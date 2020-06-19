@@ -9,532 +9,744 @@
 
 function Bevel_Create(AOwner: TComponent): TBevel; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TBevel.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure Bevel_Free(AObj: TBevel); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure Bevel_BringToFront(AObj: TBevel); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure Bevel_ClientToScreen(AObj: TBevel; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure Bevel_ClientToParent(AObj: TBevel; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function Bevel_Dragging(AObj: TBevel): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function Bevel_HasParent(AObj: TBevel): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure Bevel_Hide(AObj: TBevel); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 procedure Bevel_Invalidate(AObj: TBevel); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 function Bevel_Perform(AObj: TBevel; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure Bevel_Refresh(AObj: TBevel); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure Bevel_Repaint(AObj: TBevel); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure Bevel_ScreenToClient(AObj: TBevel; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure Bevel_ParentToClient(AObj: TBevel; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure Bevel_SendToBack(AObj: TBevel); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetBounds(AObj: TBevel; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure Bevel_Show(AObj: TBevel); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 procedure Bevel_Update(AObj: TBevel); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 function Bevel_GetTextBuf(AObj: TBevel; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function Bevel_GetTextLen(AObj: TBevel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetTextBuf(AObj: TBevel; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function Bevel_FindComponent(AObj: TBevel; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function Bevel_GetNamePath(AObj: TBevel): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure Bevel_Assign(AObj: TBevel; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function Bevel_ClassType(AObj: TBevel): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Bevel_ClassName(AObj: TBevel): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Bevel_InstanceSize(AObj: TBevel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Bevel_InheritsFrom(AObj: TBevel; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Bevel_Equals(AObj: TBevel; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Bevel_GetHashCode(AObj: TBevel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Bevel_ToString(AObj: TBevel): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure Bevel_AnchorToNeighbour(AObj: TBevel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure Bevel_AnchorParallel(AObj: TBevel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure Bevel_AnchorHorizontalCenterTo(AObj: TBevel; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure Bevel_AnchorVerticalCenterTo(AObj: TBevel; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure Bevel_AnchorAsAlign(AObj: TBevel; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure Bevel_AnchorClient(AObj: TBevel; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function Bevel_GetAlign(AObj: TBevel): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetAlign(AObj: TBevel; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetAnchors(AObj: TBevel): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetAnchors(AObj: TBevel; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetConstraints(AObj: TBevel): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetConstraints(AObj: TBevel; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetParentShowHint(AObj: TBevel): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetParentShowHint(AObj: TBevel; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetShape(AObj: TBevel): TBevelShape; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Shape;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetShape(AObj: TBevel; AValue: TBevelShape); extdecl;
 begin
+  handleExceptionBegin
   AObj.Shape := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetShowHint(AObj: TBevel): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetShowHint(AObj: TBevel; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetStyle(AObj: TBevel): TBevelStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Style;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetStyle(AObj: TBevel; AValue: TBevelStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.Style := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetVisible(AObj: TBevel): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetVisible(AObj: TBevel; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetEnabled(AObj: TBevel): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetEnabled(AObj: TBevel; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetAction(AObj: TBevel): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetAction(AObj: TBevel; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetBiDiMode(AObj: TBevel): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetBiDiMode(AObj: TBevel; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 procedure Bevel_GetBoundsRect(AObj: TBevel; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetBoundsRect(AObj: TBevel; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetClientHeight(AObj: TBevel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetClientHeight(AObj: TBevel; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure Bevel_GetClientOrigin(AObj: TBevel; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure Bevel_GetClientRect(AObj: TBevel; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function Bevel_GetClientWidth(AObj: TBevel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetClientWidth(AObj: TBevel; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetControlState(AObj: TBevel): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetControlState(AObj: TBevel; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetControlStyle(AObj: TBevel): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetControlStyle(AObj: TBevel; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetFloating(AObj: TBevel): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function Bevel_GetParent(AObj: TBevel): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetParent(AObj: TBevel; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetLeft(AObj: TBevel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetLeft(AObj: TBevel; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetTop(AObj: TBevel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetTop(AObj: TBevel; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetWidth(AObj: TBevel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetWidth(AObj: TBevel; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetHeight(AObj: TBevel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetHeight(AObj: TBevel; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetCursor(AObj: TBevel): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetCursor(AObj: TBevel; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetHint(AObj: TBevel): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetHint(AObj: TBevel; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetComponentCount(AObj: TBevel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function Bevel_GetComponentIndex(AObj: TBevel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetComponentIndex(AObj: TBevel; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetOwner(AObj: TBevel): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function Bevel_GetName(AObj: TBevel): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetName(AObj: TBevel; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetTag(AObj: TBevel): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetTag(AObj: TBevel; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetAnchorSideLeft(AObj: TBevel): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetAnchorSideLeft(AObj: TBevel; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetAnchorSideTop(AObj: TBevel): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetAnchorSideTop(AObj: TBevel; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetAnchorSideRight(AObj: TBevel): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetAnchorSideRight(AObj: TBevel; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetAnchorSideBottom(AObj: TBevel): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetAnchorSideBottom(AObj: TBevel; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetBorderSpacing(AObj: TBevel): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure Bevel_SetBorderSpacing(AObj: TBevel; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function Bevel_GetComponents(AObj: TBevel; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function Bevel_GetAnchorSide(AObj: TBevel; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function Bevel_StaticClassType: TClass; extdecl;

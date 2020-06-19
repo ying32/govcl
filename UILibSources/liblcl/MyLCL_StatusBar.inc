@@ -9,522 +9,730 @@
 
 function StatusBar_Create(AOwner: TComponent): TStatusBar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TStatusBar.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_Free(AObj: TStatusBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_FlipChildren(AObj: TStatusBar; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetBounds(AObj: TStatusBar; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 function StatusBar_CanFocus(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function StatusBar_ContainsControl(AObj: TStatusBar; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function StatusBar_ControlAtPos(AObj: TStatusBar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_DisableAlign(AObj: TStatusBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_EnableAlign(AObj: TStatusBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function StatusBar_FindChildControl(AObj: TStatusBar; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 function StatusBar_Focused(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function StatusBar_HandleAllocated(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_InsertControl(AObj: TStatusBar; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_Invalidate(AObj: TStatusBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_RemoveControl(AObj: TStatusBar; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_Realign(AObj: TStatusBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_Repaint(AObj: TStatusBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_ScaleBy(AObj: TStatusBar; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_ScrollBy(AObj: TStatusBar; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetFocus(AObj: TStatusBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_Update(AObj: TStatusBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_BringToFront(AObj: TStatusBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_ClientToScreen(AObj: TStatusBar; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_ClientToParent(AObj: TStatusBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function StatusBar_Dragging(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function StatusBar_HasParent(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_Hide(AObj: TStatusBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function StatusBar_Perform(AObj: TStatusBar; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_Refresh(AObj: TStatusBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_ScreenToClient(AObj: TStatusBar; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_ParentToClient(AObj: TStatusBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SendToBack(AObj: TStatusBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_Show(AObj: TStatusBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetTextBuf(AObj: TStatusBar; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function StatusBar_GetTextLen(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetTextBuf(AObj: TStatusBar; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function StatusBar_FindComponent(AObj: TStatusBar; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function StatusBar_GetNamePath(AObj: TStatusBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_Assign(AObj: TStatusBar; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function StatusBar_ClassType(AObj: TStatusBar): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function StatusBar_ClassName(AObj: TStatusBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function StatusBar_InstanceSize(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function StatusBar_InheritsFrom(AObj: TStatusBar; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function StatusBar_Equals(AObj: TStatusBar; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function StatusBar_GetHashCode(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function StatusBar_ToString(AObj: TStatusBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_AnchorToNeighbour(AObj: TStatusBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_AnchorParallel(AObj: TStatusBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_AnchorHorizontalCenterTo(AObj: TStatusBar; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_AnchorVerticalCenterTo(AObj: TStatusBar; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_AnchorAsAlign(AObj: TStatusBar; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_AnchorClient(AObj: TStatusBar; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function StatusBar_GetAction(AObj: TStatusBar): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetAction(AObj: TStatusBar; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetAutoHint(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoHint;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetAutoHint(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoHint := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetAlign(AObj: TStatusBar): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetAlign(AObj: TStatusBar; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetAnchors(AObj: TStatusBar): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetAnchors(AObj: TStatusBar; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetBiDiMode(AObj: TStatusBar): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetBiDiMode(AObj: TStatusBar; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetBorderWidth(AObj: TStatusBar): TBorderWidth; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderWidth;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetBorderWidth(AObj: TStatusBar; AValue: TBorderWidth); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderWidth := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetColor(AObj: TStatusBar): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetColor(AObj: TStatusBar; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetDoubleBuffered(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetDoubleBuffered(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetDragCursor(AObj: TStatusBar): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetDragCursor(AObj: TStatusBar; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetDragKind(AObj: TStatusBar): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetDragKind(AObj: TStatusBar; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetDragMode(AObj: TStatusBar): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetDragMode(AObj: TStatusBar; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetEnabled(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetEnabled(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetFont(AObj: TStatusBar): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetFont(AObj: TStatusBar; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetConstraints(AObj: TStatusBar): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetConstraints(AObj: TStatusBar; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetPanels(AObj: TStatusBar): TStatusPanels; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Panels;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetPanels(AObj: TStatusBar; AValue: TStatusPanels); extdecl;
 begin
+  handleExceptionBegin
   AObj.Panels := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetParentColor(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetParentColor(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetParentDoubleBuffered(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetParentDoubleBuffered(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetParentFont(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetParentFont(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetParentShowHint(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetParentShowHint(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetPopupMenu(AObj: TStatusBar): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetPopupMenu(AObj: TStatusBar; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetShowHint(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetShowHint(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetSimplePanel(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SimplePanel;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetSimplePanel(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.SimplePanel := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetSimpleText(AObj: TStatusBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.SimpleText);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetSimpleText(AObj: TStatusBar; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SimpleText := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetSizeGrip(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SizeGrip;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetSizeGrip(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.SizeGrip := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetUseSystemFont(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseSystemFont;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetUseSystemFont(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseSystemFont := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetVisible(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetVisible(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -649,347 +857,485 @@ end;
 
 function StatusBar_GetCanvas(AObj: TStatusBar): TCanvas; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Canvas;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetDockClientCount(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetDockSite(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetDockSite(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetMouseInClient(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetVisibleDockClientCount(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetBrush(AObj: TStatusBar): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetControlCount(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetHandle(AObj: TStatusBar): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetParentWindow(AObj: TStatusBar): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetParentWindow(AObj: TStatusBar; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetShowing(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetTabOrder(AObj: TStatusBar): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetTabOrder(AObj: TStatusBar; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetTabStop(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetTabStop(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetUseDockManager(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetUseDockManager(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_GetBoundsRect(AObj: TStatusBar; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetBoundsRect(AObj: TStatusBar; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetClientHeight(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetClientHeight(AObj: TStatusBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_GetClientOrigin(AObj: TStatusBar; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_GetClientRect(AObj: TStatusBar; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetClientWidth(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetClientWidth(AObj: TStatusBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetControlState(AObj: TStatusBar): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetControlState(AObj: TStatusBar; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetControlStyle(AObj: TStatusBar): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetControlStyle(AObj: TStatusBar; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetFloating(AObj: TStatusBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetParent(AObj: TStatusBar): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetParent(AObj: TStatusBar; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetLeft(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetLeft(AObj: TStatusBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetTop(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetTop(AObj: TStatusBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetWidth(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetWidth(AObj: TStatusBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetHeight(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetHeight(AObj: TStatusBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetCursor(AObj: TStatusBar): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetCursor(AObj: TStatusBar; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetHint(AObj: TStatusBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetHint(AObj: TStatusBar; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetComponentCount(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetComponentIndex(AObj: TStatusBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetComponentIndex(AObj: TStatusBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetOwner(AObj: TStatusBar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetName(AObj: TStatusBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetName(AObj: TStatusBar; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetTag(AObj: TStatusBar): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetTag(AObj: TStatusBar; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetAnchorSideLeft(AObj: TStatusBar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetAnchorSideLeft(AObj: TStatusBar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetAnchorSideTop(AObj: TStatusBar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetAnchorSideTop(AObj: TStatusBar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetAnchorSideRight(AObj: TStatusBar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetAnchorSideRight(AObj: TStatusBar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetAnchorSideBottom(AObj: TStatusBar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetAnchorSideBottom(AObj: TStatusBar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetChildSizing(AObj: TStatusBar): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetChildSizing(AObj: TStatusBar; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetBorderSpacing(AObj: TStatusBar): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure StatusBar_SetBorderSpacing(AObj: TStatusBar; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function StatusBar_GetDockClients(AObj: TStatusBar; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function StatusBar_GetControls(AObj: TStatusBar; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function StatusBar_GetComponents(AObj: TStatusBar; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function StatusBar_GetAnchorSide(AObj: TStatusBar; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function StatusBar_StaticClassType: TClass; extdecl;

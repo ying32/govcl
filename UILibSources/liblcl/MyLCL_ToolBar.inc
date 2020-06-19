@@ -9,647 +9,905 @@
 
 function ToolBar_Create(AOwner: TComponent): TToolBar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TToolBar.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_Free(AObj: TToolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_FlipChildren(AObj: TToolBar; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function ToolBar_CanFocus(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function ToolBar_ContainsControl(AObj: TToolBar; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function ToolBar_ControlAtPos(AObj: TToolBar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_DisableAlign(AObj: TToolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_EnableAlign(AObj: TToolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function ToolBar_FindChildControl(AObj: TToolBar; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 function ToolBar_Focused(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function ToolBar_HandleAllocated(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_InsertControl(AObj: TToolBar; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_Invalidate(AObj: TToolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_RemoveControl(AObj: TToolBar; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_Realign(AObj: TToolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_Repaint(AObj: TToolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_ScaleBy(AObj: TToolBar; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_ScrollBy(AObj: TToolBar; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetBounds(AObj: TToolBar; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetFocus(AObj: TToolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_Update(AObj: TToolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_BringToFront(AObj: TToolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_ClientToScreen(AObj: TToolBar; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_ClientToParent(AObj: TToolBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function ToolBar_Dragging(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function ToolBar_HasParent(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_Hide(AObj: TToolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function ToolBar_Perform(AObj: TToolBar; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_Refresh(AObj: TToolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_ScreenToClient(AObj: TToolBar; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_ParentToClient(AObj: TToolBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SendToBack(AObj: TToolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_Show(AObj: TToolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetTextBuf(AObj: TToolBar; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function ToolBar_GetTextLen(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetTextBuf(AObj: TToolBar; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function ToolBar_FindComponent(AObj: TToolBar; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function ToolBar_GetNamePath(AObj: TToolBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_Assign(AObj: TToolBar; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ToolBar_ClassType(AObj: TToolBar): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ToolBar_ClassName(AObj: TToolBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ToolBar_InstanceSize(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ToolBar_InheritsFrom(AObj: TToolBar; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ToolBar_Equals(AObj: TToolBar; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ToolBar_GetHashCode(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ToolBar_ToString(AObj: TToolBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_AnchorToNeighbour(AObj: TToolBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_AnchorParallel(AObj: TToolBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_AnchorHorizontalCenterTo(AObj: TToolBar; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_AnchorVerticalCenterTo(AObj: TToolBar; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_AnchorAsAlign(AObj: TToolBar; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_AnchorClient(AObj: TToolBar; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function ToolBar_GetButtonCount(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ButtonCount;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetCanvas(AObj: TToolBar): TCanvas; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Canvas;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetRowCount(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.RowCount;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetAlign(AObj: TToolBar): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetAlign(AObj: TToolBar; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetAnchors(AObj: TToolBar): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetAnchors(AObj: TToolBar; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetAutoSize(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSize;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetAutoSize(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSize := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetBorderWidth(AObj: TToolBar): TBorderWidth; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderWidth;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetBorderWidth(AObj: TToolBar; AValue: TBorderWidth); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetButtonHeight(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ButtonHeight;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetButtonHeight(AObj: TToolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ButtonHeight := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetButtonWidth(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ButtonWidth;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetButtonWidth(AObj: TToolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ButtonWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetCaption(AObj: TToolBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Caption);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetCaption(AObj: TToolBar; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Caption := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetColor(AObj: TToolBar): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetColor(AObj: TToolBar; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetConstraints(AObj: TToolBar): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetConstraints(AObj: TToolBar; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetDoubleBuffered(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetDoubleBuffered(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetDockSite(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetDockSite(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetDragCursor(AObj: TToolBar): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetDragCursor(AObj: TToolBar; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetDragKind(AObj: TToolBar): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetDragKind(AObj: TToolBar; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetDragMode(AObj: TToolBar): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetDragMode(AObj: TToolBar; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetEdgeBorders(AObj: TToolBar): TEdgeBorders; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.EdgeBorders;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetEdgeBorders(AObj: TToolBar; AValue: TEdgeBorders); extdecl;
 begin
+  handleExceptionBegin
   AObj.EdgeBorders := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetEdgeInner(AObj: TToolBar): TEdgeStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.EdgeInner;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetEdgeInner(AObj: TToolBar; AValue: TEdgeStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.EdgeInner := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetEdgeOuter(AObj: TToolBar): TEdgeStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.EdgeOuter;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetEdgeOuter(AObj: TToolBar; AValue: TEdgeStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.EdgeOuter := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetEnabled(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetEnabled(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetFlat(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Flat;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetFlat(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Flat := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetFont(AObj: TToolBar): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetFont(AObj: TToolBar; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetHeight(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetHeight(AObj: TToolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetHotImages(AObj: TToolBar): TCustomImageList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HotImages;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetHotImages(AObj: TToolBar; AValue: TCustomImageList); extdecl;
 begin
+  handleExceptionBegin
   AObj.HotImages := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetImages(AObj: TToolBar): TCustomImageList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Images;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetImages(AObj: TToolBar; AValue: TCustomImageList); extdecl;
 begin
+  handleExceptionBegin
   AObj.Images := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetIndent(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Indent;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetIndent(AObj: TToolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Indent := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetList(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.List;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetList(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.List := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetParentColor(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetParentColor(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetParentDoubleBuffered(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetParentDoubleBuffered(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetParentFont(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetParentFont(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetParentShowHint(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetParentShowHint(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetPopupMenu(AObj: TToolBar): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetPopupMenu(AObj: TToolBar; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetShowCaptions(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowCaptions;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetShowCaptions(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowCaptions := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetShowHint(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetShowHint(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetTabOrder(AObj: TToolBar): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetTabOrder(AObj: TToolBar; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetTabStop(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetTabStop(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetTransparent(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Transparent;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetTransparent(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Transparent := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetVisible(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetVisible(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetWrapable(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Wrapable;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetWrapable(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Wrapable := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -782,327 +1040,457 @@ end;
 
 function ToolBar_GetDockClientCount(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetMouseInClient(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetVisibleDockClientCount(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetBrush(AObj: TToolBar): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetControlCount(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetHandle(AObj: TToolBar): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetParentWindow(AObj: TToolBar): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetParentWindow(AObj: TToolBar; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetShowing(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetUseDockManager(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetUseDockManager(AObj: TToolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetAction(AObj: TToolBar): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetAction(AObj: TToolBar; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetBiDiMode(AObj: TToolBar): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetBiDiMode(AObj: TToolBar; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_GetBoundsRect(AObj: TToolBar; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetBoundsRect(AObj: TToolBar; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetClientHeight(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetClientHeight(AObj: TToolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_GetClientOrigin(AObj: TToolBar; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_GetClientRect(AObj: TToolBar; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetClientWidth(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetClientWidth(AObj: TToolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetControlState(AObj: TToolBar): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetControlState(AObj: TToolBar; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetControlStyle(AObj: TToolBar): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetControlStyle(AObj: TToolBar; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetFloating(AObj: TToolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetParent(AObj: TToolBar): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetParent(AObj: TToolBar; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetLeft(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetLeft(AObj: TToolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetTop(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetTop(AObj: TToolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetWidth(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetWidth(AObj: TToolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetCursor(AObj: TToolBar): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetCursor(AObj: TToolBar; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetHint(AObj: TToolBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetHint(AObj: TToolBar; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetComponentCount(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetComponentIndex(AObj: TToolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetComponentIndex(AObj: TToolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetOwner(AObj: TToolBar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetName(AObj: TToolBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetName(AObj: TToolBar; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetTag(AObj: TToolBar): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetTag(AObj: TToolBar; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetAnchorSideLeft(AObj: TToolBar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetAnchorSideLeft(AObj: TToolBar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetAnchorSideTop(AObj: TToolBar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetAnchorSideTop(AObj: TToolBar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetAnchorSideRight(AObj: TToolBar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetAnchorSideRight(AObj: TToolBar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetAnchorSideBottom(AObj: TToolBar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetAnchorSideBottom(AObj: TToolBar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetChildSizing(AObj: TToolBar): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetChildSizing(AObj: TToolBar; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetBorderSpacing(AObj: TToolBar): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure ToolBar_SetBorderSpacing(AObj: TToolBar; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function ToolBar_GetButtons(AObj: TToolBar; Index: Integer): TToolButton; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Buttons[Index];
+  handleExceptionEnd
 end;
 
 function ToolBar_GetDockClients(AObj: TToolBar; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function ToolBar_GetControls(AObj: TToolBar; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function ToolBar_GetComponents(AObj: TToolBar; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function ToolBar_GetAnchorSide(AObj: TToolBar; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function ToolBar_StaticClassType: TClass; extdecl;

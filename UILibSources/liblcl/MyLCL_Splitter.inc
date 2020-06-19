@@ -9,272 +9,380 @@
 
 function Splitter_Create(AOwner: TComponent): TSplitter; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TSplitter.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure Splitter_Free(AObj: TSplitter); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure Splitter_BringToFront(AObj: TSplitter); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure Splitter_ClientToScreen(AObj: TSplitter; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure Splitter_ClientToParent(AObj: TSplitter; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function Splitter_Dragging(AObj: TSplitter): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function Splitter_HasParent(AObj: TSplitter): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure Splitter_Hide(AObj: TSplitter); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 procedure Splitter_Invalidate(AObj: TSplitter); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 function Splitter_Perform(AObj: TSplitter; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure Splitter_Refresh(AObj: TSplitter); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure Splitter_Repaint(AObj: TSplitter); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure Splitter_ScreenToClient(AObj: TSplitter; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure Splitter_ParentToClient(AObj: TSplitter; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure Splitter_SendToBack(AObj: TSplitter); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetBounds(AObj: TSplitter; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure Splitter_Show(AObj: TSplitter); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 procedure Splitter_Update(AObj: TSplitter); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 function Splitter_GetTextBuf(AObj: TSplitter; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function Splitter_GetTextLen(AObj: TSplitter): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetTextBuf(AObj: TSplitter; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function Splitter_FindComponent(AObj: TSplitter; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function Splitter_GetNamePath(AObj: TSplitter): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure Splitter_Assign(AObj: TSplitter; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function Splitter_ClassType(AObj: TSplitter): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Splitter_ClassName(AObj: TSplitter): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Splitter_InstanceSize(AObj: TSplitter): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Splitter_InheritsFrom(AObj: TSplitter; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Splitter_Equals(AObj: TSplitter; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Splitter_GetHashCode(AObj: TSplitter): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Splitter_ToString(AObj: TSplitter): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure Splitter_AnchorToNeighbour(AObj: TSplitter; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure Splitter_AnchorParallel(AObj: TSplitter; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure Splitter_AnchorHorizontalCenterTo(AObj: TSplitter; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure Splitter_AnchorVerticalCenterTo(AObj: TSplitter; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure Splitter_AnchorAsAlign(AObj: TSplitter; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure Splitter_AnchorClient(AObj: TSplitter; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function Splitter_GetResizeAnchor(AObj: TSplitter): TAnchorKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ResizeAnchor;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetResizeAnchor(AObj: TSplitter; AValue: TAnchorKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.ResizeAnchor := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetCanvas(AObj: TSplitter): TCanvas; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Canvas;
+  handleExceptionEnd
 end;
 
 function Splitter_GetAlign(AObj: TSplitter): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetAlign(AObj: TSplitter; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetColor(AObj: TSplitter): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetColor(AObj: TSplitter; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetCursor(AObj: TSplitter): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetCursor(AObj: TSplitter; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetConstraints(AObj: TSplitter): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetConstraints(AObj: TSplitter; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetParentColor(AObj: TSplitter): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetParentColor(AObj: TSplitter; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetVisible(AObj: TSplitter): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetVisible(AObj: TSplitter; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetWidth(AObj: TSplitter): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetWidth(AObj: TSplitter; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -287,267 +395,373 @@ end;
 
 function Splitter_GetEnabled(AObj: TSplitter): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetEnabled(AObj: TSplitter; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetAction(AObj: TSplitter): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetAction(AObj: TSplitter; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetAnchors(AObj: TSplitter): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetAnchors(AObj: TSplitter; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetBiDiMode(AObj: TSplitter): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetBiDiMode(AObj: TSplitter; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 procedure Splitter_GetBoundsRect(AObj: TSplitter; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetBoundsRect(AObj: TSplitter; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetClientHeight(AObj: TSplitter): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetClientHeight(AObj: TSplitter; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure Splitter_GetClientOrigin(AObj: TSplitter; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure Splitter_GetClientRect(AObj: TSplitter; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function Splitter_GetClientWidth(AObj: TSplitter): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetClientWidth(AObj: TSplitter; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetControlState(AObj: TSplitter): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetControlState(AObj: TSplitter; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetControlStyle(AObj: TSplitter): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetControlStyle(AObj: TSplitter; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetFloating(AObj: TSplitter): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function Splitter_GetShowHint(AObj: TSplitter): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetShowHint(AObj: TSplitter; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetParent(AObj: TSplitter): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetParent(AObj: TSplitter; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetLeft(AObj: TSplitter): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetLeft(AObj: TSplitter; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetTop(AObj: TSplitter): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetTop(AObj: TSplitter; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetHeight(AObj: TSplitter): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetHeight(AObj: TSplitter; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetHint(AObj: TSplitter): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetHint(AObj: TSplitter; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetComponentCount(AObj: TSplitter): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function Splitter_GetComponentIndex(AObj: TSplitter): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetComponentIndex(AObj: TSplitter; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetOwner(AObj: TSplitter): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function Splitter_GetName(AObj: TSplitter): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetName(AObj: TSplitter; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetTag(AObj: TSplitter): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetTag(AObj: TSplitter; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetAnchorSideLeft(AObj: TSplitter): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetAnchorSideLeft(AObj: TSplitter; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetAnchorSideTop(AObj: TSplitter): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetAnchorSideTop(AObj: TSplitter; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetAnchorSideRight(AObj: TSplitter): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetAnchorSideRight(AObj: TSplitter; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetAnchorSideBottom(AObj: TSplitter): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetAnchorSideBottom(AObj: TSplitter; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetBorderSpacing(AObj: TSplitter): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure Splitter_SetBorderSpacing(AObj: TSplitter; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function Splitter_GetComponents(AObj: TSplitter; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function Splitter_GetAnchorSide(AObj: TSplitter; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function Splitter_StaticClassType: TClass; extdecl;

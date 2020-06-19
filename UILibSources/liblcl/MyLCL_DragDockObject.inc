@@ -9,157 +9,219 @@
 
 function DragDockObject_Create(AOwner: TControl): TDragDockObject; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TDragDockObject.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_Free(AObj: TDragDockObject); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_Assign(AObj: TDragDockObject; Source: TDragObject); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_HideDragImage(AObj: TDragDockObject); extdecl;
 begin
+  handleExceptionBegin
   AObj.HideDragImage;
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_ShowDragImage(AObj: TDragDockObject); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowDragImage;
+  handleExceptionEnd
 end;
 
 function DragDockObject_ClassType(AObj: TDragDockObject): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function DragDockObject_ClassName(AObj: TDragDockObject): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function DragDockObject_InstanceSize(AObj: TDragDockObject): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function DragDockObject_InheritsFrom(AObj: TDragDockObject; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function DragDockObject_Equals(AObj: TDragDockObject; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function DragDockObject_GetHashCode(AObj: TDragDockObject): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function DragDockObject_ToString(AObj: TDragDockObject): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_GetDockRect(AObj: TDragDockObject; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockRect;
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_SetDockRect(AObj: TDragDockObject; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockRect := AValue;
+  handleExceptionEnd
 end;
 
 function DragDockObject_GetDropAlign(AObj: TDragDockObject): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DropAlign;
+  handleExceptionEnd
 end;
 
 function DragDockObject_GetDropOnControl(AObj: TDragDockObject): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DropOnControl;
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_GetEraseDockRect(AObj: TDragDockObject; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.EraseDockRect;
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_SetEraseDockRect(AObj: TDragDockObject; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.EraseDockRect := AValue;
+  handleExceptionEnd
 end;
 
 function DragDockObject_GetFloating(AObj: TDragDockObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_SetFloating(AObj: TDragDockObject; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Floating := AValue;
+  handleExceptionEnd
 end;
 
 function DragDockObject_GetControl(AObj: TDragDockObject): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Control;
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_SetControl(AObj: TDragDockObject; AValue: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Control := AValue;
+  handleExceptionEnd
 end;
 
 function DragDockObject_GetAlwaysShowDragImages(AObj: TDragDockObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AlwaysShowDragImages;
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_SetAlwaysShowDragImages(AObj: TDragDockObject; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AlwaysShowDragImages := AValue;
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_GetDragPos(AObj: TDragDockObject; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragPos;
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_SetDragPos(AObj: TDragDockObject; var AValue: TPoint); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragPos := AValue;
+  handleExceptionEnd
 end;
 
 function DragDockObject_GetDragTarget(AObj: TDragDockObject): Pointer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragTarget;
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_SetDragTarget(AObj: TDragDockObject; AValue: Pointer); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragTarget := AValue;
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_GetDragTargetPos(AObj: TDragDockObject; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragTargetPos;
+  handleExceptionEnd
 end;
 
 procedure DragDockObject_SetDragTargetPos(AObj: TDragDockObject; var AValue: TPoint); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragTargetPos := AValue;
+  handleExceptionEnd
 end;
 
 function DragDockObject_GetDropped(AObj: TDragDockObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dropped;
+  handleExceptionEnd
 end;
 
 function DragDockObject_StaticClassType: TClass; extdecl;

@@ -9,622 +9,870 @@
 
 function LabeledEdit_Create(AOwner: TComponent): TLabeledEdit; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TLabeledEdit.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_Free(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetBounds(AObj: TLabeledEdit; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_Clear(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_ClearSelection(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClearSelection;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_CopyToClipboard(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.CopyToClipboard;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_CutToClipboard(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.CutToClipboard;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_PasteFromClipboard(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.PasteFromClipboard;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_Undo(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Undo;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SelectAll(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelectAll;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_CanFocus(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_ContainsControl(AObj: TLabeledEdit; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function LabeledEdit_ControlAtPos(AObj: TLabeledEdit; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_DisableAlign(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_EnableAlign(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_FindChildControl(AObj: TLabeledEdit; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_FlipChildren(AObj: TLabeledEdit; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function LabeledEdit_Focused(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_HandleAllocated(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_InsertControl(AObj: TLabeledEdit; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_Invalidate(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_RemoveControl(AObj: TLabeledEdit; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_Realign(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_Repaint(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_ScaleBy(AObj: TLabeledEdit; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_ScrollBy(AObj: TLabeledEdit; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetFocus(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_Update(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_BringToFront(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_ClientToScreen(AObj: TLabeledEdit; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_ClientToParent(AObj: TLabeledEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function LabeledEdit_Dragging(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_HasParent(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_Hide(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_Perform(AObj: TLabeledEdit; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_Refresh(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_ScreenToClient(AObj: TLabeledEdit; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_ParentToClient(AObj: TLabeledEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SendToBack(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_Show(AObj: TLabeledEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetTextBuf(AObj: TLabeledEdit; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetTextLen(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetTextBuf(AObj: TLabeledEdit; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function LabeledEdit_FindComponent(AObj: TLabeledEdit; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetNamePath(AObj: TLabeledEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_Assign(AObj: TLabeledEdit; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function LabeledEdit_ClassType(AObj: TLabeledEdit): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_ClassName(AObj: TLabeledEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function LabeledEdit_InstanceSize(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_InheritsFrom(AObj: TLabeledEdit; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function LabeledEdit_Equals(AObj: TLabeledEdit; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetHashCode(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_ToString(AObj: TLabeledEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_AnchorToNeighbour(AObj: TLabeledEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_AnchorParallel(AObj: TLabeledEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_AnchorHorizontalCenterTo(AObj: TLabeledEdit; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_AnchorVerticalCenterTo(AObj: TLabeledEdit; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_AnchorAsAlign(AObj: TLabeledEdit; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_AnchorClient(AObj: TLabeledEdit; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetAlignment(AObj: TLabeledEdit): TAlignment; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Alignment;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetAlignment(AObj: TLabeledEdit; AValue: TAlignment); extdecl;
 begin
+  handleExceptionBegin
   AObj.Alignment := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetAnchors(AObj: TLabeledEdit): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetAnchors(AObj: TLabeledEdit; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetAutoSelect(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSelect;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetAutoSelect(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSelect := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetAutoSize(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSize;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetAutoSize(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSize := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetBiDiMode(AObj: TLabeledEdit): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetBiDiMode(AObj: TLabeledEdit; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetBorderStyle(AObj: TLabeledEdit): TBorderStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderStyle;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetBorderStyle(AObj: TLabeledEdit; AValue: TBorderStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderStyle := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetCharCase(AObj: TLabeledEdit): TEditCharCase; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CharCase;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetCharCase(AObj: TLabeledEdit; AValue: TEditCharCase); extdecl;
 begin
+  handleExceptionBegin
   AObj.CharCase := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetColor(AObj: TLabeledEdit): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetColor(AObj: TLabeledEdit; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetConstraints(AObj: TLabeledEdit): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetConstraints(AObj: TLabeledEdit; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetDoubleBuffered(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetDoubleBuffered(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetDragCursor(AObj: TLabeledEdit): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetDragCursor(AObj: TLabeledEdit; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetDragMode(AObj: TLabeledEdit): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetDragMode(AObj: TLabeledEdit; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetEditLabel(AObj: TLabeledEdit): TBoundLabel; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.EditLabel;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetEnabled(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetEnabled(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetFont(AObj: TLabeledEdit): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetFont(AObj: TLabeledEdit; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetHideSelection(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HideSelection;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetHideSelection(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.HideSelection := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetLabelPosition(AObj: TLabeledEdit): TLabelPosition; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.LabelPosition;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetLabelPosition(AObj: TLabeledEdit; AValue: TLabelPosition); extdecl;
 begin
+  handleExceptionBegin
   AObj.LabelPosition := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetLabelSpacing(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.LabelSpacing;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetLabelSpacing(AObj: TLabeledEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.LabelSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetMaxLength(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MaxLength;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetMaxLength(AObj: TLabeledEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MaxLength := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetNumbersOnly(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.NumbersOnly;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetNumbersOnly(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.NumbersOnly := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetParentColor(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetParentColor(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetParentDoubleBuffered(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetParentDoubleBuffered(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetParentFont(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetParentFont(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetParentShowHint(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetParentShowHint(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetPasswordChar(AObj: TLabeledEdit): Char; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PasswordChar;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetPasswordChar(AObj: TLabeledEdit; AValue: Char); extdecl;
 begin
+  handleExceptionBegin
   AObj.PasswordChar := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetPopupMenu(AObj: TLabeledEdit): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetPopupMenu(AObj: TLabeledEdit; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetReadOnly(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ReadOnly;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetReadOnly(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ReadOnly := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetShowHint(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetShowHint(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetTabOrder(AObj: TLabeledEdit): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetTabOrder(AObj: TLabeledEdit; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetTabStop(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetTabStop(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetText(AObj: TLabeledEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Text);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetText(AObj: TLabeledEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Text := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetTextHint(AObj: TLabeledEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.TextHint);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetTextHint(AObj: TLabeledEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.TextHint := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetVisible(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetVisible(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -757,387 +1005,541 @@ end;
 
 function LabeledEdit_GetCanUndo(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanUndo;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetModified(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Modified;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetModified(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Modified := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetSelLength(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelLength;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetSelLength(AObj: TLabeledEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelLength := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetSelStart(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelStart;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetSelStart(AObj: TLabeledEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelStart := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetSelText(AObj: TLabeledEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.SelText);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetSelText(AObj: TLabeledEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelText := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetDockClientCount(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetDockSite(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetDockSite(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetMouseInClient(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetVisibleDockClientCount(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetBrush(AObj: TLabeledEdit): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetControlCount(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetHandle(AObj: TLabeledEdit): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetParentWindow(AObj: TLabeledEdit): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetParentWindow(AObj: TLabeledEdit; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetShowing(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetUseDockManager(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetUseDockManager(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetAction(AObj: TLabeledEdit): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetAction(AObj: TLabeledEdit; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetAlign(AObj: TLabeledEdit): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetAlign(AObj: TLabeledEdit; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_GetBoundsRect(AObj: TLabeledEdit; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetBoundsRect(AObj: TLabeledEdit; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetClientHeight(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetClientHeight(AObj: TLabeledEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_GetClientOrigin(AObj: TLabeledEdit; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_GetClientRect(AObj: TLabeledEdit; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetClientWidth(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetClientWidth(AObj: TLabeledEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetControlState(AObj: TLabeledEdit): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetControlState(AObj: TLabeledEdit; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetControlStyle(AObj: TLabeledEdit): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetControlStyle(AObj: TLabeledEdit; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetFloating(AObj: TLabeledEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetParent(AObj: TLabeledEdit): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetParent(AObj: TLabeledEdit; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetLeft(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetLeft(AObj: TLabeledEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetTop(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetTop(AObj: TLabeledEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetWidth(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetWidth(AObj: TLabeledEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetHeight(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetHeight(AObj: TLabeledEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetCursor(AObj: TLabeledEdit): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetCursor(AObj: TLabeledEdit; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetHint(AObj: TLabeledEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetHint(AObj: TLabeledEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetComponentCount(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetComponentIndex(AObj: TLabeledEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetComponentIndex(AObj: TLabeledEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetOwner(AObj: TLabeledEdit): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetName(AObj: TLabeledEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetName(AObj: TLabeledEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetTag(AObj: TLabeledEdit): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetTag(AObj: TLabeledEdit; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetAnchorSideLeft(AObj: TLabeledEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetAnchorSideLeft(AObj: TLabeledEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetAnchorSideTop(AObj: TLabeledEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetAnchorSideTop(AObj: TLabeledEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetAnchorSideRight(AObj: TLabeledEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetAnchorSideRight(AObj: TLabeledEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetAnchorSideBottom(AObj: TLabeledEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetAnchorSideBottom(AObj: TLabeledEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetChildSizing(AObj: TLabeledEdit): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetChildSizing(AObj: TLabeledEdit; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetBorderSpacing(AObj: TLabeledEdit): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure LabeledEdit_SetBorderSpacing(AObj: TLabeledEdit; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetDockClients(AObj: TLabeledEdit; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetControls(AObj: TLabeledEdit; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetComponents(AObj: TLabeledEdit; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function LabeledEdit_GetAnchorSide(AObj: TLabeledEdit; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function LabeledEdit_StaticClassType: TClass; extdecl;

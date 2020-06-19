@@ -9,224 +9,312 @@
 
 function Bitmap_Create: TBitmap; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TBitmap.Create;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_Free(AObj: TBitmap); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_Assign(AObj: TBitmap; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 procedure Bitmap_FreeImage(AObj: TBitmap); extdecl;
 begin
+  handleExceptionBegin
   AObj.FreeImage;
+  handleExceptionEnd
 end;
 
 function Bitmap_HandleAllocated(AObj: TBitmap): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_LoadFromStream(AObj: TBitmap; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromStream(Stream);
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SaveToStream(AObj: TBitmap; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToStream(Stream);
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SetSize(AObj: TBitmap; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetSize(AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure Bitmap_LoadFromResourceName(AObj: TBitmap; Instance: NativeUInt; ResName: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromResourceName(Instance, ResName);
+  handleExceptionEnd
 end;
 
 procedure Bitmap_LoadFromResourceID(AObj: TBitmap; Instance: NativeUInt; ResID: Integer); extdecl;
 begin
+  handleExceptionBegin
 {$IFDEF MSWINDOWS}
   AObj.LoadFromResourceID(Instance, ResID);
+  handleExceptionEnd
 {$ENDIF MSWINDOWS}
 end;
 
 function Bitmap_Equals(AObj: TBitmap; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 procedure Bitmap_LoadFromFile(AObj: TBitmap; Filename: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromFile(Filename);
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SaveToFile(AObj: TBitmap; Filename: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToFile(Filename);
+  handleExceptionEnd
 end;
 
 function Bitmap_GetNamePath(AObj: TBitmap): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function Bitmap_ClassType(AObj: TBitmap): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Bitmap_ClassName(AObj: TBitmap): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Bitmap_InstanceSize(AObj: TBitmap): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Bitmap_InheritsFrom(AObj: TBitmap; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Bitmap_GetHashCode(AObj: TBitmap): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Bitmap_ToString(AObj: TBitmap): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Bitmap_GetCanvas(AObj: TBitmap): TCanvas; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Canvas;
+  handleExceptionEnd
 end;
 
 function Bitmap_GetHandle(AObj: TBitmap): HBITMAP; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SetHandle(AObj: TBitmap; AValue: HBITMAP); extdecl;
 begin
+  handleExceptionBegin
   AObj.Handle := AValue;
+  handleExceptionEnd
 end;
 
 function Bitmap_GetHandleType(AObj: TBitmap): TBitmapHandleType; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleType;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SetHandleType(AObj: TBitmap; AValue: TBitmapHandleType); extdecl;
 begin
+  handleExceptionBegin
   AObj.HandleType := AValue;
+  handleExceptionEnd
 end;
 
 function Bitmap_GetMaskHandle(AObj: TBitmap): HBITMAP; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MaskHandle;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SetMaskHandle(AObj: TBitmap; AValue: HBITMAP); extdecl;
 begin
+  handleExceptionBegin
   AObj.MaskHandle := AValue;
+  handleExceptionEnd
 end;
 
 function Bitmap_GetPixelFormat(AObj: TBitmap): TPixelFormat; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PixelFormat;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SetPixelFormat(AObj: TBitmap; AValue: TPixelFormat); extdecl;
 begin
+  handleExceptionBegin
   AObj.PixelFormat := AValue;
+  handleExceptionEnd
 end;
 
 function Bitmap_GetTransparentMode(AObj: TBitmap): TTransparentMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TransparentMode;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SetTransparentMode(AObj: TBitmap; AValue: TTransparentMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.TransparentMode := AValue;
+  handleExceptionEnd
 end;
 
 function Bitmap_GetEmpty(AObj: TBitmap): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Empty;
+  handleExceptionEnd
 end;
 
 function Bitmap_GetHeight(AObj: TBitmap): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SetHeight(AObj: TBitmap; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function Bitmap_GetModified(AObj: TBitmap): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Modified;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SetModified(AObj: TBitmap; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Modified := AValue;
+  handleExceptionEnd
 end;
 
 function Bitmap_GetPalette(AObj: TBitmap): HPALETTE; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Palette;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SetPalette(AObj: TBitmap; AValue: HPALETTE); extdecl;
 begin
+  handleExceptionBegin
   AObj.Palette := AValue;
+  handleExceptionEnd
 end;
 
 function Bitmap_GetPaletteModified(AObj: TBitmap): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PaletteModified;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SetPaletteModified(AObj: TBitmap; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.PaletteModified := AValue;
+  handleExceptionEnd
 end;
 
 function Bitmap_GetTransparent(AObj: TBitmap): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Transparent;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SetTransparent(AObj: TBitmap; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Transparent := AValue;
+  handleExceptionEnd
 end;
 
 function Bitmap_GetWidth(AObj: TBitmap): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_SetWidth(AObj: TBitmap; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -239,7 +327,9 @@ end;
 
 function Bitmap_GetScanLine(AObj: TBitmap; Row: Integer): Pointer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScanLine[Row];
+  handleExceptionEnd
 end;
 
 function Bitmap_StaticClassType: TClass; extdecl;

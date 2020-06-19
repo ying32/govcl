@@ -9,117 +9,163 @@
 
 procedure ParaAttributes_Assign(AObj: TParaAttributes; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ParaAttributes_GetNamePath(AObj: TParaAttributes): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function ParaAttributes_ClassType(AObj: TParaAttributes): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ParaAttributes_ClassName(AObj: TParaAttributes): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ParaAttributes_InstanceSize(AObj: TParaAttributes): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ParaAttributes_InheritsFrom(AObj: TParaAttributes; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ParaAttributes_Equals(AObj: TParaAttributes; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ParaAttributes_GetHashCode(AObj: TParaAttributes): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ParaAttributes_ToString(AObj: TParaAttributes): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function ParaAttributes_GetAlignment(AObj: TParaAttributes): TAlignment; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Alignment;
+  handleExceptionEnd
 end;
 
 procedure ParaAttributes_SetAlignment(AObj: TParaAttributes; AValue: TAlignment); extdecl;
 begin
+  handleExceptionBegin
   AObj.Alignment := AValue;
+  handleExceptionEnd
 end;
 
 function ParaAttributes_GetFirstIndent(AObj: TParaAttributes): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FirstIndent;
+  handleExceptionEnd
 end;
 
 procedure ParaAttributes_SetFirstIndent(AObj: TParaAttributes; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.FirstIndent := AValue;
+  handleExceptionEnd
 end;
 
 function ParaAttributes_GetLeftIndent(AObj: TParaAttributes): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.LeftIndent;
+  handleExceptionEnd
 end;
 
 procedure ParaAttributes_SetLeftIndent(AObj: TParaAttributes; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.LeftIndent := AValue;
+  handleExceptionEnd
 end;
 
 function ParaAttributes_GetNumbering(AObj: TParaAttributes): TNumberingStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Numbering;
+  handleExceptionEnd
 end;
 
 procedure ParaAttributes_SetNumbering(AObj: TParaAttributes; AValue: TNumberingStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.Numbering := AValue;
+  handleExceptionEnd
 end;
 
 function ParaAttributes_GetRightIndent(AObj: TParaAttributes): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.RightIndent;
+  handleExceptionEnd
 end;
 
 procedure ParaAttributes_SetRightIndent(AObj: TParaAttributes; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.RightIndent := AValue;
+  handleExceptionEnd
 end;
 
 function ParaAttributes_GetTabCount(AObj: TParaAttributes): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabCount;
+  handleExceptionEnd
 end;
 
 procedure ParaAttributes_SetTabCount(AObj: TParaAttributes; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabCount := AValue;
+  handleExceptionEnd
 end;
 
 function ParaAttributes_GetTab(AObj: TParaAttributes; Index: Byte): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tab[Index];
+  handleExceptionEnd
 end;
 
 procedure ParaAttributes_SetTab(AObj: TParaAttributes; Index: Byte; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tab[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function ParaAttributes_StaticClassType: TClass; extdecl;

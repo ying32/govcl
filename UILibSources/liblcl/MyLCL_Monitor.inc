@@ -9,97 +9,135 @@
 
 function Monitor_Create: TMonitor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TMonitor.Create;
+  handleExceptionEnd
 end;
 
 procedure Monitor_Free(AObj: TMonitor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function Monitor_ClassType(AObj: TMonitor): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Monitor_ClassName(AObj: TMonitor): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Monitor_InstanceSize(AObj: TMonitor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Monitor_InheritsFrom(AObj: TMonitor; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Monitor_Equals(AObj: TMonitor; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Monitor_GetHashCode(AObj: TMonitor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Monitor_ToString(AObj: TMonitor): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Monitor_GetHandle(AObj: TMonitor): HMONITOR; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function Monitor_GetMonitorNum(AObj: TMonitor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MonitorNum;
+  handleExceptionEnd
 end;
 
 function Monitor_GetLeft(AObj: TMonitor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 function Monitor_GetHeight(AObj: TMonitor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 function Monitor_GetTop(AObj: TMonitor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 function Monitor_GetWidth(AObj: TMonitor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure Monitor_GetBoundsRect(AObj: TMonitor; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure Monitor_GetWorkareaRect(AObj: TMonitor; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.WorkareaRect;
+  handleExceptionEnd
 end;
 
 function Monitor_GetPrimary(AObj: TMonitor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Primary;
+  handleExceptionEnd
 end;
 
 function Monitor_GetPixelsPerInch(AObj: TMonitor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PixelsPerInch;
+  handleExceptionEnd
 end;
 
 function Monitor_StaticClassType: TClass; extdecl;

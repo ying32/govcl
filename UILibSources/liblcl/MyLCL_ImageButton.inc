@@ -9,392 +9,548 @@
 
 function ImageButton_Create(AOwner: TComponent): TImageButton; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TImageButton.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_Free(AObj: TImageButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_Click(AObj: TImageButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Click;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_BringToFront(AObj: TImageButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_ClientToScreen(AObj: TImageButton; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_ClientToParent(AObj: TImageButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function ImageButton_Dragging(AObj: TImageButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function ImageButton_HasParent(AObj: TImageButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_Hide(AObj: TImageButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_Invalidate(AObj: TImageButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 function ImageButton_Perform(AObj: TImageButton; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_Refresh(AObj: TImageButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_Repaint(AObj: TImageButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_ScreenToClient(AObj: TImageButton; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_ParentToClient(AObj: TImageButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SendToBack(AObj: TImageButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetBounds(AObj: TImageButton; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_Show(AObj: TImageButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_Update(AObj: TImageButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetTextBuf(AObj: TImageButton; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function ImageButton_GetTextLen(AObj: TImageButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetTextBuf(AObj: TImageButton; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function ImageButton_FindComponent(AObj: TImageButton; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function ImageButton_GetNamePath(AObj: TImageButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_Assign(AObj: TImageButton; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ImageButton_ClassType(AObj: TImageButton): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ImageButton_ClassName(AObj: TImageButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ImageButton_InstanceSize(AObj: TImageButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ImageButton_InheritsFrom(AObj: TImageButton; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ImageButton_Equals(AObj: TImageButton; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ImageButton_GetHashCode(AObj: TImageButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ImageButton_ToString(AObj: TImageButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_AnchorToNeighbour(AObj: TImageButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_AnchorParallel(AObj: TImageButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_AnchorHorizontalCenterTo(AObj: TImageButton; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_AnchorVerticalCenterTo(AObj: TImageButton; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_AnchorAsAlign(AObj: TImageButton; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_AnchorClient(AObj: TImageButton; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function ImageButton_GetAction(AObj: TImageButton): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetAction(AObj: TImageButton; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetAlign(AObj: TImageButton): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetAlign(AObj: TImageButton; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetAnchors(AObj: TImageButton): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetAnchors(AObj: TImageButton; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetAutoSize(AObj: TImageButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSize;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetAutoSize(AObj: TImageButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSize := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetConstraints(AObj: TImageButton): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetConstraints(AObj: TImageButton; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetCaption(AObj: TImageButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Caption);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetCaption(AObj: TImageButton; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Caption := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetDragCursor(AObj: TImageButton): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetDragCursor(AObj: TImageButton; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetDragKind(AObj: TImageButton): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetDragKind(AObj: TImageButton; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetDragMode(AObj: TImageButton): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetDragMode(AObj: TImageButton; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetEnabled(AObj: TImageButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetEnabled(AObj: TImageButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetFont(AObj: TImageButton): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetFont(AObj: TImageButton; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetImageCount(AObj: TImageButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ImageCount;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetImageCount(AObj: TImageButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ImageCount := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetModalResult(AObj: TImageButton): TModalResult; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ModalResult;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetModalResult(AObj: TImageButton; AValue: TModalResult); extdecl;
 begin
+  handleExceptionBegin
   AObj.ModalResult := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetParentShowHint(AObj: TImageButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetParentShowHint(AObj: TImageButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetParentFont(AObj: TImageButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetParentFont(AObj: TImageButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetPicture(AObj: TImageButton): TPicture; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Picture;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetPicture(AObj: TImageButton; AValue: TPicture); extdecl;
 begin
+  handleExceptionBegin
   AObj.Picture := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetPopupMenu(AObj: TImageButton): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetPopupMenu(AObj: TImageButton; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetShowHint(AObj: TImageButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetShowHint(AObj: TImageButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetShowCaption(AObj: TImageButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowCaption;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetShowCaption(AObj: TImageButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowCaption := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetVisible(AObj: TImageButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetVisible(AObj: TImageButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -495,247 +651,345 @@ end;
 
 function ImageButton_GetBiDiMode(AObj: TImageButton): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetBiDiMode(AObj: TImageButton; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_GetBoundsRect(AObj: TImageButton; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetBoundsRect(AObj: TImageButton; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetClientHeight(AObj: TImageButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetClientHeight(AObj: TImageButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_GetClientOrigin(AObj: TImageButton; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_GetClientRect(AObj: TImageButton; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetClientWidth(AObj: TImageButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetClientWidth(AObj: TImageButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetControlState(AObj: TImageButton): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetControlState(AObj: TImageButton; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetControlStyle(AObj: TImageButton): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetControlStyle(AObj: TImageButton; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetFloating(AObj: TImageButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetParent(AObj: TImageButton): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetParent(AObj: TImageButton; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetLeft(AObj: TImageButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetLeft(AObj: TImageButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetTop(AObj: TImageButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetTop(AObj: TImageButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetWidth(AObj: TImageButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetWidth(AObj: TImageButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetHeight(AObj: TImageButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetHeight(AObj: TImageButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetCursor(AObj: TImageButton): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetCursor(AObj: TImageButton; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetHint(AObj: TImageButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetHint(AObj: TImageButton; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetComponentCount(AObj: TImageButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetComponentIndex(AObj: TImageButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetComponentIndex(AObj: TImageButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetOwner(AObj: TImageButton): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetName(AObj: TImageButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetName(AObj: TImageButton; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetTag(AObj: TImageButton): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetTag(AObj: TImageButton; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetAnchorSideLeft(AObj: TImageButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetAnchorSideLeft(AObj: TImageButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetAnchorSideTop(AObj: TImageButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetAnchorSideTop(AObj: TImageButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetAnchorSideRight(AObj: TImageButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetAnchorSideRight(AObj: TImageButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetAnchorSideBottom(AObj: TImageButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetAnchorSideBottom(AObj: TImageButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetBorderSpacing(AObj: TImageButton): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure ImageButton_SetBorderSpacing(AObj: TImageButton; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function ImageButton_GetComponents(AObj: TImageButton; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function ImageButton_GetAnchorSide(AObj: TImageButton; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function ImageButton_StaticClassType: TClass; extdecl;

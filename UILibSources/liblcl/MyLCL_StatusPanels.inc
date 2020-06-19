@@ -9,122 +9,170 @@
 
 function StatusPanels_Create(AOwner: TStatusBar): TStatusPanels; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TStatusPanels.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure StatusPanels_Free(AObj: TStatusPanels); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function StatusPanels_Add(AObj: TStatusPanels): TStatusPanel; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Add;
+  handleExceptionEnd
 end;
 
 function StatusPanels_Insert(AObj: TStatusPanels; Index: Integer): TStatusPanel; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Insert(Index) as TStatusPanel;
+  handleExceptionEnd
 end;
 
 function StatusPanels_Owner(AObj: TStatusPanels): TPersistent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 procedure StatusPanels_Assign(AObj: TStatusPanels; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 procedure StatusPanels_BeginUpdate(AObj: TStatusPanels); extdecl;
 begin
+  handleExceptionBegin
   AObj.BeginUpdate;
+  handleExceptionEnd
 end;
 
 procedure StatusPanels_Clear(AObj: TStatusPanels); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure StatusPanels_Delete(AObj: TStatusPanels; Index: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Delete(Index);
+  handleExceptionEnd
 end;
 
 procedure StatusPanels_EndUpdate(AObj: TStatusPanels); extdecl;
 begin
+  handleExceptionBegin
   AObj.EndUpdate;
+  handleExceptionEnd
 end;
 
 function StatusPanels_FindItemID(AObj: TStatusPanels; ID: Integer): TCollectionItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindItemID(ID);
+  handleExceptionEnd
 end;
 
 function StatusPanels_GetNamePath(AObj: TStatusPanels): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function StatusPanels_ClassType(AObj: TStatusPanels): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function StatusPanels_ClassName(AObj: TStatusPanels): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function StatusPanels_InstanceSize(AObj: TStatusPanels): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function StatusPanels_InheritsFrom(AObj: TStatusPanels; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function StatusPanels_Equals(AObj: TStatusPanels; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function StatusPanels_GetHashCode(AObj: TStatusPanels): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function StatusPanels_ToString(AObj: TStatusPanels): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function StatusPanels_GetCapacity(AObj: TStatusPanels): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Capacity;
+  handleExceptionEnd
 end;
 
 procedure StatusPanels_SetCapacity(AObj: TStatusPanels; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Capacity := AValue;
+  handleExceptionEnd
 end;
 
 function StatusPanels_GetCount(AObj: TStatusPanels): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Count;
+  handleExceptionEnd
 end;
 
 function StatusPanels_GetItems(AObj: TStatusPanels; Index: Integer): TStatusPanel; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Items[Index];
+  handleExceptionEnd
 end;
 
 procedure StatusPanels_SetItems(AObj: TStatusPanels; Index: Integer; AValue: TStatusPanel); extdecl;
 begin
+  handleExceptionBegin
   AObj.Items[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function StatusPanels_StaticClassType: TClass; extdecl;

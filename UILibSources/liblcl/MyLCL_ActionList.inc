@@ -9,87 +9,121 @@
 
 function ActionList_Create(AOwner: TComponent): TActionList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TActionList.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ActionList_Free(AObj: TActionList); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function ActionList_FindComponent(AObj: TActionList; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function ActionList_GetNamePath(AObj: TActionList): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function ActionList_HasParent(AObj: TActionList): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure ActionList_Assign(AObj: TActionList; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ActionList_ClassType(AObj: TActionList): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ActionList_ClassName(AObj: TActionList): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ActionList_InstanceSize(AObj: TActionList): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ActionList_InheritsFrom(AObj: TActionList; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ActionList_Equals(AObj: TActionList; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ActionList_GetHashCode(AObj: TActionList): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ActionList_ToString(AObj: TActionList): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function ActionList_GetImages(AObj: TActionList): TCustomImageList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Images;
+  handleExceptionEnd
 end;
 
 procedure ActionList_SetImages(AObj: TActionList; AValue: TCustomImageList); extdecl;
 begin
+  handleExceptionBegin
   AObj.Images := AValue;
+  handleExceptionEnd
 end;
 
 function ActionList_GetState(AObj: TActionList): TActionListState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.State;
+  handleExceptionEnd
 end;
 
 procedure ActionList_SetState(AObj: TActionList; AValue: TActionListState); extdecl;
 begin
+  handleExceptionBegin
   AObj.State := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -102,47 +136,65 @@ end;
 
 function ActionList_GetComponentCount(AObj: TActionList): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function ActionList_GetComponentIndex(AObj: TActionList): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure ActionList_SetComponentIndex(AObj: TActionList; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ActionList_GetOwner(AObj: TActionList): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function ActionList_GetName(AObj: TActionList): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure ActionList_SetName(AObj: TActionList; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function ActionList_GetTag(AObj: TActionList): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure ActionList_SetTag(AObj: TActionList; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function ActionList_GetComponents(AObj: TActionList; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function ActionList_StaticClassType: TClass; extdecl;

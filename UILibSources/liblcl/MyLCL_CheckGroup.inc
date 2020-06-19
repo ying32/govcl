@@ -9,447 +9,625 @@
 
 function CheckGroup_Create(AOwner: TComponent): TCheckGroup; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TCheckGroup.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_Free(AObj: TCheckGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_FlipChildren(AObj: TCheckGroup; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function CheckGroup_Rows(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Rows;
+  handleExceptionEnd
 end;
 
 function CheckGroup_CanFocus(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function CheckGroup_ContainsControl(AObj: TCheckGroup; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function CheckGroup_ControlAtPos(AObj: TCheckGroup; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_DisableAlign(AObj: TCheckGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_EnableAlign(AObj: TCheckGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function CheckGroup_FindChildControl(AObj: TCheckGroup; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 function CheckGroup_Focused(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function CheckGroup_HandleAllocated(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_InsertControl(AObj: TCheckGroup; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_Invalidate(AObj: TCheckGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_RemoveControl(AObj: TCheckGroup; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_Realign(AObj: TCheckGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_Repaint(AObj: TCheckGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_ScaleBy(AObj: TCheckGroup; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_ScrollBy(AObj: TCheckGroup; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetBounds(AObj: TCheckGroup; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetFocus(AObj: TCheckGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_Update(AObj: TCheckGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_BringToFront(AObj: TCheckGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_ClientToScreen(AObj: TCheckGroup; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_ClientToParent(AObj: TCheckGroup; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function CheckGroup_Dragging(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function CheckGroup_HasParent(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_Hide(AObj: TCheckGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function CheckGroup_Perform(AObj: TCheckGroup; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_Refresh(AObj: TCheckGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_ScreenToClient(AObj: TCheckGroup; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_ParentToClient(AObj: TCheckGroup; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SendToBack(AObj: TCheckGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_Show(AObj: TCheckGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetTextBuf(AObj: TCheckGroup; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetTextLen(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetTextBuf(AObj: TCheckGroup; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function CheckGroup_FindComponent(AObj: TCheckGroup; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetNamePath(AObj: TCheckGroup): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_Assign(AObj: TCheckGroup; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function CheckGroup_ClassType(AObj: TCheckGroup): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function CheckGroup_ClassName(AObj: TCheckGroup): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function CheckGroup_InstanceSize(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function CheckGroup_InheritsFrom(AObj: TCheckGroup; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function CheckGroup_Equals(AObj: TCheckGroup; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetHashCode(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function CheckGroup_ToString(AObj: TCheckGroup): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_AnchorToNeighbour(AObj: TCheckGroup; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_AnchorParallel(AObj: TCheckGroup; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_AnchorHorizontalCenterTo(AObj: TCheckGroup; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_AnchorVerticalCenterTo(AObj: TCheckGroup; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_AnchorAsAlign(AObj: TCheckGroup; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_AnchorClient(AObj: TCheckGroup; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetAlign(AObj: TCheckGroup): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetAlign(AObj: TCheckGroup; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetAnchors(AObj: TCheckGroup): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetAnchors(AObj: TCheckGroup; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetAutoFill(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoFill;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetAutoFill(AObj: TCheckGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoFill := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetAutoSize(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSize;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetAutoSize(AObj: TCheckGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSize := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetBiDiMode(AObj: TCheckGroup): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetBiDiMode(AObj: TCheckGroup; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetCaption(AObj: TCheckGroup): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Caption);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetCaption(AObj: TCheckGroup; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Caption := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetClientHeight(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetClientHeight(AObj: TCheckGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetClientWidth(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetClientWidth(AObj: TCheckGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetColor(AObj: TCheckGroup): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetColor(AObj: TCheckGroup; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetColumnLayout(AObj: TCheckGroup): TColumnLayout; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ColumnLayout;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetColumnLayout(AObj: TCheckGroup; AValue: TColumnLayout); extdecl;
 begin
+  handleExceptionBegin
   AObj.ColumnLayout := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetColumns(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Columns;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetColumns(AObj: TCheckGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Columns := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetConstraints(AObj: TCheckGroup): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetConstraints(AObj: TCheckGroup; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetDoubleBuffered(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetDoubleBuffered(AObj: TCheckGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetDragCursor(AObj: TCheckGroup): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetDragCursor(AObj: TCheckGroup; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetDragMode(AObj: TCheckGroup): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetDragMode(AObj: TCheckGroup; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetEnabled(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetEnabled(AObj: TCheckGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetFont(AObj: TCheckGroup): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetFont(AObj: TCheckGroup; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetItems(AObj: TCheckGroup): TStrings; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Items;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetItems(AObj: TCheckGroup; AValue: TStrings); extdecl;
 begin
+  handleExceptionBegin
   AObj.Items := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -614,422 +792,590 @@ end;
 
 function CheckGroup_GetParentFont(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetParentFont(AObj: TCheckGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetParentColor(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetParentColor(AObj: TCheckGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetParentDoubleBuffered(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetParentDoubleBuffered(AObj: TCheckGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetParentShowHint(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetParentShowHint(AObj: TCheckGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetPopupMenu(AObj: TCheckGroup): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetPopupMenu(AObj: TCheckGroup; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetShowHint(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetShowHint(AObj: TCheckGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetTabOrder(AObj: TCheckGroup): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetTabOrder(AObj: TCheckGroup; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetTabStop(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetTabStop(AObj: TCheckGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetVisible(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetVisible(AObj: TCheckGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetDockClientCount(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetDockSite(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetDockSite(AObj: TCheckGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetMouseInClient(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetVisibleDockClientCount(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetBrush(AObj: TCheckGroup): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetControlCount(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetHandle(AObj: TCheckGroup): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetParentWindow(AObj: TCheckGroup): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetParentWindow(AObj: TCheckGroup; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetShowing(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetUseDockManager(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetUseDockManager(AObj: TCheckGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetAction(AObj: TCheckGroup): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetAction(AObj: TCheckGroup; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_GetBoundsRect(AObj: TCheckGroup; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetBoundsRect(AObj: TCheckGroup; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_GetClientOrigin(AObj: TCheckGroup; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_GetClientRect(AObj: TCheckGroup; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetControlState(AObj: TCheckGroup): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetControlState(AObj: TCheckGroup; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetControlStyle(AObj: TCheckGroup): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetControlStyle(AObj: TCheckGroup; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetFloating(AObj: TCheckGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetParent(AObj: TCheckGroup): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetParent(AObj: TCheckGroup; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetLeft(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetLeft(AObj: TCheckGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetTop(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetTop(AObj: TCheckGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetWidth(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetWidth(AObj: TCheckGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetHeight(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetHeight(AObj: TCheckGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetCursor(AObj: TCheckGroup): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetCursor(AObj: TCheckGroup; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetHint(AObj: TCheckGroup): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetHint(AObj: TCheckGroup; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetComponentCount(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetComponentIndex(AObj: TCheckGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetComponentIndex(AObj: TCheckGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetOwner(AObj: TCheckGroup): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetName(AObj: TCheckGroup): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetName(AObj: TCheckGroup; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetTag(AObj: TCheckGroup): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetTag(AObj: TCheckGroup; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetAnchorSideLeft(AObj: TCheckGroup): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetAnchorSideLeft(AObj: TCheckGroup; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetAnchorSideTop(AObj: TCheckGroup): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetAnchorSideTop(AObj: TCheckGroup; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetAnchorSideRight(AObj: TCheckGroup): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetAnchorSideRight(AObj: TCheckGroup; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetAnchorSideBottom(AObj: TCheckGroup): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetAnchorSideBottom(AObj: TCheckGroup; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetChildSizing(AObj: TCheckGroup): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetChildSizing(AObj: TCheckGroup; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetBorderSpacing(AObj: TCheckGroup): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetBorderSpacing(AObj: TCheckGroup; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetChecked(AObj: TCheckGroup; Index: Integer): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Checked[Index];
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetChecked(AObj: TCheckGroup; Index: Integer; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Checked[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetCheckEnabled(AObj: TCheckGroup; Index: Integer): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CheckEnabled[Index];
+  handleExceptionEnd
 end;
 
 procedure CheckGroup_SetCheckEnabled(AObj: TCheckGroup; Index: Integer; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.CheckEnabled[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetDockClients(AObj: TCheckGroup; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetControls(AObj: TCheckGroup; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetComponents(AObj: TCheckGroup; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function CheckGroup_GetAnchorSide(AObj: TCheckGroup; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function CheckGroup_StaticClassType: TClass; extdecl;

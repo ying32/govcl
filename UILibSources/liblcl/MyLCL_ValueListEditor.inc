@@ -9,592 +9,828 @@
 
 function ValueListEditor_Create(AOwner: TComponent): TValueListEditor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TValueListEditor.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_Free(AObj: TValueListEditor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_Refresh(AObj: TValueListEditor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_CellRect(AObj: TValueListEditor; ACol: Integer; ARow: Integer; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CellRect(ACol, ARow);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_MouseToCell(AObj: TValueListEditor; X: Integer; Y: Integer; var ACol: Integer; var ARow: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MouseToCell(X, Y, ACol, ARow);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_MouseCoord(AObj: TValueListEditor; X: Integer; Y: Integer; var Result: TGridCoord); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseCoord(X, Y);
+  handleExceptionEnd
 end;
 
 function ValueListEditor_CanFocus(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_ContainsControl(AObj: TValueListEditor; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function ValueListEditor_ControlAtPos(AObj: TValueListEditor; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_DisableAlign(AObj: TValueListEditor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_EnableAlign(AObj: TValueListEditor); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_FindChildControl(AObj: TValueListEditor; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_FlipChildren(AObj: TValueListEditor; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function ValueListEditor_Focused(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_HandleAllocated(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_InsertControl(AObj: TValueListEditor; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_Invalidate(AObj: TValueListEditor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_RemoveControl(AObj: TValueListEditor; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_Realign(AObj: TValueListEditor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_Repaint(AObj: TValueListEditor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_ScaleBy(AObj: TValueListEditor; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_ScrollBy(AObj: TValueListEditor; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetBounds(AObj: TValueListEditor; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetFocus(AObj: TValueListEditor); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_Update(AObj: TValueListEditor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_BringToFront(AObj: TValueListEditor); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_ClientToScreen(AObj: TValueListEditor; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_ClientToParent(AObj: TValueListEditor; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function ValueListEditor_Dragging(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_HasParent(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_Hide(AObj: TValueListEditor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_Perform(AObj: TValueListEditor; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_ScreenToClient(AObj: TValueListEditor; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_ParentToClient(AObj: TValueListEditor; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SendToBack(AObj: TValueListEditor); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_Show(AObj: TValueListEditor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetTextBuf(AObj: TValueListEditor; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetTextLen(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetTextBuf(AObj: TValueListEditor; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function ValueListEditor_FindComponent(AObj: TValueListEditor; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetNamePath(AObj: TValueListEditor): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_Assign(AObj: TValueListEditor; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ValueListEditor_ClassType(AObj: TValueListEditor): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_ClassName(AObj: TValueListEditor): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ValueListEditor_InstanceSize(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_InheritsFrom(AObj: TValueListEditor; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ValueListEditor_Equals(AObj: TValueListEditor; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetHashCode(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_ToString(AObj: TValueListEditor): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_AnchorToNeighbour(AObj: TValueListEditor; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_AnchorParallel(AObj: TValueListEditor; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_AnchorHorizontalCenterTo(AObj: TValueListEditor; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_AnchorVerticalCenterTo(AObj: TValueListEditor; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_AnchorAsAlign(AObj: TValueListEditor; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_AnchorClient(AObj: TValueListEditor; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetColCount(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ColCount;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetColCount(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ColCount := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetRowCount(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.RowCount;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetVisibleColCount(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleColCount;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetVisibleRowCount(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleRowCount;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetAlign(AObj: TValueListEditor): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetAlign(AObj: TValueListEditor; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetAnchors(AObj: TValueListEditor): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetAnchors(AObj: TValueListEditor; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetBiDiMode(AObj: TValueListEditor): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetBiDiMode(AObj: TValueListEditor; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetBorderStyle(AObj: TValueListEditor): TBorderStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderStyle;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetBorderStyle(AObj: TValueListEditor; AValue: TBorderStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetColor(AObj: TValueListEditor): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetColor(AObj: TValueListEditor; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetConstraints(AObj: TValueListEditor): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetConstraints(AObj: TValueListEditor; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetDefaultColWidth(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DefaultColWidth;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetDefaultColWidth(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.DefaultColWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetDefaultDrawing(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DefaultDrawing;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetDefaultDrawing(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DefaultDrawing := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetDefaultRowHeight(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DefaultRowHeight;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetDefaultRowHeight(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.DefaultRowHeight := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetDoubleBuffered(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetDoubleBuffered(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetDragCursor(AObj: TValueListEditor): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetDragCursor(AObj: TValueListEditor; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetDragKind(AObj: TValueListEditor): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetDragKind(AObj: TValueListEditor; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetDragMode(AObj: TValueListEditor): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetDragMode(AObj: TValueListEditor; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetEnabled(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetEnabled(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetFixedColor(AObj: TValueListEditor): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FixedColor;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetFixedColor(AObj: TValueListEditor; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.FixedColor := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetFixedCols(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FixedCols;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetFixedCols(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.FixedCols := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetFont(AObj: TValueListEditor): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetFont(AObj: TValueListEditor; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetGridLineWidth(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GridLineWidth;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetGridLineWidth(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.GridLineWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetOptions(AObj: TValueListEditor): TGridOptions; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Options;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetOptions(AObj: TValueListEditor; AValue: TGridOptions); extdecl;
 begin
+  handleExceptionBegin
   AObj.Options := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetParentColor(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetParentColor(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetParentDoubleBuffered(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetParentDoubleBuffered(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetParentFont(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetParentFont(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetParentShowHint(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetParentShowHint(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetPopupMenu(AObj: TValueListEditor): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetPopupMenu(AObj: TValueListEditor; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetScrollBars(AObj: TValueListEditor): TScrollStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScrollBars;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetScrollBars(AObj: TValueListEditor; AValue: TScrollStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBars := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetShowHint(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetShowHint(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetStrings(AObj: TValueListEditor): TStrings; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Strings as TValueListStrings;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetStrings(AObj: TValueListEditor; AValue: TStrings); extdecl;
 begin
+  handleExceptionBegin
   AObj.Strings := AValue as TValueListStrings;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetTabOrder(AObj: TValueListEditor): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetTabOrder(AObj: TValueListEditor; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetVisible(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetVisible(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -815,457 +1051,639 @@ end;
 
 function ValueListEditor_GetCanvas(AObj: TValueListEditor): TCanvas; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Canvas;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetCol(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Col;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetCol(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Col := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetEditorMode(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.EditorMode;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetEditorMode(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.EditorMode := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetGridHeight(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GridHeight;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetGridWidth(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GridWidth;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetLeftCol(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.LeftCol;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetLeftCol(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.LeftCol := AValue;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_GetSelection(AObj: TValueListEditor; var Result: TGridRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Selection;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetSelection(AObj: TValueListEditor; var AValue: TGridRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.Selection := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetRow(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Row;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetRow(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Row := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetTopRow(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TopRow;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetTopRow(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.TopRow := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetTabStop(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetTabStop(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetDockClientCount(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetDockSite(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetDockSite(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetMouseInClient(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetVisibleDockClientCount(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetBrush(AObj: TValueListEditor): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetControlCount(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetHandle(AObj: TValueListEditor): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetParentWindow(AObj: TValueListEditor): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetParentWindow(AObj: TValueListEditor; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetShowing(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetUseDockManager(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetUseDockManager(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetAction(AObj: TValueListEditor): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetAction(AObj: TValueListEditor; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_GetBoundsRect(AObj: TValueListEditor; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetBoundsRect(AObj: TValueListEditor; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetClientHeight(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetClientHeight(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_GetClientOrigin(AObj: TValueListEditor; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_GetClientRect(AObj: TValueListEditor; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetClientWidth(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetClientWidth(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetControlState(AObj: TValueListEditor): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetControlState(AObj: TValueListEditor; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetControlStyle(AObj: TValueListEditor): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetControlStyle(AObj: TValueListEditor; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetFloating(AObj: TValueListEditor): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetParent(AObj: TValueListEditor): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetParent(AObj: TValueListEditor; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetLeft(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetLeft(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetTop(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetTop(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetWidth(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetWidth(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetHeight(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetHeight(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetCursor(AObj: TValueListEditor): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetCursor(AObj: TValueListEditor; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetHint(AObj: TValueListEditor): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetHint(AObj: TValueListEditor; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetComponentCount(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetComponentIndex(AObj: TValueListEditor): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetComponentIndex(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetOwner(AObj: TValueListEditor): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetName(AObj: TValueListEditor): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetName(AObj: TValueListEditor; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetTag(AObj: TValueListEditor): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetTag(AObj: TValueListEditor; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetAnchorSideLeft(AObj: TValueListEditor): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetAnchorSideLeft(AObj: TValueListEditor; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetAnchorSideTop(AObj: TValueListEditor): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetAnchorSideTop(AObj: TValueListEditor; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetAnchorSideRight(AObj: TValueListEditor): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetAnchorSideRight(AObj: TValueListEditor; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetAnchorSideBottom(AObj: TValueListEditor): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetAnchorSideBottom(AObj: TValueListEditor; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetChildSizing(AObj: TValueListEditor): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetChildSizing(AObj: TValueListEditor; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetBorderSpacing(AObj: TValueListEditor): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetBorderSpacing(AObj: TValueListEditor; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetCells(AObj: TValueListEditor; ACol: Integer; ARow: Integer): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Cells[ACol, ARow]);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetCells(AObj: TValueListEditor; ACol: Integer; ARow: Integer; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cells[ACol, ARow] := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetValues(AObj: TValueListEditor; Key: PChar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Values[Key]);
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetValues(AObj: TValueListEditor; Key: string; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Values[Key] := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetColWidths(AObj: TValueListEditor; Index: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ColWidths[Index];
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetColWidths(AObj: TValueListEditor; Index: Integer; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ColWidths[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetRowHeights(AObj: TValueListEditor; Index: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.RowHeights[Index];
+  handleExceptionEnd
 end;
 
 procedure ValueListEditor_SetRowHeights(AObj: TValueListEditor; Index: Integer; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.RowHeights[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetDockClients(AObj: TValueListEditor; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetControls(AObj: TValueListEditor; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetComponents(AObj: TValueListEditor; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function ValueListEditor_GetAnchorSide(AObj: TValueListEditor; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function ValueListEditor_StaticClassType: TClass; extdecl;

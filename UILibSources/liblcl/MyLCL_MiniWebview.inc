@@ -9,362 +9,506 @@
 
 function MiniWebview_Create(AOwner: TComponent): TMiniWebview; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TMiniWebview.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_Free(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_Navigate(AObj: TMiniWebview; AURL: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Navigate(AURL);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_GoBack(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.GoBack;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_GoForward(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.GoForward;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_GoHome(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.GoHome;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_GoSearch(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.GoSearch;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_Refresh(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_Stop(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.Stop;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetBounds(AObj: TMiniWebview; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 function MiniWebview_ExecuteScript(AObj: TMiniWebview; AScriptText: PChar; AScriptType: PChar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ExecuteScript(AScriptText, AScriptType));
+  handleExceptionEnd
 end;
 
 function MiniWebview_ExecuteJS(AObj: TMiniWebview; AScriptText: PChar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ExecuteJS(AScriptText));
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_LoadHTML(AObj: TMiniWebview; AStr: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadHTML(AStr);
+  handleExceptionEnd
 end;
 
 function MiniWebview_CanFocus(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function MiniWebview_ContainsControl(AObj: TMiniWebview; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function MiniWebview_ControlAtPos(AObj: TMiniWebview; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_DisableAlign(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_EnableAlign(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function MiniWebview_FindChildControl(AObj: TMiniWebview; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_FlipChildren(AObj: TMiniWebview; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function MiniWebview_Focused(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function MiniWebview_HandleAllocated(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_InsertControl(AObj: TMiniWebview; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_Invalidate(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_RemoveControl(AObj: TMiniWebview; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_Realign(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_Repaint(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_ScaleBy(AObj: TMiniWebview; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_ScrollBy(AObj: TMiniWebview; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetFocus(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_Update(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_BringToFront(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_ClientToScreen(AObj: TMiniWebview; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_ClientToParent(AObj: TMiniWebview; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function MiniWebview_Dragging(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function MiniWebview_HasParent(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_Hide(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function MiniWebview_Perform(AObj: TMiniWebview; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_ScreenToClient(AObj: TMiniWebview; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_ParentToClient(AObj: TMiniWebview; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SendToBack(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_Show(AObj: TMiniWebview); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetTextBuf(AObj: TMiniWebview; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetTextLen(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetTextBuf(AObj: TMiniWebview; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function MiniWebview_FindComponent(AObj: TMiniWebview; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetNamePath(AObj: TMiniWebview): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_Assign(AObj: TMiniWebview; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function MiniWebview_ClassType(AObj: TMiniWebview): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function MiniWebview_ClassName(AObj: TMiniWebview): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function MiniWebview_InstanceSize(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function MiniWebview_InheritsFrom(AObj: TMiniWebview; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function MiniWebview_Equals(AObj: TMiniWebview; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetHashCode(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function MiniWebview_ToString(AObj: TMiniWebview): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_AnchorToNeighbour(AObj: TMiniWebview; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_AnchorParallel(AObj: TMiniWebview; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_AnchorHorizontalCenterTo(AObj: TMiniWebview; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_AnchorVerticalCenterTo(AObj: TMiniWebview; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_AnchorAsAlign(AObj: TMiniWebview; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_AnchorClient(AObj: TMiniWebview; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetReadyState(AObj: TMiniWebview): TReadyState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ReadyState;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetAlign(AObj: TMiniWebview): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetAlign(AObj: TMiniWebview; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetAnchors(AObj: TMiniWebview): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetAnchors(AObj: TMiniWebview; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetConstraints(AObj: TMiniWebview): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetConstraints(AObj: TMiniWebview; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetEnabled(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetEnabled(AObj: TMiniWebview; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetVisible(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetVisible(AObj: TMiniWebview; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TWebTitleChangeEvent
@@ -385,392 +529,548 @@ end;
 
 function MiniWebview_GetDockClientCount(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetDockSite(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetDockSite(AObj: TMiniWebview; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetDoubleBuffered(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetDoubleBuffered(AObj: TMiniWebview; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetMouseInClient(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetVisibleDockClientCount(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetBrush(AObj: TMiniWebview): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetControlCount(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetHandle(AObj: TMiniWebview): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetParentDoubleBuffered(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetParentDoubleBuffered(AObj: TMiniWebview; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetParentWindow(AObj: TMiniWebview): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetParentWindow(AObj: TMiniWebview; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetShowing(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetTabOrder(AObj: TMiniWebview): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetTabOrder(AObj: TMiniWebview; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetTabStop(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetTabStop(AObj: TMiniWebview; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetUseDockManager(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetUseDockManager(AObj: TMiniWebview; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetAction(AObj: TMiniWebview): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetAction(AObj: TMiniWebview; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetBiDiMode(AObj: TMiniWebview): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetBiDiMode(AObj: TMiniWebview; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_GetBoundsRect(AObj: TMiniWebview; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetBoundsRect(AObj: TMiniWebview; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetClientHeight(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetClientHeight(AObj: TMiniWebview; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_GetClientOrigin(AObj: TMiniWebview; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_GetClientRect(AObj: TMiniWebview; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetClientWidth(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetClientWidth(AObj: TMiniWebview; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetControlState(AObj: TMiniWebview): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetControlState(AObj: TMiniWebview; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetControlStyle(AObj: TMiniWebview): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetControlStyle(AObj: TMiniWebview; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetFloating(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetShowHint(AObj: TMiniWebview): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetShowHint(AObj: TMiniWebview; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetParent(AObj: TMiniWebview): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetParent(AObj: TMiniWebview; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetLeft(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetLeft(AObj: TMiniWebview; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetTop(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetTop(AObj: TMiniWebview; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetWidth(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetWidth(AObj: TMiniWebview; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetHeight(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetHeight(AObj: TMiniWebview; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetCursor(AObj: TMiniWebview): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetCursor(AObj: TMiniWebview; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetHint(AObj: TMiniWebview): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetHint(AObj: TMiniWebview; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetComponentCount(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetComponentIndex(AObj: TMiniWebview): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetComponentIndex(AObj: TMiniWebview; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetOwner(AObj: TMiniWebview): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetName(AObj: TMiniWebview): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetName(AObj: TMiniWebview; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetTag(AObj: TMiniWebview): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetTag(AObj: TMiniWebview; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetAnchorSideLeft(AObj: TMiniWebview): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetAnchorSideLeft(AObj: TMiniWebview; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetAnchorSideTop(AObj: TMiniWebview): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetAnchorSideTop(AObj: TMiniWebview; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetAnchorSideRight(AObj: TMiniWebview): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetAnchorSideRight(AObj: TMiniWebview; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetAnchorSideBottom(AObj: TMiniWebview): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetAnchorSideBottom(AObj: TMiniWebview; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetChildSizing(AObj: TMiniWebview): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetChildSizing(AObj: TMiniWebview; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetBorderSpacing(AObj: TMiniWebview): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure MiniWebview_SetBorderSpacing(AObj: TMiniWebview; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetDockClients(AObj: TMiniWebview; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetControls(AObj: TMiniWebview; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetComponents(AObj: TMiniWebview; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function MiniWebview_GetAnchorSide(AObj: TMiniWebview; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function MiniWebview_StaticClassType: TClass; extdecl;

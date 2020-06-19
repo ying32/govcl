@@ -9,847 +9,1185 @@
 
 function TreeView_Create(AOwner: TComponent): TTreeView; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TTreeView.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure TreeView_Free(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function TreeView_AlphaSort(AObj: TTreeView; ARecurse: LongBool): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AlphaSort(ARecurse);
+  handleExceptionEnd
 end;
 
 procedure TreeView_FullCollapse(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.FullCollapse;
+  handleExceptionEnd
 end;
 
 procedure TreeView_FullExpand(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.FullExpand;
+  handleExceptionEnd
 end;
 
 function TreeView_GetNodeAt(AObj: TTreeView; X: Integer; Y: Integer): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetNodeAt(X, Y);
+  handleExceptionEnd
 end;
 
 function TreeView_IsEditing(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.IsEditing;
+  handleExceptionEnd
 end;
 
 procedure TreeView_LoadFromFile(AObj: TTreeView; FileName: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromFile(FileName);
+  handleExceptionEnd
 end;
 
 procedure TreeView_LoadFromStream(AObj: TTreeView; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromStream(Stream);
+  handleExceptionEnd
 end;
 
 procedure TreeView_SaveToFile(AObj: TTreeView; FileName: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToFile(FileName);
+  handleExceptionEnd
 end;
 
 procedure TreeView_SaveToStream(AObj: TTreeView; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToStream(Stream);
+  handleExceptionEnd
 end;
 
 procedure TreeView_ClearSelection(AObj: TTreeView; KeepPrimary: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClearSelection(KeepPrimary);
+  handleExceptionEnd
 end;
 
 function TreeView_CustomSort(AObj: TTreeView; SortProc: PFNTVCOMPARE; Data: NativeInt; ARecurse: LongBool): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CustomSort(SortProc, Data, ARecurse);
+  handleExceptionEnd
 end;
 
 function TreeView_CanFocus(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function TreeView_ContainsControl(AObj: TTreeView; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function TreeView_ControlAtPos(AObj: TTreeView; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure TreeView_DisableAlign(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure TreeView_EnableAlign(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function TreeView_FindChildControl(AObj: TTreeView; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure TreeView_FlipChildren(AObj: TTreeView; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function TreeView_Focused(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function TreeView_HandleAllocated(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure TreeView_InsertControl(AObj: TTreeView; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure TreeView_Invalidate(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure TreeView_RemoveControl(AObj: TTreeView; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure TreeView_Realign(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure TreeView_Repaint(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure TreeView_ScaleBy(AObj: TTreeView; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure TreeView_ScrollBy(AObj: TTreeView; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetBounds(AObj: TTreeView; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetFocus(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure TreeView_Update(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure TreeView_BringToFront(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure TreeView_ClientToScreen(AObj: TTreeView; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure TreeView_ClientToParent(AObj: TTreeView; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function TreeView_Dragging(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function TreeView_HasParent(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure TreeView_Hide(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function TreeView_Perform(AObj: TTreeView; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure TreeView_Refresh(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure TreeView_ScreenToClient(AObj: TTreeView; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure TreeView_ParentToClient(AObj: TTreeView; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure TreeView_SendToBack(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure TreeView_Show(AObj: TTreeView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function TreeView_GetTextBuf(AObj: TTreeView; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function TreeView_GetTextLen(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetTextBuf(AObj: TTreeView; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function TreeView_FindComponent(AObj: TTreeView; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function TreeView_GetNamePath(AObj: TTreeView): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure TreeView_Assign(AObj: TTreeView; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function TreeView_ClassType(AObj: TTreeView): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function TreeView_ClassName(AObj: TTreeView): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function TreeView_InstanceSize(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function TreeView_InheritsFrom(AObj: TTreeView; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function TreeView_Equals(AObj: TTreeView; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function TreeView_GetHashCode(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function TreeView_ToString(AObj: TTreeView): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure TreeView_AnchorToNeighbour(AObj: TTreeView; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure TreeView_AnchorParallel(AObj: TTreeView; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure TreeView_AnchorHorizontalCenterTo(AObj: TTreeView; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure TreeView_AnchorVerticalCenterTo(AObj: TTreeView; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure TreeView_AnchorAsAlign(AObj: TTreeView; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure TreeView_AnchorClient(AObj: TTreeView; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function TreeView_GetDefaultItemHeight(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DefaultItemHeight;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetDefaultItemHeight(AObj: TTreeView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.DefaultItemHeight := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetExpandSignColor(AObj: TTreeView): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ExpandSignColor;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetExpandSignColor(AObj: TTreeView; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.ExpandSignColor := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetExpandSignSize(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ExpandSignSize;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetExpandSignSize(AObj: TTreeView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ExpandSignSize := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetExpandSignType(AObj: TTreeView): TTreeViewExpandSignType; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ExpandSignType;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetExpandSignType(AObj: TTreeView; AValue: TTreeViewExpandSignType); extdecl;
 begin
+  handleExceptionBegin
   AObj.ExpandSignType := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetHotTrackColor(AObj: TTreeView): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HotTrackColor;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetHotTrackColor(AObj: TTreeView; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.HotTrackColor := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetImagesWidth(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ImagesWidth;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetImagesWidth(AObj: TTreeView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ImagesWidth := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetOptions(AObj: TTreeView): TTreeViewOptions; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Options;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetOptions(AObj: TTreeView; AValue: TTreeViewOptions); extdecl;
 begin
+  handleExceptionBegin
   AObj.Options := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetScrollBars(AObj: TTreeView): TScrollStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScrollBars;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetScrollBars(AObj: TTreeView; AValue: TScrollStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBars := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetSelectionColor(AObj: TTreeView): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelectionColor;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetSelectionColor(AObj: TTreeView; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelectionColor := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetSelectionFontColor(AObj: TTreeView): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelectionFontColor;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetSelectionFontColor(AObj: TTreeView; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelectionFontColor := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetSelectionFontColorUsed(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelectionFontColorUsed;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetSelectionFontColorUsed(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelectionFontColorUsed := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetSeparatorColor(AObj: TTreeView): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SeparatorColor;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetSeparatorColor(AObj: TTreeView; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.SeparatorColor := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetStateImagesWidth(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.StateImagesWidth;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetStateImagesWidth(AObj: TTreeView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.StateImagesWidth := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetToolTips(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ToolTips;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetToolTips(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ToolTips := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetTreeLineColor(AObj: TTreeView): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TreeLineColor;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetTreeLineColor(AObj: TTreeView; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.TreeLineColor := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetTreeLinePenStyle(AObj: TTreeView): TPenStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TreeLinePenStyle;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetTreeLinePenStyle(AObj: TTreeView; AValue: TPenStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.TreeLinePenStyle := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetAlign(AObj: TTreeView): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetAlign(AObj: TTreeView; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetAnchors(AObj: TTreeView): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetAnchors(AObj: TTreeView; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetAutoExpand(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoExpand;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetAutoExpand(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoExpand := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetBiDiMode(AObj: TTreeView): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetBiDiMode(AObj: TTreeView; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetBorderStyle(AObj: TTreeView): TBorderStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderStyle;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetBorderStyle(AObj: TTreeView; AValue: TBorderStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderStyle := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetBorderWidth(AObj: TTreeView): TBorderWidth; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderWidth;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetBorderWidth(AObj: TTreeView; AValue: TBorderWidth); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderWidth := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetColor(AObj: TTreeView): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetColor(AObj: TTreeView; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetConstraints(AObj: TTreeView): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetConstraints(AObj: TTreeView; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetDoubleBuffered(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetDoubleBuffered(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetDragKind(AObj: TTreeView): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetDragKind(AObj: TTreeView; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetDragCursor(AObj: TTreeView): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetDragCursor(AObj: TTreeView; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetDragMode(AObj: TTreeView): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetDragMode(AObj: TTreeView; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetEnabled(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetEnabled(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetFont(AObj: TTreeView): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetFont(AObj: TTreeView; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetHideSelection(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HideSelection;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetHideSelection(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.HideSelection := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetHotTrack(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HotTrack;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetHotTrack(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.HotTrack := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetImages(AObj: TTreeView): TCustomImageList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Images;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetImages(AObj: TTreeView; AValue: TCustomImageList); extdecl;
 begin
+  handleExceptionBegin
   AObj.Images := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetIndent(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Indent;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetIndent(AObj: TTreeView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Indent := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetMultiSelect(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MultiSelect;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetMultiSelect(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.MultiSelect := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetMultiSelectStyle(AObj: TTreeView): TMultiSelectStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MultiSelectStyle;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetMultiSelectStyle(AObj: TTreeView; AValue: TMultiSelectStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.MultiSelectStyle := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetParentColor(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetParentColor(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetParentDoubleBuffered(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetParentDoubleBuffered(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetParentFont(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetParentFont(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetParentShowHint(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetParentShowHint(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetPopupMenu(AObj: TTreeView): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetPopupMenu(AObj: TTreeView; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetReadOnly(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ReadOnly;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetReadOnly(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ReadOnly := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetRightClickSelect(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.RightClickSelect;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetRightClickSelect(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.RightClickSelect := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetRowSelect(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.RowSelect;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetRowSelect(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.RowSelect := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetShowButtons(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowButtons;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetShowButtons(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowButtons := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetShowHint(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetShowHint(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetShowLines(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowLines;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetShowLines(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowLines := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetShowRoot(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowRoot;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetShowRoot(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowRoot := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetSortType(AObj: TTreeView): TSortType; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SortType;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetSortType(AObj: TTreeView; AValue: TSortType); extdecl;
 begin
+  handleExceptionBegin
   AObj.SortType := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetStateImages(AObj: TTreeView): TCustomImageList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.StateImages;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetStateImages(AObj: TTreeView; AValue: TCustomImageList); extdecl;
 begin
+  handleExceptionBegin
   AObj.StateImages := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetTabOrder(AObj: TTreeView): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetTabOrder(AObj: TTreeView; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetTabStop(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetTabStop(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetVisible(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetVisible(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TTVExpandedEvent
@@ -1110,377 +1448,527 @@ end;
 
 function TreeView_GetItems(AObj: TTreeView): TTreeNodes; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Items;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetItems(AObj: TTreeView; AValue: TTreeNodes); extdecl;
 begin
+  handleExceptionBegin
   AObj.Items := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetCanvas(AObj: TTreeView): TCanvas; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Canvas;
+  handleExceptionEnd
 end;
 
 function TreeView_GetSelected(AObj: TTreeView): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Selected;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetSelected(AObj: TTreeView; AValue: TTreeNode); extdecl;
 begin
+  handleExceptionBegin
   AObj.Selected := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetTopItem(AObj: TTreeView): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TopItem;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetTopItem(AObj: TTreeView; AValue: TTreeNode); extdecl;
 begin
+  handleExceptionBegin
   AObj.TopItem := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetSelectionCount(AObj: TTreeView): Cardinal; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelectionCount;
+  handleExceptionEnd
 end;
 
 function TreeView_GetDockClientCount(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function TreeView_GetDockSite(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetDockSite(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetMouseInClient(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function TreeView_GetVisibleDockClientCount(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function TreeView_GetBrush(AObj: TTreeView): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function TreeView_GetControlCount(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function TreeView_GetHandle(AObj: TTreeView): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function TreeView_GetParentWindow(AObj: TTreeView): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetParentWindow(AObj: TTreeView; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetShowing(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function TreeView_GetUseDockManager(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetUseDockManager(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetAction(AObj: TTreeView): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetAction(AObj: TTreeView; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 procedure TreeView_GetBoundsRect(AObj: TTreeView; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetBoundsRect(AObj: TTreeView; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetClientHeight(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetClientHeight(AObj: TTreeView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure TreeView_GetClientOrigin(AObj: TTreeView; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure TreeView_GetClientRect(AObj: TTreeView; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function TreeView_GetClientWidth(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetClientWidth(AObj: TTreeView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetControlState(AObj: TTreeView): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetControlState(AObj: TTreeView; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetControlStyle(AObj: TTreeView): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetControlStyle(AObj: TTreeView; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetFloating(AObj: TTreeView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function TreeView_GetParent(AObj: TTreeView): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetParent(AObj: TTreeView; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetLeft(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetLeft(AObj: TTreeView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetTop(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetTop(AObj: TTreeView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetWidth(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetWidth(AObj: TTreeView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetHeight(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetHeight(AObj: TTreeView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetCursor(AObj: TTreeView): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetCursor(AObj: TTreeView; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetHint(AObj: TTreeView): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetHint(AObj: TTreeView; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetComponentCount(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function TreeView_GetComponentIndex(AObj: TTreeView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetComponentIndex(AObj: TTreeView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetOwner(AObj: TTreeView): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function TreeView_GetName(AObj: TTreeView): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetName(AObj: TTreeView; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetTag(AObj: TTreeView): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetTag(AObj: TTreeView; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetAnchorSideLeft(AObj: TTreeView): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetAnchorSideLeft(AObj: TTreeView; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetAnchorSideTop(AObj: TTreeView): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetAnchorSideTop(AObj: TTreeView; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetAnchorSideRight(AObj: TTreeView): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetAnchorSideRight(AObj: TTreeView; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetAnchorSideBottom(AObj: TTreeView): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetAnchorSideBottom(AObj: TTreeView; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetChildSizing(AObj: TTreeView): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetChildSizing(AObj: TTreeView; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetBorderSpacing(AObj: TTreeView): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure TreeView_SetBorderSpacing(AObj: TTreeView; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function TreeView_GetSelections(AObj: TTreeView; Index: Integer): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Selections[Index];
+  handleExceptionEnd
 end;
 
 function TreeView_GetDockClients(AObj: TTreeView; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function TreeView_GetControls(AObj: TTreeView; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function TreeView_GetComponents(AObj: TTreeView; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function TreeView_GetAnchorSide(AObj: TTreeView; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function TreeView_StaticClassType: TClass; extdecl;

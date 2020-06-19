@@ -9,117 +9,163 @@
 
 function List_Create: TList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TList.Create;
+  handleExceptionEnd
 end;
 
 procedure List_Free(AObj: TList); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function List_Add(AObj: TList; Item: Pointer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Add(Item);
+  handleExceptionEnd
 end;
 
 procedure List_Clear(AObj: TList); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure List_Delete(AObj: TList; Index: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Delete(Index);
+  handleExceptionEnd
 end;
 
 function List_Expand(AObj: TList): TList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Expand;
+  handleExceptionEnd
 end;
 
 function List_IndexOf(AObj: TList; Item: Pointer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.IndexOf(Item);
+  handleExceptionEnd
 end;
 
 procedure List_Insert(AObj: TList; Index: Integer; Item: Pointer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Insert(Index, Item);
+  handleExceptionEnd
 end;
 
 procedure List_Move(AObj: TList; CurIndex: Integer; NewIndex: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Move(CurIndex, NewIndex);
+  handleExceptionEnd
 end;
 
 function List_ClassType(AObj: TList): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function List_ClassName(AObj: TList): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function List_InstanceSize(AObj: TList): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function List_InheritsFrom(AObj: TList; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function List_Equals(AObj: TList; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function List_GetHashCode(AObj: TList): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function List_ToString(AObj: TList): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function List_GetCapacity(AObj: TList): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Capacity;
+  handleExceptionEnd
 end;
 
 procedure List_SetCapacity(AObj: TList; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Capacity := AValue;
+  handleExceptionEnd
 end;
 
 function List_GetCount(AObj: TList): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Count;
+  handleExceptionEnd
 end;
 
 procedure List_SetCount(AObj: TList; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Count := AValue;
+  handleExceptionEnd
 end;
 
 function List_GetList(AObj: TList): PPointerList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.List;
+  handleExceptionEnd
 end;
 
 function List_GetItems(AObj: TList; Index: Integer): Pointer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Items[Index];
+  handleExceptionEnd
 end;
 
 procedure List_SetItems(AObj: TList; Index: Integer; AValue: Pointer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Items[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function List_StaticClassType: TClass; extdecl;

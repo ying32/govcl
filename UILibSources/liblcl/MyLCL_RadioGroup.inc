@@ -9,492 +9,688 @@
 
 function RadioGroup_Create(AOwner: TComponent): TRadioGroup; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TRadioGroup.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_Free(AObj: TRadioGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_FlipChildren(AObj: TRadioGroup; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function RadioGroup_CanFocus(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function RadioGroup_ContainsControl(AObj: TRadioGroup; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function RadioGroup_ControlAtPos(AObj: TRadioGroup; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_DisableAlign(AObj: TRadioGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_EnableAlign(AObj: TRadioGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function RadioGroup_FindChildControl(AObj: TRadioGroup; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 function RadioGroup_Focused(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function RadioGroup_HandleAllocated(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_InsertControl(AObj: TRadioGroup; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_Invalidate(AObj: TRadioGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_RemoveControl(AObj: TRadioGroup; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_Realign(AObj: TRadioGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_Repaint(AObj: TRadioGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_ScaleBy(AObj: TRadioGroup; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_ScrollBy(AObj: TRadioGroup; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetBounds(AObj: TRadioGroup; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetFocus(AObj: TRadioGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_Update(AObj: TRadioGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_BringToFront(AObj: TRadioGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_ClientToScreen(AObj: TRadioGroup; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_ClientToParent(AObj: TRadioGroup; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function RadioGroup_Dragging(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function RadioGroup_HasParent(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_Hide(AObj: TRadioGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function RadioGroup_Perform(AObj: TRadioGroup; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_Refresh(AObj: TRadioGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_ScreenToClient(AObj: TRadioGroup; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_ParentToClient(AObj: TRadioGroup; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SendToBack(AObj: TRadioGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_Show(AObj: TRadioGroup); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetTextBuf(AObj: TRadioGroup; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetTextLen(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetTextBuf(AObj: TRadioGroup; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function RadioGroup_FindComponent(AObj: TRadioGroup; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetNamePath(AObj: TRadioGroup): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_Assign(AObj: TRadioGroup; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function RadioGroup_ClassType(AObj: TRadioGroup): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function RadioGroup_ClassName(AObj: TRadioGroup): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function RadioGroup_InstanceSize(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function RadioGroup_InheritsFrom(AObj: TRadioGroup; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function RadioGroup_Equals(AObj: TRadioGroup; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetHashCode(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function RadioGroup_ToString(AObj: TRadioGroup): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_AnchorToNeighbour(AObj: TRadioGroup; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_AnchorParallel(AObj: TRadioGroup; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_AnchorHorizontalCenterTo(AObj: TRadioGroup; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_AnchorVerticalCenterTo(AObj: TRadioGroup; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_AnchorAsAlign(AObj: TRadioGroup; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_AnchorClient(AObj: TRadioGroup; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetAlign(AObj: TRadioGroup): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetAlign(AObj: TRadioGroup; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetAnchors(AObj: TRadioGroup): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetAnchors(AObj: TRadioGroup; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetBiDiMode(AObj: TRadioGroup): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetBiDiMode(AObj: TRadioGroup; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetCaption(AObj: TRadioGroup): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Caption);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetCaption(AObj: TRadioGroup; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Caption := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetColor(AObj: TRadioGroup): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetColor(AObj: TRadioGroup; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetColumns(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Columns;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetColumns(AObj: TRadioGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Columns := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetDoubleBuffered(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetDoubleBuffered(AObj: TRadioGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetDragCursor(AObj: TRadioGroup): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetDragCursor(AObj: TRadioGroup; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetDragMode(AObj: TRadioGroup): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetDragMode(AObj: TRadioGroup; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetEnabled(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetEnabled(AObj: TRadioGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetFont(AObj: TRadioGroup): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetFont(AObj: TRadioGroup; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetItemIndex(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemIndex;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetItemIndex(AObj: TRadioGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ItemIndex := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetItems(AObj: TRadioGroup): TStrings; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Items;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetItems(AObj: TRadioGroup; AValue: TStrings); extdecl;
 begin
+  handleExceptionBegin
   AObj.Items := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetConstraints(AObj: TRadioGroup): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetConstraints(AObj: TRadioGroup; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetParentColor(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetParentColor(AObj: TRadioGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetParentDoubleBuffered(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetParentDoubleBuffered(AObj: TRadioGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetParentFont(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetParentFont(AObj: TRadioGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetParentShowHint(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetParentShowHint(AObj: TRadioGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetPopupMenu(AObj: TRadioGroup): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetPopupMenu(AObj: TRadioGroup; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetShowHint(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetShowHint(AObj: TRadioGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetTabOrder(AObj: TRadioGroup): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetTabOrder(AObj: TRadioGroup; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetTabStop(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetTabStop(AObj: TRadioGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetVisible(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetVisible(AObj: TRadioGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -547,332 +743,464 @@ end;
 
 function RadioGroup_GetDockClientCount(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetDockSite(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetDockSite(AObj: TRadioGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetMouseInClient(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetVisibleDockClientCount(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetBrush(AObj: TRadioGroup): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetControlCount(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetHandle(AObj: TRadioGroup): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetParentWindow(AObj: TRadioGroup): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetParentWindow(AObj: TRadioGroup; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetShowing(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetUseDockManager(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetUseDockManager(AObj: TRadioGroup; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetAction(AObj: TRadioGroup): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetAction(AObj: TRadioGroup; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_GetBoundsRect(AObj: TRadioGroup; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetBoundsRect(AObj: TRadioGroup; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetClientHeight(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetClientHeight(AObj: TRadioGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_GetClientOrigin(AObj: TRadioGroup; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_GetClientRect(AObj: TRadioGroup; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetClientWidth(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetClientWidth(AObj: TRadioGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetControlState(AObj: TRadioGroup): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetControlState(AObj: TRadioGroup; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetControlStyle(AObj: TRadioGroup): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetControlStyle(AObj: TRadioGroup; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetFloating(AObj: TRadioGroup): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetParent(AObj: TRadioGroup): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetParent(AObj: TRadioGroup; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetLeft(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetLeft(AObj: TRadioGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetTop(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetTop(AObj: TRadioGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetWidth(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetWidth(AObj: TRadioGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetHeight(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetHeight(AObj: TRadioGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetCursor(AObj: TRadioGroup): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetCursor(AObj: TRadioGroup; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetHint(AObj: TRadioGroup): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetHint(AObj: TRadioGroup; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetComponentCount(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetComponentIndex(AObj: TRadioGroup): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetComponentIndex(AObj: TRadioGroup; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetOwner(AObj: TRadioGroup): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetName(AObj: TRadioGroup): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetName(AObj: TRadioGroup; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetTag(AObj: TRadioGroup): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetTag(AObj: TRadioGroup; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetAnchorSideLeft(AObj: TRadioGroup): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetAnchorSideLeft(AObj: TRadioGroup; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetAnchorSideTop(AObj: TRadioGroup): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetAnchorSideTop(AObj: TRadioGroup; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetAnchorSideRight(AObj: TRadioGroup): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetAnchorSideRight(AObj: TRadioGroup; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetAnchorSideBottom(AObj: TRadioGroup): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetAnchorSideBottom(AObj: TRadioGroup; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetChildSizing(AObj: TRadioGroup): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetChildSizing(AObj: TRadioGroup; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetBorderSpacing(AObj: TRadioGroup): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure RadioGroup_SetBorderSpacing(AObj: TRadioGroup; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetDockClients(AObj: TRadioGroup; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetControls(AObj: TRadioGroup; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetComponents(AObj: TRadioGroup; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function RadioGroup_GetAnchorSide(AObj: TRadioGroup; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function RadioGroup_StaticClassType: TClass; extdecl;

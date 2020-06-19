@@ -9,452 +9,632 @@
 
 function SpeedButton_Create(AOwner: TComponent): TSpeedButton; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TSpeedButton.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_Free(AObj: TSpeedButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_Click(AObj: TSpeedButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Click;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_BringToFront(AObj: TSpeedButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_ClientToScreen(AObj: TSpeedButton; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_ClientToParent(AObj: TSpeedButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function SpeedButton_Dragging(AObj: TSpeedButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function SpeedButton_HasParent(AObj: TSpeedButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_Hide(AObj: TSpeedButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_Invalidate(AObj: TSpeedButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 function SpeedButton_Perform(AObj: TSpeedButton; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_Refresh(AObj: TSpeedButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_Repaint(AObj: TSpeedButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_ScreenToClient(AObj: TSpeedButton; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_ParentToClient(AObj: TSpeedButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SendToBack(AObj: TSpeedButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetBounds(AObj: TSpeedButton; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_Show(AObj: TSpeedButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_Update(AObj: TSpeedButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetTextBuf(AObj: TSpeedButton; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetTextLen(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetTextBuf(AObj: TSpeedButton; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function SpeedButton_FindComponent(AObj: TSpeedButton; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetNamePath(AObj: TSpeedButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_Assign(AObj: TSpeedButton; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function SpeedButton_ClassType(AObj: TSpeedButton): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function SpeedButton_ClassName(AObj: TSpeedButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function SpeedButton_InstanceSize(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function SpeedButton_InheritsFrom(AObj: TSpeedButton; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function SpeedButton_Equals(AObj: TSpeedButton; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetHashCode(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function SpeedButton_ToString(AObj: TSpeedButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_AnchorToNeighbour(AObj: TSpeedButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_AnchorParallel(AObj: TSpeedButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_AnchorHorizontalCenterTo(AObj: TSpeedButton; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_AnchorVerticalCenterTo(AObj: TSpeedButton; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_AnchorAsAlign(AObj: TSpeedButton; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_AnchorClient(AObj: TSpeedButton; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetImageIndex(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ImageIndex;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetImageIndex(AObj: TSpeedButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ImageIndex := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetImages(AObj: TSpeedButton): TCustomImageList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Images;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetImages(AObj: TSpeedButton; AValue: TCustomImageList); extdecl;
 begin
+  handleExceptionBegin
   AObj.Images := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetImageWidth(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ImageWidth;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetImageWidth(AObj: TSpeedButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ImageWidth := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetShowCaption(AObj: TSpeedButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowCaption;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetShowCaption(AObj: TSpeedButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowCaption := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetAction(AObj: TSpeedButton): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetAction(AObj: TSpeedButton; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetAlign(AObj: TSpeedButton): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetAlign(AObj: TSpeedButton; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetAllowAllUp(AObj: TSpeedButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AllowAllUp;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetAllowAllUp(AObj: TSpeedButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AllowAllUp := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetAnchors(AObj: TSpeedButton): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetAnchors(AObj: TSpeedButton; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetBiDiMode(AObj: TSpeedButton): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetBiDiMode(AObj: TSpeedButton; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetConstraints(AObj: TSpeedButton): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetConstraints(AObj: TSpeedButton; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetGroupIndex(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GroupIndex;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetGroupIndex(AObj: TSpeedButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.GroupIndex := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetDown(AObj: TSpeedButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Down;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetDown(AObj: TSpeedButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Down := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetCaption(AObj: TSpeedButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Caption);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetCaption(AObj: TSpeedButton; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Caption := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetEnabled(AObj: TSpeedButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetEnabled(AObj: TSpeedButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetFlat(AObj: TSpeedButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Flat;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetFlat(AObj: TSpeedButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Flat := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetFont(AObj: TSpeedButton): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetFont(AObj: TSpeedButton; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetGlyph(AObj: TSpeedButton): TBitmap; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Glyph;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetGlyph(AObj: TSpeedButton; AValue: TBitmap); extdecl;
 begin
+  handleExceptionBegin
   AObj.Glyph := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetLayout(AObj: TSpeedButton): TButtonLayout; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Layout;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetLayout(AObj: TSpeedButton; AValue: TButtonLayout); extdecl;
 begin
+  handleExceptionBegin
   AObj.Layout := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetNumGlyphs(AObj: TSpeedButton): TNumGlyphs; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.NumGlyphs;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetNumGlyphs(AObj: TSpeedButton; AValue: TNumGlyphs); extdecl;
 begin
+  handleExceptionBegin
   AObj.NumGlyphs := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetParentFont(AObj: TSpeedButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetParentFont(AObj: TSpeedButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetParentShowHint(AObj: TSpeedButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetParentShowHint(AObj: TSpeedButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetPopupMenu(AObj: TSpeedButton): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetPopupMenu(AObj: TSpeedButton; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetShowHint(AObj: TSpeedButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetShowHint(AObj: TSpeedButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetSpacing(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Spacing;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetSpacing(AObj: TSpeedButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Spacing := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetTransparent(AObj: TSpeedButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Transparent;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetTransparent(AObj: TSpeedButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Transparent := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetVisible(AObj: TSpeedButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetVisible(AObj: TSpeedButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -515,237 +695,331 @@ end;
 
 procedure SpeedButton_GetBoundsRect(AObj: TSpeedButton; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetBoundsRect(AObj: TSpeedButton; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetClientHeight(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetClientHeight(AObj: TSpeedButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_GetClientOrigin(AObj: TSpeedButton; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_GetClientRect(AObj: TSpeedButton; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetClientWidth(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetClientWidth(AObj: TSpeedButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetControlState(AObj: TSpeedButton): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetControlState(AObj: TSpeedButton; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetControlStyle(AObj: TSpeedButton): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetControlStyle(AObj: TSpeedButton; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetFloating(AObj: TSpeedButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetParent(AObj: TSpeedButton): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetParent(AObj: TSpeedButton; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetLeft(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetLeft(AObj: TSpeedButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetTop(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetTop(AObj: TSpeedButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetWidth(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetWidth(AObj: TSpeedButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetHeight(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetHeight(AObj: TSpeedButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetCursor(AObj: TSpeedButton): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetCursor(AObj: TSpeedButton; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetHint(AObj: TSpeedButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetHint(AObj: TSpeedButton; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetComponentCount(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetComponentIndex(AObj: TSpeedButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetComponentIndex(AObj: TSpeedButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetOwner(AObj: TSpeedButton): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetName(AObj: TSpeedButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetName(AObj: TSpeedButton; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetTag(AObj: TSpeedButton): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetTag(AObj: TSpeedButton; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetAnchorSideLeft(AObj: TSpeedButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetAnchorSideLeft(AObj: TSpeedButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetAnchorSideTop(AObj: TSpeedButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetAnchorSideTop(AObj: TSpeedButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetAnchorSideRight(AObj: TSpeedButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetAnchorSideRight(AObj: TSpeedButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetAnchorSideBottom(AObj: TSpeedButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetAnchorSideBottom(AObj: TSpeedButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetBorderSpacing(AObj: TSpeedButton): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure SpeedButton_SetBorderSpacing(AObj: TSpeedButton; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetComponents(AObj: TSpeedButton; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function SpeedButton_GetAnchorSide(AObj: TSpeedButton; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function SpeedButton_StaticClassType: TClass; extdecl;

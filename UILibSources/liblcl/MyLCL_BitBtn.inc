@@ -9,537 +9,751 @@
 
 function BitBtn_Create(AOwner: TComponent): TBitBtn; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TBitBtn.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_Free(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_Click(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.Click;
+  handleExceptionEnd
 end;
 
 function BitBtn_CanFocus(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function BitBtn_ContainsControl(AObj: TBitBtn; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function BitBtn_ControlAtPos(AObj: TBitBtn; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_DisableAlign(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_EnableAlign(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function BitBtn_FindChildControl(AObj: TBitBtn; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_FlipChildren(AObj: TBitBtn; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function BitBtn_Focused(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function BitBtn_HandleAllocated(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_InsertControl(AObj: TBitBtn; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_Invalidate(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_RemoveControl(AObj: TBitBtn; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_Realign(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_Repaint(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_ScaleBy(AObj: TBitBtn; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_ScrollBy(AObj: TBitBtn; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetBounds(AObj: TBitBtn; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetFocus(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_Update(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_BringToFront(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_ClientToScreen(AObj: TBitBtn; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_ClientToParent(AObj: TBitBtn; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function BitBtn_Dragging(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function BitBtn_HasParent(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_Hide(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function BitBtn_Perform(AObj: TBitBtn; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_Refresh(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_ScreenToClient(AObj: TBitBtn; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_ParentToClient(AObj: TBitBtn; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SendToBack(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_Show(AObj: TBitBtn); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetTextBuf(AObj: TBitBtn; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function BitBtn_GetTextLen(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetTextBuf(AObj: TBitBtn; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function BitBtn_FindComponent(AObj: TBitBtn; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function BitBtn_GetNamePath(AObj: TBitBtn): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_Assign(AObj: TBitBtn; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function BitBtn_ClassType(AObj: TBitBtn): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function BitBtn_ClassName(AObj: TBitBtn): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function BitBtn_InstanceSize(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function BitBtn_InheritsFrom(AObj: TBitBtn; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function BitBtn_Equals(AObj: TBitBtn; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function BitBtn_GetHashCode(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function BitBtn_ToString(AObj: TBitBtn): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_AnchorToNeighbour(AObj: TBitBtn; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_AnchorParallel(AObj: TBitBtn; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_AnchorHorizontalCenterTo(AObj: TBitBtn; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_AnchorVerticalCenterTo(AObj: TBitBtn; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_AnchorAsAlign(AObj: TBitBtn; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_AnchorClient(AObj: TBitBtn; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function BitBtn_GetDefaultCaption(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DefaultCaption;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetDefaultCaption(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DefaultCaption := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetGlyphShowMode(AObj: TBitBtn): TGlyphShowMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GlyphShowMode;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetGlyphShowMode(AObj: TBitBtn; AValue: TGlyphShowMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.GlyphShowMode := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetImageWidth(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ImageWidth;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetImageWidth(AObj: TBitBtn; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ImageWidth := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetAction(AObj: TBitBtn): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetAction(AObj: TBitBtn; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetAlign(AObj: TBitBtn): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetAlign(AObj: TBitBtn; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetAnchors(AObj: TBitBtn): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetAnchors(AObj: TBitBtn; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetBiDiMode(AObj: TBitBtn): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetBiDiMode(AObj: TBitBtn; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetCancel(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cancel;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetCancel(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cancel := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetCaption(AObj: TBitBtn): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Caption);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetCaption(AObj: TBitBtn; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Caption := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetConstraints(AObj: TBitBtn): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetConstraints(AObj: TBitBtn; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetDefault(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Default;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetDefault(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Default := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetDoubleBuffered(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetDoubleBuffered(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetEnabled(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetEnabled(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetFont(AObj: TBitBtn): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetFont(AObj: TBitBtn; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetGlyph(AObj: TBitBtn): TBitmap; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Glyph;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetGlyph(AObj: TBitBtn; AValue: TBitmap); extdecl;
 begin
+  handleExceptionBegin
   AObj.Glyph := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetLayout(AObj: TBitBtn): TButtonLayout; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Layout;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetLayout(AObj: TBitBtn; AValue: TButtonLayout); extdecl;
 begin
+  handleExceptionBegin
   AObj.Layout := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetModalResult(AObj: TBitBtn): TModalResult; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ModalResult;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetModalResult(AObj: TBitBtn; AValue: TModalResult); extdecl;
 begin
+  handleExceptionBegin
   AObj.ModalResult := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetNumGlyphs(AObj: TBitBtn): TNumGlyphs; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.NumGlyphs;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetNumGlyphs(AObj: TBitBtn; AValue: TNumGlyphs); extdecl;
 begin
+  handleExceptionBegin
   AObj.NumGlyphs := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetParentDoubleBuffered(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetParentDoubleBuffered(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetParentFont(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetParentFont(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetParentShowHint(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetParentShowHint(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetPopupMenu(AObj: TBitBtn): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetPopupMenu(AObj: TBitBtn; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetShowHint(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetShowHint(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetSpacing(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Spacing;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetSpacing(AObj: TBitBtn; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Spacing := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetTabOrder(AObj: TBitBtn): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetTabOrder(AObj: TBitBtn; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetTabStop(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetTabStop(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetVisible(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetVisible(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -664,322 +878,450 @@ end;
 
 function BitBtn_GetDockClientCount(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetDockSite(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetDockSite(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetMouseInClient(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetVisibleDockClientCount(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetBrush(AObj: TBitBtn): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetControlCount(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetHandle(AObj: TBitBtn): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetParentWindow(AObj: TBitBtn): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetParentWindow(AObj: TBitBtn; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetShowing(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetUseDockManager(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetUseDockManager(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_GetBoundsRect(AObj: TBitBtn; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetBoundsRect(AObj: TBitBtn; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetClientHeight(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetClientHeight(AObj: TBitBtn; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_GetClientOrigin(AObj: TBitBtn; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_GetClientRect(AObj: TBitBtn; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetClientWidth(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetClientWidth(AObj: TBitBtn; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetControlState(AObj: TBitBtn): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetControlState(AObj: TBitBtn; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetControlStyle(AObj: TBitBtn): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetControlStyle(AObj: TBitBtn; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetFloating(AObj: TBitBtn): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetParent(AObj: TBitBtn): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetParent(AObj: TBitBtn; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetLeft(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetLeft(AObj: TBitBtn; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetTop(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetTop(AObj: TBitBtn; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetWidth(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetWidth(AObj: TBitBtn; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetHeight(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetHeight(AObj: TBitBtn; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetCursor(AObj: TBitBtn): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetCursor(AObj: TBitBtn; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetHint(AObj: TBitBtn): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetHint(AObj: TBitBtn; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetComponentCount(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetComponentIndex(AObj: TBitBtn): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetComponentIndex(AObj: TBitBtn; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetOwner(AObj: TBitBtn): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetName(AObj: TBitBtn): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetName(AObj: TBitBtn; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetTag(AObj: TBitBtn): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetTag(AObj: TBitBtn; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetAnchorSideLeft(AObj: TBitBtn): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetAnchorSideLeft(AObj: TBitBtn; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetAnchorSideTop(AObj: TBitBtn): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetAnchorSideTop(AObj: TBitBtn; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetAnchorSideRight(AObj: TBitBtn): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetAnchorSideRight(AObj: TBitBtn; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetAnchorSideBottom(AObj: TBitBtn): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetAnchorSideBottom(AObj: TBitBtn; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetChildSizing(AObj: TBitBtn): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetChildSizing(AObj: TBitBtn; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetBorderSpacing(AObj: TBitBtn): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure BitBtn_SetBorderSpacing(AObj: TBitBtn; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function BitBtn_GetDockClients(AObj: TBitBtn; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function BitBtn_GetControls(AObj: TBitBtn; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function BitBtn_GetComponents(AObj: TBitBtn; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function BitBtn_GetAnchorSide(AObj: TBitBtn; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function BitBtn_StaticClassType: TClass; extdecl;

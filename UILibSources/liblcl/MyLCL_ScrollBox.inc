@@ -9,517 +9,723 @@
 
 function ScrollBox_Create(AOwner: TComponent): TScrollBox; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TScrollBox.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_Free(AObj: TScrollBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_ScrollInView(AObj: TScrollBox; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollInView(AControl);
+  handleExceptionEnd
 end;
 
 function ScrollBox_CanFocus(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function ScrollBox_ContainsControl(AObj: TScrollBox; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function ScrollBox_ControlAtPos(AObj: TScrollBox; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_DisableAlign(AObj: TScrollBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_EnableAlign(AObj: TScrollBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function ScrollBox_FindChildControl(AObj: TScrollBox; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_FlipChildren(AObj: TScrollBox; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function ScrollBox_Focused(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function ScrollBox_HandleAllocated(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_InsertControl(AObj: TScrollBox; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_Invalidate(AObj: TScrollBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_RemoveControl(AObj: TScrollBox; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_Realign(AObj: TScrollBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_Repaint(AObj: TScrollBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_ScaleBy(AObj: TScrollBox; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_ScrollBy(AObj: TScrollBox; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetBounds(AObj: TScrollBox; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetFocus(AObj: TScrollBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_Update(AObj: TScrollBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_BringToFront(AObj: TScrollBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_ClientToScreen(AObj: TScrollBox; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_ClientToParent(AObj: TScrollBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function ScrollBox_Dragging(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function ScrollBox_HasParent(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_Hide(AObj: TScrollBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function ScrollBox_Perform(AObj: TScrollBox; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_Refresh(AObj: TScrollBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_ScreenToClient(AObj: TScrollBox; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_ParentToClient(AObj: TScrollBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SendToBack(AObj: TScrollBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_Show(AObj: TScrollBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetTextBuf(AObj: TScrollBox; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetTextLen(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetTextBuf(AObj: TScrollBox; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function ScrollBox_FindComponent(AObj: TScrollBox; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetNamePath(AObj: TScrollBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_Assign(AObj: TScrollBox; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ScrollBox_ClassType(AObj: TScrollBox): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ScrollBox_ClassName(AObj: TScrollBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ScrollBox_InstanceSize(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ScrollBox_InheritsFrom(AObj: TScrollBox; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ScrollBox_Equals(AObj: TScrollBox; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetHashCode(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ScrollBox_ToString(AObj: TScrollBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_AnchorToNeighbour(AObj: TScrollBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_AnchorParallel(AObj: TScrollBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_AnchorHorizontalCenterTo(AObj: TScrollBox; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_AnchorVerticalCenterTo(AObj: TScrollBox; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_AnchorAsAlign(AObj: TScrollBox; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_AnchorClient(AObj: TScrollBox; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetAlign(AObj: TScrollBox): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetAlign(AObj: TScrollBox; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetAnchors(AObj: TScrollBox): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetAnchors(AObj: TScrollBox; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetAutoScroll(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoScroll;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetAutoScroll(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoScroll := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetAutoSize(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSize;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetAutoSize(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSize := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetBiDiMode(AObj: TScrollBox): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetBiDiMode(AObj: TScrollBox; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetBorderStyle(AObj: TScrollBox): TBorderStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderStyle;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetBorderStyle(AObj: TScrollBox; AValue: TBorderStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetConstraints(AObj: TScrollBox): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetConstraints(AObj: TScrollBox; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetDockSite(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetDockSite(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetDoubleBuffered(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetDoubleBuffered(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetDragCursor(AObj: TScrollBox): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetDragCursor(AObj: TScrollBox; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetDragKind(AObj: TScrollBox): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetDragKind(AObj: TScrollBox; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetDragMode(AObj: TScrollBox): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetDragMode(AObj: TScrollBox; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetEnabled(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetEnabled(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetColor(AObj: TScrollBox): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetColor(AObj: TScrollBox; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetFont(AObj: TScrollBox): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetFont(AObj: TScrollBox; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetParentBackground(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentBackground;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetParentBackground(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentBackground := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetParentColor(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetParentColor(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetParentDoubleBuffered(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetParentDoubleBuffered(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetParentFont(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetParentFont(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetParentShowHint(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetParentShowHint(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetPopupMenu(AObj: TScrollBox): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetPopupMenu(AObj: TScrollBox; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetShowHint(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetShowHint(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetTabOrder(AObj: TScrollBox): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetTabOrder(AObj: TScrollBox; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetTabStop(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetTabStop(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetVisible(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetVisible(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -684,342 +890,478 @@ end;
 
 function ScrollBox_GetHorzScrollBar(AObj: TScrollBox): TControlScrollBar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HorzScrollBar;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetHorzScrollBar(AObj: TScrollBox; AValue: TControlScrollBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.HorzScrollBar := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetVertScrollBar(AObj: TScrollBox): TControlScrollBar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VertScrollBar;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetVertScrollBar(AObj: TScrollBox; AValue: TControlScrollBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.VertScrollBar := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetDockClientCount(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetMouseInClient(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetVisibleDockClientCount(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetBrush(AObj: TScrollBox): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetControlCount(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetHandle(AObj: TScrollBox): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetParentWindow(AObj: TScrollBox): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetParentWindow(AObj: TScrollBox; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetShowing(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetUseDockManager(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetUseDockManager(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetAction(AObj: TScrollBox): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetAction(AObj: TScrollBox; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_GetBoundsRect(AObj: TScrollBox; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetBoundsRect(AObj: TScrollBox; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetClientHeight(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetClientHeight(AObj: TScrollBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_GetClientOrigin(AObj: TScrollBox; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_GetClientRect(AObj: TScrollBox; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetClientWidth(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetClientWidth(AObj: TScrollBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetControlState(AObj: TScrollBox): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetControlState(AObj: TScrollBox; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetControlStyle(AObj: TScrollBox): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetControlStyle(AObj: TScrollBox; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetFloating(AObj: TScrollBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetParent(AObj: TScrollBox): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetParent(AObj: TScrollBox; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetLeft(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetLeft(AObj: TScrollBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetTop(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetTop(AObj: TScrollBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetWidth(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetWidth(AObj: TScrollBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetHeight(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetHeight(AObj: TScrollBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetCursor(AObj: TScrollBox): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetCursor(AObj: TScrollBox; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetHint(AObj: TScrollBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetHint(AObj: TScrollBox; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetComponentCount(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetComponentIndex(AObj: TScrollBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetComponentIndex(AObj: TScrollBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetOwner(AObj: TScrollBox): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetName(AObj: TScrollBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetName(AObj: TScrollBox; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetTag(AObj: TScrollBox): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetTag(AObj: TScrollBox; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetAnchorSideLeft(AObj: TScrollBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetAnchorSideLeft(AObj: TScrollBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetAnchorSideTop(AObj: TScrollBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetAnchorSideTop(AObj: TScrollBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetAnchorSideRight(AObj: TScrollBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetAnchorSideRight(AObj: TScrollBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetAnchorSideBottom(AObj: TScrollBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetAnchorSideBottom(AObj: TScrollBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetChildSizing(AObj: TScrollBox): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetChildSizing(AObj: TScrollBox; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetBorderSpacing(AObj: TScrollBox): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure ScrollBox_SetBorderSpacing(AObj: TScrollBox; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetDockClients(AObj: TScrollBox; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetControls(AObj: TScrollBox; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetComponents(AObj: TScrollBox; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function ScrollBox_GetAnchorSide(AObj: TScrollBox; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function ScrollBox_StaticClassType: TClass; extdecl;

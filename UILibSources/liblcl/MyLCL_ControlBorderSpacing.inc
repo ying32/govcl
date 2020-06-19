@@ -9,102 +9,142 @@
 
 procedure ControlBorderSpacing_Assign(AObj: TControlBorderSpacing; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetNamePath(AObj: TControlBorderSpacing): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_ClassType(AObj: TControlBorderSpacing): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_ClassName(AObj: TControlBorderSpacing): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_InstanceSize(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_InheritsFrom(AObj: TControlBorderSpacing; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_Equals(AObj: TControlBorderSpacing; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetHashCode(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_ToString(AObj: TControlBorderSpacing): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetControl(AObj: TControlBorderSpacing): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Control;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetAroundLeft(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AroundLeft;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetAroundTop(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AroundTop;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetAroundRight(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AroundRight;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetAroundBottom(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AroundBottom;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetControlLeft(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlLeft;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetControlTop(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlTop;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetControlWidth(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlWidth;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetControlHeight(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlHeight;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetControlRight(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlRight;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetControlBottom(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlBottom;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -117,92 +157,128 @@ end;
 
 function ControlBorderSpacing_GetLeft(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure ControlBorderSpacing_SetLeft(AObj: TControlBorderSpacing; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetTop(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure ControlBorderSpacing_SetTop(AObj: TControlBorderSpacing; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetRight(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Right;
+  handleExceptionEnd
 end;
 
 procedure ControlBorderSpacing_SetRight(AObj: TControlBorderSpacing; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Right := AValue;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetBottom(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Bottom;
+  handleExceptionEnd
 end;
 
 procedure ControlBorderSpacing_SetBottom(AObj: TControlBorderSpacing; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Bottom := AValue;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetAround(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Around;
+  handleExceptionEnd
 end;
 
 procedure ControlBorderSpacing_SetAround(AObj: TControlBorderSpacing; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Around := AValue;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetInnerBorder(AObj: TControlBorderSpacing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InnerBorder;
+  handleExceptionEnd
 end;
 
 procedure ControlBorderSpacing_SetInnerBorder(AObj: TControlBorderSpacing; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.InnerBorder := AValue;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetCellAlignHorizontal(AObj: TControlBorderSpacing): TControlCellAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CellAlignHorizontal;
+  handleExceptionEnd
 end;
 
 procedure ControlBorderSpacing_SetCellAlignHorizontal(AObj: TControlBorderSpacing; AValue: TControlCellAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.CellAlignHorizontal := AValue;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetCellAlignVertical(AObj: TControlBorderSpacing): TControlCellAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CellAlignVertical;
+  handleExceptionEnd
 end;
 
 procedure ControlBorderSpacing_SetCellAlignVertical(AObj: TControlBorderSpacing; AValue: TControlCellAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.CellAlignVertical := AValue;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_GetSpace(AObj: TControlBorderSpacing; Kind: TAnchorKind): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Space[Kind];
+  handleExceptionEnd
 end;
 
 procedure ControlBorderSpacing_SetSpace(AObj: TControlBorderSpacing; Kind: TAnchorKind; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Space[Kind] := AValue;
+  handleExceptionEnd
 end;
 
 function ControlBorderSpacing_StaticClassType: TClass; extdecl;

@@ -9,117 +9,163 @@
 
 function ListItems_Create(AOwner: TCustomListView): TListItems; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TListItems.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ListItems_Free(AObj: TListItems); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function ListItems_Add(AObj: TListItems): TListItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Add;
+  handleExceptionEnd
 end;
 
 procedure ListItems_Assign(AObj: TListItems; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 procedure ListItems_BeginUpdate(AObj: TListItems); extdecl;
 begin
+  handleExceptionBegin
   AObj.BeginUpdate;
+  handleExceptionEnd
 end;
 
 procedure ListItems_Clear(AObj: TListItems); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure ListItems_Delete(AObj: TListItems; Index: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Delete(Index);
+  handleExceptionEnd
 end;
 
 procedure ListItems_EndUpdate(AObj: TListItems); extdecl;
 begin
+  handleExceptionBegin
   AObj.EndUpdate;
+  handleExceptionEnd
 end;
 
 function ListItems_IndexOf(AObj: TListItems; Value: TListItem): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.IndexOf(Value);
+  handleExceptionEnd
 end;
 
 function ListItems_Insert(AObj: TListItems; Index: Integer): TListItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Insert(Index);
+  handleExceptionEnd
 end;
 
 function ListItems_GetNamePath(AObj: TListItems): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function ListItems_ClassType(AObj: TListItems): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ListItems_ClassName(AObj: TListItems): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ListItems_InstanceSize(AObj: TListItems): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ListItems_InheritsFrom(AObj: TListItems; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ListItems_Equals(AObj: TListItems; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ListItems_GetHashCode(AObj: TListItems): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ListItems_ToString(AObj: TListItems): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function ListItems_GetCount(AObj: TListItems): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Count;
+  handleExceptionEnd
 end;
 
 procedure ListItems_SetCount(AObj: TListItems; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Count := AValue;
+  handleExceptionEnd
 end;
 
 function ListItems_GetOwner(AObj: TListItems): TCustomListView; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function ListItems_GetItem(AObj: TListItems; Index: Integer): TListItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Item[Index];
+  handleExceptionEnd
 end;
 
 procedure ListItems_SetItem(AObj: TListItems; Index: Integer; AValue: TListItem); extdecl;
 begin
+  handleExceptionBegin
   AObj.Item[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function ListItems_StaticClassType: TClass; extdecl;

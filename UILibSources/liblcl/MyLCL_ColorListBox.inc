@@ -9,517 +9,723 @@
 
 function ColorListBox_Create(AOwner: TComponent): TColorListBox; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TColorListBox.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_Free(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_AddItem(AObj: TColorListBox; Item: PChar; AObject: TObject); extdecl;
 begin
+  handleExceptionBegin
   AObj.AddItem(Item, AObject);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_Clear(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_ClearSelection(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClearSelection;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_DeleteSelected(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.DeleteSelected;
+  handleExceptionEnd
 end;
 
 function ColorListBox_ItemAtPos(AObj: TColorListBox; var Pos: TPoint; Existing: LongBool): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemAtPos(Pos, Existing);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_ItemRect(AObj: TColorListBox; Index: Integer; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemRect(Index);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SelectAll(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelectAll;
+  handleExceptionEnd
 end;
 
 function ColorListBox_CanFocus(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function ColorListBox_ContainsControl(AObj: TColorListBox; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function ColorListBox_ControlAtPos(AObj: TColorListBox; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_DisableAlign(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_EnableAlign(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function ColorListBox_FindChildControl(AObj: TColorListBox; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_FlipChildren(AObj: TColorListBox; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function ColorListBox_Focused(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function ColorListBox_HandleAllocated(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_InsertControl(AObj: TColorListBox; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_Invalidate(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_RemoveControl(AObj: TColorListBox; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_Realign(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_Repaint(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_ScaleBy(AObj: TColorListBox; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_ScrollBy(AObj: TColorListBox; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetBounds(AObj: TColorListBox; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetFocus(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_Update(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_BringToFront(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_ClientToScreen(AObj: TColorListBox; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_ClientToParent(AObj: TColorListBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function ColorListBox_Dragging(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function ColorListBox_HasParent(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_Hide(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function ColorListBox_Perform(AObj: TColorListBox; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_Refresh(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_ScreenToClient(AObj: TColorListBox; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_ParentToClient(AObj: TColorListBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SendToBack(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_Show(AObj: TColorListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetTextBuf(AObj: TColorListBox; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetTextLen(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetTextBuf(AObj: TColorListBox; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function ColorListBox_FindComponent(AObj: TColorListBox; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetNamePath(AObj: TColorListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_Assign(AObj: TColorListBox; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ColorListBox_ClassType(AObj: TColorListBox): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ColorListBox_ClassName(AObj: TColorListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ColorListBox_InstanceSize(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ColorListBox_InheritsFrom(AObj: TColorListBox; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ColorListBox_Equals(AObj: TColorListBox; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetHashCode(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ColorListBox_ToString(AObj: TColorListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_AnchorToNeighbour(AObj: TColorListBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_AnchorParallel(AObj: TColorListBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_AnchorHorizontalCenterTo(AObj: TColorListBox; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_AnchorVerticalCenterTo(AObj: TColorListBox; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_AnchorAsAlign(AObj: TColorListBox; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_AnchorClient(AObj: TColorListBox; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetAlign(AObj: TColorListBox): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetAlign(AObj: TColorListBox; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetDefaultColorColor(AObj: TColorListBox): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DefaultColorColor;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetDefaultColorColor(AObj: TColorListBox; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DefaultColorColor := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetNoneColorColor(AObj: TColorListBox): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.NoneColorColor;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetNoneColorColor(AObj: TColorListBox; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.NoneColorColor := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetSelected(AObj: TColorListBox): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Selected;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetSelected(AObj: TColorListBox; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Selected := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetStyle(AObj: TColorListBox): TColorBoxStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Style;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetStyle(AObj: TColorListBox; AValue: TColorBoxStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.Style := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetAnchors(AObj: TColorListBox): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetAnchors(AObj: TColorListBox; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetBiDiMode(AObj: TColorListBox): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetBiDiMode(AObj: TColorListBox; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetColor(AObj: TColorListBox): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetColor(AObj: TColorListBox; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetConstraints(AObj: TColorListBox): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetConstraints(AObj: TColorListBox; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetDoubleBuffered(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetDoubleBuffered(AObj: TColorListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetEnabled(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetEnabled(AObj: TColorListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetFont(AObj: TColorListBox): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetFont(AObj: TColorListBox; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetItemHeight(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemHeight;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetItemHeight(AObj: TColorListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ItemHeight := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetParentColor(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetParentColor(AObj: TColorListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetParentDoubleBuffered(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetParentDoubleBuffered(AObj: TColorListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetParentFont(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetParentFont(AObj: TColorListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetParentShowHint(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetParentShowHint(AObj: TColorListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetPopupMenu(AObj: TColorListBox): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetPopupMenu(AObj: TColorListBox; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetShowHint(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetShowHint(AObj: TColorListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetTabOrder(AObj: TColorListBox): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetTabOrder(AObj: TColorListBox; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetTabStop(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetTabStop(AObj: TColorListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetVisible(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetVisible(AObj: TColorListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -652,397 +858,555 @@ end;
 
 function ColorListBox_GetCanvas(AObj: TColorListBox): TCanvas; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Canvas;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetCount(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Count;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetItems(AObj: TColorListBox): TStrings; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Items;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetItems(AObj: TColorListBox; AValue: TStrings); extdecl;
 begin
+  handleExceptionBegin
   AObj.Items := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetTopIndex(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TopIndex;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetTopIndex(AObj: TColorListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.TopIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetMultiSelect(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MultiSelect;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetMultiSelect(AObj: TColorListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.MultiSelect := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetSelCount(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelCount;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetItemIndex(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemIndex;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetItemIndex(AObj: TColorListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ItemIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetDockClientCount(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetDockSite(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetDockSite(AObj: TColorListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetMouseInClient(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetVisibleDockClientCount(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetBrush(AObj: TColorListBox): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetControlCount(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetHandle(AObj: TColorListBox): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetParentWindow(AObj: TColorListBox): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetParentWindow(AObj: TColorListBox; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetShowing(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetUseDockManager(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetUseDockManager(AObj: TColorListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetAction(AObj: TColorListBox): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetAction(AObj: TColorListBox; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_GetBoundsRect(AObj: TColorListBox; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetBoundsRect(AObj: TColorListBox; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetClientHeight(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetClientHeight(AObj: TColorListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_GetClientOrigin(AObj: TColorListBox; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_GetClientRect(AObj: TColorListBox; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetClientWidth(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetClientWidth(AObj: TColorListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetControlState(AObj: TColorListBox): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetControlState(AObj: TColorListBox; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetControlStyle(AObj: TColorListBox): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetControlStyle(AObj: TColorListBox; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetFloating(AObj: TColorListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetParent(AObj: TColorListBox): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetParent(AObj: TColorListBox; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetLeft(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetLeft(AObj: TColorListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetTop(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetTop(AObj: TColorListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetWidth(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetWidth(AObj: TColorListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetHeight(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetHeight(AObj: TColorListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetCursor(AObj: TColorListBox): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetCursor(AObj: TColorListBox; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetHint(AObj: TColorListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetHint(AObj: TColorListBox; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetComponentCount(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetComponentIndex(AObj: TColorListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetComponentIndex(AObj: TColorListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetOwner(AObj: TColorListBox): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetName(AObj: TColorListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetName(AObj: TColorListBox; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetTag(AObj: TColorListBox): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetTag(AObj: TColorListBox; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetAnchorSideLeft(AObj: TColorListBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetAnchorSideLeft(AObj: TColorListBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetAnchorSideTop(AObj: TColorListBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetAnchorSideTop(AObj: TColorListBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetAnchorSideRight(AObj: TColorListBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetAnchorSideRight(AObj: TColorListBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetAnchorSideBottom(AObj: TColorListBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetAnchorSideBottom(AObj: TColorListBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetChildSizing(AObj: TColorListBox): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetChildSizing(AObj: TColorListBox; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetBorderSpacing(AObj: TColorListBox): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure ColorListBox_SetBorderSpacing(AObj: TColorListBox; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetColors(AObj: TColorListBox; Index: Integer): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Colors[Index];
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetColorNames(AObj: TColorListBox; Index: Integer): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ColorNames[Index]);
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetDockClients(AObj: TColorListBox; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetControls(AObj: TColorListBox; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetComponents(AObj: TColorListBox; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function ColorListBox_GetAnchorSide(AObj: TColorListBox; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function ColorListBox_StaticClassType: TClass; extdecl;

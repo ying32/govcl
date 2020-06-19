@@ -9,47 +9,65 @@
 
 procedure SizeConstraints_Assign(AObj: TSizeConstraints; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function SizeConstraints_GetNamePath(AObj: TSizeConstraints): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function SizeConstraints_ClassType(AObj: TSizeConstraints): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function SizeConstraints_ClassName(AObj: TSizeConstraints): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function SizeConstraints_InstanceSize(AObj: TSizeConstraints): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function SizeConstraints_InheritsFrom(AObj: TSizeConstraints; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function SizeConstraints_Equals(AObj: TSizeConstraints; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function SizeConstraints_GetHashCode(AObj: TSizeConstraints): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function SizeConstraints_ToString(AObj: TSizeConstraints): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -62,42 +80,58 @@ end;
 
 function SizeConstraints_GetMaxHeight(AObj: TSizeConstraints): TConstraintSize; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MaxHeight;
+  handleExceptionEnd
 end;
 
 procedure SizeConstraints_SetMaxHeight(AObj: TSizeConstraints; AValue: TConstraintSize); extdecl;
 begin
+  handleExceptionBegin
   AObj.MaxHeight := AValue;
+  handleExceptionEnd
 end;
 
 function SizeConstraints_GetMaxWidth(AObj: TSizeConstraints): TConstraintSize; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MaxWidth;
+  handleExceptionEnd
 end;
 
 procedure SizeConstraints_SetMaxWidth(AObj: TSizeConstraints; AValue: TConstraintSize); extdecl;
 begin
+  handleExceptionBegin
   AObj.MaxWidth := AValue;
+  handleExceptionEnd
 end;
 
 function SizeConstraints_GetMinHeight(AObj: TSizeConstraints): TConstraintSize; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MinHeight;
+  handleExceptionEnd
 end;
 
 procedure SizeConstraints_SetMinHeight(AObj: TSizeConstraints; AValue: TConstraintSize); extdecl;
 begin
+  handleExceptionBegin
   AObj.MinHeight := AValue;
+  handleExceptionEnd
 end;
 
 function SizeConstraints_GetMinWidth(AObj: TSizeConstraints): TConstraintSize; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MinWidth;
+  handleExceptionEnd
 end;
 
 procedure SizeConstraints_SetMinWidth(AObj: TSizeConstraints; AValue: TConstraintSize); extdecl;
 begin
+  handleExceptionBegin
   AObj.MinWidth := AValue;
+  handleExceptionEnd
 end;
 
 function SizeConstraints_StaticClassType: TClass; extdecl;

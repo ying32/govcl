@@ -9,112 +9,156 @@
 
 function ListColumns_Create(AOwner: TCustomListView): TListColumns; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TListColumns.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ListColumns_Free(AObj: TListColumns); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function ListColumns_Add(AObj: TListColumns): TListColumn; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Add;
+  handleExceptionEnd
 end;
 
 function ListColumns_Owner(AObj: TListColumns): TCustomListView; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 procedure ListColumns_Assign(AObj: TListColumns; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 procedure ListColumns_BeginUpdate(AObj: TListColumns); extdecl;
 begin
+  handleExceptionBegin
   AObj.BeginUpdate;
+  handleExceptionEnd
 end;
 
 procedure ListColumns_Clear(AObj: TListColumns); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure ListColumns_Delete(AObj: TListColumns; Index: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Delete(Index);
+  handleExceptionEnd
 end;
 
 procedure ListColumns_EndUpdate(AObj: TListColumns); extdecl;
 begin
+  handleExceptionBegin
   AObj.EndUpdate;
+  handleExceptionEnd
 end;
 
 function ListColumns_FindItemID(AObj: TListColumns; ID: Integer): TCollectionItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindItemID(ID);
+  handleExceptionEnd
 end;
 
 function ListColumns_GetNamePath(AObj: TListColumns): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function ListColumns_Insert(AObj: TListColumns; Index: Integer): TCollectionItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Insert(Index);
+  handleExceptionEnd
 end;
 
 function ListColumns_ClassType(AObj: TListColumns): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ListColumns_ClassName(AObj: TListColumns): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ListColumns_InstanceSize(AObj: TListColumns): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ListColumns_InheritsFrom(AObj: TListColumns; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ListColumns_Equals(AObj: TListColumns; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ListColumns_GetHashCode(AObj: TListColumns): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ListColumns_ToString(AObj: TListColumns): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function ListColumns_GetCount(AObj: TListColumns): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Count;
+  handleExceptionEnd
 end;
 
 function ListColumns_GetItems(AObj: TListColumns; Index: Integer): TListColumn; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Items[Index];
+  handleExceptionEnd
 end;
 
 procedure ListColumns_SetItems(AObj: TListColumns; Index: Integer; AValue: TListColumn); extdecl;
 begin
+  handleExceptionBegin
   AObj.Items[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function ListColumns_StaticClassType: TClass; extdecl;

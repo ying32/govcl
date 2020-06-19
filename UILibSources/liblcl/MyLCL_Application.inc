@@ -9,312 +9,436 @@
 
 function Application_Create(AOwner: TComponent): TApplication; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TApplication.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure Application_Free(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure Application_ActivateHint(AObj: TApplication; var CursorPos: TPoint); extdecl;
 begin
+  handleExceptionBegin
   AObj.ActivateHint(CursorPos);
+  handleExceptionEnd
 end;
 
 procedure Application_BringToFront(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure Application_CancelHint(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
   AObj.CancelHint;
+  handleExceptionEnd
 end;
 
 procedure Application_HandleMessage(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
   AObj.HandleMessage;
+  handleExceptionEnd
 end;
 
 procedure Application_HideHint(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
   AObj.HideHint;
+  handleExceptionEnd
 end;
 
 procedure Application_Minimize(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
   AObj.Minimize;
+  handleExceptionEnd
 end;
 
 procedure Application_ModalStarted(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
   AObj.ModalStarted;
+  handleExceptionEnd
 end;
 
 procedure Application_ModalFinished(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
   AObj.ModalFinished;
+  handleExceptionEnd
 end;
 
 procedure Application_ProcessMessages(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
   AObj.ProcessMessages;
+  handleExceptionEnd
 end;
 
 procedure Application_Restore(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
   AObj.Restore;
+  handleExceptionEnd
 end;
 
 procedure Application_RestoreTopMosts(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
   AObj.RestoreTopMosts;
+  handleExceptionEnd
 end;
 
 procedure Application_Terminate(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
   AObj.Terminate;
+  handleExceptionEnd
 end;
 
 function Application_MessageBox(AObj: TApplication; Text: PChar; Caption: PChar; Flags: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MessageBox(Text, Caption, Flags);
+  handleExceptionEnd
 end;
 
 function Application_FindComponent(AObj: TApplication; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function Application_GetNamePath(AObj: TApplication): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function Application_HasParent(AObj: TApplication): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure Application_Assign(AObj: TApplication; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function Application_ClassType(AObj: TApplication): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Application_ClassName(AObj: TApplication): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Application_InstanceSize(AObj: TApplication): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Application_InheritsFrom(AObj: TApplication; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Application_Equals(AObj: TApplication; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Application_GetHashCode(AObj: TApplication): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Application_ToString(AObj: TApplication): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Application_GetScaled(AObj: TApplication): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Scaled;
+  handleExceptionEnd
 end;
 
 procedure Application_SetScaled(AObj: TApplication; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Scaled := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetSingleInstanceEnabled(AObj: TApplication): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SingleInstanceEnabled;
+  handleExceptionEnd
 end;
 
 procedure Application_SetSingleInstanceEnabled(AObj: TApplication; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.SingleInstanceEnabled := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetLocation(AObj: TApplication): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Location);
+  handleExceptionEnd
 end;
 
 function Application_GetStopOnException(AObj: TApplication): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.StopOnException;
+  handleExceptionEnd
 end;
 
 procedure Application_SetStopOnException(AObj: TApplication; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.StopOnException := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetExceptionExitCode(AObj: TApplication): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ExceptionExitCode;
+  handleExceptionEnd
 end;
 
 procedure Application_SetExceptionExitCode(AObj: TApplication; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ExceptionExitCode := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetExeName(AObj: TApplication): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ExeName);
+  handleExceptionEnd
 end;
 
 function Application_GetHint(AObj: TApplication): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure Application_SetHint(AObj: TApplication; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetHintColor(AObj: TApplication): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HintColor;
+  handleExceptionEnd
 end;
 
 procedure Application_SetHintColor(AObj: TApplication; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.HintColor := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetHintHidePause(AObj: TApplication): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HintHidePause;
+  handleExceptionEnd
 end;
 
 procedure Application_SetHintHidePause(AObj: TApplication; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.HintHidePause := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetHintPause(AObj: TApplication): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HintPause;
+  handleExceptionEnd
 end;
 
 procedure Application_SetHintPause(AObj: TApplication; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.HintPause := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetHintShortCuts(AObj: TApplication): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HintShortCuts;
+  handleExceptionEnd
 end;
 
 procedure Application_SetHintShortCuts(AObj: TApplication; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.HintShortCuts := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetHintShortPause(AObj: TApplication): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HintShortPause;
+  handleExceptionEnd
 end;
 
 procedure Application_SetHintShortPause(AObj: TApplication; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.HintShortPause := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetIcon(AObj: TApplication): TIcon; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Icon;
+  handleExceptionEnd
 end;
 
 procedure Application_SetIcon(AObj: TApplication; AValue: TIcon); extdecl;
 begin
+  handleExceptionBegin
   AObj.Icon := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetMainForm(AObj: TApplication): TForm; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MainForm;
+  handleExceptionEnd
 end;
 
 function Application_GetMainFormHandle(AObj: TApplication): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MainFormHandle;
+  handleExceptionEnd
 end;
 
 function Application_GetMainFormOnTaskBar(AObj: TApplication): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MainFormOnTaskBar;
+  handleExceptionEnd
 end;
 
 procedure Application_SetMainFormOnTaskBar(AObj: TApplication; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.MainFormOnTaskBar := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetBiDiMode(AObj: TApplication): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure Application_SetBiDiMode(AObj: TApplication; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetShowHint(AObj: TApplication): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure Application_SetShowHint(AObj: TApplication; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetShowMainForm(AObj: TApplication): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowMainForm;
+  handleExceptionEnd
 end;
 
 procedure Application_SetShowMainForm(AObj: TApplication; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowMainForm := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetTitle(AObj: TApplication): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Title);
+  handleExceptionEnd
 end;
 
 procedure Application_SetTitle(AObj: TApplication; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Title := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TExceptionEvent
@@ -367,47 +491,65 @@ end;
 
 function Application_GetComponentCount(AObj: TApplication): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function Application_GetComponentIndex(AObj: TApplication): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure Application_SetComponentIndex(AObj: TApplication; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetOwner(AObj: TApplication): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function Application_GetName(AObj: TApplication): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure Application_SetName(AObj: TApplication; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetTag(AObj: TApplication): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure Application_SetTag(AObj: TApplication; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetComponents(AObj: TApplication; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function Application_StaticClassType: TClass; extdecl;

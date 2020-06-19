@@ -9,107 +9,149 @@
 
 function Clipboard_Create: TClipboard; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TClipboard.Create;
+  handleExceptionEnd
 end;
 
 procedure Clipboard_Free(AObj: TClipboard); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure Clipboard_Assign(AObj: TClipboard; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 procedure Clipboard_Clear(AObj: TClipboard); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure Clipboard_Close(AObj: TClipboard); extdecl;
 begin
+  handleExceptionBegin
   AObj.Close;
+  handleExceptionEnd
 end;
 
 function Clipboard_HasFormat(AObj: TClipboard; Format: Word): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasFormat(Format);
+  handleExceptionEnd
 end;
 
 procedure Clipboard_Open(AObj: TClipboard); extdecl;
 begin
+  handleExceptionBegin
   AObj.Open;
+  handleExceptionEnd
 end;
 
 function Clipboard_GetTextBuf(AObj: TClipboard; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 procedure Clipboard_SetTextBuf(AObj: TClipboard; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function Clipboard_GetNamePath(AObj: TClipboard): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function Clipboard_ClassType(AObj: TClipboard): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Clipboard_ClassName(AObj: TClipboard): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Clipboard_InstanceSize(AObj: TClipboard): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Clipboard_InheritsFrom(AObj: TClipboard; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Clipboard_Equals(AObj: TClipboard; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Clipboard_GetHashCode(AObj: TClipboard): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Clipboard_ToString(AObj: TClipboard): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Clipboard_GetAsText(AObj: TClipboard): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.AsText);
+  handleExceptionEnd
 end;
 
 procedure Clipboard_SetAsText(AObj: TClipboard; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.AsText := AValue;
+  handleExceptionEnd
 end;
 
 function Clipboard_GetFormatCount(AObj: TClipboard): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FormatCount;
+  handleExceptionEnd
 end;
 
 function Clipboard_GetFormats(AObj: TClipboard; Index: Integer): Word; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Formats[Index];
+  handleExceptionEnd
 end;
 
 function Clipboard_StaticClassType: TClass; extdecl;

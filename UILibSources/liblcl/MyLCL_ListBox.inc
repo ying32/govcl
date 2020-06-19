@@ -9,597 +9,835 @@
 
 function ListBox_Create(AOwner: TComponent): TListBox; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TListBox.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ListBox_Free(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure ListBox_AddItem(AObj: TListBox; Item: PChar; AObject: TObject); extdecl;
 begin
+  handleExceptionBegin
   AObj.AddItem(Item, AObject);
+  handleExceptionEnd
 end;
 
 procedure ListBox_Clear(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure ListBox_ClearSelection(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClearSelection;
+  handleExceptionEnd
 end;
 
 procedure ListBox_DeleteSelected(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.DeleteSelected;
+  handleExceptionEnd
 end;
 
 function ListBox_ItemAtPos(AObj: TListBox; var Pos: TPoint; Existing: LongBool): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemAtPos(Pos, Existing);
+  handleExceptionEnd
 end;
 
 procedure ListBox_ItemRect(AObj: TListBox; Index: Integer; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemRect(Index);
+  handleExceptionEnd
 end;
 
 procedure ListBox_SelectAll(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelectAll;
+  handleExceptionEnd
 end;
 
 function ListBox_CanFocus(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function ListBox_ContainsControl(AObj: TListBox; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function ListBox_ControlAtPos(AObj: TListBox; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure ListBox_DisableAlign(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure ListBox_EnableAlign(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function ListBox_FindChildControl(AObj: TListBox; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure ListBox_FlipChildren(AObj: TListBox; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function ListBox_Focused(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function ListBox_HandleAllocated(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure ListBox_InsertControl(AObj: TListBox; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ListBox_Invalidate(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure ListBox_RemoveControl(AObj: TListBox; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ListBox_Realign(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure ListBox_Repaint(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure ListBox_ScaleBy(AObj: TListBox; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure ListBox_ScrollBy(AObj: TListBox; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetBounds(AObj: TListBox; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetFocus(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure ListBox_Update(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure ListBox_BringToFront(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure ListBox_ClientToScreen(AObj: TListBox; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure ListBox_ClientToParent(AObj: TListBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function ListBox_Dragging(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function ListBox_HasParent(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure ListBox_Hide(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function ListBox_Perform(AObj: TListBox; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure ListBox_Refresh(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure ListBox_ScreenToClient(AObj: TListBox; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure ListBox_ParentToClient(AObj: TListBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure ListBox_SendToBack(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure ListBox_Show(AObj: TListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function ListBox_GetTextBuf(AObj: TListBox; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function ListBox_GetTextLen(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetTextBuf(AObj: TListBox; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function ListBox_FindComponent(AObj: TListBox; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function ListBox_GetNamePath(AObj: TListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure ListBox_Assign(AObj: TListBox; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ListBox_ClassType(AObj: TListBox): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ListBox_ClassName(AObj: TListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ListBox_InstanceSize(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ListBox_InheritsFrom(AObj: TListBox; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ListBox_Equals(AObj: TListBox; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ListBox_GetHashCode(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ListBox_ToString(AObj: TListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure ListBox_AnchorToNeighbour(AObj: TListBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ListBox_AnchorParallel(AObj: TListBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ListBox_AnchorHorizontalCenterTo(AObj: TListBox; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ListBox_AnchorVerticalCenterTo(AObj: TListBox; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ListBox_AnchorAsAlign(AObj: TListBox; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure ListBox_AnchorClient(AObj: TListBox; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function ListBox_GetClickOnSelChange(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClickOnSelChange;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetClickOnSelChange(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClickOnSelChange := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetOptions(AObj: TListBox): TListBoxOptions; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Options;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetOptions(AObj: TListBox; AValue: TListBoxOptions); extdecl;
 begin
+  handleExceptionBegin
   AObj.Options := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetTopIndex(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TopIndex;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetTopIndex(AObj: TListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.TopIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetStyle(AObj: TListBox): TListBoxStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Style;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetStyle(AObj: TListBox; AValue: TListBoxStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.Style := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetAlign(AObj: TListBox): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetAlign(AObj: TListBox; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetAnchors(AObj: TListBox): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetAnchors(AObj: TListBox; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetBiDiMode(AObj: TListBox): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetBiDiMode(AObj: TListBox; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetBorderStyle(AObj: TListBox): TBorderStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderStyle;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetBorderStyle(AObj: TListBox; AValue: TBorderStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetColor(AObj: TListBox): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetColor(AObj: TListBox; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetColumns(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Columns;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetColumns(AObj: TListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Columns := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetConstraints(AObj: TListBox): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetConstraints(AObj: TListBox; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetDoubleBuffered(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetDoubleBuffered(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetDragCursor(AObj: TListBox): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetDragCursor(AObj: TListBox; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetDragKind(AObj: TListBox): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetDragKind(AObj: TListBox; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetDragMode(AObj: TListBox): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetDragMode(AObj: TListBox; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetEnabled(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetEnabled(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetFont(AObj: TListBox): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetFont(AObj: TListBox; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetItemHeight(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemHeight;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetItemHeight(AObj: TListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ItemHeight := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetItems(AObj: TListBox): TStrings; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Items;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetItems(AObj: TListBox; AValue: TStrings); extdecl;
 begin
+  handleExceptionBegin
   AObj.Items := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetMultiSelect(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MultiSelect;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetMultiSelect(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.MultiSelect := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetParentColor(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetParentColor(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetParentDoubleBuffered(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetParentDoubleBuffered(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetParentFont(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetParentFont(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetParentShowHint(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetParentShowHint(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetPopupMenu(AObj: TListBox): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetPopupMenu(AObj: TListBox; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetShowHint(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetShowHint(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetSorted(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Sorted;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetSorted(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Sorted := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetTabOrder(AObj: TListBox): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetTabOrder(AObj: TListBox; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetTabStop(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetTabStop(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetVisible(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetVisible(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -748,367 +986,513 @@ end;
 
 function ListBox_GetCanvas(AObj: TListBox): TCanvas; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Canvas;
+  handleExceptionEnd
 end;
 
 function ListBox_GetCount(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Count;
+  handleExceptionEnd
 end;
 
 function ListBox_GetSelCount(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelCount;
+  handleExceptionEnd
 end;
 
 function ListBox_GetItemIndex(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemIndex;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetItemIndex(AObj: TListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ItemIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetDockClientCount(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function ListBox_GetDockSite(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetDockSite(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetMouseInClient(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function ListBox_GetVisibleDockClientCount(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function ListBox_GetBrush(AObj: TListBox): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function ListBox_GetControlCount(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function ListBox_GetHandle(AObj: TListBox): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function ListBox_GetParentWindow(AObj: TListBox): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetParentWindow(AObj: TListBox; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetShowing(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function ListBox_GetUseDockManager(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetUseDockManager(AObj: TListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetAction(AObj: TListBox): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetAction(AObj: TListBox; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 procedure ListBox_GetBoundsRect(AObj: TListBox; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetBoundsRect(AObj: TListBox; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetClientHeight(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetClientHeight(AObj: TListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure ListBox_GetClientOrigin(AObj: TListBox; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure ListBox_GetClientRect(AObj: TListBox; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function ListBox_GetClientWidth(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetClientWidth(AObj: TListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetControlState(AObj: TListBox): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetControlState(AObj: TListBox; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetControlStyle(AObj: TListBox): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetControlStyle(AObj: TListBox; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetFloating(AObj: TListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function ListBox_GetParent(AObj: TListBox): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetParent(AObj: TListBox; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetLeft(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetLeft(AObj: TListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetTop(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetTop(AObj: TListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetWidth(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetWidth(AObj: TListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetHeight(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetHeight(AObj: TListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetCursor(AObj: TListBox): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetCursor(AObj: TListBox; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetHint(AObj: TListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetHint(AObj: TListBox; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetComponentCount(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function ListBox_GetComponentIndex(AObj: TListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetComponentIndex(AObj: TListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetOwner(AObj: TListBox): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function ListBox_GetName(AObj: TListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetName(AObj: TListBox; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetTag(AObj: TListBox): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetTag(AObj: TListBox; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetAnchorSideLeft(AObj: TListBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetAnchorSideLeft(AObj: TListBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetAnchorSideTop(AObj: TListBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetAnchorSideTop(AObj: TListBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetAnchorSideRight(AObj: TListBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetAnchorSideRight(AObj: TListBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetAnchorSideBottom(AObj: TListBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetAnchorSideBottom(AObj: TListBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetChildSizing(AObj: TListBox): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetChildSizing(AObj: TListBox; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetBorderSpacing(AObj: TListBox): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetBorderSpacing(AObj: TListBox; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetSelected(AObj: TListBox; Index: Integer): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Selected[Index];
+  handleExceptionEnd
 end;
 
 procedure ListBox_SetSelected(AObj: TListBox; Index: Integer; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Selected[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function ListBox_GetDockClients(AObj: TListBox; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function ListBox_GetControls(AObj: TListBox; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function ListBox_GetComponents(AObj: TListBox; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function ListBox_GetAnchorSide(AObj: TListBox; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function ListBox_StaticClassType: TClass; extdecl;

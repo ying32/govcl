@@ -9,152 +9,212 @@
 
 function OpenPictureDialog_Create(AOwner: TComponent): TOpenPictureDialog; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TOpenPictureDialog.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure OpenPictureDialog_Free(AObj: TOpenPictureDialog); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_Execute(AObj: TOpenPictureDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Execute;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_FindComponent(AObj: TOpenPictureDialog; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetNamePath(AObj: TOpenPictureDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_HasParent(AObj: TOpenPictureDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure OpenPictureDialog_Assign(AObj: TOpenPictureDialog; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_ClassType(AObj: TOpenPictureDialog): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_ClassName(AObj: TOpenPictureDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_InstanceSize(AObj: TOpenPictureDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_InheritsFrom(AObj: TOpenPictureDialog; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_Equals(AObj: TOpenPictureDialog; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetHashCode(AObj: TOpenPictureDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_ToString(AObj: TOpenPictureDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetFilter(AObj: TOpenPictureDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Filter);
+  handleExceptionEnd
 end;
 
 procedure OpenPictureDialog_SetFilter(AObj: TOpenPictureDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Filter := AValue;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetFiles(AObj: TOpenPictureDialog): TStrings; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Files;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetDefaultExt(AObj: TOpenPictureDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.DefaultExt);
+  handleExceptionEnd
 end;
 
 procedure OpenPictureDialog_SetDefaultExt(AObj: TOpenPictureDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.DefaultExt := AValue;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetFileName(AObj: TOpenPictureDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.FileName);
+  handleExceptionEnd
 end;
 
 procedure OpenPictureDialog_SetFileName(AObj: TOpenPictureDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.FileName := AValue;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetFilterIndex(AObj: TOpenPictureDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FilterIndex;
+  handleExceptionEnd
 end;
 
 procedure OpenPictureDialog_SetFilterIndex(AObj: TOpenPictureDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.FilterIndex := AValue;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetInitialDir(AObj: TOpenPictureDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.InitialDir);
+  handleExceptionEnd
 end;
 
 procedure OpenPictureDialog_SetInitialDir(AObj: TOpenPictureDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.InitialDir := AValue;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetOptions(AObj: TOpenPictureDialog): TOpenOptions; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Options;
+  handleExceptionEnd
 end;
 
 procedure OpenPictureDialog_SetOptions(AObj: TOpenPictureDialog; AValue: TOpenOptions); extdecl;
 begin
+  handleExceptionBegin
   AObj.Options := AValue;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetTitle(AObj: TOpenPictureDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Title);
+  handleExceptionEnd
 end;
 
 procedure OpenPictureDialog_SetTitle(AObj: TOpenPictureDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Title := AValue;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetHandle(AObj: TOpenPictureDialog): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -175,47 +235,65 @@ end;
 
 function OpenPictureDialog_GetComponentCount(AObj: TOpenPictureDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetComponentIndex(AObj: TOpenPictureDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure OpenPictureDialog_SetComponentIndex(AObj: TOpenPictureDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetOwner(AObj: TOpenPictureDialog): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetName(AObj: TOpenPictureDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure OpenPictureDialog_SetName(AObj: TOpenPictureDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetTag(AObj: TOpenPictureDialog): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure OpenPictureDialog_SetTag(AObj: TOpenPictureDialog; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_GetComponents(AObj: TOpenPictureDialog; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function OpenPictureDialog_StaticClassType: TClass; extdecl;

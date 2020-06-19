@@ -9,77 +9,107 @@
 
 function Mouse_Create: TMouse; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TMouse.Create;
+  handleExceptionEnd
 end;
 
 procedure Mouse_Free(AObj: TMouse); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function Mouse_ClassType(AObj: TMouse): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Mouse_ClassName(AObj: TMouse): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Mouse_InstanceSize(AObj: TMouse): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Mouse_InheritsFrom(AObj: TMouse; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Mouse_Equals(AObj: TMouse; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Mouse_GetHashCode(AObj: TMouse): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Mouse_ToString(AObj: TMouse): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Mouse_GetCapture(AObj: TMouse): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Capture;
+  handleExceptionEnd
 end;
 
 procedure Mouse_SetCapture(AObj: TMouse; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.Capture := AValue;
+  handleExceptionEnd
 end;
 
 procedure Mouse_GetCursorPos(AObj: TMouse; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CursorPos;
+  handleExceptionEnd
 end;
 
 procedure Mouse_SetCursorPos(AObj: TMouse; var AValue: TPoint); extdecl;
 begin
+  handleExceptionBegin
   AObj.CursorPos := AValue;
+  handleExceptionEnd
 end;
 
 function Mouse_GetIsDragging(AObj: TMouse): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.IsDragging;
+  handleExceptionEnd
 end;
 
 function Mouse_GetWheelScrollLines(AObj: TMouse): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.WheelScrollLines;
+  handleExceptionEnd
 end;
 
 function Mouse_StaticClassType: TClass; extdecl;

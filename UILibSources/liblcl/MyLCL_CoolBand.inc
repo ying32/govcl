@@ -9,252 +9,352 @@
 
 function CoolBand_Create(AOwner: TCollection): TCoolBand; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TCoolBand.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure CoolBand_Free(AObj: TCoolBand); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_Assign(AObj: TCoolBand; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function CoolBand_GetNamePath(AObj: TCoolBand): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function CoolBand_ClassType(AObj: TCoolBand): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function CoolBand_ClassName(AObj: TCoolBand): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function CoolBand_InstanceSize(AObj: TCoolBand): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function CoolBand_InheritsFrom(AObj: TCoolBand; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function CoolBand_Equals(AObj: TCoolBand; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function CoolBand_GetHashCode(AObj: TCoolBand): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function CoolBand_ToString(AObj: TCoolBand): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function CoolBand_GetHeight(AObj: TCoolBand): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetBitmap(AObj: TCoolBand): TBitmap; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Bitmap;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetBitmap(AObj: TCoolBand; AValue: TBitmap); extdecl;
 begin
+  handleExceptionBegin
   AObj.Bitmap := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetBorderStyle(AObj: TCoolBand): TBorderStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderStyle;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetBorderStyle(AObj: TCoolBand; AValue: TBorderStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderStyle := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetBreak(AObj: TCoolBand): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Break;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetBreak(AObj: TCoolBand; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Break := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetColor(AObj: TCoolBand): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetColor(AObj: TCoolBand; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetControl(AObj: TCoolBand): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Control as TWinControl;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetControl(AObj: TCoolBand; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Control := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetFixedBackground(AObj: TCoolBand): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FixedBackground;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetFixedBackground(AObj: TCoolBand; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FixedBackground := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetFixedSize(AObj: TCoolBand): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FixedSize;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetFixedSize(AObj: TCoolBand; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FixedSize := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetHorizontalOnly(AObj: TCoolBand): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HorizontalOnly;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetHorizontalOnly(AObj: TCoolBand; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.HorizontalOnly := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetImageIndex(AObj: TCoolBand): TImageIndex; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ImageIndex;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetImageIndex(AObj: TCoolBand; AValue: TImageIndex); extdecl;
 begin
+  handleExceptionBegin
   AObj.ImageIndex := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetMinHeight(AObj: TCoolBand): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MinHeight;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetMinHeight(AObj: TCoolBand; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MinHeight := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetMinWidth(AObj: TCoolBand): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MinWidth;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetMinWidth(AObj: TCoolBand; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MinWidth := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetParentColor(AObj: TCoolBand): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetParentColor(AObj: TCoolBand; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetParentBitmap(AObj: TCoolBand): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentBitmap;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetParentBitmap(AObj: TCoolBand; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentBitmap := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetText(AObj: TCoolBand): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Text);
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetText(AObj: TCoolBand; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Text := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetVisible(AObj: TCoolBand): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetVisible(AObj: TCoolBand; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetWidth(AObj: TCoolBand): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetWidth(AObj: TCoolBand; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetCollection(AObj: TCoolBand): TCollection; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Collection;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetCollection(AObj: TCoolBand; AValue: TCollection); extdecl;
 begin
+  handleExceptionBegin
   AObj.Collection := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetIndex(AObj: TCoolBand): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Index;
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetIndex(AObj: TCoolBand; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Index := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_GetDisplayName(AObj: TCoolBand): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.DisplayName);
+  handleExceptionEnd
 end;
 
 procedure CoolBand_SetDisplayName(AObj: TCoolBand; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisplayName := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBand_StaticClassType: TClass; extdecl;

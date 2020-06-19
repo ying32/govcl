@@ -9,127 +9,177 @@
 
 function FindDialog_Create(AOwner: TComponent): TFindDialog; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TFindDialog.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure FindDialog_Free(AObj: TFindDialog); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure FindDialog_CloseDialog(AObj: TFindDialog); extdecl;
 begin
+  handleExceptionBegin
   AObj.CloseDialog;
+  handleExceptionEnd
 end;
 
 function FindDialog_Execute(AObj: TFindDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Execute;
+  handleExceptionEnd
 end;
 
 function FindDialog_FindComponent(AObj: TFindDialog; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function FindDialog_GetNamePath(AObj: TFindDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function FindDialog_HasParent(AObj: TFindDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure FindDialog_Assign(AObj: TFindDialog; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function FindDialog_ClassType(AObj: TFindDialog): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function FindDialog_ClassName(AObj: TFindDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function FindDialog_InstanceSize(AObj: TFindDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function FindDialog_InheritsFrom(AObj: TFindDialog; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function FindDialog_Equals(AObj: TFindDialog; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function FindDialog_GetHashCode(AObj: TFindDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function FindDialog_ToString(AObj: TFindDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function FindDialog_GetLeft(AObj: TFindDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure FindDialog_SetLeft(AObj: TFindDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 procedure FindDialog_GetPosition(AObj: TFindDialog; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Position;
+  handleExceptionEnd
 end;
 
 procedure FindDialog_SetPosition(AObj: TFindDialog; var AValue: TPoint); extdecl;
 begin
+  handleExceptionBegin
   AObj.Position := AValue;
+  handleExceptionEnd
 end;
 
 function FindDialog_GetTop(AObj: TFindDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure FindDialog_SetTop(AObj: TFindDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function FindDialog_GetFindText(AObj: TFindDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.FindText);
+  handleExceptionEnd
 end;
 
 procedure FindDialog_SetFindText(AObj: TFindDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.FindText := AValue;
+  handleExceptionEnd
 end;
 
 function FindDialog_GetOptions(AObj: TFindDialog): TFindOptions; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Options;
+  handleExceptionEnd
 end;
 
 procedure FindDialog_SetOptions(AObj: TFindDialog; AValue: TFindOptions); extdecl;
 begin
+  handleExceptionBegin
   AObj.Options := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -142,7 +192,9 @@ end;
 
 function FindDialog_GetHandle(AObj: TFindDialog): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -163,47 +215,65 @@ end;
 
 function FindDialog_GetComponentCount(AObj: TFindDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function FindDialog_GetComponentIndex(AObj: TFindDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure FindDialog_SetComponentIndex(AObj: TFindDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function FindDialog_GetOwner(AObj: TFindDialog): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function FindDialog_GetName(AObj: TFindDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure FindDialog_SetName(AObj: TFindDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function FindDialog_GetTag(AObj: TFindDialog): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure FindDialog_SetTag(AObj: TFindDialog; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function FindDialog_GetComponents(AObj: TFindDialog; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function FindDialog_StaticClassType: TClass; extdecl;

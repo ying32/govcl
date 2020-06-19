@@ -9,852 +9,1192 @@
 
 function ListView_Create(AOwner: TComponent): TListView; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TListView.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ListView_Free(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure ListView_AddItem(AObj: TListView; Item: PChar; AObject: TObject); extdecl;
 begin
+  handleExceptionBegin
   AObj.AddItem(Item, AObject);
+  handleExceptionEnd
 end;
 
 function ListView_AlphaSort(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AlphaSort;
+  handleExceptionEnd
 end;
 
 procedure ListView_Clear(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure ListView_ClearSelection(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClearSelection;
+  handleExceptionEnd
 end;
 
 procedure ListView_DeleteSelected(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.DeleteSelected;
+  handleExceptionEnd
 end;
 
 function ListView_IsEditing(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.IsEditing;
+  handleExceptionEnd
 end;
 
 procedure ListView_SelectAll(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelectAll;
+  handleExceptionEnd
 end;
 
 function ListView_CustomSort(AObj: TListView; SortProc: PFNLVCOMPARE; lParam: NativeInt): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CustomSort(SortProc, lParam);
+  handleExceptionEnd
 end;
 
 function ListView_CanFocus(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function ListView_ContainsControl(AObj: TListView; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function ListView_ControlAtPos(AObj: TListView; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure ListView_DisableAlign(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure ListView_EnableAlign(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function ListView_FindChildControl(AObj: TListView; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure ListView_FlipChildren(AObj: TListView; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function ListView_Focused(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function ListView_HandleAllocated(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure ListView_InsertControl(AObj: TListView; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ListView_Invalidate(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure ListView_RemoveControl(AObj: TListView; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ListView_Realign(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure ListView_Repaint(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure ListView_ScaleBy(AObj: TListView; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure ListView_ScrollBy(AObj: TListView; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure ListView_SetBounds(AObj: TListView; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure ListView_SetFocus(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure ListView_Update(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure ListView_BringToFront(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure ListView_ClientToScreen(AObj: TListView; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure ListView_ClientToParent(AObj: TListView; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function ListView_Dragging(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function ListView_HasParent(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure ListView_Hide(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function ListView_Perform(AObj: TListView; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure ListView_Refresh(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure ListView_ScreenToClient(AObj: TListView; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure ListView_ParentToClient(AObj: TListView; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure ListView_SendToBack(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure ListView_Show(AObj: TListView); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function ListView_GetTextBuf(AObj: TListView; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function ListView_GetTextLen(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure ListView_SetTextBuf(AObj: TListView; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function ListView_FindComponent(AObj: TListView; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function ListView_GetNamePath(AObj: TListView): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure ListView_Assign(AObj: TListView; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ListView_ClassType(AObj: TListView): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ListView_ClassName(AObj: TListView): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ListView_InstanceSize(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ListView_InheritsFrom(AObj: TListView; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ListView_Equals(AObj: TListView; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ListView_GetHashCode(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ListView_ToString(AObj: TListView): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure ListView_AnchorToNeighbour(AObj: TListView; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ListView_AnchorParallel(AObj: TListView; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ListView_AnchorHorizontalCenterTo(AObj: TListView; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ListView_AnchorVerticalCenterTo(AObj: TListView; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ListView_AnchorAsAlign(AObj: TListView; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure ListView_AnchorClient(AObj: TListView; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function ListView_GetAutoSort(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSort;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetAutoSort(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSort := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetAutoSortIndicator(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSortIndicator;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetAutoSortIndicator(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSortIndicator := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetAutoWidthLastColumn(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoWidthLastColumn;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetAutoWidthLastColumn(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoWidthLastColumn := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetSmallImagesWidth(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SmallImagesWidth;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetSmallImagesWidth(AObj: TListView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SmallImagesWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetSortColumn(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SortColumn;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetSortColumn(AObj: TListView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SortColumn := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetSortDirection(AObj: TListView): TSortDirection; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SortDirection;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetSortDirection(AObj: TListView; AValue: TSortDirection); extdecl;
 begin
+  handleExceptionBegin
   AObj.SortDirection := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetLargeImagesWidth(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.LargeImagesWidth;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetLargeImagesWidth(AObj: TListView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.LargeImagesWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetStateImagesWidth(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.StateImagesWidth;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetStateImagesWidth(AObj: TListView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.StateImagesWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetToolTips(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ToolTips;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetToolTips(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ToolTips := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetScrollBars(AObj: TListView): TScrollStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScrollBars;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetScrollBars(AObj: TListView; AValue: TScrollStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBars := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetAction(AObj: TListView): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetAction(AObj: TListView; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetAlign(AObj: TListView): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetAlign(AObj: TListView; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetAllocBy(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AllocBy;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetAllocBy(AObj: TListView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AllocBy := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetAnchors(AObj: TListView): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetAnchors(AObj: TListView; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetBiDiMode(AObj: TListView): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetBiDiMode(AObj: TListView; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetBorderStyle(AObj: TListView): TBorderStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderStyle;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetBorderStyle(AObj: TListView; AValue: TBorderStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetBorderWidth(AObj: TListView): TBorderWidth; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderWidth;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetBorderWidth(AObj: TListView; AValue: TBorderWidth); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetCheckboxes(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Checkboxes;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetCheckboxes(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Checkboxes := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetColor(AObj: TListView): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetColor(AObj: TListView; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetColumns(AObj: TListView): TListColumns; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Columns;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetColumns(AObj: TListView; AValue: TListColumns); extdecl;
 begin
+  handleExceptionBegin
   AObj.Columns := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetColumnClick(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ColumnClick;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetColumnClick(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ColumnClick := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetConstraints(AObj: TListView): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetConstraints(AObj: TListView; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetDoubleBuffered(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetDoubleBuffered(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetDragCursor(AObj: TListView): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetDragCursor(AObj: TListView; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetDragKind(AObj: TListView): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetDragKind(AObj: TListView; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetDragMode(AObj: TListView): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetDragMode(AObj: TListView; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetEnabled(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetEnabled(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetFont(AObj: TListView): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetFont(AObj: TListView; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetFlatScrollBars(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FlatScrollBars;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetFlatScrollBars(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlatScrollBars := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetFullDrag(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FullDrag;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetFullDrag(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FullDrag := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetGridLines(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GridLines;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetGridLines(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.GridLines := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetHideSelection(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HideSelection;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetHideSelection(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.HideSelection := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetHotTrack(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HotTrack;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetHotTrack(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.HotTrack := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetIconOptions(AObj: TListView): TIconOptions; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.IconOptions;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetIconOptions(AObj: TListView; AValue: TIconOptions); extdecl;
 begin
+  handleExceptionBegin
   AObj.IconOptions := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetItems(AObj: TListView): TListItems; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Items;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetItems(AObj: TListView; AValue: TListItems); extdecl;
 begin
+  handleExceptionBegin
   AObj.Items := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetLargeImages(AObj: TListView): TCustomImageList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.LargeImages;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetLargeImages(AObj: TListView; AValue: TCustomImageList); extdecl;
 begin
+  handleExceptionBegin
   AObj.LargeImages := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetMultiSelect(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MultiSelect;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetMultiSelect(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.MultiSelect := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetOwnerData(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.OwnerData;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetOwnerData(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.OwnerData := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetOwnerDraw(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.OwnerDraw;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetOwnerDraw(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.OwnerDraw := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetReadOnly(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ReadOnly;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetReadOnly(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ReadOnly := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetRowSelect(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.RowSelect;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetRowSelect(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.RowSelect := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetParentColor(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetParentColor(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetParentDoubleBuffered(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetParentDoubleBuffered(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetParentFont(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetParentFont(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetParentShowHint(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetParentShowHint(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetPopupMenu(AObj: TListView): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetPopupMenu(AObj: TListView; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetShowColumnHeaders(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowColumnHeaders;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetShowColumnHeaders(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowColumnHeaders := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetShowHint(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetShowHint(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetSmallImages(AObj: TListView): TCustomImageList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SmallImages;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetSmallImages(AObj: TListView; AValue: TCustomImageList); extdecl;
 begin
+  handleExceptionBegin
   AObj.SmallImages := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetSortType(AObj: TListView): TSortType; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SortType;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetSortType(AObj: TListView; AValue: TSortType); extdecl;
 begin
+  handleExceptionBegin
   AObj.SortType := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetStateImages(AObj: TListView): TCustomImageList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.StateImages;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetStateImages(AObj: TListView; AValue: TCustomImageList); extdecl;
 begin
+  handleExceptionBegin
   AObj.StateImages := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetTabOrder(AObj: TListView): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetTabOrder(AObj: TListView; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetTabStop(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetTabStop(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetViewStyle(AObj: TListView): TViewStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ViewStyle;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetViewStyle(AObj: TListView; AValue: TViewStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ViewStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetVisible(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetVisible(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TLVAdvancedCustomDrawEvent
@@ -1155,377 +1495,527 @@ end;
 
 function ListView_GetCanvas(AObj: TListView): TCanvas; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Canvas;
+  handleExceptionEnd
 end;
 
 function ListView_GetItemFocused(AObj: TListView): TListItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemFocused;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetItemFocused(AObj: TListView; AValue: TListItem); extdecl;
 begin
+  handleExceptionBegin
   AObj.ItemFocused := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetSelCount(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelCount;
+  handleExceptionEnd
 end;
 
 function ListView_GetSelected(AObj: TListView): TListItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Selected;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetSelected(AObj: TListView; AValue: TListItem); extdecl;
 begin
+  handleExceptionBegin
   AObj.Selected := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetTopItem(AObj: TListView): TListItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TopItem;
+  handleExceptionEnd
 end;
 
 function ListView_GetVisibleRowCount(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleRowCount;
+  handleExceptionEnd
 end;
 
 function ListView_GetItemIndex(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemIndex;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetItemIndex(AObj: TListView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ItemIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetDockClientCount(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function ListView_GetDockSite(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetDockSite(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetMouseInClient(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function ListView_GetVisibleDockClientCount(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function ListView_GetBrush(AObj: TListView): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function ListView_GetControlCount(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function ListView_GetHandle(AObj: TListView): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function ListView_GetParentWindow(AObj: TListView): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetParentWindow(AObj: TListView; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetShowing(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function ListView_GetUseDockManager(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetUseDockManager(AObj: TListView; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 procedure ListView_GetBoundsRect(AObj: TListView; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetBoundsRect(AObj: TListView; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetClientHeight(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetClientHeight(AObj: TListView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure ListView_GetClientOrigin(AObj: TListView; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure ListView_GetClientRect(AObj: TListView; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function ListView_GetClientWidth(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetClientWidth(AObj: TListView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetControlState(AObj: TListView): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetControlState(AObj: TListView; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetControlStyle(AObj: TListView): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetControlStyle(AObj: TListView; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetFloating(AObj: TListView): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function ListView_GetParent(AObj: TListView): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetParent(AObj: TListView; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetLeft(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetLeft(AObj: TListView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetTop(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetTop(AObj: TListView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetWidth(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetWidth(AObj: TListView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetHeight(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetHeight(AObj: TListView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetCursor(AObj: TListView): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetCursor(AObj: TListView; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetHint(AObj: TListView): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure ListView_SetHint(AObj: TListView; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetComponentCount(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function ListView_GetComponentIndex(AObj: TListView): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetComponentIndex(AObj: TListView; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetOwner(AObj: TListView): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function ListView_GetName(AObj: TListView): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure ListView_SetName(AObj: TListView; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetTag(AObj: TListView): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetTag(AObj: TListView; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetAnchorSideLeft(AObj: TListView): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetAnchorSideLeft(AObj: TListView; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetAnchorSideTop(AObj: TListView): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetAnchorSideTop(AObj: TListView; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetAnchorSideRight(AObj: TListView): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetAnchorSideRight(AObj: TListView; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetAnchorSideBottom(AObj: TListView): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetAnchorSideBottom(AObj: TListView; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetChildSizing(AObj: TListView): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetChildSizing(AObj: TListView; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetBorderSpacing(AObj: TListView): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure ListView_SetBorderSpacing(AObj: TListView; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function ListView_GetColumn(AObj: TListView; Index: Integer): TListColumn; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Column[Index];
+  handleExceptionEnd
 end;
 
 function ListView_GetDockClients(AObj: TListView; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function ListView_GetControls(AObj: TListView; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function ListView_GetComponents(AObj: TListView; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function ListView_GetAnchorSide(AObj: TListView; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function ListView_StaticClassType: TClass; extdecl;

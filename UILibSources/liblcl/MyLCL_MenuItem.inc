@@ -9,242 +9,338 @@
 
 function MenuItem_Create(AOwner: TComponent): TMenuItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TMenuItem.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure MenuItem_Free(AObj: TMenuItem); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_Insert(AObj: TMenuItem; Index: Integer; Item: TMenuItem); extdecl;
 begin
+  handleExceptionBegin
   AObj.Insert(Index, Item);
+  handleExceptionEnd
 end;
 
 procedure MenuItem_Delete(AObj: TMenuItem; Index: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Delete(Index);
+  handleExceptionEnd
 end;
 
 procedure MenuItem_Clear(AObj: TMenuItem); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_Click(AObj: TMenuItem); extdecl;
 begin
+  handleExceptionBegin
   AObj.Click;
+  handleExceptionEnd
 end;
 
 function MenuItem_IndexOf(AObj: TMenuItem; Item: TMenuItem): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.IndexOf(Item);
+  handleExceptionEnd
 end;
 
 function MenuItem_HasParent(AObj: TMenuItem): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_Add(AObj: TMenuItem; Item: TMenuItem); extdecl;
 begin
+  handleExceptionBegin
   AObj.Add(Item);
+  handleExceptionEnd
 end;
 
 function MenuItem_FindComponent(AObj: TMenuItem; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function MenuItem_GetNamePath(AObj: TMenuItem): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure MenuItem_Assign(AObj: TMenuItem; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function MenuItem_ClassType(AObj: TMenuItem): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function MenuItem_ClassName(AObj: TMenuItem): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function MenuItem_InstanceSize(AObj: TMenuItem): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function MenuItem_InheritsFrom(AObj: TMenuItem; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function MenuItem_Equals(AObj: TMenuItem; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function MenuItem_GetHashCode(AObj: TMenuItem): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function MenuItem_ToString(AObj: TMenuItem): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function MenuItem_GetHandle(AObj: TMenuItem): HMENU; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetCount(AObj: TMenuItem): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Count;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetParent(AObj: TMenuItem): TMenuItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetAction(AObj: TMenuItem): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetAction(AObj: TMenuItem; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetAutoCheck(AObj: TMenuItem): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoCheck;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetAutoCheck(AObj: TMenuItem; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoCheck := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetBitmap(AObj: TMenuItem): TBitmap; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Bitmap;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetBitmap(AObj: TMenuItem; AValue: TBitmap); extdecl;
 begin
+  handleExceptionBegin
   AObj.Bitmap := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetCaption(AObj: TMenuItem): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Caption);
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetCaption(AObj: TMenuItem; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Caption := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetChecked(AObj: TMenuItem): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Checked;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetChecked(AObj: TMenuItem; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Checked := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetDefault(AObj: TMenuItem): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Default;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetDefault(AObj: TMenuItem; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Default := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetEnabled(AObj: TMenuItem): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetEnabled(AObj: TMenuItem; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetGroupIndex(AObj: TMenuItem): Byte; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GroupIndex;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetGroupIndex(AObj: TMenuItem; AValue: Byte); extdecl;
 begin
+  handleExceptionBegin
   AObj.GroupIndex := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetHint(AObj: TMenuItem): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetHint(AObj: TMenuItem; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetImageIndex(AObj: TMenuItem): TImageIndex; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ImageIndex;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetImageIndex(AObj: TMenuItem; AValue: TImageIndex); extdecl;
 begin
+  handleExceptionBegin
   AObj.ImageIndex := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetRadioItem(AObj: TMenuItem): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.RadioItem;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetRadioItem(AObj: TMenuItem; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.RadioItem := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetShortCut(AObj: TMenuItem): TShortCut; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShortCut;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetShortCut(AObj: TMenuItem; AValue: TShortCut); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShortCut := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetVisible(AObj: TMenuItem): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetVisible(AObj: TMenuItem; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -265,52 +361,72 @@ end;
 
 function MenuItem_GetComponentCount(AObj: TMenuItem): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetComponentIndex(AObj: TMenuItem): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetComponentIndex(AObj: TMenuItem; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetOwner(AObj: TMenuItem): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetName(AObj: TMenuItem): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetName(AObj: TMenuItem; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetTag(AObj: TMenuItem): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure MenuItem_SetTag(AObj: TMenuItem; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function MenuItem_GetItems(AObj: TMenuItem; Index: Integer): TMenuItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Items[Index];
+  handleExceptionEnd
 end;
 
 function MenuItem_GetComponents(AObj: TMenuItem; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function MenuItem_StaticClassType: TClass; extdecl;

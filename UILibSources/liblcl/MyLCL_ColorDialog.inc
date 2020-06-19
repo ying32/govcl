@@ -9,87 +9,121 @@
 
 function ColorDialog_Create(AOwner: TComponent): TColorDialog; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TColorDialog.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ColorDialog_Free(AObj: TColorDialog); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function ColorDialog_Execute(AObj: TColorDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Execute;
+  handleExceptionEnd
 end;
 
 function ColorDialog_FindComponent(AObj: TColorDialog; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function ColorDialog_GetNamePath(AObj: TColorDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function ColorDialog_HasParent(AObj: TColorDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure ColorDialog_Assign(AObj: TColorDialog; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ColorDialog_ClassType(AObj: TColorDialog): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ColorDialog_ClassName(AObj: TColorDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ColorDialog_InstanceSize(AObj: TColorDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ColorDialog_InheritsFrom(AObj: TColorDialog; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ColorDialog_Equals(AObj: TColorDialog; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ColorDialog_GetHashCode(AObj: TColorDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ColorDialog_ToString(AObj: TColorDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function ColorDialog_GetColor(AObj: TColorDialog): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure ColorDialog_SetColor(AObj: TColorDialog; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function ColorDialog_GetHandle(AObj: TColorDialog): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -110,47 +144,65 @@ end;
 
 function ColorDialog_GetComponentCount(AObj: TColorDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function ColorDialog_GetComponentIndex(AObj: TColorDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure ColorDialog_SetComponentIndex(AObj: TColorDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ColorDialog_GetOwner(AObj: TColorDialog): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function ColorDialog_GetName(AObj: TColorDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure ColorDialog_SetName(AObj: TColorDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function ColorDialog_GetTag(AObj: TColorDialog): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure ColorDialog_SetTag(AObj: TColorDialog; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function ColorDialog_GetComponents(AObj: TColorDialog; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function ColorDialog_StaticClassType: TClass; extdecl;

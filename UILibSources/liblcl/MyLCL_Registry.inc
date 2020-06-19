@@ -9,257 +9,359 @@
 
 function Registry_Create(AAccess: LongWord): TRegistry; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TRegistry.Create(AAccess);
+  handleExceptionEnd
 end;
 
 procedure Registry_Free(AObj: TRegistry); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure Registry_CloseKey(AObj: TRegistry); extdecl;
 begin
+  handleExceptionBegin
   AObj.CloseKey;
+  handleExceptionEnd
 end;
 
 function Registry_CreateKey(AObj: TRegistry; Key: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CreateKey(Key);
+  handleExceptionEnd
 end;
 
 function Registry_DeleteKey(AObj: TRegistry; Key: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DeleteKey(Key);
+  handleExceptionEnd
 end;
 
 function Registry_DeleteValue(AObj: TRegistry; Name: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DeleteValue(Name);
+  handleExceptionEnd
 end;
 
 function Registry_HasSubKeys(AObj: TRegistry): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasSubKeys;
+  handleExceptionEnd
 end;
 
 function Registry_KeyExists(AObj: TRegistry; Key: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.KeyExists(Key);
+  handleExceptionEnd
 end;
 
 function Registry_LoadKey(AObj: TRegistry; Key: PChar; FileName: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.LoadKey(Key, FileName);
+  handleExceptionEnd
 end;
 
 procedure Registry_MoveKey(AObj: TRegistry; OldName: PChar; NewName: PChar; Delete: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.MoveKey(OldName, NewName, Delete);
+  handleExceptionEnd
 end;
 
 function Registry_OpenKey(AObj: TRegistry; Key: PChar; CanCreate: LongBool): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.OpenKey(Key, CanCreate);
+  handleExceptionEnd
 end;
 
 function Registry_OpenKeyReadOnly(AObj: TRegistry; Key: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.OpenKeyReadOnly(Key);
+  handleExceptionEnd
 end;
 
 function Registry_ReadBool(AObj: TRegistry; Name: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ReadBool(Name);
+  handleExceptionEnd
 end;
 
 function Registry_ReadDate(AObj: TRegistry; Name: PChar): TUnixDateTime; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToUnixTime(AObj.ReadDate(Name));
+  handleExceptionEnd
 end;
 
 function Registry_ReadDateTime(AObj: TRegistry; Name: PChar): TUnixDateTime; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToUnixTime(AObj.ReadDateTime(Name));
+  handleExceptionEnd
 end;
 
 procedure Registry_ReadFloat(AObj: TRegistry; Name: PChar; var Result: Double); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ReadFloat(Name);
+  handleExceptionEnd
 end;
 
 function Registry_ReadInteger(AObj: TRegistry; Name: PChar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ReadInteger(Name);
+  handleExceptionEnd
 end;
 
 function Registry_ReadString(AObj: TRegistry; Name: PChar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ReadString(Name));
+  handleExceptionEnd
 end;
 
 function Registry_ReadTime(AObj: TRegistry; Name: PChar): TUnixDateTime; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToUnixTime(AObj.ReadTime(Name));
+  handleExceptionEnd
 end;
 
 function Registry_RegistryConnect(AObj: TRegistry; UNCName: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.RegistryConnect(UNCName);
+  handleExceptionEnd
 end;
 
 procedure Registry_RenameValue(AObj: TRegistry; OldName: PChar; NewName: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.RenameValue(OldName, NewName);
+  handleExceptionEnd
 end;
 
 function Registry_ReplaceKey(AObj: TRegistry; Key: PChar; FileName: PChar; BackUpFileName: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ReplaceKey(Key, FileName, BackUpFileName);
+  handleExceptionEnd
 end;
 
 function Registry_RestoreKey(AObj: TRegistry; Key: PChar; FileName: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.RestoreKey(Key, FileName);
+  handleExceptionEnd
 end;
 
 function Registry_SaveKey(AObj: TRegistry; Key: PChar; FileName: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SaveKey(Key, FileName);
+  handleExceptionEnd
 end;
 
 function Registry_UnLoadKey(AObj: TRegistry; Key: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UnLoadKey(Key);
+  handleExceptionEnd
 end;
 
 function Registry_ValueExists(AObj: TRegistry; Name: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ValueExists(Name);
+  handleExceptionEnd
 end;
 
 procedure Registry_WriteBool(AObj: TRegistry; Name: PChar; Value: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.WriteBool(Name, Value);
+  handleExceptionEnd
 end;
 
 procedure Registry_WriteDate(AObj: TRegistry; Name: PChar; Value: TUnixDateTime); extdecl;
 begin
+  handleExceptionBegin
   AObj.WriteDate(Name, UnixToTime(Value));
+  handleExceptionEnd
 end;
 
 procedure Registry_WriteDateTime(AObj: TRegistry; Name: PChar; Value: TUnixDateTime); extdecl;
 begin
+  handleExceptionBegin
   AObj.WriteDateTime(Name, UnixToTime(Value));
+  handleExceptionEnd
 end;
 
 procedure Registry_WriteFloat(AObj: TRegistry; Name: PChar; var Value: Double); extdecl;
 begin
+  handleExceptionBegin
   AObj.WriteFloat(Name, Value);
+  handleExceptionEnd
 end;
 
 procedure Registry_WriteInteger(AObj: TRegistry; Name: PChar; Value: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.WriteInteger(Name, Value);
+  handleExceptionEnd
 end;
 
 procedure Registry_WriteString(AObj: TRegistry; Name: PChar; Value: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.WriteString(Name, Value);
+  handleExceptionEnd
 end;
 
 procedure Registry_WriteExpandString(AObj: TRegistry; Name: PChar; Value: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.WriteExpandString(Name, Value);
+  handleExceptionEnd
 end;
 
 procedure Registry_WriteTime(AObj: TRegistry; Name: PChar; Value: TUnixDateTime); extdecl;
 begin
+  handleExceptionBegin
   AObj.WriteTime(Name, UnixToTime(Value));
+  handleExceptionEnd
 end;
 
 function Registry_ClassType(AObj: TRegistry): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Registry_ClassName(AObj: TRegistry): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Registry_InstanceSize(AObj: TRegistry): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Registry_InheritsFrom(AObj: TRegistry; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Registry_Equals(AObj: TRegistry; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Registry_GetHashCode(AObj: TRegistry): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Registry_ToString(AObj: TRegistry): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Registry_GetCurrentKey(AObj: TRegistry): HKEY; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CurrentKey;
+  handleExceptionEnd
 end;
 
 function Registry_GetCurrentPath(AObj: TRegistry): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.CurrentPath);
+  handleExceptionEnd
 end;
 
 function Registry_GetLazyWrite(AObj: TRegistry): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.LazyWrite;
+  handleExceptionEnd
 end;
 
 procedure Registry_SetLazyWrite(AObj: TRegistry; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.LazyWrite := AValue;
+  handleExceptionEnd
 end;
 
 function Registry_GetLastError(AObj: TRegistry): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.LastError;
+  handleExceptionEnd
 end;
 
 function Registry_GetLastErrorMsg(AObj: TRegistry): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.LastErrorMsg);
+  handleExceptionEnd
 end;
 
 function Registry_GetRootKey(AObj: TRegistry): HKEY; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.RootKey;
+  handleExceptionEnd
 end;
 
 procedure Registry_SetRootKey(AObj: TRegistry; AValue: HKEY); extdecl;
 begin
+  handleExceptionBegin
   AObj.RootKey := AValue;
+  handleExceptionEnd
 end;
 
 function Registry_GetAccess(AObj: TRegistry): Cardinal; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Access;
+  handleExceptionEnd
 end;
 
 procedure Registry_SetAccess(AObj: TRegistry; AValue: Cardinal); extdecl;
 begin
+  handleExceptionBegin
   AObj.Access := AValue;
+  handleExceptionEnd
 end;
 
 function Registry_StaticClassType: TClass; extdecl;

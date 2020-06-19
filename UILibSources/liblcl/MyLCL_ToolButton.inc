@@ -9,422 +9,590 @@
 
 function ToolButton_Create(AOwner: TComponent): TToolButton; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TToolButton.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_Free(AObj: TToolButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function ToolButton_CheckMenuDropdown(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CheckMenuDropdown;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_Click(AObj: TToolButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Click;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetBounds(AObj: TToolButton; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_BringToFront(AObj: TToolButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_ClientToScreen(AObj: TToolButton; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_ClientToParent(AObj: TToolButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function ToolButton_Dragging(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function ToolButton_HasParent(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_Hide(AObj: TToolButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_Invalidate(AObj: TToolButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 function ToolButton_Perform(AObj: TToolButton; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_Refresh(AObj: TToolButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_Repaint(AObj: TToolButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_ScreenToClient(AObj: TToolButton; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_ParentToClient(AObj: TToolButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SendToBack(AObj: TToolButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_Show(AObj: TToolButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_Update(AObj: TToolButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetTextBuf(AObj: TToolButton; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function ToolButton_GetTextLen(AObj: TToolButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetTextBuf(AObj: TToolButton; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function ToolButton_FindComponent(AObj: TToolButton; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function ToolButton_GetNamePath(AObj: TToolButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_Assign(AObj: TToolButton; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ToolButton_ClassType(AObj: TToolButton): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ToolButton_ClassName(AObj: TToolButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ToolButton_InstanceSize(AObj: TToolButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ToolButton_InheritsFrom(AObj: TToolButton; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ToolButton_Equals(AObj: TToolButton; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ToolButton_GetHashCode(AObj: TToolButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ToolButton_ToString(AObj: TToolButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_AnchorToNeighbour(AObj: TToolButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_AnchorParallel(AObj: TToolButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_AnchorHorizontalCenterTo(AObj: TToolButton; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_AnchorVerticalCenterTo(AObj: TToolButton; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_AnchorAsAlign(AObj: TToolButton; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_AnchorClient(AObj: TToolButton; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function ToolButton_GetIndex(AObj: TToolButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Index;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetAction(AObj: TToolButton): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetAction(AObj: TToolButton; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetAllowAllUp(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AllowAllUp;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetAllowAllUp(AObj: TToolButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AllowAllUp := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetAutoSize(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSize;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetAutoSize(AObj: TToolButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSize := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetCaption(AObj: TToolButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Caption);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetCaption(AObj: TToolButton; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Caption := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetDown(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Down;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetDown(AObj: TToolButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Down := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetDragCursor(AObj: TToolButton): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetDragCursor(AObj: TToolButton; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetDragKind(AObj: TToolButton): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetDragKind(AObj: TToolButton; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetDragMode(AObj: TToolButton): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetDragMode(AObj: TToolButton; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetDropdownMenu(AObj: TToolButton): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DropdownMenu;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetDropdownMenu(AObj: TToolButton; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.DropdownMenu := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetEnabled(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetEnabled(AObj: TToolButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetGrouped(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Grouped;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetGrouped(AObj: TToolButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Grouped := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetHeight(AObj: TToolButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetHeight(AObj: TToolButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetImageIndex(AObj: TToolButton): TImageIndex; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ImageIndex;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetImageIndex(AObj: TToolButton; AValue: TImageIndex); extdecl;
 begin
+  handleExceptionBegin
   AObj.ImageIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetIndeterminate(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Indeterminate;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetIndeterminate(AObj: TToolButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Indeterminate := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetMarked(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Marked;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetMarked(AObj: TToolButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Marked := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetParentShowHint(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetParentShowHint(AObj: TToolButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetPopupMenu(AObj: TToolButton): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetPopupMenu(AObj: TToolButton; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetWrap(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Wrap;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetWrap(AObj: TToolButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Wrap := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetShowHint(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetShowHint(AObj: TToolButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetStyle(AObj: TToolButton): TToolButtonStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Style;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetStyle(AObj: TToolButton; AValue: TToolButtonStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.Style := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetVisible(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetVisible(AObj: TToolButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetWidth(AObj: TToolButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetWidth(AObj: TToolButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -525,257 +693,359 @@ end;
 
 function ToolButton_GetAlign(AObj: TToolButton): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetAlign(AObj: TToolButton; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetAnchors(AObj: TToolButton): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetAnchors(AObj: TToolButton; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetBiDiMode(AObj: TToolButton): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetBiDiMode(AObj: TToolButton; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_GetBoundsRect(AObj: TToolButton; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetBoundsRect(AObj: TToolButton; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetClientHeight(AObj: TToolButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetClientHeight(AObj: TToolButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_GetClientOrigin(AObj: TToolButton; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_GetClientRect(AObj: TToolButton; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetClientWidth(AObj: TToolButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetClientWidth(AObj: TToolButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetConstraints(AObj: TToolButton): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetConstraints(AObj: TToolButton; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetControlState(AObj: TToolButton): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetControlState(AObj: TToolButton; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetControlStyle(AObj: TToolButton): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetControlStyle(AObj: TToolButton; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetFloating(AObj: TToolButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetParent(AObj: TToolButton): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetParent(AObj: TToolButton; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetLeft(AObj: TToolButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetLeft(AObj: TToolButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetTop(AObj: TToolButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetTop(AObj: TToolButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetCursor(AObj: TToolButton): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetCursor(AObj: TToolButton; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetHint(AObj: TToolButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetHint(AObj: TToolButton; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetComponentCount(AObj: TToolButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetComponentIndex(AObj: TToolButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetComponentIndex(AObj: TToolButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetOwner(AObj: TToolButton): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetName(AObj: TToolButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetName(AObj: TToolButton; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetTag(AObj: TToolButton): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetTag(AObj: TToolButton; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetAnchorSideLeft(AObj: TToolButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetAnchorSideLeft(AObj: TToolButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetAnchorSideTop(AObj: TToolButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetAnchorSideTop(AObj: TToolButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetAnchorSideRight(AObj: TToolButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetAnchorSideRight(AObj: TToolButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetAnchorSideBottom(AObj: TToolButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetAnchorSideBottom(AObj: TToolButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetBorderSpacing(AObj: TToolButton): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure ToolButton_SetBorderSpacing(AObj: TToolButton; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function ToolButton_GetComponents(AObj: TToolButton; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function ToolButton_GetAnchorSide(AObj: TToolButton; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function ToolButton_StaticClassType: TClass; extdecl;

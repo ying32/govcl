@@ -9,152 +9,212 @@
 
 function SaveDialog_Create(AOwner: TComponent): TSaveDialog; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TSaveDialog.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure SaveDialog_Free(AObj: TSaveDialog); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function SaveDialog_Execute(AObj: TSaveDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Execute;
+  handleExceptionEnd
 end;
 
 function SaveDialog_FindComponent(AObj: TSaveDialog; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetNamePath(AObj: TSaveDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function SaveDialog_HasParent(AObj: TSaveDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure SaveDialog_Assign(AObj: TSaveDialog; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function SaveDialog_ClassType(AObj: TSaveDialog): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function SaveDialog_ClassName(AObj: TSaveDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function SaveDialog_InstanceSize(AObj: TSaveDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function SaveDialog_InheritsFrom(AObj: TSaveDialog; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function SaveDialog_Equals(AObj: TSaveDialog; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetHashCode(AObj: TSaveDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function SaveDialog_ToString(AObj: TSaveDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetFiles(AObj: TSaveDialog): TStrings; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Files;
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetDefaultExt(AObj: TSaveDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.DefaultExt);
+  handleExceptionEnd
 end;
 
 procedure SaveDialog_SetDefaultExt(AObj: TSaveDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.DefaultExt := AValue;
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetFileName(AObj: TSaveDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.FileName);
+  handleExceptionEnd
 end;
 
 procedure SaveDialog_SetFileName(AObj: TSaveDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.FileName := AValue;
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetFilter(AObj: TSaveDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Filter);
+  handleExceptionEnd
 end;
 
 procedure SaveDialog_SetFilter(AObj: TSaveDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Filter := AValue;
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetFilterIndex(AObj: TSaveDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FilterIndex;
+  handleExceptionEnd
 end;
 
 procedure SaveDialog_SetFilterIndex(AObj: TSaveDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.FilterIndex := AValue;
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetInitialDir(AObj: TSaveDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.InitialDir);
+  handleExceptionEnd
 end;
 
 procedure SaveDialog_SetInitialDir(AObj: TSaveDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.InitialDir := AValue;
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetOptions(AObj: TSaveDialog): TOpenOptions; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Options;
+  handleExceptionEnd
 end;
 
 procedure SaveDialog_SetOptions(AObj: TSaveDialog; AValue: TOpenOptions); extdecl;
 begin
+  handleExceptionBegin
   AObj.Options := AValue;
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetTitle(AObj: TSaveDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Title);
+  handleExceptionEnd
 end;
 
 procedure SaveDialog_SetTitle(AObj: TSaveDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Title := AValue;
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetHandle(AObj: TSaveDialog): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -175,47 +235,65 @@ end;
 
 function SaveDialog_GetComponentCount(AObj: TSaveDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetComponentIndex(AObj: TSaveDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure SaveDialog_SetComponentIndex(AObj: TSaveDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetOwner(AObj: TSaveDialog): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetName(AObj: TSaveDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure SaveDialog_SetName(AObj: TSaveDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetTag(AObj: TSaveDialog): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure SaveDialog_SetTag(AObj: TSaveDialog; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function SaveDialog_GetComponents(AObj: TSaveDialog; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function SaveDialog_StaticClassType: TClass; extdecl;

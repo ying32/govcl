@@ -1,6 +1,18 @@
 // 不使用自动生成的
 // 这里主要是对自动生成做兼容和补充相关
 
+// 显示异常
+procedure CallException(E: Exception);
+begin
+  if Assigned(Application) then
+  begin
+    if Assigned(Application.OnException) then
+      Application.OnException(Application, E)
+    else
+      MessageDlg(E.Message,  mtError, [mbOK], 0);
+  end;
+end;
+
 function DLibStringEncoding: TStringEncoding; extdecl;
 begin
   Result := seUTF8;
@@ -59,16 +71,20 @@ end;
 // 移动来自 MyLCL_Application.inc
 procedure Application_Initialize(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
   AObj.Initialize;
 {$IFDEF WINDOWS}
   WidgetSet.ThemeServices.UpdateThemes;
   WidgetSet.AppHandle := CreateWindowsAppHandle;
 {$ENDIF}
+  handleExceptionEnd
 end;
 
 function Application_CreateForm(App: TApplication; AInitScale: LongBool): TForm; extdecl;
 begin
+  handleExceptionBegin
   App.CreateForm(TGoForm, Result);
+  handleExceptionEnd
 end;
 
 procedure RemoveAllForms;
@@ -86,6 +102,7 @@ end;
 
 procedure Application_Run(AObj: TApplication); extdecl;
 begin
+  handleExceptionBegin
 // 先不用这里的了
 //{$IFDEF WINDOWS}
   //if (AObj.MainForm <> nil) and AObj.ShowMainForm then AObj.MainForm.Show;
@@ -99,6 +116,7 @@ begin
 //  if AObj.Handle <> 0 then
 //     DisposeWindowInfo(AObj.Handle);
 //{$ENDIF}
+  handleExceptionEnd
 end;
 
 function Application_GetHandle(AObj: TApplication): THandle; extdecl;
@@ -121,11 +139,14 @@ end;
 
 function Form_Create2(AOwner: TComponent; AInitScale: LongBool): TGoForm; extdecl;
 begin
+  handleExceptionBegin
   Result := TGoForm.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure Form_EnabledMaximize(AObj: TGoForm; AValue: Boolean); extdecl;
 begin
+  handleExceptionBegin
   if AValue then
   begin
     if not(biMaximize in AObj.BorderIcons) then
@@ -135,10 +156,12 @@ begin
     if biMaximize in AObj.BorderIcons then
       AObj.BorderIcons := AObj.BorderIcons - [biMaximize]
   end;
+  handleExceptionEnd
 end;
 
 procedure Form_EnabledMinimize(AObj: TGoForm; AValue: Boolean); extdecl;
 begin
+  handleExceptionBegin
   if AValue then
   begin
     if not(biMinimize in AObj.BorderIcons) then
@@ -148,10 +171,12 @@ begin
     if biMinimize in AObj.BorderIcons then
       AObj.BorderIcons := AObj.BorderIcons - [biMinimize]
   end;
+  handleExceptionEnd
 end;
 
 procedure Form_EnabledSystemMenu(AObj: TGoForm; AValue: Boolean); extdecl;
 begin
+  handleExceptionBegin
   if AValue then
   begin
     if not(biSystemMenu in AObj.BorderIcons) then
@@ -161,16 +186,21 @@ begin
     if biSystemMenu in AObj.BorderIcons then
       AObj.BorderIcons := AObj.BorderIcons - [biSystemMenu]
   end;
+  handleExceptionEnd
 end;
 
 procedure Form_SetAllowDropFiles(AObj: TGoForm; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AllowDropFiles := AValue;
+  handleExceptionEnd
 end;
 
 function Form_GetAllowDropFiles(AObj: TGoForm): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result := AObj.AllowDropFiles;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TDropFilesEvent
@@ -216,6 +246,7 @@ end;
 //EVENT_TYPE:TWndProcEvent
 procedure Form_SetOnWndProc(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
+  handleExceptionBegin
   if AEventId = 0 then
   begin
     AObj.OnWndProc := nil;
@@ -224,21 +255,28 @@ begin
   end;
   AObj.OnWndProc := TMessageEventClass.OnWndProc;
   TMessageEventClass.Add(AObj, AEventId);
+  handleExceptionEnd
 end;
 
 procedure Form_SetShowInTaskBar(AObj: TGoForm; AVal: TShowInTaskbar); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowInTaskBar := AVal;
+  handleExceptionEnd
 end;
 
 function Form_ShowInTaskBar(AObj: TGoForm): TShowInTaskbar; extdecl;
 begin
+  handleExceptionBegin
   Result := AObj.ShowInTaskBar;
+  handleExceptionEnd
 end;
 
 procedure Form_ScaleForPPI(AObj: TGoForm; ANewPPI: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleForPPI(ANewPPI);
+  handleExceptionEnd
 end;
 
 procedure Form_ScaleControlsForDpi(AObj: TGoForm; ANewPPI: Integer); extdecl;
@@ -248,12 +286,16 @@ end;
 
 procedure Form_ScaleForCurrentDpi(AObj: TGoForm); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleForCurrentDpi;
+  handleExceptionEnd
 end;
 
 procedure Form_InheritedWndProc(AObj: TGoForm; var AMsg: TLMessage); extdecl;
 begin
+  handleExceptionBegin
   AObj.InheritedWndProc(AMsg);
+  handleExceptionEnd
 end;
 
 // mouse
@@ -270,12 +312,16 @@ end;
 
 function DTextToShortCut(AText: PChar): TShortCut; extdecl;
 begin
+  handleExceptionBegin
   Result := TextToShortCut(AText);
+  handleExceptionEnd
 end;
 
 function DShortCutToText(AVal: TShortCut): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result := PChar(ShortCutToText(AVal));
+  handleExceptionEnd
 end;
 
 // TClipboard
@@ -286,20 +332,26 @@ end;
 
 function Clipboard_SetClipboard(NewClipboard: TClipboard): TClipboard; extdecl;
 begin
+  handleExceptionBegin
   Result := SetClipboard(NewClipboard);
+  handleExceptionEnd
 end;
 
 // TMemoryStream
 // function Write(const Buffer; Count: Longint): Longint;
 function MemoryStream_Write(AObj: TMemoryStream; Buffer: Pointer; Count: Longint): Longint; extdecl;
 begin
+  handleExceptionBegin
   Result := AObj.Write(Buffer^, Count);
+  handleExceptionEnd
 end;
 
 // function Read(var Buffer; Count: Longint): Longint;
 function MemoryStream_Read(AObj: TMemoryStream; Buffer: Pointer; Count: Longint): Longint; extdecl;
 begin
+  handleExceptionBegin
   Result := AObj.Read(Buffer^, Count);
+  handleExceptionEnd
 end;
 
 // TCanvas
@@ -316,47 +368,65 @@ end;
 
 procedure Canvas_BrushCopy(AObj: TCanvas; var Dest: TRect; Bitmap: TBitmap; var Source: TRect; Color: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.BrushCopy(Dest, Bitmap, Source, Color);
+  handleExceptionEnd
 end;
 
 procedure Canvas_CopyRect(AObj: TCanvas; var Dest: TRect; Canvas: TCanvas; var Source: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.CopyRect(Dest, Canvas, Source);
+  handleExceptionEnd
 end;
 
 procedure Canvas_Draw1(AObj: TCanvas; X, Y: Integer; Graphic: TGraphic); extdecl;
 begin
+  handleExceptionBegin
   AObj.Draw(X, Y, Graphic);
+  handleExceptionEnd
 end;
 
 procedure Canvas_Draw2(AObj: TCanvas; X, Y: Integer; Graphic: TGraphic; Opacity: Byte); extdecl;
 begin
+  handleExceptionBegin
   AObj.Draw(X, Y, Graphic);
+  handleExceptionEnd
 end;
 
 procedure Canvas_DrawFocusRect(AObj: TCanvas; var ARect: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.DrawFocusRect(ARect);
+  handleExceptionEnd
 end;
 
 procedure Canvas_FillRect(AObj: TCanvas; var Rect: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.FillRect(Rect);
+  handleExceptionEnd
 end;
 
 procedure Canvas_FrameRect(AObj: TCanvas; var Rect: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.FrameRect(Rect);
+  handleExceptionEnd
 end;
 
 procedure Canvas_StretchDraw(AObj: TCanvas; var Rect: TRect; Graphic: TGraphic); extdecl;
 begin
+  handleExceptionBegin
   AObj.StretchDraw(Rect, Graphic);
+  handleExceptionEnd
 end;
 
 procedure Canvas_TextRect1(AObj: TCanvas; var Rect: TRect; X, Y: Integer; const Text: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.TextRect(Rect, X, Y, Text);
+  handleExceptionEnd
 end;
 
 
@@ -397,6 +467,7 @@ var
   LStyle: TTextStyle;
 begin
   Result := 0;
+  handleExceptionBegin
   LStyle := AObj.TextStyle;
   if TTextFormats.tfSingleLine in TextFormat then
     LStyle.SingleLine := True;
@@ -423,6 +494,7 @@ begin
   else if TTextFormats.tfRight in TextFormat then
     LStyle.Alignment:= taRightJustify;
   AObj.TextRect(Rect, Rect.Left, Rect.Top, Text, LStyle);
+  handleExceptionEnd
 end;
 
 
@@ -433,28 +505,38 @@ end;
 
 procedure Canvas_Polygon(AObj: TCanvas; APoints: PPoint; ALen: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Polygon(APoints, ALen);
+  handleExceptionEnd
 end;
 
 procedure Canvas_Polyline(AObj: TCanvas; APoints: PPoint; ALen: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Polyline(APoints, ALen);
+  handleExceptionEnd
 end;
 
 procedure Canvas_PolyBezier(AObj: TCanvas; APoints: PPoint; ALen: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.PolyBezier(APoints, ALen);
+  handleExceptionEnd
 end;
 
 //
 function Canvas_Pixels(AObj: TCanvas; X, Y: Integer): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result := AObj.Pixels[X, Y];
+  handleExceptionEnd
 end;
 
 procedure Canvas_SetPixels(AObj: TCanvas; X, Y: Integer; AColor: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Pixels[X, Y] := AColor;
+  handleExceptionEnd
 end;
 
 
@@ -468,7 +550,9 @@ end;
 
 procedure ImageList_Draw1(AObj: TImageList; Canvas: TCanvas; X, Y, Index: Integer; Enabled: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Draw(Canvas, X, Y, Index, Enabled);
+  handleExceptionEnd
 end;
 
 //procedure ImageList_Draw2(AObj: TImageList; Canvas: TCanvas; X, Y, Index: Integer;
@@ -480,7 +564,9 @@ end;
 
 procedure ImageList_DrawOverlay1(AObj: TImageList; Canvas: TCanvas; X, Y: Integer; ImageIndex: Integer; Overlay: TOverlay; Enabled: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DrawOverlay(Canvas, X, Y, ImageIndex, Overlay, Enabled);
+  handleExceptionEnd
 end;
   
 //procedure ImageList_DrawOverlay2(AObj: TImageList; Canvas: TCanvas; X, Y: Integer;
@@ -492,7 +578,9 @@ end;
   
 procedure ImageList_GetIcon1(AObj: TImageList; Index: Integer; Image: TIcon); extdecl;
 begin
+  handleExceptionBegin
   AObj.GetIcon(Index, Image);
+  handleExceptionEnd
 end;
 
 //procedure ImageList_GetIcon2(AObj: TImageList; Index: Integer; Image: TIcon; ADrawingStyle: TDrawingStyle; AImageType: TImageType); extdecl;
@@ -505,76 +593,104 @@ end;
 // TBitmap
 procedure Bitmap_Clear(AObj: TBitmap); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure Bitmap_BeginUpdate(AObj: TBitmap; ACanvasOnly: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.BeginUpdate(ACanvasOnly);
+  handleExceptionEnd
 end;
 
 procedure Bitmap_EndUpdate(AObj: TBitmap; AStreamIsValid: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.EndUpdate(AStreamIsValid);
+  handleExceptionEnd
 end;
 
 procedure Bitmap_LoadFromDevice(AObj: TBitmap; ADc: HDC); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromDevice(ADc);
+  handleExceptionEnd
 end;
 
 // win api
 {$IFNDEF WINDOWS}
 function DSendMessage(hWd: HWND; msg: Cardinal; wParam: WParam; lParam: LParam): LResult; extdecl;
 begin
+  handleExceptionBegin
   Result := LCLIntf.SendMessage(hWd, msg, wParam, lParam);
+  handleExceptionEnd
 end;
 
 function DPostMessage(hWd: HWND; msg: Cardinal; wParam: WParam; lParam: LParam): Boolean; extdecl;
 begin
+  handleExceptionBegin
   Result := LCLIntf.PostMessage(hWd, msg, wParam, lParam);
+  handleExceptionEnd
 end;
 
 function DIsIconic(hWnd: HWND): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result := LCLIntf.IsIconic(hWnd);
+  handleExceptionEnd
 end;
 
 function DIsWindow(hWnd: HWND): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result := LCLIntf.IsWindow(hWnd);
+  handleExceptionEnd
 end;
 
 function DIsZoomed(hWnd: HWND): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result := LCLIntf.IsZoomed(hWnd);
+  handleExceptionEnd
 end;
 
 function DIsWindowVisible(hWnd: HWND): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result := LCLIntf.IsWindowVisible(hWnd);
+  handleExceptionEnd
 end;
 
 function DGetDC(hWnd: HWND): HDC; extdecl;
 begin
+  handleExceptionBegin
   Result := LCLIntf.GetDC(hWnd);
+  handleExceptionEnd
 end;
 
 function DReleaseDC(hWnd: HWND; dc: HDC): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result := LCLIntf.ReleaseDC(hWnd, dc);
+  handleExceptionEnd
 end;
 
 function DSetForegroundWindow(hWnd: HWND): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result := LCLIntf.SetForegroundWindow(hWnd);
+  handleExceptionEnd
 end;
 
 function DWindowFromPoint(point: PPoint): HWND; extdecl;
 begin
   if point = nil then
     Exit(0);
+  handleExceptionBegin
   Result := LCLIntf.WindowFromPoint(PPoint(point)^);
+  handleExceptionEnd
 end;
 {$ENDIF}
 
@@ -599,27 +715,37 @@ end;
 // 从string数组中获取成员
 function DGetStringArrOf(P: Pointer; AIndex: NativeInt): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result := PChar(PString(PByte(P) + AIndex * SizeOf(string))^);
+  handleExceptionEnd
 end;
 
 function DStrLen(p: PChar): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result := Length(p);
+  handleExceptionEnd
 end;
 
 procedure DMove(Src, Dest: Pointer; Len: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   Move(Src^, Dest^, Len);
+  handleExceptionEnd
 end;
 
 function DGetClassName(Obj: TObject): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result := PChar(string(Obj.ClassName));
+  handleExceptionEnd
 end;
 
 procedure DShowMessage(AMsg: PChar); extdecl;
 begin
+  handleExceptionBegin
   ShowMessage(AMsg);
+  handleExceptionEnd
 end;
 
 function DGetMainInstance: HINST; extdecl;
@@ -633,16 +759,20 @@ end;
 
 function DMessageDlg(const Msg: PChar; DlgType: TMsgDlgType; Buttons: TMsgDlgButtons; HelpCtx: Longint): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result := MessageDlg(Msg, DlgType, Buttons, HelpCtx);
+  handleExceptionEnd
 end;
 
 // 在主线程中运行
 procedure DSynchronize(AUseMsg: LongBool); extdecl;
 begin
+  handleExceptionBegin
   if MainThreadId = TThread.CurrentThread.ThreadID then
     TEventClass.ThreadProc()
   else
     TThread.Synchronize(nil, TEventClass.ThreadProc);
+  handleExceptionEnd
 end;
 
 function DMainThreadId: TThreadID; extdecl;
@@ -652,7 +782,9 @@ end;
 
 function DCurrentThreadId: TThreadID; extdecl;
 begin
+  handleExceptionBegin
   Result := TThread.CurrentThread.ThreadID;
+  handleExceptionEnd
 end;
 
 procedure DSysOpen(FileName: PChar); extdecl;
@@ -667,45 +799,57 @@ end;
 // 不想导入包，所以干脆用delphi的得了
 function DExtractFilePath(AFileName: PChar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result := PChar(ExtractFilePath(AFileName));
+  handleExceptionEnd
 end;
 
 function DFileExists(AFileName: PChar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result := FileExists(AFileName);
+  handleExceptionEnd
 end;
 
 function DSelectDirectory1(var Directory: PChar; Options: TSelectDirOpts; HelpCtx: Longint): LongBool; extdecl;
 var
   LDir: string;
 begin
+  handleExceptionBegin
   Result := SelectDirectory(LDir, Options, HelpCtx);
   if Result then
     Directory := PChar(LDir);
+  handleExceptionEnd
 end;
 
 function DSelectDirectory2(Caption, Root: PChar; var Directory: PChar; Options: Cardinal{无效参数}; Parent: TWinControl{无效参数}): LongBool;  extdecl;
 var
   LDir: string;
 begin
+  handleExceptionBegin
   Result := SelectDirectory(Caption, Root, LDir, False, 0);
   if Result then
     Directory := PChar(LDir);
+  handleExceptionEnd
 end;
 
 function DInputBox(ACaption, APrompt, ADefault: PChar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result := PChar(InputBox(ACaption, APrompt, ADefault));
+  handleExceptionEnd
 end;
 
 function DInputQuery(ACaption, APrompt: PChar; Value: PChar; out AOut: PChar): LongBool; extdecl;
 var
   S: string;
 begin
+  handleExceptionBegin
   S := Value;
   Result := InputQuery(string(ACaption), string(APrompt), S);
   if Result then
     AOut := PChar(S);
+  handleExceptionEnd
 end;
 
 
@@ -732,6 +876,7 @@ procedure DCreateURLShortCut(ADestPath, AShortCutName, AURL: PChar); extdecl;
 var
   Ini: TIniFile;
 begin
+  handleExceptionBegin
   Ini := TIniFile.Create(PathCombine(ADestPath, AShortCutName) + '.url');
   try
     Ini.WriteString('{000214A0-0000-0000-C000-000000000046}', 'Prop3', '19,2');
@@ -739,6 +884,7 @@ begin
   finally
     Ini.Free;
   end;
+  handleExceptionEnd
 end;
 
 // 创建快捷方式
@@ -749,6 +895,7 @@ var
   LPPFile : IPersistFile;
   LinkFilename : WideString;
 begin
+  handleExceptionBegin
   CoInitializeEx(nil, 0);
   try
     LObject := CreateComObject(CLSID_ShellLink);
@@ -766,6 +913,7 @@ begin
   finally
     CoUninitialize;
   end;
+  handleExceptionEnd
 end;
 
 {$ENDIF}
@@ -776,6 +924,7 @@ procedure DSetPropertyValue(Instance: TObject; PropName, Value: PChar); extdecl;
 var
   LPropInfo: PPropInfo;
 begin
+  handleExceptionBegin
   LPropInfo := GetPropInfo(Instance, PropName);
   if LPropInfo <> nil then
   begin
@@ -786,6 +935,7 @@ begin
         SetStrProp(Instance, LPropInfo, Value);
     end;
   end;
+  handleExceptionEnd
 end;
 
 procedure DSetPropertySecValue(Instance: TObject; PropName, SecPropName, Value: PChar); extdecl;
@@ -797,6 +947,7 @@ var
   LPropName: string;
   LP, LIndex: Integer;
 begin
+  handleExceptionBegin
   LPropName := PropName;
   LIndex := -1;
   LP := LPropName.IndexOf('[');
@@ -830,6 +981,7 @@ begin
         DSetPropertyValue(LObj, SecPropName, Value);
     end;
   end;
+  handleExceptionEnd
 end;
 
 
@@ -837,18 +989,24 @@ end;
 //GUIDToString
 function DGUIDToString(var AGUID: TGUID): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result := PChar(GUIDToString(AGUID));
+  handleExceptionEnd
 end;
 //StringToGUID
 procedure DStringToGUID(AGUIDStr: PChar; out AGUID: TGUID); extdecl;
 begin
+  handleExceptionBegin
   AGUID := StringToGUID(AGUIDStr);
+  handleExceptionEnd
 end;
 
 //CreateGUID
 procedure DCreateGUID(out AGUID: TGUID); extdecl;
 begin
+  handleExceptionBegin
   CreateGUID(AGUID);//TGUID.NewGuid;
+  handleExceptionEnd
 end;
 
 // Printer
@@ -865,7 +1023,9 @@ end;
 // 因参数与Delphi中不一致，这里要伪造下参数，后面  ADriver, APort, ADeviceMode 三个参数无效
 procedure Printer_SetPrinter(Obj: TPrinter; aName, ADriver, APort: PChar; ADeviceMode: NativeUInt); extdecl;
 begin
+  handleExceptionBegin
   Obj.SetPrinter(aName);
+  handleExceptionEnd
 end;
 
 function SysIsZhCN: Boolean;
@@ -964,15 +1124,19 @@ end;
 
 procedure DGetLibResouceItem(AIndex: Integer; out AResult: TResItem); extdecl;
 begin
+  handleExceptionBegin
   if (AIndex >= 0)  and (AIndex < Length(GLibResouces)) then
     AResult := GLibResouces[AIndex];
+  handleExceptionEnd
 end;
 
 // 说不好有没有内存泄露，啊，先这样呗
 procedure DModifyLibResouce(APtr: Pointer; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   if APtr <> nil then
     PResStringRec(APtr)^ := string(AValue);
+  handleExceptionEnd
 end;
 
 
@@ -982,7 +1146,6 @@ function DGetLibType: TLibType; extdecl;
 begin
   Result := ltLCL;
 end;
-
 
 // 非Windows下使用exports无法导出pas中的
 //function DGetProcAddr(AName: PChar): Pointer; extdecl;
@@ -1047,6 +1210,7 @@ end;
 // 用于go编译成dll时使用
 procedure DInitGoDll(AMainThreadId: TThreadID); extdecl;
 begin
+  handleExceptionBegin
   // 因为go编译为dll后，这个值不一定是主线程id了，所以得重新初始
   if MainThreadId <> AMainThreadId then
   begin
@@ -1062,6 +1226,7 @@ begin
   // 设置App句柄
   WidgetSet.AppHandle := CreateWindowsAppHandle;
 {$endif}
+  handleExceptionEnd
 end;
 
 

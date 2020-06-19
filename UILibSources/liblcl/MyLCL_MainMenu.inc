@@ -9,107 +9,149 @@
 
 function MainMenu_Create(AOwner: TComponent): TMainMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TMainMenu.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure MainMenu_Free(AObj: TMainMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function MainMenu_FindComponent(AObj: TMainMenu; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function MainMenu_GetNamePath(AObj: TMainMenu): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function MainMenu_HasParent(AObj: TMainMenu): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure MainMenu_Assign(AObj: TMainMenu; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function MainMenu_ClassType(AObj: TMainMenu): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function MainMenu_ClassName(AObj: TMainMenu): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function MainMenu_InstanceSize(AObj: TMainMenu): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function MainMenu_InheritsFrom(AObj: TMainMenu; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function MainMenu_Equals(AObj: TMainMenu; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function MainMenu_GetHashCode(AObj: TMainMenu): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function MainMenu_ToString(AObj: TMainMenu): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function MainMenu_GetImagesWidth(AObj: TMainMenu): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ImagesWidth;
+  handleExceptionEnd
 end;
 
 procedure MainMenu_SetImagesWidth(AObj: TMainMenu; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ImagesWidth := AValue;
+  handleExceptionEnd
 end;
 
 function MainMenu_GetBiDiMode(AObj: TMainMenu): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure MainMenu_SetBiDiMode(AObj: TMainMenu; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function MainMenu_GetImages(AObj: TMainMenu): TCustomImageList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Images;
+  handleExceptionEnd
 end;
 
 procedure MainMenu_SetImages(AObj: TMainMenu; AValue: TCustomImageList); extdecl;
 begin
+  handleExceptionBegin
   AObj.Images := AValue;
+  handleExceptionEnd
 end;
 
 function MainMenu_GetOwnerDraw(AObj: TMainMenu): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.OwnerDraw;
+  handleExceptionEnd
 end;
 
 procedure MainMenu_SetOwnerDraw(AObj: TMainMenu; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.OwnerDraw := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TMenuChangeEvent
@@ -122,57 +164,79 @@ end;
 
 function MainMenu_GetHandle(AObj: TMainMenu): HMENU; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function MainMenu_GetItems(AObj: TMainMenu): TMenuItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Items;
+  handleExceptionEnd
 end;
 
 function MainMenu_GetComponentCount(AObj: TMainMenu): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function MainMenu_GetComponentIndex(AObj: TMainMenu): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure MainMenu_SetComponentIndex(AObj: TMainMenu; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function MainMenu_GetOwner(AObj: TMainMenu): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function MainMenu_GetName(AObj: TMainMenu): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure MainMenu_SetName(AObj: TMainMenu; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function MainMenu_GetTag(AObj: TMainMenu): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure MainMenu_SetTag(AObj: TMainMenu; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function MainMenu_GetComponents(AObj: TMainMenu; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function MainMenu_StaticClassType: TClass; extdecl;

@@ -9,452 +9,632 @@
 
 function MonthCalendar_Create(AOwner: TComponent): TMonthCalendar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TMonthCalendar.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_Free(AObj: TMonthCalendar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_CanFocus(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_ContainsControl(AObj: TMonthCalendar; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function MonthCalendar_ControlAtPos(AObj: TMonthCalendar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_DisableAlign(AObj: TMonthCalendar); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_EnableAlign(AObj: TMonthCalendar); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_FindChildControl(AObj: TMonthCalendar; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_FlipChildren(AObj: TMonthCalendar; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function MonthCalendar_Focused(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_HandleAllocated(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_InsertControl(AObj: TMonthCalendar; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_Invalidate(AObj: TMonthCalendar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_RemoveControl(AObj: TMonthCalendar; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_Realign(AObj: TMonthCalendar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_Repaint(AObj: TMonthCalendar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_ScaleBy(AObj: TMonthCalendar; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_ScrollBy(AObj: TMonthCalendar; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetBounds(AObj: TMonthCalendar; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetFocus(AObj: TMonthCalendar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_Update(AObj: TMonthCalendar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_BringToFront(AObj: TMonthCalendar); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_ClientToScreen(AObj: TMonthCalendar; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_ClientToParent(AObj: TMonthCalendar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function MonthCalendar_Dragging(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_HasParent(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_Hide(AObj: TMonthCalendar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_Perform(AObj: TMonthCalendar; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_Refresh(AObj: TMonthCalendar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_ScreenToClient(AObj: TMonthCalendar; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_ParentToClient(AObj: TMonthCalendar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SendToBack(AObj: TMonthCalendar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_Show(AObj: TMonthCalendar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetTextBuf(AObj: TMonthCalendar; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetTextLen(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetTextBuf(AObj: TMonthCalendar; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function MonthCalendar_FindComponent(AObj: TMonthCalendar; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetNamePath(AObj: TMonthCalendar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_Assign(AObj: TMonthCalendar; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function MonthCalendar_ClassType(AObj: TMonthCalendar): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_ClassName(AObj: TMonthCalendar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function MonthCalendar_InstanceSize(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_InheritsFrom(AObj: TMonthCalendar; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function MonthCalendar_Equals(AObj: TMonthCalendar; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetHashCode(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_ToString(AObj: TMonthCalendar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_AnchorToNeighbour(AObj: TMonthCalendar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_AnchorParallel(AObj: TMonthCalendar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_AnchorHorizontalCenterTo(AObj: TMonthCalendar; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_AnchorVerticalCenterTo(AObj: TMonthCalendar; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_AnchorAsAlign(AObj: TMonthCalendar; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_AnchorClient(AObj: TMonthCalendar; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetAlign(AObj: TMonthCalendar): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetAlign(AObj: TMonthCalendar; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetAnchors(AObj: TMonthCalendar): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetAnchors(AObj: TMonthCalendar; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetAutoSize(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSize;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetAutoSize(AObj: TMonthCalendar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSize := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetBorderWidth(AObj: TMonthCalendar): TBorderWidth; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderWidth;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetBorderWidth(AObj: TMonthCalendar; AValue: TBorderWidth); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderWidth := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetBiDiMode(AObj: TMonthCalendar): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetBiDiMode(AObj: TMonthCalendar; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetConstraints(AObj: TMonthCalendar): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetConstraints(AObj: TMonthCalendar; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetDate(AObj: TMonthCalendar): TUnixDateTime; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToUnixTime(AObj.Date);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetDate(AObj: TMonthCalendar; AValue: TUnixDateTime); extdecl;
 begin
+  handleExceptionBegin
   AObj.Date := UnixToTime(AValue);
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetDoubleBuffered(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetDoubleBuffered(AObj: TMonthCalendar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetDragCursor(AObj: TMonthCalendar): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetDragCursor(AObj: TMonthCalendar; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetDragKind(AObj: TMonthCalendar): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetDragKind(AObj: TMonthCalendar; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetDragMode(AObj: TMonthCalendar): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetDragMode(AObj: TMonthCalendar; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetEnabled(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetEnabled(AObj: TMonthCalendar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetFont(AObj: TMonthCalendar): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetFont(AObj: TMonthCalendar; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetParentDoubleBuffered(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetParentDoubleBuffered(AObj: TMonthCalendar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetPopupMenu(AObj: TMonthCalendar): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetPopupMenu(AObj: TMonthCalendar; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetShowHint(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetShowHint(AObj: TMonthCalendar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetTabOrder(AObj: TMonthCalendar): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetTabOrder(AObj: TMonthCalendar; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetTabStop(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetTabStop(AObj: TMonthCalendar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetVisible(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetVisible(AObj: TMonthCalendar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -579,332 +759,464 @@ end;
 
 function MonthCalendar_GetDockClientCount(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetDockSite(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetDockSite(AObj: TMonthCalendar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetMouseInClient(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetVisibleDockClientCount(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetBrush(AObj: TMonthCalendar): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetControlCount(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetHandle(AObj: TMonthCalendar): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetParentWindow(AObj: TMonthCalendar): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetParentWindow(AObj: TMonthCalendar; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetShowing(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetUseDockManager(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetUseDockManager(AObj: TMonthCalendar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetAction(AObj: TMonthCalendar): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetAction(AObj: TMonthCalendar; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_GetBoundsRect(AObj: TMonthCalendar; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetBoundsRect(AObj: TMonthCalendar; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetClientHeight(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetClientHeight(AObj: TMonthCalendar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_GetClientOrigin(AObj: TMonthCalendar; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_GetClientRect(AObj: TMonthCalendar; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetClientWidth(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetClientWidth(AObj: TMonthCalendar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetControlState(AObj: TMonthCalendar): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetControlState(AObj: TMonthCalendar; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetControlStyle(AObj: TMonthCalendar): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetControlStyle(AObj: TMonthCalendar; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetFloating(AObj: TMonthCalendar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetParent(AObj: TMonthCalendar): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetParent(AObj: TMonthCalendar; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetLeft(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetLeft(AObj: TMonthCalendar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetTop(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetTop(AObj: TMonthCalendar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetWidth(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetWidth(AObj: TMonthCalendar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetHeight(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetHeight(AObj: TMonthCalendar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetCursor(AObj: TMonthCalendar): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetCursor(AObj: TMonthCalendar; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetHint(AObj: TMonthCalendar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetHint(AObj: TMonthCalendar; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetComponentCount(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetComponentIndex(AObj: TMonthCalendar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetComponentIndex(AObj: TMonthCalendar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetOwner(AObj: TMonthCalendar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetName(AObj: TMonthCalendar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetName(AObj: TMonthCalendar; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetTag(AObj: TMonthCalendar): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetTag(AObj: TMonthCalendar; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetAnchorSideLeft(AObj: TMonthCalendar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetAnchorSideLeft(AObj: TMonthCalendar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetAnchorSideTop(AObj: TMonthCalendar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetAnchorSideTop(AObj: TMonthCalendar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetAnchorSideRight(AObj: TMonthCalendar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetAnchorSideRight(AObj: TMonthCalendar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetAnchorSideBottom(AObj: TMonthCalendar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetAnchorSideBottom(AObj: TMonthCalendar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetChildSizing(AObj: TMonthCalendar): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetChildSizing(AObj: TMonthCalendar; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetBorderSpacing(AObj: TMonthCalendar): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure MonthCalendar_SetBorderSpacing(AObj: TMonthCalendar; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetDockClients(AObj: TMonthCalendar; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetControls(AObj: TMonthCalendar; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetComponents(AObj: TMonthCalendar; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function MonthCalendar_GetAnchorSide(AObj: TMonthCalendar; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function MonthCalendar_StaticClassType: TClass; extdecl;

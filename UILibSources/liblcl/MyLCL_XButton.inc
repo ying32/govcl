@@ -9,427 +9,597 @@
 
 function XButton_Create(AOwner: TComponent): TXButton; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TXButton.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure XButton_Free(AObj: TXButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure XButton_BringToFront(AObj: TXButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure XButton_ClientToScreen(AObj: TXButton; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure XButton_ClientToParent(AObj: TXButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function XButton_Dragging(AObj: TXButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function XButton_HasParent(AObj: TXButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure XButton_Hide(AObj: TXButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 procedure XButton_Invalidate(AObj: TXButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 function XButton_Perform(AObj: TXButton; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure XButton_Refresh(AObj: TXButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure XButton_Repaint(AObj: TXButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure XButton_ScreenToClient(AObj: TXButton; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure XButton_ParentToClient(AObj: TXButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure XButton_SendToBack(AObj: TXButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetBounds(AObj: TXButton; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure XButton_Show(AObj: TXButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 procedure XButton_Update(AObj: TXButton); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 function XButton_GetTextBuf(AObj: TXButton; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function XButton_GetTextLen(AObj: TXButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure XButton_SetTextBuf(AObj: TXButton; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function XButton_FindComponent(AObj: TXButton; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function XButton_GetNamePath(AObj: TXButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure XButton_Assign(AObj: TXButton; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function XButton_ClassType(AObj: TXButton): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function XButton_ClassName(AObj: TXButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function XButton_InstanceSize(AObj: TXButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function XButton_InheritsFrom(AObj: TXButton; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function XButton_Equals(AObj: TXButton; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function XButton_GetHashCode(AObj: TXButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function XButton_ToString(AObj: TXButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure XButton_AnchorToNeighbour(AObj: TXButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure XButton_AnchorParallel(AObj: TXButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure XButton_AnchorHorizontalCenterTo(AObj: TXButton; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure XButton_AnchorVerticalCenterTo(AObj: TXButton; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure XButton_AnchorAsAlign(AObj: TXButton; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure XButton_AnchorClient(AObj: TXButton; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function XButton_GetCaption(AObj: TXButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Caption);
+  handleExceptionEnd
 end;
 
 procedure XButton_SetCaption(AObj: TXButton; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Caption := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetShowCaption(AObj: TXButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowCaption;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetShowCaption(AObj: TXButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowCaption := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetBackColor(AObj: TXButton): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BackColor;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetBackColor(AObj: TXButton; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.BackColor := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetHoverColor(AObj: TXButton): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HoverColor;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetHoverColor(AObj: TXButton; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.HoverColor := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetDownColor(AObj: TXButton): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DownColor;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetDownColor(AObj: TXButton; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DownColor := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetBorderWidth(AObj: TXButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderWidth;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetBorderWidth(AObj: TXButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderWidth := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetBorderColor(AObj: TXButton): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderColor;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetBorderColor(AObj: TXButton; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderColor := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetPicture(AObj: TXButton): TPicture; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Picture;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetPicture(AObj: TXButton; AValue: TPicture); extdecl;
 begin
+  handleExceptionBegin
   AObj.Picture := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetDrawMode(AObj: TXButton): TDrawImageMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DrawMode;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetDrawMode(AObj: TXButton; AValue: TDrawImageMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DrawMode := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetNormalFontColor(AObj: TXButton): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.NormalFontColor;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetNormalFontColor(AObj: TXButton; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.NormalFontColor := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetDownFontColor(AObj: TXButton): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DownFontColor;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetDownFontColor(AObj: TXButton; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DownFontColor := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetHoverFontColor(AObj: TXButton): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HoverFontColor;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetHoverFontColor(AObj: TXButton; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.HoverFontColor := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetAction(AObj: TXButton): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetAction(AObj: TXButton; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetAlign(AObj: TXButton): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetAlign(AObj: TXButton; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetAnchors(AObj: TXButton): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetAnchors(AObj: TXButton; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetBiDiMode(AObj: TXButton): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetBiDiMode(AObj: TXButton; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetConstraints(AObj: TXButton): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetConstraints(AObj: TXButton; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetEnabled(AObj: TXButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetEnabled(AObj: TXButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetFont(AObj: TXButton): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetFont(AObj: TXButton; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetParentFont(AObj: TXButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetParentFont(AObj: TXButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetParentShowHint(AObj: TXButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetParentShowHint(AObj: TXButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetPopupMenu(AObj: TXButton): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetPopupMenu(AObj: TXButton; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetShowHint(AObj: TXButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetShowHint(AObj: TXButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetVisible(AObj: TXButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetVisible(AObj: TXButton; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -490,237 +660,331 @@ end;
 
 procedure XButton_GetBoundsRect(AObj: TXButton; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetBoundsRect(AObj: TXButton; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetClientHeight(AObj: TXButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetClientHeight(AObj: TXButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure XButton_GetClientOrigin(AObj: TXButton; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure XButton_GetClientRect(AObj: TXButton; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function XButton_GetClientWidth(AObj: TXButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetClientWidth(AObj: TXButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetControlState(AObj: TXButton): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetControlState(AObj: TXButton; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetControlStyle(AObj: TXButton): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetControlStyle(AObj: TXButton; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetFloating(AObj: TXButton): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function XButton_GetParent(AObj: TXButton): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetParent(AObj: TXButton; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetLeft(AObj: TXButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetLeft(AObj: TXButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetTop(AObj: TXButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetTop(AObj: TXButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetWidth(AObj: TXButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetWidth(AObj: TXButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetHeight(AObj: TXButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetHeight(AObj: TXButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetCursor(AObj: TXButton): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetCursor(AObj: TXButton; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetHint(AObj: TXButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure XButton_SetHint(AObj: TXButton; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetComponentCount(AObj: TXButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function XButton_GetComponentIndex(AObj: TXButton): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetComponentIndex(AObj: TXButton; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetOwner(AObj: TXButton): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function XButton_GetName(AObj: TXButton): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure XButton_SetName(AObj: TXButton; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetTag(AObj: TXButton): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetTag(AObj: TXButton; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetAnchorSideLeft(AObj: TXButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetAnchorSideLeft(AObj: TXButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetAnchorSideTop(AObj: TXButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetAnchorSideTop(AObj: TXButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetAnchorSideRight(AObj: TXButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetAnchorSideRight(AObj: TXButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetAnchorSideBottom(AObj: TXButton): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetAnchorSideBottom(AObj: TXButton; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetBorderSpacing(AObj: TXButton): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure XButton_SetBorderSpacing(AObj: TXButton; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function XButton_GetComponents(AObj: TXButton; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function XButton_GetAnchorSide(AObj: TXButton; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function XButton_StaticClassType: TClass; extdecl;

@@ -9,97 +9,135 @@
 
 function FontDialog_Create(AOwner: TComponent): TFontDialog; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TFontDialog.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure FontDialog_Free(AObj: TFontDialog); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function FontDialog_Execute(AObj: TFontDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Execute;
+  handleExceptionEnd
 end;
 
 function FontDialog_FindComponent(AObj: TFontDialog; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function FontDialog_GetNamePath(AObj: TFontDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function FontDialog_HasParent(AObj: TFontDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure FontDialog_Assign(AObj: TFontDialog; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function FontDialog_ClassType(AObj: TFontDialog): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function FontDialog_ClassName(AObj: TFontDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function FontDialog_InstanceSize(AObj: TFontDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function FontDialog_InheritsFrom(AObj: TFontDialog; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function FontDialog_Equals(AObj: TFontDialog; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function FontDialog_GetHashCode(AObj: TFontDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function FontDialog_ToString(AObj: TFontDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function FontDialog_GetFont(AObj: TFontDialog): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure FontDialog_SetFont(AObj: TFontDialog; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function FontDialog_GetOptions(AObj: TFontDialog): TFontDialogOptions; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Options;
+  handleExceptionEnd
 end;
 
 procedure FontDialog_SetOptions(AObj: TFontDialog; AValue: TFontDialogOptions); extdecl;
 begin
+  handleExceptionBegin
   AObj.Options := AValue;
+  handleExceptionEnd
 end;
 
 function FontDialog_GetHandle(AObj: TFontDialog): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -120,47 +158,65 @@ end;
 
 function FontDialog_GetComponentCount(AObj: TFontDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function FontDialog_GetComponentIndex(AObj: TFontDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure FontDialog_SetComponentIndex(AObj: TFontDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function FontDialog_GetOwner(AObj: TFontDialog): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function FontDialog_GetName(AObj: TFontDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure FontDialog_SetName(AObj: TFontDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function FontDialog_GetTag(AObj: TFontDialog): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure FontDialog_SetTag(AObj: TFontDialog; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function FontDialog_GetComponents(AObj: TFontDialog; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function FontDialog_StaticClassType: TClass; extdecl;

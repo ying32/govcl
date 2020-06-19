@@ -9,152 +9,212 @@
 
 function StringList_Create: TStringList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TStringList.Create;
+  handleExceptionEnd
 end;
 
 procedure StringList_Free(AObj: TStringList); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function StringList_Add(AObj: TStringList; S: PChar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Add(S);
+  handleExceptionEnd
 end;
 
 function StringList_AddObject(AObj: TStringList; S: PChar; AObject: TObject): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AddObject(S, AObject);
+  handleExceptionEnd
 end;
 
 procedure StringList_Assign(AObj: TStringList; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 procedure StringList_Clear(AObj: TStringList); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure StringList_Delete(AObj: TStringList; Index: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Delete(Index);
+  handleExceptionEnd
 end;
 
 function StringList_IndexOf(AObj: TStringList; S: PChar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.IndexOf(S);
+  handleExceptionEnd
 end;
 
 procedure StringList_Insert(AObj: TStringList; Index: Integer; S: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Insert(Index, S);
+  handleExceptionEnd
 end;
 
 procedure StringList_InsertObject(AObj: TStringList; Index: Integer; S: PChar; AObject: TObject); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertObject(Index, S, AObject);
+  handleExceptionEnd
 end;
 
 procedure StringList_Append(AObj: TStringList; S: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Append(S);
+  handleExceptionEnd
 end;
 
 procedure StringList_BeginUpdate(AObj: TStringList); extdecl;
 begin
+  handleExceptionBegin
   AObj.BeginUpdate;
+  handleExceptionEnd
 end;
 
 procedure StringList_EndUpdate(AObj: TStringList); extdecl;
 begin
+  handleExceptionBegin
   AObj.EndUpdate;
+  handleExceptionEnd
 end;
 
 function StringList_Equals(AObj: TStringList; Strings: TStrings): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Strings);
+  handleExceptionEnd
 end;
 
 function StringList_IndexOfName(AObj: TStringList; Name: PChar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.IndexOfName(Name);
+  handleExceptionEnd
 end;
 
 function StringList_IndexOfObject(AObj: TStringList; AObject: TObject): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.IndexOfObject(AObject);
+  handleExceptionEnd
 end;
 
 procedure StringList_LoadFromFile(AObj: TStringList; FileName: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromFile(FileName);
+  handleExceptionEnd
 end;
 
 procedure StringList_LoadFromStream(AObj: TStringList; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromStream(Stream);
+  handleExceptionEnd
 end;
 
 procedure StringList_Move(AObj: TStringList; CurIndex: Integer; NewIndex: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Move(CurIndex, NewIndex);
+  handleExceptionEnd
 end;
 
 procedure StringList_SaveToFile(AObj: TStringList; FileName: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToFile(FileName);
+  handleExceptionEnd
 end;
 
 procedure StringList_SaveToStream(AObj: TStringList; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToStream(Stream);
+  handleExceptionEnd
 end;
 
 function StringList_GetNamePath(AObj: TStringList): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function StringList_ClassType(AObj: TStringList): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function StringList_ClassName(AObj: TStringList): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function StringList_InstanceSize(AObj: TStringList): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function StringList_InheritsFrom(AObj: TStringList; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function StringList_GetHashCode(AObj: TStringList): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function StringList_ToString(AObj: TStringList): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function StringList_GetSorted(AObj: TStringList): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Sorted;
+  handleExceptionEnd
 end;
 
 procedure StringList_SetSorted(AObj: TStringList; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Sorted := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -175,87 +235,121 @@ end;
 
 function StringList_GetCapacity(AObj: TStringList): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Capacity;
+  handleExceptionEnd
 end;
 
 procedure StringList_SetCapacity(AObj: TStringList; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Capacity := AValue;
+  handleExceptionEnd
 end;
 
 function StringList_GetCommaText(AObj: TStringList): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.CommaText);
+  handleExceptionEnd
 end;
 
 procedure StringList_SetCommaText(AObj: TStringList; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.CommaText := AValue;
+  handleExceptionEnd
 end;
 
 function StringList_GetCount(AObj: TStringList): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Count;
+  handleExceptionEnd
 end;
 
 function StringList_GetDelimiter(AObj: TStringList): Char; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Delimiter;
+  handleExceptionEnd
 end;
 
 procedure StringList_SetDelimiter(AObj: TStringList; AValue: Char); extdecl;
 begin
+  handleExceptionBegin
   AObj.Delimiter := AValue;
+  handleExceptionEnd
 end;
 
 function StringList_GetText(AObj: TStringList): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Text);
+  handleExceptionEnd
 end;
 
 procedure StringList_SetText(AObj: TStringList; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Text := AValue;
+  handleExceptionEnd
 end;
 
 function StringList_GetObjects(AObj: TStringList; Index: Integer): TObject; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Objects[Index];
+  handleExceptionEnd
 end;
 
 procedure StringList_SetObjects(AObj: TStringList; Index: Integer; AValue: TObject); extdecl;
 begin
+  handleExceptionBegin
   AObj.Objects[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function StringList_GetValues(AObj: TStringList; Name: PChar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Values[Name]);
+  handleExceptionEnd
 end;
 
 procedure StringList_SetValues(AObj: TStringList; Name: string; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Values[Name] := AValue;
+  handleExceptionEnd
 end;
 
 function StringList_GetValueFromIndex(AObj: TStringList; Index: Integer): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ValueFromIndex[Index]);
+  handleExceptionEnd
 end;
 
 procedure StringList_SetValueFromIndex(AObj: TStringList; Index: Integer; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.ValueFromIndex[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function StringList_GetStrings(AObj: TStringList; Index: Integer): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Strings[Index]);
+  handleExceptionEnd
 end;
 
 procedure StringList_SetStrings(AObj: TStringList; Index: Integer; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Strings[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function StringList_StaticClassType: TClass; extdecl;

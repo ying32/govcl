@@ -9,617 +9,863 @@
 
 function Edit_Create(AOwner: TComponent): TEdit; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TEdit.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure Edit_Free(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure Edit_Clear(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure Edit_ClearSelection(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClearSelection;
+  handleExceptionEnd
 end;
 
 procedure Edit_CopyToClipboard(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.CopyToClipboard;
+  handleExceptionEnd
 end;
 
 procedure Edit_CutToClipboard(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.CutToClipboard;
+  handleExceptionEnd
 end;
 
 procedure Edit_PasteFromClipboard(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.PasteFromClipboard;
+  handleExceptionEnd
 end;
 
 procedure Edit_Undo(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Undo;
+  handleExceptionEnd
 end;
 
 procedure Edit_SelectAll(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelectAll;
+  handleExceptionEnd
 end;
 
 function Edit_CanFocus(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function Edit_ContainsControl(AObj: TEdit; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function Edit_ControlAtPos(AObj: TEdit; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure Edit_DisableAlign(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure Edit_EnableAlign(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function Edit_FindChildControl(AObj: TEdit; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure Edit_FlipChildren(AObj: TEdit; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function Edit_Focused(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function Edit_HandleAllocated(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure Edit_InsertControl(AObj: TEdit; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure Edit_Invalidate(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure Edit_RemoveControl(AObj: TEdit; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure Edit_Realign(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure Edit_Repaint(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure Edit_ScaleBy(AObj: TEdit; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure Edit_ScrollBy(AObj: TEdit; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure Edit_SetBounds(AObj: TEdit; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure Edit_SetFocus(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure Edit_Update(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure Edit_BringToFront(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure Edit_ClientToScreen(AObj: TEdit; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure Edit_ClientToParent(AObj: TEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function Edit_Dragging(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function Edit_HasParent(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure Edit_Hide(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function Edit_Perform(AObj: TEdit; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure Edit_Refresh(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure Edit_ScreenToClient(AObj: TEdit; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure Edit_ParentToClient(AObj: TEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure Edit_SendToBack(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure Edit_Show(AObj: TEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function Edit_GetTextBuf(AObj: TEdit; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function Edit_GetTextLen(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure Edit_SetTextBuf(AObj: TEdit; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function Edit_FindComponent(AObj: TEdit; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function Edit_GetNamePath(AObj: TEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure Edit_Assign(AObj: TEdit; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function Edit_ClassType(AObj: TEdit): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Edit_ClassName(AObj: TEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Edit_InstanceSize(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Edit_InheritsFrom(AObj: TEdit; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Edit_Equals(AObj: TEdit; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Edit_GetHashCode(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Edit_ToString(AObj: TEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure Edit_AnchorToNeighbour(AObj: TEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure Edit_AnchorParallel(AObj: TEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure Edit_AnchorHorizontalCenterTo(AObj: TEdit; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure Edit_AnchorVerticalCenterTo(AObj: TEdit; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure Edit_AnchorAsAlign(AObj: TEdit; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure Edit_AnchorClient(AObj: TEdit; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function Edit_GetAlign(AObj: TEdit): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetAlign(AObj: TEdit; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetAlignment(AObj: TEdit): TAlignment; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Alignment;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetAlignment(AObj: TEdit; AValue: TAlignment); extdecl;
 begin
+  handleExceptionBegin
   AObj.Alignment := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetAnchors(AObj: TEdit): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetAnchors(AObj: TEdit; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetAutoSelect(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSelect;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetAutoSelect(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSelect := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetAutoSize(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSize;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetAutoSize(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSize := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetBiDiMode(AObj: TEdit): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetBiDiMode(AObj: TEdit; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetBorderStyle(AObj: TEdit): TBorderStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderStyle;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetBorderStyle(AObj: TEdit; AValue: TBorderStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderStyle := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetCharCase(AObj: TEdit): TEditCharCase; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CharCase;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetCharCase(AObj: TEdit; AValue: TEditCharCase); extdecl;
 begin
+  handleExceptionBegin
   AObj.CharCase := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetColor(AObj: TEdit): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetColor(AObj: TEdit; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetConstraints(AObj: TEdit): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetConstraints(AObj: TEdit; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetDoubleBuffered(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetDoubleBuffered(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetDragCursor(AObj: TEdit): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetDragCursor(AObj: TEdit; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetDragKind(AObj: TEdit): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetDragKind(AObj: TEdit; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetDragMode(AObj: TEdit): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetDragMode(AObj: TEdit; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetEnabled(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetEnabled(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetFont(AObj: TEdit): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetFont(AObj: TEdit; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetHideSelection(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HideSelection;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetHideSelection(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.HideSelection := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetMaxLength(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MaxLength;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetMaxLength(AObj: TEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MaxLength := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetNumbersOnly(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.NumbersOnly;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetNumbersOnly(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.NumbersOnly := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetParentColor(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetParentColor(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetParentDoubleBuffered(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetParentDoubleBuffered(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetParentFont(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetParentFont(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetParentShowHint(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetParentShowHint(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetPasswordChar(AObj: TEdit): Char; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PasswordChar;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetPasswordChar(AObj: TEdit; AValue: Char); extdecl;
 begin
+  handleExceptionBegin
   AObj.PasswordChar := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetPopupMenu(AObj: TEdit): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetPopupMenu(AObj: TEdit; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetReadOnly(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ReadOnly;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetReadOnly(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ReadOnly := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetShowHint(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetShowHint(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetTabOrder(AObj: TEdit): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetTabOrder(AObj: TEdit; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetTabStop(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetTabStop(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetText(AObj: TEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Text);
+  handleExceptionEnd
 end;
 
 procedure Edit_SetText(AObj: TEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Text := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetTextHint(AObj: TEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.TextHint);
+  handleExceptionEnd
 end;
 
 procedure Edit_SetTextHint(AObj: TEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.TextHint := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetVisible(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetVisible(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -760,377 +1006,527 @@ end;
 
 function Edit_GetCanUndo(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanUndo;
+  handleExceptionEnd
 end;
 
 function Edit_GetModified(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Modified;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetModified(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Modified := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetSelLength(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelLength;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetSelLength(AObj: TEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelLength := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetSelStart(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelStart;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetSelStart(AObj: TEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelStart := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetSelText(AObj: TEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.SelText);
+  handleExceptionEnd
 end;
 
 procedure Edit_SetSelText(AObj: TEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelText := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetDockClientCount(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function Edit_GetDockSite(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetDockSite(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetMouseInClient(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function Edit_GetVisibleDockClientCount(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function Edit_GetBrush(AObj: TEdit): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function Edit_GetControlCount(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function Edit_GetHandle(AObj: TEdit): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function Edit_GetParentWindow(AObj: TEdit): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetParentWindow(AObj: TEdit; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetShowing(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function Edit_GetUseDockManager(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetUseDockManager(AObj: TEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetAction(AObj: TEdit): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetAction(AObj: TEdit; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 procedure Edit_GetBoundsRect(AObj: TEdit; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetBoundsRect(AObj: TEdit; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetClientHeight(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetClientHeight(AObj: TEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure Edit_GetClientOrigin(AObj: TEdit; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure Edit_GetClientRect(AObj: TEdit; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function Edit_GetClientWidth(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetClientWidth(AObj: TEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetControlState(AObj: TEdit): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetControlState(AObj: TEdit; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetControlStyle(AObj: TEdit): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetControlStyle(AObj: TEdit; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetFloating(AObj: TEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function Edit_GetParent(AObj: TEdit): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetParent(AObj: TEdit; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetLeft(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetLeft(AObj: TEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetTop(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetTop(AObj: TEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetWidth(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetWidth(AObj: TEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetHeight(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetHeight(AObj: TEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetCursor(AObj: TEdit): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetCursor(AObj: TEdit; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetHint(AObj: TEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure Edit_SetHint(AObj: TEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetComponentCount(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function Edit_GetComponentIndex(AObj: TEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetComponentIndex(AObj: TEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetOwner(AObj: TEdit): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function Edit_GetName(AObj: TEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure Edit_SetName(AObj: TEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetTag(AObj: TEdit): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetTag(AObj: TEdit; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetAnchorSideLeft(AObj: TEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetAnchorSideLeft(AObj: TEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetAnchorSideTop(AObj: TEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetAnchorSideTop(AObj: TEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetAnchorSideRight(AObj: TEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetAnchorSideRight(AObj: TEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetAnchorSideBottom(AObj: TEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetAnchorSideBottom(AObj: TEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetChildSizing(AObj: TEdit): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetChildSizing(AObj: TEdit; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetBorderSpacing(AObj: TEdit): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure Edit_SetBorderSpacing(AObj: TEdit; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function Edit_GetDockClients(AObj: TEdit; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function Edit_GetControls(AObj: TEdit; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function Edit_GetComponents(AObj: TEdit; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function Edit_GetAnchorSide(AObj: TEdit; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function Edit_StaticClassType: TClass; extdecl;

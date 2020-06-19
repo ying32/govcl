@@ -9,107 +9,149 @@
 
 function Pen_Create: TPen; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TPen.Create;
+  handleExceptionEnd
 end;
 
 procedure Pen_Free(AObj: TPen); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure Pen_Assign(AObj: TPen; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function Pen_GetNamePath(AObj: TPen): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function Pen_ClassType(AObj: TPen): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Pen_ClassName(AObj: TPen): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Pen_InstanceSize(AObj: TPen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Pen_InheritsFrom(AObj: TPen; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Pen_Equals(AObj: TPen; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Pen_GetHashCode(AObj: TPen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Pen_ToString(AObj: TPen): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Pen_GetHandle(AObj: TPen): HPEN; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 procedure Pen_SetHandle(AObj: TPen; AValue: HPEN); extdecl;
 begin
+  handleExceptionBegin
   AObj.Handle := AValue;
+  handleExceptionEnd
 end;
 
 function Pen_GetColor(AObj: TPen): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure Pen_SetColor(AObj: TPen; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function Pen_GetMode(AObj: TPen): TPenMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Mode;
+  handleExceptionEnd
 end;
 
 procedure Pen_SetMode(AObj: TPen; AValue: TPenMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.Mode := AValue;
+  handleExceptionEnd
 end;
 
 function Pen_GetStyle(AObj: TPen): TPenStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Style;
+  handleExceptionEnd
 end;
 
 procedure Pen_SetStyle(AObj: TPen; AValue: TPenStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.Style := AValue;
+  handleExceptionEnd
 end;
 
 function Pen_GetWidth(AObj: TPen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure Pen_SetWidth(AObj: TPen; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent

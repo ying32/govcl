@@ -9,302 +9,422 @@
 
 function CheckListBox_Create(AOwner: TComponent): TCheckListBox; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TCheckListBox.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_Free(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_CheckAll(AObj: TCheckListBox; AState: TCheckBoxState; AllowGrayed: LongBool; AllowDisabled: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.CheckAll(AState, AllowGrayed, AllowDisabled);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_AddItem(AObj: TCheckListBox; Item: PChar; AObject: TObject); extdecl;
 begin
+  handleExceptionBegin
   AObj.AddItem(Item, AObject);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_Clear(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_ClearSelection(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClearSelection;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_DeleteSelected(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.DeleteSelected;
+  handleExceptionEnd
 end;
 
 function CheckListBox_ItemAtPos(AObj: TCheckListBox; var Pos: TPoint; Existing: LongBool): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemAtPos(Pos, Existing);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_ItemRect(AObj: TCheckListBox; Index: Integer; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemRect(Index);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SelectAll(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelectAll;
+  handleExceptionEnd
 end;
 
 function CheckListBox_CanFocus(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function CheckListBox_ContainsControl(AObj: TCheckListBox; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function CheckListBox_ControlAtPos(AObj: TCheckListBox; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_DisableAlign(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_EnableAlign(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function CheckListBox_FindChildControl(AObj: TCheckListBox; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_FlipChildren(AObj: TCheckListBox; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function CheckListBox_Focused(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function CheckListBox_HandleAllocated(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_InsertControl(AObj: TCheckListBox; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_Invalidate(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_RemoveControl(AObj: TCheckListBox; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_Realign(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_Repaint(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_ScaleBy(AObj: TCheckListBox; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_ScrollBy(AObj: TCheckListBox; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetBounds(AObj: TCheckListBox; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetFocus(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_Update(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_BringToFront(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_ClientToScreen(AObj: TCheckListBox; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_ClientToParent(AObj: TCheckListBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function CheckListBox_Dragging(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function CheckListBox_HasParent(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_Hide(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function CheckListBox_Perform(AObj: TCheckListBox; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_Refresh(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_ScreenToClient(AObj: TCheckListBox; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_ParentToClient(AObj: TCheckListBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SendToBack(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_Show(AObj: TCheckListBox); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetTextBuf(AObj: TCheckListBox; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetTextLen(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetTextBuf(AObj: TCheckListBox; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function CheckListBox_FindComponent(AObj: TCheckListBox; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetNamePath(AObj: TCheckListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_Assign(AObj: TCheckListBox; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function CheckListBox_ClassType(AObj: TCheckListBox): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function CheckListBox_ClassName(AObj: TCheckListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function CheckListBox_InstanceSize(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function CheckListBox_InheritsFrom(AObj: TCheckListBox; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function CheckListBox_Equals(AObj: TCheckListBox; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetHashCode(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function CheckListBox_ToString(AObj: TCheckListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_AnchorToNeighbour(AObj: TCheckListBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_AnchorParallel(AObj: TCheckListBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_AnchorHorizontalCenterTo(AObj: TCheckListBox; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_AnchorVerticalCenterTo(AObj: TCheckListBox; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_AnchorAsAlign(AObj: TCheckListBox; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_AnchorClient(AObj: TCheckListBox; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -317,262 +437,366 @@ end;
 
 function CheckListBox_GetAlign(AObj: TCheckListBox): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetAlign(AObj: TCheckListBox; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetAllowGrayed(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AllowGrayed;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetAllowGrayed(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AllowGrayed := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetAnchors(AObj: TCheckListBox): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetAnchors(AObj: TCheckListBox; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetBiDiMode(AObj: TCheckListBox): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetBiDiMode(AObj: TCheckListBox; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetBorderStyle(AObj: TCheckListBox): TBorderStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderStyle;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetBorderStyle(AObj: TCheckListBox; AValue: TBorderStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderStyle := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetColor(AObj: TCheckListBox): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetColor(AObj: TCheckListBox; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetColumns(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Columns;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetColumns(AObj: TCheckListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Columns := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetConstraints(AObj: TCheckListBox): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetConstraints(AObj: TCheckListBox; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetDoubleBuffered(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetDoubleBuffered(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetDragCursor(AObj: TCheckListBox): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetDragCursor(AObj: TCheckListBox; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetDragMode(AObj: TCheckListBox): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetDragMode(AObj: TCheckListBox; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetEnabled(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetEnabled(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetFont(AObj: TCheckListBox): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetFont(AObj: TCheckListBox; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetItemHeight(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemHeight;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetItemHeight(AObj: TCheckListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ItemHeight := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetItems(AObj: TCheckListBox): TStrings; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Items;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetItems(AObj: TCheckListBox; AValue: TStrings); extdecl;
 begin
+  handleExceptionBegin
   AObj.Items := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetParentColor(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetParentColor(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetParentDoubleBuffered(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetParentDoubleBuffered(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetParentFont(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetParentFont(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetParentShowHint(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetParentShowHint(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetPopupMenu(AObj: TCheckListBox): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetPopupMenu(AObj: TCheckListBox; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetShowHint(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetShowHint(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetSorted(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Sorted;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetSorted(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Sorted := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetStyle(AObj: TCheckListBox): TListBoxStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Style;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetStyle(AObj: TCheckListBox; AValue: TListBoxStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.Style := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetTabOrder(AObj: TCheckListBox): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetTabOrder(AObj: TCheckListBox; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetTabStop(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetTabStop(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetVisible(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetVisible(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -713,427 +937,597 @@ end;
 
 function CheckListBox_GetCanvas(AObj: TCheckListBox): TCanvas; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Canvas;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetCount(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Count;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetTopIndex(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TopIndex;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetTopIndex(AObj: TCheckListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.TopIndex := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetMultiSelect(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MultiSelect;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetMultiSelect(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.MultiSelect := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetSelCount(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelCount;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetItemIndex(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemIndex;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetItemIndex(AObj: TCheckListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ItemIndex := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetDockClientCount(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetDockSite(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetDockSite(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetMouseInClient(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetVisibleDockClientCount(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetBrush(AObj: TCheckListBox): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetControlCount(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetHandle(AObj: TCheckListBox): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetParentWindow(AObj: TCheckListBox): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetParentWindow(AObj: TCheckListBox; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetShowing(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetUseDockManager(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetUseDockManager(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetAction(AObj: TCheckListBox): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetAction(AObj: TCheckListBox; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_GetBoundsRect(AObj: TCheckListBox; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetBoundsRect(AObj: TCheckListBox; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetClientHeight(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetClientHeight(AObj: TCheckListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_GetClientOrigin(AObj: TCheckListBox; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_GetClientRect(AObj: TCheckListBox; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetClientWidth(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetClientWidth(AObj: TCheckListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetControlState(AObj: TCheckListBox): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetControlState(AObj: TCheckListBox; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetControlStyle(AObj: TCheckListBox): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetControlStyle(AObj: TCheckListBox; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetFloating(AObj: TCheckListBox): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetParent(AObj: TCheckListBox): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetParent(AObj: TCheckListBox; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetLeft(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetLeft(AObj: TCheckListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetTop(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetTop(AObj: TCheckListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetWidth(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetWidth(AObj: TCheckListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetHeight(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetHeight(AObj: TCheckListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetCursor(AObj: TCheckListBox): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetCursor(AObj: TCheckListBox; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetHint(AObj: TCheckListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetHint(AObj: TCheckListBox; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetComponentCount(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetComponentIndex(AObj: TCheckListBox): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetComponentIndex(AObj: TCheckListBox; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetOwner(AObj: TCheckListBox): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetName(AObj: TCheckListBox): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetName(AObj: TCheckListBox; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetTag(AObj: TCheckListBox): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetTag(AObj: TCheckListBox; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetAnchorSideLeft(AObj: TCheckListBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetAnchorSideLeft(AObj: TCheckListBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetAnchorSideTop(AObj: TCheckListBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetAnchorSideTop(AObj: TCheckListBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetAnchorSideRight(AObj: TCheckListBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetAnchorSideRight(AObj: TCheckListBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetAnchorSideBottom(AObj: TCheckListBox): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetAnchorSideBottom(AObj: TCheckListBox; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetChildSizing(AObj: TCheckListBox): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetChildSizing(AObj: TCheckListBox; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetBorderSpacing(AObj: TCheckListBox): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetBorderSpacing(AObj: TCheckListBox; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetChecked(AObj: TCheckListBox; Index: Integer): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Checked[Index];
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetChecked(AObj: TCheckListBox; Index: Integer; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Checked[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetItemEnabled(AObj: TCheckListBox; Index: Integer): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemEnabled[Index];
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetItemEnabled(AObj: TCheckListBox; Index: Integer; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ItemEnabled[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetState(AObj: TCheckListBox; Index: Integer): TCheckBoxState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.State[Index];
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetState(AObj: TCheckListBox; Index: Integer; AValue: TCheckBoxState); extdecl;
 begin
+  handleExceptionBegin
   AObj.State[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetHeader(AObj: TCheckListBox; Index: Integer): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Header[Index];
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetHeader(AObj: TCheckListBox; Index: Integer; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Header[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetSelected(AObj: TCheckListBox; Index: Integer): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Selected[Index];
+  handleExceptionEnd
 end;
 
 procedure CheckListBox_SetSelected(AObj: TCheckListBox; Index: Integer; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Selected[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetDockClients(AObj: TCheckListBox; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetControls(AObj: TCheckListBox; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetComponents(AObj: TCheckListBox; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function CheckListBox_GetAnchorSide(AObj: TCheckListBox; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function CheckListBox_StaticClassType: TClass; extdecl;

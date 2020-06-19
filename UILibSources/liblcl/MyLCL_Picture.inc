@@ -9,117 +9,163 @@
 
 function Picture_Create: TPicture; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TPicture.Create;
+  handleExceptionEnd
 end;
 
 procedure Picture_Free(AObj: TPicture); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure Picture_LoadFromFile(AObj: TPicture; Filename: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromFile(Filename);
+  handleExceptionEnd
 end;
 
 procedure Picture_SaveToFile(AObj: TPicture; Filename: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToFile(Filename);
+  handleExceptionEnd
 end;
 
 procedure Picture_LoadFromStream(AObj: TPicture; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromStream(Stream);
+  handleExceptionEnd
 end;
 
 procedure Picture_SaveToStream(AObj: TPicture; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToStream(Stream);
+  handleExceptionEnd
 end;
 
 procedure Picture_Assign(AObj: TPicture; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function Picture_GetNamePath(AObj: TPicture): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function Picture_ClassType(AObj: TPicture): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Picture_ClassName(AObj: TPicture): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Picture_InstanceSize(AObj: TPicture): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Picture_InheritsFrom(AObj: TPicture; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Picture_Equals(AObj: TPicture; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Picture_GetHashCode(AObj: TPicture): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Picture_ToString(AObj: TPicture): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Picture_GetBitmap(AObj: TPicture): TBitmap; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Bitmap;
+  handleExceptionEnd
 end;
 
 procedure Picture_SetBitmap(AObj: TPicture; AValue: TBitmap); extdecl;
 begin
+  handleExceptionBegin
   AObj.Bitmap := AValue;
+  handleExceptionEnd
 end;
 
 function Picture_GetGraphic(AObj: TPicture): TGraphic; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Graphic;
+  handleExceptionEnd
 end;
 
 procedure Picture_SetGraphic(AObj: TPicture; AValue: TGraphic); extdecl;
 begin
+  handleExceptionBegin
   AObj.Graphic := AValue;
+  handleExceptionEnd
 end;
 
 function Picture_GetHeight(AObj: TPicture): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 function Picture_GetIcon(AObj: TPicture): TIcon; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Icon;
+  handleExceptionEnd
 end;
 
 procedure Picture_SetIcon(AObj: TPicture; AValue: TIcon); extdecl;
 begin
+  handleExceptionBegin
   AObj.Icon := AValue;
+  handleExceptionEnd
 end;
 
 function Picture_GetWidth(AObj: TPicture): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent

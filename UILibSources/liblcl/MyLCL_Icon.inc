@@ -9,174 +9,242 @@
 
 function Icon_Create: TIcon; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TIcon.Create;
+  handleExceptionEnd
 end;
 
 procedure Icon_Free(AObj: TIcon); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure Icon_Assign(AObj: TIcon; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function Icon_HandleAllocated(AObj: TIcon): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure Icon_LoadFromStream(AObj: TIcon; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromStream(Stream);
+  handleExceptionEnd
 end;
 
 procedure Icon_SaveToStream(AObj: TIcon; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToStream(Stream);
+  handleExceptionEnd
 end;
 
 procedure Icon_SetSize(AObj: TIcon; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetSize(AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure Icon_LoadFromResourceName(AObj: TIcon; Instance: NativeUInt; ResName: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromResourceName(Instance, ResName);
+  handleExceptionEnd
 end;
 
 procedure Icon_LoadFromResourceID(AObj: TIcon; Instance: NativeUInt; ResID: Integer); extdecl;
 begin
+  handleExceptionBegin
 {$IFDEF MSWINDOWS}
   AObj.LoadFromResourceID(Instance, ResID);
+  handleExceptionEnd
 {$ENDIF MSWINDOWS}
 end;
 
 function Icon_Equals(AObj: TIcon; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 procedure Icon_LoadFromFile(AObj: TIcon; Filename: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromFile(Filename);
+  handleExceptionEnd
 end;
 
 procedure Icon_SaveToFile(AObj: TIcon; Filename: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToFile(Filename);
+  handleExceptionEnd
 end;
 
 function Icon_GetNamePath(AObj: TIcon): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function Icon_ClassType(AObj: TIcon): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Icon_ClassName(AObj: TIcon): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Icon_InstanceSize(AObj: TIcon): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Icon_InheritsFrom(AObj: TIcon; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Icon_GetHashCode(AObj: TIcon): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Icon_ToString(AObj: TIcon): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Icon_GetHandle(AObj: TIcon): HICON; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 procedure Icon_SetHandle(AObj: TIcon; AValue: HICON); extdecl;
 begin
+  handleExceptionBegin
   AObj.Handle := AValue;
+  handleExceptionEnd
 end;
 
 function Icon_GetEmpty(AObj: TIcon): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Empty;
+  handleExceptionEnd
 end;
 
 function Icon_GetHeight(AObj: TIcon): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure Icon_SetHeight(AObj: TIcon; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function Icon_GetModified(AObj: TIcon): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Modified;
+  handleExceptionEnd
 end;
 
 procedure Icon_SetModified(AObj: TIcon; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Modified := AValue;
+  handleExceptionEnd
 end;
 
 function Icon_GetPalette(AObj: TIcon): HPALETTE; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Palette;
+  handleExceptionEnd
 end;
 
 procedure Icon_SetPalette(AObj: TIcon; AValue: HPALETTE); extdecl;
 begin
+  handleExceptionBegin
   AObj.Palette := AValue;
+  handleExceptionEnd
 end;
 
 function Icon_GetPaletteModified(AObj: TIcon): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PaletteModified;
+  handleExceptionEnd
 end;
 
 procedure Icon_SetPaletteModified(AObj: TIcon; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.PaletteModified := AValue;
+  handleExceptionEnd
 end;
 
 function Icon_GetTransparent(AObj: TIcon): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Transparent;
+  handleExceptionEnd
 end;
 
 procedure Icon_SetTransparent(AObj: TIcon; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Transparent := AValue;
+  handleExceptionEnd
 end;
 
 function Icon_GetWidth(AObj: TIcon): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure Icon_SetWidth(AObj: TIcon; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent

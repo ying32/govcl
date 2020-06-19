@@ -9,517 +9,723 @@
 
 function DateTimePicker_Create(AOwner: TComponent): TDateTimePicker; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TDateTimePicker.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_Free(AObj: TDateTimePicker); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_CanFocus(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_ContainsControl(AObj: TDateTimePicker; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_ControlAtPos(AObj: TDateTimePicker; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_DisableAlign(AObj: TDateTimePicker); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_EnableAlign(AObj: TDateTimePicker); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_FindChildControl(AObj: TDateTimePicker; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_FlipChildren(AObj: TDateTimePicker; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_Focused(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_HandleAllocated(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_InsertControl(AObj: TDateTimePicker; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_Invalidate(AObj: TDateTimePicker); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_RemoveControl(AObj: TDateTimePicker; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_Realign(AObj: TDateTimePicker); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_Repaint(AObj: TDateTimePicker); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_ScaleBy(AObj: TDateTimePicker; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_ScrollBy(AObj: TDateTimePicker; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetBounds(AObj: TDateTimePicker; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetFocus(AObj: TDateTimePicker); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_Update(AObj: TDateTimePicker); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_BringToFront(AObj: TDateTimePicker); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_ClientToScreen(AObj: TDateTimePicker; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_ClientToParent(AObj: TDateTimePicker; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_Dragging(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_HasParent(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_Hide(AObj: TDateTimePicker); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_Perform(AObj: TDateTimePicker; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_Refresh(AObj: TDateTimePicker); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_ScreenToClient(AObj: TDateTimePicker; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_ParentToClient(AObj: TDateTimePicker; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SendToBack(AObj: TDateTimePicker); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_Show(AObj: TDateTimePicker); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetTextBuf(AObj: TDateTimePicker; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetTextLen(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetTextBuf(AObj: TDateTimePicker; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_FindComponent(AObj: TDateTimePicker; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetNamePath(AObj: TDateTimePicker): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_Assign(AObj: TDateTimePicker; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_ClassType(AObj: TDateTimePicker): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_ClassName(AObj: TDateTimePicker): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_InstanceSize(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_InheritsFrom(AObj: TDateTimePicker; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_Equals(AObj: TDateTimePicker; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetHashCode(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_ToString(AObj: TDateTimePicker): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_AnchorToNeighbour(AObj: TDateTimePicker; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_AnchorParallel(AObj: TDateTimePicker; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_AnchorHorizontalCenterTo(AObj: TDateTimePicker; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_AnchorVerticalCenterTo(AObj: TDateTimePicker; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_AnchorAsAlign(AObj: TDateTimePicker; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_AnchorClient(AObj: TDateTimePicker; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetDateTime(AObj: TDateTimePicker): TUnixDateTime; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToUnixTime(AObj.DateTime);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetDateTime(AObj: TDateTimePicker; AValue: TUnixDateTime); extdecl;
 begin
+  handleExceptionBegin
   AObj.DateTime := UnixToTime(AValue);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetDroppedDown(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DroppedDown;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetAlign(AObj: TDateTimePicker): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetAlign(AObj: TDateTimePicker; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetAnchors(AObj: TDateTimePicker): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetAnchors(AObj: TDateTimePicker; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetBiDiMode(AObj: TDateTimePicker): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetBiDiMode(AObj: TDateTimePicker; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetCalAlignment(AObj: TDateTimePicker): TDTCalAlignment; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CalAlignment;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetCalAlignment(AObj: TDateTimePicker; AValue: TDTCalAlignment); extdecl;
 begin
+  handleExceptionBegin
   AObj.CalAlignment := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetConstraints(AObj: TDateTimePicker): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetConstraints(AObj: TDateTimePicker; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetDate(AObj: TDateTimePicker): TUnixDateTime; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToUnixTime(AObj.Date);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetDate(AObj: TDateTimePicker; AValue: TUnixDateTime); extdecl;
 begin
+  handleExceptionBegin
   AObj.Date := UnixToTime(AValue);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetTime(AObj: TDateTimePicker): TUnixDateTime; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToUnixTime(AObj.Time);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetTime(AObj: TDateTimePicker; AValue: TUnixDateTime); extdecl;
 begin
+  handleExceptionBegin
   AObj.Time := UnixToTime(AValue);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetChecked(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Checked;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetChecked(AObj: TDateTimePicker; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Checked := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetColor(AObj: TDateTimePicker): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetColor(AObj: TDateTimePicker; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetDateMode(AObj: TDateTimePicker): TDTDateMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DateMode;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetDateMode(AObj: TDateTimePicker; AValue: TDTDateMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DateMode := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetDoubleBuffered(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetDoubleBuffered(AObj: TDateTimePicker; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetEnabled(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetEnabled(AObj: TDateTimePicker; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetFont(AObj: TDateTimePicker): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetFont(AObj: TDateTimePicker; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetMaxDate(AObj: TDateTimePicker): TUnixDateTime; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToUnixTime(AObj.MaxDate);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetMaxDate(AObj: TDateTimePicker; AValue: TUnixDateTime); extdecl;
 begin
+  handleExceptionBegin
   AObj.MaxDate := UnixToTime(AValue);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetMinDate(AObj: TDateTimePicker): TUnixDateTime; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToUnixTime(AObj.MinDate);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetMinDate(AObj: TDateTimePicker; AValue: TUnixDateTime); extdecl;
 begin
+  handleExceptionBegin
   AObj.MinDate := UnixToTime(AValue);
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetParentColor(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetParentColor(AObj: TDateTimePicker; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetParentDoubleBuffered(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetParentDoubleBuffered(AObj: TDateTimePicker; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetParentFont(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetParentFont(AObj: TDateTimePicker; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetParentShowHint(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetParentShowHint(AObj: TDateTimePicker; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetPopupMenu(AObj: TDateTimePicker): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetPopupMenu(AObj: TDateTimePicker; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetShowHint(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetShowHint(AObj: TDateTimePicker; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetTabOrder(AObj: TDateTimePicker): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetTabOrder(AObj: TDateTimePicker; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetTabStop(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetTabStop(AObj: TDateTimePicker; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetVisible(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetVisible(AObj: TDateTimePicker; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -604,332 +810,464 @@ end;
 
 function DateTimePicker_GetDockClientCount(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetDockSite(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetDockSite(AObj: TDateTimePicker; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetMouseInClient(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetVisibleDockClientCount(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetBrush(AObj: TDateTimePicker): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetControlCount(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetHandle(AObj: TDateTimePicker): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetParentWindow(AObj: TDateTimePicker): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetParentWindow(AObj: TDateTimePicker; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetShowing(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetUseDockManager(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetUseDockManager(AObj: TDateTimePicker; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetAction(AObj: TDateTimePicker): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetAction(AObj: TDateTimePicker; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_GetBoundsRect(AObj: TDateTimePicker; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetBoundsRect(AObj: TDateTimePicker; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetClientHeight(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetClientHeight(AObj: TDateTimePicker; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_GetClientOrigin(AObj: TDateTimePicker; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_GetClientRect(AObj: TDateTimePicker; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetClientWidth(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetClientWidth(AObj: TDateTimePicker; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetControlState(AObj: TDateTimePicker): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetControlState(AObj: TDateTimePicker; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetControlStyle(AObj: TDateTimePicker): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetControlStyle(AObj: TDateTimePicker; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetFloating(AObj: TDateTimePicker): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetParent(AObj: TDateTimePicker): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetParent(AObj: TDateTimePicker; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetLeft(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetLeft(AObj: TDateTimePicker; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetTop(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetTop(AObj: TDateTimePicker; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetWidth(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetWidth(AObj: TDateTimePicker; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetHeight(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetHeight(AObj: TDateTimePicker; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetCursor(AObj: TDateTimePicker): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetCursor(AObj: TDateTimePicker; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetHint(AObj: TDateTimePicker): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetHint(AObj: TDateTimePicker; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetComponentCount(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetComponentIndex(AObj: TDateTimePicker): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetComponentIndex(AObj: TDateTimePicker; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetOwner(AObj: TDateTimePicker): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetName(AObj: TDateTimePicker): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetName(AObj: TDateTimePicker; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetTag(AObj: TDateTimePicker): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetTag(AObj: TDateTimePicker; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetAnchorSideLeft(AObj: TDateTimePicker): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetAnchorSideLeft(AObj: TDateTimePicker; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetAnchorSideTop(AObj: TDateTimePicker): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetAnchorSideTop(AObj: TDateTimePicker; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetAnchorSideRight(AObj: TDateTimePicker): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetAnchorSideRight(AObj: TDateTimePicker; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetAnchorSideBottom(AObj: TDateTimePicker): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetAnchorSideBottom(AObj: TDateTimePicker; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetChildSizing(AObj: TDateTimePicker): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetChildSizing(AObj: TDateTimePicker; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetBorderSpacing(AObj: TDateTimePicker): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure DateTimePicker_SetBorderSpacing(AObj: TDateTimePicker; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetDockClients(AObj: TDateTimePicker; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetControls(AObj: TDateTimePicker; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetComponents(AObj: TDateTimePicker; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function DateTimePicker_GetAnchorSide(AObj: TDateTimePicker; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function DateTimePicker_StaticClassType: TClass; extdecl;

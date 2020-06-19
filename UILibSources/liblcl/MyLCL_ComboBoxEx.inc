@@ -9,567 +9,793 @@
 
 function ComboBoxEx_Create(AOwner: TComponent): TComboBoxEx; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TComboBoxEx.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_Free(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_Focused(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_AddItem(AObj: TComboBoxEx; Item: PChar; AObject: TObject); extdecl;
 begin
+  handleExceptionBegin
   AObj.AddItem(Item, AObject);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_Clear(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_ClearSelection(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClearSelection;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_DeleteSelected(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.DeleteSelected;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SelectAll(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelectAll;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_CanFocus(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_ContainsControl(AObj: TComboBoxEx; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_ControlAtPos(AObj: TComboBoxEx; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_DisableAlign(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_EnableAlign(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_FindChildControl(AObj: TComboBoxEx; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_FlipChildren(AObj: TComboBoxEx; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_HandleAllocated(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_InsertControl(AObj: TComboBoxEx; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_Invalidate(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_RemoveControl(AObj: TComboBoxEx; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_Realign(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_Repaint(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_ScaleBy(AObj: TComboBoxEx; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_ScrollBy(AObj: TComboBoxEx; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetBounds(AObj: TComboBoxEx; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetFocus(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_Update(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_BringToFront(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_ClientToScreen(AObj: TComboBoxEx; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_ClientToParent(AObj: TComboBoxEx; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_Dragging(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_HasParent(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_Hide(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_Perform(AObj: TComboBoxEx; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_Refresh(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_ScreenToClient(AObj: TComboBoxEx; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_ParentToClient(AObj: TComboBoxEx; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SendToBack(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_Show(AObj: TComboBoxEx); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetTextBuf(AObj: TComboBoxEx; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetTextLen(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetTextBuf(AObj: TComboBoxEx; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_FindComponent(AObj: TComboBoxEx; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetNamePath(AObj: TComboBoxEx): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_Assign(AObj: TComboBoxEx; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_ClassType(AObj: TComboBoxEx): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_ClassName(AObj: TComboBoxEx): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_InstanceSize(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_InheritsFrom(AObj: TComboBoxEx; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_Equals(AObj: TComboBoxEx; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetHashCode(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_ToString(AObj: TComboBoxEx): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_AnchorToNeighbour(AObj: TComboBoxEx; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_AnchorParallel(AObj: TComboBoxEx; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_AnchorHorizontalCenterTo(AObj: TComboBoxEx; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_AnchorVerticalCenterTo(AObj: TComboBoxEx; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_AnchorAsAlign(AObj: TComboBoxEx; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_AnchorClient(AObj: TComboBoxEx; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetAlign(AObj: TComboBoxEx): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetAlign(AObj: TComboBoxEx; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetAutoCompleteOptions(AObj: TComboBoxEx): TAutoCompleteOptions; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoCompleteOptions;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetAutoCompleteOptions(AObj: TComboBoxEx; AValue: TAutoCompleteOptions); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoCompleteOptions := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetItemsEx(AObj: TComboBoxEx): TComboExItems; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemsEx;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetItemsEx(AObj: TComboBoxEx; AValue: TComboExItems); extdecl;
 begin
+  handleExceptionBegin
   AObj.ItemsEx := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetStyle(AObj: TComboBoxEx): TComboBoxExStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Style;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetStyle(AObj: TComboBoxEx; AValue: TComboBoxExStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.Style := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetStyleEx(AObj: TComboBoxEx): TComboBoxExStyles; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.StyleEx;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetStyleEx(AObj: TComboBoxEx; AValue: TComboBoxExStyles); extdecl;
 begin
+  handleExceptionBegin
   AObj.StyleEx := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetAction(AObj: TComboBoxEx): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetAction(AObj: TComboBoxEx; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetAnchors(AObj: TComboBoxEx): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetAnchors(AObj: TComboBoxEx; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetBiDiMode(AObj: TComboBoxEx): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetBiDiMode(AObj: TComboBoxEx; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetColor(AObj: TComboBoxEx): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetColor(AObj: TComboBoxEx; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetConstraints(AObj: TComboBoxEx): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetConstraints(AObj: TComboBoxEx; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetDoubleBuffered(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetDoubleBuffered(AObj: TComboBoxEx; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetDragCursor(AObj: TComboBoxEx): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetDragCursor(AObj: TComboBoxEx; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetDragKind(AObj: TComboBoxEx): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetDragKind(AObj: TComboBoxEx; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetDragMode(AObj: TComboBoxEx): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetDragMode(AObj: TComboBoxEx; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetEnabled(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetEnabled(AObj: TComboBoxEx; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetFont(AObj: TComboBoxEx): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetFont(AObj: TComboBoxEx; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetItemHeight(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemHeight;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetItemHeight(AObj: TComboBoxEx; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ItemHeight := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetMaxLength(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MaxLength;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetMaxLength(AObj: TComboBoxEx; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MaxLength := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetParentColor(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetParentColor(AObj: TComboBoxEx; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetParentDoubleBuffered(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetParentDoubleBuffered(AObj: TComboBoxEx; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetParentFont(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetParentFont(AObj: TComboBoxEx; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetParentShowHint(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetParentShowHint(AObj: TComboBoxEx; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetPopupMenu(AObj: TComboBoxEx): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetPopupMenu(AObj: TComboBoxEx; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetShowHint(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetShowHint(AObj: TComboBoxEx; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetTabOrder(AObj: TComboBoxEx): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetTabOrder(AObj: TComboBoxEx; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetTabStop(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetTabStop(AObj: TComboBoxEx; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetText(AObj: TComboBoxEx): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Text);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetText(AObj: TComboBoxEx; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Text := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetVisible(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetVisible(AObj: TComboBoxEx; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -702,407 +928,569 @@ end;
 
 function ComboBoxEx_GetImages(AObj: TComboBoxEx): TCustomImageList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Images;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetImages(AObj: TComboBoxEx; AValue: TCustomImageList); extdecl;
 begin
+  handleExceptionBegin
   AObj.Images := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetDropDownCount(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DropDownCount;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetDropDownCount(AObj: TComboBoxEx; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.DropDownCount := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetSelText(AObj: TComboBoxEx): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.SelText);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetSelText(AObj: TComboBoxEx; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelText := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetCanvas(AObj: TComboBoxEx): TCanvas; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Canvas;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetDroppedDown(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DroppedDown;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetDroppedDown(AObj: TComboBoxEx; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DroppedDown := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetItems(AObj: TComboBoxEx): TStrings; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Items;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetItems(AObj: TComboBoxEx; AValue: TStrings); extdecl;
 begin
+  handleExceptionBegin
   AObj.Items := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetSelLength(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelLength;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetSelLength(AObj: TComboBoxEx; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelLength := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetSelStart(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelStart;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetSelStart(AObj: TComboBoxEx; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelStart := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetItemIndex(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ItemIndex;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetItemIndex(AObj: TComboBoxEx; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ItemIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetDockClientCount(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetDockSite(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetDockSite(AObj: TComboBoxEx; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetMouseInClient(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetVisibleDockClientCount(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetBrush(AObj: TComboBoxEx): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetControlCount(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetHandle(AObj: TComboBoxEx): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetParentWindow(AObj: TComboBoxEx): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetParentWindow(AObj: TComboBoxEx; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetShowing(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetUseDockManager(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetUseDockManager(AObj: TComboBoxEx; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_GetBoundsRect(AObj: TComboBoxEx; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetBoundsRect(AObj: TComboBoxEx; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetClientHeight(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetClientHeight(AObj: TComboBoxEx; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_GetClientOrigin(AObj: TComboBoxEx; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_GetClientRect(AObj: TComboBoxEx; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetClientWidth(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetClientWidth(AObj: TComboBoxEx; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetControlState(AObj: TComboBoxEx): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetControlState(AObj: TComboBoxEx; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetControlStyle(AObj: TComboBoxEx): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetControlStyle(AObj: TComboBoxEx; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetFloating(AObj: TComboBoxEx): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetParent(AObj: TComboBoxEx): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetParent(AObj: TComboBoxEx; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetLeft(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetLeft(AObj: TComboBoxEx; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetTop(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetTop(AObj: TComboBoxEx; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetWidth(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetWidth(AObj: TComboBoxEx; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetHeight(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetHeight(AObj: TComboBoxEx; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetCursor(AObj: TComboBoxEx): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetCursor(AObj: TComboBoxEx; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetHint(AObj: TComboBoxEx): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetHint(AObj: TComboBoxEx; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetComponentCount(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetComponentIndex(AObj: TComboBoxEx): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetComponentIndex(AObj: TComboBoxEx; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetOwner(AObj: TComboBoxEx): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetName(AObj: TComboBoxEx): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetName(AObj: TComboBoxEx; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetTag(AObj: TComboBoxEx): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetTag(AObj: TComboBoxEx; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetAnchorSideLeft(AObj: TComboBoxEx): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetAnchorSideLeft(AObj: TComboBoxEx; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetAnchorSideTop(AObj: TComboBoxEx): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetAnchorSideTop(AObj: TComboBoxEx; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetAnchorSideRight(AObj: TComboBoxEx): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetAnchorSideRight(AObj: TComboBoxEx; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetAnchorSideBottom(AObj: TComboBoxEx): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetAnchorSideBottom(AObj: TComboBoxEx; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetChildSizing(AObj: TComboBoxEx): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetChildSizing(AObj: TComboBoxEx; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetBorderSpacing(AObj: TComboBoxEx): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure ComboBoxEx_SetBorderSpacing(AObj: TComboBoxEx; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetDockClients(AObj: TComboBoxEx; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetControls(AObj: TComboBoxEx; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetComponents(AObj: TComboBoxEx; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_GetAnchorSide(AObj: TComboBoxEx; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function ComboBoxEx_StaticClassType: TClass; extdecl;

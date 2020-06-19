@@ -9,507 +9,709 @@
 
 function SpinEdit_Create(AOwner: TComponent): TSpinEdit; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TSpinEdit.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_Free(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_Clear(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_ClearSelection(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClearSelection;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_CopyToClipboard(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.CopyToClipboard;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_CutToClipboard(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.CutToClipboard;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_PasteFromClipboard(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.PasteFromClipboard;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_Undo(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Undo;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SelectAll(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelectAll;
+  handleExceptionEnd
 end;
 
 function SpinEdit_CanFocus(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function SpinEdit_ContainsControl(AObj: TSpinEdit; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function SpinEdit_ControlAtPos(AObj: TSpinEdit; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_DisableAlign(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_EnableAlign(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function SpinEdit_FindChildControl(AObj: TSpinEdit; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_FlipChildren(AObj: TSpinEdit; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function SpinEdit_Focused(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function SpinEdit_HandleAllocated(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_InsertControl(AObj: TSpinEdit; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_Invalidate(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_RemoveControl(AObj: TSpinEdit; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_Realign(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_Repaint(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_ScaleBy(AObj: TSpinEdit; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_ScrollBy(AObj: TSpinEdit; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetBounds(AObj: TSpinEdit; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetFocus(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_Update(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_BringToFront(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_ClientToScreen(AObj: TSpinEdit; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_ClientToParent(AObj: TSpinEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function SpinEdit_Dragging(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function SpinEdit_HasParent(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_Hide(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function SpinEdit_Perform(AObj: TSpinEdit; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_Refresh(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_ScreenToClient(AObj: TSpinEdit; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_ParentToClient(AObj: TSpinEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SendToBack(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_Show(AObj: TSpinEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetTextBuf(AObj: TSpinEdit; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetTextLen(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetTextBuf(AObj: TSpinEdit; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function SpinEdit_FindComponent(AObj: TSpinEdit; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetNamePath(AObj: TSpinEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_Assign(AObj: TSpinEdit; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function SpinEdit_ClassType(AObj: TSpinEdit): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function SpinEdit_ClassName(AObj: TSpinEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function SpinEdit_InstanceSize(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function SpinEdit_InheritsFrom(AObj: TSpinEdit; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function SpinEdit_Equals(AObj: TSpinEdit; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetHashCode(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function SpinEdit_ToString(AObj: TSpinEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_AnchorToNeighbour(AObj: TSpinEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_AnchorParallel(AObj: TSpinEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_AnchorHorizontalCenterTo(AObj: TSpinEdit; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_AnchorVerticalCenterTo(AObj: TSpinEdit; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_AnchorAsAlign(AObj: TSpinEdit; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_AnchorClient(AObj: TSpinEdit; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetAnchors(AObj: TSpinEdit): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetAnchors(AObj: TSpinEdit; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetAutoSelect(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSelect;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetAutoSelect(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSelect := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetAutoSize(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSize;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetAutoSize(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSize := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetColor(AObj: TSpinEdit): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetColor(AObj: TSpinEdit; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetConstraints(AObj: TSpinEdit): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetConstraints(AObj: TSpinEdit; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetEnabled(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetEnabled(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetFont(AObj: TSpinEdit): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetFont(AObj: TSpinEdit; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetIncrement(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Increment;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetIncrement(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Increment := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetMaxLength(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MaxLength;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetMaxLength(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MaxLength := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetMaxValue(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MaxValue;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetMaxValue(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MaxValue := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetMinValue(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MinValue;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetMinValue(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MinValue := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetParentColor(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetParentColor(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetParentFont(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetParentFont(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetParentShowHint(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetParentShowHint(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetPopupMenu(AObj: TSpinEdit): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetPopupMenu(AObj: TSpinEdit; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetReadOnly(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ReadOnly;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetReadOnly(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ReadOnly := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetShowHint(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetShowHint(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetTabOrder(AObj: TSpinEdit): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetTabOrder(AObj: TSpinEdit; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetTabStop(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetTabStop(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetValue(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Value;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetValue(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Value := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetVisible(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetVisible(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -594,447 +796,625 @@ end;
 
 function SpinEdit_GetAlignment(AObj: TSpinEdit): TAlignment; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Alignment;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetAlignment(AObj: TSpinEdit; AValue: TAlignment); extdecl;
 begin
+  handleExceptionBegin
   AObj.Alignment := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetCanUndo(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanUndo;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetModified(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Modified;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetModified(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Modified := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetSelLength(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelLength;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetSelLength(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelLength := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetSelStart(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelStart;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetSelStart(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelStart := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetSelText(AObj: TSpinEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.SelText);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetSelText(AObj: TSpinEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelText := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetText(AObj: TSpinEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Text);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetText(AObj: TSpinEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Text := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetTextHint(AObj: TSpinEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.TextHint);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetTextHint(AObj: TSpinEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.TextHint := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetDockClientCount(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetDockSite(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetDockSite(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetDoubleBuffered(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetDoubleBuffered(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetMouseInClient(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetVisibleDockClientCount(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetBrush(AObj: TSpinEdit): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetControlCount(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetHandle(AObj: TSpinEdit): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetParentDoubleBuffered(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetParentDoubleBuffered(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetParentWindow(AObj: TSpinEdit): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetParentWindow(AObj: TSpinEdit; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetShowing(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetUseDockManager(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetUseDockManager(AObj: TSpinEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetAction(AObj: TSpinEdit): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetAction(AObj: TSpinEdit; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetAlign(AObj: TSpinEdit): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetAlign(AObj: TSpinEdit; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetBiDiMode(AObj: TSpinEdit): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetBiDiMode(AObj: TSpinEdit; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_GetBoundsRect(AObj: TSpinEdit; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetBoundsRect(AObj: TSpinEdit; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetClientHeight(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetClientHeight(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_GetClientOrigin(AObj: TSpinEdit; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_GetClientRect(AObj: TSpinEdit; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetClientWidth(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetClientWidth(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetControlState(AObj: TSpinEdit): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetControlState(AObj: TSpinEdit; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetControlStyle(AObj: TSpinEdit): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetControlStyle(AObj: TSpinEdit; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetFloating(AObj: TSpinEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetParent(AObj: TSpinEdit): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetParent(AObj: TSpinEdit; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetLeft(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetLeft(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetTop(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetTop(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetWidth(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetWidth(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetHeight(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetHeight(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetCursor(AObj: TSpinEdit): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetCursor(AObj: TSpinEdit; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetHint(AObj: TSpinEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetHint(AObj: TSpinEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetComponentCount(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetComponentIndex(AObj: TSpinEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetComponentIndex(AObj: TSpinEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetOwner(AObj: TSpinEdit): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetName(AObj: TSpinEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetName(AObj: TSpinEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetTag(AObj: TSpinEdit): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetTag(AObj: TSpinEdit; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetAnchorSideLeft(AObj: TSpinEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetAnchorSideLeft(AObj: TSpinEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetAnchorSideTop(AObj: TSpinEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetAnchorSideTop(AObj: TSpinEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetAnchorSideRight(AObj: TSpinEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetAnchorSideRight(AObj: TSpinEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetAnchorSideBottom(AObj: TSpinEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetAnchorSideBottom(AObj: TSpinEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetChildSizing(AObj: TSpinEdit): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetChildSizing(AObj: TSpinEdit; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetBorderSpacing(AObj: TSpinEdit): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure SpinEdit_SetBorderSpacing(AObj: TSpinEdit; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetDockClients(AObj: TSpinEdit; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetControls(AObj: TSpinEdit; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetComponents(AObj: TSpinEdit; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function SpinEdit_GetAnchorSide(AObj: TSpinEdit; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function SpinEdit_StaticClassType: TClass; extdecl;

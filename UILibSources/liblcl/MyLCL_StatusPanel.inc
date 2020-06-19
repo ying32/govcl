@@ -9,137 +9,191 @@
 
 function StatusPanel_Create(AOwner: TCollection): TStatusPanel; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TStatusPanel.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure StatusPanel_Free(AObj: TStatusPanel); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure StatusPanel_Assign(AObj: TStatusPanel; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function StatusPanel_GetNamePath(AObj: TStatusPanel): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function StatusPanel_ClassType(AObj: TStatusPanel): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function StatusPanel_ClassName(AObj: TStatusPanel): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function StatusPanel_InstanceSize(AObj: TStatusPanel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function StatusPanel_InheritsFrom(AObj: TStatusPanel; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function StatusPanel_Equals(AObj: TStatusPanel; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function StatusPanel_GetHashCode(AObj: TStatusPanel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function StatusPanel_ToString(AObj: TStatusPanel): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function StatusPanel_GetAlignment(AObj: TStatusPanel): TAlignment; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Alignment;
+  handleExceptionEnd
 end;
 
 procedure StatusPanel_SetAlignment(AObj: TStatusPanel; AValue: TAlignment); extdecl;
 begin
+  handleExceptionBegin
   AObj.Alignment := AValue;
+  handleExceptionEnd
 end;
 
 function StatusPanel_GetBiDiMode(AObj: TStatusPanel): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure StatusPanel_SetBiDiMode(AObj: TStatusPanel; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function StatusPanel_GetStyle(AObj: TStatusPanel): TStatusPanelStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Style;
+  handleExceptionEnd
 end;
 
 procedure StatusPanel_SetStyle(AObj: TStatusPanel; AValue: TStatusPanelStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.Style := AValue;
+  handleExceptionEnd
 end;
 
 function StatusPanel_GetText(AObj: TStatusPanel): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Text);
+  handleExceptionEnd
 end;
 
 procedure StatusPanel_SetText(AObj: TStatusPanel; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Text := AValue;
+  handleExceptionEnd
 end;
 
 function StatusPanel_GetWidth(AObj: TStatusPanel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure StatusPanel_SetWidth(AObj: TStatusPanel; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function StatusPanel_GetCollection(AObj: TStatusPanel): TCollection; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Collection;
+  handleExceptionEnd
 end;
 
 procedure StatusPanel_SetCollection(AObj: TStatusPanel; AValue: TCollection); extdecl;
 begin
+  handleExceptionBegin
   AObj.Collection := AValue;
+  handleExceptionEnd
 end;
 
 function StatusPanel_GetIndex(AObj: TStatusPanel): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Index;
+  handleExceptionEnd
 end;
 
 procedure StatusPanel_SetIndex(AObj: TStatusPanel; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Index := AValue;
+  handleExceptionEnd
 end;
 
 function StatusPanel_GetDisplayName(AObj: TStatusPanel): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.DisplayName);
+  handleExceptionEnd
 end;
 
 procedure StatusPanel_SetDisplayName(AObj: TStatusPanel; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisplayName := AValue;
+  handleExceptionEnd
 end;
 
 function StatusPanel_StaticClassType: TClass; extdecl;

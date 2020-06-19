@@ -9,597 +9,835 @@
 
 function DrawGrid_Create(AOwner: TComponent): TDrawGrid; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TDrawGrid.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_Free(AObj: TDrawGrid); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_CellRect(AObj: TDrawGrid; ACol: Integer; ARow: Integer; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CellRect(ACol, ARow);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_MouseToCell(AObj: TDrawGrid; X: Integer; Y: Integer; var ACol: Integer; var ARow: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MouseToCell(X, Y, ACol, ARow);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_MouseCoord(AObj: TDrawGrid; X: Integer; Y: Integer; var Result: TGridCoord); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseCoord(X, Y);
+  handleExceptionEnd
 end;
 
 function DrawGrid_CanFocus(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function DrawGrid_ContainsControl(AObj: TDrawGrid; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function DrawGrid_ControlAtPos(AObj: TDrawGrid; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_DisableAlign(AObj: TDrawGrid); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_EnableAlign(AObj: TDrawGrid); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function DrawGrid_FindChildControl(AObj: TDrawGrid; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_FlipChildren(AObj: TDrawGrid; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function DrawGrid_Focused(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function DrawGrid_HandleAllocated(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_InsertControl(AObj: TDrawGrid; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_Invalidate(AObj: TDrawGrid); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_RemoveControl(AObj: TDrawGrid; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_Realign(AObj: TDrawGrid); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_Repaint(AObj: TDrawGrid); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_ScaleBy(AObj: TDrawGrid; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_ScrollBy(AObj: TDrawGrid; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetBounds(AObj: TDrawGrid; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetFocus(AObj: TDrawGrid); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_Update(AObj: TDrawGrid); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_BringToFront(AObj: TDrawGrid); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_ClientToScreen(AObj: TDrawGrid; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_ClientToParent(AObj: TDrawGrid; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function DrawGrid_Dragging(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function DrawGrid_HasParent(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_Hide(AObj: TDrawGrid); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function DrawGrid_Perform(AObj: TDrawGrid; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_Refresh(AObj: TDrawGrid); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_ScreenToClient(AObj: TDrawGrid; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_ParentToClient(AObj: TDrawGrid; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SendToBack(AObj: TDrawGrid); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_Show(AObj: TDrawGrid); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetTextBuf(AObj: TDrawGrid; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetTextLen(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetTextBuf(AObj: TDrawGrid; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function DrawGrid_FindComponent(AObj: TDrawGrid; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetNamePath(AObj: TDrawGrid): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_Assign(AObj: TDrawGrid; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function DrawGrid_ClassType(AObj: TDrawGrid): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function DrawGrid_ClassName(AObj: TDrawGrid): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function DrawGrid_InstanceSize(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function DrawGrid_InheritsFrom(AObj: TDrawGrid; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function DrawGrid_Equals(AObj: TDrawGrid; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetHashCode(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function DrawGrid_ToString(AObj: TDrawGrid): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_AnchorToNeighbour(AObj: TDrawGrid; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_AnchorParallel(AObj: TDrawGrid; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_AnchorHorizontalCenterTo(AObj: TDrawGrid; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_AnchorVerticalCenterTo(AObj: TDrawGrid; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_AnchorAsAlign(AObj: TDrawGrid; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_AnchorClient(AObj: TDrawGrid; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetAlign(AObj: TDrawGrid): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetAlign(AObj: TDrawGrid; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetAnchors(AObj: TDrawGrid): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetAnchors(AObj: TDrawGrid; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetBiDiMode(AObj: TDrawGrid): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetBiDiMode(AObj: TDrawGrid; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetBorderStyle(AObj: TDrawGrid): TBorderStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderStyle;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetBorderStyle(AObj: TDrawGrid; AValue: TBorderStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderStyle := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetColor(AObj: TDrawGrid): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetColor(AObj: TDrawGrid; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetColCount(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ColCount;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetColCount(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ColCount := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetConstraints(AObj: TDrawGrid): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetConstraints(AObj: TDrawGrid; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetDefaultColWidth(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DefaultColWidth;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetDefaultColWidth(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.DefaultColWidth := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetDefaultRowHeight(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DefaultRowHeight;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetDefaultRowHeight(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.DefaultRowHeight := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetDefaultDrawing(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DefaultDrawing;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetDefaultDrawing(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DefaultDrawing := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetDoubleBuffered(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetDoubleBuffered(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetDragCursor(AObj: TDrawGrid): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetDragCursor(AObj: TDrawGrid; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetDragKind(AObj: TDrawGrid): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetDragKind(AObj: TDrawGrid; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetDragMode(AObj: TDrawGrid): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetDragMode(AObj: TDrawGrid; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetEnabled(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetEnabled(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetFixedColor(AObj: TDrawGrid): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FixedColor;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetFixedColor(AObj: TDrawGrid; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.FixedColor := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetFixedCols(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FixedCols;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetFixedCols(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.FixedCols := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetRowCount(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.RowCount;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetRowCount(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.RowCount := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetFixedRows(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FixedRows;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetFixedRows(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.FixedRows := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetFont(AObj: TDrawGrid): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetFont(AObj: TDrawGrid; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetGridLineWidth(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GridLineWidth;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetGridLineWidth(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.GridLineWidth := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetOptions(AObj: TDrawGrid): TGridOptions; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Options;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetOptions(AObj: TDrawGrid; AValue: TGridOptions); extdecl;
 begin
+  handleExceptionBegin
   AObj.Options := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetParentColor(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetParentColor(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetParentDoubleBuffered(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetParentDoubleBuffered(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetParentFont(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetParentFont(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetParentShowHint(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetParentShowHint(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetPopupMenu(AObj: TDrawGrid): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetPopupMenu(AObj: TDrawGrid; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetScrollBars(AObj: TDrawGrid): TScrollStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScrollBars;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetScrollBars(AObj: TDrawGrid; AValue: TScrollStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBars := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetShowHint(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetShowHint(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetTabOrder(AObj: TDrawGrid): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetTabOrder(AObj: TDrawGrid; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetVisible(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetVisible(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetVisibleColCount(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleColCount;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetVisibleRowCount(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleRowCount;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -828,437 +1066,611 @@ end;
 
 function DrawGrid_GetCanvas(AObj: TDrawGrid): TCanvas; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Canvas;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetCol(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Col;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetCol(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Col := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetEditorMode(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.EditorMode;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetEditorMode(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.EditorMode := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetGridHeight(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GridHeight;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetGridWidth(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GridWidth;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetLeftCol(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.LeftCol;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetLeftCol(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.LeftCol := AValue;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_GetSelection(AObj: TDrawGrid; var Result: TGridRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Selection;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetSelection(AObj: TDrawGrid; var AValue: TGridRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.Selection := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetRow(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Row;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetRow(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Row := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetTopRow(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TopRow;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetTopRow(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.TopRow := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetTabStop(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetTabStop(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetDockClientCount(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetDockSite(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetDockSite(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetMouseInClient(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetVisibleDockClientCount(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetBrush(AObj: TDrawGrid): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetControlCount(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetHandle(AObj: TDrawGrid): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetParentWindow(AObj: TDrawGrid): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetParentWindow(AObj: TDrawGrid; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetShowing(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetUseDockManager(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetUseDockManager(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetAction(AObj: TDrawGrid): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetAction(AObj: TDrawGrid; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_GetBoundsRect(AObj: TDrawGrid; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetBoundsRect(AObj: TDrawGrid; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetClientHeight(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetClientHeight(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_GetClientOrigin(AObj: TDrawGrid; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_GetClientRect(AObj: TDrawGrid; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetClientWidth(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetClientWidth(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetControlState(AObj: TDrawGrid): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetControlState(AObj: TDrawGrid; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetControlStyle(AObj: TDrawGrid): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetControlStyle(AObj: TDrawGrid; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetFloating(AObj: TDrawGrid): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetParent(AObj: TDrawGrid): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetParent(AObj: TDrawGrid; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetLeft(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetLeft(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetTop(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetTop(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetWidth(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetWidth(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetHeight(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetHeight(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetCursor(AObj: TDrawGrid): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetCursor(AObj: TDrawGrid; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetHint(AObj: TDrawGrid): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetHint(AObj: TDrawGrid; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetComponentCount(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetComponentIndex(AObj: TDrawGrid): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetComponentIndex(AObj: TDrawGrid; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetOwner(AObj: TDrawGrid): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetName(AObj: TDrawGrid): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetName(AObj: TDrawGrid; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetTag(AObj: TDrawGrid): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetTag(AObj: TDrawGrid; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetAnchorSideLeft(AObj: TDrawGrid): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetAnchorSideLeft(AObj: TDrawGrid; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetAnchorSideTop(AObj: TDrawGrid): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetAnchorSideTop(AObj: TDrawGrid; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetAnchorSideRight(AObj: TDrawGrid): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetAnchorSideRight(AObj: TDrawGrid; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetAnchorSideBottom(AObj: TDrawGrid): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetAnchorSideBottom(AObj: TDrawGrid; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetChildSizing(AObj: TDrawGrid): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetChildSizing(AObj: TDrawGrid; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetBorderSpacing(AObj: TDrawGrid): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetBorderSpacing(AObj: TDrawGrid; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetColWidths(AObj: TDrawGrid; Index: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ColWidths[Index];
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetColWidths(AObj: TDrawGrid; Index: Integer; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ColWidths[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetRowHeights(AObj: TDrawGrid; Index: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.RowHeights[Index];
+  handleExceptionEnd
 end;
 
 procedure DrawGrid_SetRowHeights(AObj: TDrawGrid; Index: Integer; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.RowHeights[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetDockClients(AObj: TDrawGrid; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetControls(AObj: TDrawGrid; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetComponents(AObj: TDrawGrid; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function DrawGrid_GetAnchorSide(AObj: TDrawGrid; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function DrawGrid_StaticClassType: TClass; extdecl;

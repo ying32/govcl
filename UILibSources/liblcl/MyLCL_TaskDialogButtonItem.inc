@@ -9,117 +9,163 @@
 
 function TaskDialogButtonItem_Create(AOwner: TCollection): TTaskDialogButtonItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TTaskDialogButtonItem.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure TaskDialogButtonItem_Free(AObj: TTaskDialogButtonItem); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_GetNamePath(AObj: TTaskDialogButtonItem): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure TaskDialogButtonItem_Assign(AObj: TTaskDialogButtonItem; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_ClassType(AObj: TTaskDialogButtonItem): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_ClassName(AObj: TTaskDialogButtonItem): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_InstanceSize(AObj: TTaskDialogButtonItem): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_InheritsFrom(AObj: TTaskDialogButtonItem; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_Equals(AObj: TTaskDialogButtonItem; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_GetHashCode(AObj: TTaskDialogButtonItem): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_ToString(AObj: TTaskDialogButtonItem): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_GetModalResult(AObj: TTaskDialogButtonItem): TModalResult; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ModalResult;
+  handleExceptionEnd
 end;
 
 procedure TaskDialogButtonItem_SetModalResult(AObj: TTaskDialogButtonItem; AValue: TModalResult); extdecl;
 begin
+  handleExceptionBegin
   AObj.ModalResult := AValue;
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_GetCaption(AObj: TTaskDialogButtonItem): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Caption);
+  handleExceptionEnd
 end;
 
 procedure TaskDialogButtonItem_SetCaption(AObj: TTaskDialogButtonItem; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Caption := AValue;
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_GetDefault(AObj: TTaskDialogButtonItem): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Default;
+  handleExceptionEnd
 end;
 
 procedure TaskDialogButtonItem_SetDefault(AObj: TTaskDialogButtonItem; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Default := AValue;
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_GetCollection(AObj: TTaskDialogButtonItem): TCollection; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Collection;
+  handleExceptionEnd
 end;
 
 procedure TaskDialogButtonItem_SetCollection(AObj: TTaskDialogButtonItem; AValue: TCollection); extdecl;
 begin
+  handleExceptionBegin
   AObj.Collection := AValue;
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_GetIndex(AObj: TTaskDialogButtonItem): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Index;
+  handleExceptionEnd
 end;
 
 procedure TaskDialogButtonItem_SetIndex(AObj: TTaskDialogButtonItem; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Index := AValue;
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_GetDisplayName(AObj: TTaskDialogButtonItem): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.DisplayName);
+  handleExceptionEnd
 end;
 
 procedure TaskDialogButtonItem_SetDisplayName(AObj: TTaskDialogButtonItem; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisplayName := AValue;
+  handleExceptionEnd
 end;
 
 function TaskDialogButtonItem_StaticClassType: TClass; extdecl;

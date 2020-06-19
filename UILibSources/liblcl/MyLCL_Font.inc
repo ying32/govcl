@@ -9,172 +9,240 @@
 
 function Font_Create: TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TFont.Create;
+  handleExceptionEnd
 end;
 
 procedure Font_Free(AObj: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure Font_Assign(AObj: TFont; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function Font_HandleAllocated(AObj: TFont): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 function Font_GetNamePath(AObj: TFont): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function Font_ClassType(AObj: TFont): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Font_ClassName(AObj: TFont): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Font_InstanceSize(AObj: TFont): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Font_InheritsFrom(AObj: TFont; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Font_Equals(AObj: TFont; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Font_GetHashCode(AObj: TFont): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Font_ToString(AObj: TFont): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Font_GetHandle(AObj: TFont): HFONT; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 procedure Font_SetHandle(AObj: TFont; AValue: HFONT); extdecl;
 begin
+  handleExceptionBegin
   AObj.Handle := AValue;
+  handleExceptionEnd
 end;
 
 function Font_GetPixelsPerInch(AObj: TFont): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PixelsPerInch;
+  handleExceptionEnd
 end;
 
 procedure Font_SetPixelsPerInch(AObj: TFont; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.PixelsPerInch := AValue;
+  handleExceptionEnd
 end;
 
 function Font_GetCharset(AObj: TFont): TFontCharset; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Charset;
+  handleExceptionEnd
 end;
 
 procedure Font_SetCharset(AObj: TFont; AValue: TFontCharset); extdecl;
 begin
+  handleExceptionBegin
   AObj.Charset := AValue;
+  handleExceptionEnd
 end;
 
 function Font_GetColor(AObj: TFont): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure Font_SetColor(AObj: TFont; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function Font_GetHeight(AObj: TFont): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure Font_SetHeight(AObj: TFont; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function Font_GetName(AObj: TFont): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure Font_SetName(AObj: TFont; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function Font_GetOrientation(AObj: TFont): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Orientation;
+  handleExceptionEnd
 end;
 
 procedure Font_SetOrientation(AObj: TFont; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Orientation := AValue;
+  handleExceptionEnd
 end;
 
 function Font_GetPitch(AObj: TFont): TFontPitch; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Pitch;
+  handleExceptionEnd
 end;
 
 procedure Font_SetPitch(AObj: TFont; AValue: TFontPitch); extdecl;
 begin
+  handleExceptionBegin
   AObj.Pitch := AValue;
+  handleExceptionEnd
 end;
 
 function Font_GetSize(AObj: TFont): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Size;
+  handleExceptionEnd
 end;
 
 procedure Font_SetSize(AObj: TFont; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Size := AValue;
+  handleExceptionEnd
 end;
 
 function Font_GetStyle(AObj: TFont): TFontStyles; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Style;
+  handleExceptionEnd
 end;
 
 procedure Font_SetStyle(AObj: TFont; AValue: TFontStyles); extdecl;
 begin
+  handleExceptionBegin
   AObj.Style := AValue;
+  handleExceptionEnd
 end;
 
 function Font_GetQuality(AObj: TFont): TFontQuality; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Quality;
+  handleExceptionEnd
 end;
 
 procedure Font_SetQuality(AObj: TFont; AValue: TFontQuality); extdecl;
 begin
+  handleExceptionBegin
   AObj.Quality := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent

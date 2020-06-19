@@ -9,87 +9,121 @@
 
 function ReplaceDialog_Create(AOwner: TComponent): TReplaceDialog; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TReplaceDialog.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure ReplaceDialog_Free(AObj: TReplaceDialog); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure ReplaceDialog_CloseDialog(AObj: TReplaceDialog); extdecl;
 begin
+  handleExceptionBegin
   AObj.CloseDialog;
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_Execute(AObj: TReplaceDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Execute;
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_FindComponent(AObj: TReplaceDialog; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_GetNamePath(AObj: TReplaceDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_HasParent(AObj: TReplaceDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure ReplaceDialog_Assign(AObj: TReplaceDialog; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_ClassType(AObj: TReplaceDialog): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_ClassName(AObj: TReplaceDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_InstanceSize(AObj: TReplaceDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_InheritsFrom(AObj: TReplaceDialog; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_Equals(AObj: TReplaceDialog; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_GetHashCode(AObj: TReplaceDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_ToString(AObj: TReplaceDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_GetReplaceText(AObj: TReplaceDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ReplaceText);
+  handleExceptionEnd
 end;
 
 procedure ReplaceDialog_SetReplaceText(AObj: TReplaceDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.ReplaceText := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -102,52 +136,72 @@ end;
 
 function ReplaceDialog_GetLeft(AObj: TReplaceDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure ReplaceDialog_SetLeft(AObj: TReplaceDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 procedure ReplaceDialog_GetPosition(AObj: TReplaceDialog; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Position;
+  handleExceptionEnd
 end;
 
 procedure ReplaceDialog_SetPosition(AObj: TReplaceDialog; var AValue: TPoint); extdecl;
 begin
+  handleExceptionBegin
   AObj.Position := AValue;
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_GetTop(AObj: TReplaceDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure ReplaceDialog_SetTop(AObj: TReplaceDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_GetFindText(AObj: TReplaceDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.FindText);
+  handleExceptionEnd
 end;
 
 procedure ReplaceDialog_SetFindText(AObj: TReplaceDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.FindText := AValue;
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_GetOptions(AObj: TReplaceDialog): TFindOptions; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Options;
+  handleExceptionEnd
 end;
 
 procedure ReplaceDialog_SetOptions(AObj: TReplaceDialog; AValue: TFindOptions); extdecl;
 begin
+  handleExceptionBegin
   AObj.Options := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -160,7 +214,9 @@ end;
 
 function ReplaceDialog_GetHandle(AObj: TReplaceDialog): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -181,47 +237,65 @@ end;
 
 function ReplaceDialog_GetComponentCount(AObj: TReplaceDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_GetComponentIndex(AObj: TReplaceDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure ReplaceDialog_SetComponentIndex(AObj: TReplaceDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_GetOwner(AObj: TReplaceDialog): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_GetName(AObj: TReplaceDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure ReplaceDialog_SetName(AObj: TReplaceDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_GetTag(AObj: TReplaceDialog): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure ReplaceDialog_SetTag(AObj: TReplaceDialog; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_GetComponents(AObj: TReplaceDialog; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function ReplaceDialog_StaticClassType: TClass; extdecl;

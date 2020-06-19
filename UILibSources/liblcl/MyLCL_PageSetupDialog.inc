@@ -9,152 +9,212 @@
 
 function PageSetupDialog_Create(AOwner: TComponent): TPageSetupDialog; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TPageSetupDialog.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure PageSetupDialog_Free(AObj: TPageSetupDialog); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_Execute(AObj: TPageSetupDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Execute;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_FindComponent(AObj: TPageSetupDialog; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetNamePath(AObj: TPageSetupDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_HasParent(AObj: TPageSetupDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure PageSetupDialog_Assign(AObj: TPageSetupDialog; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_ClassType(AObj: TPageSetupDialog): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_ClassName(AObj: TPageSetupDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_InstanceSize(AObj: TPageSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_InheritsFrom(AObj: TPageSetupDialog; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_Equals(AObj: TPageSetupDialog; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetHashCode(AObj: TPageSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_ToString(AObj: TPageSetupDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetMarginLeft(AObj: TPageSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MarginLeft;
+  handleExceptionEnd
 end;
 
 procedure PageSetupDialog_SetMarginLeft(AObj: TPageSetupDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MarginLeft := AValue;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetMarginTop(AObj: TPageSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MarginTop;
+  handleExceptionEnd
 end;
 
 procedure PageSetupDialog_SetMarginTop(AObj: TPageSetupDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MarginTop := AValue;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetMarginRight(AObj: TPageSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MarginRight;
+  handleExceptionEnd
 end;
 
 procedure PageSetupDialog_SetMarginRight(AObj: TPageSetupDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MarginRight := AValue;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetMarginBottom(AObj: TPageSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MarginBottom;
+  handleExceptionEnd
 end;
 
 procedure PageSetupDialog_SetMarginBottom(AObj: TPageSetupDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MarginBottom := AValue;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetOptions(AObj: TPageSetupDialog): TPageSetupDialogOptions; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Options;
+  handleExceptionEnd
 end;
 
 procedure PageSetupDialog_SetOptions(AObj: TPageSetupDialog; AValue: TPageSetupDialogOptions); extdecl;
 begin
+  handleExceptionBegin
   AObj.Options := AValue;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetPageWidth(AObj: TPageSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PageWidth;
+  handleExceptionEnd
 end;
 
 procedure PageSetupDialog_SetPageWidth(AObj: TPageSetupDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.PageWidth := AValue;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetPageHeight(AObj: TPageSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PageHeight;
+  handleExceptionEnd
 end;
 
 procedure PageSetupDialog_SetPageHeight(AObj: TPageSetupDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.PageHeight := AValue;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetUnits(AObj: TPageSetupDialog): TPageMeasureUnits; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Units;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetHandle(AObj: TPageSetupDialog): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -175,47 +235,65 @@ end;
 
 function PageSetupDialog_GetComponentCount(AObj: TPageSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetComponentIndex(AObj: TPageSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure PageSetupDialog_SetComponentIndex(AObj: TPageSetupDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetOwner(AObj: TPageSetupDialog): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetName(AObj: TPageSetupDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure PageSetupDialog_SetName(AObj: TPageSetupDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetTag(AObj: TPageSetupDialog): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure PageSetupDialog_SetTag(AObj: TPageSetupDialog; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_GetComponents(AObj: TPageSetupDialog; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function PageSetupDialog_StaticClassType: TClass; extdecl;

@@ -9,142 +9,198 @@
 
 function Graphic_Create: TGraphic; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TGraphic.Create;
+  handleExceptionEnd
 end;
 
 procedure Graphic_Free(AObj: TGraphic); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function Graphic_Equals(AObj: TGraphic; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 procedure Graphic_LoadFromFile(AObj: TGraphic; Filename: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromFile(Filename);
+  handleExceptionEnd
 end;
 
 procedure Graphic_SaveToFile(AObj: TGraphic; Filename: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToFile(Filename);
+  handleExceptionEnd
 end;
 
 procedure Graphic_LoadFromStream(AObj: TGraphic; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromStream(Stream);
+  handleExceptionEnd
 end;
 
 procedure Graphic_SaveToStream(AObj: TGraphic; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToStream(Stream);
+  handleExceptionEnd
 end;
 
 procedure Graphic_Assign(AObj: TGraphic; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function Graphic_GetNamePath(AObj: TGraphic): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function Graphic_ClassType(AObj: TGraphic): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Graphic_ClassName(AObj: TGraphic): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Graphic_InstanceSize(AObj: TGraphic): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Graphic_InheritsFrom(AObj: TGraphic; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Graphic_GetHashCode(AObj: TGraphic): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Graphic_ToString(AObj: TGraphic): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Graphic_GetEmpty(AObj: TGraphic): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Empty;
+  handleExceptionEnd
 end;
 
 function Graphic_GetHeight(AObj: TGraphic): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure Graphic_SetHeight(AObj: TGraphic; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function Graphic_GetModified(AObj: TGraphic): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Modified;
+  handleExceptionEnd
 end;
 
 procedure Graphic_SetModified(AObj: TGraphic; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Modified := AValue;
+  handleExceptionEnd
 end;
 
 function Graphic_GetPalette(AObj: TGraphic): HPALETTE; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Palette;
+  handleExceptionEnd
 end;
 
 procedure Graphic_SetPalette(AObj: TGraphic; AValue: HPALETTE); extdecl;
 begin
+  handleExceptionBegin
   AObj.Palette := AValue;
+  handleExceptionEnd
 end;
 
 function Graphic_GetPaletteModified(AObj: TGraphic): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PaletteModified;
+  handleExceptionEnd
 end;
 
 procedure Graphic_SetPaletteModified(AObj: TGraphic; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.PaletteModified := AValue;
+  handleExceptionEnd
 end;
 
 function Graphic_GetTransparent(AObj: TGraphic): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Transparent;
+  handleExceptionEnd
 end;
 
 procedure Graphic_SetTransparent(AObj: TGraphic; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Transparent := AValue;
+  handleExceptionEnd
 end;
 
 function Graphic_GetWidth(AObj: TGraphic): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure Graphic_SetWidth(AObj: TGraphic; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent

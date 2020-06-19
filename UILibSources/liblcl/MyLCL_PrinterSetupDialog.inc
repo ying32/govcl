@@ -9,77 +9,107 @@
 
 function PrinterSetupDialog_Create(AOwner: TComponent): TPrinterSetupDialog; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TPrinterSetupDialog.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure PrinterSetupDialog_Free(AObj: TPrinterSetupDialog); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_Execute(AObj: TPrinterSetupDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Execute;
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_FindComponent(AObj: TPrinterSetupDialog; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_GetNamePath(AObj: TPrinterSetupDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_HasParent(AObj: TPrinterSetupDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure PrinterSetupDialog_Assign(AObj: TPrinterSetupDialog; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_ClassType(AObj: TPrinterSetupDialog): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_ClassName(AObj: TPrinterSetupDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_InstanceSize(AObj: TPrinterSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_InheritsFrom(AObj: TPrinterSetupDialog; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_Equals(AObj: TPrinterSetupDialog; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_GetHashCode(AObj: TPrinterSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_ToString(AObj: TPrinterSetupDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_GetHandle(AObj: TPrinterSetupDialog): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -100,47 +130,65 @@ end;
 
 function PrinterSetupDialog_GetComponentCount(AObj: TPrinterSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_GetComponentIndex(AObj: TPrinterSetupDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure PrinterSetupDialog_SetComponentIndex(AObj: TPrinterSetupDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_GetOwner(AObj: TPrinterSetupDialog): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_GetName(AObj: TPrinterSetupDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure PrinterSetupDialog_SetName(AObj: TPrinterSetupDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_GetTag(AObj: TPrinterSetupDialog): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure PrinterSetupDialog_SetTag(AObj: TPrinterSetupDialog; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_GetComponents(AObj: TPrinterSetupDialog; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function PrinterSetupDialog_StaticClassType: TClass; extdecl;

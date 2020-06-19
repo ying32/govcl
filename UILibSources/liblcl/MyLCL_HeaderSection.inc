@@ -9,157 +9,219 @@
 
 function HeaderSection_Create(AOwner: TCollection): THeaderSection; extdecl;
 begin
+  handleExceptionBegin
   Result :=  THeaderSection.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure HeaderSection_Free(AObj: THeaderSection); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure HeaderSection_Assign(AObj: THeaderSection; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function HeaderSection_GetNamePath(AObj: THeaderSection): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function HeaderSection_ClassType(AObj: THeaderSection): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function HeaderSection_ClassName(AObj: THeaderSection): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function HeaderSection_InstanceSize(AObj: THeaderSection): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function HeaderSection_InheritsFrom(AObj: THeaderSection; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function HeaderSection_Equals(AObj: THeaderSection; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function HeaderSection_GetHashCode(AObj: THeaderSection): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function HeaderSection_ToString(AObj: THeaderSection): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function HeaderSection_GetLeft(AObj: THeaderSection): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 function HeaderSection_GetRight(AObj: THeaderSection): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Right;
+  handleExceptionEnd
 end;
 
 function HeaderSection_GetAlignment(AObj: THeaderSection): TAlignment; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Alignment;
+  handleExceptionEnd
 end;
 
 procedure HeaderSection_SetAlignment(AObj: THeaderSection; AValue: TAlignment); extdecl;
 begin
+  handleExceptionBegin
   AObj.Alignment := AValue;
+  handleExceptionEnd
 end;
 
 function HeaderSection_GetImageIndex(AObj: THeaderSection): TImageIndex; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ImageIndex;
+  handleExceptionEnd
 end;
 
 procedure HeaderSection_SetImageIndex(AObj: THeaderSection; AValue: TImageIndex); extdecl;
 begin
+  handleExceptionBegin
   AObj.ImageIndex := AValue;
+  handleExceptionEnd
 end;
 
 function HeaderSection_GetMaxWidth(AObj: THeaderSection): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MaxWidth;
+  handleExceptionEnd
 end;
 
 procedure HeaderSection_SetMaxWidth(AObj: THeaderSection; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MaxWidth := AValue;
+  handleExceptionEnd
 end;
 
 function HeaderSection_GetMinWidth(AObj: THeaderSection): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MinWidth;
+  handleExceptionEnd
 end;
 
 procedure HeaderSection_SetMinWidth(AObj: THeaderSection; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MinWidth := AValue;
+  handleExceptionEnd
 end;
 
 function HeaderSection_GetText(AObj: THeaderSection): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Text);
+  handleExceptionEnd
 end;
 
 procedure HeaderSection_SetText(AObj: THeaderSection; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Text := AValue;
+  handleExceptionEnd
 end;
 
 function HeaderSection_GetWidth(AObj: THeaderSection): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure HeaderSection_SetWidth(AObj: THeaderSection; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function HeaderSection_GetCollection(AObj: THeaderSection): TCollection; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Collection;
+  handleExceptionEnd
 end;
 
 procedure HeaderSection_SetCollection(AObj: THeaderSection; AValue: TCollection); extdecl;
 begin
+  handleExceptionBegin
   AObj.Collection := AValue;
+  handleExceptionEnd
 end;
 
 function HeaderSection_GetIndex(AObj: THeaderSection): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Index;
+  handleExceptionEnd
 end;
 
 procedure HeaderSection_SetIndex(AObj: THeaderSection; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Index := AValue;
+  handleExceptionEnd
 end;
 
 function HeaderSection_GetDisplayName(AObj: THeaderSection): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.DisplayName);
+  handleExceptionEnd
 end;
 
 procedure HeaderSection_SetDisplayName(AObj: THeaderSection; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisplayName := AValue;
+  handleExceptionEnd
 end;
 
 function HeaderSection_StaticClassType: TClass; extdecl;

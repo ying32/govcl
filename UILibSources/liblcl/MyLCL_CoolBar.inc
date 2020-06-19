@@ -9,577 +9,807 @@
 
 function CoolBar_Create(AOwner: TComponent): TCoolBar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TCoolBar.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_Free(AObj: TCoolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_FlipChildren(AObj: TCoolBar; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function CoolBar_CanFocus(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function CoolBar_ContainsControl(AObj: TCoolBar; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function CoolBar_ControlAtPos(AObj: TCoolBar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_DisableAlign(AObj: TCoolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_EnableAlign(AObj: TCoolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function CoolBar_FindChildControl(AObj: TCoolBar; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 function CoolBar_Focused(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function CoolBar_HandleAllocated(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_Invalidate(AObj: TCoolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_RemoveControl(AObj: TCoolBar; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_Realign(AObj: TCoolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_Repaint(AObj: TCoolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_ScaleBy(AObj: TCoolBar; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_ScrollBy(AObj: TCoolBar; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetBounds(AObj: TCoolBar; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetFocus(AObj: TCoolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_Update(AObj: TCoolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_BringToFront(AObj: TCoolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_ClientToScreen(AObj: TCoolBar; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_ClientToParent(AObj: TCoolBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function CoolBar_Dragging(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function CoolBar_HasParent(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_Hide(AObj: TCoolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function CoolBar_Perform(AObj: TCoolBar; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_Refresh(AObj: TCoolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_ScreenToClient(AObj: TCoolBar; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_ParentToClient(AObj: TCoolBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SendToBack(AObj: TCoolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_Show(AObj: TCoolBar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetTextBuf(AObj: TCoolBar; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function CoolBar_GetTextLen(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetTextBuf(AObj: TCoolBar; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function CoolBar_FindComponent(AObj: TCoolBar; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function CoolBar_GetNamePath(AObj: TCoolBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_Assign(AObj: TCoolBar; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function CoolBar_ClassType(AObj: TCoolBar): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function CoolBar_ClassName(AObj: TCoolBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function CoolBar_InstanceSize(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function CoolBar_InheritsFrom(AObj: TCoolBar; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function CoolBar_Equals(AObj: TCoolBar; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function CoolBar_GetHashCode(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function CoolBar_ToString(AObj: TCoolBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_AnchorToNeighbour(AObj: TCoolBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_AnchorParallel(AObj: TCoolBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_AnchorHorizontalCenterTo(AObj: TCoolBar; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_AnchorVerticalCenterTo(AObj: TCoolBar; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_AnchorAsAlign(AObj: TCoolBar; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_AnchorClient(AObj: TCoolBar; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function CoolBar_GetAlign(AObj: TCoolBar): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetAlign(AObj: TCoolBar; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetAnchors(AObj: TCoolBar): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetAnchors(AObj: TCoolBar; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetAutoSize(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoSize;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetAutoSize(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoSize := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetBandBorderStyle(AObj: TCoolBar): TBorderStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BandBorderStyle;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetBandBorderStyle(AObj: TCoolBar; AValue: TBorderStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.BandBorderStyle := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetBandMaximize(AObj: TCoolBar): TCoolBandMaximize; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BandMaximize;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetBandMaximize(AObj: TCoolBar; AValue: TCoolBandMaximize); extdecl;
 begin
+  handleExceptionBegin
   AObj.BandMaximize := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetBands(AObj: TCoolBar): TCoolBands; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Bands;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetBands(AObj: TCoolBar; AValue: TCoolBands); extdecl;
 begin
+  handleExceptionBegin
   AObj.Bands := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetBorderWidth(AObj: TCoolBar): TBorderWidth; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderWidth;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetBorderWidth(AObj: TCoolBar; AValue: TBorderWidth); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderWidth := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetColor(AObj: TCoolBar): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetColor(AObj: TCoolBar; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetConstraints(AObj: TCoolBar): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetConstraints(AObj: TCoolBar; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetDockSite(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetDockSite(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetDoubleBuffered(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetDoubleBuffered(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetDragCursor(AObj: TCoolBar): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetDragCursor(AObj: TCoolBar; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetDragKind(AObj: TCoolBar): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetDragKind(AObj: TCoolBar; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetDragMode(AObj: TCoolBar): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetDragMode(AObj: TCoolBar; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetEdgeBorders(AObj: TCoolBar): TEdgeBorders; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.EdgeBorders;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetEdgeBorders(AObj: TCoolBar; AValue: TEdgeBorders); extdecl;
 begin
+  handleExceptionBegin
   AObj.EdgeBorders := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetEdgeInner(AObj: TCoolBar): TEdgeStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.EdgeInner;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetEdgeInner(AObj: TCoolBar; AValue: TEdgeStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.EdgeInner := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetEdgeOuter(AObj: TCoolBar): TEdgeStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.EdgeOuter;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetEdgeOuter(AObj: TCoolBar; AValue: TEdgeStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.EdgeOuter := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetEnabled(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetEnabled(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetFixedSize(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FixedSize;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetFixedSize(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FixedSize := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetFixedOrder(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FixedOrder;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetFixedOrder(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FixedOrder := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetFont(AObj: TCoolBar): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetFont(AObj: TCoolBar; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetImages(AObj: TCoolBar): TCustomImageList; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Images;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetImages(AObj: TCoolBar; AValue: TCustomImageList); extdecl;
 begin
+  handleExceptionBegin
   AObj.Images := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetParentColor(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetParentColor(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetParentDoubleBuffered(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetParentDoubleBuffered(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetParentFont(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetParentFont(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetParentShowHint(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetParentShowHint(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetBitmap(AObj: TCoolBar): TBitmap; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Bitmap;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetBitmap(AObj: TCoolBar; AValue: TBitmap); extdecl;
 begin
+  handleExceptionBegin
   AObj.Bitmap := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetPopupMenu(AObj: TCoolBar): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetPopupMenu(AObj: TCoolBar; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetShowHint(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetShowHint(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetShowText(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowText;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetShowText(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowText := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetVertical(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Vertical;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetVertical(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Vertical := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetVisible(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetVisible(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -728,352 +958,492 @@ end;
 
 function CoolBar_GetDockClientCount(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetMouseInClient(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetVisibleDockClientCount(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetBrush(AObj: TCoolBar): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetControlCount(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetHandle(AObj: TCoolBar): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetParentWindow(AObj: TCoolBar): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetParentWindow(AObj: TCoolBar; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetShowing(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetTabOrder(AObj: TCoolBar): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetTabOrder(AObj: TCoolBar; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetTabStop(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetTabStop(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetUseDockManager(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetUseDockManager(AObj: TCoolBar; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetAction(AObj: TCoolBar): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetAction(AObj: TCoolBar; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetBiDiMode(AObj: TCoolBar): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetBiDiMode(AObj: TCoolBar; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_GetBoundsRect(AObj: TCoolBar; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetBoundsRect(AObj: TCoolBar; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetClientHeight(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetClientHeight(AObj: TCoolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_GetClientOrigin(AObj: TCoolBar; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_GetClientRect(AObj: TCoolBar; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetClientWidth(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetClientWidth(AObj: TCoolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetControlState(AObj: TCoolBar): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetControlState(AObj: TCoolBar; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetControlStyle(AObj: TCoolBar): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetControlStyle(AObj: TCoolBar; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetFloating(AObj: TCoolBar): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetParent(AObj: TCoolBar): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetParent(AObj: TCoolBar; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetLeft(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetLeft(AObj: TCoolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetTop(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetTop(AObj: TCoolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetWidth(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetWidth(AObj: TCoolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetHeight(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetHeight(AObj: TCoolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetCursor(AObj: TCoolBar): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetCursor(AObj: TCoolBar; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetHint(AObj: TCoolBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetHint(AObj: TCoolBar; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetComponentCount(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetComponentIndex(AObj: TCoolBar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetComponentIndex(AObj: TCoolBar; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetOwner(AObj: TCoolBar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetName(AObj: TCoolBar): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetName(AObj: TCoolBar; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetTag(AObj: TCoolBar): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetTag(AObj: TCoolBar; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetAnchorSideLeft(AObj: TCoolBar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetAnchorSideLeft(AObj: TCoolBar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetAnchorSideTop(AObj: TCoolBar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetAnchorSideTop(AObj: TCoolBar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetAnchorSideRight(AObj: TCoolBar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetAnchorSideRight(AObj: TCoolBar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetAnchorSideBottom(AObj: TCoolBar): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetAnchorSideBottom(AObj: TCoolBar; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetChildSizing(AObj: TCoolBar): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetChildSizing(AObj: TCoolBar; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetBorderSpacing(AObj: TCoolBar): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure CoolBar_SetBorderSpacing(AObj: TCoolBar; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function CoolBar_GetDockClients(AObj: TCoolBar; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function CoolBar_GetControls(AObj: TCoolBar; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function CoolBar_GetComponents(AObj: TCoolBar; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function CoolBar_GetAnchorSide(AObj: TCoolBar; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function CoolBar_StaticClassType: TClass; extdecl;

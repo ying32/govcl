@@ -9,102 +9,142 @@
 
 function ComboExItems_Add(AObj: TComboExItems): TComboExItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Add;
+  handleExceptionEnd
 end;
 
 function ComboExItems_AddItem(AObj: TComboExItems; Caption: PChar; ImageIndex: Integer; SelectedImageIndex: Integer; OverlayImageIndex: Integer; Indent: Integer; Data: Pointer): TComboExItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AddItem(Caption, ImageIndex, SelectedImageIndex, OverlayImageIndex, Indent, Data);
+  handleExceptionEnd
 end;
 
 function ComboExItems_Insert(AObj: TComboExItems; Index: Integer): TComboExItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Insert(Index);
+  handleExceptionEnd
 end;
 
 function ComboExItems_Owner(AObj: TComboExItems): TPersistent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 procedure ComboExItems_Assign(AObj: TComboExItems; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 procedure ComboExItems_BeginUpdate(AObj: TComboExItems); extdecl;
 begin
+  handleExceptionBegin
   AObj.BeginUpdate;
+  handleExceptionEnd
 end;
 
 procedure ComboExItems_Clear(AObj: TComboExItems); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure ComboExItems_Delete(AObj: TComboExItems; Index: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Delete(Index);
+  handleExceptionEnd
 end;
 
 procedure ComboExItems_EndUpdate(AObj: TComboExItems); extdecl;
 begin
+  handleExceptionBegin
   AObj.EndUpdate;
+  handleExceptionEnd
 end;
 
 function ComboExItems_FindItemID(AObj: TComboExItems; ID: Integer): TCollectionItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindItemID(ID);
+  handleExceptionEnd
 end;
 
 function ComboExItems_GetNamePath(AObj: TComboExItems): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function ComboExItems_ClassType(AObj: TComboExItems): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ComboExItems_ClassName(AObj: TComboExItems): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ComboExItems_InstanceSize(AObj: TComboExItems): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ComboExItems_InheritsFrom(AObj: TComboExItems; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ComboExItems_Equals(AObj: TComboExItems; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ComboExItems_GetHashCode(AObj: TComboExItems): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ComboExItems_ToString(AObj: TComboExItems): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function ComboExItems_GetCount(AObj: TComboExItems): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Count;
+  handleExceptionEnd
 end;
 
 function ComboExItems_GetComboItems(AObj: TComboExItems; Index: Integer): TComboExItem; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComboItems[Index];
+  handleExceptionEnd
 end;
 
 function ComboExItems_StaticClassType: TClass; extdecl;

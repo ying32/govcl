@@ -9,242 +9,338 @@
 
 function Screen_Create(AOwner: TComponent): TScreen; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TScreen.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure Screen_Free(AObj: TScreen); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function Screen_FindComponent(AObj: TScreen; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function Screen_GetNamePath(AObj: TScreen): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function Screen_HasParent(AObj: TScreen): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure Screen_Assign(AObj: TScreen; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function Screen_ClassType(AObj: TScreen): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Screen_ClassName(AObj: TScreen): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Screen_InstanceSize(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Screen_InheritsFrom(AObj: TScreen; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Screen_Equals(AObj: TScreen; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Screen_GetHashCode(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Screen_ToString(AObj: TScreen): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Screen_GetActiveForm(AObj: TScreen): TForm; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ActiveForm;
+  handleExceptionEnd
 end;
 
 function Screen_GetCustomFormCount(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CustomFormCount;
+  handleExceptionEnd
 end;
 
 function Screen_GetCursor(AObj: TScreen): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure Screen_SetCursor(AObj: TScreen; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function Screen_GetFocusedForm(AObj: TScreen): TCustomForm; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FocusedForm;
+  handleExceptionEnd
 end;
 
 function Screen_GetMonitorCount(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MonitorCount;
+  handleExceptionEnd
 end;
 
 procedure Screen_GetDesktopRect(AObj: TScreen; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DesktopRect;
+  handleExceptionEnd
 end;
 
 function Screen_GetDesktopHeight(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DesktopHeight;
+  handleExceptionEnd
 end;
 
 function Screen_GetDesktopLeft(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DesktopLeft;
+  handleExceptionEnd
 end;
 
 function Screen_GetDesktopTop(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DesktopTop;
+  handleExceptionEnd
 end;
 
 function Screen_GetDesktopWidth(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DesktopWidth;
+  handleExceptionEnd
 end;
 
 procedure Screen_GetWorkAreaRect(AObj: TScreen; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.WorkAreaRect;
+  handleExceptionEnd
 end;
 
 function Screen_GetWorkAreaHeight(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.WorkAreaHeight;
+  handleExceptionEnd
 end;
 
 function Screen_GetWorkAreaLeft(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.WorkAreaLeft;
+  handleExceptionEnd
 end;
 
 function Screen_GetWorkAreaTop(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.WorkAreaTop;
+  handleExceptionEnd
 end;
 
 function Screen_GetWorkAreaWidth(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.WorkAreaWidth;
+  handleExceptionEnd
 end;
 
 function Screen_GetFonts(AObj: TScreen): TStrings; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Fonts;
+  handleExceptionEnd
 end;
 
 function Screen_GetFormCount(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FormCount;
+  handleExceptionEnd
 end;
 
 function Screen_GetHeight(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 function Screen_GetPixelsPerInch(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PixelsPerInch;
+  handleExceptionEnd
 end;
 
 function Screen_GetPrimaryMonitor(AObj: TScreen): TMonitor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PrimaryMonitor;
+  handleExceptionEnd
 end;
 
 function Screen_GetWidth(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 function Screen_GetComponentCount(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function Screen_GetComponentIndex(AObj: TScreen): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure Screen_SetComponentIndex(AObj: TScreen; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function Screen_GetOwner(AObj: TScreen): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function Screen_GetName(AObj: TScreen): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure Screen_SetName(AObj: TScreen; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function Screen_GetTag(AObj: TScreen): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure Screen_SetTag(AObj: TScreen; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function Screen_GetCursors(AObj: TScreen; Index: Integer): HICON; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursors[Index];
+  handleExceptionEnd
 end;
 
 procedure Screen_SetCursors(AObj: TScreen; Index: Integer; AValue: HICON); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursors[Index] := AValue;
+  handleExceptionEnd
 end;
 
 function Screen_GetMonitors(AObj: TScreen; Index: Integer): TMonitor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Monitors[Index];
+  handleExceptionEnd
 end;
 
 function Screen_GetForms(AObj: TScreen; Index: Integer): TForm; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Forms[Index];
+  handleExceptionEnd
 end;
 
 function Screen_GetComponents(AObj: TScreen; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function Screen_StaticClassType: TClass; extdecl;

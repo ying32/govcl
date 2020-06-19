@@ -9,47 +9,65 @@
 
 function Exception_ToString(AObj: Exception): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Exception_ClassType(AObj: Exception): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Exception_ClassName(AObj: Exception): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Exception_InstanceSize(AObj: Exception): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Exception_InheritsFrom(AObj: Exception; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Exception_Equals(AObj: Exception; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Exception_GetHashCode(AObj: Exception): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Exception_GetMessage(AObj: Exception): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Message);
+  handleExceptionEnd
 end;
 
 procedure Exception_SetMessage(AObj: Exception; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Message := AValue;
+  handleExceptionEnd
 end;
 
 function Exception_StaticClassType: TClass; extdecl;

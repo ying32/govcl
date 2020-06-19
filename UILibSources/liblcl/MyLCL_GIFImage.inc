@@ -9,152 +9,212 @@
 
 function GIFImage_Create: TGIFImage; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TGIFImage.Create;
+  handleExceptionEnd
 end;
 
 procedure GIFImage_Free(AObj: TGIFImage); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure GIFImage_SaveToStream(AObj: TGIFImage; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToStream(Stream);
+  handleExceptionEnd
 end;
 
 procedure GIFImage_LoadFromStream(AObj: TGIFImage; Stream: TStream); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromStream(Stream);
+  handleExceptionEnd
 end;
 
 procedure GIFImage_Clear(AObj: TGIFImage); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure GIFImage_Assign(AObj: TGIFImage; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function GIFImage_Equals(AObj: TGIFImage; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 procedure GIFImage_LoadFromFile(AObj: TGIFImage; Filename: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.LoadFromFile(Filename);
+  handleExceptionEnd
 end;
 
 procedure GIFImage_SaveToFile(AObj: TGIFImage; Filename: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SaveToFile(Filename);
+  handleExceptionEnd
 end;
 
 procedure GIFImage_SetSize(AObj: TGIFImage; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetSize(AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 function GIFImage_GetNamePath(AObj: TGIFImage): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function GIFImage_ClassType(AObj: TGIFImage): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function GIFImage_ClassName(AObj: TGIFImage): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function GIFImage_InstanceSize(AObj: TGIFImage): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function GIFImage_InheritsFrom(AObj: TGIFImage; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function GIFImage_GetHashCode(AObj: TGIFImage): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function GIFImage_ToString(AObj: TGIFImage): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function GIFImage_GetBitsPerPixel(AObj: TGIFImage): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BitsPerPixel;
+  handleExceptionEnd
 end;
 
 function GIFImage_GetEmpty(AObj: TGIFImage): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Empty;
+  handleExceptionEnd
 end;
 
 function GIFImage_GetHeight(AObj: TGIFImage): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure GIFImage_SetHeight(AObj: TGIFImage; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function GIFImage_GetModified(AObj: TGIFImage): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Modified;
+  handleExceptionEnd
 end;
 
 procedure GIFImage_SetModified(AObj: TGIFImage; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Modified := AValue;
+  handleExceptionEnd
 end;
 
 function GIFImage_GetPalette(AObj: TGIFImage): HPALETTE; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Palette;
+  handleExceptionEnd
 end;
 
 procedure GIFImage_SetPalette(AObj: TGIFImage; AValue: HPALETTE); extdecl;
 begin
+  handleExceptionBegin
   AObj.Palette := AValue;
+  handleExceptionEnd
 end;
 
 function GIFImage_GetPaletteModified(AObj: TGIFImage): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PaletteModified;
+  handleExceptionEnd
 end;
 
 procedure GIFImage_SetPaletteModified(AObj: TGIFImage; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.PaletteModified := AValue;
+  handleExceptionEnd
 end;
 
 function GIFImage_GetTransparent(AObj: TGIFImage): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Transparent;
+  handleExceptionEnd
 end;
 
 function GIFImage_GetWidth(AObj: TGIFImage): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure GIFImage_SetWidth(AObj: TGIFImage; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent

@@ -9,167 +9,233 @@
 
 function Action_Create(AOwner: TComponent): TAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TAction.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure Action_Free(AObj: TAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function Action_Execute(AObj: TAction): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Execute;
+  handleExceptionEnd
 end;
 
 function Action_Update(AObj: TAction): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Update;
+  handleExceptionEnd
 end;
 
 function Action_HasParent(AObj: TAction): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 function Action_FindComponent(AObj: TAction; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function Action_GetNamePath(AObj: TAction): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure Action_Assign(AObj: TAction; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function Action_ClassType(AObj: TAction): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Action_ClassName(AObj: TAction): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Action_InstanceSize(AObj: TAction): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Action_InheritsFrom(AObj: TAction; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Action_Equals(AObj: TAction; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Action_GetHashCode(AObj: TAction): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Action_ToString(AObj: TAction): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Action_GetAutoCheck(AObj: TAction): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoCheck;
+  handleExceptionEnd
 end;
 
 procedure Action_SetAutoCheck(AObj: TAction; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoCheck := AValue;
+  handleExceptionEnd
 end;
 
 function Action_GetCaption(AObj: TAction): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Caption);
+  handleExceptionEnd
 end;
 
 procedure Action_SetCaption(AObj: TAction; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Caption := AValue;
+  handleExceptionEnd
 end;
 
 function Action_GetChecked(AObj: TAction): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Checked;
+  handleExceptionEnd
 end;
 
 procedure Action_SetChecked(AObj: TAction; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Checked := AValue;
+  handleExceptionEnd
 end;
 
 function Action_GetEnabled(AObj: TAction): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure Action_SetEnabled(AObj: TAction; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function Action_GetGroupIndex(AObj: TAction): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GroupIndex;
+  handleExceptionEnd
 end;
 
 procedure Action_SetGroupIndex(AObj: TAction; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.GroupIndex := AValue;
+  handleExceptionEnd
 end;
 
 function Action_GetHint(AObj: TAction): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure Action_SetHint(AObj: TAction; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function Action_GetImageIndex(AObj: TAction): TImageIndex; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ImageIndex;
+  handleExceptionEnd
 end;
 
 procedure Action_SetImageIndex(AObj: TAction; AValue: TImageIndex); extdecl;
 begin
+  handleExceptionBegin
   AObj.ImageIndex := AValue;
+  handleExceptionEnd
 end;
 
 function Action_GetShortCut(AObj: TAction): TShortCut; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShortCut;
+  handleExceptionEnd
 end;
 
 procedure Action_SetShortCut(AObj: TAction; AValue: TShortCut); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShortCut := AValue;
+  handleExceptionEnd
 end;
 
 function Action_GetVisible(AObj: TAction): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure Action_SetVisible(AObj: TAction; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -190,57 +256,79 @@ end;
 
 function Action_GetIndex(AObj: TAction): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Index;
+  handleExceptionEnd
 end;
 
 procedure Action_SetIndex(AObj: TAction; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Index := AValue;
+  handleExceptionEnd
 end;
 
 function Action_GetComponentCount(AObj: TAction): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function Action_GetComponentIndex(AObj: TAction): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure Action_SetComponentIndex(AObj: TAction; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function Action_GetOwner(AObj: TAction): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function Action_GetName(AObj: TAction): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure Action_SetName(AObj: TAction; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function Action_GetTag(AObj: TAction): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure Action_SetTag(AObj: TAction; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function Action_GetComponents(AObj: TAction; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function Action_StaticClassType: TClass; extdecl;

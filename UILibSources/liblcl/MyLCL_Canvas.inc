@@ -9,197 +9,275 @@
 
 function Canvas_Create: TCanvas; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TCanvas.Create;
+  handleExceptionEnd
 end;
 
 procedure Canvas_Free(AObj: TCanvas); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure Canvas_Arc(AObj: TCanvas; X1: Integer; Y1: Integer; X2: Integer; Y2: Integer; X3: Integer; Y3: Integer; X4: Integer; Y4: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Arc(X1, Y1, X2, Y2, X3, Y3, X4, Y4);
+  handleExceptionEnd
 end;
 
 procedure Canvas_ArcTo(AObj: TCanvas; X1: Integer; Y1: Integer; X2: Integer; Y2: Integer; X3: Integer; Y3: Integer; X4: Integer; Y4: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ArcTo(X1, Y1, X2, Y2, X3, Y3, X4, Y4);
+  handleExceptionEnd
 end;
 
 procedure Canvas_AngleArc(AObj: TCanvas; X: Integer; Y: Integer; Radius: Cardinal; var StartAngle: Single; var SweepAngle: Single); extdecl;
 begin
+  handleExceptionBegin
   AObj.AngleArc(X, Y, Radius, StartAngle, SweepAngle);
+  handleExceptionEnd
 end;
 
 procedure Canvas_Chord(AObj: TCanvas; X1: Integer; Y1: Integer; X2: Integer; Y2: Integer; X3: Integer; Y3: Integer; X4: Integer; Y4: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Chord(X1, Y1, X2, Y2, X3, Y3, X4, Y4);
+  handleExceptionEnd
 end;
 
 procedure Canvas_Ellipse(AObj: TCanvas; X1: Integer; Y1: Integer; X2: Integer; Y2: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Ellipse(X1, Y1, X2, Y2);
+  handleExceptionEnd
 end;
 
 procedure Canvas_FloodFill(AObj: TCanvas; X: Integer; Y: Integer; Color: TColor; FillStyle: TFillStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.FloodFill(X, Y, Color, FillStyle);
+  handleExceptionEnd
 end;
 
 function Canvas_HandleAllocated(AObj: TCanvas): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure Canvas_LineTo(AObj: TCanvas; X: Integer; Y: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.LineTo(X, Y);
+  handleExceptionEnd
 end;
 
 procedure Canvas_MoveTo(AObj: TCanvas; X: Integer; Y: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MoveTo(X, Y);
+  handleExceptionEnd
 end;
 
 procedure Canvas_Pie(AObj: TCanvas; X1: Integer; Y1: Integer; X2: Integer; Y2: Integer; X3: Integer; Y3: Integer; X4: Integer; Y4: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Pie(X1, Y1, X2, Y2, X3, Y3, X4, Y4);
+  handleExceptionEnd
 end;
 
 procedure Canvas_Rectangle(AObj: TCanvas; X1: Integer; Y1: Integer; X2: Integer; Y2: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Rectangle(X1, Y1, X2, Y2);
+  handleExceptionEnd
 end;
 
 procedure Canvas_Refresh(AObj: TCanvas); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure Canvas_RoundRect(AObj: TCanvas; X1: Integer; Y1: Integer; X2: Integer; Y2: Integer; X3: Integer; Y3: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.RoundRect(X1, Y1, X2, Y2, X3, Y3);
+  handleExceptionEnd
 end;
 
 procedure Canvas_TextExtent(AObj: TCanvas; Text: PChar; var Result: TSize); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TextExtent(Text);
+  handleExceptionEnd
 end;
 
 procedure Canvas_TextOut(AObj: TCanvas; X: Integer; Y: Integer; Text: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.TextOut(X, Y, Text);
+  handleExceptionEnd
 end;
 
 procedure Canvas_Lock(AObj: TCanvas); extdecl;
 begin
+  handleExceptionBegin
   AObj.Lock;
+  handleExceptionEnd
 end;
 
 function Canvas_TextHeight(AObj: TCanvas; Text: PChar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TextHeight(Text);
+  handleExceptionEnd
 end;
 
 function Canvas_TextWidth(AObj: TCanvas; Text: PChar): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TextWidth(Text);
+  handleExceptionEnd
 end;
 
 procedure Canvas_Assign(AObj: TCanvas; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function Canvas_GetNamePath(AObj: TCanvas): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function Canvas_ClassType(AObj: TCanvas): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function Canvas_ClassName(AObj: TCanvas): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function Canvas_InstanceSize(AObj: TCanvas): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function Canvas_InheritsFrom(AObj: TCanvas; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function Canvas_Equals(AObj: TCanvas; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function Canvas_GetHashCode(AObj: TCanvas): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function Canvas_ToString(AObj: TCanvas): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function Canvas_GetHandle(AObj: TCanvas): HDC; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 procedure Canvas_SetHandle(AObj: TCanvas; AValue: HDC); extdecl;
 begin
+  handleExceptionBegin
   AObj.Handle := AValue;
+  handleExceptionEnd
 end;
 
 function Canvas_GetBrush(AObj: TCanvas): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 procedure Canvas_SetBrush(AObj: TCanvas; AValue: TBrush); extdecl;
 begin
+  handleExceptionBegin
   AObj.Brush := AValue;
+  handleExceptionEnd
 end;
 
 function Canvas_GetCopyMode(AObj: TCanvas): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CopyMode;
+  handleExceptionEnd
 end;
 
 procedure Canvas_SetCopyMode(AObj: TCanvas; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.CopyMode := AValue;
+  handleExceptionEnd
 end;
 
 function Canvas_GetFont(AObj: TCanvas): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure Canvas_SetFont(AObj: TCanvas; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function Canvas_GetPen(AObj: TCanvas): TPen; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Pen;
+  handleExceptionEnd
 end;
 
 procedure Canvas_SetPen(AObj: TCanvas; AValue: TPen); extdecl;
 begin
+  handleExceptionBegin
   AObj.Pen := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent

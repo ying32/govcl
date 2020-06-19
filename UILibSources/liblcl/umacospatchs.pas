@@ -52,6 +52,7 @@ var
   LWinContent: TCocoaWindowContent = nil;
 begin
   Result := nil;
+  handleExceptionBegin
   if AForm = nil then
     Exit;
   LWinContent := TCocoaWindowContent(AForm.Handle);
@@ -61,41 +62,56 @@ begin
     Result := MyNSWindow(LWinContent.window);
   //if Assigned(Result) then
   //  Result._retain;   // +1
+  handleExceptionEnd
 end;
 
 function NSWindow_titleVisibility(AObj: MyNSWindow): NSWindowTitleVisibility; extdecl;
 begin
+  handleExceptionBegin
   Result := AObj.titleVisibility();
+  handleExceptionEnd
 end;
 
 procedure NSWindow_setTitleVisibility(AObj: MyNSWindow; AVal: NSWindowTitleVisibility); extdecl;
 begin
+  handleExceptionBegin
   AObj.setTitleVisibility(AVal);
+  handleExceptionEnd
 end;
 
 function NSWindow_titlebarAppearsTransparent(AObj: MyNSWindow): Boolean; extdecl;
 begin
+  handleExceptionBegin
   Result := AObj.titlebarAppearsTransparent();
+  handleExceptionEnd
 end;
 
 procedure NSWindow_setTitlebarAppearsTransparent(AObj: MyNSWindow; AVal: Boolean); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTitlebarAppearsTransparent(AVal);
+  handleExceptionEnd
 end;
 
 function NSWindow_styleMask(AObj: MyNSWindow): NSInteger; extdecl;
 begin
+  handleExceptionBegin
   Result := AObj.styleMask();
+  handleExceptionEnd
 end;
 
 procedure NSWindow_setStyleMask(AObj: MyNSWindow; AVal: NSInteger); extdecl;
 begin
+  handleExceptionBegin
   AObj.setStyleMask(AVal);
+  handleExceptionEnd
 end;
 
 procedure NSWindow_setRepresentedURL(AObj: MyNSWindow; AVal: NSURL); extdecl;
 begin
+  handleExceptionBegin
   AObj.setRepresentedURL(AVal);
+  handleExceptionEnd
 end;
 
 procedure NSWindow_release(AObj: MyNSWindow); extdecl;

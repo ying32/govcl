@@ -9,162 +9,226 @@
 
 function TrayIcon_Create(AOwner: TComponent): TTrayIcon; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TTrayIcon.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_Free(AObj: TTrayIcon); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_ShowBalloonHint(AObj: TTrayIcon); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowBalloonHint;
+  handleExceptionEnd
 end;
 
 function TrayIcon_FindComponent(AObj: TTrayIcon; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetNamePath(AObj: TTrayIcon): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function TrayIcon_HasParent(AObj: TTrayIcon): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_Assign(AObj: TTrayIcon; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function TrayIcon_ClassType(AObj: TTrayIcon): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function TrayIcon_ClassName(AObj: TTrayIcon): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function TrayIcon_InstanceSize(AObj: TTrayIcon): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function TrayIcon_InheritsFrom(AObj: TTrayIcon; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function TrayIcon_Equals(AObj: TTrayIcon; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetHashCode(AObj: TTrayIcon): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function TrayIcon_ToString(AObj: TTrayIcon): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetAnimateInterval(AObj: TTrayIcon): Cardinal; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnimateInterval;
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_SetAnimateInterval(AObj: TTrayIcon; AValue: Cardinal); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnimateInterval := AValue;
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetHint(AObj: TTrayIcon): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_SetHint(AObj: TTrayIcon; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetBalloonHint(AObj: TTrayIcon): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.BalloonHint);
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_SetBalloonHint(AObj: TTrayIcon; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.BalloonHint := AValue;
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetBalloonTitle(AObj: TTrayIcon): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.BalloonTitle);
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_SetBalloonTitle(AObj: TTrayIcon; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.BalloonTitle := AValue;
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetBalloonTimeout(AObj: TTrayIcon): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BalloonTimeout;
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_SetBalloonTimeout(AObj: TTrayIcon; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.BalloonTimeout := AValue;
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetBalloonFlags(AObj: TTrayIcon): TBalloonFlags; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BalloonFlags;
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_SetBalloonFlags(AObj: TTrayIcon; AValue: TBalloonFlags); extdecl;
 begin
+  handleExceptionBegin
   AObj.BalloonFlags := AValue;
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetIcon(AObj: TTrayIcon): TIcon; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Icon;
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_SetIcon(AObj: TTrayIcon; AValue: TIcon); extdecl;
 begin
+  handleExceptionBegin
   AObj.Icon := AValue;
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetPopupMenu(AObj: TTrayIcon): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_SetPopupMenu(AObj: TTrayIcon; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetVisible(AObj: TTrayIcon): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_SetVisible(AObj: TTrayIcon; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -209,47 +273,65 @@ end;
 
 function TrayIcon_GetComponentCount(AObj: TTrayIcon): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetComponentIndex(AObj: TTrayIcon): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_SetComponentIndex(AObj: TTrayIcon; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetOwner(AObj: TTrayIcon): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetName(AObj: TTrayIcon): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_SetName(AObj: TTrayIcon; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetTag(AObj: TTrayIcon): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure TrayIcon_SetTag(AObj: TTrayIcon; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function TrayIcon_GetComponents(AObj: TTrayIcon; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function TrayIcon_StaticClassType: TClass; extdecl;

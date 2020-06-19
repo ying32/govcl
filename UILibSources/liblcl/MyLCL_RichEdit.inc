@@ -9,602 +9,842 @@
 
 function RichEdit_Create(AOwner: TComponent): TRichEdit; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TRichEdit.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_Free(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_Clear(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 function RichEdit_FindText(AObj: TRichEdit; SearchStr: PChar; StartPos: Integer; Length: Integer; Options: TSearchTypes): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindText(SearchStr, StartPos, Length, Options);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_ClearSelection(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClearSelection;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_CopyToClipboard(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.CopyToClipboard;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_CutToClipboard(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.CutToClipboard;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_PasteFromClipboard(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.PasteFromClipboard;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_Undo(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Undo;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SelectAll(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelectAll;
+  handleExceptionEnd
 end;
 
 function RichEdit_CanFocus(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanFocus;
+  handleExceptionEnd
 end;
 
 function RichEdit_ContainsControl(AObj: TRichEdit; Control: TControl): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ContainsControl(Control);
+  handleExceptionEnd
 end;
 
 function RichEdit_ControlAtPos(AObj: TRichEdit; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_DisableAlign(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.DisableAlign;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_EnableAlign(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnableAlign;
+  handleExceptionEnd
 end;
 
 function RichEdit_FindChildControl(AObj: TRichEdit; ControlName: PChar): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindChildControl(ControlName);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_FlipChildren(AObj: TRichEdit; AllLevels: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.FlipChildren(AllLevels);
+  handleExceptionEnd
 end;
 
 function RichEdit_Focused(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Focused;
+  handleExceptionEnd
 end;
 
 function RichEdit_HandleAllocated(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HandleAllocated;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_InsertControl(AObj: TRichEdit; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.InsertControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_Invalidate(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Invalidate;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_RemoveControl(AObj: TRichEdit; AControl: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.RemoveControl(AControl);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_Realign(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Realign;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_Repaint(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Repaint;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_ScaleBy(AObj: TRichEdit; M: Integer; D: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScaleBy(M, D);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_ScrollBy(AObj: TRichEdit; DeltaX: Integer; DeltaY: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBy(DeltaX, DeltaY);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetBounds(AObj: TRichEdit; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetFocus(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetFocus;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_Update(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Update;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_BringToFront(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.BringToFront;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_ClientToScreen(AObj: TRichEdit; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToScreen(Point);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_ClientToParent(AObj: TRichEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientToParent(Point, AParent);
+  handleExceptionEnd
 end;
 
 function RichEdit_Dragging(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Dragging;
+  handleExceptionEnd
 end;
 
 function RichEdit_HasParent(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_Hide(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hide;
+  handleExceptionEnd
 end;
 
 function RichEdit_Perform(AObj: TRichEdit; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Perform(Msg, WParam, LParam);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_Refresh(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Refresh;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_ScreenToClient(AObj: TRichEdit; var Point: TPoint; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScreenToClient(Point);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_ParentToClient(AObj: TRichEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentToClient(Point, AParent);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SendToBack(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.SendToBack;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_Show(AObj: TRichEdit); extdecl;
 begin
+  handleExceptionBegin
   AObj.Show;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetTextBuf(AObj: TRichEdit; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+  handleExceptionEnd
 end;
 
 function RichEdit_GetTextLen(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetTextBuf(AObj: TRichEdit; Buffer: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SetTextBuf(Buffer);
+  handleExceptionEnd
 end;
 
 function RichEdit_FindComponent(AObj: TRichEdit; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function RichEdit_GetNamePath(AObj: TRichEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_Assign(AObj: TRichEdit; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function RichEdit_ClassType(AObj: TRichEdit): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function RichEdit_ClassName(AObj: TRichEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function RichEdit_InstanceSize(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function RichEdit_InheritsFrom(AObj: TRichEdit; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function RichEdit_Equals(AObj: TRichEdit; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function RichEdit_GetHashCode(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function RichEdit_ToString(AObj: TRichEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_AnchorToNeighbour(AObj: TRichEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_AnchorParallel(AObj: TRichEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorParallel(ASide, ASpace, ASibling);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_AnchorHorizontalCenterTo(AObj: TRichEdit; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorHorizontalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_AnchorVerticalCenterTo(AObj: TRichEdit; ASibling: TControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorVerticalCenterTo(ASibling);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_AnchorAsAlign(AObj: TRichEdit; ATheAlign: TAlign; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorAsAlign(ATheAlign, ASpace);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_AnchorClient(AObj: TRichEdit; ASpace: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorClient(ASpace);
+  handleExceptionEnd
 end;
 
 function RichEdit_GetAlign(AObj: TRichEdit): TAlign; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Align;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetAlign(AObj: TRichEdit; AValue: TAlign); extdecl;
 begin
+  handleExceptionBegin
   AObj.Align := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetAlignment(AObj: TRichEdit): TAlignment; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Alignment;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetAlignment(AObj: TRichEdit; AValue: TAlignment); extdecl;
 begin
+  handleExceptionBegin
   AObj.Alignment := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetAnchors(AObj: TRichEdit): TAnchors; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Anchors;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetAnchors(AObj: TRichEdit; AValue: TAnchors); extdecl;
 begin
+  handleExceptionBegin
   AObj.Anchors := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetBiDiMode(AObj: TRichEdit): TBiDiMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BiDiMode;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetBiDiMode(AObj: TRichEdit; AValue: TBiDiMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.BiDiMode := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetBorderStyle(AObj: TRichEdit): TBorderStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderStyle;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetBorderStyle(AObj: TRichEdit; AValue: TBorderStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderStyle := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetBorderWidth(AObj: TRichEdit): TBorderWidth; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderWidth;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetBorderWidth(AObj: TRichEdit; AValue: TBorderWidth); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderWidth := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetColor(AObj: TRichEdit): TColor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Color;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetColor(AObj: TRichEdit; AValue: TColor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Color := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetDragCursor(AObj: TRichEdit): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragCursor;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetDragCursor(AObj: TRichEdit; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragCursor := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetDragKind(AObj: TRichEdit): TDragKind; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragKind;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetDragKind(AObj: TRichEdit; AValue: TDragKind); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragKind := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetDragMode(AObj: TRichEdit): TDragMode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DragMode;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetDragMode(AObj: TRichEdit; AValue: TDragMode); extdecl;
 begin
+  handleExceptionBegin
   AObj.DragMode := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetEnabled(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Enabled;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetEnabled(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Enabled := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetFont(AObj: TRichEdit): TFont; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Font;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetFont(AObj: TRichEdit; AValue: TFont); extdecl;
 begin
+  handleExceptionBegin
   AObj.Font := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetHideSelection(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HideSelection;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetHideSelection(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.HideSelection := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetConstraints(AObj: TRichEdit): TSizeConstraints; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Constraints;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetConstraints(AObj: TRichEdit; AValue: TSizeConstraints); extdecl;
 begin
+  handleExceptionBegin
   AObj.Constraints := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetLines(AObj: TRichEdit): TStrings; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Lines;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetLines(AObj: TRichEdit; AValue: TStrings); extdecl;
 begin
+  handleExceptionBegin
   AObj.Lines := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetMaxLength(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MaxLength;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetMaxLength(AObj: TRichEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MaxLength := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetParentColor(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentColor;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetParentColor(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentColor := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetParentFont(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentFont;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetParentFont(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentFont := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetParentShowHint(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentShowHint;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetParentShowHint(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetPopupMenu(AObj: TRichEdit): TPopupMenu; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PopupMenu;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetPopupMenu(AObj: TRichEdit; AValue: TPopupMenu); extdecl;
 begin
+  handleExceptionBegin
   AObj.PopupMenu := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetReadOnly(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ReadOnly;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetReadOnly(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ReadOnly := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetScrollBars(AObj: TRichEdit): TScrollStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ScrollBars;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetScrollBars(AObj: TRichEdit; AValue: TScrollStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ScrollBars := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetShowHint(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShowHint;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetShowHint(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShowHint := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetTabOrder(AObj: TRichEdit): TTabOrder; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabOrder;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetTabOrder(AObj: TRichEdit; AValue: TTabOrder); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabOrder := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetTabStop(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TabStop;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetTabStop(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.TabStop := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetVisible(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Visible;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetVisible(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Visible := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetWantTabs(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.WantTabs;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetWantTabs(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.WantTabs := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetWantReturns(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.WantReturns;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetWantReturns(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.WantReturns := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetWordWrap(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.WordWrap;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetWordWrap(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.WordWrap := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetZoom(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Zoom;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetZoom(AObj: TRichEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Zoom := AValue;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -769,452 +1009,632 @@ end;
 
 function RichEdit_GetDefAttributes(AObj: TRichEdit): TTextAttributes; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DefAttributes;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetDefAttributes(AObj: TRichEdit; AValue: TTextAttributes); extdecl;
 begin
+  handleExceptionBegin
   AObj.DefAttributes := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetSelAttributes(AObj: TRichEdit): TTextAttributes; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelAttributes;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetSelAttributes(AObj: TRichEdit; AValue: TTextAttributes); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelAttributes := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetParagraph(AObj: TRichEdit): TParaAttributes; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Paragraph;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_GetCaretPos(AObj: TRichEdit; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CaretPos;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetCaretPos(AObj: TRichEdit; var AValue: TPoint); extdecl;
 begin
+  handleExceptionBegin
   AObj.CaretPos := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetCanUndo(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CanUndo;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetModified(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Modified;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetModified(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Modified := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetSelLength(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelLength;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetSelLength(AObj: TRichEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelLength := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetSelStart(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.SelStart;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetSelStart(AObj: TRichEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelStart := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetSelText(AObj: TRichEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.SelText);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetSelText(AObj: TRichEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.SelText := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetText(AObj: TRichEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Text);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetText(AObj: TRichEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Text := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetTextHint(AObj: TRichEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.TextHint);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetTextHint(AObj: TRichEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.TextHint := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetDockClientCount(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClientCount;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetDockSite(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockSite;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetDockSite(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DockSite := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetDoubleBuffered(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetDoubleBuffered(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.DoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetMouseInClient(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MouseInClient;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetVisibleDockClientCount(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VisibleDockClientCount;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetBrush(AObj: TRichEdit): TBrush; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Brush;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetControlCount(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlCount;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetHandle(AObj: TRichEdit): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetParentDoubleBuffered(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentDoubleBuffered;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetParentDoubleBuffered(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentDoubleBuffered := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetParentWindow(AObj: TRichEdit): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ParentWindow;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetParentWindow(AObj: TRichEdit; AValue: HWND); extdecl;
 begin
+  handleExceptionBegin
   AObj.ParentWindow := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetShowing(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Showing;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetUseDockManager(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.UseDockManager;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetUseDockManager(AObj: TRichEdit; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.UseDockManager := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetAction(AObj: TRichEdit): TBasicAction; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Action;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetAction(AObj: TRichEdit; AValue: TBasicAction); extdecl;
 begin
+  handleExceptionBegin
   AObj.Action := AValue;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_GetBoundsRect(AObj: TRichEdit; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BoundsRect;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetBoundsRect(AObj: TRichEdit; var AValue: TRect); extdecl;
 begin
+  handleExceptionBegin
   AObj.BoundsRect := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetClientHeight(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientHeight;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetClientHeight(AObj: TRichEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientHeight := AValue;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_GetClientOrigin(AObj: TRichEdit; var Result: TPoint); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientOrigin;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_GetClientRect(AObj: TRichEdit; var Result: TRect); extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientRect;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetClientWidth(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClientWidth;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetClientWidth(AObj: TRichEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ClientWidth := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetControlState(AObj: TRichEdit): TControlState; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlState;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetControlState(AObj: TRichEdit; AValue: TControlState); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlState := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetControlStyle(AObj: TRichEdit): TControlStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlStyle;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetControlStyle(AObj: TRichEdit; AValue: TControlStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlStyle := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetFloating(AObj: TRichEdit): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Floating;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetParent(AObj: TRichEdit): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Parent;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetParent(AObj: TRichEdit; AValue: TWinControl); extdecl;
 begin
+  handleExceptionBegin
   AObj.Parent := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetLeft(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Left;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetLeft(AObj: TRichEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Left := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetTop(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Top;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetTop(AObj: TRichEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Top := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetWidth(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Width;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetWidth(AObj: TRichEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Width := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetHeight(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Height;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetHeight(AObj: TRichEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Height := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetCursor(AObj: TRichEdit): TCursor; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Cursor;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetCursor(AObj: TRichEdit; AValue: TCursor); extdecl;
 begin
+  handleExceptionBegin
   AObj.Cursor := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetHint(AObj: TRichEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Hint);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetHint(AObj: TRichEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Hint := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetComponentCount(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetComponentIndex(AObj: TRichEdit): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetComponentIndex(AObj: TRichEdit; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetOwner(AObj: TRichEdit): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetName(AObj: TRichEdit): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetName(AObj: TRichEdit; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetTag(AObj: TRichEdit): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetTag(AObj: TRichEdit; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetAnchorSideLeft(AObj: TRichEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideLeft;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetAnchorSideLeft(AObj: TRichEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideLeft := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetAnchorSideTop(AObj: TRichEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideTop;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetAnchorSideTop(AObj: TRichEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideTop := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetAnchorSideRight(AObj: TRichEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideRight;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetAnchorSideRight(AObj: TRichEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideRight := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetAnchorSideBottom(AObj: TRichEdit): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSideBottom;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetAnchorSideBottom(AObj: TRichEdit; AValue: TAnchorSide); extdecl;
 begin
+  handleExceptionBegin
   AObj.AnchorSideBottom := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetChildSizing(AObj: TRichEdit): TControlChildSizing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ChildSizing;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetChildSizing(AObj: TRichEdit; AValue: TControlChildSizing); extdecl;
 begin
+  handleExceptionBegin
   AObj.ChildSizing := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetBorderSpacing(AObj: TRichEdit): TControlBorderSpacing; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.BorderSpacing;
+  handleExceptionEnd
 end;
 
 procedure RichEdit_SetBorderSpacing(AObj: TRichEdit; AValue: TControlBorderSpacing); extdecl;
 begin
+  handleExceptionBegin
   AObj.BorderSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function RichEdit_GetDockClients(AObj: TRichEdit; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.DockClients[Index];
+  handleExceptionEnd
 end;
 
 function RichEdit_GetControls(AObj: TRichEdit; Index: Integer): TControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Controls[Index];
+  handleExceptionEnd
 end;
 
 function RichEdit_GetComponents(AObj: TRichEdit; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function RichEdit_GetAnchorSide(AObj: TRichEdit; AKind: TAnchorKind): TAnchorSide; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AnchorSide[AKind];
+  handleExceptionEnd
 end;
 
 function RichEdit_StaticClassType: TClass; extdecl;

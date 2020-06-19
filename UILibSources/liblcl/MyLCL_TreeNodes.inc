@@ -9,157 +9,219 @@
 
 function TreeNodes_Create(AOwner: TCustomTreeView): TTreeNodes; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TTreeNodes.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure TreeNodes_Free(AObj: TTreeNodes); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function TreeNodes_AddChildFirst(AObj: TTreeNodes; Parent: TTreeNode; S: PChar): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AddChildFirst(Parent, S);
+  handleExceptionEnd
 end;
 
 function TreeNodes_AddChild(AObj: TTreeNodes; Parent: TTreeNode; S: PChar): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AddChild(Parent, S);
+  handleExceptionEnd
 end;
 
 function TreeNodes_AddChildObjectFirst(AObj: TTreeNodes; Parent: TTreeNode; S: PChar; Ptr: Pointer): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AddChildObjectFirst(Parent, S, Ptr);
+  handleExceptionEnd
 end;
 
 function TreeNodes_AddChildObject(AObj: TTreeNodes; Parent: TTreeNode; S: PChar; Ptr: Pointer): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AddChildObject(Parent, S, Ptr);
+  handleExceptionEnd
 end;
 
 function TreeNodes_AddObjectFirst(AObj: TTreeNodes; Sibling: TTreeNode; S: PChar; Ptr: Pointer): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AddObjectFirst(Sibling, S, Ptr);
+  handleExceptionEnd
 end;
 
 function TreeNodes_AddObject(AObj: TTreeNodes; Sibling: TTreeNode; S: PChar; Ptr: Pointer): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AddObject(Sibling, S, Ptr);
+  handleExceptionEnd
 end;
 
 function TreeNodes_AddNode(AObj: TTreeNodes; Node: TTreeNode; Relative: TTreeNode; S: PChar; Ptr: Pointer; Method: TNodeAttachMode): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AddNode(Node, Relative, S, Ptr, Method);
+  handleExceptionEnd
 end;
 
 function TreeNodes_AddFirst(AObj: TTreeNodes; Sibling: TTreeNode; S: PChar): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AddFirst(Sibling, S);
+  handleExceptionEnd
 end;
 
 function TreeNodes_Add(AObj: TTreeNodes; Sibling: TTreeNode; S: PChar): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Add(Sibling, S);
+  handleExceptionEnd
 end;
 
 procedure TreeNodes_Assign(AObj: TTreeNodes; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 procedure TreeNodes_BeginUpdate(AObj: TTreeNodes); extdecl;
 begin
+  handleExceptionBegin
   AObj.BeginUpdate;
+  handleExceptionEnd
 end;
 
 procedure TreeNodes_Clear(AObj: TTreeNodes); extdecl;
 begin
+  handleExceptionBegin
   AObj.Clear;
+  handleExceptionEnd
 end;
 
 procedure TreeNodes_Delete(AObj: TTreeNodes; Node: TTreeNode); extdecl;
 begin
+  handleExceptionBegin
   AObj.Delete(Node);
+  handleExceptionEnd
 end;
 
 procedure TreeNodes_EndUpdate(AObj: TTreeNodes); extdecl;
 begin
+  handleExceptionBegin
   AObj.EndUpdate;
+  handleExceptionEnd
 end;
 
 function TreeNodes_GetFirstNode(AObj: TTreeNodes): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetFirstNode;
+  handleExceptionEnd
 end;
 
 function TreeNodes_Insert(AObj: TTreeNodes; Sibling: TTreeNode; S: PChar): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Insert(Sibling, S);
+  handleExceptionEnd
 end;
 
 function TreeNodes_InsertObject(AObj: TTreeNodes; Sibling: TTreeNode; S: PChar; Ptr: Pointer): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InsertObject(Sibling, S, Ptr);
+  handleExceptionEnd
 end;
 
 function TreeNodes_CustomSort(AObj: TTreeNodes; SortProc: PFNTVCOMPARE; Data: NativeInt; ARecurse: LongBool): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.CustomSort(SortProc, Data, ARecurse);
+  handleExceptionEnd
 end;
 
 function TreeNodes_GetNamePath(AObj: TTreeNodes): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function TreeNodes_ClassType(AObj: TTreeNodes): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function TreeNodes_ClassName(AObj: TTreeNodes): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function TreeNodes_InstanceSize(AObj: TTreeNodes): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function TreeNodes_InheritsFrom(AObj: TTreeNodes; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function TreeNodes_Equals(AObj: TTreeNodes; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function TreeNodes_GetHashCode(AObj: TTreeNodes): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function TreeNodes_ToString(AObj: TTreeNodes): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function TreeNodes_GetCount(AObj: TTreeNodes): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Count;
+  handleExceptionEnd
 end;
 
 function TreeNodes_GetOwner(AObj: TTreeNodes): TCustomTreeView; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function TreeNodes_GetItem(AObj: TTreeNodes; Index: Integer): TTreeNode; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Item[Index];
+  handleExceptionEnd
 end;
 
 function TreeNodes_StaticClassType: TClass; extdecl;

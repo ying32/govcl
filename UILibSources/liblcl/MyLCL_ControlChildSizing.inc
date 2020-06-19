@@ -9,52 +9,72 @@
 
 procedure ControlChildSizing_Assign(AObj: TControlChildSizing; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_GetNamePath(AObj: TControlChildSizing): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_ClassType(AObj: TControlChildSizing): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_ClassName(AObj: TControlChildSizing): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_InstanceSize(AObj: TControlChildSizing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_InheritsFrom(AObj: TControlChildSizing; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_Equals(AObj: TControlChildSizing; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_GetHashCode(AObj: TControlChildSizing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_ToString(AObj: TControlChildSizing): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_GetControl(AObj: TControlChildSizing): TWinControl; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Control;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -67,102 +87,142 @@ end;
 
 function ControlChildSizing_GetLeftRightSpacing(AObj: TControlChildSizing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.LeftRightSpacing;
+  handleExceptionEnd
 end;
 
 procedure ControlChildSizing_SetLeftRightSpacing(AObj: TControlChildSizing; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.LeftRightSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_GetTopBottomSpacing(AObj: TControlChildSizing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.TopBottomSpacing;
+  handleExceptionEnd
 end;
 
 procedure ControlChildSizing_SetTopBottomSpacing(AObj: TControlChildSizing; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.TopBottomSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_GetHorizontalSpacing(AObj: TControlChildSizing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HorizontalSpacing;
+  handleExceptionEnd
 end;
 
 procedure ControlChildSizing_SetHorizontalSpacing(AObj: TControlChildSizing; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.HorizontalSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_GetVerticalSpacing(AObj: TControlChildSizing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.VerticalSpacing;
+  handleExceptionEnd
 end;
 
 procedure ControlChildSizing_SetVerticalSpacing(AObj: TControlChildSizing; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.VerticalSpacing := AValue;
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_GetEnlargeHorizontal(AObj: TControlChildSizing): TChildControlResizeStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.EnlargeHorizontal;
+  handleExceptionEnd
 end;
 
 procedure ControlChildSizing_SetEnlargeHorizontal(AObj: TControlChildSizing; AValue: TChildControlResizeStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnlargeHorizontal := AValue;
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_GetEnlargeVertical(AObj: TControlChildSizing): TChildControlResizeStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.EnlargeVertical;
+  handleExceptionEnd
 end;
 
 procedure ControlChildSizing_SetEnlargeVertical(AObj: TControlChildSizing; AValue: TChildControlResizeStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.EnlargeVertical := AValue;
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_GetShrinkHorizontal(AObj: TControlChildSizing): TChildControlResizeStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShrinkHorizontal;
+  handleExceptionEnd
 end;
 
 procedure ControlChildSizing_SetShrinkHorizontal(AObj: TControlChildSizing; AValue: TChildControlResizeStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShrinkHorizontal := AValue;
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_GetShrinkVertical(AObj: TControlChildSizing): TChildControlResizeStyle; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ShrinkVertical;
+  handleExceptionEnd
 end;
 
 procedure ControlChildSizing_SetShrinkVertical(AObj: TControlChildSizing; AValue: TChildControlResizeStyle); extdecl;
 begin
+  handleExceptionBegin
   AObj.ShrinkVertical := AValue;
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_GetLayout(AObj: TControlChildSizing): TControlChildrenLayout; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Layout;
+  handleExceptionEnd
 end;
 
 procedure ControlChildSizing_SetLayout(AObj: TControlChildSizing; AValue: TControlChildrenLayout); extdecl;
 begin
+  handleExceptionBegin
   AObj.Layout := AValue;
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_GetControlsPerLine(AObj: TControlChildSizing): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ControlsPerLine;
+  handleExceptionEnd
 end;
 
 procedure ControlChildSizing_SetControlsPerLine(AObj: TControlChildSizing; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ControlsPerLine := AValue;
+  handleExceptionEnd
 end;
 
 function ControlChildSizing_StaticClassType: TClass; extdecl;

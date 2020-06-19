@@ -9,67 +9,93 @@
 
 procedure IconOptions_Assign(AObj: TIconOptions; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function IconOptions_GetNamePath(AObj: TIconOptions): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function IconOptions_ClassType(AObj: TIconOptions): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function IconOptions_ClassName(AObj: TIconOptions): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function IconOptions_InstanceSize(AObj: TIconOptions): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function IconOptions_InheritsFrom(AObj: TIconOptions; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function IconOptions_Equals(AObj: TIconOptions; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function IconOptions_GetHashCode(AObj: TIconOptions): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function IconOptions_ToString(AObj: TIconOptions): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function IconOptions_GetArrangement(AObj: TIconOptions): TIconArrangement; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Arrangement;
+  handleExceptionEnd
 end;
 
 procedure IconOptions_SetArrangement(AObj: TIconOptions; AValue: TIconArrangement); extdecl;
 begin
+  handleExceptionBegin
   AObj.Arrangement := AValue;
+  handleExceptionEnd
 end;
 
 function IconOptions_GetAutoArrange(AObj: TIconOptions): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.AutoArrange;
+  handleExceptionEnd
 end;
 
 procedure IconOptions_SetAutoArrange(AObj: TIconOptions; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.AutoArrange := AValue;
+  handleExceptionEnd
 end;
 
 function IconOptions_StaticClassType: TClass; extdecl;

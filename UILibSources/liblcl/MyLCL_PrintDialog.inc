@@ -9,167 +9,233 @@
 
 function PrintDialog_Create(AOwner: TComponent): TPrintDialog; extdecl;
 begin
+  handleExceptionBegin
   Result :=  TPrintDialog.Create(AOwner);
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_Free(AObj: TPrintDialog); extdecl;
 begin
+  handleExceptionBegin
   AObj.Free;
+  handleExceptionEnd
 end;
 
 function PrintDialog_Execute(AObj: TPrintDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Execute;
+  handleExceptionEnd
 end;
 
 function PrintDialog_FindComponent(AObj: TPrintDialog; AName: PChar): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FindComponent(AName);
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetNamePath(AObj: TPrintDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.GetNamePath);
+  handleExceptionEnd
 end;
 
 function PrintDialog_HasParent(AObj: TPrintDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.HasParent;
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_Assign(AObj: TPrintDialog; Source: TPersistent); extdecl;
 begin
+  handleExceptionBegin
   AObj.Assign(Source);
+  handleExceptionEnd
 end;
 
 function PrintDialog_ClassType(AObj: TPrintDialog): TClass; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ClassType;
+  handleExceptionEnd
 end;
 
 function PrintDialog_ClassName(AObj: TPrintDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  ToPChar(AObj.ClassName);
+  handleExceptionEnd
 end;
 
 function PrintDialog_InstanceSize(AObj: TPrintDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InstanceSize;
+  handleExceptionEnd
 end;
 
 function PrintDialog_InheritsFrom(AObj: TPrintDialog; AClass: TClass): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.InheritsFrom(AClass);
+  handleExceptionEnd
 end;
 
 function PrintDialog_Equals(AObj: TPrintDialog; Obj: TObject): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Equals(Obj);
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetHashCode(AObj: TPrintDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.GetHashCode;
+  handleExceptionEnd
 end;
 
 function PrintDialog_ToString(AObj: TPrintDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.ToString);
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetCollate(AObj: TPrintDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Collate;
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_SetCollate(AObj: TPrintDialog; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.Collate := AValue;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetCopies(AObj: TPrintDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Copies;
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_SetCopies(AObj: TPrintDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.Copies := AValue;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetFromPage(AObj: TPrintDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.FromPage;
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_SetFromPage(AObj: TPrintDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.FromPage := AValue;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetMinPage(AObj: TPrintDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MinPage;
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_SetMinPage(AObj: TPrintDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MinPage := AValue;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetMaxPage(AObj: TPrintDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.MaxPage;
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_SetMaxPage(AObj: TPrintDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.MaxPage := AValue;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetOptions(AObj: TPrintDialog): TPrintDialogOptions; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Options;
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_SetOptions(AObj: TPrintDialog; AValue: TPrintDialogOptions); extdecl;
 begin
+  handleExceptionBegin
   AObj.Options := AValue;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetPrintToFile(AObj: TPrintDialog): LongBool; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PrintToFile;
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_SetPrintToFile(AObj: TPrintDialog; AValue: LongBool); extdecl;
 begin
+  handleExceptionBegin
   AObj.PrintToFile := AValue;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetPrintRange(AObj: TPrintDialog): TPrintRange; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.PrintRange;
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_SetPrintRange(AObj: TPrintDialog; AValue: TPrintRange); extdecl;
 begin
+  handleExceptionBegin
   AObj.PrintRange := AValue;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetToPage(AObj: TPrintDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ToPage;
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_SetToPage(AObj: TPrintDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ToPage := AValue;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetHandle(AObj: TPrintDialog): HWND; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Handle;
+  handleExceptionEnd
 end;
 
 //EVENT_TYPE:TNotifyEvent
@@ -190,47 +256,65 @@ end;
 
 function PrintDialog_GetComponentCount(AObj: TPrintDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentCount;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetComponentIndex(AObj: TPrintDialog): Integer; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.ComponentIndex;
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_SetComponentIndex(AObj: TPrintDialog; AValue: Integer); extdecl;
 begin
+  handleExceptionBegin
   AObj.ComponentIndex := AValue;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetOwner(AObj: TPrintDialog): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Owner;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetName(AObj: TPrintDialog): PChar; extdecl;
 begin
+  handleExceptionBegin
   Result :=  PChar(AObj.Name);
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_SetName(AObj: TPrintDialog; AValue: PChar); extdecl;
 begin
+  handleExceptionBegin
   AObj.Name := AValue;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetTag(AObj: TPrintDialog): NativeInt; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Tag;
+  handleExceptionEnd
 end;
 
 procedure PrintDialog_SetTag(AObj: TPrintDialog; AValue: NativeInt); extdecl;
 begin
+  handleExceptionBegin
   AObj.Tag := AValue;
+  handleExceptionEnd
 end;
 
 function PrintDialog_GetComponents(AObj: TPrintDialog; AIndex: Integer): TComponent; extdecl;
 begin
+  handleExceptionBegin
   Result :=  AObj.Components[AIndex];
+  handleExceptionEnd
 end;
 
 function PrintDialog_StaticClassType: TClass; extdecl;
