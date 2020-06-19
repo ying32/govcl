@@ -51,8 +51,8 @@ end;
 
 procedure PngImage_LoadFromResourceID(AObj: TPngImage; Instance: NativeUInt; ResID: Integer); extdecl;
 begin
-  handleExceptionBegin
 {$IFDEF MSWINDOWS}
+  handleExceptionBegin
   AObj.LoadFromResourceID(Instance, ResID);
   handleExceptionEnd
 {$ENDIF MSWINDOWS}
