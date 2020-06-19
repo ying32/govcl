@@ -31,12 +31,15 @@ uses
 {$IFDEF LINUX}
   uLinuxPatchs,
 {$ENDIF}
+  uExceptionHandle,
   uComponents,
   uControlPatchs
 // windows下才用这种方式，否则把pas当一个inc文件处理
 {$ifdef windows}
   ,uExport1,
-  uExport2
+  uExport2,
+  uExport3,
+  uExport4
 {$endif};
 
 {$IFDEF WINDOWS}
@@ -49,6 +52,8 @@ uses
 {$ifndef windows}
   {$I uExport1.pas}
   {$I uExport2.pas}
+  {$I uExport3.pas}
+  {$I uExport4.pas}
 {$endif}
 
 // 用户自己定义的组件

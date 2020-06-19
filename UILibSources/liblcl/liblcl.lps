@@ -193,11 +193,12 @@
         <Item5 Mode="MacOS64(cocoa)" Option="558457850193"/>
       </SessionEnabledMatrixOptions>
     </BuildModes>
-    <Units Count="369">
+    <Units Count="372">
       <Unit0>
         <Filename Value="liblcl.lpr"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="19" Y="46"/>
+        <TopLine Value="31"/>
+        <CursorPos X="122" Y="21"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -213,7 +214,7 @@
         <Filename Value="ulinklabel.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uLinkLabel"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="17"/>
         <TopLine Value="117"/>
         <CursorPos X="63" Y="103"/>
         <UsageCount Value="200"/>
@@ -222,7 +223,7 @@
       <Unit3>
         <Filename Value="ImageButton.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="15"/>
         <TopLine Value="308"/>
         <CursorPos X="116" Y="335"/>
         <UsageCount Value="200"/>
@@ -240,7 +241,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uComponents"/>
         <EditorIndex Value="1"/>
-        <CursorPos Y="77"/>
+        <CursorPos X="124" Y="17"/>
         <UsageCount Value="186"/>
         <Loaded Value="True"/>
       </Unit5>
@@ -256,7 +257,7 @@
       <Unit7>
         <Filename Value="uMiniWebview.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="13"/>
         <TopLine Value="14"/>
         <CursorPos X="34" Y="26"/>
         <UsageCount Value="111"/>
@@ -293,7 +294,7 @@
         <Filename Value="xbutton.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="xButton"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="16"/>
         <TopLine Value="147"/>
         <CursorPos X="63" Y="157"/>
         <UsageCount Value="62"/>
@@ -303,10 +304,11 @@
         <Filename Value="urichedit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uRichEdit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="311"/>
-        <CursorPos X="19" Y="270"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="22" Y="17"/>
         <UsageCount Value="49"/>
+        <Loaded Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="uFormDesignerFile.pas"/>
@@ -320,7 +322,7 @@
         <Filename Value="uexport1.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uExport1"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="6"/>
         <CursorPos X="33" Y="24"/>
         <UsageCount Value="39"/>
@@ -330,8 +332,7 @@
         <Filename Value="uexport2.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uExport2"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="4"/>
         <CursorPos X="42" Y="9"/>
         <UsageCount Value="39"/>
         <Loaded Value="True"/>
@@ -346,7 +347,6 @@
       </Unit16>
       <Unit17>
         <Filename Value="uexporttable.pas"/>
-        <IsPartOfProject Value="True"/>
         <UnitName Value="uExportTable"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="33"/>
@@ -508,7 +508,7 @@
       </Unit38>
       <Unit39>
         <Filename Value="MyLCL_Edit.inc"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="194"/>
         <CursorPos X="90" Y="208"/>
         <UsageCount Value="11"/>
@@ -517,7 +517,7 @@
       <Unit40>
         <Filename Value="F:\lazarus\lcl\controls.pp"/>
         <UnitName Value="Controls"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="8"/>
         <TopLine Value="1624"/>
         <CursorPos X="15" Y="1638"/>
         <UsageCount Value="15"/>
@@ -1055,7 +1055,7 @@
       </Unit117>
       <Unit118>
         <Filename Value="F:\lazarus\lcl\include\wincontrol.inc"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="11"/>
         <TopLine Value="5068"/>
         <CursorPos X="3" Y="5071"/>
         <UsageCount Value="12"/>
@@ -2003,7 +2003,7 @@
       </Unit255>
       <Unit256>
         <Filename Value="MiniWebviewWin.inc"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="299"/>
         <CursorPos X="12" Y="323"/>
         <UsageCount Value="21"/>
@@ -2074,7 +2074,7 @@
       </Unit266>
       <Unit267>
         <Filename Value="MiniWebviewMac.inc"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="12"/>
         <TopLine Value="309"/>
         <CursorPos Y="333"/>
         <UsageCount Value="12"/>
@@ -2206,7 +2206,7 @@
       </Unit286>
       <Unit287>
         <Filename Value="MiniWebviewLinux.inc"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="14"/>
         <TopLine Value="275"/>
         <CursorPos X="31" Y="294"/>
         <UsageCount Value="12"/>
@@ -2769,7 +2769,7 @@
       </Unit364>
       <Unit365>
         <Filename Value="F:\lazarus\lcl\include\control.inc"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="9"/>
         <TopLine Value="4985"/>
         <CursorPos X="29" Y="5003"/>
         <UsageCount Value="11"/>
@@ -2777,7 +2777,7 @@
       </Unit365>
       <Unit366>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\syspchh.inc"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="10"/>
         <TopLine Value="12"/>
         <CursorPos X="18" Y="41"/>
         <UsageCount Value="11"/>
@@ -2799,11 +2799,41 @@
         <CursorPos X="36" Y="275"/>
         <UsageCount Value="10"/>
       </Unit368>
+      <Unit369>
+        <Filename Value="uexport3.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit369>
+      <Unit370>
+        <Filename Value="uexport4.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit370>
+      <Unit371>
+        <Filename Value="uexceptionhandle.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uExceptionHandle"/>
+        <EditorIndex Value="2"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit371>
     </Units>
     <OtherDefines Count="1">
       <Define0 Value="USED_BY_LAZLOGGER_DUMMY"/>
     </OtherDefines>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="1">
+      <Position1>
+        <Filename Value="uexceptionhandle.pas"/>
+      </Position1>
+    </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes Count="0" ActiveMode="default"/>

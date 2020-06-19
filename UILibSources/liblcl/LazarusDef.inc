@@ -1,18 +1,6 @@
 // 不使用自动生成的
 // 这里主要是对自动生成做兼容和补充相关
 
-// 显示异常
-procedure CallException(E: Exception);
-begin
-  if Assigned(Application) then
-  begin
-    if Assigned(Application.OnException) then
-      Application.OnException(Application, E)
-    else
-      MessageDlg(E.Message,  mtError, [mbOK], 0);
-  end;
-end;
-
 function DLibStringEncoding: TStringEncoding; extdecl;
 begin
   Result := seUTF8;

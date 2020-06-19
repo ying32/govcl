@@ -66,7 +66,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="18">
+    <Units Count="20">
       <Unit0>
         <Filename Value="liblcl.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -146,10 +146,18 @@
         <IsPartOfProject Value="True"/>
       </Unit16>
       <Unit17>
-        <Filename Value="uexporttable.pas"/>
+        <Filename Value="uexport3.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="uExportTable"/>
       </Unit17>
+      <Unit18>
+        <Filename Value="uexport4.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="uexceptionhandle.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uExceptionHandle"/>
+      </Unit19>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
