@@ -22,6 +22,11 @@ uses
   function GtkWidget_Window(Ah: HWND): PGdkWindow; extdecl;
 implementation
 
+{$ifdef UsehandleException}
+uses
+   uExceptionHandle;
+{$endif}
+
 function GdkWindow_FromForm(AForm: TForm): PGdkWindow; extdecl;
 begin
   Result := nil;

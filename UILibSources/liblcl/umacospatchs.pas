@@ -47,6 +47,11 @@ procedure NSWindow_release(AObj: MyNSWindow); extdecl;
 
 implementation
 
+{$ifdef UsehandleException}
+uses
+   uExceptionHandle;
+{$endif}
+
 function NSWindow_FromForm(AForm: TForm): MyNSWindow; extdecl;
 var
   LWinContent: TCocoaWindowContent = nil;
