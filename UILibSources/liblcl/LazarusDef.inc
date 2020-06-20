@@ -62,6 +62,8 @@ begin
   handleExceptionBegin
   AObj.Initialize;
 {$IFDEF WINDOWS}
+  if Application.Icon.Handle = 0 then
+     Application.Icon.Handle := LoadIcon(GetModuleHandle(nil), 'MAINICON');
   WidgetSet.ThemeServices.UpdateThemes;
   WidgetSet.AppHandle := CreateWindowsAppHandle;
 {$ENDIF}
@@ -91,19 +93,9 @@ end;
 procedure Application_Run(AObj: TApplication); extdecl;
 begin
   handleExceptionBegin
-// 先不用这里的了
-//{$IFDEF WINDOWS}
-  //if (AObj.MainForm <> nil) and AObj.ShowMainForm then AObj.MainForm.Show;
-     //WidgetSet.AppRun(AObj.MyRunLoop);
-//{$ELSE}
   AObj.Run;
-//{$ENDIF}
   // 在Run结束后手动释放Application中的Form，主要是考虑在非Lazarus运行环境中造成的一些资源清理问题
   RemoveAllForms;
-//{$IFDEF WINDOWS}
-//  if AObj.Handle <> 0 then
-//     DisposeWindowInfo(AObj.Handle);
-//{$ENDIF}
   handleExceptionEnd
 end;
 
@@ -1357,7 +1349,7 @@ exports
   Canvas_TextRect2,
   Canvas_Polygon,
   Canvas_Polyline,
-  canvas_PolyBezier,
+  Canvas_PolyBezier,
   //Canvas_PolyBezierTo,
   Canvas_Pixels,
   Canvas_SetPixels,

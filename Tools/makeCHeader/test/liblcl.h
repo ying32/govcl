@@ -83889,12 +83889,12 @@ static void init_lib_lcl() {
 
 #ifdef _WIN32
     // 尝试加载exe中名为MAINICON的图标为应用程序图标
-    if(Application) {
-        TIcon icon = Application_GetIcon(Application);
-        if(icon) {
-            Icon_SetHandle(icon, LoadIconA(GetModuleHandleA(NULL), "MAINICON"));
-        } 
-    }
+    //if(Application) {
+    //    TIcon icon = Application_GetIcon(Application);
+    //    if(icon) {
+    //        Icon_SetHandle(icon, LoadIconA(GetModuleHandleA(NULL), "MAINICON"));
+    //    } 
+    //}
 #endif
 }
 

@@ -21,8 +21,11 @@ func showError(err interface{}) {
 // CN: 尝试加载默认Application icon
 // EN: Try to load the default Application icon.
 func tryLoadAppIcon() {
-	hIcon := LoadIcon2(GetSelfModuleHandle(), "MAINICON")
-	if hIcon != 0 {
-		Application.Icon().SetHandle(hIcon)
+	// 将来会删除此代码，因为liblcl中已经做了处理了
+	if Application.Icon().Handle() == 0 {
+		hIcon := LoadIcon2(GetSelfModuleHandle(), "MAINICON")
+		if hIcon != 0 {
+			Application.Icon().SetHandle(hIcon)
+		}
 	}
 }

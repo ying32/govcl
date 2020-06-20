@@ -78,7 +78,7 @@ var (
 	canvas_TextRect2     = libvcl.NewProc("Canvas_TextRect2")
 	canvas_Polygon       = libvcl.NewProc("Canvas_Polygon")
 	canvas_Polyline      = libvcl.NewProc("Canvas_Polyline")
-	canvas_PolyBezier    = libvcl.NewProc("canvas_PolyBezier")
+	canvas_PolyBezier    = libvcl.NewProc("Canvas_PolyBezier")
 	canvas_PolyBezierTo  = libvcl.NewProc("Canvas_PolyBezierTo")
 	canvas_Pixels        = libvcl.NewProc("Canvas_Pixels")
 	canvas_SetPixels     = libvcl.NewProc("Canvas_SetPixels")
