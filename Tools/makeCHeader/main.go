@@ -71,6 +71,7 @@ var (
 	funcsMap   = make(map[string]string, 0)
 	classArray = make([]string, 0)
 	objsMap    = make(map[string]string)
+	defFile    = bytes.NewBuffer([]byte("EXPORTS\n\n"))
 )
 
 func main() {
@@ -95,8 +96,11 @@ func main() {
 	file.WLn()
 
 	// 自动生成的对象函数
-	parseClassFiles(file, "uexport1.pas")
-	parseClassFiles(file, "uexport2.pas")
+	for i := 1; i <= 4; i++ {
+		parseClassFiles(file, fmt.Sprintf("uexport%d.pas", i))
+	}
+
+	//	parseClassFiles(file, "uexport2.pas")
 
 	file.WLn()
 	parseFile(file, "LazarusDef.inc", false)
@@ -135,6 +139,9 @@ func main() {
 	file.AddReplaceFlag("typeconsts", parseConst("../../vcl/types/consts.go"))
 
 	file.Save()
+
+	// 保存def文件
+	//ioutil.WriteFile("./test/liblcl.def", defFile.Bytes(), 0664)
 
 }
 
@@ -202,7 +209,7 @@ func parseClassFiles(f *CFile, fileName string) {
 
 }
 
-func parseFunc(f *CFile, s string, isclass bool, eventType string) error {
+func parseFunc(f *CFile, s string, isclass bool, eventType string) {
 	isFunc := strings.HasPrefix(strings.ToLower(s), "function")
 	if isFunc {
 		s = strings.TrimPrefix(s, "function")
@@ -249,12 +256,13 @@ func parseFunc(f *CFile, s string, isclass bool, eventType string) error {
 	//fmt.Println(params)
 	//fmt.Println(s)
 	if _, ok := funcsMap[funcName]; ok {
-		return nil
+		return
 	}
 	funcsMap[funcName] = ""
-	MakeCFunc(f, funcName, returnType, params, isclass)
 
-	return nil
+	defFile.WriteString(fmt.Sprintf("  %s\n", funcName))
+
+	MakeCFunc(f, funcName, returnType, params, isclass)
 }
 
 type Param struct {
@@ -311,7 +319,7 @@ func ParseParams(s string, eventType string) []Param {
 	return ps
 }
 
-func MakeCFunc(f *CFile, name, returnType string, params []Param, isclass bool) error {
+func MakeCFunc(f *CFile, name, returnType string, params []Param, isclass bool) {
 
 	if name == "DSendMessage" || name == "DCreateURLShortCut" {
 		f.WLn()
@@ -398,8 +406,6 @@ func MakeCFunc(f *CFile, name, returnType string, params []Param, isclass bool) 
 		f.W("#endif\n")
 		f.WLn()
 	}
-
-	return nil
 }
 
 func TypeConvert(src string) string {

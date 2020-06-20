@@ -29389,6 +29389,8 @@ TClass ImageList_StaticClassType() {
 }
 
 
+// uexport2.pas
+
 // MyLCL_UpDown.inc
 DEFINE_FUNC_PTR(UpDown_Create)
 TUpDown UpDown_Create(TComponent AOwner) {
@@ -48489,6 +48491,8 @@ TClass StatusPanel_StaticClassType() {
 }
 
 
+// uexport3.pas
+
 // MyLCL_SpinEdit.inc
 DEFINE_FUNC_PTR(SpinEdit_Create)
 TSpinEdit SpinEdit_Create(TComponent AOwner) {
@@ -63959,6 +63963,8 @@ TClass PrinterSetupDialog_StaticClassType() {
 }
 
 
+// uexport4.pas
+
 // MyLCL_PageSetupDialog.inc
 DEFINE_FUNC_PTR(PageSetupDialog_Create)
 TPageSetupDialog PageSetupDialog_Create(TComponent AOwner) {
@@ -73534,8 +73540,6 @@ TClass FlowPanel_StaticClassType() {
     return (TClass)MySyscall(pFlowPanel_StaticClassType, 0 ,0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
-
-// uexport2.pas
 
 // MyLCL_CoolBar.inc
 DEFINE_FUNC_PTR(CoolBar_Create)
