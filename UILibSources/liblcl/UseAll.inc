@@ -52,8 +52,8 @@
   uLinkLabel,
   uEventCallback,
   ImageButton,
-  Gauges,
   uMiniWebview,
   xButton,
   uGoForm,
-  uRichEdit
+  uRichEdit,
+  uGauge

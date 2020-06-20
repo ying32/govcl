@@ -5,5 +5,6 @@
 
 | Name | Download URL | License |
 | :------ | :------ | ---- | 
-| RichMemo | http://packages.lazarus-ide.org/RichMemo.zip | modifiedLGPL |
+| RichMemo | http://packages.lazarus-ide.org/RichMemo.zip | modifiedLGPL |  
+| TATGauge | https://github.com/Alexey-T/ATFlatControls | MPL 2.0 or LGPL or any license which LCL can use |  
 

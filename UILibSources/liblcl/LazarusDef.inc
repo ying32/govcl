@@ -1039,7 +1039,8 @@ begin
             'Official website:https://z-kit.cc'#13#10 +
             'Based on Lazarus ' + lcl_version + #13#10 +
             'Third party library list:'#13#10#13#10;
-  LVal := LVal + '    TRichMemo';
+  LVal := LVal + '    TRichMemo'#13#10;
+  LVal := LVal + '    TATGauge';
   Result := PChar(LVal);
 end;
 
