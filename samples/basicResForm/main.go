@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	//vcl.Application.SetFormScaled(true)
+	//vcl.Application.SetScaled(true)
 	//vcl.Application.Initialize()
 	//vcl.Application.SetMainFormOnTaskBar(true)
 	//vcl.Application.SetOnException(func(sender vcl.IObject, e *vcl.Exception) {

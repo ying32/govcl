@@ -30,7 +30,6 @@ var (
 )
 
 func main() {
-	vcl.Application.SetFormScaled(true)
 	vcl.Application.SetOnException(applicationException)
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)

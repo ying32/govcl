@@ -4,17 +4,14 @@ package main
 import (
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
 )
 
 const Lazarus = true
 
 func main() {
-	if rtl.LcLLoaded() {
-		vcl.Application.SetFormScaled(true)
-	}
+
 	vcl.Application.Initialize()
-    vcl.Application.CreateForm(&MainForm)
-    vcl.Application.CreateForm(&About)
+	vcl.Application.CreateForm(&MainForm)
+	vcl.Application.CreateForm(&About)
 	vcl.Application.Run()
 }
