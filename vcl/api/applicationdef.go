@@ -19,9 +19,11 @@ func Application_CreateForm(app uintptr, initScale bool) uintptr {
 }
 
 func Application_Run(app uintptr) {
+	defer func() {
+		// 运行完后free下
+		closeLib()
+	}()
 	application_Run.Call(app)
-	// 运行完后free下
-	closeLib()
 }
 
 func Application_Initialize(obj uintptr) {

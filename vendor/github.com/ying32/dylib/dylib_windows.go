@@ -40,7 +40,9 @@ func (d *LazyDLL) NewProc(name string) *LazyProc {
 }
 
 func (d *LazyDLL) Close() {
-	//
+	if d.Handle() != 0 {
+		syscall.FreeLibrary(syscall.Handle(d.Handle()))
+	}
 }
 
 func (d *LazyDLL) call(proc *LazyProc, a ...uintptr) (r1, r2 uintptr, lastErr error) {
