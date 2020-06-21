@@ -1,2 +1,3 @@
 *.pas linguist-language=go
 *.inc linguist-language=go
+*.h linguist-language=go
