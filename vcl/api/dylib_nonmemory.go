@@ -11,32 +11,22 @@
 package api
 
 import (
-	"runtime"
-
 	"github.com/ying32/govcl/pkgs/libname"
 
 	"github.com/ying32/dylib"
 )
 
-var (
-	platformExtNames = map[string]string{
-		"windows": ".dll",
-		"linux":   ".so",
-		"darwin":  ".dylib",
-	}
-)
-
 // 加载库
 func loadUILib() *dylib.LazyDLL {
-	libName := "liblcl"
-	if libname.LibName == "" {
-		if ext, ok := platformExtNames[runtime.GOOS]; ok {
-			libName += ext
-		}
+	libName := getDLLName()
+	// 如果支持运行时释放，则使用此种方法
+	if support, newDLLPath := checkAndReleaseDLL(); support {
+		libName = newDLLPath
 	} else {
-		libName = libname.LibName
+		if libname.LibName != "" {
+			libName = libname.LibName
+		}
 	}
-	//fmt.Println("LoadLibrary:", libName)
 	lib := dylib.NewLazyDLL(libName)
 	err := lib.Load()
 	if err != nil {
@@ -46,7 +36,6 @@ func loadUILib() *dylib.LazyDLL {
 		// 当前已经不再支持VCL库了。如果有需要，请使用最后一个支持VCL版本的代码：https://github.com/ying32/govcl/tree/last-vcl-support。
 		panic("The VCL library is no longer supported. If necessary, please use the last code that supports VCL version: https://github.com/ying32/govcl/tree/last-vcl-support.")
 	}
-
 	return lib
 }
 

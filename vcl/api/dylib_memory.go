@@ -8,6 +8,9 @@
 
 // +build windows
 // +build memorydll
+// +build !tempdll
+
+// 指令为：target == windows && memorydll && !tempdll
 
 // 编译时加上 -tags memorydll
 

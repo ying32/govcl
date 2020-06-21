@@ -26,3 +26,19 @@ const (
 	LtVCL TLibType = iota + 0
 	LtLCL
 )
+
+var (
+	platformExtNames = map[string]string{
+		"windows": ".dll",
+		"linux":   ".so",
+		"darwin":  ".dylib",
+	}
+)
+
+func getDLLName() string {
+	libName := "liblcl"
+	if ext, ok := platformExtNames[runtime.GOOS]; ok {
+		return libName + ext
+	}
+	return libName
+}
