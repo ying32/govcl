@@ -44,7 +44,10 @@ func (f *TMainForm) OnActUpdate(sender vcl.IObject) {
 
 func (f *TMainForm) initComponents() {
 	f.ImgList = vcl.NewImageList(f)
-	f.ImgList.AddIcon(vcl.Application.Icon())
+
+	if vcl.Application.Icon().Handle() != 0 {
+		f.ImgList.AddIcon(vcl.Application.Icon())
+	}
 
 	f.ActList = vcl.NewActionList(f)
 	f.ActList.SetImages(f.ImgList)
