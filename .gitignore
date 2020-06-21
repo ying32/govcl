@@ -69,7 +69,7 @@ lib
 # Castalia statistics file (since XE7 Castalia is distributed with Delphi)
 *.stat
 /.vscode
-/.idea
+.idea
 /UILibSources/liblcl/lib
 /UILibSources/liblcl/backup
 /bin/styles
