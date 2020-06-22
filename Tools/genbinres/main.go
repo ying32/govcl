@@ -46,7 +46,7 @@ func main() {
 
 	fmt.Println("找到路径")
 	if !fileExists(libLCLBinResDir) {
-		if err := os.MkdirAll(libLCLBinResDir, 0664); err != nil {
+		if err := os.MkdirAll(libLCLBinResDir, 0666); err != nil {
 			panic(err)
 		}
 	}
@@ -78,6 +78,8 @@ func main() {
 		ss := reg.FindStringSubmatch(path.Base(zipFileName))
 		if len(ss) >= 2 {
 			writeVersion(libLCLBinResDir+"/version.go", ss[1])
+		} else {
+			panic("检测文件错误，不能生成version.go文件。")
 		}
 
 	} else {
@@ -105,7 +107,7 @@ func readZipData(ff *zip.File) []byte {
 
 func writeVersion(filename, version string) {
 	fmt.Println("genFile: ", filename)
-	ioutil.WriteFile(filename, []byte(fmt.Sprintf("package liblclbinres\r\n\r\nconst Version = \"%s\"", version)), 0664)
+	ioutil.WriteFile(filename, []byte(fmt.Sprintf("package liblclbinres\r\n\r\nconst Version = \"%s\"", version)), 0666)
 }
 
 //  zlib压缩
@@ -150,7 +152,7 @@ func genresByte(input []byte, newFileName string) {
 		code.WriteString("\\x" + fmt.Sprintf("%.2x", b))
 	}
 	code.WriteString("\")\r\n")
-	ioutil.WriteFile(newFileName, code.Bytes(), 0775)
+	ioutil.WriteFile(newFileName, code.Bytes(), 0666)
 }
 
 // 生成字节的单元
