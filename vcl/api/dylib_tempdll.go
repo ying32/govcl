@@ -17,11 +17,11 @@ package api
 import (
 	"bytes"
 	"compress/zlib"
+	"fmt"
 	"hash/crc32"
 	"io"
 	"io/ioutil"
 	"os"
-	"runtime"
 
 	"github.com/ying32/liblclbinres"
 )
@@ -62,14 +62,14 @@ func fileExists(path string) bool {
 }
 
 func checkAndReleaseDLL() (bool, string) {
-	tempDLLDir := os.TempDir() + spStr + "liblcl" + spStr + liblclbinres.Version + spStr + runtime.GOARCH
-	// create liblcl: $tempdir/liblcl/{version}/{arch}/liblcl.{ext}
+	tempDLLDir := fmt.Sprintf("%s/liblcl/%x", os.TempDir(), liblclbinres.CRC32Value)
+	// create liblcl: $tempdir/liblcl/{crc32}/liblcl.{ext}
 	if !fileExists(tempDLLDir) {
 		if err := os.MkdirAll(tempDLLDir, 0775); err != nil {
 			return false, ""
 		}
 	}
-	tempDLLFileName := tempDLLDir + spStr + getDLLName()
+	tempDLLFileName := fmt.Sprintf("%s/%s", tempDLLDir, getDLLName())
 	// test crc32
 	if fileExists(tempDLLFileName) {
 		bs, err := ioutil.ReadFile(tempDLLFileName)
