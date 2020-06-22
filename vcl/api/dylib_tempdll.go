@@ -17,7 +17,6 @@ package api
 import (
 	"bytes"
 	"compress/zlib"
-	"fmt"
 	"hash/crc32"
 	"io"
 	"io/ioutil"
@@ -64,13 +63,11 @@ func fileExists(path string) bool {
 
 func checkAndReleaseDLL() (bool, string) {
 	tempDLLDir := os.TempDir() + spStr + "liblcl" + spStr + liblclbinres.Version + spStr + runtime.GOARCH
-	// 创建目录 tempdir/liblcl/{version}/{arch}/liblcl.{ext}
+	// create liblcl: $tempdir/liblcl/{version}/{arch}/liblcl.{ext}
 	if !fileExists(tempDLLDir) {
-		if err := os.MkdirAll(tempDLLDir, 0664); err != nil {
+		if err := os.MkdirAll(tempDLLDir, 0775); err != nil {
 			return false, ""
 		}
-	} else {
-		fmt.Println("目录已创建")
 	}
 	tempDLLFileName := tempDLLDir + spStr + getDLLName()
 	// test crc32
@@ -84,11 +81,10 @@ func checkAndReleaseDLL() (bool, string) {
 	}
 	if !fileExists(tempDLLFileName) {
 		if err := ZlibUnCompressToFile(tempDLLFileName, liblclbinres.LCLBinRes); err != nil {
-			os.Remove(tempDLLFileName)
-			return false, ""
+			if os.Remove(tempDLLFileName) != nil {
+				return false, ""
+			}
 		}
-	} else {
-		fmt.Println("liblcl已经存在")
 	}
 	return true, tempDLLFileName
 }
