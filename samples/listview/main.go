@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"runtime"
 
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
@@ -11,9 +12,6 @@ import (
 )
 
 func main() {
-	icon := vcl.NewIcon()
-	icon.LoadFromResourceName(rtl.MainInstance(), "MAINICON")
-	defer icon.Free()
 
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
@@ -27,7 +25,12 @@ func main() {
 	mainForm.SetDoubleBuffered(true)
 
 	imgList := vcl.NewImageList(mainForm)
-	imgList.AddIcon(icon)
+	if runtime.GOOS == "windows" {
+		icon := vcl.NewIcon()
+		icon.LoadFromResourceName(rtl.MainInstance(), "MAINICON")
+		imgList.AddIcon(icon)
+		icon.Free()
+	}
 
 	lv1 := vcl.NewListView(mainForm)
 	lv1.SetParent(mainForm)

@@ -23,16 +23,17 @@ func main() {
 	mainForm.SetWidth(600)
 	mainForm.SetHeight(500)
 
+	imglist := vcl.NewImageList(mainForm)
+
 	icon := vcl.NewIcon()
-	defer icon.Free()
 	if runtime.GOOS == "windows" {
 		icon.LoadFromResourceName(rtl.MainInstance(), "MAINICON")
 	} else {
 		icon.LoadFromFile("./brown.ico")
 	}
-
-	imglist := vcl.NewImageList(mainForm)
 	imglist.AddIcon(icon)
+	icon.Free()
+
 	ico2 := vcl.NewIcon()
 	ico2.LoadFromFile("brown.ico")
 	imglist.AddIcon(ico2)
