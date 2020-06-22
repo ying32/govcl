@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/ying32/govcl/vcl/rtl"
 	//	"syscall"
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
@@ -27,10 +29,15 @@ func main() {
 	img := vcl.NewImage(mainForm)
 	img.SetParent(mainForm)
 	// 本地加载
-	mem := vcl.NewMemoryStream()
-	defer mem.Free()
-	mem.LoadFromFile("1.jpg")
-	img.Picture().LoadFromStream(mem)
+	jpgFileName := "./1.jpg"
+	if rtl.FileExists(jpgFileName) {
+		mem := vcl.NewMemoryStream()
+		mem.LoadFromFile(jpgFileName)
+		mem.SetPosition(0)
+		img.Picture().LoadFromStream(mem)
+		mem.Free()
+	}
+
 	// 网络图片加载
 	img2 := vcl.NewImage(mainForm)
 	img2.SetParent(mainForm)

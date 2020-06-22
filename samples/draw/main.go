@@ -3,6 +3,7 @@ package main
 import (
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 	"github.com/ying32/govcl/vcl/types/colors"
 )
@@ -22,9 +23,13 @@ func main() {
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 
-	jpgimg := vcl.NewJPEGImage()
-	defer jpgimg.Free()
-	jpgimg.LoadFromFile("imgs/1.jpg")
+	jpgFileName := "./imgs/1.jpg"
+	canLoad := rtl.FileExists(jpgFileName)
+	var jpgimg *vcl.TJPEGImage
+	if canLoad {
+		jpgimg = vcl.NewJPEGImage()
+		jpgimg.LoadFromFile(jpgFileName)
+	}
 
 	mainForm := vcl.Application.CreateForm()
 	mainForm.SetCaption("Hello")
@@ -33,6 +38,11 @@ func main() {
 	mainForm.SetWidth(600)
 	mainForm.SetHeight(600)
 	mainForm.SetDoubleBuffered(true)
+	mainForm.SetOnDestroy(func(sender vcl.IObject) {
+		if jpgimg != nil {
+			jpgimg.Free()
+		}
+	})
 
 	mainForm.SetOnPaint(func(vcl.IObject) {
 
@@ -44,6 +54,7 @@ func main() {
 		canvas.Font().SetColor(colors.ClRed) // red
 		canvas.Font().SetSize(20)
 		style := canvas.Font().Style()
+		canvas.Brush().SetStyle(types.BsClear)
 		canvas.Font().SetStyle(style.Include(types.FsBold, types.FsItalic))
 		canvas.TextOut(100, 30, s)
 
