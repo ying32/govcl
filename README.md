@@ -54,9 +54,9 @@ package main
 
 
 import (
-   "github.com/ying32/govcl/vcl"
    // 如果你使用自定义的syso文件则不要引用此包
    _ "github.com/ying32/govcl/pkgs/winappres"
+   "github.com/ying32/govcl/vcl"
 )
 
 type TMainForm struct {
@@ -105,16 +105,16 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 **方法一需要配合res2go工具使用。**  
 
 
-* 方法二(纯代码，仿照FreePascal类的方式。)：  
+* 方法二(纯代码，仿照FreePascal类的方式)：  
 
 ```golang
 package main
 
 
 import (
-   "github.com/ying32/govcl/vcl"
    // 如果你使用自定义的syso文件则不要引用此包
    _ "github.com/ying32/govcl/pkgs/winappres"
+   "github.com/ying32/govcl/vcl"
 )
 
 type TMainForm struct {

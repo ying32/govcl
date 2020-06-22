@@ -17,7 +17,7 @@ Cross-platform Golang GUI library, Binding with Lazarus LCL.
 [WIKI(Chinese)](https://gitee.com/ying32/govcl/wikis/pages) | 
 [What's-new(Chinese)](https://z-kit.cc/changelog.html) | 
 [GoVCL video tutorial (third party)](https://video.0-w.cc/videos/1) | 
-[Sponsor govcl](https://z-kit.cc/sponsor.html)  
+[Sponsor govcl](https://z-kit.cc/en/sponsor.html)  
 
 ----
 
@@ -50,9 +50,9 @@ package main
 
 
 import (
-   "github.com/ying32/govcl/vcl"
    // Do not reference this package if you use custom syso files
    _ "github.com/ying32/govcl/pkgs/winappres"
+   "github.com/ying32/govcl/vcl"
 )
 
 type TMainForm struct {
@@ -101,16 +101,16 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 **Method 1 needs to be used in conjunction with the res2go tool.**  
 
 
-* Method 2(Pure code, imitating the way of FreePascal class.):  
+* Method 2(Pure code, imitating the way of FreePascal class):  
 
 ```golang
 package main
 
 
 import (
-   "github.com/ying32/govcl/vcl"
    // Do not reference this package if you use custom syso files
    _ "github.com/ying32/govcl/pkgs/winappres"
+   "github.com/ying32/govcl/vcl"
 )
 
 type TMainForm struct {
