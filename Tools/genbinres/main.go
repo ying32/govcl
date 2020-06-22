@@ -8,7 +8,6 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
-	"regexp"
 	"strings"
 
 	"archive/zip"
@@ -74,19 +73,11 @@ func main() {
 				genresByte(readZipData(ff), libLCLBinResDir+"/liblcl_windows_amd64.go")
 			}
 		}
-		reg := regexp.MustCompile(`liblcl-(\d+\.\d+\.\d+)`)
-		ss := reg.FindStringSubmatch(path.Base(zipFileName))
-		if len(ss) >= 2 {
-			writeVersion(libLCLBinResDir+"/version.go", ss[1])
-		} else {
-			panic("检测文件错误，不能生成version.go文件。")
-		}
 
 	} else {
 		genresFile("../../Librarys/liblcl/win32/liblcl.dll", libLCLBinResDir+"/liblcl_windows_386.go")
 		genresFile("../../Librarys/liblcl/win64/liblcl.dll", libLCLBinResDir+"/liblcl_windows_amd64.go")
 		genresFile("../../Librarys/liblcl/linux64-gtk2/liblcl.so", libLCLBinResDir+"/liblcl_linux_amd64.go")
-		writeVersion(libLCLBinResDir+"/version.go", "2.0.3")
 	}
 
 	// macOS不支持这种，也不需要支持这种
@@ -103,11 +94,6 @@ func readZipData(ff *zip.File) []byte {
 		return bs
 	}
 	return nil
-}
-
-func writeVersion(filename, version string) {
-	fmt.Println("genFile: ", filename)
-	ioutil.WriteFile(filename, []byte(fmt.Sprintf("package liblclbinres\r\n\r\nconst Version = \"%s\"", version)), 0666)
 }
 
 //  zlib压缩
@@ -145,7 +131,7 @@ func genresByte(input []byte, newFileName string) {
 	code := bytes.NewBuffer(nil)
 	code.WriteString("package liblclbinres")
 	code.WriteString("\r\n\r\n")
-	code.WriteString(fmt.Sprintf("const CRC32Value = 0x%x\r\n\r\n", crc32Val))
+	code.WriteString(fmt.Sprintf("const CRC32Value uint32 = 0x%x\r\n\r\n", crc32Val))
 
 	code.WriteString("var LCLBinRes = []byte(\"")
 	for _, b := range bs {
