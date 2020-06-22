@@ -1583,7 +1583,7 @@ const (
 	BsSpacer
 )
 
-// TGaugeKind = (gkText, gkHorizontalBar, gkVerticalBar, gkPie, gkNeedle);
+// TGaugeKind = (gkText, gkHorizontalBar, gkVerticalBar, gkPie, gkNeedle, gkHalfPie);
 type TGaugeKind int32
 
 const (
@@ -1592,6 +1592,7 @@ const (
 	GkVerticalBar
 	GkPie
 	GkNeedle
+	GkHalfPie
 )
 
 //TCustomDrawTarget = (dtControl, dtItem, dtSubItem);
