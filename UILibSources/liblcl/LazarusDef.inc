@@ -9,7 +9,7 @@ end;
 function DLibVersion: Cardinal; extdecl;
 begin
   // 共8位，2位2位的
-  Result := $02000300;
+  Result := $02000400;
 end;
 
 // 一些初始

@@ -92,7 +92,7 @@ type IControl interface {
 	AnchorParallel(TAnchorKind, int32, IControl)
 	AnchorHorizontalCenterTo(IControl)
 	AnchorVerticalCenterTo(IControl)
-	AnchorSame(TAnchorKind, IControl)
+	//AnchorSame(TAnchorKind, IControl)
 	AnchorAsAlign(TAlign, int32)
 	AnchorClient(int32)
 

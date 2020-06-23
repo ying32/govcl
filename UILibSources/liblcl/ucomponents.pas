@@ -67,7 +67,7 @@ begin
       {THeaderSection,THeaderSections,}TLabeledEdit,TBoundLabel,
       TFlowPanel,TCoolBar,TCoolBands,TCoolBand, TSpinEdit,TMiniWebview,
       TTaskDialog, {TTaskDialogButtons, TTaskDialogProgressBar, TTaskDialogButtonItem, TTaskDialogRadioButtonItem, TTaskDialogBaseButtonItem,}TCalendar,
-      {TControlBorderSpacing,}TComboBoxEx,{TFrame,TControlScrollBar,TSizeConstraints,}TXButton
+      {TControlBorderSpacing,}TComboBoxEx,{TFrame,TControlScrollBar,TSizeConstraints,}TXButton, TCheckGroup, TToggleBox
   ]);
   {$I UserDefineComponentsClass.inc}
 end;
