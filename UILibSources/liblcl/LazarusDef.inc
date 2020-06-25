@@ -969,7 +969,7 @@ end;
 //end;
 //
 // 因参数与Delphi中不一致，这里要伪造下参数，后面  ADriver, APort, ADeviceMode 三个参数无效
-procedure Printer_SetPrinter(Obj: TPrinter; aName, ADriver, APort: PChar; ADeviceMode: NativeUInt); extdecl;
+procedure Printer_SetPrinter(Obj: TPrinter; aName: PChar); extdecl;
 begin
   handleExceptionBegin
   Obj.SetPrinter(aName);

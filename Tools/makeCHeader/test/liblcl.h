@@ -83653,9 +83653,9 @@ TPrinter Printer_Instance() {
 }
 
 DEFINE_FUNC_PTR(Printer_SetPrinter)
-void Printer_SetPrinter(TPrinter Obj, CChar char* aName, CChar char* ADriver, CChar char* APort, uintptr_t ADeviceMode) {
+void Printer_SetPrinter(TPrinter Obj, CChar char* aName) {
     GET_FUNC_ADDR(Printer_SetPrinter)
-    MySyscall(pPrinter_SetPrinter, 5, Obj, aName, ADriver, APort, ADeviceMode ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+    MySyscall(pPrinter_SetPrinter, 2, Obj, aName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 DEFINE_FUNC_PTR(DLibAbout)

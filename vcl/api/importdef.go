@@ -113,7 +113,8 @@ var (
 	dSetPropertySecValue = libvcl.NewProc("DSetPropertySecValue")
 
 	// Printer
-	printer_Instance = libvcl.NewProc("Printer_Instance")
+	printer_Instance   = libvcl.NewProc("Printer_Instance")
+	printer_SetPrinter = libvcl.NewProc("Printer_SetPrinter")
 
 	// guid
 	dGUIDToString = libvcl.NewProc("DGUIDToString")
