@@ -71,234 +71,127 @@ type
     class constructor Create;
     class destructor Destroy;
   public
-    class procedure OnClick(Sender: TObject);
-
-    class procedure FormOnClose(Sender: TObject; var Action: TCloseAction);
-    class procedure FormOnCloseQuery(Sender: TObject; var CanClose: Boolean);
-    class procedure FormOnDropFiles(Sender: TObject; const AFileNames: array of string);
-
-    class procedure OnClose(Sender: TObject);
-
-    class procedure OnChange(Sender: TObject);
-
-    class procedure UpDownOnClick(Sender: TObject; Button: TUDBtnType);
-
-    class procedure TreeViewOnChange(Sender: TObject; ANode: TTreeNode);
-    class procedure TreeViewOnGetImageIndex(Sender: TObject; Node: TTreeNode);
-    class procedure TreeViewOnGetSelectedIndex(Sender: TObject; Node: TTreeNode);
-    class procedure TreeViewOnCompare(Sender: TObject; Node1, Node2: TTreeNode; var Compare: Integer);
-    class procedure TreeViewOnAdvancedCustomDraw(Sender: TCustomTreeView;
-      const ARect: TRect; Stage: TCustomDrawStage; var DefaultDraw: Boolean);
-    class procedure TreeViewOnAdvancedCustomDrawItem(Sender: TCustomTreeView;
-      Node: TTreeNode; State: TCustomDrawState; Stage: TCustomDrawStage;
-      var PaintImages, DefaultDraw: Boolean);
+    //------------------新方式-------------------------------
+    class procedure OnTExceptionEvent_OnException(Sender: TObject; E: Exception);
 
 
-    class procedure ListViewOnChange(Sender: TObject; AItem: TListItem; Change: TItemChange);
-    class procedure ListViewOnColumnClick(Sender: TObject; Column: TListColumn);
-    class procedure ListViewOnColumnRightClick(Sender: TObject; Column: TListColumn; Point: TPoint);
-    class procedure ListViewOnGetImageIndex(Sender: TObject; Item: TListItem);
-    class procedure ListViewOnSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
-    class procedure ListViewOnItemChecked(Sender: TObject; Item: TListItem);
-    class procedure ListViewOnCompare(Sender: TObject; Item1, Item2: TListItem; Data: Integer; var Compare: Integer);
-    class procedure ListViewOnAdvancedCustomDraw(Sender: TCustomListView;
-       const ARect: TRect; Stage: TCustomDrawStage; var DefaultDraw: Boolean);
-    class procedure ListViewOnAdvancedCustomDrawItem(Sender: TCustomListView;
-      Item: TListItem; State: TCustomDrawState; Stage: TCustomDrawStage;
-      var DefaultDraw: Boolean);
-    class procedure ListViewOnAdvancedCustomDrawSubItem(Sender: TCustomListView;
-      Item: TListItem; SubItem: Integer; State: TCustomDrawState;
-      Stage: TCustomDrawStage; var DefaultDraw: Boolean);
-
-    class procedure PageControlOnGetImageIndex(Sender: TObject; TabIndex: Integer; var ImageIndex: Integer);
-
-
-    class procedure ToolBarOnAdvancedCustomDraw(Sender: TToolBar;
-       const ARect: TRect; Stage: TCustomDrawStage; var DefaultDraw: Boolean);
-    //class procedure ToolBarOnAdvancedCustomDrawButton(Sender: TToolBar;
-      //Button: TToolButton; State: TCustomDrawState; Stage: TCustomDrawStage;
-      //var Flags: TTBCustomDrawFlags; var DefaultDraw: Boolean);
-
-
-    class procedure OnDblClick(Sender: TObject);
-
-    class procedure OnPaint(Sender: TObject);
-    class procedure OnResize(Sender: TObject);
-    class procedure OnShow(Sender: TObject);
-    class procedure OnEnter(Sender: TObject);
-    class procedure OnExit(Sender: TObject);
-    class procedure OnPopup(Sender: TObject);
-    class procedure OnHint(Sender: TObject);
-    class procedure OnClickCheck(Sender: TObject);
-
-    class procedure OnExecute(Sender: TObject);
-    class procedure OnUpdate(Sender: TObject);
-
-    class procedure OnBalloonClick(Sender: TObject);
-
-    class procedure OnException(Sender: TObject; E: Exception);
-    class procedure OnTimer(Sender: TObject);
-
-    class procedure OnMinimize(Sender: TObject);
-    class procedure OnRestore(Sender: TObject);
-    class procedure OnHide(Sender: TObject);
-
-    class procedure OnDestroy(Sender: TObject);
-    class procedure OnReplace(Sender: TObject);
-    class procedure OnFind(Sender: TObject);
-
-    class procedure OnActivate(Sender: TObject);
-    class procedure OnDeactivate(Sender: TObject);
-    class procedure OnConstrainedResize(Sender: TObject; var MinWidth, MinHeight, MaxWidth, MaxHeight: TConstraintSize);
-
-
-    // new
-    class function OnHelp(Command: Word; Data: PtrInt; var CallHelp: Boolean): Boolean;
-    class procedure OnShortCut(var Msg: TLMKey; var Handled: Boolean);
-    class procedure OnContextPopup(Sender: TObject; MousePos: TPoint; var Handled: Boolean);
-    class procedure OnDockDrop(Sender: TObject; Source: TDragDockObject; X, Y: Integer);
-    class procedure OnDragDrop(Sender, Source: TObject; X, Y: Integer);
-    class procedure OnDragOver(Sender, Source: TObject; X, Y: Integer; State: TDragState; var Accept: Boolean);
-    class procedure OnEndDock(Sender, Target: TObject; X, Y: Integer);
-    class procedure OnGetSiteInfo(Sender: TObject; DockClient: TControl; var InfluenceRect: TRect; MousePos: TPoint; var CanDock: Boolean);
-    class procedure OnMouseWheelDown(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
-    class procedure OnMouseWheelUp(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
-    class procedure OnStartDock(Sender: TObject; var DragObject: TDragDockObject);
-    class procedure OnUnDock(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean);
-    class procedure OnEndDrag(Sender, Target: TObject; X, Y: Integer);
+    class procedure OnTNotifyEvent_OnActivate(Sender: TObject);
+    class procedure OnTNotifyEvent_OnDeactivate(Sender: TObject);
+    class procedure OnTNotifyEvent_OnHint(Sender: TObject);
+    class procedure OnTNotifyEvent_OnMinimize(Sender: TObject);
+    class procedure OnTNotifyEvent_OnRestore(Sender: TObject);
+    class procedure OnTNotifyEvent_OnClick(Sender: TObject);
+    class procedure OnTNotifyEvent_OnDblClick(Sender: TObject);
+    class procedure OnTNotifyEvent_OnHide(Sender: TObject);
+    class procedure OnTNotifyEvent_OnMouseEnter(Sender: TObject);
+    class procedure OnTNotifyEvent_OnMouseLeave(Sender: TObject);
+    class procedure OnTNotifyEvent_OnPaint(Sender: TObject);
+    class procedure OnTNotifyEvent_OnResize(Sender: TObject);
+    class procedure OnTNotifyEvent_OnShow(Sender: TObject);
+    class procedure OnTNotifyEvent_OnEnter(Sender: TObject);
+    class procedure OnTNotifyEvent_OnExit(Sender: TObject);
+    class procedure OnTNotifyEvent_OnChange(Sender: TObject);
+    class procedure OnTNotifyEvent_OnPopup(Sender: TObject);
+    class procedure OnTNotifyEvent_OnSelect(Sender: TObject);
+    class procedure OnTNotifyEvent_OnClose(Sender: TObject);
+    class procedure OnTNotifyEvent_OnChanging(Sender: TObject);
+    class procedure OnTNotifyEvent_OnExecute(Sender: TObject);
+    class procedure OnTNotifyEvent_OnUpdate(Sender: TObject);
+    class procedure OnTNotifyEvent_OnTimer(Sender: TObject);
+    class procedure OnTNotifyEvent_OnClickCheck(Sender: TObject);
+    class procedure OnTNotifyEvent_OnFind(Sender: TObject);
+    class procedure OnTNotifyEvent_OnReplace(Sender: TObject);
+    class procedure OnTNotifyEvent_OnTopLeftChanged(Sender: TObject);
+    class procedure OnTNotifyEvent_OnSectionEndDrag(Sender: TObject);
+    class procedure OnTNotifyEvent_OnDestroy(Sender: TObject);
 
 
 
-    //class procedure OnGesture(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
-    //class procedure OnMouseActivate(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y, HitTest: Integer; var MouseActivate: TMouseActivate);
-    //class procedure ListBoxOnData(Control: TWinControl; Index: Integer; var Data: string);
-    //class function ListBoxOnDataFind(Control: TWinControl; FindString: string): Integer;
-    //class procedure ListBoxOnDataObject(Control: TWinControl; Index: Integer; var DataObject: TObject);
-    class procedure ListBoxOnMeasureItem(Control: TWinControl; Index: Integer; var Height: Integer);
-    class procedure OnChanging(Sender: TObject);
-    class procedure UpDownOnChanging(Sender: TObject; var AllowChange: Boolean);
+    class function OnTHelpEvent_OnHelp(Command: Word; Data: PtrInt; var CallHelp: Boolean): Boolean;
+    class procedure OnTShortCutEvent_OnShortCut(var Msg: TLMKey; var Handled: Boolean);
+    class procedure OnTAlignPositionEvent_OnAlignPosition(Sender: TWinControl; Control: TControl; var NewLeft, NewTop, NewWidth, NewHeight: Integer; var AlignRect: TRect; AlignInfo: TAlignInfo);
+    class procedure OnTCloseEvent_OnClose(Sender: TObject; var Action: TCloseAction);
+    class procedure OnTCloseQueryEvent_OnCloseQuery(Sender: TObject; var CanClose: Boolean);
+    class procedure OnTContextPopupEvent_OnContextPopup(Sender: TObject; MousePos: TPoint; var Handled: Boolean);
+    class procedure OnTDockDropEvent_OnDockDrop(Sender: TObject; Source: TDragDockObject; X, Y: Integer);
+    class procedure OnTDragDropEvent_OnDragDrop(Sender, Source: TObject; X, Y: Integer);
+    class procedure OnTDragOverEvent_OnDragOver(Sender, Source: TObject; X, Y: Integer; State: TDragState; var Accept: Boolean);
+    class procedure OnTEndDragEvent_OnEndDrag(Sender, Target: TObject; X, Y: Integer);
+    class procedure OnTEndDragEvent_OnEndDock(Sender, Target: TObject; X, Y: Integer);
+    class procedure OnTGetSiteInfoEvent_OnGetSiteInfo(Sender: TObject; DockClient: TControl; var InfluenceRect: TRect; MousePos: TPoint; var CanDock: Boolean);
+    class procedure OnTKeyEvent_OnKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    class procedure OnTKeyEvent_OnKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    class procedure OnTKeyPressEvent_OnKeyPress(Sender: TObject; var Key: Char);
+    class procedure OnTMouseEvent_OnMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    class procedure OnTMouseEvent_OnMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    class procedure OnTMouseMoveEvent_OnMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    class procedure OnTMouseWheelEvent_OnMouseWheel(Sender: TObject; Shift: TShiftState; WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+    class procedure OnTMouseWheelUpDownEvent_OnMouseWheelDown(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
+    class procedure OnTMouseWheelUpDownEvent_OnMouseWheelUp(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
+    class procedure OnTStartDockEvent_OnStartDock(Sender: TObject; var DragObject: TDragDockObject);
+    class procedure OnTUnDockEvent_OnUnDock(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean);
+    class procedure OnTMenuChangeEvent_OnChange(Sender: TObject; Source: TMenuItem; Rebuild: Boolean);
+    class procedure OnTDrawItemEvent_OnDrawItem(Control: TWinControl; Index: Integer; ARect: TRect; State: TOwnerDrawState);
+    class procedure OnTMeasureItemEvent_OnMeasureItem(Control: TWinControl; Index: Integer; var Height: Integer);
+    class procedure OnTSysLinkEvent_OnLinkClick(Sender: TObject; const Link: string; LinkType: TSysLinkType);
+    class procedure OnTUDChangingEvent_OnChanging(Sender: TObject; var AllowChange: Boolean);
+    class procedure OnTUDClickEvent_OnClick(Sender: TObject; Button: TUDBtnType);
+    class procedure OnTLVAdvancedCustomDrawEvent_OnAdvancedCustomDraw(Sender: TCustomListView; const ARect: TRect; Stage: TCustomDrawStage; var DefaultDraw: Boolean);
+    class procedure OnTLVAdvancedCustomDrawItemEvent_OnAdvancedCustomDrawItem(Sender: TCustomListView; Item: TListItem; State: TCustomDrawState; Stage: TCustomDrawStage; var DefaultDraw: Boolean);
+    class procedure OnTLVAdvancedCustomDrawSubItemEvent_OnAdvancedCustomDrawSubItem(Sender: TCustomListView; Item: TListItem; SubItem: Integer; State: TCustomDrawState; Stage: TCustomDrawStage; var DefaultDraw: Boolean);
+    class procedure OnTLVChangeEvent_OnChange(Sender: TObject; AItem: TListItem; Change: TItemChange);
+    class procedure OnTLVColumnClickEvent_OnColumnClick(Sender: TObject; Column: TListColumn);
+    class procedure OnTLVCompareEvent_OnCompare(Sender: TObject; Item1, Item2: TListItem; Data: Integer; var Compare: Integer);
+    class procedure OnTLVCustomDrawEvent_OnCustomDraw(Sender: TCustomListView; const ARect: TRect; var DefaultDraw: Boolean);
+    class procedure OnTLVCustomDrawItemEvent_OnCustomDrawItem(Sender: TCustomListView; Item: TListItem; State: TCustomDrawState; var DefaultDraw: Boolean);
+    class procedure OnTLVCustomDrawSubItemEvent_OnCustomDrawSubItem(Sender: TCustomListView; Item: TListItem; SubItem: Integer; State: TCustomDrawState; var DefaultDraw: Boolean);
+    class procedure OnTLVOwnerDataEvent_OnData(Sender: TObject; Item: TListItem);
+    class procedure OnTLVOwnerDataFindEvent_OnDataFind(Sender: TObject; Find: TItemFind; const FindString: string; const FindPosition: TPoint; FindData: Pointer; StartIndex: Integer; Direction: TSearchDirection; Wrap: Boolean; var Index: Integer);
+    class procedure OnTLVOwnerDataHintEvent_OnDataHint(Sender: TObject; StartIndex, EndIndex: Integer);
+    class procedure OnTLVDeletedEvent_OnDeletion(Sender: TObject; Item: TListItem);
+    class procedure OnTLVEditedEvent_OnEdited(Sender: TObject; Item: TListItem; var S: string);
+    class procedure OnTLVEditingEvent_OnEditing(Sender: TObject; Item: TListItem; var AllowEdit: Boolean);
+    class procedure OnTLVDeletedEvent_OnInsert(Sender: TObject; Item: TListItem);
+    class procedure OnTLVSelectItemEvent_OnSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
+    class procedure OnTLVCheckedItemEvent_OnItemChecked(Sender: TObject; Item: TListItem);
+    class procedure OnTTVExpandedEvent_OnAddition(Sender: TObject; Node: TTreeNode);
+    class procedure OnTTVExpandedEvent_OnCollapsed(Sender: TObject; Node: TTreeNode);
+    class procedure OnTTVExpandedEvent_OnDeletion(Sender: TObject; Node: TTreeNode);
+    class procedure OnTTVExpandedEvent_OnExpanded(Sender: TObject; Node: TTreeNode);
+    class procedure OnTTVExpandedEvent_OnGetSelectedIndex(Sender: TObject; Node: TTreeNode);
+    class procedure OnTTVAdvancedCustomDrawEvent_OnAdvancedCustomDraw(Sender: TCustomTreeView; const ARect: TRect; Stage: TCustomDrawStage; var DefaultDraw: Boolean);
+    class procedure OnTTVAdvancedCustomDrawItemEvent_OnAdvancedCustomDrawItem(Sender: TCustomTreeView; Node: TTreeNode; State: TCustomDrawState; Stage: TCustomDrawStage; var PaintImages, DefaultDraw: Boolean);
+    class procedure OnTTVChangedEvent_OnChange(Sender: TObject; ANode: TTreeNode);
+    class procedure OnTTVChangingEvent_OnChanging(Sender: TObject; Node: TTreeNode; var AllowChange: Boolean);
+    class procedure OnTTVCollapsingEvent_OnCollapsing(Sender: TObject; Node: TTreeNode; var AllowCollapse: Boolean);
+    class procedure OnTTVCompareEvent_OnCompare(Sender: TObject; Node1, Node2: TTreeNode; var Compare: Integer);
+    class procedure OnTTVCustomDrawEvent_OnCustomDraw(Sender: TCustomTreeView; const ARect: TRect; var DefaultDraw: Boolean);
+    class procedure OnTTVCustomDrawItemEvent_OnCustomDrawItem(Sender: TCustomTreeView; Node: TTreeNode; State: TCustomDrawState; var DefaultDraw: Boolean);
+    class procedure OnTTVEditedEvent_OnEdited(Sender: TObject; Node: TTreeNode; var S: string);
+    class procedure OnTTVEditingEvent_OnEditing(Sender: TObject; Node: TTreeNode; var AllowEdit: Boolean);
+    class procedure OnTTVExpandingEvent_OnExpanding(Sender: TObject; Node: TTreeNode; var AllowExpansion: Boolean);
+    class procedure OnTMenuMeasureItemEvent_OnMeasureItem(Sender: TObject; ACanvas: TCanvas; var Width, Height: Integer);
+    class procedure OnTTabChangingEvent_OnChanging(Sender: TObject; var AllowChange: Boolean);
+    class procedure OnTWebTitleChangeEvent_OnTitleChange(Sender: TObject; const Text: string);
+    class procedure OnTWebJSExternalEvent_OnJSExternal(Sender: TObject; const Afunc: string; const AArgs: WideString; var ARetval: WideString);
+    class procedure OnTMovedEvent_OnColRowMoved(Sender: TObject; IsColumn: Boolean; FromIndex, ToIndex: Longint);
+    class procedure OnTDrawCellEvent_OnDrawCell(Sender: TObject; ACol, ARow: Longint; ARect: TRect; State: TGridDrawState);
+    class procedure OnTGetEditEvent_OnGetEditMask(Sender: TObject; ACol, ARow: Integer; var Value: string);
+    class procedure OnTGetEditEvent_OnGetEditText(Sender: TObject; ACol, ARow: Integer; var Value: string);
+    class procedure OnTSetEditEvent_OnSetEditText(Sender: TObject; ACol, ARow: Integer; const Value: string);
+    class procedure OnTSelectCellEvent_OnSelectCell(Sender: TObject; ACol, ARow: Integer; var CanSelect: Boolean);
+    class procedure OnTSectionNotifyEvent_OnSectionClick(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
+    class procedure OnTSectionNotifyEvent_OnSectionResize(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
+    class procedure OnTSectionTrackEvent_OnSectionTrack(HeaderControl: TCustomHeaderControl; Section: THeaderSection; Width: Integer; State: TSectionTrackState);
+    class procedure OnTSectionDragEvent_OnSectionDrag(Sender: TObject; FromSection, ToSection: THeaderSection; var AllowDrag: Boolean);
+    class procedure OnTTaskDlgClickEvent_OnButtonClicked(Sender: TObject; ModalResult: TModalResult; var CanClose: Boolean);
+    class procedure OnTCheckGroupClicked_OnItemClick(Sender: TObject; Index: integer);
 
-    class procedure ListViewOnChanging(Sender: TObject; Item: TListItem; Change: TItemChange; var AllowChange: Boolean);
-    class procedure ListViewOnData(Sender: TObject; Item: TListItem);
-    class procedure ListViewOnDataFind(Sender: TObject; Find: TItemFind;
-      const FindString: string; const FindPosition: TPoint; FindData: Pointer;
-      StartIndex: Integer; Direction: TSearchDirection; Wrap: Boolean; var Index: Integer);
-    class procedure ListViewOnEdited(Sender: TObject; Item: TListItem; var S: string);
-    class procedure ListViewOnEditing(Sender: TObject; Item: TListItem; var AllowEdit: Boolean);
-    class procedure ListViewOnInsert(Sender: TObject; Item: TListItem);
-    class procedure ListViewOnDeletion(Sender: TObject; Item: TListItem);
-
-    class procedure ListViewOnCustomDraw(Sender: TCustomListView; const ARect: TRect; var DefaultDraw: Boolean);
-    class procedure ListViewOnCustomDrawItem(Sender: TCustomListView; Item: TListItem; State: TCustomDrawState; var DefaultDraw: Boolean);
-    class procedure ListViewOnCustomDrawSubItem(Sender: TCustomListView; Item: TListItem; SubItem: Integer; State: TCustomDrawState; var DefaultDraw: Boolean);
-    class procedure ListViewOnDrawItem(Sender: TCustomListView; Item: TListItem; ARect: TRect; State: TOwnerDrawState);
-
-    class procedure ListViewOnDataHint(Sender: TObject; StartIndex, EndIndex: Integer);
-
-
-
-
-    class procedure TreeViewOnChanging(Sender: TObject; Node: TTreeNode; var AllowChange: Boolean);
-    //class procedure TreeViewOnCancelEdit(Sender: TObject; Node: TTreeNode);
-    class procedure TreeViewOnAddition(Sender: TObject; Node: TTreeNode);
-    class procedure TreeViewOnCollapsed(Sender: TObject; Node: TTreeNode);
-    class procedure TreeViewOnCollapsing(Sender: TObject; Node: TTreeNode; var AllowCollapse: Boolean);
-    class procedure TreeViewOnDeletion(Sender: TObject; Node: TTreeNode);
-    class procedure TreeViewOnEdited(Sender: TObject; Node: TTreeNode; var S: string);
-    class procedure TreeViewOnEditing(Sender: TObject; Node: TTreeNode; var AllowEdit: Boolean);
-    class procedure TreeViewOnExpanded(Sender: TObject; Node: TTreeNode);
-    class procedure TreeViewOnExpanding(Sender: TObject; Node: TTreeNode; var AllowExpansion: Boolean);
-    //class procedure TreeViewOnHint(Sender: TObject; const Node: TTreeNode; var Hint: string);
-    class procedure TreeViewOnCustomDraw(Sender: TCustomTreeView; const ARect: TRect; var DefaultDraw: Boolean);
-    class procedure TreeViewOnCustomDrawItem(Sender: TCustomTreeView; Node: TTreeNode; State: TCustomDrawState; var DefaultDraw: Boolean);
-
-
-
-    class procedure MenuItemOnMeasureItem(Sender: TObject; ACanvas: TCanvas; var Width, Height: Integer);
-    class procedure PageControlOnChanging(Sender: TObject; var AllowChange: Boolean);
-
-
-    // grid
-
-    class procedure OnColumnMoved(Sender: TObject; IsColumn: Boolean; FromIndex, ToIndex: Longint);
-    class procedure OnDrawCell(Sender: TObject; ACol, ARow: Longint; ARect: TRect; State: TGridDrawState);
-    class procedure OnFixedCellClick(Sender: TObject; ACol, ARow: Integer);
-    class procedure OnGetEditMask(Sender: TObject; ACol, ARow: Integer; var Value: string);
-    class procedure OnGetEditText(Sender: TObject; ACol, ARow: Integer; var Value: string);
-    class procedure OnRowMoved(Sender: TObject; IsColumn: Boolean; FromIndex, ToIndex: Integer);
-    class procedure OnSelectCell(Sender: TObject; ACol, ARow: Integer; var CanSelect: Boolean);
-    class procedure OnSetEditText(Sender: TObject; ACol, ARow: Integer; const Value: string);
-    class procedure OnTopLeftChanged(Sender: TObject);
-
-
-
-    // headercontrol
-    //class procedure OnDrawSection(HeaderControl: THeaderControl; Section: THeaderSection; const Rect: TRect; Pressed: Boolean);
-    //class procedure OnSectionCheck(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
-    class procedure OnSectionClick(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
-    class procedure OnSectionDrag(Sender: TObject; FromSection, ToSection: THeaderSection; var AllowDrag: Boolean);
-    class procedure OnSectionEndDrag(Sender: TObject);
-    class procedure OnSectionResize(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
-    class procedure OnSectionTrack(HeaderControl: TCustomHeaderControl; Section: THeaderSection; Width: Integer; State: TSectionTrackState);
-
-
-
-    class procedure OnKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    class procedure OnKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
-    class procedure OnKeyPress(Sender: TObject; var Key: Char);
-
-    class procedure OnMouseDown(Sender: TObject; Button: TMouseButton;
-           Shift: TShiftState; X, Y: Integer);
-    class procedure OnMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
-    class procedure OnMouseUp(Sender: TObject; Button: TMouseButton;
-          Shift: TShiftState; X, Y: Integer);
-    class procedure OnMouseWheel(Sender: TObject; Shift: TShiftState;
-          WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
-
-    class procedure OnMouseEnter(Sender: TObject);
-    class procedure OnMouseLeave(Sender: TObject);
-
-
-    class procedure ListBoxOnDrawItem(Control: TWinControl; Index: Integer;
-          ARect: TRect; State: TOwnerDrawState);
-
-    class procedure OnLinkClick(Sender: TObject; const Link: string; LinkType: TSysLinkType);
-
-    class procedure MenuOnChange(Sender: TObject; Source: TMenuItem; Rebuild: Boolean);
-
-    // webbrowser
-    class procedure OnTitleChange(Sender: TObject; const Text: string);
-    class procedure OnJSExternal(Sender: TObject; const Afunc: string; const AArgs: WideString; var ARetval: WideString);
-
-    // TaskDialog
-    class procedure TaskDialogOnButtonClicked(Sender: TObject; ModalResult: TModalResult; var CanClose: Boolean);
-    // Lazarus不支持
-    //class procedure TaskDialogOnDialogConstructed(Sender: TObject);
-    //class procedure TaskDialogOnDialogCreated(Sender: TObject);
-    //class procedure TaskDialogOnDialogDestroyed(Sender: TObject);
-    //class procedure TaskDialogOnExpanded(Sender: TObject);
-    //class procedure TaskDialogOnHyperlinkClicked(Sender: TObject);
-    //class procedure TaskDialogOnNavigated(Sender: TObject);
-    //class procedure TaskDialogOnRadioButtonClicked(Sender: TObject);
-    //class procedure TaskDialogOnTimer(Sender: TObject; TickCount: Cardinal; var Reset: Boolean);
-    //class procedure TaskDialogOnVerificationClicked(Sender: TObject);
-
-
-    //    class function OnAlignInsertBefore(Sender: TWinControl; C1, C2: TControl): Boolean;
-    class procedure OnAlignPosition(Sender: TWinControl; Control: TControl;
-       var NewLeft, NewTop, NewWidth, NewHeight: Integer; var AlignRect: TRect; AlignInfo: TAlignInfo);
-
-    class procedure OnDropDown(Sender: TObject);
-    class procedure OnSelect(Sender: TObject);
-    class procedure OnBeginEdit(Sender: TObject);
-    class procedure OnEndEdit(Sender: TObject);
-
-    // checkgroup
-    class procedure OnItemClick(Sender: TObject; Index: integer);
-
+    class procedure OnTConstrainedResizeEvent_OnConstrainedResize(Sender: TObject; var MinWidth, MinHeight, MaxWidth, MaxHeight: TConstraintSize);
+    class procedure OnTDropFilesEvent_OnDropFiles(Sender: TObject; const AFileNames: array of string);
+    //--------------------------------------------------------------------------
 
     class procedure Add(AObj: TObject; AEvent: Pointer; AId: NativeUInt);
-    class procedure AddClick(Sender: TObject; AId: NativeUInt);
     class procedure Remove(AObj: TObject; AEvent: Pointer);
     class procedure ThreadProc;
 
@@ -332,13 +225,13 @@ var
   I: Integer;
   P: PByte;
 begin
-   Result := 0;
-   P := @Key;
-    for I := 1 to SizeOf(Key) do
-    begin
-      Result := ((Result shl 2) or (Result shr (SizeOf(Result) * 8 - 2))) xor P^;
-      Inc(P);
-    end;
+  Result := 0;
+  P := @Key;
+  for I := 1 to SizeOf(Key) do
+  begin
+    Result := ((Result shl 2) or (Result shr (SizeOf(Result) * 8 - 2))) xor P^;
+    Inc(P);
+  end;
 end;
 
 
@@ -381,790 +274,6 @@ class procedure TEventClass.ThreadProc;
 begin
   GThreadSyncCallbackPtr();
 end;
-
-class procedure TEventClass.AddClick(Sender: TObject; AId: NativeUInt);
-begin
-  Add(Sender, @TEventClass.OnClick , AId);
-end;
-
-class procedure TEventClass.OnBalloonClick(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnBalloonClick, [Sender]);
-end;
-
-class procedure TEventClass.OnChange(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnChange, [Sender]);
-end;
-
-class procedure TEventClass.OnClick(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnClick, [Sender]);
-end;
-
-class procedure TEventClass.OnClickCheck(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnClickCheck, [Sender]);
-end;
-class procedure TEventClass.FormOnClose(Sender: TObject; var Action: TCloseAction);
-begin
-  SendEvent(Sender, @TEventClass.FormOnClose, [Sender, @Action]);
-end;
-
-class procedure TEventClass.OnReplace(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnReplace, [Sender]);
-end;
-
-class procedure TEventClass.OnFind(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnFind, [Sender]);
-end;
-
-
-class procedure TEventClass.OnActivate(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnActivate, [Sender]);
-end;
-
-class procedure TEventClass.OnDeactivate(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnDeactivate, [Sender]);
-end;
-
-class procedure TEventClass.OnConstrainedResize(Sender: TObject; var MinWidth, MinHeight, MaxWidth, MaxHeight: TConstraintSize);
-begin
-  SendEvent(Sender, @TEventClass.OnConstrainedResize, [Sender, @MinWidth, @MinHeight, @MaxWidth, @MaxHeight]);
-end;
-
-
-class function TEventClass.OnHelp(Command: Word; Data: PtrInt;
-  var CallHelp: Boolean): Boolean;
-var
-  LResult: Boolean;
-begin
-  SendEvent(Application, @TEventClass.OnHelp, [Command, Data, Pointer(@CallHelp), Pointer(@LResult)]);
-  Result := LResult;
-end;
-
-class procedure TEventClass.OnShortCut(var Msg: TLMKey; var Handled: Boolean);
-begin
-  SendEvent(Application, @TEventClass.OnShortCut, [Pointer(@Msg), Pointer(@Handled)]);
-end;
-
-class procedure TEventClass.OnContextPopup(Sender: TObject; MousePos: TPoint; var Handled: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.OnContextPopup, [Sender, Pointer(@MousePos), Pointer(@Handled)]);
-end;
-
-class procedure TEventClass.OnDockDrop(Sender: TObject; Source: TDragDockObject; X, Y: Integer);
-begin
-  SendEvent(Sender, @TEventClass.OnDockDrop, [Sender, Source, X, Y]);
-end;
-
-class procedure TEventClass.OnDragDrop(Sender, Source: TObject; X, Y: Integer);
-begin
-  SendEvent(Sender, @TEventClass.OnDragDrop, [Sender, Source, X, Y]);
-end;
-
-class procedure TEventClass.OnDragOver(Sender, Source: TObject; X, Y: Integer; State: TDragState; var Accept: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.OnDragOver, [Sender, Source, X, Y, Integer(State), Pointer(@Accept)]);
-end;
-
-class procedure TEventClass.OnEndDock(Sender, Target: TObject; X, Y: Integer);
-begin
-  SendEvent(Sender, @TEventClass.OnEndDock, [Sender, Target, X, Y]);
-end;
-
-class procedure TEventClass.OnGetSiteInfo(Sender: TObject; DockClient: TControl;
-  var InfluenceRect: TRect; MousePos: TPoint; var CanDock: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.OnGetSiteInfo, [Sender, DockClient, Pointer(@InfluenceRect), Pointer(@MousePos), Pointer(@CanDock)]);
-end;
-
-class procedure TEventClass.OnMouseWheelDown(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.OnMouseWheelDown, [Sender, PWord(@Shift)^, Pointer(@MousePos), Pointer(@Handled)]);
-end;
-
-class procedure TEventClass.OnMouseWheelUp(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.OnMouseWheelUp, [Sender, PWord(@Shift)^, Pointer(@MousePos), Pointer(@Handled)]);
-end;
-
-class procedure TEventClass.OnStartDock(Sender: TObject; var DragObject: TDragDockObject);
-begin
-  SendEvent(Sender, @TEventClass.OnStartDock, [Sender, DragObject]);
-end;
-
-class procedure TEventClass.OnUnDock(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.OnUnDock, [Sender, Client, NewTarget, Pointer(@Allow)]);
-end;
-
-class procedure TEventClass.OnEndDrag(Sender, Target: TObject; X, Y: Integer);
-begin
-  SendEvent(Sender, @TEventClass.OnEndDrag, [Sender, Target, X, Y]);
-end;
-
-
-//class procedure TEventClass.OnGesture(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
-//begin
-//  SendEvent(Sender, @TEventClass.OnGesture, [Sender, @EventInfo, @Handled]);
-//end;
-
-//class procedure TEventClass.OnMouseActivate(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
-//  X, Y, HitTest: Integer; var MouseActivate: TMouseActivate);
-//begin
-//  SendEvent(Sender, @TEventClass.OnMouseActivate, [Sender, Ord(Button), PWord(@Shift)^, X, Y, HitTest, @MouseActivate]);
-//end;
-
-
-//class procedure TEventClass.ListBoxOnData(Control: TWinControl; Index: Integer; var Data: string);
-//var
-//  LData: PChar;
-//begin
-//  LData := PChar(Data);
-//  SendEvent(Control, @TEventClass.ListBoxOnData, [Control,Index, @LData]);
-//  Data := LData;
-//end;
-//
-//
-//class function TEventClass.ListBoxOnDataFind(Control: TWinControl; FindString: string): Integer;
-//begin
-//  SendEvent(Control, @TEventClass.ListBoxOnDataFind, [Control, PChar(FindString), @Result]);
-//end;
-//
-//class procedure TEventClass.ListBoxOnDataObject(Control: TWinControl; Index: Integer; var DataObject: TObject);
-//begin
-//  SendEvent(Control, @TEventClass.ListBoxOnDataObject, [Control, Index, @DataObject]);
-//end;
-
-class procedure TEventClass.ListBoxOnMeasureItem(Control: TWinControl; Index: Integer; var Height: Integer);
-begin
-  SendEvent(Control, @TEventClass.ListBoxOnMeasureItem, [Control, Index, @Height]);
-end;
-
-class procedure TEventClass.OnChanging(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnChanging, [Sender]);
-end;
-
-class procedure TEventClass.UpDownOnChanging(Sender: TObject; var AllowChange: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.UpDownOnChanging, [Sender, @AllowChange]);
-end;
-
-class procedure TEventClass.ListViewOnChanging(Sender: TObject; Item: TListItem; Change: TItemChange; var AllowChange: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnChanging, [Sender, Item, Ord(Change), @AllowChange]);
-end;
-
-class procedure TEventClass.ListViewOnData(Sender: TObject; Item: TListItem);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnData, [Sender, Item]);
-end;
-
-class procedure TEventClass.ListViewOnDataFind(Sender: TObject; Find: TItemFind;
-  const FindString: string; const FindPosition: TPoint; FindData: Pointer;
-  StartIndex: Integer; Direction: TSearchDirection; Wrap: Boolean; var Index: Integer);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnDataFind, [Sender, Ord(Find), PChar(FindString), @FindPosition, FindData, StartIndex,
-    Ord(Direction), Integer(Wrap), @Index]);
-end;
-
-class procedure TEventClass.ListViewOnEdited(Sender: TObject; Item: TListItem; var S: string);
-var
-  LS: PChar;
-begin
-  LS := PChar(S);
-  SendEvent(Sender, @TEventClass.ListViewOnEdited, [Sender, Item, @LS]);
-  S := LS;
-end;
-
-class procedure TEventClass.ListViewOnEditing(Sender: TObject; Item: TListItem; var AllowEdit: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnEditing, [Sender, Item, @AllowEdit]);
-end;
-
-class procedure TEventClass.ListViewOnInsert(Sender: TObject; Item: TListItem);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnInsert, [Sender, Item]);
-end;
-
-class procedure TEventClass.ListViewOnDeletion(Sender: TObject; Item: TListItem);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnDeletion, [Sender, Item]);
-end;
-
-
-class procedure TEventClass.ListViewOnCustomDraw(Sender: TCustomListView; const ARect: TRect; var DefaultDraw: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnCustomDraw, [Sender, @ARect, @DefaultDraw]);
-end;
-
-class procedure TEventClass.ListViewOnCustomDrawItem(Sender: TCustomListView;
-  Item: TListItem; State: TCustomDrawState; var DefaultDraw: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnCustomDrawItem, [Sender, Item, PWord(@State)^, @DefaultDraw]);
-end;
-
-class procedure TEventClass.ListViewOnCustomDrawSubItem(Sender: TCustomListView;
-  Item: TListItem; SubItem: Integer; State: TCustomDrawState; var DefaultDraw: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnCustomDrawSubItem, [Sender, Item, SubItem, PWord(@State)^, @DefaultDraw]);
-end;
-
-class procedure TEventClass.ListViewOnDrawItem(Sender: TCustomListView; Item: TListItem; ARect: TRect; State: TOwnerDrawState);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnDrawItem, [Sender, Item, @ARect, PWord(@State)^]);
-end;
-
-class procedure TEventClass.ListViewOnDataHint(Sender: TObject; StartIndex,
-  EndIndex: Integer);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnDataHint, [Sender, StartIndex, EndIndex]);
-end;
-
-
-
-class procedure TEventClass.TreeViewOnChanging(Sender: TObject; Node: TTreeNode; var AllowChange: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.TreeViewOnChanging, [Sender, Node, @AllowChange]);
-end;
-
-//class procedure TEventClass.TreeViewOnCancelEdit(Sender: TObject; Node: TTreeNode);
-//begin
-//  SendEvent(Sender, @TEventClass.TreeViewOnCancelEdit, [Sender, Node]);
-//end;
-
-class procedure TEventClass.TreeViewOnAddition(Sender: TObject; Node: TTreeNode);
-begin
-  SendEvent(Sender, @TEventClass.TreeViewOnAddition, [Sender, Node]);
-end;
-
-class procedure TEventClass.TreeViewOnCollapsed(Sender: TObject; Node: TTreeNode);
-begin
-  SendEvent(Sender, @TEventClass.TreeViewOnCollapsed, [Sender, Node]);
-end;
-
-class procedure TEventClass.TreeViewOnCollapsing(Sender: TObject; Node: TTreeNode; var AllowCollapse: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.TreeViewOnCollapsing, [Sender, Node, @AllowCollapse]);
-end;
-
-class procedure TEventClass.TreeViewOnDeletion(Sender: TObject; Node: TTreeNode);
-begin
-  SendEvent(Sender, @TEventClass.TreeViewOnDeletion, [Sender, Node]);
-end;
-
-class procedure TEventClass.TreeViewOnEdited(Sender: TObject; Node: TTreeNode; var S: string);
-var
-  LS: PChar;
-begin
-  LS := PChar(S);
-  SendEvent(Sender, @TEventClass.TreeViewOnEdited, [Sender, Node, @LS]);
-  S := LS;
-end;
-
-class procedure TEventClass.TreeViewOnEditing(Sender: TObject; Node: TTreeNode; var AllowEdit: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.TreeViewOnEditing, [Sender, Node, @AllowEdit]);
-end;
-
-class procedure TEventClass.TreeViewOnExpanded(Sender: TObject; Node: TTreeNode);
-begin
-  SendEvent(Sender, @TEventClass.TreeViewOnExpanded, [Sender, Node]);
-end;
-
-class procedure TEventClass.TreeViewOnExpanding(Sender: TObject; Node: TTreeNode; var AllowExpansion: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.TreeViewOnExpanding, [Sender, Node, @AllowExpansion]);
-end;
-
-//class procedure TEventClass.TreeViewOnHint(Sender: TObject; const Node: TTreeNode; var Hint: string);
-//var
-//  LHint: PChar;
-//begin
-//  LHint := PChar(Hint);
-//  SendEvent(Sender, @TEventClass.TreeViewOnHint, [Sender, Node, @LHint]);
-//  Hint := LHint;
-//end;
-
-class procedure TEventClass.TreeViewOnCustomDraw(Sender: TCustomTreeView; const ARect: TRect; var DefaultDraw: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.TreeViewOnCustomDraw, [Sender, @ARect, @DefaultDraw]);
-end;
-
-class procedure TEventClass.TreeViewOnCustomDrawItem(Sender: TCustomTreeView; Node: TTreeNode; State: TCustomDrawState; var DefaultDraw: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.TreeViewOnCustomDrawItem, [Sender, Node, PWord(@State)^, @DefaultDraw]);
-end;
-
-
-class procedure TEventClass.MenuItemOnMeasureItem(Sender: TObject; ACanvas: TCanvas; var Width, Height: Integer);
-begin
-  SendEvent(Sender, @TEventClass.MenuItemOnMeasureItem, [Sender, ACanvas, @Width, @Height]);
-end;
-
-class procedure TEventClass.PageControlOnChanging(Sender: TObject; var AllowChange: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.PageControlOnChanging, [Sender, @AllowChange]);
-end;
-
-
-//class procedure TEventClass.OnMessage(var Msg: TMsg; var Handled: Boolean);
-//begin
-//  SendEvent(Application, @TEventClass.OnMessage, [Pointer(@Msg), Pointer(@Handled)]);
-//end;
-
-
-//----------------------- TListView
-
-class procedure TEventClass.ListViewOnChange(Sender: TObject; AItem: TListItem; Change: TItemChange);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnChange, [Sender, AItem, Ord(Change)]);
-end;
-
-class procedure TEventClass.ListViewOnColumnClick(Sender: TObject; Column: TListColumn);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnColumnClick, [Sender, Column]);
-end;
-
-class procedure TEventClass.ListViewOnColumnRightClick(Sender: TObject; Column: TListColumn; Point: TPoint);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnColumnRightClick, [Sender, Column, Point.X, Point.Y]);
-end;
-
-class procedure TEventClass.ListViewOnGetImageIndex(Sender: TObject; Item: TListItem);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnGetImageIndex, [Sender, Item]);
-end;
-
-class procedure TEventClass.ListViewOnSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnSelectItem, [Sender, Item, Selected]);
-end;
-
-class procedure TEventClass.ListViewOnItemChecked(Sender: TObject; Item: TListItem);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnItemChecked, [Sender, Item]);
-end;
-
-class procedure TEventClass.ListViewOnCompare(Sender: TObject; Item1, Item2: TListItem; Data: Integer; var Compare: Integer);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnCompare, [Sender, Item1, Item2, Data, @Compare]);
-end;
-
-class procedure TEventClass.ListViewOnAdvancedCustomDraw(Sender: TCustomListView;
-  const ARect: TRect; Stage: TCustomDrawStage; var DefaultDraw: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnAdvancedCustomDraw, [
-    Sender, @ARect, Ord(Stage), @DefaultDraw
-  ]);
-end;
-
-class procedure TEventClass.ListViewOnAdvancedCustomDrawItem(
-  Sender: TCustomListView; Item: TListItem; State: TCustomDrawState;
-  Stage: TCustomDrawStage; var DefaultDraw: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnAdvancedCustomDrawItem, [
-    Sender, Item, PWord(@State)^, Ord(Stage), @DefaultDraw
-  ]);
-end;
-
-class procedure TEventClass.ListViewOnAdvancedCustomDrawSubItem(
-  Sender: TCustomListView; Item: TListItem; SubItem: Integer;
-  State: TCustomDrawState; Stage: TCustomDrawStage; var DefaultDraw: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.ListViewOnAdvancedCustomDrawSubItem, [
-    Sender, Item, SubItem, PWord(@State)^, Ord(Stage), @DefaultDraw
-  ]);
-end;
-
-//----------------------------------------- TPageControl
-class procedure TEventClass.PageControlOnGetImageIndex(Sender: TObject; TabIndex: Integer; var ImageIndex: Integer);
-begin
-  SendEvent(Sender, @TEventClass.PageControlOnGetImageIndex, [Sender, TabIndex, @ImageIndex]);
-end;
-class procedure TEventClass.MenuOnChange(Sender: TObject; Source: TMenuItem;
-  Rebuild: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.MenuOnChange, [Sender, Source, Rebuild]);
-end;
-
-class procedure TEventClass.OnTitleChange(Sender: TObject; const Text: string);
-begin
-  SendEvent(Sender, @TEventClass.OnTitleChange, [Sender, Text]);
-end;
-
-class procedure TEventClass.OnJSExternal(Sender: TObject; const Afunc: string;
-  const AArgs: WideString; var ARetval: WideString);
-var
-  LRet: PChar;
-begin
-  LRet := PChar(ARetval);
-  SendEvent(Sender, @TEventClass.OnJSExternal, [Sender, string(Afunc), string(AArgs), @LRet]);
-  ARetval := WideString(LRet);
-end;
-
-
-// TaskDialog
-class procedure TEventClass.TaskDialogOnButtonClicked(Sender: TObject; ModalResult: TModalResult; var CanClose: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.TaskDialogOnButtonClicked, [Sender, ModalResult, @CanClose]);
-end;
-
-class procedure TEventClass.OnAlignPosition(Sender: TWinControl;
-  Control: TControl; var NewLeft, NewTop, NewWidth, NewHeight: Integer;
-  var AlignRect: TRect; AlignInfo: TAlignInfo);
-begin
-  SendEvent(Sender, @TEventClass.OnAlignPosition, [Sender, Control, @NewLeft, @NewTop, @NewWidth, @NewHeight, @AlignRect, @AlignInfo]);
-end;
-
-//class procedure TEventClass.TaskDialogOnDialogConstructed(Sender: TObject);
-//begin
-//  SendEvent(Sender, @TEventClass.TaskDialogOnDialogConstructed, [Sender]);
-//end;
-//
-//class procedure TEventClass.TaskDialogOnDialogCreated(Sender: TObject);
-//begin
-//  SendEvent(Sender, @TEventClass.TaskDialogOnDialogCreated, [Sender]);
-//end;
-//
-//class procedure TEventClass.TaskDialogOnDialogDestroyed(Sender: TObject);
-//begin
-//  SendEvent(Sender, @TEventClass.TaskDialogOnDialogDestroyed, [Sender]);
-//end;
-//
-//class procedure TEventClass.TaskDialogOnExpanded(Sender: TObject);
-//begin
-//  SendEvent(Sender, @TEventClass.TaskDialogOnExpanded, [Sender]);
-//end;
-//
-//class procedure TEventClass.TaskDialogOnHyperlinkClicked(Sender: TObject);
-//begin
-//  SendEvent(Sender, @TEventClass.TaskDialogOnHyperlinkClicked, [Sender]);
-//end;
-//
-//class procedure TEventClass.TaskDialogOnNavigated(Sender: TObject);
-//begin
-//  SendEvent(Sender, @TEventClass.TaskDialogOnNavigated, [Sender]);
-//end;
-//
-//class procedure TEventClass.TaskDialogOnRadioButtonClicked(Sender: TObject);
-//begin
-//  SendEvent(Sender, @TEventClass.TaskDialogOnRadioButtonClicked, [Sender]);
-//end;
-//
-//class procedure TEventClass.TaskDialogOnTimer(Sender: TObject; TickCount: Cardinal; var Reset: Boolean);
-//begin
-//  SendEvent(Sender, @TEventClass.TaskDialogOnTimer, [Sender, TickCount, @Reset]);
-//end;
-//
-//class procedure TEventClass.TaskDialogOnVerificationClicked(Sender: TObject);
-//begin
-//  SendEvent(Sender, @TEventClass.TaskDialogOnVerificationClicked, [Sender]);
-//end;
-
-// -------------- end TaskDialog -----------------------
-
-//class function TEventClass.OnAlignInsertBefore(Sender: TWinControl; C1, C2: TControl): Boolean;
-//begin
-//  SendEvent(Sender, @TEventClass.OnAlignInsertBefore, [Sender, C1, C2, @Result]);
-//end;
-
-class procedure TEventClass.OnDropDown(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnDropDown, [Sender]);
-end;
-
-class procedure TEventClass.OnSelect(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnSelect, [Sender]);
-end;
-
-class procedure TEventClass.OnBeginEdit(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnBeginEdit, [Sender]);
-end;
-
-class procedure TEventClass.OnEndEdit(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnEndEdit, [Sender]);
-end;
-
-class procedure TEventClass.OnItemClick(Sender: TObject; Index: integer);
-begin
-  SendEvent(Sender, @TEventClass.OnItemClick, [Sender, Index]);
-end;
-
-
-
-class procedure TEventClass.OnClose(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnClose, [Sender]);
-end;
-
-class procedure TEventClass.FormOnCloseQuery(Sender: TObject;
-  var CanClose: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.FormOnCloseQuery, [Sender, @CanClose]);
-end;
-
-class procedure TEventClass.FormOnDropFiles(Sender: TObject;
-  const AFileNames: array of string);
-var
-  LLen: Integer;
-begin
-  LLen := Length(AFileNames);
-  if LLen > 0 then
-    SendEvent(Sender, @TEventClass.FormOnDropFiles, [Sender, @AFileNames[0], LLen]);
-end;
-
-class procedure TEventClass.OnDblClick(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnDblClick, [Sender]);
-end;
-
-class procedure TEventClass.OnEnter(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnEnter, [Sender]);
-end;
-
-class procedure TEventClass.OnException(Sender: TObject; E: Exception);
-begin
-  SendEvent(Sender, @TEventClass.OnException, [Sender, E]);
-end;
-
-class procedure TEventClass.OnExecute(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnExecute, [Sender]);
-end;
-
-class procedure TEventClass.OnExit(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnExit, [Sender]);
-end;
-
-class procedure TEventClass.OnHide(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnHide, [Sender]);
-end;
-
-
-// grid
-class procedure TEventClass.OnColumnMoved(Sender: TObject; IsColumn: Boolean; FromIndex, ToIndex: Longint);
-begin
-  if IsColumn then
-    SendEvent(Sender, @TEventClass.OnColumnMoved, [Sender, FromIndex, ToIndex]);
-end;
-
-class procedure TEventClass.OnDrawCell(Sender: TObject; ACol, ARow: Longint; ARect: TRect; State: TGridDrawState);
-begin
-  SendEvent(Sender, @TEventClass.OnDrawCell, [Sender, ACol, ARow, Pointer(@ARect), PWord(@State)^]);
-end;
-
-class procedure TEventClass.OnFixedCellClick(Sender: TObject; ACol, ARow: Integer);
-begin
-  SendEvent(Sender, @TEventClass.OnFixedCellClick, [Sender, ACol, ARow]);
-end;
-
-class procedure TEventClass.OnGetEditMask(Sender: TObject; ACol, ARow: Integer; var Value: string);
-var
-  LS: PChar;
-begin
-  LS := PChar(Value);
-  SendEvent(Sender, @TEventClass.OnGetEditMask, [Sender, ACol, ARow, Pointer(@LS)]);
-  Value := LS;
-end;
-
-class procedure TEventClass.OnGetEditText(Sender: TObject; ACol, ARow: Integer; var Value: string);
-var
-  LS: PChar;
-begin
-  LS := PChar(Value);
-  SendEvent(Sender, @TEventClass.OnGetEditText, [Sender, ACol, ARow, Pointer(@LS)]);
-  Value := LS;
-end;
-
-class procedure TEventClass.OnRowMoved(Sender: TObject; IsColumn: Boolean; FromIndex, ToIndex: Integer);
-begin
-  if not IsColumn then
-    SendEvent(Sender, @TEventClass.OnRowMoved, [Sender, FromIndex, ToIndex]);
-end;
-
-class procedure TEventClass.OnSelectCell(Sender: TObject; ACol, ARow: Integer; var CanSelect: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.OnSelectCell, [Sender, ACol, ARow, Pointer(@CanSelect)]);
-end;
-
-class procedure TEventClass.OnSetEditText(Sender: TObject; ACol, ARow: Integer; const Value: string);
-begin
-  SendEvent(Sender, @TEventClass.OnSetEditText, [Sender, ACol, ARow, PChar(Value)]);
-end;
-
-class procedure TEventClass.OnTopLeftChanged(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnTopLeftChanged, [Sender]);
-end;
-
-
-// headercontrol
-//class procedure TEventClass.OnDrawSection(HeaderControl: THeaderControl; Section: THeaderSection; const Rect: TRect; Pressed: Boolean);
-//begin
-//  SendEvent(HeaderControl, @TEventClass.OnDrawSection, [HeaderControl, Section, Pointer(@Rect), Pressed]);
-//end;
-
-//class procedure TEventClass.OnSectionCheck(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
-//begin
-//  SendEvent(HeaderControl, @TEventClass.OnSectionCheck, [HeaderControl, Section]);
-//end;
-
-class procedure TEventClass.OnSectionClick(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
-begin
-  SendEvent(HeaderControl, @TEventClass.OnSectionClick, [HeaderControl, Section]);
-end;
-
-class procedure TEventClass.OnSectionDrag(Sender: TObject; FromSection, ToSection: THeaderSection; var AllowDrag: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.OnSectionDrag, [Sender, FromSection, ToSection, Pointer(@AllowDrag)]);
-end;
-
-class procedure TEventClass.OnSectionEndDrag(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnSectionEndDrag, [Sender]);
-end;
-
-class procedure TEventClass.OnSectionResize(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
-begin
-  SendEvent(HeaderControl, @TEventClass.OnSectionResize, [HeaderControl, Section]);
-end;
-
-class procedure TEventClass.OnSectionTrack(HeaderControl: TCustomHeaderControl; Section: THeaderSection; Width: Integer; State: TSectionTrackState);
-begin
-  SendEvent(HeaderControl, @TEventClass.OnSectionTrack, [HeaderControl, Section, Width, Integer(State)]);
-end;
-
-
-class procedure TEventClass.OnDestroy(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnDestroy, [Sender]);
-end;
-
-class procedure TEventClass.OnHint(Sender: TObject);
-begin
-   SendEvent(Sender, @TEventClass.OnHint, [Sender]);
-end;
-class procedure TEventClass.OnKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-  SendEvent(Sender, @TEventClass.OnKeyDown, [Sender, @Key, PWord(@Shift)^]);
-end;
-
-class procedure TEventClass.OnKeyPress(Sender: TObject; var Key: Char);
-var
-  LKey: Word;
-begin
-  // 这里要修复下
-  LKey := Ord(Key);
-  SendEvent(Sender, @TEventClass.OnKeyPress, [Sender, @LKey]);
-  Key := Char(LKey);
-end;
-
-class procedure TEventClass.OnKeyUp(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-  SendEvent(Sender, @TEventClass.OnKeyUp, [Sender, @Key, PWord(@Shift)^]);
-end;
-
-class procedure TEventClass.OnMinimize(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnMinimize, [Sender]);
-end;
-
-class procedure TEventClass.OnMouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
-begin
-  SendEvent(Sender, @TEventClass.OnMouseDown, [Sender, Ord(Button), PWord(@Shift)^, X, Y]);
-end;
-
-class procedure TEventClass.OnMouseEnter(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnMouseEnter, [Sender]);
-end;
-
-class procedure TEventClass.OnMouseLeave(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnMouseLeave, [Sender]);
-end;
-
-class procedure TEventClass.ListBoxOnDrawItem(Control: TWinControl; Index: Integer;
-  ARect: TRect; State: TOwnerDrawState);
-begin
-  SendEvent(Control, @TEventClass.ListBoxOnDrawItem, [Control, Index, @ARect, PWord(@State)^]);
-end;
-
-class procedure TEventClass.OnMouseMove(Sender: TObject; Shift: TShiftState; X,
-  Y: Integer);
-begin
-  SendEvent(Sender, @TEventClass.OnMouseMove, [Sender, PWord(@Shift)^, X, Y]);
-end;
-
-class procedure TEventClass.OnMouseUp(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
-begin
-  SendEvent(Sender, @TEventClass.OnMouseUp, [Sender, Ord(Button), PWord(@Shift)^, X, Y]);
-end;
-
-class procedure TEventClass.OnMouseWheel(Sender: TObject; Shift: TShiftState;
-  WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.OnMouseWheel, [Sender, PWord(@Shift)^, WheelDelta, MousePos.X, MousePos.Y, @Handled]);
-end;
-
-class procedure TEventClass.OnLinkClick(Sender: TObject; const Link: string;
-  LinkType: TSysLinkType);
-begin
-  SendEvent(Sender, @TEventClass.OnLinkClick, [Sender, Link, Ord(LinkType)]);
-end;
-
-class procedure TEventClass.OnPaint(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnPaint, [Sender]);
-end;
-
-class procedure TEventClass.OnPopup(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnPopup, [Sender]);
-end;
-
-class procedure TEventClass.OnResize(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnResize, [Sender]);
-end;
-
-class procedure TEventClass.OnRestore(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnRestore, [Sender]);
-end;
-
-class procedure TEventClass.OnShow(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnShow, [Sender]);
-end;
-
-class procedure TEventClass.OnTimer(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnTimer, [Sender]);
-end;
-
-class procedure TEventClass.OnUpdate(Sender: TObject);
-begin
-  SendEvent(Sender, @TEventClass.OnUpdate, [Sender]);
-end;
-
 
 class procedure TEventClass.SendEvent(Sender: TObject; AEvent: Pointer; AArgs: array of const);
 
@@ -1217,66 +326,697 @@ var
 begin
   if FEvents.TryGetData(CreateEventKey(Sender, AEvent), LEventId) then
     SendEventSrc(LEventId, AArgs)
-  else writeln('can''t found id, sender:', sender.ToString, ', event:', Cardinal(AEvent));
+  else writeln('can''t found id, sender:', sender.ToString, ', event:', NativeUInt(AEvent));
 end;
 
-// ---------------------- TTreeView
+//------------------新方式-------------------------------
 
-class procedure TEventClass.TreeViewOnAdvancedCustomDraw(
+class procedure TEventClass.OnTExceptionEvent_OnException(Sender: TObject; E: Exception);
+begin
+  SendEvent(Sender, @TEventClass.OnTExceptionEvent_OnException, [Sender, E]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnActivate(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnActivate, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnDeactivate(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnDeactivate, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnHint(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnHint, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnMinimize(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnMinimize, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnRestore(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnRestore, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnClick(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnClick, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnDblClick(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnDblClick, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnHide(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnHide, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnMouseEnter(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnMouseEnter, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnMouseLeave(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnMouseLeave, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnPaint(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnPaint, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnResize(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnResize, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnShow(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnShow, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnEnter(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnEnter, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnExit(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnExit, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnChange(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnChange, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnPopup(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnPopup, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnSelect(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnSelect, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnClose(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnClose, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnChanging(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnChanging, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnExecute(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnExecute, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnUpdate(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnUpdate, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnTimer(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnTimer, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnClickCheck(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnClickCheck, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnFind(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnFind, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnReplace(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnReplace, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnTopLeftChanged(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnTopLeftChanged, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnSectionEndDrag(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnSectionEndDrag, [Sender]);
+end;
+
+class procedure TEventClass.OnTNotifyEvent_OnDestroy(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTNotifyEvent_OnDestroy, [Sender]);
+end;
+
+class function TEventClass.OnTHelpEvent_OnHelp(Command: Word; Data: PtrInt;
+  var CallHelp: Boolean): Boolean;
+var
+  LResult: Boolean;
+begin
+  SendEvent(Application, @TEventClass.OnTHelpEvent_OnHelp, [Command, Data, Pointer(@CallHelp), Pointer(@LResult)]);
+  Result := LResult;
+end;
+
+class procedure TEventClass.OnTShortCutEvent_OnShortCut(var Msg: TLMKey;
+  var Handled: Boolean);
+begin
+  SendEvent(Application, @TEventClass.OnTShortCutEvent_OnShortCut, [Pointer(@Msg), Pointer(@Handled)]);
+end;
+
+class procedure TEventClass.OnTAlignPositionEvent_OnAlignPosition(Sender: TWinControl;
+  Control: TControl; var NewLeft, NewTop, NewWidth, NewHeight: Integer;
+  var AlignRect: TRect; AlignInfo: TAlignInfo);
+begin
+  SendEvent(Sender, @TEventClass.OnTAlignPositionEvent_OnAlignPosition, [Sender, Control, @NewLeft, @NewTop, @NewWidth, @NewHeight, @AlignRect, @AlignInfo]);
+end;
+
+class procedure TEventClass.OnTCloseEvent_OnClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  SendEvent(Sender, @TEventClass.OnTCloseEvent_OnClose, [Sender, @Action]);
+end;
+
+class procedure TEventClass.OnTCloseQueryEvent_OnCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTCloseQueryEvent_OnCloseQuery, [Sender, @CanClose]);
+end;
+
+class procedure TEventClass.OnTContextPopupEvent_OnContextPopup(Sender: TObject;
+  MousePos: TPoint; var Handled: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTContextPopupEvent_OnContextPopup, [Sender, Pointer(@MousePos), Pointer(@Handled)]);
+end;
+
+class procedure TEventClass.OnTDockDropEvent_OnDockDrop(Sender: TObject;
+  Source: TDragDockObject; X, Y: Integer);
+begin
+  SendEvent(Sender, @TEventClass.OnTDockDropEvent_OnDockDrop, [Sender, Source, X, Y]);
+end;
+
+class procedure TEventClass.OnTDragDropEvent_OnDragDrop(Sender, Source: TObject; X,
+  Y: Integer);
+begin
+  SendEvent(Sender, @TEventClass.OnTDragDropEvent_OnDragDrop, [Sender, Source, X, Y]);
+end;
+
+class procedure TEventClass.OnTDragOverEvent_OnDragOver(Sender, Source: TObject; X,
+  Y: Integer; State: TDragState; var Accept: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTDragOverEvent_OnDragOver, [Sender, Source, X, Y, Integer(State), Pointer(@Accept)]);
+end;
+
+class procedure TEventClass.OnTEndDragEvent_OnEndDrag(Sender, Target: TObject; X,
+  Y: Integer);
+begin
+  SendEvent(Sender, @TEventClass.OnTEndDragEvent_OnEndDrag, [Sender, Target, X, Y]);
+end;
+
+class procedure TEventClass.OnTEndDragEvent_OnEndDock(Sender, Target: TObject;
+  X, Y: Integer);
+begin
+  SendEvent(Sender, @TEventClass.OnTEndDragEvent_OnEndDock, [Sender, Target, X, Y]);
+end;
+
+class procedure TEventClass.OnTGetSiteInfoEvent_OnGetSiteInfo(Sender: TObject;
+  DockClient: TControl; var InfluenceRect: TRect; MousePos: TPoint;
+  var CanDock: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTGetSiteInfoEvent_OnGetSiteInfo, [Sender, DockClient, Pointer(@InfluenceRect), Pointer(@MousePos), Pointer(@CanDock)]);
+end;
+
+class procedure TEventClass.OnTKeyEvent_OnKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  SendEvent(Sender, @TEventClass.OnTKeyEvent_OnKeyDown, [Sender, @Key, PWord(@Shift)^]);
+end;
+
+class procedure TEventClass.OnTKeyEvent_OnKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  SendEvent(Sender, @TEventClass.OnTKeyEvent_OnKeyUp, [Sender, @Key, PWord(@Shift)^]);
+end;
+
+class procedure TEventClass.OnTKeyPressEvent_OnKeyPress(Sender: TObject; var Key: Char);
+var
+  LKey: Word;
+begin
+  // 这里要修复下
+  LKey := Ord(Key);
+  SendEvent(Sender, @TEventClass.OnTKeyPressEvent_OnKeyPress, [Sender, @LKey]);
+  Key := Char(LKey);
+end;
+
+class procedure TEventClass.OnTMouseEvent_OnMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  SendEvent(Sender, @TEventClass.OnTMouseEvent_OnMouseDown, [Sender, Ord(Button), PWord(@Shift)^, X, Y]);
+end;
+
+
+class procedure TEventClass.OnTMouseEvent_OnMouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  SendEvent(Sender, @TEventClass.OnTMouseEvent_OnMouseUp, [Sender, Ord(Button), PWord(@Shift)^, X, Y]);
+end;
+
+class procedure TEventClass.OnTMouseMoveEvent_OnMouseMove(Sender: TObject;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  SendEvent(Sender, @TEventClass.OnTMouseMoveEvent_OnMouseMove, [Sender, PWord(@Shift)^, X, Y]);
+end;
+
+class procedure TEventClass.OnTMouseWheelEvent_OnMouseWheel(Sender: TObject;
+  Shift: TShiftState; WheelDelta: Integer; MousePos: TPoint;
+  var Handled: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTMouseWheelEvent_OnMouseWheel, [Sender, PWord(@Shift)^, WheelDelta, MousePos.X, MousePos.Y, @Handled]);
+end;
+
+class procedure TEventClass.OnTMouseWheelUpDownEvent_OnMouseWheelDown(Sender: TObject;
+  Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTMouseWheelUpDownEvent_OnMouseWheelDown, [Sender, PWord(@Shift)^, Pointer(@MousePos), Pointer(@Handled)]);
+end;
+
+class procedure TEventClass.OnTMouseWheelUpDownEvent_OnMouseWheelUp(Sender: TObject;
+  Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTMouseWheelUpDownEvent_OnMouseWheelUp, [Sender, PWord(@Shift)^, Pointer(@MousePos), Pointer(@Handled)]);
+end;
+
+
+class procedure TEventClass.OnTStartDockEvent_OnStartDock(Sender: TObject;
+  var DragObject: TDragDockObject);
+begin
+  SendEvent(Sender, @TEventClass.OnTStartDockEvent_OnStartDock, [Sender, DragObject]);
+end;
+
+class procedure TEventClass.OnTUnDockEvent_OnUnDock(Sender: TObject; Client: TControl;
+  NewTarget: TWinControl; var Allow: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTUnDockEvent_OnUnDock, [Sender, Client, NewTarget, Pointer(@Allow)]);
+end;
+
+class procedure TEventClass.OnTMenuChangeEvent_OnChange(Sender: TObject;
+  Source: TMenuItem; Rebuild: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTMenuChangeEvent_OnChange, [Sender, Source, Rebuild]);
+end;
+
+class procedure TEventClass.OnTDrawItemEvent_OnDrawItem(Control: TWinControl;
+  Index: Integer; ARect: TRect; State: TOwnerDrawState);
+begin
+  SendEvent(Control, @TEventClass.OnTDrawItemEvent_OnDrawItem, [Control, Index, @ARect, PWord(@State)^]);
+end;
+
+class procedure TEventClass.OnTMeasureItemEvent_OnMeasureItem(Control: TWinControl;
+  Index: Integer; var Height: Integer);
+begin
+  SendEvent(Control, @TEventClass.OnTMeasureItemEvent_OnMeasureItem, [Control, Index, @Height]);
+end;
+
+class procedure TEventClass.OnTSysLinkEvent_OnLinkClick(Sender: TObject;
+  const Link: string; LinkType: TSysLinkType);
+begin
+  SendEvent(Sender, @TEventClass.OnTSysLinkEvent_OnLinkClick, [Sender, Link, Ord(LinkType)]);
+end;
+
+class procedure TEventClass.OnTUDChangingEvent_OnChanging(Sender: TObject;
+  var AllowChange: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTUDChangingEvent_OnChanging, [Sender, @AllowChange]);
+end;
+
+class procedure TEventClass.OnTUDClickEvent_OnClick(Sender: TObject; Button: TUDBtnType
+  );
+begin
+  SendEvent(Sender, @TEventClass.OnTUDClickEvent_OnClick, [Sender, Ord(Button)]);
+end;
+
+class procedure TEventClass.OnTLVAdvancedCustomDrawEvent_OnAdvancedCustomDraw(
+  Sender: TCustomListView; const ARect: TRect; Stage: TCustomDrawStage;
+  var DefaultDraw: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVAdvancedCustomDrawEvent_OnAdvancedCustomDraw, [
+    Sender, @ARect, Ord(Stage), @DefaultDraw
+  ]);
+end;
+
+class procedure TEventClass.OnTLVAdvancedCustomDrawItemEvent_OnAdvancedCustomDrawItem(
+  Sender: TCustomListView; Item: TListItem; State: TCustomDrawState;
+  Stage: TCustomDrawStage; var DefaultDraw: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVAdvancedCustomDrawItemEvent_OnAdvancedCustomDrawItem, [
+    Sender, Item, PWord(@State)^, Ord(Stage), @DefaultDraw
+  ]);
+end;
+
+class procedure TEventClass.OnTLVAdvancedCustomDrawSubItemEvent_OnAdvancedCustomDrawSubItem(
+  Sender: TCustomListView; Item: TListItem; SubItem: Integer;
+  State: TCustomDrawState; Stage: TCustomDrawStage; var DefaultDraw: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVAdvancedCustomDrawSubItemEvent_OnAdvancedCustomDrawSubItem, [
+    Sender, Item, SubItem, PWord(@State)^, Ord(Stage), @DefaultDraw
+  ]);
+end;
+
+class procedure TEventClass.OnTLVChangeEvent_OnChange(Sender: TObject; AItem: TListItem;
+  Change: TItemChange);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVChangeEvent_OnChange, [Sender, AItem, Ord(Change)]);
+end;
+
+class procedure TEventClass.OnTLVColumnClickEvent_OnColumnClick(Sender: TObject;
+  Column: TListColumn);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVColumnClickEvent_OnColumnClick, [Sender, Column]);
+end;
+
+class procedure TEventClass.OnTLVCompareEvent_OnCompare(Sender: TObject; Item1,
+  Item2: TListItem; Data: Integer; var Compare: Integer);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVCompareEvent_OnCompare, [Sender, Item1, Item2, Data, @Compare]);
+end;
+
+class procedure TEventClass.OnTLVCustomDrawEvent_OnCustomDraw(Sender: TCustomListView;
+  const ARect: TRect; var DefaultDraw: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVCustomDrawEvent_OnCustomDraw, [Sender, @ARect, @DefaultDraw]);
+end;
+
+class procedure TEventClass.OnTLVCustomDrawItemEvent_OnCustomDrawItem(Sender: TCustomListView;
+  Item: TListItem; State: TCustomDrawState; var DefaultDraw: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVCustomDrawItemEvent_OnCustomDrawItem, [Sender, Item, PWord(@State)^, @DefaultDraw]);
+end;
+
+class procedure TEventClass.OnTLVCustomDrawSubItemEvent_OnCustomDrawSubItem(
+  Sender: TCustomListView; Item: TListItem; SubItem: Integer;
+  State: TCustomDrawState; var DefaultDraw: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVCustomDrawSubItemEvent_OnCustomDrawSubItem, [Sender, Item, SubItem, PWord(@State)^, @DefaultDraw]);
+end;
+
+class procedure TEventClass.OnTLVOwnerDataEvent_OnData(Sender: TObject; Item: TListItem
+  );
+begin
+  SendEvent(Sender, @TEventClass.OnTLVOwnerDataEvent_OnData, [Sender, Item]);
+end;
+
+class procedure TEventClass.OnTLVOwnerDataFindEvent_OnDataFind(Sender: TObject;
+  Find: TItemFind; const FindString: string; const FindPosition: TPoint;
+  FindData: Pointer; StartIndex: Integer; Direction: TSearchDirection;
+  Wrap: Boolean; var Index: Integer);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVOwnerDataFindEvent_OnDataFind, [Sender, Ord(Find), PChar(FindString), @FindPosition, FindData, StartIndex,
+    Ord(Direction), Integer(Wrap), @Index]);
+end;
+
+class procedure TEventClass.OnTLVOwnerDataHintEvent_OnDataHint(Sender: TObject;
+  StartIndex, EndIndex: Integer);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVOwnerDataHintEvent_OnDataHint, [Sender, StartIndex, EndIndex]);
+end;
+
+class procedure TEventClass.OnTLVDeletedEvent_OnDeletion(Sender: TObject; Item: TListItem);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVDeletedEvent_OnDeletion, [Sender, Item]);
+end;
+
+class procedure TEventClass.OnTLVEditedEvent_OnEdited(Sender: TObject; Item: TListItem;
+  var S: string);
+var
+  LS: PChar;
+begin
+  LS := PChar(S);
+  SendEvent(Sender, @TEventClass.OnTLVEditedEvent_OnEdited, [Sender, Item, @LS]);
+  S := LS;
+end;
+
+class procedure TEventClass.OnTLVEditingEvent_OnEditing(Sender: TObject; Item: TListItem;
+  var AllowEdit: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVEditingEvent_OnEditing, [Sender, Item, @AllowEdit]);
+end;
+
+class procedure TEventClass.OnTLVDeletedEvent_OnInsert(Sender: TObject;
+  Item: TListItem);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVDeletedEvent_OnInsert, [Sender, Item]);
+end;
+
+class procedure TEventClass.OnTLVSelectItemEvent_OnSelectItem(Sender: TObject;
+  Item: TListItem; Selected: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVSelectItemEvent_OnSelectItem, [Sender, Item, Selected]);
+end;
+
+class procedure TEventClass.OnTLVCheckedItemEvent_OnItemChecked(Sender: TObject;
+  Item: TListItem);
+begin
+  SendEvent(Sender, @TEventClass.OnTLVCheckedItemEvent_OnItemChecked, [Sender, Item]);
+end;
+
+class procedure TEventClass.OnTTVExpandedEvent_OnAddition(Sender: TObject; Node: TTreeNode
+  );
+begin
+  SendEvent(Sender, @TEventClass.OnTTVExpandedEvent_OnAddition, [Sender, Node]);
+end;
+
+class procedure TEventClass.OnTTVExpandedEvent_OnCollapsed(Sender: TObject;
+  Node: TTreeNode);
+begin
+  SendEvent(Sender, @TEventClass.OnTTVExpandedEvent_OnCollapsed, [Sender, Node]);
+end;
+
+class procedure TEventClass.OnTTVExpandedEvent_OnDeletion(Sender: TObject;
+  Node: TTreeNode);
+begin
+  SendEvent(Sender, @TEventClass.OnTTVExpandedEvent_OnDeletion, [Sender, Node]);
+end;
+
+class procedure TEventClass.OnTTVExpandedEvent_OnExpanded(Sender: TObject;
+  Node: TTreeNode);
+begin
+  SendEvent(Sender, @TEventClass.OnTTVExpandedEvent_OnExpanded, [Sender, Node]);
+end;
+
+class procedure TEventClass.OnTTVExpandedEvent_OnGetSelectedIndex(
+  Sender: TObject; Node: TTreeNode);
+begin
+  SendEvent(Sender, @TEventClass.OnTTVExpandedEvent_OnGetSelectedIndex, [Sender, Node]);
+end;
+
+class procedure TEventClass.OnTTVAdvancedCustomDrawEvent_OnAdvancedCustomDraw(
   Sender: TCustomTreeView; const ARect: TRect; Stage: TCustomDrawStage;
   var DefaultDraw: Boolean);
 begin
-  SendEvent(Sender, @TEventClass.TreeViewOnAdvancedCustomDraw,
+  SendEvent(Sender, @TEventClass.OnTTVAdvancedCustomDrawEvent_OnAdvancedCustomDraw,
     [Sender, @ARect, Ord(Stage), DefaultDraw]);
 end;
 
-class procedure TEventClass.TreeViewOnAdvancedCustomDrawItem(
+class procedure TEventClass.OnTTVAdvancedCustomDrawItemEvent_OnAdvancedCustomDrawItem(
   Sender: TCustomTreeView; Node: TTreeNode; State: TCustomDrawState;
   Stage: TCustomDrawStage; var PaintImages, DefaultDraw: Boolean);
 begin
-  SendEvent(Sender, @TEventClass.TreeViewOnAdvancedCustomDrawItem,
+  SendEvent(Sender, @TEventClass.OnTTVAdvancedCustomDrawItemEvent_OnAdvancedCustomDrawItem,
     [Sender, Node, PWord(@State)^, Ord(Stage), @PaintImages, DefaultDraw]);
 end;
 
-class procedure TEventClass.TreeViewOnChange(Sender: TObject; ANode: TTreeNode);
+class procedure TEventClass.OnTTVChangedEvent_OnChange(Sender: TObject; ANode: TTreeNode
+  );
 begin
-  SendEvent(Sender, @TEventClass.TreeViewOnChange, [Sender, ANode]);
+  SendEvent(Sender, @TEventClass.OnTTVChangedEvent_OnChange, [Sender, ANode]);
 end;
 
-class procedure TEventClass.TreeViewOnGetImageIndex(Sender: TObject; Node: TTreeNode);
+class procedure TEventClass.OnTTVChangingEvent_OnChanging(Sender: TObject;
+  Node: TTreeNode; var AllowChange: Boolean);
 begin
-  SendEvent(Sender, @TEventClass.TreeViewOnGetImageIndex, [Sender, Node]);
+  SendEvent(Sender, @TEventClass.OnTTVChangingEvent_OnChanging, [Sender, Node, @AllowChange]);
 end;
 
-class procedure TEventClass.TreeViewOnGetSelectedIndex(Sender: TObject; Node: TTreeNode);
+class procedure TEventClass.OnTTVCollapsingEvent_OnCollapsing(Sender: TObject;
+  Node: TTreeNode; var AllowCollapse: Boolean);
 begin
-  SendEvent(Sender, @TEventClass.TreeViewOnGetSelectedIndex, [Sender, Node]);
+  SendEvent(Sender, @TEventClass.OnTTVCollapsingEvent_OnCollapsing, [Sender, Node, @AllowCollapse]);
 end;
 
-class procedure TEventClass.TreeViewOnCompare(Sender: TObject; Node1, Node2: TTreeNode; var Compare: Integer);
+class procedure TEventClass.OnTTVCompareEvent_OnCompare(Sender: TObject; Node1,
+  Node2: TTreeNode; var Compare: Integer);
 begin
-  SendEvent(Sender, @TEventClass.TreeViewOnCompare, [Sender, Node1, Node2, 0, @Compare]);
-end;
-//----------- TToolBar
-class procedure TEventClass.ToolBarOnAdvancedCustomDraw(Sender: TToolBar;
-  const ARect: TRect; Stage: TCustomDrawStage; var DefaultDraw: Boolean);
-begin
-  SendEvent(Sender, @TEventClass.ToolBarOnAdvancedCustomDraw,
-    [Sender, @ARect, Ord(Stage), @DefaultDraw]);
+  SendEvent(Sender, @TEventClass.OnTTVCompareEvent_OnCompare, [Sender, Node1, Node2, 0, @Compare]);
 end;
 
-//class procedure TEventClass.ToolBarOnAdvancedCustomDrawButton(Sender: TToolBar;
-//  Button: TToolButton; State: TCustomDrawState; Stage: TCustomDrawStage;
-//  var Flags: TTBCustomDrawFlags; var DefaultDraw: Boolean);
-//begin
-//  SendEvent(Sender, @TEventClass.ToolBarOnAdvancedCustomDrawButton,
-//    [Sender, Button, PWord(@State)^, Ord(Stage), PWord(@Flags), @DefaultDraw]);
-//end;
-
-
-class procedure TEventClass.UpDownOnClick(Sender: TObject; Button: TUDBtnType);
+class procedure TEventClass.OnTTVCustomDrawEvent_OnCustomDraw(Sender: TCustomTreeView;
+  const ARect: TRect; var DefaultDraw: Boolean);
 begin
-  SendEvent(Sender, @TEventClass.UpDownOnClick, [Sender, Ord(Button)]);
+  SendEvent(Sender, @TEventClass.OnTTVCustomDrawEvent_OnCustomDraw, [Sender, @ARect, @DefaultDraw]);
+end;
+
+class procedure TEventClass.OnTTVCustomDrawItemEvent_OnCustomDrawItem(Sender: TCustomTreeView;
+  Node: TTreeNode; State: TCustomDrawState; var DefaultDraw: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTTVCustomDrawItemEvent_OnCustomDrawItem, [Sender, Node, PWord(@State)^, @DefaultDraw]);
+end;
+
+class procedure TEventClass.OnTTVEditedEvent_OnEdited(Sender: TObject; Node: TTreeNode;
+  var S: string);
+var
+  LS: PChar;
+begin
+  LS := PChar(S);
+  SendEvent(Sender, @TEventClass.OnTTVEditedEvent_OnEdited, [Sender, Node, @LS]);
+  S := LS;
+end;
+
+class procedure TEventClass.OnTTVEditingEvent_OnEditing(Sender: TObject; Node: TTreeNode;
+  var AllowEdit: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTTVEditingEvent_OnEditing, [Sender, Node, @AllowEdit]);
+end;
+
+class procedure TEventClass.OnTTVExpandingEvent_OnExpanding(Sender: TObject;
+  Node: TTreeNode; var AllowExpansion: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTTVExpandingEvent_OnExpanding, [Sender, Node, @AllowExpansion]);
+end;
+
+class procedure TEventClass.OnTMenuMeasureItemEvent_OnMeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  SendEvent(Sender, @TEventClass.OnTMenuMeasureItemEvent_OnMeasureItem, [Sender, ACanvas, @Width, @Height]);
+end;
+
+class procedure TEventClass.OnTTabChangingEvent_OnChanging(Sender: TObject;
+  var AllowChange: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTTabChangingEvent_OnChanging, [Sender, @AllowChange]);
+end;
+
+class procedure TEventClass.OnTWebTitleChangeEvent_OnTitleChange(Sender: TObject;
+  const Text: string);
+begin
+  SendEvent(Sender, @TEventClass.OnTWebTitleChangeEvent_OnTitleChange, [Sender, Text]);
+end;
+
+class procedure TEventClass.OnTWebJSExternalEvent_OnJSExternal(Sender: TObject;
+  const Afunc: string; const AArgs: WideString; var ARetval: WideString);
+var
+  LRet: PChar;
+begin
+  LRet := PChar(ARetval);
+  SendEvent(Sender, @TEventClass.OnTWebJSExternalEvent_OnJSExternal, [Sender, string(Afunc), string(AArgs), @LRet]);
+  ARetval := WideString(LRet);
+end;
+
+class procedure TEventClass.OnTMovedEvent_OnColRowMoved(Sender: TObject; IsColumn: Boolean;
+  FromIndex, ToIndex: Longint);
+begin
+  //if IsColumn then
+    SendEvent(Sender, @TEventClass.OnTMovedEvent_OnColRowMoved, [Sender, IsColumn, FromIndex, ToIndex]);
+end;
+
+class procedure TEventClass.OnTDrawCellEvent_OnDrawCell(Sender: TObject; ACol,
+  ARow: Longint; ARect: TRect; State: TGridDrawState);
+begin
+  SendEvent(Sender, @TEventClass.OnTDrawCellEvent_OnDrawCell, [Sender, ACol, ARow, Pointer(@ARect), PWord(@State)^]);
+end;
+
+class procedure TEventClass.OnTGetEditEvent_OnGetEditMask(Sender: TObject; ACol,
+  ARow: Integer; var Value: string);
+var
+  LS: PChar;
+begin
+  LS := PChar(Value);
+  SendEvent(Sender, @TEventClass.OnTGetEditEvent_OnGetEditMask, [Sender, ACol, ARow, Pointer(@LS)]);
+  Value := LS;
+end;
+
+class procedure TEventClass.OnTGetEditEvent_OnGetEditText(Sender: TObject;
+  ACol, ARow: Integer; var Value: string);
+var
+  LS: PChar;
+begin
+  LS := PChar(Value);
+  SendEvent(Sender, @TEventClass.OnTGetEditEvent_OnGetEditText, [Sender, ACol, ARow, Pointer(@LS)]);
+  Value := LS;
+end;
+
+class procedure TEventClass.OnTSelectCellEvent_OnSelectCell(Sender: TObject; ACol,
+  ARow: Integer; var CanSelect: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTSelectCellEvent_OnSelectCell, [Sender, ACol, ARow, Pointer(@CanSelect)]);
+end;
+
+class procedure TEventClass.OnTSetEditEvent_OnSetEditText(Sender: TObject; ACol,
+  ARow: Integer; const Value: string);
+begin
+  SendEvent(Sender, @TEventClass.OnTSetEditEvent_OnSetEditText, [Sender, ACol, ARow, PChar(Value)]);
+end;
+
+class procedure TEventClass.OnTSectionNotifyEvent_OnSectionClick(
+  HeaderControl: TCustomHeaderControl; Section: THeaderSection);
+begin
+  SendEvent(HeaderControl, @TEventClass.OnTSectionNotifyEvent_OnSectionClick, [HeaderControl, Section]);
+end;
+
+class procedure TEventClass.OnTSectionNotifyEvent_OnSectionResize(
+  HeaderControl: TCustomHeaderControl; Section: THeaderSection);
+begin
+  SendEvent(HeaderControl, @TEventClass.OnTSectionNotifyEvent_OnSectionResize, [HeaderControl, Section]);
+end;
+
+class procedure TEventClass.OnTSectionTrackEvent_OnSectionTrack(
+  HeaderControl: TCustomHeaderControl; Section: THeaderSection; Width: Integer;
+  State: TSectionTrackState);
+begin
+  SendEvent(HeaderControl, @TEventClass.OnTSectionTrackEvent_OnSectionTrack, [HeaderControl, Section, Width, Integer(State)]);
+end;
+
+class procedure TEventClass.OnTSectionDragEvent_OnSectionDrag(Sender: TObject; FromSection,
+  ToSection: THeaderSection; var AllowDrag: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTSectionDragEvent_OnSectionDrag, [Sender, FromSection, ToSection, Pointer(@AllowDrag)]);
+end;
+
+class procedure TEventClass.OnTTaskDlgClickEvent_OnButtonClicked(Sender: TObject;
+  ModalResult: TModalResult; var CanClose: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.OnTTaskDlgClickEvent_OnButtonClicked, [Sender, ModalResult, @CanClose]);
+end;
+
+class procedure TEventClass.OnTCheckGroupClicked_OnItemClick(Sender: TObject; Index: integer
+  );
+begin
+  SendEvent(Sender, @TEventClass.OnTCheckGroupClicked_OnItemClick, [Sender, Index]);
+end;
+
+class procedure TEventClass.OnTConstrainedResizeEvent_OnConstrainedResize(Sender: TObject; var MinWidth, MinHeight, MaxWidth, MaxHeight: TConstraintSize);
+begin
+  SendEvent(Sender, @TEventClass.OnTConstrainedResizeEvent_OnConstrainedResize, [Sender, @MinWidth, @MinHeight, @MaxWidth, @MaxHeight]);
+end;
+
+class procedure TEventClass.OnTDropFilesEvent_OnDropFiles(Sender: TObject; const AFileNames: array of string);
+var
+  LLen: Integer;
+begin
+  LLen := Length(AFileNames);
+  if LLen > 0 then
+    SendEvent(Sender, @TEventClass.OnTDropFilesEvent_OnDropFiles, [Sender, @AFileNames[0], LLen]);
 end;
 
 // 用户定义事件实现引入

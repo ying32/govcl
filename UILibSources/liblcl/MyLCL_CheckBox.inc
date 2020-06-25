@@ -374,8 +374,8 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure CheckBox_SetOnChange(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnChange}
   {$DEFINE EventName := OnChange}
-  {$DEFINE EventMethodName := OnChange}
   EventMethodCode
 end;
 
@@ -746,120 +746,120 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure CheckBox_SetOnClick(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnClick}
   {$DEFINE EventName := OnClick}
-  {$DEFINE EventMethodName := OnClick}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TContextPopupEvent
 procedure CheckBox_SetOnContextPopup(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTContextPopupEvent_OnContextPopup}
   {$DEFINE EventName := OnContextPopup}
-  {$DEFINE EventMethodName := OnContextPopup}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragDropEvent
 procedure CheckBox_SetOnDragDrop(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragDropEvent_OnDragDrop}
   {$DEFINE EventName := OnDragDrop}
-  {$DEFINE EventMethodName := OnDragDrop}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragOverEvent
 procedure CheckBox_SetOnDragOver(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragOverEvent_OnDragOver}
   {$DEFINE EventName := OnDragOver}
-  {$DEFINE EventMethodName := OnDragOver}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TEndDragEvent
 procedure CheckBox_SetOnEndDrag(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTEndDragEvent_OnEndDrag}
   {$DEFINE EventName := OnEndDrag}
-  {$DEFINE EventMethodName := OnEndDrag}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure CheckBox_SetOnEnter(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnEnter}
   {$DEFINE EventName := OnEnter}
-  {$DEFINE EventMethodName := OnEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure CheckBox_SetOnExit(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnExit}
   {$DEFINE EventName := OnExit}
-  {$DEFINE EventMethodName := OnExit}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyEvent
 procedure CheckBox_SetOnKeyDown(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyEvent_OnKeyDown}
   {$DEFINE EventName := OnKeyDown}
-  {$DEFINE EventMethodName := OnKeyDown}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyPressEvent
 procedure CheckBox_SetOnKeyPress(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyPressEvent_OnKeyPress}
   {$DEFINE EventName := OnKeyPress}
-  {$DEFINE EventMethodName := OnKeyPress}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyEvent
 procedure CheckBox_SetOnKeyUp(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyEvent_OnKeyUp}
   {$DEFINE EventName := OnKeyUp}
-  {$DEFINE EventMethodName := OnKeyUp}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseEvent
 procedure CheckBox_SetOnMouseDown(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseEvent_OnMouseDown}
   {$DEFINE EventName := OnMouseDown}
-  {$DEFINE EventMethodName := OnMouseDown}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure CheckBox_SetOnMouseEnter(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseEnter}
   {$DEFINE EventName := OnMouseEnter}
-  {$DEFINE EventMethodName := OnMouseEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure CheckBox_SetOnMouseLeave(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseLeave}
   {$DEFINE EventName := OnMouseLeave}
-  {$DEFINE EventMethodName := OnMouseLeave}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseMoveEvent
 procedure CheckBox_SetOnMouseMove(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseMoveEvent_OnMouseMove}
   {$DEFINE EventName := OnMouseMove}
-  {$DEFINE EventMethodName := OnMouseMove}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseEvent
 procedure CheckBox_SetOnMouseUp(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseEvent_OnMouseUp}
   {$DEFINE EventName := OnMouseUp}
-  {$DEFINE EventMethodName := OnMouseUp}
   EventMethodCode
 end;
 

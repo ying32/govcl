@@ -661,112 +661,112 @@ end;
 //EVENT_TYPE:TContextPopupEvent
 procedure TabSheet_SetOnContextPopup(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTContextPopupEvent_OnContextPopup}
   {$DEFINE EventName := OnContextPopup}
-  {$DEFINE EventMethodName := OnContextPopup}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragDropEvent
 procedure TabSheet_SetOnDragDrop(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragDropEvent_OnDragDrop}
   {$DEFINE EventName := OnDragDrop}
-  {$DEFINE EventMethodName := OnDragDrop}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragOverEvent
 procedure TabSheet_SetOnDragOver(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragOverEvent_OnDragOver}
   {$DEFINE EventName := OnDragOver}
-  {$DEFINE EventMethodName := OnDragOver}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TEndDragEvent
 procedure TabSheet_SetOnEndDrag(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTEndDragEvent_OnEndDrag}
   {$DEFINE EventName := OnEndDrag}
-  {$DEFINE EventMethodName := OnEndDrag}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure TabSheet_SetOnEnter(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnEnter}
   {$DEFINE EventName := OnEnter}
-  {$DEFINE EventMethodName := OnEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure TabSheet_SetOnExit(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnExit}
   {$DEFINE EventName := OnExit}
-  {$DEFINE EventMethodName := OnExit}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure TabSheet_SetOnHide(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnHide}
   {$DEFINE EventName := OnHide}
-  {$DEFINE EventMethodName := OnHide}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseEvent
 procedure TabSheet_SetOnMouseDown(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseEvent_OnMouseDown}
   {$DEFINE EventName := OnMouseDown}
-  {$DEFINE EventMethodName := OnMouseDown}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure TabSheet_SetOnMouseEnter(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseEnter}
   {$DEFINE EventName := OnMouseEnter}
-  {$DEFINE EventMethodName := OnMouseEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure TabSheet_SetOnMouseLeave(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseLeave}
   {$DEFINE EventName := OnMouseLeave}
-  {$DEFINE EventMethodName := OnMouseLeave}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseMoveEvent
 procedure TabSheet_SetOnMouseMove(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseMoveEvent_OnMouseMove}
   {$DEFINE EventName := OnMouseMove}
-  {$DEFINE EventMethodName := OnMouseMove}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseEvent
 procedure TabSheet_SetOnMouseUp(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseEvent_OnMouseUp}
   {$DEFINE EventName := OnMouseUp}
-  {$DEFINE EventMethodName := OnMouseUp}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure TabSheet_SetOnResize(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnResize}
   {$DEFINE EventName := OnResize}
-  {$DEFINE EventMethodName := OnResize}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure TabSheet_SetOnShow(AObj: TTabSheet; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnShow}
   {$DEFINE EventName := OnShow}
-  {$DEFINE EventMethodName := OnShow}
   EventMethodCode
 end;
 

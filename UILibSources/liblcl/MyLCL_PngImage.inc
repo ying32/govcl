@@ -51,11 +51,9 @@ end;
 
 procedure PngImage_LoadFromResourceID(AObj: TPngImage; Instance: NativeUInt; ResID: Integer); extdecl;
 begin
-{$IFDEF MSWINDOWS}
   handleExceptionBegin
   AObj.LoadFromResourceID(Instance, ResID);
   handleExceptionEnd
-{$ENDIF MSWINDOWS}
 end;
 
 function PngImage_Equals(AObj: TPngImage; Obj: TObject): LongBool; extdecl;
@@ -222,8 +220,8 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure PngImage_SetOnChange(AObj: TPngImage; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnChange}
   {$DEFINE EventName := OnChange}
-  {$DEFINE EventMethodName := OnChange}
   EventMethodCode
 end;
 

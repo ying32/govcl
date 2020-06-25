@@ -865,10 +865,6 @@ func (v *TValueListEditor) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
     ValueListEditor_SetOnMouseWheelUp(v.instance, fn)
 }
 
-func (v *TValueListEditor) SetOnRowMoved(fn TMovedEvent) {
-    ValueListEditor_SetOnRowMoved(v.instance, fn)
-}
-
 func (v *TValueListEditor) SetOnSelectCell(fn TSelectCellEvent) {
     ValueListEditor_SetOnSelectCell(v.instance, fn)
 }

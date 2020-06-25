@@ -640,120 +640,120 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure MonthCalendar_SetOnClick(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnClick}
   {$DEFINE EventName := OnClick}
-  {$DEFINE EventMethodName := OnClick}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TContextPopupEvent
 procedure MonthCalendar_SetOnContextPopup(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTContextPopupEvent_OnContextPopup}
   {$DEFINE EventName := OnContextPopup}
-  {$DEFINE EventMethodName := OnContextPopup}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure MonthCalendar_SetOnDblClick(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnDblClick}
   {$DEFINE EventName := OnDblClick}
-  {$DEFINE EventMethodName := OnDblClick}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragDropEvent
 procedure MonthCalendar_SetOnDragDrop(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragDropEvent_OnDragDrop}
   {$DEFINE EventName := OnDragDrop}
-  {$DEFINE EventMethodName := OnDragDrop}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragOverEvent
 procedure MonthCalendar_SetOnDragOver(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragOverEvent_OnDragOver}
   {$DEFINE EventName := OnDragOver}
-  {$DEFINE EventMethodName := OnDragOver}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TEndDragEvent
 procedure MonthCalendar_SetOnEndDock(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTEndDragEvent_OnEndDock}
   {$DEFINE EventName := OnEndDock}
-  {$DEFINE EventMethodName := OnEndDock}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TEndDragEvent
 procedure MonthCalendar_SetOnEndDrag(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTEndDragEvent_OnEndDrag}
   {$DEFINE EventName := OnEndDrag}
-  {$DEFINE EventMethodName := OnEndDrag}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure MonthCalendar_SetOnEnter(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnEnter}
   {$DEFINE EventName := OnEnter}
-  {$DEFINE EventMethodName := OnEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure MonthCalendar_SetOnExit(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnExit}
   {$DEFINE EventName := OnExit}
-  {$DEFINE EventMethodName := OnExit}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyEvent
 procedure MonthCalendar_SetOnKeyDown(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyEvent_OnKeyDown}
   {$DEFINE EventName := OnKeyDown}
-  {$DEFINE EventMethodName := OnKeyDown}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyPressEvent
 procedure MonthCalendar_SetOnKeyPress(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyPressEvent_OnKeyPress}
   {$DEFINE EventName := OnKeyPress}
-  {$DEFINE EventMethodName := OnKeyPress}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyEvent
 procedure MonthCalendar_SetOnKeyUp(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyEvent_OnKeyUp}
   {$DEFINE EventName := OnKeyUp}
-  {$DEFINE EventMethodName := OnKeyUp}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure MonthCalendar_SetOnMouseEnter(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseEnter}
   {$DEFINE EventName := OnMouseEnter}
-  {$DEFINE EventMethodName := OnMouseEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure MonthCalendar_SetOnMouseLeave(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseLeave}
   {$DEFINE EventName := OnMouseLeave}
-  {$DEFINE EventMethodName := OnMouseLeave}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TStartDockEvent
 procedure MonthCalendar_SetOnStartDock(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTStartDockEvent_OnStartDock}
   {$DEFINE EventName := OnStartDock}
-  {$DEFINE EventMethodName := OnStartDock}
   EventMethodCode
 end;
 

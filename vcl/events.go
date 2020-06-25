@@ -185,7 +185,9 @@ type TMouseWheelUpDownEvent func(sender IObject, shift TShiftState, mousePos TPo
 
 // ---- grid
 //  TMovedEvent = procedure (Sender: TObject; FromIndex, ToIndex: Longint) of object;
-type TMovedEvent func(sender IObject, fromIndex, toIndex int32)
+//type TMovedEvent func(sender IObject, fromIndex, toIndex int32)
+//TMovedEvent = procedure (Sender: TObject; IsColumn:Boolean;  sIndex, tIndex: Integer) of object;
+type TMovedEvent func(sender IObject, isColumn bool, sIndex, tIndex int32)
 
 //TDrawCellEvent = procedure (Sender: TObject; ACol, ARow: Longint; Rect: TRect; State: TGridDrawState) of object;
 type TDrawCellEvent func(sender IObject, aCol, aRow int32, aRect TRect, state TGridDrawState)

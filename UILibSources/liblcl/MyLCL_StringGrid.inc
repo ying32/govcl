@@ -392,6 +392,14 @@ begin
   handleExceptionEnd
 end;
 
+//EVENT_TYPE:TMovedEvent
+procedure StringGrid_SetOnColRowMoved(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventMethodName := OnTMovedEvent_OnColRowMoved}
+  {$DEFINE EventName := OnColRowMoved}
+  EventMethodCode
+end;
+
 function StringGrid_GetAlign(AObj: TStringGrid): TAlign; extdecl;
 begin
   handleExceptionBegin
@@ -843,224 +851,208 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure StringGrid_SetOnClick(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnClick}
   {$DEFINE EventName := OnClick}
-  {$DEFINE EventMethodName := OnClick}
-  EventMethodCode
-end;
-
-//EVENT_TYPE:TMovedEvent
-procedure StringGrid_SetOnColumnMoved(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
-begin
-  {$DEFINE EventName := OnColRowMoved}
-  {$DEFINE EventMethodName := OnColumnMoved}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TContextPopupEvent
 procedure StringGrid_SetOnContextPopup(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTContextPopupEvent_OnContextPopup}
   {$DEFINE EventName := OnContextPopup}
-  {$DEFINE EventMethodName := OnContextPopup}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure StringGrid_SetOnDblClick(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnDblClick}
   {$DEFINE EventName := OnDblClick}
-  {$DEFINE EventMethodName := OnDblClick}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragDropEvent
 procedure StringGrid_SetOnDragDrop(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragDropEvent_OnDragDrop}
   {$DEFINE EventName := OnDragDrop}
-  {$DEFINE EventMethodName := OnDragDrop}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragOverEvent
 procedure StringGrid_SetOnDragOver(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragOverEvent_OnDragOver}
   {$DEFINE EventName := OnDragOver}
-  {$DEFINE EventMethodName := OnDragOver}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDrawCellEvent
 procedure StringGrid_SetOnDrawCell(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDrawCellEvent_OnDrawCell}
   {$DEFINE EventName := OnDrawCell}
-  {$DEFINE EventMethodName := OnDrawCell}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TEndDragEvent
 procedure StringGrid_SetOnEndDock(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTEndDragEvent_OnEndDock}
   {$DEFINE EventName := OnEndDock}
-  {$DEFINE EventMethodName := OnEndDock}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TEndDragEvent
 procedure StringGrid_SetOnEndDrag(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTEndDragEvent_OnEndDrag}
   {$DEFINE EventName := OnEndDrag}
-  {$DEFINE EventMethodName := OnEndDrag}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure StringGrid_SetOnEnter(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnEnter}
   {$DEFINE EventName := OnEnter}
-  {$DEFINE EventMethodName := OnEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure StringGrid_SetOnExit(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnExit}
   {$DEFINE EventName := OnExit}
-  {$DEFINE EventMethodName := OnExit}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TGetEditEvent
 procedure StringGrid_SetOnGetEditMask(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTGetEditEvent_OnGetEditMask}
   {$DEFINE EventName := OnGetEditMask}
-  {$DEFINE EventMethodName := OnGetEditMask}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TGetEditEvent
 procedure StringGrid_SetOnGetEditText(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTGetEditEvent_OnGetEditText}
   {$DEFINE EventName := OnGetEditText}
-  {$DEFINE EventMethodName := OnGetEditText}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyEvent
 procedure StringGrid_SetOnKeyDown(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyEvent_OnKeyDown}
   {$DEFINE EventName := OnKeyDown}
-  {$DEFINE EventMethodName := OnKeyDown}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyPressEvent
 procedure StringGrid_SetOnKeyPress(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyPressEvent_OnKeyPress}
   {$DEFINE EventName := OnKeyPress}
-  {$DEFINE EventMethodName := OnKeyPress}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyEvent
 procedure StringGrid_SetOnKeyUp(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyEvent_OnKeyUp}
   {$DEFINE EventName := OnKeyUp}
-  {$DEFINE EventMethodName := OnKeyUp}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseEvent
 procedure StringGrid_SetOnMouseDown(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseEvent_OnMouseDown}
   {$DEFINE EventName := OnMouseDown}
-  {$DEFINE EventMethodName := OnMouseDown}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure StringGrid_SetOnMouseEnter(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseEnter}
   {$DEFINE EventName := OnMouseEnter}
-  {$DEFINE EventMethodName := OnMouseEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure StringGrid_SetOnMouseLeave(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseLeave}
   {$DEFINE EventName := OnMouseLeave}
-  {$DEFINE EventMethodName := OnMouseLeave}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseMoveEvent
 procedure StringGrid_SetOnMouseMove(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseMoveEvent_OnMouseMove}
   {$DEFINE EventName := OnMouseMove}
-  {$DEFINE EventMethodName := OnMouseMove}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseEvent
 procedure StringGrid_SetOnMouseUp(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseEvent_OnMouseUp}
   {$DEFINE EventName := OnMouseUp}
-  {$DEFINE EventMethodName := OnMouseUp}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseWheelUpDownEvent
 procedure StringGrid_SetOnMouseWheelDown(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseWheelUpDownEvent_OnMouseWheelDown}
   {$DEFINE EventName := OnMouseWheelDown}
-  {$DEFINE EventMethodName := OnMouseWheelDown}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseWheelUpDownEvent
 procedure StringGrid_SetOnMouseWheelUp(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseWheelUpDownEvent_OnMouseWheelUp}
   {$DEFINE EventName := OnMouseWheelUp}
-  {$DEFINE EventMethodName := OnMouseWheelUp}
-  EventMethodCode
-end;
-
-//EVENT_TYPE:TMovedEvent
-procedure StringGrid_SetOnRowMoved(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
-begin
-  {$DEFINE EventName := OnColRowMoved}
-  {$DEFINE EventMethodName := OnRowMoved}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TSelectCellEvent
 procedure StringGrid_SetOnSelectCell(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTSelectCellEvent_OnSelectCell}
   {$DEFINE EventName := OnSelectCell}
-  {$DEFINE EventMethodName := OnSelectCell}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TSetEditEvent
 procedure StringGrid_SetOnSetEditText(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTSetEditEvent_OnSetEditText}
   {$DEFINE EventName := OnSetEditText}
-  {$DEFINE EventMethodName := OnSetEditText}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TStartDockEvent
 procedure StringGrid_SetOnStartDock(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTStartDockEvent_OnStartDock}
   {$DEFINE EventName := OnStartDock}
-  {$DEFINE EventMethodName := OnStartDock}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure StringGrid_SetOnTopLeftChanged(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnTopLeftChanged}
   {$DEFINE EventName := OnTopLeftChanged}
-  {$DEFINE EventMethodName := OnTopLeftChanged}
   EventMethodCode
 end;
 
@@ -1790,6 +1782,7 @@ exports
   StringGrid_AnchorVerticalCenterTo,
   StringGrid_AnchorAsAlign,
   StringGrid_AnchorClient,
+  StringGrid_SetOnColRowMoved,
   StringGrid_GetAlign,
   StringGrid_SetAlign,
   StringGrid_GetAnchors,
@@ -1855,7 +1848,6 @@ exports
   StringGrid_GetVisibleColCount,
   StringGrid_GetVisibleRowCount,
   StringGrid_SetOnClick,
-  StringGrid_SetOnColumnMoved,
   StringGrid_SetOnContextPopup,
   StringGrid_SetOnDblClick,
   StringGrid_SetOnDragDrop,
@@ -1877,7 +1869,6 @@ exports
   StringGrid_SetOnMouseUp,
   StringGrid_SetOnMouseWheelDown,
   StringGrid_SetOnMouseWheelUp,
-  StringGrid_SetOnRowMoved,
   StringGrid_SetOnSelectCell,
   StringGrid_SetOnSetEditText,
   StringGrid_SetOnStartDock,

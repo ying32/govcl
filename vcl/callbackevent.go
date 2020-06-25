@@ -421,19 +421,14 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				*(*TPoint)(unsafe.Pointer(getVal(2))),
 				(*bool)(unsafe.Pointer(getVal(3))))
 
-			// TMessageEvent = procedure (var Msg: TMsg; var Handled: Boolean) of object;
-		//case TMessageEvent: // func(msg *TMsg, handled *bool)
-		//	v.(TMessageEvent)(
-		//		(*TMsg)(unsafe.Pointer(getVal(0))),
-		//		(*bool)(unsafe.Pointer(getVal(1))))
-
 		// ---- grid
-		//type TMovedEvent func(sender IObject, fromIndex, toIndex int32)
+		//type TMovedEvent func(sender IObject, isColumn bool, sIndex, tIndex int32)
 		case TMovedEvent:
 			v.(TMovedEvent)(
 				AsObject(getVal(0)),
-				int32(getVal(1)),
-				int32(getVal(2)))
+				DBoolToGoBool(getVal(1)),
+				int32(getVal(2)),
+				int32(getVal(3)))
 
 			//type TDrawCellEvent func(sender IObject, aCol, aRow int32, aRect TRect, state TGridDrawState)
 		case TDrawCellEvent:
@@ -513,14 +508,6 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 			v.(TCustomSectionNotifyEvent)(
 				AsHeaderControl(getVal(0)),
 				AsHeaderSection(getVal(1)))
-
-			////
-			//type TGestureEvent func(sender IObject, eventInfo TGestureEventInfo, handled *bool)
-		//case TGestureEvent:
-		//	v.(TGestureEvent)(
-		//		AsObject(getVal(0)),
-		//		*(*TGestureEventInfo)(unsafe.Pointer(getVal(1))),
-		//		(*bool)(unsafe.Pointer(getVal(2))))
 
 		//type TMouseActivateEvent func(sender IObject, button TMouseButton, shift TShiftState, x, y int32, hitTest int32, mouseActivate *TMouseActivate)
 		case TMouseActivateEvent:

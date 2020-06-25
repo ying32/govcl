@@ -1200,296 +1200,296 @@ end;
 //EVENT_TYPE:TLVAdvancedCustomDrawEvent
 procedure ListView_SetOnAdvancedCustomDraw(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVAdvancedCustomDrawEvent_OnAdvancedCustomDraw}
   {$DEFINE EventName := OnAdvancedCustomDraw}
-  {$DEFINE EventMethodName := ListViewOnAdvancedCustomDraw}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVAdvancedCustomDrawItemEvent
 procedure ListView_SetOnAdvancedCustomDrawItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVAdvancedCustomDrawItemEvent_OnAdvancedCustomDrawItem}
   {$DEFINE EventName := OnAdvancedCustomDrawItem}
-  {$DEFINE EventMethodName := ListViewOnAdvancedCustomDrawItem}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVAdvancedCustomDrawSubItemEvent
 procedure ListView_SetOnAdvancedCustomDrawSubItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVAdvancedCustomDrawSubItemEvent_OnAdvancedCustomDrawSubItem}
   {$DEFINE EventName := OnAdvancedCustomDrawSubItem}
-  {$DEFINE EventMethodName := ListViewOnAdvancedCustomDrawSubItem}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVChangeEvent
 procedure ListView_SetOnChange(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVChangeEvent_OnChange}
   {$DEFINE EventName := OnChange}
-  {$DEFINE EventMethodName := ListViewOnChange}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnClick(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnClick}
   {$DEFINE EventName := OnClick}
-  {$DEFINE EventMethodName := OnClick}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVColumnClickEvent
 procedure ListView_SetOnColumnClick(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVColumnClickEvent_OnColumnClick}
   {$DEFINE EventName := OnColumnClick}
-  {$DEFINE EventMethodName := ListViewOnColumnClick}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVCompareEvent
 procedure ListView_SetOnCompare(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVCompareEvent_OnCompare}
   {$DEFINE EventName := OnCompare}
-  {$DEFINE EventMethodName := ListViewOnCompare}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TContextPopupEvent
 procedure ListView_SetOnContextPopup(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTContextPopupEvent_OnContextPopup}
   {$DEFINE EventName := OnContextPopup}
-  {$DEFINE EventMethodName := OnContextPopup}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVCustomDrawEvent
 procedure ListView_SetOnCustomDraw(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVCustomDrawEvent_OnCustomDraw}
   {$DEFINE EventName := OnCustomDraw}
-  {$DEFINE EventMethodName := ListViewOnCustomDraw}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVCustomDrawItemEvent
 procedure ListView_SetOnCustomDrawItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVCustomDrawItemEvent_OnCustomDrawItem}
   {$DEFINE EventName := OnCustomDrawItem}
-  {$DEFINE EventMethodName := ListViewOnCustomDrawItem}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVCustomDrawSubItemEvent
 procedure ListView_SetOnCustomDrawSubItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVCustomDrawSubItemEvent_OnCustomDrawSubItem}
   {$DEFINE EventName := OnCustomDrawSubItem}
-  {$DEFINE EventMethodName := ListViewOnCustomDrawSubItem}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVOwnerDataEvent
 procedure ListView_SetOnData(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVOwnerDataEvent_OnData}
   {$DEFINE EventName := OnData}
-  {$DEFINE EventMethodName := ListViewOnData}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVOwnerDataFindEvent
 procedure ListView_SetOnDataFind(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVOwnerDataFindEvent_OnDataFind}
   {$DEFINE EventName := OnDataFind}
-  {$DEFINE EventMethodName := ListViewOnDataFind}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVOwnerDataHintEvent
 procedure ListView_SetOnDataHint(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVOwnerDataHintEvent_OnDataHint}
   {$DEFINE EventName := OnDataHint}
-  {$DEFINE EventMethodName := ListViewOnDataHint}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnDblClick(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnDblClick}
   {$DEFINE EventName := OnDblClick}
-  {$DEFINE EventMethodName := OnDblClick}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVDeletedEvent
 procedure ListView_SetOnDeletion(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVDeletedEvent_OnDeletion}
   {$DEFINE EventName := OnDeletion}
-  {$DEFINE EventMethodName := ListViewOnDeletion}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVEditedEvent
 procedure ListView_SetOnEdited(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVEditedEvent_OnEdited}
   {$DEFINE EventName := OnEdited}
-  {$DEFINE EventMethodName := ListViewOnEdited}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVEditingEvent
 procedure ListView_SetOnEditing(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVEditingEvent_OnEditing}
   {$DEFINE EventName := OnEditing}
-  {$DEFINE EventMethodName := ListViewOnEditing}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TEndDragEvent
 procedure ListView_SetOnEndDock(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTEndDragEvent_OnEndDock}
   {$DEFINE EventName := OnEndDock}
-  {$DEFINE EventMethodName := OnEndDock}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TEndDragEvent
 procedure ListView_SetOnEndDrag(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTEndDragEvent_OnEndDrag}
   {$DEFINE EventName := OnEndDrag}
-  {$DEFINE EventMethodName := OnEndDrag}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnEnter(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnEnter}
   {$DEFINE EventName := OnEnter}
-  {$DEFINE EventMethodName := OnEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnExit(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnExit}
   {$DEFINE EventName := OnExit}
-  {$DEFINE EventMethodName := OnExit}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragDropEvent
 procedure ListView_SetOnDragDrop(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragDropEvent_OnDragDrop}
   {$DEFINE EventName := OnDragDrop}
-  {$DEFINE EventMethodName := OnDragDrop}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragOverEvent
 procedure ListView_SetOnDragOver(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragOverEvent_OnDragOver}
   {$DEFINE EventName := OnDragOver}
-  {$DEFINE EventMethodName := OnDragOver}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVDeletedEvent
 procedure ListView_SetOnInsert(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVDeletedEvent_OnInsert}
   {$DEFINE EventName := OnInsert}
-  {$DEFINE EventMethodName := ListViewOnInsert}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyEvent
 procedure ListView_SetOnKeyDown(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyEvent_OnKeyDown}
   {$DEFINE EventName := OnKeyDown}
-  {$DEFINE EventMethodName := OnKeyDown}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyPressEvent
 procedure ListView_SetOnKeyPress(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyPressEvent_OnKeyPress}
   {$DEFINE EventName := OnKeyPress}
-  {$DEFINE EventMethodName := OnKeyPress}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyEvent
 procedure ListView_SetOnKeyUp(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyEvent_OnKeyUp}
   {$DEFINE EventName := OnKeyUp}
-  {$DEFINE EventMethodName := OnKeyUp}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseEvent
 procedure ListView_SetOnMouseDown(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseEvent_OnMouseDown}
   {$DEFINE EventName := OnMouseDown}
-  {$DEFINE EventMethodName := OnMouseDown}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnMouseEnter(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseEnter}
   {$DEFINE EventName := OnMouseEnter}
-  {$DEFINE EventMethodName := OnMouseEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnMouseLeave(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseLeave}
   {$DEFINE EventName := OnMouseLeave}
-  {$DEFINE EventMethodName := OnMouseLeave}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseMoveEvent
 procedure ListView_SetOnMouseMove(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseMoveEvent_OnMouseMove}
   {$DEFINE EventName := OnMouseMove}
-  {$DEFINE EventMethodName := OnMouseMove}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseEvent
 procedure ListView_SetOnMouseUp(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseEvent_OnMouseUp}
   {$DEFINE EventName := OnMouseUp}
-  {$DEFINE EventMethodName := OnMouseUp}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnResize(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnResize}
   {$DEFINE EventName := OnResize}
-  {$DEFINE EventMethodName := OnResize}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVSelectItemEvent
 procedure ListView_SetOnSelectItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVSelectItemEvent_OnSelectItem}
   {$DEFINE EventName := OnSelectItem}
-  {$DEFINE EventMethodName := ListViewOnSelectItem}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TLVCheckedItemEvent
 procedure ListView_SetOnItemChecked(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTLVCheckedItemEvent_OnItemChecked}
   {$DEFINE EventName := OnItemChecked}
-  {$DEFINE EventMethodName := ListViewOnItemChecked}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TStartDockEvent
 procedure ListView_SetOnStartDock(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTStartDockEvent_OnStartDock}
   {$DEFINE EventName := OnStartDock}
-  {$DEFINE EventMethodName := OnStartDock}
   EventMethodCode
 end;
 

@@ -79,15 +79,15 @@ func (f *TForm) SetOnConstrainedResize(fn TConstrainedResizeEvent) {
 	Form_SetOnConstrainedResize(f.instance, fn)
 }
 
-// 窗口被取消激活事件（失去焦点）
-func (f *TForm) SetOnDeactivate(fn TNotifyEvent) {
-	Form_SetOnDeactivate(f.instance, fn)
-}
-
-// 窗口激活事件（获取焦点）
-func (f *TForm) SetOnActivate(fn TNotifyEvent) {
-	Form_SetOnActivate(f.instance, fn)
-}
+//// 窗口被取消激活事件（失去焦点）
+//func (f *TForm) SetOnDeactivate(fn TNotifyEvent) {
+//	Form_SetOnDeactivate(f.instance, fn)
+//}
+//
+//// 窗口激活事件（获取焦点）
+//func (f *TForm) SetOnActivate(fn TNotifyEvent) {
+//	Form_SetOnActivate(f.instance, fn)
+//}
 
 // 窗口消息过程
 func (f *TForm) SetOnWndProc(fn TWndProcEvent) {

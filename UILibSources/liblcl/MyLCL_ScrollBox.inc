@@ -731,160 +731,160 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure ScrollBox_SetOnClick(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnClick}
   {$DEFINE EventName := OnClick}
-  {$DEFINE EventMethodName := OnClick}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ScrollBox_SetOnDblClick(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnDblClick}
   {$DEFINE EventName := OnDblClick}
-  {$DEFINE EventMethodName := OnDblClick}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDockDropEvent
 procedure ScrollBox_SetOnDockDrop(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDockDropEvent_OnDockDrop}
   {$DEFINE EventName := OnDockDrop}
-  {$DEFINE EventMethodName := OnDockDrop}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragDropEvent
 procedure ScrollBox_SetOnDragDrop(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragDropEvent_OnDragDrop}
   {$DEFINE EventName := OnDragDrop}
-  {$DEFINE EventMethodName := OnDragDrop}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragOverEvent
 procedure ScrollBox_SetOnDragOver(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragOverEvent_OnDragOver}
   {$DEFINE EventName := OnDragOver}
-  {$DEFINE EventMethodName := OnDragOver}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TEndDragEvent
 procedure ScrollBox_SetOnEndDrag(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTEndDragEvent_OnEndDrag}
   {$DEFINE EventName := OnEndDrag}
-  {$DEFINE EventMethodName := OnEndDrag}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ScrollBox_SetOnEnter(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnEnter}
   {$DEFINE EventName := OnEnter}
-  {$DEFINE EventMethodName := OnEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ScrollBox_SetOnExit(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnExit}
   {$DEFINE EventName := OnExit}
-  {$DEFINE EventMethodName := OnExit}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TGetSiteInfoEvent
 procedure ScrollBox_SetOnGetSiteInfo(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTGetSiteInfoEvent_OnGetSiteInfo}
   {$DEFINE EventName := OnGetSiteInfo}
-  {$DEFINE EventMethodName := OnGetSiteInfo}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseEvent
 procedure ScrollBox_SetOnMouseDown(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseEvent_OnMouseDown}
   {$DEFINE EventName := OnMouseDown}
-  {$DEFINE EventMethodName := OnMouseDown}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ScrollBox_SetOnMouseEnter(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseEnter}
   {$DEFINE EventName := OnMouseEnter}
-  {$DEFINE EventMethodName := OnMouseEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ScrollBox_SetOnMouseLeave(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseLeave}
   {$DEFINE EventName := OnMouseLeave}
-  {$DEFINE EventMethodName := OnMouseLeave}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseMoveEvent
 procedure ScrollBox_SetOnMouseMove(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseMoveEvent_OnMouseMove}
   {$DEFINE EventName := OnMouseMove}
-  {$DEFINE EventMethodName := OnMouseMove}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseEvent
 procedure ScrollBox_SetOnMouseUp(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseEvent_OnMouseUp}
   {$DEFINE EventName := OnMouseUp}
-  {$DEFINE EventMethodName := OnMouseUp}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseWheelEvent
 procedure ScrollBox_SetOnMouseWheel(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseWheelEvent_OnMouseWheel}
   {$DEFINE EventName := OnMouseWheel}
-  {$DEFINE EventMethodName := OnMouseWheel}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseWheelUpDownEvent
 procedure ScrollBox_SetOnMouseWheelDown(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseWheelUpDownEvent_OnMouseWheelDown}
   {$DEFINE EventName := OnMouseWheelDown}
-  {$DEFINE EventMethodName := OnMouseWheelDown}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMouseWheelUpDownEvent
 procedure ScrollBox_SetOnMouseWheelUp(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMouseWheelUpDownEvent_OnMouseWheelUp}
   {$DEFINE EventName := OnMouseWheelUp}
-  {$DEFINE EventMethodName := OnMouseWheelUp}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ScrollBox_SetOnResize(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnResize}
   {$DEFINE EventName := OnResize}
-  {$DEFINE EventMethodName := OnResize}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TUnDockEvent
 procedure ScrollBox_SetOnUnDock(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTUnDockEvent_OnUnDock}
   {$DEFINE EventName := OnUnDock}
-  {$DEFINE EventMethodName := OnUnDock}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TAlignPositionEvent
 procedure ScrollBox_SetOnAlignPosition(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTAlignPositionEvent_OnAlignPosition}
   {$DEFINE EventName := OnAlignPosition}
-  {$DEFINE EventMethodName := OnAlignPosition}
   EventMethodCode
 end;
 

@@ -429,6 +429,14 @@ func (a *TApplication) SetTitle(value string) {
     Application_SetTitle(a.instance, value)
 }
 
+func (a *TApplication) SetOnActivate(fn TNotifyEvent) {
+    Application_SetOnActivate(a.instance, fn)
+}
+
+func (a *TApplication) SetOnDeactivate(fn TNotifyEvent) {
+    Application_SetOnDeactivate(a.instance, fn)
+}
+
 // CN: 设置应用程序异常事件。
 // EN: .
 func (a *TApplication) SetOnException(fn TExceptionEvent) {
@@ -459,6 +467,18 @@ func (a *TApplication) SetOnRestore(fn TNotifyEvent) {
 
 func (a *TApplication) SetOnShortCut(fn TShortCutEvent) {
     Application_SetOnShortCut(a.instance, fn)
+}
+
+// CN: 获取控件句柄。
+// EN: Get Control handle.
+func (a *TApplication) Handle() HWND {
+    return Application_GetHandle(a.instance)
+}
+
+// CN: 设置控件句柄。
+// EN: Set Control handle.
+func (a *TApplication) SetHandle(value HWND) {
+    Application_SetHandle(a.instance, value)
 }
 
 // CN: 获取组件总数。

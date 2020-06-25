@@ -115,16 +115,16 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure PrinterSetupDialog_SetOnClose(AObj: TPrinterSetupDialog; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnClose}
   {$DEFINE EventName := OnClose}
-  {$DEFINE EventMethodName := OnClose}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure PrinterSetupDialog_SetOnShow(AObj: TPrinterSetupDialog; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnShow}
   {$DEFINE EventName := OnShow}
-  {$DEFINE EventMethodName := OnShow}
   EventMethodCode
 end;
 

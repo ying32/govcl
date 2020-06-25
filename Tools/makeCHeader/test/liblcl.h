@@ -1562,6 +1562,7 @@ typedef enum  {
     gkVerticalBar,
     gkPie,
     gkNeedle,
+    gkHalfPie,
 }TGaugeKind;
 
 typedef enum  {
@@ -2407,8 +2408,8 @@ typedef void(*TGetSiteInfoEvent)(TObject, TControl, TRect*, TPoint, BOOL*);
 // void (TObject sender, TShiftState shift, TPoint mousePos, BOOL* handled)
 typedef void(*TMouseWheelUpDownEvent)(TObject, TShiftState, TPoint, BOOL*);
 
-// void (TObject sender, int32_t fromIndex, int32_t toIndex)
-typedef void(*TMovedEvent)(TObject, int32_t, int32_t);
+// void (TObject sender, BOOL isColumn, int32_t sIndex, int32_t tIndex)
+typedef void(*TMovedEvent)(TObject, BOOL, int32_t, int32_t);
 
 // void (TObject sender, int32_t aCol, int32_t aRow, TRect aRect, TGridDrawState state)
 typedef void(*TDrawCellEvent)(TObject, int32_t, int32_t, TRect, TGridDrawState);
@@ -3054,6 +3055,18 @@ void Application_SetTitle(TApplication AObj, CChar char* AValue) {
     MySyscall(pApplication_SetTitle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
+DEFINE_FUNC_PTR(Application_SetOnActivate)
+void Application_SetOnActivate(TApplication AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(Application_SetOnActivate)
+    MySyscall(pApplication_SetOnActivate, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(Application_SetOnDeactivate)
+void Application_SetOnDeactivate(TApplication AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(Application_SetOnDeactivate)
+    MySyscall(pApplication_SetOnDeactivate, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
 DEFINE_FUNC_PTR(Application_SetOnException)
 void Application_SetOnException(TApplication AObj, TExceptionEvent AEventId) {
     GET_FUNC_ADDR(Application_SetOnException)
@@ -3088,6 +3101,18 @@ DEFINE_FUNC_PTR(Application_SetOnShortCut)
 void Application_SetOnShortCut(TApplication AObj, TShortCutEvent AEventId) {
     GET_FUNC_ADDR(Application_SetOnShortCut)
     MySyscall(pApplication_SetOnShortCut, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(Application_GetHandle)
+HWND Application_GetHandle(TApplication AObj) {
+    GET_FUNC_ADDR(Application_GetHandle)
+    return (HWND)MySyscall(pApplication_GetHandle, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(Application_SetHandle)
+void Application_SetHandle(TApplication AObj, HWND AValue) {
+    GET_FUNC_ADDR(Application_SetHandle)
+    MySyscall(pApplication_SetHandle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 DEFINE_FUNC_PTR(Application_GetComponentCount)
@@ -3480,6 +3505,36 @@ DEFINE_FUNC_PTR(Form_AnchorClient)
 void Form_AnchorClient(TForm AObj, int32_t ASpace) {
     GET_FUNC_ADDR(Form_AnchorClient)
     MySyscall(pForm_AnchorClient, 2, AObj, ASpace ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(Form_GetAllowDropFiles)
+BOOL Form_GetAllowDropFiles(TForm AObj) {
+    GET_FUNC_ADDR(Form_GetAllowDropFiles)
+    return (BOOL)MySyscall(pForm_GetAllowDropFiles, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(Form_SetAllowDropFiles)
+void Form_SetAllowDropFiles(TForm AObj, BOOL AValue) {
+    GET_FUNC_ADDR(Form_SetAllowDropFiles)
+    MySyscall(pForm_SetAllowDropFiles, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(Form_SetOnDropFiles)
+void Form_SetOnDropFiles(TForm AObj, TDropFilesEvent AEventId) {
+    GET_FUNC_ADDR(Form_SetOnDropFiles)
+    MySyscall(pForm_SetOnDropFiles, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(Form_GetShowInTaskBar)
+TShowInTaskbar Form_GetShowInTaskBar(TForm AObj) {
+    GET_FUNC_ADDR(Form_GetShowInTaskBar)
+    return (TShowInTaskbar)MySyscall(pForm_GetShowInTaskBar, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(Form_SetShowInTaskBar)
+void Form_SetShowInTaskBar(TForm AObj, TShowInTaskbar AValue) {
+    GET_FUNC_ADDR(Form_SetShowInTaskBar)
+    MySyscall(pForm_SetShowInTaskBar, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 DEFINE_FUNC_PTR(Form_GetAction)
@@ -3962,6 +4017,12 @@ void Form_SetWindowState(TForm AObj, TWindowState AValue) {
     MySyscall(pForm_SetWindowState, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
+DEFINE_FUNC_PTR(Form_SetOnActivate)
+void Form_SetOnActivate(TForm AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(Form_SetOnActivate)
+    MySyscall(pForm_SetOnActivate, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
 DEFINE_FUNC_PTR(Form_SetOnAlignPosition)
 void Form_SetOnAlignPosition(TForm AObj, TAlignPositionEvent AEventId) {
     GET_FUNC_ADDR(Form_SetOnAlignPosition)
@@ -3996,6 +4057,12 @@ DEFINE_FUNC_PTR(Form_SetOnDblClick)
 void Form_SetOnDblClick(TForm AObj, TNotifyEvent AEventId) {
     GET_FUNC_ADDR(Form_SetOnDblClick)
     MySyscall(pForm_SetOnDblClick, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(Form_SetOnDeactivate)
+void Form_SetOnDeactivate(TForm AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(Form_SetOnDeactivate)
+    MySyscall(pForm_SetOnDeactivate, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 DEFINE_FUNC_PTR(Form_SetOnDockDrop)
@@ -64878,6 +64945,12 @@ void StringGrid_AnchorClient(TStringGrid AObj, int32_t ASpace) {
     MySyscall(pStringGrid_AnchorClient, 2, AObj, ASpace ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
+DEFINE_FUNC_PTR(StringGrid_SetOnColRowMoved)
+void StringGrid_SetOnColRowMoved(TStringGrid AObj, TMovedEvent AEventId) {
+    GET_FUNC_ADDR(StringGrid_SetOnColRowMoved)
+    MySyscall(pStringGrid_SetOnColRowMoved, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
 DEFINE_FUNC_PTR(StringGrid_GetAlign)
 TAlign StringGrid_GetAlign(TStringGrid AObj) {
     GET_FUNC_ADDR(StringGrid_GetAlign)
@@ -65268,12 +65341,6 @@ void StringGrid_SetOnClick(TStringGrid AObj, TNotifyEvent AEventId) {
     MySyscall(pStringGrid_SetOnClick, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
-DEFINE_FUNC_PTR(StringGrid_SetOnColumnMoved)
-void StringGrid_SetOnColumnMoved(TStringGrid AObj, TMovedEvent AEventId) {
-    GET_FUNC_ADDR(StringGrid_SetOnColumnMoved)
-    MySyscall(pStringGrid_SetOnColumnMoved, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
 DEFINE_FUNC_PTR(StringGrid_SetOnContextPopup)
 void StringGrid_SetOnContextPopup(TStringGrid AObj, TContextPopupEvent AEventId) {
     GET_FUNC_ADDR(StringGrid_SetOnContextPopup)
@@ -65398,12 +65465,6 @@ DEFINE_FUNC_PTR(StringGrid_SetOnMouseWheelUp)
 void StringGrid_SetOnMouseWheelUp(TStringGrid AObj, TMouseWheelUpDownEvent AEventId) {
     GET_FUNC_ADDR(StringGrid_SetOnMouseWheelUp)
     MySyscall(pStringGrid_SetOnMouseWheelUp, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
-DEFINE_FUNC_PTR(StringGrid_SetOnRowMoved)
-void StringGrid_SetOnRowMoved(TStringGrid AObj, TMovedEvent AEventId) {
-    GET_FUNC_ADDR(StringGrid_SetOnRowMoved)
-    MySyscall(pStringGrid_SetOnRowMoved, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 DEFINE_FUNC_PTR(StringGrid_SetOnSelectCell)
@@ -66338,6 +66399,12 @@ void DrawGrid_AnchorClient(TDrawGrid AObj, int32_t ASpace) {
     MySyscall(pDrawGrid_AnchorClient, 2, AObj, ASpace ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
+DEFINE_FUNC_PTR(DrawGrid_SetOnColRowMoved)
+void DrawGrid_SetOnColRowMoved(TDrawGrid AObj, TMovedEvent AEventId) {
+    GET_FUNC_ADDR(DrawGrid_SetOnColRowMoved)
+    MySyscall(pDrawGrid_SetOnColRowMoved, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
 DEFINE_FUNC_PTR(DrawGrid_GetAlign)
 TAlign DrawGrid_GetAlign(TDrawGrid AObj) {
     GET_FUNC_ADDR(DrawGrid_GetAlign)
@@ -66728,12 +66795,6 @@ void DrawGrid_SetOnClick(TDrawGrid AObj, TNotifyEvent AEventId) {
     MySyscall(pDrawGrid_SetOnClick, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
-DEFINE_FUNC_PTR(DrawGrid_SetOnColumnMoved)
-void DrawGrid_SetOnColumnMoved(TDrawGrid AObj, TMovedEvent AEventId) {
-    GET_FUNC_ADDR(DrawGrid_SetOnColumnMoved)
-    MySyscall(pDrawGrid_SetOnColumnMoved, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
 DEFINE_FUNC_PTR(DrawGrid_SetOnContextPopup)
 void DrawGrid_SetOnContextPopup(TDrawGrid AObj, TContextPopupEvent AEventId) {
     GET_FUNC_ADDR(DrawGrid_SetOnContextPopup)
@@ -66858,12 +66919,6 @@ DEFINE_FUNC_PTR(DrawGrid_SetOnMouseWheelUp)
 void DrawGrid_SetOnMouseWheelUp(TDrawGrid AObj, TMouseWheelUpDownEvent AEventId) {
     GET_FUNC_ADDR(DrawGrid_SetOnMouseWheelUp)
     MySyscall(pDrawGrid_SetOnMouseWheelUp, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
-DEFINE_FUNC_PTR(DrawGrid_SetOnRowMoved)
-void DrawGrid_SetOnRowMoved(TDrawGrid AObj, TMovedEvent AEventId) {
-    GET_FUNC_ADDR(DrawGrid_SetOnRowMoved)
-    MySyscall(pDrawGrid_SetOnRowMoved, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 DEFINE_FUNC_PTR(DrawGrid_SetOnSelectCell)
@@ -68258,12 +68313,6 @@ DEFINE_FUNC_PTR(ValueListEditor_SetOnMouseWheelUp)
 void ValueListEditor_SetOnMouseWheelUp(TValueListEditor AObj, TMouseWheelUpDownEvent AEventId) {
     GET_FUNC_ADDR(ValueListEditor_SetOnMouseWheelUp)
     MySyscall(pValueListEditor_SetOnMouseWheelUp, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
-DEFINE_FUNC_PTR(ValueListEditor_SetOnRowMoved)
-void ValueListEditor_SetOnRowMoved(TValueListEditor AObj, TMovedEvent AEventId) {
-    GET_FUNC_ADDR(ValueListEditor_SetOnRowMoved)
-    MySyscall(pValueListEditor_SetOnRowMoved, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 DEFINE_FUNC_PTR(ValueListEditor_SetOnSelectCell)
@@ -83121,18 +83170,6 @@ void Application_Run(TApplication AObj) {
     MySyscall(pApplication_Run, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
-DEFINE_FUNC_PTR(Application_GetHandle)
-THandle Application_GetHandle(TApplication AObj) {
-    GET_FUNC_ADDR(Application_GetHandle)
-    return (THandle)MySyscall(pApplication_GetHandle, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
-DEFINE_FUNC_PTR(Application_SetHandle)
-void Application_SetHandle(TApplication AObj, THandle AValue) {
-    GET_FUNC_ADDR(Application_SetHandle)
-    MySyscall(pApplication_SetHandle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
 DEFINE_FUNC_PTR(Form_Create2)
 TForm Form_Create2(TComponent AOwner, BOOL AInitScale) {
     GET_FUNC_ADDR(Form_Create2)
@@ -83157,24 +83194,6 @@ void Form_EnabledSystemMenu(TForm AObj, BOOL AValue) {
     MySyscall(pForm_EnabledSystemMenu, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
-DEFINE_FUNC_PTR(Form_SetAllowDropFiles)
-void Form_SetAllowDropFiles(TForm AObj, BOOL AValue) {
-    GET_FUNC_ADDR(Form_SetAllowDropFiles)
-    MySyscall(pForm_SetAllowDropFiles, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
-DEFINE_FUNC_PTR(Form_GetAllowDropFiles)
-BOOL Form_GetAllowDropFiles(TForm AObj) {
-    GET_FUNC_ADDR(Form_GetAllowDropFiles)
-    return (BOOL)MySyscall(pForm_GetAllowDropFiles, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
-DEFINE_FUNC_PTR(Form_SetOnDropFiles)
-void Form_SetOnDropFiles(TForm AObj, TDropFilesEvent AEventId) {
-    GET_FUNC_ADDR(Form_SetOnDropFiles)
-    MySyscall(pForm_SetOnDropFiles, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
 DEFINE_FUNC_PTR(Form_SetOnDestroy)
 void Form_SetOnDestroy(TForm AObj, TNotifyEvent AEventId) {
     GET_FUNC_ADDR(Form_SetOnDestroy)
@@ -83187,34 +83206,10 @@ void Form_SetOnConstrainedResize(TForm AObj, TConstrainedResizeEvent AEventId) {
     MySyscall(pForm_SetOnConstrainedResize, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
-DEFINE_FUNC_PTR(Form_SetOnDeactivate)
-void Form_SetOnDeactivate(TForm AObj, TNotifyEvent AEventId) {
-    GET_FUNC_ADDR(Form_SetOnDeactivate)
-    MySyscall(pForm_SetOnDeactivate, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
-DEFINE_FUNC_PTR(Form_SetOnActivate)
-void Form_SetOnActivate(TForm AObj, TNotifyEvent AEventId) {
-    GET_FUNC_ADDR(Form_SetOnActivate)
-    MySyscall(pForm_SetOnActivate, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
 DEFINE_FUNC_PTR(Form_SetOnWndProc)
 void Form_SetOnWndProc(TForm AObj, TWndProcEvent AEventId) {
     GET_FUNC_ADDR(Form_SetOnWndProc)
     MySyscall(pForm_SetOnWndProc, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
-DEFINE_FUNC_PTR(Form_SetShowInTaskBar)
-void Form_SetShowInTaskBar(TForm AObj, TShowInTaskbar AVal) {
-    GET_FUNC_ADDR(Form_SetShowInTaskBar)
-    MySyscall(pForm_SetShowInTaskBar, 2, AObj, AVal ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
-}
-
-DEFINE_FUNC_PTR(Form_ShowInTaskBar)
-TShowInTaskbar Form_ShowInTaskBar(TForm AObj) {
-    GET_FUNC_ADDR(Form_ShowInTaskBar)
-    return (TShowInTaskbar)MySyscall(pForm_ShowInTaskBar, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 DEFINE_FUNC_PTR(Form_ScaleForPPI)

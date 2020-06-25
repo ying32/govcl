@@ -441,52 +441,82 @@ begin
   handleExceptionEnd
 end;
 
+//EVENT_TYPE:TNotifyEvent
+procedure Application_SetOnActivate(AObj: TApplication; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnActivate}
+  {$DEFINE EventName := OnActivate}
+  EventMethodCode
+end;
+
+//EVENT_TYPE:TNotifyEvent
+procedure Application_SetOnDeactivate(AObj: TApplication; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnDeactivate}
+  {$DEFINE EventName := OnDeactivate}
+  EventMethodCode
+end;
+
 //EVENT_TYPE:TExceptionEvent
 procedure Application_SetOnException(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTExceptionEvent_OnException}
   {$DEFINE EventName := OnException}
-  {$DEFINE EventMethodName := OnException}
   EventMethodCode
 end;
 
 //EVENT_TYPE:THelpEvent
 procedure Application_SetOnHelp(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTHelpEvent_OnHelp}
   {$DEFINE EventName := OnHelp}
-  {$DEFINE EventMethodName := OnHelp}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure Application_SetOnHint(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnHint}
   {$DEFINE EventName := OnHint}
-  {$DEFINE EventMethodName := OnHint}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure Application_SetOnMinimize(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMinimize}
   {$DEFINE EventName := OnMinimize}
-  {$DEFINE EventMethodName := OnMinimize}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure Application_SetOnRestore(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnRestore}
   {$DEFINE EventName := OnRestore}
-  {$DEFINE EventMethodName := OnRestore}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TShortCutEvent
 procedure Application_SetOnShortCut(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTShortCutEvent_OnShortCut}
   {$DEFINE EventName := OnShortCut}
-  {$DEFINE EventMethodName := OnShortCut}
   EventMethodCode
+end;
+
+function Application_GetHandle(AObj: TApplication): HWND; extdecl;
+begin
+  handleExceptionBegin
+  Result :=  AObj.Handle;
+  handleExceptionEnd
+end;
+
+procedure Application_SetHandle(AObj: TApplication; AValue: HWND); extdecl;
+begin
+  handleExceptionBegin
+  AObj.Handle := AValue;
+  handleExceptionEnd
 end;
 
 function Application_GetComponentCount(AObj: TApplication): Integer; extdecl;
@@ -620,12 +650,16 @@ exports
   Application_SetShowMainForm,
   Application_GetTitle,
   Application_SetTitle,
+  Application_SetOnActivate,
+  Application_SetOnDeactivate,
   Application_SetOnException,
   Application_SetOnHelp,
   Application_SetOnHint,
   Application_SetOnMinimize,
   Application_SetOnRestore,
   Application_SetOnShortCut,
+  Application_GetHandle,
+  Application_SetHandle,
   Application_GetComponentCount,
   Application_GetComponentIndex,
   Application_SetComponentIndex,

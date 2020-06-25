@@ -206,8 +206,8 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure PopupMenu_SetOnPopup(AObj: TPopupMenu; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnPopup}
   {$DEFINE EventName := OnPopup}
-  {$DEFINE EventMethodName := OnPopup}
   EventMethodCode
 end;
 

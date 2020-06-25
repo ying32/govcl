@@ -157,8 +157,8 @@ end;
 //EVENT_TYPE:TMenuChangeEvent
 procedure MainMenu_SetOnChange(AObj: TMainMenu; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMenuChangeEvent_OnChange}
   {$DEFINE EventName := OnChange}
-  {$DEFINE EventMethodName := MenuOnChange}
   EventMethodCode
 end;
 

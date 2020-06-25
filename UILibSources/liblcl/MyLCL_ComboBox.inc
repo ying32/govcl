@@ -829,136 +829,136 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure ComboBox_SetOnChange(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnChange}
   {$DEFINE EventName := OnChange}
-  {$DEFINE EventMethodName := OnChange}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ComboBox_SetOnClick(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnClick}
   {$DEFINE EventName := OnClick}
-  {$DEFINE EventMethodName := OnClick}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TContextPopupEvent
 procedure ComboBox_SetOnContextPopup(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTContextPopupEvent_OnContextPopup}
   {$DEFINE EventName := OnContextPopup}
-  {$DEFINE EventMethodName := OnContextPopup}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ComboBox_SetOnDblClick(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnDblClick}
   {$DEFINE EventName := OnDblClick}
-  {$DEFINE EventMethodName := OnDblClick}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragDropEvent
 procedure ComboBox_SetOnDragDrop(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragDropEvent_OnDragDrop}
   {$DEFINE EventName := OnDragDrop}
-  {$DEFINE EventMethodName := OnDragDrop}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDragOverEvent
 procedure ComboBox_SetOnDragOver(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDragOverEvent_OnDragOver}
   {$DEFINE EventName := OnDragOver}
-  {$DEFINE EventMethodName := OnDragOver}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TDrawItemEvent
 procedure ComboBox_SetOnDrawItem(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTDrawItemEvent_OnDrawItem}
   {$DEFINE EventName := OnDrawItem}
-  {$DEFINE EventMethodName := ListBoxOnDrawItem}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TEndDragEvent
 procedure ComboBox_SetOnEndDrag(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTEndDragEvent_OnEndDrag}
   {$DEFINE EventName := OnEndDrag}
-  {$DEFINE EventMethodName := OnEndDrag}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ComboBox_SetOnEnter(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnEnter}
   {$DEFINE EventName := OnEnter}
-  {$DEFINE EventMethodName := OnEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ComboBox_SetOnExit(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnExit}
   {$DEFINE EventName := OnExit}
-  {$DEFINE EventMethodName := OnExit}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyEvent
 procedure ComboBox_SetOnKeyDown(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyEvent_OnKeyDown}
   {$DEFINE EventName := OnKeyDown}
-  {$DEFINE EventMethodName := OnKeyDown}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyPressEvent
 procedure ComboBox_SetOnKeyPress(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyPressEvent_OnKeyPress}
   {$DEFINE EventName := OnKeyPress}
-  {$DEFINE EventMethodName := OnKeyPress}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TKeyEvent
 procedure ComboBox_SetOnKeyUp(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTKeyEvent_OnKeyUp}
   {$DEFINE EventName := OnKeyUp}
-  {$DEFINE EventMethodName := OnKeyUp}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMeasureItemEvent
 procedure ComboBox_SetOnMeasureItem(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMeasureItemEvent_OnMeasureItem}
   {$DEFINE EventName := OnMeasureItem}
-  {$DEFINE EventMethodName := ListBoxOnMeasureItem}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ComboBox_SetOnMouseEnter(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseEnter}
   {$DEFINE EventName := OnMouseEnter}
-  {$DEFINE EventMethodName := OnMouseEnter}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ComboBox_SetOnMouseLeave(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnMouseLeave}
   {$DEFINE EventName := OnMouseLeave}
-  {$DEFINE EventMethodName := OnMouseLeave}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ComboBox_SetOnSelect(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnSelect}
   {$DEFINE EventName := OnSelect}
-  {$DEFINE EventMethodName := OnSelect}
   EventMethodCode
 end;
 

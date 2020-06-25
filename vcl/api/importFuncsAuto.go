@@ -290,6 +290,14 @@ func Application_SetTitle(obj uintptr, value string) {
    application_SetTitle.Call(obj, GoStrToDStr(value))
 }
 
+func Application_SetOnActivate(obj uintptr, fn interface{}) {
+    application_SetOnActivate.Call(obj, addEventToMap(fn))
+}
+
+func Application_SetOnDeactivate(obj uintptr, fn interface{}) {
+    application_SetOnDeactivate.Call(obj, addEventToMap(fn))
+}
+
 func Application_SetOnException(obj uintptr, fn interface{}) {
     application_SetOnException.Call(obj, addEventToMap(fn))
 }
@@ -312,6 +320,15 @@ func Application_SetOnRestore(obj uintptr, fn interface{}) {
 
 func Application_SetOnShortCut(obj uintptr, fn interface{}) {
     application_SetOnShortCut.Call(obj, addEventToMap(fn))
+}
+
+func Application_GetHandle(obj uintptr) HWND {
+    ret, _, _ := application_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func Application_SetHandle(obj uintptr, value HWND) {
+   application_SetHandle.Call(obj, uintptr(value))
 }
 
 func Application_GetComponentCount(obj uintptr) int32 {
@@ -616,6 +633,28 @@ func Form_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func Form_AnchorClient(obj uintptr, ASpace int32)  {
     form_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func Form_GetAllowDropFiles(obj uintptr) bool {
+    ret, _, _ := form_GetAllowDropFiles.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Form_SetAllowDropFiles(obj uintptr, value bool) {
+   form_SetAllowDropFiles.Call(obj, GoBoolToDBool(value))
+}
+
+func Form_SetOnDropFiles(obj uintptr, fn interface{}) {
+    form_SetOnDropFiles.Call(obj, addEventToMap(fn))
+}
+
+func Form_GetShowInTaskBar(obj uintptr) TShowInTaskbar {
+    ret, _, _ := form_GetShowInTaskBar.Call(obj)
+    return TShowInTaskbar(ret)
+}
+
+func Form_SetShowInTaskBar(obj uintptr, value TShowInTaskbar) {
+   form_SetShowInTaskBar.Call(obj, uintptr(value))
 }
 
 func Form_GetAction(obj uintptr) uintptr {
@@ -978,6 +1017,10 @@ func Form_SetWindowState(obj uintptr, value TWindowState) {
    form_SetWindowState.Call(obj, uintptr(value))
 }
 
+func Form_SetOnActivate(obj uintptr, fn interface{}) {
+    form_SetOnActivate.Call(obj, addEventToMap(fn))
+}
+
 func Form_SetOnAlignPosition(obj uintptr, fn interface{}) {
     form_SetOnAlignPosition.Call(obj, addEventToMap(fn))
 }
@@ -1000,6 +1043,10 @@ func Form_SetOnContextPopup(obj uintptr, fn interface{}) {
 
 func Form_SetOnDblClick(obj uintptr, fn interface{}) {
     form_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func Form_SetOnDeactivate(obj uintptr, fn interface{}) {
+    form_SetOnDeactivate.Call(obj, addEventToMap(fn))
 }
 
 func Form_SetOnDockDrop(obj uintptr, fn interface{}) {
@@ -47569,6 +47616,10 @@ func StringGrid_AnchorClient(obj uintptr, ASpace int32)  {
     stringGrid_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func StringGrid_SetOnColRowMoved(obj uintptr, fn interface{}) {
+    stringGrid_SetOnColRowMoved.Call(obj, addEventToMap(fn))
+}
+
 func StringGrid_GetAlign(obj uintptr) TAlign {
     ret, _, _ := stringGrid_GetAlign.Call(obj)
     return TAlign(ret)
@@ -47862,10 +47913,6 @@ func StringGrid_SetOnClick(obj uintptr, fn interface{}) {
     stringGrid_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
-func StringGrid_SetOnColumnMoved(obj uintptr, fn interface{}) {
-    stringGrid_SetOnColumnMoved.Call(obj, addEventToMap(fn))
-}
-
 func StringGrid_SetOnContextPopup(obj uintptr, fn interface{}) {
     stringGrid_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
@@ -47948,10 +47995,6 @@ func StringGrid_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
 
 func StringGrid_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
     stringGrid_SetOnMouseWheelUp.Call(obj, addEventToMap(fn))
-}
-
-func StringGrid_SetOnRowMoved(obj uintptr, fn interface{}) {
-    stringGrid_SetOnRowMoved.Call(obj, addEventToMap(fn))
 }
 
 func StringGrid_SetOnSelectCell(obj uintptr, fn interface{}) {
@@ -48676,6 +48719,10 @@ func DrawGrid_AnchorClient(obj uintptr, ASpace int32)  {
     drawGrid_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func DrawGrid_SetOnColRowMoved(obj uintptr, fn interface{}) {
+    drawGrid_SetOnColRowMoved.Call(obj, addEventToMap(fn))
+}
+
 func DrawGrid_GetAlign(obj uintptr) TAlign {
     ret, _, _ := drawGrid_GetAlign.Call(obj)
     return TAlign(ret)
@@ -48969,10 +49016,6 @@ func DrawGrid_SetOnClick(obj uintptr, fn interface{}) {
     drawGrid_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
-func DrawGrid_SetOnColumnMoved(obj uintptr, fn interface{}) {
-    drawGrid_SetOnColumnMoved.Call(obj, addEventToMap(fn))
-}
-
 func DrawGrid_SetOnContextPopup(obj uintptr, fn interface{}) {
     drawGrid_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
@@ -49055,10 +49098,6 @@ func DrawGrid_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
 
 func DrawGrid_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
     drawGrid_SetOnMouseWheelUp.Call(obj, addEventToMap(fn))
-}
-
-func DrawGrid_SetOnRowMoved(obj uintptr, fn interface{}) {
-    drawGrid_SetOnRowMoved.Call(obj, addEventToMap(fn))
 }
 
 func DrawGrid_SetOnSelectCell(obj uintptr, fn interface{}) {
@@ -50118,10 +50157,6 @@ func ValueListEditor_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
 
 func ValueListEditor_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
     valueListEditor_SetOnMouseWheelUp.Call(obj, addEventToMap(fn))
-}
-
-func ValueListEditor_SetOnRowMoved(obj uintptr, fn interface{}) {
-    valueListEditor_SetOnRowMoved.Call(obj, addEventToMap(fn))
 }
 
 func ValueListEditor_SetOnSelectCell(obj uintptr, fn interface{}) {

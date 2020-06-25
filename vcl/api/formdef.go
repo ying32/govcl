@@ -31,19 +31,6 @@ func Form_EnabledSystemMenu(obj uintptr, val bool) {
 	form_EnabledSystemMenu.Call(obj, GoBoolToDBool(val))
 }
 
-func Form_SetAllowDropFiles(obj uintptr, val bool) {
-	form_SetAllowDropFiles.Call(obj, GoBoolToDBool(val))
-}
-
-func Form_GetAllowDropFiles(obj uintptr) bool {
-	r, _, _ := form_GetAllowDropFiles.Call(obj)
-	return DBoolToGoBool(r)
-}
-
-func Form_SetOnDropFiles(obj uintptr, fn interface{}) {
-	form_SetOnDropFiles.Call(obj, addEventToMap(fn))
-}
-
 func Form_SetOnDestroy(obj uintptr, fn interface{}) {
 	form_SetOnDestroy.Call(obj, addEventToMap(fn))
 }
@@ -52,24 +39,8 @@ func Form_SetOnConstrainedResize(obj uintptr, fn interface{}) {
 	form_SetOnConstrainedResize.Call(obj, addEventToMap(fn))
 }
 
-func Form_SetOnDeactivate(obj uintptr, fn interface{}) {
-	form_SetOnDeactivate.Call(obj, addEventToMap(fn))
-}
-
-func Form_SetOnActivate(obj uintptr, fn interface{}) {
-	form_SetOnActivate.Call(obj, addEventToMap(fn))
-}
-
-func Form_SetOnStyleChanged(obj uintptr, fn interface{}) {
-	form_SetOnStyleChanged.Call(obj, addEventToMap(fn))
-}
-
 func Form_SetOnWndProc(obj uintptr, fn interface{}) {
 	form_SetOnWndProc.Call(obj, addMessageEventToMap(fn))
-}
-
-func Form_SetShowInTaskBar(obj uintptr, val types.TShowInTaskbar) {
-	form_SetShowInTaskBar.Call(obj, uintptr(val))
 }
 
 func Form_ShowInTaskBar(obj uintptr) types.TShowInTaskbar {

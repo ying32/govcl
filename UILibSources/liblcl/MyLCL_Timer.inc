@@ -129,8 +129,8 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure Timer_SetOnTimer(AObj: TTimer; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnTimer}
   {$DEFINE EventName := OnTimer}
-  {$DEFINE EventMethodName := OnTimer}
   EventMethodCode
 end;
 

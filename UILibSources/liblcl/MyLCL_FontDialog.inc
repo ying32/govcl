@@ -143,16 +143,16 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure FontDialog_SetOnClose(AObj: TFontDialog; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnClose}
   {$DEFINE EventName := OnClose}
-  {$DEFINE EventMethodName := OnClose}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure FontDialog_SetOnShow(AObj: TFontDialog; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnShow}
   {$DEFINE EventName := OnShow}
-  {$DEFINE EventMethodName := OnShow}
   EventMethodCode
 end;
 

@@ -220,16 +220,16 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure SelectDirectoryDialog_SetOnClose(AObj: TSelectDirectoryDialog; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnClose}
   {$DEFINE EventName := OnClose}
-  {$DEFINE EventMethodName := OnClose}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure SelectDirectoryDialog_SetOnShow(AObj: TSelectDirectoryDialog; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnShow}
   {$DEFINE EventName := OnShow}
-  {$DEFINE EventMethodName := OnShow}
   EventMethodCode
 end;
 

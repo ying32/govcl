@@ -29,12 +29,3 @@ func Application_Run(app uintptr) {
 func Application_Initialize(obj uintptr) {
 	application_Initialize.Call(obj)
 }
-
-func Application_GetHandle(obj uintptr) uintptr {
-	ret, _, _ := application_GetHandle.Call(obj)
-	return ret
-}
-
-func Application_SetHandle(obj uintptr, handle uintptr) {
-	application_SetHandle.Call(obj, handle)
-}

@@ -143,8 +143,8 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure Brush_SetOnChange(AObj: TBrush; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnChange}
   {$DEFINE EventName := OnChange}
-  {$DEFINE EventMethodName := OnChange}
   EventMethodCode
 end;
 

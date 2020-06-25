@@ -318,8 +318,8 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure ImageList_SetOnChange(AObj: TImageList; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnChange}
   {$DEFINE EventName := OnChange}
-  {$DEFINE EventMethodName := OnChange}
   EventMethodCode
 end;
 

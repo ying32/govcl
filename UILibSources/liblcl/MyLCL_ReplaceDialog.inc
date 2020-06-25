@@ -129,8 +129,8 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure ReplaceDialog_SetOnReplace(AObj: TReplaceDialog; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnReplace}
   {$DEFINE EventName := OnReplace}
-  {$DEFINE EventMethodName := OnReplace}
   EventMethodCode
 end;
 
@@ -207,8 +207,8 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure ReplaceDialog_SetOnFind(AObj: TReplaceDialog; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnFind}
   {$DEFINE EventName := OnFind}
-  {$DEFINE EventMethodName := OnFind}
   EventMethodCode
 end;
 
@@ -222,16 +222,16 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure ReplaceDialog_SetOnClose(AObj: TReplaceDialog; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnClose}
   {$DEFINE EventName := OnClose}
-  {$DEFINE EventMethodName := OnClose}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure ReplaceDialog_SetOnShow(AObj: TReplaceDialog; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnShow}
   {$DEFINE EventName := OnShow}
-  {$DEFINE EventMethodName := OnShow}
   EventMethodCode
 end;
 

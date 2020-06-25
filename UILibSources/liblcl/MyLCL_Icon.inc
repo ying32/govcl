@@ -65,11 +65,9 @@ end;
 
 procedure Icon_LoadFromResourceID(AObj: TIcon; Instance: NativeUInt; ResID: Integer); extdecl;
 begin
-{$IFDEF MSWINDOWS}
   handleExceptionBegin
   AObj.LoadFromResourceID(Instance, ResID);
   handleExceptionEnd
-{$ENDIF MSWINDOWS}
 end;
 
 function Icon_Equals(AObj: TIcon; Obj: TObject): LongBool; extdecl;
@@ -250,8 +248,8 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure Icon_SetOnChange(AObj: TIcon; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnChange}
   {$DEFINE EventName := OnChange}
-  {$DEFINE EventMethodName := OnChange}
   EventMethodCode
 end;
 

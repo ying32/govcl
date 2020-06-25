@@ -72,11 +72,9 @@ end;
 
 procedure Bitmap_LoadFromResourceID(AObj: TBitmap; Instance: NativeUInt; ResID: Integer); extdecl;
 begin
-{$IFDEF MSWINDOWS}
   handleExceptionBegin
   AObj.LoadFromResourceID(Instance, ResID);
   handleExceptionEnd
-{$ENDIF MSWINDOWS}
 end;
 
 function Bitmap_Equals(AObj: TBitmap; Obj: TObject): LongBool; extdecl;
@@ -320,8 +318,8 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure Bitmap_SetOnChange(AObj: TBitmap; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnChange}
   {$DEFINE EventName := OnChange}
-  {$DEFINE EventMethodName := OnChange}
   EventMethodCode
 end;
 

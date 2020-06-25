@@ -413,6 +413,10 @@ func (s *TStringGrid) AnchorClient(ASpace int32) {
     StringGrid_AnchorClient(s.instance, ASpace)
 }
 
+func (s *TStringGrid) SetOnColRowMoved(fn TMovedEvent) {
+    StringGrid_SetOnColRowMoved(s.instance, fn)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (s *TStringGrid) Align() TAlign {
@@ -751,10 +755,6 @@ func (s *TStringGrid) SetOnClick(fn TNotifyEvent) {
     StringGrid_SetOnClick(s.instance, fn)
 }
 
-func (s *TStringGrid) SetOnColumnMoved(fn TMovedEvent) {
-    StringGrid_SetOnColumnMoved(s.instance, fn)
-}
-
 // CN: 设置上下文弹出事件，一般是右键时弹出。
 // EN: Set Context popup event, usually pop up when right click.
 func (s *TStringGrid) SetOnContextPopup(fn TContextPopupEvent) {
@@ -871,10 +871,6 @@ func (s *TStringGrid) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
 // EN: .
 func (s *TStringGrid) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
     StringGrid_SetOnMouseWheelUp(s.instance, fn)
-}
-
-func (s *TStringGrid) SetOnRowMoved(fn TMovedEvent) {
-    StringGrid_SetOnRowMoved(s.instance, fn)
 }
 
 func (s *TStringGrid) SetOnSelectCell(fn TSelectCellEvent) {

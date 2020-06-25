@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/rtl"
@@ -125,6 +127,7 @@ func main() {
 	})
 
 	paintbox.SetOnMouseDown(func(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
+		fmt.Println("mouse down")
 		if button == types.MbLeft {
 			points = append(points, TPoint{X: x, Y: y, Down: true})
 			isMouseDown = true
@@ -139,6 +142,7 @@ func main() {
 	})
 
 	paintbox.SetOnMouseUp(func(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
+		fmt.Println("mouse SetOnMouseUp")
 		if button == types.MbLeft {
 			isMouseDown = false
 		}

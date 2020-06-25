@@ -99,22 +99,6 @@ begin
   handleExceptionEnd
 end;
 
-function Application_GetHandle(AObj: TApplication): THandle; extdecl;
-begin
-{$IFDEF WINDOWS}
-   Result := WidgetSet.AppHandle;
-{$ELSE}
-   Result := 0;
-{$ENDIF}
-end;
-
-procedure Application_SetHandle(AObj: TApplication; AValue: THandle); extdecl;
-begin
-{$IFDEF WINDOWS}
-  WidgetSet.AppHandle := AValue;
-{$ENDIF}
-end;
-
 // TForm
 
 function Form_Create2(AOwner: TComponent; AInitScale: LongBool): TGoForm; extdecl;
@@ -183,19 +167,19 @@ begin
   handleExceptionEnd
 end;
 
-//EVENT_TYPE:TDropFilesEvent
-procedure Form_SetOnDropFiles(AObj: TGoForm; AEventId: NativeUInt); extdecl;
-begin
-  {$DEFINE EventName := OnDropFiles}
-  {$DEFINE EventMethodName := FormOnDropFiles}
-  EventMethodCode
-end;
+////EVENT_TYPE:TDropFilesEvent
+//procedure Form_SetOnDropFiles(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+//begin
+//  {$DEFINE EventName := OnDropFiles}
+//  {$DEFINE EventMethodName := OnTDropFilesEvent_OnDropFiles}
+//  EventMethodCode
+//end;
 
 //EVENT_TYPE:TNotifyEvent
 procedure Form_SetOnDestroy(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDestroy}
-  {$DEFINE EventMethodName := OnDestroy}
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnDestroy}
   EventMethodCode
 end;
 
@@ -203,23 +187,7 @@ end;
 procedure Form_SetOnConstrainedResize(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnConstrainedResize}
-  {$DEFINE EventMethodName := OnConstrainedResize}
-  EventMethodCode
-end;
-
-//EVENT_TYPE:TNotifyEvent
-procedure Form_SetOnDeactivate(AObj: TGoForm; AEventId: NativeUInt); extdecl;
-begin
-  {$DEFINE EventName := OnDeactivate}
-  {$DEFINE EventMethodName := OnDeactivate}
-  EventMethodCode
-end;
-
-//EVENT_TYPE:TNotifyEvent
-procedure Form_SetOnActivate(AObj: TGoForm; AEventId: NativeUInt); extdecl;
-begin
-  {$DEFINE EventName := OnActivate}
-  {$DEFINE EventMethodName := OnActivate}
+  {$DEFINE EventMethodName := OnTConstrainedResizeEvent_OnConstrainedResize}
   EventMethodCode
 end;
 
@@ -238,19 +206,19 @@ begin
   handleExceptionEnd
 end;
 
-procedure Form_SetShowInTaskBar(AObj: TGoForm; AVal: TShowInTaskbar); extdecl;
-begin
-  handleExceptionBegin
-  AObj.ShowInTaskBar := AVal;
-  handleExceptionEnd
-end;
-
-function Form_ShowInTaskBar(AObj: TGoForm): TShowInTaskbar; extdecl;
-begin
-  handleExceptionBegin
-  Result := AObj.ShowInTaskBar;
-  handleExceptionEnd
-end;
+//procedure Form_SetShowInTaskBar(AObj: TGoForm; AVal: TShowInTaskbar); extdecl;
+//begin
+//  handleExceptionBegin
+//  AObj.ShowInTaskBar := AVal;
+//  handleExceptionEnd
+//end;
+//
+//function Form_ShowInTaskBar(AObj: TGoForm): TShowInTaskbar; extdecl;
+//begin
+//  handleExceptionBegin
+//  Result := AObj.ShowInTaskBar;
+//  handleExceptionEnd
+//end;
 
 procedure Form_ScaleForPPI(AObj: TGoForm; ANewPPI: Integer); extdecl;
 begin
@@ -1230,26 +1198,16 @@ exports
   Application_Instance,
   Application_CreateForm,
   Application_Run,
-  //SetGlobalFormScaled,
   Application_Initialize,
-  Application_GetHandle,
-  Application_SetHandle,
 
   // TForm
   Form_Create2,
   Form_EnabledMaximize,
   Form_EnabledMinimize,
   Form_EnabledSystemMenu,
-  Form_SetAllowDropFiles,
-  Form_GetAllowDropFiles,
-  Form_SetOnDropFiles,
   Form_SetOnDestroy,
   Form_SetOnConstrainedResize,
-  Form_SetOnDeactivate,
-  Form_SetOnActivate,
   Form_SetOnWndProc,
-  Form_SetShowInTaskBar,
-  Form_ShowInTaskBar,
   Form_ScaleForPPI,
   Form_ScaleControlsForDpi,
   Form_ScaleForCurrentDpi,

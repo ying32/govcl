@@ -171,8 +171,8 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure Picture_SetOnChange(AObj: TPicture; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnChange}
   {$DEFINE EventName := OnChange}
-  {$DEFINE EventMethodName := OnChange}
   EventMethodCode
 end;
 

@@ -413,6 +413,10 @@ func (d *TDrawGrid) AnchorClient(ASpace int32) {
     DrawGrid_AnchorClient(d.instance, ASpace)
 }
 
+func (d *TDrawGrid) SetOnColRowMoved(fn TMovedEvent) {
+    DrawGrid_SetOnColRowMoved(d.instance, fn)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (d *TDrawGrid) Align() TAlign {
@@ -751,10 +755,6 @@ func (d *TDrawGrid) SetOnClick(fn TNotifyEvent) {
     DrawGrid_SetOnClick(d.instance, fn)
 }
 
-func (d *TDrawGrid) SetOnColumnMoved(fn TMovedEvent) {
-    DrawGrid_SetOnColumnMoved(d.instance, fn)
-}
-
 // CN: 设置上下文弹出事件，一般是右键时弹出。
 // EN: Set Context popup event, usually pop up when right click.
 func (d *TDrawGrid) SetOnContextPopup(fn TContextPopupEvent) {
@@ -871,10 +871,6 @@ func (d *TDrawGrid) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
 // EN: .
 func (d *TDrawGrid) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
     DrawGrid_SetOnMouseWheelUp(d.instance, fn)
-}
-
-func (d *TDrawGrid) SetOnRowMoved(fn TMovedEvent) {
-    DrawGrid_SetOnRowMoved(d.instance, fn)
 }
 
 func (d *TDrawGrid) SetOnSelectCell(fn TSelectCellEvent) {

@@ -346,16 +346,16 @@ end;
 //EVENT_TYPE:TNotifyEvent
 procedure MenuItem_SetOnClick(AObj: TMenuItem; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTNotifyEvent_OnClick}
   {$DEFINE EventName := OnClick}
-  {$DEFINE EventMethodName := OnClick}
   EventMethodCode
 end;
 
 //EVENT_TYPE:TMenuMeasureItemEvent
 procedure MenuItem_SetOnMeasureItem(AObj: TMenuItem; AEventId: NativeUInt); extdecl;
 begin
+  {$DEFINE EventMethodName := OnTMenuMeasureItemEvent_OnMeasureItem}
   {$DEFINE EventName := OnMeasureItem}
-  {$DEFINE EventMethodName := MenuItemOnMeasureItem}
   EventMethodCode
 end;
 
