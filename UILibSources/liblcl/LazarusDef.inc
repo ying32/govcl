@@ -153,19 +153,6 @@ begin
   handleExceptionEnd
 end;
 
-procedure Form_SetAllowDropFiles(AObj: TGoForm; AValue: LongBool); extdecl;
-begin
-  handleExceptionBegin
-  AObj.AllowDropFiles := AValue;
-  handleExceptionEnd
-end;
-
-function Form_GetAllowDropFiles(AObj: TGoForm): LongBool; extdecl;
-begin
-  handleExceptionBegin
-  Result := AObj.AllowDropFiles;
-  handleExceptionEnd
-end;
 
 ////EVENT_TYPE:TDropFilesEvent
 //procedure Form_SetOnDropFiles(AObj: TGoForm; AEventId: NativeUInt); extdecl;

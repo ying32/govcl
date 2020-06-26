@@ -124,7 +124,11 @@ var
   webkit_web_view_reload: procedure(webview: WebKitWebView); cdecl;
   webkit_web_view_stop_loading: procedure(webview: WebKitWebView); cdecl;
   webkit_web_view_is_loading: function(webview: WebKitWebView): gboolean; cdecl;
+  // gtk2: webkit_web_view_load_html_string
   webkit_web_view_load_html: procedure(webview: WebKitWebView; content, base_uri: Pgchar); cdecl;
+{$ifdef LCLGtk2}
+  webkit_web_view_execute_script: procedure(web_view: WebKitWebView; script: Pgchar); cdecl;
+{$endif}
 
 function WEBKIT_WEB_VIEW(webview: PGtkWidget): WebKitWebView; inline;
 begin
@@ -151,7 +155,10 @@ begin
     Pointer(webkit_web_view_reload) := dynlibs.GetProcAddress(LibWebkitGtkHandle, 'webkit_web_view_reload');
     Pointer(webkit_web_view_stop_loading) := dynlibs.GetProcAddress(LibWebkitGtkHandle, 'webkit_web_view_stop_loading');
     Pointer(webkit_web_view_is_loading) := dynlibs.GetProcAddress(LibWebkitGtkHandle, 'webkit_web_view_is_loading');
-    Pointer(webkit_web_view_load_html) := dynlibs.GetProcAddress(LibWebkitGtkHandle, 'webkit_web_view_load_html');
+    Pointer(webkit_web_view_load_html) := dynlibs.GetProcAddress(LibWebkitGtkHandle, {$ifdef LCLgtk3}'webkit_web_view_load_html'{$else}'webkit_web_view_load_html_string'{$endif});
+  {$ifdef LCLGtk2}
+    Pointer(webkit_web_view_execute_script) := dynlibs.GetProcAddress(LibWebkitGtkHandle, 'webkit_web_view_execute_script');
+  {$endif}
   end;
 end;
 
@@ -162,6 +169,13 @@ begin
     dynlibs.UnloadLibrary(LibWebkitGtkHandle);
     LibWebkitGtkHandle := 0;
   end;
+end;
+
+// event
+procedure doWebviewTitleChanged(web_view: WebKitWebView; frame: {WebKitWebFrame}Pointer; title: Pgchar; user_data: gpointer); cdecl;
+begin
+  if (user_data <> nil) and Assigned(TMiniWebview(user_data).OnTitleChange) then
+    TMiniWebview(user_data).OnTitleChange(TObject(user_data), title);
 end;
 
 { TMiniWebview }
@@ -182,6 +196,7 @@ begin
 {$IFDEF LCLgtk2}
   gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(FScrolledWindow), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
   gtk_container_add(GTK_CONTAINER(FScrolledWindow), GTK_WIDGET(FWebView));
+  g_signal_connect(FWebView, 'title-changed', G_CALLBACK(@doWebviewTitleChanged), Self);
 {$ENDIF}
 {$IFDEF LClgtk3}
   gtk_scrolled_window_set_policy(FScrolledWindow, GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
@@ -240,10 +255,7 @@ end;
 procedure TMiniWebview.Navigate(const AURL: string);
 begin
   if Assigned(FWebView) then
-  begin
     webkit_web_view_load_uri(FWebView, PChar(AURL));
-    //gtk_widget_grab_focus(GTK_WIDGET(FWebView));
-  end;
 end;
 
 procedure TMiniWebview.GoBack;
@@ -283,6 +295,10 @@ end;
 function TMiniWebview.ExecuteScript(AScriptText, AScriptType: string): string;
 begin
   Result := '';
+{$ifdef LCLGtk2}
+  if Assigned(webkit_web_view_execute_script) and Assigned(FWebview) and (Length(AScriptText) > 0) then
+    webkit_web_view_execute_script(FWebview, Pgchar(AScriptText));
+{$endif}
 end;
 
 function TMiniWebview.ExecuteJS(AScriptText: string): string;
@@ -292,8 +308,8 @@ end;
 
 procedure TMiniWebview.LoadHTML(const AStr: string);
 begin
-  //if Assigned(FWebview) and (Length(AStr) > 0) then
-    //webkit_web_view_load_html(FWebview, PChar(AStr), 'about:blank');
+  if Assigned(webkit_web_view_load_html) and Assigned(FWebview) and (Length(AStr) > 0)  then
+    webkit_web_view_load_html(FWebview, PChar(AStr), 'about:blank');
 end;
 
 procedure TMiniWebview.Paint;
