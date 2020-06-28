@@ -63,14 +63,14 @@ func main() {
 
 	tv.SetOnClick(func(vcl.IObject) {
 		node := tv.Selected()
-		if node != nil && node.IsValid() {
+		if node != nil /*&& node.IsValid()*/ {
 			fmt.Println("Text:", node.Text(), ", Level:", node.Level(), ", Index:", node.Index(), ", hasChild:", node.HasChildren())
 		}
 	})
 	// 双击删除
 	tv.SetOnDblClick(func(sender vcl.IObject) {
 		sel := tv.Selected()
-		if sel.IsValid() {
+		if sel != nil /*&& sel.IsValid()*/ {
 			sel.Delete()
 		}
 		// 或者
@@ -79,7 +79,7 @@ func main() {
 	tv.SetOnMouseDown(func(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
 		if button == types.MbRight {
 			node := tv.GetNodeAt(x, y)
-			if node != nil && node.IsValid() {
+			if node != nil /*&& node.IsValid()*/ {
 				// 自由决择是否选中
 				node.SetSelected(true)
 				// 根据Level来判断，这里只是做演示
