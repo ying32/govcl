@@ -85,14 +85,25 @@ func (f *TForm1) OnMIAddFolderClick(sender vcl.IObject) {
 
 func (f *TForm1) addFile(fileName string) {
 	name := filepath.Base(fileName)
-	if len(name) < 5 {
+	ext := strings.ToLower(filepath.Ext(name))
+	if ext != ".mp3" && ext != ".m4a" {
 		return
 	}
-	nameArr := strings.Split(name[:len(name)-4], "-")
+	name = name[:len(name)-len(ext)]
+	nameArr := strings.Split(name, "-")
+	caption := ""
+	singer := ""
 	if len(nameArr) >= 2 {
-		lenVal := int32(bass.GetFileLength(fileName))
-		f.playCtl.Add(TPlayListItem{strings.TrimSpace(nameArr[1]), strings.TrimSpace(nameArr[0]), lenVal, "", fileName})
+		caption = strings.TrimSpace(nameArr[1])
+		singer = strings.TrimSpace(nameArr[0])
+	} else {
+		caption = strings.TrimSpace(name)
+		singer = caption
 	}
+
+	lenVal := int32(bass.GetFileLength(fileName))
+	f.playCtl.Add(TPlayListItem{caption, singer, lenVal, "", fileName})
+
 }
 
 func (f *TForm1) addFoler(rootPath string) {
