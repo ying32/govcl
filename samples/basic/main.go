@@ -36,8 +36,8 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.SetHeight(200)
 	f.ScreenCenter()
 
-	f.Button1 = vcl.NewButton(mainForm)
-	f.Button1.SetParent(mainForm)
+	f.Button1 = vcl.NewButton(f)
+	f.Button1.SetParent(f)
 	f.Button1.SetCaption("窗口1")
 	f.Button1.SetLeft(50)
 	f.Button1.SetTop(50)
