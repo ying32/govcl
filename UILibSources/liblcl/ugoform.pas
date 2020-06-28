@@ -43,11 +43,6 @@ implementation
 constructor TGoForm.CreateNew(AOwner: TComponent; Num: Integer);
 begin
   inherited CreateNew(AOwner, Num);
-{$IFDEF WINDOWS}
-  // Windows下统一VCL/LCL默认字体
-  Font.Name := 'Tahoma';
-  Font.Size := 8;
-{$ENDIF}
 end;
 
 procedure TGoForm.ScaleForPPI(ANewPPI: Integer);
