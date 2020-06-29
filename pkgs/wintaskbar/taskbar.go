@@ -47,6 +47,17 @@ const (
 	THBN_CLICKED = 0x1800
 )
 
+const (
+	TBPF_NOPROGRESS    = 0
+	TBPF_INDETERMINATE = 0x1
+	TBPF_NORMAL        = 0x2
+	TBPF_ERROR         = 0x4
+	TBPF_PAUSED        = 0x8
+
+	TBATF_USEMDITHUMBNAIL   = 0x1
+	TBATF_USEMDILIVEPREVIEW = 0x2
+)
+
 var (
 	WM_TASKBARBUTTONCREATED uint32
 
@@ -88,9 +99,7 @@ func NewWinTaskBar(hWnd types.HWND) *TWinTaskBar {
 	if oldWndPrc == 0 {
 		initCreateProc = t.createTaskBar
 		processMessageProc = t.processMessage
-
-		newWndProc := syscall.NewCallback(NewWndProc)
-		oldWndPrc = win.SetWindowLongPtr(t.hWnd, win.GWL_WNDPROC, newWndProc)
+		oldWndPrc = win.SetWindowLongPtr(t.hWnd, win.GWL_WNDPROC, syscall.NewCallback(newWndProc))
 	}
 	return t
 }
@@ -117,7 +126,7 @@ func (t *TWinTaskBar) initButtons() error {
 			&arg2,
 			&arg3,
 		}
-
+		// call: function ThumbBarAddButtons(hwnd: HWND; cButtons: UINT; pButton: PThumbButton): HRESULT; stdcall;
 		err := DispCallFunc(uintptr(unsafe.Pointer(t.taskBarList)), 16, ole.CC_STDCALL, ole.VT_EMPTY, argsType, args, &result)
 		if err != nil {
 			return err
@@ -142,6 +151,7 @@ func (t *TWinTaskBar) createTaskBar() error {
 		return err
 	}
 	var result ole.VARIANT
+	// function HrInit: HRESULT; stdcall;
 	err = DispCallFunc(uintptr(unsafe.Pointer(t.taskBarList)), 4, ole.CC_STDCALL, ole.VT_EMPTY, nil, nil, &result)
 	if err != nil {
 		return err
@@ -155,6 +165,150 @@ func (t *TWinTaskBar) createTaskBar() error {
 	}
 	t.created = true
 
+	return nil
+}
+
+func (t *TWinTaskBar) SetThumbnailTooltip(tip string) error {
+	if t.taskBarList != nil {
+		var result ole.VARIANT
+
+		argsType := []ole.VT{
+			ole.VT_UI4,
+			ole.VT_LPWSTR,
+		}
+		arg1 := ole.NewVariant(ole.VT_UI4, int64(t.hWnd))
+		arg2 := ole.NewVariant(ole.VT_LPWSTR, int64(win.CStr(tip)))
+		args := []*ole.VARIANT{
+			&arg1,
+			&arg2,
+		}
+		// call: function SetThumbnailTooltip(hwnd: HWND; pszTip: LPCWSTR): HRESULT; stdcall;
+		err := DispCallFunc(uintptr(unsafe.Pointer(t.taskBarList)), 20, ole.CC_STDCALL, ole.VT_EMPTY, argsType, args, &result)
+		if err != nil {
+			return err
+		}
+		if !Succeeded(types.HResult(result.Val)) {
+			return ole.NewError(uintptr(result.Val))
+		}
+	}
+	return nil
+}
+
+func (t *TWinTaskBar) ThumbBarUpdateButtons() error {
+	if t.taskBarList != nil && len(t.buttons) > 0 {
+		var result ole.VARIANT
+
+		argsType := []ole.VT{
+			ole.VT_UI4,
+			ole.VT_UI4,
+			ole.VT_PTR,
+		}
+
+		arg1 := ole.NewVariant(ole.VT_UI4, int64(t.hWnd))
+		arg2 := ole.NewVariant(ole.VT_UI4, int64(len(t.buttons)))
+		arg3 := ole.NewVariant(ole.VT_UI4, int64(uintptr(unsafe.Pointer(&t.buttons[0]))))
+		args := []*ole.VARIANT{
+			&arg1,
+			&arg2,
+			&arg3,
+		}
+		// offset: 17
+		//function ThumbBarUpdateButtons(hwnd: HWND; cButtons: UINT; pButton: PThumbButton): HRESULT; stdcall;
+		err := DispCallFunc(uintptr(unsafe.Pointer(t.taskBarList)), 17, ole.CC_STDCALL, ole.VT_EMPTY, argsType, args, &result)
+		if err != nil {
+			return err
+		}
+		if !Succeeded(types.HResult(result.Val)) {
+			return ole.NewError(uintptr(result.Val))
+		}
+	}
+	return nil
+}
+
+func (t *TWinTaskBar) SetProgressValue(ullCompleted, ullTotal uint64) error {
+	if t.taskBarList != nil {
+		var result ole.VARIANT
+
+		argsType := []ole.VT{
+			ole.VT_UI4,
+			ole.VT_UI8,
+			ole.VT_UI8,
+		}
+		arg1 := ole.NewVariant(ole.VT_UI4, int64(t.hWnd))
+		arg2 := ole.NewVariant(ole.VT_UI8, int64(ullCompleted))
+		arg3 := ole.NewVariant(ole.VT_UI8, int64(ullTotal))
+		args := []*ole.VARIANT{
+			&arg1,
+			&arg2,
+			&arg3,
+		}
+		// offset: 10
+		//function SetProgressValue(hwnd: HWND; ullCompleted: ULONGLONG; ullTotal: ULONGLONG): HRESULT; stdcall;
+		err := DispCallFunc(uintptr(unsafe.Pointer(t.taskBarList)), 10, ole.CC_STDCALL, ole.VT_EMPTY, argsType, args, &result)
+		if err != nil {
+			return err
+		}
+		if !Succeeded(types.HResult(result.Val)) {
+			return ole.NewError(uintptr(result.Val))
+		}
+	}
+	return nil
+}
+
+func (t *TWinTaskBar) SetProgressState(flags int32) error {
+	if t.taskBarList != nil {
+		var result ole.VARIANT
+
+		argsType := []ole.VT{
+			ole.VT_UI4,
+			ole.VT_I4,
+		}
+		arg1 := ole.NewVariant(ole.VT_UI4, int64(t.hWnd))
+		arg2 := ole.NewVariant(ole.VT_I4, int64(flags))
+		args := []*ole.VARIANT{
+			&arg1,
+			&arg2,
+		}
+		// offset: 11
+		//function SetProgressState(hwnd: HWND; tbpFlags: Integer): HRESULT; stdcall;
+		err := DispCallFunc(uintptr(unsafe.Pointer(t.taskBarList)), 11, ole.CC_STDCALL, ole.VT_EMPTY, argsType, args, &result)
+		if err != nil {
+			return err
+		}
+		if !Succeeded(types.HResult(result.Val)) {
+			return ole.NewError(uintptr(result.Val))
+		}
+	}
+	return nil
+}
+
+func (t *TWinTaskBar) SetOverlayIcon(hIcon types.HICON, pszDescription string) error {
+	if t.taskBarList != nil {
+		var result ole.VARIANT
+
+		argsType := []ole.VT{
+			ole.VT_UI4,
+			ole.VT_UI4,
+			ole.VT_LPWSTR,
+		}
+		arg1 := ole.NewVariant(ole.VT_UI4, int64(t.hWnd))
+		arg2 := ole.NewVariant(ole.VT_UI4, int64(hIcon))
+		arg3 := ole.NewVariant(ole.VT_LPWSTR, int64(win.CStr(pszDescription)))
+		args := []*ole.VARIANT{
+			&arg1,
+			&arg2,
+			&arg3,
+		}
+		// offset: 19
+		// function SetOverlayIcon(hwnd: HWND; hIcon: HICON; pszDescription: LPCWSTR): HRESULT; stdcall;
+		err := DispCallFunc(uintptr(unsafe.Pointer(t.taskBarList)), 11, ole.CC_STDCALL, ole.VT_EMPTY, argsType, args, &result)
+		if err != nil {
+			return err
+		}
+		if !Succeeded(types.HResult(result.Val)) {
+			return ole.NewError(uintptr(result.Val))
+		}
+	}
 	return nil
 }
 
@@ -201,7 +355,7 @@ func (t *TWinTaskBar) Free() {
 }
 
 // 因为lcl不知道什么原因造成WM_COMMAND消息无法收到，所以这样处理
-func NewWndProc(hWnd uintptr, message uint32, wParam, lParam uintptr) uintptr {
+func newWndProc(hWnd uintptr, message uint32, wParam, lParam uintptr) uintptr {
 	switch message {
 	case WM_TASKBARBUTTONCREATED:
 		if initCreateProc != nil {
