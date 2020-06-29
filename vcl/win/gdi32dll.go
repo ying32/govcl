@@ -29,8 +29,10 @@ var (
 	_CreatePen          = gdi32dll.NewProc("CreatePen")
 	_SetROP2            = gdi32dll.NewProc("SetROP2")
 	_Rectangle          = gdi32dll.NewProc("Rectangle")
-
-	_SetBkMode = gdi32dll.NewProc("SetBkMode")
+	_SaveDC             = gdi32dll.NewProc("SaveDC")
+	_RestoreDC          = gdi32dll.NewProc("RestoreDC")
+	_SetBkMode          = gdi32dll.NewProc("SetBkMode")
+	_SetTextColor       = gdi32dll.NewProc("SetTextColor")
 )
 
 func CreateCompatibleDC(dc HDC) HDC {
@@ -76,4 +78,19 @@ func Rectangle(dc HDC, x1, y1, x2, y2 int32) bool {
 func SetBkMode(dC HDC, bkMode int32) int32 {
 	r, _, _ := _SetBkMode.Call(uintptr(dC), uintptr(bkMode))
 	return int32(r)
+}
+
+func SaveDC(dC HDC) int32 {
+	r, _, _ := _SaveDC.Call(uintptr(dC))
+	return int32(r)
+}
+
+func RestoreDC(dC HDC, savedDC int32) bool {
+	r, _, _ := _RestoreDC.Call(uintptr(dC), uintptr(savedDC))
+	return r != 0
+}
+
+func SetTextColor(dC HDC, color uint32) uint32 {
+	r, _, _ := _SetTextColor.Call(uintptr(dC), uintptr(color))
+	return uint32(r)
 }

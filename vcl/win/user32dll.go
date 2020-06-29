@@ -96,6 +96,8 @@ var (
 
 	_UnregisterHotKey = user32dll.NewProc("UnregisterHotKey")
 	_RegisterHotKey   = user32dll.NewProc("RegisterHotKey")
+
+	_DrawText = user32dll.NewProc("DrawTextW")
 )
 
 // MessageBox 消息框
@@ -505,4 +507,9 @@ func UnregisterHotKey(hWnd HWND, id int32) bool {
 func RegisterHotKey(hWnd HWND, id int32, fsModifiers, vk uint32) bool {
 	r, _, _ := _RegisterHotKey.Call(uintptr(hWnd), uintptr(id), uintptr(fsModifiers), uintptr(vk))
 	return r != 0
+}
+
+func DrawText(hDC HDC, lpString string, nCount int32, lpRect *TRect, uFormat uint32) int32 {
+	r, _, _ := _DrawText.Call(uintptr(hDC), CStr(lpString), uintptr(nCount), uintptr(unsafe.Pointer(lpRect)), uintptr(uFormat))
+	return int32(r)
 }

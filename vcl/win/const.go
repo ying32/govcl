@@ -784,3 +784,32 @@ const (
 	SEC_NOCACHE            = 0x10000000
 	MEM_IMAGE              = SEC_IMAGE
 )
+
+const (
+	/* DrawText() Format Flags */
+	DT_TOP             = 0
+	DT_LEFT            = 0
+	DT_CENTER          = 1
+	DT_RIGHT           = 2
+	DT_VCENTER         = 4
+	DT_BOTTOM          = 8
+	DT_WORDBREAK       = 0x10
+	DT_SINGLELINE      = 0x20
+	DT_EXPANDTABS      = 0x40
+	DT_TABSTOP         = 0x80
+	DT_NOCLIP          = 0x100
+	DT_EXTERNALLEADING = 0x200
+	DT_CALCRECT        = 0x400
+	DT_NOPREFIX        = 0x800
+	DT_INTERNAL        = 0x1000
+
+	DT_EDITCONTROL          = 0x2000
+	DT_PATH_ELLIPSIS        = 0x4000
+	DT_END_ELLIPSIS         = 0x8000
+	DT_MODIFYSTRING         = 0x10000
+	DT_RTLREADING           = 0x20000
+	DT_WORD_ELLIPSIS        = 0x40000
+	DT_NOFULLWIDTHCHARBREAK = 0x0080000
+	DT_HIDEPREFIX           = 0x00100000
+	DT_PREFIXONLY           = 0x00200000
+)
