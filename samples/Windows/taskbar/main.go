@@ -3,12 +3,13 @@ package main
 import (
 	"fmt"
 
+	"github.com/ying32/govcl/vcl/rtl"
+	"github.com/ying32/govcl/vcl/win"
+
 	"github.com/ying32/govcl/vcl/types"
 
 	"github.com/ying32/govcl/pkgs/wintaskbar"
 	"github.com/ying32/govcl/vcl"
-
-	_ "github.com/ying32/govcl/pkgs/winappres"
 )
 
 type TMainForm struct {
@@ -57,16 +58,30 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.timer.SetOnTimer(f.doTimer)
 
 	f.taskbar = wintaskbar.NewWinTaskBar(f.Handle())
-	f.taskbar.SetOnThumbButtonClick(func(index uint16) {
-		fmt.Println("index: ", index)
-	})
-	h := types.HICON(0)
+	f.taskbar.SetOnThumbButtonClick(f.onThumbButtonClick)
+
+	loadIcon := func(name string) types.HICON {
+		return win.LoadIcon2(rtl.MainInstance(), name)
+	}
 
 	// button只能一次性添加的，然后不能再添加和删除了，只能更新，这是ms官方的说明
-	// 这里的api还要重构下，方便使用
-	f.taskbar.AddButton("test1", h, wintaskbar.Enabled)
-	f.taskbar.AddButton("test2", h, wintaskbar.Enabled)
-	f.taskbar.AddButton("test3", h, wintaskbar.Enabled)
+
+	btn, _ := f.taskbar.AddButton()
+	btn.SetHint("上一曲")
+	btn.SetIcon(loadIcon("TASKBTN_PREV"))
+
+	btn, _ = f.taskbar.AddButton()
+	btn.SetHint("播放")
+	btn.SetIcon(loadIcon("TASKBTN_PLAY"))
+
+	btn, _ = f.taskbar.AddButton()
+	btn.SetHint("暂停")
+	btn.SetIcon(loadIcon("TASKBTN_PAUSE"))
+	btn.SetFlags(wintaskbar.Hidden)
+
+	btn, _ = f.taskbar.AddButton()
+	btn.SetHint("下一曲")
+	btn.SetIcon(loadIcon("TASKBTN_NEXT"))
 
 }
 
@@ -74,6 +89,23 @@ func (f *TMainForm) OnFormDestroy(sender vcl.IObject) {
 	if f.taskbar != nil {
 		f.taskbar.Free()
 		f.taskbar = nil
+	}
+}
+
+func (f *TMainForm) onThumbButtonClick(index uint16) {
+	switch index {
+	case 0: // 上一曲
+		fmt.Println("上一曲")
+	case 1: // 播放
+		fmt.Println("播放")
+		f.taskbar.Buttons()[1].SetFlags(wintaskbar.Hidden)
+		f.taskbar.Buttons()[2].SetFlags(wintaskbar.Enabled)
+	case 2: // 暂停
+		fmt.Println("暂停")
+		f.taskbar.Buttons()[2].SetFlags(wintaskbar.Hidden)
+		f.taskbar.Buttons()[1].SetFlags(wintaskbar.Enabled)
+	case 3: // 下一曲
+		fmt.Println("下一曲")
 	}
 }
 
