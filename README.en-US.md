@@ -29,6 +29,10 @@ Cross-platform Golang GUI library, Binding with Lazarus LCL.
 ### Pre-compiled GUI library binary download ([source code](UILibSources))     
 [![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.3.1.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.3/liblcl-2.0.3.1.zip)   
 
+
+* Dev version pre-compiled GUI binary   
+[liblcl-2.0.4-dev.zip](http://z-kit.cc/downloads/liblcl-2.0.4-dev.zip)  
+
 ### res2go Tool([doc, source code](Tools/res2go))    
 
 **Need to compile yourself: [Compile Guide](Tools/res2go/src/README.en-US.md)**   
