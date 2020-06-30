@@ -7,7 +7,7 @@
 //----------------------------------------
 //+build windows
 
-package wintaskbar
+package intf
 
 import (
 	"github.com/go-ole/go-ole"
@@ -15,13 +15,13 @@ import (
 	"github.com/ying32/govcl/vcl/win"
 )
 
-type tThumbButton struct {
-	dwMask  uint32
-	iId     uint32
-	iBitmap uint32
-	hIcon   types.HICON
-	szTip   [260]uint16
-	dwFlags uint32
+type TThumbButton struct {
+	DwMask  uint32
+	IId     uint32
+	IBitmap uint32
+	HIcon   types.HICON
+	SzTip   [260]uint16
+	DwFlags uint32
 }
 
 const (
@@ -62,10 +62,6 @@ var (
 	SID_ITaskbarList4 = ole.NewGUID("{C43DC798-95D1-4BEA-9030-BB99E2983A1A}")
 	SID_ITaskbarList3 = ole.NewGUID("{EA1AFB91-9E28-4B86-90E9-9E9F8A5EEFAF}")
 )
-
-func hiWord(L uint32) uint16 {
-	return uint16(L >> 16)
-}
 
 func init() {
 	WM_TASKBARBUTTONCREATED = win.RegisterWindowMessage("TaskbarButtonCreated")
