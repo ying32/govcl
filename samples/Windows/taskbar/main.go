@@ -8,7 +8,7 @@ import (
 
 	"github.com/ying32/govcl/vcl/types"
 
-	"github.com/ying32/govcl/pkgs/wintaskbar"
+	tsbar "github.com/ying32/govcl/pkgs/wintaskbar"
 	"github.com/ying32/govcl/vcl"
 )
 
@@ -16,7 +16,7 @@ type TMainForm struct {
 	*vcl.TForm
 	Button1  *vcl.TButton
 	Button2  *vcl.TButton
-	taskbar  *wintaskbar.TWinTaskBar
+	taskBar  *tsbar.WinTaskBar
 	timer    *vcl.TTimer
 	progress uint64
 }
@@ -57,8 +57,8 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.timer.SetEnabled(true)
 	f.timer.SetOnTimer(f.doTimer)
 
-	f.taskbar = wintaskbar.NewWinTaskBar(f.Handle())
-	f.taskbar.SetOnThumbButtonClick(f.onThumbButtonClick)
+	f.taskBar = tsbar.NewWinTaskBar(f.Handle())
+	f.taskBar.SetOnThumbButtonClick(f.onThumbButtonClick)
 
 	loadIcon := func(name string) types.HICON {
 		return win.LoadIcon2(rtl.MainInstance(), name)
@@ -66,29 +66,29 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 
 	// button只能一次性添加的，然后不能再添加和删除了，只能更新，这是ms官方的说明
 
-	btn, _ := f.taskbar.AddButton()
+	btn, _ := f.taskBar.AddButton()
 	btn.SetHint("上一曲")
 	btn.SetIcon(loadIcon("TASKBTN_PREV"))
 
-	btn, _ = f.taskbar.AddButton()
+	btn, _ = f.taskBar.AddButton()
 	btn.SetHint("播放")
 	btn.SetIcon(loadIcon("TASKBTN_PLAY"))
 
-	btn, _ = f.taskbar.AddButton()
+	btn, _ = f.taskBar.AddButton()
 	btn.SetHint("暂停")
 	btn.SetIcon(loadIcon("TASKBTN_PAUSE"))
-	btn.SetFlags(wintaskbar.Hidden)
+	btn.SetFlags(tsbar.Hidden)
 
-	btn, _ = f.taskbar.AddButton()
+	btn, _ = f.taskBar.AddButton()
 	btn.SetHint("下一曲")
 	btn.SetIcon(loadIcon("TASKBTN_NEXT"))
 
 }
 
 func (f *TMainForm) OnFormDestroy(sender vcl.IObject) {
-	if f.taskbar != nil {
-		f.taskbar.Free()
-		f.taskbar = nil
+	if f.taskBar != nil {
+		f.taskBar.Free()
+		f.taskBar = nil
 	}
 }
 
@@ -98,12 +98,12 @@ func (f *TMainForm) onThumbButtonClick(index uint16) {
 		fmt.Println("上一曲")
 	case 1: // 播放
 		fmt.Println("播放")
-		f.taskbar.Buttons()[1].SetFlags(wintaskbar.Hidden)
-		f.taskbar.Buttons()[2].SetFlags(wintaskbar.Enabled)
+		f.taskBar.Buttons()[1].SetFlags(tsbar.Hidden)
+		f.taskBar.Buttons()[2].SetFlags(tsbar.Enabled)
 	case 2: // 暂停
 		fmt.Println("暂停")
-		f.taskbar.Buttons()[2].SetFlags(wintaskbar.Hidden)
-		f.taskbar.Buttons()[1].SetFlags(wintaskbar.Enabled)
+		f.taskBar.Buttons()[2].SetFlags(tsbar.Hidden)
+		f.taskBar.Buttons()[1].SetFlags(tsbar.Enabled)
 	case 3: // 下一曲
 		fmt.Println("下一曲")
 	}
@@ -111,16 +111,16 @@ func (f *TMainForm) onThumbButtonClick(index uint16) {
 
 func (f *TMainForm) onButton1Click(sender vcl.IObject) {
 	// 设置后，鼠标悬停会显示提示
-	f.taskbar.SetThumbnailTooltip("HELLO!")
+	f.taskBar.SetThumbnailTooltip("HELLO!")
 	// 进度状态
-	f.taskbar.SetProgressState(wintaskbar.Error)
+	f.taskBar.SetProgressState(tsbar.Error)
 
 }
 
 func (f *TMainForm) onButton2Click(sender vcl.IObject) {
 
 	// 叠加的icon
-	f.taskbar.SetOverlayIcon(f.Icon().Handle(), "描述啊。。。")
+	f.taskBar.SetOverlayIcon(f.Icon().Handle(), "描述啊。。。")
 }
 
 func (f *TMainForm) doTimer(sender vcl.IObject) {
@@ -129,5 +129,5 @@ func (f *TMainForm) doTimer(sender vcl.IObject) {
 		f.progress = 0
 	}
 	// 进度值
-	f.taskbar.SetProgressValue(f.progress, 100)
+	f.taskBar.SetProgressValue(f.progress, 100)
 }
