@@ -15,7 +15,7 @@ import (
 	"github.com/ying32/govcl/vcl/win"
 )
 
-type TThumbButton struct {
+type tThumbButton struct {
 	dwMask  uint32
 	iId     uint32
 	iBitmap uint32

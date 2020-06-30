@@ -51,13 +51,52 @@ const (
 
 type TThumbButtonClick func(index uint16)
 
+type ThumbButton struct {
+	taskBar *TWinTaskBar
+	button  tThumbButton
+}
+
 type TWinTaskBar struct {
 	hWnd        types.HWND
 	taskBarList ITaskbarList4
 	created     bool
-	buttons     []TThumbButton
+	buttons     []*ThumbButton
 	btnCallback TThumbButtonClick
 }
+
+func newThumbButton(taskBar *TWinTaskBar) *ThumbButton {
+	tt := new(ThumbButton)
+	tt.taskBar = taskBar
+	tt.button.dwMask = THB_ICON | THB_TOOLTIP | THB_FLAGS
+	tt.button.iId = uint32(len(taskBar.buttons))
+	tt.button.dwFlags = uint32(Enabled)
+	taskBar.buttons = append(taskBar.buttons, tt)
+	return tt
+}
+
+func (tt *ThumbButton) changed() {
+	if tt.taskBar.created {
+		tt.taskBar.changed()
+	}
+}
+
+func (tt *ThumbButton) SetHint(str string) {
+	s := syscall.StringToUTF16(str)
+	copy(tt.button.szTip[:], s)
+	tt.changed()
+}
+
+func (tt *ThumbButton) SetIcon(h types.HICON) {
+	tt.button.hIcon = h
+	tt.changed()
+}
+
+func (tt *ThumbButton) SetFlags(flags TButtonFlags) {
+	tt.button.dwFlags = uint32(flags)
+	tt.changed()
+}
+
+//---------------------------------------------------------------------------------------------------------------------
 
 func NewWinTaskBar(hWnd types.HWND) *TWinTaskBar {
 	t := new(TWinTaskBar)
@@ -80,6 +119,14 @@ func (t *TWinTaskBar) SetOnThumbButtonClick(event TThumbButtonClick) {
 	t.btnCallback = event
 }
 
+func (t *TWinTaskBar) getButtons() []tThumbButton {
+	r := make([]tThumbButton, 0)
+	for _, b := range t.buttons {
+		r = append(r, b.button)
+	}
+	return r
+}
+
 func (t *TWinTaskBar) createTaskBar() error {
 	if t.created {
 		return nil
@@ -97,7 +144,7 @@ func (t *TWinTaskBar) createTaskBar() error {
 		return err
 	}
 
-	err = t.taskBarList.ThumbBarAddButtons(t.hWnd, t.buttons)
+	err = t.taskBarList.ThumbBarAddButtons(t.hWnd, t.getButtons())
 	if err != nil {
 		return err
 	}
@@ -110,13 +157,13 @@ func (t *TWinTaskBar) SetThumbnailTooltip(tip string) error {
 	return t.taskBarList.SetThumbnailTooltip(t.hWnd, tip)
 }
 
-func (t *TWinTaskBar) ThumbBarUpdateButton(index int, tipStr string, hIconHandle types.HICON, flags TButtonFlags) error {
-	if index >= 0 && index < len(t.buttons) {
-		t.setThumbButton(&t.buttons[index], tipStr, hIconHandle, flags, false)
-		return t.taskBarList.ThumbBarUpdateButtons(t.hWnd, t.buttons)
-	}
-	return errors.New("索引超出范围。")
-}
+//func (t *TWinTaskBar) ThumbBarUpdateButton(index int, tipStr string, hIconHandle types.HICON, flags TButtonFlags) error {
+//	if index >= 0 && index < len(t.buttons) {
+//		t.setThumbButton(&t.buttons[index], tipStr, hIconHandle, flags, false)
+//		return t.taskBarList.ThumbBarUpdateButtons(t.hWnd, t.buttons)
+//	}
+//	return errors.New("索引超出范围。")
+//}
 
 func (t *TWinTaskBar) SetProgressValue(ullCompleted, ullTotal uint64) error {
 	return t.taskBarList.SetProgressValue(t.hWnd, ullCompleted, ullTotal)
@@ -130,32 +177,33 @@ func (t *TWinTaskBar) SetOverlayIcon(hIcon types.HICON, pszDescription string) e
 	return t.taskBarList.SetOverlayIcon(t.hWnd, hIcon, pszDescription)
 }
 
-func (t *TWinTaskBar) setThumbButton(item *TThumbButton, tipStr string, hIconHandle types.HICON, dwFlags TButtonFlags, IsAdd bool) {
-	if IsAdd {
-		item.dwMask = THB_ICON | THB_TOOLTIP | THB_FLAGS
-		item.iId = uint32(len(t.buttons))
-	}
-	item.hIcon = hIconHandle
-	item.dwFlags = uint32(dwFlags)
-	s := syscall.StringToUTF16(tipStr)
-	copy(item.szTip[:], s)
+func (t *TWinTaskBar) Buttons() []*ThumbButton {
+	return t.buttons
 }
 
-func (t *TWinTaskBar) AddButton(tipStr string, hIconHandle types.HICON, flags TButtonFlags) error {
+//func (t *TWinTaskBar) setThumbButton(item *TThumbButton, tipStr string, hIconHandle types.HICON, dwFlags TButtonFlags, IsAdd bool) {
+//	if IsAdd {
+//		item.dwMask = THB_ICON | THB_TOOLTIP | THB_FLAGS
+//		item.iId = uint32(len(t.buttons))
+//	}
+//	item.hIcon = hIconHandle
+//	item.dwFlags = uint32(dwFlags)
+//	s := syscall.StringToUTF16(tipStr)
+//	copy(item.szTip[:], s)
+//}
+
+func (t *TWinTaskBar) AddButton() (*ThumbButton, error) {
 	if len(t.buttons) > MAX_BUTTON_COUNT {
-		return errors.New(fmt.Sprintf("len(buttons) >  %d", MAX_BUTTON_COUNT))
+		return nil, errors.New(fmt.Sprintf("len(buttons) >  %d", MAX_BUTTON_COUNT))
 	}
 	if t.created {
-		return errors.New("已创建，不能再进行添加操作。")
+		return nil, errors.New("已创建，不能再进行添加操作。")
 	}
-	item := TThumbButton{}
-	t.setThumbButton(&item, tipStr, hIconHandle, flags, true)
-	t.buttons = append(t.buttons, item)
-	return nil
+	return newThumbButton(t), nil
 }
 
 func (t *TWinTaskBar) changed() {
-	//t.taskBarList.CallMethod("ThumbBarUpdateButtons", t.hWnd,  AIndex, @LItem);
+	t.taskBarList.ThumbBarUpdateButtons(t.hWnd, t.getButtons())
 }
 
 func (t *TWinTaskBar) processMessage(wParam uintptr) {
@@ -170,6 +218,7 @@ func (t *TWinTaskBar) Free() {
 		win.SetWindowLongPtr(t.hWnd, win.GWL_WNDPROC, oldWndPrc)
 		oldWndPrc = 0
 	}
+	t.buttons = make([]*ThumbButton, 0)
 	t.taskBarList.Release()
 	t.taskBarList = 0
 }

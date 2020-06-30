@@ -93,7 +93,7 @@ func (ii ITaskbarList4) HrInit() error {
 	return nil
 }
 
-func (ii ITaskbarList4) addOrUpdateButtons(offset uintptr, hWnd types.HWND, buttons []TThumbButton) error {
+func (ii ITaskbarList4) addOrUpdateButtons(offset uintptr, hWnd types.HWND, buttons []tThumbButton) error {
 	if len(buttons) == 0 {
 		return errors.New("buttons == 0")
 	}
@@ -123,11 +123,11 @@ func (ii ITaskbarList4) addOrUpdateButtons(offset uintptr, hWnd types.HWND, butt
 	return nil
 }
 
-func (ii ITaskbarList4) ThumbBarAddButtons(hWnd types.HWND, buttons []TThumbButton) error {
+func (ii ITaskbarList4) ThumbBarAddButtons(hWnd types.HWND, buttons []tThumbButton) error {
 	return ii.addOrUpdateButtons(getOffset("ThumbBarAddButtons"), hWnd, buttons)
 }
 
-func (ii ITaskbarList4) ThumbBarUpdateButtons(hWnd types.HWND, buttons []TThumbButton) error {
+func (ii ITaskbarList4) ThumbBarUpdateButtons(hWnd types.HWND, buttons []tThumbButton) error {
 	return ii.addOrUpdateButtons(getOffset("ThumbBarUpdateButtons"), hWnd, buttons)
 }
 
