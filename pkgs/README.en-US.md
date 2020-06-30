@@ -26,3 +26,6 @@ App resources under the default windows.
 
 * wke  
 Go interface of wke browser.  
+
+* wintaskbar  
+New features of the taskbar that Windows 7+ started to support.  

@@ -27,3 +27,6 @@ skinh皮肤库的Go接口。
 
 * wke  
 wke浏览器的Go接口。  
+
+* wintaskbar  
+Windows7+开始支持的任务栏新特性。  
