@@ -5,7 +5,7 @@
 
 ### GoVCL
 
-跨平台的Golang GUI库，底层绑定自Lazarus LCL。  
+跨平台的Golang GUI库, 核心绑定自[Lazarus](https://www.lazarus-ide.org/)创建的通用跨平台GUI库[liblcl](https://github.com/ying32/liblcl)。  
 
 **中文全称：`Go语言可视化组件库`；英文全称：`Go Language Visual Component Library`**    
 
