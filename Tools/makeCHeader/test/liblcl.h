@@ -83694,6 +83694,42 @@ void InitGoDll(uintptr_t AMainThreadId) {
     MySyscall(pDInitGoDll, 1, AMainThreadId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
+DEFINE_FUNC_PTR(DFindControl)
+TWinControl FindControl(HWND AHandle) {
+    GET_FUNC_ADDR(DFindControl)
+    return (TWinControl)MySyscall(pDFindControl, 1, AHandle ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(DFindLCLControl)
+TControl FindLCLControl(TPoint* AScreenPos) {
+    GET_FUNC_ADDR(DFindLCLControl)
+    return (TControl)MySyscall(pDFindLCLControl, 1, AScreenPos ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(DFindOwnerControl)
+TWinControl FindOwnerControl(HWND Handle) {
+    GET_FUNC_ADDR(DFindOwnerControl)
+    return (TWinControl)MySyscall(pDFindOwnerControl, 1, Handle ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(DFindControlAtPosition)
+TControl FindControlAtPosition(TPoint* APosition, BOOL AllowDisabled) {
+    GET_FUNC_ADDR(DFindControlAtPosition)
+    return (TControl)MySyscall(pDFindControlAtPosition, 2, APosition, AllowDisabled ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(DFindLCLWindow)
+TWinControl FindLCLWindow(TPoint* AScreenPos, BOOL AllowDisabled) {
+    GET_FUNC_ADDR(DFindLCLWindow)
+    return (TWinControl)MySyscall(pDFindLCLWindow, 2, AScreenPos, AllowDisabled ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(DFindDragTarget)
+TControl FindDragTarget(TPoint* APosition, BOOL AllowDisabled) {
+    GET_FUNC_ADDR(DFindDragTarget)
+    return (TControl)MySyscall(pDFindDragTarget, 2, APosition, AllowDisabled ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
 
 #ifdef __linux__
 
