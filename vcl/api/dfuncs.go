@@ -348,3 +348,33 @@ func DCurrentThreadId() uintptr {
 func DInitGoDll(aMainThreadId uintptr) {
 	dInitGoDll.Call(aMainThreadId)
 }
+
+func DFindControl(handle HWND) uintptr {
+	r, _, _ := dFindControl.Call(handle)
+	return r
+}
+
+func DFindLCLControl(screenPos TPoint) uintptr {
+	r, _, _ := dFindLCLControl.Call(uintptr(unsafe.Pointer(&screenPos)))
+	return r
+}
+
+func DFindOwnerControl(handle HWND) uintptr {
+	r, _, _ := dFindOwnerControl.Call(handle)
+	return r
+}
+
+func DFindControlAtPosition(position TPoint, allowDisabled bool) uintptr {
+	r, _, _ := dFindControlAtPosition.Call(uintptr(unsafe.Pointer(&position)), GoBoolToDBool(allowDisabled))
+	return r
+}
+
+func DFindLCLWindow(screenPos TPoint, allowDisabled bool) uintptr {
+	r, _, _ := dFindLCLWindow.Call(uintptr(unsafe.Pointer(&screenPos)), GoBoolToDBool(allowDisabled))
+	return r
+}
+
+func DFindDragTarget(position TPoint, allowDisabled bool) uintptr {
+	r, _, _ := dFindDragTarget.Call(uintptr(unsafe.Pointer(&position)), GoBoolToDBool(allowDisabled))
+	return r
+}

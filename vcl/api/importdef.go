@@ -135,4 +135,11 @@ var (
 	dCurrentThreadId = libvcl.NewProc("DCurrentThreadId")
 
 	dInitGoDll = libvcl.NewProc("DInitGoDll")
+
+	dFindControl           = libvcl.NewProc("DFindControl")
+	dFindLCLControl        = libvcl.NewProc("DFindLCLControl")
+	dFindOwnerControl      = libvcl.NewProc("DFindOwnerControl")
+	dFindControlAtPosition = libvcl.NewProc("DFindControlAtPosition")
+	dFindLCLWindow         = libvcl.NewProc("DFindLCLWindow")
+	dFindDragTarget        = libvcl.NewProc("DFindDragTarget")
 )

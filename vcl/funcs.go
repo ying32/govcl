@@ -169,3 +169,27 @@ func LclLoaded() bool {
 func EqualsObject(obj1, obj2 IObject) bool {
 	return CheckPtr(obj1) == CheckPtr(obj2)
 }
+
+func FindControl(handle HWND) *TWinControl {
+	return AsWinControl(api.DFindControl(handle))
+}
+
+func FindLCLControl(screenPos TPoint) *TControl {
+	return AsControl(api.DFindLCLControl(screenPos))
+}
+
+func FindOwnerControl(handle HWND) *TWinControl {
+	return AsWinControl(api.DFindOwnerControl(handle))
+}
+
+func FindControlAtPosition(position TPoint, allowDisabled bool) *TControl {
+	return AsControl(api.DFindControlAtPosition(position, allowDisabled))
+}
+
+func FindLCLWindow(screenPos TPoint, allowDisabled bool) *TWinControl {
+	return AsWinControl(api.DFindLCLWindow(screenPos, allowDisabled))
+}
+
+func FindDragTarget(position TPoint, allowDisabled bool) *TControl {
+	return AsControl(api.DFindDragTarget(position, allowDisabled))
+}

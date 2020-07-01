@@ -1167,6 +1167,36 @@ begin
   handleExceptionEnd
 end;
 
+function DFindControl(AHandle: HWND): TWinControl; extdecl;
+begin
+  Result := FindControl(AHandle);
+end;
+
+function DFindLCLControl(var AScreenPos: TPoint): TControl; extdecl;
+begin
+  Result := FindLCLControl(AScreenPos);
+end;
+
+function DFindOwnerControl(Handle: HWND): TWinControl; extdecl;
+begin
+  Result := FindOwnerControl(Handle);
+end;
+
+function DFindControlAtPosition(var APosition: TPoint; AllowDisabled: LongBool): TControl; extdecl;
+begin
+  Result := FindControlAtPosition(APosition, AllowDisabled);
+end;
+
+function DFindLCLWindow(var AScreenPos: TPoint; AllowDisabled: LongBool): TWinControl; extdecl;
+begin
+  Result := FindLCLWindow(AScreenPos, AllowDisabled);
+end;
+
+function DFindDragTarget(var APosition: TPoint; AllowDisabled: LongBool): TControl; extdecl;
+begin
+  Result := FindDragTarget(APosition, AllowDisabled);
+end;
+
 
 exports
   // 导出动态调用的
@@ -1334,5 +1364,12 @@ exports
 
   DGetLibType,
 
-  DInitGoDll
+  DInitGoDll,
+
+  DFindControl,
+  DFindLCLControl,
+  DFindOwnerControl,
+  DFindControlAtPosition,
+  DFindLCLWindow,
+  DFindDragTarget
 ;
