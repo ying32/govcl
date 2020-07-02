@@ -43,6 +43,7 @@ type
     Name: string;
     RealName: string;
     ComponentName: string;
+    ComponentClass: string;
   end;
 
   TEventType = record
@@ -74,63 +75,127 @@ const
      先不管了，
   }
   // 特殊
-  CommonEventType: array[0..42] of TEventType = (
-    (Name: 'Create'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'Destroy'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'Show'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'Hide'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'Activate'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'Deactivate'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'CloseQuery'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, canClose *bool'),
-    (Name: 'ConstrainedResize'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, minWidth, minHeight, maxWidth, maxHeight *int32'),
-    (Name: 'DropFiles'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, aFileNames []string'),
-    (Name: 'FormClose'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, action *types.TCloseAction'),
+  CommonEventType: array[0..116] of TEventType = (
 
-    (Name: 'Execute'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'Update'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Exception'; ControlClassName: 'TApplication'; ImportTypePkg: False; Params: 'sender vcl.IObject, e vcl.Exception'),
+  (Name: 'Destroy'; ControlClassName: 'TForm'; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Create'; ControlClassName: 'TForm'; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Help'; ControlClassName: 'TForm'; ImportTypePkg: True; Params: 'command uint16, data types.THelpEventData, callhelp, result *bool'),
+  (Name: 'ShortCut'; ControlClassName: 'TForm'; ImportTypePkg: True; Params: 'msg *types.TWMKey, handled *bool'),
+  (Name: 'Close'; ControlClassName: 'TForm'; ImportTypePkg: True; Params: 'sender vcl.IObject, action *types.TCloseAction'),
+  (Name: 'CloseQuery'; ControlClassName: 'TForm'; ImportTypePkg: False; Params: 'sender vcl.IObject, canClose *bool'),
+  (Name: 'DropFiles'; ControlClassName: 'TForm'; ImportTypePkg: False; Params: 'sender vcl.IObject, aFileNames []string'),
+  (Name: 'LinkClick'; ControlClassName: 'TLinkLabel'; ImportTypePkg: True; Params: 'sender vcl.IObject, link string, linkType types.TSysLinkType'),
+  (Name: 'Changing'; ControlClassName: 'TUpDown'; ImportTypePkg: False; Params: 'sender vcl.IObject, allowChange *bool'),
+  (Name: 'Click'; ControlClassName: 'TUpDown'; ImportTypePkg: True; Params: 'sender vcl.IObject, button types.TUDBtnType'),
+  (Name: 'AdvancedCustomDraw'; ControlClassName: 'TListView'; ImportTypePkg: True; Params: 'sender *vcl.TListView, aRect types.TRect, stage types.TCustomDrawStage, defaultDraw *bool'),
+  (Name: 'AdvancedCustomDrawItem'; ControlClassName: 'TListView'; ImportTypePkg: True; Params: 'sender *vcl.TListView, item *vcl.TListItem, state types.TCustomDrawState, Stage types.TCustomDrawStage, defaultDraw *bool'),
+  (Name: 'AdvancedCustomDrawSubItem'; ControlClassName: 'TListView'; ImportTypePkg: True; Params: 'sender *vcl.TListView, item *vcl.TListItem, subItem int32, state types.TCustomDrawState, stage types.TCustomDrawStage, defaultDraw *bool'),
+  (Name: 'Change'; ControlClassName: 'TListView'; ImportTypePkg: True; Params: 'sender vcl.IObject, item *vcl.TListItem, change types.TItemChange'),
+  (Name: 'ColumnClick'; ControlClassName: 'TListView'; ImportTypePkg: False; Params: 'sender vcl.IObject, column *vcl.TListColumn'),
+  (Name: 'Compare'; ControlClassName: 'TListView'; ImportTypePkg: False; Params: 'sender vcl.IObject, item1, item2 *vcl.TListItem, data int32, compare *int32'),
+  (Name: 'CustomDraw'; ControlClassName: 'TListView'; ImportTypePkg: True; Params: 'sender *vcl.TListView, aRect types.TRect, defaultDraw *bool'),
+  (Name: 'CustomDrawItem'; ControlClassName: 'TListView'; ImportTypePkg: True; Params: 'sender *vcl.TListView, item *vcl.TListItem, state types.TCustomDrawStage, defaultDraw *bool'),
+  (Name: 'CustomDrawSubItem'; ControlClassName: 'TListView'; ImportTypePkg: True; Params: 'sender *vcl.TListView, item *vcl.TListItem, subItem int32, state types.TCustomDrawStage, defaultDraw *bool'),
+  (Name: 'Data'; ControlClassName: 'TListView'; ImportTypePkg: False; Params: 'sender vcl.IObject, item *vcl.TListItem'),
+  (Name: 'DataFind'; ControlClassName: 'TListView'; ImportTypePkg: True; Params: 'sender vcl.IObject, find types.TItemFind, findString string, findPosition types.TPoint, findData types.TCustomData, startIndex int32, direction types.TSearchDirection, warp bool, index *int32'),
+  (Name: 'DataHint'; ControlClassName: 'TListView'; ImportTypePkg: False; Params: 'sender vcl.IObject, startIndex, endIndex int32'),
+  (Name: 'Deletion'; ControlClassName: 'TListView'; ImportTypePkg: False; Params: 'sender vcl.IObject, item *vcl.TListItem'),
+  (Name: 'Edited'; ControlClassName: 'TListView'; ImportTypePkg: False; Params: 'sender vcl.IObject, item *vcl.TListItem, s *string'),
+  (Name: 'Editing'; ControlClassName: 'TListView'; ImportTypePkg: False; Params: 'sender vcl.IObject, item *vcl.TListItem, allowEdit *bool'),
+  (Name: 'Insert'; ControlClassName: 'TListView'; ImportTypePkg: False; Params: 'sender vcl.IObject, item *vcl.TListItem'),
+  (Name: 'SelectItem'; ControlClassName: 'TListView'; ImportTypePkg: False; Params: 'sender vcl.IObject, item *vcl.TListItem, selected bool'),
+  (Name: 'ItemChecked'; ControlClassName: 'TListView'; ImportTypePkg: False; Params: 'sender vcl.IObject, item *vcl.TListItem'),
+  (Name: 'Addition'; ControlClassName: 'TTreeView'; ImportTypePkg: False; Params: 'sender vcl.IObject, node *vcl.TTreeNode'),
+  (Name: 'Collapsed'; ControlClassName: 'TTreeView'; ImportTypePkg: False; Params: 'sender vcl.IObject, node *vcl.TTreeNode'),
+  (Name: 'Deletion'; ControlClassName: 'TTreeView'; ImportTypePkg: False; Params: 'sender vcl.IObject, node *vcl.TTreeNode'),
+  (Name: 'Expanded'; ControlClassName: 'TTreeView'; ImportTypePkg: False; Params: 'sender vcl.IObject, node *vcl.TTreeNode'),
+  (Name: 'GetSelectedIndex'; ControlClassName: 'TTreeView'; ImportTypePkg: False; Params: 'sender vcl.IObject, node *vcl.TTreeNode'),
+  (Name: 'AdvancedCustomDraw'; ControlClassName: 'TTreeView'; ImportTypePkg: True; Params: 'sender *vcl.TTreeView, aRect types.TRect, stage types.TCustomDrawStage, defaultDraw *bool'),
+  (Name: 'AdvancedCustomDrawItem'; ControlClassName: 'TTreeView'; ImportTypePkg: True; Params: 'sender *vcl.TTreeView, node *vcl.TTreeNode, state types.TCustomDrawState, stage types.TCustomDrawStage, paintImages, defaultDraw *bool'),
+  (Name: 'Change'; ControlClassName: 'TTreeView'; ImportTypePkg: False; Params: 'sender vcl.IObject, node *vcl.TTreeNode'),
+  (Name: 'Changing'; ControlClassName: 'TTreeView'; ImportTypePkg: False; Params: 'sender vcl.IObject, node *vcl.TTreeNode, allowChange *bool'),
+  (Name: 'Collapsing'; ControlClassName: 'TTreeView'; ImportTypePkg: False; Params: 'sender vcl.IObject, node *vcl.TTreeNode, allowCollapse *bool'),
+  (Name: 'Compare'; ControlClassName: 'TTreeView'; ImportTypePkg: False; Params: 'sender vcl.IObject, node1, node2 *vcl.TTreeNode, data int32, compare *int32'),
+  (Name: 'CustomDraw'; ControlClassName: 'TTreeView'; ImportTypePkg: True; Params: 'sender *vcl.TTreeView, aRect types.TRect, defaultDraw *bool'),
+  (Name: 'CustomDrawItem'; ControlClassName: 'TTreeView'; ImportTypePkg: True; Params: 'sender *vcl.TTreeView, node *vcl.TTreeNode, state types.TCustomDrawStage, defaultDraw *bool'),
+  (Name: 'Edited'; ControlClassName: 'TTreeView'; ImportTypePkg: False; Params: 'sender vcl.IObject, node *vcl.TTreeNode, s *string'),
+  (Name: 'Editing'; ControlClassName: 'TTreeView'; ImportTypePkg: False; Params: 'sender vcl.IObject, node *vcl.TTreeNode, allowEdit *bool'),
+  (Name: 'Expanding'; ControlClassName: 'TTreeView'; ImportTypePkg: False; Params: 'sender vcl.IObject, node *vcl.TTreeNode, allowExpansion *bool'),
+  (Name: 'DrawItem'; ControlClassName: 'TListBox'; ImportTypePkg: True; Params: 'control vcl.IWinControl, index int32, aRect types.TRect, state types.TOwnerDrawState'),
+  (Name: 'MeasureItem'; ControlClassName: 'TListBox'; ImportTypePkg: False; Params: 'control *vcl.TWinControl, index int32, height *int32'),
+  (Name: 'DrawItem'; ControlClassName: 'TComboBox'; ImportTypePkg: True; Params: 'control vcl.IWinControl, index int32, aRect types.TRect, state types.TOwnerDrawState'),
+  (Name: 'MeasureItem'; ControlClassName: 'TComboBox'; ImportTypePkg: False; Params: 'control *vcl.TWinControl, index int32, height *int32'),
+  (Name: 'Change'; ControlClassName: 'TMainMenu'; ImportTypePkg: False; Params: 'sender vcl.IObject, source *vcl.TMenuItem, rebuild bool'),
+  (Name: 'MeasureItem'; ControlClassName: 'TMainMenu'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCanvas *vcl.TCanvas, width, height *int32'),
+  (Name: 'DrawItem'; ControlClassName: 'TMainMenu'; ImportTypePkg: True; Params: 'sender vcl.IObject, aCanvas *vcl.TCanvas, aRect types.TRect, selected bool'),
+  (Name: 'MeasureItem'; ControlClassName: 'TPopupMenu'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCanvas *vcl.TCanvas, width, height *int32'),
+  (Name: 'DrawItem'; ControlClassName: 'TPopupMenu'; ImportTypePkg: True; Params: 'sender vcl.IObject, aCanvas *vcl.TCanvas, aRect types.TRect, selected bool'),
+  (Name: 'Changing'; ControlClassName: 'TPageControl'; ImportTypePkg: False; Params: 'sender vcl.IObject, allowChange *bool'),
+  (Name: 'TitleChange'; ControlClassName: 'TMiniWebview'; ImportTypePkg: False; Params: 'sender vcl.IObject, text string'),
+  (Name: 'JSExternal'; ControlClassName: 'TMiniWebview'; ImportTypePkg: False; Params: 'sender vcl.IObject, funcName, args string, retVal *string'),
+  (Name: 'SectionClick'; ControlClassName: 'THeaderControl'; ImportTypePkg: False; Params: 'headerControl *vcl.THeaderControl, section *vcl.THeaderSection'),
+  (Name: 'SectionResize'; ControlClassName: 'THeaderControl'; ImportTypePkg: False; Params: 'headerControl *vcl.THeaderControl, section *vcl.THeaderSection'),
+  (Name: 'SectionTrack'; ControlClassName: 'THeaderControl'; ImportTypePkg: True; Params: 'headerControl *vcl.THeaderControl, section *vcl.THeaderSection, width int32, state types.TSectionTrackState'),
+  (Name: 'SectionDrag'; ControlClassName: 'THeaderControl'; ImportTypePkg: False; Params: 'sender vcl.IObject, fromSection, toSection *vcl.THeaderSection, allowDrag *bool'),
+  (Name: 'ButtonClicked'; ControlClassName: 'TTaskDialog'; ImportTypePkg: True; Params: 'sender vcl.IObject, modalResult types.TModalResult, canClose *bool'),
+  (Name: 'ItemClick'; ControlClassName: 'TCheckGroup'; ImportTypePkg: False; Params: 'sender vcl.IObject, index int32'),
+  (Name: 'Activate'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Deactivate'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Hint'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Minimize'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Restore'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Click'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'DblClick'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Hide'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'MouseEnter'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'MouseLeave'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Paint'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Resize'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Show'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Enter'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Exit'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Change'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Popup'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Select'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Close'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Changing'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Execute'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Update'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Timer'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'ClickCheck'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Find'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Replace'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'TopLeftChanged'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'SectionEndDrag'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'ConstrainedResize'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, minWidth, minHeight, maxWidth, maxHeight *int32'),
+  (Name: 'AlignPosition'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender *vcl.TWinControl, control *vcl.TControl, newLeft, newTop, newWidth, newHeight *int32, alignRect *types.TRect, alignInfo types.TAlignInfo'),
+  (Name: 'ContextPopup'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, mousePos types.TPoint, handled *bool'),
+  (Name: 'DockDrop'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, source *vcl.TDragDockObject, x, y int32'),
+  (Name: 'DragDrop'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender, source vcl.IObject, x, y int32'),
+  (Name: 'DragOver'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender, source vcl.IObject, x, y int32, state types.TDragState, accept *bool'),
+  (Name: 'EndDrag'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender, target vcl.IObject, x, y int32'),
+  (Name: 'EndDock'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender, target vcl.IObject, x, y int32'),
+  (Name: 'GetSiteInfo'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, dockClient *vcl.TControl, influenceRect *types.TRect, mousePos types.TPoint, canDock *bool'),
+  (Name: 'KeyDown'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, key *types.Char, shift types.TShiftState'),
+  (Name: 'KeyUp'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, key *types.Char, shift types.TShiftState'),
+  (Name: 'KeyPress'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, key *types.Char'),
+  (Name: 'MouseDown'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32'),
+  (Name: 'MouseUp'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32'),
+  (Name: 'MouseMove'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, shift types.TShiftState, x, y int32'),
+  (Name: 'MouseWheel'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, shift types.TShiftState, wheelDelta, x, y int32, handled *bool'),
+  (Name: 'MouseWheelDown'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, shift types.TShiftState, mousePos types.TPoint, handled *bool'),
+  (Name: 'MouseWheelUp'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, shift types.TShiftState, mousePos types.TPoint, handled *bool'),
+  (Name: 'StartDock'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, dragObject *vcl.TDragDockObject'),
+  (Name: 'UnDock'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, client *vcl.TControl, newTarget *vcl.TControl, allow *bool'),
+  (Name: 'ColRowMoved'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, sIndex, tIndex int32'),
+  (Name: 'DrawCell'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, aCol, aRow int32, aRect types.TRect, state types.TGridDrawState'),
+  (Name: 'GetEditMask'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32, value *string'),
+  (Name: 'GetEditText'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32, value *string'),
+  (Name: 'SetEditText'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32, value string'),
+  (Name: 'SelectCell'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32, canSelect *bool')
 
-    (Name: 'Click'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'DblClick'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-
-    (Name: 'Change'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-
-    (Name: 'Timer'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-
-    // (ClassC: TCustomComboBox; Name: 'Change'; Params: 'sender vcl.IObject'),
-
-    (Name: 'MouseDown'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32'),
-    (Name: 'MouseUp'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32'),
-    (Name: 'MouseMove'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, shift types.TShiftState, x, y int32'),
-    (Name: 'MouseWheel'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, shift types.TShiftState, wheelDelta, x, y int32, handled *bool'),
-    (Name: 'MouseWheelDown'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, shift types.TShiftState, mousePos types.TPoint, handled *bool'),
-    (Name: 'MouseWheelUp'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, shift types.TShiftState, mousePos types.TPoint, handled *bool'),
-
-
-    (Name: 'Resize'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'Paint'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'MouseEnter'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'MouseLeave'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-
-    (Name: 'KeyDown'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, key *types.Char, shift types.TShiftState'),
-    (Name: 'KeyUp'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, key *types.Char, shift types.TShiftState'),
-    (Name: 'KeyPress'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, key *types.Char'),
-
-    (Name: 'ContextPopup'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, mousePos types.TPoint, handled *bool'),
-    (Name: 'DragOver'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender, source vcl.IObject, x, y int32, state types.TDragState, accept *bool'),
-    (Name: 'DragDrop'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender, source vcl.IObject, x, y int32'),
-    (Name: 'StartDrag'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, dragObject *vcl.TDragObject'),
-    (Name: 'EndDrag'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender, target vcl.IObject, x, y int32'),
-    (Name: 'DockDrop'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, source *vcl.TDragDockObject, x, y int32'),
-    (Name: 'DockOver'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, source *vcl.TDragDockObject, x, y int32, state types.TDragState, accept *bool'),
-    (Name: 'UnDock'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, client *vcl.TControl, newTarget *vcl.TControl, allow *bool'),
-    (Name: 'StartDock'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, dragObject *vcl.TDragDockObject'),
-    (Name: 'GetSiteInfo'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, dockClient *vcl.TControl, influenceRect *types.TRect, mousePos types.TPoint, canDock *bool'),
-
-    (Name: 'LinkClick'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, link string, linktype types.TSysLinkType'),
-    (Name: 'Find'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'Replace'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'OnItemClick'; ControlClassName: 'TCheckGroup'; ImportTypePkg: False; Params: 'sender vcl.IObject, index int32')
-    );
+ );
 
 {$I supportsComponents.inc}
 
@@ -152,8 +217,13 @@ const
   PrivateFiledsFlagStr = '//::private::';
   PrivateFiledsStr = 'T%sFields';
 
+type
+   TEventFindList = specialize  TFPGMap<string, string>;
+
 var
   uErrorPause, uWaringPause: boolean;
+  uEventFindList: TEventFindList;
+
 
 
 procedure WriteHelp; forward;
@@ -260,18 +330,11 @@ begin
 end;
 
 function GetEventParam(AItem: TEventItem): string;
-var
-  LItem: TEventType;
 begin
   Result := '';
-  for LItem in CommonEventType do
-  begin
-    // 优先这个，一般是Form全名事件
-    if SameText(LItem.Name, AItem.RealName) then
-      Exit(LItem.Params);
-    if SameText(LItem.Name, AItem.Name) then
-      Exit(LItem.Params);
-  end;
+  if not uEventFindList.TryGetData(AItem.ComponentClass+AItem.Name, Result) then
+    if not uEventFindList.TryGetData(AItem.Name, Result) then
+       Result := '';
 end;
 
 function IsSupportsComponent(AClassName: string): boolean;
@@ -787,7 +850,7 @@ var
   LParser: TParser;
   LComponents: TList;
   LEventList: array of TEventItem;
-  LCurObjectName: string;
+  LCurObjectName, LCurObjectClass: string;
 
   // 摘自lazarus classes.pas单元中的代码
   procedure ProcessProperty;
@@ -828,6 +891,11 @@ var
             LEventList[High(LEventList)].Name := LPropName.Substring(2);
             LEventList[High(LEventList)].RealName := LParser.TokenComponentIdent;
             LEventList[High(LEventList)].ComponentName := LCurObjectName;
+            if 'Form'+LEventList[High(LEventList)].Name = LEventList[High(LEventList)].RealName then
+              LEventList[High(LEventList)].ComponentClass := 'TForm'
+            else
+              LEventList[High(LEventList)].ComponentClass := LCurObjectClass;
+              //writeln(Length(LEventList), '   ',  LEventList[High(LEventList)].RealName, '   ', LEventList[High(LEventList)].Name);
           end;
         end;
       end;
@@ -889,6 +957,7 @@ var
     end;
     // 保存对象名称
     LCurObjectName := ObjectName;
+    LCurObjectClass := ObjectType;
     //CtlWriteln('%s: %s', [ObjectName, ObjectType]);
     New(LItem);
     LItem^.Name := ObjectName;
@@ -1444,6 +1513,20 @@ end;
 
 {$ENDIF}
 
+procedure InitEventFindList;
+var
+  LItem: TEventType;
+begin
+  for LItem in CommonEventType do
+    uEventFindList.Add(LItem.ControlClassName+LItem.Name, LItem.Params);
+end;
+
+initialization
+  uEventFindList := TEventFindList.Create;
+  InitEventFindList;
+
+finalization
+  uEventFindList.Free;
 
 
 end.
