@@ -29,7 +29,7 @@
 
 ----
 
-### 预编译GUI库二进制下载（[源代码](UILibSources)）       
+### 预编译GUI库二进制下载（[源代码](https://github.com/ying32/liblcl)）       
 [![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.3.1.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.3/liblcl-2.0.3.1.zip)  
 
 
