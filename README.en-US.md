@@ -207,4 +207,5 @@ A: My English is bad. You can try using Google Translate [Chinese WIKI](https://
 
 ----
 
-![jetbrains](https://z-kit.cc/assets/images/jetbrains.png)[Support from jetbrains](https://www.jetbrains.com/?from=govcl)
+![jetbrains](https://z-kit.cc/assets/images/jetbrains.png)  
+[Support from jetbrains](https://www.jetbrains.com/?from=govcl)  

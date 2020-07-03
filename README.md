@@ -209,4 +209,5 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 
 ----
 
-![jetbrains](https://z-kit.cc/assets/images/jetbrains.png)[来自jetbrains的支持](https://www.jetbrains.com/?from=govcl)
+![jetbrains](https://z-kit.cc/assets/images/jetbrains.png)   
+[来自jetbrains的支持](https://www.jetbrains.com/?from=govcl)  
