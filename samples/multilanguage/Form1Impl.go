@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/multilang"
+	"github.com/ying32/govcl/vcl/i18n"
 	"github.com/ying32/govcl/vcl/types"
 )
 
@@ -20,19 +20,19 @@ type TForm1Fields struct {
 }
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
-	multilang.InitComponentLang(f)
+	i18n.InitComponentLang(f)
 	f.ScreenCenter()
 
 	item := vcl.NewMenuItem(f)
 	item.SetCaption("Languages")
-	for key, val := range multilang.LocalLangs {
+	for key, val := range i18n.LocalLangs {
 		subitem := vcl.NewMenuItem(f)
 		subitem.SetGroupIndex(1)
 		subitem.SetRadioItem(true)
 		subitem.SetCaption(fmt.Sprintf("%d - %s", val.Language.Id, val.Language.Description))
 		subitem.SetOnClick(f.OnLanguageMenuItemClick)
 		subitem.SetTag(key)
-		if multilang.CurrentLang == val.Language.Name {
+		if i18n.CurrentLang == val.Language.Name {
 			subitem.SetChecked(true)
 		}
 		item.Add(subitem)
@@ -42,10 +42,10 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 
 func (f *TForm1) OnLanguageMenuItemClick(sender vcl.IObject) {
 	id := vcl.AsMenuItem(sender).Tag()
-	if lang, ok := multilang.LocalLangs[id]; ok {
+	if lang, ok := i18n.LocalLangs[id]; ok {
 		fmt.Println(lang)
-		multilang.ChangeLang(lang.Language.Name)
-		multilang.WriteSetLang(lang.Language.Name)
+		i18n.ChangeLang(lang.Language.Name)
+		i18n.WriteSetLang(lang.Language.Name)
 		vcl.AsMenuItem(sender).SetChecked(true)
 	}
 }
@@ -61,12 +61,12 @@ func (f *TForm1) OnButton2Click(sender vcl.IObject) {
 }
 
 func (f *TForm1) OnButton3Click(sender vcl.IObject) {
-	vcl.ShowMessage(multilang.IdRes("testMessage3"))
+	vcl.ShowMessage(i18n.IdRes("testMessage3"))
 }
 
 // 初始就注册
 func init() {
-	multilang.RegsiterVarString("testMessage", &testMessage)
-	multilang.RegsiterVarString("testMessage2", &testMessage2)
+	i18n.RegsiterVarString("testMessage", &testMessage)
+	i18n.RegsiterVarString("testMessage2", &testMessage2)
 	//multilang.RegsiterVar(&testMessage)
 }

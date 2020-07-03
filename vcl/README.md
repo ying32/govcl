@@ -7,7 +7,7 @@
 * api  
 vcl或者lcl库的函数导入等。    
 
-* multilang    
+* i18n    
 App多语言设置。  
 
 * rtl  

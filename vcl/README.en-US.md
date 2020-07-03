@@ -6,7 +6,7 @@
 * api  
 Function import of vcl or lcl library.      
 
-* multilang    
+* i18n    
 App multi-language settings.    
 
 * rtl  

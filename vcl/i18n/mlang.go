@@ -8,7 +8,7 @@
 
 // 多语言包，用于本地化操作
 
-package multilang
+package i18n
 
 import (
 	"encoding/json"
