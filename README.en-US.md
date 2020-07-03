@@ -202,7 +202,9 @@ A: My English is bad. You can try using Google Translate [Chinese WIKI](https://
 
 ### API document
 
-* [Lazarus LCL component document  WIKI](http://wiki.freepascal.org/LCL_Components)  
+* [Lazarus LCL component WIKI](http://wiki.freepascal.org/LCL_Components)  
 * [Windows API document](https://msdn.microsoft.com/zh-cn/library/ms123401.aspx)
 
 ----
+
+![jetbrains](https://z-kit.cc/assets/images/jetbrains.png)[Support from jetbrains](https://www.jetbrains.com/?from=govcl)
