@@ -88,14 +88,16 @@ func (c *TCanvas) PolyBezierTo(points []TPoint) {
 	Canvas_PolyBezierTo(c.instance, points)
 }
 
-// CN: 获取指定位置的颜色
-// EN: Get the color at the specified position
+// 获取指定位置的颜色
+//
+// Get the color at the specified position
 func (c *TCanvas) Pixels(x, y int32) TColor {
 	return Canvas_Pixels(c.instance, x, y)
 }
 
-// CN: 设置指定位置的颜色。
-// EN: Set the color at the specified position.
+// 设置指定位置的颜色。
+//
+// Set the color at the specified position.
 func (c *TCanvas) SetPixels(x, y int32, value TColor) {
 	Canvas_SetPixels(c.instance, x, y, value)
 }

@@ -24,8 +24,9 @@ type TFontDialog struct {
     ptr unsafe.Pointer
 }
 
-// CN: 创建一个新的对象。
-// EN: Create a new object.
+// 创建一个新的对象。
+// 
+// Create a new object.
 func NewFontDialog(owner IComponent) *TFontDialog {
     f := new(TFontDialog)
     f.instance = FontDialog_Create(CheckPtr(owner))
@@ -35,8 +36,9 @@ func NewFontDialog(owner IComponent) *TFontDialog {
     return f
 }
 
-// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
-// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+// 动态转换一个已存在的对象实例。
+// 
+// Dynamically convert an existing object instance.
 func AsFontDialog(obj interface{}) *TFontDialog {
     instance, ptr := getInstance(obj)
     if instance == 0 { return nil }
@@ -44,30 +46,34 @@ func AsFontDialog(obj interface{}) *TFontDialog {
 }
 
 // -------------------------- Deprecated begin --------------------------
-// CN: 新建一个对象来自已经存在的对象实例指针。
-// EN: Create a new object from an existing object instance pointer.
+// 新建一个对象来自已经存在的对象实例指针。
+// 
+// Create a new object from an existing object instance pointer.
 // Deprecated: use AsFontDialog.
 func FontDialogFromInst(inst uintptr) *TFontDialog {
     return AsFontDialog(inst)
 }
 
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// 新建一个对象来自已经存在的对象实例。
+// 
+// Create a new object from an existing object instance.
 // Deprecated: use AsFontDialog.
 func FontDialogFromObj(obj IObject) *TFontDialog {
     return AsFontDialog(obj)
 }
 
-// CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
+// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+// 
+// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsFontDialog.
 func FontDialogFromUnsafePointer(ptr unsafe.Pointer) *TFontDialog {
     return AsFontDialog(ptr)
 }
 
 // -------------------------- Deprecated end --------------------------
-// CN: 释放对象。
-// EN: Free object.
+// 释放对象。
+// 
+// Free object.
 func (f *TFontDialog) Free() {
     if f.instance != 0 {
         FontDialog_Free(f.instance)
@@ -75,122 +81,140 @@ func (f *TFontDialog) Free() {
     }
 }
 
-// CN: 返回对象实例指针。
-// EN: Return object instance pointer.
+// 返回对象实例指针。
+// 
+// Return object instance pointer.
 func (f *TFontDialog) Instance() uintptr {
     return f.instance
 }
 
-// CN: 获取一个不安全的地址。
-// EN: Get an unsafe address.
+// 获取一个不安全的地址。
+// 
+// Get an unsafe address.
 func (f *TFontDialog) UnsafeAddr() unsafe.Pointer {
     return f.ptr
 }
 
-// CN: 检测地址是否为空。
-// EN: Check if the address is empty.
+// 检测地址是否为空。
+// 
+// Check if the address is empty.
 func (f *TFontDialog) IsValid() bool {
     return f.instance != 0
 }
 
-// CN: 检测当前对象是否继承自目标对象。
-// EN: Checks whether the current object is inherited from the target object.
+// 检测当前对象是否继承自目标对象。
+// 
+// Checks whether the current object is inherited from the target object.
 func (f *TFontDialog) Is() TIs {
     return TIs(f.instance)
 }
 
-// CN: 动态转换当前对象为目标对象。
-// EN: Dynamically convert the current object to the target object.
+// 动态转换当前对象为目标对象。
+// 
+// Dynamically convert the current object to the target object.
 //func (f *TFontDialog) As() TAs {
 //    return TAs(f.instance)
 //}
 
-// CN: 获取类信息指针。
-// EN: Get class information pointer.
+// 获取类信息指针。
+// 
+// Get class information pointer.
 func TFontDialogClass() TClass {
     return FontDialog_StaticClassType()
 }
 
-// CN: 执行。
-// EN: .
+// 执行。
 func (f *TFontDialog) Execute() bool {
     return FontDialog_Execute(f.instance)
 }
 
-// CN: 查找指定名称的组件。
-// EN: Find the component with the specified name.
+// 查找指定名称的组件。
+//
+// Find the component with the specified name.
 func (f *TFontDialog) FindComponent(AName string) *TComponent {
     return AsComponent(FontDialog_FindComponent(f.instance, AName))
 }
 
-// CN: 获取类名路径。
-// EN: Get the class name path.
+// 获取类名路径。
+//
+// Get the class name path.
 func (f *TFontDialog) GetNamePath() string {
     return FontDialog_GetNamePath(f.instance)
 }
 
-// CN: 是否有父容器。
-// EN: Is there a parent container.
+// 是否有父容器。
+//
+// Is there a parent container.
 func (f *TFontDialog) HasParent() bool {
     return FontDialog_HasParent(f.instance)
 }
 
-// CN: 复制一个对象，如果对象实现了此方法的话。
-// EN: Copy an object, if the object implements this method.
+// 复制一个对象，如果对象实现了此方法的话。
+//
+// Copy an object, if the object implements this method.
 func (f *TFontDialog) Assign(Source IObject) {
     FontDialog_Assign(f.instance, CheckPtr(Source))
 }
 
-// CN: 获取类的类型信息。
-// EN: Get class type information.
+// 获取类的类型信息。
+//
+// Get class type information.
 func (f *TFontDialog) ClassType() TClass {
     return FontDialog_ClassType(f.instance)
 }
 
-// CN: 获取当前对象类名称。
-// EN: Get the current object class name.
+// 获取当前对象类名称。
+//
+// Get the current object class name.
 func (f *TFontDialog) ClassName() string {
     return FontDialog_ClassName(f.instance)
 }
 
-// CN: 获取当前对象实例大小。
-// EN: Get the current object instance size.
+// 获取当前对象实例大小。
+//
+// Get the current object instance size.
 func (f *TFontDialog) InstanceSize() int32 {
     return FontDialog_InstanceSize(f.instance)
 }
 
-// CN: 判断当前类是否继承自指定类。
-// EN: Determine whether the current class inherits from the specified class.
+// 判断当前类是否继承自指定类。
+//
+// Determine whether the current class inherits from the specified class.
 func (f *TFontDialog) InheritsFrom(AClass TClass) bool {
     return FontDialog_InheritsFrom(f.instance, AClass)
 }
 
-// CN: 与一个对象进行比较。
-// EN: Compare with an object.
+// 与一个对象进行比较。
+//
+// Compare with an object.
 func (f *TFontDialog) Equals(Obj IObject) bool {
     return FontDialog_Equals(f.instance, CheckPtr(Obj))
 }
 
-// CN: 获取类的哈希值。
-// EN: Get the hash value of the class.
+// 获取类的哈希值。
+//
+// Get the hash value of the class.
 func (f *TFontDialog) GetHashCode() int32 {
     return FontDialog_GetHashCode(f.instance)
 }
 
-// CN: 文本类信息。
-// EN: Text information.
+// 文本类信息。
+//
+// Text information.
 func (f *TFontDialog) ToString() string {
     return FontDialog_ToString(f.instance)
 }
 
-// CN: 获取字体。
-// EN: Get Font.
+// 获取字体。
+//
+// Get Font.
 func (f *TFontDialog) Font() *TFont {
     return AsFont(FontDialog_GetFont(f.instance))
 }
 
-// CN: 设置字体。
-// EN: Set Font.
+// 设置字体。
+//
+// Set Font.
 func (f *TFontDialog) SetFont(value *TFont) {
     FontDialog_SetFont(f.instance, CheckPtr(value))
 }
@@ -203,8 +227,9 @@ func (f *TFontDialog) SetOptions(value TFontDialogOptions) {
     FontDialog_SetOptions(f.instance, value)
 }
 
-// CN: 获取控件句柄。
-// EN: Get Control handle.
+// 获取控件句柄。
+//
+// Get Control handle.
 func (f *TFontDialog) Handle() HWND {
     return FontDialog_GetHandle(f.instance)
 }
@@ -213,62 +238,70 @@ func (f *TFontDialog) SetOnClose(fn TNotifyEvent) {
     FontDialog_SetOnClose(f.instance, fn)
 }
 
-// CN: 设置显示事件。
-// EN: .
+// 设置显示事件。
 func (f *TFontDialog) SetOnShow(fn TNotifyEvent) {
     FontDialog_SetOnShow(f.instance, fn)
 }
 
-// CN: 获取组件总数。
-// EN: Get the total number of components.
+// 获取组件总数。
+//
+// Get the total number of components.
 func (f *TFontDialog) ComponentCount() int32 {
     return FontDialog_GetComponentCount(f.instance)
 }
 
-// CN: 获取组件索引。
-// EN: Get component index.
+// 获取组件索引。
+//
+// Get component index.
 func (f *TFontDialog) ComponentIndex() int32 {
     return FontDialog_GetComponentIndex(f.instance)
 }
 
-// CN: 设置组件索引。
-// EN: Set component index.
+// 设置组件索引。
+//
+// Set component index.
 func (f *TFontDialog) SetComponentIndex(value int32) {
     FontDialog_SetComponentIndex(f.instance, value)
 }
 
-// CN: 获取组件所有者。
-// EN: Get component owner.
+// 获取组件所有者。
+//
+// Get component owner.
 func (f *TFontDialog) Owner() *TComponent {
     return AsComponent(FontDialog_GetOwner(f.instance))
 }
 
-// CN: 获取组件名称。
-// EN: Get the component name.
+// 获取组件名称。
+//
+// Get the component name.
 func (f *TFontDialog) Name() string {
     return FontDialog_GetName(f.instance)
 }
 
-// CN: 设置组件名称。
-// EN: Set the component name.
+// 设置组件名称。
+//
+// Set the component name.
 func (f *TFontDialog) SetName(value string) {
     FontDialog_SetName(f.instance, value)
 }
 
-// CN: 获取对象标记。
-// EN: Get the control tag.
+// 获取对象标记。
+//
+// Get the control tag.
 func (f *TFontDialog) Tag() int {
     return FontDialog_GetTag(f.instance)
 }
 
-// CN: 设置对象标记。
-// EN: Set the control tag.
+// 设置对象标记。
+//
+// Set the control tag.
 func (f *TFontDialog) SetTag(value int) {
     FontDialog_SetTag(f.instance, value)
 }
 
-// CN: 获取指定索引组件。
-// EN: Get the specified index component.
+// 获取指定索引组件。
+//
+// Get the specified index component.
 func (f *TFontDialog) Components(AIndex int32) *TComponent {
     return AsComponent(FontDialog_GetComponents(f.instance, AIndex))
 }

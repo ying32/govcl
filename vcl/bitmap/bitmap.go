@@ -6,7 +6,7 @@
 //
 //----------------------------------------
 
-// 实现一些Go的Image转vcl/lcl的
+// 实现一些Go的Image转lcl的
 package bitmap
 
 import (
@@ -31,9 +31,10 @@ var (
 	ErrUnknownError          = errors.New("unknown error")
 )
 
-// CN: 将Go的Image转为VCL/LCL的 TPngImage
+// 将Go的Image转为LCL的 TPngImage
 //     返回的Png对象用完记得Free掉
-// EN: Convert the image of go to TPngImage of VCL/LCL
+//
+// Convert the image of go to TPngImage of LCL
 //     Remember to free the returned png object
 func ToPngImage(img image.Image) (*vcl.TPngImage, error) {
 	buff := bytes.NewBuffer([]byte{})
@@ -48,9 +49,10 @@ func ToPngImage(img image.Image) (*vcl.TPngImage, error) {
 	return obj, nil
 }
 
-// CN: 32bit bmp
+// 32bit bmp
 //     返回的Bmp对象用完记得Free掉
-// EN: 32bit bmp
+//
+// 32bit bmp
 //     Remember to free the returned bmp object
 func ToBitmap(img image.Image) (*vcl.TBitmap, error) {
 	bmp := vcl.NewBitmap()
@@ -84,9 +86,10 @@ func ToBitmap2(img image.Image, bmp *vcl.TBitmap) error {
 	return nil
 }
 
-// CN: 将Go的Image转为VCL/LCL的 TJPEGImage
+// 将Go的Image转为LCL的 TJPEGImage
 //     返回的jpg对象用完记得Free掉
-// EN: Convert the image of go to TJPEGImage of VCL/LCL
+//
+// Convert the image of go to TJPEGImage of LCL
 //     Remember to free the returned jpg object
 func ToJPEGImage(img image.Image, quality int) (*vcl.TJPEGImage, error) {
 	buff := bytes.NewBuffer([]byte{})
@@ -101,9 +104,10 @@ func ToJPEGImage(img image.Image, quality int) (*vcl.TJPEGImage, error) {
 	return obj, nil
 }
 
-// CN: 将Go的Image转为VCL/LCL的 TGIFImage
+// 将Go的Image转为LCL的 TGIFImage
 //     返回的gif对象用完记得Free掉
-// EN: Convert the image of go to TGIFImage of VCL/LCL
+//
+// Convert the image of go to TGIFImage of LCL
 //     Remember to free the returned GIF object
 func ToGIFImage(img image.Image) (*vcl.TGIFImage, error) {
 	buff := bytes.NewBuffer([]byte{})
@@ -149,8 +153,9 @@ func toBitmap(width, height int, pix []uint8, bmp *vcl.TBitmap) error {
 	return nil
 }
 
-// CN: 将vcl/lcl的Graphic对象转为Go的Image
-// EN: Convert the graphic object of VCL/LCL to the image of go
+// 将lcl的Graphic对象转为Go的Image
+//
+// Convert the graphic object of LCL to the image of go
 func ToGoImage(obj *vcl.TGraphic) (image.Image, error) {
 	if obj == nil {
 		return nil, ErrObjIsInvalid

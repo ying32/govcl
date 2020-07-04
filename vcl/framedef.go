@@ -8,8 +8,9 @@
 
 package vcl
 
-// CN: 从资源中创建TFrame。
-// EN: Create TFrame from resources.
+// 从资源中创建TFrame。
+//
+// Create TFrame from resources.
 func CreateResFrame(owner IComponent, fields ...interface{}) {
 	resObjtBuild(2, owner, 0, fields...)
 }

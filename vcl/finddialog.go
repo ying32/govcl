@@ -24,8 +24,9 @@ type TFindDialog struct {
     ptr unsafe.Pointer
 }
 
-// CN: 创建一个新的对象。
-// EN: Create a new object.
+// 创建一个新的对象。
+// 
+// Create a new object.
 func NewFindDialog(owner IComponent) *TFindDialog {
     f := new(TFindDialog)
     f.instance = FindDialog_Create(CheckPtr(owner))
@@ -35,8 +36,9 @@ func NewFindDialog(owner IComponent) *TFindDialog {
     return f
 }
 
-// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
-// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+// 动态转换一个已存在的对象实例。
+// 
+// Dynamically convert an existing object instance.
 func AsFindDialog(obj interface{}) *TFindDialog {
     instance, ptr := getInstance(obj)
     if instance == 0 { return nil }
@@ -44,30 +46,34 @@ func AsFindDialog(obj interface{}) *TFindDialog {
 }
 
 // -------------------------- Deprecated begin --------------------------
-// CN: 新建一个对象来自已经存在的对象实例指针。
-// EN: Create a new object from an existing object instance pointer.
+// 新建一个对象来自已经存在的对象实例指针。
+// 
+// Create a new object from an existing object instance pointer.
 // Deprecated: use AsFindDialog.
 func FindDialogFromInst(inst uintptr) *TFindDialog {
     return AsFindDialog(inst)
 }
 
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// 新建一个对象来自已经存在的对象实例。
+// 
+// Create a new object from an existing object instance.
 // Deprecated: use AsFindDialog.
 func FindDialogFromObj(obj IObject) *TFindDialog {
     return AsFindDialog(obj)
 }
 
-// CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
+// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+// 
+// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsFindDialog.
 func FindDialogFromUnsafePointer(ptr unsafe.Pointer) *TFindDialog {
     return AsFindDialog(ptr)
 }
 
 // -------------------------- Deprecated end --------------------------
-// CN: 释放对象。
-// EN: Free object.
+// 释放对象。
+// 
+// Free object.
 func (f *TFindDialog) Free() {
     if f.instance != 0 {
         FindDialog_Free(f.instance)
@@ -75,38 +81,44 @@ func (f *TFindDialog) Free() {
     }
 }
 
-// CN: 返回对象实例指针。
-// EN: Return object instance pointer.
+// 返回对象实例指针。
+// 
+// Return object instance pointer.
 func (f *TFindDialog) Instance() uintptr {
     return f.instance
 }
 
-// CN: 获取一个不安全的地址。
-// EN: Get an unsafe address.
+// 获取一个不安全的地址。
+// 
+// Get an unsafe address.
 func (f *TFindDialog) UnsafeAddr() unsafe.Pointer {
     return f.ptr
 }
 
-// CN: 检测地址是否为空。
-// EN: Check if the address is empty.
+// 检测地址是否为空。
+// 
+// Check if the address is empty.
 func (f *TFindDialog) IsValid() bool {
     return f.instance != 0
 }
 
-// CN: 检测当前对象是否继承自目标对象。
-// EN: Checks whether the current object is inherited from the target object.
+// 检测当前对象是否继承自目标对象。
+// 
+// Checks whether the current object is inherited from the target object.
 func (f *TFindDialog) Is() TIs {
     return TIs(f.instance)
 }
 
-// CN: 动态转换当前对象为目标对象。
-// EN: Dynamically convert the current object to the target object.
+// 动态转换当前对象为目标对象。
+// 
+// Dynamically convert the current object to the target object.
 //func (f *TFindDialog) As() TAs {
 //    return TAs(f.instance)
 //}
 
-// CN: 获取类信息指针。
-// EN: Get class information pointer.
+// 获取类信息指针。
+// 
+// Get class information pointer.
 func TFindDialogClass() TClass {
     return FindDialog_StaticClassType()
 }
@@ -115,86 +127,98 @@ func (f *TFindDialog) CloseDialog() {
     FindDialog_CloseDialog(f.instance)
 }
 
-// CN: 执行。
-// EN: .
+// 执行。
 func (f *TFindDialog) Execute() bool {
     return FindDialog_Execute(f.instance)
 }
 
-// CN: 查找指定名称的组件。
-// EN: Find the component with the specified name.
+// 查找指定名称的组件。
+//
+// Find the component with the specified name.
 func (f *TFindDialog) FindComponent(AName string) *TComponent {
     return AsComponent(FindDialog_FindComponent(f.instance, AName))
 }
 
-// CN: 获取类名路径。
-// EN: Get the class name path.
+// 获取类名路径。
+//
+// Get the class name path.
 func (f *TFindDialog) GetNamePath() string {
     return FindDialog_GetNamePath(f.instance)
 }
 
-// CN: 是否有父容器。
-// EN: Is there a parent container.
+// 是否有父容器。
+//
+// Is there a parent container.
 func (f *TFindDialog) HasParent() bool {
     return FindDialog_HasParent(f.instance)
 }
 
-// CN: 复制一个对象，如果对象实现了此方法的话。
-// EN: Copy an object, if the object implements this method.
+// 复制一个对象，如果对象实现了此方法的话。
+//
+// Copy an object, if the object implements this method.
 func (f *TFindDialog) Assign(Source IObject) {
     FindDialog_Assign(f.instance, CheckPtr(Source))
 }
 
-// CN: 获取类的类型信息。
-// EN: Get class type information.
+// 获取类的类型信息。
+//
+// Get class type information.
 func (f *TFindDialog) ClassType() TClass {
     return FindDialog_ClassType(f.instance)
 }
 
-// CN: 获取当前对象类名称。
-// EN: Get the current object class name.
+// 获取当前对象类名称。
+//
+// Get the current object class name.
 func (f *TFindDialog) ClassName() string {
     return FindDialog_ClassName(f.instance)
 }
 
-// CN: 获取当前对象实例大小。
-// EN: Get the current object instance size.
+// 获取当前对象实例大小。
+//
+// Get the current object instance size.
 func (f *TFindDialog) InstanceSize() int32 {
     return FindDialog_InstanceSize(f.instance)
 }
 
-// CN: 判断当前类是否继承自指定类。
-// EN: Determine whether the current class inherits from the specified class.
+// 判断当前类是否继承自指定类。
+//
+// Determine whether the current class inherits from the specified class.
 func (f *TFindDialog) InheritsFrom(AClass TClass) bool {
     return FindDialog_InheritsFrom(f.instance, AClass)
 }
 
-// CN: 与一个对象进行比较。
-// EN: Compare with an object.
+// 与一个对象进行比较。
+//
+// Compare with an object.
 func (f *TFindDialog) Equals(Obj IObject) bool {
     return FindDialog_Equals(f.instance, CheckPtr(Obj))
 }
 
-// CN: 获取类的哈希值。
-// EN: Get the hash value of the class.
+// 获取类的哈希值。
+//
+// Get the hash value of the class.
 func (f *TFindDialog) GetHashCode() int32 {
     return FindDialog_GetHashCode(f.instance)
 }
 
-// CN: 文本类信息。
-// EN: Text information.
+// 文本类信息。
+//
+// Text information.
 func (f *TFindDialog) ToString() string {
     return FindDialog_ToString(f.instance)
 }
 
-// CN: 获取左边位置。
-// EN: Get Left position.
+// 获取左边位置。
+//
+// Get Left position.
 func (f *TFindDialog) Left() int32 {
     return FindDialog_GetLeft(f.instance)
 }
 
-// CN: 设置左边位置。
-// EN: Set Left position.
+// 设置左边位置。
+//
+// Set Left position.
 func (f *TFindDialog) SetLeft(value int32) {
     FindDialog_SetLeft(f.instance, value)
 }
@@ -207,14 +231,16 @@ func (f *TFindDialog) SetPosition(value TPoint) {
     FindDialog_SetPosition(f.instance, value)
 }
 
-// CN: 获取顶边位置。
-// EN: Get Top position.
+// 获取顶边位置。
+//
+// Get Top position.
 func (f *TFindDialog) Top() int32 {
     return FindDialog_GetTop(f.instance)
 }
 
-// CN: 设置顶边位置。
-// EN: Set Top position.
+// 设置顶边位置。
+//
+// Set Top position.
 func (f *TFindDialog) SetTop(value int32) {
     FindDialog_SetTop(f.instance, value)
 }
@@ -239,8 +265,9 @@ func (f *TFindDialog) SetOnFind(fn TNotifyEvent) {
     FindDialog_SetOnFind(f.instance, fn)
 }
 
-// CN: 获取控件句柄。
-// EN: Get Control handle.
+// 获取控件句柄。
+//
+// Get Control handle.
 func (f *TFindDialog) Handle() HWND {
     return FindDialog_GetHandle(f.instance)
 }
@@ -249,62 +276,70 @@ func (f *TFindDialog) SetOnClose(fn TNotifyEvent) {
     FindDialog_SetOnClose(f.instance, fn)
 }
 
-// CN: 设置显示事件。
-// EN: .
+// 设置显示事件。
 func (f *TFindDialog) SetOnShow(fn TNotifyEvent) {
     FindDialog_SetOnShow(f.instance, fn)
 }
 
-// CN: 获取组件总数。
-// EN: Get the total number of components.
+// 获取组件总数。
+//
+// Get the total number of components.
 func (f *TFindDialog) ComponentCount() int32 {
     return FindDialog_GetComponentCount(f.instance)
 }
 
-// CN: 获取组件索引。
-// EN: Get component index.
+// 获取组件索引。
+//
+// Get component index.
 func (f *TFindDialog) ComponentIndex() int32 {
     return FindDialog_GetComponentIndex(f.instance)
 }
 
-// CN: 设置组件索引。
-// EN: Set component index.
+// 设置组件索引。
+//
+// Set component index.
 func (f *TFindDialog) SetComponentIndex(value int32) {
     FindDialog_SetComponentIndex(f.instance, value)
 }
 
-// CN: 获取组件所有者。
-// EN: Get component owner.
+// 获取组件所有者。
+//
+// Get component owner.
 func (f *TFindDialog) Owner() *TComponent {
     return AsComponent(FindDialog_GetOwner(f.instance))
 }
 
-// CN: 获取组件名称。
-// EN: Get the component name.
+// 获取组件名称。
+//
+// Get the component name.
 func (f *TFindDialog) Name() string {
     return FindDialog_GetName(f.instance)
 }
 
-// CN: 设置组件名称。
-// EN: Set the component name.
+// 设置组件名称。
+//
+// Set the component name.
 func (f *TFindDialog) SetName(value string) {
     FindDialog_SetName(f.instance, value)
 }
 
-// CN: 获取对象标记。
-// EN: Get the control tag.
+// 获取对象标记。
+//
+// Get the control tag.
 func (f *TFindDialog) Tag() int {
     return FindDialog_GetTag(f.instance)
 }
 
-// CN: 设置对象标记。
-// EN: Set the control tag.
+// 设置对象标记。
+//
+// Set the control tag.
 func (f *TFindDialog) SetTag(value int) {
     FindDialog_SetTag(f.instance, value)
 }
 
-// CN: 获取指定索引组件。
-// EN: Get the specified index component.
+// 获取指定索引组件。
+//
+// Get the specified index component.
 func (f *TFindDialog) Components(AIndex int32) *TComponent {
     return AsComponent(FindDialog_GetComponents(f.instance, AIndex))
 }

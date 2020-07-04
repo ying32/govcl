@@ -24,8 +24,9 @@ type TRadioGroup struct {
     ptr unsafe.Pointer
 }
 
-// CN: 创建一个新的对象。
-// EN: Create a new object.
+// 创建一个新的对象。
+// 
+// Create a new object.
 func NewRadioGroup(owner IComponent) *TRadioGroup {
     r := new(TRadioGroup)
     r.instance = RadioGroup_Create(CheckPtr(owner))
@@ -35,8 +36,9 @@ func NewRadioGroup(owner IComponent) *TRadioGroup {
     return r
 }
 
-// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
-// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+// 动态转换一个已存在的对象实例。
+// 
+// Dynamically convert an existing object instance.
 func AsRadioGroup(obj interface{}) *TRadioGroup {
     instance, ptr := getInstance(obj)
     if instance == 0 { return nil }
@@ -44,30 +46,34 @@ func AsRadioGroup(obj interface{}) *TRadioGroup {
 }
 
 // -------------------------- Deprecated begin --------------------------
-// CN: 新建一个对象来自已经存在的对象实例指针。
-// EN: Create a new object from an existing object instance pointer.
+// 新建一个对象来自已经存在的对象实例指针。
+// 
+// Create a new object from an existing object instance pointer.
 // Deprecated: use AsRadioGroup.
 func RadioGroupFromInst(inst uintptr) *TRadioGroup {
     return AsRadioGroup(inst)
 }
 
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// 新建一个对象来自已经存在的对象实例。
+// 
+// Create a new object from an existing object instance.
 // Deprecated: use AsRadioGroup.
 func RadioGroupFromObj(obj IObject) *TRadioGroup {
     return AsRadioGroup(obj)
 }
 
-// CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
+// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+// 
+// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsRadioGroup.
 func RadioGroupFromUnsafePointer(ptr unsafe.Pointer) *TRadioGroup {
     return AsRadioGroup(ptr)
 }
 
 // -------------------------- Deprecated end --------------------------
-// CN: 释放对象。
-// EN: Free object.
+// 释放对象。
+// 
+// Free object.
 func (r *TRadioGroup) Free() {
     if r.instance != 0 {
         RadioGroup_Free(r.instance)
@@ -75,38 +81,44 @@ func (r *TRadioGroup) Free() {
     }
 }
 
-// CN: 返回对象实例指针。
-// EN: Return object instance pointer.
+// 返回对象实例指针。
+// 
+// Return object instance pointer.
 func (r *TRadioGroup) Instance() uintptr {
     return r.instance
 }
 
-// CN: 获取一个不安全的地址。
-// EN: Get an unsafe address.
+// 获取一个不安全的地址。
+// 
+// Get an unsafe address.
 func (r *TRadioGroup) UnsafeAddr() unsafe.Pointer {
     return r.ptr
 }
 
-// CN: 检测地址是否为空。
-// EN: Check if the address is empty.
+// 检测地址是否为空。
+// 
+// Check if the address is empty.
 func (r *TRadioGroup) IsValid() bool {
     return r.instance != 0
 }
 
-// CN: 检测当前对象是否继承自目标对象。
-// EN: Checks whether the current object is inherited from the target object.
+// 检测当前对象是否继承自目标对象。
+// 
+// Checks whether the current object is inherited from the target object.
 func (r *TRadioGroup) Is() TIs {
     return TIs(r.instance)
 }
 
-// CN: 动态转换当前对象为目标对象。
-// EN: Dynamically convert the current object to the target object.
+// 动态转换当前对象为目标对象。
+// 
+// Dynamically convert the current object to the target object.
 //func (r *TRadioGroup) As() TAs {
 //    return TAs(r.instance)
 //}
 
-// CN: 获取类信息指针。
-// EN: Get class information pointer.
+// 获取类信息指针。
+// 
+// Get class information pointer.
 func TRadioGroupClass() TClass {
     return RadioGroup_StaticClassType()
 }
@@ -115,260 +127,301 @@ func (r *TRadioGroup) FlipChildren(AllLevels bool) {
     RadioGroup_FlipChildren(r.instance, AllLevels)
 }
 
-// CN: 是否可以获得焦点。
-// EN: .
+// 是否可以获得焦点。
 func (r *TRadioGroup) CanFocus() bool {
     return RadioGroup_CanFocus(r.instance)
 }
 
-// CN: 返回是否包含指定控件。
-// EN: it's contain a specified control.
+// 返回是否包含指定控件。
+//
+// it's contain a specified control.
 func (r *TRadioGroup) ContainsControl(Control IControl) bool {
     return RadioGroup_ContainsControl(r.instance, CheckPtr(Control))
 }
 
-// CN: 返回指定坐标及相关属性位置控件。
-// EN: Returns the specified coordinate and the relevant attribute position control..
+// 返回指定坐标及相关属性位置控件。
+//
+// Returns the specified coordinate and the relevant attribute position control..
 func (r *TRadioGroup) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return AsControl(RadioGroup_ControlAtPos(r.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
-// CN: 禁用控件的对齐。
-// EN: Disable control alignment.
+// 禁用控件的对齐。
+//
+// Disable control alignment.
 func (r *TRadioGroup) DisableAlign() {
     RadioGroup_DisableAlign(r.instance)
 }
 
-// CN: 启用控件对齐。
-// EN: Enabled control alignment.
+// 启用控件对齐。
+//
+// Enabled control alignment.
 func (r *TRadioGroup) EnableAlign() {
     RadioGroup_EnableAlign(r.instance)
 }
 
-// CN: 查找子控件。
-// EN: Find sub controls.
+// 查找子控件。
+//
+// Find sub controls.
 func (r *TRadioGroup) FindChildControl(ControlName string) *TControl {
     return AsControl(RadioGroup_FindChildControl(r.instance, ControlName))
 }
 
-// CN: 返回是否获取焦点。
-// EN: Return to get focus.
+// 返回是否获取焦点。
+//
+// Return to get focus.
 func (r *TRadioGroup) Focused() bool {
     return RadioGroup_Focused(r.instance)
 }
 
-// CN: 句柄是否已经分配。
-// EN: Is the handle already allocated.
+// 句柄是否已经分配。
+//
+// Is the handle already allocated.
 func (r *TRadioGroup) HandleAllocated() bool {
     return RadioGroup_HandleAllocated(r.instance)
 }
 
-// CN: 插入一个控件。
-// EN: Insert a control.
+// 插入一个控件。
+//
+// Insert a control.
 func (r *TRadioGroup) InsertControl(AControl IControl) {
     RadioGroup_InsertControl(r.instance, CheckPtr(AControl))
 }
 
-// CN: 要求重绘。
-// EN: Redraw.
+// 要求重绘。
+//
+// Redraw.
 func (r *TRadioGroup) Invalidate() {
     RadioGroup_Invalidate(r.instance)
 }
 
-// CN: 移除一个控件。
-// EN: Remove a control.
+// 移除一个控件。
+//
+// Remove a control.
 func (r *TRadioGroup) RemoveControl(AControl IControl) {
     RadioGroup_RemoveControl(r.instance, CheckPtr(AControl))
 }
 
-// CN: 重新对齐。
-// EN: Realign.
+// 重新对齐。
+//
+// Realign.
 func (r *TRadioGroup) Realign() {
     RadioGroup_Realign(r.instance)
 }
 
-// CN: 重绘。
-// EN: Repaint.
+// 重绘。
+//
+// Repaint.
 func (r *TRadioGroup) Repaint() {
     RadioGroup_Repaint(r.instance)
 }
 
-// CN: 按比例缩放。
-// EN: Scale by.
+// 按比例缩放。
+//
+// Scale by.
 func (r *TRadioGroup) ScaleBy(M int32, D int32) {
     RadioGroup_ScaleBy(r.instance, M , D)
 }
 
-// CN: 滚动至指定位置。
-// EN: Scroll by.
+// 滚动至指定位置。
+//
+// Scroll by.
 func (r *TRadioGroup) ScrollBy(DeltaX int32, DeltaY int32) {
     RadioGroup_ScrollBy(r.instance, DeltaX , DeltaY)
 }
 
-// CN: 设置组件边界。
-// EN: Set component boundaries.
+// 设置组件边界。
+//
+// Set component boundaries.
 func (r *TRadioGroup) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     RadioGroup_SetBounds(r.instance, ALeft , ATop , AWidth , AHeight)
 }
 
-// CN: 设置控件焦点。
-// EN: Set control focus.
+// 设置控件焦点。
+//
+// Set control focus.
 func (r *TRadioGroup) SetFocus() {
     RadioGroup_SetFocus(r.instance)
 }
 
-// CN: 控件更新。
-// EN: Update.
+// 控件更新。
+//
+// Update.
 func (r *TRadioGroup) Update() {
     RadioGroup_Update(r.instance)
 }
 
-// CN: 将控件置于最前。
-// EN: Bring the control to the front.
+// 将控件置于最前。
+//
+// Bring the control to the front.
 func (r *TRadioGroup) BringToFront() {
     RadioGroup_BringToFront(r.instance)
 }
 
-// CN: 将客户端坐标转为绝对的屏幕坐标。
-// EN: Convert client coordinates to absolute screen coordinates.
+// 将客户端坐标转为绝对的屏幕坐标。
+//
+// Convert client coordinates to absolute screen coordinates.
 func (r *TRadioGroup) ClientToScreen(Point TPoint) TPoint {
     return RadioGroup_ClientToScreen(r.instance, Point)
 }
 
-// CN: 将客户端坐标转为父容器坐标。
-// EN: Convert client coordinates to parent container coordinates.
+// 将客户端坐标转为父容器坐标。
+//
+// Convert client coordinates to parent container coordinates.
 func (r *TRadioGroup) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return RadioGroup_ClientToParent(r.instance, Point , CheckPtr(AParent))
 }
 
-// CN: 是否在拖拽中。
-// EN: Is it in the middle of dragging.
+// 是否在拖拽中。
+//
+// Is it in the middle of dragging.
 func (r *TRadioGroup) Dragging() bool {
     return RadioGroup_Dragging(r.instance)
 }
 
-// CN: 是否有父容器。
-// EN: Is there a parent container.
+// 是否有父容器。
+//
+// Is there a parent container.
 func (r *TRadioGroup) HasParent() bool {
     return RadioGroup_HasParent(r.instance)
 }
 
-// CN: 隐藏控件。
-// EN: Hidden control.
+// 隐藏控件。
+//
+// Hidden control.
 func (r *TRadioGroup) Hide() {
     RadioGroup_Hide(r.instance)
 }
 
-// CN: 发送一个消息。
-// EN: Send a message.
+// 发送一个消息。
+//
+// Send a message.
 func (r *TRadioGroup) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return RadioGroup_Perform(r.instance, Msg , WParam , LParam)
 }
 
-// CN: 刷新控件。
-// EN: Refresh control.
+// 刷新控件。
+//
+// Refresh control.
 func (r *TRadioGroup) Refresh() {
     RadioGroup_Refresh(r.instance)
 }
 
-// CN: 将屏幕坐标转为客户端坐标。
-// EN: Convert screen coordinates to client coordinates.
+// 将屏幕坐标转为客户端坐标。
+//
+// Convert screen coordinates to client coordinates.
 func (r *TRadioGroup) ScreenToClient(Point TPoint) TPoint {
     return RadioGroup_ScreenToClient(r.instance, Point)
 }
 
-// CN: 将父容器坐标转为客户端坐标。
-// EN: Convert parent container coordinates to client coordinates.
+// 将父容器坐标转为客户端坐标。
+//
+// Convert parent container coordinates to client coordinates.
 func (r *TRadioGroup) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return RadioGroup_ParentToClient(r.instance, Point , CheckPtr(AParent))
 }
 
-// CN: 控件至于最后面。
-// EN: The control is placed at the end.
+// 控件至于最后面。
+//
+// The control is placed at the end.
 func (r *TRadioGroup) SendToBack() {
     RadioGroup_SendToBack(r.instance)
 }
 
-// CN: 显示控件。
-// EN: Show control.
+// 显示控件。
+//
+// Show control.
 func (r *TRadioGroup) Show() {
     RadioGroup_Show(r.instance)
 }
 
-// CN: 获取控件的字符，如果有。
-// EN: Get the characters of the control, if any.
+// 获取控件的字符，如果有。
+//
+// Get the characters of the control, if any.
 func (r *TRadioGroup) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return RadioGroup_GetTextBuf(r.instance, Buffer , BufSize)
 }
 
-// CN: 获取控件的字符长，如果有。
-// EN: Get the character length of the control, if any.
+// 获取控件的字符长，如果有。
+//
+// Get the character length of the control, if any.
 func (r *TRadioGroup) GetTextLen() int32 {
     return RadioGroup_GetTextLen(r.instance)
 }
 
-// CN: 设置控件字符，如果有。
-// EN: Set control characters, if any.
+// 设置控件字符，如果有。
+//
+// Set control characters, if any.
 func (r *TRadioGroup) SetTextBuf(Buffer string) {
     RadioGroup_SetTextBuf(r.instance, Buffer)
 }
 
-// CN: 查找指定名称的组件。
-// EN: Find the component with the specified name.
+// 查找指定名称的组件。
+//
+// Find the component with the specified name.
 func (r *TRadioGroup) FindComponent(AName string) *TComponent {
     return AsComponent(RadioGroup_FindComponent(r.instance, AName))
 }
 
-// CN: 获取类名路径。
-// EN: Get the class name path.
+// 获取类名路径。
+//
+// Get the class name path.
 func (r *TRadioGroup) GetNamePath() string {
     return RadioGroup_GetNamePath(r.instance)
 }
 
-// CN: 复制一个对象，如果对象实现了此方法的话。
-// EN: Copy an object, if the object implements this method.
+// 复制一个对象，如果对象实现了此方法的话。
+//
+// Copy an object, if the object implements this method.
 func (r *TRadioGroup) Assign(Source IObject) {
     RadioGroup_Assign(r.instance, CheckPtr(Source))
 }
 
-// CN: 获取类的类型信息。
-// EN: Get class type information.
+// 获取类的类型信息。
+//
+// Get class type information.
 func (r *TRadioGroup) ClassType() TClass {
     return RadioGroup_ClassType(r.instance)
 }
 
-// CN: 获取当前对象类名称。
-// EN: Get the current object class name.
+// 获取当前对象类名称。
+//
+// Get the current object class name.
 func (r *TRadioGroup) ClassName() string {
     return RadioGroup_ClassName(r.instance)
 }
 
-// CN: 获取当前对象实例大小。
-// EN: Get the current object instance size.
+// 获取当前对象实例大小。
+//
+// Get the current object instance size.
 func (r *TRadioGroup) InstanceSize() int32 {
     return RadioGroup_InstanceSize(r.instance)
 }
 
-// CN: 判断当前类是否继承自指定类。
-// EN: Determine whether the current class inherits from the specified class.
+// 判断当前类是否继承自指定类。
+//
+// Determine whether the current class inherits from the specified class.
 func (r *TRadioGroup) InheritsFrom(AClass TClass) bool {
     return RadioGroup_InheritsFrom(r.instance, AClass)
 }
 
-// CN: 与一个对象进行比较。
-// EN: Compare with an object.
+// 与一个对象进行比较。
+//
+// Compare with an object.
 func (r *TRadioGroup) Equals(Obj IObject) bool {
     return RadioGroup_Equals(r.instance, CheckPtr(Obj))
 }
 
-// CN: 获取类的哈希值。
-// EN: Get the hash value of the class.
+// 获取类的哈希值。
+//
+// Get the hash value of the class.
 func (r *TRadioGroup) GetHashCode() int32 {
     return RadioGroup_GetHashCode(r.instance)
 }
 
-// CN: 文本类信息。
-// EN: Text information.
+// 文本类信息。
+//
+// Text information.
 func (r *TRadioGroup) ToString() string {
     return RadioGroup_ToString(r.instance)
 }
@@ -381,14 +434,12 @@ func (r *TRadioGroup) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling I
     RadioGroup_AnchorParallel(r.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
-// CN: 置于指定控件的横向中心。
-// EN: .
+// 置于指定控件的横向中心。
 func (r *TRadioGroup) AnchorHorizontalCenterTo(ASibling IControl) {
     RadioGroup_AnchorHorizontalCenterTo(r.instance, CheckPtr(ASibling))
 }
 
-// CN: 置于指定控件的纵向中心。
-// EN: .
+// 置于指定控件的纵向中心。
 func (r *TRadioGroup) AnchorVerticalCenterTo(ASibling IControl) {
     RadioGroup_AnchorVerticalCenterTo(r.instance, CheckPtr(ASibling))
 }
@@ -401,26 +452,26 @@ func (r *TRadioGroup) AnchorClient(ASpace int32) {
     RadioGroup_AnchorClient(r.instance, ASpace)
 }
 
-// CN: 获取控件自动调整。
-// EN: Get Control automatically adjusts.
+// 获取控件自动调整。
+//
+// Get Control automatically adjusts.
 func (r *TRadioGroup) Align() TAlign {
     return RadioGroup_GetAlign(r.instance)
 }
 
-// CN: 设置控件自动调整。
-// EN: Set Control automatically adjusts.
+// 设置控件自动调整。
+//
+// Set Control automatically adjusts.
 func (r *TRadioGroup) SetAlign(value TAlign) {
     RadioGroup_SetAlign(r.instance, value)
 }
 
-// CN: 获取四个角位置的锚点。
-// EN: .
+// 获取四个角位置的锚点。
 func (r *TRadioGroup) Anchors() TAnchors {
     return RadioGroup_GetAnchors(r.instance)
 }
 
-// CN: 设置四个角位置的锚点。
-// EN: .
+// 设置四个角位置的锚点。
 func (r *TRadioGroup) SetAnchors(value TAnchors) {
     RadioGroup_SetAnchors(r.instance, value)
 }
@@ -433,26 +484,30 @@ func (r *TRadioGroup) SetBiDiMode(value TBiDiMode) {
     RadioGroup_SetBiDiMode(r.instance, value)
 }
 
-// CN: 获取控件标题。
-// EN: Get the control title.
+// 获取控件标题。
+//
+// Get the control title.
 func (r *TRadioGroup) Caption() string {
     return RadioGroup_GetCaption(r.instance)
 }
 
-// CN: 设置控件标题。
-// EN: Set the control title.
+// 设置控件标题。
+//
+// Set the control title.
 func (r *TRadioGroup) SetCaption(value string) {
     RadioGroup_SetCaption(r.instance, value)
 }
 
-// CN: 获取颜色。
-// EN: Get color.
+// 获取颜色。
+//
+// Get color.
 func (r *TRadioGroup) Color() TColor {
     return RadioGroup_GetColor(r.instance)
 }
 
-// CN: 设置颜色。
-// EN: Set color.
+// 设置颜色。
+//
+// Set color.
 func (r *TRadioGroup) SetColor(value TColor) {
     RadioGroup_SetColor(r.instance, value)
 }
@@ -465,62 +520,72 @@ func (r *TRadioGroup) SetColumns(value int32) {
     RadioGroup_SetColumns(r.instance, value)
 }
 
-// CN: 获取设置控件双缓冲。
-// EN: Get Set control double buffering.
+// 获取设置控件双缓冲。
+//
+// Get Set control double buffering.
 func (r *TRadioGroup) DoubleBuffered() bool {
     return RadioGroup_GetDoubleBuffered(r.instance)
 }
 
-// CN: 设置设置控件双缓冲。
-// EN: Set Set control double buffering.
+// 设置设置控件双缓冲。
+//
+// Set Set control double buffering.
 func (r *TRadioGroup) SetDoubleBuffered(value bool) {
     RadioGroup_SetDoubleBuffered(r.instance, value)
 }
 
-// CN: 获取设置控件拖拽时的光标。
-// EN: Get Set the cursor when the control is dragged.
+// 获取设置控件拖拽时的光标。
+//
+// Get Set the cursor when the control is dragged.
 func (r *TRadioGroup) DragCursor() TCursor {
     return RadioGroup_GetDragCursor(r.instance)
 }
 
-// CN: 设置设置控件拖拽时的光标。
-// EN: Set Set the cursor when the control is dragged.
+// 设置设置控件拖拽时的光标。
+//
+// Set Set the cursor when the control is dragged.
 func (r *TRadioGroup) SetDragCursor(value TCursor) {
     RadioGroup_SetDragCursor(r.instance, value)
 }
 
-// CN: 获取拖拽模式。
-// EN: Get Drag mode.
+// 获取拖拽模式。
+//
+// Get Drag mode.
 func (r *TRadioGroup) DragMode() TDragMode {
     return RadioGroup_GetDragMode(r.instance)
 }
 
-// CN: 设置拖拽模式。
-// EN: Set Drag mode.
+// 设置拖拽模式。
+//
+// Set Drag mode.
 func (r *TRadioGroup) SetDragMode(value TDragMode) {
     RadioGroup_SetDragMode(r.instance, value)
 }
 
-// CN: 获取控件启用。
-// EN: Get the control enabled.
+// 获取控件启用。
+//
+// Get the control enabled.
 func (r *TRadioGroup) Enabled() bool {
     return RadioGroup_GetEnabled(r.instance)
 }
 
-// CN: 设置控件启用。
-// EN: Set the control enabled.
+// 设置控件启用。
+//
+// Set the control enabled.
 func (r *TRadioGroup) SetEnabled(value bool) {
     RadioGroup_SetEnabled(r.instance, value)
 }
 
-// CN: 获取字体。
-// EN: Get Font.
+// 获取字体。
+//
+// Get Font.
 func (r *TRadioGroup) Font() *TFont {
     return AsFont(RadioGroup_GetFont(r.instance))
 }
 
-// CN: 设置字体。
-// EN: Set Font.
+// 设置字体。
+//
+// Set Font.
 func (r *TRadioGroup) SetFont(value *TFont) {
     RadioGroup_SetFont(r.instance, CheckPtr(value))
 }
@@ -541,218 +606,244 @@ func (r *TRadioGroup) SetItems(value IObject) {
     RadioGroup_SetItems(r.instance, CheckPtr(value))
 }
 
-// CN: 获取约束控件大小。
-// EN: .
+// 获取约束控件大小。
 func (r *TRadioGroup) Constraints() *TSizeConstraints {
     return AsSizeConstraints(RadioGroup_GetConstraints(r.instance))
 }
 
-// CN: 设置约束控件大小。
-// EN: .
+// 设置约束控件大小。
 func (r *TRadioGroup) SetConstraints(value *TSizeConstraints) {
     RadioGroup_SetConstraints(r.instance, CheckPtr(value))
 }
 
-// CN: 获取使用父容器颜色。
-// EN: Get parent color.
+// 获取使用父容器颜色。
+//
+// Get parent color.
 func (r *TRadioGroup) ParentColor() bool {
     return RadioGroup_GetParentColor(r.instance)
 }
 
-// CN: 设置使用父容器颜色。
-// EN: Set parent color.
+// 设置使用父容器颜色。
+//
+// Set parent color.
 func (r *TRadioGroup) SetParentColor(value bool) {
     RadioGroup_SetParentColor(r.instance, value)
 }
 
-// CN: 获取使用父容器双缓冲。
-// EN: Get Parent container double buffering.
+// 获取使用父容器双缓冲。
+//
+// Get Parent container double buffering.
 func (r *TRadioGroup) ParentDoubleBuffered() bool {
     return RadioGroup_GetParentDoubleBuffered(r.instance)
 }
 
-// CN: 设置使用父容器双缓冲。
-// EN: Set Parent container double buffering.
+// 设置使用父容器双缓冲。
+//
+// Set Parent container double buffering.
 func (r *TRadioGroup) SetParentDoubleBuffered(value bool) {
     RadioGroup_SetParentDoubleBuffered(r.instance, value)
 }
 
-// CN: 获取使用父容器字体。
-// EN: Get Parent container font.
+// 获取使用父容器字体。
+//
+// Get Parent container font.
 func (r *TRadioGroup) ParentFont() bool {
     return RadioGroup_GetParentFont(r.instance)
 }
 
-// CN: 设置使用父容器字体。
-// EN: Set Parent container font.
+// 设置使用父容器字体。
+//
+// Set Parent container font.
 func (r *TRadioGroup) SetParentFont(value bool) {
     RadioGroup_SetParentFont(r.instance, value)
 }
 
-// CN: 获取以父容器的ShowHint属性为准。
-// EN: .
+// 获取以父容器的ShowHint属性为准。
 func (r *TRadioGroup) ParentShowHint() bool {
     return RadioGroup_GetParentShowHint(r.instance)
 }
 
-// CN: 设置以父容器的ShowHint属性为准。
-// EN: .
+// 设置以父容器的ShowHint属性为准。
 func (r *TRadioGroup) SetParentShowHint(value bool) {
     RadioGroup_SetParentShowHint(r.instance, value)
 }
 
-// CN: 获取右键菜单。
-// EN: Get Right click menu.
+// 获取右键菜单。
+//
+// Get Right click menu.
 func (r *TRadioGroup) PopupMenu() *TPopupMenu {
     return AsPopupMenu(RadioGroup_GetPopupMenu(r.instance))
 }
 
-// CN: 设置右键菜单。
-// EN: Set Right click menu.
+// 设置右键菜单。
+//
+// Set Right click menu.
 func (r *TRadioGroup) SetPopupMenu(value IComponent) {
     RadioGroup_SetPopupMenu(r.instance, CheckPtr(value))
 }
 
-// CN: 获取显示鼠标悬停提示。
-// EN: Get Show mouseover tips.
+// 获取显示鼠标悬停提示。
+//
+// Get Show mouseover tips.
 func (r *TRadioGroup) ShowHint() bool {
     return RadioGroup_GetShowHint(r.instance)
 }
 
-// CN: 设置显示鼠标悬停提示。
-// EN: Set Show mouseover tips.
+// 设置显示鼠标悬停提示。
+//
+// Set Show mouseover tips.
 func (r *TRadioGroup) SetShowHint(value bool) {
     RadioGroup_SetShowHint(r.instance, value)
 }
 
-// CN: 获取Tab切换顺序序号。
-// EN: Get Tab switching sequence number.
+// 获取Tab切换顺序序号。
+//
+// Get Tab switching sequence number.
 func (r *TRadioGroup) TabOrder() TTabOrder {
     return RadioGroup_GetTabOrder(r.instance)
 }
 
-// CN: 设置Tab切换顺序序号。
-// EN: Set Tab switching sequence number.
+// 设置Tab切换顺序序号。
+//
+// Set Tab switching sequence number.
 func (r *TRadioGroup) SetTabOrder(value TTabOrder) {
     RadioGroup_SetTabOrder(r.instance, value)
 }
 
-// CN: 获取Tab可停留。
-// EN: Get Tab can stay.
+// 获取Tab可停留。
+//
+// Get Tab can stay.
 func (r *TRadioGroup) TabStop() bool {
     return RadioGroup_GetTabStop(r.instance)
 }
 
-// CN: 设置Tab可停留。
-// EN: Set Tab can stay.
+// 设置Tab可停留。
+//
+// Set Tab can stay.
 func (r *TRadioGroup) SetTabStop(value bool) {
     RadioGroup_SetTabStop(r.instance, value)
 }
 
-// CN: 获取控件可视。
-// EN: Get the control visible.
+// 获取控件可视。
+//
+// Get the control visible.
 func (r *TRadioGroup) Visible() bool {
     return RadioGroup_GetVisible(r.instance)
 }
 
-// CN: 设置控件可视。
-// EN: Set the control visible.
+// 设置控件可视。
+//
+// Set the control visible.
 func (r *TRadioGroup) SetVisible(value bool) {
     RadioGroup_SetVisible(r.instance, value)
 }
 
-// CN: 设置控件单击事件。
-// EN: Set control click event.
+// 设置控件单击事件。
+//
+// Set control click event.
 func (r *TRadioGroup) SetOnClick(fn TNotifyEvent) {
     RadioGroup_SetOnClick(r.instance, fn)
 }
 
-// CN: 设置拖拽下落事件。
-// EN: Set Drag and drop event.
+// 设置拖拽下落事件。
+//
+// Set Drag and drop event.
 func (r *TRadioGroup) SetOnDragDrop(fn TDragDropEvent) {
     RadioGroup_SetOnDragDrop(r.instance, fn)
 }
 
-// CN: 设置拖拽完成事件。
-// EN: Set Drag and drop completion event.
+// 设置拖拽完成事件。
+//
+// Set Drag and drop completion event.
 func (r *TRadioGroup) SetOnDragOver(fn TDragOverEvent) {
     RadioGroup_SetOnDragOver(r.instance, fn)
 }
 
-// CN: 设置拖拽结束。
-// EN: Set End of drag.
+// 设置拖拽结束。
+//
+// Set End of drag.
 func (r *TRadioGroup) SetOnEndDrag(fn TEndDragEvent) {
     RadioGroup_SetOnEndDrag(r.instance, fn)
 }
 
-// CN: 设置焦点进入。
-// EN: Set Focus entry.
+// 设置焦点进入。
+//
+// Set Focus entry.
 func (r *TRadioGroup) SetOnEnter(fn TNotifyEvent) {
     RadioGroup_SetOnEnter(r.instance, fn)
 }
 
-// CN: 设置焦点退出。
-// EN: Set Focus exit.
+// 设置焦点退出。
+//
+// Set Focus exit.
 func (r *TRadioGroup) SetOnExit(fn TNotifyEvent) {
     RadioGroup_SetOnExit(r.instance, fn)
 }
 
-// CN: 获取依靠客户端总数。
-// EN: .
+// 获取依靠客户端总数。
 func (r *TRadioGroup) DockClientCount() int32 {
     return RadioGroup_GetDockClientCount(r.instance)
 }
 
-// CN: 获取停靠站点。
-// EN: Get Docking site.
+// 获取停靠站点。
+//
+// Get Docking site.
 func (r *TRadioGroup) DockSite() bool {
     return RadioGroup_GetDockSite(r.instance)
 }
 
-// CN: 设置停靠站点。
-// EN: Set Docking site.
+// 设置停靠站点。
+//
+// Set Docking site.
 func (r *TRadioGroup) SetDockSite(value bool) {
     RadioGroup_SetDockSite(r.instance, value)
 }
 
-// CN: 获取鼠标是否在客户端，仅VCL有效。
-// EN: Get Whether the mouse is on the client, only VCL is valid.
+// 获取鼠标是否在客户端，仅VCL有效。
+//
+// Get Whether the mouse is on the client, only VCL is valid.
 func (r *TRadioGroup) MouseInClient() bool {
     return RadioGroup_GetMouseInClient(r.instance)
 }
 
-// CN: 获取当前停靠的可视总数。
-// EN: Get The total number of visible calls currently docked.
+// 获取当前停靠的可视总数。
+//
+// Get The total number of visible calls currently docked.
 func (r *TRadioGroup) VisibleDockClientCount() int32 {
     return RadioGroup_GetVisibleDockClientCount(r.instance)
 }
 
-// CN: 获取画刷对象。
-// EN: Get Brush.
+// 获取画刷对象。
+//
+// Get Brush.
 func (r *TRadioGroup) Brush() *TBrush {
     return AsBrush(RadioGroup_GetBrush(r.instance))
 }
 
-// CN: 获取子控件数。
-// EN: Get Number of child controls.
+// 获取子控件数。
+//
+// Get Number of child controls.
 func (r *TRadioGroup) ControlCount() int32 {
     return RadioGroup_GetControlCount(r.instance)
 }
 
-// CN: 获取控件句柄。
-// EN: Get Control handle.
+// 获取控件句柄。
+//
+// Get Control handle.
 func (r *TRadioGroup) Handle() HWND {
     return RadioGroup_GetHandle(r.instance)
 }
 
-// CN: 获取父容器句柄。
-// EN: Get Parent container handle.
+// 获取父容器句柄。
+//
+// Get Parent container handle.
 func (r *TRadioGroup) ParentWindow() HWND {
     return RadioGroup_GetParentWindow(r.instance)
 }
 
-// CN: 设置父容器句柄。
-// EN: Set Parent container handle.
+// 设置父容器句柄。
+//
+// Set Parent container handle.
 func (r *TRadioGroup) SetParentWindow(value HWND) {
     RadioGroup_SetParentWindow(r.instance, value)
 }
@@ -761,14 +852,12 @@ func (r *TRadioGroup) Showing() bool {
     return RadioGroup_GetShowing(r.instance)
 }
 
-// CN: 获取使用停靠管理。
-// EN: .
+// 获取使用停靠管理。
 func (r *TRadioGroup) UseDockManager() bool {
     return RadioGroup_GetUseDockManager(r.instance)
 }
 
-// CN: 设置使用停靠管理。
-// EN: .
+// 设置使用停靠管理。
 func (r *TRadioGroup) SetUseDockManager(value bool) {
     RadioGroup_SetUseDockManager(r.instance, value)
 }
@@ -789,14 +878,16 @@ func (r *TRadioGroup) SetBoundsRect(value TRect) {
     RadioGroup_SetBoundsRect(r.instance, value)
 }
 
-// CN: 获取客户区高度。
-// EN: Get client height.
+// 获取客户区高度。
+//
+// Get client height.
 func (r *TRadioGroup) ClientHeight() int32 {
     return RadioGroup_GetClientHeight(r.instance)
 }
 
-// CN: 设置客户区高度。
-// EN: Set client height.
+// 设置客户区高度。
+//
+// Set client height.
 func (r *TRadioGroup) SetClientHeight(value int32) {
     RadioGroup_SetClientHeight(r.instance, value)
 }
@@ -805,44 +896,51 @@ func (r *TRadioGroup) ClientOrigin() TPoint {
     return RadioGroup_GetClientOrigin(r.instance)
 }
 
-// CN: 获取客户区矩形。
-// EN: Get client rectangle.
+// 获取客户区矩形。
+//
+// Get client rectangle.
 func (r *TRadioGroup) ClientRect() TRect {
     return RadioGroup_GetClientRect(r.instance)
 }
 
-// CN: 获取客户区宽度。
-// EN: Get client width.
+// 获取客户区宽度。
+//
+// Get client width.
 func (r *TRadioGroup) ClientWidth() int32 {
     return RadioGroup_GetClientWidth(r.instance)
 }
 
-// CN: 设置客户区宽度。
-// EN: Set client width.
+// 设置客户区宽度。
+//
+// Set client width.
 func (r *TRadioGroup) SetClientWidth(value int32) {
     RadioGroup_SetClientWidth(r.instance, value)
 }
 
-// CN: 获取控件状态。
-// EN: Get control state.
+// 获取控件状态。
+//
+// Get control state.
 func (r *TRadioGroup) ControlState() TControlState {
     return RadioGroup_GetControlState(r.instance)
 }
 
-// CN: 设置控件状态。
-// EN: Set control state.
+// 设置控件状态。
+//
+// Set control state.
 func (r *TRadioGroup) SetControlState(value TControlState) {
     RadioGroup_SetControlState(r.instance, value)
 }
 
-// CN: 获取控件样式。
-// EN: Get control style.
+// 获取控件样式。
+//
+// Get control style.
 func (r *TRadioGroup) ControlStyle() TControlStyle {
     return RadioGroup_GetControlStyle(r.instance)
 }
 
-// CN: 设置控件样式。
-// EN: Set control style.
+// 设置控件样式。
+//
+// Set control style.
 func (r *TRadioGroup) SetControlStyle(value TControlStyle) {
     RadioGroup_SetControlStyle(r.instance, value)
 }
@@ -851,182 +949,196 @@ func (r *TRadioGroup) Floating() bool {
     return RadioGroup_GetFloating(r.instance)
 }
 
-// CN: 获取控件父容器。
-// EN: Get control parent container.
+// 获取控件父容器。
+//
+// Get control parent container.
 func (r *TRadioGroup) Parent() *TWinControl {
     return AsWinControl(RadioGroup_GetParent(r.instance))
 }
 
-// CN: 设置控件父容器。
-// EN: Set control parent container.
+// 设置控件父容器。
+//
+// Set control parent container.
 func (r *TRadioGroup) SetParent(value IWinControl) {
     RadioGroup_SetParent(r.instance, CheckPtr(value))
 }
 
-// CN: 获取左边位置。
-// EN: Get Left position.
+// 获取左边位置。
+//
+// Get Left position.
 func (r *TRadioGroup) Left() int32 {
     return RadioGroup_GetLeft(r.instance)
 }
 
-// CN: 设置左边位置。
-// EN: Set Left position.
+// 设置左边位置。
+//
+// Set Left position.
 func (r *TRadioGroup) SetLeft(value int32) {
     RadioGroup_SetLeft(r.instance, value)
 }
 
-// CN: 获取顶边位置。
-// EN: Get Top position.
+// 获取顶边位置。
+//
+// Get Top position.
 func (r *TRadioGroup) Top() int32 {
     return RadioGroup_GetTop(r.instance)
 }
 
-// CN: 设置顶边位置。
-// EN: Set Top position.
+// 设置顶边位置。
+//
+// Set Top position.
 func (r *TRadioGroup) SetTop(value int32) {
     RadioGroup_SetTop(r.instance, value)
 }
 
-// CN: 获取宽度。
-// EN: Get width.
+// 获取宽度。
+//
+// Get width.
 func (r *TRadioGroup) Width() int32 {
     return RadioGroup_GetWidth(r.instance)
 }
 
-// CN: 设置宽度。
-// EN: Set width.
+// 设置宽度。
+//
+// Set width.
 func (r *TRadioGroup) SetWidth(value int32) {
     RadioGroup_SetWidth(r.instance, value)
 }
 
-// CN: 获取高度。
-// EN: Get height.
+// 获取高度。
+//
+// Get height.
 func (r *TRadioGroup) Height() int32 {
     return RadioGroup_GetHeight(r.instance)
 }
 
-// CN: 设置高度。
-// EN: Set height.
+// 设置高度。
+//
+// Set height.
 func (r *TRadioGroup) SetHeight(value int32) {
     RadioGroup_SetHeight(r.instance, value)
 }
 
-// CN: 获取控件光标。
-// EN: Get control cursor.
+// 获取控件光标。
+//
+// Get control cursor.
 func (r *TRadioGroup) Cursor() TCursor {
     return RadioGroup_GetCursor(r.instance)
 }
 
-// CN: 设置控件光标。
-// EN: Set control cursor.
+// 设置控件光标。
+//
+// Set control cursor.
 func (r *TRadioGroup) SetCursor(value TCursor) {
     RadioGroup_SetCursor(r.instance, value)
 }
 
-// CN: 获取组件鼠标悬停提示。
-// EN: Get component mouse hints.
+// 获取组件鼠标悬停提示。
+//
+// Get component mouse hints.
 func (r *TRadioGroup) Hint() string {
     return RadioGroup_GetHint(r.instance)
 }
 
-// CN: 设置组件鼠标悬停提示。
-// EN: Set component mouse hints.
+// 设置组件鼠标悬停提示。
+//
+// Set component mouse hints.
 func (r *TRadioGroup) SetHint(value string) {
     RadioGroup_SetHint(r.instance, value)
 }
 
-// CN: 获取组件总数。
-// EN: Get the total number of components.
+// 获取组件总数。
+//
+// Get the total number of components.
 func (r *TRadioGroup) ComponentCount() int32 {
     return RadioGroup_GetComponentCount(r.instance)
 }
 
-// CN: 获取组件索引。
-// EN: Get component index.
+// 获取组件索引。
+//
+// Get component index.
 func (r *TRadioGroup) ComponentIndex() int32 {
     return RadioGroup_GetComponentIndex(r.instance)
 }
 
-// CN: 设置组件索引。
-// EN: Set component index.
+// 设置组件索引。
+//
+// Set component index.
 func (r *TRadioGroup) SetComponentIndex(value int32) {
     RadioGroup_SetComponentIndex(r.instance, value)
 }
 
-// CN: 获取组件所有者。
-// EN: Get component owner.
+// 获取组件所有者。
+//
+// Get component owner.
 func (r *TRadioGroup) Owner() *TComponent {
     return AsComponent(RadioGroup_GetOwner(r.instance))
 }
 
-// CN: 获取组件名称。
-// EN: Get the component name.
+// 获取组件名称。
+//
+// Get the component name.
 func (r *TRadioGroup) Name() string {
     return RadioGroup_GetName(r.instance)
 }
 
-// CN: 设置组件名称。
-// EN: Set the component name.
+// 设置组件名称。
+//
+// Set the component name.
 func (r *TRadioGroup) SetName(value string) {
     RadioGroup_SetName(r.instance, value)
 }
 
-// CN: 获取对象标记。
-// EN: Get the control tag.
+// 获取对象标记。
+//
+// Get the control tag.
 func (r *TRadioGroup) Tag() int {
     return RadioGroup_GetTag(r.instance)
 }
 
-// CN: 设置对象标记。
-// EN: Set the control tag.
+// 设置对象标记。
+//
+// Set the control tag.
 func (r *TRadioGroup) SetTag(value int) {
     RadioGroup_SetTag(r.instance, value)
 }
 
-// CN: 获取左边锚点。
-// EN: .
+// 获取左边锚点。
 func (r *TRadioGroup) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(RadioGroup_GetAnchorSideLeft(r.instance))
 }
 
-// CN: 设置左边锚点。
-// EN: .
+// 设置左边锚点。
 func (r *TRadioGroup) SetAnchorSideLeft(value *TAnchorSide) {
     RadioGroup_SetAnchorSideLeft(r.instance, CheckPtr(value))
 }
 
-// CN: 获取顶边锚点。
-// EN: .
+// 获取顶边锚点。
 func (r *TRadioGroup) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(RadioGroup_GetAnchorSideTop(r.instance))
 }
 
-// CN: 设置顶边锚点。
-// EN: .
+// 设置顶边锚点。
 func (r *TRadioGroup) SetAnchorSideTop(value *TAnchorSide) {
     RadioGroup_SetAnchorSideTop(r.instance, CheckPtr(value))
 }
 
-// CN: 获取右边锚点。
-// EN: .
+// 获取右边锚点。
 func (r *TRadioGroup) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(RadioGroup_GetAnchorSideRight(r.instance))
 }
 
-// CN: 设置右边锚点。
-// EN: .
+// 设置右边锚点。
 func (r *TRadioGroup) SetAnchorSideRight(value *TAnchorSide) {
     RadioGroup_SetAnchorSideRight(r.instance, CheckPtr(value))
 }
 
-// CN: 获取底边锚点。
-// EN: .
+// 获取底边锚点。
 func (r *TRadioGroup) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(RadioGroup_GetAnchorSideBottom(r.instance))
 }
 
-// CN: 设置底边锚点。
-// EN: .
+// 设置底边锚点。
 func (r *TRadioGroup) SetAnchorSideBottom(value *TAnchorSide) {
     RadioGroup_SetAnchorSideBottom(r.instance, CheckPtr(value))
 }
@@ -1039,38 +1151,34 @@ func (r *TRadioGroup) SetChildSizing(value *TControlChildSizing) {
     RadioGroup_SetChildSizing(r.instance, CheckPtr(value))
 }
 
-// CN: 获取边框间距。
-// EN: .
+// 获取边框间距。
 func (r *TRadioGroup) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(RadioGroup_GetBorderSpacing(r.instance))
 }
 
-// CN: 设置边框间距。
-// EN: .
+// 设置边框间距。
 func (r *TRadioGroup) SetBorderSpacing(value *TControlBorderSpacing) {
     RadioGroup_SetBorderSpacing(r.instance, CheckPtr(value))
 }
 
-// CN: 获取指定索引停靠客户端。
-// EN: .
+// 获取指定索引停靠客户端。
 func (r *TRadioGroup) DockClients(Index int32) *TControl {
     return AsControl(RadioGroup_GetDockClients(r.instance, Index))
 }
 
-// CN: 获取指定索引子控件。
-// EN: .
+// 获取指定索引子控件。
 func (r *TRadioGroup) Controls(Index int32) *TControl {
     return AsControl(RadioGroup_GetControls(r.instance, Index))
 }
 
-// CN: 获取指定索引组件。
-// EN: Get the specified index component.
+// 获取指定索引组件。
+//
+// Get the specified index component.
 func (r *TRadioGroup) Components(AIndex int32) *TComponent {
     return AsComponent(RadioGroup_GetComponents(r.instance, AIndex))
 }
 
-// CN: 获取锚侧面。
-// EN: .
+// 获取锚侧面。
 func (r *TRadioGroup) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(RadioGroup_GetAnchorSide(r.instance, AKind))
 }

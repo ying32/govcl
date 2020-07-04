@@ -24,8 +24,9 @@ type TLinkLabel struct {
     ptr unsafe.Pointer
 }
 
-// CN: 创建一个新的对象。
-// EN: Create a new object.
+// 创建一个新的对象。
+// 
+// Create a new object.
 func NewLinkLabel(owner IComponent) *TLinkLabel {
     l := new(TLinkLabel)
     l.instance = LinkLabel_Create(CheckPtr(owner))
@@ -35,8 +36,9 @@ func NewLinkLabel(owner IComponent) *TLinkLabel {
     return l
 }
 
-// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
-// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+// 动态转换一个已存在的对象实例。
+// 
+// Dynamically convert an existing object instance.
 func AsLinkLabel(obj interface{}) *TLinkLabel {
     instance, ptr := getInstance(obj)
     if instance == 0 { return nil }
@@ -44,30 +46,34 @@ func AsLinkLabel(obj interface{}) *TLinkLabel {
 }
 
 // -------------------------- Deprecated begin --------------------------
-// CN: 新建一个对象来自已经存在的对象实例指针。
-// EN: Create a new object from an existing object instance pointer.
+// 新建一个对象来自已经存在的对象实例指针。
+// 
+// Create a new object from an existing object instance pointer.
 // Deprecated: use AsLinkLabel.
 func LinkLabelFromInst(inst uintptr) *TLinkLabel {
     return AsLinkLabel(inst)
 }
 
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// 新建一个对象来自已经存在的对象实例。
+// 
+// Create a new object from an existing object instance.
 // Deprecated: use AsLinkLabel.
 func LinkLabelFromObj(obj IObject) *TLinkLabel {
     return AsLinkLabel(obj)
 }
 
-// CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
+// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+// 
+// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsLinkLabel.
 func LinkLabelFromUnsafePointer(ptr unsafe.Pointer) *TLinkLabel {
     return AsLinkLabel(ptr)
 }
 
 // -------------------------- Deprecated end --------------------------
-// CN: 释放对象。
-// EN: Free object.
+// 释放对象。
+// 
+// Free object.
 func (l *TLinkLabel) Free() {
     if l.instance != 0 {
         LinkLabel_Free(l.instance)
@@ -75,212 +81,247 @@ func (l *TLinkLabel) Free() {
     }
 }
 
-// CN: 返回对象实例指针。
-// EN: Return object instance pointer.
+// 返回对象实例指针。
+// 
+// Return object instance pointer.
 func (l *TLinkLabel) Instance() uintptr {
     return l.instance
 }
 
-// CN: 获取一个不安全的地址。
-// EN: Get an unsafe address.
+// 获取一个不安全的地址。
+// 
+// Get an unsafe address.
 func (l *TLinkLabel) UnsafeAddr() unsafe.Pointer {
     return l.ptr
 }
 
-// CN: 检测地址是否为空。
-// EN: Check if the address is empty.
+// 检测地址是否为空。
+// 
+// Check if the address is empty.
 func (l *TLinkLabel) IsValid() bool {
     return l.instance != 0
 }
 
-// CN: 检测当前对象是否继承自目标对象。
-// EN: Checks whether the current object is inherited from the target object.
+// 检测当前对象是否继承自目标对象。
+// 
+// Checks whether the current object is inherited from the target object.
 func (l *TLinkLabel) Is() TIs {
     return TIs(l.instance)
 }
 
-// CN: 动态转换当前对象为目标对象。
-// EN: Dynamically convert the current object to the target object.
+// 动态转换当前对象为目标对象。
+// 
+// Dynamically convert the current object to the target object.
 //func (l *TLinkLabel) As() TAs {
 //    return TAs(l.instance)
 //}
 
-// CN: 获取类信息指针。
-// EN: Get class information pointer.
+// 获取类信息指针。
+// 
+// Get class information pointer.
 func TLinkLabelClass() TClass {
     return LinkLabel_StaticClassType()
 }
 
-// CN: 要求重绘。
-// EN: Redraw.
+// 要求重绘。
+//
+// Redraw.
 func (l *TLinkLabel) Invalidate() {
     LinkLabel_Invalidate(l.instance)
 }
 
-// CN: 重绘。
-// EN: Repaint.
+// 重绘。
+//
+// Repaint.
 func (l *TLinkLabel) Repaint() {
     LinkLabel_Repaint(l.instance)
 }
 
-// CN: 设置组件边界。
-// EN: Set component boundaries.
+// 设置组件边界。
+//
+// Set component boundaries.
 func (l *TLinkLabel) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     LinkLabel_SetBounds(l.instance, ALeft , ATop , AWidth , AHeight)
 }
 
-// CN: 控件更新。
-// EN: Update.
+// 控件更新。
+//
+// Update.
 func (l *TLinkLabel) Update() {
     LinkLabel_Update(l.instance)
 }
 
-// CN: 将控件置于最前。
-// EN: Bring the control to the front.
+// 将控件置于最前。
+//
+// Bring the control to the front.
 func (l *TLinkLabel) BringToFront() {
     LinkLabel_BringToFront(l.instance)
 }
 
-// CN: 将客户端坐标转为绝对的屏幕坐标。
-// EN: Convert client coordinates to absolute screen coordinates.
+// 将客户端坐标转为绝对的屏幕坐标。
+//
+// Convert client coordinates to absolute screen coordinates.
 func (l *TLinkLabel) ClientToScreen(Point TPoint) TPoint {
     return LinkLabel_ClientToScreen(l.instance, Point)
 }
 
-// CN: 将客户端坐标转为父容器坐标。
-// EN: Convert client coordinates to parent container coordinates.
+// 将客户端坐标转为父容器坐标。
+//
+// Convert client coordinates to parent container coordinates.
 func (l *TLinkLabel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return LinkLabel_ClientToParent(l.instance, Point , CheckPtr(AParent))
 }
 
-// CN: 是否在拖拽中。
-// EN: Is it in the middle of dragging.
+// 是否在拖拽中。
+//
+// Is it in the middle of dragging.
 func (l *TLinkLabel) Dragging() bool {
     return LinkLabel_Dragging(l.instance)
 }
 
-// CN: 是否有父容器。
-// EN: Is there a parent container.
+// 是否有父容器。
+//
+// Is there a parent container.
 func (l *TLinkLabel) HasParent() bool {
     return LinkLabel_HasParent(l.instance)
 }
 
-// CN: 隐藏控件。
-// EN: Hidden control.
+// 隐藏控件。
+//
+// Hidden control.
 func (l *TLinkLabel) Hide() {
     LinkLabel_Hide(l.instance)
 }
 
-// CN: 发送一个消息。
-// EN: Send a message.
+// 发送一个消息。
+//
+// Send a message.
 func (l *TLinkLabel) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return LinkLabel_Perform(l.instance, Msg , WParam , LParam)
 }
 
-// CN: 刷新控件。
-// EN: Refresh control.
+// 刷新控件。
+//
+// Refresh control.
 func (l *TLinkLabel) Refresh() {
     LinkLabel_Refresh(l.instance)
 }
 
-// CN: 将屏幕坐标转为客户端坐标。
-// EN: Convert screen coordinates to client coordinates.
+// 将屏幕坐标转为客户端坐标。
+//
+// Convert screen coordinates to client coordinates.
 func (l *TLinkLabel) ScreenToClient(Point TPoint) TPoint {
     return LinkLabel_ScreenToClient(l.instance, Point)
 }
 
-// CN: 将父容器坐标转为客户端坐标。
-// EN: Convert parent container coordinates to client coordinates.
+// 将父容器坐标转为客户端坐标。
+//
+// Convert parent container coordinates to client coordinates.
 func (l *TLinkLabel) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return LinkLabel_ParentToClient(l.instance, Point , CheckPtr(AParent))
 }
 
-// CN: 控件至于最后面。
-// EN: The control is placed at the end.
+// 控件至于最后面。
+//
+// The control is placed at the end.
 func (l *TLinkLabel) SendToBack() {
     LinkLabel_SendToBack(l.instance)
 }
 
-// CN: 显示控件。
-// EN: Show control.
+// 显示控件。
+//
+// Show control.
 func (l *TLinkLabel) Show() {
     LinkLabel_Show(l.instance)
 }
 
-// CN: 获取控件的字符，如果有。
-// EN: Get the characters of the control, if any.
+// 获取控件的字符，如果有。
+//
+// Get the characters of the control, if any.
 func (l *TLinkLabel) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return LinkLabel_GetTextBuf(l.instance, Buffer , BufSize)
 }
 
-// CN: 获取控件的字符长，如果有。
-// EN: Get the character length of the control, if any.
+// 获取控件的字符长，如果有。
+//
+// Get the character length of the control, if any.
 func (l *TLinkLabel) GetTextLen() int32 {
     return LinkLabel_GetTextLen(l.instance)
 }
 
-// CN: 设置控件字符，如果有。
-// EN: Set control characters, if any.
+// 设置控件字符，如果有。
+//
+// Set control characters, if any.
 func (l *TLinkLabel) SetTextBuf(Buffer string) {
     LinkLabel_SetTextBuf(l.instance, Buffer)
 }
 
-// CN: 查找指定名称的组件。
-// EN: Find the component with the specified name.
+// 查找指定名称的组件。
+//
+// Find the component with the specified name.
 func (l *TLinkLabel) FindComponent(AName string) *TComponent {
     return AsComponent(LinkLabel_FindComponent(l.instance, AName))
 }
 
-// CN: 获取类名路径。
-// EN: Get the class name path.
+// 获取类名路径。
+//
+// Get the class name path.
 func (l *TLinkLabel) GetNamePath() string {
     return LinkLabel_GetNamePath(l.instance)
 }
 
-// CN: 复制一个对象，如果对象实现了此方法的话。
-// EN: Copy an object, if the object implements this method.
+// 复制一个对象，如果对象实现了此方法的话。
+//
+// Copy an object, if the object implements this method.
 func (l *TLinkLabel) Assign(Source IObject) {
     LinkLabel_Assign(l.instance, CheckPtr(Source))
 }
 
-// CN: 获取类的类型信息。
-// EN: Get class type information.
+// 获取类的类型信息。
+//
+// Get class type information.
 func (l *TLinkLabel) ClassType() TClass {
     return LinkLabel_ClassType(l.instance)
 }
 
-// CN: 获取当前对象类名称。
-// EN: Get the current object class name.
+// 获取当前对象类名称。
+//
+// Get the current object class name.
 func (l *TLinkLabel) ClassName() string {
     return LinkLabel_ClassName(l.instance)
 }
 
-// CN: 获取当前对象实例大小。
-// EN: Get the current object instance size.
+// 获取当前对象实例大小。
+//
+// Get the current object instance size.
 func (l *TLinkLabel) InstanceSize() int32 {
     return LinkLabel_InstanceSize(l.instance)
 }
 
-// CN: 判断当前类是否继承自指定类。
-// EN: Determine whether the current class inherits from the specified class.
+// 判断当前类是否继承自指定类。
+//
+// Determine whether the current class inherits from the specified class.
 func (l *TLinkLabel) InheritsFrom(AClass TClass) bool {
     return LinkLabel_InheritsFrom(l.instance, AClass)
 }
 
-// CN: 与一个对象进行比较。
-// EN: Compare with an object.
+// 与一个对象进行比较。
+//
+// Compare with an object.
 func (l *TLinkLabel) Equals(Obj IObject) bool {
     return LinkLabel_Equals(l.instance, CheckPtr(Obj))
 }
 
-// CN: 获取类的哈希值。
-// EN: Get the hash value of the class.
+// 获取类的哈希值。
+//
+// Get the hash value of the class.
 func (l *TLinkLabel) GetHashCode() int32 {
     return LinkLabel_GetHashCode(l.instance)
 }
 
-// CN: 文本类信息。
-// EN: Text information.
+// 文本类信息。
+//
+// Text information.
 func (l *TLinkLabel) ToString() string {
     return LinkLabel_ToString(l.instance)
 }
@@ -293,14 +334,12 @@ func (l *TLinkLabel) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IC
     LinkLabel_AnchorParallel(l.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
-// CN: 置于指定控件的横向中心。
-// EN: .
+// 置于指定控件的横向中心。
 func (l *TLinkLabel) AnchorHorizontalCenterTo(ASibling IControl) {
     LinkLabel_AnchorHorizontalCenterTo(l.instance, CheckPtr(ASibling))
 }
 
-// CN: 置于指定控件的纵向中心。
-// EN: .
+// 置于指定控件的纵向中心。
 func (l *TLinkLabel) AnchorVerticalCenterTo(ASibling IControl) {
     LinkLabel_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
 }
@@ -313,284 +352,311 @@ func (l *TLinkLabel) AnchorClient(ASpace int32) {
     LinkLabel_AnchorClient(l.instance, ASpace)
 }
 
-// CN: 获取控件自动调整。
-// EN: Get Control automatically adjusts.
+// 获取控件自动调整。
+//
+// Get Control automatically adjusts.
 func (l *TLinkLabel) Align() TAlign {
     return LinkLabel_GetAlign(l.instance)
 }
 
-// CN: 设置控件自动调整。
-// EN: Set Control automatically adjusts.
+// 设置控件自动调整。
+//
+// Set Control automatically adjusts.
 func (l *TLinkLabel) SetAlign(value TAlign) {
     LinkLabel_SetAlign(l.instance, value)
 }
 
-// CN: 获取文字对齐。
-// EN: Get Text alignment.
+// 获取文字对齐。
+//
+// Get Text alignment.
 func (l *TLinkLabel) Alignment() TLinkAlignment {
     return LinkLabel_GetAlignment(l.instance)
 }
 
-// CN: 设置文字对齐。
-// EN: Set Text alignment.
+// 设置文字对齐。
+//
+// Set Text alignment.
 func (l *TLinkLabel) SetAlignment(value TLinkAlignment) {
     LinkLabel_SetAlignment(l.instance, value)
 }
 
-// CN: 获取四个角位置的锚点。
-// EN: .
+// 获取四个角位置的锚点。
 func (l *TLinkLabel) Anchors() TAnchors {
     return LinkLabel_GetAnchors(l.instance)
 }
 
-// CN: 设置四个角位置的锚点。
-// EN: .
+// 设置四个角位置的锚点。
 func (l *TLinkLabel) SetAnchors(value TAnchors) {
     LinkLabel_SetAnchors(l.instance, value)
 }
 
-// CN: 获取自动调整大小。
-// EN: .
+// 获取自动调整大小。
 func (l *TLinkLabel) AutoSize() bool {
     return LinkLabel_GetAutoSize(l.instance)
 }
 
-// CN: 设置自动调整大小。
-// EN: .
+// 设置自动调整大小。
 func (l *TLinkLabel) SetAutoSize(value bool) {
     LinkLabel_SetAutoSize(l.instance, value)
 }
 
-// CN: 获取控件标题。
-// EN: Get the control title.
+// 获取控件标题。
+//
+// Get the control title.
 func (l *TLinkLabel) Caption() string {
     return LinkLabel_GetCaption(l.instance)
 }
 
-// CN: 设置控件标题。
-// EN: Set the control title.
+// 设置控件标题。
+//
+// Set the control title.
 func (l *TLinkLabel) SetCaption(value string) {
     LinkLabel_SetCaption(l.instance, value)
 }
 
-// CN: 获取颜色。
-// EN: Get color.
+// 获取颜色。
+//
+// Get color.
 func (l *TLinkLabel) Color() TColor {
     return LinkLabel_GetColor(l.instance)
 }
 
-// CN: 设置颜色。
-// EN: Set color.
+// 设置颜色。
+//
+// Set color.
 func (l *TLinkLabel) SetColor(value TColor) {
     LinkLabel_SetColor(l.instance, value)
 }
 
-// CN: 获取约束控件大小。
-// EN: .
+// 获取约束控件大小。
 func (l *TLinkLabel) Constraints() *TSizeConstraints {
     return AsSizeConstraints(LinkLabel_GetConstraints(l.instance))
 }
 
-// CN: 设置约束控件大小。
-// EN: .
+// 设置约束控件大小。
 func (l *TLinkLabel) SetConstraints(value *TSizeConstraints) {
     LinkLabel_SetConstraints(l.instance, CheckPtr(value))
 }
 
-// CN: 获取设置控件拖拽时的光标。
-// EN: Get Set the cursor when the control is dragged.
+// 获取设置控件拖拽时的光标。
+//
+// Get Set the cursor when the control is dragged.
 func (l *TLinkLabel) DragCursor() TCursor {
     return LinkLabel_GetDragCursor(l.instance)
 }
 
-// CN: 设置设置控件拖拽时的光标。
-// EN: Set Set the cursor when the control is dragged.
+// 设置设置控件拖拽时的光标。
+//
+// Set Set the cursor when the control is dragged.
 func (l *TLinkLabel) SetDragCursor(value TCursor) {
     LinkLabel_SetDragCursor(l.instance, value)
 }
 
-// CN: 获取拖拽方式。
-// EN: Get Drag and drop.
+// 获取拖拽方式。
+//
+// Get Drag and drop.
 func (l *TLinkLabel) DragKind() TDragKind {
     return LinkLabel_GetDragKind(l.instance)
 }
 
-// CN: 设置拖拽方式。
-// EN: Set Drag and drop.
+// 设置拖拽方式。
+//
+// Set Drag and drop.
 func (l *TLinkLabel) SetDragKind(value TDragKind) {
     LinkLabel_SetDragKind(l.instance, value)
 }
 
-// CN: 获取拖拽模式。
-// EN: Get Drag mode.
+// 获取拖拽模式。
+//
+// Get Drag mode.
 func (l *TLinkLabel) DragMode() TDragMode {
     return LinkLabel_GetDragMode(l.instance)
 }
 
-// CN: 设置拖拽模式。
-// EN: Set Drag mode.
+// 设置拖拽模式。
+//
+// Set Drag mode.
 func (l *TLinkLabel) SetDragMode(value TDragMode) {
     LinkLabel_SetDragMode(l.instance, value)
 }
 
-// CN: 获取控件启用。
-// EN: Get the control enabled.
+// 获取控件启用。
+//
+// Get the control enabled.
 func (l *TLinkLabel) Enabled() bool {
     return LinkLabel_GetEnabled(l.instance)
 }
 
-// CN: 设置控件启用。
-// EN: Set the control enabled.
+// 设置控件启用。
+//
+// Set the control enabled.
 func (l *TLinkLabel) SetEnabled(value bool) {
     LinkLabel_SetEnabled(l.instance, value)
 }
 
-// CN: 获取字体。
-// EN: Get Font.
+// 获取字体。
+//
+// Get Font.
 func (l *TLinkLabel) Font() *TFont {
     return AsFont(LinkLabel_GetFont(l.instance))
 }
 
-// CN: 设置字体。
-// EN: Set Font.
+// 设置字体。
+//
+// Set Font.
 func (l *TLinkLabel) SetFont(value *TFont) {
     LinkLabel_SetFont(l.instance, CheckPtr(value))
 }
 
-// CN: 获取使用父容器颜色。
-// EN: Get parent color.
+// 获取使用父容器颜色。
+//
+// Get parent color.
 func (l *TLinkLabel) ParentColor() bool {
     return LinkLabel_GetParentColor(l.instance)
 }
 
-// CN: 设置使用父容器颜色。
-// EN: Set parent color.
+// 设置使用父容器颜色。
+//
+// Set parent color.
 func (l *TLinkLabel) SetParentColor(value bool) {
     LinkLabel_SetParentColor(l.instance, value)
 }
 
-// CN: 获取使用父容器字体。
-// EN: Get Parent container font.
+// 获取使用父容器字体。
+//
+// Get Parent container font.
 func (l *TLinkLabel) ParentFont() bool {
     return LinkLabel_GetParentFont(l.instance)
 }
 
-// CN: 设置使用父容器字体。
-// EN: Set Parent container font.
+// 设置使用父容器字体。
+//
+// Set Parent container font.
 func (l *TLinkLabel) SetParentFont(value bool) {
     LinkLabel_SetParentFont(l.instance, value)
 }
 
-// CN: 获取以父容器的ShowHint属性为准。
-// EN: .
+// 获取以父容器的ShowHint属性为准。
 func (l *TLinkLabel) ParentShowHint() bool {
     return LinkLabel_GetParentShowHint(l.instance)
 }
 
-// CN: 设置以父容器的ShowHint属性为准。
-// EN: .
+// 设置以父容器的ShowHint属性为准。
 func (l *TLinkLabel) SetParentShowHint(value bool) {
     LinkLabel_SetParentShowHint(l.instance, value)
 }
 
-// CN: 获取右键菜单。
-// EN: Get Right click menu.
+// 获取右键菜单。
+//
+// Get Right click menu.
 func (l *TLinkLabel) PopupMenu() *TPopupMenu {
     return AsPopupMenu(LinkLabel_GetPopupMenu(l.instance))
 }
 
-// CN: 设置右键菜单。
-// EN: Set Right click menu.
+// 设置右键菜单。
+//
+// Set Right click menu.
 func (l *TLinkLabel) SetPopupMenu(value IComponent) {
     LinkLabel_SetPopupMenu(l.instance, CheckPtr(value))
 }
 
-// CN: 获取显示鼠标悬停提示。
-// EN: Get Show mouseover tips.
+// 获取显示鼠标悬停提示。
+//
+// Get Show mouseover tips.
 func (l *TLinkLabel) ShowHint() bool {
     return LinkLabel_GetShowHint(l.instance)
 }
 
-// CN: 设置显示鼠标悬停提示。
-// EN: Set Show mouseover tips.
+// 设置显示鼠标悬停提示。
+//
+// Set Show mouseover tips.
 func (l *TLinkLabel) SetShowHint(value bool) {
     LinkLabel_SetShowHint(l.instance, value)
 }
 
-// CN: 获取控件可视。
-// EN: Get the control visible.
+// 获取控件可视。
+//
+// Get the control visible.
 func (l *TLinkLabel) Visible() bool {
     return LinkLabel_GetVisible(l.instance)
 }
 
-// CN: 设置控件可视。
-// EN: Set the control visible.
+// 设置控件可视。
+//
+// Set the control visible.
 func (l *TLinkLabel) SetVisible(value bool) {
     LinkLabel_SetVisible(l.instance, value)
 }
 
-// CN: 设置控件单击事件。
-// EN: Set control click event.
+// 设置控件单击事件。
+//
+// Set control click event.
 func (l *TLinkLabel) SetOnClick(fn TNotifyEvent) {
     LinkLabel_SetOnClick(l.instance, fn)
 }
 
-// CN: 设置上下文弹出事件，一般是右键时弹出。
-// EN: Set Context popup event, usually pop up when right click.
+// 设置上下文弹出事件，一般是右键时弹出。
+//
+// Set Context popup event, usually pop up when right click.
 func (l *TLinkLabel) SetOnContextPopup(fn TContextPopupEvent) {
     LinkLabel_SetOnContextPopup(l.instance, fn)
 }
 
-// CN: 设置双击事件。
-// EN: .
+// 设置双击事件。
 func (l *TLinkLabel) SetOnDblClick(fn TNotifyEvent) {
     LinkLabel_SetOnDblClick(l.instance, fn)
 }
 
-// CN: 设置拖拽下落事件。
-// EN: Set Drag and drop event.
+// 设置拖拽下落事件。
+//
+// Set Drag and drop event.
 func (l *TLinkLabel) SetOnDragDrop(fn TDragDropEvent) {
     LinkLabel_SetOnDragDrop(l.instance, fn)
 }
 
-// CN: 设置拖拽完成事件。
-// EN: Set Drag and drop completion event.
+// 设置拖拽完成事件。
+//
+// Set Drag and drop completion event.
 func (l *TLinkLabel) SetOnDragOver(fn TDragOverEvent) {
     LinkLabel_SetOnDragOver(l.instance, fn)
 }
 
-// CN: 设置拖拽结束。
-// EN: Set End of drag.
+// 设置拖拽结束。
+//
+// Set End of drag.
 func (l *TLinkLabel) SetOnEndDrag(fn TEndDragEvent) {
     LinkLabel_SetOnEndDrag(l.instance, fn)
 }
 
-// CN: 设置鼠标按下事件。
-// EN: Set Mouse down event.
+// 设置鼠标按下事件。
+//
+// Set Mouse down event.
 func (l *TLinkLabel) SetOnMouseDown(fn TMouseEvent) {
     LinkLabel_SetOnMouseDown(l.instance, fn)
 }
 
-// CN: 设置鼠标进入事件。
-// EN: Set Mouse entry event.
+// 设置鼠标进入事件。
+//
+// Set Mouse entry event.
 func (l *TLinkLabel) SetOnMouseEnter(fn TNotifyEvent) {
     LinkLabel_SetOnMouseEnter(l.instance, fn)
 }
 
-// CN: 设置鼠标离开事件。
-// EN: Set Mouse leave event.
+// 设置鼠标离开事件。
+//
+// Set Mouse leave event.
 func (l *TLinkLabel) SetOnMouseLeave(fn TNotifyEvent) {
     LinkLabel_SetOnMouseLeave(l.instance, fn)
 }
 
-// CN: 设置鼠标移动事件。
-// EN: .
+// 设置鼠标移动事件。
 func (l *TLinkLabel) SetOnMouseMove(fn TMouseMoveEvent) {
     LinkLabel_SetOnMouseMove(l.instance, fn)
 }
 
-// CN: 设置鼠标抬起事件。
-// EN: Set Mouse lift event.
+// 设置鼠标抬起事件。
+//
+// Set Mouse lift event.
 func (l *TLinkLabel) SetOnMouseUp(fn TMouseEvent) {
     LinkLabel_SetOnMouseUp(l.instance, fn)
 }
@@ -599,8 +665,9 @@ func (l *TLinkLabel) SetOnLinkClick(fn TSysLinkEvent) {
     LinkLabel_SetOnLinkClick(l.instance, fn)
 }
 
-// CN: 获取鼠标是否在客户端，仅VCL有效。
-// EN: Get Whether the mouse is on the client, only VCL is valid.
+// 获取鼠标是否在客户端，仅VCL有效。
+//
+// Get Whether the mouse is on the client, only VCL is valid.
 func (l *TLinkLabel) MouseInClient() bool {
     return LinkLabel_GetMouseInClient(l.instance)
 }
@@ -629,14 +696,16 @@ func (l *TLinkLabel) SetBoundsRect(value TRect) {
     LinkLabel_SetBoundsRect(l.instance, value)
 }
 
-// CN: 获取客户区高度。
-// EN: Get client height.
+// 获取客户区高度。
+//
+// Get client height.
 func (l *TLinkLabel) ClientHeight() int32 {
     return LinkLabel_GetClientHeight(l.instance)
 }
 
-// CN: 设置客户区高度。
-// EN: Set client height.
+// 设置客户区高度。
+//
+// Set client height.
 func (l *TLinkLabel) SetClientHeight(value int32) {
     LinkLabel_SetClientHeight(l.instance, value)
 }
@@ -645,44 +714,51 @@ func (l *TLinkLabel) ClientOrigin() TPoint {
     return LinkLabel_GetClientOrigin(l.instance)
 }
 
-// CN: 获取客户区矩形。
-// EN: Get client rectangle.
+// 获取客户区矩形。
+//
+// Get client rectangle.
 func (l *TLinkLabel) ClientRect() TRect {
     return LinkLabel_GetClientRect(l.instance)
 }
 
-// CN: 获取客户区宽度。
-// EN: Get client width.
+// 获取客户区宽度。
+//
+// Get client width.
 func (l *TLinkLabel) ClientWidth() int32 {
     return LinkLabel_GetClientWidth(l.instance)
 }
 
-// CN: 设置客户区宽度。
-// EN: Set client width.
+// 设置客户区宽度。
+//
+// Set client width.
 func (l *TLinkLabel) SetClientWidth(value int32) {
     LinkLabel_SetClientWidth(l.instance, value)
 }
 
-// CN: 获取控件状态。
-// EN: Get control state.
+// 获取控件状态。
+//
+// Get control state.
 func (l *TLinkLabel) ControlState() TControlState {
     return LinkLabel_GetControlState(l.instance)
 }
 
-// CN: 设置控件状态。
-// EN: Set control state.
+// 设置控件状态。
+//
+// Set control state.
 func (l *TLinkLabel) SetControlState(value TControlState) {
     LinkLabel_SetControlState(l.instance, value)
 }
 
-// CN: 获取控件样式。
-// EN: Get control style.
+// 获取控件样式。
+//
+// Get control style.
 func (l *TLinkLabel) ControlStyle() TControlStyle {
     return LinkLabel_GetControlStyle(l.instance)
 }
 
-// CN: 设置控件样式。
-// EN: Set control style.
+// 设置控件样式。
+//
+// Set control style.
 func (l *TLinkLabel) SetControlStyle(value TControlStyle) {
     LinkLabel_SetControlStyle(l.instance, value)
 }
@@ -691,194 +767,204 @@ func (l *TLinkLabel) Floating() bool {
     return LinkLabel_GetFloating(l.instance)
 }
 
-// CN: 获取控件父容器。
-// EN: Get control parent container.
+// 获取控件父容器。
+//
+// Get control parent container.
 func (l *TLinkLabel) Parent() *TWinControl {
     return AsWinControl(LinkLabel_GetParent(l.instance))
 }
 
-// CN: 设置控件父容器。
-// EN: Set control parent container.
+// 设置控件父容器。
+//
+// Set control parent container.
 func (l *TLinkLabel) SetParent(value IWinControl) {
     LinkLabel_SetParent(l.instance, CheckPtr(value))
 }
 
-// CN: 获取左边位置。
-// EN: Get Left position.
+// 获取左边位置。
+//
+// Get Left position.
 func (l *TLinkLabel) Left() int32 {
     return LinkLabel_GetLeft(l.instance)
 }
 
-// CN: 设置左边位置。
-// EN: Set Left position.
+// 设置左边位置。
+//
+// Set Left position.
 func (l *TLinkLabel) SetLeft(value int32) {
     LinkLabel_SetLeft(l.instance, value)
 }
 
-// CN: 获取顶边位置。
-// EN: Get Top position.
+// 获取顶边位置。
+//
+// Get Top position.
 func (l *TLinkLabel) Top() int32 {
     return LinkLabel_GetTop(l.instance)
 }
 
-// CN: 设置顶边位置。
-// EN: Set Top position.
+// 设置顶边位置。
+//
+// Set Top position.
 func (l *TLinkLabel) SetTop(value int32) {
     LinkLabel_SetTop(l.instance, value)
 }
 
-// CN: 获取宽度。
-// EN: Get width.
+// 获取宽度。
+//
+// Get width.
 func (l *TLinkLabel) Width() int32 {
     return LinkLabel_GetWidth(l.instance)
 }
 
-// CN: 设置宽度。
-// EN: Set width.
+// 设置宽度。
+//
+// Set width.
 func (l *TLinkLabel) SetWidth(value int32) {
     LinkLabel_SetWidth(l.instance, value)
 }
 
-// CN: 获取高度。
-// EN: Get height.
+// 获取高度。
+//
+// Get height.
 func (l *TLinkLabel) Height() int32 {
     return LinkLabel_GetHeight(l.instance)
 }
 
-// CN: 设置高度。
-// EN: Set height.
+// 设置高度。
+//
+// Set height.
 func (l *TLinkLabel) SetHeight(value int32) {
     LinkLabel_SetHeight(l.instance, value)
 }
 
-// CN: 获取组件鼠标悬停提示。
-// EN: Get component mouse hints.
+// 获取组件鼠标悬停提示。
+//
+// Get component mouse hints.
 func (l *TLinkLabel) Hint() string {
     return LinkLabel_GetHint(l.instance)
 }
 
-// CN: 设置组件鼠标悬停提示。
-// EN: Set component mouse hints.
+// 设置组件鼠标悬停提示。
+//
+// Set component mouse hints.
 func (l *TLinkLabel) SetHint(value string) {
     LinkLabel_SetHint(l.instance, value)
 }
 
-// CN: 获取组件总数。
-// EN: Get the total number of components.
+// 获取组件总数。
+//
+// Get the total number of components.
 func (l *TLinkLabel) ComponentCount() int32 {
     return LinkLabel_GetComponentCount(l.instance)
 }
 
-// CN: 获取组件索引。
-// EN: Get component index.
+// 获取组件索引。
+//
+// Get component index.
 func (l *TLinkLabel) ComponentIndex() int32 {
     return LinkLabel_GetComponentIndex(l.instance)
 }
 
-// CN: 设置组件索引。
-// EN: Set component index.
+// 设置组件索引。
+//
+// Set component index.
 func (l *TLinkLabel) SetComponentIndex(value int32) {
     LinkLabel_SetComponentIndex(l.instance, value)
 }
 
-// CN: 获取组件所有者。
-// EN: Get component owner.
+// 获取组件所有者。
+//
+// Get component owner.
 func (l *TLinkLabel) Owner() *TComponent {
     return AsComponent(LinkLabel_GetOwner(l.instance))
 }
 
-// CN: 获取组件名称。
-// EN: Get the component name.
+// 获取组件名称。
+//
+// Get the component name.
 func (l *TLinkLabel) Name() string {
     return LinkLabel_GetName(l.instance)
 }
 
-// CN: 设置组件名称。
-// EN: Set the component name.
+// 设置组件名称。
+//
+// Set the component name.
 func (l *TLinkLabel) SetName(value string) {
     LinkLabel_SetName(l.instance, value)
 }
 
-// CN: 获取对象标记。
-// EN: Get the control tag.
+// 获取对象标记。
+//
+// Get the control tag.
 func (l *TLinkLabel) Tag() int {
     return LinkLabel_GetTag(l.instance)
 }
 
-// CN: 设置对象标记。
-// EN: Set the control tag.
+// 设置对象标记。
+//
+// Set the control tag.
 func (l *TLinkLabel) SetTag(value int) {
     LinkLabel_SetTag(l.instance, value)
 }
 
-// CN: 获取左边锚点。
-// EN: .
+// 获取左边锚点。
 func (l *TLinkLabel) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(LinkLabel_GetAnchorSideLeft(l.instance))
 }
 
-// CN: 设置左边锚点。
-// EN: .
+// 设置左边锚点。
 func (l *TLinkLabel) SetAnchorSideLeft(value *TAnchorSide) {
     LinkLabel_SetAnchorSideLeft(l.instance, CheckPtr(value))
 }
 
-// CN: 获取顶边锚点。
-// EN: .
+// 获取顶边锚点。
 func (l *TLinkLabel) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(LinkLabel_GetAnchorSideTop(l.instance))
 }
 
-// CN: 设置顶边锚点。
-// EN: .
+// 设置顶边锚点。
 func (l *TLinkLabel) SetAnchorSideTop(value *TAnchorSide) {
     LinkLabel_SetAnchorSideTop(l.instance, CheckPtr(value))
 }
 
-// CN: 获取右边锚点。
-// EN: .
+// 获取右边锚点。
 func (l *TLinkLabel) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(LinkLabel_GetAnchorSideRight(l.instance))
 }
 
-// CN: 设置右边锚点。
-// EN: .
+// 设置右边锚点。
 func (l *TLinkLabel) SetAnchorSideRight(value *TAnchorSide) {
     LinkLabel_SetAnchorSideRight(l.instance, CheckPtr(value))
 }
 
-// CN: 获取底边锚点。
-// EN: .
+// 获取底边锚点。
 func (l *TLinkLabel) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(LinkLabel_GetAnchorSideBottom(l.instance))
 }
 
-// CN: 设置底边锚点。
-// EN: .
+// 设置底边锚点。
 func (l *TLinkLabel) SetAnchorSideBottom(value *TAnchorSide) {
     LinkLabel_SetAnchorSideBottom(l.instance, CheckPtr(value))
 }
 
-// CN: 获取边框间距。
-// EN: .
+// 获取边框间距。
 func (l *TLinkLabel) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(LinkLabel_GetBorderSpacing(l.instance))
 }
 
-// CN: 设置边框间距。
-// EN: .
+// 设置边框间距。
 func (l *TLinkLabel) SetBorderSpacing(value *TControlBorderSpacing) {
     LinkLabel_SetBorderSpacing(l.instance, CheckPtr(value))
 }
 
-// CN: 获取指定索引组件。
-// EN: Get the specified index component.
+// 获取指定索引组件。
+//
+// Get the specified index component.
 func (l *TLinkLabel) Components(AIndex int32) *TComponent {
     return AsComponent(LinkLabel_GetComponents(l.instance, AIndex))
 }
 
-// CN: 获取锚侧面。
-// EN: .
+// 获取锚侧面。
 func (l *TLinkLabel) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(LinkLabel_GetAnchorSide(l.instance, AKind))
 }

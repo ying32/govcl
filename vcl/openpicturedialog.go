@@ -24,8 +24,9 @@ type TOpenPictureDialog struct {
     ptr unsafe.Pointer
 }
 
-// CN: 创建一个新的对象。
-// EN: Create a new object.
+// 创建一个新的对象。
+// 
+// Create a new object.
 func NewOpenPictureDialog(owner IComponent) *TOpenPictureDialog {
     o := new(TOpenPictureDialog)
     o.instance = OpenPictureDialog_Create(CheckPtr(owner))
@@ -35,8 +36,9 @@ func NewOpenPictureDialog(owner IComponent) *TOpenPictureDialog {
     return o
 }
 
-// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
-// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+// 动态转换一个已存在的对象实例。
+// 
+// Dynamically convert an existing object instance.
 func AsOpenPictureDialog(obj interface{}) *TOpenPictureDialog {
     instance, ptr := getInstance(obj)
     if instance == 0 { return nil }
@@ -44,30 +46,34 @@ func AsOpenPictureDialog(obj interface{}) *TOpenPictureDialog {
 }
 
 // -------------------------- Deprecated begin --------------------------
-// CN: 新建一个对象来自已经存在的对象实例指针。
-// EN: Create a new object from an existing object instance pointer.
+// 新建一个对象来自已经存在的对象实例指针。
+// 
+// Create a new object from an existing object instance pointer.
 // Deprecated: use AsOpenPictureDialog.
 func OpenPictureDialogFromInst(inst uintptr) *TOpenPictureDialog {
     return AsOpenPictureDialog(inst)
 }
 
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// 新建一个对象来自已经存在的对象实例。
+// 
+// Create a new object from an existing object instance.
 // Deprecated: use AsOpenPictureDialog.
 func OpenPictureDialogFromObj(obj IObject) *TOpenPictureDialog {
     return AsOpenPictureDialog(obj)
 }
 
-// CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
+// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+// 
+// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsOpenPictureDialog.
 func OpenPictureDialogFromUnsafePointer(ptr unsafe.Pointer) *TOpenPictureDialog {
     return AsOpenPictureDialog(ptr)
 }
 
 // -------------------------- Deprecated end --------------------------
-// CN: 释放对象。
-// EN: Free object.
+// 释放对象。
+// 
+// Free object.
 func (o *TOpenPictureDialog) Free() {
     if o.instance != 0 {
         OpenPictureDialog_Free(o.instance)
@@ -75,110 +81,126 @@ func (o *TOpenPictureDialog) Free() {
     }
 }
 
-// CN: 返回对象实例指针。
-// EN: Return object instance pointer.
+// 返回对象实例指针。
+// 
+// Return object instance pointer.
 func (o *TOpenPictureDialog) Instance() uintptr {
     return o.instance
 }
 
-// CN: 获取一个不安全的地址。
-// EN: Get an unsafe address.
+// 获取一个不安全的地址。
+// 
+// Get an unsafe address.
 func (o *TOpenPictureDialog) UnsafeAddr() unsafe.Pointer {
     return o.ptr
 }
 
-// CN: 检测地址是否为空。
-// EN: Check if the address is empty.
+// 检测地址是否为空。
+// 
+// Check if the address is empty.
 func (o *TOpenPictureDialog) IsValid() bool {
     return o.instance != 0
 }
 
-// CN: 检测当前对象是否继承自目标对象。
-// EN: Checks whether the current object is inherited from the target object.
+// 检测当前对象是否继承自目标对象。
+// 
+// Checks whether the current object is inherited from the target object.
 func (o *TOpenPictureDialog) Is() TIs {
     return TIs(o.instance)
 }
 
-// CN: 动态转换当前对象为目标对象。
-// EN: Dynamically convert the current object to the target object.
+// 动态转换当前对象为目标对象。
+// 
+// Dynamically convert the current object to the target object.
 //func (o *TOpenPictureDialog) As() TAs {
 //    return TAs(o.instance)
 //}
 
-// CN: 获取类信息指针。
-// EN: Get class information pointer.
+// 获取类信息指针。
+// 
+// Get class information pointer.
 func TOpenPictureDialogClass() TClass {
     return OpenPictureDialog_StaticClassType()
 }
 
-// CN: 执行。
-// EN: .
+// 执行。
 func (o *TOpenPictureDialog) Execute() bool {
     return OpenPictureDialog_Execute(o.instance)
 }
 
-// CN: 查找指定名称的组件。
-// EN: Find the component with the specified name.
+// 查找指定名称的组件。
+//
+// Find the component with the specified name.
 func (o *TOpenPictureDialog) FindComponent(AName string) *TComponent {
     return AsComponent(OpenPictureDialog_FindComponent(o.instance, AName))
 }
 
-// CN: 获取类名路径。
-// EN: Get the class name path.
+// 获取类名路径。
+//
+// Get the class name path.
 func (o *TOpenPictureDialog) GetNamePath() string {
     return OpenPictureDialog_GetNamePath(o.instance)
 }
 
-// CN: 是否有父容器。
-// EN: Is there a parent container.
+// 是否有父容器。
+//
+// Is there a parent container.
 func (o *TOpenPictureDialog) HasParent() bool {
     return OpenPictureDialog_HasParent(o.instance)
 }
 
-// CN: 复制一个对象，如果对象实现了此方法的话。
-// EN: Copy an object, if the object implements this method.
+// 复制一个对象，如果对象实现了此方法的话。
+//
+// Copy an object, if the object implements this method.
 func (o *TOpenPictureDialog) Assign(Source IObject) {
     OpenPictureDialog_Assign(o.instance, CheckPtr(Source))
 }
 
-// CN: 获取类的类型信息。
-// EN: Get class type information.
+// 获取类的类型信息。
+//
+// Get class type information.
 func (o *TOpenPictureDialog) ClassType() TClass {
     return OpenPictureDialog_ClassType(o.instance)
 }
 
-// CN: 获取当前对象类名称。
-// EN: Get the current object class name.
+// 获取当前对象类名称。
+//
+// Get the current object class name.
 func (o *TOpenPictureDialog) ClassName() string {
     return OpenPictureDialog_ClassName(o.instance)
 }
 
-// CN: 获取当前对象实例大小。
-// EN: Get the current object instance size.
+// 获取当前对象实例大小。
+//
+// Get the current object instance size.
 func (o *TOpenPictureDialog) InstanceSize() int32 {
     return OpenPictureDialog_InstanceSize(o.instance)
 }
 
-// CN: 判断当前类是否继承自指定类。
-// EN: Determine whether the current class inherits from the specified class.
+// 判断当前类是否继承自指定类。
+//
+// Determine whether the current class inherits from the specified class.
 func (o *TOpenPictureDialog) InheritsFrom(AClass TClass) bool {
     return OpenPictureDialog_InheritsFrom(o.instance, AClass)
 }
 
-// CN: 与一个对象进行比较。
-// EN: Compare with an object.
+// 与一个对象进行比较。
+//
+// Compare with an object.
 func (o *TOpenPictureDialog) Equals(Obj IObject) bool {
     return OpenPictureDialog_Equals(o.instance, CheckPtr(Obj))
 }
 
-// CN: 获取类的哈希值。
-// EN: Get the hash value of the class.
+// 获取类的哈希值。
+//
+// Get the hash value of the class.
 func (o *TOpenPictureDialog) GetHashCode() int32 {
     return OpenPictureDialog_GetHashCode(o.instance)
 }
 
-// CN: 文本类信息。
-// EN: Text information.
+// 文本类信息。
+//
+// Text information.
 func (o *TOpenPictureDialog) ToString() string {
     return OpenPictureDialog_ToString(o.instance)
 }
@@ -243,8 +265,9 @@ func (o *TOpenPictureDialog) SetTitle(value string) {
     OpenPictureDialog_SetTitle(o.instance, value)
 }
 
-// CN: 获取控件句柄。
-// EN: Get Control handle.
+// 获取控件句柄。
+//
+// Get Control handle.
 func (o *TOpenPictureDialog) Handle() HWND {
     return OpenPictureDialog_GetHandle(o.instance)
 }
@@ -253,62 +276,70 @@ func (o *TOpenPictureDialog) SetOnClose(fn TNotifyEvent) {
     OpenPictureDialog_SetOnClose(o.instance, fn)
 }
 
-// CN: 设置显示事件。
-// EN: .
+// 设置显示事件。
 func (o *TOpenPictureDialog) SetOnShow(fn TNotifyEvent) {
     OpenPictureDialog_SetOnShow(o.instance, fn)
 }
 
-// CN: 获取组件总数。
-// EN: Get the total number of components.
+// 获取组件总数。
+//
+// Get the total number of components.
 func (o *TOpenPictureDialog) ComponentCount() int32 {
     return OpenPictureDialog_GetComponentCount(o.instance)
 }
 
-// CN: 获取组件索引。
-// EN: Get component index.
+// 获取组件索引。
+//
+// Get component index.
 func (o *TOpenPictureDialog) ComponentIndex() int32 {
     return OpenPictureDialog_GetComponentIndex(o.instance)
 }
 
-// CN: 设置组件索引。
-// EN: Set component index.
+// 设置组件索引。
+//
+// Set component index.
 func (o *TOpenPictureDialog) SetComponentIndex(value int32) {
     OpenPictureDialog_SetComponentIndex(o.instance, value)
 }
 
-// CN: 获取组件所有者。
-// EN: Get component owner.
+// 获取组件所有者。
+//
+// Get component owner.
 func (o *TOpenPictureDialog) Owner() *TComponent {
     return AsComponent(OpenPictureDialog_GetOwner(o.instance))
 }
 
-// CN: 获取组件名称。
-// EN: Get the component name.
+// 获取组件名称。
+//
+// Get the component name.
 func (o *TOpenPictureDialog) Name() string {
     return OpenPictureDialog_GetName(o.instance)
 }
 
-// CN: 设置组件名称。
-// EN: Set the component name.
+// 设置组件名称。
+//
+// Set the component name.
 func (o *TOpenPictureDialog) SetName(value string) {
     OpenPictureDialog_SetName(o.instance, value)
 }
 
-// CN: 获取对象标记。
-// EN: Get the control tag.
+// 获取对象标记。
+//
+// Get the control tag.
 func (o *TOpenPictureDialog) Tag() int {
     return OpenPictureDialog_GetTag(o.instance)
 }
 
-// CN: 设置对象标记。
-// EN: Set the control tag.
+// 设置对象标记。
+//
+// Set the control tag.
 func (o *TOpenPictureDialog) SetTag(value int) {
     OpenPictureDialog_SetTag(o.instance, value)
 }
 
-// CN: 获取指定索引组件。
-// EN: Get the specified index component.
+// 获取指定索引组件。
+//
+// Get the specified index component.
 func (o *TOpenPictureDialog) Components(AIndex int32) *TComponent {
     return AsComponent(OpenPictureDialog_GetComponents(o.instance, AIndex))
 }

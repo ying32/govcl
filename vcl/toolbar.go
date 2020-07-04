@@ -24,8 +24,9 @@ type TToolBar struct {
     ptr unsafe.Pointer
 }
 
-// CN: 创建一个新的对象。
-// EN: Create a new object.
+// 创建一个新的对象。
+// 
+// Create a new object.
 func NewToolBar(owner IComponent) *TToolBar {
     t := new(TToolBar)
     t.instance = ToolBar_Create(CheckPtr(owner))
@@ -35,8 +36,9 @@ func NewToolBar(owner IComponent) *TToolBar {
     return t
 }
 
-// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
-// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+// 动态转换一个已存在的对象实例。
+// 
+// Dynamically convert an existing object instance.
 func AsToolBar(obj interface{}) *TToolBar {
     instance, ptr := getInstance(obj)
     if instance == 0 { return nil }
@@ -44,30 +46,34 @@ func AsToolBar(obj interface{}) *TToolBar {
 }
 
 // -------------------------- Deprecated begin --------------------------
-// CN: 新建一个对象来自已经存在的对象实例指针。
-// EN: Create a new object from an existing object instance pointer.
+// 新建一个对象来自已经存在的对象实例指针。
+// 
+// Create a new object from an existing object instance pointer.
 // Deprecated: use AsToolBar.
 func ToolBarFromInst(inst uintptr) *TToolBar {
     return AsToolBar(inst)
 }
 
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// 新建一个对象来自已经存在的对象实例。
+// 
+// Create a new object from an existing object instance.
 // Deprecated: use AsToolBar.
 func ToolBarFromObj(obj IObject) *TToolBar {
     return AsToolBar(obj)
 }
 
-// CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
+// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+// 
+// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsToolBar.
 func ToolBarFromUnsafePointer(ptr unsafe.Pointer) *TToolBar {
     return AsToolBar(ptr)
 }
 
 // -------------------------- Deprecated end --------------------------
-// CN: 释放对象。
-// EN: Free object.
+// 释放对象。
+// 
+// Free object.
 func (t *TToolBar) Free() {
     if t.instance != 0 {
         ToolBar_Free(t.instance)
@@ -75,38 +81,44 @@ func (t *TToolBar) Free() {
     }
 }
 
-// CN: 返回对象实例指针。
-// EN: Return object instance pointer.
+// 返回对象实例指针。
+// 
+// Return object instance pointer.
 func (t *TToolBar) Instance() uintptr {
     return t.instance
 }
 
-// CN: 获取一个不安全的地址。
-// EN: Get an unsafe address.
+// 获取一个不安全的地址。
+// 
+// Get an unsafe address.
 func (t *TToolBar) UnsafeAddr() unsafe.Pointer {
     return t.ptr
 }
 
-// CN: 检测地址是否为空。
-// EN: Check if the address is empty.
+// 检测地址是否为空。
+// 
+// Check if the address is empty.
 func (t *TToolBar) IsValid() bool {
     return t.instance != 0
 }
 
-// CN: 检测当前对象是否继承自目标对象。
-// EN: Checks whether the current object is inherited from the target object.
+// 检测当前对象是否继承自目标对象。
+// 
+// Checks whether the current object is inherited from the target object.
 func (t *TToolBar) Is() TIs {
     return TIs(t.instance)
 }
 
-// CN: 动态转换当前对象为目标对象。
-// EN: Dynamically convert the current object to the target object.
+// 动态转换当前对象为目标对象。
+// 
+// Dynamically convert the current object to the target object.
 //func (t *TToolBar) As() TAs {
 //    return TAs(t.instance)
 //}
 
-// CN: 获取类信息指针。
-// EN: Get class information pointer.
+// 获取类信息指针。
+// 
+// Get class information pointer.
 func TToolBarClass() TClass {
     return ToolBar_StaticClassType()
 }
@@ -115,260 +127,301 @@ func (t *TToolBar) FlipChildren(AllLevels bool) {
     ToolBar_FlipChildren(t.instance, AllLevels)
 }
 
-// CN: 是否可以获得焦点。
-// EN: .
+// 是否可以获得焦点。
 func (t *TToolBar) CanFocus() bool {
     return ToolBar_CanFocus(t.instance)
 }
 
-// CN: 返回是否包含指定控件。
-// EN: it's contain a specified control.
+// 返回是否包含指定控件。
+//
+// it's contain a specified control.
 func (t *TToolBar) ContainsControl(Control IControl) bool {
     return ToolBar_ContainsControl(t.instance, CheckPtr(Control))
 }
 
-// CN: 返回指定坐标及相关属性位置控件。
-// EN: Returns the specified coordinate and the relevant attribute position control..
+// 返回指定坐标及相关属性位置控件。
+//
+// Returns the specified coordinate and the relevant attribute position control..
 func (t *TToolBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return AsControl(ToolBar_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
-// CN: 禁用控件的对齐。
-// EN: Disable control alignment.
+// 禁用控件的对齐。
+//
+// Disable control alignment.
 func (t *TToolBar) DisableAlign() {
     ToolBar_DisableAlign(t.instance)
 }
 
-// CN: 启用控件对齐。
-// EN: Enabled control alignment.
+// 启用控件对齐。
+//
+// Enabled control alignment.
 func (t *TToolBar) EnableAlign() {
     ToolBar_EnableAlign(t.instance)
 }
 
-// CN: 查找子控件。
-// EN: Find sub controls.
+// 查找子控件。
+//
+// Find sub controls.
 func (t *TToolBar) FindChildControl(ControlName string) *TControl {
     return AsControl(ToolBar_FindChildControl(t.instance, ControlName))
 }
 
-// CN: 返回是否获取焦点。
-// EN: Return to get focus.
+// 返回是否获取焦点。
+//
+// Return to get focus.
 func (t *TToolBar) Focused() bool {
     return ToolBar_Focused(t.instance)
 }
 
-// CN: 句柄是否已经分配。
-// EN: Is the handle already allocated.
+// 句柄是否已经分配。
+//
+// Is the handle already allocated.
 func (t *TToolBar) HandleAllocated() bool {
     return ToolBar_HandleAllocated(t.instance)
 }
 
-// CN: 插入一个控件。
-// EN: Insert a control.
+// 插入一个控件。
+//
+// Insert a control.
 func (t *TToolBar) InsertControl(AControl IControl) {
     ToolBar_InsertControl(t.instance, CheckPtr(AControl))
 }
 
-// CN: 要求重绘。
-// EN: Redraw.
+// 要求重绘。
+//
+// Redraw.
 func (t *TToolBar) Invalidate() {
     ToolBar_Invalidate(t.instance)
 }
 
-// CN: 移除一个控件。
-// EN: Remove a control.
+// 移除一个控件。
+//
+// Remove a control.
 func (t *TToolBar) RemoveControl(AControl IControl) {
     ToolBar_RemoveControl(t.instance, CheckPtr(AControl))
 }
 
-// CN: 重新对齐。
-// EN: Realign.
+// 重新对齐。
+//
+// Realign.
 func (t *TToolBar) Realign() {
     ToolBar_Realign(t.instance)
 }
 
-// CN: 重绘。
-// EN: Repaint.
+// 重绘。
+//
+// Repaint.
 func (t *TToolBar) Repaint() {
     ToolBar_Repaint(t.instance)
 }
 
-// CN: 按比例缩放。
-// EN: Scale by.
+// 按比例缩放。
+//
+// Scale by.
 func (t *TToolBar) ScaleBy(M int32, D int32) {
     ToolBar_ScaleBy(t.instance, M , D)
 }
 
-// CN: 滚动至指定位置。
-// EN: Scroll by.
+// 滚动至指定位置。
+//
+// Scroll by.
 func (t *TToolBar) ScrollBy(DeltaX int32, DeltaY int32) {
     ToolBar_ScrollBy(t.instance, DeltaX , DeltaY)
 }
 
-// CN: 设置组件边界。
-// EN: Set component boundaries.
+// 设置组件边界。
+//
+// Set component boundaries.
 func (t *TToolBar) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     ToolBar_SetBounds(t.instance, ALeft , ATop , AWidth , AHeight)
 }
 
-// CN: 设置控件焦点。
-// EN: Set control focus.
+// 设置控件焦点。
+//
+// Set control focus.
 func (t *TToolBar) SetFocus() {
     ToolBar_SetFocus(t.instance)
 }
 
-// CN: 控件更新。
-// EN: Update.
+// 控件更新。
+//
+// Update.
 func (t *TToolBar) Update() {
     ToolBar_Update(t.instance)
 }
 
-// CN: 将控件置于最前。
-// EN: Bring the control to the front.
+// 将控件置于最前。
+//
+// Bring the control to the front.
 func (t *TToolBar) BringToFront() {
     ToolBar_BringToFront(t.instance)
 }
 
-// CN: 将客户端坐标转为绝对的屏幕坐标。
-// EN: Convert client coordinates to absolute screen coordinates.
+// 将客户端坐标转为绝对的屏幕坐标。
+//
+// Convert client coordinates to absolute screen coordinates.
 func (t *TToolBar) ClientToScreen(Point TPoint) TPoint {
     return ToolBar_ClientToScreen(t.instance, Point)
 }
 
-// CN: 将客户端坐标转为父容器坐标。
-// EN: Convert client coordinates to parent container coordinates.
+// 将客户端坐标转为父容器坐标。
+//
+// Convert client coordinates to parent container coordinates.
 func (t *TToolBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ToolBar_ClientToParent(t.instance, Point , CheckPtr(AParent))
 }
 
-// CN: 是否在拖拽中。
-// EN: Is it in the middle of dragging.
+// 是否在拖拽中。
+//
+// Is it in the middle of dragging.
 func (t *TToolBar) Dragging() bool {
     return ToolBar_Dragging(t.instance)
 }
 
-// CN: 是否有父容器。
-// EN: Is there a parent container.
+// 是否有父容器。
+//
+// Is there a parent container.
 func (t *TToolBar) HasParent() bool {
     return ToolBar_HasParent(t.instance)
 }
 
-// CN: 隐藏控件。
-// EN: Hidden control.
+// 隐藏控件。
+//
+// Hidden control.
 func (t *TToolBar) Hide() {
     ToolBar_Hide(t.instance)
 }
 
-// CN: 发送一个消息。
-// EN: Send a message.
+// 发送一个消息。
+//
+// Send a message.
 func (t *TToolBar) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return ToolBar_Perform(t.instance, Msg , WParam , LParam)
 }
 
-// CN: 刷新控件。
-// EN: Refresh control.
+// 刷新控件。
+//
+// Refresh control.
 func (t *TToolBar) Refresh() {
     ToolBar_Refresh(t.instance)
 }
 
-// CN: 将屏幕坐标转为客户端坐标。
-// EN: Convert screen coordinates to client coordinates.
+// 将屏幕坐标转为客户端坐标。
+//
+// Convert screen coordinates to client coordinates.
 func (t *TToolBar) ScreenToClient(Point TPoint) TPoint {
     return ToolBar_ScreenToClient(t.instance, Point)
 }
 
-// CN: 将父容器坐标转为客户端坐标。
-// EN: Convert parent container coordinates to client coordinates.
+// 将父容器坐标转为客户端坐标。
+//
+// Convert parent container coordinates to client coordinates.
 func (t *TToolBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ToolBar_ParentToClient(t.instance, Point , CheckPtr(AParent))
 }
 
-// CN: 控件至于最后面。
-// EN: The control is placed at the end.
+// 控件至于最后面。
+//
+// The control is placed at the end.
 func (t *TToolBar) SendToBack() {
     ToolBar_SendToBack(t.instance)
 }
 
-// CN: 显示控件。
-// EN: Show control.
+// 显示控件。
+//
+// Show control.
 func (t *TToolBar) Show() {
     ToolBar_Show(t.instance)
 }
 
-// CN: 获取控件的字符，如果有。
-// EN: Get the characters of the control, if any.
+// 获取控件的字符，如果有。
+//
+// Get the characters of the control, if any.
 func (t *TToolBar) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return ToolBar_GetTextBuf(t.instance, Buffer , BufSize)
 }
 
-// CN: 获取控件的字符长，如果有。
-// EN: Get the character length of the control, if any.
+// 获取控件的字符长，如果有。
+//
+// Get the character length of the control, if any.
 func (t *TToolBar) GetTextLen() int32 {
     return ToolBar_GetTextLen(t.instance)
 }
 
-// CN: 设置控件字符，如果有。
-// EN: Set control characters, if any.
+// 设置控件字符，如果有。
+//
+// Set control characters, if any.
 func (t *TToolBar) SetTextBuf(Buffer string) {
     ToolBar_SetTextBuf(t.instance, Buffer)
 }
 
-// CN: 查找指定名称的组件。
-// EN: Find the component with the specified name.
+// 查找指定名称的组件。
+//
+// Find the component with the specified name.
 func (t *TToolBar) FindComponent(AName string) *TComponent {
     return AsComponent(ToolBar_FindComponent(t.instance, AName))
 }
 
-// CN: 获取类名路径。
-// EN: Get the class name path.
+// 获取类名路径。
+//
+// Get the class name path.
 func (t *TToolBar) GetNamePath() string {
     return ToolBar_GetNamePath(t.instance)
 }
 
-// CN: 复制一个对象，如果对象实现了此方法的话。
-// EN: Copy an object, if the object implements this method.
+// 复制一个对象，如果对象实现了此方法的话。
+//
+// Copy an object, if the object implements this method.
 func (t *TToolBar) Assign(Source IObject) {
     ToolBar_Assign(t.instance, CheckPtr(Source))
 }
 
-// CN: 获取类的类型信息。
-// EN: Get class type information.
+// 获取类的类型信息。
+//
+// Get class type information.
 func (t *TToolBar) ClassType() TClass {
     return ToolBar_ClassType(t.instance)
 }
 
-// CN: 获取当前对象类名称。
-// EN: Get the current object class name.
+// 获取当前对象类名称。
+//
+// Get the current object class name.
 func (t *TToolBar) ClassName() string {
     return ToolBar_ClassName(t.instance)
 }
 
-// CN: 获取当前对象实例大小。
-// EN: Get the current object instance size.
+// 获取当前对象实例大小。
+//
+// Get the current object instance size.
 func (t *TToolBar) InstanceSize() int32 {
     return ToolBar_InstanceSize(t.instance)
 }
 
-// CN: 判断当前类是否继承自指定类。
-// EN: Determine whether the current class inherits from the specified class.
+// 判断当前类是否继承自指定类。
+//
+// Determine whether the current class inherits from the specified class.
 func (t *TToolBar) InheritsFrom(AClass TClass) bool {
     return ToolBar_InheritsFrom(t.instance, AClass)
 }
 
-// CN: 与一个对象进行比较。
-// EN: Compare with an object.
+// 与一个对象进行比较。
+//
+// Compare with an object.
 func (t *TToolBar) Equals(Obj IObject) bool {
     return ToolBar_Equals(t.instance, CheckPtr(Obj))
 }
 
-// CN: 获取类的哈希值。
-// EN: Get the hash value of the class.
+// 获取类的哈希值。
+//
+// Get the hash value of the class.
 func (t *TToolBar) GetHashCode() int32 {
     return ToolBar_GetHashCode(t.instance)
 }
 
-// CN: 文本类信息。
-// EN: Text information.
+// 文本类信息。
+//
+// Text information.
 func (t *TToolBar) ToString() string {
     return ToolBar_ToString(t.instance)
 }
@@ -381,14 +434,12 @@ func (t *TToolBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICon
     ToolBar_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
-// CN: 置于指定控件的横向中心。
-// EN: .
+// 置于指定控件的横向中心。
 func (t *TToolBar) AnchorHorizontalCenterTo(ASibling IControl) {
     ToolBar_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
 }
 
-// CN: 置于指定控件的纵向中心。
-// EN: .
+// 置于指定控件的纵向中心。
 func (t *TToolBar) AnchorVerticalCenterTo(ASibling IControl) {
     ToolBar_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
 }
@@ -405,8 +456,7 @@ func (t *TToolBar) ButtonCount() int32 {
     return ToolBar_GetButtonCount(t.instance)
 }
 
-// CN: 获取画布。
-// EN: .
+// 获取画布。
 func (t *TToolBar) Canvas() *TCanvas {
     return AsCanvas(ToolBar_GetCanvas(t.instance))
 }
@@ -415,50 +465,46 @@ func (t *TToolBar) RowCount() int32 {
     return ToolBar_GetRowCount(t.instance)
 }
 
-// CN: 获取控件自动调整。
-// EN: Get Control automatically adjusts.
+// 获取控件自动调整。
+//
+// Get Control automatically adjusts.
 func (t *TToolBar) Align() TAlign {
     return ToolBar_GetAlign(t.instance)
 }
 
-// CN: 设置控件自动调整。
-// EN: Set Control automatically adjusts.
+// 设置控件自动调整。
+//
+// Set Control automatically adjusts.
 func (t *TToolBar) SetAlign(value TAlign) {
     ToolBar_SetAlign(t.instance, value)
 }
 
-// CN: 获取四个角位置的锚点。
-// EN: .
+// 获取四个角位置的锚点。
 func (t *TToolBar) Anchors() TAnchors {
     return ToolBar_GetAnchors(t.instance)
 }
 
-// CN: 设置四个角位置的锚点。
-// EN: .
+// 设置四个角位置的锚点。
 func (t *TToolBar) SetAnchors(value TAnchors) {
     ToolBar_SetAnchors(t.instance, value)
 }
 
-// CN: 获取自动调整大小。
-// EN: .
+// 获取自动调整大小。
 func (t *TToolBar) AutoSize() bool {
     return ToolBar_GetAutoSize(t.instance)
 }
 
-// CN: 设置自动调整大小。
-// EN: .
+// 设置自动调整大小。
 func (t *TToolBar) SetAutoSize(value bool) {
     ToolBar_SetAutoSize(t.instance, value)
 }
 
-// CN: 获取边框的宽度。
-// EN: .
+// 获取边框的宽度。
 func (t *TToolBar) BorderWidth() int32 {
     return ToolBar_GetBorderWidth(t.instance)
 }
 
-// CN: 设置边框的宽度。
-// EN: .
+// 设置边框的宽度。
 func (t *TToolBar) SetBorderWidth(value int32) {
     ToolBar_SetBorderWidth(t.instance, value)
 }
@@ -479,98 +525,110 @@ func (t *TToolBar) SetButtonWidth(value int32) {
     ToolBar_SetButtonWidth(t.instance, value)
 }
 
-// CN: 获取控件标题。
-// EN: Get the control title.
+// 获取控件标题。
+//
+// Get the control title.
 func (t *TToolBar) Caption() string {
     return ToolBar_GetCaption(t.instance)
 }
 
-// CN: 设置控件标题。
-// EN: Set the control title.
+// 设置控件标题。
+//
+// Set the control title.
 func (t *TToolBar) SetCaption(value string) {
     ToolBar_SetCaption(t.instance, value)
 }
 
-// CN: 获取颜色。
-// EN: Get color.
+// 获取颜色。
+//
+// Get color.
 func (t *TToolBar) Color() TColor {
     return ToolBar_GetColor(t.instance)
 }
 
-// CN: 设置颜色。
-// EN: Set color.
+// 设置颜色。
+//
+// Set color.
 func (t *TToolBar) SetColor(value TColor) {
     ToolBar_SetColor(t.instance, value)
 }
 
-// CN: 获取约束控件大小。
-// EN: .
+// 获取约束控件大小。
 func (t *TToolBar) Constraints() *TSizeConstraints {
     return AsSizeConstraints(ToolBar_GetConstraints(t.instance))
 }
 
-// CN: 设置约束控件大小。
-// EN: .
+// 设置约束控件大小。
 func (t *TToolBar) SetConstraints(value *TSizeConstraints) {
     ToolBar_SetConstraints(t.instance, CheckPtr(value))
 }
 
-// CN: 获取设置控件双缓冲。
-// EN: Get Set control double buffering.
+// 获取设置控件双缓冲。
+//
+// Get Set control double buffering.
 func (t *TToolBar) DoubleBuffered() bool {
     return ToolBar_GetDoubleBuffered(t.instance)
 }
 
-// CN: 设置设置控件双缓冲。
-// EN: Set Set control double buffering.
+// 设置设置控件双缓冲。
+//
+// Set Set control double buffering.
 func (t *TToolBar) SetDoubleBuffered(value bool) {
     ToolBar_SetDoubleBuffered(t.instance, value)
 }
 
-// CN: 获取停靠站点。
-// EN: Get Docking site.
+// 获取停靠站点。
+//
+// Get Docking site.
 func (t *TToolBar) DockSite() bool {
     return ToolBar_GetDockSite(t.instance)
 }
 
-// CN: 设置停靠站点。
-// EN: Set Docking site.
+// 设置停靠站点。
+//
+// Set Docking site.
 func (t *TToolBar) SetDockSite(value bool) {
     ToolBar_SetDockSite(t.instance, value)
 }
 
-// CN: 获取设置控件拖拽时的光标。
-// EN: Get Set the cursor when the control is dragged.
+// 获取设置控件拖拽时的光标。
+//
+// Get Set the cursor when the control is dragged.
 func (t *TToolBar) DragCursor() TCursor {
     return ToolBar_GetDragCursor(t.instance)
 }
 
-// CN: 设置设置控件拖拽时的光标。
-// EN: Set Set the cursor when the control is dragged.
+// 设置设置控件拖拽时的光标。
+//
+// Set Set the cursor when the control is dragged.
 func (t *TToolBar) SetDragCursor(value TCursor) {
     ToolBar_SetDragCursor(t.instance, value)
 }
 
-// CN: 获取拖拽方式。
-// EN: Get Drag and drop.
+// 获取拖拽方式。
+//
+// Get Drag and drop.
 func (t *TToolBar) DragKind() TDragKind {
     return ToolBar_GetDragKind(t.instance)
 }
 
-// CN: 设置拖拽方式。
-// EN: Set Drag and drop.
+// 设置拖拽方式。
+//
+// Set Drag and drop.
 func (t *TToolBar) SetDragKind(value TDragKind) {
     ToolBar_SetDragKind(t.instance, value)
 }
 
-// CN: 获取拖拽模式。
-// EN: Get Drag mode.
+// 获取拖拽模式。
+//
+// Get Drag mode.
 func (t *TToolBar) DragMode() TDragMode {
     return ToolBar_GetDragMode(t.instance)
 }
 
-// CN: 设置拖拽模式。
-// EN: Set Drag mode.
+// 设置拖拽模式。
+//
+// Set Drag mode.
 func (t *TToolBar) SetDragMode(value TDragMode) {
     ToolBar_SetDragMode(t.instance, value)
 }
@@ -599,50 +657,54 @@ func (t *TToolBar) SetEdgeOuter(value TEdgeStyle) {
     ToolBar_SetEdgeOuter(t.instance, value)
 }
 
-// CN: 获取控件启用。
-// EN: Get the control enabled.
+// 获取控件启用。
+//
+// Get the control enabled.
 func (t *TToolBar) Enabled() bool {
     return ToolBar_GetEnabled(t.instance)
 }
 
-// CN: 设置控件启用。
-// EN: Set the control enabled.
+// 设置控件启用。
+//
+// Set the control enabled.
 func (t *TToolBar) SetEnabled(value bool) {
     ToolBar_SetEnabled(t.instance, value)
 }
 
-// CN: 获取平面样式。
-// EN: .
+// 获取平面样式。
 func (t *TToolBar) Flat() bool {
     return ToolBar_GetFlat(t.instance)
 }
 
-// CN: 设置平面样式。
-// EN: .
+// 设置平面样式。
 func (t *TToolBar) SetFlat(value bool) {
     ToolBar_SetFlat(t.instance, value)
 }
 
-// CN: 获取字体。
-// EN: Get Font.
+// 获取字体。
+//
+// Get Font.
 func (t *TToolBar) Font() *TFont {
     return AsFont(ToolBar_GetFont(t.instance))
 }
 
-// CN: 设置字体。
-// EN: Set Font.
+// 设置字体。
+//
+// Set Font.
 func (t *TToolBar) SetFont(value *TFont) {
     ToolBar_SetFont(t.instance, CheckPtr(value))
 }
 
-// CN: 获取高度。
-// EN: Get height.
+// 获取高度。
+//
+// Get height.
 func (t *TToolBar) Height() int32 {
     return ToolBar_GetHeight(t.instance)
 }
 
-// CN: 设置高度。
-// EN: Set height.
+// 设置高度。
+//
+// Set height.
 func (t *TToolBar) SetHeight(value int32) {
     ToolBar_SetHeight(t.instance, value)
 }
@@ -655,14 +717,12 @@ func (t *TToolBar) SetHotImages(value IComponent) {
     ToolBar_SetHotImages(t.instance, CheckPtr(value))
 }
 
-// CN: 获取图标索引列表对象。
-// EN: .
+// 获取图标索引列表对象。
 func (t *TToolBar) Images() *TImageList {
     return AsImageList(ToolBar_GetImages(t.instance))
 }
 
-// CN: 设置图标索引列表对象。
-// EN: .
+// 设置图标索引列表对象。
 func (t *TToolBar) SetImages(value IComponent) {
     ToolBar_SetImages(t.instance, CheckPtr(value))
 }
@@ -683,134 +743,148 @@ func (t *TToolBar) SetList(value bool) {
     ToolBar_SetList(t.instance, value)
 }
 
-// CN: 获取使用父容器颜色。
-// EN: Get parent color.
+// 获取使用父容器颜色。
+//
+// Get parent color.
 func (t *TToolBar) ParentColor() bool {
     return ToolBar_GetParentColor(t.instance)
 }
 
-// CN: 设置使用父容器颜色。
-// EN: Set parent color.
+// 设置使用父容器颜色。
+//
+// Set parent color.
 func (t *TToolBar) SetParentColor(value bool) {
     ToolBar_SetParentColor(t.instance, value)
 }
 
-// CN: 获取使用父容器双缓冲。
-// EN: Get Parent container double buffering.
+// 获取使用父容器双缓冲。
+//
+// Get Parent container double buffering.
 func (t *TToolBar) ParentDoubleBuffered() bool {
     return ToolBar_GetParentDoubleBuffered(t.instance)
 }
 
-// CN: 设置使用父容器双缓冲。
-// EN: Set Parent container double buffering.
+// 设置使用父容器双缓冲。
+//
+// Set Parent container double buffering.
 func (t *TToolBar) SetParentDoubleBuffered(value bool) {
     ToolBar_SetParentDoubleBuffered(t.instance, value)
 }
 
-// CN: 获取使用父容器字体。
-// EN: Get Parent container font.
+// 获取使用父容器字体。
+//
+// Get Parent container font.
 func (t *TToolBar) ParentFont() bool {
     return ToolBar_GetParentFont(t.instance)
 }
 
-// CN: 设置使用父容器字体。
-// EN: Set Parent container font.
+// 设置使用父容器字体。
+//
+// Set Parent container font.
 func (t *TToolBar) SetParentFont(value bool) {
     ToolBar_SetParentFont(t.instance, value)
 }
 
-// CN: 获取以父容器的ShowHint属性为准。
-// EN: .
+// 获取以父容器的ShowHint属性为准。
 func (t *TToolBar) ParentShowHint() bool {
     return ToolBar_GetParentShowHint(t.instance)
 }
 
-// CN: 设置以父容器的ShowHint属性为准。
-// EN: .
+// 设置以父容器的ShowHint属性为准。
 func (t *TToolBar) SetParentShowHint(value bool) {
     ToolBar_SetParentShowHint(t.instance, value)
 }
 
-// CN: 获取右键菜单。
-// EN: Get Right click menu.
+// 获取右键菜单。
+//
+// Get Right click menu.
 func (t *TToolBar) PopupMenu() *TPopupMenu {
     return AsPopupMenu(ToolBar_GetPopupMenu(t.instance))
 }
 
-// CN: 设置右键菜单。
-// EN: Set Right click menu.
+// 设置右键菜单。
+//
+// Set Right click menu.
 func (t *TToolBar) SetPopupMenu(value IComponent) {
     ToolBar_SetPopupMenu(t.instance, CheckPtr(value))
 }
 
-// CN: 获取显示标题。
-// EN: .
+// 获取显示标题。
 func (t *TToolBar) ShowCaptions() bool {
     return ToolBar_GetShowCaptions(t.instance)
 }
 
-// CN: 设置显示标题。
-// EN: .
+// 设置显示标题。
 func (t *TToolBar) SetShowCaptions(value bool) {
     ToolBar_SetShowCaptions(t.instance, value)
 }
 
-// CN: 获取显示鼠标悬停提示。
-// EN: Get Show mouseover tips.
+// 获取显示鼠标悬停提示。
+//
+// Get Show mouseover tips.
 func (t *TToolBar) ShowHint() bool {
     return ToolBar_GetShowHint(t.instance)
 }
 
-// CN: 设置显示鼠标悬停提示。
-// EN: Set Show mouseover tips.
+// 设置显示鼠标悬停提示。
+//
+// Set Show mouseover tips.
 func (t *TToolBar) SetShowHint(value bool) {
     ToolBar_SetShowHint(t.instance, value)
 }
 
-// CN: 获取Tab切换顺序序号。
-// EN: Get Tab switching sequence number.
+// 获取Tab切换顺序序号。
+//
+// Get Tab switching sequence number.
 func (t *TToolBar) TabOrder() TTabOrder {
     return ToolBar_GetTabOrder(t.instance)
 }
 
-// CN: 设置Tab切换顺序序号。
-// EN: Set Tab switching sequence number.
+// 设置Tab切换顺序序号。
+//
+// Set Tab switching sequence number.
 func (t *TToolBar) SetTabOrder(value TTabOrder) {
     ToolBar_SetTabOrder(t.instance, value)
 }
 
-// CN: 获取Tab可停留。
-// EN: Get Tab can stay.
+// 获取Tab可停留。
+//
+// Get Tab can stay.
 func (t *TToolBar) TabStop() bool {
     return ToolBar_GetTabStop(t.instance)
 }
 
-// CN: 设置Tab可停留。
-// EN: Set Tab can stay.
+// 设置Tab可停留。
+//
+// Set Tab can stay.
 func (t *TToolBar) SetTabStop(value bool) {
     ToolBar_SetTabStop(t.instance, value)
 }
 
-// CN: 获取透明。
-// EN: Get transparent.
+// 获取透明。
+//
+// Get transparent.
 func (t *TToolBar) Transparent() bool {
     return ToolBar_GetTransparent(t.instance)
 }
 
-// CN: 设置透明。
-// EN: Set transparent.
+// 设置透明。
+//
+// Set transparent.
 func (t *TToolBar) SetTransparent(value bool) {
     ToolBar_SetTransparent(t.instance, value)
 }
 
-// CN: 获取控件可视。
-// EN: Get the control visible.
+// 获取控件可视。
+//
+// Get the control visible.
 func (t *TToolBar) Visible() bool {
     return ToolBar_GetVisible(t.instance)
 }
 
-// CN: 设置控件可视。
-// EN: Set the control visible.
+// 设置控件可视。
+//
+// Set the control visible.
 func (t *TToolBar) SetVisible(value bool) {
     ToolBar_SetVisible(t.instance, value)
 }
@@ -823,20 +897,21 @@ func (t *TToolBar) SetWrapable(value bool) {
     ToolBar_SetWrapable(t.instance, value)
 }
 
-// CN: 设置控件单击事件。
-// EN: Set control click event.
+// 设置控件单击事件。
+//
+// Set control click event.
 func (t *TToolBar) SetOnClick(fn TNotifyEvent) {
     ToolBar_SetOnClick(t.instance, fn)
 }
 
-// CN: 设置上下文弹出事件，一般是右键时弹出。
-// EN: Set Context popup event, usually pop up when right click.
+// 设置上下文弹出事件，一般是右键时弹出。
+//
+// Set Context popup event, usually pop up when right click.
 func (t *TToolBar) SetOnContextPopup(fn TContextPopupEvent) {
     ToolBar_SetOnContextPopup(t.instance, fn)
 }
 
-// CN: 设置双击事件。
-// EN: .
+// 设置双击事件。
 func (t *TToolBar) SetOnDblClick(fn TNotifyEvent) {
     ToolBar_SetOnDblClick(t.instance, fn)
 }
@@ -845,68 +920,75 @@ func (t *TToolBar) SetOnDockDrop(fn TDockDropEvent) {
     ToolBar_SetOnDockDrop(t.instance, fn)
 }
 
-// CN: 设置拖拽下落事件。
-// EN: Set Drag and drop event.
+// 设置拖拽下落事件。
+//
+// Set Drag and drop event.
 func (t *TToolBar) SetOnDragDrop(fn TDragDropEvent) {
     ToolBar_SetOnDragDrop(t.instance, fn)
 }
 
-// CN: 设置拖拽完成事件。
-// EN: Set Drag and drop completion event.
+// 设置拖拽完成事件。
+//
+// Set Drag and drop completion event.
 func (t *TToolBar) SetOnDragOver(fn TDragOverEvent) {
     ToolBar_SetOnDragOver(t.instance, fn)
 }
 
-// CN: 设置拖拽结束。
-// EN: Set End of drag.
+// 设置拖拽结束。
+//
+// Set End of drag.
 func (t *TToolBar) SetOnEndDrag(fn TEndDragEvent) {
     ToolBar_SetOnEndDrag(t.instance, fn)
 }
 
-// CN: 设置焦点进入。
-// EN: Set Focus entry.
+// 设置焦点进入。
+//
+// Set Focus entry.
 func (t *TToolBar) SetOnEnter(fn TNotifyEvent) {
     ToolBar_SetOnEnter(t.instance, fn)
 }
 
-// CN: 设置焦点退出。
-// EN: Set Focus exit.
+// 设置焦点退出。
+//
+// Set Focus exit.
 func (t *TToolBar) SetOnExit(fn TNotifyEvent) {
     ToolBar_SetOnExit(t.instance, fn)
 }
 
-// CN: 设置鼠标按下事件。
-// EN: Set Mouse down event.
+// 设置鼠标按下事件。
+//
+// Set Mouse down event.
 func (t *TToolBar) SetOnMouseDown(fn TMouseEvent) {
     ToolBar_SetOnMouseDown(t.instance, fn)
 }
 
-// CN: 设置鼠标进入事件。
-// EN: Set Mouse entry event.
+// 设置鼠标进入事件。
+//
+// Set Mouse entry event.
 func (t *TToolBar) SetOnMouseEnter(fn TNotifyEvent) {
     ToolBar_SetOnMouseEnter(t.instance, fn)
 }
 
-// CN: 设置鼠标离开事件。
-// EN: Set Mouse leave event.
+// 设置鼠标离开事件。
+//
+// Set Mouse leave event.
 func (t *TToolBar) SetOnMouseLeave(fn TNotifyEvent) {
     ToolBar_SetOnMouseLeave(t.instance, fn)
 }
 
-// CN: 设置鼠标移动事件。
-// EN: .
+// 设置鼠标移动事件。
 func (t *TToolBar) SetOnMouseMove(fn TMouseMoveEvent) {
     ToolBar_SetOnMouseMove(t.instance, fn)
 }
 
-// CN: 设置鼠标抬起事件。
-// EN: Set Mouse lift event.
+// 设置鼠标抬起事件。
+//
+// Set Mouse lift event.
 func (t *TToolBar) SetOnMouseUp(fn TMouseEvent) {
     ToolBar_SetOnMouseUp(t.instance, fn)
 }
 
-// CN: 设置大小被改变事件。
-// EN: .
+// 设置大小被改变事件。
 func (t *TToolBar) SetOnResize(fn TNotifyEvent) {
     ToolBar_SetOnResize(t.instance, fn)
 }
@@ -915,50 +997,56 @@ func (t *TToolBar) SetOnUnDock(fn TUnDockEvent) {
     ToolBar_SetOnUnDock(t.instance, fn)
 }
 
-// CN: 获取依靠客户端总数。
-// EN: .
+// 获取依靠客户端总数。
 func (t *TToolBar) DockClientCount() int32 {
     return ToolBar_GetDockClientCount(t.instance)
 }
 
-// CN: 获取鼠标是否在客户端，仅VCL有效。
-// EN: Get Whether the mouse is on the client, only VCL is valid.
+// 获取鼠标是否在客户端，仅VCL有效。
+//
+// Get Whether the mouse is on the client, only VCL is valid.
 func (t *TToolBar) MouseInClient() bool {
     return ToolBar_GetMouseInClient(t.instance)
 }
 
-// CN: 获取当前停靠的可视总数。
-// EN: Get The total number of visible calls currently docked.
+// 获取当前停靠的可视总数。
+//
+// Get The total number of visible calls currently docked.
 func (t *TToolBar) VisibleDockClientCount() int32 {
     return ToolBar_GetVisibleDockClientCount(t.instance)
 }
 
-// CN: 获取画刷对象。
-// EN: Get Brush.
+// 获取画刷对象。
+//
+// Get Brush.
 func (t *TToolBar) Brush() *TBrush {
     return AsBrush(ToolBar_GetBrush(t.instance))
 }
 
-// CN: 获取子控件数。
-// EN: Get Number of child controls.
+// 获取子控件数。
+//
+// Get Number of child controls.
 func (t *TToolBar) ControlCount() int32 {
     return ToolBar_GetControlCount(t.instance)
 }
 
-// CN: 获取控件句柄。
-// EN: Get Control handle.
+// 获取控件句柄。
+//
+// Get Control handle.
 func (t *TToolBar) Handle() HWND {
     return ToolBar_GetHandle(t.instance)
 }
 
-// CN: 获取父容器句柄。
-// EN: Get Parent container handle.
+// 获取父容器句柄。
+//
+// Get Parent container handle.
 func (t *TToolBar) ParentWindow() HWND {
     return ToolBar_GetParentWindow(t.instance)
 }
 
-// CN: 设置父容器句柄。
-// EN: Set Parent container handle.
+// 设置父容器句柄。
+//
+// Set Parent container handle.
 func (t *TToolBar) SetParentWindow(value HWND) {
     ToolBar_SetParentWindow(t.instance, value)
 }
@@ -967,14 +1055,12 @@ func (t *TToolBar) Showing() bool {
     return ToolBar_GetShowing(t.instance)
 }
 
-// CN: 获取使用停靠管理。
-// EN: .
+// 获取使用停靠管理。
 func (t *TToolBar) UseDockManager() bool {
     return ToolBar_GetUseDockManager(t.instance)
 }
 
-// CN: 设置使用停靠管理。
-// EN: .
+// 设置使用停靠管理。
 func (t *TToolBar) SetUseDockManager(value bool) {
     ToolBar_SetUseDockManager(t.instance, value)
 }
@@ -1003,14 +1089,16 @@ func (t *TToolBar) SetBoundsRect(value TRect) {
     ToolBar_SetBoundsRect(t.instance, value)
 }
 
-// CN: 获取客户区高度。
-// EN: Get client height.
+// 获取客户区高度。
+//
+// Get client height.
 func (t *TToolBar) ClientHeight() int32 {
     return ToolBar_GetClientHeight(t.instance)
 }
 
-// CN: 设置客户区高度。
-// EN: Set client height.
+// 设置客户区高度。
+//
+// Set client height.
 func (t *TToolBar) SetClientHeight(value int32) {
     ToolBar_SetClientHeight(t.instance, value)
 }
@@ -1019,44 +1107,51 @@ func (t *TToolBar) ClientOrigin() TPoint {
     return ToolBar_GetClientOrigin(t.instance)
 }
 
-// CN: 获取客户区矩形。
-// EN: Get client rectangle.
+// 获取客户区矩形。
+//
+// Get client rectangle.
 func (t *TToolBar) ClientRect() TRect {
     return ToolBar_GetClientRect(t.instance)
 }
 
-// CN: 获取客户区宽度。
-// EN: Get client width.
+// 获取客户区宽度。
+//
+// Get client width.
 func (t *TToolBar) ClientWidth() int32 {
     return ToolBar_GetClientWidth(t.instance)
 }
 
-// CN: 设置客户区宽度。
-// EN: Set client width.
+// 设置客户区宽度。
+//
+// Set client width.
 func (t *TToolBar) SetClientWidth(value int32) {
     ToolBar_SetClientWidth(t.instance, value)
 }
 
-// CN: 获取控件状态。
-// EN: Get control state.
+// 获取控件状态。
+//
+// Get control state.
 func (t *TToolBar) ControlState() TControlState {
     return ToolBar_GetControlState(t.instance)
 }
 
-// CN: 设置控件状态。
-// EN: Set control state.
+// 设置控件状态。
+//
+// Set control state.
 func (t *TToolBar) SetControlState(value TControlState) {
     ToolBar_SetControlState(t.instance, value)
 }
 
-// CN: 获取控件样式。
-// EN: Get control style.
+// 获取控件样式。
+//
+// Get control style.
 func (t *TToolBar) ControlStyle() TControlStyle {
     return ToolBar_GetControlStyle(t.instance)
 }
 
-// CN: 设置控件样式。
-// EN: Set control style.
+// 设置控件样式。
+//
+// Set control style.
 func (t *TToolBar) SetControlStyle(value TControlStyle) {
     ToolBar_SetControlStyle(t.instance, value)
 }
@@ -1065,170 +1160,182 @@ func (t *TToolBar) Floating() bool {
     return ToolBar_GetFloating(t.instance)
 }
 
-// CN: 获取控件父容器。
-// EN: Get control parent container.
+// 获取控件父容器。
+//
+// Get control parent container.
 func (t *TToolBar) Parent() *TWinControl {
     return AsWinControl(ToolBar_GetParent(t.instance))
 }
 
-// CN: 设置控件父容器。
-// EN: Set control parent container.
+// 设置控件父容器。
+//
+// Set control parent container.
 func (t *TToolBar) SetParent(value IWinControl) {
     ToolBar_SetParent(t.instance, CheckPtr(value))
 }
 
-// CN: 获取左边位置。
-// EN: Get Left position.
+// 获取左边位置。
+//
+// Get Left position.
 func (t *TToolBar) Left() int32 {
     return ToolBar_GetLeft(t.instance)
 }
 
-// CN: 设置左边位置。
-// EN: Set Left position.
+// 设置左边位置。
+//
+// Set Left position.
 func (t *TToolBar) SetLeft(value int32) {
     ToolBar_SetLeft(t.instance, value)
 }
 
-// CN: 获取顶边位置。
-// EN: Get Top position.
+// 获取顶边位置。
+//
+// Get Top position.
 func (t *TToolBar) Top() int32 {
     return ToolBar_GetTop(t.instance)
 }
 
-// CN: 设置顶边位置。
-// EN: Set Top position.
+// 设置顶边位置。
+//
+// Set Top position.
 func (t *TToolBar) SetTop(value int32) {
     ToolBar_SetTop(t.instance, value)
 }
 
-// CN: 获取宽度。
-// EN: Get width.
+// 获取宽度。
+//
+// Get width.
 func (t *TToolBar) Width() int32 {
     return ToolBar_GetWidth(t.instance)
 }
 
-// CN: 设置宽度。
-// EN: Set width.
+// 设置宽度。
+//
+// Set width.
 func (t *TToolBar) SetWidth(value int32) {
     ToolBar_SetWidth(t.instance, value)
 }
 
-// CN: 获取控件光标。
-// EN: Get control cursor.
+// 获取控件光标。
+//
+// Get control cursor.
 func (t *TToolBar) Cursor() TCursor {
     return ToolBar_GetCursor(t.instance)
 }
 
-// CN: 设置控件光标。
-// EN: Set control cursor.
+// 设置控件光标。
+//
+// Set control cursor.
 func (t *TToolBar) SetCursor(value TCursor) {
     ToolBar_SetCursor(t.instance, value)
 }
 
-// CN: 获取组件鼠标悬停提示。
-// EN: Get component mouse hints.
+// 获取组件鼠标悬停提示。
+//
+// Get component mouse hints.
 func (t *TToolBar) Hint() string {
     return ToolBar_GetHint(t.instance)
 }
 
-// CN: 设置组件鼠标悬停提示。
-// EN: Set component mouse hints.
+// 设置组件鼠标悬停提示。
+//
+// Set component mouse hints.
 func (t *TToolBar) SetHint(value string) {
     ToolBar_SetHint(t.instance, value)
 }
 
-// CN: 获取组件总数。
-// EN: Get the total number of components.
+// 获取组件总数。
+//
+// Get the total number of components.
 func (t *TToolBar) ComponentCount() int32 {
     return ToolBar_GetComponentCount(t.instance)
 }
 
-// CN: 获取组件索引。
-// EN: Get component index.
+// 获取组件索引。
+//
+// Get component index.
 func (t *TToolBar) ComponentIndex() int32 {
     return ToolBar_GetComponentIndex(t.instance)
 }
 
-// CN: 设置组件索引。
-// EN: Set component index.
+// 设置组件索引。
+//
+// Set component index.
 func (t *TToolBar) SetComponentIndex(value int32) {
     ToolBar_SetComponentIndex(t.instance, value)
 }
 
-// CN: 获取组件所有者。
-// EN: Get component owner.
+// 获取组件所有者。
+//
+// Get component owner.
 func (t *TToolBar) Owner() *TComponent {
     return AsComponent(ToolBar_GetOwner(t.instance))
 }
 
-// CN: 获取组件名称。
-// EN: Get the component name.
+// 获取组件名称。
+//
+// Get the component name.
 func (t *TToolBar) Name() string {
     return ToolBar_GetName(t.instance)
 }
 
-// CN: 设置组件名称。
-// EN: Set the component name.
+// 设置组件名称。
+//
+// Set the component name.
 func (t *TToolBar) SetName(value string) {
     ToolBar_SetName(t.instance, value)
 }
 
-// CN: 获取对象标记。
-// EN: Get the control tag.
+// 获取对象标记。
+//
+// Get the control tag.
 func (t *TToolBar) Tag() int {
     return ToolBar_GetTag(t.instance)
 }
 
-// CN: 设置对象标记。
-// EN: Set the control tag.
+// 设置对象标记。
+//
+// Set the control tag.
 func (t *TToolBar) SetTag(value int) {
     ToolBar_SetTag(t.instance, value)
 }
 
-// CN: 获取左边锚点。
-// EN: .
+// 获取左边锚点。
 func (t *TToolBar) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(ToolBar_GetAnchorSideLeft(t.instance))
 }
 
-// CN: 设置左边锚点。
-// EN: .
+// 设置左边锚点。
 func (t *TToolBar) SetAnchorSideLeft(value *TAnchorSide) {
     ToolBar_SetAnchorSideLeft(t.instance, CheckPtr(value))
 }
 
-// CN: 获取顶边锚点。
-// EN: .
+// 获取顶边锚点。
 func (t *TToolBar) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(ToolBar_GetAnchorSideTop(t.instance))
 }
 
-// CN: 设置顶边锚点。
-// EN: .
+// 设置顶边锚点。
 func (t *TToolBar) SetAnchorSideTop(value *TAnchorSide) {
     ToolBar_SetAnchorSideTop(t.instance, CheckPtr(value))
 }
 
-// CN: 获取右边锚点。
-// EN: .
+// 获取右边锚点。
 func (t *TToolBar) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(ToolBar_GetAnchorSideRight(t.instance))
 }
 
-// CN: 设置右边锚点。
-// EN: .
+// 设置右边锚点。
 func (t *TToolBar) SetAnchorSideRight(value *TAnchorSide) {
     ToolBar_SetAnchorSideRight(t.instance, CheckPtr(value))
 }
 
-// CN: 获取底边锚点。
-// EN: .
+// 获取底边锚点。
 func (t *TToolBar) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(ToolBar_GetAnchorSideBottom(t.instance))
 }
 
-// CN: 设置底边锚点。
-// EN: .
+// 设置底边锚点。
 func (t *TToolBar) SetAnchorSideBottom(value *TAnchorSide) {
     ToolBar_SetAnchorSideBottom(t.instance, CheckPtr(value))
 }
@@ -1241,14 +1348,12 @@ func (t *TToolBar) SetChildSizing(value *TControlChildSizing) {
     ToolBar_SetChildSizing(t.instance, CheckPtr(value))
 }
 
-// CN: 获取边框间距。
-// EN: .
+// 获取边框间距。
 func (t *TToolBar) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(ToolBar_GetBorderSpacing(t.instance))
 }
 
-// CN: 设置边框间距。
-// EN: .
+// 设置边框间距。
 func (t *TToolBar) SetBorderSpacing(value *TControlBorderSpacing) {
     ToolBar_SetBorderSpacing(t.instance, CheckPtr(value))
 }
@@ -1257,26 +1362,24 @@ func (t *TToolBar) Buttons(Index int32) *TToolButton {
     return AsToolButton(ToolBar_GetButtons(t.instance, Index))
 }
 
-// CN: 获取指定索引停靠客户端。
-// EN: .
+// 获取指定索引停靠客户端。
 func (t *TToolBar) DockClients(Index int32) *TControl {
     return AsControl(ToolBar_GetDockClients(t.instance, Index))
 }
 
-// CN: 获取指定索引子控件。
-// EN: .
+// 获取指定索引子控件。
 func (t *TToolBar) Controls(Index int32) *TControl {
     return AsControl(ToolBar_GetControls(t.instance, Index))
 }
 
-// CN: 获取指定索引组件。
-// EN: Get the specified index component.
+// 获取指定索引组件。
+//
+// Get the specified index component.
 func (t *TToolBar) Components(AIndex int32) *TComponent {
     return AsComponent(ToolBar_GetComponents(t.instance, AIndex))
 }
 
-// CN: 获取锚侧面。
-// EN: .
+// 获取锚侧面。
 func (t *TToolBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(ToolBar_GetAnchorSide(t.instance, AKind))
 }

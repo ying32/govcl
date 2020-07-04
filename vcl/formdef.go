@@ -81,7 +81,7 @@ func (f *TForm) SetOnWndProc(fn TWndProcEvent) {
 
 // 这个方法主要是用于当不使用资源窗口创建时用，这个方法要用于设置了Width, Height或者ClientWidth、ClientHeight之后
 func (f *TForm) ScaleSelf() {
-	if globalFormScaled {
+	if Application.Scaled() {
 		f.SetClientWidth(int32(float64(f.ClientWidth()) * (float64(Screen.PixelsPerInch()) / 96.0)))
 		f.SetClientHeight(int32(float64(f.ClientHeight()) * (float64(Screen.PixelsPerInch()) / 96.0)))
 	}

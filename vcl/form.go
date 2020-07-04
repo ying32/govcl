@@ -24,8 +24,9 @@ type TForm struct {
     ptr unsafe.Pointer
 }
 
-// CN: 创建一个新的对象。
-// EN: Create a new object.
+// 创建一个新的对象。
+// 
+// Create a new object.
 func NewForm(owner IComponent) *TForm {
     f := new(TForm)
     f.instance = Form_Create(CheckPtr(owner))
@@ -35,8 +36,9 @@ func NewForm(owner IComponent) *TForm {
     return f
 }
 
-// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
-// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+// 动态转换一个已存在的对象实例。
+// 
+// Dynamically convert an existing object instance.
 func AsForm(obj interface{}) *TForm {
     instance, ptr := getInstance(obj)
     if instance == 0 { return nil }
@@ -44,30 +46,34 @@ func AsForm(obj interface{}) *TForm {
 }
 
 // -------------------------- Deprecated begin --------------------------
-// CN: 新建一个对象来自已经存在的对象实例指针。
-// EN: Create a new object from an existing object instance pointer.
+// 新建一个对象来自已经存在的对象实例指针。
+// 
+// Create a new object from an existing object instance pointer.
 // Deprecated: use AsForm.
 func FormFromInst(inst uintptr) *TForm {
     return AsForm(inst)
 }
 
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// 新建一个对象来自已经存在的对象实例。
+// 
+// Create a new object from an existing object instance.
 // Deprecated: use AsForm.
 func FormFromObj(obj IObject) *TForm {
     return AsForm(obj)
 }
 
-// CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
+// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+// 
+// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsForm.
 func FormFromUnsafePointer(ptr unsafe.Pointer) *TForm {
     return AsForm(ptr)
 }
 
 // -------------------------- Deprecated end --------------------------
-// CN: 释放对象。
-// EN: Free object.
+// 释放对象。
+// 
+// Free object.
 func (f *TForm) Free() {
     if f.instance != 0 {
         Form_Free(f.instance)
@@ -75,44 +81,49 @@ func (f *TForm) Free() {
     }
 }
 
-// CN: 返回对象实例指针。
-// EN: Return object instance pointer.
+// 返回对象实例指针。
+// 
+// Return object instance pointer.
 func (f *TForm) Instance() uintptr {
     return f.instance
 }
 
-// CN: 获取一个不安全的地址。
-// EN: Get an unsafe address.
+// 获取一个不安全的地址。
+// 
+// Get an unsafe address.
 func (f *TForm) UnsafeAddr() unsafe.Pointer {
     return f.ptr
 }
 
-// CN: 检测地址是否为空。
-// EN: Check if the address is empty.
+// 检测地址是否为空。
+// 
+// Check if the address is empty.
 func (f *TForm) IsValid() bool {
     return f.instance != 0
 }
 
-// CN: 检测当前对象是否继承自目标对象。
-// EN: Checks whether the current object is inherited from the target object.
+// 检测当前对象是否继承自目标对象。
+// 
+// Checks whether the current object is inherited from the target object.
 func (f *TForm) Is() TIs {
     return TIs(f.instance)
 }
 
-// CN: 动态转换当前对象为目标对象。
-// EN: Dynamically convert the current object to the target object.
+// 动态转换当前对象为目标对象。
+// 
+// Dynamically convert the current object to the target object.
 //func (f *TForm) As() TAs {
 //    return TAs(f.instance)
 //}
 
-// CN: 获取类信息指针。
-// EN: Get class information pointer.
+// 获取类信息指针。
+// 
+// Get class information pointer.
 func TFormClass() TClass {
     return Form_StaticClassType()
 }
 
-// CN: 关闭。
-// EN: .
+// 关闭。
 func (f *TForm) Close() {
     Form_Close(f.instance)
 }
@@ -121,26 +132,28 @@ func (f *TForm) FocusControl(Control IWinControl) {
     Form_FocusControl(f.instance, CheckPtr(Control))
 }
 
-// CN: 隐藏控件。
-// EN: Hidden control.
+// 隐藏控件。
+//
+// Hidden control.
 func (f *TForm) Hide() {
     Form_Hide(f.instance)
 }
 
-// CN: 设置控件焦点。
-// EN: Set control focus.
+// 设置控件焦点。
+//
+// Set control focus.
 func (f *TForm) SetFocus() {
     Form_SetFocus(f.instance)
 }
 
-// CN: 显示控件。
-// EN: Show control.
+// 显示控件。
+//
+// Show control.
 func (f *TForm) Show() {
     Form_Show(f.instance)
 }
 
-// CN: 以模态模式显示对话框。
-// EN: .
+// 以模态模式显示对话框。
 func (f *TForm) ShowModal() int32 {
     return Form_ShowModal(f.instance)
 }
@@ -149,38 +162,42 @@ func (f *TForm) ScrollInView(AControl IControl) {
     Form_ScrollInView(f.instance, CheckPtr(AControl))
 }
 
-// CN: 是否可以获得焦点。
-// EN: .
+// 是否可以获得焦点。
 func (f *TForm) CanFocus() bool {
     return Form_CanFocus(f.instance)
 }
 
-// CN: 返回是否包含指定控件。
-// EN: it's contain a specified control.
+// 返回是否包含指定控件。
+//
+// it's contain a specified control.
 func (f *TForm) ContainsControl(Control IControl) bool {
     return Form_ContainsControl(f.instance, CheckPtr(Control))
 }
 
-// CN: 返回指定坐标及相关属性位置控件。
-// EN: Returns the specified coordinate and the relevant attribute position control..
+// 返回指定坐标及相关属性位置控件。
+//
+// Returns the specified coordinate and the relevant attribute position control..
 func (f *TForm) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return AsControl(Form_ControlAtPos(f.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
-// CN: 禁用控件的对齐。
-// EN: Disable control alignment.
+// 禁用控件的对齐。
+//
+// Disable control alignment.
 func (f *TForm) DisableAlign() {
     Form_DisableAlign(f.instance)
 }
 
-// CN: 启用控件对齐。
-// EN: Enabled control alignment.
+// 启用控件对齐。
+//
+// Enabled control alignment.
 func (f *TForm) EnableAlign() {
     Form_EnableAlign(f.instance)
 }
 
-// CN: 查找子控件。
-// EN: Find sub controls.
+// 查找子控件。
+//
+// Find sub controls.
 func (f *TForm) FindChildControl(ControlName string) *TControl {
     return AsControl(Form_FindChildControl(f.instance, ControlName))
 }
@@ -189,206 +206,240 @@ func (f *TForm) FlipChildren(AllLevels bool) {
     Form_FlipChildren(f.instance, AllLevels)
 }
 
-// CN: 返回是否获取焦点。
-// EN: Return to get focus.
+// 返回是否获取焦点。
+//
+// Return to get focus.
 func (f *TForm) Focused() bool {
     return Form_Focused(f.instance)
 }
 
-// CN: 句柄是否已经分配。
-// EN: Is the handle already allocated.
+// 句柄是否已经分配。
+//
+// Is the handle already allocated.
 func (f *TForm) HandleAllocated() bool {
     return Form_HandleAllocated(f.instance)
 }
 
-// CN: 插入一个控件。
-// EN: Insert a control.
+// 插入一个控件。
+//
+// Insert a control.
 func (f *TForm) InsertControl(AControl IControl) {
     Form_InsertControl(f.instance, CheckPtr(AControl))
 }
 
-// CN: 要求重绘。
-// EN: Redraw.
+// 要求重绘。
+//
+// Redraw.
 func (f *TForm) Invalidate() {
     Form_Invalidate(f.instance)
 }
 
-// CN: 移除一个控件。
-// EN: Remove a control.
+// 移除一个控件。
+//
+// Remove a control.
 func (f *TForm) RemoveControl(AControl IControl) {
     Form_RemoveControl(f.instance, CheckPtr(AControl))
 }
 
-// CN: 重新对齐。
-// EN: Realign.
+// 重新对齐。
+//
+// Realign.
 func (f *TForm) Realign() {
     Form_Realign(f.instance)
 }
 
-// CN: 重绘。
-// EN: Repaint.
+// 重绘。
+//
+// Repaint.
 func (f *TForm) Repaint() {
     Form_Repaint(f.instance)
 }
 
-// CN: 按比例缩放。
-// EN: Scale by.
+// 按比例缩放。
+//
+// Scale by.
 func (f *TForm) ScaleBy(M int32, D int32) {
     Form_ScaleBy(f.instance, M , D)
 }
 
-// CN: 滚动至指定位置。
-// EN: Scroll by.
+// 滚动至指定位置。
+//
+// Scroll by.
 func (f *TForm) ScrollBy(DeltaX int32, DeltaY int32) {
     Form_ScrollBy(f.instance, DeltaX , DeltaY)
 }
 
-// CN: 设置组件边界。
-// EN: Set component boundaries.
+// 设置组件边界。
+//
+// Set component boundaries.
 func (f *TForm) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     Form_SetBounds(f.instance, ALeft , ATop , AWidth , AHeight)
 }
 
-// CN: 控件更新。
-// EN: Update.
+// 控件更新。
+//
+// Update.
 func (f *TForm) Update() {
     Form_Update(f.instance)
 }
 
-// CN: 将控件置于最前。
-// EN: Bring the control to the front.
+// 将控件置于最前。
+//
+// Bring the control to the front.
 func (f *TForm) BringToFront() {
     Form_BringToFront(f.instance)
 }
 
-// CN: 将客户端坐标转为绝对的屏幕坐标。
-// EN: Convert client coordinates to absolute screen coordinates.
+// 将客户端坐标转为绝对的屏幕坐标。
+//
+// Convert client coordinates to absolute screen coordinates.
 func (f *TForm) ClientToScreen(Point TPoint) TPoint {
     return Form_ClientToScreen(f.instance, Point)
 }
 
-// CN: 将客户端坐标转为父容器坐标。
-// EN: Convert client coordinates to parent container coordinates.
+// 将客户端坐标转为父容器坐标。
+//
+// Convert client coordinates to parent container coordinates.
 func (f *TForm) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Form_ClientToParent(f.instance, Point , CheckPtr(AParent))
 }
 
-// CN: 是否在拖拽中。
-// EN: Is it in the middle of dragging.
+// 是否在拖拽中。
+//
+// Is it in the middle of dragging.
 func (f *TForm) Dragging() bool {
     return Form_Dragging(f.instance)
 }
 
-// CN: 是否有父容器。
-// EN: Is there a parent container.
+// 是否有父容器。
+//
+// Is there a parent container.
 func (f *TForm) HasParent() bool {
     return Form_HasParent(f.instance)
 }
 
-// CN: 发送一个消息。
-// EN: Send a message.
+// 发送一个消息。
+//
+// Send a message.
 func (f *TForm) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return Form_Perform(f.instance, Msg , WParam , LParam)
 }
 
-// CN: 刷新控件。
-// EN: Refresh control.
+// 刷新控件。
+//
+// Refresh control.
 func (f *TForm) Refresh() {
     Form_Refresh(f.instance)
 }
 
-// CN: 将屏幕坐标转为客户端坐标。
-// EN: Convert screen coordinates to client coordinates.
+// 将屏幕坐标转为客户端坐标。
+//
+// Convert screen coordinates to client coordinates.
 func (f *TForm) ScreenToClient(Point TPoint) TPoint {
     return Form_ScreenToClient(f.instance, Point)
 }
 
-// CN: 将父容器坐标转为客户端坐标。
-// EN: Convert parent container coordinates to client coordinates.
+// 将父容器坐标转为客户端坐标。
+//
+// Convert parent container coordinates to client coordinates.
 func (f *TForm) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Form_ParentToClient(f.instance, Point , CheckPtr(AParent))
 }
 
-// CN: 控件至于最后面。
-// EN: The control is placed at the end.
+// 控件至于最后面。
+//
+// The control is placed at the end.
 func (f *TForm) SendToBack() {
     Form_SendToBack(f.instance)
 }
 
-// CN: 获取控件的字符，如果有。
-// EN: Get the characters of the control, if any.
+// 获取控件的字符，如果有。
+//
+// Get the characters of the control, if any.
 func (f *TForm) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return Form_GetTextBuf(f.instance, Buffer , BufSize)
 }
 
-// CN: 获取控件的字符长，如果有。
-// EN: Get the character length of the control, if any.
+// 获取控件的字符长，如果有。
+//
+// Get the character length of the control, if any.
 func (f *TForm) GetTextLen() int32 {
     return Form_GetTextLen(f.instance)
 }
 
-// CN: 设置控件字符，如果有。
-// EN: Set control characters, if any.
+// 设置控件字符，如果有。
+//
+// Set control characters, if any.
 func (f *TForm) SetTextBuf(Buffer string) {
     Form_SetTextBuf(f.instance, Buffer)
 }
 
-// CN: 查找指定名称的组件。
-// EN: Find the component with the specified name.
+// 查找指定名称的组件。
+//
+// Find the component with the specified name.
 func (f *TForm) FindComponent(AName string) *TComponent {
     return AsComponent(Form_FindComponent(f.instance, AName))
 }
 
-// CN: 获取类名路径。
-// EN: Get the class name path.
+// 获取类名路径。
+//
+// Get the class name path.
 func (f *TForm) GetNamePath() string {
     return Form_GetNamePath(f.instance)
 }
 
-// CN: 复制一个对象，如果对象实现了此方法的话。
-// EN: Copy an object, if the object implements this method.
+// 复制一个对象，如果对象实现了此方法的话。
+//
+// Copy an object, if the object implements this method.
 func (f *TForm) Assign(Source IObject) {
     Form_Assign(f.instance, CheckPtr(Source))
 }
 
-// CN: 获取类的类型信息。
-// EN: Get class type information.
+// 获取类的类型信息。
+//
+// Get class type information.
 func (f *TForm) ClassType() TClass {
     return Form_ClassType(f.instance)
 }
 
-// CN: 获取当前对象类名称。
-// EN: Get the current object class name.
+// 获取当前对象类名称。
+//
+// Get the current object class name.
 func (f *TForm) ClassName() string {
     return Form_ClassName(f.instance)
 }
 
-// CN: 获取当前对象实例大小。
-// EN: Get the current object instance size.
+// 获取当前对象实例大小。
+//
+// Get the current object instance size.
 func (f *TForm) InstanceSize() int32 {
     return Form_InstanceSize(f.instance)
 }
 
-// CN: 判断当前类是否继承自指定类。
-// EN: Determine whether the current class inherits from the specified class.
+// 判断当前类是否继承自指定类。
+//
+// Determine whether the current class inherits from the specified class.
 func (f *TForm) InheritsFrom(AClass TClass) bool {
     return Form_InheritsFrom(f.instance, AClass)
 }
 
-// CN: 与一个对象进行比较。
-// EN: Compare with an object.
+// 与一个对象进行比较。
+//
+// Compare with an object.
 func (f *TForm) Equals(Obj IObject) bool {
     return Form_Equals(f.instance, CheckPtr(Obj))
 }
 
-// CN: 获取类的哈希值。
-// EN: Get the hash value of the class.
+// 获取类的哈希值。
+//
+// Get the hash value of the class.
 func (f *TForm) GetHashCode() int32 {
     return Form_GetHashCode(f.instance)
 }
 
-// CN: 文本类信息。
-// EN: Text information.
+// 文本类信息。
+//
+// Text information.
 func (f *TForm) ToString() string {
     return Form_ToString(f.instance)
 }
@@ -401,14 +452,12 @@ func (f *TForm) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IContro
     Form_AnchorParallel(f.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
-// CN: 置于指定控件的横向中心。
-// EN: .
+// 置于指定控件的横向中心。
 func (f *TForm) AnchorHorizontalCenterTo(ASibling IControl) {
     Form_AnchorHorizontalCenterTo(f.instance, CheckPtr(ASibling))
 }
 
-// CN: 置于指定控件的纵向中心。
-// EN: .
+// 置于指定控件的纵向中心。
 func (f *TForm) AnchorVerticalCenterTo(ASibling IControl) {
     Form_AnchorVerticalCenterTo(f.instance, CheckPtr(ASibling))
 }
@@ -421,32 +470,27 @@ func (f *TForm) AnchorClient(ASpace int32) {
     Form_AnchorClient(f.instance, ASpace)
 }
 
-// CN: 获取允许拖放文件。
-// EN: .
+// 获取允许拖放文件。
 func (f *TForm) AllowDropFiles() bool {
     return Form_GetAllowDropFiles(f.instance)
 }
 
-// CN: 设置允许拖放文件。
-// EN: .
+// 设置允许拖放文件。
 func (f *TForm) SetAllowDropFiles(value bool) {
     Form_SetAllowDropFiles(f.instance, value)
 }
 
-// CN: 设置拖放文件事件。
-// EN: .
+// 设置拖放文件事件。
 func (f *TForm) SetOnDropFiles(fn TDropFilesEvent) {
     Form_SetOnDropFiles(f.instance, fn)
 }
 
-// CN: 获取显示在任务栏上。
-// EN: .
+// 获取显示在任务栏上。
 func (f *TForm) ShowInTaskBar() TShowInTaskbar {
     return Form_GetShowInTaskBar(f.instance)
 }
 
-// CN: 设置显示在任务栏上。
-// EN: .
+// 设置显示在任务栏上。
 func (f *TForm) SetShowInTaskBar(value TShowInTaskbar) {
     Form_SetShowInTaskBar(f.instance, value)
 }
@@ -459,62 +503,56 @@ func (f *TForm) SetAction(value IComponent) {
     Form_SetAction(f.instance, CheckPtr(value))
 }
 
-// CN: 获取当前动控件。
-// EN: .
+// 获取当前动控件。
 func (f *TForm) ActiveControl() *TWinControl {
     return AsWinControl(Form_GetActiveControl(f.instance))
 }
 
-// CN: 设置当前动控件。
-// EN: .
+// 设置当前动控件。
 func (f *TForm) SetActiveControl(value IWinControl) {
     Form_SetActiveControl(f.instance, CheckPtr(value))
 }
 
-// CN: 获取控件自动调整。
-// EN: Get Control automatically adjusts.
+// 获取控件自动调整。
+//
+// Get Control automatically adjusts.
 func (f *TForm) Align() TAlign {
     return Form_GetAlign(f.instance)
 }
 
-// CN: 设置控件自动调整。
-// EN: Set Control automatically adjusts.
+// 设置控件自动调整。
+//
+// Set Control automatically adjusts.
 func (f *TForm) SetAlign(value TAlign) {
     Form_SetAlign(f.instance, value)
 }
 
-// CN: 获取半透明。
-// EN: .
+// 获取半透明。
 func (f *TForm) AlphaBlend() bool {
     return Form_GetAlphaBlend(f.instance)
 }
 
-// CN: 设置半透明。
-// EN: .
+// 设置半透明。
 func (f *TForm) SetAlphaBlend(value bool) {
     Form_SetAlphaBlend(f.instance, value)
 }
 
-// CN: 获取半透明值-0-255。
-// EN: .
+// 获取半透明值-0-255。
 func (f *TForm) AlphaBlendValue() uint8 {
     return Form_GetAlphaBlendValue(f.instance)
 }
 
-// CN: 设置半透明值-0-255。
-// EN: .
+// 设置半透明值-0-255。
 func (f *TForm) SetAlphaBlendValue(value uint8) {
     Form_SetAlphaBlendValue(f.instance, value)
 }
 
-// CN: 获取四个角位置的锚点。
-// EN: .
+// 获取四个角位置的锚点。
 func (f *TForm) Anchors() TAnchors {
     return Form_GetAnchors(f.instance)
 }
 
-// CN: 设置四个角位置的锚点。
-// EN: .
+// 设置四个角位置的锚点。
 func (f *TForm) SetAnchors(value TAnchors) {
     Form_SetAnchors(f.instance, value)
 }
@@ -527,14 +565,12 @@ func (f *TForm) SetAutoScroll(value bool) {
     Form_SetAutoScroll(f.instance, value)
 }
 
-// CN: 获取自动调整大小。
-// EN: .
+// 获取自动调整大小。
 func (f *TForm) AutoSize() bool {
     return Form_GetAutoSize(f.instance)
 }
 
-// CN: 设置自动调整大小。
-// EN: .
+// 设置自动调整大小。
 func (f *TForm) SetAutoSize(value bool) {
     Form_SetAutoSize(f.instance, value)
 }
@@ -547,230 +583,240 @@ func (f *TForm) SetBiDiMode(value TBiDiMode) {
     Form_SetBiDiMode(f.instance, value)
 }
 
-// CN: 获取窗口标题栏图标设置。比如：关闭，最大化，最小化等。
-// EN: .
+// 获取窗口标题栏图标设置。比如：关闭，最大化，最小化等。
 func (f *TForm) BorderIcons() TBorderIcons {
     return Form_GetBorderIcons(f.instance)
 }
 
-// CN: 设置窗口标题栏图标设置。比如：关闭，最大化，最小化等。
-// EN: .
+// 设置窗口标题栏图标设置。比如：关闭，最大化，最小化等。
 func (f *TForm) SetBorderIcons(value TBorderIcons) {
     Form_SetBorderIcons(f.instance, value)
 }
 
-// CN: 获取窗口边框样式。比如：无边框，单一边框等。
-// EN: .
+// 获取窗口边框样式。比如：无边框，单一边框等。
 func (f *TForm) BorderStyle() TFormBorderStyle {
     return Form_GetBorderStyle(f.instance)
 }
 
-// CN: 设置窗口边框样式。比如：无边框，单一边框等。
-// EN: .
+// 设置窗口边框样式。比如：无边框，单一边框等。
 func (f *TForm) SetBorderStyle(value TFormBorderStyle) {
     Form_SetBorderStyle(f.instance, value)
 }
 
-// CN: 获取边框的宽度。
-// EN: .
+// 获取边框的宽度。
 func (f *TForm) BorderWidth() int32 {
     return Form_GetBorderWidth(f.instance)
 }
 
-// CN: 设置边框的宽度。
-// EN: .
+// 设置边框的宽度。
 func (f *TForm) SetBorderWidth(value int32) {
     Form_SetBorderWidth(f.instance, value)
 }
 
-// CN: 获取控件标题。
-// EN: Get the control title.
+// 获取控件标题。
+//
+// Get the control title.
 func (f *TForm) Caption() string {
     return Form_GetCaption(f.instance)
 }
 
-// CN: 设置控件标题。
-// EN: Set the control title.
+// 设置控件标题。
+//
+// Set the control title.
 func (f *TForm) SetCaption(value string) {
     Form_SetCaption(f.instance, value)
 }
 
-// CN: 获取客户区高度。
-// EN: Get client height.
+// 获取客户区高度。
+//
+// Get client height.
 func (f *TForm) ClientHeight() int32 {
     return Form_GetClientHeight(f.instance)
 }
 
-// CN: 设置客户区高度。
-// EN: Set client height.
+// 设置客户区高度。
+//
+// Set client height.
 func (f *TForm) SetClientHeight(value int32) {
     Form_SetClientHeight(f.instance, value)
 }
 
-// CN: 获取客户区宽度。
-// EN: Get client width.
+// 获取客户区宽度。
+//
+// Get client width.
 func (f *TForm) ClientWidth() int32 {
     return Form_GetClientWidth(f.instance)
 }
 
-// CN: 设置客户区宽度。
-// EN: Set client width.
+// 设置客户区宽度。
+//
+// Set client width.
 func (f *TForm) SetClientWidth(value int32) {
     Form_SetClientWidth(f.instance, value)
 }
 
-// CN: 获取颜色。
-// EN: Get color.
+// 获取颜色。
+//
+// Get color.
 func (f *TForm) Color() TColor {
     return Form_GetColor(f.instance)
 }
 
-// CN: 设置颜色。
-// EN: Set color.
+// 设置颜色。
+//
+// Set color.
 func (f *TForm) SetColor(value TColor) {
     Form_SetColor(f.instance, value)
 }
 
-// CN: 获取约束控件大小。
-// EN: .
+// 获取约束控件大小。
 func (f *TForm) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Form_GetConstraints(f.instance))
 }
 
-// CN: 设置约束控件大小。
-// EN: .
+// 设置约束控件大小。
 func (f *TForm) SetConstraints(value *TSizeConstraints) {
     Form_SetConstraints(f.instance, CheckPtr(value))
 }
 
-// CN: 获取使用停靠管理。
-// EN: .
+// 获取使用停靠管理。
 func (f *TForm) UseDockManager() bool {
     return Form_GetUseDockManager(f.instance)
 }
 
-// CN: 设置使用停靠管理。
-// EN: .
+// 设置使用停靠管理。
 func (f *TForm) SetUseDockManager(value bool) {
     Form_SetUseDockManager(f.instance, value)
 }
 
-// CN: 获取默认监视器。
-// EN: .
+// 获取默认监视器。
 func (f *TForm) DefaultMonitor() TDefaultMonitor {
     return Form_GetDefaultMonitor(f.instance)
 }
 
-// CN: 设置默认监视器。
-// EN: .
+// 设置默认监视器。
 func (f *TForm) SetDefaultMonitor(value TDefaultMonitor) {
     Form_SetDefaultMonitor(f.instance, value)
 }
 
-// CN: 获取停靠站点。
-// EN: Get Docking site.
+// 获取停靠站点。
+//
+// Get Docking site.
 func (f *TForm) DockSite() bool {
     return Form_GetDockSite(f.instance)
 }
 
-// CN: 设置停靠站点。
-// EN: Set Docking site.
+// 设置停靠站点。
+//
+// Set Docking site.
 func (f *TForm) SetDockSite(value bool) {
     Form_SetDockSite(f.instance, value)
 }
 
-// CN: 获取设置控件双缓冲。
-// EN: Get Set control double buffering.
+// 获取设置控件双缓冲。
+//
+// Get Set control double buffering.
 func (f *TForm) DoubleBuffered() bool {
     return Form_GetDoubleBuffered(f.instance)
 }
 
-// CN: 设置设置控件双缓冲。
-// EN: Set Set control double buffering.
+// 设置设置控件双缓冲。
+//
+// Set Set control double buffering.
 func (f *TForm) SetDoubleBuffered(value bool) {
     Form_SetDoubleBuffered(f.instance, value)
 }
 
-// CN: 获取拖拽方式。
-// EN: Get Drag and drop.
+// 获取拖拽方式。
+//
+// Get Drag and drop.
 func (f *TForm) DragKind() TDragKind {
     return Form_GetDragKind(f.instance)
 }
 
-// CN: 设置拖拽方式。
-// EN: Set Drag and drop.
+// 设置拖拽方式。
+//
+// Set Drag and drop.
 func (f *TForm) SetDragKind(value TDragKind) {
     Form_SetDragKind(f.instance, value)
 }
 
-// CN: 获取拖拽模式。
-// EN: Get Drag mode.
+// 获取拖拽模式。
+//
+// Get Drag mode.
 func (f *TForm) DragMode() TDragMode {
     return Form_GetDragMode(f.instance)
 }
 
-// CN: 设置拖拽模式。
-// EN: Set Drag mode.
+// 设置拖拽模式。
+//
+// Set Drag mode.
 func (f *TForm) SetDragMode(value TDragMode) {
     Form_SetDragMode(f.instance, value)
 }
 
-// CN: 获取控件启用。
-// EN: Get the control enabled.
+// 获取控件启用。
+//
+// Get the control enabled.
 func (f *TForm) Enabled() bool {
     return Form_GetEnabled(f.instance)
 }
 
-// CN: 设置控件启用。
-// EN: Set the control enabled.
+// 设置控件启用。
+//
+// Set the control enabled.
 func (f *TForm) SetEnabled(value bool) {
     Form_SetEnabled(f.instance, value)
 }
 
-// CN: 获取使用父容器字体。
-// EN: Get Parent container font.
+// 获取使用父容器字体。
+//
+// Get Parent container font.
 func (f *TForm) ParentFont() bool {
     return Form_GetParentFont(f.instance)
 }
 
-// CN: 设置使用父容器字体。
-// EN: Set Parent container font.
+// 设置使用父容器字体。
+//
+// Set Parent container font.
 func (f *TForm) SetParentFont(value bool) {
     Form_SetParentFont(f.instance, value)
 }
 
-// CN: 获取字体。
-// EN: Get Font.
+// 获取字体。
+//
+// Get Font.
 func (f *TForm) Font() *TFont {
     return AsFont(Form_GetFont(f.instance))
 }
 
-// CN: 设置字体。
-// EN: Set Font.
+// 设置字体。
+//
+// Set Font.
 func (f *TForm) SetFont(value *TFont) {
     Form_SetFont(f.instance, CheckPtr(value))
 }
 
-// CN: 获取窗口样式。比如：置顶，MID窗口。
-// EN: .
+// 获取窗口样式。比如：置顶，MID窗口。
 func (f *TForm) FormStyle() TFormStyle {
     return Form_GetFormStyle(f.instance)
 }
 
-// CN: 设置窗口样式。比如：置顶，MID窗口。
-// EN: .
+// 设置窗口样式。比如：置顶，MID窗口。
 func (f *TForm) SetFormStyle(value TFormStyle) {
     Form_SetFormStyle(f.instance, value)
 }
 
-// CN: 获取高度。
-// EN: Get height.
+// 获取高度。
+//
+// Get height.
 func (f *TForm) Height() int32 {
     return Form_GetHeight(f.instance)
 }
 
-// CN: 设置高度。
-// EN: Set height.
+// 设置高度。
+//
+// Set height.
 func (f *TForm) SetHeight(value int32) {
     Form_SetHeight(f.instance, value)
 }
@@ -783,98 +829,94 @@ func (f *TForm) SetHorzScrollBar(value *TControlScrollBar) {
     Form_SetHorzScrollBar(f.instance, CheckPtr(value))
 }
 
-// CN: 获取图标。
-// EN: Get icon.
+// 获取图标。
+//
+// Get icon.
 func (f *TForm) Icon() *TIcon {
     return AsIcon(Form_GetIcon(f.instance))
 }
 
-// CN: 设置图标。
-// EN: Set icon.
+// 设置图标。
+//
+// Set icon.
 func (f *TForm) SetIcon(value *TIcon) {
     Form_SetIcon(f.instance, CheckPtr(value))
 }
 
-// CN: 获取窗口优先接收键盘按盘消息。
-// EN: .
+// 获取窗口优先接收键盘按盘消息。
 func (f *TForm) KeyPreview() bool {
     return Form_GetKeyPreview(f.instance)
 }
 
-// CN: 设置窗口优先接收键盘按盘消息。
-// EN: .
+// 设置窗口优先接收键盘按盘消息。
 func (f *TForm) SetKeyPreview(value bool) {
     Form_SetKeyPreview(f.instance, value)
 }
 
-// CN: 获取窗口主菜单。
-// EN: .
+// 获取窗口主菜单。
 func (f *TForm) Menu() *TMainMenu {
     return AsMainMenu(Form_GetMenu(f.instance))
 }
 
-// CN: 设置窗口主菜单。
-// EN: .
+// 设置窗口主菜单。
 func (f *TForm) SetMenu(value IComponent) {
     Form_SetMenu(f.instance, CheckPtr(value))
 }
 
-// CN: 获取每英寸像素数。
-// EN: .
+// 获取每英寸像素数。
 func (f *TForm) PixelsPerInch() int32 {
     return Form_GetPixelsPerInch(f.instance)
 }
 
-// CN: 设置每英寸像素数。
-// EN: .
+// 设置每英寸像素数。
 func (f *TForm) SetPixelsPerInch(value int32) {
     Form_SetPixelsPerInch(f.instance, value)
 }
 
-// CN: 获取右键菜单。
-// EN: Get Right click menu.
+// 获取右键菜单。
+//
+// Get Right click menu.
 func (f *TForm) PopupMenu() *TPopupMenu {
     return AsPopupMenu(Form_GetPopupMenu(f.instance))
 }
 
-// CN: 设置右键菜单。
-// EN: Set Right click menu.
+// 设置右键菜单。
+//
+// Set Right click menu.
 func (f *TForm) SetPopupMenu(value IComponent) {
     Form_SetPopupMenu(f.instance, CheckPtr(value))
 }
 
-// CN: 获取窗口的位置。比如：居中等。。
-// EN: .
+// 获取窗口的位置。比如：居中等。。
 func (f *TForm) Position() TPosition {
     return Form_GetPosition(f.instance)
 }
 
-// CN: 设置窗口的位置。比如：居中等。。
-// EN: .
+// 设置窗口的位置。比如：居中等。。
 func (f *TForm) SetPosition(value TPosition) {
     Form_SetPosition(f.instance, value)
 }
 
-// CN: 获取自动缩放。
-// EN: .
+// 获取自动缩放。
 func (f *TForm) Scaled() bool {
     return Form_GetScaled(f.instance)
 }
 
-// CN: 设置自动缩放。
-// EN: .
+// 设置自动缩放。
 func (f *TForm) SetScaled(value bool) {
     Form_SetScaled(f.instance, value)
 }
 
-// CN: 获取显示鼠标悬停提示。
-// EN: Get Show mouseover tips.
+// 获取显示鼠标悬停提示。
+//
+// Get Show mouseover tips.
 func (f *TForm) ShowHint() bool {
     return Form_GetShowHint(f.instance)
 }
 
-// CN: 设置显示鼠标悬停提示。
-// EN: Set Show mouseover tips.
+// 设置显示鼠标悬停提示。
+//
+// Set Show mouseover tips.
 func (f *TForm) SetShowHint(value bool) {
     Form_SetShowHint(f.instance, value)
 }
@@ -887,86 +929,84 @@ func (f *TForm) SetVertScrollBar(value *TControlScrollBar) {
     Form_SetVertScrollBar(f.instance, CheckPtr(value))
 }
 
-// CN: 获取控件可视。
-// EN: Get the control visible.
+// 获取控件可视。
+//
+// Get the control visible.
 func (f *TForm) Visible() bool {
     return Form_GetVisible(f.instance)
 }
 
-// CN: 设置控件可视。
-// EN: Set the control visible.
+// 设置控件可视。
+//
+// Set the control visible.
 func (f *TForm) SetVisible(value bool) {
     Form_SetVisible(f.instance, value)
 }
 
-// CN: 获取宽度。
-// EN: Get width.
+// 获取宽度。
+//
+// Get width.
 func (f *TForm) Width() int32 {
     return Form_GetWidth(f.instance)
 }
 
-// CN: 设置宽度。
-// EN: Set width.
+// 设置宽度。
+//
+// Set width.
 func (f *TForm) SetWidth(value int32) {
     Form_SetWidth(f.instance, value)
 }
 
-// CN: 获取窗口样式。比如：最大化，最小化等。
-// EN: .
+// 获取窗口样式。比如：最大化，最小化等。
 func (f *TForm) WindowState() TWindowState {
     return Form_GetWindowState(f.instance)
 }
 
-// CN: 设置窗口样式。比如：最大化，最小化等。
-// EN: .
+// 设置窗口样式。比如：最大化，最小化等。
 func (f *TForm) SetWindowState(value TWindowState) {
     Form_SetWindowState(f.instance, value)
 }
 
-// CN: 设置窗口激活事件。
-// EN: .
+// 设置窗口激活事件。
 func (f *TForm) SetOnActivate(fn TNotifyEvent) {
     Form_SetOnActivate(f.instance, fn)
 }
 
-// CN: 设置对齐位置事件，当Align为alCustom时Parent会收到这个消息。
-// EN: .
+// 设置对齐位置事件，当Align为alCustom时Parent会收到这个消息。
 func (f *TForm) SetOnAlignPosition(fn TAlignPositionEvent) {
     Form_SetOnAlignPosition(f.instance, fn)
 }
 
-// CN: 设置控件单击事件。
-// EN: Set control click event.
+// 设置控件单击事件。
+//
+// Set control click event.
 func (f *TForm) SetOnClick(fn TNotifyEvent) {
     Form_SetOnClick(f.instance, fn)
 }
 
-// CN: 设置窗口关闭事件。
-// EN: .
+// 设置窗口关闭事件。
 func (f *TForm) SetOnClose(fn TCloseEvent) {
     Form_SetOnClose(f.instance, fn)
 }
 
-// CN: 设置窗口关闭询问事件。
-// EN: .
+// 设置窗口关闭询问事件。
 func (f *TForm) SetOnCloseQuery(fn TCloseQueryEvent) {
     Form_SetOnCloseQuery(f.instance, fn)
 }
 
-// CN: 设置上下文弹出事件，一般是右键时弹出。
-// EN: Set Context popup event, usually pop up when right click.
+// 设置上下文弹出事件，一般是右键时弹出。
+//
+// Set Context popup event, usually pop up when right click.
 func (f *TForm) SetOnContextPopup(fn TContextPopupEvent) {
     Form_SetOnContextPopup(f.instance, fn)
 }
 
-// CN: 设置双击事件。
-// EN: .
+// 设置双击事件。
 func (f *TForm) SetOnDblClick(fn TNotifyEvent) {
     Form_SetOnDblClick(f.instance, fn)
 }
 
-// CN: 设置窗口失去激状态。
-// EN: .
+// 设置窗口失去激状态。
 func (f *TForm) SetOnDeactivate(fn TNotifyEvent) {
     Form_SetOnDeactivate(f.instance, fn)
 }
@@ -975,20 +1015,23 @@ func (f *TForm) SetOnDockDrop(fn TDockDropEvent) {
     Form_SetOnDockDrop(f.instance, fn)
 }
 
-// CN: 设置拖拽下落事件。
-// EN: Set Drag and drop event.
+// 设置拖拽下落事件。
+//
+// Set Drag and drop event.
 func (f *TForm) SetOnDragDrop(fn TDragDropEvent) {
     Form_SetOnDragDrop(f.instance, fn)
 }
 
-// CN: 设置拖拽完成事件。
-// EN: Set Drag and drop completion event.
+// 设置拖拽完成事件。
+//
+// Set Drag and drop completion event.
 func (f *TForm) SetOnDragOver(fn TDragOverEvent) {
     Form_SetOnDragOver(f.instance, fn)
 }
 
-// CN: 设置停靠结束事件。
-// EN: Set Dock end event.
+// 设置停靠结束事件。
+//
+// Set Dock end event.
 func (f *TForm) SetOnEndDock(fn TEndDragEvent) {
     Form_SetOnEndDock(f.instance, fn)
 }
@@ -997,8 +1040,7 @@ func (f *TForm) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
     Form_SetOnGetSiteInfo(f.instance, fn)
 }
 
-// CN: 设置隐藏事件。
-// EN: .
+// 设置隐藏事件。
 func (f *TForm) SetOnHide(fn TNotifyEvent) {
     Form_SetOnHide(f.instance, fn)
 }
@@ -1007,80 +1049,79 @@ func (f *TForm) SetOnHelp(fn THelpEvent) {
     Form_SetOnHelp(f.instance, fn)
 }
 
-// CN: 设置键盘按键按下事件。
-// EN: Set Keyboard button press event.
+// 设置键盘按键按下事件。
+//
+// Set Keyboard button press event.
 func (f *TForm) SetOnKeyDown(fn TKeyEvent) {
     Form_SetOnKeyDown(f.instance, fn)
 }
 
-// CN: 设置键键下事件。
-// EN: .
+// 设置键键下事件。
 func (f *TForm) SetOnKeyPress(fn TKeyPressEvent) {
     Form_SetOnKeyPress(f.instance, fn)
 }
 
-// CN: 设置键盘按键抬起事件。
-// EN: Set Keyboard button lift event.
+// 设置键盘按键抬起事件。
+//
+// Set Keyboard button lift event.
 func (f *TForm) SetOnKeyUp(fn TKeyEvent) {
     Form_SetOnKeyUp(f.instance, fn)
 }
 
-// CN: 设置鼠标按下事件。
-// EN: Set Mouse down event.
+// 设置鼠标按下事件。
+//
+// Set Mouse down event.
 func (f *TForm) SetOnMouseDown(fn TMouseEvent) {
     Form_SetOnMouseDown(f.instance, fn)
 }
 
-// CN: 设置鼠标进入事件。
-// EN: Set Mouse entry event.
+// 设置鼠标进入事件。
+//
+// Set Mouse entry event.
 func (f *TForm) SetOnMouseEnter(fn TNotifyEvent) {
     Form_SetOnMouseEnter(f.instance, fn)
 }
 
-// CN: 设置鼠标离开事件。
-// EN: Set Mouse leave event.
+// 设置鼠标离开事件。
+//
+// Set Mouse leave event.
 func (f *TForm) SetOnMouseLeave(fn TNotifyEvent) {
     Form_SetOnMouseLeave(f.instance, fn)
 }
 
-// CN: 设置鼠标移动事件。
-// EN: .
+// 设置鼠标移动事件。
 func (f *TForm) SetOnMouseMove(fn TMouseMoveEvent) {
     Form_SetOnMouseMove(f.instance, fn)
 }
 
-// CN: 设置鼠标抬起事件。
-// EN: Set Mouse lift event.
+// 设置鼠标抬起事件。
+//
+// Set Mouse lift event.
 func (f *TForm) SetOnMouseUp(fn TMouseEvent) {
     Form_SetOnMouseUp(f.instance, fn)
 }
 
-// CN: 设置鼠标滚轮事件。
-// EN: .
+// 设置鼠标滚轮事件。
 func (f *TForm) SetOnMouseWheel(fn TMouseWheelEvent) {
     Form_SetOnMouseWheel(f.instance, fn)
 }
 
-// CN: 设置鼠标滚轮按下事件。
-// EN: .
+// 设置鼠标滚轮按下事件。
 func (f *TForm) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
     Form_SetOnMouseWheelDown(f.instance, fn)
 }
 
-// CN: 设置鼠标滚轮抬起事件。
-// EN: .
+// 设置鼠标滚轮抬起事件。
 func (f *TForm) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
     Form_SetOnMouseWheelUp(f.instance, fn)
 }
 
-// CN: 设置绘画事件。
-// EN: .
+// 设置绘画事件。
 func (f *TForm) SetOnPaint(fn TNotifyEvent) {
     Form_SetOnPaint(f.instance, fn)
 }
 
-// CN: 设置大小被改变事件。
-// EN: .
+// 设置大小被改变事件。
 func (f *TForm) SetOnResize(fn TNotifyEvent) {
     Form_SetOnResize(f.instance, fn)
 }
@@ -1089,14 +1130,12 @@ func (f *TForm) SetOnShortCut(fn TShortCutEvent) {
     Form_SetOnShortCut(f.instance, fn)
 }
 
-// CN: 设置显示事件。
-// EN: .
+// 设置显示事件。
 func (f *TForm) SetOnShow(fn TNotifyEvent) {
     Form_SetOnShow(f.instance, fn)
 }
 
-// CN: 设置启动停靠。
-// EN: .
+// 设置启动停靠。
 func (f *TForm) SetOnStartDock(fn TStartDockEvent) {
     Form_SetOnStartDock(f.instance, fn)
 }
@@ -1105,110 +1144,118 @@ func (f *TForm) SetOnUnDock(fn TUnDockEvent) {
     Form_SetOnUnDock(f.instance, fn)
 }
 
-// CN: 获取画布。
-// EN: .
+// 获取画布。
 func (f *TForm) Canvas() *TCanvas {
     return AsCanvas(Form_GetCanvas(f.instance))
 }
 
-// CN: 获取模态对话框显示结果。
-// EN: .
+// 获取模态对话框显示结果。
 func (f *TForm) ModalResult() TModalResult {
     return Form_GetModalResult(f.instance)
 }
 
-// CN: 设置模态对话框显示结果。
-// EN: .
+// 设置模态对话框显示结果。
 func (f *TForm) SetModalResult(value TModalResult) {
     Form_SetModalResult(f.instance, value)
 }
 
-// CN: 获取监视器。
-// EN: .
+// 获取监视器。
 func (f *TForm) Monitor() *TMonitor {
     return AsMonitor(Form_GetMonitor(f.instance))
 }
 
-// CN: 获取左边位置。
-// EN: Get Left position.
+// 获取左边位置。
+//
+// Get Left position.
 func (f *TForm) Left() int32 {
     return Form_GetLeft(f.instance)
 }
 
-// CN: 设置左边位置。
-// EN: Set Left position.
+// 设置左边位置。
+//
+// Set Left position.
 func (f *TForm) SetLeft(value int32) {
     Form_SetLeft(f.instance, value)
 }
 
-// CN: 获取顶边位置。
-// EN: Get Top position.
+// 获取顶边位置。
+//
+// Get Top position.
 func (f *TForm) Top() int32 {
     return Form_GetTop(f.instance)
 }
 
-// CN: 设置顶边位置。
-// EN: Set Top position.
+// 设置顶边位置。
+//
+// Set Top position.
 func (f *TForm) SetTop(value int32) {
     Form_SetTop(f.instance, value)
 }
 
-// CN: 获取依靠客户端总数。
-// EN: .
+// 获取依靠客户端总数。
 func (f *TForm) DockClientCount() int32 {
     return Form_GetDockClientCount(f.instance)
 }
 
-// CN: 获取鼠标是否在客户端，仅VCL有效。
-// EN: Get Whether the mouse is on the client, only VCL is valid.
+// 获取鼠标是否在客户端，仅VCL有效。
+//
+// Get Whether the mouse is on the client, only VCL is valid.
 func (f *TForm) MouseInClient() bool {
     return Form_GetMouseInClient(f.instance)
 }
 
-// CN: 获取当前停靠的可视总数。
-// EN: Get The total number of visible calls currently docked.
+// 获取当前停靠的可视总数。
+//
+// Get The total number of visible calls currently docked.
 func (f *TForm) VisibleDockClientCount() int32 {
     return Form_GetVisibleDockClientCount(f.instance)
 }
 
-// CN: 获取画刷对象。
-// EN: Get Brush.
+// 获取画刷对象。
+//
+// Get Brush.
 func (f *TForm) Brush() *TBrush {
     return AsBrush(Form_GetBrush(f.instance))
 }
 
-// CN: 获取子控件数。
-// EN: Get Number of child controls.
+// 获取子控件数。
+//
+// Get Number of child controls.
 func (f *TForm) ControlCount() int32 {
     return Form_GetControlCount(f.instance)
 }
 
-// CN: 获取控件句柄。
-// EN: Get Control handle.
+// 获取控件句柄。
+//
+// Get Control handle.
 func (f *TForm) Handle() HWND {
     return Form_GetHandle(f.instance)
 }
 
-// CN: 获取使用父容器双缓冲。
-// EN: Get Parent container double buffering.
+// 获取使用父容器双缓冲。
+//
+// Get Parent container double buffering.
 func (f *TForm) ParentDoubleBuffered() bool {
     return Form_GetParentDoubleBuffered(f.instance)
 }
 
-// CN: 设置使用父容器双缓冲。
-// EN: Set Parent container double buffering.
+// 设置使用父容器双缓冲。
+//
+// Set Parent container double buffering.
 func (f *TForm) SetParentDoubleBuffered(value bool) {
     Form_SetParentDoubleBuffered(f.instance, value)
 }
 
-// CN: 获取父容器句柄。
-// EN: Get Parent container handle.
+// 获取父容器句柄。
+//
+// Get Parent container handle.
 func (f *TForm) ParentWindow() HWND {
     return Form_GetParentWindow(f.instance)
 }
 
-// CN: 设置父容器句柄。
-// EN: Set Parent container handle.
+// 设置父容器句柄。
+//
+// Set Parent container handle.
 func (f *TForm) SetParentWindow(value HWND) {
     Form_SetParentWindow(f.instance, value)
 }
@@ -1217,26 +1264,30 @@ func (f *TForm) Showing() bool {
     return Form_GetShowing(f.instance)
 }
 
-// CN: 获取Tab切换顺序序号。
-// EN: Get Tab switching sequence number.
+// 获取Tab切换顺序序号。
+//
+// Get Tab switching sequence number.
 func (f *TForm) TabOrder() TTabOrder {
     return Form_GetTabOrder(f.instance)
 }
 
-// CN: 设置Tab切换顺序序号。
-// EN: Set Tab switching sequence number.
+// 设置Tab切换顺序序号。
+//
+// Set Tab switching sequence number.
 func (f *TForm) SetTabOrder(value TTabOrder) {
     Form_SetTabOrder(f.instance, value)
 }
 
-// CN: 获取Tab可停留。
-// EN: Get Tab can stay.
+// 获取Tab可停留。
+//
+// Get Tab can stay.
 func (f *TForm) TabStop() bool {
     return Form_GetTabStop(f.instance)
 }
 
-// CN: 设置Tab可停留。
-// EN: Set Tab can stay.
+// 设置Tab可停留。
+//
+// Set Tab can stay.
 func (f *TForm) SetTabStop(value bool) {
     Form_SetTabStop(f.instance, value)
 }
@@ -1253,32 +1304,37 @@ func (f *TForm) ClientOrigin() TPoint {
     return Form_GetClientOrigin(f.instance)
 }
 
-// CN: 获取客户区矩形。
-// EN: Get client rectangle.
+// 获取客户区矩形。
+//
+// Get client rectangle.
 func (f *TForm) ClientRect() TRect {
     return Form_GetClientRect(f.instance)
 }
 
-// CN: 获取控件状态。
-// EN: Get control state.
+// 获取控件状态。
+//
+// Get control state.
 func (f *TForm) ControlState() TControlState {
     return Form_GetControlState(f.instance)
 }
 
-// CN: 设置控件状态。
-// EN: Set control state.
+// 设置控件状态。
+//
+// Set control state.
 func (f *TForm) SetControlState(value TControlState) {
     Form_SetControlState(f.instance, value)
 }
 
-// CN: 获取控件样式。
-// EN: Get control style.
+// 获取控件样式。
+//
+// Get control style.
 func (f *TForm) ControlStyle() TControlStyle {
     return Form_GetControlStyle(f.instance)
 }
 
-// CN: 设置控件样式。
-// EN: Set control style.
+// 设置控件样式。
+//
+// Set control style.
 func (f *TForm) SetControlStyle(value TControlStyle) {
     Form_SetControlStyle(f.instance, value)
 }
@@ -1287,134 +1343,140 @@ func (f *TForm) Floating() bool {
     return Form_GetFloating(f.instance)
 }
 
-// CN: 获取控件父容器。
-// EN: Get control parent container.
+// 获取控件父容器。
+//
+// Get control parent container.
 func (f *TForm) Parent() *TWinControl {
     return AsWinControl(Form_GetParent(f.instance))
 }
 
-// CN: 设置控件父容器。
-// EN: Set control parent container.
+// 设置控件父容器。
+//
+// Set control parent container.
 func (f *TForm) SetParent(value IWinControl) {
     Form_SetParent(f.instance, CheckPtr(value))
 }
 
-// CN: 获取控件光标。
-// EN: Get control cursor.
+// 获取控件光标。
+//
+// Get control cursor.
 func (f *TForm) Cursor() TCursor {
     return Form_GetCursor(f.instance)
 }
 
-// CN: 设置控件光标。
-// EN: Set control cursor.
+// 设置控件光标。
+//
+// Set control cursor.
 func (f *TForm) SetCursor(value TCursor) {
     Form_SetCursor(f.instance, value)
 }
 
-// CN: 获取组件鼠标悬停提示。
-// EN: Get component mouse hints.
+// 获取组件鼠标悬停提示。
+//
+// Get component mouse hints.
 func (f *TForm) Hint() string {
     return Form_GetHint(f.instance)
 }
 
-// CN: 设置组件鼠标悬停提示。
-// EN: Set component mouse hints.
+// 设置组件鼠标悬停提示。
+//
+// Set component mouse hints.
 func (f *TForm) SetHint(value string) {
     Form_SetHint(f.instance, value)
 }
 
-// CN: 获取组件总数。
-// EN: Get the total number of components.
+// 获取组件总数。
+//
+// Get the total number of components.
 func (f *TForm) ComponentCount() int32 {
     return Form_GetComponentCount(f.instance)
 }
 
-// CN: 获取组件索引。
-// EN: Get component index.
+// 获取组件索引。
+//
+// Get component index.
 func (f *TForm) ComponentIndex() int32 {
     return Form_GetComponentIndex(f.instance)
 }
 
-// CN: 设置组件索引。
-// EN: Set component index.
+// 设置组件索引。
+//
+// Set component index.
 func (f *TForm) SetComponentIndex(value int32) {
     Form_SetComponentIndex(f.instance, value)
 }
 
-// CN: 获取组件所有者。
-// EN: Get component owner.
+// 获取组件所有者。
+//
+// Get component owner.
 func (f *TForm) Owner() *TComponent {
     return AsComponent(Form_GetOwner(f.instance))
 }
 
-// CN: 获取组件名称。
-// EN: Get the component name.
+// 获取组件名称。
+//
+// Get the component name.
 func (f *TForm) Name() string {
     return Form_GetName(f.instance)
 }
 
-// CN: 设置组件名称。
-// EN: Set the component name.
+// 设置组件名称。
+//
+// Set the component name.
 func (f *TForm) SetName(value string) {
     Form_SetName(f.instance, value)
 }
 
-// CN: 获取对象标记。
-// EN: Get the control tag.
+// 获取对象标记。
+//
+// Get the control tag.
 func (f *TForm) Tag() int {
     return Form_GetTag(f.instance)
 }
 
-// CN: 设置对象标记。
-// EN: Set the control tag.
+// 设置对象标记。
+//
+// Set the control tag.
 func (f *TForm) SetTag(value int) {
     Form_SetTag(f.instance, value)
 }
 
-// CN: 获取左边锚点。
-// EN: .
+// 获取左边锚点。
 func (f *TForm) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(Form_GetAnchorSideLeft(f.instance))
 }
 
-// CN: 设置左边锚点。
-// EN: .
+// 设置左边锚点。
 func (f *TForm) SetAnchorSideLeft(value *TAnchorSide) {
     Form_SetAnchorSideLeft(f.instance, CheckPtr(value))
 }
 
-// CN: 获取顶边锚点。
-// EN: .
+// 获取顶边锚点。
 func (f *TForm) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(Form_GetAnchorSideTop(f.instance))
 }
 
-// CN: 设置顶边锚点。
-// EN: .
+// 设置顶边锚点。
 func (f *TForm) SetAnchorSideTop(value *TAnchorSide) {
     Form_SetAnchorSideTop(f.instance, CheckPtr(value))
 }
 
-// CN: 获取右边锚点。
-// EN: .
+// 获取右边锚点。
 func (f *TForm) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(Form_GetAnchorSideRight(f.instance))
 }
 
-// CN: 设置右边锚点。
-// EN: .
+// 设置右边锚点。
 func (f *TForm) SetAnchorSideRight(value *TAnchorSide) {
     Form_SetAnchorSideRight(f.instance, CheckPtr(value))
 }
 
-// CN: 获取底边锚点。
-// EN: .
+// 获取底边锚点。
 func (f *TForm) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(Form_GetAnchorSideBottom(f.instance))
 }
 
-// CN: 设置底边锚点。
-// EN: .
+// 设置底边锚点。
 func (f *TForm) SetAnchorSideBottom(value *TAnchorSide) {
     Form_SetAnchorSideBottom(f.instance, CheckPtr(value))
 }
@@ -1427,38 +1489,34 @@ func (f *TForm) SetChildSizing(value *TControlChildSizing) {
     Form_SetChildSizing(f.instance, CheckPtr(value))
 }
 
-// CN: 获取边框间距。
-// EN: .
+// 获取边框间距。
 func (f *TForm) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(Form_GetBorderSpacing(f.instance))
 }
 
-// CN: 设置边框间距。
-// EN: .
+// 设置边框间距。
 func (f *TForm) SetBorderSpacing(value *TControlBorderSpacing) {
     Form_SetBorderSpacing(f.instance, CheckPtr(value))
 }
 
-// CN: 获取指定索引停靠客户端。
-// EN: .
+// 获取指定索引停靠客户端。
 func (f *TForm) DockClients(Index int32) *TControl {
     return AsControl(Form_GetDockClients(f.instance, Index))
 }
 
-// CN: 获取指定索引子控件。
-// EN: .
+// 获取指定索引子控件。
 func (f *TForm) Controls(Index int32) *TControl {
     return AsControl(Form_GetControls(f.instance, Index))
 }
 
-// CN: 获取指定索引组件。
-// EN: Get the specified index component.
+// 获取指定索引组件。
+//
+// Get the specified index component.
 func (f *TForm) Components(AIndex int32) *TComponent {
     return AsComponent(Form_GetComponents(f.instance, AIndex))
 }
 
-// CN: 获取锚侧面。
-// EN: .
+// 获取锚侧面。
 func (f *TForm) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(Form_GetAnchorSide(f.instance, AKind))
 }

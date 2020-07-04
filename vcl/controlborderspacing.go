@@ -24,8 +24,9 @@ type TControlBorderSpacing struct {
     ptr unsafe.Pointer
 }
 
-// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
-// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+// 动态转换一个已存在的对象实例。
+// 
+// Dynamically convert an existing object instance.
 func AsControlBorderSpacing(obj interface{}) *TControlBorderSpacing {
     instance, ptr := getInstance(obj)
     if instance == 0 { return nil }
@@ -33,114 +34,132 @@ func AsControlBorderSpacing(obj interface{}) *TControlBorderSpacing {
 }
 
 // -------------------------- Deprecated begin --------------------------
-// CN: 新建一个对象来自已经存在的对象实例指针。
-// EN: Create a new object from an existing object instance pointer.
+// 新建一个对象来自已经存在的对象实例指针。
+// 
+// Create a new object from an existing object instance pointer.
 // Deprecated: use AsControlBorderSpacing.
 func ControlBorderSpacingFromInst(inst uintptr) *TControlBorderSpacing {
     return AsControlBorderSpacing(inst)
 }
 
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// 新建一个对象来自已经存在的对象实例。
+// 
+// Create a new object from an existing object instance.
 // Deprecated: use AsControlBorderSpacing.
 func ControlBorderSpacingFromObj(obj IObject) *TControlBorderSpacing {
     return AsControlBorderSpacing(obj)
 }
 
-// CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
+// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+// 
+// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsControlBorderSpacing.
 func ControlBorderSpacingFromUnsafePointer(ptr unsafe.Pointer) *TControlBorderSpacing {
     return AsControlBorderSpacing(ptr)
 }
 
 // -------------------------- Deprecated end --------------------------
-// CN: 返回对象实例指针。
-// EN: Return object instance pointer.
+// 返回对象实例指针。
+// 
+// Return object instance pointer.
 func (c *TControlBorderSpacing) Instance() uintptr {
     return c.instance
 }
 
-// CN: 获取一个不安全的地址。
-// EN: Get an unsafe address.
+// 获取一个不安全的地址。
+// 
+// Get an unsafe address.
 func (c *TControlBorderSpacing) UnsafeAddr() unsafe.Pointer {
     return c.ptr
 }
 
-// CN: 检测地址是否为空。
-// EN: Check if the address is empty.
+// 检测地址是否为空。
+// 
+// Check if the address is empty.
 func (c *TControlBorderSpacing) IsValid() bool {
     return c.instance != 0
 }
 
-// CN: 检测当前对象是否继承自目标对象。
-// EN: Checks whether the current object is inherited from the target object.
+// 检测当前对象是否继承自目标对象。
+// 
+// Checks whether the current object is inherited from the target object.
 func (c *TControlBorderSpacing) Is() TIs {
     return TIs(c.instance)
 }
 
-// CN: 动态转换当前对象为目标对象。
-// EN: Dynamically convert the current object to the target object.
+// 动态转换当前对象为目标对象。
+// 
+// Dynamically convert the current object to the target object.
 //func (c *TControlBorderSpacing) As() TAs {
 //    return TAs(c.instance)
 //}
 
-// CN: 获取类信息指针。
-// EN: Get class information pointer.
+// 获取类信息指针。
+// 
+// Get class information pointer.
 func TControlBorderSpacingClass() TClass {
     return ControlBorderSpacing_StaticClassType()
 }
 
-// CN: 复制一个对象，如果对象实现了此方法的话。
-// EN: Copy an object, if the object implements this method.
+// 复制一个对象，如果对象实现了此方法的话。
+//
+// Copy an object, if the object implements this method.
 func (c *TControlBorderSpacing) Assign(Source IObject) {
     ControlBorderSpacing_Assign(c.instance, CheckPtr(Source))
 }
 
-// CN: 获取类名路径。
-// EN: Get the class name path.
+// 获取类名路径。
+//
+// Get the class name path.
 func (c *TControlBorderSpacing) GetNamePath() string {
     return ControlBorderSpacing_GetNamePath(c.instance)
 }
 
-// CN: 获取类的类型信息。
-// EN: Get class type information.
+// 获取类的类型信息。
+//
+// Get class type information.
 func (c *TControlBorderSpacing) ClassType() TClass {
     return ControlBorderSpacing_ClassType(c.instance)
 }
 
-// CN: 获取当前对象类名称。
-// EN: Get the current object class name.
+// 获取当前对象类名称。
+//
+// Get the current object class name.
 func (c *TControlBorderSpacing) ClassName() string {
     return ControlBorderSpacing_ClassName(c.instance)
 }
 
-// CN: 获取当前对象实例大小。
-// EN: Get the current object instance size.
+// 获取当前对象实例大小。
+//
+// Get the current object instance size.
 func (c *TControlBorderSpacing) InstanceSize() int32 {
     return ControlBorderSpacing_InstanceSize(c.instance)
 }
 
-// CN: 判断当前类是否继承自指定类。
-// EN: Determine whether the current class inherits from the specified class.
+// 判断当前类是否继承自指定类。
+//
+// Determine whether the current class inherits from the specified class.
 func (c *TControlBorderSpacing) InheritsFrom(AClass TClass) bool {
     return ControlBorderSpacing_InheritsFrom(c.instance, AClass)
 }
 
-// CN: 与一个对象进行比较。
-// EN: Compare with an object.
+// 与一个对象进行比较。
+//
+// Compare with an object.
 func (c *TControlBorderSpacing) Equals(Obj IObject) bool {
     return ControlBorderSpacing_Equals(c.instance, CheckPtr(Obj))
 }
 
-// CN: 获取类的哈希值。
-// EN: Get the hash value of the class.
+// 获取类的哈希值。
+//
+// Get the hash value of the class.
 func (c *TControlBorderSpacing) GetHashCode() int32 {
     return ControlBorderSpacing_GetHashCode(c.instance)
 }
 
-// CN: 文本类信息。
-// EN: Text information.
+// 文本类信息。
+//
+// Text information.
 func (c *TControlBorderSpacing) ToString() string {
     return ControlBorderSpacing_ToString(c.instance)
 }
@@ -189,32 +208,37 @@ func (c *TControlBorderSpacing) ControlBottom() int32 {
     return ControlBorderSpacing_GetControlBottom(c.instance)
 }
 
-// CN: 设置改变事件。
-// EN: Set changed event.
+// 设置改变事件。
+//
+// Set changed event.
 func (c *TControlBorderSpacing) SetOnChange(fn TNotifyEvent) {
     ControlBorderSpacing_SetOnChange(c.instance, fn)
 }
 
-// CN: 获取左边位置。
-// EN: Get Left position.
+// 获取左边位置。
+//
+// Get Left position.
 func (c *TControlBorderSpacing) Left() int32 {
     return ControlBorderSpacing_GetLeft(c.instance)
 }
 
-// CN: 设置左边位置。
-// EN: Set Left position.
+// 设置左边位置。
+//
+// Set Left position.
 func (c *TControlBorderSpacing) SetLeft(value int32) {
     ControlBorderSpacing_SetLeft(c.instance, value)
 }
 
-// CN: 获取顶边位置。
-// EN: Get Top position.
+// 获取顶边位置。
+//
+// Get Top position.
 func (c *TControlBorderSpacing) Top() int32 {
     return ControlBorderSpacing_GetTop(c.instance)
 }
 
-// CN: 设置顶边位置。
-// EN: Set Top position.
+// 设置顶边位置。
+//
+// Set Top position.
 func (c *TControlBorderSpacing) SetTop(value int32) {
     ControlBorderSpacing_SetTop(c.instance, value)
 }

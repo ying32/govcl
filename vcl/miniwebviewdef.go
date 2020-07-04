@@ -19,8 +19,9 @@ import (
 	"github.com/ying32/govcl/vcl/win"
 )
 
-// CN: Windows下设置TMiiWebview的IE内核版本，需管理员权限才可以写注册表
-// EN: Set the IE kernel version of TMiiWebview under Windows, you need administrator privileges.
+// Windows下设置TMiiWebview的IE内核版本，需管理员权限才可以写注册表
+//
+// Set the IE kernel version of TMiiWebview under Windows, you need administrator privileges.
 func (m *TMiniWebview) SetIEVersion(version int) {
 	// 7000   Webpages containing standards-based !DOCTYPE directives are displayed in IE7 Standards mode.
 	// 8000   Webpages containing standards-based !DOCTYPE directives are displayed in IE8 mode.
@@ -47,8 +48,9 @@ func (m *TMiniWebview) SetIEVersion(version int) {
 	}
 }
 
-// CN: Windows下读取IE内核版本，需管理员权限才可以写注册表
-// EN: Read the IE kernel version under Windows, you need administrator rights to write the registry.
+// Windows下读取IE内核版本，需管理员权限才可以写注册表
+//
+// Read the IE kernel version under Windows, you need administrator rights to write the registry.
 func (m *TMiniWebview) GetIEVersion() int {
 	reg := NewRegistryAllAccess()
 	defer reg.Free()

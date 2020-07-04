@@ -25,8 +25,9 @@ type TDateTimePicker struct {
     ptr unsafe.Pointer
 }
 
-// CN: 创建一个新的对象。
-// EN: Create a new object.
+// 创建一个新的对象。
+// 
+// Create a new object.
 func NewDateTimePicker(owner IComponent) *TDateTimePicker {
     d := new(TDateTimePicker)
     d.instance = DateTimePicker_Create(CheckPtr(owner))
@@ -36,8 +37,9 @@ func NewDateTimePicker(owner IComponent) *TDateTimePicker {
     return d
 }
 
-// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
-// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+// 动态转换一个已存在的对象实例。
+// 
+// Dynamically convert an existing object instance.
 func AsDateTimePicker(obj interface{}) *TDateTimePicker {
     instance, ptr := getInstance(obj)
     if instance == 0 { return nil }
@@ -45,30 +47,34 @@ func AsDateTimePicker(obj interface{}) *TDateTimePicker {
 }
 
 // -------------------------- Deprecated begin --------------------------
-// CN: 新建一个对象来自已经存在的对象实例指针。
-// EN: Create a new object from an existing object instance pointer.
+// 新建一个对象来自已经存在的对象实例指针。
+// 
+// Create a new object from an existing object instance pointer.
 // Deprecated: use AsDateTimePicker.
 func DateTimePickerFromInst(inst uintptr) *TDateTimePicker {
     return AsDateTimePicker(inst)
 }
 
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// 新建一个对象来自已经存在的对象实例。
+// 
+// Create a new object from an existing object instance.
 // Deprecated: use AsDateTimePicker.
 func DateTimePickerFromObj(obj IObject) *TDateTimePicker {
     return AsDateTimePicker(obj)
 }
 
-// CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
+// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+// 
+// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsDateTimePicker.
 func DateTimePickerFromUnsafePointer(ptr unsafe.Pointer) *TDateTimePicker {
     return AsDateTimePicker(ptr)
 }
 
 // -------------------------- Deprecated end --------------------------
-// CN: 释放对象。
-// EN: Free object.
+// 释放对象。
+// 
+// Free object.
 func (d *TDateTimePicker) Free() {
     if d.instance != 0 {
         DateTimePicker_Free(d.instance)
@@ -76,74 +82,84 @@ func (d *TDateTimePicker) Free() {
     }
 }
 
-// CN: 返回对象实例指针。
-// EN: Return object instance pointer.
+// 返回对象实例指针。
+// 
+// Return object instance pointer.
 func (d *TDateTimePicker) Instance() uintptr {
     return d.instance
 }
 
-// CN: 获取一个不安全的地址。
-// EN: Get an unsafe address.
+// 获取一个不安全的地址。
+// 
+// Get an unsafe address.
 func (d *TDateTimePicker) UnsafeAddr() unsafe.Pointer {
     return d.ptr
 }
 
-// CN: 检测地址是否为空。
-// EN: Check if the address is empty.
+// 检测地址是否为空。
+// 
+// Check if the address is empty.
 func (d *TDateTimePicker) IsValid() bool {
     return d.instance != 0
 }
 
-// CN: 检测当前对象是否继承自目标对象。
-// EN: Checks whether the current object is inherited from the target object.
+// 检测当前对象是否继承自目标对象。
+// 
+// Checks whether the current object is inherited from the target object.
 func (d *TDateTimePicker) Is() TIs {
     return TIs(d.instance)
 }
 
-// CN: 动态转换当前对象为目标对象。
-// EN: Dynamically convert the current object to the target object.
+// 动态转换当前对象为目标对象。
+// 
+// Dynamically convert the current object to the target object.
 //func (d *TDateTimePicker) As() TAs {
 //    return TAs(d.instance)
 //}
 
-// CN: 获取类信息指针。
-// EN: Get class information pointer.
+// 获取类信息指针。
+// 
+// Get class information pointer.
 func TDateTimePickerClass() TClass {
     return DateTimePicker_StaticClassType()
 }
 
-// CN: 是否可以获得焦点。
-// EN: .
+// 是否可以获得焦点。
 func (d *TDateTimePicker) CanFocus() bool {
     return DateTimePicker_CanFocus(d.instance)
 }
 
-// CN: 返回是否包含指定控件。
-// EN: it's contain a specified control.
+// 返回是否包含指定控件。
+//
+// it's contain a specified control.
 func (d *TDateTimePicker) ContainsControl(Control IControl) bool {
     return DateTimePicker_ContainsControl(d.instance, CheckPtr(Control))
 }
 
-// CN: 返回指定坐标及相关属性位置控件。
-// EN: Returns the specified coordinate and the relevant attribute position control..
+// 返回指定坐标及相关属性位置控件。
+//
+// Returns the specified coordinate and the relevant attribute position control..
 func (d *TDateTimePicker) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return AsControl(DateTimePicker_ControlAtPos(d.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
-// CN: 禁用控件的对齐。
-// EN: Disable control alignment.
+// 禁用控件的对齐。
+//
+// Disable control alignment.
 func (d *TDateTimePicker) DisableAlign() {
     DateTimePicker_DisableAlign(d.instance)
 }
 
-// CN: 启用控件对齐。
-// EN: Enabled control alignment.
+// 启用控件对齐。
+//
+// Enabled control alignment.
 func (d *TDateTimePicker) EnableAlign() {
     DateTimePicker_EnableAlign(d.instance)
 }
 
-// CN: 查找子控件。
-// EN: Find sub controls.
+// 查找子控件。
+//
+// Find sub controls.
 func (d *TDateTimePicker) FindChildControl(ControlName string) *TControl {
     return AsControl(DateTimePicker_FindChildControl(d.instance, ControlName))
 }
@@ -152,224 +168,261 @@ func (d *TDateTimePicker) FlipChildren(AllLevels bool) {
     DateTimePicker_FlipChildren(d.instance, AllLevels)
 }
 
-// CN: 返回是否获取焦点。
-// EN: Return to get focus.
+// 返回是否获取焦点。
+//
+// Return to get focus.
 func (d *TDateTimePicker) Focused() bool {
     return DateTimePicker_Focused(d.instance)
 }
 
-// CN: 句柄是否已经分配。
-// EN: Is the handle already allocated.
+// 句柄是否已经分配。
+//
+// Is the handle already allocated.
 func (d *TDateTimePicker) HandleAllocated() bool {
     return DateTimePicker_HandleAllocated(d.instance)
 }
 
-// CN: 插入一个控件。
-// EN: Insert a control.
+// 插入一个控件。
+//
+// Insert a control.
 func (d *TDateTimePicker) InsertControl(AControl IControl) {
     DateTimePicker_InsertControl(d.instance, CheckPtr(AControl))
 }
 
-// CN: 要求重绘。
-// EN: Redraw.
+// 要求重绘。
+//
+// Redraw.
 func (d *TDateTimePicker) Invalidate() {
     DateTimePicker_Invalidate(d.instance)
 }
 
-// CN: 移除一个控件。
-// EN: Remove a control.
+// 移除一个控件。
+//
+// Remove a control.
 func (d *TDateTimePicker) RemoveControl(AControl IControl) {
     DateTimePicker_RemoveControl(d.instance, CheckPtr(AControl))
 }
 
-// CN: 重新对齐。
-// EN: Realign.
+// 重新对齐。
+//
+// Realign.
 func (d *TDateTimePicker) Realign() {
     DateTimePicker_Realign(d.instance)
 }
 
-// CN: 重绘。
-// EN: Repaint.
+// 重绘。
+//
+// Repaint.
 func (d *TDateTimePicker) Repaint() {
     DateTimePicker_Repaint(d.instance)
 }
 
-// CN: 按比例缩放。
-// EN: Scale by.
+// 按比例缩放。
+//
+// Scale by.
 func (d *TDateTimePicker) ScaleBy(M int32, D int32) {
     DateTimePicker_ScaleBy(d.instance, M , D)
 }
 
-// CN: 滚动至指定位置。
-// EN: Scroll by.
+// 滚动至指定位置。
+//
+// Scroll by.
 func (d *TDateTimePicker) ScrollBy(DeltaX int32, DeltaY int32) {
     DateTimePicker_ScrollBy(d.instance, DeltaX , DeltaY)
 }
 
-// CN: 设置组件边界。
-// EN: Set component boundaries.
+// 设置组件边界。
+//
+// Set component boundaries.
 func (d *TDateTimePicker) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     DateTimePicker_SetBounds(d.instance, ALeft , ATop , AWidth , AHeight)
 }
 
-// CN: 设置控件焦点。
-// EN: Set control focus.
+// 设置控件焦点。
+//
+// Set control focus.
 func (d *TDateTimePicker) SetFocus() {
     DateTimePicker_SetFocus(d.instance)
 }
 
-// CN: 控件更新。
-// EN: Update.
+// 控件更新。
+//
+// Update.
 func (d *TDateTimePicker) Update() {
     DateTimePicker_Update(d.instance)
 }
 
-// CN: 将控件置于最前。
-// EN: Bring the control to the front.
+// 将控件置于最前。
+//
+// Bring the control to the front.
 func (d *TDateTimePicker) BringToFront() {
     DateTimePicker_BringToFront(d.instance)
 }
 
-// CN: 将客户端坐标转为绝对的屏幕坐标。
-// EN: Convert client coordinates to absolute screen coordinates.
+// 将客户端坐标转为绝对的屏幕坐标。
+//
+// Convert client coordinates to absolute screen coordinates.
 func (d *TDateTimePicker) ClientToScreen(Point TPoint) TPoint {
     return DateTimePicker_ClientToScreen(d.instance, Point)
 }
 
-// CN: 将客户端坐标转为父容器坐标。
-// EN: Convert client coordinates to parent container coordinates.
+// 将客户端坐标转为父容器坐标。
+//
+// Convert client coordinates to parent container coordinates.
 func (d *TDateTimePicker) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return DateTimePicker_ClientToParent(d.instance, Point , CheckPtr(AParent))
 }
 
-// CN: 是否在拖拽中。
-// EN: Is it in the middle of dragging.
+// 是否在拖拽中。
+//
+// Is it in the middle of dragging.
 func (d *TDateTimePicker) Dragging() bool {
     return DateTimePicker_Dragging(d.instance)
 }
 
-// CN: 是否有父容器。
-// EN: Is there a parent container.
+// 是否有父容器。
+//
+// Is there a parent container.
 func (d *TDateTimePicker) HasParent() bool {
     return DateTimePicker_HasParent(d.instance)
 }
 
-// CN: 隐藏控件。
-// EN: Hidden control.
+// 隐藏控件。
+//
+// Hidden control.
 func (d *TDateTimePicker) Hide() {
     DateTimePicker_Hide(d.instance)
 }
 
-// CN: 发送一个消息。
-// EN: Send a message.
+// 发送一个消息。
+//
+// Send a message.
 func (d *TDateTimePicker) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return DateTimePicker_Perform(d.instance, Msg , WParam , LParam)
 }
 
-// CN: 刷新控件。
-// EN: Refresh control.
+// 刷新控件。
+//
+// Refresh control.
 func (d *TDateTimePicker) Refresh() {
     DateTimePicker_Refresh(d.instance)
 }
 
-// CN: 将屏幕坐标转为客户端坐标。
-// EN: Convert screen coordinates to client coordinates.
+// 将屏幕坐标转为客户端坐标。
+//
+// Convert screen coordinates to client coordinates.
 func (d *TDateTimePicker) ScreenToClient(Point TPoint) TPoint {
     return DateTimePicker_ScreenToClient(d.instance, Point)
 }
 
-// CN: 将父容器坐标转为客户端坐标。
-// EN: Convert parent container coordinates to client coordinates.
+// 将父容器坐标转为客户端坐标。
+//
+// Convert parent container coordinates to client coordinates.
 func (d *TDateTimePicker) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return DateTimePicker_ParentToClient(d.instance, Point , CheckPtr(AParent))
 }
 
-// CN: 控件至于最后面。
-// EN: The control is placed at the end.
+// 控件至于最后面。
+//
+// The control is placed at the end.
 func (d *TDateTimePicker) SendToBack() {
     DateTimePicker_SendToBack(d.instance)
 }
 
-// CN: 显示控件。
-// EN: Show control.
+// 显示控件。
+//
+// Show control.
 func (d *TDateTimePicker) Show() {
     DateTimePicker_Show(d.instance)
 }
 
-// CN: 获取控件的字符，如果有。
-// EN: Get the characters of the control, if any.
+// 获取控件的字符，如果有。
+//
+// Get the characters of the control, if any.
 func (d *TDateTimePicker) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return DateTimePicker_GetTextBuf(d.instance, Buffer , BufSize)
 }
 
-// CN: 获取控件的字符长，如果有。
-// EN: Get the character length of the control, if any.
+// 获取控件的字符长，如果有。
+//
+// Get the character length of the control, if any.
 func (d *TDateTimePicker) GetTextLen() int32 {
     return DateTimePicker_GetTextLen(d.instance)
 }
 
-// CN: 设置控件字符，如果有。
-// EN: Set control characters, if any.
+// 设置控件字符，如果有。
+//
+// Set control characters, if any.
 func (d *TDateTimePicker) SetTextBuf(Buffer string) {
     DateTimePicker_SetTextBuf(d.instance, Buffer)
 }
 
-// CN: 查找指定名称的组件。
-// EN: Find the component with the specified name.
+// 查找指定名称的组件。
+//
+// Find the component with the specified name.
 func (d *TDateTimePicker) FindComponent(AName string) *TComponent {
     return AsComponent(DateTimePicker_FindComponent(d.instance, AName))
 }
 
-// CN: 获取类名路径。
-// EN: Get the class name path.
+// 获取类名路径。
+//
+// Get the class name path.
 func (d *TDateTimePicker) GetNamePath() string {
     return DateTimePicker_GetNamePath(d.instance)
 }
 
-// CN: 复制一个对象，如果对象实现了此方法的话。
-// EN: Copy an object, if the object implements this method.
+// 复制一个对象，如果对象实现了此方法的话。
+//
+// Copy an object, if the object implements this method.
 func (d *TDateTimePicker) Assign(Source IObject) {
     DateTimePicker_Assign(d.instance, CheckPtr(Source))
 }
 
-// CN: 获取类的类型信息。
-// EN: Get class type information.
+// 获取类的类型信息。
+//
+// Get class type information.
 func (d *TDateTimePicker) ClassType() TClass {
     return DateTimePicker_ClassType(d.instance)
 }
 
-// CN: 获取当前对象类名称。
-// EN: Get the current object class name.
+// 获取当前对象类名称。
+//
+// Get the current object class name.
 func (d *TDateTimePicker) ClassName() string {
     return DateTimePicker_ClassName(d.instance)
 }
 
-// CN: 获取当前对象实例大小。
-// EN: Get the current object instance size.
+// 获取当前对象实例大小。
+//
+// Get the current object instance size.
 func (d *TDateTimePicker) InstanceSize() int32 {
     return DateTimePicker_InstanceSize(d.instance)
 }
 
-// CN: 判断当前类是否继承自指定类。
-// EN: Determine whether the current class inherits from the specified class.
+// 判断当前类是否继承自指定类。
+//
+// Determine whether the current class inherits from the specified class.
 func (d *TDateTimePicker) InheritsFrom(AClass TClass) bool {
     return DateTimePicker_InheritsFrom(d.instance, AClass)
 }
 
-// CN: 与一个对象进行比较。
-// EN: Compare with an object.
+// 与一个对象进行比较。
+//
+// Compare with an object.
 func (d *TDateTimePicker) Equals(Obj IObject) bool {
     return DateTimePicker_Equals(d.instance, CheckPtr(Obj))
 }
 
-// CN: 获取类的哈希值。
-// EN: Get the hash value of the class.
+// 获取类的哈希值。
+//
+// Get the hash value of the class.
 func (d *TDateTimePicker) GetHashCode() int32 {
     return DateTimePicker_GetHashCode(d.instance)
 }
 
-// CN: 文本类信息。
-// EN: Text information.
+// 文本类信息。
+//
+// Text information.
 func (d *TDateTimePicker) ToString() string {
     return DateTimePicker_ToString(d.instance)
 }
@@ -382,14 +435,12 @@ func (d *TDateTimePicker) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibli
     DateTimePicker_AnchorParallel(d.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
-// CN: 置于指定控件的横向中心。
-// EN: .
+// 置于指定控件的横向中心。
 func (d *TDateTimePicker) AnchorHorizontalCenterTo(ASibling IControl) {
     DateTimePicker_AnchorHorizontalCenterTo(d.instance, CheckPtr(ASibling))
 }
 
-// CN: 置于指定控件的纵向中心。
-// EN: .
+// 置于指定控件的纵向中心。
 func (d *TDateTimePicker) AnchorVerticalCenterTo(ASibling IControl) {
     DateTimePicker_AnchorVerticalCenterTo(d.instance, CheckPtr(ASibling))
 }
@@ -414,26 +465,26 @@ func (d *TDateTimePicker) DroppedDown() bool {
     return DateTimePicker_GetDroppedDown(d.instance)
 }
 
-// CN: 获取控件自动调整。
-// EN: Get Control automatically adjusts.
+// 获取控件自动调整。
+//
+// Get Control automatically adjusts.
 func (d *TDateTimePicker) Align() TAlign {
     return DateTimePicker_GetAlign(d.instance)
 }
 
-// CN: 设置控件自动调整。
-// EN: Set Control automatically adjusts.
+// 设置控件自动调整。
+//
+// Set Control automatically adjusts.
 func (d *TDateTimePicker) SetAlign(value TAlign) {
     DateTimePicker_SetAlign(d.instance, value)
 }
 
-// CN: 获取四个角位置的锚点。
-// EN: .
+// 获取四个角位置的锚点。
 func (d *TDateTimePicker) Anchors() TAnchors {
     return DateTimePicker_GetAnchors(d.instance)
 }
 
-// CN: 设置四个角位置的锚点。
-// EN: .
+// 设置四个角位置的锚点。
 func (d *TDateTimePicker) SetAnchors(value TAnchors) {
     DateTimePicker_SetAnchors(d.instance, value)
 }
@@ -454,14 +505,12 @@ func (d *TDateTimePicker) SetCalAlignment(value TDTCalAlignment) {
     DateTimePicker_SetCalAlignment(d.instance, value)
 }
 
-// CN: 获取约束控件大小。
-// EN: .
+// 获取约束控件大小。
 func (d *TDateTimePicker) Constraints() *TSizeConstraints {
     return AsSizeConstraints(DateTimePicker_GetConstraints(d.instance))
 }
 
-// CN: 设置约束控件大小。
-// EN: .
+// 设置约束控件大小。
 func (d *TDateTimePicker) SetConstraints(value *TSizeConstraints) {
     DateTimePicker_SetConstraints(d.instance, CheckPtr(value))
 }
@@ -482,26 +531,26 @@ func (d *TDateTimePicker) SetTime(value time.Time) {
     DateTimePicker_SetTime(d.instance, value)
 }
 
-// CN: 获取是否选中。
-// EN: .
+// 获取是否选中。
 func (d *TDateTimePicker) Checked() bool {
     return DateTimePicker_GetChecked(d.instance)
 }
 
-// CN: 设置是否选中。
-// EN: .
+// 设置是否选中。
 func (d *TDateTimePicker) SetChecked(value bool) {
     DateTimePicker_SetChecked(d.instance, value)
 }
 
-// CN: 获取颜色。
-// EN: Get color.
+// 获取颜色。
+//
+// Get color.
 func (d *TDateTimePicker) Color() TColor {
     return DateTimePicker_GetColor(d.instance)
 }
 
-// CN: 设置颜色。
-// EN: Set color.
+// 设置颜色。
+//
+// Set color.
 func (d *TDateTimePicker) SetColor(value TColor) {
     DateTimePicker_SetColor(d.instance, value)
 }
@@ -514,38 +563,44 @@ func (d *TDateTimePicker) SetDateMode(value TDTDateMode) {
     DateTimePicker_SetDateMode(d.instance, value)
 }
 
-// CN: 获取设置控件双缓冲。
-// EN: Get Set control double buffering.
+// 获取设置控件双缓冲。
+//
+// Get Set control double buffering.
 func (d *TDateTimePicker) DoubleBuffered() bool {
     return DateTimePicker_GetDoubleBuffered(d.instance)
 }
 
-// CN: 设置设置控件双缓冲。
-// EN: Set Set control double buffering.
+// 设置设置控件双缓冲。
+//
+// Set Set control double buffering.
 func (d *TDateTimePicker) SetDoubleBuffered(value bool) {
     DateTimePicker_SetDoubleBuffered(d.instance, value)
 }
 
-// CN: 获取控件启用。
-// EN: Get the control enabled.
+// 获取控件启用。
+//
+// Get the control enabled.
 func (d *TDateTimePicker) Enabled() bool {
     return DateTimePicker_GetEnabled(d.instance)
 }
 
-// CN: 设置控件启用。
-// EN: Set the control enabled.
+// 设置控件启用。
+//
+// Set the control enabled.
 func (d *TDateTimePicker) SetEnabled(value bool) {
     DateTimePicker_SetEnabled(d.instance, value)
 }
 
-// CN: 获取字体。
-// EN: Get Font.
+// 获取字体。
+//
+// Get Font.
 func (d *TDateTimePicker) Font() *TFont {
     return AsFont(DateTimePicker_GetFont(d.instance))
 }
 
-// CN: 设置字体。
-// EN: Set Font.
+// 设置字体。
+//
+// Set Font.
 func (d *TDateTimePicker) SetFont(value *TFont) {
     DateTimePicker_SetFont(d.instance, CheckPtr(value))
 }
@@ -566,230 +621,260 @@ func (d *TDateTimePicker) SetMinDate(value time.Time) {
     DateTimePicker_SetMinDate(d.instance, value)
 }
 
-// CN: 获取使用父容器颜色。
-// EN: Get parent color.
+// 获取使用父容器颜色。
+//
+// Get parent color.
 func (d *TDateTimePicker) ParentColor() bool {
     return DateTimePicker_GetParentColor(d.instance)
 }
 
-// CN: 设置使用父容器颜色。
-// EN: Set parent color.
+// 设置使用父容器颜色。
+//
+// Set parent color.
 func (d *TDateTimePicker) SetParentColor(value bool) {
     DateTimePicker_SetParentColor(d.instance, value)
 }
 
-// CN: 获取使用父容器双缓冲。
-// EN: Get Parent container double buffering.
+// 获取使用父容器双缓冲。
+//
+// Get Parent container double buffering.
 func (d *TDateTimePicker) ParentDoubleBuffered() bool {
     return DateTimePicker_GetParentDoubleBuffered(d.instance)
 }
 
-// CN: 设置使用父容器双缓冲。
-// EN: Set Parent container double buffering.
+// 设置使用父容器双缓冲。
+//
+// Set Parent container double buffering.
 func (d *TDateTimePicker) SetParentDoubleBuffered(value bool) {
     DateTimePicker_SetParentDoubleBuffered(d.instance, value)
 }
 
-// CN: 获取使用父容器字体。
-// EN: Get Parent container font.
+// 获取使用父容器字体。
+//
+// Get Parent container font.
 func (d *TDateTimePicker) ParentFont() bool {
     return DateTimePicker_GetParentFont(d.instance)
 }
 
-// CN: 设置使用父容器字体。
-// EN: Set Parent container font.
+// 设置使用父容器字体。
+//
+// Set Parent container font.
 func (d *TDateTimePicker) SetParentFont(value bool) {
     DateTimePicker_SetParentFont(d.instance, value)
 }
 
-// CN: 获取以父容器的ShowHint属性为准。
-// EN: .
+// 获取以父容器的ShowHint属性为准。
 func (d *TDateTimePicker) ParentShowHint() bool {
     return DateTimePicker_GetParentShowHint(d.instance)
 }
 
-// CN: 设置以父容器的ShowHint属性为准。
-// EN: .
+// 设置以父容器的ShowHint属性为准。
 func (d *TDateTimePicker) SetParentShowHint(value bool) {
     DateTimePicker_SetParentShowHint(d.instance, value)
 }
 
-// CN: 获取右键菜单。
-// EN: Get Right click menu.
+// 获取右键菜单。
+//
+// Get Right click menu.
 func (d *TDateTimePicker) PopupMenu() *TPopupMenu {
     return AsPopupMenu(DateTimePicker_GetPopupMenu(d.instance))
 }
 
-// CN: 设置右键菜单。
-// EN: Set Right click menu.
+// 设置右键菜单。
+//
+// Set Right click menu.
 func (d *TDateTimePicker) SetPopupMenu(value IComponent) {
     DateTimePicker_SetPopupMenu(d.instance, CheckPtr(value))
 }
 
-// CN: 获取显示鼠标悬停提示。
-// EN: Get Show mouseover tips.
+// 获取显示鼠标悬停提示。
+//
+// Get Show mouseover tips.
 func (d *TDateTimePicker) ShowHint() bool {
     return DateTimePicker_GetShowHint(d.instance)
 }
 
-// CN: 设置显示鼠标悬停提示。
-// EN: Set Show mouseover tips.
+// 设置显示鼠标悬停提示。
+//
+// Set Show mouseover tips.
 func (d *TDateTimePicker) SetShowHint(value bool) {
     DateTimePicker_SetShowHint(d.instance, value)
 }
 
-// CN: 获取Tab切换顺序序号。
-// EN: Get Tab switching sequence number.
+// 获取Tab切换顺序序号。
+//
+// Get Tab switching sequence number.
 func (d *TDateTimePicker) TabOrder() TTabOrder {
     return DateTimePicker_GetTabOrder(d.instance)
 }
 
-// CN: 设置Tab切换顺序序号。
-// EN: Set Tab switching sequence number.
+// 设置Tab切换顺序序号。
+//
+// Set Tab switching sequence number.
 func (d *TDateTimePicker) SetTabOrder(value TTabOrder) {
     DateTimePicker_SetTabOrder(d.instance, value)
 }
 
-// CN: 获取Tab可停留。
-// EN: Get Tab can stay.
+// 获取Tab可停留。
+//
+// Get Tab can stay.
 func (d *TDateTimePicker) TabStop() bool {
     return DateTimePicker_GetTabStop(d.instance)
 }
 
-// CN: 设置Tab可停留。
-// EN: Set Tab can stay.
+// 设置Tab可停留。
+//
+// Set Tab can stay.
 func (d *TDateTimePicker) SetTabStop(value bool) {
     DateTimePicker_SetTabStop(d.instance, value)
 }
 
-// CN: 获取控件可视。
-// EN: Get the control visible.
+// 获取控件可视。
+//
+// Get the control visible.
 func (d *TDateTimePicker) Visible() bool {
     return DateTimePicker_GetVisible(d.instance)
 }
 
-// CN: 设置控件可视。
-// EN: Set the control visible.
+// 设置控件可视。
+//
+// Set the control visible.
 func (d *TDateTimePicker) SetVisible(value bool) {
     DateTimePicker_SetVisible(d.instance, value)
 }
 
-// CN: 设置控件单击事件。
-// EN: Set control click event.
+// 设置控件单击事件。
+//
+// Set control click event.
 func (d *TDateTimePicker) SetOnClick(fn TNotifyEvent) {
     DateTimePicker_SetOnClick(d.instance, fn)
 }
 
-// CN: 设置改变事件。
-// EN: Set changed event.
+// 设置改变事件。
+//
+// Set changed event.
 func (d *TDateTimePicker) SetOnChange(fn TNotifyEvent) {
     DateTimePicker_SetOnChange(d.instance, fn)
 }
 
-// CN: 设置上下文弹出事件，一般是右键时弹出。
-// EN: Set Context popup event, usually pop up when right click.
+// 设置上下文弹出事件，一般是右键时弹出。
+//
+// Set Context popup event, usually pop up when right click.
 func (d *TDateTimePicker) SetOnContextPopup(fn TContextPopupEvent) {
     DateTimePicker_SetOnContextPopup(d.instance, fn)
 }
 
-// CN: 设置焦点进入。
-// EN: Set Focus entry.
+// 设置焦点进入。
+//
+// Set Focus entry.
 func (d *TDateTimePicker) SetOnEnter(fn TNotifyEvent) {
     DateTimePicker_SetOnEnter(d.instance, fn)
 }
 
-// CN: 设置焦点退出。
-// EN: Set Focus exit.
+// 设置焦点退出。
+//
+// Set Focus exit.
 func (d *TDateTimePicker) SetOnExit(fn TNotifyEvent) {
     DateTimePicker_SetOnExit(d.instance, fn)
 }
 
-// CN: 设置键盘按键按下事件。
-// EN: Set Keyboard button press event.
+// 设置键盘按键按下事件。
+//
+// Set Keyboard button press event.
 func (d *TDateTimePicker) SetOnKeyDown(fn TKeyEvent) {
     DateTimePicker_SetOnKeyDown(d.instance, fn)
 }
 
-// CN: 设置键键下事件。
-// EN: .
+// 设置键键下事件。
 func (d *TDateTimePicker) SetOnKeyPress(fn TKeyPressEvent) {
     DateTimePicker_SetOnKeyPress(d.instance, fn)
 }
 
-// CN: 设置键盘按键抬起事件。
-// EN: Set Keyboard button lift event.
+// 设置键盘按键抬起事件。
+//
+// Set Keyboard button lift event.
 func (d *TDateTimePicker) SetOnKeyUp(fn TKeyEvent) {
     DateTimePicker_SetOnKeyUp(d.instance, fn)
 }
 
-// CN: 设置鼠标进入事件。
-// EN: Set Mouse entry event.
+// 设置鼠标进入事件。
+//
+// Set Mouse entry event.
 func (d *TDateTimePicker) SetOnMouseEnter(fn TNotifyEvent) {
     DateTimePicker_SetOnMouseEnter(d.instance, fn)
 }
 
-// CN: 设置鼠标离开事件。
-// EN: Set Mouse leave event.
+// 设置鼠标离开事件。
+//
+// Set Mouse leave event.
 func (d *TDateTimePicker) SetOnMouseLeave(fn TNotifyEvent) {
     DateTimePicker_SetOnMouseLeave(d.instance, fn)
 }
 
-// CN: 获取依靠客户端总数。
-// EN: .
+// 获取依靠客户端总数。
 func (d *TDateTimePicker) DockClientCount() int32 {
     return DateTimePicker_GetDockClientCount(d.instance)
 }
 
-// CN: 获取停靠站点。
-// EN: Get Docking site.
+// 获取停靠站点。
+//
+// Get Docking site.
 func (d *TDateTimePicker) DockSite() bool {
     return DateTimePicker_GetDockSite(d.instance)
 }
 
-// CN: 设置停靠站点。
-// EN: Set Docking site.
+// 设置停靠站点。
+//
+// Set Docking site.
 func (d *TDateTimePicker) SetDockSite(value bool) {
     DateTimePicker_SetDockSite(d.instance, value)
 }
 
-// CN: 获取鼠标是否在客户端，仅VCL有效。
-// EN: Get Whether the mouse is on the client, only VCL is valid.
+// 获取鼠标是否在客户端，仅VCL有效。
+//
+// Get Whether the mouse is on the client, only VCL is valid.
 func (d *TDateTimePicker) MouseInClient() bool {
     return DateTimePicker_GetMouseInClient(d.instance)
 }
 
-// CN: 获取当前停靠的可视总数。
-// EN: Get The total number of visible calls currently docked.
+// 获取当前停靠的可视总数。
+//
+// Get The total number of visible calls currently docked.
 func (d *TDateTimePicker) VisibleDockClientCount() int32 {
     return DateTimePicker_GetVisibleDockClientCount(d.instance)
 }
 
-// CN: 获取画刷对象。
-// EN: Get Brush.
+// 获取画刷对象。
+//
+// Get Brush.
 func (d *TDateTimePicker) Brush() *TBrush {
     return AsBrush(DateTimePicker_GetBrush(d.instance))
 }
 
-// CN: 获取子控件数。
-// EN: Get Number of child controls.
+// 获取子控件数。
+//
+// Get Number of child controls.
 func (d *TDateTimePicker) ControlCount() int32 {
     return DateTimePicker_GetControlCount(d.instance)
 }
 
-// CN: 获取控件句柄。
-// EN: Get Control handle.
+// 获取控件句柄。
+//
+// Get Control handle.
 func (d *TDateTimePicker) Handle() HWND {
     return DateTimePicker_GetHandle(d.instance)
 }
 
-// CN: 获取父容器句柄。
-// EN: Get Parent container handle.
+// 获取父容器句柄。
+//
+// Get Parent container handle.
 func (d *TDateTimePicker) ParentWindow() HWND {
     return DateTimePicker_GetParentWindow(d.instance)
 }
 
-// CN: 设置父容器句柄。
-// EN: Set Parent container handle.
+// 设置父容器句柄。
+//
+// Set Parent container handle.
 func (d *TDateTimePicker) SetParentWindow(value HWND) {
     DateTimePicker_SetParentWindow(d.instance, value)
 }
@@ -798,14 +883,12 @@ func (d *TDateTimePicker) Showing() bool {
     return DateTimePicker_GetShowing(d.instance)
 }
 
-// CN: 获取使用停靠管理。
-// EN: .
+// 获取使用停靠管理。
 func (d *TDateTimePicker) UseDockManager() bool {
     return DateTimePicker_GetUseDockManager(d.instance)
 }
 
-// CN: 设置使用停靠管理。
-// EN: .
+// 设置使用停靠管理。
 func (d *TDateTimePicker) SetUseDockManager(value bool) {
     DateTimePicker_SetUseDockManager(d.instance, value)
 }
@@ -826,14 +909,16 @@ func (d *TDateTimePicker) SetBoundsRect(value TRect) {
     DateTimePicker_SetBoundsRect(d.instance, value)
 }
 
-// CN: 获取客户区高度。
-// EN: Get client height.
+// 获取客户区高度。
+//
+// Get client height.
 func (d *TDateTimePicker) ClientHeight() int32 {
     return DateTimePicker_GetClientHeight(d.instance)
 }
 
-// CN: 设置客户区高度。
-// EN: Set client height.
+// 设置客户区高度。
+//
+// Set client height.
 func (d *TDateTimePicker) SetClientHeight(value int32) {
     DateTimePicker_SetClientHeight(d.instance, value)
 }
@@ -842,44 +927,51 @@ func (d *TDateTimePicker) ClientOrigin() TPoint {
     return DateTimePicker_GetClientOrigin(d.instance)
 }
 
-// CN: 获取客户区矩形。
-// EN: Get client rectangle.
+// 获取客户区矩形。
+//
+// Get client rectangle.
 func (d *TDateTimePicker) ClientRect() TRect {
     return DateTimePicker_GetClientRect(d.instance)
 }
 
-// CN: 获取客户区宽度。
-// EN: Get client width.
+// 获取客户区宽度。
+//
+// Get client width.
 func (d *TDateTimePicker) ClientWidth() int32 {
     return DateTimePicker_GetClientWidth(d.instance)
 }
 
-// CN: 设置客户区宽度。
-// EN: Set client width.
+// 设置客户区宽度。
+//
+// Set client width.
 func (d *TDateTimePicker) SetClientWidth(value int32) {
     DateTimePicker_SetClientWidth(d.instance, value)
 }
 
-// CN: 获取控件状态。
-// EN: Get control state.
+// 获取控件状态。
+//
+// Get control state.
 func (d *TDateTimePicker) ControlState() TControlState {
     return DateTimePicker_GetControlState(d.instance)
 }
 
-// CN: 设置控件状态。
-// EN: Set control state.
+// 设置控件状态。
+//
+// Set control state.
 func (d *TDateTimePicker) SetControlState(value TControlState) {
     DateTimePicker_SetControlState(d.instance, value)
 }
 
-// CN: 获取控件样式。
-// EN: Get control style.
+// 获取控件样式。
+//
+// Get control style.
 func (d *TDateTimePicker) ControlStyle() TControlStyle {
     return DateTimePicker_GetControlStyle(d.instance)
 }
 
-// CN: 设置控件样式。
-// EN: Set control style.
+// 设置控件样式。
+//
+// Set control style.
 func (d *TDateTimePicker) SetControlStyle(value TControlStyle) {
     DateTimePicker_SetControlStyle(d.instance, value)
 }
@@ -888,182 +980,196 @@ func (d *TDateTimePicker) Floating() bool {
     return DateTimePicker_GetFloating(d.instance)
 }
 
-// CN: 获取控件父容器。
-// EN: Get control parent container.
+// 获取控件父容器。
+//
+// Get control parent container.
 func (d *TDateTimePicker) Parent() *TWinControl {
     return AsWinControl(DateTimePicker_GetParent(d.instance))
 }
 
-// CN: 设置控件父容器。
-// EN: Set control parent container.
+// 设置控件父容器。
+//
+// Set control parent container.
 func (d *TDateTimePicker) SetParent(value IWinControl) {
     DateTimePicker_SetParent(d.instance, CheckPtr(value))
 }
 
-// CN: 获取左边位置。
-// EN: Get Left position.
+// 获取左边位置。
+//
+// Get Left position.
 func (d *TDateTimePicker) Left() int32 {
     return DateTimePicker_GetLeft(d.instance)
 }
 
-// CN: 设置左边位置。
-// EN: Set Left position.
+// 设置左边位置。
+//
+// Set Left position.
 func (d *TDateTimePicker) SetLeft(value int32) {
     DateTimePicker_SetLeft(d.instance, value)
 }
 
-// CN: 获取顶边位置。
-// EN: Get Top position.
+// 获取顶边位置。
+//
+// Get Top position.
 func (d *TDateTimePicker) Top() int32 {
     return DateTimePicker_GetTop(d.instance)
 }
 
-// CN: 设置顶边位置。
-// EN: Set Top position.
+// 设置顶边位置。
+//
+// Set Top position.
 func (d *TDateTimePicker) SetTop(value int32) {
     DateTimePicker_SetTop(d.instance, value)
 }
 
-// CN: 获取宽度。
-// EN: Get width.
+// 获取宽度。
+//
+// Get width.
 func (d *TDateTimePicker) Width() int32 {
     return DateTimePicker_GetWidth(d.instance)
 }
 
-// CN: 设置宽度。
-// EN: Set width.
+// 设置宽度。
+//
+// Set width.
 func (d *TDateTimePicker) SetWidth(value int32) {
     DateTimePicker_SetWidth(d.instance, value)
 }
 
-// CN: 获取高度。
-// EN: Get height.
+// 获取高度。
+//
+// Get height.
 func (d *TDateTimePicker) Height() int32 {
     return DateTimePicker_GetHeight(d.instance)
 }
 
-// CN: 设置高度。
-// EN: Set height.
+// 设置高度。
+//
+// Set height.
 func (d *TDateTimePicker) SetHeight(value int32) {
     DateTimePicker_SetHeight(d.instance, value)
 }
 
-// CN: 获取控件光标。
-// EN: Get control cursor.
+// 获取控件光标。
+//
+// Get control cursor.
 func (d *TDateTimePicker) Cursor() TCursor {
     return DateTimePicker_GetCursor(d.instance)
 }
 
-// CN: 设置控件光标。
-// EN: Set control cursor.
+// 设置控件光标。
+//
+// Set control cursor.
 func (d *TDateTimePicker) SetCursor(value TCursor) {
     DateTimePicker_SetCursor(d.instance, value)
 }
 
-// CN: 获取组件鼠标悬停提示。
-// EN: Get component mouse hints.
+// 获取组件鼠标悬停提示。
+//
+// Get component mouse hints.
 func (d *TDateTimePicker) Hint() string {
     return DateTimePicker_GetHint(d.instance)
 }
 
-// CN: 设置组件鼠标悬停提示。
-// EN: Set component mouse hints.
+// 设置组件鼠标悬停提示。
+//
+// Set component mouse hints.
 func (d *TDateTimePicker) SetHint(value string) {
     DateTimePicker_SetHint(d.instance, value)
 }
 
-// CN: 获取组件总数。
-// EN: Get the total number of components.
+// 获取组件总数。
+//
+// Get the total number of components.
 func (d *TDateTimePicker) ComponentCount() int32 {
     return DateTimePicker_GetComponentCount(d.instance)
 }
 
-// CN: 获取组件索引。
-// EN: Get component index.
+// 获取组件索引。
+//
+// Get component index.
 func (d *TDateTimePicker) ComponentIndex() int32 {
     return DateTimePicker_GetComponentIndex(d.instance)
 }
 
-// CN: 设置组件索引。
-// EN: Set component index.
+// 设置组件索引。
+//
+// Set component index.
 func (d *TDateTimePicker) SetComponentIndex(value int32) {
     DateTimePicker_SetComponentIndex(d.instance, value)
 }
 
-// CN: 获取组件所有者。
-// EN: Get component owner.
+// 获取组件所有者。
+//
+// Get component owner.
 func (d *TDateTimePicker) Owner() *TComponent {
     return AsComponent(DateTimePicker_GetOwner(d.instance))
 }
 
-// CN: 获取组件名称。
-// EN: Get the component name.
+// 获取组件名称。
+//
+// Get the component name.
 func (d *TDateTimePicker) Name() string {
     return DateTimePicker_GetName(d.instance)
 }
 
-// CN: 设置组件名称。
-// EN: Set the component name.
+// 设置组件名称。
+//
+// Set the component name.
 func (d *TDateTimePicker) SetName(value string) {
     DateTimePicker_SetName(d.instance, value)
 }
 
-// CN: 获取对象标记。
-// EN: Get the control tag.
+// 获取对象标记。
+//
+// Get the control tag.
 func (d *TDateTimePicker) Tag() int {
     return DateTimePicker_GetTag(d.instance)
 }
 
-// CN: 设置对象标记。
-// EN: Set the control tag.
+// 设置对象标记。
+//
+// Set the control tag.
 func (d *TDateTimePicker) SetTag(value int) {
     DateTimePicker_SetTag(d.instance, value)
 }
 
-// CN: 获取左边锚点。
-// EN: .
+// 获取左边锚点。
 func (d *TDateTimePicker) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(DateTimePicker_GetAnchorSideLeft(d.instance))
 }
 
-// CN: 设置左边锚点。
-// EN: .
+// 设置左边锚点。
 func (d *TDateTimePicker) SetAnchorSideLeft(value *TAnchorSide) {
     DateTimePicker_SetAnchorSideLeft(d.instance, CheckPtr(value))
 }
 
-// CN: 获取顶边锚点。
-// EN: .
+// 获取顶边锚点。
 func (d *TDateTimePicker) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(DateTimePicker_GetAnchorSideTop(d.instance))
 }
 
-// CN: 设置顶边锚点。
-// EN: .
+// 设置顶边锚点。
 func (d *TDateTimePicker) SetAnchorSideTop(value *TAnchorSide) {
     DateTimePicker_SetAnchorSideTop(d.instance, CheckPtr(value))
 }
 
-// CN: 获取右边锚点。
-// EN: .
+// 获取右边锚点。
 func (d *TDateTimePicker) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(DateTimePicker_GetAnchorSideRight(d.instance))
 }
 
-// CN: 设置右边锚点。
-// EN: .
+// 设置右边锚点。
 func (d *TDateTimePicker) SetAnchorSideRight(value *TAnchorSide) {
     DateTimePicker_SetAnchorSideRight(d.instance, CheckPtr(value))
 }
 
-// CN: 获取底边锚点。
-// EN: .
+// 获取底边锚点。
 func (d *TDateTimePicker) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(DateTimePicker_GetAnchorSideBottom(d.instance))
 }
 
-// CN: 设置底边锚点。
-// EN: .
+// 设置底边锚点。
 func (d *TDateTimePicker) SetAnchorSideBottom(value *TAnchorSide) {
     DateTimePicker_SetAnchorSideBottom(d.instance, CheckPtr(value))
 }
@@ -1076,38 +1182,34 @@ func (d *TDateTimePicker) SetChildSizing(value *TControlChildSizing) {
     DateTimePicker_SetChildSizing(d.instance, CheckPtr(value))
 }
 
-// CN: 获取边框间距。
-// EN: .
+// 获取边框间距。
 func (d *TDateTimePicker) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(DateTimePicker_GetBorderSpacing(d.instance))
 }
 
-// CN: 设置边框间距。
-// EN: .
+// 设置边框间距。
 func (d *TDateTimePicker) SetBorderSpacing(value *TControlBorderSpacing) {
     DateTimePicker_SetBorderSpacing(d.instance, CheckPtr(value))
 }
 
-// CN: 获取指定索引停靠客户端。
-// EN: .
+// 获取指定索引停靠客户端。
 func (d *TDateTimePicker) DockClients(Index int32) *TControl {
     return AsControl(DateTimePicker_GetDockClients(d.instance, Index))
 }
 
-// CN: 获取指定索引子控件。
-// EN: .
+// 获取指定索引子控件。
 func (d *TDateTimePicker) Controls(Index int32) *TControl {
     return AsControl(DateTimePicker_GetControls(d.instance, Index))
 }
 
-// CN: 获取指定索引组件。
-// EN: Get the specified index component.
+// 获取指定索引组件。
+//
+// Get the specified index component.
 func (d *TDateTimePicker) Components(AIndex int32) *TComponent {
     return AsComponent(DateTimePicker_GetComponents(d.instance, AIndex))
 }
 
-// CN: 获取锚侧面。
-// EN: .
+// 获取锚侧面。
 func (d *TDateTimePicker) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(DateTimePicker_GetAnchorSide(d.instance, AKind))
 }

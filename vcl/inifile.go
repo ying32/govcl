@@ -25,8 +25,9 @@ type TIniFile struct {
     ptr unsafe.Pointer
 }
 
-// CN: 创建一个新的对象。
-// EN: Create a new object.
+// 创建一个新的对象。
+// 
+// Create a new object.
 func NewIniFile(filename string) *TIniFile {
     i := new(TIniFile)
     i.instance = IniFile_Create(GoStrToDStr(filename))
@@ -36,8 +37,9 @@ func NewIniFile(filename string) *TIniFile {
     return i
 }
 
-// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
-// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+// 动态转换一个已存在的对象实例。
+// 
+// Dynamically convert an existing object instance.
 func AsIniFile(obj interface{}) *TIniFile {
     instance, ptr := getInstance(obj)
     if instance == 0 { return nil }
@@ -45,30 +47,34 @@ func AsIniFile(obj interface{}) *TIniFile {
 }
 
 // -------------------------- Deprecated begin --------------------------
-// CN: 新建一个对象来自已经存在的对象实例指针。
-// EN: Create a new object from an existing object instance pointer.
+// 新建一个对象来自已经存在的对象实例指针。
+// 
+// Create a new object from an existing object instance pointer.
 // Deprecated: use AsIniFile.
 func IniFileFromInst(inst uintptr) *TIniFile {
     return AsIniFile(inst)
 }
 
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// 新建一个对象来自已经存在的对象实例。
+// 
+// Create a new object from an existing object instance.
 // Deprecated: use AsIniFile.
 func IniFileFromObj(obj IObject) *TIniFile {
     return AsIniFile(obj)
 }
 
-// CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
+// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+// 
+// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsIniFile.
 func IniFileFromUnsafePointer(ptr unsafe.Pointer) *TIniFile {
     return AsIniFile(ptr)
 }
 
 // -------------------------- Deprecated end --------------------------
-// CN: 释放对象。
-// EN: Free object.
+// 释放对象。
+// 
+// Free object.
 func (i *TIniFile) Free() {
     if i.instance != 0 {
         IniFile_Free(i.instance)
@@ -76,38 +82,44 @@ func (i *TIniFile) Free() {
     }
 }
 
-// CN: 返回对象实例指针。
-// EN: Return object instance pointer.
+// 返回对象实例指针。
+// 
+// Return object instance pointer.
 func (i *TIniFile) Instance() uintptr {
     return i.instance
 }
 
-// CN: 获取一个不安全的地址。
-// EN: Get an unsafe address.
+// 获取一个不安全的地址。
+// 
+// Get an unsafe address.
 func (i *TIniFile) UnsafeAddr() unsafe.Pointer {
     return i.ptr
 }
 
-// CN: 检测地址是否为空。
-// EN: Check if the address is empty.
+// 检测地址是否为空。
+// 
+// Check if the address is empty.
 func (i *TIniFile) IsValid() bool {
     return i.instance != 0
 }
 
-// CN: 检测当前对象是否继承自目标对象。
-// EN: Checks whether the current object is inherited from the target object.
+// 检测当前对象是否继承自目标对象。
+// 
+// Checks whether the current object is inherited from the target object.
 func (i *TIniFile) Is() TIs {
     return TIs(i.instance)
 }
 
-// CN: 动态转换当前对象为目标对象。
-// EN: Dynamically convert the current object to the target object.
+// 动态转换当前对象为目标对象。
+// 
+// Dynamically convert the current object to the target object.
 //func (i *TIniFile) As() TAs {
 //    return TAs(i.instance)
 //}
 
-// CN: 获取类信息指针。
-// EN: Get class information pointer.
+// 获取类信息指针。
+// 
+// Get class information pointer.
 func TIniFileClass() TClass {
     return IniFile_StaticClassType()
 }
@@ -196,44 +208,51 @@ func (i *TIniFile) ValueExists(Section string, Ident string) bool {
     return IniFile_ValueExists(i.instance, Section , Ident)
 }
 
-// CN: 获取类的类型信息。
-// EN: Get class type information.
+// 获取类的类型信息。
+//
+// Get class type information.
 func (i *TIniFile) ClassType() TClass {
     return IniFile_ClassType(i.instance)
 }
 
-// CN: 获取当前对象类名称。
-// EN: Get the current object class name.
+// 获取当前对象类名称。
+//
+// Get the current object class name.
 func (i *TIniFile) ClassName() string {
     return IniFile_ClassName(i.instance)
 }
 
-// CN: 获取当前对象实例大小。
-// EN: Get the current object instance size.
+// 获取当前对象实例大小。
+//
+// Get the current object instance size.
 func (i *TIniFile) InstanceSize() int32 {
     return IniFile_InstanceSize(i.instance)
 }
 
-// CN: 判断当前类是否继承自指定类。
-// EN: Determine whether the current class inherits from the specified class.
+// 判断当前类是否继承自指定类。
+//
+// Determine whether the current class inherits from the specified class.
 func (i *TIniFile) InheritsFrom(AClass TClass) bool {
     return IniFile_InheritsFrom(i.instance, AClass)
 }
 
-// CN: 与一个对象进行比较。
-// EN: Compare with an object.
+// 与一个对象进行比较。
+//
+// Compare with an object.
 func (i *TIniFile) Equals(Obj IObject) bool {
     return IniFile_Equals(i.instance, CheckPtr(Obj))
 }
 
-// CN: 获取类的哈希值。
-// EN: Get the hash value of the class.
+// 获取类的哈希值。
+//
+// Get the hash value of the class.
 func (i *TIniFile) GetHashCode() int32 {
     return IniFile_GetHashCode(i.instance)
 }
 
-// CN: 文本类信息。
-// EN: Text information.
+// 文本类信息。
+//
+// Text information.
 func (i *TIniFile) ToString() string {
     return IniFile_ToString(i.instance)
 }

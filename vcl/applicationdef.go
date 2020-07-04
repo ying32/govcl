@@ -12,8 +12,6 @@ import (
 	. "github.com/ying32/govcl/vcl/api"
 )
 
-var globalFormScaled bool = false
-
 /*
  TApplication.CreateForm 一般不建议使用NewForm，而优先使用CreateForm
 
@@ -79,20 +77,23 @@ var globalFormScaled bool = false
   5、vcl.Application.CreateForm(form1Bytes, &mainForm)   // 从字节中填充子组件，并绑定所有事件
 */
 
-// CN: 创建一个TForm。
-// EN: Create a TForm.
+// 创建一个TForm。
+//
+// Create a TForm.
 func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 	return AsForm(resObjtBuild(0, nil, a.instance, fields...))
 }
 
-// CN: 运行APP。
-// EN: Run the app.
+// 运行APP。
+//
+// Run the app.
 func (a *TApplication) Run() {
 	Application_Run(a.instance)
 }
 
-// CN: 初始APP信息。
-// EN: Initial APP information.
+// 初始APP信息。
+//
+// Initial APP information.
 func (a *TApplication) Initialize() {
 	Application_Initialize(a.instance)
 }
