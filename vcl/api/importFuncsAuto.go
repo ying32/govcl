@@ -393,6 +393,10 @@ func Form_Close(obj uintptr)  {
     form_Close.Call(obj)
 }
 
+func Form_FocusControl(obj uintptr, Control uintptr)  {
+    form_FocusControl.Call(obj, Control )
+}
+
 func Form_Hide(obj uintptr)  {
     form_Hide.Call(obj)
 }
@@ -664,6 +668,15 @@ func Form_GetAction(obj uintptr) uintptr {
 
 func Form_SetAction(obj uintptr, value uintptr) {
    form_SetAction.Call(obj, value)
+}
+
+func Form_GetActiveControl(obj uintptr) uintptr {
+    ret, _, _ := form_GetActiveControl.Call(obj)
+    return ret
+}
+
+func Form_SetActiveControl(obj uintptr, value uintptr) {
+   form_SetActiveControl.Call(obj, value)
 }
 
 func Form_GetAlign(obj uintptr) TAlign {
@@ -7388,6 +7401,15 @@ func Label_GetEnabled(obj uintptr) bool {
 
 func Label_SetEnabled(obj uintptr, value bool) {
    label_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func Label_GetFocusControl(obj uintptr) uintptr {
+    ret, _, _ := label_GetFocusControl.Call(obj)
+    return ret
+}
+
+func Label_SetFocusControl(obj uintptr, value uintptr) {
+   label_SetFocusControl.Call(obj, value)
 }
 
 func Label_GetFont(obj uintptr) uintptr {
@@ -14206,6 +14228,15 @@ func StaticText_GetEnabled(obj uintptr) bool {
 
 func StaticText_SetEnabled(obj uintptr, value bool) {
    staticText_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func StaticText_GetFocusControl(obj uintptr) uintptr {
+    ret, _, _ := staticText_GetFocusControl.Call(obj)
+    return ret
+}
+
+func StaticText_SetFocusControl(obj uintptr, value uintptr) {
+   staticText_SetFocusControl.Call(obj, value)
 }
 
 func StaticText_GetFont(obj uintptr) uintptr {
@@ -34269,6 +34300,11 @@ func Screen_GetHashCode(obj uintptr) int32 {
 func Screen_ToString(obj uintptr) string {
     ret, _, _ := screen_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Screen_GetActiveControl(obj uintptr) uintptr {
+    ret, _, _ := screen_GetActiveControl.Call(obj)
+    return ret
 }
 
 func Screen_GetActiveForm(obj uintptr) uintptr {

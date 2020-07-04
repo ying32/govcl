@@ -415,25 +415,25 @@ func (p *TPaintBox) SetFont(value *TFont) {
     PaintBox_SetFont(p.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (p *TPaintBox) ParentColor() bool {
     return PaintBox_GetParentColor(p.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (p *TPaintBox) SetParentColor(value bool) {
     PaintBox_SetParentColor(p.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (p *TPaintBox) ParentFont() bool {
     return PaintBox_GetParentFont(p.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (p *TPaintBox) SetParentFont(value bool) {
     PaintBox_SetParentFont(p.instance, value)

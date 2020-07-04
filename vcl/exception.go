@@ -133,10 +133,14 @@ func (e *Exception) GetHashCode() int32 {
     return Exception_GetHashCode(e.instance)
 }
 
+// CN: 获取异常消息。
+// EN: .
 func (e *Exception) Message() string {
     return Exception_GetMessage(e.instance)
 }
 
+// CN: 设置异常消息。
+// EN: .
 func (e *Exception) SetMessage(value string) {
     Exception_SetMessage(e.instance, value)
 }

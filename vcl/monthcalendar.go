@@ -550,13 +550,13 @@ func (m *TMonthCalendar) SetFont(value *TFont) {
     MonthCalendar_SetFont(m.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (m *TMonthCalendar) ParentDoubleBuffered() bool {
     return MonthCalendar_GetParentDoubleBuffered(m.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (m *TMonthCalendar) SetParentDoubleBuffered(value bool) {
     MonthCalendar_SetParentDoubleBuffered(m.instance, value)
@@ -682,6 +682,8 @@ func (m *TMonthCalendar) SetOnKeyDown(fn TKeyEvent) {
     MonthCalendar_SetOnKeyDown(m.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (m *TMonthCalendar) SetOnKeyPress(fn TKeyPressEvent) {
     MonthCalendar_SetOnKeyPress(m.instance, fn)
 }

@@ -567,37 +567,37 @@ func (c *TColorListBox) SetItemHeight(value int32) {
     ColorListBox_SetItemHeight(c.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (c *TColorListBox) ParentColor() bool {
     return ColorListBox_GetParentColor(c.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (c *TColorListBox) SetParentColor(value bool) {
     ColorListBox_SetParentColor(c.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (c *TColorListBox) ParentDoubleBuffered() bool {
     return ColorListBox_GetParentDoubleBuffered(c.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (c *TColorListBox) SetParentDoubleBuffered(value bool) {
     ColorListBox_SetParentDoubleBuffered(c.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (c *TColorListBox) ParentFont() bool {
     return ColorListBox_GetParentFont(c.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (c *TColorListBox) SetParentFont(value bool) {
     ColorListBox_SetParentFont(c.instance, value)
@@ -729,6 +729,8 @@ func (c *TColorListBox) SetOnKeyDown(fn TKeyEvent) {
     ColorListBox_SetOnKeyDown(c.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (c *TColorListBox) SetOnKeyPress(fn TKeyPressEvent) {
     ColorListBox_SetOnKeyPress(c.instance, fn)
 }

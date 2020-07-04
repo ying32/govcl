@@ -497,13 +497,13 @@ func (x *TXButton) SetFont(value *TFont) {
     XButton_SetFont(x.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (x *TXButton) ParentFont() bool {
     return XButton_GetParentFont(x.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (x *TXButton) SetParentFont(value bool) {
     XButton_SetParentFont(x.instance, value)

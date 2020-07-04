@@ -825,37 +825,37 @@ func (l *TListView) SetRowSelect(value bool) {
     ListView_SetRowSelect(l.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (l *TListView) ParentColor() bool {
     return ListView_GetParentColor(l.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (l *TListView) SetParentColor(value bool) {
     ListView_SetParentColor(l.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (l *TListView) ParentDoubleBuffered() bool {
     return ListView_GetParentDoubleBuffered(l.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (l *TListView) SetParentDoubleBuffered(value bool) {
     ListView_SetParentDoubleBuffered(l.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (l *TListView) ParentFont() bool {
     return ListView_GetParentFont(l.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (l *TListView) SetParentFont(value bool) {
     ListView_SetParentFont(l.instance, value)
@@ -1099,6 +1099,8 @@ func (l *TListView) SetOnKeyDown(fn TKeyEvent) {
     ListView_SetOnKeyDown(l.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (l *TListView) SetOnKeyPress(fn TKeyPressEvent) {
     ListView_SetOnKeyPress(l.instance, fn)
 }

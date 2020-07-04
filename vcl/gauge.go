@@ -437,25 +437,25 @@ func (g *TGauge) SetMaxValue(value int32) {
     Gauge_SetMaxValue(g.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (g *TGauge) ParentColor() bool {
     return Gauge_GetParentColor(g.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (g *TGauge) SetParentColor(value bool) {
     Gauge_SetParentColor(g.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (g *TGauge) ParentFont() bool {
     return Gauge_GetParentFont(g.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (g *TGauge) SetParentFont(value bool) {
     Gauge_SetParentFont(g.instance, value)

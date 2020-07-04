@@ -627,37 +627,37 @@ func (c *TCoolBar) SetImages(value IComponent) {
     CoolBar_SetImages(c.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (c *TCoolBar) ParentColor() bool {
     return CoolBar_GetParentColor(c.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (c *TCoolBar) SetParentColor(value bool) {
     CoolBar_SetParentColor(c.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (c *TCoolBar) ParentDoubleBuffered() bool {
     return CoolBar_GetParentDoubleBuffered(c.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (c *TCoolBar) SetParentDoubleBuffered(value bool) {
     CoolBar_SetParentDoubleBuffered(c.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (c *TCoolBar) ParentFont() bool {
     return CoolBar_GetParentFont(c.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (c *TCoolBar) SetParentFont(value bool) {
     CoolBar_SetParentFont(c.instance, value)

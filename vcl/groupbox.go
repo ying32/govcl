@@ -553,37 +553,37 @@ func (g *TGroupBox) SetFont(value *TFont) {
     GroupBox_SetFont(g.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (g *TGroupBox) ParentColor() bool {
     return GroupBox_GetParentColor(g.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (g *TGroupBox) SetParentColor(value bool) {
     GroupBox_SetParentColor(g.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (g *TGroupBox) ParentDoubleBuffered() bool {
     return GroupBox_GetParentDoubleBuffered(g.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (g *TGroupBox) SetParentDoubleBuffered(value bool) {
     GroupBox_SetParentDoubleBuffered(g.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (g *TGroupBox) ParentFont() bool {
     return GroupBox_GetParentFont(g.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (g *TGroupBox) SetParentFont(value bool) {
     GroupBox_SetParentFont(g.instance, value)
@@ -661,6 +661,8 @@ func (g *TGroupBox) SetVisible(value bool) {
     GroupBox_SetVisible(g.instance, value)
 }
 
+// CN: 设置对齐位置事件，当Align为alCustom时Parent会收到这个消息。
+// EN: .
 func (g *TGroupBox) SetOnAlignPosition(fn TAlignPositionEvent) {
     GroupBox_SetOnAlignPosition(g.instance, fn)
 }

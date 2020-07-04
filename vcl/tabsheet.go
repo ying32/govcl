@@ -529,25 +529,25 @@ func (t *TTabSheet) SetPageIndex(value int32) {
     TabSheet_SetPageIndex(t.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (t *TTabSheet) ParentDoubleBuffered() bool {
     return TabSheet_GetParentDoubleBuffered(t.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (t *TTabSheet) SetParentDoubleBuffered(value bool) {
     TabSheet_SetParentDoubleBuffered(t.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (t *TTabSheet) ParentFont() bool {
     return TabSheet_GetParentFont(t.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (t *TTabSheet) SetParentFont(value bool) {
     TabSheet_SetParentFont(t.instance, value)

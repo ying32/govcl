@@ -653,37 +653,37 @@ func (f *TFlowPanel) SetParentBackground(value bool) {
     FlowPanel_SetParentBackground(f.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (f *TFlowPanel) ParentColor() bool {
     return FlowPanel_GetParentColor(f.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (f *TFlowPanel) SetParentColor(value bool) {
     FlowPanel_SetParentColor(f.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (f *TFlowPanel) ParentDoubleBuffered() bool {
     return FlowPanel_GetParentDoubleBuffered(f.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (f *TFlowPanel) SetParentDoubleBuffered(value bool) {
     FlowPanel_SetParentDoubleBuffered(f.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (f *TFlowPanel) ParentFont() bool {
     return FlowPanel_GetParentFont(f.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (f *TFlowPanel) SetParentFont(value bool) {
     FlowPanel_SetParentFont(f.instance, value)
@@ -761,6 +761,8 @@ func (f *TFlowPanel) SetVisible(value bool) {
     FlowPanel_SetVisible(f.instance, value)
 }
 
+// CN: 设置对齐位置事件，当Align为alCustom时Parent会收到这个消息。
+// EN: .
 func (f *TFlowPanel) SetOnAlignPosition(fn TAlignPositionEvent) {
     FlowPanel_SetOnAlignPosition(f.instance, fn)
 }

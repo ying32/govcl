@@ -631,25 +631,25 @@ func (r *TRichEdit) SetMaxLength(value int32) {
     RichEdit_SetMaxLength(r.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (r *TRichEdit) ParentColor() bool {
     return RichEdit_GetParentColor(r.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (r *TRichEdit) SetParentColor(value bool) {
     RichEdit_SetParentColor(r.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (r *TRichEdit) ParentFont() bool {
     return RichEdit_GetParentFont(r.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (r *TRichEdit) SetParentFont(value bool) {
     RichEdit_SetParentFont(r.instance, value)
@@ -843,6 +843,8 @@ func (r *TRichEdit) SetOnKeyDown(fn TKeyEvent) {
     RichEdit_SetOnKeyDown(r.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (r *TRichEdit) SetOnKeyPress(fn TKeyPressEvent) {
     RichEdit_SetOnKeyPress(r.instance, fn)
 }
@@ -1073,13 +1075,13 @@ func (r *TRichEdit) Handle() HWND {
     return RichEdit_GetHandle(r.instance)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (r *TRichEdit) ParentDoubleBuffered() bool {
     return RichEdit_GetParentDoubleBuffered(r.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (r *TRichEdit) SetParentDoubleBuffered(value bool) {
     RichEdit_SetParentDoubleBuffered(r.instance, value)

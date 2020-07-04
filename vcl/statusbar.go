@@ -565,37 +565,37 @@ func (s *TStatusBar) SetPanels(value *TStatusPanels) {
     StatusBar_SetPanels(s.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (s *TStatusBar) ParentColor() bool {
     return StatusBar_GetParentColor(s.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (s *TStatusBar) SetParentColor(value bool) {
     StatusBar_SetParentColor(s.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (s *TStatusBar) ParentDoubleBuffered() bool {
     return StatusBar_GetParentDoubleBuffered(s.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (s *TStatusBar) SetParentDoubleBuffered(value bool) {
     StatusBar_SetParentDoubleBuffered(s.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (s *TStatusBar) ParentFont() bool {
     return StatusBar_GetParentFont(s.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (s *TStatusBar) SetParentFont(value bool) {
     StatusBar_SetParentFont(s.instance, value)

@@ -603,37 +603,37 @@ func (c *TCheckListBox) SetItems(value IObject) {
     CheckListBox_SetItems(c.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (c *TCheckListBox) ParentColor() bool {
     return CheckListBox_GetParentColor(c.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (c *TCheckListBox) SetParentColor(value bool) {
     CheckListBox_SetParentColor(c.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (c *TCheckListBox) ParentDoubleBuffered() bool {
     return CheckListBox_GetParentDoubleBuffered(c.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (c *TCheckListBox) SetParentDoubleBuffered(value bool) {
     CheckListBox_SetParentDoubleBuffered(c.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (c *TCheckListBox) ParentFont() bool {
     return CheckListBox_GetParentFont(c.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (c *TCheckListBox) SetParentFont(value bool) {
     CheckListBox_SetParentFont(c.instance, value)
@@ -781,6 +781,8 @@ func (c *TCheckListBox) SetOnKeyDown(fn TKeyEvent) {
     CheckListBox_SetOnKeyDown(c.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (c *TCheckListBox) SetOnKeyPress(fn TKeyPressEvent) {
     CheckListBox_SetOnKeyPress(c.instance, fn)
 }

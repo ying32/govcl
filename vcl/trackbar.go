@@ -533,13 +533,13 @@ func (t *TTrackBar) SetOrientation(value TTrackBarOrientation) {
     TrackBar_SetOrientation(t.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (t *TTrackBar) ParentDoubleBuffered() bool {
     return TrackBar_GetParentDoubleBuffered(t.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (t *TTrackBar) SetParentDoubleBuffered(value bool) {
     TrackBar_SetParentDoubleBuffered(t.instance, value)
@@ -733,6 +733,8 @@ func (t *TTrackBar) SetOnKeyDown(fn TKeyEvent) {
     TrackBar_SetOnKeyDown(t.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (t *TTrackBar) SetOnKeyPress(fn TKeyPressEvent) {
     TrackBar_SetOnKeyPress(t.instance, fn)
 }

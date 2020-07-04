@@ -177,6 +177,12 @@ func (s *TScreen) ToString() string {
     return Screen_ToString(s.instance)
 }
 
+// CN: 获取当前动控件。
+// EN: .
+func (s *TScreen) ActiveControl() *TWinControl {
+    return AsWinControl(Screen_GetActiveControl(s.instance))
+}
+
 func (s *TScreen) ActiveForm() *TForm {
     return AsForm(Screen_GetActiveForm(s.instance))
 }

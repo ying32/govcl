@@ -663,37 +663,37 @@ func (e *TEdit) SetNumbersOnly(value bool) {
     Edit_SetNumbersOnly(e.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (e *TEdit) ParentColor() bool {
     return Edit_GetParentColor(e.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (e *TEdit) SetParentColor(value bool) {
     Edit_SetParentColor(e.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (e *TEdit) ParentDoubleBuffered() bool {
     return Edit_GetParentDoubleBuffered(e.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (e *TEdit) SetParentDoubleBuffered(value bool) {
     Edit_SetParentDoubleBuffered(e.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (e *TEdit) ParentFont() bool {
     return Edit_GetParentFont(e.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (e *TEdit) SetParentFont(value bool) {
     Edit_SetParentFont(e.instance, value)
@@ -885,6 +885,8 @@ func (e *TEdit) SetOnKeyDown(fn TKeyEvent) {
     Edit_SetOnKeyDown(e.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (e *TEdit) SetOnKeyPress(fn TKeyPressEvent) {
     Edit_SetOnKeyPress(e.instance, fn)
 }

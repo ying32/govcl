@@ -569,13 +569,13 @@ func (m *TMiniWebview) Handle() HWND {
     return MiniWebview_GetHandle(m.instance)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (m *TMiniWebview) ParentDoubleBuffered() bool {
     return MiniWebview_GetParentDoubleBuffered(m.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (m *TMiniWebview) SetParentDoubleBuffered(value bool) {
     MiniWebview_SetParentDoubleBuffered(m.instance, value)

@@ -629,37 +629,37 @@ func (v *TValueListEditor) SetOptions(value TGridOptions) {
     ValueListEditor_SetOptions(v.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (v *TValueListEditor) ParentColor() bool {
     return ValueListEditor_GetParentColor(v.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (v *TValueListEditor) SetParentColor(value bool) {
     ValueListEditor_SetParentColor(v.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (v *TValueListEditor) ParentDoubleBuffered() bool {
     return ValueListEditor_GetParentDoubleBuffered(v.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (v *TValueListEditor) SetParentDoubleBuffered(value bool) {
     ValueListEditor_SetParentDoubleBuffered(v.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (v *TValueListEditor) ParentFont() bool {
     return ValueListEditor_GetParentFont(v.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (v *TValueListEditor) SetParentFont(value bool) {
     ValueListEditor_SetParentFont(v.instance, value)
@@ -813,6 +813,8 @@ func (v *TValueListEditor) SetOnKeyDown(fn TKeyEvent) {
     ValueListEditor_SetOnKeyDown(v.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (v *TValueListEditor) SetOnKeyPress(fn TKeyPressEvent) {
     ValueListEditor_SetOnKeyPress(v.instance, fn)
 }

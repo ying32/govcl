@@ -399,25 +399,25 @@ func (b *TBoundLabel) Left() int32 {
     return BoundLabel_GetLeft(b.instance)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (b *TBoundLabel) ParentColor() bool {
     return BoundLabel_GetParentColor(b.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (b *TBoundLabel) SetParentColor(value bool) {
     BoundLabel_SetParentColor(b.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (b *TBoundLabel) ParentFont() bool {
     return BoundLabel_GetParentFont(b.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (b *TBoundLabel) SetParentFont(value bool) {
     BoundLabel_SetParentFont(b.instance, value)

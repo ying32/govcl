@@ -659,37 +659,37 @@ func (l *TLabeledEdit) SetNumbersOnly(value bool) {
     LabeledEdit_SetNumbersOnly(l.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (l *TLabeledEdit) ParentColor() bool {
     return LabeledEdit_GetParentColor(l.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (l *TLabeledEdit) SetParentColor(value bool) {
     LabeledEdit_SetParentColor(l.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (l *TLabeledEdit) ParentDoubleBuffered() bool {
     return LabeledEdit_GetParentDoubleBuffered(l.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (l *TLabeledEdit) SetParentDoubleBuffered(value bool) {
     LabeledEdit_SetParentDoubleBuffered(l.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (l *TLabeledEdit) ParentFont() bool {
     return LabeledEdit_GetParentFont(l.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (l *TLabeledEdit) SetParentFont(value bool) {
     LabeledEdit_SetParentFont(l.instance, value)
@@ -875,6 +875,8 @@ func (l *TLabeledEdit) SetOnKeyDown(fn TKeyEvent) {
     LabeledEdit_SetOnKeyDown(l.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (l *TLabeledEdit) SetOnKeyPress(fn TKeyPressEvent) {
     LabeledEdit_SetOnKeyPress(l.instance, fn)
 }

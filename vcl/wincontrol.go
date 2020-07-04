@@ -461,13 +461,13 @@ func (w *TWinControl) Handle() HWND {
     return WinControl_GetHandle(w.instance)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (w *TWinControl) ParentDoubleBuffered() bool {
     return WinControl_GetParentDoubleBuffered(w.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (w *TWinControl) SetParentDoubleBuffered(value bool) {
     WinControl_SetParentDoubleBuffered(w.instance, value)

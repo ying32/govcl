@@ -653,6 +653,8 @@ func (c *TCheckGroup) SetOnKeyDown(fn TKeyEvent) {
     CheckGroup_SetOnKeyDown(c.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (c *TCheckGroup) SetOnKeyPress(fn TKeyPressEvent) {
     CheckGroup_SetOnKeyPress(c.instance, fn)
 }
@@ -717,37 +719,37 @@ func (c *TCheckGroup) SetOnResize(fn TNotifyEvent) {
     CheckGroup_SetOnResize(c.instance, fn)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (c *TCheckGroup) ParentFont() bool {
     return CheckGroup_GetParentFont(c.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (c *TCheckGroup) SetParentFont(value bool) {
     CheckGroup_SetParentFont(c.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (c *TCheckGroup) ParentColor() bool {
     return CheckGroup_GetParentColor(c.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (c *TCheckGroup) SetParentColor(value bool) {
     CheckGroup_SetParentColor(c.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (c *TCheckGroup) ParentDoubleBuffered() bool {
     return CheckGroup_GetParentDoubleBuffered(c.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (c *TCheckGroup) SetParentDoubleBuffered(value bool) {
     CheckGroup_SetParentDoubleBuffered(c.instance, value)

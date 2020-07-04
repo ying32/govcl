@@ -565,6 +565,14 @@ func (s *TStaticText) SetEnabled(value bool) {
     StaticText_SetEnabled(s.instance, value)
 }
 
+func (s *TStaticText) FocusControl() *TWinControl {
+    return AsWinControl(StaticText_GetFocusControl(s.instance))
+}
+
+func (s *TStaticText) SetFocusControl(value IWinControl) {
+    StaticText_SetFocusControl(s.instance, CheckPtr(value))
+}
+
 // CN: 获取字体。
 // EN: Get Font.
 func (s *TStaticText) Font() *TFont {
@@ -577,37 +585,37 @@ func (s *TStaticText) SetFont(value *TFont) {
     StaticText_SetFont(s.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (s *TStaticText) ParentColor() bool {
     return StaticText_GetParentColor(s.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (s *TStaticText) SetParentColor(value bool) {
     StaticText_SetParentColor(s.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (s *TStaticText) ParentDoubleBuffered() bool {
     return StaticText_GetParentDoubleBuffered(s.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (s *TStaticText) SetParentDoubleBuffered(value bool) {
     StaticText_SetParentDoubleBuffered(s.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (s *TStaticText) ParentFont() bool {
     return StaticText_GetParentFont(s.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (s *TStaticText) SetParentFont(value bool) {
     StaticText_SetParentFont(s.instance, value)

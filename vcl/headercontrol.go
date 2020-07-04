@@ -553,25 +553,25 @@ func (h *THeaderControl) SetShowHint(value bool) {
     HeaderControl_SetShowHint(h.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (h *THeaderControl) ParentDoubleBuffered() bool {
     return HeaderControl_GetParentDoubleBuffered(h.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (h *THeaderControl) SetParentDoubleBuffered(value bool) {
     HeaderControl_SetParentDoubleBuffered(h.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (h *THeaderControl) ParentFont() bool {
     return HeaderControl_GetParentFont(h.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (h *THeaderControl) SetParentFont(value bool) {
     HeaderControl_SetParentFont(h.instance, value)

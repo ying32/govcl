@@ -645,37 +645,37 @@ func (p *TPanel) SetParentBackground(value bool) {
     Panel_SetParentBackground(p.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (p *TPanel) ParentColor() bool {
     return Panel_GetParentColor(p.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (p *TPanel) SetParentColor(value bool) {
     Panel_SetParentColor(p.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (p *TPanel) ParentDoubleBuffered() bool {
     return Panel_GetParentDoubleBuffered(p.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (p *TPanel) SetParentDoubleBuffered(value bool) {
     Panel_SetParentDoubleBuffered(p.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (p *TPanel) ParentFont() bool {
     return Panel_GetParentFont(p.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (p *TPanel) SetParentFont(value bool) {
     Panel_SetParentFont(p.instance, value)
@@ -753,6 +753,8 @@ func (p *TPanel) SetVisible(value bool) {
     Panel_SetVisible(p.instance, value)
 }
 
+// CN: 设置对齐位置事件，当Align为alCustom时Parent会收到这个消息。
+// EN: .
 func (p *TPanel) SetOnAlignPosition(fn TAlignPositionEvent) {
     Panel_SetOnAlignPosition(p.instance, fn)
 }

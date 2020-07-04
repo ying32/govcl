@@ -375,13 +375,13 @@ func (s *TSplitter) SetConstraints(value *TSizeConstraints) {
     Splitter_SetConstraints(s.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (s *TSplitter) ParentColor() bool {
     return Splitter_GetParentColor(s.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (s *TSplitter) SetParentColor(value bool) {
     Splitter_SetParentColor(s.instance, value)

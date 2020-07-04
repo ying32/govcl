@@ -571,25 +571,25 @@ func (b *TButton) SetModalResult(value TModalResult) {
     Button_SetModalResult(b.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (b *TButton) ParentDoubleBuffered() bool {
     return Button_GetParentDoubleBuffered(b.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (b *TButton) SetParentDoubleBuffered(value bool) {
     Button_SetParentDoubleBuffered(b.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (b *TButton) ParentFont() bool {
     return Button_GetParentFont(b.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (b *TButton) SetParentFont(value bool) {
     Button_SetParentFont(b.instance, value)
@@ -715,6 +715,8 @@ func (b *TButton) SetOnKeyDown(fn TKeyEvent) {
     Button_SetOnKeyDown(b.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (b *TButton) SetOnKeyPress(fn TKeyPressEvent) {
     Button_SetOnKeyPress(b.instance, fn)
 }

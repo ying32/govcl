@@ -479,13 +479,13 @@ func (i *TImageButton) SetParentShowHint(value bool) {
     ImageButton_SetParentShowHint(i.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (i *TImageButton) ParentFont() bool {
     return ImageButton_GetParentFont(i.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (i *TImageButton) SetParentFont(value bool) {
     ImageButton_SetParentFont(i.instance, value)

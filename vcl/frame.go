@@ -565,37 +565,37 @@ func (f *TFrame) SetFont(value *TFont) {
     Frame_SetFont(f.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (f *TFrame) ParentColor() bool {
     return Frame_GetParentColor(f.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (f *TFrame) SetParentColor(value bool) {
     Frame_SetParentColor(f.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (f *TFrame) ParentDoubleBuffered() bool {
     return Frame_GetParentDoubleBuffered(f.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (f *TFrame) SetParentDoubleBuffered(value bool) {
     Frame_SetParentDoubleBuffered(f.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (f *TFrame) ParentFont() bool {
     return Frame_GetParentFont(f.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (f *TFrame) SetParentFont(value bool) {
     Frame_SetParentFont(f.instance, value)
@@ -673,6 +673,8 @@ func (f *TFrame) SetVisible(value bool) {
     Frame_SetVisible(f.instance, value)
 }
 
+// CN: 设置对齐位置事件，当Align为alCustom时Parent会收到这个消息。
+// EN: .
 func (f *TFrame) SetOnAlignPosition(fn TAlignPositionEvent) {
     Frame_SetOnAlignPosition(f.instance, fn)
 }

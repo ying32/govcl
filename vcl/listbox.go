@@ -639,37 +639,37 @@ func (l *TListBox) SetMultiSelect(value bool) {
     ListBox_SetMultiSelect(l.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (l *TListBox) ParentColor() bool {
     return ListBox_GetParentColor(l.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (l *TListBox) SetParentColor(value bool) {
     ListBox_SetParentColor(l.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (l *TListBox) ParentDoubleBuffered() bool {
     return ListBox_GetParentDoubleBuffered(l.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (l *TListBox) SetParentDoubleBuffered(value bool) {
     ListBox_SetParentDoubleBuffered(l.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (l *TListBox) ParentFont() bool {
     return ListBox_GetParentFont(l.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (l *TListBox) SetParentFont(value bool) {
     ListBox_SetParentFont(l.instance, value)
@@ -813,6 +813,8 @@ func (l *TListBox) SetOnKeyDown(fn TKeyEvent) {
     ListBox_SetOnKeyDown(l.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (l *TListBox) SetOnKeyPress(fn TKeyPressEvent) {
     ListBox_SetOnKeyPress(l.instance, fn)
 }

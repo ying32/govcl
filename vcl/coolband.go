@@ -271,13 +271,13 @@ func (c *TCoolBand) SetMinWidth(value int32) {
     CoolBand_SetMinWidth(c.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (c *TCoolBand) ParentColor() bool {
     return CoolBand_GetParentColor(c.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (c *TCoolBand) SetParentColor(value bool) {
     CoolBand_SetParentColor(c.instance, value)

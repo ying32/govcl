@@ -461,6 +461,18 @@ func (l *TLabel) SetEnabled(value bool) {
     Label_SetEnabled(l.instance, value)
 }
 
+// CN: 获取当按下Alt+Key时跳转到指定的控件。
+// EN: .
+func (l *TLabel) FocusControl() *TWinControl {
+    return AsWinControl(Label_GetFocusControl(l.instance))
+}
+
+// CN: 设置当按下Alt+Key时跳转到指定的控件。
+// EN: .
+func (l *TLabel) SetFocusControl(value IWinControl) {
+    Label_SetFocusControl(l.instance, CheckPtr(value))
+}
+
 // CN: 获取字体。
 // EN: Get Font.
 func (l *TLabel) Font() *TFont {
@@ -473,25 +485,25 @@ func (l *TLabel) SetFont(value *TFont) {
     Label_SetFont(l.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (l *TLabel) ParentColor() bool {
     return Label_GetParentColor(l.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (l *TLabel) SetParentColor(value bool) {
     Label_SetParentColor(l.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (l *TLabel) ParentFont() bool {
     return Label_GetParentFont(l.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (l *TLabel) SetParentFont(value bool) {
     Label_SetParentFont(l.instance, value)

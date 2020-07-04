@@ -457,25 +457,25 @@ func (l *TLinkLabel) SetFont(value *TFont) {
     LinkLabel_SetFont(l.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (l *TLinkLabel) ParentColor() bool {
     return LinkLabel_GetParentColor(l.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (l *TLinkLabel) SetParentColor(value bool) {
     LinkLabel_SetParentColor(l.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (l *TLinkLabel) ParentFont() bool {
     return LinkLabel_GetParentFont(l.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (l *TLinkLabel) SetParentFont(value bool) {
     LinkLabel_SetParentFont(l.instance, value)

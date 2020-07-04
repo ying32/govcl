@@ -585,37 +585,37 @@ func (s *TScrollBox) SetParentBackground(value bool) {
     ScrollBox_SetParentBackground(s.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (s *TScrollBox) ParentColor() bool {
     return ScrollBox_GetParentColor(s.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (s *TScrollBox) SetParentColor(value bool) {
     ScrollBox_SetParentColor(s.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (s *TScrollBox) ParentDoubleBuffered() bool {
     return ScrollBox_GetParentDoubleBuffered(s.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (s *TScrollBox) SetParentDoubleBuffered(value bool) {
     ScrollBox_SetParentDoubleBuffered(s.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (s *TScrollBox) ParentFont() bool {
     return ScrollBox_GetParentFont(s.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (s *TScrollBox) SetParentFont(value bool) {
     ScrollBox_SetParentFont(s.instance, value)
@@ -801,6 +801,8 @@ func (s *TScrollBox) SetOnUnDock(fn TUnDockEvent) {
     ScrollBox_SetOnUnDock(s.instance, fn)
 }
 
+// CN: 设置对齐位置事件，当Align为alCustom时Parent会收到这个消息。
+// EN: .
 func (s *TScrollBox) SetOnAlignPosition(fn TAlignPositionEvent) {
     ScrollBox_SetOnAlignPosition(s.instance, fn)
 }

@@ -553,13 +553,13 @@ func (p *TProgressBar) SetOrientation(value TProgressBarOrientation) {
     ProgressBar_SetOrientation(p.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (p *TProgressBar) ParentDoubleBuffered() bool {
     return ProgressBar_GetParentDoubleBuffered(p.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (p *TProgressBar) SetParentDoubleBuffered(value bool) {
     ProgressBar_SetParentDoubleBuffered(p.instance, value)

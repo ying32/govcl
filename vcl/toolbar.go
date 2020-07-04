@@ -683,37 +683,37 @@ func (t *TToolBar) SetList(value bool) {
     ToolBar_SetList(t.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (t *TToolBar) ParentColor() bool {
     return ToolBar_GetParentColor(t.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (t *TToolBar) SetParentColor(value bool) {
     ToolBar_SetParentColor(t.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (t *TToolBar) ParentDoubleBuffered() bool {
     return ToolBar_GetParentDoubleBuffered(t.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (t *TToolBar) SetParentDoubleBuffered(value bool) {
     ToolBar_SetParentDoubleBuffered(t.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (t *TToolBar) ParentFont() bool {
     return ToolBar_GetParentFont(t.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (t *TToolBar) SetParentFont(value bool) {
     ToolBar_SetParentFont(t.instance, value)

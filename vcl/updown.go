@@ -493,13 +493,13 @@ func (u *TUpDown) SetOrientation(value TUDOrientation) {
     UpDown_SetOrientation(u.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (u *TUpDown) ParentDoubleBuffered() bool {
     return UpDown_GetParentDoubleBuffered(u.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (u *TUpDown) SetParentDoubleBuffered(value bool) {
     UpDown_SetParentDoubleBuffered(u.instance, value)

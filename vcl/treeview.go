@@ -803,37 +803,37 @@ func (t *TTreeView) SetMultiSelectStyle(value TMultiSelectStyle) {
     TreeView_SetMultiSelectStyle(t.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (t *TTreeView) ParentColor() bool {
     return TreeView_GetParentColor(t.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (t *TTreeView) SetParentColor(value bool) {
     TreeView_SetParentColor(t.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (t *TTreeView) ParentDoubleBuffered() bool {
     return TreeView_GetParentDoubleBuffered(t.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (t *TTreeView) SetParentDoubleBuffered(value bool) {
     TreeView_SetParentDoubleBuffered(t.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (t *TTreeView) ParentFont() bool {
     return TreeView_GetParentFont(t.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (t *TTreeView) SetParentFont(value bool) {
     TreeView_SetParentFont(t.instance, value)
@@ -1099,6 +1099,8 @@ func (t *TTreeView) SetOnKeyDown(fn TKeyEvent) {
     TreeView_SetOnKeyDown(t.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (t *TTreeView) SetOnKeyPress(fn TKeyPressEvent) {
     TreeView_SetOnKeyPress(t.instance, fn)
 }

@@ -54,21 +54,6 @@ func (f *TForm) ScaleControlsForDpi(val int32) {
 	Form_ScaleControlsForDpi(f.instance, val)
 }
 
-// 设置允许拖放文件
-func (f *TForm) SetAllowDropFiles(val bool) {
-	Form_SetAllowDropFiles(f.instance, val)
-}
-
-// AllowDropFiles 获取允许拖放文件
-func (f *TForm) AllowDropFiles() bool {
-	return Form_GetAllowDropFiles(f.instance)
-}
-
-// 窗口文件拖放事件
-func (f *TForm) SetOnDropFiles(fn TDropFilesEvent) {
-	Form_SetOnDropFiles(f.instance, fn)
-}
-
 // 窗口销毁事件
 func (f *TForm) SetOnDestroy(fn TNotifyEvent) {
 	Form_SetOnDestroy(f.instance, fn)
@@ -92,16 +77,6 @@ func (f *TForm) SetOnConstrainedResize(fn TConstrainedResizeEvent) {
 // 窗口消息过程
 func (f *TForm) SetOnWndProc(fn TWndProcEvent) {
 	Form_SetOnWndProc(f.instance, fn)
-}
-
-// 设置窗口显示在任务栏上
-func (f *TForm) SetShowInTaskBar(val types.TShowInTaskbar) {
-	Form_SetShowInTaskBar(f.instance, val)
-}
-
-// 获取当前窗口是否显示在任务栏上
-func (f *TForm) ShowInTaskBar() types.TShowInTaskbar {
-	return Form_ShowInTaskBar(f.instance)
 }
 
 // 这个方法主要是用于当不使用资源窗口创建时用，这个方法要用于设置了Width, Height或者ClientWidth、ClientHeight之后

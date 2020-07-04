@@ -635,37 +635,37 @@ func (m *TMemo) SetMaxLength(value int32) {
     Memo_SetMaxLength(m.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (m *TMemo) ParentColor() bool {
     return Memo_GetParentColor(m.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (m *TMemo) SetParentColor(value bool) {
     Memo_SetParentColor(m.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (m *TMemo) ParentDoubleBuffered() bool {
     return Memo_GetParentDoubleBuffered(m.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (m *TMemo) SetParentDoubleBuffered(value bool) {
     Memo_SetParentDoubleBuffered(m.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (m *TMemo) ParentFont() bool {
     return Memo_GetParentFont(m.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (m *TMemo) SetParentFont(value bool) {
     Memo_SetParentFont(m.instance, value)
@@ -851,6 +851,8 @@ func (m *TMemo) SetOnKeyDown(fn TKeyEvent) {
     Memo_SetOnKeyDown(m.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (m *TMemo) SetOnKeyPress(fn TKeyPressEvent) {
     Memo_SetOnKeyPress(m.instance, fn)
 }

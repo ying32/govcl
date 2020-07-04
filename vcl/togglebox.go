@@ -667,25 +667,25 @@ func (t *TToggleBox) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
     ToggleBox_SetOnMouseWheelUp(t.instance, fn)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (t *TToggleBox) ParentDoubleBuffered() bool {
     return ToggleBox_GetParentDoubleBuffered(t.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (t *TToggleBox) SetParentDoubleBuffered(value bool) {
     ToggleBox_SetParentDoubleBuffered(t.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (t *TToggleBox) ParentFont() bool {
     return ToggleBox_GetParentFont(t.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (t *TToggleBox) SetParentFont(value bool) {
     ToggleBox_SetParentFont(t.instance, value)

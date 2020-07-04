@@ -637,37 +637,37 @@ func (s *TStringGrid) SetOptions(value TGridOptions) {
     StringGrid_SetOptions(s.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (s *TStringGrid) ParentColor() bool {
     return StringGrid_GetParentColor(s.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (s *TStringGrid) SetParentColor(value bool) {
     StringGrid_SetParentColor(s.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (s *TStringGrid) ParentDoubleBuffered() bool {
     return StringGrid_GetParentDoubleBuffered(s.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (s *TStringGrid) SetParentDoubleBuffered(value bool) {
     StringGrid_SetParentDoubleBuffered(s.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (s *TStringGrid) ParentFont() bool {
     return StringGrid_GetParentFont(s.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (s *TStringGrid) SetParentFont(value bool) {
     StringGrid_SetParentFont(s.instance, value)
@@ -821,6 +821,8 @@ func (s *TStringGrid) SetOnKeyDown(fn TKeyEvent) {
     StringGrid_SetOnKeyDown(s.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (s *TStringGrid) SetOnKeyPress(fn TKeyPressEvent) {
     StringGrid_SetOnKeyPress(s.instance, fn)
 }

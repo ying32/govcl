@@ -553,37 +553,37 @@ func (r *TRadioGroup) SetConstraints(value *TSizeConstraints) {
     RadioGroup_SetConstraints(r.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (r *TRadioGroup) ParentColor() bool {
     return RadioGroup_GetParentColor(r.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (r *TRadioGroup) SetParentColor(value bool) {
     RadioGroup_SetParentColor(r.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (r *TRadioGroup) ParentDoubleBuffered() bool {
     return RadioGroup_GetParentDoubleBuffered(r.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (r *TRadioGroup) SetParentDoubleBuffered(value bool) {
     RadioGroup_SetParentDoubleBuffered(r.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (r *TRadioGroup) ParentFont() bool {
     return RadioGroup_GetParentFont(r.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (r *TRadioGroup) SetParentFont(value bool) {
     RadioGroup_SetParentFont(r.instance, value)

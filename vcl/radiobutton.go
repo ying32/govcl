@@ -579,37 +579,37 @@ func (r *TRadioButton) SetFont(value *TFont) {
     RadioButton_SetFont(r.instance, CheckPtr(value))
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (r *TRadioButton) ParentColor() bool {
     return RadioButton_GetParentColor(r.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (r *TRadioButton) SetParentColor(value bool) {
     RadioButton_SetParentColor(r.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (r *TRadioButton) ParentDoubleBuffered() bool {
     return RadioButton_GetParentDoubleBuffered(r.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (r *TRadioButton) SetParentDoubleBuffered(value bool) {
     RadioButton_SetParentDoubleBuffered(r.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (r *TRadioButton) ParentFont() bool {
     return RadioButton_GetParentFont(r.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (r *TRadioButton) SetParentFont(value bool) {
     RadioButton_SetParentFont(r.instance, value)
@@ -735,6 +735,8 @@ func (r *TRadioButton) SetOnKeyDown(fn TKeyEvent) {
     RadioButton_SetOnKeyDown(r.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (r *TRadioButton) SetOnKeyPress(fn TKeyPressEvent) {
     RadioButton_SetOnKeyPress(r.instance, fn)
 }

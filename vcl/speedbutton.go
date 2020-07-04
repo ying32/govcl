@@ -511,13 +511,13 @@ func (s *TSpeedButton) SetNumGlyphs(value TNumGlyphs) {
     SpeedButton_SetNumGlyphs(s.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (s *TSpeedButton) ParentFont() bool {
     return SpeedButton_GetParentFont(s.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (s *TSpeedButton) SetParentFont(value bool) {
     SpeedButton_SetParentFont(s.instance, value)

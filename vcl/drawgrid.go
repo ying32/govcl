@@ -637,37 +637,37 @@ func (d *TDrawGrid) SetOptions(value TGridOptions) {
     DrawGrid_SetOptions(d.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (d *TDrawGrid) ParentColor() bool {
     return DrawGrid_GetParentColor(d.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (d *TDrawGrid) SetParentColor(value bool) {
     DrawGrid_SetParentColor(d.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (d *TDrawGrid) ParentDoubleBuffered() bool {
     return DrawGrid_GetParentDoubleBuffered(d.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (d *TDrawGrid) SetParentDoubleBuffered(value bool) {
     DrawGrid_SetParentDoubleBuffered(d.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (d *TDrawGrid) ParentFont() bool {
     return DrawGrid_GetParentFont(d.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (d *TDrawGrid) SetParentFont(value bool) {
     DrawGrid_SetParentFont(d.instance, value)
@@ -821,6 +821,8 @@ func (d *TDrawGrid) SetOnKeyDown(fn TKeyEvent) {
     DrawGrid_SetOnKeyDown(d.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (d *TDrawGrid) SetOnKeyPress(fn TKeyPressEvent) {
     DrawGrid_SetOnKeyPress(d.instance, fn)
 }

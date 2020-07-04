@@ -615,37 +615,37 @@ func (c *TComboBoxEx) SetMaxLength(value int32) {
     ComboBoxEx_SetMaxLength(c.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (c *TComboBoxEx) ParentColor() bool {
     return ComboBoxEx_GetParentColor(c.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (c *TComboBoxEx) SetParentColor(value bool) {
     ComboBoxEx_SetParentColor(c.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (c *TComboBoxEx) ParentDoubleBuffered() bool {
     return ComboBoxEx_GetParentDoubleBuffered(c.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (c *TComboBoxEx) SetParentDoubleBuffered(value bool) {
     ComboBoxEx_SetParentDoubleBuffered(c.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (c *TComboBoxEx) ParentFont() bool {
     return ComboBoxEx_GetParentFont(c.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (c *TComboBoxEx) SetParentFont(value bool) {
     ComboBoxEx_SetParentFont(c.instance, value)
@@ -807,6 +807,8 @@ func (c *TComboBoxEx) SetOnKeyDown(fn TKeyEvent) {
     ComboBoxEx_SetOnKeyDown(c.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (c *TComboBoxEx) SetOnKeyPress(fn TKeyPressEvent) {
     ComboBoxEx_SetOnKeyPress(c.instance, fn)
 }

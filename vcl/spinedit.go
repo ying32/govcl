@@ -563,25 +563,25 @@ func (s *TSpinEdit) SetMinValue(value int32) {
     SpinEdit_SetMinValue(s.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (s *TSpinEdit) ParentColor() bool {
     return SpinEdit_GetParentColor(s.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (s *TSpinEdit) SetParentColor(value bool) {
     SpinEdit_SetParentColor(s.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (s *TSpinEdit) ParentFont() bool {
     return SpinEdit_GetParentFont(s.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (s *TSpinEdit) SetParentFont(value bool) {
     SpinEdit_SetParentFont(s.instance, value)
@@ -709,6 +709,8 @@ func (s *TSpinEdit) SetOnKeyDown(fn TKeyEvent) {
     SpinEdit_SetOnKeyDown(s.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (s *TSpinEdit) SetOnKeyPress(fn TKeyPressEvent) {
     SpinEdit_SetOnKeyPress(s.instance, fn)
 }
@@ -893,13 +895,13 @@ func (s *TSpinEdit) Handle() HWND {
     return SpinEdit_GetHandle(s.instance)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (s *TSpinEdit) ParentDoubleBuffered() bool {
     return SpinEdit_GetParentDoubleBuffered(s.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (s *TSpinEdit) SetParentDoubleBuffered(value bool) {
     SpinEdit_SetParentDoubleBuffered(s.instance, value)

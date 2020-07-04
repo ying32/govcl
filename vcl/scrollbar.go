@@ -541,13 +541,13 @@ func (s *TScrollBar) SetPageSize(value int32) {
     ScrollBar_SetPageSize(s.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (s *TScrollBar) ParentDoubleBuffered() bool {
     return ScrollBar_GetParentDoubleBuffered(s.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (s *TScrollBar) SetParentDoubleBuffered(value bool) {
     ScrollBar_SetParentDoubleBuffered(s.instance, value)
@@ -689,6 +689,8 @@ func (s *TScrollBar) SetOnKeyDown(fn TKeyEvent) {
     ScrollBar_SetOnKeyDown(s.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (s *TScrollBar) SetOnKeyPress(fn TKeyPressEvent) {
     ScrollBar_SetOnKeyPress(s.instance, fn)
 }

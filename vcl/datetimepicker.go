@@ -566,37 +566,37 @@ func (d *TDateTimePicker) SetMinDate(value time.Time) {
     DateTimePicker_SetMinDate(d.instance, value)
 }
 
-// CN: 获取父容器颜色。
+// CN: 获取使用父容器颜色。
 // EN: Get parent color.
 func (d *TDateTimePicker) ParentColor() bool {
     return DateTimePicker_GetParentColor(d.instance)
 }
 
-// CN: 设置父容器颜色。
+// CN: 设置使用父容器颜色。
 // EN: Set parent color.
 func (d *TDateTimePicker) SetParentColor(value bool) {
     DateTimePicker_SetParentColor(d.instance, value)
 }
 
-// CN: 获取父容器双缓冲。
+// CN: 获取使用父容器双缓冲。
 // EN: Get Parent container double buffering.
 func (d *TDateTimePicker) ParentDoubleBuffered() bool {
     return DateTimePicker_GetParentDoubleBuffered(d.instance)
 }
 
-// CN: 设置父容器双缓冲。
+// CN: 设置使用父容器双缓冲。
 // EN: Set Parent container double buffering.
 func (d *TDateTimePicker) SetParentDoubleBuffered(value bool) {
     DateTimePicker_SetParentDoubleBuffered(d.instance, value)
 }
 
-// CN: 获取父容器字体。
+// CN: 获取使用父容器字体。
 // EN: Get Parent container font.
 func (d *TDateTimePicker) ParentFont() bool {
     return DateTimePicker_GetParentFont(d.instance)
 }
 
-// CN: 设置父容器字体。
+// CN: 设置使用父容器字体。
 // EN: Set Parent container font.
 func (d *TDateTimePicker) SetParentFont(value bool) {
     DateTimePicker_SetParentFont(d.instance, value)
@@ -710,6 +710,8 @@ func (d *TDateTimePicker) SetOnKeyDown(fn TKeyEvent) {
     DateTimePicker_SetOnKeyDown(d.instance, fn)
 }
 
+// CN: 设置键键下事件。
+// EN: .
 func (d *TDateTimePicker) SetOnKeyPress(fn TKeyPressEvent) {
     DateTimePicker_SetOnKeyPress(d.instance, fn)
 }
