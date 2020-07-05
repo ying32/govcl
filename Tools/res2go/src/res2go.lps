@@ -16,6 +16,7 @@
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
             <Optimizations>
               <OptimizationLevel Value="4"/>
             </Optimizations>
@@ -24,8 +25,10 @@
             <Debugging>
               <GenerateDebugInfo Value="False"/>
               <UseValgrind Value="True"/>
+              <StripSymbols Value="True"/>
               <UseExternalDbgSyms Value="True"/>
             </Debugging>
+            <LinkSmart Value="True"/>
           </Linking>
           <Other>
             <WriteFPCLogo Value="False"/>
@@ -50,19 +53,18 @@
       <Unit2>
         <Filename Value="supportsComponents.inc"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="111"/>
-        <CursorPos X="28" Y="140"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="53"/>
+        <CursorPos X="51" Y="66"/>
         <UsageCount Value="47"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="uresourceformtogo.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="384"/>
-        <CursorPos X="20" Y="397"/>
+        <CursorPos X="49" Y="194"/>
         <UsageCount Value="39"/>
         <Loaded Value="True"/>
       </Unit3>
@@ -246,11 +248,10 @@
       </Unit28>
       <Unit29>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\sysutilh.inc"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="254"/>
         <CursorPos X="3" Y="270"/>
         <UsageCount Value="12"/>
-        <Loaded Value="True"/>
       </Unit29>
       <Unit30>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\win64\system.pp"/>
@@ -400,7 +401,7 @@
         <UsageCount Value="12"/>
       </Unit50>
     </Units>
-    <JumpHistory Count="24" HistoryIndex="18">
+    <JumpHistory Count="22" HistoryIndex="21">
       <Position1>
         <Filename Value="uresourceformtogo.pas"/>
         <Caret Line="239" Column="140" TopLine="226"/>
@@ -478,25 +479,17 @@
         <Caret Line="431" Column="43" TopLine="404"/>
       </Position19>
       <Position20>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="442" Column="73" TopLine="415"/>
+        <Filename Value="supportsComponents.inc"/>
+        <Caret Line="7" Column="30"/>
       </Position20>
       <Position21>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="446" Column="20" TopLine="419"/>
+        <Filename Value="supportsComponents.inc"/>
+        <Caret Line="4" Column="34"/>
       </Position21>
       <Position22>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="623" Column="72" TopLine="596"/>
+        <Filename Value="supportsComponents.inc"/>
+        <Caret Line="74" Column="40" TopLine="53"/>
       </Position22>
-      <Position23>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1591" Column="57" TopLine="1567"/>
-      </Position23>
-      <Position24>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="49" Column="3" TopLine="33"/>
-      </Position24>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
