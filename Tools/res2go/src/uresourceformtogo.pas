@@ -37,6 +37,7 @@ type
   TSupportComponentItem = record
     ClassName: string;
     PkgName: string;  // 需要生成的包名，为空则为vcl
+    UnitName: string  // 单元名，用于将gfm转lfm+pas所有
   end;
 
   TEventItem = record
