@@ -5,11 +5,9 @@
 
 ### GoVCL
 
-Cross-platform Golang GUI library, The core binding is [liblcl](https://github.com/ying32/liblcl), a common cross-platform GUI library created by [Lazarus](https://www.lazarus-ide.org/).  
+Cross-platform Golang GUI library, The core binding is [liblcl](https://github.com/ying32/liblcl), a common cross-platform GUI library created by [Lazarus](https://www.lazarus-ide.org/).    
 
 **Full name: `Go Language Visual Component Library`**    
-
-**The current version no longer supports `Delphi/VCL`. The last branch that supports the vcl version: [last-vcl-support](https://github.com/ying32/govcl/tree/last-vcl-support/).**   
 
 *govcl minimum requirement is go1.9.*    
 
