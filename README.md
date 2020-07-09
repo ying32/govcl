@@ -28,11 +28,8 @@
 ----
 
 ### 预编译GUI库二进制下载（[源代码](https://github.com/ying32/liblcl)）       
-[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.3.1.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.3/liblcl-2.0.3.1.zip)  
+[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.4.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.4/liblcl-2.0.4.zip)  
 
-
-* dev版预编译GUI二进制  
-[liblcl-2.0.4-dev.zip](http://z-kit.cc/downloads/liblcl-2.0.4-dev.zip)  
 
 ### res2go工具下载（[文档、源代码](Tools/res2go)）  
 
