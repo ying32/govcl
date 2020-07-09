@@ -116,20 +116,9 @@ func SelectDirectory1(options TSelectDirOpts) (bool, string) {
 
 // 选择目录，一般options默认是SdNewUI，parent默认为nil。
 //
-// Select directory, options defaults to SdNewUI, parent defaults to nil.
-func SelectDirectory2(caption, root string, options TSelectDirExtOpts, parent IObject) (bool, string) {
-	return api.DSelectDirectory2(caption, root, options, CheckPtr(parent))
-}
-
-// 选择目录， options默认是SdNewUI，parent默认为nil。
-//
-// Select directory, options defaults to SdNewUI, parent defaults to nil.
-func SelectDirectory3(caption, root string, options ...uint8) (bool, string) {
-	opts := NewSet(options...)
-	if len(options) == 0 {
-		opts = opts.Include(SdNewUI)
-	}
-	return SelectDirectory2(caption, root, opts, nil)
+// Select directory.
+func SelectDirectory2(caption, root string, showHidden bool) (bool, string) {
+	return api.DSelectDirectory2(caption, root, showHidden)
 }
 
 // 主线程中执行。

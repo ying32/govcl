@@ -1677,19 +1677,19 @@ type TSelectDirOpts = TSet
 
 //TSelectDirExtOpt = (sdNewFolder, sdShowEdit, sdShowShares, sdNewUI, sdShowFiles,
 //sdValidateDir);
-type TSelectDirExtOpt int32
-
-const (
-	SdNewFolder = iota + 0
-	SdShowEdit
-	SdShowShares
-	SdNewUI
-	SdShowFiles
-	SdValidateDir
-)
+//type TSelectDirExtOpt int32
+//
+//const (
+//	SdNewFolder = iota + 0
+//	SdShowEdit
+//	SdShowShares
+//	SdNewUI
+//	SdShowFiles
+//	SdValidateDir
+//)
 
 //TSelectDirExtOpts = set of TSelectDirExtOpt;
-type TSelectDirExtOpts = TSet
+//type TSelectDirExtOpts = TSet
 
 // TFindOption
 type TFindOption = uint32

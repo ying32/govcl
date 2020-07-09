@@ -125,8 +125,7 @@ func main() {
 	btn.SetParent(mainForm)
 	btn.SetCaption("SelectDirectory2")
 	btn.SetOnClick(func(vcl.IObject) {
-		options := types.NewSet(types.SdNewFolder, types.SdShowEdit, types.SdNewUI)
-		if ok, dir := vcl.SelectDirectory2("标题了", "C:/", options, nil); ok {
+		if ok, dir := vcl.SelectDirectory2("标题了", "C:/", true); ok {
 			fmt.Println("选择的目录为：", dir)
 		}
 	})

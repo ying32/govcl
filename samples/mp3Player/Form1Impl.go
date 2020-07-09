@@ -78,7 +78,7 @@ func (f *TForm1) OnMIAddFileClick(sender vcl.IObject) {
 }
 
 func (f *TForm1) OnMIAddFolderClick(sender vcl.IObject) {
-	if ok, str := vcl.SelectDirectory2("选择目录", "", types.NewSet(types.SdNewUI, types.SdShowEdit), nil); ok {
+	if ok, str := vcl.SelectDirectory2("选择目录", "", false); ok {
 		f.addFoler(str)
 	}
 }

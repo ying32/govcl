@@ -209,10 +209,9 @@ func DSelectDirectory1(options TSelectDirOpts) (bool, string) {
 	return false, ""
 }
 
-func DSelectDirectory2(caption, root string, options TSelectDirExtOpts, parent uintptr) (bool, string) {
+func DSelectDirectory2(caption, root string, showHidden bool) (bool, string) {
 	var ptr uintptr
-	r, _, _ := dSelectDirectory2.Call(GoStrToDStr(caption), GoStrToDStr(root), uintptr(unsafe.Pointer(&ptr)),
-		uintptr(options), parent)
+	r, _, _ := dSelectDirectory2.Call(GoStrToDStr(caption), GoStrToDStr(root), GoBoolToDBool(showHidden), uintptr(unsafe.Pointer(&ptr)))
 	v := DBoolToGoBool(r)
 	if v {
 		return true, DStrToGoStr(ptr)
