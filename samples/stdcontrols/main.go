@@ -79,7 +79,9 @@ func main() {
 	// TStatusBar
 	stat := vcl.NewStatusBar(mainForm)
 	stat.SetParent(mainForm)
-	//stat.SetSizeGrip(false) // 右解是否有可调的
+	// 不知道从哪个版开始，默认变成了true了
+	stat.SetSimplePanel(false)
+	//stat.SetSizeGrip(true) // 右下角是否有可调的
 	spnl := stat.Panels().Add()
 	spnl.SetText("第一个")
 	spnl.SetWidth(80)
