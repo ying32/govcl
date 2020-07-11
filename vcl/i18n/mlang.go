@@ -70,13 +70,13 @@ var (
 	regForms = make(map[uintptr]vcl.IComponent, 0)
 
 	// 需要注册的资源
-	regResouces = make(map[string]*string, 0)
+	regResources = make(map[string]*string, 0)
 
 	// lib中注册的资源
-	regLibResouces []types.TLibResouce
+	regLibResources []types.TLibResource
 
 	// 修改lib中资源的函数
-	modifyLibResouceFN func(aPtr uintptr, aValue string)
+	modifyLibResourceFN func(aPtr uintptr, aValue string)
 )
 
 func extractFilePath(path string) string {
@@ -128,11 +128,11 @@ func parseLangFile(lang string) {
 // 翻译资源，这里不UI上的资源，只是一些常量什么的
 func translateStrings() {
 	// 这里先翻译lib中的资源
-	if len(regLibResouces) > 0 && len(libResouces) > 0 {
-		for _, item := range regLibResouces {
+	if len(regLibResources) > 0 && len(libResouces) > 0 {
+		for _, item := range regLibResources {
 			if v, ok := libResouces[item.Name]; ok {
-				if modifyLibResouceFN != nil {
-					modifyLibResouceFN(item.Ptr, v)
+				if modifyLibResourceFN != nil {
+					modifyLibResourceFN(item.Ptr, v)
 				}
 			}
 		}
@@ -140,7 +140,7 @@ func translateStrings() {
 
 	// 没有待翻译的，不进行翻译
 	if len(commonResouces) > 0 || len(appResouces) > 0 {
-		for key, val := range regResouces {
+		for key, val := range regResources {
 			if v, ok := appResouces[key]; ok {
 				*val = v
 			} else {
@@ -246,7 +246,7 @@ func InitComponentLang(aOwner vcl.IComponent) {
 
 // RegsiterVarString 注册需要翻译的字符
 func RegsiterVarString(name string, value *string) {
-	regResouces[name] = value
+	regResources[name] = value
 }
 
 func initLoadLocalLangsInfo() {
@@ -270,7 +270,7 @@ func initLoadLocalLangsInfo() {
 
 func init() {
 	// 首先设置lib中资源
-	regLibResouces = rtl.GetLibResouceItems()
-	modifyLibResouceFN = rtl.ModifyLibResouce
+	regLibResources = rtl.GetLibResourceItems()
+	modifyLibResourceFN = rtl.ModifyLibResource
 	initLoadLocalLangsInfo()
 }

@@ -295,25 +295,25 @@ func DCreateGUID() TGUID {
 	return guid
 }
 
-// LibResouces
-func DGetLibResouceCount() int32 {
-	r, _, _ := dGetLibResouceCount.Call()
+// LibResources
+func DGetLibResourceCount() int32 {
+	r, _, _ := dGetLibResourceCount.Call()
 	return int32(r)
 }
 
-func DGetLibResouceItem(aIndex int32) (ret TLibResouce) {
+func DGetLibResourceItem(aIndex int32) (ret TLibResource) {
 	item := struct {
 		Name     uintptr
 		ValuePtr uintptr
 	}{}
-	dGetLibResouceItem.Call(uintptr(aIndex), uintptr(unsafe.Pointer(&item)))
+	dGetLibResourceItem.Call(uintptr(aIndex), uintptr(unsafe.Pointer(&item)))
 	ret.Name = DStrToGoStr(item.Name)
 	ret.Ptr = item.ValuePtr
 	return
 }
 
-func DModifyLibResouce(aPtr uintptr, aValue string) {
-	dModifyLibResouce.Call(aPtr, GoStrToDStr(aValue))
+func DModifyLibResource(aPtr uintptr, aValue string) {
+	dModifyLibResource.Call(aPtr, GoStrToDStr(aValue))
 }
 
 // 库的信息

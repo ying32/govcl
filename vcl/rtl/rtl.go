@@ -171,25 +171,25 @@ func SetPropertySecValue(instance uintptr, propName, secPropName, value string) 
 	api.DSetPropertySecValue(instance, propName, secPropName, value)
 }
 
-// LibResouces
-func GetLibResouceCount() int32 {
-	return api.DGetLibResouceCount()
+// LibResources
+func GetLibResourceCount() int32 {
+	return api.DGetLibResourceCount()
 }
 
-func GetLibResouceItem(aIndex int32) types.TLibResouce {
-	return api.DGetLibResouceItem(aIndex)
+func GetLibResourceItem(aIndex int32) types.TLibResource {
+	return api.DGetLibResourceItem(aIndex)
 }
 
-func GetLibResouceItems() []types.TLibResouce {
-	ret := make([]types.TLibResouce, GetLibResouceCount())
+func GetLibResourceItems() []types.TLibResource {
+	ret := make([]types.TLibResource, GetLibResourceCount())
 	for i := 0; i < len(ret); i++ {
-		ret[i] = GetLibResouceItem(int32(i))
+		ret[i] = GetLibResourceItem(int32(i))
 	}
 	return ret
 }
 
-func ModifyLibResouce(aPtr uintptr, aValue string) {
-	api.DModifyLibResouce(aPtr, aValue)
+func ModifyLibResource(aPtr uintptr, aValue string) {
+	api.DModifyLibResource(aPtr, aValue)
 }
 
 // 库的信息

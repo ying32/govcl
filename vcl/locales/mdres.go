@@ -12,10 +12,10 @@ import "github.com/ying32/govcl/vcl/api"
 
 // 修改资源
 func ModifyResources(data map[string]string) {
-	for i := int32(0); i < api.DGetLibResouceCount(); i++ {
-		item := api.DGetLibResouceItem(i)
+	for i := int32(0); i < api.DGetLibResourceCount(); i++ {
+		item := api.DGetLibResourceItem(i)
 		if value, ok := data[item.Name]; ok {
-			api.DModifyLibResouce(item.Ptr, value)
+			api.DModifyLibResource(item.Ptr, value)
 		}
 	}
 }

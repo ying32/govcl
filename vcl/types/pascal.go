@@ -80,8 +80,8 @@ type TGUID struct {
 	D4 [8]uint8
 }
 
-// LibResouces
-type TLibResouce struct {
+// LibResource
+type TLibResource struct {
 	Name string
 	Ptr  uintptr
 }

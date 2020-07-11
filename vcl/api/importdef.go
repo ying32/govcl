@@ -121,11 +121,11 @@ var (
 	dStringToGUID = libvcl.NewProc("DStringToGUID")
 	dCreateGUID   = libvcl.NewProc("DCreateGUID")
 
-	// libResouces
-	dGetLibResouceCount = libvcl.NewProc("DGetLibResouceCount")
-	dGetLibResouceItem  = libvcl.NewProc("DGetLibResouceItem")
-	dModifyLibResouce   = libvcl.NewProc("DModifyLibResouce")
-	dLibAbout           = libvcl.NewProc("DLibAbout")
+	// libResources
+	dGetLibResourceCount = libvcl.NewProc("DGetLibResourceCount")
+	dGetLibResourceItem  = libvcl.NewProc("DGetLibResourceItem")
+	dModifyLibResource   = libvcl.NewProc("DModifyLibResource")
+	dLibAbout            = libvcl.NewProc("DLibAbout")
 
 	// 库的信息
 	dLibStringEncoding = libvcl.NewProc("DLibStringEncoding")
