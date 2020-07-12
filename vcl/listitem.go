@@ -123,6 +123,10 @@ func TListItemClass() TClass {
     return ListItem_StaticClassType()
 }
 
+func (l *TListItem) DisplayRectSubItem(subItem int32, Code TDisplayCode) TRect {
+    return ListItem_DisplayRectSubItem(l.instance, subItem , Code)
+}
+
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
@@ -200,6 +204,14 @@ func (l *TListItem) GetHashCode() int32 {
 // Text information.
 func (l *TListItem) ToString() string {
     return ListItem_ToString(l.instance)
+}
+
+func (l *TListItem) DropTarget() bool {
+    return ListItem_GetDropTarget(l.instance)
+}
+
+func (l *TListItem) SetDropTarget(value bool) {
+    ListItem_SetDropTarget(l.instance, value)
 }
 
 // 获取控件标题。

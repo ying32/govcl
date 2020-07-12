@@ -264,6 +264,14 @@ func (t *TTreeNode) SetFocused(value bool) {
     TreeNode_SetFocused(t.instance, value)
 }
 
+func (t *TTreeNode) DropTarget() bool {
+    return TreeNode_GetDropTarget(t.instance)
+}
+
+func (t *TTreeNode) SetDropTarget(value bool) {
+    TreeNode_SetDropTarget(t.instance, value)
+}
+
 func (t *TTreeNode) Selected() bool {
     return TreeNode_GetSelected(t.instance)
 }

@@ -24583,6 +24583,15 @@ func ListView_GetCanvas(obj uintptr) uintptr {
     return ret
 }
 
+func ListView_GetDropTarget(obj uintptr) uintptr {
+    ret, _, _ := listView_GetDropTarget.Call(obj)
+    return ret
+}
+
+func ListView_SetDropTarget(obj uintptr, value uintptr) {
+   listView_SetDropTarget.Call(obj, value)
+}
+
 func ListView_GetItemFocused(obj uintptr) uintptr {
     ret, _, _ := listView_GetItemFocused.Call(obj)
     return ret
@@ -25843,6 +25852,15 @@ func TreeView_SetItems(obj uintptr, value uintptr) {
 func TreeView_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := treeView_GetCanvas.Call(obj)
     return ret
+}
+
+func TreeView_GetDropTarget(obj uintptr) uintptr {
+    ret, _, _ := treeView_GetDropTarget.Call(obj)
+    return ret
+}
+
+func TreeView_SetDropTarget(obj uintptr, value uintptr) {
+   treeView_SetDropTarget.Call(obj, value)
 }
 
 func TreeView_GetSelected(obj uintptr) uintptr {
@@ -30963,6 +30981,12 @@ func ListItem_Free(obj uintptr) {
     listItem_Free.Call(obj)
 }
 
+func ListItem_DisplayRectSubItem(obj uintptr, subItem int32, Code TDisplayCode) TRect {
+    var ret TRect
+    listItem_DisplayRectSubItem.Call(obj, uintptr(subItem) , uintptr(Code) , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ListItem_Assign(obj uintptr, Source uintptr)  {
     listItem_Assign.Call(obj, Source )
 }
@@ -31024,6 +31048,15 @@ func ListItem_GetHashCode(obj uintptr) int32 {
 func ListItem_ToString(obj uintptr) string {
     ret, _, _ := listItem_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ListItem_GetDropTarget(obj uintptr) bool {
+    ret, _, _ := listItem_GetDropTarget.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListItem_SetDropTarget(obj uintptr, value bool) {
+   listItem_SetDropTarget.Call(obj, GoBoolToDBool(value))
 }
 
 func ListItem_GetCaption(obj uintptr) string {
@@ -31300,6 +31333,15 @@ func TreeNode_GetFocused(obj uintptr) bool {
 
 func TreeNode_SetFocused(obj uintptr, value bool) {
    treeNode_SetFocused.Call(obj, GoBoolToDBool(value))
+}
+
+func TreeNode_GetDropTarget(obj uintptr) bool {
+    ret, _, _ := treeNode_GetDropTarget.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TreeNode_SetDropTarget(obj uintptr, value bool) {
+   treeNode_SetDropTarget.Call(obj, GoBoolToDBool(value))
 }
 
 func TreeNode_GetSelected(obj uintptr) bool {

@@ -1229,6 +1229,14 @@ func (t *TTreeView) Canvas() *TCanvas {
     return AsCanvas(TreeView_GetCanvas(t.instance))
 }
 
+func (t *TTreeView) DropTarget() *TTreeNode {
+    return AsTreeNode(TreeView_GetDropTarget(t.instance))
+}
+
+func (t *TTreeView) SetDropTarget(value *TTreeNode) {
+    TreeView_SetDropTarget(t.instance, CheckPtr(value))
+}
+
 func (t *TTreeView) Selected() *TTreeNode {
     return AsTreeNode(TreeView_GetSelected(t.instance))
 }

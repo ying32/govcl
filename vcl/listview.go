@@ -1244,6 +1244,14 @@ func (l *TListView) Canvas() *TCanvas {
     return AsCanvas(ListView_GetCanvas(l.instance))
 }
 
+func (l *TListView) DropTarget() *TListItem {
+    return AsListItem(ListView_GetDropTarget(l.instance))
+}
+
+func (l *TListView) SetDropTarget(value *TListItem) {
+    ListView_SetDropTarget(l.instance, CheckPtr(value))
+}
+
 func (l *TListView) ItemFocused() *TListItem {
     return AsListItem(ListView_GetItemFocused(l.instance))
 }
