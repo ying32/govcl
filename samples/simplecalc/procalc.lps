@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="2">
+      <Unit0>
+        <Filename Value="procalc.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="21"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="umain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uMain"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="35"/>
+        <CursorPos X="3" Y="64"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+    </Units>
+    <JumpHistory Count="3" HistoryIndex="2">
+      <Position1>
+        <Filename Value="umain.pas"/>
+        <Caret Line="5" Column="129"/>
+      </Position1>
+      <Position2>
+        <Filename Value="umain.pas"/>
+        <Caret Line="58" Column="3" TopLine="28"/>
+      </Position2>
+      <Position3>
+        <Filename Value="umain.pas"/>
+        <Caret Line="63" Column="3" TopLine="34"/>
+      </Position3>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

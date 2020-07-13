@@ -63,6 +63,7 @@
 | [treeview](treeview) |  树型列表框演示  | |
 | [valuelisteditor](valuelisteditor) |  键值编辑器 | | 
 | [videosrtgui](videosrtgui) |  一个用govcl重写[video-srt-windows ](https://github.com/wxbool/video-srt-windows)的（仅UI和交互） | | 
+| [simplecalc](simplecalc) | 简易计算器（演示布局用，内有布局解析）  | | 
 
 
 * macOS 
