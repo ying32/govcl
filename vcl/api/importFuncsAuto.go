@@ -34661,6 +34661,15 @@ func ListColumn_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func ListColumn_GetSortIndicator(obj uintptr) TSortIndicator {
+    ret, _, _ := listColumn_GetSortIndicator.Call(obj)
+    return TSortIndicator(ret)
+}
+
+func ListColumn_SetSortIndicator(obj uintptr, value TSortIndicator) {
+   listColumn_SetSortIndicator.Call(obj, uintptr(value))
+}
+
 func ListColumn_GetAlignment(obj uintptr) TAlignment {
     ret, _, _ := listColumn_GetAlignment.Call(obj)
     return TAlignment(ret)

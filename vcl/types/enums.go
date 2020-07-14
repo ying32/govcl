@@ -2328,3 +2328,12 @@ const (
 	ClHorizontalThenVertical = iota + 0
 	ClVerticalThenHorizontal
 )
+
+//TSortIndicator = (siNone, siAscending, siDescending);
+type TSortIndicator int32
+
+const (
+	SiNone = iota + 0
+	SiAscending
+	SiDescending
+)

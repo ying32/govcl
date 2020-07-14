@@ -186,6 +186,14 @@ func (l *TListColumn) ToString() string {
     return ListColumn_ToString(l.instance)
 }
 
+func (l *TListColumn) SortIndicator() TSortIndicator {
+    return ListColumn_GetSortIndicator(l.instance)
+}
+
+func (l *TListColumn) SetSortIndicator(value TSortIndicator) {
+    ListColumn_SetSortIndicator(l.instance, value)
+}
+
 // 获取文字对齐。
 //
 // Get Text alignment.

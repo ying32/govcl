@@ -7685,6 +7685,8 @@ var (
     listColumn_Equals = libvcl.NewProc("ListColumn_Equals")
     listColumn_GetHashCode = libvcl.NewProc("ListColumn_GetHashCode")
     listColumn_ToString = libvcl.NewProc("ListColumn_ToString")
+    listColumn_GetSortIndicator = libvcl.NewProc("ListColumn_GetSortIndicator")
+    listColumn_SetSortIndicator = libvcl.NewProc("ListColumn_SetSortIndicator")
     listColumn_GetAlignment = libvcl.NewProc("ListColumn_GetAlignment")
     listColumn_SetAlignment = libvcl.NewProc("ListColumn_SetAlignment")
     listColumn_GetAutoSize = libvcl.NewProc("ListColumn_GetAutoSize")
