@@ -123,6 +123,10 @@ func TMemoClass() TClass {
     return Memo_StaticClassType()
 }
 
+func (m *TMemo) Append(Value string) {
+    Memo_Append(m.instance, Value)
+}
+
 // 清除。
 func (m *TMemo) Clear() {
     Memo_Clear(m.instance)

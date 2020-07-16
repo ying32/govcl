@@ -815,6 +815,7 @@ var (
     // TMemo
     memo_Create = libvcl.NewProc("Memo_Create")
     memo_Free = libvcl.NewProc("Memo_Free")
+    memo_Append = libvcl.NewProc("Memo_Append")
     memo_Clear = libvcl.NewProc("Memo_Clear")
     memo_ClearSelection = libvcl.NewProc("Memo_ClearSelection")
     memo_CopyToClipboard = libvcl.NewProc("Memo_CopyToClipboard")

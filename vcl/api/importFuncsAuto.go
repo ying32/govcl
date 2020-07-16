@@ -3622,6 +3622,10 @@ func Memo_Free(obj uintptr) {
     memo_Free.Call(obj)
 }
 
+func Memo_Append(obj uintptr, Value string)  {
+    memo_Append.Call(obj, GoStrToDStr(Value) )
+}
+
 func Memo_Clear(obj uintptr)  {
     memo_Clear.Call(obj)
 }
