@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 
+	"github.com/ying32/govcl/vcl/types/colors"
+
 	"time"
 
 	"math/rand"
@@ -90,16 +92,28 @@ func (f *TMainFrom) OnFormCreate(sender vcl.IObject) {
 		tempData[i].Sub5 = fmt.Sprintf("子项5:%d", rand.Intn(1000000))
 	}
 	ns := time.Now().UnixNano() - t // 1e-6
-	fmt.Println("t:", ns, "ns, ", ns/1E6, "ms")
+	fmt.Println("t:", ns, "ns, ", ns/1e6, "ms")
 	f.ListView.Items().SetCount(int32(len(tempData))) //   必须主动的设置Virtual List的行数
 
+	// 解决subitem数据为空时，不能连续绘制背景色
+	f.ListView.SetOnAdvancedCustomDrawItem(f.onAdvancedCustomDrawItem)
+
+}
+
+func (f *TMainFrom) onAdvancedCustomDrawItem(sender *vcl.TListView, item *vcl.TListItem, state types.TCustomDrawState, Stage types.TCustomDrawStage, defaultDraw *bool) {
+	if state.In(types.CdsSelected) && Stage == types.CdPrePaint {
+		r := item.DisplayRect(types.DrBounds)
+		canvas := sender.Canvas()
+		canvas.Brush().SetColor(types.TColor(colors.RGB(0, 120, 215)))
+		canvas.FillRect(r)
+	}
 }
 
 func (f *TMainFrom) OnListView1Data(sender vcl.IObject, item *vcl.TListItem) {
 	data := tempData[int(item.Index())]
 	item.SetCaption(data.Caption)
 	item.SubItems().Add(data.Sub1)
-	item.SubItems().Add(data.Sub2)
+	item.SubItems().Add("") //data.Sub2)
 	item.SubItems().Add(data.Sub3)
 	item.SubItems().Add(data.Sub4)
 	item.SubItems().Add(data.Sub5)
