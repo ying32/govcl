@@ -13,7 +13,7 @@ package types
 
 */
 
-// TAlign = (alNone, alTop, alBottom, alLeft, alRight, alClient, alCustom);
+//ENUM:
 type TAlign int32
 
 const (
@@ -26,10 +26,10 @@ const (
 	AlCustom
 )
 
+//SET:TAlign
 type TAlignSet = TSet
 
-//  TFormBorderStyle = (bsNone, bsSingle, bsSizeable, bsDialog, bsToolWindow, bsSizeToolWin);
-//  TBorderStyle = bsNone..bsSingle;
+//ENUM:
 type TBorderStyle int32
 
 const (
@@ -43,8 +43,7 @@ const (
 
 type TFormBorderStyle TBorderStyle
 
-// vcl TFormStyle = (fsNormal, fsMDIChild, fsMDIForm, fsStayOnTop);
-// lcl TFormStyle = (fsNormal, fsMDIChild, fsMDIForm, fsStayOnTop, fsSplash, fsSystemStayOnTop);
+//ENUM:
 type TFormStyle int32
 
 const (
@@ -52,13 +51,11 @@ const (
 	FsMDIChild
 	FsMDIForm
 	FsStayOnTop
-
-	// lcl
 	FsSplash
 	FsSystemStayOnTop
 )
 
-//  TPosition = (poDesigned, poDefault, poDefaultPosOnly, poDefaultSizeOnly, poScreenCenter, poDesktopCenter, poMainFormCenter, poOwnerFormCenter);
+//ENUM:
 type TPosition int32
 
 const (
@@ -73,7 +70,8 @@ const (
 	PoWorkAreaCenter             // center form on working area (depends on DefaultMonitor)
 )
 
-//  TCursor = -32768..32767;
+// TCursor = -32768..32767;
+//ENUM:
 type TCursor int16
 
 const (
@@ -114,7 +112,7 @@ const (
 	CrLow = -30
 )
 
-// TSeekOrigin = (soBeginning, soCurrent, soEnd);
+//ENUM:
 type TSeekOrigin int32
 
 const (
@@ -123,7 +121,7 @@ const (
 	SoEnd
 )
 
-// TPixelFormat = (pfDevice, pf1bit, pf4bit, pf8bit, pf15bit, pf16bit, pf24bit, pf32bit, pfCustom);
+//ENUM:
 type TPixelFormat int32
 
 const (
@@ -138,15 +136,7 @@ const (
 	PfCustom
 )
 
-// TBalloonHintStyle = (bhsStandard, bhsBalloon);
-//type TBalloonHintStyle int32
-//
-//const (
-//	bhsStandard = iota + 0
-//	bhsBalloon
-//)
-
-//TAlignment = (taLeftJustify, taRightJustify, taCenter);
+//ENUM:
 type TAlignment int32
 
 const (
@@ -155,10 +145,10 @@ const (
 	TaCenter
 )
 
-//  TLeftRight = TAlignment.taLeftJustify..TAlignment.taRightJustify;
+// TLeftRight = TAlignment.taLeftJustify..TAlignment.taRightJustify;
 type TLeftRight int32
 
-//  TBiDiMode = (bdLeftToRight, bdRightToLeft, bdRightToLeftNoAlign, bdRightToLeftReadingOnly);
+//ENUM:
 type TBiDiMode int32
 
 const (
@@ -168,7 +158,7 @@ const (
 	BdRightToLeftReadingOnly
 )
 
-//  TVerticalAlignment = (taAlignTop, taAlignBottom, taVerticalCenter);
+//ENUM:
 type TVerticalAlignment int32
 
 const (
@@ -177,17 +167,7 @@ const (
 	TaVerticalCenter
 )
 
-// TButtonStyle = (bsPushButton, bsCommandLink, bsSplitButton);
-type TButtonStyle int32
-
-const (
-	BsPushButton = iota + 0
-	BsCommandLink
-	BsSplitButton
-)
-
-type TColorBoxStyle int32
-
+//ENUM:
 type TComboBoxStyle int32
 
 const (
@@ -200,19 +180,19 @@ const (
 	CsOwnerDrawEditableVariable            // like csOwnerDrawVariable, but with TEdit
 )
 
-//  TWindowState = (wsNormal, wsMinimized, wsMaximized);
+type TColorBoxStyle = TComboBoxStyle
+
+//ENUM:
 type TWindowState int32
 
 const (
 	WsNormal = iota + 0
 	WsMinimized
 	WsMaximized
-
-	// LCL
 	WsFullScreen
 )
 
-//  TTextLayout = (tlTop, tlCenter, tlBottom);
+//ENUM:
 type TTextLayout int32
 
 const (
@@ -221,7 +201,7 @@ const (
 	TlBottom
 )
 
-//  TEllipsisPosition = (epNone, epPathEllipsis, epEndEllipsis, epWordEllipsis);
+//ENUM:
 type TEllipsisPosition int32
 
 const (
@@ -233,7 +213,7 @@ const (
 
 type TLinkAlignment TAlignment
 
-// TListBoxStyle = (lbStandard, lbOwnerDrawFixed, lbOwnerDrawVariable, lbVirtual);
+//ENUM:
 type TListBoxStyle int32
 
 const (
@@ -244,19 +224,7 @@ const (
 	//LbVirtualOwnerDraw
 )
 
-//TMenuItemAutoFlag = (maAutomatic, maManual, maParent);
-type TMenuItemAutoFlag int32
-
-const (
-	MaAutomatic = iota + 0
-	MaManual
-	MaParent
-)
-
-//  TMenuAutoFlag = maAutomatic..maManual;
-type TMenuAutoFlag TMenuItemAutoFlag
-
-//TPopupAlignment = (paLeft, paRight, paCenter);
+//ENUM:
 type TPopupAlignment int32
 
 const (
@@ -265,7 +233,7 @@ const (
 	PaCenter
 )
 
-//  TTrackButton = (tbRightButton, tbLeftButton);
+//ENUM:
 type TTrackButton int32
 
 const (
@@ -273,18 +241,17 @@ const (
 	TbLeftButton
 )
 
-// TProgressBarOrientation = (pbHorizontal, pbVertical, pbRightToLeft, pbTopDown);
+//ENUM:
 type TProgressBarOrientation int32
 
 const (
 	PbHorizontal = iota + 0
 	PbVertical
-	// lcl
 	PbRightToLeft
 	PbTopDown
 )
 
-//  TProgressBarStyle = (pbstNormal, pbstMarquee);
+//ENUM:
 type TProgressBarStyle int32
 
 const (
@@ -292,7 +259,7 @@ const (
 	PbstMarquee
 )
 
-//  TProgressBarState = (pbsNormal, pbsError, pbsPaused);
+//ENUM:
 type TProgressBarState int32
 
 const (
@@ -301,7 +268,7 @@ const (
 	PbsPaused
 )
 
-//TButtonLayout = (blGlyphLeft, blGlyphRight, blGlyphTop, blGlyphBottom);
+//ENUM:
 type TButtonLayout int32
 
 const (
@@ -311,7 +278,7 @@ const (
 	BlGlyphBottom
 )
 
-//  TButtonState = (bsUp, bsDisabled, bsDown, bsExclusive);
+//ENUM:
 type TButtonState int32
 
 const (
@@ -319,12 +286,11 @@ const (
 	BsDisabled             // button disabled (grayed)
 	BsDown                 // button is down
 	BsExclusive            // button is the only down in his group
-	// lcl
-	BsHot // button is under mouse
+	BsHot                  // button is under mouse
 )
 
-// TButtonStyle = (bsAutoDetect, bsWin31, bsNew);
-//type TButtonStyle int32
+//ENUM:
+type TButtonStyle int32
 
 const (
 	BsAutoDetect = iota + 0
@@ -332,10 +298,10 @@ const (
 	BsNew
 )
 
-//  TNumGlyphs = 1..4;
+// TNumGlyphs = 1..4;
 type TNumGlyphs int32
 
-// TStaticBorderStyle = (sbsNone, sbsSingle, sbsSunken);
+//ENUM:
 type TStaticBorderStyle int32
 
 const (
@@ -344,7 +310,7 @@ const (
 	sbsSunken
 )
 
-// TFontStyle = (fsBold, fsItalic, fsUnderline, fsStrikeOut);
+//ENUM:
 type TFontStyle int32
 
 const (
@@ -354,10 +320,10 @@ const (
 	FsStrikeOut
 )
 
-// TFontStyles = set of TFontStyle
+//SET:TFontStyle
 type TFontStyles = TSet
 
-// TScrollStyle = (ssNone, ssHorizontal, ssVertical, ssBoth);
+//ENUM:
 type TScrollStyle int32
 
 const (
@@ -365,13 +331,12 @@ const (
 	SsHorizontal
 	SsVertical
 	SsBoth
-	// lcl
 	SsAutoHorizontal
 	SsAutoVertical
 	SsAutoBoth
 )
 
-//TSortType = (stNone, stData, stText, stBoth);
+//ENUM:
 type TSortType int32
 
 const (
@@ -381,17 +346,7 @@ const (
 	StBoth
 )
 
-//  TMultiSelectStyles = (msControlSelect, msShiftSelect, msVisibleOnly, msSiblingOnly);
-type TMultiSelectStyles int32
-
-const (
-	MsControlSelect = iota + 0
-	MsShiftSelect
-	MsVisibleOnly
-	MsSiblingOnly
-)
-
-//  TListArrangement = (arAlignBottom, arAlignLeft, arAlignRight, arAlignTop, arDefault, arSnapToGrid);
+//ENUM:
 type TListArrangement int32
 
 const (
@@ -403,7 +358,7 @@ const (
 	ArSnapToGrid
 )
 
-//  TViewStyle = (vsIcon, vsSmallIcon, vsList, vsReport);
+//ENUM:
 type TViewStyle int32
 
 const (
@@ -413,7 +368,7 @@ const (
 	VsReport
 )
 
-//  TItemState = (isNone, isCut, isDropHilited, isFocused, isSelected, isActivating);
+//ENUM:
 type TItemState int32
 
 const (
@@ -425,10 +380,10 @@ const (
 	IsActivating
 )
 
-//  TItemStates = set of TItemState;
+//SET:TItemState
 type TItemStates = TSet
 
-//  TItemChange = (ctText, ctImage, ctState);
+//ENUM:
 type TItemChange int32
 
 const (
@@ -437,7 +392,7 @@ const (
 	CtState
 )
 
-//  TItemFind = (ifData, ifPartialString, ifExactString, ifNearest);
+//ENUM:
 type TItemFind int32
 
 const (
@@ -447,7 +402,7 @@ const (
 	IfNearest
 )
 
-//  TSearchDirection = (sdLeft, sdRight, sdAbove, sdBelow, sdAll);
+//ENUM:
 type TSearchDirection int32
 
 const (
@@ -458,7 +413,7 @@ const (
 	SdAll
 )
 
-//  TListHotTrackStyle = (htHandPoint, htUnderlineCold, htUnderlineHot);
+//ENUM:
 type TListHotTrackStyle int32
 
 const (
@@ -467,10 +422,10 @@ const (
 	HtUnderlineHot
 )
 
-//  TListHotTrackStyles = set of TListHotTrackStyle;
+//SET:TListHotTrackStyle
 type TListHotTrackStyles = TSet
 
-//  TItemRequests = (irText, irImage, irParam, irState, irIndent);
+//ENUM:
 type TItemRequests int32
 
 const (
@@ -481,8 +436,7 @@ const (
 	IrIndent
 )
 
-//TBrushStyle = (bsSolid, bsClear, bsHorizontal, bsVertical,
-//    bsFDiagonal, bsBDiagonal, bsCross, bsDiagCross);
+//ENUM:
 type TBrushStyle int32
 
 const (
@@ -494,12 +448,11 @@ const (
 	BsBDiagonal
 	BsCross
 	BsDiagCross
-
-	// lcl
 	BsImage
 	BsPattern
 )
 
+//ENUM:
 type TPenStyle int32
 
 const (
@@ -513,7 +466,7 @@ const (
 	PsClear
 )
 
-// TUDBtnType = (btNext, btPrev);
+//ENUM:
 type TUDBtnType int32
 
 const (
@@ -521,7 +474,7 @@ const (
 	BtPrev
 )
 
-//  TTabPosition = (tpTop, tpBottom, tpLeft, tpRight);
+//ENUM:
 type TTabPosition int32
 
 const (
@@ -531,7 +484,7 @@ const (
 	TpRight
 )
 
-//  TTabStyle = (tsTabs, tsButtons, tsFlatButtons);
+//ENUM:
 type TTabStyle int32
 
 const (
@@ -540,7 +493,7 @@ const (
 	TsFlatButtons
 )
 
-// TFontPitch = (fpDefault, fpVariable, fpFixed);
+//ENUM:
 type TFontPitch int32
 
 const (
@@ -549,9 +502,7 @@ const (
 	FpFixed
 )
 
-// TPenMode = (pmBlack, pmWhite, pmNop, pmNot, pmCopy, pmNotCopy,
-//    pmMergePenNot, pmMaskPenNot, pmMergeNotPen, pmMaskNotPen, pmMerge,
-//    pmNotMerge, pmMask, pmNotMask, pmXor, pmNotXor);
+//ENUM:
 type TPenMode int32
 
 const (
@@ -573,7 +524,7 @@ const (
 	PmNotXor
 )
 
-// TTrackBarOrientation = (trHorizontal, trVertical);
+//ENUM:
 type TTrackBarOrientation int32
 
 const (
@@ -581,7 +532,7 @@ const (
 	TrVertical
 )
 
-// TUDOrientation = (udHorizontal, udVertical);
+//ENUM:
 type TUDOrientation int32
 
 const (
@@ -589,8 +540,7 @@ const (
 	UdVertical
 )
 
-//  TFontQuality = (fqDefault, fqDraft, fqProof, fqNonAntialiased, fqAntialiased,
-//    fqClearType, fqClearTypeNatural);
+//ENUM:
 type TFontQuality int32
 
 const (
@@ -603,7 +553,7 @@ const (
 	FqClearTypeNatural
 )
 
-// TCloseAction = (caNone, caHide, caFree, caMinimize);
+//ENUM:
 type TCloseAction int32
 
 const (
@@ -613,6 +563,7 @@ const (
 	CaMinimize
 )
 
+//ENUM:
 type TBalloonFlags int32
 
 const (
@@ -622,7 +573,7 @@ const (
 	BfError
 )
 
-//  TMsgDlgType = (mtWarning, mtError, mtInformation, mtConfirmation, mtCustom);
+//ENUM:
 type TMsgDlgType int32
 
 const (
@@ -633,8 +584,7 @@ const (
 	MtCustom
 )
 
-//  TMsgDlgBtn = (mbYes, mbNo, mbOK, mbCancel, mbAbort, mbRetry, mbIgnore,
-//    mbAll, mbNoToAll, mbYesToAll, mbHelp, mbClose);
+//ENUM:
 type TMsgDlgBtn int32
 
 const (
@@ -652,10 +602,10 @@ const (
 	MbClose
 )
 
-//  TMsgDlgButtons = set of TMsgDlgBtn;
+//SET:TMsgDlgBtn
 type TMsgDlgButtons = TSet
 
-// TSysLinkType = (sltURL, sltID);
+//ENUM:
 type TSysLinkType int32
 
 const (
@@ -663,7 +613,7 @@ const (
 	SltID
 )
 
-//  TStatusPanelStyle = (psText, psOwnerDraw);
+//ENUM:
 type TStatusPanelStyle int32
 
 const (
@@ -671,19 +621,7 @@ const (
 	PsOwnerDraw
 )
 
-//  TStatusPanelBevel = (pbNone, pbLowered, pbRaised);
-type TStatusPanelBevel int32
-
-const (
-	PbNone = iota + 0
-	PbLowered
-	PbRaised
-)
-
-//  TJPEGQualityRange = 1..100;   // 100 = best quality, 25 = pretty awful
-type TJPEGQualityRange = uint32
-
-//  TJPEGPerformance = (jpBestQuality, jpBestSpeed);
+//ENUM:
 type TJPEGPerformance int32
 
 const (
@@ -691,17 +629,6 @@ const (
 	JpBestSpeed
 )
 
-//  TJPEGScale = (jsFullSize, jsHalf, jsQuarter, jsEighth);
-type TJPEGScale int32
-
-const (
-	JsFullSize = iota + 0
-	JsHalf
-	JsQuarter
-	JsEighth
-)
-
-//  TJPEGPixelFormat = (jf24Bit, jf8Bit);
 type TJPEGPixelFormat = TPixelFormat
 
 //const (
@@ -709,48 +636,9 @@ type TJPEGPixelFormat = TPixelFormat
 //	Jf8Bit
 //)
 
-//  TGIFVersion = (gvUnknown, gv87a, gv89a);
-type TGIFVersion int32
-
-const (
-	GvUnknown = iota + 0
-	Gv87a
-	Gv89a
-)
-
-// Animation loop behaviour
-//TGIFAnimationLoop = (
-//  glDisabled,                 // Never loop
-//  glEnabled,                  // Loop is specified in GIF
-//  glContinously               // Loop continously regardless of GIF
-//  );
-type TGIFAnimationLoop int32
-
-const (
-	GlDisabled = iota + 0
-	GlEnabled
-	GlContinously
-)
-
-// Auto dithering of GIF output to Netscape 216 color palette
-//TGIFDithering = (
-//  gdDisabled,                 // Never dither
-//  gdEnabled,                  // Always dither
-//  gdAuto                      // Dither if Desktop DC supports <= 256 colors.
-//  );
-type TGIFDithering int32
-
-const (
-	GdDisabled = iota + 0
-	GdEnabled
-	GdAuto
-)
-
-// TCompressionLevel = 0..9;
-type TCompressionLevel = uint32
-
 type TShortCut uint16
 
+//ENUM:
 type TNodeState int32
 
 const (
@@ -766,6 +654,7 @@ const (
 	NsBound                    // bound to a tree, e.g. has Parent or is top lvl node
 )
 
+//ENUM:
 type TNodeAttachMode int32
 
 const (
@@ -777,7 +666,7 @@ const (
 	NaInsertBehind             // insert behind Destination
 )
 
-//  TAddMode = (taAddFirst, taAdd, taInsert);
+//ENUM:
 type TAddMode int32
 
 const (
@@ -786,18 +675,20 @@ const (
 	TaInsert
 )
 
-//type TMultiSelectStyles int32
-//
-//const (
-//	MsControlSelect = iota + 0
-//	MsShiftSelect
-//	MsVisibleOnly
-//	MsSiblingOnly
-//)
+//ENUM:
+type TMultiSelectStyles int32
 
+const (
+	MsControlSelect = iota + 0
+	MsShiftSelect
+	MsVisibleOnly
+	MsSiblingOnly
+)
+
+//SET:TMultiSelectStyles
 type TMultiSelectStyle = TSet
 
-// TActionListState = (asNormal, asSuspended, asSuspendedEnabled);
+//ENUM:
 type TActionListState int32
 
 const (
@@ -806,7 +697,7 @@ const (
 	AsSuspendedEnabled
 )
 
-// TGradientDirection = (gdHorizontal, gdVertical);
+//ENUM:
 type TGradientDirection int32
 
 const (
@@ -814,7 +705,7 @@ const (
 	GdVertical
 )
 
-// TDrawingStyle = (dsFocus, dsSelected, dsNormal, dsTransparent);
+//ENUM:
 type TDrawingStyle int32
 
 const (
@@ -824,7 +715,7 @@ const (
 	DSTransparent
 )
 
-// TImageType = (itImage, itMask);
+//ENUM:
 type TImageType int32
 
 const (
@@ -832,7 +723,7 @@ const (
 	ItMask
 )
 
-// TResType = (rtBitmap, rtCursor, rtIcon);
+//ENUM:
 type TResType int32
 
 const (
@@ -841,9 +732,7 @@ const (
 	RtIcon
 )
 
-// TOverlay = 0..14;
-
-// TLoadResource = (lrDefaultColor, lrDefaultSize, lrFromFile, lrMap3DColors, lrTransparent, lrMonoChrome);
+//ENUM:
 type TLoadResource int32
 
 const (
@@ -855,10 +744,10 @@ const (
 	LrMonoChrome
 )
 
-//   TLoadResources = set of TLoadResource;
+//SET:TLoadResource
 type TLoadResources = TSet
 
-// TColorDepth = (cdDefault, cdDeviceDependent, cd4Bit, cd8Bit, cd16Bit, cd24Bit, cd32Bit);
+//ENUM:
 type TColorDepth int32
 
 const (
@@ -871,7 +760,7 @@ const (
 	Cd32Bit
 )
 
-// TCheckBoxState = (cbUnchecked, cbChecked, cbGrayed);
+//ENUM:
 type TCheckBoxState int32
 
 const (
@@ -880,35 +769,7 @@ const (
 	CbGrayed
 )
 
-//  TListGroupState = (
-//    lgsNormal,
-//    lgsHidden,
-//    lgsCollapsed,
-//    lgsNoHeader,
-//    lgsCollapsible,
-//    lgsFocused,
-//    lgsSelected,
-//    lgsSubseted,
-//    lgsSubSetLinkFocused
-//  );
-//type TListGroupState int32
-//
-//const (
-//	LgsNormal = iota + 0
-//	LgsHidden
-//	LgsCollapsed
-//	LgsNoHeader
-//	LgsCollapsible
-//	LgsFocused
-//	LgsSelected
-//	LgsSubseted
-//	LgsSubSetLinkFocused
-//)
-
-//  TListGroupStateSet = set of TListGroupState;
-//type TListGroupStateSet = TSet
-
-// TTBDrawingStyle = (dsNormal, dsGradient);
+//ENUM:
 type TTBDrawingStyle int32
 
 const (
@@ -916,6 +777,7 @@ const (
 	DsGradient
 )
 
+//ENUM:
 type TToolButtonStyle int32
 
 const (
@@ -927,21 +789,7 @@ const (
 	TbsButtonDrop            // button with arrow (not separated from each other)
 )
 
-//  TToolButtonState = (tbsChecked, tbsPressed, tbsEnabled, tbsHidden, tbsIndeterminate, tbsWrap, tbsEllipses, tbsMarked);
-//type TToolButtonState int32
-//
-//const (
-//	TbsChecked = iota + 0
-//	TbsPressed
-//	TbsEnabled
-//	TbsHidden
-//	TbsIndeterminate
-//	TbsWrap
-//	TbsEllipses
-//	TbsMarked
-//)
-
-// TTBGradientDrawingOption = (gdoHotTrack, gdoGradient)
+//ENUM:
 type TTBGradientDrawingOption int32
 
 const (
@@ -949,11 +797,10 @@ const (
 	GdoGradient
 )
 
-// TTBGradientDrawingOptions = set of (gdoHotTrack, gdoGradient);
+//SET:TTBGradientDrawingOption
 type TTBGradientDrawingOptions = TSet
 
-// TColorDialogOption = (cdFullOpen, cdPreventFullOpen, cdShowHelp,
-// cdSolidColor, cdAnyColor);
+//ENUM:
 type TColorDialogOption int32
 
 const (
@@ -964,9 +811,10 @@ const (
 	CdAnyColor
 )
 
+//SET:TColorDialogOption
 type TColorDialogOptions = TSet
 
-// TBorderIcon = (biSystemMenu, biMinimize, biMaximize, biHelp);
+//ENUM:
 type TBorderIcon int32
 
 const (
@@ -976,13 +824,10 @@ const (
 	BiHelp
 )
 
-// TBorderIcons = set of TBorderIcon;
+//SET:TBorderIcon
 type TBorderIcons = TSet
 
-// TFontDialogOption = (fdAnsiOnly, fdTrueTypeOnly, fdEffects,
-//     fdFixedPitchOnly, fdForceFontExist, fdNoFaceSel, fdNoOEMFonts,
-//     fdNoSimulations, fdNoSizeSel, fdNoStyleSel,  fdNoVectorFonts,
-//     fdShowHelp, fdWysiwyg, fdLimitSize, fdScalableOnly, fdApplyButton);
+//ENUM:
 type TFontDialogOption int32
 
 const (
@@ -1004,16 +849,10 @@ const (
 	FdApplyButton
 )
 
-//   TFontDialogOptions = set of TFontDialogOption;
+//SET:TFontDialogOption
 type TFontDialogOptions = TSet
 
-// { TOpenDialog }
-// TOpenOption = (ofReadOnly, ofOverwritePrompt, ofHideReadOnly,
-//   ofNoChangeDir, ofShowHelp, ofNoValidate, ofAllowMultiSelect,
-//   ofExtensionDifferent, ofPathMustExist, ofFileMustExist, ofCreatePrompt,
-//   ofShareAware, ofNoReadOnlyReturn, ofNoTestFileCreate, ofNoNetworkButton,
-//   ofNoLongNames, ofOldStyleDialog, ofNoDereferenceLinks, ofEnableIncludeNotify,
-//   ofEnableSizing, ofDontAddToRecent, ofForceShowHidden);
+//ENUM:
 type TOpenOption int32
 
 const (
@@ -1045,33 +884,30 @@ const (
 	OfAutoPreview     // details are OS and interface dependent
 )
 
-// TOpenOptions = set of TOpenOption;
+//SET:TOpenOption
 type TOpenOptions = TSet
 
-// TOpenOptionEx = (ofExNoPlacesBar);
+//ENUM:
 type TOpenOptionEx int32
 
 const (
 	OfExNoPlacesBar = iota + 0
 )
 
-// TOpenOptionsEx = set of TOpenOptionEx;
+//SET:TOpenOptionEx
 type TOpenOptionsEx = TSet
 
-// { TPrintDialog }
-// TPrintRange = (prAllPages, prSelection, prPageNums);
+//ENUM:
 type TPrintRange int32
 
 const (
 	PrAllPages = iota + 0
 	PrSelection
 	PrPageNums
-	// lcl
 	PrCurrentPage
 )
 
-// TPrintDialogOption = (poPrintToFile, poPageNums, poSelection, poWarning,
-//   poHelp, poDisablePrintToFile);
+//ENUM:
 type TPrintDialogOption int32
 
 const (
@@ -1081,16 +917,13 @@ const (
 	PoWarning
 	PoHelp
 	PoDisablePrintToFile
-	//lcl
 	PoBeforeBeginDoc
 )
 
-// TPrintDialogOptions = set of TPrintDialogOption;
+//SET:TPrintDialogOption
 type TPrintDialogOptions = TSet
 
-// TPageSetupDialogOption = (psoDefaultMinMargins, psoDisableMargins,
-//   psoDisableOrientation, psoDisablePagePainting, psoDisablePaper, psoDisablePrinter,
-//   psoMargins, psoMinMargins, psoShowHelp, psoWarning, psoNoNetworkButton);
+//ENUM:
 type TPageSetupDialogOption int32
 
 const (
@@ -1107,10 +940,10 @@ const (
 	PsoNoNetworkButton
 )
 
-// TPageSetupDialogOptions = set of TPageSetupDialogOption;
+//SET:TPageSetupDialogOption
 type TPageSetupDialogOptions = TSet
 
-// TPrinterKind = (pkDotMatrix, pkHPPCL);
+//ENUM:
 type TPrinterKind int32
 
 const (
@@ -1118,7 +951,7 @@ const (
 	PkHPPCL
 )
 
-// TPageType = (ptEnvelope, ptPaper);
+//ENUM:
 type TPageType int32
 
 const (
@@ -1126,7 +959,7 @@ const (
 	PtPaper
 )
 
-// TPageMeasureUnits = (pmDefault, pmMillimeters, pmInches);
+//ENUM:
 type TPageMeasureUnits int32
 
 const (
@@ -1135,8 +968,8 @@ const (
 	PmInches
 )
 
-//   TStringsOption = (soStrictDelimiter, soWriteBOM, soTrailingLineBreak, soUseLocale);
-type TStringsOption = uint32
+//ENUM:
+type TStringsOption int32
 
 const (
 	SoStrictDelimiter = iota + 0
@@ -1145,10 +978,11 @@ const (
 	SoUseLocale
 )
 
-//   TStringsOptions = set of TStringsOption;
+//SET:TStringsOption
 type TStringsOptions = TSet
 
-type TShiftState = TSet
+//ENUM:
+type TShiftStateEnum int32
 
 const (
 	SsShift = iota + 0
@@ -1172,21 +1006,21 @@ const (
 	SsExtra2
 )
 
-// vcl TMouseButton = (mbLeft, mbRight, mbMiddle);
-// lcl TMouseButton = (mbLeft, mbRight, mbMiddle, mbExtra1, mbExtra2);
+//SET:TShiftStateEnum
+type TShiftState = TSet
+
+//ENUM:
 type TMouseButton int32
 
 const (
 	MbLeft = iota + 0
 	MbRight
 	MbMiddle
-
-	// lcl
 	mbExtra1
 	mbExtra2
 )
 
-// TFillStyle = (fsSurface, fsBorder);
+//ENUM:
 type TFillStyle int32
 
 const (
@@ -1194,7 +1028,7 @@ const (
 	FsBorder
 )
 
-// TFillMode = (fmAlternate, fmWinding);
+//ENUM:
 type TFillMode int32
 
 const (
@@ -1202,9 +1036,7 @@ const (
 	FmWinding
 )
 
-// TCopyMode = Longint;
-
-// TCanvasStates = (csHandleValid, csFontValid, csPenValid, csBrushValid);
+//ENUM:
 type TCanvasStates int32
 
 const (
@@ -1212,14 +1044,13 @@ const (
 	CsFontValid
 	CsPenValid
 	CsBrushValid
-	//lcl
 	CsRegionValid
 )
 
-// TCanvasState = set of TCanvasStates;
+//SET:TCanvasStates
 type TCanvasState = TSet
 
-// TCanvasOrientation = (coLeftToRight, coRightToLeft);
+//ENUM:
 type TCanvasOrientation int32
 
 const (
@@ -1227,12 +1058,7 @@ const (
 	CoRightToLeft
 )
 
-// // Note: tfComposited only supported by ThemeServices.DrawText
-// TTextFormats = (tfBottom, tfCalcRect, tfCenter, tfEditControl, tfEndEllipsis,
-//   tfPathEllipsis, tfExpandTabs, tfExternalLeading, tfLeft, tfModifyString,
-//   tfNoClip, tfNoPrefix, tfRight, tfRtlReading, tfSingleLine, tfTop,
-//   tfVerticalCenter, tfWordBreak, tfHidePrefix, tfNoFullWidthCharBreak,
-//   tfPrefixOnly, tfTabStop, tfWordEllipsis, tfComposited);
+//ENUM:
 type TTextFormats int32
 
 const (
@@ -1262,19 +1088,10 @@ const (
 	TfComposited
 )
 
-// TTextFormat = set of TTextFormats;
+//SET:TTextFormats
 type TTextFormat = TSet
 
-// TStyleElements = set of (seFont, seClient, seBorder);
-//type TStyleElements = TSet
-//
-//const (
-//	SeFont = iota + 0
-//	SeClient
-//	SeBorder
-//)
-
-// TBevelCut = (bvNone, bvLowered, bvRaised, bvSpace);
+//ENUM:
 type TBevelCut int32
 
 const (
@@ -1284,7 +1101,7 @@ const (
 	BvSpace
 )
 
-// TBevelEdge = (beLeft, beTop, beRight, beBottom);
+//ENUM:
 type TBevelEdge int32
 
 const (
@@ -1294,10 +1111,10 @@ const (
 	BeBottom
 )
 
-// TBevelEdges = set of TBevelEdge;
+//SET:TBevelEdge
 type TBevelEdges = TSet
 
-// TBevelKind = (bkNone, bkTile, bkSoft, bkFlat);
+//ENUM:
 type TBevelKind int32
 
 const (
@@ -1307,7 +1124,7 @@ const (
 	BkFlat
 )
 
-// TTickMark = (tmBottomRight, tmTopLeft, tmBoth);
+//ENUM:
 type TTickMark int32
 
 const (
@@ -1316,7 +1133,7 @@ const (
 	TmBoth
 )
 
-// TTickStyle = (tsNone, tsAuto, tsManual);
+//ENUM:
 type TTickStyle int32
 
 const (
@@ -1325,7 +1142,7 @@ const (
 	TsManual
 )
 
-// TPositionToolTip = (ptNone, ptTop, ptLeft, ptBottom, ptRight);
+//ENUM:
 type TPositionToolTip int32
 
 const (
@@ -1336,27 +1153,25 @@ const (
 	PtRight
 )
 
-// TDateTimeKind = (dtkDate, dtkTime);
+//ENUM:
 type TDateTimeKind int32
 
 const (
 	DtkDate = iota + 0
 	DtkTime
-	// lcl
 	DtkDateTime
 )
 
-// TDTDateMode = (dmComboBox, dmUpDown);
+//ENUM:
 type TDTDateMode int32
 
 const (
 	DmComboBox = iota + 0
 	DmUpDown
-	// lcl
 	DmNone
 )
 
-// TDTDateFormat = (dfShort, dfLong);
+//ENUM:
 type TDTDateFormat int32
 
 const (
@@ -1364,19 +1179,16 @@ const (
 	DfLong
 )
 
-// TDTCalAlignment = (dtaLeft, dtaRight);
+//ENUM:
 type TDTCalAlignment int32
 
 const (
 	DtaLeft = iota + 0
 	DtaRight
-	// lcl
 	DtaDefault
 )
 
-// { Calendar common control support }
-// TCalDayOfWeek = (dowMonday, dowTuesday, dowWednesday, dowThursday,
-//   dowFriday, dowSaturday, dowSunday, dowLocaleDefault);
+//ENUM:
 type TCalDayOfWeek int32
 
 const (
@@ -1390,7 +1202,7 @@ const (
 	DowLocaleDefault
 )
 
-// TSearchType = (stWholeWord, stMatchCase);
+//ENUM:
 type TSearchType int32
 
 const (
@@ -1398,11 +1210,10 @@ const (
 	StMatchCase
 )
 
-// TSearchTypes = set of TSearchType;
-
+//SET:TSearchType
 type TSearchTypes = TSet
 
-// TNumberingStyle = (nsNone, nsBullet);
+//ENUM:
 type TNumberingStyle int32
 
 const (
@@ -1410,7 +1221,7 @@ const (
 	NsBullte
 )
 
-// TAttributeType = (atSelected, atDefaultText);
+//ENUM:
 type TAttributeType int32
 
 const (
@@ -1418,8 +1229,7 @@ const (
 	AtDefaultText
 )
 
-// TConsistentAttribute = (caBold, caColor, caFace, caItalic,
-//   caSize, caStrikeOut, caUnderline, caProtected);
+//ENUM:
 type TConsistentAttribute int32
 
 const (
@@ -1433,10 +1243,10 @@ const (
 	CaProtected
 )
 
-// TConsistentAttributes = set of TConsistentAttribute;
+//SET:TConsistentAttribute
 type TConsistentAttributes = TSet
 
-// TIconArrangement = (iaTop, iaLeft);
+//ENUM:
 type TIconArrangement int32
 
 const (
@@ -1444,7 +1254,7 @@ const (
 	IaLeft
 )
 
-// THeaderStyle = (hsGradient, hsImage, hsThemed);
+//ENUM:
 type THeaderStyle int32
 
 const (
@@ -1453,19 +1263,19 @@ const (
 	HsThemed
 )
 
-// TImageAlignment = (iaLeft, iaRight, iaTop, iaBottom, iaCenter);
+//ENUM:
 type TImageAlignment int32
 
+// IaTop有冲突，所以增加一个i
 const (
-	IiaLeft = iota + 0 // IaTop有冲突，所以增加一个i
+	IiaLeft = iota + 0
 	IiaRight
 	IiaTop
 	IiaBottom
 	IiaCenter
 )
 
-// vcl TAnchorKind = (akLeft, akTop, akRight, akBottom);
-// lcl TAnchorKind = (akTop, akLeft, akRight, akBottom);
+//ENUM:
 type TAnchorKind int32
 
 const (
@@ -1475,14 +1285,10 @@ const (
 	AkBottom
 )
 
-//  TAnchors = set of TAnchorKind;
+//SET:TAnchorKind
 type TAnchors = TSet
 
-// TOwnerDrawState = set of (odSelected, odGrayed, odDisabled, odChecked,
-//    odFocused, odDefault, odHotLight, odInactive, odNoAccel, odNoFocusRect,
-//    odReserved1, odReserved2, odComboBoxEdit);
-type TOwnerDrawState = TSet
-
+//ENUM:
 type TOwnerDrawStateType int32
 
 const (
@@ -1502,8 +1308,10 @@ const (
 	OdBackgroundPainted // item background already painted
 )
 
-//   TBitBtnKind = (bkCustom, bkOK, bkCancel, bkHelp, bkYes, bkNo, bkClose,
-// bkAbort, bkRetry, bkIgnore, bkAll);
+//SET:TOwnerDrawStateType
+type TOwnerDrawState = TSet
+
+//ENUM:
 type TBitBtnKind int32
 
 const (
@@ -1522,7 +1330,7 @@ const (
 	BkYesToAll
 )
 
-// TScrollBarKind = (sbHorizontal, sbVertical);
+//ENUM:
 type TScrollBarKind int32
 
 const (
@@ -1533,7 +1341,7 @@ const (
 // TScrollBarInc = 1..32767;
 type TScrollBarInc int16
 
-// TScrollBarStyle = (ssRegular, ssFlat, ssHotTrack);
+//ENUM:
 type TScrollBarStyle int32
 
 const (
@@ -1542,6 +1350,7 @@ const (
 	SsHotTrack
 )
 
+//ENUM:
 type TShapeType int32
 
 const (
@@ -1569,8 +1378,7 @@ const (
 	BsRaised
 )
 
-// TBevelShape = (bsBox, bsFrame, bsTopLine, bsBottomLine, bsLeftLine,
-// bsRightLine, bsSpacer);
+//ENUM:
 type TBevelShape int32
 
 const (
@@ -1583,7 +1391,7 @@ const (
 	BsSpacer
 )
 
-// TGaugeKind = (gkText, gkHorizontalBar, gkVerticalBar, gkPie, gkNeedle, gkHalfPie);
+//ENUM:
 type TGaugeKind int32
 
 const (
@@ -1595,7 +1403,7 @@ const (
 	GkHalfPie
 )
 
-//TCustomDrawTarget = (dtControl, dtItem, dtSubItem);
+//ENUM:
 type TCustomDrawTarget int32
 
 const (
@@ -1604,7 +1412,7 @@ const (
 	DtSubItem
 )
 
-//TCustomDrawStage = (cdPrePaint, cdPostPaint, cdPreErase, cdPostErase);
+//ENUM:
 type TCustomDrawStage int32
 
 const (
@@ -1614,7 +1422,8 @@ const (
 	CdPostErase
 )
 
-type TCustomDrawState = TSet
+//ENUM:
+type TCustomDrawStateFlag int32
 
 const (
 	CdsSelected = iota + 0
@@ -1626,34 +1435,12 @@ const (
 	CdsHot
 	CdsMarked
 	CdsIndeterminate
-
-	//CdsSelected = iota + 0
-	//CdsGrayed
-	//CdsDisabled
-	//CdsChecked
-	//CdsFocused
-	//CdsDefault
-	//CdsHot
-	//CdsMarked
-	//CdsIndeterminate
-	//CdsShowKeyboardCues
-	//CdsNearHot
-	//CdsOtherSideHot
-	//CdsDropHilited
 )
 
-//TTBCustomDrawFlags = set of (tbNoEdges, tbHiliteHotTrack, tbNoOffset, tbNoMark, tbNoEtchedEffect);
-type TTBCustomDrawFlags = TSet
+//SET:TCustomDrawStateFlag
+type TCustomDrawState = TSet
 
-const (
-	TbNoEdges = iota + 0
-	TbHiliteHotTrack
-	TbNoOffset
-	TbNoMark
-	TbNoEtchedEffect
-)
-
-//  TDisplayCode = (drBounds, drIcon, drLabel, drSelectBounds);
+//ENUM:
 type TDisplayCode int32
 
 const (
@@ -1663,7 +1450,7 @@ const (
 	DrSelectBounds
 )
 
-//TSelectDirOpt = (sdAllowCreate, sdPerformCreate, sdPrompt);
+//ENUM:
 type TSelectDirOpt int32
 
 const (
@@ -1672,27 +1459,11 @@ const (
 	SdPrompt
 )
 
-//TSelectDirOpts = set of TSelectDirOpt;
+//SET:TSelectDirOpt
 type TSelectDirOpts = TSet
 
-//TSelectDirExtOpt = (sdNewFolder, sdShowEdit, sdShowShares, sdNewUI, sdShowFiles,
-//sdValidateDir);
-//type TSelectDirExtOpt int32
-//
-//const (
-//	SdNewFolder = iota + 0
-//	SdShowEdit
-//	SdShowShares
-//	SdNewUI
-//	SdShowFiles
-//	SdValidateDir
-//)
-
-//TSelectDirExtOpts = set of TSelectDirExtOpt;
-//type TSelectDirExtOpts = TSet
-
-// TFindOption
-type TFindOption = uint32
+//ENUM:
+type TFindOption int32
 
 const (
 	FrDown = iota + 0
@@ -1708,8 +1479,6 @@ const (
 	FrReplaceAll
 	FrWholeWord
 	FrShowHelp
-
-	// LCL
 	FrEntireScope
 	FrHideEntireScope
 	FrPromptOnReplace
@@ -1717,9 +1486,10 @@ const (
 	FrButtonsAtBottom
 )
 
-// TFindOptions = set of TFindOption
+//SET:TFindOption
 type TFindOptions = TSet
 
+//ENUM:
 type TDragMode int32
 
 const (
@@ -1727,6 +1497,7 @@ const (
 	DmAutomatic
 )
 
+//ENUM:
 type TDragState int32
 
 const (
@@ -1735,6 +1506,7 @@ const (
 	DsDragMove
 )
 
+//ENUM:
 type TDragKind int32
 
 const (
@@ -1742,7 +1514,7 @@ const (
 	DkDock
 )
 
-// Editors common support=
+//ENUM:
 type TEditCharCase int32
 
 const (
@@ -1751,6 +1523,7 @@ const (
 	EcLowerCase
 )
 
+//ENUM:
 type TEdgeBorder int32
 
 const (
@@ -1760,9 +1533,10 @@ const (
 	EbBottom
 )
 
-// set of TEdgeBorder
+//SET:TEdgeBorder
 type TEdgeBorders = TSet
 
+//ENUM:
 type TEdgeStyle int32
 
 const (
@@ -1771,6 +1545,7 @@ const (
 	EsLowered
 )
 
+//ENUM:
 type TGridDrawingStyle int32
 
 const (
@@ -1779,8 +1554,8 @@ const (
 	GdsGradient
 )
 
-// Lazarus的Grids选项，跟Delphi有点不一样。
-type TGridOption = int32
+//ENUM:
+type TGridOption int32
 
 const (
 	GoFixedVertLine = iota + 0
@@ -1818,10 +1593,11 @@ const (
 	GoRowHighlight                // Highlight the current Row
 )
 
-// Delphi set of TGridOption,  Lazarus set of TGridOptionLz
+//SET:TGridOption
 type TGridOptions = TSet
 
-type TGridDrawState = TSet
+//ENUM:
+type TGridDrawStates int32
 
 const (
 	GdSelected = iota + 0
@@ -1832,15 +1608,10 @@ const (
 	GdRowHighlight
 )
 
-type TGridScrollDirection = uint32
+//SET:TGridDrawStates
+type TGridDrawState = TSet
 
-const (
-	//SdLeft = iota + 0
-	//SdRight
-	SdUp = iota + SdRight
-	SdDown
-)
-
+//ENUM:
 type THeaderSectionStyle int32
 
 const (
@@ -1848,6 +1619,7 @@ const (
 	HsOwnerDraw
 )
 
+//ENUM:
 type TLabelPosition int32
 
 const (
@@ -1857,6 +1629,7 @@ const (
 	LpRight
 )
 
+//ENUM:
 type TFlowStyle int32
 
 const (
@@ -1870,6 +1643,7 @@ const (
 	FsBottomTopRightLeft
 )
 
+//ENUM:
 type TCoolBandMaximize int32
 
 const (
@@ -1878,6 +1652,7 @@ const (
 	BmDblClick
 )
 
+//ENUM:
 type TMenuBreak int32
 
 const (
@@ -1886,6 +1661,7 @@ const (
 	MbBarBreak
 )
 
+//ENUM:
 type TSectionTrackState int32
 
 const (
@@ -1894,12 +1670,8 @@ const (
 	TsTrackEnd
 )
 
-// TControlState = set of (csLButtonDown, csClicked, csPalette,
-//  csReadingState, csAlignmentNeeded, csFocusing, csCreating,
-//  csPaintCopy, csCustomPaint, csDestroyingHandle, csDocking,
-//  csDesignerHide, csPanning, csRecreating, csAligning, csGlassPaint,
-//  csPrintClient);
-type TControlState = TSet
+//ENUM:
+type TControlStateType int32
 
 const (
 	CsLButtonDown = iota + 0
@@ -1915,6 +1687,10 @@ const (
 	CsVisibleSetInLoading
 )
 
+//SET:TControlStateType
+type TControlState = TSet
+
+//ENUM:
 type TControlStyleType int32
 
 const (
@@ -1952,8 +1728,10 @@ const (
 	CsRequiresKeyboardInput                 // If the device has no physical keyboard then show the virtual keyboard when this control gets focus (therefore available only to TWinControl descendents)
 )
 
+//SET:TControlStyleType
 type TControlStyle = TSet
 
+//ENUM:
 type TMouseActivate int32
 
 const (
@@ -1964,6 +1742,7 @@ const (
 	MaNoActivateAndEat
 )
 
+//ENUM:
 type TTaskBarProgressState int32
 
 const (
@@ -1974,35 +1753,7 @@ const (
 	Paused
 )
 
-//TThumbButtonState = (Enabled, DismissOnClick, NoBackground, Hidden, NonInteractive);
-type TThumbButtonState int32
-
-const (
-	Enabled = iota + 0
-	DismissOnClick
-	NoBackground
-	Hidden
-	NonInteractive
-)
-
-//TThumbButtonStates = set of TThumbButtonState;
-type TThumbButtonStates = TSet
-
-//TThumbTabProperty = (AppThumbAlways, AppThumbWhenActive, AppPeekAlways, AppPeekWhenActive, CustomizedPreview);
-type TThumbTabProperty int32
-
-const (
-	AppThumbAlways = iota + 0
-	AppThumbWhenActive
-	AppPeekAlways
-	AppPeekWhenActive
-	CustomizedPreview
-)
-
-//TThumbTabProperties = set of TThumbTabProperty;
-type TThumbTabProperties = TSet
-
-// TBitmapHandleType
+//ENUM:
 type TBitmapHandleType int32
 
 const (
@@ -2010,7 +1761,7 @@ const (
 	BmDDB
 )
 
-// TPrinterState = (psNoHandle, psHandleIC, psHandleDC);
+//ENUM:
 type TPrinterState int32
 
 const (
@@ -2020,7 +1771,7 @@ const (
 	PsStopped
 )
 
-// TPrinterOrientation = (poPortrait, poLandscape);
+//ENUM:
 type TPrinterOrientation int32
 
 const (
@@ -2030,7 +1781,7 @@ const (
 	PoReversePortrait
 )
 
-//TPrinterCapability = (pcCopies, pcOrientation, pcCollation);
+//ENUM:
 type TPrinterCapability int32
 
 const (
@@ -2039,9 +1790,10 @@ const (
 	PcCollation
 )
 
-// Set of TPrinterCapability
+//SET:TPrinterCapability
 type TPrinterCapabilities = TSet
 
+//ENUM:
 type TPrinterType int32
 
 const (
@@ -2049,6 +1801,7 @@ const (
 	PtNetWork
 )
 
+//ENUM:
 type TReadyState int32
 
 const (
@@ -2059,6 +1812,7 @@ const (
 	RsComplete
 )
 
+//ENUM:
 type TStringEncoding int32
 
 const (
@@ -2068,6 +1822,7 @@ const (
 	SeUTF8
 )
 
+//ENUM:
 type TShowInTaskbar int32
 
 const (
@@ -2076,9 +1831,7 @@ const (
 	StNever              // never show taskbar item for the form
 )
 
-// Set of TTaskDialogCommonButton
-type TTaskDialogCommonButtons = TSet
-
+//ENUM:
 type TTaskDialogCommonButton int32
 
 const (
@@ -2090,9 +1843,10 @@ const (
 	TcbClose
 )
 
-// set of TTaskDialogFlag;
-type TTaskDialogFlags = TSet
+//SET:TTaskDialogCommonButton
+type TTaskDialogCommonButtons = TSet
 
+//ENUM:
 type TTaskDialogFlag int32
 
 const (
@@ -2114,7 +1868,10 @@ const (
 	TfCanBeMinimized
 )
 
-// TTaskDialogIcon = Low(Integer)..High(Integer);
+//SET:TTaskDialogFlag
+type TTaskDialogFlags = TSet
+
+//ENUM:
 type TTaskDialogIcon int32
 
 const (
@@ -2123,12 +1880,10 @@ const (
 	TdiError
 	TdiInformation
 	TdiShield
-	TdiQuestion // Lazarus所有
+	TdiQuestion
 )
 
-// TProgressBarState = Vcl.ComCtrls.TProgressBarState; // for compatibility
-//type TProgressBarState = TProgressBarState
-
+//ENUM:
 type TComboBoxExStyle int32
 
 const (
@@ -2137,6 +1892,7 @@ const (
 	CsExDropDownList
 )
 
+//ENUM:
 type TComboBoxExStyleEx int32
 
 const (
@@ -2147,9 +1903,10 @@ const (
 	CsExPathWordBreak
 )
 
-// set of TComboBoxExStyleEx;
+//SET:TComboBoxExStyleEx
 type TComboBoxExStyles = TSet
 
+//ENUM:
 type TAutoCompleteOption int32
 
 const (
@@ -2162,9 +1919,10 @@ const (
 	AcoRtlReading
 )
 
-// set of TAutoCompleteOption;
+//SET:TAutoCompleteOption
 type TAutoCompleteOptions = TSet
 
+//ENUM:
 type TDefaultMonitor int32
 
 const (
@@ -2174,7 +1932,7 @@ const (
 	DmActiveForm
 )
 
-// TTransparentMode = (tmAuto, tmFixed);
+//ENUM:
 type TTransparentMode int32
 
 const (
@@ -2182,20 +1940,7 @@ const (
 	TmFixed
 )
 
-//// libvcl
-//// TAlphaFormat = (afIgnored, afDefined, afPremultiplied);
-//type TAlphaFormat int32
-//
-//// afIgnored  The Reserved byte in the TRGBQuad is ignored.
-//// afDefined  The reserved byte in the TRGBQuad contains an alpha value.
-//// afPremultiplied The reserved byte in the TRGBQuad contains an alpha value. The red, green, and blue values have been premultiplied with the alpha value.
-//const (
-//	AfIgnored = iota + 0
-//	AfDefined
-//	AfPremultiplied
-//)
-
-// TDrawImageMode = (dimNormal, dimCenter, dimStretch);
+//ENUM:
 type TDrawImageMode int32
 
 const (
@@ -2204,14 +1949,17 @@ const (
 	DimStretch
 )
 
+//ENUM:
 type TListBoxOption int32
 
 const (
 	LboDrawFocusRect = iota + 0 // draw focus rect in case of owner drawing
 )
 
+//SET:TListBoxOption
 type TListBoxOptions = TSet
 
+//ENUM:
 type TAntialiasingMode int32
 
 const (
@@ -2220,6 +1968,7 @@ const (
 	AmOff                 // disabled
 )
 
+//ENUM:
 type TSortDirection int32
 
 const (
@@ -2227,6 +1976,7 @@ const (
 	SdDescending
 )
 
+//ENUM:
 type TTreeViewExpandSignType int32
 
 const (
@@ -2236,6 +1986,7 @@ const (
 	TvestArrowFill            // use filled arrow
 )
 
+//ENUM:
 type TTreeViewOption int32
 
 const (
@@ -2258,8 +2009,10 @@ const (
 	TvoThemedDraw
 )
 
+//SET:TTreeViewOption
 type TTreeViewOptions = TSet
 
+//ENUM:
 type TGlyphShowMode int32
 
 const (
@@ -2269,7 +2022,7 @@ const (
 	GsmSystem                 // depends on system settings
 )
 
-// These are LCL additions
+//ENUM:
 type TCTabControlOption int32
 
 const (
@@ -2281,8 +2034,10 @@ const (
 	NboDoChangeOnSetIndex
 )
 
+//SET:TCTabControlOption
 type TCTabControlOptions = TSet
 
+//ENUM:
 type TAnchorSideReference int32
 
 const (
@@ -2291,6 +2046,7 @@ const (
 	AsrCenter
 )
 
+//ENUM:
 type TControlCellAlign int32
 
 const (
@@ -2300,8 +2056,10 @@ const (
 	CcaCenter
 )
 
+//SET:TControlCellAlign
 type TControlCellAligns = TSet
 
+//ENUM:
 type TChildControlResizeStyle int32
 
 const (
@@ -2309,11 +2067,12 @@ const (
 	CrsScaleChilds                      // scale children equally, keep space between children fixed
 	CrsHomogenousChildResize            // enlarge children equally (i.e. by the same amount of pixel)
 	CrsHomogenousSpaceResize            // enlarge space between children equally
-//{$IFDEF EnablecrsSameSize}
-//,CrsSameSize  // each child gets the same size (maybe one pixel difference)
-//{$ENDIF}
+	//{$IFDEF EnablecrsSameSize}
+	//,CrsSameSize  // each child gets the same size (maybe one pixel difference)
+	//{$ENDIF}
 )
 
+//ENUM:
 type TControlChildrenLayout int32
 
 const (
@@ -2322,6 +2081,7 @@ const (
 	CclTopToBottomThenLeftToRight
 )
 
+//ENUM:
 type TColumnLayout int32
 
 const (
@@ -2329,7 +2089,7 @@ const (
 	ClVerticalThenHorizontal
 )
 
-//TSortIndicator = (siNone, siAscending, siDescending);
+//ENUM:
 type TSortIndicator int32
 
 const (

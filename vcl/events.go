@@ -124,11 +124,6 @@ type TTabGetImageEvent func(sender IObject, tabIndex int32, imageIndex *int32)
 //  Stage: TCustomDrawStage; var DefaultDraw: Boolean) of object;
 type TTBAdvancedCustomDrawEvent func(sender *TToolBar, aRect TRect, stage TCustomDrawStage, defaultDraw *bool)
 
-//TTBAdvancedCustomDrawBtnEvent = procedure(Sender: TToolBar; Button: TToolButton;
-//  State: TCustomDrawState; Stage: TCustomDrawStage;
-//  var Flags: TTBCustomDrawFlags; var DefaultDraw: Boolean) of object;
-type TTBAdvancedCustomDrawBtnEvent func(sender *TToolBar, button *TToolButton, state TCustomDrawState, stage TCustomDrawStage, flags *TTBCustomDrawFlags, defaultDraw *bool)
-
 // TThreadProc
 type TThreadProc func()
 

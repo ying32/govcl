@@ -289,16 +289,6 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				TCustomDrawStage(getVal(2)),
 				(*bool)(unsafe.Pointer(getVal(3))))
 
-		//type TTBAdvancedCustomDrawBtnEvent func(sender *TToolBar, button *TToolButton, state TCustomDrawState, stage TCustomDrawStage, flags *TTBCustomDrawFlags, defaultDraw *bool)
-		case TTBAdvancedCustomDrawBtnEvent:
-			v.(TTBAdvancedCustomDrawBtnEvent)(
-				AsToolBar(getVal(0)),
-				AsToolButton(getVal(1)),
-				TCustomDrawState(getVal(2)),
-				TCustomDrawStage(getVal(3)),
-				(*TTBCustomDrawFlags)(unsafe.Pointer(getVal(4))),
-				(*bool)(unsafe.Pointer(getVal(5))))
-
 		// TDropFilesEvent
 		case TDropFilesEvent:
 			nLen := int(getVal(2))
