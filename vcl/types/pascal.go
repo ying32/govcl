@@ -42,6 +42,8 @@ type Char = uint16
 
 type TClass uintptr
 
+type TThreadID = uintptr
+
 type TGridCoord struct {
 	X int32
 	Y int32
@@ -90,7 +92,7 @@ type TLibResource struct {
 type TConstraintSize int32
 
 type TAlignInfo struct {
-	AlignList    uintptr //: TList;
+	AlignList    uintptr
 	ControlIndex int32
 	Align        TAlign
 	Scratch      int32

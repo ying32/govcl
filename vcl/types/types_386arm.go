@@ -21,7 +21,7 @@ type TWMKey struct {
 	// CharCode: Word;
 	// Unused: Word;
 	CharCodeUnusedFiller TDWordFiller
-	KeyData              uint32 // 第二个元素未使用
+	KeyData              uint32
 	KeyDataFiller        TDWordFiller
 	Result               uintptr
 }

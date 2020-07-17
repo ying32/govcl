@@ -9,15 +9,20 @@
 package types
 
 type TPoint struct {
-	X, Y int32
+	X int32
+	Y int32
 }
 
 type TRect struct {
-	Left, Top, Right, Bottom int32
+	Left   int32
+	Top    int32
+	Right  int32
+	Bottom int32
 }
 
 type TSize struct {
-	Cx, Cy int32
+	Cx int32
+	Cy int32
 }
 
 type HWND = uintptr
