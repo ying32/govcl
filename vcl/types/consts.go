@@ -9,7 +9,6 @@
 package types
 
 // MessageBox or MessageDlg 返回值
-
 const (
 	IdOK       = 1
 	IdCancel   = 2
@@ -39,7 +38,7 @@ const (
 	MrYesToAll = MrNoToAll + 1
 )
 
-/* Predefined Clipboard Formats */
+// Predefined Clipboard Formats
 const (
 	CF_TEXT         = 1
 	CF_BITMAP       = 2

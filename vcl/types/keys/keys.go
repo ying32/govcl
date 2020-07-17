@@ -8,9 +8,8 @@
 
 package keys
 
-// 虚拟键
+// Virtual Keys, Standard Set
 const (
-	// Virtual Keys, Standard Set
 	VkLButton    = 0x01 //   1
 	VkRButton    = 0x02 //   2
 	VkCancel     = 0x03 //   3

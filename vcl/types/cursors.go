@@ -8,6 +8,7 @@
 
 package types
 
+// 光标定义
 const (
 	CrHigh = TCursor(0)
 
@@ -42,6 +43,5 @@ const (
 	CrHelp      = TCursor(-20)
 	CrHandPoint = TCursor(-21)
 	CrSizeAll   = TCursor(-22)
-
-	CrLow = -30
+	CrLow       = TCursor(-30)
 )
