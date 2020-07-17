@@ -88,6 +88,11 @@ type TLibResource struct {
 	Ptr  uintptr
 }
 
+type TResItem struct {
+	Name  uintptr
+	Value uintptr
+}
+
 // TConstraintSize = 0..MaxInt;
 type TConstraintSize int32
 

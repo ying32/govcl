@@ -19,14 +19,6 @@ var (
 	libvcl = loadUILib()
 )
 
-// VCL或者LCL
-type TLibType int32
-
-const (
-	LtVCL TLibType = iota + 0
-	LtLCL
-)
-
 var (
 	platformExtNames = map[string]string{
 		"windows": ".dll",
