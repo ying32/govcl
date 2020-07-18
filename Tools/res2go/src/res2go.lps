@@ -53,9 +53,8 @@
       <Unit2>
         <Filename Value="supportsComponents.inc"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="21"/>
+        <TopLine Value="32"/>
         <CursorPos X="56" Y="44"/>
         <UsageCount Value="47"/>
         <Loaded Value="True"/>
@@ -63,9 +62,10 @@
       <Unit3>
         <Filename Value="uresourceformtogo.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="21"/>
-        <CursorPos X="13" Y="40"/>
+        <TopLine Value="49"/>
+        <CursorPos X="32" Y="79"/>
         <UsageCount Value="39"/>
         <Loaded Value="True"/>
       </Unit3>
@@ -402,7 +402,7 @@
         <UsageCount Value="12"/>
       </Unit50>
     </Units>
-    <JumpHistory Count="23" HistoryIndex="22">
+    <JumpHistory Count="24" HistoryIndex="23">
       <Position1>
         <Filename Value="uresourceformtogo.pas"/>
         <Caret Line="239" Column="140" TopLine="226"/>
@@ -495,6 +495,10 @@
         <Filename Value="supportsComponents.inc"/>
         <Caret Line="66" Column="51"/>
       </Position23>
+      <Position24>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="74" Column="48" TopLine="61"/>
+      </Position24>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
