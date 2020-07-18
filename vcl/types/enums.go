@@ -2058,3 +2058,105 @@ const (
 	LtVCL TLibType = iota + 0
 	LtLCL
 )
+
+//ENUM:
+type TColumnButtonStyle int32
+
+const (
+	CbsAuto = iota + 0
+	CbsEllipsis
+	CbsNone
+	CbsPickList
+	CbsCheckboxColumn
+	CbsButton
+	CbsButtonColumn
+)
+
+//ENUM:
+type TGridZone int32
+
+const (
+	GzNormal = iota + 0
+	GzFixedCols
+	GzFixedRows
+	GzFixedCells
+	GzInvalid
+)
+
+//SET:TGridZone
+type TGridZoneSet = TSet
+
+//ENUM:
+type TSortOrder int32
+
+const (
+	SoAscending = iota + 0
+	SoDescending
+)
+
+//ENUM:
+type TAutoAdvance int32
+
+const (
+	AaNone = iota + 0
+	AaDown
+	AaRight
+	AaLeft
+	AaRightDown
+	AaLeftDown
+	AaRightUp
+	AaLeftUp
+)
+
+//ENUM:
+type TCellHintPriority int32
+
+const (
+	ChpAll = iota + 0
+	ChpAllNoDefault
+	ChpTruncOnly
+)
+
+//ENUM:
+type TMouseWheelOption int32
+
+const (
+	MwCursor = iota + 0
+	MwGrid
+)
+
+//ENUM:
+type TGridOption2 int32
+
+const (
+	GoScrollToLastCol = iota + 0 // allow scrolling to last column (so that last column can be leftcol)
+	GoScrollToLastRow            // allow scrolling to last row (so that last row can be toprow)
+)
+
+//SET:TGridOption2
+type TGridOptions2 = TSet
+
+//ENUM:
+type TRangeSelectMode int32
+
+const (
+	RsmSingle = iota + 0
+	RsmMulti
+)
+
+//ENUM:
+type TTitleStyle int32
+
+const (
+	TsLazarus = iota + 0
+	TsStandard
+	TsNative
+)
+
+//ENUM:
+type TPrefixOption int32
+
+const (
+	PoNone = iota + 0
+	PoHeaderClick
+)

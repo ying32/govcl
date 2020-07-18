@@ -123,16 +123,133 @@ func TStringGridClass() TClass {
     return StringGrid_StaticClassType()
 }
 
+func (s *TStringGrid) DeleteColRow(IsColumn bool, index int32) {
+    StringGrid_DeleteColRow(s.instance, IsColumn , index)
+}
+
+func (s *TStringGrid) DeleteCol(Index int32) {
+    StringGrid_DeleteCol(s.instance, Index)
+}
+
+func (s *TStringGrid) DeleteRow(Index int32) {
+    StringGrid_DeleteRow(s.instance, Index)
+}
+
+func (s *TStringGrid) ExchangeColRow(IsColumn bool, index int32, WithIndex int32) {
+    StringGrid_ExchangeColRow(s.instance, IsColumn , index , WithIndex)
+}
+
+func (s *TStringGrid) InsertColRow(IsColumn bool, index int32) {
+    StringGrid_InsertColRow(s.instance, IsColumn , index)
+}
+
+func (s *TStringGrid) MoveColRow(IsColumn bool, FromIndex int32, ToIndex int32) {
+    StringGrid_MoveColRow(s.instance, IsColumn , FromIndex , ToIndex)
+}
+
+func (s *TStringGrid) SortColRow(IsColumn bool, Index int32, FromIndex int32, ToIndex int32) {
+    StringGrid_SortColRow(s.instance, IsColumn , Index , FromIndex , ToIndex)
+}
+
+func (s *TStringGrid) EditorByStyle(Style TColumnButtonStyle) *TWinControl {
+    return AsWinControl(StringGrid_EditorByStyle(s.instance, Style))
+}
+
+func (s *TStringGrid) EditorKeyDown(Sender IObject, Key *uint16, Shift TShiftState) {
+    StringGrid_EditorKeyDown(s.instance, CheckPtr(Sender), Key , Shift)
+}
+
+func (s *TStringGrid) EditorKeyPress(Sender IObject, Key *uint16) {
+    StringGrid_EditorKeyPress(s.instance, CheckPtr(Sender), Key)
+}
+
+func (s *TStringGrid) EditorKeyUp(Sender IObject, key *uint16, shift TShiftState) {
+    StringGrid_EditorKeyUp(s.instance, CheckPtr(Sender), key , shift)
+}
+
+func (s *TStringGrid) EditorTextChanged(aCol int32, aRow int32, aText string) {
+    StringGrid_EditorTextChanged(s.instance, aCol , aRow , aText)
+}
+
+func (s *TStringGrid) EditingDone() {
+    StringGrid_EditingDone(s.instance)
+}
+
+func (s *TStringGrid) AutoAdjustColumns() {
+    StringGrid_AutoAdjustColumns(s.instance)
+}
+
 func (s *TStringGrid) CellRect(ACol int32, ARow int32) TRect {
     return StringGrid_CellRect(s.instance, ACol , ARow)
 }
 
-func (s *TStringGrid) MouseToCell(X int32, Y int32, ACol *int32, ARow *int32) {
-    StringGrid_MouseToCell(s.instance, X , Y , ACol , ARow)
+func (s *TStringGrid) CellToGridZone(aCol int32, aRow int32) TGridZone {
+    return StringGrid_CellToGridZone(s.instance, aCol , aRow)
+}
+
+func (s *TStringGrid) CheckPosition() {
+    StringGrid_CheckPosition(s.instance)
+}
+
+func (s *TStringGrid) ClearCols() bool {
+    return StringGrid_ClearCols(s.instance)
+}
+
+func (s *TStringGrid) ClearRows() bool {
+    return StringGrid_ClearRows(s.instance)
+}
+
+// 清除。
+func (s *TStringGrid) Clear() {
+    StringGrid_Clear(s.instance)
+}
+
+func (s *TStringGrid) ClearSelections() {
+    StringGrid_ClearSelections(s.instance)
+}
+
+func (s *TStringGrid) HasMultiSelection() bool {
+    return StringGrid_HasMultiSelection(s.instance)
+}
+
+func (s *TStringGrid) InvalidateCell(aCol int32, aRow int32) {
+    StringGrid_InvalidateCell(s.instance, aCol , aRow)
+}
+
+func (s *TStringGrid) InvalidateCol(ACol int32) {
+    StringGrid_InvalidateCol(s.instance, ACol)
+}
+
+func (s *TStringGrid) InvalidateRange(aRange TRect) {
+    StringGrid_InvalidateRange(s.instance, aRange)
+}
+
+func (s *TStringGrid) InvalidateRow(ARow int32) {
+    StringGrid_InvalidateRow(s.instance, ARow)
+}
+
+func (s *TStringGrid) IsCellVisible(aCol int32, aRow int32) bool {
+    return StringGrid_IsCellVisible(s.instance, aCol , aRow)
+}
+
+func (s *TStringGrid) IsFixedCellVisible(aCol int32, aRow int32) bool {
+    return StringGrid_IsFixedCellVisible(s.instance, aCol , aRow)
 }
 
 func (s *TStringGrid) MouseCoord(X int32, Y int32) TGridCoord {
     return StringGrid_MouseCoord(s.instance, X , Y)
+}
+
+func (s *TStringGrid) MouseToCell(Mouse TPoint) TPoint {
+    return StringGrid_MouseToCell(s.instance, Mouse)
+}
+
+func (s *TStringGrid) MouseToLogcell(Mouse TPoint) TPoint {
+    return StringGrid_MouseToLogcell(s.instance, Mouse)
+}
+
+func (s *TStringGrid) MouseToGridZone(X int32, Y int32) TGridZone {
+    return StringGrid_MouseToGridZone(s.instance, X , Y)
 }
 
 // 是否可以获得焦点。
@@ -464,8 +581,370 @@ func (s *TStringGrid) AnchorClient(ASpace int32) {
     StringGrid_AnchorClient(s.instance, ASpace)
 }
 
-func (s *TStringGrid) SetOnColRowMoved(fn TMovedEvent) {
+func (s *TStringGrid) SelectedColor() TColor {
+    return StringGrid_GetSelectedColor(s.instance)
+}
+
+func (s *TStringGrid) SetSelectedColor(value TColor) {
+    StringGrid_SetSelectedColor(s.instance, value)
+}
+
+func (s *TStringGrid) SelectedColumn() *TGridColumn {
+    return AsGridColumn(StringGrid_GetSelectedColumn(s.instance))
+}
+
+func (s *TStringGrid) StrictSort() bool {
+    return StringGrid_GetStrictSort(s.instance)
+}
+
+func (s *TStringGrid) SetStrictSort(value bool) {
+    StringGrid_SetStrictSort(s.instance, value)
+}
+
+func (s *TStringGrid) FixedHotColor() TColor {
+    return StringGrid_GetFixedHotColor(s.instance)
+}
+
+func (s *TStringGrid) SetFixedHotColor(value TColor) {
+    StringGrid_SetFixedHotColor(s.instance, value)
+}
+
+func (s *TStringGrid) FastEditing() bool {
+    return StringGrid_GetFastEditing(s.instance)
+}
+
+func (s *TStringGrid) SetFastEditing(value bool) {
+    StringGrid_SetFastEditing(s.instance, value)
+}
+
+func (s *TStringGrid) FixedGridLineColor() TColor {
+    return StringGrid_GetFixedGridLineColor(s.instance)
+}
+
+func (s *TStringGrid) SetFixedGridLineColor(value TColor) {
+    StringGrid_SetFixedGridLineColor(s.instance, value)
+}
+
+func (s *TStringGrid) FocusColor() TColor {
+    return StringGrid_GetFocusColor(s.instance)
+}
+
+func (s *TStringGrid) SetFocusColor(value TColor) {
+    StringGrid_SetFocusColor(s.instance, value)
+}
+
+func (s *TStringGrid) FocusRectVisible() bool {
+    return StringGrid_GetFocusRectVisible(s.instance)
+}
+
+func (s *TStringGrid) SetFocusRectVisible(value bool) {
+    StringGrid_SetFocusRectVisible(s.instance, value)
+}
+
+func (s *TStringGrid) GridLineColor() TColor {
+    return StringGrid_GetGridLineColor(s.instance)
+}
+
+func (s *TStringGrid) SetGridLineColor(value TColor) {
+    StringGrid_SetGridLineColor(s.instance, value)
+}
+
+func (s *TStringGrid) GridLineStyle() TPenStyle {
+    return StringGrid_GetGridLineStyle(s.instance)
+}
+
+func (s *TStringGrid) SetGridLineStyle(value TPenStyle) {
+    StringGrid_SetGridLineStyle(s.instance, value)
+}
+
+func (s *TStringGrid) Editor() *TWinControl {
+    return AsWinControl(StringGrid_GetEditor(s.instance))
+}
+
+func (s *TStringGrid) SetEditor(value IWinControl) {
+    StringGrid_SetEditor(s.instance, CheckPtr(value))
+}
+
+func (s *TStringGrid) EditorBorderStyle() TBorderStyle {
+    return StringGrid_GetEditorBorderStyle(s.instance)
+}
+
+func (s *TStringGrid) SetEditorBorderStyle(value TBorderStyle) {
+    StringGrid_SetEditorBorderStyle(s.instance, value)
+}
+
+func (s *TStringGrid) EditorMode() bool {
+    return StringGrid_GetEditorMode(s.instance)
+}
+
+func (s *TStringGrid) SetEditorMode(value bool) {
+    StringGrid_SetEditorMode(s.instance, value)
+}
+
+func (s *TStringGrid) SortOrder() TSortOrder {
+    return StringGrid_GetSortOrder(s.instance)
+}
+
+func (s *TStringGrid) SetSortOrder(value TSortOrder) {
+    StringGrid_SetSortOrder(s.instance, value)
+}
+
+func (s *TStringGrid) SortColumn() int32 {
+    return StringGrid_GetSortColumn(s.instance)
+}
+
+func (s *TStringGrid) SetOnAfterSelection(fn TOnSelectEvent) {
+    StringGrid_SetOnAfterSelection(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnBeforeSelection(fn TOnSelectEvent) {
+    StringGrid_SetOnBeforeSelection(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnButtonClick(fn TOnSelectEvent) {
+    StringGrid_SetOnButtonClick(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnCheckboxToggled(fn TToggledCheckboxEvent) {
+    StringGrid_SetOnCheckboxToggled(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnColRowDeleted(fn TGridOperationEvent) {
+    StringGrid_SetOnColRowDeleted(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnColRowExchanged(fn TGridOperationEvent) {
+    StringGrid_SetOnColRowExchanged(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnColRowInserted(fn TGridOperationEvent) {
+    StringGrid_SetOnColRowInserted(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnColRowMoved(fn TGridOperationEvent) {
     StringGrid_SetOnColRowMoved(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnCompareCells(fn TOnCompareCells) {
+    StringGrid_SetOnCompareCells(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnEditingDone(fn TNotifyEvent) {
+    StringGrid_SetOnEditingDone(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnGetCellHint(fn TGetCellHintEvent) {
+    StringGrid_SetOnGetCellHint(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnGetCheckboxState(fn TGetCheckboxStateEvent) {
+    StringGrid_SetOnGetCheckboxState(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnSetCheckboxState(fn TSetCheckboxStateEvent) {
+    StringGrid_SetOnSetCheckboxState(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnHeaderClick(fn THdrEvent) {
+    StringGrid_SetOnHeaderClick(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnHeaderSized(fn THdrEvent) {
+    StringGrid_SetOnHeaderSized(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnHeaderSizing(fn THeaderSizingEvent) {
+    StringGrid_SetOnHeaderSizing(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnPickListSelect(fn TNotifyEvent) {
+    StringGrid_SetOnPickListSelect(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnSelection(fn TOnSelectEvent) {
+    StringGrid_SetOnSelection(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnSelectEditor(fn TSelectEditorEvent) {
+    StringGrid_SetOnSelectEditor(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnUserCheckboxBitmap(fn TUserCheckBoxBitmapEvent) {
+    StringGrid_SetOnUserCheckboxBitmap(s.instance, fn)
+}
+
+func (s *TStringGrid) SetOnValidateEntry(fn TValidateEntryEvent) {
+    StringGrid_SetOnValidateEntry(s.instance, fn)
+}
+
+func (s *TStringGrid) AlternateColor() TColor {
+    return StringGrid_GetAlternateColor(s.instance)
+}
+
+func (s *TStringGrid) SetAlternateColor(value TColor) {
+    StringGrid_SetAlternateColor(s.instance, value)
+}
+
+func (s *TStringGrid) AutoAdvance() TAutoAdvance {
+    return StringGrid_GetAutoAdvance(s.instance)
+}
+
+func (s *TStringGrid) SetAutoAdvance(value TAutoAdvance) {
+    StringGrid_SetAutoAdvance(s.instance, value)
+}
+
+func (s *TStringGrid) AutoEdit() bool {
+    return StringGrid_GetAutoEdit(s.instance)
+}
+
+func (s *TStringGrid) SetAutoEdit(value bool) {
+    StringGrid_SetAutoEdit(s.instance, value)
+}
+
+func (s *TStringGrid) AutoFillColumns() bool {
+    return StringGrid_GetAutoFillColumns(s.instance)
+}
+
+func (s *TStringGrid) SetAutoFillColumns(value bool) {
+    StringGrid_SetAutoFillColumns(s.instance, value)
+}
+
+func (s *TStringGrid) CellHintPriority() TCellHintPriority {
+    return StringGrid_GetCellHintPriority(s.instance)
+}
+
+func (s *TStringGrid) SetCellHintPriority(value TCellHintPriority) {
+    StringGrid_SetCellHintPriority(s.instance, value)
+}
+
+func (s *TStringGrid) ColumnClickSorts() bool {
+    return StringGrid_GetColumnClickSorts(s.instance)
+}
+
+func (s *TStringGrid) SetColumnClickSorts(value bool) {
+    StringGrid_SetColumnClickSorts(s.instance, value)
+}
+
+func (s *TStringGrid) Columns() *TGridColumns {
+    return AsGridColumns(StringGrid_GetColumns(s.instance))
+}
+
+func (s *TStringGrid) SetColumns(value *TGridColumns) {
+    StringGrid_SetColumns(s.instance, CheckPtr(value))
+}
+
+func (s *TStringGrid) ExtendedSelect() bool {
+    return StringGrid_GetExtendedSelect(s.instance)
+}
+
+func (s *TStringGrid) SetExtendedSelect(value bool) {
+    StringGrid_SetExtendedSelect(s.instance, value)
+}
+
+// 获取平面样式。
+func (s *TStringGrid) Flat() bool {
+    return StringGrid_GetFlat(s.instance)
+}
+
+// 设置平面样式。
+func (s *TStringGrid) SetFlat(value bool) {
+    StringGrid_SetFlat(s.instance, value)
+}
+
+func (s *TStringGrid) HeaderHotZones() TGridZoneSet {
+    return StringGrid_GetHeaderHotZones(s.instance)
+}
+
+func (s *TStringGrid) SetHeaderHotZones(value TGridZoneSet) {
+    StringGrid_SetHeaderHotZones(s.instance, value)
+}
+
+func (s *TStringGrid) HeaderPushZones() TGridZoneSet {
+    return StringGrid_GetHeaderPushZones(s.instance)
+}
+
+func (s *TStringGrid) SetHeaderPushZones(value TGridZoneSet) {
+    StringGrid_SetHeaderPushZones(s.instance, value)
+}
+
+func (s *TStringGrid) ImageIndexSortAsc() int32 {
+    return StringGrid_GetImageIndexSortAsc(s.instance)
+}
+
+func (s *TStringGrid) SetImageIndexSortAsc(value int32) {
+    StringGrid_SetImageIndexSortAsc(s.instance, value)
+}
+
+func (s *TStringGrid) ImageIndexSortDesc() int32 {
+    return StringGrid_GetImageIndexSortDesc(s.instance)
+}
+
+func (s *TStringGrid) SetImageIndexSortDesc(value int32) {
+    StringGrid_SetImageIndexSortDesc(s.instance, value)
+}
+
+func (s *TStringGrid) MouseWheelOption() TMouseWheelOption {
+    return StringGrid_GetMouseWheelOption(s.instance)
+}
+
+func (s *TStringGrid) SetMouseWheelOption(value TMouseWheelOption) {
+    StringGrid_SetMouseWheelOption(s.instance, value)
+}
+
+func (s *TStringGrid) Options2() TGridOptions2 {
+    return StringGrid_GetOptions2(s.instance)
+}
+
+func (s *TStringGrid) SetOptions2(value TGridOptions2) {
+    StringGrid_SetOptions2(s.instance, value)
+}
+
+func (s *TStringGrid) RangeSelectMode() TRangeSelectMode {
+    return StringGrid_GetRangeSelectMode(s.instance)
+}
+
+func (s *TStringGrid) SetRangeSelectMode(value TRangeSelectMode) {
+    StringGrid_SetRangeSelectMode(s.instance, value)
+}
+
+func (s *TStringGrid) TabAdvance() TAutoAdvance {
+    return StringGrid_GetTabAdvance(s.instance)
+}
+
+func (s *TStringGrid) SetTabAdvance(value TAutoAdvance) {
+    StringGrid_SetTabAdvance(s.instance, value)
+}
+
+func (s *TStringGrid) TitleFont() *TFont {
+    return AsFont(StringGrid_GetTitleFont(s.instance))
+}
+
+func (s *TStringGrid) SetTitleFont(value *TFont) {
+    StringGrid_SetTitleFont(s.instance, CheckPtr(value))
+}
+
+func (s *TStringGrid) TitleImageList() *TImageList {
+    return AsImageList(StringGrid_GetTitleImageList(s.instance))
+}
+
+func (s *TStringGrid) SetTitleImageList(value IComponent) {
+    StringGrid_SetTitleImageList(s.instance, CheckPtr(value))
+}
+
+func (s *TStringGrid) TitleStyle() TTitleStyle {
+    return StringGrid_GetTitleStyle(s.instance)
+}
+
+func (s *TStringGrid) SetTitleStyle(value TTitleStyle) {
+    StringGrid_SetTitleStyle(s.instance, value)
+}
+
+func (s *TStringGrid) UseXORFeatures() bool {
+    return StringGrid_GetUseXORFeatures(s.instance)
+}
+
+func (s *TStringGrid) SetUseXORFeatures(value bool) {
+    StringGrid_SetUseXORFeatures(s.instance, value)
 }
 
 // 获取控件自动调整。
@@ -987,14 +1466,6 @@ func (s *TStringGrid) SetCol(value int32) {
     StringGrid_SetCol(s.instance, value)
 }
 
-func (s *TStringGrid) EditorMode() bool {
-    return StringGrid_GetEditorMode(s.instance)
-}
-
-func (s *TStringGrid) SetEditorMode(value bool) {
-    StringGrid_SetEditorMode(s.instance, value)
-}
-
 func (s *TStringGrid) GridHeight() int32 {
     return StringGrid_GetGridHeight(s.instance)
 }
@@ -1428,6 +1899,10 @@ func (s *TStringGrid) BorderSpacing() *TControlBorderSpacing {
 // 设置边框间距。
 func (s *TStringGrid) SetBorderSpacing(value *TControlBorderSpacing) {
     StringGrid_SetBorderSpacing(s.instance, CheckPtr(value))
+}
+
+func (s *TStringGrid) IsCellSelected(aCol int32, aRow int32) bool {
+    return StringGrid_GetIsCellSelected(s.instance, aCol, aRow)
 }
 
 func (s *TStringGrid) Cells(ACol int32, ARow int32) string {

@@ -123,6 +123,10 @@ func TValueListEditorClass() TClass {
     return ValueListEditor_StaticClassType()
 }
 
+func (v *TValueListEditor) DeleteRow(ARow int32) {
+    ValueListEditor_DeleteRow(v.instance, ARow)
+}
+
 // 刷新控件。
 //
 // Refresh control.
@@ -628,6 +632,14 @@ func (v *TValueListEditor) DragMode() TDragMode {
 // Set Drag mode.
 func (v *TValueListEditor) SetDragMode(value TDragMode) {
     ValueListEditor_SetDragMode(v.instance, value)
+}
+
+func (v *TValueListEditor) DropDownRows() int32 {
+    return ValueListEditor_GetDropDownRows(v.instance)
+}
+
+func (v *TValueListEditor) SetDropDownRows(value int32) {
+    ValueListEditor_SetDropDownRows(v.instance, value)
 }
 
 // 获取控件启用。

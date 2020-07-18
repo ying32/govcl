@@ -464,7 +464,7 @@ func (d *TDrawGrid) AnchorClient(ASpace int32) {
     DrawGrid_AnchorClient(d.instance, ASpace)
 }
 
-func (d *TDrawGrid) SetOnColRowMoved(fn TMovedEvent) {
+func (d *TDrawGrid) SetOnColRowMoved(fn TGridOperationEvent) {
     DrawGrid_SetOnColRowMoved(d.instance, fn)
 }
 

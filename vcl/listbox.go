@@ -660,6 +660,14 @@ func (l *TListBox) SetEnabled(value bool) {
     ListBox_SetEnabled(l.instance, value)
 }
 
+func (l *TListBox) ExtendedSelect() bool {
+    return ListBox_GetExtendedSelect(l.instance)
+}
+
+func (l *TListBox) SetExtendedSelect(value bool) {
+    ListBox_SetExtendedSelect(l.instance, value)
+}
+
 // 获取字体。
 //
 // Get Font.

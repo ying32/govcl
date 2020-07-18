@@ -8215,6 +8215,15 @@ func ListBox_SetEnabled(obj uintptr, value bool) {
    listBox_SetEnabled.Call(obj, GoBoolToDBool(value))
 }
 
+func ListBox_GetExtendedSelect(obj uintptr) bool {
+    ret, _, _ := listBox_GetExtendedSelect.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListBox_SetExtendedSelect(obj uintptr, value bool) {
+   listBox_SetExtendedSelect.Call(obj, GoBoolToDBool(value))
+}
+
 func ListBox_GetFont(obj uintptr) uintptr {
     ret, _, _ := listBox_GetFont.Call(obj)
     return ret
@@ -12793,6 +12802,15 @@ func Splitter_GetConstraints(obj uintptr) uintptr {
 
 func Splitter_SetConstraints(obj uintptr, value uintptr) {
    splitter_SetConstraints.Call(obj, value)
+}
+
+func Splitter_GetMinSize(obj uintptr) int32 {
+    ret, _, _ := splitter_GetMinSize.Call(obj)
+    return int32(ret)
+}
+
+func Splitter_SetMinSize(obj uintptr, value int32) {
+   splitter_SetMinSize.Call(obj, uintptr(value))
 }
 
 func Splitter_GetParentColor(obj uintptr) bool {
@@ -47458,20 +47476,148 @@ func StringGrid_Free(obj uintptr) {
     stringGrid_Free.Call(obj)
 }
 
+func StringGrid_DeleteColRow(obj uintptr, IsColumn bool, index int32)  {
+    stringGrid_DeleteColRow.Call(obj, GoBoolToDBool(IsColumn) , uintptr(index) )
+}
+
+func StringGrid_DeleteCol(obj uintptr, Index int32)  {
+    stringGrid_DeleteCol.Call(obj, uintptr(Index) )
+}
+
+func StringGrid_DeleteRow(obj uintptr, Index int32)  {
+    stringGrid_DeleteRow.Call(obj, uintptr(Index) )
+}
+
+func StringGrid_ExchangeColRow(obj uintptr, IsColumn bool, index int32, WithIndex int32)  {
+    stringGrid_ExchangeColRow.Call(obj, GoBoolToDBool(IsColumn) , uintptr(index) , uintptr(WithIndex) )
+}
+
+func StringGrid_InsertColRow(obj uintptr, IsColumn bool, index int32)  {
+    stringGrid_InsertColRow.Call(obj, GoBoolToDBool(IsColumn) , uintptr(index) )
+}
+
+func StringGrid_MoveColRow(obj uintptr, IsColumn bool, FromIndex int32, ToIndex int32)  {
+    stringGrid_MoveColRow.Call(obj, GoBoolToDBool(IsColumn) , uintptr(FromIndex) , uintptr(ToIndex) )
+}
+
+func StringGrid_SortColRow(obj uintptr, IsColumn bool, Index int32, FromIndex int32, ToIndex int32)  {
+    stringGrid_SortColRow.Call(obj, GoBoolToDBool(IsColumn) , uintptr(Index) , uintptr(FromIndex) , uintptr(ToIndex) )
+}
+
+func StringGrid_EditorByStyle(obj uintptr, Style TColumnButtonStyle) uintptr {
+    ret, _, _ := stringGrid_EditorByStyle.Call(obj, uintptr(Style) )
+    return ret
+}
+
+func StringGrid_EditorKeyDown(obj uintptr, Sender uintptr, Key *uint16, Shift TShiftState)  {
+    stringGrid_EditorKeyDown.Call(obj, Sender , uintptr(unsafe.Pointer(Key)), uintptr(Shift) )
+}
+
+func StringGrid_EditorKeyPress(obj uintptr, Sender uintptr, Key *uint16)  {
+    stringGrid_EditorKeyPress.Call(obj, Sender , uintptr(unsafe.Pointer(Key)))
+}
+
+func StringGrid_EditorKeyUp(obj uintptr, Sender uintptr, key *uint16, shift TShiftState)  {
+    stringGrid_EditorKeyUp.Call(obj, Sender , uintptr(unsafe.Pointer(key)), uintptr(shift) )
+}
+
+func StringGrid_EditorTextChanged(obj uintptr, aCol int32, aRow int32, aText string)  {
+    stringGrid_EditorTextChanged.Call(obj, uintptr(aCol) , uintptr(aRow) , GoStrToDStr(aText) )
+}
+
+func StringGrid_EditingDone(obj uintptr)  {
+    stringGrid_EditingDone.Call(obj)
+}
+
+func StringGrid_AutoAdjustColumns(obj uintptr)  {
+    stringGrid_AutoAdjustColumns.Call(obj)
+}
+
 func StringGrid_CellRect(obj uintptr, ACol int32, ARow int32) TRect {
     var ret TRect
     stringGrid_CellRect.Call(obj, uintptr(ACol) , uintptr(ARow) , uintptr(unsafe.Pointer(&ret)))
     return ret
 }
 
-func StringGrid_MouseToCell(obj uintptr, X int32, Y int32, ACol *int32, ARow *int32)  {
-    stringGrid_MouseToCell.Call(obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(ACol)), uintptr(unsafe.Pointer(ARow)))
+func StringGrid_CellToGridZone(obj uintptr, aCol int32, aRow int32) TGridZone {
+    ret, _, _ := stringGrid_CellToGridZone.Call(obj, uintptr(aCol) , uintptr(aRow) )
+    return TGridZone(ret)
+}
+
+func StringGrid_CheckPosition(obj uintptr)  {
+    stringGrid_CheckPosition.Call(obj)
+}
+
+func StringGrid_ClearCols(obj uintptr) bool {
+    ret, _, _ := stringGrid_ClearCols.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_ClearRows(obj uintptr) bool {
+    ret, _, _ := stringGrid_ClearRows.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_Clear(obj uintptr)  {
+    stringGrid_Clear.Call(obj)
+}
+
+func StringGrid_ClearSelections(obj uintptr)  {
+    stringGrid_ClearSelections.Call(obj)
+}
+
+func StringGrid_HasMultiSelection(obj uintptr) bool {
+    ret, _, _ := stringGrid_HasMultiSelection.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_InvalidateCell(obj uintptr, aCol int32, aRow int32)  {
+    stringGrid_InvalidateCell.Call(obj, uintptr(aCol) , uintptr(aRow) )
+}
+
+func StringGrid_InvalidateCol(obj uintptr, ACol int32)  {
+    stringGrid_InvalidateCol.Call(obj, uintptr(ACol) )
+}
+
+func StringGrid_InvalidateRange(obj uintptr, aRange TRect)  {
+    stringGrid_InvalidateRange.Call(obj, uintptr(unsafe.Pointer(&aRange)))
+}
+
+func StringGrid_InvalidateRow(obj uintptr, ARow int32)  {
+    stringGrid_InvalidateRow.Call(obj, uintptr(ARow) )
+}
+
+func StringGrid_IsCellVisible(obj uintptr, aCol int32, aRow int32) bool {
+    ret, _, _ := stringGrid_IsCellVisible.Call(obj, uintptr(aCol) , uintptr(aRow) )
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_IsFixedCellVisible(obj uintptr, aCol int32, aRow int32) bool {
+    ret, _, _ := stringGrid_IsFixedCellVisible.Call(obj, uintptr(aCol) , uintptr(aRow) )
+    return DBoolToGoBool(ret)
 }
 
 func StringGrid_MouseCoord(obj uintptr, X int32, Y int32) TGridCoord {
     var ret TGridCoord
     stringGrid_MouseCoord.Call(obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(&ret)))
     return ret
+}
+
+func StringGrid_MouseToCell(obj uintptr, Mouse TPoint) TPoint {
+    var ret TPoint
+    stringGrid_MouseToCell.Call(obj, uintptr(unsafe.Pointer(&Mouse)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StringGrid_MouseToLogcell(obj uintptr, Mouse TPoint) TPoint {
+    var ret TPoint
+    stringGrid_MouseToLogcell.Call(obj, uintptr(unsafe.Pointer(&Mouse)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StringGrid_MouseToGridZone(obj uintptr, X int32, Y int32) TGridZone {
+    ret, _, _ := stringGrid_MouseToGridZone.Call(obj, uintptr(X) , uintptr(Y) )
+    return TGridZone(ret)
 }
 
 func StringGrid_CanFocus(obj uintptr) bool {
@@ -47707,8 +47853,404 @@ func StringGrid_AnchorClient(obj uintptr, ASpace int32)  {
     stringGrid_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func StringGrid_GetSelectedColor(obj uintptr) TColor {
+    ret, _, _ := stringGrid_GetSelectedColor.Call(obj)
+    return TColor(ret)
+}
+
+func StringGrid_SetSelectedColor(obj uintptr, value TColor) {
+   stringGrid_SetSelectedColor.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetSelectedColumn(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetSelectedColumn.Call(obj)
+    return ret
+}
+
+func StringGrid_GetStrictSort(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetStrictSort.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetStrictSort(obj uintptr, value bool) {
+   stringGrid_SetStrictSort.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetFixedHotColor(obj uintptr) TColor {
+    ret, _, _ := stringGrid_GetFixedHotColor.Call(obj)
+    return TColor(ret)
+}
+
+func StringGrid_SetFixedHotColor(obj uintptr, value TColor) {
+   stringGrid_SetFixedHotColor.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetFastEditing(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetFastEditing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetFastEditing(obj uintptr, value bool) {
+   stringGrid_SetFastEditing.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetFixedGridLineColor(obj uintptr) TColor {
+    ret, _, _ := stringGrid_GetFixedGridLineColor.Call(obj)
+    return TColor(ret)
+}
+
+func StringGrid_SetFixedGridLineColor(obj uintptr, value TColor) {
+   stringGrid_SetFixedGridLineColor.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetFocusColor(obj uintptr) TColor {
+    ret, _, _ := stringGrid_GetFocusColor.Call(obj)
+    return TColor(ret)
+}
+
+func StringGrid_SetFocusColor(obj uintptr, value TColor) {
+   stringGrid_SetFocusColor.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetFocusRectVisible(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetFocusRectVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetFocusRectVisible(obj uintptr, value bool) {
+   stringGrid_SetFocusRectVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetGridLineColor(obj uintptr) TColor {
+    ret, _, _ := stringGrid_GetGridLineColor.Call(obj)
+    return TColor(ret)
+}
+
+func StringGrid_SetGridLineColor(obj uintptr, value TColor) {
+   stringGrid_SetGridLineColor.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetGridLineStyle(obj uintptr) TPenStyle {
+    ret, _, _ := stringGrid_GetGridLineStyle.Call(obj)
+    return TPenStyle(ret)
+}
+
+func StringGrid_SetGridLineStyle(obj uintptr, value TPenStyle) {
+   stringGrid_SetGridLineStyle.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetEditor(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetEditor.Call(obj)
+    return ret
+}
+
+func StringGrid_SetEditor(obj uintptr, value uintptr) {
+   stringGrid_SetEditor.Call(obj, value)
+}
+
+func StringGrid_GetEditorBorderStyle(obj uintptr) TBorderStyle {
+    ret, _, _ := stringGrid_GetEditorBorderStyle.Call(obj)
+    return TBorderStyle(ret)
+}
+
+func StringGrid_SetEditorBorderStyle(obj uintptr, value TBorderStyle) {
+   stringGrid_SetEditorBorderStyle.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetEditorMode(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetEditorMode.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetEditorMode(obj uintptr, value bool) {
+   stringGrid_SetEditorMode.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetSortOrder(obj uintptr) TSortOrder {
+    ret, _, _ := stringGrid_GetSortOrder.Call(obj)
+    return TSortOrder(ret)
+}
+
+func StringGrid_SetSortOrder(obj uintptr, value TSortOrder) {
+   stringGrid_SetSortOrder.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetSortColumn(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetSortColumn.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetOnAfterSelection(obj uintptr, fn interface{}) {
+    stringGrid_SetOnAfterSelection.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnBeforeSelection(obj uintptr, fn interface{}) {
+    stringGrid_SetOnBeforeSelection.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnButtonClick(obj uintptr, fn interface{}) {
+    stringGrid_SetOnButtonClick.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnCheckboxToggled(obj uintptr, fn interface{}) {
+    stringGrid_SetOnCheckboxToggled.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnColRowDeleted(obj uintptr, fn interface{}) {
+    stringGrid_SetOnColRowDeleted.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnColRowExchanged(obj uintptr, fn interface{}) {
+    stringGrid_SetOnColRowExchanged.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnColRowInserted(obj uintptr, fn interface{}) {
+    stringGrid_SetOnColRowInserted.Call(obj, addEventToMap(fn))
+}
+
 func StringGrid_SetOnColRowMoved(obj uintptr, fn interface{}) {
     stringGrid_SetOnColRowMoved.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnCompareCells(obj uintptr, fn interface{}) {
+    stringGrid_SetOnCompareCells.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnEditingDone(obj uintptr, fn interface{}) {
+    stringGrid_SetOnEditingDone.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnGetCellHint(obj uintptr, fn interface{}) {
+    stringGrid_SetOnGetCellHint.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnGetCheckboxState(obj uintptr, fn interface{}) {
+    stringGrid_SetOnGetCheckboxState.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnSetCheckboxState(obj uintptr, fn interface{}) {
+    stringGrid_SetOnSetCheckboxState.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnHeaderClick(obj uintptr, fn interface{}) {
+    stringGrid_SetOnHeaderClick.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnHeaderSized(obj uintptr, fn interface{}) {
+    stringGrid_SetOnHeaderSized.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnHeaderSizing(obj uintptr, fn interface{}) {
+    stringGrid_SetOnHeaderSizing.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnPickListSelect(obj uintptr, fn interface{}) {
+    stringGrid_SetOnPickListSelect.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnSelection(obj uintptr, fn interface{}) {
+    stringGrid_SetOnSelection.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnSelectEditor(obj uintptr, fn interface{}) {
+    stringGrid_SetOnSelectEditor.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnUserCheckboxBitmap(obj uintptr, fn interface{}) {
+    stringGrid_SetOnUserCheckboxBitmap.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnValidateEntry(obj uintptr, fn interface{}) {
+    stringGrid_SetOnValidateEntry.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_GetAlternateColor(obj uintptr) TColor {
+    ret, _, _ := stringGrid_GetAlternateColor.Call(obj)
+    return TColor(ret)
+}
+
+func StringGrid_SetAlternateColor(obj uintptr, value TColor) {
+   stringGrid_SetAlternateColor.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetAutoAdvance(obj uintptr) TAutoAdvance {
+    ret, _, _ := stringGrid_GetAutoAdvance.Call(obj)
+    return TAutoAdvance(ret)
+}
+
+func StringGrid_SetAutoAdvance(obj uintptr, value TAutoAdvance) {
+   stringGrid_SetAutoAdvance.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetAutoEdit(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetAutoEdit.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetAutoEdit(obj uintptr, value bool) {
+   stringGrid_SetAutoEdit.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetAutoFillColumns(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetAutoFillColumns.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetAutoFillColumns(obj uintptr, value bool) {
+   stringGrid_SetAutoFillColumns.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetCellHintPriority(obj uintptr) TCellHintPriority {
+    ret, _, _ := stringGrid_GetCellHintPriority.Call(obj)
+    return TCellHintPriority(ret)
+}
+
+func StringGrid_SetCellHintPriority(obj uintptr, value TCellHintPriority) {
+   stringGrid_SetCellHintPriority.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetColumnClickSorts(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetColumnClickSorts.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetColumnClickSorts(obj uintptr, value bool) {
+   stringGrid_SetColumnClickSorts.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetColumns(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetColumns.Call(obj)
+    return ret
+}
+
+func StringGrid_SetColumns(obj uintptr, value uintptr) {
+   stringGrid_SetColumns.Call(obj, value)
+}
+
+func StringGrid_GetExtendedSelect(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetExtendedSelect.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetExtendedSelect(obj uintptr, value bool) {
+   stringGrid_SetExtendedSelect.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetFlat(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetFlat.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetFlat(obj uintptr, value bool) {
+   stringGrid_SetFlat.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetHeaderHotZones(obj uintptr) TGridZoneSet {
+    ret, _, _ := stringGrid_GetHeaderHotZones.Call(obj)
+    return TGridZoneSet(ret)
+}
+
+func StringGrid_SetHeaderHotZones(obj uintptr, value TGridZoneSet) {
+   stringGrid_SetHeaderHotZones.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetHeaderPushZones(obj uintptr) TGridZoneSet {
+    ret, _, _ := stringGrid_GetHeaderPushZones.Call(obj)
+    return TGridZoneSet(ret)
+}
+
+func StringGrid_SetHeaderPushZones(obj uintptr, value TGridZoneSet) {
+   stringGrid_SetHeaderPushZones.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetImageIndexSortAsc(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetImageIndexSortAsc.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetImageIndexSortAsc(obj uintptr, value int32) {
+   stringGrid_SetImageIndexSortAsc.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetImageIndexSortDesc(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetImageIndexSortDesc.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetImageIndexSortDesc(obj uintptr, value int32) {
+   stringGrid_SetImageIndexSortDesc.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetMouseWheelOption(obj uintptr) TMouseWheelOption {
+    ret, _, _ := stringGrid_GetMouseWheelOption.Call(obj)
+    return TMouseWheelOption(ret)
+}
+
+func StringGrid_SetMouseWheelOption(obj uintptr, value TMouseWheelOption) {
+   stringGrid_SetMouseWheelOption.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetOptions2(obj uintptr) TGridOptions2 {
+    ret, _, _ := stringGrid_GetOptions2.Call(obj)
+    return TGridOptions2(ret)
+}
+
+func StringGrid_SetOptions2(obj uintptr, value TGridOptions2) {
+   stringGrid_SetOptions2.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetRangeSelectMode(obj uintptr) TRangeSelectMode {
+    ret, _, _ := stringGrid_GetRangeSelectMode.Call(obj)
+    return TRangeSelectMode(ret)
+}
+
+func StringGrid_SetRangeSelectMode(obj uintptr, value TRangeSelectMode) {
+   stringGrid_SetRangeSelectMode.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetTabAdvance(obj uintptr) TAutoAdvance {
+    ret, _, _ := stringGrid_GetTabAdvance.Call(obj)
+    return TAutoAdvance(ret)
+}
+
+func StringGrid_SetTabAdvance(obj uintptr, value TAutoAdvance) {
+   stringGrid_SetTabAdvance.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetTitleFont(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetTitleFont.Call(obj)
+    return ret
+}
+
+func StringGrid_SetTitleFont(obj uintptr, value uintptr) {
+   stringGrid_SetTitleFont.Call(obj, value)
+}
+
+func StringGrid_GetTitleImageList(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetTitleImageList.Call(obj)
+    return ret
+}
+
+func StringGrid_SetTitleImageList(obj uintptr, value uintptr) {
+   stringGrid_SetTitleImageList.Call(obj, value)
+}
+
+func StringGrid_GetTitleStyle(obj uintptr) TTitleStyle {
+    ret, _, _ := stringGrid_GetTitleStyle.Call(obj)
+    return TTitleStyle(ret)
+}
+
+func StringGrid_SetTitleStyle(obj uintptr, value TTitleStyle) {
+   stringGrid_SetTitleStyle.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetUseXORFeatures(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetUseXORFeatures.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetUseXORFeatures(obj uintptr, value bool) {
+   stringGrid_SetUseXORFeatures.Call(obj, GoBoolToDBool(value))
 }
 
 func StringGrid_GetAlign(obj uintptr) TAlign {
@@ -48118,15 +48660,6 @@ func StringGrid_SetCol(obj uintptr, value int32) {
    stringGrid_SetCol.Call(obj, uintptr(value))
 }
 
-func StringGrid_GetEditorMode(obj uintptr) bool {
-    ret, _, _ := stringGrid_GetEditorMode.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func StringGrid_SetEditorMode(obj uintptr, value bool) {
-   stringGrid_SetEditorMode.Call(obj, GoBoolToDBool(value))
-}
-
 func StringGrid_GetGridHeight(obj uintptr) int32 {
     ret, _, _ := stringGrid_GetGridHeight.Call(obj)
     return int32(ret)
@@ -48469,6 +49002,11 @@ func StringGrid_GetBorderSpacing(obj uintptr) uintptr {
 
 func StringGrid_SetBorderSpacing(obj uintptr, value uintptr) {
    stringGrid_SetBorderSpacing.Call(obj, value)
+}
+
+func StringGrid_GetIsCellSelected(obj uintptr, aCol int32, aRow int32) bool {
+    ret, _, _ := stringGrid_GetIsCellSelected.Call(obj, uintptr(aCol), uintptr(aRow))
+    return DBoolToGoBool(ret)
 }
 
 func StringGrid_GetCells(obj uintptr, ACol int32, ARow int32) string {
@@ -49628,6 +50166,10 @@ func ValueListEditor_Free(obj uintptr) {
     valueListEditor_Free.Call(obj)
 }
 
+func ValueListEditor_DeleteRow(obj uintptr, ARow int32)  {
+    valueListEditor_DeleteRow.Call(obj, uintptr(ARow) )
+}
+
 func ValueListEditor_Refresh(obj uintptr)  {
     valueListEditor_Refresh.Call(obj)
 }
@@ -50016,6 +50558,15 @@ func ValueListEditor_GetDragMode(obj uintptr) TDragMode {
 
 func ValueListEditor_SetDragMode(obj uintptr, value TDragMode) {
    valueListEditor_SetDragMode.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetDropDownRows(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetDropDownRows.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetDropDownRows(obj uintptr, value int32) {
+   valueListEditor_SetDropDownRows.Call(obj, uintptr(value))
 }
 
 func ValueListEditor_GetEnabled(obj uintptr) bool {
@@ -61577,5 +62128,552 @@ func ToggleBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
 
 func ToggleBox_StaticClassType() TClass {
     r, _, _:= toggleBox_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TGridColumnTitle ---------------------------
+
+func GridColumnTitle_Assign(obj uintptr, Source uintptr)  {
+    gridColumnTitle_Assign.Call(obj, Source )
+}
+
+func GridColumnTitle_FillTitleDefaultFont(obj uintptr)  {
+    gridColumnTitle_FillTitleDefaultFont.Call(obj)
+}
+
+func GridColumnTitle_IsDefault(obj uintptr) bool {
+    ret, _, _ := gridColumnTitle_IsDefault.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GridColumnTitle_GetNamePath(obj uintptr) string {
+    ret, _, _ := gridColumnTitle_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func GridColumnTitle_ClassType(obj uintptr) TClass {
+    ret, _, _ := gridColumnTitle_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func GridColumnTitle_ClassName(obj uintptr) string {
+    ret, _, _ := gridColumnTitle_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func GridColumnTitle_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := gridColumnTitle_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func GridColumnTitle_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := gridColumnTitle_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func GridColumnTitle_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := gridColumnTitle_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func GridColumnTitle_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := gridColumnTitle_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func GridColumnTitle_ToString(obj uintptr) string {
+    ret, _, _ := gridColumnTitle_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func GridColumnTitle_GetColumn(obj uintptr) uintptr {
+    ret, _, _ := gridColumnTitle_GetColumn.Call(obj)
+    return ret
+}
+
+func GridColumnTitle_GetAlignment(obj uintptr) TAlignment {
+    ret, _, _ := gridColumnTitle_GetAlignment.Call(obj)
+    return TAlignment(ret)
+}
+
+func GridColumnTitle_SetAlignment(obj uintptr, value TAlignment) {
+   gridColumnTitle_SetAlignment.Call(obj, uintptr(value))
+}
+
+func GridColumnTitle_GetCaption(obj uintptr) string {
+    ret, _, _ := gridColumnTitle_GetCaption.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func GridColumnTitle_SetCaption(obj uintptr, value string) {
+   gridColumnTitle_SetCaption.Call(obj, GoStrToDStr(value))
+}
+
+func GridColumnTitle_GetColor(obj uintptr) TColor {
+    ret, _, _ := gridColumnTitle_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func GridColumnTitle_SetColor(obj uintptr, value TColor) {
+   gridColumnTitle_SetColor.Call(obj, uintptr(value))
+}
+
+func GridColumnTitle_GetFont(obj uintptr) uintptr {
+    ret, _, _ := gridColumnTitle_GetFont.Call(obj)
+    return ret
+}
+
+func GridColumnTitle_SetFont(obj uintptr, value uintptr) {
+   gridColumnTitle_SetFont.Call(obj, value)
+}
+
+func GridColumnTitle_GetImageIndex(obj uintptr) int32 {
+    ret, _, _ := gridColumnTitle_GetImageIndex.Call(obj)
+    return int32(ret)
+}
+
+func GridColumnTitle_SetImageIndex(obj uintptr, value int32) {
+   gridColumnTitle_SetImageIndex.Call(obj, uintptr(value))
+}
+
+func GridColumnTitle_GetImageLayout(obj uintptr) TButtonLayout {
+    ret, _, _ := gridColumnTitle_GetImageLayout.Call(obj)
+    return TButtonLayout(ret)
+}
+
+func GridColumnTitle_SetImageLayout(obj uintptr, value TButtonLayout) {
+   gridColumnTitle_SetImageLayout.Call(obj, uintptr(value))
+}
+
+func GridColumnTitle_GetLayout(obj uintptr) TTextLayout {
+    ret, _, _ := gridColumnTitle_GetLayout.Call(obj)
+    return TTextLayout(ret)
+}
+
+func GridColumnTitle_SetLayout(obj uintptr, value TTextLayout) {
+   gridColumnTitle_SetLayout.Call(obj, uintptr(value))
+}
+
+func GridColumnTitle_GetMultiLine(obj uintptr) bool {
+    ret, _, _ := gridColumnTitle_GetMultiLine.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GridColumnTitle_SetMultiLine(obj uintptr, value bool) {
+   gridColumnTitle_SetMultiLine.Call(obj, GoBoolToDBool(value))
+}
+
+func GridColumnTitle_GetPrefixOption(obj uintptr) TPrefixOption {
+    ret, _, _ := gridColumnTitle_GetPrefixOption.Call(obj)
+    return TPrefixOption(ret)
+}
+
+func GridColumnTitle_SetPrefixOption(obj uintptr, value TPrefixOption) {
+   gridColumnTitle_SetPrefixOption.Call(obj, uintptr(value))
+}
+
+func GridColumnTitle_StaticClassType() TClass {
+    r, _, _:= gridColumnTitle_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TGridColumn ---------------------------
+
+func GridColumn_Assign(obj uintptr, Source uintptr)  {
+    gridColumn_Assign.Call(obj, Source )
+}
+
+func GridColumn_IsDefault(obj uintptr) bool {
+    ret, _, _ := gridColumn_IsDefault.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GridColumn_GetNamePath(obj uintptr) string {
+    ret, _, _ := gridColumn_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func GridColumn_ClassType(obj uintptr) TClass {
+    ret, _, _ := gridColumn_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func GridColumn_ClassName(obj uintptr) string {
+    ret, _, _ := gridColumn_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func GridColumn_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := gridColumn_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func GridColumn_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := gridColumn_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func GridColumn_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := gridColumn_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func GridColumn_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := gridColumn_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func GridColumn_ToString(obj uintptr) string {
+    ret, _, _ := gridColumn_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func GridColumn_GetGrid(obj uintptr) uintptr {
+    ret, _, _ := gridColumn_GetGrid.Call(obj)
+    return ret
+}
+
+func GridColumn_GetDefaultWidth(obj uintptr) int32 {
+    ret, _, _ := gridColumn_GetDefaultWidth.Call(obj)
+    return int32(ret)
+}
+
+func GridColumn_GetStoredWidth(obj uintptr) int32 {
+    ret, _, _ := gridColumn_GetStoredWidth.Call(obj)
+    return int32(ret)
+}
+
+func GridColumn_GetWidthChanged(obj uintptr) bool {
+    ret, _, _ := gridColumn_GetWidthChanged.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GridColumn_GetAlignment(obj uintptr) TAlignment {
+    ret, _, _ := gridColumn_GetAlignment.Call(obj)
+    return TAlignment(ret)
+}
+
+func GridColumn_SetAlignment(obj uintptr, value TAlignment) {
+   gridColumn_SetAlignment.Call(obj, uintptr(value))
+}
+
+func GridColumn_GetButtonStyle(obj uintptr) TColumnButtonStyle {
+    ret, _, _ := gridColumn_GetButtonStyle.Call(obj)
+    return TColumnButtonStyle(ret)
+}
+
+func GridColumn_SetButtonStyle(obj uintptr, value TColumnButtonStyle) {
+   gridColumn_SetButtonStyle.Call(obj, uintptr(value))
+}
+
+func GridColumn_GetColor(obj uintptr) TColor {
+    ret, _, _ := gridColumn_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func GridColumn_SetColor(obj uintptr, value TColor) {
+   gridColumn_SetColor.Call(obj, uintptr(value))
+}
+
+func GridColumn_GetDropDownRows(obj uintptr) int32 {
+    ret, _, _ := gridColumn_GetDropDownRows.Call(obj)
+    return int32(ret)
+}
+
+func GridColumn_SetDropDownRows(obj uintptr, value int32) {
+   gridColumn_SetDropDownRows.Call(obj, uintptr(value))
+}
+
+func GridColumn_GetExpanded(obj uintptr) bool {
+    ret, _, _ := gridColumn_GetExpanded.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GridColumn_SetExpanded(obj uintptr, value bool) {
+   gridColumn_SetExpanded.Call(obj, GoBoolToDBool(value))
+}
+
+func GridColumn_GetFont(obj uintptr) uintptr {
+    ret, _, _ := gridColumn_GetFont.Call(obj)
+    return ret
+}
+
+func GridColumn_SetFont(obj uintptr, value uintptr) {
+   gridColumn_SetFont.Call(obj, value)
+}
+
+func GridColumn_GetLayout(obj uintptr) TTextLayout {
+    ret, _, _ := gridColumn_GetLayout.Call(obj)
+    return TTextLayout(ret)
+}
+
+func GridColumn_SetLayout(obj uintptr, value TTextLayout) {
+   gridColumn_SetLayout.Call(obj, uintptr(value))
+}
+
+func GridColumn_GetMinSize(obj uintptr) int32 {
+    ret, _, _ := gridColumn_GetMinSize.Call(obj)
+    return int32(ret)
+}
+
+func GridColumn_SetMinSize(obj uintptr, value int32) {
+   gridColumn_SetMinSize.Call(obj, uintptr(value))
+}
+
+func GridColumn_GetMaxSize(obj uintptr) int32 {
+    ret, _, _ := gridColumn_GetMaxSize.Call(obj)
+    return int32(ret)
+}
+
+func GridColumn_SetMaxSize(obj uintptr, value int32) {
+   gridColumn_SetMaxSize.Call(obj, uintptr(value))
+}
+
+func GridColumn_GetPickList(obj uintptr) uintptr {
+    ret, _, _ := gridColumn_GetPickList.Call(obj)
+    return ret
+}
+
+func GridColumn_SetPickList(obj uintptr, value uintptr) {
+   gridColumn_SetPickList.Call(obj, value)
+}
+
+func GridColumn_GetReadOnly(obj uintptr) bool {
+    ret, _, _ := gridColumn_GetReadOnly.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GridColumn_SetReadOnly(obj uintptr, value bool) {
+   gridColumn_SetReadOnly.Call(obj, GoBoolToDBool(value))
+}
+
+func GridColumn_GetSizePriority(obj uintptr) int32 {
+    ret, _, _ := gridColumn_GetSizePriority.Call(obj)
+    return int32(ret)
+}
+
+func GridColumn_SetSizePriority(obj uintptr, value int32) {
+   gridColumn_SetSizePriority.Call(obj, uintptr(value))
+}
+
+func GridColumn_GetTag(obj uintptr) int {
+    ret, _, _ := gridColumn_GetTag.Call(obj)
+    return int(ret)
+}
+
+func GridColumn_SetTag(obj uintptr, value int) {
+   gridColumn_SetTag.Call(obj, uintptr(value))
+}
+
+func GridColumn_GetTitle(obj uintptr) uintptr {
+    ret, _, _ := gridColumn_GetTitle.Call(obj)
+    return ret
+}
+
+func GridColumn_SetTitle(obj uintptr, value uintptr) {
+   gridColumn_SetTitle.Call(obj, value)
+}
+
+func GridColumn_GetWidth(obj uintptr) int32 {
+    ret, _, _ := gridColumn_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func GridColumn_SetWidth(obj uintptr, value int32) {
+   gridColumn_SetWidth.Call(obj, uintptr(value))
+}
+
+func GridColumn_GetVisible(obj uintptr) bool {
+    ret, _, _ := gridColumn_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GridColumn_SetVisible(obj uintptr, value bool) {
+   gridColumn_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func GridColumn_GetValueChecked(obj uintptr) string {
+    ret, _, _ := gridColumn_GetValueChecked.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func GridColumn_SetValueChecked(obj uintptr, value string) {
+   gridColumn_SetValueChecked.Call(obj, GoStrToDStr(value))
+}
+
+func GridColumn_GetValueUnchecked(obj uintptr) string {
+    ret, _, _ := gridColumn_GetValueUnchecked.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func GridColumn_SetValueUnchecked(obj uintptr, value string) {
+   gridColumn_SetValueUnchecked.Call(obj, GoStrToDStr(value))
+}
+
+func GridColumn_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := gridColumn_GetCollection.Call(obj)
+    return ret
+}
+
+func GridColumn_SetCollection(obj uintptr, value uintptr) {
+   gridColumn_SetCollection.Call(obj, value)
+}
+
+func GridColumn_GetIndex(obj uintptr) int32 {
+    ret, _, _ := gridColumn_GetIndex.Call(obj)
+    return int32(ret)
+}
+
+func GridColumn_SetIndex(obj uintptr, value int32) {
+   gridColumn_SetIndex.Call(obj, uintptr(value))
+}
+
+func GridColumn_GetDisplayName(obj uintptr) string {
+    ret, _, _ := gridColumn_GetDisplayName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func GridColumn_SetDisplayName(obj uintptr, value string) {
+   gridColumn_SetDisplayName.Call(obj, GoStrToDStr(value))
+}
+
+func GridColumn_StaticClassType() TClass {
+    r, _, _:= gridColumn_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TGridColumns ---------------------------
+
+func GridColumns_Add(obj uintptr) uintptr {
+    ret, _, _ := gridColumns_Add.Call(obj)
+    return ret
+}
+
+func GridColumns_Clear(obj uintptr)  {
+    gridColumns_Clear.Call(obj)
+}
+
+func GridColumns_RealIndex(obj uintptr, Index int32) int32 {
+    ret, _, _ := gridColumns_RealIndex.Call(obj, uintptr(Index) )
+    return int32(ret)
+}
+
+func GridColumns_IndexOf(obj uintptr, Column uintptr) int32 {
+    ret, _, _ := gridColumns_IndexOf.Call(obj, Column )
+    return int32(ret)
+}
+
+func GridColumns_IsDefault(obj uintptr) bool {
+    ret, _, _ := gridColumns_IsDefault.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GridColumns_HasIndex(obj uintptr, Index int32) bool {
+    ret, _, _ := gridColumns_HasIndex.Call(obj, uintptr(Index) )
+    return DBoolToGoBool(ret)
+}
+
+func GridColumns_Owner(obj uintptr) uintptr {
+    ret, _, _ := gridColumns_Owner.Call(obj)
+    return ret
+}
+
+func GridColumns_Assign(obj uintptr, Source uintptr)  {
+    gridColumns_Assign.Call(obj, Source )
+}
+
+func GridColumns_BeginUpdate(obj uintptr)  {
+    gridColumns_BeginUpdate.Call(obj)
+}
+
+func GridColumns_Delete(obj uintptr, Index int32)  {
+    gridColumns_Delete.Call(obj, uintptr(Index) )
+}
+
+func GridColumns_EndUpdate(obj uintptr)  {
+    gridColumns_EndUpdate.Call(obj)
+}
+
+func GridColumns_FindItemID(obj uintptr, ID int32) uintptr {
+    ret, _, _ := gridColumns_FindItemID.Call(obj, uintptr(ID) )
+    return ret
+}
+
+func GridColumns_GetNamePath(obj uintptr) string {
+    ret, _, _ := gridColumns_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func GridColumns_Insert(obj uintptr, Index int32) uintptr {
+    ret, _, _ := gridColumns_Insert.Call(obj, uintptr(Index) )
+    return ret
+}
+
+func GridColumns_ClassType(obj uintptr) TClass {
+    ret, _, _ := gridColumns_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func GridColumns_ClassName(obj uintptr) string {
+    ret, _, _ := gridColumns_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func GridColumns_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := gridColumns_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func GridColumns_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := gridColumns_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func GridColumns_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := gridColumns_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func GridColumns_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := gridColumns_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func GridColumns_ToString(obj uintptr) string {
+    ret, _, _ := gridColumns_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func GridColumns_GetGrid(obj uintptr) uintptr {
+    ret, _, _ := gridColumns_GetGrid.Call(obj)
+    return ret
+}
+
+func GridColumns_GetVisibleCount(obj uintptr) int32 {
+    ret, _, _ := gridColumns_GetVisibleCount.Call(obj)
+    return int32(ret)
+}
+
+func GridColumns_GetEnabled(obj uintptr) bool {
+    ret, _, _ := gridColumns_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GridColumns_GetCount(obj uintptr) int32 {
+    ret, _, _ := gridColumns_GetCount.Call(obj)
+    return int32(ret)
+}
+
+func GridColumns_GetItems(obj uintptr, Index int32) uintptr {
+    ret, _, _ := gridColumns_GetItems.Call(obj, uintptr(Index))
+    return ret
+}
+
+func GridColumns_SetItems(obj uintptr, Index int32, value uintptr) {
+   gridColumns_SetItems.Call(obj, uintptr(Index), value)
+}
+
+func GridColumns_StaticClassType() TClass {
+    r, _, _:= gridColumns_StaticClassType.Call()
     return TClass(r)
 }

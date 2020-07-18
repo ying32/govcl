@@ -417,6 +417,14 @@ func (s *TSplitter) SetConstraints(value *TSizeConstraints) {
     Splitter_SetConstraints(s.instance, CheckPtr(value))
 }
 
+func (s *TSplitter) MinSize() int32 {
+    return Splitter_GetMinSize(s.instance)
+}
+
+func (s *TSplitter) SetMinSize(value int32) {
+    Splitter_SetMinSize(s.instance, value)
+}
+
 // 获取使用父容器颜色。
 //
 // Get parent color.

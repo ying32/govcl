@@ -1236,3 +1236,30 @@ func (i TIs) ToggleBox() bool {
 //    return AsToggleBox(uintptr(a))
 //}
 
+
+func (i TIs) GridColumnTitle() bool {
+    return GridColumnTitle_InheritsFrom(uintptr(i), TGridColumnTitleClass())
+}
+
+//func (a TAs) GridColumnTitle() *TGridColumnTitle {
+//    return AsGridColumnTitle(uintptr(a))
+//}
+
+
+func (i TIs) GridColumn() bool {
+    return GridColumn_InheritsFrom(uintptr(i), TGridColumnClass())
+}
+
+//func (a TAs) GridColumn() *TGridColumn {
+//    return AsGridColumn(uintptr(a))
+//}
+
+
+func (i TIs) GridColumns() bool {
+    return GridColumns_InheritsFrom(uintptr(i), TGridColumnsClass())
+}
+
+//func (a TAs) GridColumns() *TGridColumns {
+//    return AsGridColumns(uintptr(a))
+//}
+

@@ -350,12 +350,16 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				int32(getVal(3)))
 
 			//func(sender IObject, dragObject *TDragObject)
-		case TStartDragEvent:
-			v.(TStartDragEvent)(
-				AsObject(getVal(0)),
-				AsDragObject(getVal(1)))
+		//case TStartDragEvent:
+		//	obj := AsDragObject(getVal(1))
+		//	v.(TStartDragEvent)(
+		//		AsObject(getVal(0)),
+		//		obj)
+		//	if obj != nil {
+		//		*(*uintptr)(unsafe.Pointer(getVal(1))) = obj.instance
+		//	}
 
-			//func(sender, target IObject, x, y int32)
+		//func(sender, target IObject, x, y int32)
 		case TEndDragEvent:
 			v.(TEndDragEvent)(
 				AsObject(getVal(0)),
@@ -389,11 +393,15 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsControl(getVal(2)),
 				(*bool)(unsafe.Pointer(getVal(3))))
 
-			//func(sender IObject, dragObject *TDragDockObject)
+			//func(sender IObject, dragObject **TDragDockObject)
 		case TStartDockEvent:
+			obj := AsDragDockObject(*(*uintptr)(unsafe.Pointer(getVal(1))))
 			v.(TStartDockEvent)(
 				AsObject(getVal(0)),
-				AsDragDockObject(getVal(1)))
+				&obj)
+			if obj != nil {
+				*(*uintptr)(unsafe.Pointer(getVal(1))) = obj.instance
+			}
 
 			//func(sender IObject, dockClient *TControl, influenceRect *TRect, mousePos TPoint, canDock *bool)
 		case TGetSiteInfoEvent:
@@ -413,9 +421,9 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				(*bool)(unsafe.Pointer(getVal(3))))
 
 		// ---- grid
-		//type TMovedEvent func(sender IObject, isColumn bool, sIndex, tIndex int32)
-		case TMovedEvent:
-			v.(TMovedEvent)(
+		//type TGridOperationEvent func(sender IObject, isColumn bool, sIndex, tIndex int32)
+		case TGridOperationEvent:
+			v.(TGridOperationEvent)(
 				AsObject(getVal(0)),
 				DBoolToGoBool(getVal(1)),
 				int32(getVal(2)),
@@ -790,6 +798,109 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 			v.(TCheckGroupClicked)(
 				AsObject(getVal(0)),
 				int32(getVal(1)))
+
+		//type TOnSelectEvent func(sender IObject, aCol, aRow int32)
+		case TOnSelectEvent:
+			v.(TOnSelectEvent)(
+				AsObject(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)))
+
+		//type TToggledCheckboxEvent func(sender IObject, aCol, aRow int32, aState TCheckBoxState)
+		case TToggledCheckboxEvent:
+			v.(TToggledCheckboxEvent)(
+				AsObject(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				TCheckBoxState(getVal(3)))
+
+		//type TOnCompareCells func(sender IObject, ACol, ARow, BCol, BRow int32, result *int32)
+		case TOnCompareCells:
+			v.(TOnCompareCells)(
+				AsObject(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				int32(getVal(3)),
+				int32(getVal(4)),
+				(*int32)(unsafe.Pointer(getVal(5))))
+
+		//type TGetCellHintEvent func(sender IObject, ACol, ARow int32, hintText *string)
+		case TGetCellHintEvent:
+			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(3))))
+			v.(TGetCellHintEvent)(
+				AsObject(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				&str)
+			*(*uintptr)(unsafe.Pointer(getVal(3))) = GoStrToDStr(str)
+
+		//type TGetCheckboxStateEvent func(sender IObject, ACol, ARow int32, value *TCheckBoxState)
+		case TGetCheckboxStateEvent:
+			v.(TGetCheckboxStateEvent)(
+				AsObject(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				(*TCheckBoxState)(unsafe.Pointer(getVal(3))))
+
+		//type TSetCheckboxStateEvent func(sender IObject, ACol, ARow int32, Value TCheckBoxState)
+		case TSetCheckboxStateEvent:
+			v.(TSetCheckboxStateEvent)(
+				AsObject(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				TCheckBoxState(getVal(3)))
+
+		//type THdrEvent func(sender IObject, isColumn bool, index int32)
+		case THdrEvent:
+			v.(THdrEvent)(
+				AsObject(getVal(0)),
+				DBoolToGoBool(getVal(1)),
+				int32(getVal(2)))
+
+		//type THeaderSizingEvent func(sender IObject, isColumn bool, aIndex, aSize int32)
+		case THeaderSizingEvent:
+			v.(THeaderSizingEvent)(
+				AsObject(getVal(0)),
+				DBoolToGoBool(getVal(1)),
+				int32(getVal(2)),
+				int32(getVal(3)))
+
+		//type TSelectEditorEvent func(sender IObject, aCol, aRow int32, editor **TWinControl)
+		case TSelectEditorEvent:
+			obj := AsWinControl(*(*uintptr)(unsafe.Pointer(getVal(3))))
+			v.(TSelectEditorEvent)(
+				AsObject(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				&obj)
+			if obj != nil {
+				*(*uintptr)(unsafe.Pointer(getVal(3))) = obj.instance
+			}
+
+		//type TUserCheckBoxBitmapEvent func(sender IObject, aCol, aRow int32, CheckedState TCheckBoxState, aBitmap **TBitmap)
+		case TUserCheckBoxBitmapEvent:
+			obj := AsBitmap(*(*uintptr)(unsafe.Pointer(getVal(4))))
+			v.(TUserCheckBoxBitmapEvent)(
+				AsObject(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				TCheckBoxState(getVal(1)),
+				&obj)
+			if obj != nil {
+				*(*uintptr)(unsafe.Pointer(getVal(4))) = obj.instance
+			}
+
+			//type TValidateEntryEvent func(sender IObject, aCol, aRow int32, oldValue string, newValue *string)
+		case TValidateEntryEvent:
+			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(4))))
+			v.(TValidateEntryEvent)(
+				AsObject(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				DStrToGoStr(getVal(3)),
+				&str)
+			*(*uintptr)(unsafe.Pointer(getVal(4))) = GoStrToDStr(str)
+
 		default:
 		}
 	}

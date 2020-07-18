@@ -151,8 +151,8 @@ type TDragOverEvent func(sender, source IObject, x, y int32, state TDragState, a
 //TDragDropEvent = procedure(Sender, Source: TObject; X, Y: Integer) of object;
 type TDragDropEvent func(sender, source IObject, x, y int32)
 
-//TStartDragEvent = procedure(Sender: TObject;var DragObject: TDragObject) of object;
-type TStartDragEvent func(sender IObject, dragObject *TDragObject)
+//TStartDragEvent = procedure(Sender: TObject; var DragObject: TDragObject) of object;
+//type TStartDragEvent func(sender IObject, dragObject **TDragObject)
 
 //TEndDragEvent = procedure(Sender, Target: TObject; X, Y: Integer) of object;
 type TEndDragEvent func(sender, target IObject, x, y int32)
@@ -166,8 +166,8 @@ type TDockOverEvent func(sender IObject, source *TDragDockObject, x, y int32, st
 //TUnDockEvent = procedure(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean) of object;
 type TUnDockEvent func(sender IObject, client *TControl, newTarget *TControl, allow *bool)
 
-//TStartDockEvent = procedure(Sender: TObject;var DragObject: TDragDockObject) of object;
-type TStartDockEvent func(sender IObject, dragObject *TDragDockObject)
+//TStartDockEvent = procedure(Sender: TObject; var DragObject: TDragDockObject) of object;
+type TStartDockEvent func(sender IObject, dragObject **TDragDockObject)
 
 //TGetSiteInfoEvent = procedure(Sender: TObject; DockClient: TControl; var InfluenceRect: TRect; MousePos: TPoint; var CanDock: Boolean) of object;
 type TGetSiteInfoEvent func(sender IObject, dockClient *TControl, influenceRect *TRect, mousePos TPoint, canDock *bool)
@@ -175,14 +175,10 @@ type TGetSiteInfoEvent func(sender IObject, dockClient *TControl, influenceRect 
 //TMouseWheelUpDownEvent = procedure(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean) of object;
 type TMouseWheelUpDownEvent func(sender IObject, shift TShiftState, mousePos TPoint, handled *bool)
 
-// TMessageEvent = procedure (var Msg: TMsg; var Handled: Boolean) of object;
-//type TMessageEvent func(msg *TMsg, handled *bool)
-
 // ---- grid
-//  TMovedEvent = procedure (Sender: TObject; FromIndex, ToIndex: Longint) of object;
-//type TMovedEvent func(sender IObject, fromIndex, toIndex int32)
-//TMovedEvent = procedure (Sender: TObject; IsColumn:Boolean;  sIndex, tIndex: Integer) of object;
-type TMovedEvent func(sender IObject, isColumn bool, sIndex, tIndex int32)
+
+//TGridOperationEvent = procedure (Sender: TObject; IsColumn:Boolean;  sIndex, tIndex: Integer) of object;
+type TGridOperationEvent func(sender IObject, isColumn bool, sIndex, tIndex int32)
 
 //TDrawCellEvent = procedure (Sender: TObject; ACol, ARow: Longint; Rect: TRect; State: TGridDrawState) of object;
 type TDrawCellEvent func(sender IObject, aCol, aRow int32, aRect TRect, state TGridDrawState)
@@ -336,3 +332,37 @@ type TAlignPositionEvent func(sender *TWinControl, control *TControl, newLeft, n
 
 //TCheckGroupClicked = procedure(Sender: TObject; Index: integer) of object;
 type TCheckGroupClicked func(sender IObject, index int32)
+
+//--------------
+//TOnSelectEvent = procedure(Sender: TObject; aCol, aRow: Integer) of object;
+type TOnSelectEvent func(sender IObject, aCol, aRow int32)
+
+//TToggledCheckboxEvent = procedure(sender: TObject; aCol, aRow: Integer; aState: TCheckboxState) of object;
+type TToggledCheckboxEvent func(sender IObject, aCol, aRow int32, aState TCheckBoxState)
+
+//TOnCompareCells = procedure (Sender: TObject; ACol, ARow, BCol,BRow: Integer;var Result: integer) of object;
+type TOnCompareCells func(sender IObject, ACol, ARow, BCol, BRow int32, result *int32)
+
+//TGetCellHintEvent = procedure (Sender: TObject; ACol, ARow: Integer; var HintText: String) of object;
+type TGetCellHintEvent func(sender IObject, ACol, ARow int32, hintText *string)
+
+//TGetCheckboxStateEvent = procedure (Sender: TObject; ACol, ARow: Integer; var Value: TCheckboxState) of object;
+type TGetCheckboxStateEvent func(sender IObject, ACol, ARow int32, value *TCheckBoxState)
+
+//TSetCheckboxStateEvent = procedure (Sender: TObject; ACol, ARow: Integer; const Value: TCheckboxState) of object;
+type TSetCheckboxStateEvent func(sender IObject, ACol, ARow int32, Value TCheckBoxState)
+
+//THdrEvent = procedure(Sender: TObject; IsColumn: Boolean; Index: Integer) of object;
+type THdrEvent func(sender IObject, isColumn bool, index int32)
+
+//THeaderSizingEvent = procedure(sender: TObject; const IsColumn: boolean; const aIndex, aSize: Integer) of object;
+type THeaderSizingEvent func(sender IObject, isColumn bool, aIndex, aSize int32)
+
+//TSelectEditorEvent = procedure(Sender: TObject; aCol, aRow: Integer; var Editor: TWinControl) of object;
+type TSelectEditorEvent func(sender IObject, aCol, aRow int32, editor **TWinControl)
+
+//TUserCheckBoxBitmapEvent = procedure(Sender: TObject; const aCol, aRow: Integer; const CheckedState: TCheckboxState; var ABitmap: TBitmap) of object;
+type TUserCheckBoxBitmapEvent func(sender IObject, aCol, aRow int32, CheckedState TCheckBoxState, aBitmap **TBitmap)
+
+//TValidateEntryEvent = procedure(sender: TObject; aCol, aRow: Integer; const OldValue: string; var NewValue: String) of object;
+type TValidateEntryEvent func(sender IObject, aCol, aRow int32, oldValue string, newValue *string)
