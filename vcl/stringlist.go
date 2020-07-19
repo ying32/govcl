@@ -320,6 +320,14 @@ func (s *TStringList) SetDelimiter(value uint16) {
     StringList_SetDelimiter(s.instance, value)
 }
 
+func (s *TStringList) NameValueSeparator() uint16 {
+    return StringList_GetNameValueSeparator(s.instance)
+}
+
+func (s *TStringList) SetNameValueSeparator(value uint16) {
+    StringList_SetNameValueSeparator(s.instance, value)
+}
+
 // 获取文本。
 func (s *TStringList) Text() string {
     return StringList_GetText(s.instance)

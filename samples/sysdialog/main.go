@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
@@ -13,8 +14,17 @@ func main() {
 
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
+	initComponents()
+	vcl.Application.Run()
+}
 
+func initComponents() {
 	mainForm := vcl.Application.CreateForm()
+
+	// 先禁用对齐
+	mainForm.DisableAlign()
+	defer mainForm.EnableAlign()
+
 	mainForm.SetCaption("Hello")
 	mainForm.SetPosition(types.PoScreenCenter)
 	mainForm.EnabledMaximize(false)
@@ -260,5 +270,28 @@ func main() {
 		dlPageSetupDialog.Execute()
 	})
 
-	vcl.Application.Run()
+	btn = vcl.NewButton(mainForm)
+	btn.SetAlign(types.AlTop)
+	btn.SetParent(mainForm)
+	btn.SetCaption("PasswordBox")
+	btn.SetOnClick(func(vcl.IObject) {
+		fmt.Println(vcl.PasswordBox("输入", "请输入密码："))
+	})
+
+	btn = vcl.NewButton(mainForm)
+	btn.SetAlign(types.AlTop)
+	btn.SetParent(mainForm)
+	btn.SetCaption("InputCombo")
+	// +strings.Repeat(" ", 50) 是因为显示的窗口大小会根据`aPrompt`这个计算宽度
+	btn.SetOnClick(func(vcl.IObject) {
+		fmt.Println(vcl.InputCombo("选择", "请选择一项："+strings.Repeat(" ", 50), []string{"第一项", "第二项", "第三项", "第四项"}))
+	})
+
+	btn = vcl.NewButton(mainForm)
+	btn.SetAlign(types.AlTop)
+	btn.SetParent(mainForm)
+	btn.SetCaption("InputComboEx")
+	btn.SetOnClick(func(vcl.IObject) {
+		fmt.Println(vcl.InputComboEx("选择", "请选择一项："+strings.Repeat(" ", 50), []string{"第一项", "第二项", "第三项", "第四项"}, false))
+	})
 }

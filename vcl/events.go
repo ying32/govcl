@@ -279,15 +279,6 @@ type TUDChangingEvent func(sender IObject, allowChange *bool)
 // TCreatingListErrorEvent = procedure (Sender: TObject; WinErrorCode: Cardinal; const ErrorDescription: string; var Handled: Boolean) of object;
 type TCreatingListErrorEvent func(sender IObject, winErrorCode uint32, errorDescription string, handled *bool)
 
-//TThumbPreviewItemRequestEvent = procedure (Sender: TObject; APreviewHeight: Integer; APreviewWidth: Integer; PreviewBitmap: TBitmap) of object;
-type TThumbPreviewItemRequestEvent func(sender IObject, aPreviewHeight, aPreviewWidth int32, previewBitmap *TBitmap)
-
-//TWindowPreviewItemRequestEvent = procedure (Sender: TObject; var Position: TPoint; PreviewBitmap: TBitmap) of object;
-type TWindowPreviewItemRequestEvent func(sender IObject, position *TPoint, previewBitmap *TBitmap)
-
-//TThumbButtonNotifyEvent = procedure (Sender: TObject; AButtonID: Integer) of object;
-type TThumbButtonNotifyEvent func(sender IObject, aButtonID int32)
-
 //--
 //TLVCustomDrawEvent = procedure(Sender: TCustomListView; const ARect: TRect; var DefaultDraw: Boolean) of object;
 type TLVCustomDrawEvent func(sender *TListView, aRect TRect, defaultDraw *bool)

@@ -38,12 +38,43 @@ func getParamOf(index int, ptr uintptr) uintptr {
 }
 
 // 回调过程
-func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
+func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 	v, ok := EventCallbackOf(f)
 	if ok {
 
+		// 获取值
 		getVal := func(i int) uintptr {
 			return getParamOf(i, args)
+		}
+
+		// 指针
+		getPtr := func(i int) unsafe.Pointer {
+			return unsafe.Pointer(getVal(i))
+		}
+
+		// 指针的值
+		getPtrVal := func(i int) uintptr {
+			return *(*uintptr)(getPtr(i))
+		}
+
+		setPtrVal := func(i int, val uintptr) {
+			*(*uintptr)(getPtr(i)) = val
+		}
+
+		getBoolPtr := func(i int) *bool {
+			return (*bool)(getPtr(i))
+		}
+
+		getI32Ptr := func(i int) *int32 {
+			return (*int32)(getPtr(i))
+		}
+
+		getRectPtr := func(i int) *TRect {
+			return (*TRect)(getPtr(i))
+		}
+
+		getPointPtr := func(i int) *TPoint {
+			return (*TPoint)(getPtr(i))
 		}
 
 		// 调用外部注册的事件回调过程
@@ -77,13 +108,13 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 		case TCloseEvent:
 			v.(TCloseEvent)(
 				AsObject(getVal(0)),
-				(*TCloseAction)(unsafe.Pointer(getVal(1))))
+				(*TCloseAction)(getPtr(1)))
 
 		// func(sender IObject, canClose *bool) //CanClose *uintptr
 		case TCloseQueryEvent:
 			v.(TCloseQueryEvent)(
 				AsObject(getVal(0)),
-				(*bool)(unsafe.Pointer(getVal(1))))
+				getBoolPtr(1))
 
 		// func(sender IObject, source *TMenuItem, rebuild bool)
 		case TMenuChangeEvent:
@@ -116,7 +147,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 
 			v.(TKeyEvent)(
 				AsObject(getVal(0)),
-				(*Char)(unsafe.Pointer(getVal(1))),
+				(*Char)(getPtr(1)),
 				TShiftState(getVal(2)))
 
 		// func(sender IObject, key *Char)
@@ -124,7 +155,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 
 			v.(TKeyPressEvent)(
 				AsObject(getVal(0)),
-				(*Char)(unsafe.Pointer(getVal(1))))
+				(*Char)(getPtr(1)))
 
 		// func(sender IObject, button TMouseButton, shift TShiftState, x, y int32)
 		case TMouseEvent:
@@ -151,14 +182,14 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				int32(getVal(2)),
 				int32(getVal(3)),
 				int32(getVal(4)),
-				(*bool)(unsafe.Pointer(getVal(5))))
+				getBoolPtr(5))
 
 			// func(control IWinControl, index int32, aRect TRect, state TOwnerDrawState)
 		case TDrawItemEvent:
 			v.(TDrawItemEvent)(
 				AsWinControl(getVal(0)),
 				int32(getVal(1)),
-				*(*TRect)(unsafe.Pointer(getVal(2))),
+				*getRectPtr(2),
 				TOwnerDrawState(getVal(3)))
 
 			// func(sender IObject, aCanvas *TCanvas, aRect TRect, selected bool)
@@ -166,7 +197,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 			v.(TMenuDrawItemEvent)(
 				AsObject(getVal(0)),
 				AsCanvas(getVal(1)),
-				*(*TRect)(unsafe.Pointer(getVal(2))),
+				*getRectPtr(2),
 				DBoolToGoBool(getVal(3)))
 
 			// type TLVNotifyEvent func(sender IObject, item *TListItem)
@@ -206,7 +237,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 			v.(TTabGetImageEvent)(
 				AsObject(getVal(0)),
 				int32(getVal(1)),
-				(*int32)(unsafe.Pointer(getVal(2))))
+				getI32Ptr(2))
 
 			// type TTVExpandedEvent func(sender IObject, node *TTreeNode)
 		case TTVExpandedEvent:
@@ -221,7 +252,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsListItem(getVal(1)),
 				AsListItem(getVal(2)),
 				int32(getVal(3)),
-				(*int32)(unsafe.Pointer(getVal(4))))
+				getI32Ptr(4))
 
 		//type TTVCompareEvent func(sender IObject, node1, node2 *TTreeNode, data int32, compare *int32)
 		case TTVCompareEvent:
@@ -230,16 +261,16 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsTreeNode(getVal(1)),
 				AsTreeNode(getVal(2)),
 				int32(getVal(3)),
-				(*int32)(unsafe.Pointer(getVal(4))))
+				getI32Ptr(4))
 
 		//type TTVAdvancedCustomDrawEvent func(sender *TTreeView, aRect TRect, stage TCustomDrawStage, defaultDraw *bool)
 		case TTVAdvancedCustomDrawEvent:
 
 			v.(TTVAdvancedCustomDrawEvent)(
 				AsTreeView(getVal(0)),
-				*(*TRect)(unsafe.Pointer(getVal(1))),
+				*getRectPtr(1),
 				TCustomDrawStage(getVal(2)),
-				(*bool)(unsafe.Pointer(getVal(3))))
+				getBoolPtr(3))
 
 		//type TTVAdvancedCustomDrawItemEvent func(sender *TTreeView, node *TTreeNode, state TCustomDrawState, stage TCustomDrawStage, paintImages, defaultDraw *bool)
 		case TTVAdvancedCustomDrawItemEvent:
@@ -248,8 +279,8 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsTreeNode(getVal(1)),
 				TCustomDrawState(getVal(2)),
 				TCustomDrawStage(getVal(3)),
-				(*bool)(unsafe.Pointer(getVal(4))),
-				(*bool)(unsafe.Pointer(getVal(5))))
+				getBoolPtr(4),
+				getBoolPtr(5))
 
 			//---------------------------------------
 
@@ -257,9 +288,9 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 		case TLVAdvancedCustomDrawEvent:
 			v.(TLVAdvancedCustomDrawEvent)(
 				AsListView(getVal(0)),
-				*(*TRect)(unsafe.Pointer(getVal(1))),
+				*getRectPtr(1),
 				TCustomDrawStage(getVal(2)),
-				(*bool)(unsafe.Pointer(getVal(3))))
+				getBoolPtr(3))
 
 		//type TLVAdvancedCustomDrawItemEvent func(sender *TListView, item *TListItem, state TCustomDrawState, Stage TCustomDrawStage, defaultDraw *bool)
 		case TLVAdvancedCustomDrawItemEvent:
@@ -268,7 +299,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsListItem(getVal(1)),
 				TCustomDrawState(getVal(2)),
 				TCustomDrawStage(getVal(3)),
-				(*bool)(unsafe.Pointer(getVal(4))))
+				getBoolPtr(4))
 
 		//type TLVAdvancedCustomDrawSubItemEvent func(sender *TListView, item *TListItem, subItem int32, state TCustomDrawState, stage TCustomDrawStage, defaultDraw *bool)
 		case TLVAdvancedCustomDrawSubItemEvent:
@@ -278,16 +309,16 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				int32(getVal(2)),
 				TCustomDrawState(getVal(3)),
 				TCustomDrawStage(getVal(4)),
-				(*bool)(unsafe.Pointer(getVal(5))))
+				getBoolPtr(5))
 
 		//-----------------------------
 		//type TTBAdvancedCustomDrawEvent func(sender *TToolBar, aRect TRect, stage TCustomDrawStage, defaultDraw *bool)
 		case TTBAdvancedCustomDrawEvent:
 			v.(TTBAdvancedCustomDrawEvent)(
 				AsToolBar(getVal(0)),
-				*(*TRect)(unsafe.Pointer(getVal(1))),
+				*getRectPtr(1),
 				TCustomDrawStage(getVal(2)),
-				(*bool)(unsafe.Pointer(getVal(3))))
+				getBoolPtr(3))
 
 		// TDropFilesEvent
 		case TDropFilesEvent:
@@ -305,31 +336,31 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 		case TConstrainedResizeEvent:
 			v.(TConstrainedResizeEvent)(
 				AsObject(getVal(0)),
-				(*int32)(unsafe.Pointer(getVal(1))),
-				(*int32)(unsafe.Pointer(getVal(2))),
-				(*int32)(unsafe.Pointer(getVal(3))),
-				(*int32)(unsafe.Pointer(getVal(4))))
+				getI32Ptr(1),
+				getI32Ptr(2),
+				getI32Ptr(3),
+				getI32Ptr(4))
 
 			// func(command uint16, data THelpEventData, callhelp *bool) bool
 		case THelpEvent:
 			v.(THelpEvent)(
 				uint16(getVal(0)),
 				THelpEventData(getVal(1)),
-				(*bool)(unsafe.Pointer(getVal(2))),
-				(*bool)(unsafe.Pointer(getVal(3))))
+				getBoolPtr(2),
+				getBoolPtr(3))
 
 			// func(msg *TWMKey, handled *bool)
 		case TShortCutEvent:
 			v.(TShortCutEvent)(
-				(*TWMKey)(unsafe.Pointer(getVal(0))),
-				(*bool)(unsafe.Pointer(getVal(1))))
+				(*TWMKey)(getPtr(0)),
+				getBoolPtr(1))
 
 			// func(sender IObject, mousePos TPoint, handled *bool)
 		case TContextPopupEvent:
 			v.(TContextPopupEvent)(
 				AsObject(getVal(0)),
-				*(*TPoint)(unsafe.Pointer(getVal(1))),
-				(*bool)(unsafe.Pointer(getVal(2))))
+				*getPointPtr(1),
+				getBoolPtr(2))
 
 			// func(sender, source IObject, x, y int32, state TDragState, accept *bool)
 		case TDragOverEvent:
@@ -339,7 +370,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				int32(getVal(2)),
 				int32(getVal(3)),
 				TDragState(getVal(4)),
-				(*bool)(unsafe.Pointer(getVal(5))))
+				getBoolPtr(5))
 
 			//func(sender, source IObject, x, y int32)
 		case TDragDropEvent:
@@ -383,7 +414,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				int32(getVal(2)),
 				int32(getVal(3)),
 				TDragState(getVal(4)),
-				(*bool)(unsafe.Pointer(getVal(5))))
+				getBoolPtr(5))
 
 			//func(sender IObject, client *TControl, newTarget *TControl, allow *bool)
 		case TUnDockEvent:
@@ -391,16 +422,16 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsObject(getVal(0)),
 				AsControl(getVal(1)),
 				AsControl(getVal(2)),
-				(*bool)(unsafe.Pointer(getVal(3))))
+				getBoolPtr(3))
 
 			//func(sender IObject, dragObject **TDragDockObject)
 		case TStartDockEvent:
-			obj := AsDragDockObject(*(*uintptr)(unsafe.Pointer(getVal(1))))
+			obj := AsDragDockObject(getPtrVal(1))
 			v.(TStartDockEvent)(
 				AsObject(getVal(0)),
 				&obj)
 			if obj != nil {
-				*(*uintptr)(unsafe.Pointer(getVal(1))) = obj.instance
+				setPtrVal(1, obj.instance)
 			}
 
 			//func(sender IObject, dockClient *TControl, influenceRect *TRect, mousePos TPoint, canDock *bool)
@@ -408,17 +439,17 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 			v.(TGetSiteInfoEvent)(
 				AsObject(getVal(0)),
 				AsControl(getVal(1)),
-				(*TRect)(unsafe.Pointer(getVal(2))),
-				*(*TPoint)(unsafe.Pointer(getVal(3))),
-				(*bool)(unsafe.Pointer(getVal(4))))
+				getRectPtr(2),
+				*getPointPtr(3),
+				getBoolPtr(4))
 
 			//func(sender IObject, shift TShiftState, mousePos TPoint, handled *bool)
 		case TMouseWheelUpDownEvent:
 			v.(TMouseWheelUpDownEvent)(
 				AsObject(getVal(0)),
 				TShiftState(getVal(1)),
-				*(*TPoint)(unsafe.Pointer(getVal(2))),
-				(*bool)(unsafe.Pointer(getVal(3))))
+				*getPointPtr(2),
+				getBoolPtr(3))
 
 		// ---- grid
 		//type TGridOperationEvent func(sender IObject, isColumn bool, sIndex, tIndex int32)
@@ -435,7 +466,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsObject(getVal(0)),
 				int32(getVal(1)),
 				int32(getVal(2)),
-				*(*TRect)(unsafe.Pointer(getVal(3))),
+				*getRectPtr(3),
 				TGridDrawState(getVal(4)))
 
 			//type TFixedCellClickEvent func(sender IObject, aCol, aRow int32)
@@ -447,13 +478,13 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 
 			//type TGetEditEvent func(sender IObject, aCol, aRow int32, value *string)
 		case TGetEditEvent:
-			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(3))))
+			str := DStrToGoStr(getPtrVal(3))
 			v.(TGetEditEvent)(
 				AsObject(getVal(0)),
 				int32(getVal(1)),
 				int32(getVal(2)),
 				&str)
-			*(*uintptr)(unsafe.Pointer(getVal(3))) = GoStrToDStr(str)
+			setPtrVal(3, GoStrToDStr(str))
 
 			//type TSelectCellEvent func(sender IObject, aCol, aRow int32, canSelect *bool)
 		case TSelectCellEvent:
@@ -461,7 +492,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsObject(getVal(0)),
 				int32(getVal(1)),
 				int32(getVal(2)),
-				(*bool)(unsafe.Pointer(getVal(3))))
+				getBoolPtr(3))
 
 			//type TSetEditEvent func(sender IObject, aCol, aRow int32, value string)
 		case TSetEditEvent:
@@ -477,7 +508,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 			v.(TDrawSectionEvent)(
 				AsHeaderControl(getVal(0)),
 				AsHeaderSection(getVal(1)),
-				*(*TRect)(unsafe.Pointer(getVal(2))),
+				*getRectPtr(2),
 				getVal(3) != 0)
 
 			//type TSectionNotifyEvent func(headerControl *THeaderControl, section *THeaderSection)
@@ -500,7 +531,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsObject(getVal(0)),
 				AsHeaderSection(getVal(1)),
 				AsHeaderSection(getVal(2)),
-				(*bool)(unsafe.Pointer(getVal(3))))
+				getBoolPtr(3))
 
 			//type TCustomSectionNotifyEvent func(headerControl *THeaderControl, section *THeaderSection)
 		case TCustomSectionNotifyEvent:
@@ -517,20 +548,19 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				int32(getVal(3)),
 				int32(getVal(4)),
 				int32(getVal(5)),
-				(*TMouseActivate)(unsafe.Pointer(getVal(6))))
+				(*TMouseActivate)(getPtr(6)))
 
 			//type TLBGetDataEvent func(control *TWinControl, index int32, data *string)
 		case TLBGetDataEvent:
-			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(2))))
+			str := DStrToGoStr(getPtrVal(2))
 			v.(TLBGetDataEvent)(
 				AsWinControl(getVal(0)),
 				int32(getVal(1)),
 				&str)
-			*(*uintptr)(unsafe.Pointer(getVal(2))) = GoStrToDStr(str)
+			setPtrVal(2, GoStrToDStr(str))
 
 			//type TLBGetDataObjectEvent func(control *TWinControl, index int32, dataObject IObject)
 		case TLBGetDataObjectEvent:
-			//ptr := *(*uintptr)(unsafe.Pointer(getVal(2)))
 			v.(TLBGetDataObjectEvent)(
 				AsWinControl(getVal(0)),
 				int32(getVal(1)),
@@ -538,18 +568,17 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 
 			//type TLBFindDataEvent func(control *TWinControl, findString string) int32
 		case TLBFindDataEvent:
-
 			result := v.(TLBFindDataEvent)(
 				AsWinControl(getVal(0)),
 				DStrToGoStr(getVal(1)))
-			*(*int32)(unsafe.Pointer(getVal(2))) = result
+			*getI32Ptr(2) = result
 
 			//type TMeasureItemEvent func(control *TWinControl, index int32, height *int32)
 		case TMeasureItemEvent:
 			v.(TMeasureItemEvent)(
 				AsWinControl(getVal(0)),
 				int32(getVal(1)),
-				(*int32)(unsafe.Pointer(getVal(2))))
+				getI32Ptr(2))
 
 			//type TLVChangingEvent func(sender IObject, item *TListItem, change TItemChange, allowChange *bool)
 		case TLVChangingEvent:
@@ -557,7 +586,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsObject(getVal(0)),
 				AsListItem(getVal(1)),
 				TItemChange(getVal(2)),
-				(*bool)(unsafe.Pointer(getVal(3))))
+				getBoolPtr(3))
 
 			//type TLVOwnerDataEvent func(sender IObject, item *TListItem)
 		case TLVOwnerDataEvent:
@@ -572,12 +601,12 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsObject(getVal(0)),
 				TItemFind(getVal(1)),
 				DStrToGoStr(getVal(2)),
-				*(*TPoint)(unsafe.Pointer(getVal(3))),
+				*getPointPtr(3),
 				TCustomData(getVal(4)),
 				int32(getVal(5)),
 				TSearchDirection(getVal(6)),
 				DBoolToGoBool(getVal(7)),
-				(*int32)(unsafe.Pointer(getVal(8))))
+				getI32Ptr(8))
 
 			//type TLVDeletedEvent func(sender IObject, item *TListItem)
 		case TLVDeletedEvent:
@@ -590,82 +619,82 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 			v.(TLVEditingEvent)(
 				AsObject(getVal(0)),
 				AsListItem(getVal(1)),
-				(*bool)(unsafe.Pointer(getVal(2))))
+				getBoolPtr(2))
 
 			//type TLVEditedEvent func(sender IObject, item *TListItem, s *string)
 		case TLVEditedEvent:
-			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(2))))
+			str := DStrToGoStr(getPtrVal(2))
 			v.(TLVEditedEvent)(
 				AsObject(getVal(0)),
 				AsListItem(getVal(1)),
 				&str)
-			*(*uintptr)(unsafe.Pointer(getVal(2))) = GoStrToDStr(str)
+			setPtrVal(2, GoStrToDStr(str))
 
 			//type TMenuMeasureItemEvent func(sender IObject, aCanvas *TCanvas, width, height *int32)
 		case TMenuMeasureItemEvent:
 			v.(TMenuMeasureItemEvent)(
 				AsObject(getVal(0)),
 				AsCanvas(getVal(1)),
-				(*int32)(unsafe.Pointer(getVal(2))),
-				(*int32)(unsafe.Pointer(getVal(3))))
+				getI32Ptr(2),
+				getI32Ptr(3))
 
 			//type TTabChangingEvent func(sender IObject, allowChange *bool)
 		case TTabChangingEvent:
 			v.(TTabChangingEvent)(
 				AsObject(getVal(0)),
-				(*bool)(unsafe.Pointer(getVal(1))))
+				getBoolPtr(1))
 
 			//type TTVChangingEvent func(sender IObject, node *TTreeNode, allowChange *bool)
 		case TTVChangingEvent:
 			v.(TTVChangingEvent)(
 				AsObject(getVal(0)),
 				AsTreeNode(getVal(1)),
-				(*bool)(unsafe.Pointer(getVal(2))))
+				getBoolPtr(2))
 
 			//type TTVCollapsingEvent func(sender IObject, node *TTreeNode, allowCollapse *bool)
 		case TTVCollapsingEvent:
 			v.(TTVCollapsingEvent)(
 				AsObject(getVal(0)),
 				AsTreeNode(getVal(1)),
-				(*bool)(unsafe.Pointer(getVal(2))))
+				getBoolPtr(2))
 
 			//type TTVEditedEvent func(sender IObject, node *TTreeNode, s *string)
 		case TTVEditedEvent:
-			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(2))))
+			str := DStrToGoStr(getPtrVal(2))
 			v.(TTVEditedEvent)(
 				AsObject(getVal(0)),
 				AsTreeNode(getVal(1)),
 				&str)
-			*(*uintptr)(unsafe.Pointer(getVal(2))) = GoStrToDStr(str)
+			setPtrVal(2, GoStrToDStr(str))
 
 			//type TTVEditingEvent func(sender IObject, node *TTreeNode, allowEdit *bool)
 		case TTVEditingEvent:
 			v.(TTVEditingEvent)(
 				AsObject(getVal(0)),
 				AsTreeNode(getVal(1)),
-				(*bool)(unsafe.Pointer(getVal(2))))
+				getBoolPtr(2))
 
 			//type TTVExpandingEvent func(sender IObject, node *TTreeNode, allowExpansion *bool)
 		case TTVExpandingEvent:
 			v.(TTVExpandingEvent)(
 				AsObject(getVal(0)),
 				AsTreeNode(getVal(1)),
-				(*bool)(unsafe.Pointer(getVal(2))))
+				getBoolPtr(2))
 
 			//type TTVHintEvent func(sender IObject, node *TTreeNode, hint *string)
 		case TTVHintEvent:
-			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(2))))
+			str := DStrToGoStr(getPtrVal(2))
 			v.(TTVHintEvent)(
 				AsObject(getVal(0)),
 				AsTreeNode(getVal(1)),
 				&str)
-			*(*uintptr)(unsafe.Pointer(getVal(2))) = GoStrToDStr(str)
+			setPtrVal(2, GoStrToDStr(str))
 
 			//type TUDChangingEvent func(sender IObject, allowChange *bool)
 		case TUDChangingEvent:
 			v.(TUDChangingEvent)(
 				AsObject(getVal(0)),
-				(*bool)(unsafe.Pointer(getVal(1))))
+				getBoolPtr(1))
 
 			//type TCreatingListErrorEvent func(sender IObject, winErrorCode uint32, errorDescription string, handled *bool)
 		case TCreatingListErrorEvent:
@@ -673,37 +702,16 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsObject(getVal(0)),
 				uint32(getVal(1)),
 				DStrToGoStr(getVal(2)),
-				(*bool)(unsafe.Pointer(getVal(3))))
+				getBoolPtr(3))
 
-			//type TThumbPreviewItemRequestEvent func(sender IObject, aPreviewHeight, aPreviewWidth int32, previewBitmap *TBitmap)
-		case TThumbPreviewItemRequestEvent:
-			v.(TThumbPreviewItemRequestEvent)(
-				AsObject(getVal(0)),
-				int32(getVal(1)),
-				int32(getVal(2)),
-				AsBitmap(getVal(3)))
+		//--
 
-			//type TWindowPreviewItemRequestEvent func(sender IObject, position *TPoint, previewBitmap *TBitmap)
-		case TWindowPreviewItemRequestEvent:
-			v.(TWindowPreviewItemRequestEvent)(
-				AsObject(getVal(0)),
-				(*TPoint)(unsafe.Pointer(getVal(1))),
-				AsBitmap(getVal(2)))
-
-			//type TThumbButtonNotifyEvent func(sender IObject, aButtonID int32)
-		case TThumbButtonNotifyEvent:
-			v.(TThumbButtonNotifyEvent)(
-				AsObject(getVal(0)),
-				int32(getVal(1)))
-
-			//--
-
-			//type TLVCustomDrawEvent func(sender *TListView, aRect TRect, defaultDraw *bool)
+		//type TLVCustomDrawEvent func(sender *TListView, aRect TRect, defaultDraw *bool)
 		case TLVCustomDrawEvent:
 			v.(TLVCustomDrawEvent)(
 				AsListView(getVal(0)),
-				*(*TRect)(unsafe.Pointer(getVal(1))),
-				(*bool)(unsafe.Pointer(getVal(2))))
+				*getRectPtr(1),
+				getBoolPtr(2))
 
 			//type TLVCustomDrawItemEvent func(sender *TListView, item *TListItem, state TCustomDrawStage, defaultDraw *bool)
 		case TLVCustomDrawItemEvent:
@@ -711,7 +719,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsListView(getVal(0)),
 				AsListItem(getVal(1)),
 				TCustomDrawStage(getVal(2)),
-				(*bool)(unsafe.Pointer(getVal(3))))
+				getBoolPtr(3))
 
 			//type TLVCustomDrawSubItemEvent func(sender *TListView, item *TListItem, subItem int32, state TCustomDrawStage, defaultDraw *bool)
 		case TLVCustomDrawSubItemEvent:
@@ -720,14 +728,14 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsListItem(getVal(1)),
 				int32(getVal(2)),
 				TCustomDrawStage(getVal(3)),
-				(*bool)(unsafe.Pointer(getVal(4))))
+				getBoolPtr(4))
 
 			//type TLVDrawItemEvent func(sender *TListView, item *TListItem, rect TRect, state TOwnerDrawState)
 		case TLVDrawItemEvent:
 			v.(TLVDrawItemEvent)(
 				AsListView(getVal(0)),
 				AsListItem(getVal(1)),
-				*(*TRect)(unsafe.Pointer(getVal(2))),
+				*getRectPtr(2),
 				TOwnerDrawState(getVal(3)))
 
 		//type TLVDataHintEvent = func(sender IObject, startIndex, endIndex int32)
@@ -741,8 +749,8 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 		case TTVCustomDrawEvent:
 			v.(TTVCustomDrawEvent)(
 				AsTreeView(getVal(0)),
-				*(*TRect)(unsafe.Pointer(getVal(1))),
-				(*bool)(unsafe.Pointer(getVal(2))))
+				*getRectPtr(1),
+				getBoolPtr(2))
 
 			//type TTVCustomDrawItemEvent func(sender *TTreeView, node *TTreeNode, state TCustomDrawStage, defaultDraw *bool)
 		case TTVCustomDrawItemEvent:
@@ -750,7 +758,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsTreeView(getVal(0)),
 				AsTreeNode(getVal(1)),
 				TCustomDrawStage(getVal(2)),
-				(*bool)(unsafe.Pointer(getVal(3))))
+				getBoolPtr(3))
 
 			// type TWebTitleChangeEvent func(sender IObject, text string)
 		case TWebTitleChangeEvent:
@@ -759,39 +767,39 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				DStrToGoStr(getVal(1)))
 
 		case TWebJSExternalEvent:
-			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(3))))
+			str := DStrToGoStr(getPtrVal(3))
 			v.(TWebJSExternalEvent)(
 				AsObject(getVal(0)),
 				DStrToGoStr(getVal(1)),
 				DStrToGoStr(getVal(2)),
 				&str)
-			*(*uintptr)(unsafe.Pointer(getVal(3))) = GoStrToDStr(str)
+			setPtrVal(3, GoStrToDStr(str))
 
 			//type TTaskDlgClickEvent func(sender IObject, modalResult TModalResult, canClose *bool)
 		case TTaskDlgClickEvent:
 			v.(TTaskDlgClickEvent)(
 				AsObject(getVal(0)),
 				TModalResult(getVal(1)),
-				(*bool)(unsafe.Pointer(getVal(2))))
+				getBoolPtr(2))
 
 			//type TTaskDlgTimerEvent func(sender IObject, tickCount uint32, reset *bool)
 		case TTaskDlgTimerEvent:
 			v.(TTaskDlgTimerEvent)(
 				AsObject(getVal(0)),
 				uint32(getVal(1)),
-				(*bool)(unsafe.Pointer(getVal(2))))
+				getBoolPtr(2))
 
 		// type TAlignPositionEvent func(sender *TWinControl, control *TControl, newLeft, newTop, newWidth, newHeight *int32, alignRect *TRect, alignInfo TAlignInfo)
 		case TAlignPositionEvent:
 			v.(TAlignPositionEvent)(
 				AsWinControl(getVal(0)),
 				AsControl(getVal(1)),
-				(*int32)(unsafe.Pointer(getVal(2))),
-				(*int32)(unsafe.Pointer(getVal(3))),
-				(*int32)(unsafe.Pointer(getVal(4))),
-				(*int32)(unsafe.Pointer(getVal(5))),
-				(*TRect)(unsafe.Pointer(getVal(6))),
-				*(*TAlignInfo)(unsafe.Pointer(getVal(7))))
+				getI32Ptr(2),
+				getI32Ptr(3),
+				getI32Ptr(4),
+				getI32Ptr(5),
+				getRectPtr(6),
+				*(*TAlignInfo)(getPtr(7)))
 
 		// type TCheckGroupClicked func(sender IObject, index int32)
 		case TCheckGroupClicked:
@@ -822,17 +830,17 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				int32(getVal(2)),
 				int32(getVal(3)),
 				int32(getVal(4)),
-				(*int32)(unsafe.Pointer(getVal(5))))
+				getI32Ptr(5))
 
 		//type TGetCellHintEvent func(sender IObject, ACol, ARow int32, hintText *string)
 		case TGetCellHintEvent:
-			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(3))))
+			str := DStrToGoStr(getPtrVal(3))
 			v.(TGetCellHintEvent)(
 				AsObject(getVal(0)),
 				int32(getVal(1)),
 				int32(getVal(2)),
 				&str)
-			*(*uintptr)(unsafe.Pointer(getVal(3))) = GoStrToDStr(str)
+			setPtrVal(3, GoStrToDStr(str))
 
 		//type TGetCheckboxStateEvent func(sender IObject, ACol, ARow int32, value *TCheckBoxState)
 		case TGetCheckboxStateEvent:
@@ -840,7 +848,7 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsObject(getVal(0)),
 				int32(getVal(1)),
 				int32(getVal(2)),
-				(*TCheckBoxState)(unsafe.Pointer(getVal(3))))
+				(*TCheckBoxState)(getPtr(3)))
 
 		//type TSetCheckboxStateEvent func(sender IObject, ACol, ARow int32, Value TCheckBoxState)
 		case TSetCheckboxStateEvent:
@@ -867,19 +875,19 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 
 		//type TSelectEditorEvent func(sender IObject, aCol, aRow int32, editor **TWinControl)
 		case TSelectEditorEvent:
-			obj := AsWinControl(*(*uintptr)(unsafe.Pointer(getVal(3))))
+			obj := AsWinControl(getPtrVal(3))
 			v.(TSelectEditorEvent)(
 				AsObject(getVal(0)),
 				int32(getVal(1)),
 				int32(getVal(2)),
 				&obj)
 			if obj != nil {
-				*(*uintptr)(unsafe.Pointer(getVal(3))) = obj.instance
+				setPtrVal(3, obj.instance)
 			}
 
 		//type TUserCheckBoxBitmapEvent func(sender IObject, aCol, aRow int32, CheckedState TCheckBoxState, aBitmap **TBitmap)
 		case TUserCheckBoxBitmapEvent:
-			obj := AsBitmap(*(*uintptr)(unsafe.Pointer(getVal(4))))
+			obj := AsBitmap(getPtrVal(4))
 			v.(TUserCheckBoxBitmapEvent)(
 				AsObject(getVal(0)),
 				int32(getVal(1)),
@@ -887,19 +895,19 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				TCheckBoxState(getVal(1)),
 				&obj)
 			if obj != nil {
-				*(*uintptr)(unsafe.Pointer(getVal(4))) = obj.instance
+				setPtrVal(4, obj.instance)
 			}
 
 			//type TValidateEntryEvent func(sender IObject, aCol, aRow int32, oldValue string, newValue *string)
 		case TValidateEntryEvent:
-			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(4))))
+			str := DStrToGoStr(getPtrVal(4))
 			v.(TValidateEntryEvent)(
 				AsObject(getVal(0)),
 				int32(getVal(1)),
 				int32(getVal(2)),
 				DStrToGoStr(getVal(3)),
 				&str)
-			*(*uintptr)(unsafe.Pointer(getVal(4))) = GoStrToDStr(str)
+			setPtrVal(4, GoStrToDStr(str))
 
 		default:
 		}

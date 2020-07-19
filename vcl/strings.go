@@ -301,6 +301,14 @@ func (s *TStrings) SetDelimiter(value uint16) {
     Strings_SetDelimiter(s.instance, value)
 }
 
+func (s *TStrings) NameValueSeparator() uint16 {
+    return Strings_GetNameValueSeparator(s.instance)
+}
+
+func (s *TStrings) SetNameValueSeparator(value uint16) {
+    Strings_SetNameValueSeparator(s.instance, value)
+}
+
 // 获取文本。
 func (s *TStrings) Text() string {
     return Strings_GetText(s.instance)

@@ -245,6 +245,21 @@ func DInputQuery(aCaption, aPrompt string, value *string) bool {
 	return DBoolToGoBool(r)
 }
 
+func DPasswordBox(aCaption, aPrompt string) string {
+	r, _, _ := dPasswordBox.Call(GoStrToDStr(aCaption), GoStrToDStr(aPrompt))
+	return DStrToGoStr(r)
+}
+
+func DInputCombo(aCaption, aPrompt string, aList uintptr) int32 {
+	r, _, _ := dInputCombo.Call(GoStrToDStr(aCaption), GoStrToDStr(aPrompt), aList)
+	return int32(r)
+}
+
+func DInputComboEx(aCaption, aPrompt string, aList uintptr, allowCustomText bool) string {
+	r, _, _ := dInputComboEx.Call(GoStrToDStr(aCaption), GoStrToDStr(aPrompt), aList, GoBoolToDBool(allowCustomText))
+	return DStrToGoStr(r)
+}
+
 // DSysLocaled
 func DSysLocale(aInfo *TSysLocale) {
 	dSysLocale.Call(uintptr(unsafe.Pointer(aInfo)))

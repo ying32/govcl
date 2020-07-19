@@ -142,6 +142,32 @@ func InputQuery(aCaption, aPrompt string, value *string) bool {
 	return api.DInputQuery(aCaption, aPrompt, value)
 }
 
+func PasswordBox(aCaption, aPrompt string) string {
+	return api.DPasswordBox(aCaption, aPrompt)
+}
+
+func InputCombo(aCaption, aPrompt string, aList []string) int32 {
+	obj := NewStringList()
+	defer obj.Free()
+	obj.AddStrings2(aList)
+	return InputCombo2(aCaption, aPrompt, AsStrings(obj))
+}
+
+func InputCombo2(aCaption, aPrompt string, aList *TStrings) int32 {
+	return api.DInputCombo(aCaption, aPrompt, CheckPtr(aList))
+}
+
+func InputComboEx(aCaption, aPrompt string, aList []string, allowCustomText bool) string {
+	obj := NewStringList()
+	defer obj.Free()
+	obj.AddStrings2(aList)
+	return InputComboEx2(aCaption, aPrompt, AsStrings(obj), allowCustomText)
+}
+
+func InputComboEx2(aCaption, aPrompt string, aList *TStrings, allowCustomText bool) string {
+	return api.DInputComboEx(aCaption, aPrompt, CheckPtr(aList), allowCustomText)
+}
+
 // 简化运行。
 //
 // simplify running.

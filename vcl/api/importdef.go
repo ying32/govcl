@@ -96,6 +96,9 @@ var (
 	dSelectDirectory2 = libvcl.NewProc("DSelectDirectory2")
 	dInputBox         = libvcl.NewProc("DInputBox")
 	dInputQuery       = libvcl.NewProc("DInputQuery")
+	dPasswordBox      = libvcl.NewProc("DPasswordBox")
+	dInputCombo       = libvcl.NewProc("DInputCombo")
+	dInputComboEx     = libvcl.NewProc("DInputComboEx")
 
 	// TForm相关设置
 	form_ScaleForPPI         = libvcl.NewProc("Form_ScaleForPPI")

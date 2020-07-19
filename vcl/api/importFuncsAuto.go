@@ -29727,6 +29727,15 @@ func Strings_SetDelimiter(obj uintptr, value uint16) {
    strings_SetDelimiter.Call(obj, uintptr(value))
 }
 
+func Strings_GetNameValueSeparator(obj uintptr) uint16 {
+    ret, _, _ := strings_GetNameValueSeparator.Call(obj)
+    return uint16(ret)
+}
+
+func Strings_SetNameValueSeparator(obj uintptr, value uint16) {
+   strings_SetNameValueSeparator.Call(obj, uintptr(value))
+}
+
 func Strings_GetText(obj uintptr) string {
     ret, _, _ := strings_GetText.Call(obj)
     return DStrToGoStr(ret)
@@ -29952,6 +29961,15 @@ func StringList_GetDelimiter(obj uintptr) uint16 {
 
 func StringList_SetDelimiter(obj uintptr, value uint16) {
    stringList_SetDelimiter.Call(obj, uintptr(value))
+}
+
+func StringList_GetNameValueSeparator(obj uintptr) uint16 {
+    ret, _, _ := stringList_GetNameValueSeparator.Call(obj)
+    return uint16(ret)
+}
+
+func StringList_SetNameValueSeparator(obj uintptr, value uint16) {
+   stringList_SetNameValueSeparator.Call(obj, uintptr(value))
 }
 
 func StringList_GetText(obj uintptr) string {
