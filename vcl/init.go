@@ -17,9 +17,9 @@ import (
 )
 
 const (
-	// CN: 要求最小liblcl或者libvcl二进制版本为2.0.4
-	// EN: Requires a minimum liblcl or libvcl binary version of 2.0.4.
-	requireMinBinaryVersion = 0x02000400
+	// CN: 要求最小liblcl二进制版本
+	// EN: Requires a minimum liblcl binary version.
+	requireMinBinaryVersion = 0x02000500
 )
 
 var (
@@ -49,7 +49,7 @@ func init() {
 	libVersion := DLibVersion()
 	fmt.Println("Library Version:", toVersionString(libVersion))
 	if libVersion < requireMinBinaryVersion {
-		panic("Require liblcl binary version >=2.0.4. Please go to \"https://github.com/ying32/govcl\" to download the latest binary.")
+		panic(fmt.Sprintf("Require liblcl binary version >=%s. Please go to \"https://github.com/ying32/govcl\" to download the latest binary.", toVersionString(requireMinBinaryVersion)))
 	}
 	// 这个似乎得默认加上，锁定主线程，防止中间被改变
 	runtime.LockOSThread()
