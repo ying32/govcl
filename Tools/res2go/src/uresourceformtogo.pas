@@ -25,7 +25,7 @@ uses
 {$ENDIF};
 
 const
-  APPVERSION = '1.0.21';
+  APPVERSION = '1.0.22';
 
 type
   TComponentItem = record
@@ -1269,6 +1269,94 @@ begin
   end;
 end;
 
+
+function GetFileNameWithoutExt(AFileName: string): string;
+var
+  LExt: string;
+begin
+  Result := ExtractFileName(AFileName);
+  LExt := ExtractFileExt(AFileName);
+  Result := Copy(Result, 1, Length(Result) - Length(LExt));
+end;
+
+function ChangeExtName(AFileName, AExt: string): string;
+begin
+  Result := GetFileNameWithoutExt(AFileName) + AExt;
+end;
+
+
+procedure GfmToLfm(const AFileName: string; AOutPath: string);
+var
+  LStream: TFileStream;
+  LBuff: array[0..9] of Byte;
+  LOutStream, LOutUnit: TStringStream;
+  LTemp, LName: string;
+begin
+  TextColorWhite;
+  if IsZhLang then
+    CtlWriteln('------转换文件：%s', [AFileName])
+  else
+    CtlWriteln('------Transform file: %s', [AFileName]);
+  // 不支持加密的
+  LStream := TFileStream.Create(AFileName, fmOpenRead);
+  try
+    if LStream.Size < 10 then
+    begin
+      TextColorRed;
+      if IsZhLang then
+        CtlWriteln('输入的gfm文件无效。')
+      else
+        CtlWriteln('The input gfm file is invalid.');
+      Exit;
+    end;
+    LStream.Read(LBuff[0], Length(LBuff));
+    if CompareMem(@LBuff[0], @TFormResFile.HEADER[0], Length(LBuff)) then
+    begin
+      TextColorRed;
+      if IsZhLang then
+        CtlWriteln('不支持加密的gfm文件。')
+      else
+        CtlWriteln('Encrypted gfm files are not supported.');
+      Exit;
+    end;
+    //LOutStream := TFileStream.Create(AOutPath + ChangeExtName(ExtractFileName(AFileName), '.lfm'), fmCreate);
+    // lfm文件名
+    LOutStream := TStringStream.Create('');
+    try
+      LStream.Position:=0;
+      ObjectBinaryToText(LStream, LOutStream);
+      LName := GetFileNameWithoutExt(AFileName);
+      LTemp := StringReplace(LOutStream.DataString, 'TDesignForm', 'T'+LName, [rfReplaceAll]);
+      LOutStream.Clear;
+      LOutStream.WriteString(LTemp);
+      LOutStream.Position:=0;
+      LOutStream.SaveToFile(AOutPath + 'u' + LName + '.lfm');
+    finally
+      LOutStream.Free;
+    end;
+    // pas文件
+    //LOutUnit := TStringStream.Create('');
+    //try
+    //  LOutUnit.WriteString('unit u' + LName + ';'+slineBreak);
+    //  LOutUnit.WriteString(slineBreak);
+    //  LOutUnit.WriteString('{$mode objfpc}{$H+}'+slineBreak);
+    //  LOutUnit.WriteString(slineBreak);
+    //  LOutUnit.WriteString('interface');
+    //  LOutUnit.WriteString('uses');
+    //
+    //
+    //  LOutUnit.SaveToFile(AOutPath + 'u' + LName + '.pas');
+    //finally
+    //  LOutUnit.Free;
+    //end;
+
+    //TFormResFile
+     //ObjectTextToBinary(LInput, LOutput);
+  finally
+    LStream.Free;
+  end;
+end;
+
 procedure ConvertAll;
 type
 {$IFDEF FPC}
@@ -1284,7 +1372,7 @@ var
   LRec: TSearchRec;
 {$ENDIF}
   LPath, LOutPath, LExt, LFileName, LPause: string;
-  LConvPro, LWatch: boolean;
+  LConvPro, LWatch, LTolfm: boolean;
   LWatchList: TWatchFileList;
 
   // 从监视列表中查找
@@ -1383,6 +1471,8 @@ begin
     LWatch := FindCmdLineSwitch('watch');
     if LWatch then
       LWatchList := TWatchFileList.Create;
+    // 转为lfm工程
+    LTolfm := FindCmdLineSwitch('tolfm');
     try
       repeat
         // 搜索文件
@@ -1391,35 +1481,50 @@ begin
           repeat
             LExt := ExtractFileExt(LRec.Name);
             LFileName := LPath + LRec.Name;
-            if SameText(LExt, '.lfm') or SameText(LExt, '.dfm') then
+            // lfm，dpr转gfm，go
+            if not LTolfm then
             begin
-              if WatchFile(LFileName, LRec.Time) then
-                Continue;
+              if SameText(LExt, '.lfm') or SameText(LExt, '.dfm') then
+              begin
+                if WatchFile(LFileName, LRec.Time) then
+                  Continue;
 
-              TextColorWhite;
-              if IsZhLang then
-                CtlWriteln('------转换文件：%s', [LFileName])
-              else
-                CtlWriteln('------Transform file: %s', [LFileName]);
-              ResouceFormToGo(LFileName, LOutPath);
-            end
-            else if LConvPro and (SameText(LExt, '.lpr') or SameText(LExt, '.dpr')) and
-              (not SameText(LRec.Name, 'res2go.lpr') and not
-              SameText(LRec.Name, 'res2go.dpr')) then
+                TextColorWhite;
+                if IsZhLang then
+                  CtlWriteln('------转换文件：%s', [LFileName])
+                else
+                  CtlWriteln('------Transform file: %s', [LFileName]);
+                ResouceFormToGo(LFileName, LOutPath);
+              end
+              else if LConvPro and (SameText(LExt, '.lpr') or SameText(LExt, '.dpr')) and
+                (not SameText(LRec.Name, 'res2go.lpr') and not
+                SameText(LRec.Name, 'res2go.dpr')) then
+              begin
+                if WatchFile(LFileName, LRec.Time) then
+                  Continue;
+
+                TextColorWhite;
+                if IsZhLang then
+                  CtlWriteln('------转换文件：%s', [LFileName])
+                else
+                  CtlWriteln('------Transform file: %s', [LFileName]);
+                ProjectFileToMainDotGo(LFileName, LOutPath);
+              end;
+            // gfm转lfm, lpr
+            end else
             begin
-              if WatchFile(LFileName, LRec.Time) then
-                Continue;
-
-              TextColorWhite;
-              if IsZhLang then
-                CtlWriteln('------转换文件：%s', [LFileName])
-              else
-                CtlWriteln('------Transform file: %s', [LFileName]);
-              ProjectFileToMainDotGo(LFileName, LOutPath);
+              if SameText(LExt, '.gfm') then
+              begin
+                GfmToLfm(LFileName, LOutPath);
+                //ResouceFormToGo(LFileName, LOutPath);
+              end;
             end;
           until FindNext(LRec) <> 0;
           FindClose(LRec);
         end;
+        // gfm转换，跳出
+        if not LTolfm then
+          Break;
         // 嗯。。。1000ms频率吧
         if LWatch then
           Sleep(1000);
@@ -1451,6 +1556,7 @@ begin
 {$ENDIF}
 end;
 
+
 procedure WriteHelp;
 begin
   //CtlWriteln('---------------Chinese------------------');
@@ -1476,6 +1582,7 @@ begin
       '  -pause      结束后根据选项暂停，比如： -pause "ew"，表示有错或者警告，可选为“e”,“w”,“a” e=错误，w=警告，a=忽略其它选项，总是显示。');
     CtlWriteln('  -pkgname    指定生成的go文件包名，默认为main。');
     CtlWriteln('  -watch      监视“-path”目录的文件，如果有改变则进行转换。');
+    //CtlWriteln('  -tolfm      将目录下的gfm文件全部转为Lazarus *lfm文件，启此项后只有“-path”和“-outpath”有效。');
     CtlWriteln('  -h -help    显示帮助。');
     CtlWriteln('  -v -version 显示版本号');
     CtlWriteln('');
@@ -1502,6 +1609,7 @@ begin
       '  -pause      After the end, pause according to the option, for example: -pause "ew", indicating that there is a fault or warning, you can choose "e", "w", "a" e=error, w=warning, a=ignore other options, always display.');
     CtlWriteln('  -pkgname    Specifies the name of the generated go file package. The default is main.');
     CtlWriteln('  -watch      Monitor files in the "-path" directory and convert if there are changes.');
+    //CtlWriteln('  -tolfm      将目录下的gfm文件全部转为Lazarus *lfm文件，启此项后只有“-path”和“-outpath”有效。');
     CtlWriteln('  -h -help    Show help.');
     CtlWriteln('  -v -version Show Version.');
     CtlWriteln('');
