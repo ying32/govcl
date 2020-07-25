@@ -10,6 +10,11 @@ import (
 	"github.com/ying32/govcl/vcl/types/keys"
 )
 
+
+//::private::
+type TLoginFormFields struct {
+}
+
 func (f *TLoginForm) OnFormCreate(sender vcl.IObject) {
 	f.SetShowInTaskBar(types.StAlways)
 }

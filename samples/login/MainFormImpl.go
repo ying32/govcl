@@ -7,6 +7,11 @@ import (
 	"github.com/ying32/govcl/vcl/types"
 )
 
+
+//::private::
+type TMainFormFields struct {
+}
+
 var (
 	// 是否登录
 	isLogin bool
