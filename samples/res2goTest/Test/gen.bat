@@ -1,1 +1,1 @@
-res2go -path ".\" -outpath ".\gocode\" -outmain true
+res2go -path ".\" -outpath ".\gocode\"

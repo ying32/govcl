@@ -7,6 +7,7 @@ object MainForm: TMainForm
   ClientHeight = 300
   ClientWidth = 325
   OnCreate = FormCreate
+  LCLVersion = '2.0.10.0'
   object Button1: TButton
     Left = 120
     Height = 25
@@ -24,18 +25,16 @@ object MainForm: TMainForm
     Width = 75
     Caption = 'Button2'
     OnClick = Button2Click
-    OnResize = Button2Resize
     ParentFont = False
     TabOrder = 1
   end
   object Button3: TButton
-    Left = 134
+    Left = 136
     Height = 25
     Top = 141
     Width = 75
     Caption = 'Button3'
     OnClick = Button2Click
-    OnResize = Button2Resize
     ParentFont = False
     TabOrder = 2
   end
@@ -46,7 +45,6 @@ object MainForm: TMainForm
     Width = 75
     Caption = 'Button4'
     OnClick = Button2Click
-    OnResize = Button2Resize
     ParentFont = False
     TabOrder = 3
   end
