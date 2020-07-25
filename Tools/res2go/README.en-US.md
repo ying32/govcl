@@ -34,5 +34,7 @@ Program Filename   res2go program full file name (including path)
 Parameters         Command line arguments (the code will be generated in the gocode directory under the current project directory after running): -path "$Path($ProjFile())" -outpath "$Path($ProjFile())/gocode"
 Working Directory  Working directory, no need to fill     
 
+Check "Scan output for FPC messages"  
+
 Lazarus can also fill in the shortcut keys and set them in the Key group.  
 ```

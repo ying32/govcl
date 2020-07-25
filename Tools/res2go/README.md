@@ -34,5 +34,7 @@ Program Filename   res2go程序全文件名（含路径）
 Parameters 命令行参数（填这句，运行后会在当前工程目录下的gocode生成代码）： -path "$Path($ProjFile())" -outpath "$Path($ProjFile())/gocode"
 Working directory  工作目录，可不填   
 
+选中"Scan output for FPC messages"  
+
 Lazarus 还可以额外填写快捷键，在Key分组里面设置。  
 ```
