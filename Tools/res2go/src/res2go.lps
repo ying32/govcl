@@ -36,7 +36,7 @@
         </CompilerOptions>
       </Item1>
     </BuildModes>
-    <Units Count="54">
+    <Units Count="55">
       <Unit0>
         <Filename Value="res2go.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -45,33 +45,30 @@
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
-        <Filename Value="uFormDesignerFile.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="16"/>
-        <CursorPos X="15" Y="29"/>
-        <UsageCount Value="71"/>
-        <Loaded Value="True"/>
-      </Unit1>
-      <Unit2>
         <Filename Value="supportsComponents.inc"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="32"/>
         <CursorPos X="56" Y="44"/>
         <UsageCount Value="48"/>
         <Loaded Value="True"/>
-      </Unit2>
-      <Unit3>
+      </Unit1>
+      <Unit2>
         <Filename Value="uresourceformtogo.pas"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="1582"/>
-        <CursorPos X="33" Y="1585"/>
-        <FoldState Value=" T3=B0{xI"/>
+        <TopLine Value="39"/>
+        <CursorPos X="30" Y="59"/>
         <UsageCount Value="40"/>
         <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="uFormDesignerFile.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="16"/>
+        <CursorPos X="15" Y="29"/>
+        <UsageCount Value="71"/>
       </Unit3>
       <Unit4>
         <Filename Value="winResData.inc"/>
@@ -415,7 +412,7 @@
       </Unit51>
       <Unit52>
         <Filename Value="F:\lazarus\fpc\3.2.0\source\rtl\objpas\classes\classesh.inc"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="2283"/>
         <CursorPos X="29" Y="2310"/>
         <UsageCount Value="10"/>
@@ -424,132 +421,49 @@
       <Unit53>
         <Filename Value="F:\lazarus\fpc\3.2.0\source\packages\rtl-objpas\src\inc\strutils.pp"/>
         <UnitName Value="StrUtils"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="249"/>
         <CursorPos X="10" Y="268"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit53>
+      <Unit54>
+        <Filename Value="F:\lazarus\fpc\3.2.0\source\rtl\objpas\fgl.pp"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="1627"/>
+        <CursorPos X="38" Y="1647"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit54>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="7" HistoryIndex="6">
       <Position1>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="385" Column="23" TopLine="369"/>
+        <Filename Value="res2go.lpr"/>
+        <Caret Line="16"/>
       </Position1>
       <Position2>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="524" Column="50" TopLine="503"/>
+        <Caret Line="1513" Column="5" TopLine="1494"/>
       </Position2>
       <Position3>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="441" Column="45" TopLine="424"/>
+        <Caret Line="265" Column="64" TopLine="258"/>
       </Position3>
       <Position4>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="42" Column="13" TopLine="26"/>
+        <Caret Line="1339" Column="20" TopLine="1317"/>
       </Position4>
       <Position5>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="386" Column="41" TopLine="359"/>
+        <Filename Value="F:\lazarus\fpc\3.2.0\source\rtl\objpas\fgl.pp"/>
+        <Caret Line="1669" Column="25" TopLine="1648"/>
       </Position5>
       <Position6>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="431" Column="43" TopLine="404"/>
+        <Filename Value="F:\lazarus\fpc\3.2.0\source\rtl\objpas\classes\classesh.inc"/>
+        <Caret Line="2310" Column="29" TopLine="2283"/>
       </Position6>
       <Position7>
-        <Filename Value="supportsComponents.inc"/>
-        <Caret Line="7" Column="30"/>
+        <Filename Value="F:\lazarus\fpc\3.2.0\source\rtl\objpas\fgl.pp"/>
+        <Caret Line="1647" Column="38" TopLine="1627"/>
       </Position7>
-      <Position8>
-        <Filename Value="supportsComponents.inc"/>
-        <Caret Line="4" Column="34"/>
-      </Position8>
-      <Position9>
-        <Filename Value="supportsComponents.inc"/>
-        <Caret Line="74" Column="40" TopLine="53"/>
-      </Position9>
-      <Position10>
-        <Filename Value="supportsComponents.inc"/>
-        <Caret Line="66" Column="51"/>
-      </Position10>
-      <Position11>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="74" Column="48" TopLine="61"/>
-      </Position11>
-      <Position12>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1386" Column="5" TopLine="1380"/>
-      </Position12>
-      <Position13>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1387" Column="20" TopLine="1371"/>
-      </Position13>
-      <Position14>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1271" Column="24" TopLine="1254"/>
-      </Position14>
-      <Position15>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1443" Column="27" TopLine="1425"/>
-      </Position15>
-      <Position16>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1274" Column="11" TopLine="1254"/>
-      </Position16>
-      <Position17>
-        <Filename Value="res2go.lpr"/>
-        <Caret Line="16"/>
-      </Position17>
-      <Position18>
-        <Filename Value="uresourceformtogo.pas"/>
-      </Position18>
-      <Position19>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1298" Column="48" TopLine="1271"/>
-      </Position19>
-      <Position20>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1283" Column="54" TopLine="1130"/>
-      </Position20>
-      <Position21>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1295" Column="58" TopLine="1276"/>
-      </Position21>
-      <Position22>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1290" Column="43" TopLine="1276"/>
-      </Position22>
-      <Position23>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1295" Column="68" TopLine="1276"/>
-      </Position23>
-      <Position24>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1286" Column="37" TopLine="1276"/>
-      </Position24>
-      <Position25>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1314" Column="96" TopLine="1291"/>
-      </Position25>
-      <Position26>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1321" Column="23" TopLine="1300"/>
-      </Position26>
-      <Position27>
-        <Filename Value="F:\lazarus\fpc\3.2.0\source\packages\rtl-objpas\src\inc\strutils.pp"/>
-      </Position27>
-      <Position28>
-        <Filename Value="F:\lazarus\fpc\3.2.0\source\packages\rtl-objpas\src\inc\strutils.pp"/>
-        <Caret Line="268" Column="35" TopLine="248"/>
-      </Position28>
-      <Position29>
-        <Filename Value="F:\lazarus\fpc\3.2.0\source\packages\rtl-objpas\src\inc\strutils.pp"/>
-        <Caret Line="262" Column="3" TopLine="248"/>
-      </Position29>
-      <Position30>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1321" Column="74" TopLine="1302"/>
-      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

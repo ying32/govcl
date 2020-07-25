@@ -35,23 +35,19 @@
         <Mode0 Name="default"/>
       </Modes>
     </RunParams>
-    <Units Count="4">
+    <Units Count="3">
       <Unit0>
         <Filename Value="res2go.lpr"/>
         <IsPartOfProject Value="True"/>
       </Unit0>
       <Unit1>
-        <Filename Value="uFormDesignerFile.pas"/>
+        <Filename Value="supportsComponents.inc"/>
         <IsPartOfProject Value="True"/>
       </Unit1>
       <Unit2>
-        <Filename Value="supportsComponents.inc"/>
-        <IsPartOfProject Value="True"/>
-      </Unit2>
-      <Unit3>
         <Filename Value="uresourceformtogo.pas"/>
         <IsPartOfProject Value="True"/>
-      </Unit3>
+      </Unit2>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
