@@ -31,7 +31,7 @@ func NewCheckGroup(owner IComponent) *TCheckGroup {
     c := new(TCheckGroup)
     c.instance = CheckGroup_Create(CheckPtr(owner))
     c.ptr = unsafe.Pointer(c.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(c, (*TCheckGroup).Free)
     return c
 }
@@ -662,7 +662,7 @@ func (c *TCheckGroup) Items() *TStrings {
     return AsStrings(CheckGroup_GetItems(c.instance))
 }
 
-func (c *TCheckGroup) SetItems(value IObject) {
+func (c *TCheckGroup) SetItems(value IStrings) {
     CheckGroup_SetItems(c.instance, CheckPtr(value))
 }
 

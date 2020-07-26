@@ -31,7 +31,7 @@ func NewClipboard() *TClipboard {
     c := new(TClipboard)
     c.instance = Clipboard_Create()
     c.ptr = unsafe.Pointer(c.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(c, (*TClipboard).Free)
     return c
 }

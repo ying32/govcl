@@ -31,7 +31,7 @@ func NewBoundLabel(owner IComponent) *TBoundLabel {
     b := new(TBoundLabel)
     b.instance = BoundLabel_Create(CheckPtr(owner))
     b.ptr = unsafe.Pointer(b.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(b, (*TBoundLabel).Free)
     return b
 }

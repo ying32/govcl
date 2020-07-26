@@ -31,7 +31,7 @@ func NewDragObject(AOwner IControl) *TDragObject {
     d := new(TDragObject)
     d.instance = DragObject_Create(CheckPtr(AOwner))
     d.ptr = unsafe.Pointer(d.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(d, (*TDragObject).Free)
     return d
 }

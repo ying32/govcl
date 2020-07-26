@@ -31,7 +31,7 @@ func NewPicture() *TPicture {
     p := new(TPicture)
     p.instance = Picture_Create()
     p.ptr = unsafe.Pointer(p.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(p, (*TPicture).Free)
     return p
 }
@@ -134,12 +134,12 @@ func (p *TPicture) SaveToFile(Filename string) {
 }
 
 // 文件流加载。
-func (p *TPicture) LoadFromStream(Stream IObject) {
+func (p *TPicture) LoadFromStream(Stream IStream) {
     Picture_LoadFromStream(p.instance, CheckPtr(Stream))
 }
 
 // 保存至流。
-func (p *TPicture) SaveToStream(Stream IObject) {
+func (p *TPicture) SaveToStream(Stream IStream) {
     Picture_SaveToStream(p.instance, CheckPtr(Stream))
 }
 

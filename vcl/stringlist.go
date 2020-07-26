@@ -18,7 +18,7 @@ import (
 )
 
 type TStringList struct {
-    IObject
+    IStrings
     instance uintptr
     // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
@@ -31,7 +31,7 @@ func NewStringList() *TStringList {
     s := new(TStringList)
     s.instance = StringList_Create()
     s.ptr = unsafe.Pointer(s.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(s, (*TStringList).Free)
     return s
 }
@@ -206,7 +206,7 @@ func (s *TStringList) LoadFromFile(FileName string) {
 }
 
 // 文件流加载。
-func (s *TStringList) LoadFromStream(Stream IObject) {
+func (s *TStringList) LoadFromStream(Stream IStream) {
     StringList_LoadFromStream(s.instance, CheckPtr(Stream))
 }
 
@@ -220,7 +220,7 @@ func (s *TStringList) SaveToFile(FileName string) {
 }
 
 // 保存至流。
-func (s *TStringList) SaveToStream(Stream IObject) {
+func (s *TStringList) SaveToStream(Stream IStream) {
     StringList_SaveToStream(s.instance, CheckPtr(Stream))
 }
 

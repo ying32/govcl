@@ -31,7 +31,7 @@ func NewHeaderControl(owner IComponent) *THeaderControl {
     h := new(THeaderControl)
     h.instance = HeaderControl_Create(CheckPtr(owner))
     h.ptr = unsafe.Pointer(h.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(h, (*THeaderControl).Free)
     return h
 }

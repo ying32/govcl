@@ -31,7 +31,7 @@ func NewBitBtn(owner IComponent) *TBitBtn {
     b := new(TBitBtn)
     b.instance = BitBtn_Create(CheckPtr(owner))
     b.ptr = unsafe.Pointer(b.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(b, (*TBitBtn).Free)
     return b
 }

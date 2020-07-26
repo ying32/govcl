@@ -31,7 +31,7 @@ func NewUpDown(owner IComponent) *TUpDown {
     u := new(TUpDown)
     u.instance = UpDown_Create(CheckPtr(owner))
     u.ptr = unsafe.Pointer(u.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(u, (*TUpDown).Free)
     return u
 }

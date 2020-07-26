@@ -278,7 +278,7 @@ func (g *TGridColumn) PickList() *TStrings {
     return AsStrings(GridColumn_GetPickList(g.instance))
 }
 
-func (g *TGridColumn) SetPickList(value IObject) {
+func (g *TGridColumn) SetPickList(value IStrings) {
     GridColumn_SetPickList(g.instance, CheckPtr(value))
 }
 

@@ -31,7 +31,7 @@ func NewGIFImage() *TGIFImage {
     g := new(TGIFImage)
     g.instance = GIFImage_Create()
     g.ptr = unsafe.Pointer(g.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(g, (*TGIFImage).Free)
     return g
 }
@@ -124,12 +124,12 @@ func TGIFImageClass() TClass {
 }
 
 // 保存至流。
-func (g *TGIFImage) SaveToStream(Stream IObject) {
+func (g *TGIFImage) SaveToStream(Stream IStream) {
     GIFImage_SaveToStream(g.instance, CheckPtr(Stream))
 }
 
 // 文件流加载。
-func (g *TGIFImage) LoadFromStream(Stream IObject) {
+func (g *TGIFImage) LoadFromStream(Stream IStream) {
     GIFImage_LoadFromStream(g.instance, CheckPtr(Stream))
 }
 

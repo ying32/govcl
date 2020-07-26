@@ -18,7 +18,7 @@ import (
 )
 
 type TMemoryStream struct {
-    IObject
+    IStream
     instance uintptr
     // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
@@ -31,7 +31,7 @@ func NewMemoryStream() *TMemoryStream {
     m := new(TMemoryStream)
     m.instance = MemoryStream_Create()
     m.ptr = unsafe.Pointer(m.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(m, (*TMemoryStream).Free)
     return m
 }
@@ -129,7 +129,7 @@ func (m *TMemoryStream) Clear() {
 }
 
 // 文件流加载。
-func (m *TMemoryStream) LoadFromStream(Stream IObject) {
+func (m *TMemoryStream) LoadFromStream(Stream IStream) {
     MemoryStream_LoadFromStream(m.instance, CheckPtr(Stream))
 }
 
@@ -144,7 +144,7 @@ func (m *TMemoryStream) Seek(Offset int64, Origin TSeekOrigin) int64 {
 }
 
 // 保存至流。
-func (m *TMemoryStream) SaveToStream(Stream IObject) {
+func (m *TMemoryStream) SaveToStream(Stream IStream) {
     MemoryStream_SaveToStream(m.instance, CheckPtr(Stream))
 }
 
@@ -154,7 +154,7 @@ func (m *TMemoryStream) SaveToFile(FileName string) {
 }
 
 // 从指定流中复制。
-func (m *TMemoryStream) CopyFrom(Source IObject, Count int64) int64 {
+func (m *TMemoryStream) CopyFrom(Source IStream, Count int64) int64 {
     return MemoryStream_CopyFrom(m.instance, CheckPtr(Source), Count)
 }
 

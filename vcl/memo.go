@@ -31,7 +31,7 @@ func NewMemo(owner IComponent) *TMemo {
     m := new(TMemo)
     m.instance = Memo_Create(CheckPtr(owner))
     m.ptr = unsafe.Pointer(m.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(m, (*TMemo).Free)
     return m
 }
@@ -677,7 +677,7 @@ func (m *TMemo) Lines() *TStrings {
     return AsStrings(Memo_GetLines(m.instance))
 }
 
-func (m *TMemo) SetLines(value IObject) {
+func (m *TMemo) SetLines(value IStrings) {
     Memo_SetLines(m.instance, CheckPtr(value))
 }
 

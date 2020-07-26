@@ -31,7 +31,7 @@ func NewPrinterSetupDialog(owner IComponent) *TPrinterSetupDialog {
     p := new(TPrinterSetupDialog)
     p.instance = PrinterSetupDialog_Create(CheckPtr(owner))
     p.ptr = unsafe.Pointer(p.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(p, (*TPrinterSetupDialog).Free)
     return p
 }

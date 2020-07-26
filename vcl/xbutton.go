@@ -31,7 +31,7 @@ func NewXButton(owner IComponent) *TXButton {
     x := new(TXButton)
     x.instance = XButton_Create(CheckPtr(owner))
     x.ptr = unsafe.Pointer(x.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(x, (*TXButton).Free)
     return x
 }

@@ -31,7 +31,7 @@ func NewCoolBar(owner IComponent) *TCoolBar {
     c := new(TCoolBar)
     c.instance = CoolBar_Create(CheckPtr(owner))
     c.ptr = unsafe.Pointer(c.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(c, (*TCoolBar).Free)
     return c
 }

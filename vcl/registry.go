@@ -32,7 +32,7 @@ func NewRegistry(aAccess uint32) *TRegistry {
     r := new(TRegistry)
     r.instance = Registry_Create(uintptr(aAccess))
     r.ptr = unsafe.Pointer(r.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(r, (*TRegistry).Free)
     return r
 }

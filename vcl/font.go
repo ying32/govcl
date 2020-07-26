@@ -31,7 +31,7 @@ func NewFont() *TFont {
     f := new(TFont)
     f.instance = Font_Create()
     f.ptr = unsafe.Pointer(f.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(f, (*TFont).Free)
     return f
 }

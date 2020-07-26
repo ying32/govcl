@@ -31,7 +31,7 @@ func NewFindDialog(owner IComponent) *TFindDialog {
     f := new(TFindDialog)
     f.instance = FindDialog_Create(CheckPtr(owner))
     f.ptr = unsafe.Pointer(f.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(f, (*TFindDialog).Free)
     return f
 }

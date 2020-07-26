@@ -31,7 +31,7 @@ func NewColorListBox(owner IComponent) *TColorListBox {
     c := new(TColorListBox)
     c.instance = ColorListBox_Create(CheckPtr(owner))
     c.ptr = unsafe.Pointer(c.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(c, (*TColorListBox).Free)
     return c
 }
@@ -863,7 +863,7 @@ func (c *TColorListBox) Items() *TStrings {
     return AsStrings(ColorListBox_GetItems(c.instance))
 }
 
-func (c *TColorListBox) SetItems(value IObject) {
+func (c *TColorListBox) SetItems(value IStrings) {
     ColorListBox_SetItems(c.instance, CheckPtr(value))
 }
 

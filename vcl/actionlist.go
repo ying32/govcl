@@ -31,7 +31,7 @@ func NewActionList(owner IComponent) *TActionList {
     a := new(TActionList)
     a.instance = ActionList_Create(CheckPtr(owner))
     a.ptr = unsafe.Pointer(a.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(a, (*TActionList).Free)
     return a
 }

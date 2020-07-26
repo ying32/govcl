@@ -31,7 +31,7 @@ func NewImageList(owner IComponent) *TImageList {
     i := new(TImageList)
     i.instance = ImageList_Create(CheckPtr(owner))
     i.ptr = unsafe.Pointer(i.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(i, (*TImageList).Free)
     return i
 }

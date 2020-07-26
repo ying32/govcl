@@ -31,7 +31,7 @@ func NewComboBox(owner IComponent) *TComboBox {
     c := new(TComboBox)
     c.instance = ComboBox_Create(CheckPtr(owner))
     c.ptr = unsafe.Pointer(c.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(c, (*TComboBox).Free)
     return c
 }
@@ -872,6 +872,10 @@ func (c *TComboBox) SetOnDrawItem(fn TDrawItemEvent) {
     ComboBox_SetOnDrawItem(c.instance, fn)
 }
 
+func (c *TComboBox) SetOnDropDown(fn TNotifyEvent) {
+    ComboBox_SetOnDropDown(c.instance, fn)
+}
+
 // 设置拖拽结束。
 //
 // Set End of drag.
@@ -938,7 +942,7 @@ func (c *TComboBox) Items() *TStrings {
     return AsStrings(ComboBox_GetItems(c.instance))
 }
 
-func (c *TComboBox) SetItems(value IObject) {
+func (c *TComboBox) SetItems(value IStrings) {
     ComboBox_SetItems(c.instance, CheckPtr(value))
 }
 

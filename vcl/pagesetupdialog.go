@@ -31,7 +31,7 @@ func NewPageSetupDialog(owner IComponent) *TPageSetupDialog {
     p := new(TPageSetupDialog)
     p.instance = PageSetupDialog_Create(CheckPtr(owner))
     p.ptr = unsafe.Pointer(p.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(p, (*TPageSetupDialog).Free)
     return p
 }

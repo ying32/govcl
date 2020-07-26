@@ -31,7 +31,7 @@ func NewRadioGroup(owner IComponent) *TRadioGroup {
     r := new(TRadioGroup)
     r.instance = RadioGroup_Create(CheckPtr(owner))
     r.ptr = unsafe.Pointer(r.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(r, (*TRadioGroup).Free)
     return r
 }
@@ -602,7 +602,7 @@ func (r *TRadioGroup) Items() *TStrings {
     return AsStrings(RadioGroup_GetItems(r.instance))
 }
 
-func (r *TRadioGroup) SetItems(value IObject) {
+func (r *TRadioGroup) SetItems(value IStrings) {
     RadioGroup_SetItems(r.instance, CheckPtr(value))
 }
 

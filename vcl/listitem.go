@@ -31,7 +31,7 @@ func NewListItem(AOwner *TListItems) *TListItem {
     l := new(TListItem)
     l.instance = ListItem_Create(CheckPtr(AOwner))
     l.ptr = unsafe.Pointer(l.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(l, (*TListItem).Free)
     return l
 }
@@ -335,7 +335,7 @@ func (l *TListItem) SubItems() *TStrings {
     return AsStrings(ListItem_GetSubItems(l.instance))
 }
 
-func (l *TListItem) SetSubItems(value IObject) {
+func (l *TListItem) SetSubItems(value IStrings) {
     ListItem_SetSubItems(l.instance, CheckPtr(value))
 }
 

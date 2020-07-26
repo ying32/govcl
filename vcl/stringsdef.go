@@ -8,7 +8,7 @@
 
 package vcl
 
-func (s *TStrings) AddStrings(list *TStrings) {
+func (s *TStrings) AddStrings(list IStrings) {
 	s.AddStrings3(list, false)
 }
 
@@ -20,7 +20,7 @@ func (s *TStrings) AddStrings2(sArr []string) {
 	}
 }
 
-func (s *TStrings) AddStrings3(list *TStrings, clearFirst bool) {
+func (s *TStrings) AddStrings3(list IStrings, clearFirst bool) {
 	if list == nil {
 		return
 	}

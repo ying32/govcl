@@ -31,7 +31,7 @@ func NewListBox(owner IComponent) *TListBox {
     l := new(TListBox)
     l.instance = ListBox_Create(CheckPtr(owner))
     l.ptr = unsafe.Pointer(l.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(l, (*TListBox).Free)
     return l
 }
@@ -694,7 +694,7 @@ func (l *TListBox) Items() *TStrings {
     return AsStrings(ListBox_GetItems(l.instance))
 }
 
-func (l *TListBox) SetItems(value IObject) {
+func (l *TListBox) SetItems(value IStrings) {
     ListBox_SetItems(l.instance, CheckPtr(value))
 }
 

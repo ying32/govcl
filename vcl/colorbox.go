@@ -31,7 +31,7 @@ func NewColorBox(owner IComponent) *TColorBox {
     c := new(TColorBox)
     c.instance = ColorBox_Create(CheckPtr(owner))
     c.ptr = unsafe.Pointer(c.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(c, (*TColorBox).Free)
     return c
 }
@@ -795,6 +795,10 @@ func (c *TColorBox) SetOnDragOver(fn TDragOverEvent) {
     ColorBox_SetOnDragOver(c.instance, fn)
 }
 
+func (c *TColorBox) SetOnDropDown(fn TNotifyEvent) {
+    ColorBox_SetOnDropDown(c.instance, fn)
+}
+
 // 设置拖拽结束。
 //
 // Set End of drag.
@@ -888,7 +892,7 @@ func (c *TColorBox) Items() *TStrings {
     return AsStrings(ColorBox_GetItems(c.instance))
 }
 
-func (c *TColorBox) SetItems(value IObject) {
+func (c *TColorBox) SetItems(value IStrings) {
     ColorBox_SetItems(c.instance, CheckPtr(value))
 }
 

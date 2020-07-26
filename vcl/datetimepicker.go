@@ -32,7 +32,7 @@ func NewDateTimePicker(owner IComponent) *TDateTimePicker {
     d := new(TDateTimePicker)
     d.instance = DateTimePicker_Create(CheckPtr(owner))
     d.ptr = unsafe.Pointer(d.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(d, (*TDateTimePicker).Free)
     return d
 }
@@ -762,6 +762,10 @@ func (d *TDateTimePicker) SetOnChange(fn TNotifyEvent) {
 // Set Context popup event, usually pop up when right click.
 func (d *TDateTimePicker) SetOnContextPopup(fn TContextPopupEvent) {
     DateTimePicker_SetOnContextPopup(d.instance, fn)
+}
+
+func (d *TDateTimePicker) SetOnDropDown(fn TNotifyEvent) {
+    DateTimePicker_SetOnDropDown(d.instance, fn)
 }
 
 // 设置焦点进入。

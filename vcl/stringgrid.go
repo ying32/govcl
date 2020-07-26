@@ -31,7 +31,7 @@ func NewStringGrid(owner IComponent) *TStringGrid {
     s := new(TStringGrid)
     s.instance = StringGrid_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(s, (*TStringGrid).Free)
     return s
 }
@@ -1917,7 +1917,7 @@ func (s *TStringGrid) Cols(Index int32) *TStrings {
     return AsStrings(StringGrid_GetCols(s.instance, Index))
 }
 
-func (s *TStringGrid) SetCols(Index int32, value IObject) {
+func (s *TStringGrid) SetCols(Index int32, value IStrings) {
     StringGrid_SetCols(s.instance, Index, CheckPtr(value))
 }
 
@@ -1933,7 +1933,7 @@ func (s *TStringGrid) Rows(Index int32) *TStrings {
     return AsStrings(StringGrid_GetRows(s.instance, Index))
 }
 
-func (s *TStringGrid) SetRows(Index int32, value IObject) {
+func (s *TStringGrid) SetRows(Index int32, value IStrings) {
     StringGrid_SetRows(s.instance, Index, CheckPtr(value))
 }
 

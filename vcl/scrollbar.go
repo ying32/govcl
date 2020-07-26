@@ -31,7 +31,7 @@ func NewScrollBar(owner IComponent) *TScrollBar {
     s := new(TScrollBar)
     s.instance = ScrollBar_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(s, (*TScrollBar).Free)
     return s
 }

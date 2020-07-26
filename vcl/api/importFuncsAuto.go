@@ -9330,6 +9330,10 @@ func ComboBox_SetOnDrawItem(obj uintptr, fn interface{}) {
     comboBox_SetOnDrawItem.Call(obj, addEventToMap(fn))
 }
 
+func ComboBox_SetOnDropDown(obj uintptr, fn interface{}) {
+    comboBox_SetOnDropDown.Call(obj, addEventToMap(fn))
+}
+
 func ComboBox_SetOnEndDrag(obj uintptr, fn interface{}) {
     comboBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -15233,6 +15237,10 @@ func ColorBox_SetOnDragDrop(obj uintptr, fn interface{}) {
 
 func ColorBox_SetOnDragOver(obj uintptr, fn interface{}) {
     colorBox_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func ColorBox_SetOnDropDown(obj uintptr, fn interface{}) {
+    colorBox_SetOnDropDown.Call(obj, addEventToMap(fn))
 }
 
 func ColorBox_SetOnEndDrag(obj uintptr, fn interface{}) {
@@ -22547,6 +22555,10 @@ func DateTimePicker_SetOnChange(obj uintptr, fn interface{}) {
 
 func DateTimePicker_SetOnContextPopup(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func DateTimePicker_SetOnDropDown(obj uintptr, fn interface{}) {
+    dateTimePicker_SetOnDropDown.Call(obj, addEventToMap(fn))
 }
 
 func DateTimePicker_SetOnEnter(obj uintptr, fn interface{}) {
@@ -57648,6 +57660,10 @@ func ComboBoxEx_SetOnDragDrop(obj uintptr, fn interface{}) {
 
 func ComboBoxEx_SetOnDragOver(obj uintptr, fn interface{}) {
     comboBoxEx_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func ComboBoxEx_SetOnDropDown(obj uintptr, fn interface{}) {
+    comboBoxEx_SetOnDropDown.Call(obj, addEventToMap(fn))
 }
 
 func ComboBoxEx_SetOnEndDock(obj uintptr, fn interface{}) {

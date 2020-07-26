@@ -31,7 +31,7 @@ func NewBitmap() *TBitmap {
     b := new(TBitmap)
     b.instance = Bitmap_Create()
     b.ptr = unsafe.Pointer(b.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(b, (*TBitmap).Free)
     return b
 }
@@ -142,12 +142,12 @@ func (b *TBitmap) HandleAllocated() bool {
 }
 
 // 文件流加载。
-func (b *TBitmap) LoadFromStream(Stream IObject) {
+func (b *TBitmap) LoadFromStream(Stream IStream) {
     Bitmap_LoadFromStream(b.instance, CheckPtr(Stream))
 }
 
 // 保存至流。
-func (b *TBitmap) SaveToStream(Stream IObject) {
+func (b *TBitmap) SaveToStream(Stream IStream) {
     Bitmap_SaveToStream(b.instance, CheckPtr(Stream))
 }
 

@@ -31,7 +31,7 @@ func NewLinkLabel(owner IComponent) *TLinkLabel {
     l := new(TLinkLabel)
     l.instance = LinkLabel_Create(CheckPtr(owner))
     l.ptr = unsafe.Pointer(l.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(l, (*TLinkLabel).Free)
     return l
 }

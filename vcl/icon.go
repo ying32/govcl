@@ -31,7 +31,7 @@ func NewIcon() *TIcon {
     i := new(TIcon)
     i.instance = Icon_Create()
     i.ptr = unsafe.Pointer(i.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(i, (*TIcon).Free)
     return i
 }
@@ -138,12 +138,12 @@ func (i *TIcon) HandleAllocated() bool {
 }
 
 // 文件流加载。
-func (i *TIcon) LoadFromStream(Stream IObject) {
+func (i *TIcon) LoadFromStream(Stream IStream) {
     Icon_LoadFromStream(i.instance, CheckPtr(Stream))
 }
 
 // 保存至流。
-func (i *TIcon) SaveToStream(Stream IObject) {
+func (i *TIcon) SaveToStream(Stream IStream) {
     Icon_SaveToStream(i.instance, CheckPtr(Stream))
 }
 

@@ -31,7 +31,7 @@ func NewValueListEditor(owner IComponent) *TValueListEditor {
     v := new(TValueListEditor)
     v.instance = ValueListEditor_Create(CheckPtr(owner))
     v.ptr = unsafe.Pointer(v.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(v, (*TValueListEditor).Free)
     return v
 }
@@ -794,7 +794,7 @@ func (v *TValueListEditor) Strings() *TStrings {
     return AsStrings(ValueListEditor_GetStrings(v.instance))
 }
 
-func (v *TValueListEditor) SetStrings(value IObject) {
+func (v *TValueListEditor) SetStrings(value IStrings) {
     ValueListEditor_SetStrings(v.instance, CheckPtr(value))
 }
 

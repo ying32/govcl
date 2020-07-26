@@ -32,7 +32,7 @@ func NewIniFile(filename string) *TIniFile {
     i := new(TIniFile)
     i.instance = IniFile_Create(GoStrToDStr(filename))
     i.ptr = unsafe.Pointer(i.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(i, (*TIniFile).Free)
     return i
 }
@@ -132,11 +132,11 @@ func (i *TIniFile) WriteString(Section string, Ident string, Value string) {
     IniFile_WriteString(i.instance, Section , Ident , Value)
 }
 
-func (i *TIniFile) ReadSections(Strings IObject) {
+func (i *TIniFile) ReadSections(Strings IStrings) {
     IniFile_ReadSections(i.instance, CheckPtr(Strings))
 }
 
-func (i *TIniFile) ReadSectionValues(Section string, Strings IObject) {
+func (i *TIniFile) ReadSectionValues(Section string, Strings IStrings) {
     IniFile_ReadSectionValues(i.instance, Section , CheckPtr(Strings))
 }
 

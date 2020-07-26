@@ -150,10 +150,10 @@ func InputCombo(aCaption, aPrompt string, aList []string) int32 {
 	obj := NewStringList()
 	defer obj.Free()
 	obj.AddStrings2(aList)
-	return InputCombo2(aCaption, aPrompt, AsStrings(obj))
+	return InputCombo2(aCaption, aPrompt, obj)
 }
 
-func InputCombo2(aCaption, aPrompt string, aList *TStrings) int32 {
+func InputCombo2(aCaption, aPrompt string, aList IStrings) int32 {
 	return api.DInputCombo(aCaption, aPrompt, CheckPtr(aList))
 }
 
@@ -161,10 +161,10 @@ func InputComboEx(aCaption, aPrompt string, aList []string, allowCustomText bool
 	obj := NewStringList()
 	defer obj.Free()
 	obj.AddStrings2(aList)
-	return InputComboEx2(aCaption, aPrompt, AsStrings(obj), allowCustomText)
+	return InputComboEx2(aCaption, aPrompt, obj, allowCustomText)
 }
 
-func InputComboEx2(aCaption, aPrompt string, aList *TStrings, allowCustomText bool) string {
+func InputComboEx2(aCaption, aPrompt string, aList IStrings, allowCustomText bool) string {
 	return api.DInputComboEx(aCaption, aPrompt, CheckPtr(aList), allowCustomText)
 }
 

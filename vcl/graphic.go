@@ -31,7 +31,7 @@ func NewGraphic() *TGraphic {
     g := new(TGraphic)
     g.instance = Graphic_Create()
     g.ptr = unsafe.Pointer(g.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(g, (*TGraphic).Free)
     return g
 }
@@ -141,12 +141,12 @@ func (g *TGraphic) SaveToFile(Filename string) {
 }
 
 // 文件流加载。
-func (g *TGraphic) LoadFromStream(Stream IObject) {
+func (g *TGraphic) LoadFromStream(Stream IStream) {
     Graphic_LoadFromStream(g.instance, CheckPtr(Stream))
 }
 
 // 保存至流。
-func (g *TGraphic) SaveToStream(Stream IObject) {
+func (g *TGraphic) SaveToStream(Stream IStream) {
     Graphic_SaveToStream(g.instance, CheckPtr(Stream))
 }
 

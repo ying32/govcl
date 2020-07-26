@@ -31,7 +31,7 @@ func NewMaskEdit(owner IComponent) *TMaskEdit {
     m := new(TMaskEdit)
     m.instance = MaskEdit_Create(CheckPtr(owner))
     m.ptr = unsafe.Pointer(m.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(m, (*TMaskEdit).Free)
     return m
 }

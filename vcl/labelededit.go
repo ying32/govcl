@@ -31,7 +31,7 @@ func NewLabeledEdit(owner IComponent) *TLabeledEdit {
     l := new(TLabeledEdit)
     l.instance = LabeledEdit_Create(CheckPtr(owner))
     l.ptr = unsafe.Pointer(l.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(l, (*TLabeledEdit).Free)
     return l
 }

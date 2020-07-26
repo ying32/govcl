@@ -31,7 +31,7 @@ func NewJPEGImage() *TJPEGImage {
     j := new(TJPEGImage)
     j.instance = JPEGImage_Create()
     j.ptr = unsafe.Pointer(j.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(j, (*TJPEGImage).Free)
     return j
 }
@@ -131,12 +131,12 @@ func (j *TJPEGImage) Assign(Source IObject) {
 }
 
 // 文件流加载。
-func (j *TJPEGImage) LoadFromStream(Stream IObject) {
+func (j *TJPEGImage) LoadFromStream(Stream IStream) {
     JPEGImage_LoadFromStream(j.instance, CheckPtr(Stream))
 }
 
 // 保存至流。
-func (j *TJPEGImage) SaveToStream(Stream IObject) {
+func (j *TJPEGImage) SaveToStream(Stream IStream) {
     JPEGImage_SaveToStream(j.instance, CheckPtr(Stream))
 }
 

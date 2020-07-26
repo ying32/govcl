@@ -31,7 +31,7 @@ func NewSpeedButton(owner IComponent) *TSpeedButton {
     s := new(TSpeedButton)
     s.instance = SpeedButton_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(s, (*TSpeedButton).Free)
     return s
 }

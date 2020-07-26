@@ -31,7 +31,7 @@ func NewList() *TList {
     l := new(TList)
     l.instance = List_Create()
     l.ptr = unsafe.Pointer(l.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(l, (*TList).Free)
     return l
 }

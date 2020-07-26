@@ -31,7 +31,7 @@ func NewTreeView(owner IComponent) *TTreeView {
     t := new(TTreeView)
     t.instance = TreeView_Create(CheckPtr(owner))
     t.ptr = unsafe.Pointer(t.instance)
-    // 不敢启用，因为不知道会发生什么...
+    // 不是TComponent应该是可以考虑加上的
     // runtime.SetFinalizer(t, (*TTreeView).Free)
     return t
 }
@@ -152,7 +152,7 @@ func (t *TTreeView) LoadFromFile(FileName string) {
 }
 
 // 文件流加载。
-func (t *TTreeView) LoadFromStream(Stream IObject) {
+func (t *TTreeView) LoadFromStream(Stream IStream) {
     TreeView_LoadFromStream(t.instance, CheckPtr(Stream))
 }
 
@@ -162,7 +162,7 @@ func (t *TTreeView) SaveToFile(FileName string) {
 }
 
 // 保存至流。
-func (t *TTreeView) SaveToStream(Stream IObject) {
+func (t *TTreeView) SaveToStream(Stream IStream) {
     TreeView_SaveToStream(t.instance, CheckPtr(Stream))
 }
 
