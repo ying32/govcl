@@ -453,6 +453,14 @@ func (m *TMonthCalendar) AnchorClient(ASpace int32) {
     MonthCalendar_AnchorClient(m.instance, ASpace)
 }
 
+func (m *TMonthCalendar) DateTime() time.Time {
+    return MonthCalendar_GetDateTime(m.instance)
+}
+
+func (m *TMonthCalendar) SetDateTime(value time.Time) {
+    MonthCalendar_SetDateTime(m.instance, value)
+}
+
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.

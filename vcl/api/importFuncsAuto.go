@@ -389,6 +389,10 @@ func Form_Free(obj uintptr) {
     form_Free.Call(obj)
 }
 
+func Form_Cascade(obj uintptr)  {
+    form_Cascade.Call(obj)
+}
+
 func Form_Close(obj uintptr)  {
     form_Close.Call(obj)
 }
@@ -22082,6 +22086,19 @@ func DateTimePicker_Free(obj uintptr) {
     dateTimePicker_Free.Call(obj)
 }
 
+func DateTimePicker_DateIsNull(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_DateIsNull.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_SelectDate(obj uintptr)  {
+    dateTimePicker_SelectDate.Call(obj)
+}
+
+func DateTimePicker_SelectTime(obj uintptr)  {
+    dateTimePicker_SelectTime.Call(obj)
+}
+
 func DateTimePicker_CanFocus(obj uintptr) bool {
     ret, _, _ := dateTimePicker_CanFocus.Call(obj)
     return DBoolToGoBool(ret)
@@ -22315,6 +22332,182 @@ func DateTimePicker_AnchorClient(obj uintptr, ASpace int32)  {
     dateTimePicker_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func DateTimePicker_GetArrowShape(obj uintptr) TArrowShape {
+    ret, _, _ := dateTimePicker_GetArrowShape.Call(obj)
+    return TArrowShape(ret)
+}
+
+func DateTimePicker_SetArrowShape(obj uintptr, value TArrowShape) {
+   dateTimePicker_SetArrowShape.Call(obj, uintptr(value))
+}
+
+func DateTimePicker_GetAutoAdvance(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetAutoAdvance.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_SetAutoAdvance(obj uintptr, value bool) {
+   dateTimePicker_SetAutoAdvance.Call(obj, GoBoolToDBool(value))
+}
+
+func DateTimePicker_GetAutoButtonSize(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetAutoButtonSize.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_SetAutoButtonSize(obj uintptr, value bool) {
+   dateTimePicker_SetAutoButtonSize.Call(obj, GoBoolToDBool(value))
+}
+
+func DateTimePicker_GetCascade(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetCascade.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_SetCascade(obj uintptr, value bool) {
+   dateTimePicker_SetCascade.Call(obj, GoBoolToDBool(value))
+}
+
+func DateTimePicker_GetCenturyFrom(obj uintptr) uint16 {
+    ret, _, _ := dateTimePicker_GetCenturyFrom.Call(obj)
+    return uint16(ret)
+}
+
+func DateTimePicker_SetCenturyFrom(obj uintptr, value uint16) {
+   dateTimePicker_SetCenturyFrom.Call(obj, uintptr(value))
+}
+
+func DateTimePicker_GetDateDisplayOrder(obj uintptr) TDateDisplayOrder {
+    ret, _, _ := dateTimePicker_GetDateDisplayOrder.Call(obj)
+    return TDateDisplayOrder(ret)
+}
+
+func DateTimePicker_SetDateDisplayOrder(obj uintptr, value TDateDisplayOrder) {
+   dateTimePicker_SetDateDisplayOrder.Call(obj, uintptr(value))
+}
+
+func DateTimePicker_GetDateSeparator(obj uintptr) string {
+    ret, _, _ := dateTimePicker_GetDateSeparator.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DateTimePicker_SetDateSeparator(obj uintptr, value string) {
+   dateTimePicker_SetDateSeparator.Call(obj, GoStrToDStr(value))
+}
+
+func DateTimePicker_GetLeadingZeros(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetLeadingZeros.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_SetLeadingZeros(obj uintptr, value bool) {
+   dateTimePicker_SetLeadingZeros.Call(obj, GoBoolToDBool(value))
+}
+
+func DateTimePicker_GetMonthNames(obj uintptr) string {
+    ret, _, _ := dateTimePicker_GetMonthNames.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DateTimePicker_SetMonthNames(obj uintptr, value string) {
+   dateTimePicker_SetMonthNames.Call(obj, GoStrToDStr(value))
+}
+
+func DateTimePicker_GetShowMonthNames(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetShowMonthNames.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_SetShowMonthNames(obj uintptr, value bool) {
+   dateTimePicker_SetShowMonthNames.Call(obj, GoBoolToDBool(value))
+}
+
+func DateTimePicker_GetNullInputAllowed(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetNullInputAllowed.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_SetNullInputAllowed(obj uintptr, value bool) {
+   dateTimePicker_SetNullInputAllowed.Call(obj, GoBoolToDBool(value))
+}
+
+func DateTimePicker_GetOptions(obj uintptr) TDateTimePickerOptions {
+    ret, _, _ := dateTimePicker_GetOptions.Call(obj)
+    return TDateTimePickerOptions(ret)
+}
+
+func DateTimePicker_SetOptions(obj uintptr, value TDateTimePickerOptions) {
+   dateTimePicker_SetOptions.Call(obj, uintptr(value))
+}
+
+func DateTimePicker_GetShowCheckBox(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetShowCheckBox.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_SetShowCheckBox(obj uintptr, value bool) {
+   dateTimePicker_SetShowCheckBox.Call(obj, GoBoolToDBool(value))
+}
+
+func DateTimePicker_GetReadOnly(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetReadOnly.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_SetReadOnly(obj uintptr, value bool) {
+   dateTimePicker_SetReadOnly.Call(obj, GoBoolToDBool(value))
+}
+
+func DateTimePicker_GetTextForNullDate(obj uintptr) string {
+    ret, _, _ := dateTimePicker_GetTextForNullDate.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DateTimePicker_SetTextForNullDate(obj uintptr, value string) {
+   dateTimePicker_SetTextForNullDate.Call(obj, GoStrToDStr(value))
+}
+
+func DateTimePicker_GetTimeDisplay(obj uintptr) TTimeDisplay {
+    ret, _, _ := dateTimePicker_GetTimeDisplay.Call(obj)
+    return TTimeDisplay(ret)
+}
+
+func DateTimePicker_SetTimeDisplay(obj uintptr, value TTimeDisplay) {
+   dateTimePicker_SetTimeDisplay.Call(obj, uintptr(value))
+}
+
+func DateTimePicker_GetTimeSeparator(obj uintptr) string {
+    ret, _, _ := dateTimePicker_GetTimeSeparator.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DateTimePicker_SetTimeSeparator(obj uintptr, value string) {
+   dateTimePicker_SetTimeSeparator.Call(obj, GoStrToDStr(value))
+}
+
+func DateTimePicker_GetTrailingSeparator(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetTrailingSeparator.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_SetTrailingSeparator(obj uintptr, value bool) {
+   dateTimePicker_SetTrailingSeparator.Call(obj, GoBoolToDBool(value))
+}
+
+func DateTimePicker_GetUseDefaultSeparators(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetUseDefaultSeparators.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_SetUseDefaultSeparators(obj uintptr, value bool) {
+   dateTimePicker_SetUseDefaultSeparators.Call(obj, GoBoolToDBool(value))
+}
+
+func DateTimePicker_GetDroppedDown(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetDroppedDown.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func DateTimePicker_GetDateTime(obj uintptr) time.Time {
     ret, _, _ := dateTimePicker_GetDateTime.Call(obj)
     return time.Unix(int64(ret), 0)
@@ -22322,11 +22515,6 @@ func DateTimePicker_GetDateTime(obj uintptr) time.Time {
 
 func DateTimePicker_SetDateTime(obj uintptr, value time.Time) {
    dateTimePicker_SetDateTime.Call(obj, uintptr(value.Unix()))
-}
-
-func DateTimePicker_GetDroppedDown(obj uintptr) bool {
-    ret, _, _ := dateTimePicker_GetDroppedDown.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func DateTimePicker_GetAlign(obj uintptr) TAlign {
@@ -23144,6 +23332,15 @@ func MonthCalendar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func MonthCalendar_AnchorClient(obj uintptr, ASpace int32)  {
     monthCalendar_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func MonthCalendar_GetDateTime(obj uintptr) time.Time {
+    ret, _, _ := monthCalendar_GetDateTime.Call(obj)
+    return time.Unix(int64(ret), 0)
+}
+
+func MonthCalendar_SetDateTime(obj uintptr, value time.Time) {
+   monthCalendar_SetDateTime.Call(obj, uintptr(value.Unix()))
 }
 
 func MonthCalendar_GetAlign(obj uintptr) TAlign {

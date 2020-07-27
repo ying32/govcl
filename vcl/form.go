@@ -123,6 +123,10 @@ func TFormClass() TClass {
     return Form_StaticClassType()
 }
 
+func (f *TForm) Cascade() {
+    Form_Cascade(f.instance)
+}
+
 // 关闭。
 func (f *TForm) Close() {
     Form_Close(f.instance)

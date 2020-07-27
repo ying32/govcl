@@ -124,6 +124,18 @@ func TDateTimePickerClass() TClass {
     return DateTimePicker_StaticClassType()
 }
 
+func (d *TDateTimePicker) DateIsNull() bool {
+    return DateTimePicker_DateIsNull(d.instance)
+}
+
+func (d *TDateTimePicker) SelectDate() {
+    DateTimePicker_SelectDate(d.instance)
+}
+
+func (d *TDateTimePicker) SelectTime() {
+    DateTimePicker_SelectTime(d.instance)
+}
+
 // 是否可以获得焦点。
 func (d *TDateTimePicker) CanFocus() bool {
     return DateTimePicker_CanFocus(d.instance)
@@ -453,16 +465,170 @@ func (d *TDateTimePicker) AnchorClient(ASpace int32) {
     DateTimePicker_AnchorClient(d.instance, ASpace)
 }
 
+func (d *TDateTimePicker) ArrowShape() TArrowShape {
+    return DateTimePicker_GetArrowShape(d.instance)
+}
+
+func (d *TDateTimePicker) SetArrowShape(value TArrowShape) {
+    DateTimePicker_SetArrowShape(d.instance, value)
+}
+
+func (d *TDateTimePicker) AutoAdvance() bool {
+    return DateTimePicker_GetAutoAdvance(d.instance)
+}
+
+func (d *TDateTimePicker) SetAutoAdvance(value bool) {
+    DateTimePicker_SetAutoAdvance(d.instance, value)
+}
+
+func (d *TDateTimePicker) AutoButtonSize() bool {
+    return DateTimePicker_GetAutoButtonSize(d.instance)
+}
+
+func (d *TDateTimePicker) SetAutoButtonSize(value bool) {
+    DateTimePicker_SetAutoButtonSize(d.instance, value)
+}
+
+func (d *TDateTimePicker) Cascade() bool {
+    return DateTimePicker_GetCascade(d.instance)
+}
+
+func (d *TDateTimePicker) SetCascade(value bool) {
+    DateTimePicker_SetCascade(d.instance, value)
+}
+
+func (d *TDateTimePicker) CenturyFrom() uint16 {
+    return DateTimePicker_GetCenturyFrom(d.instance)
+}
+
+func (d *TDateTimePicker) SetCenturyFrom(value uint16) {
+    DateTimePicker_SetCenturyFrom(d.instance, value)
+}
+
+func (d *TDateTimePicker) DateDisplayOrder() TDateDisplayOrder {
+    return DateTimePicker_GetDateDisplayOrder(d.instance)
+}
+
+func (d *TDateTimePicker) SetDateDisplayOrder(value TDateDisplayOrder) {
+    DateTimePicker_SetDateDisplayOrder(d.instance, value)
+}
+
+func (d *TDateTimePicker) DateSeparator() string {
+    return DateTimePicker_GetDateSeparator(d.instance)
+}
+
+func (d *TDateTimePicker) SetDateSeparator(value string) {
+    DateTimePicker_SetDateSeparator(d.instance, value)
+}
+
+func (d *TDateTimePicker) LeadingZeros() bool {
+    return DateTimePicker_GetLeadingZeros(d.instance)
+}
+
+func (d *TDateTimePicker) SetLeadingZeros(value bool) {
+    DateTimePicker_SetLeadingZeros(d.instance, value)
+}
+
+func (d *TDateTimePicker) MonthNames() string {
+    return DateTimePicker_GetMonthNames(d.instance)
+}
+
+func (d *TDateTimePicker) SetMonthNames(value string) {
+    DateTimePicker_SetMonthNames(d.instance, value)
+}
+
+func (d *TDateTimePicker) ShowMonthNames() bool {
+    return DateTimePicker_GetShowMonthNames(d.instance)
+}
+
+func (d *TDateTimePicker) SetShowMonthNames(value bool) {
+    DateTimePicker_SetShowMonthNames(d.instance, value)
+}
+
+func (d *TDateTimePicker) NullInputAllowed() bool {
+    return DateTimePicker_GetNullInputAllowed(d.instance)
+}
+
+func (d *TDateTimePicker) SetNullInputAllowed(value bool) {
+    DateTimePicker_SetNullInputAllowed(d.instance, value)
+}
+
+func (d *TDateTimePicker) Options() TDateTimePickerOptions {
+    return DateTimePicker_GetOptions(d.instance)
+}
+
+func (d *TDateTimePicker) SetOptions(value TDateTimePickerOptions) {
+    DateTimePicker_SetOptions(d.instance, value)
+}
+
+func (d *TDateTimePicker) ShowCheckBox() bool {
+    return DateTimePicker_GetShowCheckBox(d.instance)
+}
+
+func (d *TDateTimePicker) SetShowCheckBox(value bool) {
+    DateTimePicker_SetShowCheckBox(d.instance, value)
+}
+
+// 获取只读。
+func (d *TDateTimePicker) ReadOnly() bool {
+    return DateTimePicker_GetReadOnly(d.instance)
+}
+
+// 设置只读。
+func (d *TDateTimePicker) SetReadOnly(value bool) {
+    DateTimePicker_SetReadOnly(d.instance, value)
+}
+
+func (d *TDateTimePicker) TextForNullDate() string {
+    return DateTimePicker_GetTextForNullDate(d.instance)
+}
+
+func (d *TDateTimePicker) SetTextForNullDate(value string) {
+    DateTimePicker_SetTextForNullDate(d.instance, value)
+}
+
+func (d *TDateTimePicker) TimeDisplay() TTimeDisplay {
+    return DateTimePicker_GetTimeDisplay(d.instance)
+}
+
+func (d *TDateTimePicker) SetTimeDisplay(value TTimeDisplay) {
+    DateTimePicker_SetTimeDisplay(d.instance, value)
+}
+
+func (d *TDateTimePicker) TimeSeparator() string {
+    return DateTimePicker_GetTimeSeparator(d.instance)
+}
+
+func (d *TDateTimePicker) SetTimeSeparator(value string) {
+    DateTimePicker_SetTimeSeparator(d.instance, value)
+}
+
+func (d *TDateTimePicker) TrailingSeparator() bool {
+    return DateTimePicker_GetTrailingSeparator(d.instance)
+}
+
+func (d *TDateTimePicker) SetTrailingSeparator(value bool) {
+    DateTimePicker_SetTrailingSeparator(d.instance, value)
+}
+
+func (d *TDateTimePicker) UseDefaultSeparators() bool {
+    return DateTimePicker_GetUseDefaultSeparators(d.instance)
+}
+
+func (d *TDateTimePicker) SetUseDefaultSeparators(value bool) {
+    DateTimePicker_SetUseDefaultSeparators(d.instance, value)
+}
+
+func (d *TDateTimePicker) DroppedDown() bool {
+    return DateTimePicker_GetDroppedDown(d.instance)
+}
+
 func (d *TDateTimePicker) DateTime() time.Time {
     return DateTimePicker_GetDateTime(d.instance)
 }
 
 func (d *TDateTimePicker) SetDateTime(value time.Time) {
     DateTimePicker_SetDateTime(d.instance, value)
-}
-
-func (d *TDateTimePicker) DroppedDown() bool {
-    return DateTimePicker_GetDroppedDown(d.instance)
 }
 
 // 获取控件自动调整。

@@ -2160,3 +2160,83 @@ const (
 	PoNone = iota + 0
 	PoHeaderClick
 )
+
+//ENUM:
+type TDisplaySetting int32
+
+const (
+	DsShowHeadings = iota + 0
+	DsShowDayNames
+	DsNoMonthChange
+	DsShowWeekNumbers
+	DsStartMonday
+)
+
+//ENUM:
+type TTimeFormat int32
+
+const (
+	Tf12 = iota + 0 // 12 hours format, with am/pm string
+	Tf24            // 24 hours format
+)
+
+//ENUM:
+type TTimeDisplay int32
+
+const (
+	TdHM    = iota + 0 // hour and minute
+	TdHMS              // hour Minute and second
+	TdHMSMs            // hour Minute Second and milisecond
+)
+
+//ENUM:
+type TArrowShape int32
+
+const (
+	AsClassicSmaller = iota + 0
+	AsClassicLarger
+	AsModernSmaller
+	AsModernLarger
+	AsYetAnotherShape
+	AsTheme
+)
+
+//ENUM:
+type TDateDisplayOrder int32
+
+const (
+	DdoDMY = iota + 0
+	DdoMDY
+	DdoYMD
+	DdoTryDefault
+)
+
+//ENUM:
+type TDateTimePart int32
+
+const (
+	DtpDay = iota + 0
+	DtpMonth
+	DtpYear
+	DtpHour
+	DtpMinute
+	DtpSecond
+	DtpMiliSec
+	DtpAMPM
+)
+
+//SET:TDateTimePart
+type TDateTimeParts = TSet
+
+//ENUM:
+type TDateTimePickerOption int32
+
+const (
+	DtpoDoChangeOnSetDateTime = iota + 0
+	DtpoEnabledIfUnchecked
+	DtpoAutoCheck
+	DtpoFlatButton
+)
+
+//SET:TDateTimePickerOption
+type TDateTimePickerOptions = TSet
