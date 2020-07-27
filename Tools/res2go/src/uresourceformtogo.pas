@@ -76,7 +76,7 @@ const
      先不管了，
   }
   // 特殊
-  CommonEventType: array[0..137] of TEventType = (
+  CommonEventType: array[0..138] of TEventType = (
 
   (Name: 'Exception'; ControlClassName: 'TApplication'; ImportTypePkg: False; Params: 'sender vcl.IObject, e vcl.Exception'),
   (Name: 'Destroy'; ControlClassName: 'TForm'; ImportTypePkg: False; Params: 'sender vcl.IObject'),
@@ -169,6 +169,7 @@ const
   (Name: 'Replace'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
   (Name: 'TopLeftChanged'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
   (Name: 'SectionEndDrag'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'DropDown'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
   (Name: 'ConstrainedResize'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, minWidth, minHeight, maxWidth, maxHeight *int32'),
   (Name: 'AlignPosition'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender *vcl.TWinControl, control *vcl.TControl, newLeft, newTop, newWidth, newHeight *int32, alignRect *types.TRect, alignInfo types.TAlignInfo'),
   (Name: 'ContextPopup'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, mousePos types.TPoint, handled *bool'),
@@ -195,27 +196,27 @@ const
   (Name: 'GetEditText'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32, value *string'),
   (Name: 'SetEditText'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32, value string'),
   (Name: 'SelectCell'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32, canSelect *bool'),
-  (Name: 'OnAfterSelection'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32'),
-  (Name: 'OnBeforeSelection'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32'),
-  (Name: 'OnButtonClick'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32'),
-  (Name: 'OnCheckboxToggled'; ControlClassName: 'TStringGrid'; ImportTypePkg: True; Params: 'sender vcl.IObject, aCol, aRow int32, aState types.TCheckBoxState'),
-  (Name: 'OnColRowDeleted'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, sIndex, tIndex int32'),
-  (Name: 'OnColRowExchanged'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, sIndex, tIndex int32'),
-  (Name: 'OnColRowInserted'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, sIndex, tIndex int32'),
-  (Name: 'OnColRowMoved'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, sIndex, tIndex int32'),
-  (Name: 'OnCompareCells'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, ACol, ARow, BCol, BRow int32, result *int32'),
-  (Name: 'OnEditingDone'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-  (Name: 'OnGetCellHint'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, ACol, ARow int32, hintText *string'),
-  (Name: 'OnGetCheckboxState'; ControlClassName: 'TStringGrid'; ImportTypePkg: True; Params: 'sender vcl.IObject, ACol, ARow int32, value *types.TCheckBoxState'),
-  (Name: 'OnSetCheckboxState'; ControlClassName: 'TStringGrid'; ImportTypePkg: True; Params: 'sender vcl.IObject, ACol, ARow int32, Value types.TCheckBoxState'),
-  (Name: 'OnHeaderClick'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, index int32'),
-  (Name: 'OnHeaderSized'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, index int32'),
-  (Name: 'OnHeaderSizing'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, aIndex, aSize int32'),
-  (Name: 'OnPickListSelect'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-  (Name: 'OnSelection'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32'),
-  (Name: 'OnSelectEditor'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32, editor **vcl.TWinControl'),
-  (Name: 'OnUserCheckboxBitmap'; ControlClassName: 'TStringGrid'; ImportTypePkg: True; Params: 'sender vcl.IObject, aCol, aRow int32, CheckedState types.TCheckBoxState, aBitmap **vcl.TBitmap'),
-  (Name: 'OnValidateEntry'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32, oldValue string, newValue *string')
+  (Name: 'AfterSelection'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32'),
+  (Name: 'BeforeSelection'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32'),
+  (Name: 'ButtonClick'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32'),
+  (Name: 'CheckboxToggled'; ControlClassName: 'TStringGrid'; ImportTypePkg: True; Params: 'sender vcl.IObject, aCol, aRow int32, aState types.TCheckBoxState'),
+  (Name: 'ColRowDeleted'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, sIndex, tIndex int32'),
+  (Name: 'ColRowExchanged'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, sIndex, tIndex int32'),
+  (Name: 'ColRowInserted'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, sIndex, tIndex int32'),
+  (Name: 'ColRowMoved'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, sIndex, tIndex int32'),
+  (Name: 'CompareCells'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, ACol, ARow, BCol, BRow int32, result *int32'),
+  (Name: 'EditingDone'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'GetCellHint'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, ACol, ARow int32, hintText *string'),
+  (Name: 'GetCheckboxState'; ControlClassName: 'TStringGrid'; ImportTypePkg: True; Params: 'sender vcl.IObject, ACol, ARow int32, value *types.TCheckBoxState'),
+  (Name: 'SetCheckboxState'; ControlClassName: 'TStringGrid'; ImportTypePkg: True; Params: 'sender vcl.IObject, ACol, ARow int32, Value types.TCheckBoxState'),
+  (Name: 'HeaderClick'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, index int32'),
+  (Name: 'HeaderSized'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, index int32'),
+  (Name: 'HeaderSizing'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, isColumn bool, aIndex, aSize int32'),
+  (Name: 'PickListSelect'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+  (Name: 'Selection'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32'),
+  (Name: 'SelectEditor'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32, editor **vcl.TWinControl'),
+  (Name: 'UserCheckboxBitmap'; ControlClassName: 'TStringGrid'; ImportTypePkg: True; Params: 'sender vcl.IObject, aCol, aRow int32, CheckedState types.TCheckBoxState, aBitmap **vcl.TBitmap'),
+  (Name: 'ValidateEntry'; ControlClassName: 'TStringGrid'; ImportTypePkg: False; Params: 'sender vcl.IObject, aCol, aRow int32, oldValue string, newValue *string')
  );
 
 {$I supportsComponents.inc}
