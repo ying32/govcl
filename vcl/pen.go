@@ -31,8 +31,7 @@ func NewPen() *TPen {
     p := new(TPen)
     p.instance = Pen_Create()
     p.ptr = unsafe.Pointer(p.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(p, (*TPen).Free)
+    setFinalizer(p, (*TPen).Free)
     return p
 }
 

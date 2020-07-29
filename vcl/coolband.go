@@ -31,8 +31,7 @@ func NewCoolBand(AOwner *TCollection) *TCoolBand {
     c := new(TCoolBand)
     c.instance = CoolBand_Create(CheckPtr(AOwner))
     c.ptr = unsafe.Pointer(c.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(c, (*TCoolBand).Free)
+    setFinalizer(c, (*TCoolBand).Free)
     return c
 }
 

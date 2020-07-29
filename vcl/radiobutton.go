@@ -31,8 +31,6 @@ func NewRadioButton(owner IComponent) *TRadioButton {
     r := new(TRadioButton)
     r.instance = RadioButton_Create(CheckPtr(owner))
     r.ptr = unsafe.Pointer(r.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(r, (*TRadioButton).Free)
     return r
 }
 

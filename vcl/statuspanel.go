@@ -31,8 +31,7 @@ func NewStatusPanel(AOwner *TCollection) *TStatusPanel {
     s := new(TStatusPanel)
     s.instance = StatusPanel_Create(CheckPtr(AOwner))
     s.ptr = unsafe.Pointer(s.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(s, (*TStatusPanel).Free)
+    setFinalizer(s, (*TStatusPanel).Free)
     return s
 }
 

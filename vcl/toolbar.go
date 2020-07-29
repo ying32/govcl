@@ -31,8 +31,6 @@ func NewToolBar(owner IComponent) *TToolBar {
     t := new(TToolBar)
     t.instance = ToolBar_Create(CheckPtr(owner))
     t.ptr = unsafe.Pointer(t.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(t, (*TToolBar).Free)
     return t
 }
 

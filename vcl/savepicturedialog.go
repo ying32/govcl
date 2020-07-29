@@ -31,8 +31,6 @@ func NewSavePictureDialog(owner IComponent) *TSavePictureDialog {
     s := new(TSavePictureDialog)
     s.instance = SavePictureDialog_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(s, (*TSavePictureDialog).Free)
     return s
 }
 

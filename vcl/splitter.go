@@ -31,8 +31,6 @@ func NewSplitter(owner IComponent) *TSplitter {
     s := new(TSplitter)
     s.instance = Splitter_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(s, (*TSplitter).Free)
     return s
 }
 

@@ -31,8 +31,7 @@ func NewDragDockObject(AOwner IControl) *TDragDockObject {
     d := new(TDragDockObject)
     d.instance = DragDockObject_Create(CheckPtr(AOwner))
     d.ptr = unsafe.Pointer(d.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(d, (*TDragDockObject).Free)
+    setFinalizer(d, (*TDragDockObject).Free)
     return d
 }
 

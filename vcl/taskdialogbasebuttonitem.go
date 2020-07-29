@@ -31,8 +31,7 @@ func NewTaskDialogBaseButtonItem(AOwner *TCollection) *TTaskDialogBaseButtonItem
     t := new(TTaskDialogBaseButtonItem)
     t.instance = TaskDialogBaseButtonItem_Create(CheckPtr(AOwner))
     t.ptr = unsafe.Pointer(t.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(t, (*TTaskDialogBaseButtonItem).Free)
+    setFinalizer(t, (*TTaskDialogBaseButtonItem).Free)
     return t
 }
 

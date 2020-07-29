@@ -31,8 +31,7 @@ func NewStrings() *TStrings {
     s := new(TStrings)
     s.instance = Strings_Create()
     s.ptr = unsafe.Pointer(s.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(s, (*TStrings).Free)
+    setFinalizer(s, (*TStrings).Free)
     return s
 }
 

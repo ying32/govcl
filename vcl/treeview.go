@@ -31,8 +31,6 @@ func NewTreeView(owner IComponent) *TTreeView {
     t := new(TTreeView)
     t.instance = TreeView_Create(CheckPtr(owner))
     t.ptr = unsafe.Pointer(t.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(t, (*TTreeView).Free)
     return t
 }
 

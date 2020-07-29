@@ -31,8 +31,7 @@ func NewJPEGImage() *TJPEGImage {
     j := new(TJPEGImage)
     j.instance = JPEGImage_Create()
     j.ptr = unsafe.Pointer(j.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(j, (*TJPEGImage).Free)
+    setFinalizer(j, (*TJPEGImage).Free)
     return j
 }
 

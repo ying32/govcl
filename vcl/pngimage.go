@@ -31,8 +31,7 @@ func NewPngImage() *TPngImage {
     p := new(TPngImage)
     p.instance = PngImage_Create()
     p.ptr = unsafe.Pointer(p.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(p, (*TPngImage).Free)
+    setFinalizer(p, (*TPngImage).Free)
     return p
 }
 

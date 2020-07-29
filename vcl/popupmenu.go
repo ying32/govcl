@@ -31,8 +31,6 @@ func NewPopupMenu(owner IComponent) *TPopupMenu {
     p := new(TPopupMenu)
     p.instance = PopupMenu_Create(CheckPtr(owner))
     p.ptr = unsafe.Pointer(p.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(p, (*TPopupMenu).Free)
     return p
 }
 

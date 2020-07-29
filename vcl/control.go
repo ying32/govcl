@@ -31,8 +31,6 @@ func NewControl(owner IComponent) *TControl {
     c := new(TControl)
     c.instance = Control_Create(CheckPtr(owner))
     c.ptr = unsafe.Pointer(c.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(c, (*TControl).Free)
     return c
 }
 

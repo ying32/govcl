@@ -32,8 +32,7 @@ func NewIniFile(filename string) *TIniFile {
     i := new(TIniFile)
     i.instance = IniFile_Create(GoStrToDStr(filename))
     i.ptr = unsafe.Pointer(i.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(i, (*TIniFile).Free)
+    setFinalizer(i, (*TIniFile).Free)
     return i
 }
 

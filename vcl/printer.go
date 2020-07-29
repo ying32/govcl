@@ -31,8 +31,7 @@ func NewPrinter() *TPrinter {
     p := new(TPrinter)
     p.instance = Printer_Create()
     p.ptr = unsafe.Pointer(p.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(p, (*TPrinter).Free)
+    setFinalizer(p, (*TPrinter).Free)
     return p
 }
 

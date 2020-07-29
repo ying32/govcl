@@ -31,8 +31,6 @@ func NewForm(owner IComponent) *TForm {
     f := new(TForm)
     f.instance = Form_Create(CheckPtr(owner))
     f.ptr = unsafe.Pointer(f.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(f, (*TForm).Free)
     return f
 }
 

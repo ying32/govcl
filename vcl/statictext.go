@@ -31,8 +31,6 @@ func NewStaticText(owner IComponent) *TStaticText {
     s := new(TStaticText)
     s.instance = StaticText_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(s, (*TStaticText).Free)
     return s
 }
 

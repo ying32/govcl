@@ -31,8 +31,6 @@ func NewWinControl(owner IComponent) *TWinControl {
     w := new(TWinControl)
     w.instance = WinControl_Create(CheckPtr(owner))
     w.ptr = unsafe.Pointer(w.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(w, (*TWinControl).Free)
     return w
 }
 

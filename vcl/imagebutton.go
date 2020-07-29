@@ -31,8 +31,6 @@ func NewImageButton(owner IComponent) *TImageButton {
     i := new(TImageButton)
     i.instance = ImageButton_Create(CheckPtr(owner))
     i.ptr = unsafe.Pointer(i.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(i, (*TImageButton).Free)
     return i
 }
 

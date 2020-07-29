@@ -31,8 +31,6 @@ func NewProgressBar(owner IComponent) *TProgressBar {
     p := new(TProgressBar)
     p.instance = ProgressBar_Create(CheckPtr(owner))
     p.ptr = unsafe.Pointer(p.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(p, (*TProgressBar).Free)
     return p
 }
 

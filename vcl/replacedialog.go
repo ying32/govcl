@@ -31,8 +31,6 @@ func NewReplaceDialog(owner IComponent) *TReplaceDialog {
     r := new(TReplaceDialog)
     r.instance = ReplaceDialog_Create(CheckPtr(owner))
     r.ptr = unsafe.Pointer(r.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(r, (*TReplaceDialog).Free)
     return r
 }
 

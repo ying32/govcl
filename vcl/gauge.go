@@ -31,8 +31,6 @@ func NewGauge(owner IComponent) *TGauge {
     g := new(TGauge)
     g.instance = Gauge_Create(CheckPtr(owner))
     g.ptr = unsafe.Pointer(g.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(g, (*TGauge).Free)
     return g
 }
 

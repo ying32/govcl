@@ -31,8 +31,6 @@ func NewShape(owner IComponent) *TShape {
     s := new(TShape)
     s.instance = Shape_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(s, (*TShape).Free)
     return s
 }
 

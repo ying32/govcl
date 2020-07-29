@@ -31,8 +31,7 @@ func NewBrush() *TBrush {
     b := new(TBrush)
     b.instance = Brush_Create()
     b.ptr = unsafe.Pointer(b.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(b, (*TBrush).Free)
+    setFinalizer(b, (*TBrush).Free)
     return b
 }
 

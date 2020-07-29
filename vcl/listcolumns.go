@@ -31,8 +31,7 @@ func NewListColumns(AOwner *TListView) *TListColumns {
     l := new(TListColumns)
     l.instance = ListColumns_Create(CheckPtr(AOwner))
     l.ptr = unsafe.Pointer(l.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(l, (*TListColumns).Free)
+    setFinalizer(l, (*TListColumns).Free)
     return l
 }
 

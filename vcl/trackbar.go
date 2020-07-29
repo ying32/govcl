@@ -31,8 +31,6 @@ func NewTrackBar(owner IComponent) *TTrackBar {
     t := new(TTrackBar)
     t.instance = TrackBar_Create(CheckPtr(owner))
     t.ptr = unsafe.Pointer(t.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(t, (*TTrackBar).Free)
     return t
 }
 

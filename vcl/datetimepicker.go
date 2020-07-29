@@ -32,8 +32,6 @@ func NewDateTimePicker(owner IComponent) *TDateTimePicker {
     d := new(TDateTimePicker)
     d.instance = DateTimePicker_Create(CheckPtr(owner))
     d.ptr = unsafe.Pointer(d.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(d, (*TDateTimePicker).Free)
     return d
 }
 

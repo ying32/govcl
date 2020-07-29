@@ -31,8 +31,7 @@ func NewListColumn(AOwner *TCollection) *TListColumn {
     l := new(TListColumn)
     l.instance = ListColumn_Create(CheckPtr(AOwner))
     l.ptr = unsafe.Pointer(l.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(l, (*TListColumn).Free)
+    setFinalizer(l, (*TListColumn).Free)
     return l
 }
 

@@ -31,8 +31,6 @@ func NewPanel(owner IComponent) *TPanel {
     p := new(TPanel)
     p.instance = Panel_Create(CheckPtr(owner))
     p.ptr = unsafe.Pointer(p.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(p, (*TPanel).Free)
     return p
 }
 

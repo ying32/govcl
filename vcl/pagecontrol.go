@@ -31,8 +31,6 @@ func NewPageControl(owner IComponent) *TPageControl {
     p := new(TPageControl)
     p.instance = PageControl_Create(CheckPtr(owner))
     p.ptr = unsafe.Pointer(p.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(p, (*TPageControl).Free)
     return p
 }
 

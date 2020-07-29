@@ -31,8 +31,7 @@ func NewGIFImage() *TGIFImage {
     g := new(TGIFImage)
     g.instance = GIFImage_Create()
     g.ptr = unsafe.Pointer(g.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(g, (*TGIFImage).Free)
+    setFinalizer(g, (*TGIFImage).Free)
     return g
 }
 

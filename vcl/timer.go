@@ -31,8 +31,6 @@ func NewTimer(owner IComponent) *TTimer {
     t := new(TTimer)
     t.instance = Timer_Create(CheckPtr(owner))
     t.ptr = unsafe.Pointer(t.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(t, (*TTimer).Free)
     return t
 }
 

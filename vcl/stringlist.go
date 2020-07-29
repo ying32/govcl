@@ -31,8 +31,7 @@ func NewStringList() *TStringList {
     s := new(TStringList)
     s.instance = StringList_Create()
     s.ptr = unsafe.Pointer(s.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(s, (*TStringList).Free)
+    setFinalizer(s, (*TStringList).Free)
     return s
 }
 

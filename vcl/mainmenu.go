@@ -31,8 +31,6 @@ func NewMainMenu(owner IComponent) *TMainMenu {
     m := new(TMainMenu)
     m.instance = MainMenu_Create(CheckPtr(owner))
     m.ptr = unsafe.Pointer(m.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(m, (*TMainMenu).Free)
     return m
 }
 

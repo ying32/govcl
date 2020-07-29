@@ -31,8 +31,6 @@ func NewRichEdit(owner IComponent) *TRichEdit {
     r := new(TRichEdit)
     r.instance = RichEdit_Create(CheckPtr(owner))
     r.ptr = unsafe.Pointer(r.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(r, (*TRichEdit).Free)
     return r
 }
 

@@ -31,8 +31,7 @@ func NewCollection(AOwner *TCollectionItem) *TCollection {
     c := new(TCollection)
     c.instance = Collection_Create(CheckPtr(AOwner))
     c.ptr = unsafe.Pointer(c.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(c, (*TCollection).Free)
+    setFinalizer(c, (*TCollection).Free)
     return c
 }
 

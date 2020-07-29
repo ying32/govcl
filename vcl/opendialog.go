@@ -31,8 +31,6 @@ func NewOpenDialog(owner IComponent) *TOpenDialog {
     o := new(TOpenDialog)
     o.instance = OpenDialog_Create(CheckPtr(owner))
     o.ptr = unsafe.Pointer(o.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(o, (*TOpenDialog).Free)
     return o
 }
 

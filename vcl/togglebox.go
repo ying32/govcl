@@ -31,8 +31,6 @@ func NewToggleBox(owner IComponent) *TToggleBox {
     t := new(TToggleBox)
     t.instance = ToggleBox_Create(CheckPtr(owner))
     t.ptr = unsafe.Pointer(t.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(t, (*TToggleBox).Free)
     return t
 }
 

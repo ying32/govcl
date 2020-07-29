@@ -31,8 +31,7 @@ func NewHeaderSection(AOwner *TCollection) *THeaderSection {
     h := new(THeaderSection)
     h.instance = HeaderSection_Create(CheckPtr(AOwner))
     h.ptr = unsafe.Pointer(h.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(h, (*THeaderSection).Free)
+    setFinalizer(h, (*THeaderSection).Free)
     return h
 }
 

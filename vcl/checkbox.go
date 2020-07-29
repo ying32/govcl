@@ -31,8 +31,6 @@ func NewCheckBox(owner IComponent) *TCheckBox {
     c := new(TCheckBox)
     c.instance = CheckBox_Create(CheckPtr(owner))
     c.ptr = unsafe.Pointer(c.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(c, (*TCheckBox).Free)
     return c
 }
 

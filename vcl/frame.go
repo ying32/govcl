@@ -31,8 +31,6 @@ func NewFrame(owner IComponent) *TFrame {
     f := new(TFrame)
     f.instance = Frame_Create(CheckPtr(owner))
     f.ptr = unsafe.Pointer(f.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(f, (*TFrame).Free)
     return f
 }
 

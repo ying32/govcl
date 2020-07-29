@@ -31,8 +31,7 @@ func NewMonitor() *TMonitor {
     m := new(TMonitor)
     m.instance = Monitor_Create()
     m.ptr = unsafe.Pointer(m.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(m, (*TMonitor).Free)
+    setFinalizer(m, (*TMonitor).Free)
     return m
 }
 

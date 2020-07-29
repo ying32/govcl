@@ -31,8 +31,6 @@ func NewTaskDialog(owner IComponent) *TTaskDialog {
     t := new(TTaskDialog)
     t.instance = TaskDialog_Create(CheckPtr(owner))
     t.ptr = unsafe.Pointer(t.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(t, (*TTaskDialog).Free)
     return t
 }
 

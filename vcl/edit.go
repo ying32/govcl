@@ -31,8 +31,6 @@ func NewEdit(owner IComponent) *TEdit {
     e := new(TEdit)
     e.instance = Edit_Create(CheckPtr(owner))
     e.ptr = unsafe.Pointer(e.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(e, (*TEdit).Free)
     return e
 }
 

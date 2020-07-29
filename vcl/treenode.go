@@ -31,8 +31,7 @@ func NewTreeNode(AOwner *TTreeNodes) *TTreeNode {
     t := new(TTreeNode)
     t.instance = TreeNode_Create(CheckPtr(AOwner))
     t.ptr = unsafe.Pointer(t.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(t, (*TTreeNode).Free)
+    setFinalizer(t, (*TTreeNode).Free)
     return t
 }
 

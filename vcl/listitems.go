@@ -31,8 +31,7 @@ func NewListItems(AOwner *TListView) *TListItems {
     l := new(TListItems)
     l.instance = ListItems_Create(CheckPtr(AOwner))
     l.ptr = unsafe.Pointer(l.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(l, (*TListItems).Free)
+    setFinalizer(l, (*TListItems).Free)
     return l
 }
 

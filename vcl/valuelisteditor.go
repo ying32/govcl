@@ -31,8 +31,6 @@ func NewValueListEditor(owner IComponent) *TValueListEditor {
     v := new(TValueListEditor)
     v.instance = ValueListEditor_Create(CheckPtr(owner))
     v.ptr = unsafe.Pointer(v.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(v, (*TValueListEditor).Free)
     return v
 }
 

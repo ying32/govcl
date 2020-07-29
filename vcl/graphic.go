@@ -31,8 +31,7 @@ func NewGraphic() *TGraphic {
     g := new(TGraphic)
     g.instance = Graphic_Create()
     g.ptr = unsafe.Pointer(g.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(g, (*TGraphic).Free)
+    setFinalizer(g, (*TGraphic).Free)
     return g
 }
 

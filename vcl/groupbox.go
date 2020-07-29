@@ -31,8 +31,6 @@ func NewGroupBox(owner IComponent) *TGroupBox {
     g := new(TGroupBox)
     g.instance = GroupBox_Create(CheckPtr(owner))
     g.ptr = unsafe.Pointer(g.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(g, (*TGroupBox).Free)
     return g
 }
 

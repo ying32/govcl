@@ -31,8 +31,6 @@ func NewSpinEdit(owner IComponent) *TSpinEdit {
     s := new(TSpinEdit)
     s.instance = SpinEdit_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(s, (*TSpinEdit).Free)
     return s
 }
 

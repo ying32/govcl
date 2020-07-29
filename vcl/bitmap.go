@@ -31,8 +31,7 @@ func NewBitmap() *TBitmap {
     b := new(TBitmap)
     b.instance = Bitmap_Create()
     b.ptr = unsafe.Pointer(b.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(b, (*TBitmap).Free)
+    setFinalizer(b, (*TBitmap).Free)
     return b
 }
 

@@ -31,8 +31,6 @@ func NewStatusBar(owner IComponent) *TStatusBar {
     s := new(TStatusBar)
     s.instance = StatusBar_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(s, (*TStatusBar).Free)
     return s
 }
 

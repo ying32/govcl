@@ -31,8 +31,6 @@ func NewPaintBox(owner IComponent) *TPaintBox {
     p := new(TPaintBox)
     p.instance = PaintBox_Create(CheckPtr(owner))
     p.ptr = unsafe.Pointer(p.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(p, (*TPaintBox).Free)
     return p
 }
 

@@ -31,8 +31,6 @@ func NewColorBox(owner IComponent) *TColorBox {
     c := new(TColorBox)
     c.instance = ColorBox_Create(CheckPtr(owner))
     c.ptr = unsafe.Pointer(c.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(c, (*TColorBox).Free)
     return c
 }
 

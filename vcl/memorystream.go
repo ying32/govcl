@@ -31,8 +31,7 @@ func NewMemoryStream() *TMemoryStream {
     m := new(TMemoryStream)
     m.instance = MemoryStream_Create()
     m.ptr = unsafe.Pointer(m.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(m, (*TMemoryStream).Free)
+    setFinalizer(m, (*TMemoryStream).Free)
     return m
 }
 

@@ -31,8 +31,6 @@ func NewLabel(owner IComponent) *TLabel {
     l := new(TLabel)
     l.instance = Label_Create(CheckPtr(owner))
     l.ptr = unsafe.Pointer(l.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(l, (*TLabel).Free)
     return l
 }
 

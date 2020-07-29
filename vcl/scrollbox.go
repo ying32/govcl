@@ -31,8 +31,6 @@ func NewScrollBox(owner IComponent) *TScrollBox {
     s := new(TScrollBox)
     s.instance = ScrollBox_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(s, (*TScrollBox).Free)
     return s
 }
 

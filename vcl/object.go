@@ -31,8 +31,7 @@ func NewObject() *TObject {
     o := new(TObject)
     o.instance = Object_Create()
     o.ptr = unsafe.Pointer(o.instance)
-    // 不是TComponent应该是可以考虑加上的
-    // runtime.SetFinalizer(o, (*TObject).Free)
+    setFinalizer(o, (*TObject).Free)
     return o
 }
 
