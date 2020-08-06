@@ -21,10 +21,10 @@ func main() {
 	mainForm.SetHeight(200)
 
 	vcl.ShowMessage("消息")
-	if vcl.MessageDlg("消息", types.MtConfirmation, types.MbYes, types.MbNo) == types.IdYes {
+	if vcl.MessageDlg("消息", types.MtConfirmation, types.MbYes, types.MbNo) == types.MrYes {
 		vcl.ShowMessage("你点击了“是")
 	}
-	if vcl.Application.MessageBox("消息", "标题", win.MB_OKCANCEL+win.MB_ICONINFORMATION) == types.MrOk {
+	if vcl.Application.MessageBox("消息", "标题", win.MB_OKCANCEL+win.MB_ICONINFORMATION) == types.IdOK {
 		vcl.ShowMessage("你点击了“是")
 	}
 
