@@ -46371,6 +46371,15 @@ func ImageButton_SetImageCount(obj uintptr, value int32) {
    imageButton_SetImageCount.Call(obj, uintptr(value))
 }
 
+func ImageButton_GetOrientation(obj uintptr) TImageOrientation {
+    ret, _, _ := imageButton_GetOrientation.Call(obj)
+    return TImageOrientation(ret)
+}
+
+func ImageButton_SetOrientation(obj uintptr, value TImageOrientation) {
+   imageButton_SetOrientation.Call(obj, uintptr(value))
+}
+
 func ImageButton_GetModalResult(obj uintptr) TModalResult {
     ret, _, _ := imageButton_GetModalResult.Call(obj)
     return TModalResult(ret)

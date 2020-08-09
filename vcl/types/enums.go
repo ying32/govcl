@@ -2240,3 +2240,11 @@ const (
 
 //SET:TDateTimePickerOption
 type TDateTimePickerOptions = TSet
+
+//ENUM:
+type TImageOrientation int32
+
+const (
+	ioHorizontal = iota + 0
+	ioVertical
+)

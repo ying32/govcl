@@ -499,6 +499,14 @@ func (i *TImageButton) SetImageCount(value int32) {
     ImageButton_SetImageCount(i.instance, value)
 }
 
+func (i *TImageButton) Orientation() TImageOrientation {
+    return ImageButton_GetOrientation(i.instance)
+}
+
+func (i *TImageButton) SetOrientation(value TImageOrientation) {
+    ImageButton_SetOrientation(i.instance, value)
+}
+
 // 获取模态对话框显示结果。
 func (i *TImageButton) ModalResult() TModalResult {
     return ImageButton_GetModalResult(i.instance)

@@ -10286,6 +10286,8 @@ var (
     imageButton_SetFont = libvcl.NewProc("ImageButton_SetFont")
     imageButton_GetImageCount = libvcl.NewProc("ImageButton_GetImageCount")
     imageButton_SetImageCount = libvcl.NewProc("ImageButton_SetImageCount")
+    imageButton_GetOrientation = libvcl.NewProc("ImageButton_GetOrientation")
+    imageButton_SetOrientation = libvcl.NewProc("ImageButton_SetOrientation")
     imageButton_GetModalResult = libvcl.NewProc("ImageButton_GetModalResult")
     imageButton_SetModalResult = libvcl.NewProc("ImageButton_SetModalResult")
     imageButton_GetParentShowHint = libvcl.NewProc("ImageButton_GetParentShowHint")
