@@ -19,7 +19,7 @@ import (
 const (
 	// CN: 要求最小liblcl二进制版本
 	// EN: Requires a minimum liblcl binary version.
-	requireMinBinaryVersion = 0x02000500
+	requireMinBinaryVersion = 0x02000600
 )
 
 var (

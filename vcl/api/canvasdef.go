@@ -47,7 +47,7 @@ func Canvas_StretchDraw(obj uintptr, aRect TRect, graphic uintptr) {
 }
 
 func Canvas_TextRect2(obj uintptr, aRect *TRect, text string, textFormat TTextFormat) {
-	canvas_TextRect2.Call(obj, uintptr(unsafe.Pointer(aRect)), GoStrToDStr(text), 0, uintptr(textFormat))
+	canvas_TextRect2.Call(obj, uintptr(unsafe.Pointer(aRect)), GoStrToDStr(text), uintptr(textFormat))
 }
 
 func Canvas_TextRect3(obj uintptr, aRect *TRect, text string, textFormat TTextFormat) {
