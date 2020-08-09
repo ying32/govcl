@@ -48,11 +48,6 @@ func (c *TCanvas) FrameRect(aRect TRect) {
 	Canvas_FrameRect(c.instance, aRect)
 }
 
-// 拉伸绘制
-func (c *TCanvas) StretchDraw(aRect TRect, graphic IObject) {
-	Canvas_StretchDraw(c.instance, aRect, CheckPtr(graphic))
-}
-
 // 在矩形内绘制文字
 func (c *TCanvas) TextRect(aRect TRect, x, y int32, text string) {
 	Canvas_TextRect1(c.instance, aRect, x, y, text)
@@ -76,23 +71,4 @@ func (c *TCanvas) Polyline(points []TPoint) {
 // 多边形贝塞尔曲线
 func (c *TCanvas) PolyBezier(points []TPoint) {
 	Canvas_PolyBezier(c.instance, points)
-}
-
-// 仅libvcl
-func (c *TCanvas) PolyBezierTo(points []TPoint) {
-	Canvas_PolyBezierTo(c.instance, points)
-}
-
-// 获取指定位置的颜色
-//
-// Get the color at the specified position
-func (c *TCanvas) Pixels(x, y int32) TColor {
-	return Canvas_Pixels(c.instance, x, y)
-}
-
-// 设置指定位置的颜色。
-//
-// Set the color at the specified position.
-func (c *TCanvas) SetPixels(x, y int32, value TColor) {
-	Canvas_SetPixels(c.instance, x, y, value)
 }

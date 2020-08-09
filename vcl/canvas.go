@@ -180,6 +180,10 @@ func (c *TCanvas) RoundRect(X1 int32, Y1 int32, X2 int32, Y2 int32, X3 int32, Y3
     Canvas_RoundRect(c.instance, X1 , Y1 , X2 , Y2 , X3 , Y3)
 }
 
+func (c *TCanvas) StretchDraw(Rect TRect, Graphic *TGraphic) {
+    Canvas_StretchDraw(c.instance, Rect , CheckPtr(Graphic))
+}
+
 func (c *TCanvas) TextExtent(Text string) TSize {
     return Canvas_TextExtent(c.instance, Text)
 }
@@ -330,5 +334,13 @@ func (c *TCanvas) SetOnChange(fn TNotifyEvent) {
 
 func (c *TCanvas) SetOnChanging(fn TNotifyEvent) {
     Canvas_SetOnChanging(c.instance, fn)
+}
+
+func (c *TCanvas) Pixels(X int32, Y int32) TColor {
+    return Canvas_GetPixels(c.instance, X, Y)
+}
+
+func (c *TCanvas) SetPixels(X int32, Y int32, value TColor) {
+    Canvas_SetPixels(c.instance, X, Y, value)
 }
 

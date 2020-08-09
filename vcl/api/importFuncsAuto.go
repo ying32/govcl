@@ -20204,6 +20204,15 @@ func ImageList_Free(obj uintptr) {
     imageList_Free.Call(obj)
 }
 
+func ImageList_StretchDraw(obj uintptr, ACanvas uintptr, AIndex int32, ARect TRect, AEnabled bool)  {
+    imageList_StretchDraw.Call(obj, ACanvas , uintptr(AIndex) , uintptr(unsafe.Pointer(&ARect)), GoBoolToDBool(AEnabled) )
+}
+
+func ImageList_AddSliced(obj uintptr, Image uintptr, AHorizontalCount int32, AVerticalCount int32) int32 {
+    ret, _, _ := imageList_AddSliced.Call(obj, Image , uintptr(AHorizontalCount) , uintptr(AVerticalCount) )
+    return int32(ret)
+}
+
 func ImageList_GetHotSpot(obj uintptr) TPoint {
     var ret TPoint
     imageList_GetHotSpot.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -37050,6 +37059,10 @@ func Canvas_RoundRect(obj uintptr, X1 int32, Y1 int32, X2 int32, Y2 int32, X3 in
     canvas_RoundRect.Call(obj, uintptr(X1) , uintptr(Y1) , uintptr(X2) , uintptr(Y2) , uintptr(X3) , uintptr(Y3) )
 }
 
+func Canvas_StretchDraw(obj uintptr, Rect TRect, Graphic uintptr)  {
+    canvas_StretchDraw.Call(obj, uintptr(unsafe.Pointer(&Rect)), Graphic )
+}
+
 func Canvas_TextExtent(obj uintptr, Text string) TSize {
     var ret TSize
     canvas_TextExtent.Call(obj, GoStrToDStr(Text) , uintptr(unsafe.Pointer(&ret)))
@@ -37169,6 +37182,15 @@ func Canvas_SetOnChange(obj uintptr, fn interface{}) {
 
 func Canvas_SetOnChanging(obj uintptr, fn interface{}) {
     canvas_SetOnChanging.Call(obj, addEventToMap(fn))
+}
+
+func Canvas_GetPixels(obj uintptr, X int32, Y int32) TColor {
+    ret, _, _ := canvas_GetPixels.Call(obj, uintptr(X), uintptr(Y))
+    return TColor(ret)
+}
+
+func Canvas_SetPixels(obj uintptr, X int32, Y int32, value TColor) {
+   canvas_SetPixels.Call(obj, uintptr(X), uintptr(Y), uintptr(value))
 }
 
 func Canvas_StaticClassType() TClass {
@@ -39270,6 +39292,39 @@ func Clipboard_Free(obj uintptr) {
     clipboard_Free.Call(obj)
 }
 
+func Clipboard_FindPictureFormatID(obj uintptr) TClipboardFormat {
+    ret, _, _ := clipboard_FindPictureFormatID.Call(obj)
+    return TClipboardFormat(ret)
+}
+
+func Clipboard_FindFormatID(obj uintptr, FormatName string) TClipboardFormat {
+    ret, _, _ := clipboard_FindFormatID.Call(obj, GoStrToDStr(FormatName) )
+    return TClipboardFormat(ret)
+}
+
+func Clipboard_GetAsHtml(obj uintptr, ExtractFragmentOnly bool) string {
+    ret, _, _ := clipboard_GetAsHtml.Call(obj, GoBoolToDBool(ExtractFragmentOnly) )
+    return DStrToGoStr(ret)
+}
+
+func Clipboard_SupportedFormats(obj uintptr, List uintptr)  {
+    clipboard_SupportedFormats.Call(obj, List )
+}
+
+func Clipboard_HasFormatName(obj uintptr, FormatName string) bool {
+    ret, _, _ := clipboard_HasFormatName.Call(obj, GoStrToDStr(FormatName) )
+    return DBoolToGoBool(ret)
+}
+
+func Clipboard_HasPictureFormat(obj uintptr) bool {
+    ret, _, _ := clipboard_HasPictureFormat.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Clipboard_SetAsHtml(obj uintptr, Html string, PlainText string)  {
+    clipboard_SetAsHtml.Call(obj, GoStrToDStr(Html) , GoStrToDStr(PlainText) )
+}
+
 func Clipboard_Assign(obj uintptr, Source uintptr)  {
     clipboard_Assign.Call(obj, Source )
 }
@@ -39280,11 +39335,6 @@ func Clipboard_Clear(obj uintptr)  {
 
 func Clipboard_Close(obj uintptr)  {
     clipboard_Close.Call(obj)
-}
-
-func Clipboard_HasFormat(obj uintptr, Format uint16) bool {
-    ret, _, _ := clipboard_HasFormat.Call(obj, uintptr(Format) )
-    return DBoolToGoBool(ret)
 }
 
 func Clipboard_Open(obj uintptr)  {
@@ -39354,9 +39404,9 @@ func Clipboard_GetFormatCount(obj uintptr) int32 {
     return int32(ret)
 }
 
-func Clipboard_GetFormats(obj uintptr, Index int32) uint16 {
+func Clipboard_GetFormats(obj uintptr, Index int32) TClipboardFormat {
     ret, _, _ := clipboard_GetFormats.Call(obj, uintptr(Index))
-    return uint16(ret)
+    return TClipboardFormat(ret)
 }
 
 func Clipboard_StaticClassType() TClass {

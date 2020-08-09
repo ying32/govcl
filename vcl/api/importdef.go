@@ -47,8 +47,10 @@ var (
 	dShortCutToText = libvcl.NewProc("DShortCutToText")
 
 	// TClipboard
-	clipboard_Instance     = libvcl.NewProc("Clipboard_Instance")
-	clipboard_SetClipboard = libvcl.NewProc("Clipboard_SetClipboard")
+	clipboard_Instance       = libvcl.NewProc("Clipboard_Instance")
+	clipboard_HasFormat      = libvcl.NewProc("Clipboard_HasFormat")
+	dSetClipboard            = libvcl.NewProc("DSetClipboard")
+	dRegisterClipboardFormat = libvcl.NewProc("DRegisterClipboardFormat")
 
 	// DSysOpen
 	dSysOpen = libvcl.NewProc("DSysOpen")
@@ -65,15 +67,11 @@ var (
 	canvas_DrawFocusRect = libvcl.NewProc("Canvas_DrawFocusRect")
 	canvas_FillRect      = libvcl.NewProc("Canvas_FillRect")
 	canvas_FrameRect     = libvcl.NewProc("Canvas_FrameRect")
-	canvas_StretchDraw   = libvcl.NewProc("Canvas_StretchDraw")
 	canvas_TextRect1     = libvcl.NewProc("Canvas_TextRect1")
 	canvas_TextRect2     = libvcl.NewProc("Canvas_TextRect2")
 	canvas_Polygon       = libvcl.NewProc("Canvas_Polygon")
 	canvas_Polyline      = libvcl.NewProc("Canvas_Polyline")
 	canvas_PolyBezier    = libvcl.NewProc("Canvas_PolyBezier")
-	canvas_PolyBezierTo  = libvcl.NewProc("Canvas_PolyBezierTo")
-	canvas_Pixels        = libvcl.NewProc("Canvas_Pixels")
-	canvas_SetPixels     = libvcl.NewProc("Canvas_SetPixels")
 
 	// TImageList
 	imageList_Draw1        = libvcl.NewProc("ImageList_Draw1")

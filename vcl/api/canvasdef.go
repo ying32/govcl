@@ -42,10 +42,6 @@ func Canvas_FrameRect(obj uintptr, aRect TRect) {
 	canvas_FrameRect.Call(obj, uintptr(unsafe.Pointer(&aRect)))
 }
 
-func Canvas_StretchDraw(obj uintptr, aRect TRect, graphic uintptr) {
-	canvas_StretchDraw.Call(obj, uintptr(unsafe.Pointer(&aRect)), graphic)
-}
-
 func Canvas_TextRect2(obj uintptr, aRect *TRect, text string, textFormat TTextFormat) {
 	canvas_TextRect2.Call(obj, uintptr(unsafe.Pointer(aRect)), GoStrToDStr(text), uintptr(textFormat))
 }
@@ -77,20 +73,4 @@ func Canvas_PolyBezier(obj uintptr, points []TPoint) {
 		return
 	}
 	canvas_PolyBezier.Call(obj, uintptr(unsafe.Pointer(&points[0])), uintptr(len(points)))
-}
-
-func Canvas_PolyBezierTo(obj uintptr, points []TPoint) {
-	if len(points) == 0 {
-		return
-	}
-	canvas_PolyBezierTo.Call(obj, uintptr(unsafe.Pointer(&points[0])), uintptr(len(points)))
-}
-
-func Canvas_Pixels(obj uintptr, x, y int32) TColor {
-	r, _, _ := canvas_Pixels.Call(obj, uintptr(x), uintptr(y))
-	return TColor(r)
-}
-
-func Canvas_SetPixels(obj uintptr, x, y int32, value TColor) {
-	canvas_SetPixels.Call(obj, uintptr(x), uintptr(y), uintptr(value))
 }

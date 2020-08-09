@@ -4482,6 +4482,8 @@ var (
     // TImageList
     imageList_Create = libvcl.NewProc("ImageList_Create")
     imageList_Free = libvcl.NewProc("ImageList_Free")
+    imageList_StretchDraw = libvcl.NewProc("ImageList_StretchDraw")
+    imageList_AddSliced = libvcl.NewProc("ImageList_AddSliced")
     imageList_GetHotSpot = libvcl.NewProc("ImageList_GetHotSpot")
     imageList_HideDragImage = libvcl.NewProc("ImageList_HideDragImage")
     imageList_ShowDragImage = libvcl.NewProc("ImageList_ShowDragImage")
@@ -8218,6 +8220,7 @@ var (
     canvas_Rectangle = libvcl.NewProc("Canvas_Rectangle")
     canvas_Refresh = libvcl.NewProc("Canvas_Refresh")
     canvas_RoundRect = libvcl.NewProc("Canvas_RoundRect")
+    canvas_StretchDraw = libvcl.NewProc("Canvas_StretchDraw")
     canvas_TextExtent = libvcl.NewProc("Canvas_TextExtent")
     canvas_TextOut = libvcl.NewProc("Canvas_TextOut")
     canvas_Lock = libvcl.NewProc("Canvas_Lock")
@@ -8244,6 +8247,8 @@ var (
     canvas_SetPen = libvcl.NewProc("Canvas_SetPen")
     canvas_SetOnChange = libvcl.NewProc("Canvas_SetOnChange")
     canvas_SetOnChanging = libvcl.NewProc("Canvas_SetOnChanging")
+    canvas_GetPixels = libvcl.NewProc("Canvas_GetPixels")
+    canvas_SetPixels = libvcl.NewProc("Canvas_SetPixels")
     canvas_StaticClassType = libvcl.NewProc("Canvas_StaticClassType")
 
     // TObject
@@ -8716,10 +8721,16 @@ var (
     // TClipboard
     clipboard_Create = libvcl.NewProc("Clipboard_Create")
     clipboard_Free = libvcl.NewProc("Clipboard_Free")
+    clipboard_FindPictureFormatID = libvcl.NewProc("Clipboard_FindPictureFormatID")
+    clipboard_FindFormatID = libvcl.NewProc("Clipboard_FindFormatID")
+    clipboard_GetAsHtml = libvcl.NewProc("Clipboard_GetAsHtml")
+    clipboard_SupportedFormats = libvcl.NewProc("Clipboard_SupportedFormats")
+    clipboard_HasFormatName = libvcl.NewProc("Clipboard_HasFormatName")
+    clipboard_HasPictureFormat = libvcl.NewProc("Clipboard_HasPictureFormat")
+    clipboard_SetAsHtml = libvcl.NewProc("Clipboard_SetAsHtml")
     clipboard_Assign = libvcl.NewProc("Clipboard_Assign")
     clipboard_Clear = libvcl.NewProc("Clipboard_Clear")
     clipboard_Close = libvcl.NewProc("Clipboard_Close")
-    clipboard_HasFormat = libvcl.NewProc("Clipboard_HasFormat")
     clipboard_Open = libvcl.NewProc("Clipboard_Open")
     clipboard_GetTextBuf = libvcl.NewProc("Clipboard_GetTextBuf")
     clipboard_SetTextBuf = libvcl.NewProc("Clipboard_SetTextBuf")

@@ -44,6 +44,8 @@ type TClass uintptr
 
 type TThreadID = uintptr
 
+type TClipboardFormat = uintptr
+
 type TGridCoord struct {
 	X int32
 	Y int32

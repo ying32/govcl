@@ -121,6 +121,14 @@ func TImageListClass() TClass {
     return ImageList_StaticClassType()
 }
 
+func (i *TImageList) StretchDraw(ACanvas *TCanvas, AIndex int32, ARect TRect, AEnabled bool) {
+    ImageList_StretchDraw(i.instance, CheckPtr(ACanvas), AIndex , ARect , AEnabled)
+}
+
+func (i *TImageList) AddSliced(Image *TBitmap, AHorizontalCount int32, AVerticalCount int32) int32 {
+    return ImageList_AddSliced(i.instance, CheckPtr(Image), AHorizontalCount , AVerticalCount)
+}
+
 func (i *TImageList) GetHotSpot() TPoint {
     return ImageList_GetHotSpot(i.instance)
 }

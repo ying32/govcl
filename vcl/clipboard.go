@@ -122,6 +122,34 @@ func TClipboardClass() TClass {
     return Clipboard_StaticClassType()
 }
 
+func (c *TClipboard) FindPictureFormatID() TClipboardFormat {
+    return Clipboard_FindPictureFormatID(c.instance)
+}
+
+func (c *TClipboard) FindFormatID(FormatName string) TClipboardFormat {
+    return Clipboard_FindFormatID(c.instance, FormatName)
+}
+
+func (c *TClipboard) GetAsHtml(ExtractFragmentOnly bool) string {
+    return Clipboard_GetAsHtml(c.instance, ExtractFragmentOnly)
+}
+
+func (c *TClipboard) SupportedFormats(List IStrings) {
+    Clipboard_SupportedFormats(c.instance, CheckPtr(List))
+}
+
+func (c *TClipboard) HasFormatName(FormatName string) bool {
+    return Clipboard_HasFormatName(c.instance, FormatName)
+}
+
+func (c *TClipboard) HasPictureFormat() bool {
+    return Clipboard_HasPictureFormat(c.instance)
+}
+
+func (c *TClipboard) SetAsHtml(Html string, PlainText string) {
+    Clipboard_SetAsHtml(c.instance, Html , PlainText)
+}
+
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
@@ -137,10 +165,6 @@ func (c *TClipboard) Clear() {
 // 关闭。
 func (c *TClipboard) Close() {
     Clipboard_Close(c.instance)
-}
-
-func (c *TClipboard) HasFormat(Format uint16) bool {
-    return Clipboard_HasFormat(c.instance, Format)
 }
 
 func (c *TClipboard) Open() {
@@ -229,7 +253,7 @@ func (c *TClipboard) FormatCount() int32 {
     return Clipboard_GetFormatCount(c.instance)
 }
 
-func (c *TClipboard) Formats(Index int32) uint16 {
+func (c *TClipboard) Formats(Index int32) TClipboardFormat {
     return Clipboard_GetFormats(c.instance, Index)
 }
 
