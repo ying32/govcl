@@ -59,13 +59,8 @@ func (c *TCanvas) TextRect(aRect TRect, x, y int32, text string) {
 }
 
 // 在矩形内绘制文字
-func (c *TCanvas) TextRect2(aRect *TRect, text *string, textFormat TTextFormat) {
+func (c *TCanvas) TextRect2(aRect *TRect, text string, textFormat TTextFormat) {
 	Canvas_TextRect2(c.instance, aRect, text, textFormat)
-}
-
-// 在矩形内绘制文字
-func (c *TCanvas) TextRect3(aRect *TRect, text string, textFormat TTextFormat) {
-	Canvas_TextRect3(c.instance, aRect, text, textFormat)
 }
 
 // 填充多边形

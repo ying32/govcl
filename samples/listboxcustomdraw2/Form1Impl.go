@@ -97,7 +97,7 @@ func (f *TForm1) OnLstLeftDrawItem(control vcl.IWinControl, index int32, aRect t
 
 	//计算文字顶点位置， 水平，垂直居中，文字超出绘制圆点
 	r.Top += 2
-	canvas.TextRect3(&r, f.LstLeft.Items().S(index), types.NewSet(types.TfVerticalCenter, types.TfCenter, types.TfWordEllipsis))
+	canvas.TextRect2(&r, f.LstLeft.Items().S(index), types.NewSet(types.TfVerticalCenter, types.TfCenter, types.TfWordEllipsis))
 
 	//画焦点虚框，当系统再绘制时，变成XOR运算，从而达到擦除焦点虚框的目的
 	if state.In(types.OdFocused) {

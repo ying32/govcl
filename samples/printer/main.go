@@ -89,7 +89,7 @@ func (f *TMainForm) OnButtonClick(sender vcl.IObject) {
 	canvas.Font().SetColor(colors.ClBlack)
 	// 这里实际要通过相关的api获取打印机canvas大小，而且那东西与dpi有关
 	r := types.TRect{0, 0, 2000, 2000}
-	canvas.TextRect3(&r,
+	canvas.TextRect2(&r,
 		"这是一段文字，只是用来做测试。这是一段文字，只是用来做测试。这是一段文字，只是用来做测试。这是一段文字，只是用来做测试。这是一段文字，只是用来做测试。",
 		types.NewSet(types.TfCenter, types.TfWordBreak, types.TfVerticalCenter))
 }

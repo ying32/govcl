@@ -119,7 +119,7 @@ func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, 
 				} else {
 					r.Inflate(-10, 0)
 					s := fmt.Sprintf("%d.", aRow+1)
-					canvas.TextRect3(&r, s, drawFlags.Include(TfRight))
+					canvas.TextRect2(&r, s, drawFlags.Include(TfRight))
 				}
 
 			case 1:
@@ -127,19 +127,19 @@ func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, 
 					r.Inflate(-10, 0)
 					canvas.Font().SetSize(12)
 					canvas.Font().SetStyle(NewSet(FsBold))
-					canvas.TextRect3(&r, item.Caption, drawFlags)
+					canvas.TextRect2(&r, item.Caption, drawFlags)
 				} else {
 					r.Inflate(-5, 0)
-					canvas.TextRect3(&r, item.Caption, drawFlags)
+					canvas.TextRect2(&r, item.Caption, drawFlags)
 				}
 				canvas.Font().SetSize(9)
 				canvas.Font().SetStyle(0)
 			case 2:
 				r.Inflate(-5, 0)
-				canvas.TextRect3(&r, item.Singer, drawFlags)
+				canvas.TextRect2(&r, item.Singer, drawFlags)
 			case 3:
 				r.Inflate(-5, 0)
-				canvas.TextRect3(&r, p.mediaLengthToTimeStr(item.Length), drawFlags.Include(TfRight))
+				canvas.TextRect2(&r, p.mediaLengthToTimeStr(item.Length), drawFlags.Include(TfRight))
 			}
 		}
 

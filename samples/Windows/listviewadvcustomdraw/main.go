@@ -162,9 +162,9 @@ func (f *TMainFrom) OnListView1AdvancedCustomDrawSubItem(sender *vcl.TListView, 
 			}
 
 		case 1:
-			canvas.TextRect3(&r, data.Sub1, drawFlags)
+			canvas.TextRect2(&r, data.Sub1, drawFlags)
 		case 2:
-			canvas.TextRect3(&r, data.Sub2, drawFlags)
+			canvas.TextRect2(&r, data.Sub2, drawFlags)
 		case 3:
 
 			canvas.Brush().SetColor(colors.ClSkyblue)
@@ -182,11 +182,11 @@ func (f *TMainFrom) OnListView1AdvancedCustomDrawSubItem(sender *vcl.TListView, 
 			//flags := types.NewSet(types.TfCenter, types.TfSingleLine, types.TfVerticalCenter)
 			canvas.Brush().SetStyle(types.BsClear)
 			win.SetBkMode(canvas.Handle(), win.TRANSPARENT)
-			canvas.TextRect3(&r, fmt.Sprintf("%d%%", data.Progress), drawFlags)
+			canvas.TextRect2(&r, fmt.Sprintf("%d%%", data.Progress), drawFlags)
 
 		case 4:
 
-			canvas.TextRect3(&r, data.Sub4, drawFlags)
+			canvas.TextRect2(&r, data.Sub4, drawFlags)
 		}
 
 	}
