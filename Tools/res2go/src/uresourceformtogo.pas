@@ -1274,7 +1274,7 @@ begin
     LOutStream := TStringStream.Create('');
     try
       LStream.Position:=0;
-      ObjectBinaryToText(LStream, LOutStream);
+      ObjectBinaryToText(LStream, LOutStream, oteLFM);
       LName := GetFileNameWithoutExt(AFileName);
       LTemp := StringReplace(LOutStream.DataString, 'TDesignForm', 'T'+LName, [rfReplaceAll]);
       LOutStream.Clear;
