@@ -442,6 +442,10 @@ func (c *TCheckBox) AnchorVerticalCenterTo(ASibling IControl) {
     CheckBox_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
 }
 
+func (c *TCheckBox) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    CheckBox_AnchorSame(c.instance, ASide , CheckPtr(ASibling))
+}
+
 func (c *TCheckBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     CheckBox_AnchorAsAlign(c.instance, ATheAlign , ASpace)
 }

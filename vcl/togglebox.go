@@ -442,6 +442,10 @@ func (t *TToggleBox) AnchorVerticalCenterTo(ASibling IControl) {
     ToggleBox_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
 }
 
+func (t *TToggleBox) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    ToggleBox_AnchorSame(t.instance, ASide , CheckPtr(ASibling))
+}
+
 func (t *TToggleBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     ToggleBox_AnchorAsAlign(t.instance, ATheAlign , ASpace)
 }

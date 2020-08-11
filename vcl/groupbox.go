@@ -442,6 +442,10 @@ func (g *TGroupBox) AnchorVerticalCenterTo(ASibling IControl) {
     GroupBox_AnchorVerticalCenterTo(g.instance, CheckPtr(ASibling))
 }
 
+func (g *TGroupBox) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    GroupBox_AnchorSame(g.instance, ASide , CheckPtr(ASibling))
+}
+
 func (g *TGroupBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     GroupBox_AnchorAsAlign(g.instance, ATheAlign , ASpace)
 }

@@ -442,6 +442,10 @@ func (r *TRadioGroup) AnchorVerticalCenterTo(ASibling IControl) {
     RadioGroup_AnchorVerticalCenterTo(r.instance, CheckPtr(ASibling))
 }
 
+func (r *TRadioGroup) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    RadioGroup_AnchorSame(r.instance, ASide , CheckPtr(ASibling))
+}
+
 func (r *TRadioGroup) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     RadioGroup_AnchorAsAlign(r.instance, ATheAlign , ASpace)
 }

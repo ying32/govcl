@@ -346,6 +346,10 @@ func (g *TGauge) AnchorVerticalCenterTo(ASibling IControl) {
     Gauge_AnchorVerticalCenterTo(g.instance, CheckPtr(ASibling))
 }
 
+func (g *TGauge) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    Gauge_AnchorSame(g.instance, ASide , CheckPtr(ASibling))
+}
+
 func (g *TGauge) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     Gauge_AnchorAsAlign(g.instance, ATheAlign , ASpace)
 }

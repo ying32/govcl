@@ -342,6 +342,10 @@ func (l *TLabel) AnchorVerticalCenterTo(ASibling IControl) {
     Label_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
 }
 
+func (l *TLabel) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    Label_AnchorSame(l.instance, ASide , CheckPtr(ASibling))
+}
+
 func (l *TLabel) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     Label_AnchorAsAlign(l.instance, ATheAlign , ASpace)
 }

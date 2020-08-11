@@ -466,6 +466,10 @@ func (c *TColorBox) AnchorVerticalCenterTo(ASibling IControl) {
     ColorBox_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
 }
 
+func (c *TColorBox) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    ColorBox_AnchorSame(c.instance, ASide , CheckPtr(ASibling))
+}
+
 func (c *TColorBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     ColorBox_AnchorAsAlign(c.instance, ATheAlign , ASpace)
 }

@@ -477,6 +477,10 @@ func (l *TLabeledEdit) AnchorVerticalCenterTo(ASibling IControl) {
     LabeledEdit_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
 }
 
+func (l *TLabeledEdit) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    LabeledEdit_AnchorSame(l.instance, ASide , CheckPtr(ASibling))
+}
+
 func (l *TLabeledEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     LabeledEdit_AnchorAsAlign(l.instance, ATheAlign , ASpace)
 }

@@ -435,6 +435,10 @@ func (c *TCoolBar) AnchorVerticalCenterTo(ASibling IControl) {
     CoolBar_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
 }
 
+func (c *TCoolBar) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    CoolBar_AnchorSame(c.instance, ASide , CheckPtr(ASibling))
+}
+
 func (c *TCoolBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     CoolBar_AnchorAsAlign(c.instance, ATheAlign , ASpace)
 }

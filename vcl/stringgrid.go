@@ -571,6 +571,10 @@ func (s *TStringGrid) AnchorVerticalCenterTo(ASibling IControl) {
     StringGrid_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+func (s *TStringGrid) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    StringGrid_AnchorSame(s.instance, ASide , CheckPtr(ASibling))
+}
+
 func (s *TStringGrid) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     StringGrid_AnchorAsAlign(s.instance, ATheAlign , ASpace)
 }

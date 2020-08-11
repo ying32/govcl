@@ -446,6 +446,10 @@ func (c *TCheckGroup) AnchorVerticalCenterTo(ASibling IControl) {
     CheckGroup_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
 }
 
+func (c *TCheckGroup) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    CheckGroup_AnchorSame(c.instance, ASide , CheckPtr(ASibling))
+}
+
 func (c *TCheckGroup) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     CheckGroup_AnchorAsAlign(c.instance, ATheAlign , ASpace)
 }

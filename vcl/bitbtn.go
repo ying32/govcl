@@ -447,6 +447,10 @@ func (b *TBitBtn) AnchorVerticalCenterTo(ASibling IControl) {
     BitBtn_AnchorVerticalCenterTo(b.instance, CheckPtr(ASibling))
 }
 
+func (b *TBitBtn) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    BitBtn_AnchorSame(b.instance, ASide , CheckPtr(ASibling))
+}
+
 func (b *TBitBtn) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     BitBtn_AnchorAsAlign(b.instance, ATheAlign , ASpace)
 }

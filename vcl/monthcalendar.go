@@ -443,6 +443,10 @@ func (m *TMonthCalendar) AnchorVerticalCenterTo(ASibling IControl) {
     MonthCalendar_AnchorVerticalCenterTo(m.instance, CheckPtr(ASibling))
 }
 
+func (m *TMonthCalendar) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    MonthCalendar_AnchorSame(m.instance, ASide , CheckPtr(ASibling))
+}
+
 func (m *TMonthCalendar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     MonthCalendar_AnchorAsAlign(m.instance, ATheAlign , ASpace)
 }

@@ -347,6 +347,10 @@ func (s *TSpeedButton) AnchorVerticalCenterTo(ASibling IControl) {
     SpeedButton_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+func (s *TSpeedButton) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    SpeedButton_AnchorSame(s.instance, ASide , CheckPtr(ASibling))
+}
+
 func (s *TSpeedButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     SpeedButton_AnchorAsAlign(s.instance, ATheAlign , ASpace)
 }

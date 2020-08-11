@@ -497,6 +497,10 @@ func (t *TTreeView) AnchorVerticalCenterTo(ASibling IControl) {
     TreeView_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
 }
 
+func (t *TTreeView) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    TreeView_AnchorSame(t.instance, ASide , CheckPtr(ASibling))
+}
+
 func (t *TTreeView) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     TreeView_AnchorAsAlign(t.instance, ATheAlign , ASpace)
 }

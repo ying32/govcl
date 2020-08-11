@@ -442,6 +442,10 @@ func (s *TStatusBar) AnchorVerticalCenterTo(ASibling IControl) {
     StatusBar_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+func (s *TStatusBar) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    StatusBar_AnchorSame(s.instance, ASide , CheckPtr(ASibling))
+}
+
 func (s *TStatusBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     StatusBar_AnchorAsAlign(s.instance, ATheAlign , ASpace)
 }

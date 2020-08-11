@@ -342,6 +342,10 @@ func (s *TSplitter) AnchorVerticalCenterTo(ASibling IControl) {
     Splitter_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+func (s *TSplitter) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    Splitter_AnchorSame(s.instance, ASide , CheckPtr(ASibling))
+}
+
 func (s *TSplitter) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     Splitter_AnchorAsAlign(s.instance, ATheAlign , ASpace)
 }

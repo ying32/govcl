@@ -481,6 +481,10 @@ func (r *TRichEdit) AnchorVerticalCenterTo(ASibling IControl) {
     RichEdit_AnchorVerticalCenterTo(r.instance, CheckPtr(ASibling))
 }
 
+func (r *TRichEdit) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    RichEdit_AnchorSame(r.instance, ASide , CheckPtr(ASibling))
+}
+
 func (r *TRichEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     RichEdit_AnchorAsAlign(r.instance, ATheAlign , ASpace)
 }

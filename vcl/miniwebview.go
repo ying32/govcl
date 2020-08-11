@@ -478,6 +478,10 @@ func (m *TMiniWebview) AnchorVerticalCenterTo(ASibling IControl) {
     MiniWebview_AnchorVerticalCenterTo(m.instance, CheckPtr(ASibling))
 }
 
+func (m *TMiniWebview) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    MiniWebview_AnchorSame(m.instance, ASide , CheckPtr(ASibling))
+}
+
 func (m *TMiniWebview) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     MiniWebview_AnchorAsAlign(m.instance, ATheAlign , ASpace)
 }

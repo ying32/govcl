@@ -342,6 +342,10 @@ func (s *TShape) AnchorVerticalCenterTo(ASibling IControl) {
     Shape_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+func (s *TShape) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    Shape_AnchorSame(s.instance, ASide , CheckPtr(ASibling))
+}
+
 func (s *TShape) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     Shape_AnchorAsAlign(s.instance, ATheAlign , ASpace)
 }

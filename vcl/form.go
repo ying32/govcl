@@ -464,6 +464,10 @@ func (f *TForm) AnchorVerticalCenterTo(ASibling IControl) {
     Form_AnchorVerticalCenterTo(f.instance, CheckPtr(ASibling))
 }
 
+func (f *TForm) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    Form_AnchorSame(f.instance, ASide , CheckPtr(ASibling))
+}
+
 func (f *TForm) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     Form_AnchorAsAlign(f.instance, ATheAlign , ASpace)
 }

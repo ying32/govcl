@@ -442,6 +442,10 @@ func (h *THeaderControl) AnchorVerticalCenterTo(ASibling IControl) {
     HeaderControl_AnchorVerticalCenterTo(h.instance, CheckPtr(ASibling))
 }
 
+func (h *THeaderControl) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    HeaderControl_AnchorSame(h.instance, ASide , CheckPtr(ASibling))
+}
+
 func (h *THeaderControl) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     HeaderControl_AnchorAsAlign(h.instance, ATheAlign , ASpace)
 }

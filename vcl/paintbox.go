@@ -342,6 +342,10 @@ func (p *TPaintBox) AnchorVerticalCenterTo(ASibling IControl) {
     PaintBox_AnchorVerticalCenterTo(p.instance, CheckPtr(ASibling))
 }
 
+func (p *TPaintBox) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    PaintBox_AnchorSame(p.instance, ASide , CheckPtr(ASibling))
+}
+
 func (p *TPaintBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     PaintBox_AnchorAsAlign(p.instance, ATheAlign , ASpace)
 }

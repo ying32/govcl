@@ -342,6 +342,10 @@ func (x *TXButton) AnchorVerticalCenterTo(ASibling IControl) {
     XButton_AnchorVerticalCenterTo(x.instance, CheckPtr(ASibling))
 }
 
+func (x *TXButton) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    XButton_AnchorSame(x.instance, ASide , CheckPtr(ASibling))
+}
+
 func (x *TXButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     XButton_AnchorAsAlign(x.instance, ATheAlign , ASpace)
 }

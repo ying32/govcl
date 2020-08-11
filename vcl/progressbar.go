@@ -450,6 +450,10 @@ func (p *TProgressBar) AnchorVerticalCenterTo(ASibling IControl) {
     ProgressBar_AnchorVerticalCenterTo(p.instance, CheckPtr(ASibling))
 }
 
+func (p *TProgressBar) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    ProgressBar_AnchorSame(p.instance, ASide , CheckPtr(ASibling))
+}
+
 func (p *TProgressBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     ProgressBar_AnchorAsAlign(p.instance, ATheAlign , ASpace)
 }

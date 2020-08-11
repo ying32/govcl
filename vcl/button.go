@@ -447,6 +447,10 @@ func (b *TButton) AnchorVerticalCenterTo(ASibling IControl) {
     Button_AnchorVerticalCenterTo(b.instance, CheckPtr(ASibling))
 }
 
+func (b *TButton) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    Button_AnchorSame(b.instance, ASide , CheckPtr(ASibling))
+}
+
 func (b *TButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     Button_AnchorAsAlign(b.instance, ATheAlign , ASpace)
 }

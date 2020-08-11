@@ -450,6 +450,10 @@ func (p *TPageControl) AnchorVerticalCenterTo(ASibling IControl) {
     PageControl_AnchorVerticalCenterTo(p.instance, CheckPtr(ASibling))
 }
 
+func (p *TPageControl) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    PageControl_AnchorSame(p.instance, ASide , CheckPtr(ASibling))
+}
+
 func (p *TPageControl) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     PageControl_AnchorAsAlign(p.instance, ATheAlign , ASpace)
 }

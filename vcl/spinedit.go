@@ -477,6 +477,10 @@ func (s *TSpinEdit) AnchorVerticalCenterTo(ASibling IControl) {
     SpinEdit_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+func (s *TSpinEdit) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    SpinEdit_AnchorSame(s.instance, ASide , CheckPtr(ASibling))
+}
+
 func (s *TSpinEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     SpinEdit_AnchorAsAlign(s.instance, ATheAlign , ASpace)
 }

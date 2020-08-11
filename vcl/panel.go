@@ -442,6 +442,10 @@ func (p *TPanel) AnchorVerticalCenterTo(ASibling IControl) {
     Panel_AnchorVerticalCenterTo(p.instance, CheckPtr(ASibling))
 }
 
+func (p *TPanel) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    Panel_AnchorSame(p.instance, ASide , CheckPtr(ASibling))
+}
+
 func (p *TPanel) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     Panel_AnchorAsAlign(p.instance, ATheAlign , ASpace)
 }

@@ -342,6 +342,10 @@ func (c *TControl) AnchorVerticalCenterTo(ASibling IControl) {
     Control_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
 }
 
+func (c *TControl) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    Control_AnchorSame(c.instance, ASide , CheckPtr(ASibling))
+}
+
 func (c *TControl) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     Control_AnchorAsAlign(c.instance, ATheAlign , ASpace)
 }

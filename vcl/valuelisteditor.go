@@ -458,6 +458,10 @@ func (v *TValueListEditor) AnchorVerticalCenterTo(ASibling IControl) {
     ValueListEditor_AnchorVerticalCenterTo(v.instance, CheckPtr(ASibling))
 }
 
+func (v *TValueListEditor) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    ValueListEditor_AnchorSame(v.instance, ASide , CheckPtr(ASibling))
+}
+
 func (v *TValueListEditor) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     ValueListEditor_AnchorAsAlign(v.instance, ATheAlign , ASpace)
 }

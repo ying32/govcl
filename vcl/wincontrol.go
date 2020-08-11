@@ -442,6 +442,10 @@ func (w *TWinControl) AnchorVerticalCenterTo(ASibling IControl) {
     WinControl_AnchorVerticalCenterTo(w.instance, CheckPtr(ASibling))
 }
 
+func (w *TWinControl) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    WinControl_AnchorSame(w.instance, ASide , CheckPtr(ASibling))
+}
+
 func (w *TWinControl) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     WinControl_AnchorAsAlign(w.instance, ATheAlign , ASpace)
 }

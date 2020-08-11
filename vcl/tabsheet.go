@@ -442,6 +442,10 @@ func (t *TTabSheet) AnchorVerticalCenterTo(ASibling IControl) {
     TabSheet_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
 }
 
+func (t *TTabSheet) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    TabSheet_AnchorSame(t.instance, ASide , CheckPtr(ASibling))
+}
+
 func (t *TTabSheet) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     TabSheet_AnchorAsAlign(t.instance, ATheAlign , ASpace)
 }

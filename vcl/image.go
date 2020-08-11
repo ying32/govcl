@@ -342,6 +342,10 @@ func (i *TImage) AnchorVerticalCenterTo(ASibling IControl) {
     Image_AnchorVerticalCenterTo(i.instance, CheckPtr(ASibling))
 }
 
+func (i *TImage) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    Image_AnchorSame(i.instance, ASide , CheckPtr(ASibling))
+}
+
 func (i *TImage) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     Image_AnchorAsAlign(i.instance, ATheAlign , ASpace)
 }

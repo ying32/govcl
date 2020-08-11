@@ -342,6 +342,10 @@ func (b *TBoundLabel) AnchorVerticalCenterTo(ASibling IControl) {
     BoundLabel_AnchorVerticalCenterTo(b.instance, CheckPtr(ASibling))
 }
 
+func (b *TBoundLabel) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    BoundLabel_AnchorSame(b.instance, ASide , CheckPtr(ASibling))
+}
+
 func (b *TBoundLabel) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     BoundLabel_AnchorAsAlign(b.instance, ATheAlign , ASpace)
 }

@@ -217,6 +217,14 @@ func (c *TColorDialog) SetColor(value TColor) {
     ColorDialog_SetColor(c.instance, value)
 }
 
+func (c *TColorDialog) CustomColors() *TStrings {
+    return AsStrings(ColorDialog_GetCustomColors(c.instance))
+}
+
+func (c *TColorDialog) SetCustomColors(value IStrings) {
+    ColorDialog_SetCustomColors(c.instance, CheckPtr(value))
+}
+
 // 获取控件句柄。
 //
 // Get Control handle.

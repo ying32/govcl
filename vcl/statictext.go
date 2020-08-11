@@ -442,6 +442,10 @@ func (s *TStaticText) AnchorVerticalCenterTo(ASibling IControl) {
     StaticText_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+func (s *TStaticText) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    StaticText_AnchorSame(s.instance, ASide , CheckPtr(ASibling))
+}
+
 func (s *TStaticText) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     StaticText_AnchorAsAlign(s.instance, ATheAlign , ASpace)
 }

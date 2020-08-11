@@ -481,6 +481,10 @@ func (m *TMaskEdit) AnchorVerticalCenterTo(ASibling IControl) {
     MaskEdit_AnchorVerticalCenterTo(m.instance, CheckPtr(ASibling))
 }
 
+func (m *TMaskEdit) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    MaskEdit_AnchorSame(m.instance, ASide , CheckPtr(ASibling))
+}
+
 func (m *TMaskEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     MaskEdit_AnchorAsAlign(m.instance, ATheAlign , ASpace)
 }

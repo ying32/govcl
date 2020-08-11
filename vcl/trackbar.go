@@ -446,6 +446,10 @@ func (t *TTrackBar) AnchorVerticalCenterTo(ASibling IControl) {
     TrackBar_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
 }
 
+func (t *TTrackBar) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    TrackBar_AnchorSame(t.instance, ASide , CheckPtr(ASibling))
+}
+
 func (t *TTrackBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     TrackBar_AnchorAsAlign(t.instance, ATheAlign , ASpace)
 }

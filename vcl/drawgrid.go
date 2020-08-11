@@ -454,6 +454,10 @@ func (d *TDrawGrid) AnchorVerticalCenterTo(ASibling IControl) {
     DrawGrid_AnchorVerticalCenterTo(d.instance, CheckPtr(ASibling))
 }
 
+func (d *TDrawGrid) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    DrawGrid_AnchorSame(d.instance, ASide , CheckPtr(ASibling))
+}
+
 func (d *TDrawGrid) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     DrawGrid_AnchorAsAlign(d.instance, ATheAlign , ASpace)
 }

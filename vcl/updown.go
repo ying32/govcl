@@ -442,6 +442,10 @@ func (u *TUpDown) AnchorVerticalCenterTo(ASibling IControl) {
     UpDown_AnchorVerticalCenterTo(u.instance, CheckPtr(ASibling))
 }
 
+func (u *TUpDown) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    UpDown_AnchorSame(u.instance, ASide , CheckPtr(ASibling))
+}
+
 func (u *TUpDown) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     UpDown_AnchorAsAlign(u.instance, ATheAlign , ASpace)
 }

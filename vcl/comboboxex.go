@@ -466,6 +466,10 @@ func (c *TComboBoxEx) AnchorVerticalCenterTo(ASibling IControl) {
     ComboBoxEx_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
 }
 
+func (c *TComboBoxEx) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    ComboBoxEx_AnchorSame(c.instance, ASide , CheckPtr(ASibling))
+}
+
 func (c *TComboBoxEx) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     ComboBoxEx_AnchorAsAlign(c.instance, ATheAlign , ASpace)
 }

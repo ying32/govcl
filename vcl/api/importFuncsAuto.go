@@ -635,6 +635,10 @@ func Form_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     form_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func Form_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    form_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func Form_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     form_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -1698,6 +1702,10 @@ func Button_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     button_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func Button_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    button_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func Button_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     button_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -2539,6 +2547,10 @@ func Edit_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func Edit_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     edit_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Edit_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    edit_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func Edit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -3883,6 +3895,10 @@ func Memo_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     memo_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func Memo_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    memo_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func Memo_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     memo_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -4856,6 +4872,10 @@ func CheckBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     checkBox_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func CheckBox_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    checkBox_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func CheckBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     checkBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -5702,6 +5722,10 @@ func RadioButton_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     radioButton_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func RadioButton_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    radioButton_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func RadioButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     radioButton_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -6530,6 +6554,10 @@ func GroupBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     groupBox_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func GroupBox_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    groupBox_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func GroupBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     groupBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -7284,6 +7312,10 @@ func Label_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func Label_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     label_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Label_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    label_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func Label_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -8065,6 +8097,10 @@ func ListBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func ListBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     listBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ListBox_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    listBox_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func ListBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -9028,6 +9064,10 @@ func ComboBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     comboBox_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func ComboBox_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    comboBox_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func ComboBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     comboBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -9977,6 +10017,10 @@ func Panel_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     panel_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func Panel_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    panel_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func Panel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     panel_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -10809,6 +10853,10 @@ func Image_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     image_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func Image_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    image_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func Image_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     image_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -11462,6 +11510,10 @@ func LinkLabel_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     linkLabel_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func LinkLabel_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    linkLabel_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func LinkLabel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     linkLabel_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -12089,6 +12141,10 @@ func SpeedButton_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func SpeedButton_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     speedButton_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func SpeedButton_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    speedButton_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func SpeedButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -12754,6 +12810,10 @@ func Splitter_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     splitter_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func Splitter_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    splitter_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func Splitter_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     splitter_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -13336,6 +13396,10 @@ func RadioGroup_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func RadioGroup_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     radioGroup_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func RadioGroup_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    radioGroup_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func RadioGroup_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -14124,6 +14188,10 @@ func StaticText_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func StaticText_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     staticText_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func StaticText_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    staticText_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func StaticText_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -14988,6 +15056,10 @@ func ColorBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func ColorBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     colorBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ColorBox_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    colorBox_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func ColorBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -15939,6 +16011,10 @@ func ColorListBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func ColorListBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     colorListBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ColorListBox_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    colorListBox_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func ColorListBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -17277,6 +17353,15 @@ func ColorDialog_SetColor(obj uintptr, value TColor) {
    colorDialog_SetColor.Call(obj, uintptr(value))
 }
 
+func ColorDialog_GetCustomColors(obj uintptr) uintptr {
+    ret, _, _ := colorDialog_GetCustomColors.Call(obj)
+    return ret
+}
+
+func ColorDialog_SetCustomColors(obj uintptr, value uintptr) {
+   colorDialog_SetCustomColors.Call(obj, value)
+}
+
 func ColorDialog_GetHandle(obj uintptr) HWND {
     ret, _, _ := colorDialog_GetHandle.Call(obj)
     return HWND(ret)
@@ -18559,6 +18644,10 @@ func RichEdit_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     richEdit_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func RichEdit_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    richEdit_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func RichEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     richEdit_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -19578,6 +19667,10 @@ func TrackBar_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func TrackBar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     trackBar_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func TrackBar_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    trackBar_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func TrackBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -20727,6 +20820,10 @@ func UpDown_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     upDown_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func UpDown_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    upDown_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func UpDown_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     upDown_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -21501,6 +21598,10 @@ func ProgressBar_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func ProgressBar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     progressBar_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ProgressBar_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    progressBar_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func ProgressBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -22331,6 +22432,10 @@ func DateTimePicker_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func DateTimePicker_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     dateTimePicker_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func DateTimePicker_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    dateTimePicker_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func DateTimePicker_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -23335,6 +23440,10 @@ func MonthCalendar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     monthCalendar_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func MonthCalendar_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    monthCalendar_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func MonthCalendar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     monthCalendar_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -24165,6 +24274,10 @@ func ListView_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func ListView_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     listView_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ListView_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    listView_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func ListView_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -25467,6 +25580,10 @@ func TreeView_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     treeView_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func TreeView_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    treeView_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func TreeView_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     treeView_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -26680,6 +26797,10 @@ func StatusBar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     statusBar_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func StatusBar_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    statusBar_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func StatusBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     statusBar_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -27543,6 +27664,10 @@ func ToolBar_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func ToolBar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     toolBar_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ToolBar_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    toolBar_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func ToolBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -28512,6 +28637,10 @@ func BitBtn_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func BitBtn_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     bitBtn_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func BitBtn_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    bitBtn_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func BitBtn_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -31960,6 +32089,10 @@ func PageControl_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     pageControl_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func PageControl_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    pageControl_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func PageControl_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     pageControl_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -32837,6 +32970,10 @@ func TabSheet_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     tabSheet_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func TabSheet_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    tabSheet_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func TabSheet_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     tabSheet_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -33578,6 +33715,10 @@ func Control_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     control_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func Control_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    control_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func Control_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     control_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -34115,6 +34256,10 @@ func WinControl_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func WinControl_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     winControl_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func WinControl_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    winControl_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func WinControl_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -35634,6 +35779,10 @@ func SpinEdit_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     spinEdit_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func SpinEdit_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    spinEdit_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func SpinEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     spinEdit_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -36560,6 +36709,10 @@ func MiniWebview_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func MiniWebview_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     miniWebview_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func MiniWebview_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    miniWebview_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func MiniWebview_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -38383,6 +38536,10 @@ func ToolButton_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     toolButton_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func ToolButton_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    toolButton_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func ToolButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     toolButton_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -39685,6 +39842,10 @@ func PaintBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func PaintBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     paintBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func PaintBox_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    paintBox_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func PaintBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -41059,6 +41220,10 @@ func ScrollBar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     scrollBar_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func ScrollBar_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    scrollBar_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func ScrollBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     scrollBar_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -41884,6 +42049,10 @@ func MaskEdit_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func MaskEdit_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     maskEdit_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func MaskEdit_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    maskEdit_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func MaskEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -42774,6 +42943,10 @@ func Shape_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     shape_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func Shape_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    shape_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func Shape_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     shape_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -43340,6 +43513,10 @@ func Bevel_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func Bevel_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     bevel_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Bevel_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    bevel_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func Bevel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -43910,6 +44087,10 @@ func ScrollBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func ScrollBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     scrollBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ScrollBox_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    scrollBox_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func ScrollBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -44818,6 +44999,10 @@ func CheckListBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     checkListBox_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func CheckListBox_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    checkListBox_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func CheckListBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     checkListBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -45706,6 +45891,10 @@ func Gauge_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     gauge_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func Gauge_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    gauge_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func Gauge_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     gauge_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -46303,6 +46492,10 @@ func ImageButton_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func ImageButton_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     imageButton_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ImageButton_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    imageButton_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func ImageButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -48131,6 +48324,10 @@ func StringGrid_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     stringGrid_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func StringGrid_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    stringGrid_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func StringGrid_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     stringGrid_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -49626,6 +49823,10 @@ func DrawGrid_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     drawGrid_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func DrawGrid_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    drawGrid_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func DrawGrid_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     drawGrid_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -50697,6 +50898,10 @@ func ValueListEditor_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     valueListEditor_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func ValueListEditor_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    valueListEditor_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func ValueListEditor_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     valueListEditor_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -51765,6 +51970,10 @@ func HeaderControl_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func HeaderControl_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     headerControl_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func HeaderControl_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    headerControl_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func HeaderControl_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -52867,6 +53076,10 @@ func LabeledEdit_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     labeledEdit_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func LabeledEdit_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    labeledEdit_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func LabeledEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     labeledEdit_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -53765,6 +53978,10 @@ func BoundLabel_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     boundLabel_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func BoundLabel_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    boundLabel_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func BoundLabel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     boundLabel_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -54448,6 +54665,10 @@ func FlowPanel_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func FlowPanel_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     flowPanel_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func FlowPanel_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    flowPanel_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func FlowPanel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -55342,6 +55563,10 @@ func CoolBar_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func CoolBar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     coolBar_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func CoolBar_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    coolBar_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func CoolBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -57634,6 +57859,10 @@ func ComboBoxEx_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     comboBoxEx_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func ComboBoxEx_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    comboBoxEx_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func ComboBoxEx_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     comboBoxEx_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -58808,6 +59037,10 @@ func Frame_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     frame_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func Frame_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    frame_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func Frame_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     frame_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -59811,6 +60044,10 @@ func XButton_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func XButton_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     xButton_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func XButton_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    xButton_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func XButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
@@ -60944,6 +61181,10 @@ func CheckGroup_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     checkGroup_AnchorVerticalCenterTo.Call(obj, ASibling )
 }
 
+func CheckGroup_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    checkGroup_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
+}
+
 func CheckGroup_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
     checkGroup_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
@@ -61822,6 +62063,10 @@ func ToggleBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
 
 func ToggleBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
     toggleBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ToggleBox_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    toggleBox_AnchorSame.Call(obj, uintptr(ASide) , ASibling )
 }
 
 func ToggleBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {

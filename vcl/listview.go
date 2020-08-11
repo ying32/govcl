@@ -481,6 +481,10 @@ func (l *TListView) AnchorVerticalCenterTo(ASibling IControl) {
     ListView_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
 }
 
+func (l *TListView) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    ListView_AnchorSame(l.instance, ASide , CheckPtr(ASibling))
+}
+
 func (l *TListView) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     ListView_AnchorAsAlign(l.instance, ATheAlign , ASpace)
 }

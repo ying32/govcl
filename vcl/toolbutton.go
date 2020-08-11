@@ -351,6 +351,10 @@ func (t *TToolButton) AnchorVerticalCenterTo(ASibling IControl) {
     ToolButton_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
 }
 
+func (t *TToolButton) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    ToolButton_AnchorSame(t.instance, ASide , CheckPtr(ASibling))
+}
+
 func (t *TToolButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     ToolButton_AnchorAsAlign(t.instance, ATheAlign , ASpace)
 }

@@ -442,6 +442,10 @@ func (t *TToolBar) AnchorVerticalCenterTo(ASibling IControl) {
     ToolBar_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
 }
 
+func (t *TToolBar) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    ToolBar_AnchorSame(t.instance, ASide , CheckPtr(ASibling))
+}
+
 func (t *TToolBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     ToolBar_AnchorAsAlign(t.instance, ATheAlign , ASpace)
 }

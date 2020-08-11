@@ -477,6 +477,10 @@ func (e *TEdit) AnchorVerticalCenterTo(ASibling IControl) {
     Edit_AnchorVerticalCenterTo(e.instance, CheckPtr(ASibling))
 }
 
+func (e *TEdit) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    Edit_AnchorSame(e.instance, ASide , CheckPtr(ASibling))
+}
+
 func (e *TEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     Edit_AnchorAsAlign(e.instance, ATheAlign , ASpace)
 }

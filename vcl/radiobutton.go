@@ -442,6 +442,10 @@ func (r *TRadioButton) AnchorVerticalCenterTo(ASibling IControl) {
     RadioButton_AnchorVerticalCenterTo(r.instance, CheckPtr(ASibling))
 }
 
+func (r *TRadioButton) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    RadioButton_AnchorSame(r.instance, ASide , CheckPtr(ASibling))
+}
+
 func (r *TRadioButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     RadioButton_AnchorAsAlign(r.instance, ATheAlign , ASpace)
 }

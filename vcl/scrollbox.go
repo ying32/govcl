@@ -446,6 +446,10 @@ func (s *TScrollBox) AnchorVerticalCenterTo(ASibling IControl) {
     ScrollBox_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+func (s *TScrollBox) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    ScrollBox_AnchorSame(s.instance, ASide , CheckPtr(ASibling))
+}
+
 func (s *TScrollBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     ScrollBox_AnchorAsAlign(s.instance, ATheAlign , ASpace)
 }

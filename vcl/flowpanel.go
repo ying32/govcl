@@ -450,6 +450,10 @@ func (f *TFlowPanel) AnchorVerticalCenterTo(ASibling IControl) {
     FlowPanel_AnchorVerticalCenterTo(f.instance, CheckPtr(ASibling))
 }
 
+func (f *TFlowPanel) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    FlowPanel_AnchorSame(f.instance, ASide , CheckPtr(ASibling))
+}
+
 func (f *TFlowPanel) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     FlowPanel_AnchorAsAlign(f.instance, ATheAlign , ASpace)
 }

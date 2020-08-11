@@ -342,6 +342,10 @@ func (b *TBevel) AnchorVerticalCenterTo(ASibling IControl) {
     Bevel_AnchorVerticalCenterTo(b.instance, CheckPtr(ASibling))
 }
 
+func (b *TBevel) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    Bevel_AnchorSame(b.instance, ASide , CheckPtr(ASibling))
+}
+
 func (b *TBevel) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     Bevel_AnchorAsAlign(b.instance, ATheAlign , ASpace)
 }

@@ -455,6 +455,10 @@ func (d *TDateTimePicker) AnchorVerticalCenterTo(ASibling IControl) {
     DateTimePicker_AnchorVerticalCenterTo(d.instance, CheckPtr(ASibling))
 }
 
+func (d *TDateTimePicker) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    DateTimePicker_AnchorSame(d.instance, ASide , CheckPtr(ASibling))
+}
+
 func (d *TDateTimePicker) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     DateTimePicker_AnchorAsAlign(d.instance, ATheAlign , ASpace)
 }

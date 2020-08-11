@@ -474,6 +474,10 @@ func (c *TColorListBox) AnchorVerticalCenterTo(ASibling IControl) {
     ColorListBox_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
 }
 
+func (c *TColorListBox) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    ColorListBox_AnchorSame(c.instance, ASide , CheckPtr(ASibling))
+}
+
 func (c *TColorListBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     ColorListBox_AnchorAsAlign(c.instance, ATheAlign , ASpace)
 }

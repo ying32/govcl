@@ -474,6 +474,10 @@ func (l *TListBox) AnchorVerticalCenterTo(ASibling IControl) {
     ListBox_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
 }
 
+func (l *TListBox) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    ListBox_AnchorSame(l.instance, ASide , CheckPtr(ASibling))
+}
+
 func (l *TListBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     ListBox_AnchorAsAlign(l.instance, ATheAlign , ASpace)
 }

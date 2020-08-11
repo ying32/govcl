@@ -481,6 +481,10 @@ func (m *TMemo) AnchorVerticalCenterTo(ASibling IControl) {
     Memo_AnchorVerticalCenterTo(m.instance, CheckPtr(ASibling))
 }
 
+func (m *TMemo) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    Memo_AnchorSame(m.instance, ASide , CheckPtr(ASibling))
+}
+
 func (m *TMemo) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     Memo_AnchorAsAlign(m.instance, ATheAlign , ASpace)
 }

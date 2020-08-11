@@ -446,6 +446,10 @@ func (f *TFrame) AnchorVerticalCenterTo(ASibling IControl) {
     Frame_AnchorVerticalCenterTo(f.instance, CheckPtr(ASibling))
 }
 
+func (f *TFrame) AnchorSame(ASide TAnchorKind, ASibling IControl) {
+    Frame_AnchorSame(f.instance, ASide , CheckPtr(ASibling))
+}
+
 func (f *TFrame) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
     Frame_AnchorAsAlign(f.instance, ATheAlign , ASpace)
 }
