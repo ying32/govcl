@@ -233,12 +233,12 @@ type TMeasureItemEvent func(control *TWinControl, index int32, height *int32)
 // TLVChangingEvent = procedure(Sender: TObject; Item: TListItem; Change: TItemChange; var AllowChange: Boolean) of object;
 type TLVChangingEvent func(sender IObject, item *TListItem, change TItemChange, allowChange *bool)
 
-// TLVOwnerDataEvent = procedure(Sender: TObject; Item: TListItem) of object;
-type TLVOwnerDataEvent func(sender IObject, item *TListItem)
+// TLVDataEvent = procedure(Sender: TObject; Item: TListItem) of object;
+type TLVDataEvent func(sender IObject, item *TListItem)
 
-// TLVOwnerDataFindEvent = procedure(Sender: TObject; Find: TItemFind; const FindString: string;
+// TLVDataFindEvent = procedure(Sender: TObject; Find: TItemFind; const FindString: string;
 //  const FindPosition: TPoint; FindData: TCustomData; StartIndex: Integer; Direction: TSearchDirection; Wrap: Boolean; var Index: Integer) of object;
-type TLVOwnerDataFindEvent func(sender IObject, find TItemFind, findString string, findPosition TPoint, findData TCustomData, startIndex int32, direction TSearchDirection, warp bool, index *int32)
+type TLVDataFindEvent func(sender IObject, find TItemFind, findString string, findPosition TPoint, findData TCustomData, startIndex int32, direction TSearchDirection, warp bool, index *int32)
 
 //TLVDeletedEvent = procedure(Sender: TObject; Item: TListItem) of object;
 type TLVDeletedEvent func(sender IObject, item *TListItem)
@@ -294,7 +294,6 @@ type TLVDrawItemEvent func(sender *TListView, item *TListItem, rect TRect, state
 
 //TLVDataHintEvent = procedure(Sender: TObject; StartIndex, EndIndex: Integer) of object;
 type TLVDataHintEvent func(sender IObject, startIndex, endIndex int32)
-type TLVOwnerDataHintEvent = TLVDataHintEvent
 
 //TTVCustomDrawEvent = procedure(Sender: TCustomTreeView; const ARect: TRect;var DefaultDraw: Boolean) of object;
 type TTVCustomDrawEvent func(sender *TTreeView, aRect TRect, defaultDraw *bool)

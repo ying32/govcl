@@ -1096,15 +1096,15 @@ func (l *TListView) SetOnCustomDrawSubItem(fn TLVCustomDrawSubItemEvent) {
     ListView_SetOnCustomDrawSubItem(l.instance, fn)
 }
 
-func (l *TListView) SetOnData(fn TLVOwnerDataEvent) {
+func (l *TListView) SetOnData(fn TLVDataEvent) {
     ListView_SetOnData(l.instance, fn)
 }
 
-func (l *TListView) SetOnDataFind(fn TLVOwnerDataFindEvent) {
+func (l *TListView) SetOnDataFind(fn TLVDataFindEvent) {
     ListView_SetOnDataFind(l.instance, fn)
 }
 
-func (l *TListView) SetOnDataHint(fn TLVOwnerDataHintEvent) {
+func (l *TListView) SetOnDataHint(fn TLVDataHintEvent) {
     ListView_SetOnDataHint(l.instance, fn)
 }
 

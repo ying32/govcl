@@ -588,16 +588,16 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 				TItemChange(getVal(2)),
 				getBoolPtr(3))
 
-			//type TLVOwnerDataEvent func(sender IObject, item *TListItem)
-		case TLVOwnerDataEvent:
-			v.(TLVOwnerDataEvent)(
+			//type TLVDataEvent func(sender IObject, item *TListItem)
+		case TLVDataEvent:
+			v.(TLVDataEvent)(
 				AsObject(getVal(0)),
 				AsListItem(getVal(1)))
 
-			//type TLVOwnerDataFindEvent func(sender IObject, find TItemFind, findString string, findPosition TPoint, findData TCustomData, startIndex int32,
+			//type TLVDataFindEvent func(sender IObject, find TItemFind, findString string, findPosition TPoint, findData TCustomData, startIndex int32,
 			//	direction TSearchDirection, warp bool, index *int32)
-		case TLVOwnerDataFindEvent:
-			v.(TLVOwnerDataFindEvent)(
+		case TLVDataFindEvent:
+			v.(TLVDataFindEvent)(
 				AsObject(getVal(0)),
 				TItemFind(getVal(1)),
 				DStrToGoStr(getVal(2)),
