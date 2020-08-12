@@ -1,0 +1,84 @@
+object NewTencentTranslateEngine: TNewTencentTranslateEngine
+  Left = 993
+  Height = 217
+  Top = 442
+  Width = 479
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = '新建翻译引擎（腾讯云）'
+  ClientHeight = 217
+  ClientWidth = 479
+  Position = poScreenCenter
+  LCLVersion = '2.0.10.0'
+  object Label1: TLabel
+    Left = 22
+    Height = 17
+    Top = 24
+    Width = 65
+    Caption = '名称/别名：'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 22
+    Height = 17
+    Top = 57
+    Width = 60
+    Caption = 'SecretId：'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 22
+    Height = 17
+    Top = 91
+    Width = 69
+    Caption = 'SecretKey：'
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 23
+    Height = 34
+    Top = 126
+    Width = 190
+    Caption = '说明：'#13#10'请填写“腾讯云”创建的子用户密钥。'
+    ParentColor = False
+  end
+  object EdtName: TEdit
+    Left = 111
+    Height = 25
+    Top = 21
+    Width = 353
+    TabOrder = 0
+  end
+  object EdtSecretId: TEdit
+    Left = 111
+    Height = 25
+    Top = 52
+    Width = 353
+    TabOrder = 1
+  end
+  object EditSecretKey: TEdit
+    Left = 111
+    Height = 25
+    Top = 86
+    Width = 353
+    TabOrder = 2
+  end
+  object BtnOK: TButton
+    Left = 303
+    Height = 25
+    Top = 176
+    Width = 75
+    Caption = '确定新增'
+    OnClick = BtnOKClick
+    TabOrder = 3
+  end
+  object Button2: TButton
+    Left = 386
+    Height = 25
+    Top = 176
+    Width = 75
+    Caption = '取消'
+    ModalResult = 2
+    TabOrder = 4
+  end
+end

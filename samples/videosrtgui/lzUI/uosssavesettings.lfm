@@ -1,0 +1,114 @@
+object OSSSaveSettings: TOSSSaveSettings
+  Left = 902
+  Height = 272
+  Top = 427
+  Width = 489
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'OSS对象存储设置'
+  ClientHeight = 272
+  ClientWidth = 489
+  Position = poScreenCenter
+  LCLVersion = '2.0.10.0'
+  object Label1: TLabel
+    Left = 26
+    Height = 17
+    Top = 25
+    Width = 64
+    Caption = 'Endpoint：'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 26
+    Height = 17
+    Top = 57
+    Width = 84
+    Caption = 'AccessKeyId：'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 26
+    Height = 17
+    Top = 89
+    Width = 108
+    Caption = 'AccessKeySecret：'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 26
+    Height = 17
+    Top = 123
+    Width = 86
+    Caption = 'BucketName：'
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 26
+    Height = 17
+    Top = 154
+    Width = 96
+    Caption = 'BucketDomain：'
+    ParentColor = False
+  end
+  object EdtEndPoint: TEdit
+    Left = 133
+    Height = 25
+    Top = 20
+    Width = 338
+    TabOrder = 0
+  end
+  object EdtAccessKeyId: TEdit
+    Left = 133
+    Height = 25
+    Top = 53
+    Width = 338
+    TabOrder = 1
+  end
+  object EdtAccessKeySecret: TEdit
+    Left = 133
+    Height = 25
+    Top = 86
+    Width = 338
+    TabOrder = 2
+  end
+  object EdtBucketName: TEdit
+    Left = 133
+    Height = 25
+    Top = 119
+    Width = 338
+    TabOrder = 3
+  end
+  object EdtBucketDomain: TEdit
+    Left = 133
+    Height = 25
+    Top = 150
+    Width = 338
+    TabOrder = 4
+  end
+  object Label6: TLabel
+    Left = 28
+    Height = 34
+    Top = 188
+    Width = 358
+    Caption = '说明：'#13#10'“OSS对象存储”目前使用的是阿里云服务，请填写相关的服务配置。'
+    ParentColor = False
+  end
+  object BtnSave: TButton
+    Left = 317
+    Height = 25
+    Top = 233
+    Width = 75
+    Caption = '保存'
+    OnClick = BtnSaveClick
+    TabOrder = 5
+  end
+  object BtnCancel: TButton
+    Left = 397
+    Height = 25
+    Top = 233
+    Width = 75
+    Caption = '取消'
+    ModalResult = 2
+    TabOrder = 6
+  end
+end

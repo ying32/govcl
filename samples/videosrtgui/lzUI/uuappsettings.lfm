@@ -1,0 +1,103 @@
+object AppSettings: TAppSettings
+  Left = 993
+  Height = 274
+  Top = 429
+  Width = 436
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = '软件设置'
+  ClientHeight = 274
+  ClientWidth = 436
+  Position = poScreenCenter
+  LCLVersion = '2.0.10.0'
+  object Label1: TLabel
+    Left = 20
+    Height = 17
+    Top = 28
+    Width = 96
+    Caption = '任务处理并发数：'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 20
+    Height = 17
+    Top = 66
+    Width = 84
+    Caption = '文件输出目录：'
+    ParentColor = False
+  end
+  object EdtOutputFileDir: TEdit
+    Left = 119
+    Height = 25
+    Top = 62
+    Width = 299
+    TabOrder = 0
+  end
+  object Label3: TLabel
+    Left = 23
+    Height = 34
+    Top = 111
+    Width = 322
+    Caption = '说明：'#13#10'“文件输出目录”若留空，则默认与媒体文件输出到同一目录下'
+    ParentColor = False
+    WordWrap = True
+  end
+  object Label4: TLabel
+    Left = 24
+    Height = 17
+    Top = 168
+    Width = 132
+    Caption = '关闭OSS临时文件清理：'
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 24
+    Height = 17
+    Top = 198
+    Width = 108
+    Caption = '关闭软件新版提醒：'
+    ParentColor = False
+  end
+  object ChkCloseOSS: TCheckBox
+    Left = 157
+    Height = 21
+    Top = 167
+    Width = 22
+    TabOrder = 1
+  end
+  object ChkCloseAutoUpdate: TCheckBox
+    Left = 157
+    Height = 21
+    Top = 196
+    Width = 22
+    TabOrder = 2
+  end
+  object BtnSave: TButton
+    Left = 273
+    Height = 25
+    Top = 230
+    Width = 75
+    Caption = '保存'
+    ModalResult = 1
+    TabOrder = 3
+  end
+  object BtnCancel: TButton
+    Left = 353
+    Height = 25
+    Top = 230
+    Width = 75
+    Caption = '取消'
+    ModalResult = 2
+    TabOrder = 4
+  end
+  object EdtTaskParallelCount: TSpinEdit
+    Left = 119
+    Height = 25
+    Top = 25
+    Width = 299
+    MaxValue = 20
+    MinValue = 1
+    TabOrder = 5
+    Value = 2
+  end
+end

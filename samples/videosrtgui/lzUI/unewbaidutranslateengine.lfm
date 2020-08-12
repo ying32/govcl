@@ -1,0 +1,107 @@
+object NewBaiduTranslateEngine: TNewBaiduTranslateEngine
+  Left = 957
+  Height = 263
+  Top = 455
+  Width = 479
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = '新建翻译引擎（百度翻译）'
+  ClientHeight = 263
+  ClientWidth = 479
+  Position = poScreenCenter
+  LCLVersion = '2.0.10.0'
+  object Label1: TLabel
+    Left = 22
+    Height = 17
+    Top = 24
+    Width = 65
+    Caption = '名称/别名：'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 22
+    Height = 17
+    Top = 57
+    Width = 48
+    Caption = 'AppId：'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 22
+    Height = 17
+    Top = 91
+    Width = 72
+    Caption = 'AppSecret：'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 22
+    Height = 17
+    Top = 126
+    Width = 84
+    Caption = '帐号认证类型：'
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 22
+    Height = 34
+    Top = 155
+    Width = 402
+    Caption = '说明：'#13#10'请填写在“百度翻译开放平台”申请的密钥，注意“标准版”和“高级版”的选择。'
+    ParentColor = False
+  end
+  object EdtName: TEdit
+    Left = 111
+    Height = 25
+    Top = 21
+    Width = 353
+    TabOrder = 0
+  end
+  object EdtAppId: TEdit
+    Left = 111
+    Height = 25
+    Top = 52
+    Width = 353
+    TabOrder = 1
+  end
+  object EditAppSecret: TEdit
+    Left = 111
+    Height = 25
+    Top = 86
+    Width = 353
+    TabOrder = 2
+  end
+  object CbbType: TComboBox
+    Left = 111
+    Height = 25
+    Top = 121
+    Width = 353
+    ItemHeight = 17
+    ItemIndex = 0
+    Items.Strings = (
+      '标准版'
+      '高级版'
+    )
+    Style = csDropDownList
+    TabOrder = 3
+    Text = '标准版'
+  end
+  object BtnOK: TButton
+    Left = 305
+    Height = 25
+    Top = 222
+    Width = 75
+    Caption = '确定新增'
+    OnClick = BtnOKClick
+    TabOrder = 4
+  end
+  object Button2: TButton
+    Left = 388
+    Height = 25
+    Top = 222
+    Width = 75
+    Caption = '取消'
+    ModalResult = 2
+    TabOrder = 5
+  end
+end

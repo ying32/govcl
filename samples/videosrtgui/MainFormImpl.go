@@ -249,3 +249,19 @@ func (f *TMainForm) OnFormCloseQuery(sender vcl.IObject, canClose *bool) {
 		*canClose = vcl.MessageDlg("当前正运行中，是否等待完成后再关闭？", types.MtWarning, types.MbYes, types.MbNo) == types.MrYes
 	}
 }
+
+func (f *TMainForm) OnTBtnSettingsClick(sender vcl.IObject) {
+	f.TBtnSettings.CheckMenuDropdown()
+}
+
+func (f *TMainForm) OnTBtnHelpClick(sender vcl.IObject) {
+	f.TBtnHelp.CheckMenuDropdown()
+}
+
+func (f *TMainForm) OnTBtnOpenClick(sender vcl.IObject) {
+	f.TBtnOpen.CheckMenuDropdown()
+}
+
+func (f *TMainForm) OnTBtnNewClick(sender vcl.IObject) {
+	f.TBtnNew.CheckMenuDropdown()
+}
