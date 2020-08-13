@@ -167,6 +167,6 @@ func (f *TGdipForm) DrawText(s string, top int, g *gdiplus.Graphics, family *gdi
 func (f *TGdipForm) OnFormMouseDown(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
 	if button == types.MbLeft {
 		win.ReleaseCapture()
-		f.Perform(win.WM_SYSCOMMAND, win.SC_MOVE+1, 0)
+		win.PostMessage(f.Handle(), win.WM_SYSCOMMAND, win.SC_MOVE+1, 0)
 	}
 }
