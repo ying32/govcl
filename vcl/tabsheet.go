@@ -193,6 +193,13 @@ func (t *TTabSheet) Invalidate() {
     TabSheet_Invalidate(t.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (t *TTabSheet) PaintTo(DC HDC, X int32, Y int32) {
+    TabSheet_PaintTo(t.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -452,6 +459,58 @@ func (t *TTabSheet) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (t *TTabSheet) AnchorClient(ASpace int32) {
     TabSheet_AnchorClient(t.instance, ASpace)
+}
+
+func (t *TTabSheet) ScaleDesignToForm(ASize int32) int32 {
+    return TabSheet_ScaleDesignToForm(t.instance, ASize)
+}
+
+func (t *TTabSheet) ScaleFormToDesign(ASize int32) int32 {
+    return TabSheet_ScaleFormToDesign(t.instance, ASize)
+}
+
+func (t *TTabSheet) Scale96ToForm(ASize int32) int32 {
+    return TabSheet_Scale96ToForm(t.instance, ASize)
+}
+
+func (t *TTabSheet) ScaleFormTo96(ASize int32) int32 {
+    return TabSheet_ScaleFormTo96(t.instance, ASize)
+}
+
+func (t *TTabSheet) Scale96ToFont(ASize int32) int32 {
+    return TabSheet_Scale96ToFont(t.instance, ASize)
+}
+
+func (t *TTabSheet) ScaleFontTo96(ASize int32) int32 {
+    return TabSheet_ScaleFontTo96(t.instance, ASize)
+}
+
+func (t *TTabSheet) ScaleScreenToFont(ASize int32) int32 {
+    return TabSheet_ScaleScreenToFont(t.instance, ASize)
+}
+
+func (t *TTabSheet) ScaleFontToScreen(ASize int32) int32 {
+    return TabSheet_ScaleFontToScreen(t.instance, ASize)
+}
+
+func (t *TTabSheet) Scale96ToScreen(ASize int32) int32 {
+    return TabSheet_Scale96ToScreen(t.instance, ASize)
+}
+
+func (t *TTabSheet) ScaleScreenTo96(ASize int32) int32 {
+    return TabSheet_ScaleScreenTo96(t.instance, ASize)
+}
+
+func (t *TTabSheet) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    TabSheet_AutoAdjustLayout(t.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (t *TTabSheet) FixDesignFontsPPI(ADesignTimePPI int32) {
+    TabSheet_FixDesignFontsPPI(t.instance, ADesignTimePPI)
+}
+
+func (t *TTabSheet) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    TabSheet_ScaleFontsPPI(t.instance, AToPPI , AProportion)
 }
 
 func (t *TTabSheet) PageControl() *TPageControl {

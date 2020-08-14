@@ -354,6 +354,58 @@ func (s *TSplitter) AnchorClient(ASpace int32) {
     Splitter_AnchorClient(s.instance, ASpace)
 }
 
+func (s *TSplitter) ScaleDesignToForm(ASize int32) int32 {
+    return Splitter_ScaleDesignToForm(s.instance, ASize)
+}
+
+func (s *TSplitter) ScaleFormToDesign(ASize int32) int32 {
+    return Splitter_ScaleFormToDesign(s.instance, ASize)
+}
+
+func (s *TSplitter) Scale96ToForm(ASize int32) int32 {
+    return Splitter_Scale96ToForm(s.instance, ASize)
+}
+
+func (s *TSplitter) ScaleFormTo96(ASize int32) int32 {
+    return Splitter_ScaleFormTo96(s.instance, ASize)
+}
+
+func (s *TSplitter) Scale96ToFont(ASize int32) int32 {
+    return Splitter_Scale96ToFont(s.instance, ASize)
+}
+
+func (s *TSplitter) ScaleFontTo96(ASize int32) int32 {
+    return Splitter_ScaleFontTo96(s.instance, ASize)
+}
+
+func (s *TSplitter) ScaleScreenToFont(ASize int32) int32 {
+    return Splitter_ScaleScreenToFont(s.instance, ASize)
+}
+
+func (s *TSplitter) ScaleFontToScreen(ASize int32) int32 {
+    return Splitter_ScaleFontToScreen(s.instance, ASize)
+}
+
+func (s *TSplitter) Scale96ToScreen(ASize int32) int32 {
+    return Splitter_Scale96ToScreen(s.instance, ASize)
+}
+
+func (s *TSplitter) ScaleScreenTo96(ASize int32) int32 {
+    return Splitter_ScaleScreenTo96(s.instance, ASize)
+}
+
+func (s *TSplitter) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    Splitter_AutoAdjustLayout(s.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (s *TSplitter) FixDesignFontsPPI(ADesignTimePPI int32) {
+    Splitter_FixDesignFontsPPI(s.instance, ADesignTimePPI)
+}
+
+func (s *TSplitter) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    Splitter_ScaleFontsPPI(s.instance, AToPPI , AProportion)
+}
+
 func (s *TSplitter) ResizeAnchor() TAnchorKind {
     return Splitter_GetResizeAnchor(s.instance)
 }

@@ -193,6 +193,13 @@ func (g *TGroupBox) Invalidate() {
     GroupBox_Invalidate(g.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (g *TGroupBox) PaintTo(DC HDC, X int32, Y int32) {
+    GroupBox_PaintTo(g.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -452,6 +459,58 @@ func (g *TGroupBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (g *TGroupBox) AnchorClient(ASpace int32) {
     GroupBox_AnchorClient(g.instance, ASpace)
+}
+
+func (g *TGroupBox) ScaleDesignToForm(ASize int32) int32 {
+    return GroupBox_ScaleDesignToForm(g.instance, ASize)
+}
+
+func (g *TGroupBox) ScaleFormToDesign(ASize int32) int32 {
+    return GroupBox_ScaleFormToDesign(g.instance, ASize)
+}
+
+func (g *TGroupBox) Scale96ToForm(ASize int32) int32 {
+    return GroupBox_Scale96ToForm(g.instance, ASize)
+}
+
+func (g *TGroupBox) ScaleFormTo96(ASize int32) int32 {
+    return GroupBox_ScaleFormTo96(g.instance, ASize)
+}
+
+func (g *TGroupBox) Scale96ToFont(ASize int32) int32 {
+    return GroupBox_Scale96ToFont(g.instance, ASize)
+}
+
+func (g *TGroupBox) ScaleFontTo96(ASize int32) int32 {
+    return GroupBox_ScaleFontTo96(g.instance, ASize)
+}
+
+func (g *TGroupBox) ScaleScreenToFont(ASize int32) int32 {
+    return GroupBox_ScaleScreenToFont(g.instance, ASize)
+}
+
+func (g *TGroupBox) ScaleFontToScreen(ASize int32) int32 {
+    return GroupBox_ScaleFontToScreen(g.instance, ASize)
+}
+
+func (g *TGroupBox) Scale96ToScreen(ASize int32) int32 {
+    return GroupBox_Scale96ToScreen(g.instance, ASize)
+}
+
+func (g *TGroupBox) ScaleScreenTo96(ASize int32) int32 {
+    return GroupBox_ScaleScreenTo96(g.instance, ASize)
+}
+
+func (g *TGroupBox) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    GroupBox_AutoAdjustLayout(g.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (g *TGroupBox) FixDesignFontsPPI(ADesignTimePPI int32) {
+    GroupBox_FixDesignFontsPPI(g.instance, ADesignTimePPI)
+}
+
+func (g *TGroupBox) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    GroupBox_ScaleFontsPPI(g.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

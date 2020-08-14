@@ -354,6 +354,58 @@ func (c *TControl) AnchorClient(ASpace int32) {
     Control_AnchorClient(c.instance, ASpace)
 }
 
+func (c *TControl) ScaleDesignToForm(ASize int32) int32 {
+    return Control_ScaleDesignToForm(c.instance, ASize)
+}
+
+func (c *TControl) ScaleFormToDesign(ASize int32) int32 {
+    return Control_ScaleFormToDesign(c.instance, ASize)
+}
+
+func (c *TControl) Scale96ToForm(ASize int32) int32 {
+    return Control_Scale96ToForm(c.instance, ASize)
+}
+
+func (c *TControl) ScaleFormTo96(ASize int32) int32 {
+    return Control_ScaleFormTo96(c.instance, ASize)
+}
+
+func (c *TControl) Scale96ToFont(ASize int32) int32 {
+    return Control_Scale96ToFont(c.instance, ASize)
+}
+
+func (c *TControl) ScaleFontTo96(ASize int32) int32 {
+    return Control_ScaleFontTo96(c.instance, ASize)
+}
+
+func (c *TControl) ScaleScreenToFont(ASize int32) int32 {
+    return Control_ScaleScreenToFont(c.instance, ASize)
+}
+
+func (c *TControl) ScaleFontToScreen(ASize int32) int32 {
+    return Control_ScaleFontToScreen(c.instance, ASize)
+}
+
+func (c *TControl) Scale96ToScreen(ASize int32) int32 {
+    return Control_Scale96ToScreen(c.instance, ASize)
+}
+
+func (c *TControl) ScaleScreenTo96(ASize int32) int32 {
+    return Control_ScaleScreenTo96(c.instance, ASize)
+}
+
+func (c *TControl) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    Control_AutoAdjustLayout(c.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (c *TControl) FixDesignFontsPPI(ADesignTimePPI int32) {
+    Control_FixDesignFontsPPI(c.instance, ADesignTimePPI)
+}
+
+func (c *TControl) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    Control_ScaleFontsPPI(c.instance, AToPPI , AProportion)
+}
+
 // 获取控件启用。
 //
 // Get the control enabled.

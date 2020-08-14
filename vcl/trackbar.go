@@ -197,6 +197,13 @@ func (t *TTrackBar) Invalidate() {
     TrackBar_Invalidate(t.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (t *TTrackBar) PaintTo(DC HDC, X int32, Y int32) {
+    TrackBar_PaintTo(t.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -456,6 +463,58 @@ func (t *TTrackBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (t *TTrackBar) AnchorClient(ASpace int32) {
     TrackBar_AnchorClient(t.instance, ASpace)
+}
+
+func (t *TTrackBar) ScaleDesignToForm(ASize int32) int32 {
+    return TrackBar_ScaleDesignToForm(t.instance, ASize)
+}
+
+func (t *TTrackBar) ScaleFormToDesign(ASize int32) int32 {
+    return TrackBar_ScaleFormToDesign(t.instance, ASize)
+}
+
+func (t *TTrackBar) Scale96ToForm(ASize int32) int32 {
+    return TrackBar_Scale96ToForm(t.instance, ASize)
+}
+
+func (t *TTrackBar) ScaleFormTo96(ASize int32) int32 {
+    return TrackBar_ScaleFormTo96(t.instance, ASize)
+}
+
+func (t *TTrackBar) Scale96ToFont(ASize int32) int32 {
+    return TrackBar_Scale96ToFont(t.instance, ASize)
+}
+
+func (t *TTrackBar) ScaleFontTo96(ASize int32) int32 {
+    return TrackBar_ScaleFontTo96(t.instance, ASize)
+}
+
+func (t *TTrackBar) ScaleScreenToFont(ASize int32) int32 {
+    return TrackBar_ScaleScreenToFont(t.instance, ASize)
+}
+
+func (t *TTrackBar) ScaleFontToScreen(ASize int32) int32 {
+    return TrackBar_ScaleFontToScreen(t.instance, ASize)
+}
+
+func (t *TTrackBar) Scale96ToScreen(ASize int32) int32 {
+    return TrackBar_Scale96ToScreen(t.instance, ASize)
+}
+
+func (t *TTrackBar) ScaleScreenTo96(ASize int32) int32 {
+    return TrackBar_ScaleScreenTo96(t.instance, ASize)
+}
+
+func (t *TTrackBar) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    TrackBar_AutoAdjustLayout(t.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (t *TTrackBar) FixDesignFontsPPI(ADesignTimePPI int32) {
+    TrackBar_FixDesignFontsPPI(t.instance, ADesignTimePPI)
+}
+
+func (t *TTrackBar) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    TrackBar_ScaleFontsPPI(t.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

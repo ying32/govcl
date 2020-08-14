@@ -354,6 +354,58 @@ func (s *TShape) AnchorClient(ASpace int32) {
     Shape_AnchorClient(s.instance, ASpace)
 }
 
+func (s *TShape) ScaleDesignToForm(ASize int32) int32 {
+    return Shape_ScaleDesignToForm(s.instance, ASize)
+}
+
+func (s *TShape) ScaleFormToDesign(ASize int32) int32 {
+    return Shape_ScaleFormToDesign(s.instance, ASize)
+}
+
+func (s *TShape) Scale96ToForm(ASize int32) int32 {
+    return Shape_Scale96ToForm(s.instance, ASize)
+}
+
+func (s *TShape) ScaleFormTo96(ASize int32) int32 {
+    return Shape_ScaleFormTo96(s.instance, ASize)
+}
+
+func (s *TShape) Scale96ToFont(ASize int32) int32 {
+    return Shape_Scale96ToFont(s.instance, ASize)
+}
+
+func (s *TShape) ScaleFontTo96(ASize int32) int32 {
+    return Shape_ScaleFontTo96(s.instance, ASize)
+}
+
+func (s *TShape) ScaleScreenToFont(ASize int32) int32 {
+    return Shape_ScaleScreenToFont(s.instance, ASize)
+}
+
+func (s *TShape) ScaleFontToScreen(ASize int32) int32 {
+    return Shape_ScaleFontToScreen(s.instance, ASize)
+}
+
+func (s *TShape) Scale96ToScreen(ASize int32) int32 {
+    return Shape_Scale96ToScreen(s.instance, ASize)
+}
+
+func (s *TShape) ScaleScreenTo96(ASize int32) int32 {
+    return Shape_ScaleScreenTo96(s.instance, ASize)
+}
+
+func (s *TShape) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    Shape_AutoAdjustLayout(s.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (s *TShape) FixDesignFontsPPI(ADesignTimePPI int32) {
+    Shape_FixDesignFontsPPI(s.instance, ADesignTimePPI)
+}
+
+func (s *TShape) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    Shape_ScaleFontsPPI(s.instance, AToPPI , AProportion)
+}
+
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.

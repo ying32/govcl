@@ -193,6 +193,13 @@ func (w *TWinControl) Invalidate() {
     WinControl_Invalidate(w.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (w *TWinControl) PaintTo(DC HDC, X int32, Y int32) {
+    WinControl_PaintTo(w.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -452,6 +459,58 @@ func (w *TWinControl) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (w *TWinControl) AnchorClient(ASpace int32) {
     WinControl_AnchorClient(w.instance, ASpace)
+}
+
+func (w *TWinControl) ScaleDesignToForm(ASize int32) int32 {
+    return WinControl_ScaleDesignToForm(w.instance, ASize)
+}
+
+func (w *TWinControl) ScaleFormToDesign(ASize int32) int32 {
+    return WinControl_ScaleFormToDesign(w.instance, ASize)
+}
+
+func (w *TWinControl) Scale96ToForm(ASize int32) int32 {
+    return WinControl_Scale96ToForm(w.instance, ASize)
+}
+
+func (w *TWinControl) ScaleFormTo96(ASize int32) int32 {
+    return WinControl_ScaleFormTo96(w.instance, ASize)
+}
+
+func (w *TWinControl) Scale96ToFont(ASize int32) int32 {
+    return WinControl_Scale96ToFont(w.instance, ASize)
+}
+
+func (w *TWinControl) ScaleFontTo96(ASize int32) int32 {
+    return WinControl_ScaleFontTo96(w.instance, ASize)
+}
+
+func (w *TWinControl) ScaleScreenToFont(ASize int32) int32 {
+    return WinControl_ScaleScreenToFont(w.instance, ASize)
+}
+
+func (w *TWinControl) ScaleFontToScreen(ASize int32) int32 {
+    return WinControl_ScaleFontToScreen(w.instance, ASize)
+}
+
+func (w *TWinControl) Scale96ToScreen(ASize int32) int32 {
+    return WinControl_Scale96ToScreen(w.instance, ASize)
+}
+
+func (w *TWinControl) ScaleScreenTo96(ASize int32) int32 {
+    return WinControl_ScaleScreenTo96(w.instance, ASize)
+}
+
+func (w *TWinControl) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    WinControl_AutoAdjustLayout(w.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (w *TWinControl) FixDesignFontsPPI(ADesignTimePPI int32) {
+    WinControl_FixDesignFontsPPI(w.instance, ADesignTimePPI)
+}
+
+func (w *TWinControl) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    WinControl_ScaleFontsPPI(w.instance, AToPPI , AProportion)
 }
 
 // 获取依靠客户端总数。

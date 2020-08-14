@@ -354,6 +354,58 @@ func (p *TPaintBox) AnchorClient(ASpace int32) {
     PaintBox_AnchorClient(p.instance, ASpace)
 }
 
+func (p *TPaintBox) ScaleDesignToForm(ASize int32) int32 {
+    return PaintBox_ScaleDesignToForm(p.instance, ASize)
+}
+
+func (p *TPaintBox) ScaleFormToDesign(ASize int32) int32 {
+    return PaintBox_ScaleFormToDesign(p.instance, ASize)
+}
+
+func (p *TPaintBox) Scale96ToForm(ASize int32) int32 {
+    return PaintBox_Scale96ToForm(p.instance, ASize)
+}
+
+func (p *TPaintBox) ScaleFormTo96(ASize int32) int32 {
+    return PaintBox_ScaleFormTo96(p.instance, ASize)
+}
+
+func (p *TPaintBox) Scale96ToFont(ASize int32) int32 {
+    return PaintBox_Scale96ToFont(p.instance, ASize)
+}
+
+func (p *TPaintBox) ScaleFontTo96(ASize int32) int32 {
+    return PaintBox_ScaleFontTo96(p.instance, ASize)
+}
+
+func (p *TPaintBox) ScaleScreenToFont(ASize int32) int32 {
+    return PaintBox_ScaleScreenToFont(p.instance, ASize)
+}
+
+func (p *TPaintBox) ScaleFontToScreen(ASize int32) int32 {
+    return PaintBox_ScaleFontToScreen(p.instance, ASize)
+}
+
+func (p *TPaintBox) Scale96ToScreen(ASize int32) int32 {
+    return PaintBox_Scale96ToScreen(p.instance, ASize)
+}
+
+func (p *TPaintBox) ScaleScreenTo96(ASize int32) int32 {
+    return PaintBox_ScaleScreenTo96(p.instance, ASize)
+}
+
+func (p *TPaintBox) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    PaintBox_AutoAdjustLayout(p.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (p *TPaintBox) FixDesignFontsPPI(ADesignTimePPI int32) {
+    PaintBox_FixDesignFontsPPI(p.instance, ADesignTimePPI)
+}
+
+func (p *TPaintBox) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    PaintBox_ScaleFontsPPI(p.instance, AToPPI , AProportion)
+}
+
 // 获取画布。
 func (p *TPaintBox) Canvas() *TCanvas {
     return AsCanvas(PaintBox_GetCanvas(p.instance))

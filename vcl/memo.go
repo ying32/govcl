@@ -232,6 +232,13 @@ func (m *TMemo) Invalidate() {
     Memo_Invalidate(m.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (m *TMemo) PaintTo(DC HDC, X int32, Y int32) {
+    Memo_PaintTo(m.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -491,6 +498,58 @@ func (m *TMemo) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (m *TMemo) AnchorClient(ASpace int32) {
     Memo_AnchorClient(m.instance, ASpace)
+}
+
+func (m *TMemo) ScaleDesignToForm(ASize int32) int32 {
+    return Memo_ScaleDesignToForm(m.instance, ASize)
+}
+
+func (m *TMemo) ScaleFormToDesign(ASize int32) int32 {
+    return Memo_ScaleFormToDesign(m.instance, ASize)
+}
+
+func (m *TMemo) Scale96ToForm(ASize int32) int32 {
+    return Memo_Scale96ToForm(m.instance, ASize)
+}
+
+func (m *TMemo) ScaleFormTo96(ASize int32) int32 {
+    return Memo_ScaleFormTo96(m.instance, ASize)
+}
+
+func (m *TMemo) Scale96ToFont(ASize int32) int32 {
+    return Memo_Scale96ToFont(m.instance, ASize)
+}
+
+func (m *TMemo) ScaleFontTo96(ASize int32) int32 {
+    return Memo_ScaleFontTo96(m.instance, ASize)
+}
+
+func (m *TMemo) ScaleScreenToFont(ASize int32) int32 {
+    return Memo_ScaleScreenToFont(m.instance, ASize)
+}
+
+func (m *TMemo) ScaleFontToScreen(ASize int32) int32 {
+    return Memo_ScaleFontToScreen(m.instance, ASize)
+}
+
+func (m *TMemo) Scale96ToScreen(ASize int32) int32 {
+    return Memo_Scale96ToScreen(m.instance, ASize)
+}
+
+func (m *TMemo) ScaleScreenTo96(ASize int32) int32 {
+    return Memo_ScaleScreenTo96(m.instance, ASize)
+}
+
+func (m *TMemo) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    Memo_AutoAdjustLayout(m.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (m *TMemo) FixDesignFontsPPI(ADesignTimePPI int32) {
+    Memo_FixDesignFontsPPI(m.instance, ADesignTimePPI)
+}
+
+func (m *TMemo) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    Memo_ScaleFontsPPI(m.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

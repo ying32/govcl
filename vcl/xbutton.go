@@ -354,6 +354,58 @@ func (x *TXButton) AnchorClient(ASpace int32) {
     XButton_AnchorClient(x.instance, ASpace)
 }
 
+func (x *TXButton) ScaleDesignToForm(ASize int32) int32 {
+    return XButton_ScaleDesignToForm(x.instance, ASize)
+}
+
+func (x *TXButton) ScaleFormToDesign(ASize int32) int32 {
+    return XButton_ScaleFormToDesign(x.instance, ASize)
+}
+
+func (x *TXButton) Scale96ToForm(ASize int32) int32 {
+    return XButton_Scale96ToForm(x.instance, ASize)
+}
+
+func (x *TXButton) ScaleFormTo96(ASize int32) int32 {
+    return XButton_ScaleFormTo96(x.instance, ASize)
+}
+
+func (x *TXButton) Scale96ToFont(ASize int32) int32 {
+    return XButton_Scale96ToFont(x.instance, ASize)
+}
+
+func (x *TXButton) ScaleFontTo96(ASize int32) int32 {
+    return XButton_ScaleFontTo96(x.instance, ASize)
+}
+
+func (x *TXButton) ScaleScreenToFont(ASize int32) int32 {
+    return XButton_ScaleScreenToFont(x.instance, ASize)
+}
+
+func (x *TXButton) ScaleFontToScreen(ASize int32) int32 {
+    return XButton_ScaleFontToScreen(x.instance, ASize)
+}
+
+func (x *TXButton) Scale96ToScreen(ASize int32) int32 {
+    return XButton_Scale96ToScreen(x.instance, ASize)
+}
+
+func (x *TXButton) ScaleScreenTo96(ASize int32) int32 {
+    return XButton_ScaleScreenTo96(x.instance, ASize)
+}
+
+func (x *TXButton) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    XButton_AutoAdjustLayout(x.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (x *TXButton) FixDesignFontsPPI(ADesignTimePPI int32) {
+    XButton_FixDesignFontsPPI(x.instance, ADesignTimePPI)
+}
+
+func (x *TXButton) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    XButton_ScaleFontsPPI(x.instance, AToPPI , AProportion)
+}
+
 // 获取控件标题。
 //
 // Get the control title.

@@ -235,6 +235,13 @@ func (l *TLabeledEdit) Invalidate() {
     LabeledEdit_Invalidate(l.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (l *TLabeledEdit) PaintTo(DC HDC, X int32, Y int32) {
+    LabeledEdit_PaintTo(l.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -487,6 +494,58 @@ func (l *TLabeledEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (l *TLabeledEdit) AnchorClient(ASpace int32) {
     LabeledEdit_AnchorClient(l.instance, ASpace)
+}
+
+func (l *TLabeledEdit) ScaleDesignToForm(ASize int32) int32 {
+    return LabeledEdit_ScaleDesignToForm(l.instance, ASize)
+}
+
+func (l *TLabeledEdit) ScaleFormToDesign(ASize int32) int32 {
+    return LabeledEdit_ScaleFormToDesign(l.instance, ASize)
+}
+
+func (l *TLabeledEdit) Scale96ToForm(ASize int32) int32 {
+    return LabeledEdit_Scale96ToForm(l.instance, ASize)
+}
+
+func (l *TLabeledEdit) ScaleFormTo96(ASize int32) int32 {
+    return LabeledEdit_ScaleFormTo96(l.instance, ASize)
+}
+
+func (l *TLabeledEdit) Scale96ToFont(ASize int32) int32 {
+    return LabeledEdit_Scale96ToFont(l.instance, ASize)
+}
+
+func (l *TLabeledEdit) ScaleFontTo96(ASize int32) int32 {
+    return LabeledEdit_ScaleFontTo96(l.instance, ASize)
+}
+
+func (l *TLabeledEdit) ScaleScreenToFont(ASize int32) int32 {
+    return LabeledEdit_ScaleScreenToFont(l.instance, ASize)
+}
+
+func (l *TLabeledEdit) ScaleFontToScreen(ASize int32) int32 {
+    return LabeledEdit_ScaleFontToScreen(l.instance, ASize)
+}
+
+func (l *TLabeledEdit) Scale96ToScreen(ASize int32) int32 {
+    return LabeledEdit_Scale96ToScreen(l.instance, ASize)
+}
+
+func (l *TLabeledEdit) ScaleScreenTo96(ASize int32) int32 {
+    return LabeledEdit_ScaleScreenTo96(l.instance, ASize)
+}
+
+func (l *TLabeledEdit) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    LabeledEdit_AutoAdjustLayout(l.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (l *TLabeledEdit) FixDesignFontsPPI(ADesignTimePPI int32) {
+    LabeledEdit_FixDesignFontsPPI(l.instance, ADesignTimePPI)
+}
+
+func (l *TLabeledEdit) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    LabeledEdit_ScaleFontsPPI(l.instance, AToPPI , AProportion)
 }
 
 // 获取文字对齐。

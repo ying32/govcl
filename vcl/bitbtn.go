@@ -198,6 +198,13 @@ func (b *TBitBtn) Invalidate() {
     BitBtn_Invalidate(b.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (b *TBitBtn) PaintTo(DC HDC, X int32, Y int32) {
+    BitBtn_PaintTo(b.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -457,6 +464,58 @@ func (b *TBitBtn) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (b *TBitBtn) AnchorClient(ASpace int32) {
     BitBtn_AnchorClient(b.instance, ASpace)
+}
+
+func (b *TBitBtn) ScaleDesignToForm(ASize int32) int32 {
+    return BitBtn_ScaleDesignToForm(b.instance, ASize)
+}
+
+func (b *TBitBtn) ScaleFormToDesign(ASize int32) int32 {
+    return BitBtn_ScaleFormToDesign(b.instance, ASize)
+}
+
+func (b *TBitBtn) Scale96ToForm(ASize int32) int32 {
+    return BitBtn_Scale96ToForm(b.instance, ASize)
+}
+
+func (b *TBitBtn) ScaleFormTo96(ASize int32) int32 {
+    return BitBtn_ScaleFormTo96(b.instance, ASize)
+}
+
+func (b *TBitBtn) Scale96ToFont(ASize int32) int32 {
+    return BitBtn_Scale96ToFont(b.instance, ASize)
+}
+
+func (b *TBitBtn) ScaleFontTo96(ASize int32) int32 {
+    return BitBtn_ScaleFontTo96(b.instance, ASize)
+}
+
+func (b *TBitBtn) ScaleScreenToFont(ASize int32) int32 {
+    return BitBtn_ScaleScreenToFont(b.instance, ASize)
+}
+
+func (b *TBitBtn) ScaleFontToScreen(ASize int32) int32 {
+    return BitBtn_ScaleFontToScreen(b.instance, ASize)
+}
+
+func (b *TBitBtn) Scale96ToScreen(ASize int32) int32 {
+    return BitBtn_Scale96ToScreen(b.instance, ASize)
+}
+
+func (b *TBitBtn) ScaleScreenTo96(ASize int32) int32 {
+    return BitBtn_ScaleScreenTo96(b.instance, ASize)
+}
+
+func (b *TBitBtn) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    BitBtn_AutoAdjustLayout(b.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (b *TBitBtn) FixDesignFontsPPI(ADesignTimePPI int32) {
+    BitBtn_FixDesignFontsPPI(b.instance, ADesignTimePPI)
+}
+
+func (b *TBitBtn) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    BitBtn_ScaleFontsPPI(b.instance, AToPPI , AProportion)
 }
 
 func (b *TBitBtn) DefaultCaption() bool {

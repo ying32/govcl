@@ -472,6 +472,10 @@ func Form_Invalidate(obj uintptr)  {
     form_Invalidate.Call(obj)
 }
 
+func Form_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    form_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func Form_RemoveControl(obj uintptr, AControl uintptr)  {
     form_RemoveControl.Call(obj, AControl )
 }
@@ -647,6 +651,68 @@ func Form_AnchorClient(obj uintptr, ASpace int32)  {
     form_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func Form_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := form_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Form_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := form_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Form_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := form_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Form_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := form_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Form_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := form_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Form_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := form_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Form_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := form_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Form_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := form_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Form_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := form_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Form_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := form_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Form_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    form_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func Form_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    form_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func Form_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    form_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func Form_GetAllowDropFiles(obj uintptr) bool {
     ret, _, _ := form_GetAllowDropFiles.Call(obj)
     return DBoolToGoBool(ret)
@@ -667,6 +733,15 @@ func Form_GetShowInTaskBar(obj uintptr) TShowInTaskbar {
 
 func Form_SetShowInTaskBar(obj uintptr, value TShowInTaskbar) {
    form_SetShowInTaskBar.Call(obj, uintptr(value))
+}
+
+func Form_GetDesignTimePPI(obj uintptr) int32 {
+    ret, _, _ := form_GetDesignTimePPI.Call(obj)
+    return int32(ret)
+}
+
+func Form_SetDesignTimePPI(obj uintptr, value int32) {
+   form_SetDesignTimePPI.Call(obj, uintptr(value))
 }
 
 func Form_GetAction(obj uintptr) uintptr {
@@ -1527,6 +1602,10 @@ func Button_Invalidate(obj uintptr)  {
     button_Invalidate.Call(obj)
 }
 
+func Button_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    button_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func Button_RemoveControl(obj uintptr, AControl uintptr)  {
     button_RemoveControl.Call(obj, AControl )
 }
@@ -1712,6 +1791,68 @@ func Button_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func Button_AnchorClient(obj uintptr, ASpace int32)  {
     button_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func Button_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := button_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Button_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := button_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Button_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := button_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Button_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := button_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Button_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := button_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Button_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := button_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Button_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := button_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Button_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := button_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Button_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := button_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Button_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := button_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Button_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    button_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func Button_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    button_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func Button_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    button_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func Button_GetAction(obj uintptr) uintptr {
@@ -2374,6 +2515,10 @@ func Edit_Invalidate(obj uintptr)  {
     edit_Invalidate.Call(obj)
 }
 
+func Edit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    edit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func Edit_RemoveControl(obj uintptr, AControl uintptr)  {
     edit_RemoveControl.Call(obj, AControl )
 }
@@ -2559,6 +2704,68 @@ func Edit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func Edit_AnchorClient(obj uintptr, ASpace int32)  {
     edit_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func Edit_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := edit_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Edit_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := edit_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Edit_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := edit_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Edit_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := edit_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Edit_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := edit_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Edit_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := edit_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Edit_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := edit_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Edit_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := edit_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Edit_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := edit_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Edit_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := edit_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Edit_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    edit_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func Edit_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    edit_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func Edit_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    edit_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func Edit_GetAlign(obj uintptr) TAlign {
@@ -3720,6 +3927,10 @@ func Memo_Invalidate(obj uintptr)  {
     memo_Invalidate.Call(obj)
 }
 
+func Memo_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    memo_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func Memo_RemoveControl(obj uintptr, AControl uintptr)  {
     memo_RemoveControl.Call(obj, AControl )
 }
@@ -3905,6 +4116,68 @@ func Memo_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func Memo_AnchorClient(obj uintptr, ASpace int32)  {
     memo_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func Memo_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := memo_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Memo_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := memo_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Memo_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := memo_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Memo_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := memo_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Memo_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := memo_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Memo_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := memo_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Memo_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := memo_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Memo_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := memo_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Memo_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := memo_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Memo_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := memo_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Memo_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    memo_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func Memo_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    memo_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func Memo_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    memo_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func Memo_GetAlign(obj uintptr) TAlign {
@@ -4697,6 +4970,10 @@ func CheckBox_Invalidate(obj uintptr)  {
     checkBox_Invalidate.Call(obj)
 }
 
+func CheckBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    checkBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func CheckBox_RemoveControl(obj uintptr, AControl uintptr)  {
     checkBox_RemoveControl.Call(obj, AControl )
 }
@@ -4882,6 +5159,68 @@ func CheckBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func CheckBox_AnchorClient(obj uintptr, ASpace int32)  {
     checkBox_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func CheckBox_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkBox_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkBox_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkBox_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkBox_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkBox_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkBox_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkBox_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkBox_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkBox_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkBox_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckBox_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    checkBox_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func CheckBox_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    checkBox_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func CheckBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    checkBox_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func CheckBox_SetOnChange(obj uintptr, fn interface{}) {
@@ -5547,6 +5886,10 @@ func RadioButton_Invalidate(obj uintptr)  {
     radioButton_Invalidate.Call(obj)
 }
 
+func RadioButton_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    radioButton_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func RadioButton_RemoveControl(obj uintptr, AControl uintptr)  {
     radioButton_RemoveControl.Call(obj, AControl )
 }
@@ -5732,6 +6075,68 @@ func RadioButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func RadioButton_AnchorClient(obj uintptr, ASpace int32)  {
     radioButton_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func RadioButton_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioButton_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioButton_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioButton_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioButton_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioButton_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioButton_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioButton_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioButton_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioButton_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioButton_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioButton_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioButton_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioButton_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioButton_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioButton_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioButton_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioButton_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioButton_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioButton_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioButton_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    radioButton_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func RadioButton_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    radioButton_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func RadioButton_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    radioButton_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func RadioButton_SetOnChange(obj uintptr, fn interface{}) {
@@ -6379,6 +6784,10 @@ func GroupBox_Invalidate(obj uintptr)  {
     groupBox_Invalidate.Call(obj)
 }
 
+func GroupBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    groupBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func GroupBox_RemoveControl(obj uintptr, AControl uintptr)  {
     groupBox_RemoveControl.Call(obj, AControl )
 }
@@ -6564,6 +6973,68 @@ func GroupBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func GroupBox_AnchorClient(obj uintptr, ASpace int32)  {
     groupBox_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func GroupBox_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := groupBox_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func GroupBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := groupBox_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func GroupBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := groupBox_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func GroupBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := groupBox_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func GroupBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := groupBox_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func GroupBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := groupBox_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func GroupBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := groupBox_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func GroupBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := groupBox_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func GroupBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := groupBox_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func GroupBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := groupBox_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func GroupBox_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    groupBox_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func GroupBox_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    groupBox_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func GroupBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    groupBox_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func GroupBox_GetAlign(obj uintptr) TAlign {
@@ -7326,6 +7797,68 @@ func Label_AnchorClient(obj uintptr, ASpace int32)  {
     label_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func Label_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := label_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Label_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := label_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Label_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := label_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Label_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := label_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Label_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := label_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Label_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := label_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Label_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := label_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Label_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := label_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Label_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := label_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Label_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := label_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Label_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    label_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func Label_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    label_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func Label_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    label_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func Label_GetOptimalFill(obj uintptr) bool {
     ret, _, _ := label_GetOptimalFill.Call(obj)
     return DBoolToGoBool(ret)
@@ -7924,6 +8457,10 @@ func ListBox_Invalidate(obj uintptr)  {
     listBox_Invalidate.Call(obj)
 }
 
+func ListBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    listBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func ListBox_RemoveControl(obj uintptr, AControl uintptr)  {
     listBox_RemoveControl.Call(obj, AControl )
 }
@@ -8109,6 +8646,68 @@ func ListBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func ListBox_AnchorClient(obj uintptr, ASpace int32)  {
     listBox_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ListBox_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listBox_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listBox_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listBox_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listBox_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listBox_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listBox_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listBox_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listBox_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listBox_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listBox_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListBox_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    listBox_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ListBox_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    listBox_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ListBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    listBox_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ListBox_GetClickOnSelChange(obj uintptr) bool {
@@ -8889,6 +9488,10 @@ func ComboBox_Invalidate(obj uintptr)  {
     comboBox_Invalidate.Call(obj)
 }
 
+func ComboBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    comboBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func ComboBox_RemoveControl(obj uintptr, AControl uintptr)  {
     comboBox_RemoveControl.Call(obj, AControl )
 }
@@ -9074,6 +9677,68 @@ func ComboBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func ComboBox_AnchorClient(obj uintptr, ASpace int32)  {
     comboBox_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ComboBox_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBox_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBox_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBox_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBox_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBox_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBox_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBox_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBox_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBox_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBox_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBox_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    comboBox_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ComboBox_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    comboBox_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ComboBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    comboBox_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ComboBox_GetAlign(obj uintptr) TAlign {
@@ -9842,6 +10507,10 @@ func Panel_Invalidate(obj uintptr)  {
     panel_Invalidate.Call(obj)
 }
 
+func Panel_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    panel_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func Panel_RemoveControl(obj uintptr, AControl uintptr)  {
     panel_RemoveControl.Call(obj, AControl )
 }
@@ -10027,6 +10696,68 @@ func Panel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func Panel_AnchorClient(obj uintptr, ASpace int32)  {
     panel_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func Panel_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := panel_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Panel_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := panel_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Panel_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := panel_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Panel_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := panel_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Panel_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := panel_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Panel_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := panel_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Panel_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := panel_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Panel_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := panel_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Panel_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := panel_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Panel_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := panel_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Panel_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    panel_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func Panel_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    panel_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func Panel_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    panel_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func Panel_GetAlign(obj uintptr) TAlign {
@@ -10865,6 +11596,68 @@ func Image_AnchorClient(obj uintptr, ASpace int32)  {
     image_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func Image_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := image_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Image_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := image_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Image_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := image_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Image_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := image_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Image_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := image_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Image_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := image_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Image_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := image_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Image_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := image_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Image_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := image_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Image_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := image_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Image_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    image_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func Image_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    image_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func Image_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    image_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func Image_GetAntialiasingMode(obj uintptr) TAntialiasingMode {
     ret, _, _ := image_GetAntialiasingMode.Call(obj)
     return TAntialiasingMode(ret)
@@ -11522,6 +12315,68 @@ func LinkLabel_AnchorClient(obj uintptr, ASpace int32)  {
     linkLabel_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func LinkLabel_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := linkLabel_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LinkLabel_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := linkLabel_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LinkLabel_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := linkLabel_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LinkLabel_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := linkLabel_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LinkLabel_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := linkLabel_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LinkLabel_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := linkLabel_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LinkLabel_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := linkLabel_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LinkLabel_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := linkLabel_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LinkLabel_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := linkLabel_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LinkLabel_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := linkLabel_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LinkLabel_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    linkLabel_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func LinkLabel_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    linkLabel_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func LinkLabel_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    linkLabel_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func LinkLabel_GetAlign(obj uintptr) TAlign {
     ret, _, _ := linkLabel_GetAlign.Call(obj)
     return TAlign(ret)
@@ -12153,6 +13008,68 @@ func SpeedButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func SpeedButton_AnchorClient(obj uintptr, ASpace int32)  {
     speedButton_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func SpeedButton_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := speedButton_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpeedButton_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := speedButton_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpeedButton_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := speedButton_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpeedButton_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := speedButton_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpeedButton_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := speedButton_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpeedButton_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := speedButton_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpeedButton_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := speedButton_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpeedButton_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := speedButton_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpeedButton_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := speedButton_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpeedButton_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := speedButton_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpeedButton_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    speedButton_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func SpeedButton_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    speedButton_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func SpeedButton_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    speedButton_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func SpeedButton_GetImageIndex(obj uintptr) int32 {
@@ -12822,6 +13739,68 @@ func Splitter_AnchorClient(obj uintptr, ASpace int32)  {
     splitter_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func Splitter_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := splitter_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Splitter_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := splitter_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Splitter_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := splitter_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Splitter_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := splitter_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Splitter_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := splitter_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Splitter_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := splitter_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Splitter_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := splitter_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Splitter_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := splitter_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Splitter_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := splitter_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Splitter_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := splitter_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Splitter_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    splitter_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func Splitter_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    splitter_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func Splitter_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    splitter_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func Splitter_GetResizeAnchor(obj uintptr) TAnchorKind {
     ret, _, _ := splitter_GetResizeAnchor.Call(obj)
     return TAnchorKind(ret)
@@ -13223,6 +14202,10 @@ func RadioGroup_Invalidate(obj uintptr)  {
     radioGroup_Invalidate.Call(obj)
 }
 
+func RadioGroup_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    radioGroup_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func RadioGroup_RemoveControl(obj uintptr, AControl uintptr)  {
     radioGroup_RemoveControl.Call(obj, AControl )
 }
@@ -13408,6 +14391,68 @@ func RadioGroup_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func RadioGroup_AnchorClient(obj uintptr, ASpace int32)  {
     radioGroup_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func RadioGroup_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioGroup_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioGroup_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioGroup_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioGroup_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioGroup_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioGroup_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioGroup_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioGroup_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioGroup_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioGroup_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioGroup_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioGroup_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioGroup_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioGroup_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioGroup_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioGroup_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioGroup_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioGroup_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := radioGroup_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RadioGroup_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    radioGroup_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func RadioGroup_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    radioGroup_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func RadioGroup_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    radioGroup_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func RadioGroup_GetAlign(obj uintptr) TAlign {
@@ -14015,6 +15060,10 @@ func StaticText_Invalidate(obj uintptr)  {
     staticText_Invalidate.Call(obj)
 }
 
+func StaticText_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    staticText_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func StaticText_RemoveControl(obj uintptr, AControl uintptr)  {
     staticText_RemoveControl.Call(obj, AControl )
 }
@@ -14200,6 +15249,68 @@ func StaticText_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func StaticText_AnchorClient(obj uintptr, ASpace int32)  {
     staticText_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func StaticText_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := staticText_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StaticText_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := staticText_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StaticText_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := staticText_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StaticText_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := staticText_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StaticText_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := staticText_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StaticText_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := staticText_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StaticText_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := staticText_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StaticText_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := staticText_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StaticText_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := staticText_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StaticText_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := staticText_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StaticText_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    staticText_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func StaticText_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    staticText_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func StaticText_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    staticText_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func StaticText_GetAlign(obj uintptr) TAlign {
@@ -14883,6 +15994,10 @@ func ColorBox_Invalidate(obj uintptr)  {
     colorBox_Invalidate.Call(obj)
 }
 
+func ColorBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    colorBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func ColorBox_RemoveControl(obj uintptr, AControl uintptr)  {
     colorBox_RemoveControl.Call(obj, AControl )
 }
@@ -15068,6 +16183,68 @@ func ColorBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func ColorBox_AnchorClient(obj uintptr, ASpace int32)  {
     colorBox_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ColorBox_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorBox_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorBox_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorBox_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorBox_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorBox_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorBox_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorBox_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorBox_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorBox_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorBox_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorBox_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    colorBox_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ColorBox_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    colorBox_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ColorBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    colorBox_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ColorBox_GetAlign(obj uintptr) TAlign {
@@ -15838,6 +17015,10 @@ func ColorListBox_Invalidate(obj uintptr)  {
     colorListBox_Invalidate.Call(obj)
 }
 
+func ColorListBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    colorListBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func ColorListBox_RemoveControl(obj uintptr, AControl uintptr)  {
     colorListBox_RemoveControl.Call(obj, AControl )
 }
@@ -16023,6 +17204,68 @@ func ColorListBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func ColorListBox_AnchorClient(obj uintptr, ASpace int32)  {
     colorListBox_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ColorListBox_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorListBox_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorListBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorListBox_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorListBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorListBox_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorListBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorListBox_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorListBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorListBox_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorListBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorListBox_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorListBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorListBox_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorListBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorListBox_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorListBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorListBox_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorListBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := colorListBox_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ColorListBox_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    colorListBox_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ColorListBox_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    colorListBox_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ColorListBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    colorListBox_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ColorListBox_GetAlign(obj uintptr) TAlign {
@@ -18469,6 +19712,10 @@ func RichEdit_Invalidate(obj uintptr)  {
     richEdit_Invalidate.Call(obj)
 }
 
+func RichEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    richEdit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func RichEdit_RemoveControl(obj uintptr, AControl uintptr)  {
     richEdit_RemoveControl.Call(obj, AControl )
 }
@@ -18654,6 +19901,68 @@ func RichEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func RichEdit_AnchorClient(obj uintptr, ASpace int32)  {
     richEdit_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func RichEdit_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := richEdit_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RichEdit_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := richEdit_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RichEdit_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := richEdit_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RichEdit_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := richEdit_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RichEdit_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := richEdit_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RichEdit_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := richEdit_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RichEdit_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := richEdit_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RichEdit_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := richEdit_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RichEdit_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := richEdit_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RichEdit_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := richEdit_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func RichEdit_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    richEdit_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func RichEdit_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    richEdit_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func RichEdit_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    richEdit_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func RichEdit_GetAlign(obj uintptr) TAlign {
@@ -19494,6 +20803,10 @@ func TrackBar_Invalidate(obj uintptr)  {
     trackBar_Invalidate.Call(obj)
 }
 
+func TrackBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    trackBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func TrackBar_RemoveControl(obj uintptr, AControl uintptr)  {
     trackBar_RemoveControl.Call(obj, AControl )
 }
@@ -19679,6 +20992,68 @@ func TrackBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func TrackBar_AnchorClient(obj uintptr, ASpace int32)  {
     trackBar_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func TrackBar_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := trackBar_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TrackBar_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := trackBar_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TrackBar_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := trackBar_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TrackBar_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := trackBar_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TrackBar_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := trackBar_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TrackBar_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := trackBar_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TrackBar_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := trackBar_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TrackBar_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := trackBar_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TrackBar_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := trackBar_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TrackBar_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := trackBar_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TrackBar_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    trackBar_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func TrackBar_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    trackBar_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func TrackBar_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    trackBar_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func TrackBar_GetAlign(obj uintptr) TAlign {
@@ -20645,6 +22020,10 @@ func UpDown_Invalidate(obj uintptr)  {
     upDown_Invalidate.Call(obj)
 }
 
+func UpDown_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    upDown_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func UpDown_RemoveControl(obj uintptr, AControl uintptr)  {
     upDown_RemoveControl.Call(obj, AControl )
 }
@@ -20830,6 +22209,68 @@ func UpDown_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func UpDown_AnchorClient(obj uintptr, ASpace int32)  {
     upDown_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func UpDown_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := upDown_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func UpDown_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := upDown_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func UpDown_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := upDown_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func UpDown_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := upDown_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func UpDown_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := upDown_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func UpDown_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := upDown_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func UpDown_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := upDown_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func UpDown_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := upDown_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func UpDown_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := upDown_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func UpDown_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := upDown_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func UpDown_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    upDown_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func UpDown_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    upDown_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func UpDown_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    upDown_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func UpDown_GetAnchors(obj uintptr) TAnchors {
@@ -21425,6 +22866,10 @@ func ProgressBar_Invalidate(obj uintptr)  {
     progressBar_Invalidate.Call(obj)
 }
 
+func ProgressBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    progressBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func ProgressBar_RemoveControl(obj uintptr, AControl uintptr)  {
     progressBar_RemoveControl.Call(obj, AControl )
 }
@@ -21610,6 +23055,68 @@ func ProgressBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func ProgressBar_AnchorClient(obj uintptr, ASpace int32)  {
     progressBar_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ProgressBar_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := progressBar_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ProgressBar_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := progressBar_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ProgressBar_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := progressBar_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ProgressBar_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := progressBar_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ProgressBar_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := progressBar_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ProgressBar_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := progressBar_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ProgressBar_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := progressBar_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ProgressBar_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := progressBar_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ProgressBar_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := progressBar_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ProgressBar_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := progressBar_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ProgressBar_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    progressBar_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ProgressBar_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    progressBar_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ProgressBar_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    progressBar_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ProgressBar_GetAlign(obj uintptr) TAlign {
@@ -22259,6 +23766,10 @@ func DateTimePicker_Invalidate(obj uintptr)  {
     dateTimePicker_Invalidate.Call(obj)
 }
 
+func DateTimePicker_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    dateTimePicker_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func DateTimePicker_RemoveControl(obj uintptr, AControl uintptr)  {
     dateTimePicker_RemoveControl.Call(obj, AControl )
 }
@@ -22444,6 +23955,68 @@ func DateTimePicker_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  
 
 func DateTimePicker_AnchorClient(obj uintptr, ASpace int32)  {
     dateTimePicker_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func DateTimePicker_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := dateTimePicker_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DateTimePicker_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := dateTimePicker_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DateTimePicker_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := dateTimePicker_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DateTimePicker_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := dateTimePicker_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DateTimePicker_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := dateTimePicker_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DateTimePicker_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := dateTimePicker_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DateTimePicker_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := dateTimePicker_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DateTimePicker_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := dateTimePicker_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DateTimePicker_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := dateTimePicker_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DateTimePicker_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := dateTimePicker_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DateTimePicker_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    dateTimePicker_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func DateTimePicker_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    dateTimePicker_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func DateTimePicker_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    dateTimePicker_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func DateTimePicker_GetArrowShape(obj uintptr) TArrowShape {
@@ -23265,6 +24838,10 @@ func MonthCalendar_Invalidate(obj uintptr)  {
     monthCalendar_Invalidate.Call(obj)
 }
 
+func MonthCalendar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    monthCalendar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func MonthCalendar_RemoveControl(obj uintptr, AControl uintptr)  {
     monthCalendar_RemoveControl.Call(obj, AControl )
 }
@@ -23450,6 +25027,68 @@ func MonthCalendar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func MonthCalendar_AnchorClient(obj uintptr, ASpace int32)  {
     monthCalendar_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func MonthCalendar_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := monthCalendar_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MonthCalendar_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := monthCalendar_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MonthCalendar_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := monthCalendar_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MonthCalendar_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := monthCalendar_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MonthCalendar_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := monthCalendar_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MonthCalendar_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := monthCalendar_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MonthCalendar_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := monthCalendar_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MonthCalendar_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := monthCalendar_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MonthCalendar_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := monthCalendar_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MonthCalendar_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := monthCalendar_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MonthCalendar_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    monthCalendar_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func MonthCalendar_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    monthCalendar_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func MonthCalendar_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    monthCalendar_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func MonthCalendar_GetDateTime(obj uintptr) time.Time {
@@ -24101,6 +25740,10 @@ func ListView_Invalidate(obj uintptr)  {
     listView_Invalidate.Call(obj)
 }
 
+func ListView_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    listView_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func ListView_RemoveControl(obj uintptr, AControl uintptr)  {
     listView_RemoveControl.Call(obj, AControl )
 }
@@ -24286,6 +25929,68 @@ func ListView_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func ListView_AnchorClient(obj uintptr, ASpace int32)  {
     listView_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ListView_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listView_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListView_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listView_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListView_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listView_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListView_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listView_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListView_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listView_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListView_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listView_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListView_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listView_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListView_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listView_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListView_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listView_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListView_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := listView_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ListView_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    listView_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ListView_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    listView_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ListView_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    listView_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ListView_GetAutoSort(obj uintptr) bool {
@@ -25405,6 +27110,10 @@ func TreeView_Invalidate(obj uintptr)  {
     treeView_Invalidate.Call(obj)
 }
 
+func TreeView_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    treeView_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func TreeView_RemoveControl(obj uintptr, AControl uintptr)  {
     treeView_RemoveControl.Call(obj, AControl )
 }
@@ -25590,6 +27299,68 @@ func TreeView_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func TreeView_AnchorClient(obj uintptr, ASpace int32)  {
     treeView_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func TreeView_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := treeView_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TreeView_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := treeView_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TreeView_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := treeView_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TreeView_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := treeView_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TreeView_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := treeView_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TreeView_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := treeView_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TreeView_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := treeView_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TreeView_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := treeView_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TreeView_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := treeView_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TreeView_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := treeView_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TreeView_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    treeView_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func TreeView_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    treeView_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func TreeView_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    treeView_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func TreeView_GetDefaultItemHeight(obj uintptr) int32 {
@@ -26626,6 +28397,10 @@ func StatusBar_Invalidate(obj uintptr)  {
     statusBar_Invalidate.Call(obj)
 }
 
+func StatusBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    statusBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func StatusBar_RemoveControl(obj uintptr, AControl uintptr)  {
     statusBar_RemoveControl.Call(obj, AControl )
 }
@@ -26807,6 +28582,68 @@ func StatusBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func StatusBar_AnchorClient(obj uintptr, ASpace int32)  {
     statusBar_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func StatusBar_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := statusBar_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StatusBar_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := statusBar_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StatusBar_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := statusBar_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StatusBar_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := statusBar_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StatusBar_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := statusBar_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StatusBar_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := statusBar_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StatusBar_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := statusBar_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StatusBar_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := statusBar_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StatusBar_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := statusBar_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StatusBar_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := statusBar_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StatusBar_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    statusBar_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func StatusBar_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    statusBar_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func StatusBar_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    statusBar_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func StatusBar_GetAction(obj uintptr) uintptr {
@@ -27491,6 +29328,10 @@ func ToolBar_Invalidate(obj uintptr)  {
     toolBar_Invalidate.Call(obj)
 }
 
+func ToolBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    toolBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func ToolBar_RemoveControl(obj uintptr, AControl uintptr)  {
     toolBar_RemoveControl.Call(obj, AControl )
 }
@@ -27676,6 +29517,68 @@ func ToolBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func ToolBar_AnchorClient(obj uintptr, ASpace int32)  {
     toolBar_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ToolBar_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolBar_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolBar_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolBar_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolBar_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolBar_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolBar_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolBar_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolBar_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolBar_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolBar_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolBar_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolBar_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolBar_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolBar_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolBar_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolBar_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolBar_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolBar_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolBar_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolBar_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    toolBar_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ToolBar_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    toolBar_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ToolBar_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    toolBar_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ToolBar_GetButtonCount(obj uintptr) int32 {
@@ -28464,6 +30367,10 @@ func BitBtn_Invalidate(obj uintptr)  {
     bitBtn_Invalidate.Call(obj)
 }
 
+func BitBtn_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    bitBtn_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func BitBtn_RemoveControl(obj uintptr, AControl uintptr)  {
     bitBtn_RemoveControl.Call(obj, AControl )
 }
@@ -28649,6 +30556,68 @@ func BitBtn_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func BitBtn_AnchorClient(obj uintptr, ASpace int32)  {
     bitBtn_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func BitBtn_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bitBtn_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BitBtn_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bitBtn_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BitBtn_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bitBtn_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BitBtn_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bitBtn_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BitBtn_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bitBtn_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BitBtn_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bitBtn_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BitBtn_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bitBtn_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BitBtn_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bitBtn_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BitBtn_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bitBtn_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BitBtn_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bitBtn_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BitBtn_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    bitBtn_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func BitBtn_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    bitBtn_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func BitBtn_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    bitBtn_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func BitBtn_GetDefaultCaption(obj uintptr) bool {
@@ -31914,6 +33883,10 @@ func PageControl_Invalidate(obj uintptr)  {
     pageControl_Invalidate.Call(obj)
 }
 
+func PageControl_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    pageControl_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func PageControl_RemoveControl(obj uintptr, AControl uintptr)  {
     pageControl_RemoveControl.Call(obj, AControl )
 }
@@ -32099,6 +34072,68 @@ func PageControl_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func PageControl_AnchorClient(obj uintptr, ASpace int32)  {
     pageControl_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func PageControl_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := pageControl_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PageControl_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := pageControl_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PageControl_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := pageControl_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PageControl_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := pageControl_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PageControl_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := pageControl_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PageControl_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := pageControl_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PageControl_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := pageControl_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PageControl_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := pageControl_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PageControl_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := pageControl_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PageControl_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := pageControl_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PageControl_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    pageControl_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func PageControl_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    pageControl_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func PageControl_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    pageControl_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func PageControl_GetOptions(obj uintptr) TCTabControlOptions {
@@ -32795,6 +34830,10 @@ func TabSheet_Invalidate(obj uintptr)  {
     tabSheet_Invalidate.Call(obj)
 }
 
+func TabSheet_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    tabSheet_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func TabSheet_RemoveControl(obj uintptr, AControl uintptr)  {
     tabSheet_RemoveControl.Call(obj, AControl )
 }
@@ -32980,6 +35019,68 @@ func TabSheet_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func TabSheet_AnchorClient(obj uintptr, ASpace int32)  {
     tabSheet_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func TabSheet_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := tabSheet_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TabSheet_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := tabSheet_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TabSheet_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := tabSheet_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TabSheet_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := tabSheet_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TabSheet_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := tabSheet_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TabSheet_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := tabSheet_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TabSheet_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := tabSheet_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TabSheet_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := tabSheet_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TabSheet_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := tabSheet_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TabSheet_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := tabSheet_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func TabSheet_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    tabSheet_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func TabSheet_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    tabSheet_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func TabSheet_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    tabSheet_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func TabSheet_GetPageControl(obj uintptr) uintptr {
@@ -33727,6 +35828,68 @@ func Control_AnchorClient(obj uintptr, ASpace int32)  {
     control_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func Control_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := control_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Control_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := control_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Control_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := control_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Control_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := control_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Control_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := control_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Control_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := control_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Control_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := control_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Control_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := control_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Control_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := control_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Control_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := control_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Control_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    control_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func Control_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    control_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func Control_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    control_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func Control_GetEnabled(obj uintptr) bool {
     ret, _, _ := control_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -34083,6 +36246,10 @@ func WinControl_Invalidate(obj uintptr)  {
     winControl_Invalidate.Call(obj)
 }
 
+func WinControl_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    winControl_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func WinControl_RemoveControl(obj uintptr, AControl uintptr)  {
     winControl_RemoveControl.Call(obj, AControl )
 }
@@ -34268,6 +36435,68 @@ func WinControl_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func WinControl_AnchorClient(obj uintptr, ASpace int32)  {
     winControl_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func WinControl_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := winControl_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func WinControl_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := winControl_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func WinControl_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := winControl_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func WinControl_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := winControl_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func WinControl_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := winControl_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func WinControl_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := winControl_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func WinControl_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := winControl_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func WinControl_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := winControl_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func WinControl_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := winControl_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func WinControl_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := winControl_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func WinControl_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    winControl_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func WinControl_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    winControl_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func WinControl_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    winControl_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func WinControl_GetDockClientCount(obj uintptr) int32 {
@@ -35604,6 +37833,10 @@ func SpinEdit_Invalidate(obj uintptr)  {
     spinEdit_Invalidate.Call(obj)
 }
 
+func SpinEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    spinEdit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func SpinEdit_RemoveControl(obj uintptr, AControl uintptr)  {
     spinEdit_RemoveControl.Call(obj, AControl )
 }
@@ -35789,6 +38022,68 @@ func SpinEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func SpinEdit_AnchorClient(obj uintptr, ASpace int32)  {
     spinEdit_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func SpinEdit_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := spinEdit_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpinEdit_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := spinEdit_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpinEdit_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := spinEdit_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpinEdit_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := spinEdit_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpinEdit_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := spinEdit_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpinEdit_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := spinEdit_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpinEdit_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := spinEdit_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpinEdit_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := spinEdit_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpinEdit_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := spinEdit_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpinEdit_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := spinEdit_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func SpinEdit_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    spinEdit_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func SpinEdit_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    spinEdit_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func SpinEdit_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    spinEdit_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func SpinEdit_GetAnchors(obj uintptr) TAnchors {
@@ -36544,6 +38839,10 @@ func MiniWebview_Invalidate(obj uintptr)  {
     miniWebview_Invalidate.Call(obj)
 }
 
+func MiniWebview_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    miniWebview_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func MiniWebview_RemoveControl(obj uintptr, AControl uintptr)  {
     miniWebview_RemoveControl.Call(obj, AControl )
 }
@@ -36721,6 +39020,68 @@ func MiniWebview_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func MiniWebview_AnchorClient(obj uintptr, ASpace int32)  {
     miniWebview_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func MiniWebview_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := miniWebview_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MiniWebview_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := miniWebview_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MiniWebview_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := miniWebview_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MiniWebview_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := miniWebview_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MiniWebview_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := miniWebview_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MiniWebview_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := miniWebview_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MiniWebview_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := miniWebview_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MiniWebview_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := miniWebview_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MiniWebview_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := miniWebview_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MiniWebview_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := miniWebview_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MiniWebview_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    miniWebview_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func MiniWebview_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    miniWebview_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func MiniWebview_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    miniWebview_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func MiniWebview_GetReadyState(obj uintptr) TReadyState {
@@ -38548,6 +40909,68 @@ func ToolButton_AnchorClient(obj uintptr, ASpace int32)  {
     toolButton_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func ToolButton_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolButton_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolButton_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolButton_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolButton_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolButton_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolButton_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolButton_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolButton_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolButton_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolButton_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolButton_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolButton_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolButton_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolButton_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolButton_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolButton_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolButton_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolButton_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toolButton_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToolButton_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    toolButton_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ToolButton_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    toolButton_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ToolButton_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    toolButton_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func ToolButton_GetIndex(obj uintptr) int32 {
     ret, _, _ := toolButton_GetIndex.Call(obj)
     return int32(ret)
@@ -39856,6 +42279,68 @@ func PaintBox_AnchorClient(obj uintptr, ASpace int32)  {
     paintBox_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func PaintBox_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := paintBox_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PaintBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := paintBox_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PaintBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := paintBox_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PaintBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := paintBox_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PaintBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := paintBox_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PaintBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := paintBox_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PaintBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := paintBox_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PaintBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := paintBox_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PaintBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := paintBox_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PaintBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := paintBox_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func PaintBox_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    paintBox_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func PaintBox_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    paintBox_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func PaintBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    paintBox_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func PaintBox_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := paintBox_GetCanvas.Call(obj)
     return ret
@@ -41045,6 +43530,10 @@ func ScrollBar_Invalidate(obj uintptr)  {
     scrollBar_Invalidate.Call(obj)
 }
 
+func ScrollBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    scrollBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func ScrollBar_RemoveControl(obj uintptr, AControl uintptr)  {
     scrollBar_RemoveControl.Call(obj, AControl )
 }
@@ -41230,6 +43719,68 @@ func ScrollBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func ScrollBar_AnchorClient(obj uintptr, ASpace int32)  {
     scrollBar_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ScrollBar_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBar_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBar_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBar_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBar_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBar_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBar_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBar_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBar_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBar_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBar_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBar_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBar_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBar_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBar_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBar_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBar_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBar_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBar_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBar_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBar_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    scrollBar_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ScrollBar_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    scrollBar_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ScrollBar_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    scrollBar_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ScrollBar_GetAlign(obj uintptr) TAlign {
@@ -41881,6 +44432,10 @@ func MaskEdit_Invalidate(obj uintptr)  {
     maskEdit_Invalidate.Call(obj)
 }
 
+func MaskEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    maskEdit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func MaskEdit_RemoveControl(obj uintptr, AControl uintptr)  {
     maskEdit_RemoveControl.Call(obj, AControl )
 }
@@ -42061,6 +44616,68 @@ func MaskEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func MaskEdit_AnchorClient(obj uintptr, ASpace int32)  {
     maskEdit_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func MaskEdit_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := maskEdit_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MaskEdit_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := maskEdit_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MaskEdit_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := maskEdit_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MaskEdit_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := maskEdit_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MaskEdit_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := maskEdit_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MaskEdit_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := maskEdit_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MaskEdit_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := maskEdit_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MaskEdit_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := maskEdit_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MaskEdit_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := maskEdit_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MaskEdit_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := maskEdit_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func MaskEdit_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    maskEdit_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func MaskEdit_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    maskEdit_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func MaskEdit_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    maskEdit_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func MaskEdit_GetAlign(obj uintptr) TAlign {
@@ -42955,6 +45572,68 @@ func Shape_AnchorClient(obj uintptr, ASpace int32)  {
     shape_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func Shape_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := shape_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Shape_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := shape_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Shape_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := shape_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Shape_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := shape_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Shape_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := shape_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Shape_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := shape_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Shape_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := shape_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Shape_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := shape_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Shape_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := shape_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Shape_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := shape_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Shape_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    shape_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func Shape_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    shape_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func Shape_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    shape_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func Shape_GetAlign(obj uintptr) TAlign {
     ret, _, _ := shape_GetAlign.Call(obj)
     return TAlign(ret)
@@ -43527,6 +46206,68 @@ func Bevel_AnchorClient(obj uintptr, ASpace int32)  {
     bevel_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func Bevel_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bevel_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Bevel_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bevel_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Bevel_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bevel_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Bevel_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bevel_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Bevel_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bevel_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Bevel_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bevel_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Bevel_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bevel_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Bevel_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bevel_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Bevel_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bevel_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Bevel_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := bevel_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Bevel_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    bevel_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func Bevel_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    bevel_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func Bevel_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    bevel_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func Bevel_GetAlign(obj uintptr) TAlign {
     ret, _, _ := bevel_GetAlign.Call(obj)
     return TAlign(ret)
@@ -43914,6 +46655,10 @@ func ScrollBox_Invalidate(obj uintptr)  {
     scrollBox_Invalidate.Call(obj)
 }
 
+func ScrollBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    scrollBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func ScrollBox_RemoveControl(obj uintptr, AControl uintptr)  {
     scrollBox_RemoveControl.Call(obj, AControl )
 }
@@ -44099,6 +46844,68 @@ func ScrollBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func ScrollBox_AnchorClient(obj uintptr, ASpace int32)  {
     scrollBox_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ScrollBox_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBox_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBox_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBox_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBox_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBox_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBox_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBox_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBox_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBox_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := scrollBox_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ScrollBox_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    scrollBox_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ScrollBox_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    scrollBox_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ScrollBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    scrollBox_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ScrollBox_GetAlign(obj uintptr) TAlign {
@@ -44824,6 +47631,10 @@ func CheckListBox_Invalidate(obj uintptr)  {
     checkListBox_Invalidate.Call(obj)
 }
 
+func CheckListBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    checkListBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func CheckListBox_RemoveControl(obj uintptr, AControl uintptr)  {
     checkListBox_RemoveControl.Call(obj, AControl )
 }
@@ -45009,6 +47820,68 @@ func CheckListBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func CheckListBox_AnchorClient(obj uintptr, ASpace int32)  {
     checkListBox_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func CheckListBox_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkListBox_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckListBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkListBox_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckListBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkListBox_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckListBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkListBox_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckListBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkListBox_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckListBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkListBox_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckListBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkListBox_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckListBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkListBox_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckListBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkListBox_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckListBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkListBox_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckListBox_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    checkListBox_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func CheckListBox_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    checkListBox_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func CheckListBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    checkListBox_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func CheckListBox_SetOnClickCheck(obj uintptr, fn interface{}) {
@@ -45903,6 +48776,68 @@ func Gauge_AnchorClient(obj uintptr, ASpace int32)  {
     gauge_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func Gauge_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := gauge_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Gauge_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := gauge_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Gauge_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := gauge_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Gauge_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := gauge_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Gauge_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := gauge_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Gauge_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := gauge_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Gauge_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := gauge_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Gauge_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := gauge_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Gauge_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := gauge_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Gauge_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := gauge_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Gauge_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    gauge_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func Gauge_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    gauge_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func Gauge_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    gauge_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func Gauge_GetPercentDone(obj uintptr) int32 {
     ret, _, _ := gauge_GetPercentDone.Call(obj)
     return int32(ret)
@@ -46504,6 +49439,68 @@ func ImageButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func ImageButton_AnchorClient(obj uintptr, ASpace int32)  {
     imageButton_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ImageButton_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := imageButton_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ImageButton_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := imageButton_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ImageButton_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := imageButton_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ImageButton_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := imageButton_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ImageButton_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := imageButton_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ImageButton_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := imageButton_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ImageButton_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := imageButton_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ImageButton_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := imageButton_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ImageButton_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := imageButton_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ImageButton_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := imageButton_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ImageButton_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    imageButton_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ImageButton_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    imageButton_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ImageButton_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    imageButton_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ImageButton_GetAction(obj uintptr) uintptr {
@@ -48149,6 +51146,10 @@ func StringGrid_Invalidate(obj uintptr)  {
     stringGrid_Invalidate.Call(obj)
 }
 
+func StringGrid_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    stringGrid_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func StringGrid_RemoveControl(obj uintptr, AControl uintptr)  {
     stringGrid_RemoveControl.Call(obj, AControl )
 }
@@ -48334,6 +51335,68 @@ func StringGrid_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func StringGrid_AnchorClient(obj uintptr, ASpace int32)  {
     stringGrid_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func StringGrid_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := stringGrid_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StringGrid_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := stringGrid_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StringGrid_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := stringGrid_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StringGrid_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := stringGrid_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StringGrid_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := stringGrid_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StringGrid_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := stringGrid_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StringGrid_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := stringGrid_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StringGrid_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := stringGrid_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StringGrid_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := stringGrid_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StringGrid_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := stringGrid_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func StringGrid_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    stringGrid_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func StringGrid_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    stringGrid_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func StringGrid_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    stringGrid_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func StringGrid_GetSelectedColor(obj uintptr) TColor {
@@ -49648,6 +52711,10 @@ func DrawGrid_Invalidate(obj uintptr)  {
     drawGrid_Invalidate.Call(obj)
 }
 
+func DrawGrid_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    drawGrid_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func DrawGrid_RemoveControl(obj uintptr, AControl uintptr)  {
     drawGrid_RemoveControl.Call(obj, AControl )
 }
@@ -49833,6 +52900,68 @@ func DrawGrid_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func DrawGrid_AnchorClient(obj uintptr, ASpace int32)  {
     drawGrid_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func DrawGrid_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := drawGrid_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DrawGrid_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := drawGrid_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DrawGrid_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := drawGrid_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DrawGrid_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := drawGrid_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DrawGrid_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := drawGrid_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DrawGrid_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := drawGrid_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DrawGrid_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := drawGrid_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DrawGrid_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := drawGrid_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DrawGrid_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := drawGrid_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DrawGrid_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := drawGrid_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DrawGrid_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    drawGrid_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func DrawGrid_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    drawGrid_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func DrawGrid_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    drawGrid_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func DrawGrid_SetOnColRowMoved(obj uintptr, fn interface{}) {
@@ -50727,6 +53856,10 @@ func ValueListEditor_Invalidate(obj uintptr)  {
     valueListEditor_Invalidate.Call(obj)
 }
 
+func ValueListEditor_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    valueListEditor_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func ValueListEditor_RemoveControl(obj uintptr, AControl uintptr)  {
     valueListEditor_RemoveControl.Call(obj, AControl )
 }
@@ -50908,6 +54041,68 @@ func ValueListEditor_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32) 
 
 func ValueListEditor_AnchorClient(obj uintptr, ASpace int32)  {
     valueListEditor_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ValueListEditor_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := valueListEditor_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ValueListEditor_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := valueListEditor_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ValueListEditor_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := valueListEditor_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ValueListEditor_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := valueListEditor_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ValueListEditor_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := valueListEditor_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ValueListEditor_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := valueListEditor_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ValueListEditor_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := valueListEditor_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ValueListEditor_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := valueListEditor_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ValueListEditor_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := valueListEditor_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ValueListEditor_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := valueListEditor_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ValueListEditor_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    valueListEditor_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ValueListEditor_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    valueListEditor_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ValueListEditor_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    valueListEditor_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ValueListEditor_GetColCount(obj uintptr) int32 {
@@ -51797,6 +54992,10 @@ func HeaderControl_Invalidate(obj uintptr)  {
     headerControl_Invalidate.Call(obj)
 }
 
+func HeaderControl_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    headerControl_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func HeaderControl_RemoveControl(obj uintptr, AControl uintptr)  {
     headerControl_RemoveControl.Call(obj, AControl )
 }
@@ -51982,6 +55181,68 @@ func HeaderControl_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func HeaderControl_AnchorClient(obj uintptr, ASpace int32)  {
     headerControl_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func HeaderControl_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := headerControl_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func HeaderControl_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := headerControl_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func HeaderControl_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := headerControl_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func HeaderControl_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := headerControl_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func HeaderControl_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := headerControl_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func HeaderControl_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := headerControl_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func HeaderControl_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := headerControl_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func HeaderControl_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := headerControl_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func HeaderControl_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := headerControl_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func HeaderControl_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := headerControl_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func HeaderControl_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    headerControl_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func HeaderControl_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    headerControl_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func HeaderControl_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    headerControl_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func HeaderControl_GetAlign(obj uintptr) TAlign {
@@ -52905,6 +56166,10 @@ func LabeledEdit_Invalidate(obj uintptr)  {
     labeledEdit_Invalidate.Call(obj)
 }
 
+func LabeledEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    labeledEdit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func LabeledEdit_RemoveControl(obj uintptr, AControl uintptr)  {
     labeledEdit_RemoveControl.Call(obj, AControl )
 }
@@ -53086,6 +56351,68 @@ func LabeledEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func LabeledEdit_AnchorClient(obj uintptr, ASpace int32)  {
     labeledEdit_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func LabeledEdit_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := labeledEdit_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LabeledEdit_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := labeledEdit_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LabeledEdit_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := labeledEdit_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LabeledEdit_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := labeledEdit_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LabeledEdit_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := labeledEdit_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LabeledEdit_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := labeledEdit_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LabeledEdit_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := labeledEdit_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LabeledEdit_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := labeledEdit_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LabeledEdit_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := labeledEdit_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LabeledEdit_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := labeledEdit_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func LabeledEdit_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    labeledEdit_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func LabeledEdit_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    labeledEdit_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func LabeledEdit_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    labeledEdit_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func LabeledEdit_GetAlignment(obj uintptr) TAlignment {
@@ -53990,6 +57317,68 @@ func BoundLabel_AnchorClient(obj uintptr, ASpace int32)  {
     boundLabel_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func BoundLabel_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := boundLabel_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BoundLabel_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := boundLabel_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BoundLabel_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := boundLabel_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BoundLabel_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := boundLabel_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BoundLabel_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := boundLabel_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BoundLabel_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := boundLabel_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BoundLabel_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := boundLabel_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BoundLabel_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := boundLabel_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BoundLabel_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := boundLabel_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BoundLabel_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := boundLabel_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func BoundLabel_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    boundLabel_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func BoundLabel_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    boundLabel_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func BoundLabel_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    boundLabel_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func BoundLabel_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := boundLabel_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -54492,6 +57881,10 @@ func FlowPanel_Invalidate(obj uintptr)  {
     flowPanel_Invalidate.Call(obj)
 }
 
+func FlowPanel_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    flowPanel_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func FlowPanel_RemoveControl(obj uintptr, AControl uintptr)  {
     flowPanel_RemoveControl.Call(obj, AControl )
 }
@@ -54677,6 +58070,68 @@ func FlowPanel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func FlowPanel_AnchorClient(obj uintptr, ASpace int32)  {
     flowPanel_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func FlowPanel_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := flowPanel_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FlowPanel_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := flowPanel_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FlowPanel_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := flowPanel_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FlowPanel_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := flowPanel_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FlowPanel_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := flowPanel_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FlowPanel_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := flowPanel_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FlowPanel_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := flowPanel_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FlowPanel_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := flowPanel_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FlowPanel_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := flowPanel_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FlowPanel_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := flowPanel_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FlowPanel_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    flowPanel_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func FlowPanel_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    flowPanel_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func FlowPanel_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    flowPanel_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func FlowPanel_GetAlign(obj uintptr) TAlign {
@@ -55390,6 +58845,10 @@ func CoolBar_Invalidate(obj uintptr)  {
     coolBar_Invalidate.Call(obj)
 }
 
+func CoolBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    coolBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func CoolBar_RemoveControl(obj uintptr, AControl uintptr)  {
     coolBar_RemoveControl.Call(obj, AControl )
 }
@@ -55575,6 +59034,68 @@ func CoolBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func CoolBar_AnchorClient(obj uintptr, ASpace int32)  {
     coolBar_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func CoolBar_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := coolBar_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CoolBar_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := coolBar_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CoolBar_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := coolBar_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CoolBar_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := coolBar_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CoolBar_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := coolBar_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CoolBar_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := coolBar_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CoolBar_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := coolBar_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CoolBar_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := coolBar_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CoolBar_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := coolBar_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CoolBar_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := coolBar_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CoolBar_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    coolBar_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func CoolBar_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    coolBar_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func CoolBar_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    coolBar_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func CoolBar_GetAlign(obj uintptr) TAlign {
@@ -57684,6 +61205,10 @@ func ComboBoxEx_Invalidate(obj uintptr)  {
     comboBoxEx_Invalidate.Call(obj)
 }
 
+func ComboBoxEx_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    comboBoxEx_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func ComboBoxEx_RemoveControl(obj uintptr, AControl uintptr)  {
     comboBoxEx_RemoveControl.Call(obj, AControl )
 }
@@ -57869,6 +61394,68 @@ func ComboBoxEx_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func ComboBoxEx_AnchorClient(obj uintptr, ASpace int32)  {
     comboBoxEx_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ComboBoxEx_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBoxEx_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBoxEx_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBoxEx_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBoxEx_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBoxEx_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBoxEx_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBoxEx_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBoxEx_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBoxEx_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBoxEx_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBoxEx_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBoxEx_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBoxEx_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBoxEx_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBoxEx_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBoxEx_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBoxEx_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBoxEx_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := comboBoxEx_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ComboBoxEx_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    comboBoxEx_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ComboBoxEx_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    comboBoxEx_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ComboBoxEx_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    comboBoxEx_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ComboBoxEx_GetAlign(obj uintptr) TAlign {
@@ -58862,6 +62449,10 @@ func Frame_Invalidate(obj uintptr)  {
     frame_Invalidate.Call(obj)
 }
 
+func Frame_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    frame_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func Frame_RemoveControl(obj uintptr, AControl uintptr)  {
     frame_RemoveControl.Call(obj, AControl )
 }
@@ -59047,6 +62638,77 @@ func Frame_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func Frame_AnchorClient(obj uintptr, ASpace int32)  {
     frame_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func Frame_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := frame_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Frame_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := frame_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Frame_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := frame_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Frame_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := frame_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Frame_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := frame_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Frame_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := frame_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Frame_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := frame_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Frame_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := frame_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Frame_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := frame_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Frame_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := frame_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func Frame_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    frame_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func Frame_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    frame_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func Frame_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    frame_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
+func Frame_GetDesignTimePPI(obj uintptr) int32 {
+    ret, _, _ := frame_GetDesignTimePPI.Call(obj)
+    return int32(ret)
+}
+
+func Frame_SetDesignTimePPI(obj uintptr, value int32) {
+   frame_SetDesignTimePPI.Call(obj, uintptr(value))
 }
 
 func Frame_GetAlign(obj uintptr) TAlign {
@@ -60058,6 +63720,68 @@ func XButton_AnchorClient(obj uintptr, ASpace int32)  {
     xButton_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func XButton_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := xButton_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func XButton_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := xButton_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func XButton_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := xButton_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func XButton_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := xButton_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func XButton_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := xButton_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func XButton_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := xButton_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func XButton_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := xButton_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func XButton_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := xButton_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func XButton_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := xButton_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func XButton_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := xButton_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func XButton_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    xButton_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func XButton_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    xButton_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func XButton_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    xButton_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func XButton_GetCaption(obj uintptr) string {
     ret, _, _ := xButton_GetCaption.Call(obj)
     return DStrToGoStr(ret)
@@ -61006,6 +64730,10 @@ func CheckGroup_Invalidate(obj uintptr)  {
     checkGroup_Invalidate.Call(obj)
 }
 
+func CheckGroup_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    checkGroup_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func CheckGroup_RemoveControl(obj uintptr, AControl uintptr)  {
     checkGroup_RemoveControl.Call(obj, AControl )
 }
@@ -61191,6 +64919,68 @@ func CheckGroup_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func CheckGroup_AnchorClient(obj uintptr, ASpace int32)  {
     checkGroup_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func CheckGroup_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkGroup_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckGroup_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkGroup_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckGroup_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkGroup_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckGroup_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkGroup_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckGroup_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkGroup_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckGroup_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkGroup_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckGroup_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkGroup_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckGroup_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkGroup_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckGroup_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkGroup_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckGroup_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := checkGroup_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func CheckGroup_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    checkGroup_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func CheckGroup_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    checkGroup_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func CheckGroup_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    checkGroup_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func CheckGroup_GetAlign(obj uintptr) TAlign {
@@ -61890,6 +65680,10 @@ func ToggleBox_Invalidate(obj uintptr)  {
     toggleBox_Invalidate.Call(obj)
 }
 
+func ToggleBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    toggleBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
 func ToggleBox_RemoveControl(obj uintptr, AControl uintptr)  {
     toggleBox_RemoveControl.Call(obj, AControl )
 }
@@ -62075,6 +65869,68 @@ func ToggleBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func ToggleBox_AnchorClient(obj uintptr, ASpace int32)  {
     toggleBox_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ToggleBox_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toggleBox_ScaleDesignToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToggleBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toggleBox_ScaleFormToDesign.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToggleBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toggleBox_Scale96ToForm.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToggleBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toggleBox_ScaleFormTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToggleBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toggleBox_Scale96ToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToggleBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toggleBox_ScaleFontTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToggleBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toggleBox_ScaleScreenToFont.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToggleBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toggleBox_ScaleFontToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToggleBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toggleBox_Scale96ToScreen.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToggleBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := toggleBox_ScaleScreenTo96.Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func ToggleBox_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    toggleBox_AutoAdjustLayout.Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ToggleBox_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    toggleBox_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func ToggleBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    toggleBox_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ToggleBox_GetAllowGrayed(obj uintptr) bool {
@@ -62676,6 +66532,14 @@ func GridColumnTitle_FillTitleDefaultFont(obj uintptr)  {
     gridColumnTitle_FillTitleDefaultFont.Call(obj)
 }
 
+func GridColumnTitle_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    gridColumnTitle_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func GridColumnTitle_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    gridColumnTitle_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
 func GridColumnTitle_IsDefault(obj uintptr) bool {
     ret, _, _ := gridColumnTitle_IsDefault.Call(obj)
     return DBoolToGoBool(ret)
@@ -62816,6 +66680,14 @@ func GridColumnTitle_StaticClassType() TClass {
 
 func GridColumn_Assign(obj uintptr, Source uintptr)  {
     gridColumn_Assign.Call(obj, Source )
+}
+
+func GridColumn_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    gridColumn_FixDesignFontsPPI.Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func GridColumn_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    gridColumn_ScaleFontsPPI.Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func GridColumn_IsDefault(obj uintptr) bool {

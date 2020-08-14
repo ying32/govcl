@@ -197,6 +197,13 @@ func (f *TFrame) Invalidate() {
     Frame_Invalidate(f.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (f *TFrame) PaintTo(DC HDC, X int32, Y int32) {
+    Frame_PaintTo(f.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -456,6 +463,66 @@ func (f *TFrame) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (f *TFrame) AnchorClient(ASpace int32) {
     Frame_AnchorClient(f.instance, ASpace)
+}
+
+func (f *TFrame) ScaleDesignToForm(ASize int32) int32 {
+    return Frame_ScaleDesignToForm(f.instance, ASize)
+}
+
+func (f *TFrame) ScaleFormToDesign(ASize int32) int32 {
+    return Frame_ScaleFormToDesign(f.instance, ASize)
+}
+
+func (f *TFrame) Scale96ToForm(ASize int32) int32 {
+    return Frame_Scale96ToForm(f.instance, ASize)
+}
+
+func (f *TFrame) ScaleFormTo96(ASize int32) int32 {
+    return Frame_ScaleFormTo96(f.instance, ASize)
+}
+
+func (f *TFrame) Scale96ToFont(ASize int32) int32 {
+    return Frame_Scale96ToFont(f.instance, ASize)
+}
+
+func (f *TFrame) ScaleFontTo96(ASize int32) int32 {
+    return Frame_ScaleFontTo96(f.instance, ASize)
+}
+
+func (f *TFrame) ScaleScreenToFont(ASize int32) int32 {
+    return Frame_ScaleScreenToFont(f.instance, ASize)
+}
+
+func (f *TFrame) ScaleFontToScreen(ASize int32) int32 {
+    return Frame_ScaleFontToScreen(f.instance, ASize)
+}
+
+func (f *TFrame) Scale96ToScreen(ASize int32) int32 {
+    return Frame_Scale96ToScreen(f.instance, ASize)
+}
+
+func (f *TFrame) ScaleScreenTo96(ASize int32) int32 {
+    return Frame_ScaleScreenTo96(f.instance, ASize)
+}
+
+func (f *TFrame) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    Frame_AutoAdjustLayout(f.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (f *TFrame) FixDesignFontsPPI(ADesignTimePPI int32) {
+    Frame_FixDesignFontsPPI(f.instance, ADesignTimePPI)
+}
+
+func (f *TFrame) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    Frame_ScaleFontsPPI(f.instance, AToPPI , AProportion)
+}
+
+func (f *TFrame) DesignTimePPI() int32 {
+    return Frame_GetDesignTimePPI(f.instance)
+}
+
+func (f *TFrame) SetDesignTimePPI(value int32) {
+    Frame_SetDesignTimePPI(f.instance, value)
 }
 
 // 获取控件自动调整。

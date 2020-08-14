@@ -239,6 +239,13 @@ func (m *TMaskEdit) Invalidate() {
     MaskEdit_Invalidate(m.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (m *TMaskEdit) PaintTo(DC HDC, X int32, Y int32) {
+    MaskEdit_PaintTo(m.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -491,6 +498,58 @@ func (m *TMaskEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (m *TMaskEdit) AnchorClient(ASpace int32) {
     MaskEdit_AnchorClient(m.instance, ASpace)
+}
+
+func (m *TMaskEdit) ScaleDesignToForm(ASize int32) int32 {
+    return MaskEdit_ScaleDesignToForm(m.instance, ASize)
+}
+
+func (m *TMaskEdit) ScaleFormToDesign(ASize int32) int32 {
+    return MaskEdit_ScaleFormToDesign(m.instance, ASize)
+}
+
+func (m *TMaskEdit) Scale96ToForm(ASize int32) int32 {
+    return MaskEdit_Scale96ToForm(m.instance, ASize)
+}
+
+func (m *TMaskEdit) ScaleFormTo96(ASize int32) int32 {
+    return MaskEdit_ScaleFormTo96(m.instance, ASize)
+}
+
+func (m *TMaskEdit) Scale96ToFont(ASize int32) int32 {
+    return MaskEdit_Scale96ToFont(m.instance, ASize)
+}
+
+func (m *TMaskEdit) ScaleFontTo96(ASize int32) int32 {
+    return MaskEdit_ScaleFontTo96(m.instance, ASize)
+}
+
+func (m *TMaskEdit) ScaleScreenToFont(ASize int32) int32 {
+    return MaskEdit_ScaleScreenToFont(m.instance, ASize)
+}
+
+func (m *TMaskEdit) ScaleFontToScreen(ASize int32) int32 {
+    return MaskEdit_ScaleFontToScreen(m.instance, ASize)
+}
+
+func (m *TMaskEdit) Scale96ToScreen(ASize int32) int32 {
+    return MaskEdit_Scale96ToScreen(m.instance, ASize)
+}
+
+func (m *TMaskEdit) ScaleScreenTo96(ASize int32) int32 {
+    return MaskEdit_ScaleScreenTo96(m.instance, ASize)
+}
+
+func (m *TMaskEdit) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    MaskEdit_AutoAdjustLayout(m.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (m *TMaskEdit) FixDesignFontsPPI(ADesignTimePPI int32) {
+    MaskEdit_FixDesignFontsPPI(m.instance, ADesignTimePPI)
+}
+
+func (m *TMaskEdit) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    MaskEdit_ScaleFontsPPI(m.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

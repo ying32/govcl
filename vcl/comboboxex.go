@@ -217,6 +217,13 @@ func (c *TComboBoxEx) Invalidate() {
     ComboBoxEx_Invalidate(c.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (c *TComboBoxEx) PaintTo(DC HDC, X int32, Y int32) {
+    ComboBoxEx_PaintTo(c.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -476,6 +483,58 @@ func (c *TComboBoxEx) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (c *TComboBoxEx) AnchorClient(ASpace int32) {
     ComboBoxEx_AnchorClient(c.instance, ASpace)
+}
+
+func (c *TComboBoxEx) ScaleDesignToForm(ASize int32) int32 {
+    return ComboBoxEx_ScaleDesignToForm(c.instance, ASize)
+}
+
+func (c *TComboBoxEx) ScaleFormToDesign(ASize int32) int32 {
+    return ComboBoxEx_ScaleFormToDesign(c.instance, ASize)
+}
+
+func (c *TComboBoxEx) Scale96ToForm(ASize int32) int32 {
+    return ComboBoxEx_Scale96ToForm(c.instance, ASize)
+}
+
+func (c *TComboBoxEx) ScaleFormTo96(ASize int32) int32 {
+    return ComboBoxEx_ScaleFormTo96(c.instance, ASize)
+}
+
+func (c *TComboBoxEx) Scale96ToFont(ASize int32) int32 {
+    return ComboBoxEx_Scale96ToFont(c.instance, ASize)
+}
+
+func (c *TComboBoxEx) ScaleFontTo96(ASize int32) int32 {
+    return ComboBoxEx_ScaleFontTo96(c.instance, ASize)
+}
+
+func (c *TComboBoxEx) ScaleScreenToFont(ASize int32) int32 {
+    return ComboBoxEx_ScaleScreenToFont(c.instance, ASize)
+}
+
+func (c *TComboBoxEx) ScaleFontToScreen(ASize int32) int32 {
+    return ComboBoxEx_ScaleFontToScreen(c.instance, ASize)
+}
+
+func (c *TComboBoxEx) Scale96ToScreen(ASize int32) int32 {
+    return ComboBoxEx_Scale96ToScreen(c.instance, ASize)
+}
+
+func (c *TComboBoxEx) ScaleScreenTo96(ASize int32) int32 {
+    return ComboBoxEx_ScaleScreenTo96(c.instance, ASize)
+}
+
+func (c *TComboBoxEx) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    ComboBoxEx_AutoAdjustLayout(c.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (c *TComboBoxEx) FixDesignFontsPPI(ADesignTimePPI int32) {
+    ComboBoxEx_FixDesignFontsPPI(c.instance, ADesignTimePPI)
+}
+
+func (c *TComboBoxEx) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    ComboBoxEx_ScaleFontsPPI(c.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

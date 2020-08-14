@@ -236,6 +236,13 @@ func (f *TForm) Invalidate() {
     Form_Invalidate(f.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (f *TForm) PaintTo(DC HDC, X int32, Y int32) {
+    Form_PaintTo(f.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -476,6 +483,58 @@ func (f *TForm) AnchorClient(ASpace int32) {
     Form_AnchorClient(f.instance, ASpace)
 }
 
+func (f *TForm) ScaleDesignToForm(ASize int32) int32 {
+    return Form_ScaleDesignToForm(f.instance, ASize)
+}
+
+func (f *TForm) ScaleFormToDesign(ASize int32) int32 {
+    return Form_ScaleFormToDesign(f.instance, ASize)
+}
+
+func (f *TForm) Scale96ToForm(ASize int32) int32 {
+    return Form_Scale96ToForm(f.instance, ASize)
+}
+
+func (f *TForm) ScaleFormTo96(ASize int32) int32 {
+    return Form_ScaleFormTo96(f.instance, ASize)
+}
+
+func (f *TForm) Scale96ToFont(ASize int32) int32 {
+    return Form_Scale96ToFont(f.instance, ASize)
+}
+
+func (f *TForm) ScaleFontTo96(ASize int32) int32 {
+    return Form_ScaleFontTo96(f.instance, ASize)
+}
+
+func (f *TForm) ScaleScreenToFont(ASize int32) int32 {
+    return Form_ScaleScreenToFont(f.instance, ASize)
+}
+
+func (f *TForm) ScaleFontToScreen(ASize int32) int32 {
+    return Form_ScaleFontToScreen(f.instance, ASize)
+}
+
+func (f *TForm) Scale96ToScreen(ASize int32) int32 {
+    return Form_Scale96ToScreen(f.instance, ASize)
+}
+
+func (f *TForm) ScaleScreenTo96(ASize int32) int32 {
+    return Form_ScaleScreenTo96(f.instance, ASize)
+}
+
+func (f *TForm) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    Form_AutoAdjustLayout(f.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (f *TForm) FixDesignFontsPPI(ADesignTimePPI int32) {
+    Form_FixDesignFontsPPI(f.instance, ADesignTimePPI)
+}
+
+func (f *TForm) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    Form_ScaleFontsPPI(f.instance, AToPPI , AProportion)
+}
+
 // 获取允许拖放文件。
 func (f *TForm) AllowDropFiles() bool {
     return Form_GetAllowDropFiles(f.instance)
@@ -499,6 +558,14 @@ func (f *TForm) ShowInTaskBar() TShowInTaskbar {
 // 设置显示在任务栏上。
 func (f *TForm) SetShowInTaskBar(value TShowInTaskbar) {
     Form_SetShowInTaskBar(f.instance, value)
+}
+
+func (f *TForm) DesignTimePPI() int32 {
+    return Form_GetDesignTimePPI(f.instance)
+}
+
+func (f *TForm) SetDesignTimePPI(value int32) {
+    Form_SetDesignTimePPI(f.instance, value)
 }
 
 func (f *TForm) Action() *TAction {

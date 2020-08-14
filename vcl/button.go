@@ -198,6 +198,13 @@ func (b *TButton) Invalidate() {
     Button_Invalidate(b.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (b *TButton) PaintTo(DC HDC, X int32, Y int32) {
+    Button_PaintTo(b.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -457,6 +464,58 @@ func (b *TButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (b *TButton) AnchorClient(ASpace int32) {
     Button_AnchorClient(b.instance, ASpace)
+}
+
+func (b *TButton) ScaleDesignToForm(ASize int32) int32 {
+    return Button_ScaleDesignToForm(b.instance, ASize)
+}
+
+func (b *TButton) ScaleFormToDesign(ASize int32) int32 {
+    return Button_ScaleFormToDesign(b.instance, ASize)
+}
+
+func (b *TButton) Scale96ToForm(ASize int32) int32 {
+    return Button_Scale96ToForm(b.instance, ASize)
+}
+
+func (b *TButton) ScaleFormTo96(ASize int32) int32 {
+    return Button_ScaleFormTo96(b.instance, ASize)
+}
+
+func (b *TButton) Scale96ToFont(ASize int32) int32 {
+    return Button_Scale96ToFont(b.instance, ASize)
+}
+
+func (b *TButton) ScaleFontTo96(ASize int32) int32 {
+    return Button_ScaleFontTo96(b.instance, ASize)
+}
+
+func (b *TButton) ScaleScreenToFont(ASize int32) int32 {
+    return Button_ScaleScreenToFont(b.instance, ASize)
+}
+
+func (b *TButton) ScaleFontToScreen(ASize int32) int32 {
+    return Button_ScaleFontToScreen(b.instance, ASize)
+}
+
+func (b *TButton) Scale96ToScreen(ASize int32) int32 {
+    return Button_Scale96ToScreen(b.instance, ASize)
+}
+
+func (b *TButton) ScaleScreenTo96(ASize int32) int32 {
+    return Button_ScaleScreenTo96(b.instance, ASize)
+}
+
+func (b *TButton) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    Button_AutoAdjustLayout(b.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (b *TButton) FixDesignFontsPPI(ADesignTimePPI int32) {
+    Button_FixDesignFontsPPI(b.instance, ADesignTimePPI)
+}
+
+func (b *TButton) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    Button_ScaleFontsPPI(b.instance, AToPPI , AProportion)
 }
 
 func (b *TButton) Action() *TAction {

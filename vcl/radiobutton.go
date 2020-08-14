@@ -193,6 +193,13 @@ func (r *TRadioButton) Invalidate() {
     RadioButton_Invalidate(r.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (r *TRadioButton) PaintTo(DC HDC, X int32, Y int32) {
+    RadioButton_PaintTo(r.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -452,6 +459,58 @@ func (r *TRadioButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (r *TRadioButton) AnchorClient(ASpace int32) {
     RadioButton_AnchorClient(r.instance, ASpace)
+}
+
+func (r *TRadioButton) ScaleDesignToForm(ASize int32) int32 {
+    return RadioButton_ScaleDesignToForm(r.instance, ASize)
+}
+
+func (r *TRadioButton) ScaleFormToDesign(ASize int32) int32 {
+    return RadioButton_ScaleFormToDesign(r.instance, ASize)
+}
+
+func (r *TRadioButton) Scale96ToForm(ASize int32) int32 {
+    return RadioButton_Scale96ToForm(r.instance, ASize)
+}
+
+func (r *TRadioButton) ScaleFormTo96(ASize int32) int32 {
+    return RadioButton_ScaleFormTo96(r.instance, ASize)
+}
+
+func (r *TRadioButton) Scale96ToFont(ASize int32) int32 {
+    return RadioButton_Scale96ToFont(r.instance, ASize)
+}
+
+func (r *TRadioButton) ScaleFontTo96(ASize int32) int32 {
+    return RadioButton_ScaleFontTo96(r.instance, ASize)
+}
+
+func (r *TRadioButton) ScaleScreenToFont(ASize int32) int32 {
+    return RadioButton_ScaleScreenToFont(r.instance, ASize)
+}
+
+func (r *TRadioButton) ScaleFontToScreen(ASize int32) int32 {
+    return RadioButton_ScaleFontToScreen(r.instance, ASize)
+}
+
+func (r *TRadioButton) Scale96ToScreen(ASize int32) int32 {
+    return RadioButton_Scale96ToScreen(r.instance, ASize)
+}
+
+func (r *TRadioButton) ScaleScreenTo96(ASize int32) int32 {
+    return RadioButton_ScaleScreenTo96(r.instance, ASize)
+}
+
+func (r *TRadioButton) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    RadioButton_AutoAdjustLayout(r.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (r *TRadioButton) FixDesignFontsPPI(ADesignTimePPI int32) {
+    RadioButton_FixDesignFontsPPI(r.instance, ADesignTimePPI)
+}
+
+func (r *TRadioButton) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    RadioButton_ScaleFontsPPI(r.instance, AToPPI , AProportion)
 }
 
 // 设置改变事件。

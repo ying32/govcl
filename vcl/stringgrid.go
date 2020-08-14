@@ -322,6 +322,13 @@ func (s *TStringGrid) Invalidate() {
     StringGrid_Invalidate(s.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (s *TStringGrid) PaintTo(DC HDC, X int32, Y int32) {
+    StringGrid_PaintTo(s.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -581,6 +588,58 @@ func (s *TStringGrid) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (s *TStringGrid) AnchorClient(ASpace int32) {
     StringGrid_AnchorClient(s.instance, ASpace)
+}
+
+func (s *TStringGrid) ScaleDesignToForm(ASize int32) int32 {
+    return StringGrid_ScaleDesignToForm(s.instance, ASize)
+}
+
+func (s *TStringGrid) ScaleFormToDesign(ASize int32) int32 {
+    return StringGrid_ScaleFormToDesign(s.instance, ASize)
+}
+
+func (s *TStringGrid) Scale96ToForm(ASize int32) int32 {
+    return StringGrid_Scale96ToForm(s.instance, ASize)
+}
+
+func (s *TStringGrid) ScaleFormTo96(ASize int32) int32 {
+    return StringGrid_ScaleFormTo96(s.instance, ASize)
+}
+
+func (s *TStringGrid) Scale96ToFont(ASize int32) int32 {
+    return StringGrid_Scale96ToFont(s.instance, ASize)
+}
+
+func (s *TStringGrid) ScaleFontTo96(ASize int32) int32 {
+    return StringGrid_ScaleFontTo96(s.instance, ASize)
+}
+
+func (s *TStringGrid) ScaleScreenToFont(ASize int32) int32 {
+    return StringGrid_ScaleScreenToFont(s.instance, ASize)
+}
+
+func (s *TStringGrid) ScaleFontToScreen(ASize int32) int32 {
+    return StringGrid_ScaleFontToScreen(s.instance, ASize)
+}
+
+func (s *TStringGrid) Scale96ToScreen(ASize int32) int32 {
+    return StringGrid_Scale96ToScreen(s.instance, ASize)
+}
+
+func (s *TStringGrid) ScaleScreenTo96(ASize int32) int32 {
+    return StringGrid_ScaleScreenTo96(s.instance, ASize)
+}
+
+func (s *TStringGrid) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    StringGrid_AutoAdjustLayout(s.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (s *TStringGrid) FixDesignFontsPPI(ADesignTimePPI int32) {
+    StringGrid_FixDesignFontsPPI(s.instance, ADesignTimePPI)
+}
+
+func (s *TStringGrid) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    StringGrid_ScaleFontsPPI(s.instance, AToPPI , AProportion)
 }
 
 func (s *TStringGrid) SelectedColor() TColor {

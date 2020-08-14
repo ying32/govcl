@@ -201,6 +201,13 @@ func (f *TFlowPanel) Invalidate() {
     FlowPanel_Invalidate(f.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (f *TFlowPanel) PaintTo(DC HDC, X int32, Y int32) {
+    FlowPanel_PaintTo(f.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -460,6 +467,58 @@ func (f *TFlowPanel) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (f *TFlowPanel) AnchorClient(ASpace int32) {
     FlowPanel_AnchorClient(f.instance, ASpace)
+}
+
+func (f *TFlowPanel) ScaleDesignToForm(ASize int32) int32 {
+    return FlowPanel_ScaleDesignToForm(f.instance, ASize)
+}
+
+func (f *TFlowPanel) ScaleFormToDesign(ASize int32) int32 {
+    return FlowPanel_ScaleFormToDesign(f.instance, ASize)
+}
+
+func (f *TFlowPanel) Scale96ToForm(ASize int32) int32 {
+    return FlowPanel_Scale96ToForm(f.instance, ASize)
+}
+
+func (f *TFlowPanel) ScaleFormTo96(ASize int32) int32 {
+    return FlowPanel_ScaleFormTo96(f.instance, ASize)
+}
+
+func (f *TFlowPanel) Scale96ToFont(ASize int32) int32 {
+    return FlowPanel_Scale96ToFont(f.instance, ASize)
+}
+
+func (f *TFlowPanel) ScaleFontTo96(ASize int32) int32 {
+    return FlowPanel_ScaleFontTo96(f.instance, ASize)
+}
+
+func (f *TFlowPanel) ScaleScreenToFont(ASize int32) int32 {
+    return FlowPanel_ScaleScreenToFont(f.instance, ASize)
+}
+
+func (f *TFlowPanel) ScaleFontToScreen(ASize int32) int32 {
+    return FlowPanel_ScaleFontToScreen(f.instance, ASize)
+}
+
+func (f *TFlowPanel) Scale96ToScreen(ASize int32) int32 {
+    return FlowPanel_Scale96ToScreen(f.instance, ASize)
+}
+
+func (f *TFlowPanel) ScaleScreenTo96(ASize int32) int32 {
+    return FlowPanel_ScaleScreenTo96(f.instance, ASize)
+}
+
+func (f *TFlowPanel) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    FlowPanel_AutoAdjustLayout(f.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (f *TFlowPanel) FixDesignFontsPPI(ADesignTimePPI int32) {
+    FlowPanel_FixDesignFontsPPI(f.instance, ADesignTimePPI)
+}
+
+func (f *TFlowPanel) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    FlowPanel_ScaleFontsPPI(f.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

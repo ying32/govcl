@@ -354,6 +354,58 @@ func (l *TLabel) AnchorClient(ASpace int32) {
     Label_AnchorClient(l.instance, ASpace)
 }
 
+func (l *TLabel) ScaleDesignToForm(ASize int32) int32 {
+    return Label_ScaleDesignToForm(l.instance, ASize)
+}
+
+func (l *TLabel) ScaleFormToDesign(ASize int32) int32 {
+    return Label_ScaleFormToDesign(l.instance, ASize)
+}
+
+func (l *TLabel) Scale96ToForm(ASize int32) int32 {
+    return Label_Scale96ToForm(l.instance, ASize)
+}
+
+func (l *TLabel) ScaleFormTo96(ASize int32) int32 {
+    return Label_ScaleFormTo96(l.instance, ASize)
+}
+
+func (l *TLabel) Scale96ToFont(ASize int32) int32 {
+    return Label_Scale96ToFont(l.instance, ASize)
+}
+
+func (l *TLabel) ScaleFontTo96(ASize int32) int32 {
+    return Label_ScaleFontTo96(l.instance, ASize)
+}
+
+func (l *TLabel) ScaleScreenToFont(ASize int32) int32 {
+    return Label_ScaleScreenToFont(l.instance, ASize)
+}
+
+func (l *TLabel) ScaleFontToScreen(ASize int32) int32 {
+    return Label_ScaleFontToScreen(l.instance, ASize)
+}
+
+func (l *TLabel) Scale96ToScreen(ASize int32) int32 {
+    return Label_Scale96ToScreen(l.instance, ASize)
+}
+
+func (l *TLabel) ScaleScreenTo96(ASize int32) int32 {
+    return Label_ScaleScreenTo96(l.instance, ASize)
+}
+
+func (l *TLabel) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    Label_AutoAdjustLayout(l.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (l *TLabel) FixDesignFontsPPI(ADesignTimePPI int32) {
+    Label_FixDesignFontsPPI(l.instance, ADesignTimePPI)
+}
+
+func (l *TLabel) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    Label_ScaleFontsPPI(l.instance, AToPPI , AProportion)
+}
+
 func (l *TLabel) OptimalFill() bool {
     return Label_GetOptimalFill(l.instance)
 }

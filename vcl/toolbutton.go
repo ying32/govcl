@@ -363,6 +363,58 @@ func (t *TToolButton) AnchorClient(ASpace int32) {
     ToolButton_AnchorClient(t.instance, ASpace)
 }
 
+func (t *TToolButton) ScaleDesignToForm(ASize int32) int32 {
+    return ToolButton_ScaleDesignToForm(t.instance, ASize)
+}
+
+func (t *TToolButton) ScaleFormToDesign(ASize int32) int32 {
+    return ToolButton_ScaleFormToDesign(t.instance, ASize)
+}
+
+func (t *TToolButton) Scale96ToForm(ASize int32) int32 {
+    return ToolButton_Scale96ToForm(t.instance, ASize)
+}
+
+func (t *TToolButton) ScaleFormTo96(ASize int32) int32 {
+    return ToolButton_ScaleFormTo96(t.instance, ASize)
+}
+
+func (t *TToolButton) Scale96ToFont(ASize int32) int32 {
+    return ToolButton_Scale96ToFont(t.instance, ASize)
+}
+
+func (t *TToolButton) ScaleFontTo96(ASize int32) int32 {
+    return ToolButton_ScaleFontTo96(t.instance, ASize)
+}
+
+func (t *TToolButton) ScaleScreenToFont(ASize int32) int32 {
+    return ToolButton_ScaleScreenToFont(t.instance, ASize)
+}
+
+func (t *TToolButton) ScaleFontToScreen(ASize int32) int32 {
+    return ToolButton_ScaleFontToScreen(t.instance, ASize)
+}
+
+func (t *TToolButton) Scale96ToScreen(ASize int32) int32 {
+    return ToolButton_Scale96ToScreen(t.instance, ASize)
+}
+
+func (t *TToolButton) ScaleScreenTo96(ASize int32) int32 {
+    return ToolButton_ScaleScreenTo96(t.instance, ASize)
+}
+
+func (t *TToolButton) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    ToolButton_AutoAdjustLayout(t.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (t *TToolButton) FixDesignFontsPPI(ADesignTimePPI int32) {
+    ToolButton_FixDesignFontsPPI(t.instance, ADesignTimePPI)
+}
+
+func (t *TToolButton) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    ToolButton_ScaleFontsPPI(t.instance, AToPPI , AProportion)
+}
+
 func (t *TToolButton) Index() int32 {
     return ToolButton_GetIndex(t.instance)
 }

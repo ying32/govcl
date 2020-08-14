@@ -193,6 +193,13 @@ func (s *TStaticText) Invalidate() {
     StaticText_Invalidate(s.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (s *TStaticText) PaintTo(DC HDC, X int32, Y int32) {
+    StaticText_PaintTo(s.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -452,6 +459,58 @@ func (s *TStaticText) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (s *TStaticText) AnchorClient(ASpace int32) {
     StaticText_AnchorClient(s.instance, ASpace)
+}
+
+func (s *TStaticText) ScaleDesignToForm(ASize int32) int32 {
+    return StaticText_ScaleDesignToForm(s.instance, ASize)
+}
+
+func (s *TStaticText) ScaleFormToDesign(ASize int32) int32 {
+    return StaticText_ScaleFormToDesign(s.instance, ASize)
+}
+
+func (s *TStaticText) Scale96ToForm(ASize int32) int32 {
+    return StaticText_Scale96ToForm(s.instance, ASize)
+}
+
+func (s *TStaticText) ScaleFormTo96(ASize int32) int32 {
+    return StaticText_ScaleFormTo96(s.instance, ASize)
+}
+
+func (s *TStaticText) Scale96ToFont(ASize int32) int32 {
+    return StaticText_Scale96ToFont(s.instance, ASize)
+}
+
+func (s *TStaticText) ScaleFontTo96(ASize int32) int32 {
+    return StaticText_ScaleFontTo96(s.instance, ASize)
+}
+
+func (s *TStaticText) ScaleScreenToFont(ASize int32) int32 {
+    return StaticText_ScaleScreenToFont(s.instance, ASize)
+}
+
+func (s *TStaticText) ScaleFontToScreen(ASize int32) int32 {
+    return StaticText_ScaleFontToScreen(s.instance, ASize)
+}
+
+func (s *TStaticText) Scale96ToScreen(ASize int32) int32 {
+    return StaticText_Scale96ToScreen(s.instance, ASize)
+}
+
+func (s *TStaticText) ScaleScreenTo96(ASize int32) int32 {
+    return StaticText_ScaleScreenTo96(s.instance, ASize)
+}
+
+func (s *TStaticText) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    StaticText_AutoAdjustLayout(s.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (s *TStaticText) FixDesignFontsPPI(ADesignTimePPI int32) {
+    StaticText_FixDesignFontsPPI(s.instance, ADesignTimePPI)
+}
+
+func (s *TStaticText) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    StaticText_ScaleFontsPPI(s.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

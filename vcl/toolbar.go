@@ -193,6 +193,13 @@ func (t *TToolBar) Invalidate() {
     ToolBar_Invalidate(t.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (t *TToolBar) PaintTo(DC HDC, X int32, Y int32) {
+    ToolBar_PaintTo(t.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -452,6 +459,58 @@ func (t *TToolBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (t *TToolBar) AnchorClient(ASpace int32) {
     ToolBar_AnchorClient(t.instance, ASpace)
+}
+
+func (t *TToolBar) ScaleDesignToForm(ASize int32) int32 {
+    return ToolBar_ScaleDesignToForm(t.instance, ASize)
+}
+
+func (t *TToolBar) ScaleFormToDesign(ASize int32) int32 {
+    return ToolBar_ScaleFormToDesign(t.instance, ASize)
+}
+
+func (t *TToolBar) Scale96ToForm(ASize int32) int32 {
+    return ToolBar_Scale96ToForm(t.instance, ASize)
+}
+
+func (t *TToolBar) ScaleFormTo96(ASize int32) int32 {
+    return ToolBar_ScaleFormTo96(t.instance, ASize)
+}
+
+func (t *TToolBar) Scale96ToFont(ASize int32) int32 {
+    return ToolBar_Scale96ToFont(t.instance, ASize)
+}
+
+func (t *TToolBar) ScaleFontTo96(ASize int32) int32 {
+    return ToolBar_ScaleFontTo96(t.instance, ASize)
+}
+
+func (t *TToolBar) ScaleScreenToFont(ASize int32) int32 {
+    return ToolBar_ScaleScreenToFont(t.instance, ASize)
+}
+
+func (t *TToolBar) ScaleFontToScreen(ASize int32) int32 {
+    return ToolBar_ScaleFontToScreen(t.instance, ASize)
+}
+
+func (t *TToolBar) Scale96ToScreen(ASize int32) int32 {
+    return ToolBar_Scale96ToScreen(t.instance, ASize)
+}
+
+func (t *TToolBar) ScaleScreenTo96(ASize int32) int32 {
+    return ToolBar_ScaleScreenTo96(t.instance, ASize)
+}
+
+func (t *TToolBar) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    ToolBar_AutoAdjustLayout(t.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (t *TToolBar) FixDesignFontsPPI(ADesignTimePPI int32) {
+    ToolBar_FixDesignFontsPPI(t.instance, ADesignTimePPI)
+}
+
+func (t *TToolBar) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    ToolBar_ScaleFontsPPI(t.instance, AToPPI , AProportion)
 }
 
 func (t *TToolBar) ButtonCount() int32 {

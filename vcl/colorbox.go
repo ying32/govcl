@@ -217,6 +217,13 @@ func (c *TColorBox) Invalidate() {
     ColorBox_Invalidate(c.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (c *TColorBox) PaintTo(DC HDC, X int32, Y int32) {
+    ColorBox_PaintTo(c.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -476,6 +483,58 @@ func (c *TColorBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (c *TColorBox) AnchorClient(ASpace int32) {
     ColorBox_AnchorClient(c.instance, ASpace)
+}
+
+func (c *TColorBox) ScaleDesignToForm(ASize int32) int32 {
+    return ColorBox_ScaleDesignToForm(c.instance, ASize)
+}
+
+func (c *TColorBox) ScaleFormToDesign(ASize int32) int32 {
+    return ColorBox_ScaleFormToDesign(c.instance, ASize)
+}
+
+func (c *TColorBox) Scale96ToForm(ASize int32) int32 {
+    return ColorBox_Scale96ToForm(c.instance, ASize)
+}
+
+func (c *TColorBox) ScaleFormTo96(ASize int32) int32 {
+    return ColorBox_ScaleFormTo96(c.instance, ASize)
+}
+
+func (c *TColorBox) Scale96ToFont(ASize int32) int32 {
+    return ColorBox_Scale96ToFont(c.instance, ASize)
+}
+
+func (c *TColorBox) ScaleFontTo96(ASize int32) int32 {
+    return ColorBox_ScaleFontTo96(c.instance, ASize)
+}
+
+func (c *TColorBox) ScaleScreenToFont(ASize int32) int32 {
+    return ColorBox_ScaleScreenToFont(c.instance, ASize)
+}
+
+func (c *TColorBox) ScaleFontToScreen(ASize int32) int32 {
+    return ColorBox_ScaleFontToScreen(c.instance, ASize)
+}
+
+func (c *TColorBox) Scale96ToScreen(ASize int32) int32 {
+    return ColorBox_Scale96ToScreen(c.instance, ASize)
+}
+
+func (c *TColorBox) ScaleScreenTo96(ASize int32) int32 {
+    return ColorBox_ScaleScreenTo96(c.instance, ASize)
+}
+
+func (c *TColorBox) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    ColorBox_AutoAdjustLayout(c.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (c *TColorBox) FixDesignFontsPPI(ADesignTimePPI int32) {
+    ColorBox_FixDesignFontsPPI(c.instance, ADesignTimePPI)
+}
+
+func (c *TColorBox) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    ColorBox_ScaleFontsPPI(c.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

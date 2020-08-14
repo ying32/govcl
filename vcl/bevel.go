@@ -354,6 +354,58 @@ func (b *TBevel) AnchorClient(ASpace int32) {
     Bevel_AnchorClient(b.instance, ASpace)
 }
 
+func (b *TBevel) ScaleDesignToForm(ASize int32) int32 {
+    return Bevel_ScaleDesignToForm(b.instance, ASize)
+}
+
+func (b *TBevel) ScaleFormToDesign(ASize int32) int32 {
+    return Bevel_ScaleFormToDesign(b.instance, ASize)
+}
+
+func (b *TBevel) Scale96ToForm(ASize int32) int32 {
+    return Bevel_Scale96ToForm(b.instance, ASize)
+}
+
+func (b *TBevel) ScaleFormTo96(ASize int32) int32 {
+    return Bevel_ScaleFormTo96(b.instance, ASize)
+}
+
+func (b *TBevel) Scale96ToFont(ASize int32) int32 {
+    return Bevel_Scale96ToFont(b.instance, ASize)
+}
+
+func (b *TBevel) ScaleFontTo96(ASize int32) int32 {
+    return Bevel_ScaleFontTo96(b.instance, ASize)
+}
+
+func (b *TBevel) ScaleScreenToFont(ASize int32) int32 {
+    return Bevel_ScaleScreenToFont(b.instance, ASize)
+}
+
+func (b *TBevel) ScaleFontToScreen(ASize int32) int32 {
+    return Bevel_ScaleFontToScreen(b.instance, ASize)
+}
+
+func (b *TBevel) Scale96ToScreen(ASize int32) int32 {
+    return Bevel_Scale96ToScreen(b.instance, ASize)
+}
+
+func (b *TBevel) ScaleScreenTo96(ASize int32) int32 {
+    return Bevel_ScaleScreenTo96(b.instance, ASize)
+}
+
+func (b *TBevel) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    Bevel_AutoAdjustLayout(b.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (b *TBevel) FixDesignFontsPPI(ADesignTimePPI int32) {
+    Bevel_FixDesignFontsPPI(b.instance, ADesignTimePPI)
+}
+
+func (b *TBevel) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    Bevel_ScaleFontsPPI(b.instance, AToPPI , AProportion)
+}
+
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.

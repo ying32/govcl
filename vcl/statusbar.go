@@ -200,6 +200,13 @@ func (s *TStatusBar) Invalidate() {
     StatusBar_Invalidate(s.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (s *TStatusBar) PaintTo(DC HDC, X int32, Y int32) {
+    StatusBar_PaintTo(s.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -452,6 +459,58 @@ func (s *TStatusBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (s *TStatusBar) AnchorClient(ASpace int32) {
     StatusBar_AnchorClient(s.instance, ASpace)
+}
+
+func (s *TStatusBar) ScaleDesignToForm(ASize int32) int32 {
+    return StatusBar_ScaleDesignToForm(s.instance, ASize)
+}
+
+func (s *TStatusBar) ScaleFormToDesign(ASize int32) int32 {
+    return StatusBar_ScaleFormToDesign(s.instance, ASize)
+}
+
+func (s *TStatusBar) Scale96ToForm(ASize int32) int32 {
+    return StatusBar_Scale96ToForm(s.instance, ASize)
+}
+
+func (s *TStatusBar) ScaleFormTo96(ASize int32) int32 {
+    return StatusBar_ScaleFormTo96(s.instance, ASize)
+}
+
+func (s *TStatusBar) Scale96ToFont(ASize int32) int32 {
+    return StatusBar_Scale96ToFont(s.instance, ASize)
+}
+
+func (s *TStatusBar) ScaleFontTo96(ASize int32) int32 {
+    return StatusBar_ScaleFontTo96(s.instance, ASize)
+}
+
+func (s *TStatusBar) ScaleScreenToFont(ASize int32) int32 {
+    return StatusBar_ScaleScreenToFont(s.instance, ASize)
+}
+
+func (s *TStatusBar) ScaleFontToScreen(ASize int32) int32 {
+    return StatusBar_ScaleFontToScreen(s.instance, ASize)
+}
+
+func (s *TStatusBar) Scale96ToScreen(ASize int32) int32 {
+    return StatusBar_Scale96ToScreen(s.instance, ASize)
+}
+
+func (s *TStatusBar) ScaleScreenTo96(ASize int32) int32 {
+    return StatusBar_ScaleScreenTo96(s.instance, ASize)
+}
+
+func (s *TStatusBar) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    StatusBar_AutoAdjustLayout(s.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (s *TStatusBar) FixDesignFontsPPI(ADesignTimePPI int32) {
+    StatusBar_FixDesignFontsPPI(s.instance, ADesignTimePPI)
+}
+
+func (s *TStatusBar) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    StatusBar_ScaleFontsPPI(s.instance, AToPPI , AProportion)
 }
 
 func (s *TStatusBar) Action() *TAction {

@@ -193,6 +193,13 @@ func (c *TCheckBox) Invalidate() {
     CheckBox_Invalidate(c.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (c *TCheckBox) PaintTo(DC HDC, X int32, Y int32) {
+    CheckBox_PaintTo(c.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -452,6 +459,58 @@ func (c *TCheckBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (c *TCheckBox) AnchorClient(ASpace int32) {
     CheckBox_AnchorClient(c.instance, ASpace)
+}
+
+func (c *TCheckBox) ScaleDesignToForm(ASize int32) int32 {
+    return CheckBox_ScaleDesignToForm(c.instance, ASize)
+}
+
+func (c *TCheckBox) ScaleFormToDesign(ASize int32) int32 {
+    return CheckBox_ScaleFormToDesign(c.instance, ASize)
+}
+
+func (c *TCheckBox) Scale96ToForm(ASize int32) int32 {
+    return CheckBox_Scale96ToForm(c.instance, ASize)
+}
+
+func (c *TCheckBox) ScaleFormTo96(ASize int32) int32 {
+    return CheckBox_ScaleFormTo96(c.instance, ASize)
+}
+
+func (c *TCheckBox) Scale96ToFont(ASize int32) int32 {
+    return CheckBox_Scale96ToFont(c.instance, ASize)
+}
+
+func (c *TCheckBox) ScaleFontTo96(ASize int32) int32 {
+    return CheckBox_ScaleFontTo96(c.instance, ASize)
+}
+
+func (c *TCheckBox) ScaleScreenToFont(ASize int32) int32 {
+    return CheckBox_ScaleScreenToFont(c.instance, ASize)
+}
+
+func (c *TCheckBox) ScaleFontToScreen(ASize int32) int32 {
+    return CheckBox_ScaleFontToScreen(c.instance, ASize)
+}
+
+func (c *TCheckBox) Scale96ToScreen(ASize int32) int32 {
+    return CheckBox_Scale96ToScreen(c.instance, ASize)
+}
+
+func (c *TCheckBox) ScaleScreenTo96(ASize int32) int32 {
+    return CheckBox_ScaleScreenTo96(c.instance, ASize)
+}
+
+func (c *TCheckBox) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    CheckBox_AutoAdjustLayout(c.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (c *TCheckBox) FixDesignFontsPPI(ADesignTimePPI int32) {
+    CheckBox_FixDesignFontsPPI(c.instance, ADesignTimePPI)
+}
+
+func (c *TCheckBox) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    CheckBox_ScaleFontsPPI(c.instance, AToPPI , AProportion)
 }
 
 // 设置改变事件。

@@ -112,6 +112,14 @@ func (g *TGridColumnTitle) FillTitleDefaultFont() {
     GridColumnTitle_FillTitleDefaultFont(g.instance)
 }
 
+func (g *TGridColumnTitle) FixDesignFontsPPI(ADesignTimePPI int32) {
+    GridColumnTitle_FixDesignFontsPPI(g.instance, ADesignTimePPI)
+}
+
+func (g *TGridColumnTitle) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    GridColumnTitle_ScaleFontsPPI(g.instance, AToPPI , AProportion)
+}
+
 func (g *TGridColumnTitle) IsDefault() bool {
     return GridColumnTitle_IsDefault(g.instance)
 }

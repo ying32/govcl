@@ -193,6 +193,13 @@ func (t *TToggleBox) Invalidate() {
     ToggleBox_Invalidate(t.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (t *TToggleBox) PaintTo(DC HDC, X int32, Y int32) {
+    ToggleBox_PaintTo(t.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -452,6 +459,58 @@ func (t *TToggleBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (t *TToggleBox) AnchorClient(ASpace int32) {
     ToggleBox_AnchorClient(t.instance, ASpace)
+}
+
+func (t *TToggleBox) ScaleDesignToForm(ASize int32) int32 {
+    return ToggleBox_ScaleDesignToForm(t.instance, ASize)
+}
+
+func (t *TToggleBox) ScaleFormToDesign(ASize int32) int32 {
+    return ToggleBox_ScaleFormToDesign(t.instance, ASize)
+}
+
+func (t *TToggleBox) Scale96ToForm(ASize int32) int32 {
+    return ToggleBox_Scale96ToForm(t.instance, ASize)
+}
+
+func (t *TToggleBox) ScaleFormTo96(ASize int32) int32 {
+    return ToggleBox_ScaleFormTo96(t.instance, ASize)
+}
+
+func (t *TToggleBox) Scale96ToFont(ASize int32) int32 {
+    return ToggleBox_Scale96ToFont(t.instance, ASize)
+}
+
+func (t *TToggleBox) ScaleFontTo96(ASize int32) int32 {
+    return ToggleBox_ScaleFontTo96(t.instance, ASize)
+}
+
+func (t *TToggleBox) ScaleScreenToFont(ASize int32) int32 {
+    return ToggleBox_ScaleScreenToFont(t.instance, ASize)
+}
+
+func (t *TToggleBox) ScaleFontToScreen(ASize int32) int32 {
+    return ToggleBox_ScaleFontToScreen(t.instance, ASize)
+}
+
+func (t *TToggleBox) Scale96ToScreen(ASize int32) int32 {
+    return ToggleBox_Scale96ToScreen(t.instance, ASize)
+}
+
+func (t *TToggleBox) ScaleScreenTo96(ASize int32) int32 {
+    return ToggleBox_ScaleScreenTo96(t.instance, ASize)
+}
+
+func (t *TToggleBox) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    ToggleBox_AutoAdjustLayout(t.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (t *TToggleBox) FixDesignFontsPPI(ADesignTimePPI int32) {
+    ToggleBox_FixDesignFontsPPI(t.instance, ADesignTimePPI)
+}
+
+func (t *TToggleBox) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    ToggleBox_ScaleFontsPPI(t.instance, AToPPI , AProportion)
 }
 
 func (t *TToggleBox) AllowGrayed() bool {

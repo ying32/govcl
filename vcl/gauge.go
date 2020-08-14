@@ -358,6 +358,58 @@ func (g *TGauge) AnchorClient(ASpace int32) {
     Gauge_AnchorClient(g.instance, ASpace)
 }
 
+func (g *TGauge) ScaleDesignToForm(ASize int32) int32 {
+    return Gauge_ScaleDesignToForm(g.instance, ASize)
+}
+
+func (g *TGauge) ScaleFormToDesign(ASize int32) int32 {
+    return Gauge_ScaleFormToDesign(g.instance, ASize)
+}
+
+func (g *TGauge) Scale96ToForm(ASize int32) int32 {
+    return Gauge_Scale96ToForm(g.instance, ASize)
+}
+
+func (g *TGauge) ScaleFormTo96(ASize int32) int32 {
+    return Gauge_ScaleFormTo96(g.instance, ASize)
+}
+
+func (g *TGauge) Scale96ToFont(ASize int32) int32 {
+    return Gauge_Scale96ToFont(g.instance, ASize)
+}
+
+func (g *TGauge) ScaleFontTo96(ASize int32) int32 {
+    return Gauge_ScaleFontTo96(g.instance, ASize)
+}
+
+func (g *TGauge) ScaleScreenToFont(ASize int32) int32 {
+    return Gauge_ScaleScreenToFont(g.instance, ASize)
+}
+
+func (g *TGauge) ScaleFontToScreen(ASize int32) int32 {
+    return Gauge_ScaleFontToScreen(g.instance, ASize)
+}
+
+func (g *TGauge) Scale96ToScreen(ASize int32) int32 {
+    return Gauge_Scale96ToScreen(g.instance, ASize)
+}
+
+func (g *TGauge) ScaleScreenTo96(ASize int32) int32 {
+    return Gauge_ScaleScreenTo96(g.instance, ASize)
+}
+
+func (g *TGauge) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    Gauge_AutoAdjustLayout(g.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (g *TGauge) FixDesignFontsPPI(ADesignTimePPI int32) {
+    Gauge_FixDesignFontsPPI(g.instance, ADesignTimePPI)
+}
+
+func (g *TGauge) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    Gauge_ScaleFontsPPI(g.instance, AToPPI , AProportion)
+}
+
 func (g *TGauge) PercentDone() int32 {
     return Gauge_GetPercentDone(g.instance)
 }

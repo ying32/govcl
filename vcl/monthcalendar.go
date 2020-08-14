@@ -194,6 +194,13 @@ func (m *TMonthCalendar) Invalidate() {
     MonthCalendar_Invalidate(m.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (m *TMonthCalendar) PaintTo(DC HDC, X int32, Y int32) {
+    MonthCalendar_PaintTo(m.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -453,6 +460,58 @@ func (m *TMonthCalendar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (m *TMonthCalendar) AnchorClient(ASpace int32) {
     MonthCalendar_AnchorClient(m.instance, ASpace)
+}
+
+func (m *TMonthCalendar) ScaleDesignToForm(ASize int32) int32 {
+    return MonthCalendar_ScaleDesignToForm(m.instance, ASize)
+}
+
+func (m *TMonthCalendar) ScaleFormToDesign(ASize int32) int32 {
+    return MonthCalendar_ScaleFormToDesign(m.instance, ASize)
+}
+
+func (m *TMonthCalendar) Scale96ToForm(ASize int32) int32 {
+    return MonthCalendar_Scale96ToForm(m.instance, ASize)
+}
+
+func (m *TMonthCalendar) ScaleFormTo96(ASize int32) int32 {
+    return MonthCalendar_ScaleFormTo96(m.instance, ASize)
+}
+
+func (m *TMonthCalendar) Scale96ToFont(ASize int32) int32 {
+    return MonthCalendar_Scale96ToFont(m.instance, ASize)
+}
+
+func (m *TMonthCalendar) ScaleFontTo96(ASize int32) int32 {
+    return MonthCalendar_ScaleFontTo96(m.instance, ASize)
+}
+
+func (m *TMonthCalendar) ScaleScreenToFont(ASize int32) int32 {
+    return MonthCalendar_ScaleScreenToFont(m.instance, ASize)
+}
+
+func (m *TMonthCalendar) ScaleFontToScreen(ASize int32) int32 {
+    return MonthCalendar_ScaleFontToScreen(m.instance, ASize)
+}
+
+func (m *TMonthCalendar) Scale96ToScreen(ASize int32) int32 {
+    return MonthCalendar_Scale96ToScreen(m.instance, ASize)
+}
+
+func (m *TMonthCalendar) ScaleScreenTo96(ASize int32) int32 {
+    return MonthCalendar_ScaleScreenTo96(m.instance, ASize)
+}
+
+func (m *TMonthCalendar) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    MonthCalendar_AutoAdjustLayout(m.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (m *TMonthCalendar) FixDesignFontsPPI(ADesignTimePPI int32) {
+    MonthCalendar_FixDesignFontsPPI(m.instance, ADesignTimePPI)
+}
+
+func (m *TMonthCalendar) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    MonthCalendar_ScaleFontsPPI(m.instance, AToPPI , AProportion)
 }
 
 func (m *TMonthCalendar) DateTime() time.Time {

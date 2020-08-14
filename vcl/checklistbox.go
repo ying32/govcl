@@ -229,6 +229,13 @@ func (c *TCheckListBox) Invalidate() {
     CheckListBox_Invalidate(c.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (c *TCheckListBox) PaintTo(DC HDC, X int32, Y int32) {
+    CheckListBox_PaintTo(c.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -488,6 +495,58 @@ func (c *TCheckListBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (c *TCheckListBox) AnchorClient(ASpace int32) {
     CheckListBox_AnchorClient(c.instance, ASpace)
+}
+
+func (c *TCheckListBox) ScaleDesignToForm(ASize int32) int32 {
+    return CheckListBox_ScaleDesignToForm(c.instance, ASize)
+}
+
+func (c *TCheckListBox) ScaleFormToDesign(ASize int32) int32 {
+    return CheckListBox_ScaleFormToDesign(c.instance, ASize)
+}
+
+func (c *TCheckListBox) Scale96ToForm(ASize int32) int32 {
+    return CheckListBox_Scale96ToForm(c.instance, ASize)
+}
+
+func (c *TCheckListBox) ScaleFormTo96(ASize int32) int32 {
+    return CheckListBox_ScaleFormTo96(c.instance, ASize)
+}
+
+func (c *TCheckListBox) Scale96ToFont(ASize int32) int32 {
+    return CheckListBox_Scale96ToFont(c.instance, ASize)
+}
+
+func (c *TCheckListBox) ScaleFontTo96(ASize int32) int32 {
+    return CheckListBox_ScaleFontTo96(c.instance, ASize)
+}
+
+func (c *TCheckListBox) ScaleScreenToFont(ASize int32) int32 {
+    return CheckListBox_ScaleScreenToFont(c.instance, ASize)
+}
+
+func (c *TCheckListBox) ScaleFontToScreen(ASize int32) int32 {
+    return CheckListBox_ScaleFontToScreen(c.instance, ASize)
+}
+
+func (c *TCheckListBox) Scale96ToScreen(ASize int32) int32 {
+    return CheckListBox_Scale96ToScreen(c.instance, ASize)
+}
+
+func (c *TCheckListBox) ScaleScreenTo96(ASize int32) int32 {
+    return CheckListBox_ScaleScreenTo96(c.instance, ASize)
+}
+
+func (c *TCheckListBox) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    CheckListBox_AutoAdjustLayout(c.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (c *TCheckListBox) FixDesignFontsPPI(ADesignTimePPI int32) {
+    CheckListBox_FixDesignFontsPPI(c.instance, ADesignTimePPI)
+}
+
+func (c *TCheckListBox) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    CheckListBox_ScaleFontsPPI(c.instance, AToPPI , AProportion)
 }
 
 func (c *TCheckListBox) SetOnClickCheck(fn TNotifyEvent) {

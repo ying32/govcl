@@ -197,6 +197,13 @@ func (c *TCheckGroup) Invalidate() {
     CheckGroup_Invalidate(c.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (c *TCheckGroup) PaintTo(DC HDC, X int32, Y int32) {
+    CheckGroup_PaintTo(c.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -456,6 +463,58 @@ func (c *TCheckGroup) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (c *TCheckGroup) AnchorClient(ASpace int32) {
     CheckGroup_AnchorClient(c.instance, ASpace)
+}
+
+func (c *TCheckGroup) ScaleDesignToForm(ASize int32) int32 {
+    return CheckGroup_ScaleDesignToForm(c.instance, ASize)
+}
+
+func (c *TCheckGroup) ScaleFormToDesign(ASize int32) int32 {
+    return CheckGroup_ScaleFormToDesign(c.instance, ASize)
+}
+
+func (c *TCheckGroup) Scale96ToForm(ASize int32) int32 {
+    return CheckGroup_Scale96ToForm(c.instance, ASize)
+}
+
+func (c *TCheckGroup) ScaleFormTo96(ASize int32) int32 {
+    return CheckGroup_ScaleFormTo96(c.instance, ASize)
+}
+
+func (c *TCheckGroup) Scale96ToFont(ASize int32) int32 {
+    return CheckGroup_Scale96ToFont(c.instance, ASize)
+}
+
+func (c *TCheckGroup) ScaleFontTo96(ASize int32) int32 {
+    return CheckGroup_ScaleFontTo96(c.instance, ASize)
+}
+
+func (c *TCheckGroup) ScaleScreenToFont(ASize int32) int32 {
+    return CheckGroup_ScaleScreenToFont(c.instance, ASize)
+}
+
+func (c *TCheckGroup) ScaleFontToScreen(ASize int32) int32 {
+    return CheckGroup_ScaleFontToScreen(c.instance, ASize)
+}
+
+func (c *TCheckGroup) Scale96ToScreen(ASize int32) int32 {
+    return CheckGroup_Scale96ToScreen(c.instance, ASize)
+}
+
+func (c *TCheckGroup) ScaleScreenTo96(ASize int32) int32 {
+    return CheckGroup_ScaleScreenTo96(c.instance, ASize)
+}
+
+func (c *TCheckGroup) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    CheckGroup_AutoAdjustLayout(c.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (c *TCheckGroup) FixDesignFontsPPI(ADesignTimePPI int32) {
+    CheckGroup_FixDesignFontsPPI(c.instance, ADesignTimePPI)
+}
+
+func (c *TCheckGroup) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    CheckGroup_ScaleFontsPPI(c.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

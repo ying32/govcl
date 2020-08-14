@@ -359,6 +359,58 @@ func (i *TImageButton) AnchorClient(ASpace int32) {
     ImageButton_AnchorClient(i.instance, ASpace)
 }
 
+func (i *TImageButton) ScaleDesignToForm(ASize int32) int32 {
+    return ImageButton_ScaleDesignToForm(i.instance, ASize)
+}
+
+func (i *TImageButton) ScaleFormToDesign(ASize int32) int32 {
+    return ImageButton_ScaleFormToDesign(i.instance, ASize)
+}
+
+func (i *TImageButton) Scale96ToForm(ASize int32) int32 {
+    return ImageButton_Scale96ToForm(i.instance, ASize)
+}
+
+func (i *TImageButton) ScaleFormTo96(ASize int32) int32 {
+    return ImageButton_ScaleFormTo96(i.instance, ASize)
+}
+
+func (i *TImageButton) Scale96ToFont(ASize int32) int32 {
+    return ImageButton_Scale96ToFont(i.instance, ASize)
+}
+
+func (i *TImageButton) ScaleFontTo96(ASize int32) int32 {
+    return ImageButton_ScaleFontTo96(i.instance, ASize)
+}
+
+func (i *TImageButton) ScaleScreenToFont(ASize int32) int32 {
+    return ImageButton_ScaleScreenToFont(i.instance, ASize)
+}
+
+func (i *TImageButton) ScaleFontToScreen(ASize int32) int32 {
+    return ImageButton_ScaleFontToScreen(i.instance, ASize)
+}
+
+func (i *TImageButton) Scale96ToScreen(ASize int32) int32 {
+    return ImageButton_Scale96ToScreen(i.instance, ASize)
+}
+
+func (i *TImageButton) ScaleScreenTo96(ASize int32) int32 {
+    return ImageButton_ScaleScreenTo96(i.instance, ASize)
+}
+
+func (i *TImageButton) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    ImageButton_AutoAdjustLayout(i.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (i *TImageButton) FixDesignFontsPPI(ADesignTimePPI int32) {
+    ImageButton_FixDesignFontsPPI(i.instance, ADesignTimePPI)
+}
+
+func (i *TImageButton) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    ImageButton_ScaleFontsPPI(i.instance, AToPPI , AProportion)
+}
+
 func (i *TImageButton) Action() *TAction {
     return AsAction(ImageButton_GetAction(i.instance))
 }

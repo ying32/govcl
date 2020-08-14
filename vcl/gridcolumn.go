@@ -108,6 +108,14 @@ func (g *TGridColumn) Assign(Source IObject) {
     GridColumn_Assign(g.instance, CheckPtr(Source))
 }
 
+func (g *TGridColumn) FixDesignFontsPPI(ADesignTimePPI int32) {
+    GridColumn_FixDesignFontsPPI(g.instance, ADesignTimePPI)
+}
+
+func (g *TGridColumn) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    GridColumn_ScaleFontsPPI(g.instance, AToPPI , AProportion)
+}
+
 func (g *TGridColumn) IsDefault() bool {
     return GridColumn_IsDefault(g.instance)
 }

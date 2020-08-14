@@ -225,6 +225,13 @@ func (c *TColorListBox) Invalidate() {
     ColorListBox_Invalidate(c.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (c *TColorListBox) PaintTo(DC HDC, X int32, Y int32) {
+    ColorListBox_PaintTo(c.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -484,6 +491,58 @@ func (c *TColorListBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (c *TColorListBox) AnchorClient(ASpace int32) {
     ColorListBox_AnchorClient(c.instance, ASpace)
+}
+
+func (c *TColorListBox) ScaleDesignToForm(ASize int32) int32 {
+    return ColorListBox_ScaleDesignToForm(c.instance, ASize)
+}
+
+func (c *TColorListBox) ScaleFormToDesign(ASize int32) int32 {
+    return ColorListBox_ScaleFormToDesign(c.instance, ASize)
+}
+
+func (c *TColorListBox) Scale96ToForm(ASize int32) int32 {
+    return ColorListBox_Scale96ToForm(c.instance, ASize)
+}
+
+func (c *TColorListBox) ScaleFormTo96(ASize int32) int32 {
+    return ColorListBox_ScaleFormTo96(c.instance, ASize)
+}
+
+func (c *TColorListBox) Scale96ToFont(ASize int32) int32 {
+    return ColorListBox_Scale96ToFont(c.instance, ASize)
+}
+
+func (c *TColorListBox) ScaleFontTo96(ASize int32) int32 {
+    return ColorListBox_ScaleFontTo96(c.instance, ASize)
+}
+
+func (c *TColorListBox) ScaleScreenToFont(ASize int32) int32 {
+    return ColorListBox_ScaleScreenToFont(c.instance, ASize)
+}
+
+func (c *TColorListBox) ScaleFontToScreen(ASize int32) int32 {
+    return ColorListBox_ScaleFontToScreen(c.instance, ASize)
+}
+
+func (c *TColorListBox) Scale96ToScreen(ASize int32) int32 {
+    return ColorListBox_Scale96ToScreen(c.instance, ASize)
+}
+
+func (c *TColorListBox) ScaleScreenTo96(ASize int32) int32 {
+    return ColorListBox_ScaleScreenTo96(c.instance, ASize)
+}
+
+func (c *TColorListBox) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    ColorListBox_AutoAdjustLayout(c.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (c *TColorListBox) FixDesignFontsPPI(ADesignTimePPI int32) {
+    ColorListBox_FixDesignFontsPPI(c.instance, ADesignTimePPI)
+}
+
+func (c *TColorListBox) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    ColorListBox_ScaleFontsPPI(c.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

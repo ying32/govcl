@@ -354,6 +354,58 @@ func (i *TImage) AnchorClient(ASpace int32) {
     Image_AnchorClient(i.instance, ASpace)
 }
 
+func (i *TImage) ScaleDesignToForm(ASize int32) int32 {
+    return Image_ScaleDesignToForm(i.instance, ASize)
+}
+
+func (i *TImage) ScaleFormToDesign(ASize int32) int32 {
+    return Image_ScaleFormToDesign(i.instance, ASize)
+}
+
+func (i *TImage) Scale96ToForm(ASize int32) int32 {
+    return Image_Scale96ToForm(i.instance, ASize)
+}
+
+func (i *TImage) ScaleFormTo96(ASize int32) int32 {
+    return Image_ScaleFormTo96(i.instance, ASize)
+}
+
+func (i *TImage) Scale96ToFont(ASize int32) int32 {
+    return Image_Scale96ToFont(i.instance, ASize)
+}
+
+func (i *TImage) ScaleFontTo96(ASize int32) int32 {
+    return Image_ScaleFontTo96(i.instance, ASize)
+}
+
+func (i *TImage) ScaleScreenToFont(ASize int32) int32 {
+    return Image_ScaleScreenToFont(i.instance, ASize)
+}
+
+func (i *TImage) ScaleFontToScreen(ASize int32) int32 {
+    return Image_ScaleFontToScreen(i.instance, ASize)
+}
+
+func (i *TImage) Scale96ToScreen(ASize int32) int32 {
+    return Image_Scale96ToScreen(i.instance, ASize)
+}
+
+func (i *TImage) ScaleScreenTo96(ASize int32) int32 {
+    return Image_ScaleScreenTo96(i.instance, ASize)
+}
+
+func (i *TImage) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    Image_AutoAdjustLayout(i.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (i *TImage) FixDesignFontsPPI(ADesignTimePPI int32) {
+    Image_FixDesignFontsPPI(i.instance, ADesignTimePPI)
+}
+
+func (i *TImage) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    Image_ScaleFontsPPI(i.instance, AToPPI , AProportion)
+}
+
 func (i *TImage) AntialiasingMode() TAntialiasingMode {
     return Image_GetAntialiasingMode(i.instance)
 }

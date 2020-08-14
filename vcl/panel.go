@@ -193,6 +193,13 @@ func (p *TPanel) Invalidate() {
     Panel_Invalidate(p.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (p *TPanel) PaintTo(DC HDC, X int32, Y int32) {
+    Panel_PaintTo(p.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -452,6 +459,58 @@ func (p *TPanel) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (p *TPanel) AnchorClient(ASpace int32) {
     Panel_AnchorClient(p.instance, ASpace)
+}
+
+func (p *TPanel) ScaleDesignToForm(ASize int32) int32 {
+    return Panel_ScaleDesignToForm(p.instance, ASize)
+}
+
+func (p *TPanel) ScaleFormToDesign(ASize int32) int32 {
+    return Panel_ScaleFormToDesign(p.instance, ASize)
+}
+
+func (p *TPanel) Scale96ToForm(ASize int32) int32 {
+    return Panel_Scale96ToForm(p.instance, ASize)
+}
+
+func (p *TPanel) ScaleFormTo96(ASize int32) int32 {
+    return Panel_ScaleFormTo96(p.instance, ASize)
+}
+
+func (p *TPanel) Scale96ToFont(ASize int32) int32 {
+    return Panel_Scale96ToFont(p.instance, ASize)
+}
+
+func (p *TPanel) ScaleFontTo96(ASize int32) int32 {
+    return Panel_ScaleFontTo96(p.instance, ASize)
+}
+
+func (p *TPanel) ScaleScreenToFont(ASize int32) int32 {
+    return Panel_ScaleScreenToFont(p.instance, ASize)
+}
+
+func (p *TPanel) ScaleFontToScreen(ASize int32) int32 {
+    return Panel_ScaleFontToScreen(p.instance, ASize)
+}
+
+func (p *TPanel) Scale96ToScreen(ASize int32) int32 {
+    return Panel_Scale96ToScreen(p.instance, ASize)
+}
+
+func (p *TPanel) ScaleScreenTo96(ASize int32) int32 {
+    return Panel_ScaleScreenTo96(p.instance, ASize)
+}
+
+func (p *TPanel) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    Panel_AutoAdjustLayout(p.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (p *TPanel) FixDesignFontsPPI(ADesignTimePPI int32) {
+    Panel_FixDesignFontsPPI(p.instance, ADesignTimePPI)
+}
+
+func (p *TPanel) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    Panel_ScaleFontsPPI(p.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

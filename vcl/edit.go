@@ -228,6 +228,13 @@ func (e *TEdit) Invalidate() {
     Edit_Invalidate(e.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (e *TEdit) PaintTo(DC HDC, X int32, Y int32) {
+    Edit_PaintTo(e.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -487,6 +494,58 @@ func (e *TEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (e *TEdit) AnchorClient(ASpace int32) {
     Edit_AnchorClient(e.instance, ASpace)
+}
+
+func (e *TEdit) ScaleDesignToForm(ASize int32) int32 {
+    return Edit_ScaleDesignToForm(e.instance, ASize)
+}
+
+func (e *TEdit) ScaleFormToDesign(ASize int32) int32 {
+    return Edit_ScaleFormToDesign(e.instance, ASize)
+}
+
+func (e *TEdit) Scale96ToForm(ASize int32) int32 {
+    return Edit_Scale96ToForm(e.instance, ASize)
+}
+
+func (e *TEdit) ScaleFormTo96(ASize int32) int32 {
+    return Edit_ScaleFormTo96(e.instance, ASize)
+}
+
+func (e *TEdit) Scale96ToFont(ASize int32) int32 {
+    return Edit_Scale96ToFont(e.instance, ASize)
+}
+
+func (e *TEdit) ScaleFontTo96(ASize int32) int32 {
+    return Edit_ScaleFontTo96(e.instance, ASize)
+}
+
+func (e *TEdit) ScaleScreenToFont(ASize int32) int32 {
+    return Edit_ScaleScreenToFont(e.instance, ASize)
+}
+
+func (e *TEdit) ScaleFontToScreen(ASize int32) int32 {
+    return Edit_ScaleFontToScreen(e.instance, ASize)
+}
+
+func (e *TEdit) Scale96ToScreen(ASize int32) int32 {
+    return Edit_Scale96ToScreen(e.instance, ASize)
+}
+
+func (e *TEdit) ScaleScreenTo96(ASize int32) int32 {
+    return Edit_ScaleScreenTo96(e.instance, ASize)
+}
+
+func (e *TEdit) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    Edit_AutoAdjustLayout(e.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (e *TEdit) FixDesignFontsPPI(ADesignTimePPI int32) {
+    Edit_FixDesignFontsPPI(e.instance, ADesignTimePPI)
+}
+
+func (e *TEdit) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    Edit_ScaleFontsPPI(e.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

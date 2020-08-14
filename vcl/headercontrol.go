@@ -193,6 +193,13 @@ func (h *THeaderControl) Invalidate() {
     HeaderControl_Invalidate(h.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (h *THeaderControl) PaintTo(DC HDC, X int32, Y int32) {
+    HeaderControl_PaintTo(h.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -452,6 +459,58 @@ func (h *THeaderControl) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (h *THeaderControl) AnchorClient(ASpace int32) {
     HeaderControl_AnchorClient(h.instance, ASpace)
+}
+
+func (h *THeaderControl) ScaleDesignToForm(ASize int32) int32 {
+    return HeaderControl_ScaleDesignToForm(h.instance, ASize)
+}
+
+func (h *THeaderControl) ScaleFormToDesign(ASize int32) int32 {
+    return HeaderControl_ScaleFormToDesign(h.instance, ASize)
+}
+
+func (h *THeaderControl) Scale96ToForm(ASize int32) int32 {
+    return HeaderControl_Scale96ToForm(h.instance, ASize)
+}
+
+func (h *THeaderControl) ScaleFormTo96(ASize int32) int32 {
+    return HeaderControl_ScaleFormTo96(h.instance, ASize)
+}
+
+func (h *THeaderControl) Scale96ToFont(ASize int32) int32 {
+    return HeaderControl_Scale96ToFont(h.instance, ASize)
+}
+
+func (h *THeaderControl) ScaleFontTo96(ASize int32) int32 {
+    return HeaderControl_ScaleFontTo96(h.instance, ASize)
+}
+
+func (h *THeaderControl) ScaleScreenToFont(ASize int32) int32 {
+    return HeaderControl_ScaleScreenToFont(h.instance, ASize)
+}
+
+func (h *THeaderControl) ScaleFontToScreen(ASize int32) int32 {
+    return HeaderControl_ScaleFontToScreen(h.instance, ASize)
+}
+
+func (h *THeaderControl) Scale96ToScreen(ASize int32) int32 {
+    return HeaderControl_Scale96ToScreen(h.instance, ASize)
+}
+
+func (h *THeaderControl) ScaleScreenTo96(ASize int32) int32 {
+    return HeaderControl_ScaleScreenTo96(h.instance, ASize)
+}
+
+func (h *THeaderControl) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    HeaderControl_AutoAdjustLayout(h.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (h *THeaderControl) FixDesignFontsPPI(ADesignTimePPI int32) {
+    HeaderControl_FixDesignFontsPPI(h.instance, ADesignTimePPI)
+}
+
+func (h *THeaderControl) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    HeaderControl_ScaleFontsPPI(h.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

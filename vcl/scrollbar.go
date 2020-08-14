@@ -197,6 +197,13 @@ func (s *TScrollBar) Invalidate() {
     ScrollBar_Invalidate(s.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (s *TScrollBar) PaintTo(DC HDC, X int32, Y int32) {
+    ScrollBar_PaintTo(s.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -456,6 +463,58 @@ func (s *TScrollBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (s *TScrollBar) AnchorClient(ASpace int32) {
     ScrollBar_AnchorClient(s.instance, ASpace)
+}
+
+func (s *TScrollBar) ScaleDesignToForm(ASize int32) int32 {
+    return ScrollBar_ScaleDesignToForm(s.instance, ASize)
+}
+
+func (s *TScrollBar) ScaleFormToDesign(ASize int32) int32 {
+    return ScrollBar_ScaleFormToDesign(s.instance, ASize)
+}
+
+func (s *TScrollBar) Scale96ToForm(ASize int32) int32 {
+    return ScrollBar_Scale96ToForm(s.instance, ASize)
+}
+
+func (s *TScrollBar) ScaleFormTo96(ASize int32) int32 {
+    return ScrollBar_ScaleFormTo96(s.instance, ASize)
+}
+
+func (s *TScrollBar) Scale96ToFont(ASize int32) int32 {
+    return ScrollBar_Scale96ToFont(s.instance, ASize)
+}
+
+func (s *TScrollBar) ScaleFontTo96(ASize int32) int32 {
+    return ScrollBar_ScaleFontTo96(s.instance, ASize)
+}
+
+func (s *TScrollBar) ScaleScreenToFont(ASize int32) int32 {
+    return ScrollBar_ScaleScreenToFont(s.instance, ASize)
+}
+
+func (s *TScrollBar) ScaleFontToScreen(ASize int32) int32 {
+    return ScrollBar_ScaleFontToScreen(s.instance, ASize)
+}
+
+func (s *TScrollBar) Scale96ToScreen(ASize int32) int32 {
+    return ScrollBar_Scale96ToScreen(s.instance, ASize)
+}
+
+func (s *TScrollBar) ScaleScreenTo96(ASize int32) int32 {
+    return ScrollBar_ScaleScreenTo96(s.instance, ASize)
+}
+
+func (s *TScrollBar) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    ScrollBar_AutoAdjustLayout(s.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (s *TScrollBar) FixDesignFontsPPI(ADesignTimePPI int32) {
+    ScrollBar_FixDesignFontsPPI(s.instance, ADesignTimePPI)
+}
+
+func (s *TScrollBar) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    ScrollBar_ScaleFontsPPI(s.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

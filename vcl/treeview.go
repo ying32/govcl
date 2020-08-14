@@ -248,6 +248,13 @@ func (t *TTreeView) Invalidate() {
     TreeView_Invalidate(t.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (t *TTreeView) PaintTo(DC HDC, X int32, Y int32) {
+    TreeView_PaintTo(t.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -507,6 +514,58 @@ func (t *TTreeView) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (t *TTreeView) AnchorClient(ASpace int32) {
     TreeView_AnchorClient(t.instance, ASpace)
+}
+
+func (t *TTreeView) ScaleDesignToForm(ASize int32) int32 {
+    return TreeView_ScaleDesignToForm(t.instance, ASize)
+}
+
+func (t *TTreeView) ScaleFormToDesign(ASize int32) int32 {
+    return TreeView_ScaleFormToDesign(t.instance, ASize)
+}
+
+func (t *TTreeView) Scale96ToForm(ASize int32) int32 {
+    return TreeView_Scale96ToForm(t.instance, ASize)
+}
+
+func (t *TTreeView) ScaleFormTo96(ASize int32) int32 {
+    return TreeView_ScaleFormTo96(t.instance, ASize)
+}
+
+func (t *TTreeView) Scale96ToFont(ASize int32) int32 {
+    return TreeView_Scale96ToFont(t.instance, ASize)
+}
+
+func (t *TTreeView) ScaleFontTo96(ASize int32) int32 {
+    return TreeView_ScaleFontTo96(t.instance, ASize)
+}
+
+func (t *TTreeView) ScaleScreenToFont(ASize int32) int32 {
+    return TreeView_ScaleScreenToFont(t.instance, ASize)
+}
+
+func (t *TTreeView) ScaleFontToScreen(ASize int32) int32 {
+    return TreeView_ScaleFontToScreen(t.instance, ASize)
+}
+
+func (t *TTreeView) Scale96ToScreen(ASize int32) int32 {
+    return TreeView_Scale96ToScreen(t.instance, ASize)
+}
+
+func (t *TTreeView) ScaleScreenTo96(ASize int32) int32 {
+    return TreeView_ScaleScreenTo96(t.instance, ASize)
+}
+
+func (t *TTreeView) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    TreeView_AutoAdjustLayout(t.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (t *TTreeView) FixDesignFontsPPI(ADesignTimePPI int32) {
+    TreeView_FixDesignFontsPPI(t.instance, ADesignTimePPI)
+}
+
+func (t *TTreeView) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    TreeView_ScaleFontsPPI(t.instance, AToPPI , AProportion)
 }
 
 func (t *TTreeView) DefaultItemHeight() int32 {

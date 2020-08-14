@@ -2248,3 +2248,15 @@ const (
 	ioHorizontal = iota + 0
 	ioVertical
 )
+
+//ENUM:
+type TLayoutAdjustmentPolicy int32
+
+const (
+	LapDefault                              = iota + 0 // widgetset dependent
+	LapFixedLayout                                     // A fixed absolute layout in all platforms
+	LapAutoAdjustWithoutHorizontalScrolling            // Smartphone platforms use this one,
+	// the x axis is stretched to fill the screen and
+	// the y is scaled to fit the DPI
+	LapAutoAdjustForDPI // For desktops using High DPI, scale x and y to fit the DPI
+)

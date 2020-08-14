@@ -228,6 +228,13 @@ func (s *TSpinEdit) Invalidate() {
     SpinEdit_Invalidate(s.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (s *TSpinEdit) PaintTo(DC HDC, X int32, Y int32) {
+    SpinEdit_PaintTo(s.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -487,6 +494,58 @@ func (s *TSpinEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (s *TSpinEdit) AnchorClient(ASpace int32) {
     SpinEdit_AnchorClient(s.instance, ASpace)
+}
+
+func (s *TSpinEdit) ScaleDesignToForm(ASize int32) int32 {
+    return SpinEdit_ScaleDesignToForm(s.instance, ASize)
+}
+
+func (s *TSpinEdit) ScaleFormToDesign(ASize int32) int32 {
+    return SpinEdit_ScaleFormToDesign(s.instance, ASize)
+}
+
+func (s *TSpinEdit) Scale96ToForm(ASize int32) int32 {
+    return SpinEdit_Scale96ToForm(s.instance, ASize)
+}
+
+func (s *TSpinEdit) ScaleFormTo96(ASize int32) int32 {
+    return SpinEdit_ScaleFormTo96(s.instance, ASize)
+}
+
+func (s *TSpinEdit) Scale96ToFont(ASize int32) int32 {
+    return SpinEdit_Scale96ToFont(s.instance, ASize)
+}
+
+func (s *TSpinEdit) ScaleFontTo96(ASize int32) int32 {
+    return SpinEdit_ScaleFontTo96(s.instance, ASize)
+}
+
+func (s *TSpinEdit) ScaleScreenToFont(ASize int32) int32 {
+    return SpinEdit_ScaleScreenToFont(s.instance, ASize)
+}
+
+func (s *TSpinEdit) ScaleFontToScreen(ASize int32) int32 {
+    return SpinEdit_ScaleFontToScreen(s.instance, ASize)
+}
+
+func (s *TSpinEdit) Scale96ToScreen(ASize int32) int32 {
+    return SpinEdit_Scale96ToScreen(s.instance, ASize)
+}
+
+func (s *TSpinEdit) ScaleScreenTo96(ASize int32) int32 {
+    return SpinEdit_ScaleScreenTo96(s.instance, ASize)
+}
+
+func (s *TSpinEdit) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    SpinEdit_AutoAdjustLayout(s.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (s *TSpinEdit) FixDesignFontsPPI(ADesignTimePPI int32) {
+    SpinEdit_FixDesignFontsPPI(s.instance, ADesignTimePPI)
+}
+
+func (s *TSpinEdit) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    SpinEdit_ScaleFontsPPI(s.instance, AToPPI , AProportion)
 }
 
 // 获取四个角位置的锚点。

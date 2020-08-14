@@ -193,6 +193,13 @@ func (r *TRadioGroup) Invalidate() {
     RadioGroup_Invalidate(r.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (r *TRadioGroup) PaintTo(DC HDC, X int32, Y int32) {
+    RadioGroup_PaintTo(r.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -452,6 +459,58 @@ func (r *TRadioGroup) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (r *TRadioGroup) AnchorClient(ASpace int32) {
     RadioGroup_AnchorClient(r.instance, ASpace)
+}
+
+func (r *TRadioGroup) ScaleDesignToForm(ASize int32) int32 {
+    return RadioGroup_ScaleDesignToForm(r.instance, ASize)
+}
+
+func (r *TRadioGroup) ScaleFormToDesign(ASize int32) int32 {
+    return RadioGroup_ScaleFormToDesign(r.instance, ASize)
+}
+
+func (r *TRadioGroup) Scale96ToForm(ASize int32) int32 {
+    return RadioGroup_Scale96ToForm(r.instance, ASize)
+}
+
+func (r *TRadioGroup) ScaleFormTo96(ASize int32) int32 {
+    return RadioGroup_ScaleFormTo96(r.instance, ASize)
+}
+
+func (r *TRadioGroup) Scale96ToFont(ASize int32) int32 {
+    return RadioGroup_Scale96ToFont(r.instance, ASize)
+}
+
+func (r *TRadioGroup) ScaleFontTo96(ASize int32) int32 {
+    return RadioGroup_ScaleFontTo96(r.instance, ASize)
+}
+
+func (r *TRadioGroup) ScaleScreenToFont(ASize int32) int32 {
+    return RadioGroup_ScaleScreenToFont(r.instance, ASize)
+}
+
+func (r *TRadioGroup) ScaleFontToScreen(ASize int32) int32 {
+    return RadioGroup_ScaleFontToScreen(r.instance, ASize)
+}
+
+func (r *TRadioGroup) Scale96ToScreen(ASize int32) int32 {
+    return RadioGroup_Scale96ToScreen(r.instance, ASize)
+}
+
+func (r *TRadioGroup) ScaleScreenTo96(ASize int32) int32 {
+    return RadioGroup_ScaleScreenTo96(r.instance, ASize)
+}
+
+func (r *TRadioGroup) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    RadioGroup_AutoAdjustLayout(r.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (r *TRadioGroup) FixDesignFontsPPI(ADesignTimePPI int32) {
+    RadioGroup_FixDesignFontsPPI(r.instance, ADesignTimePPI)
+}
+
+func (r *TRadioGroup) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    RadioGroup_ScaleFontsPPI(r.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

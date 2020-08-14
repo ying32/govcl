@@ -225,6 +225,13 @@ func (l *TListBox) Invalidate() {
     ListBox_Invalidate(l.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (l *TListBox) PaintTo(DC HDC, X int32, Y int32) {
+    ListBox_PaintTo(l.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -484,6 +491,58 @@ func (l *TListBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (l *TListBox) AnchorClient(ASpace int32) {
     ListBox_AnchorClient(l.instance, ASpace)
+}
+
+func (l *TListBox) ScaleDesignToForm(ASize int32) int32 {
+    return ListBox_ScaleDesignToForm(l.instance, ASize)
+}
+
+func (l *TListBox) ScaleFormToDesign(ASize int32) int32 {
+    return ListBox_ScaleFormToDesign(l.instance, ASize)
+}
+
+func (l *TListBox) Scale96ToForm(ASize int32) int32 {
+    return ListBox_Scale96ToForm(l.instance, ASize)
+}
+
+func (l *TListBox) ScaleFormTo96(ASize int32) int32 {
+    return ListBox_ScaleFormTo96(l.instance, ASize)
+}
+
+func (l *TListBox) Scale96ToFont(ASize int32) int32 {
+    return ListBox_Scale96ToFont(l.instance, ASize)
+}
+
+func (l *TListBox) ScaleFontTo96(ASize int32) int32 {
+    return ListBox_ScaleFontTo96(l.instance, ASize)
+}
+
+func (l *TListBox) ScaleScreenToFont(ASize int32) int32 {
+    return ListBox_ScaleScreenToFont(l.instance, ASize)
+}
+
+func (l *TListBox) ScaleFontToScreen(ASize int32) int32 {
+    return ListBox_ScaleFontToScreen(l.instance, ASize)
+}
+
+func (l *TListBox) Scale96ToScreen(ASize int32) int32 {
+    return ListBox_Scale96ToScreen(l.instance, ASize)
+}
+
+func (l *TListBox) ScaleScreenTo96(ASize int32) int32 {
+    return ListBox_ScaleScreenTo96(l.instance, ASize)
+}
+
+func (l *TListBox) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    ListBox_AutoAdjustLayout(l.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (l *TListBox) FixDesignFontsPPI(ADesignTimePPI int32) {
+    ListBox_FixDesignFontsPPI(l.instance, ADesignTimePPI)
+}
+
+func (l *TListBox) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    ListBox_ScaleFontsPPI(l.instance, AToPPI , AProportion)
 }
 
 func (l *TListBox) ClickOnSelChange() bool {

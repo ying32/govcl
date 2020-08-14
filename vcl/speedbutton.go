@@ -359,6 +359,58 @@ func (s *TSpeedButton) AnchorClient(ASpace int32) {
     SpeedButton_AnchorClient(s.instance, ASpace)
 }
 
+func (s *TSpeedButton) ScaleDesignToForm(ASize int32) int32 {
+    return SpeedButton_ScaleDesignToForm(s.instance, ASize)
+}
+
+func (s *TSpeedButton) ScaleFormToDesign(ASize int32) int32 {
+    return SpeedButton_ScaleFormToDesign(s.instance, ASize)
+}
+
+func (s *TSpeedButton) Scale96ToForm(ASize int32) int32 {
+    return SpeedButton_Scale96ToForm(s.instance, ASize)
+}
+
+func (s *TSpeedButton) ScaleFormTo96(ASize int32) int32 {
+    return SpeedButton_ScaleFormTo96(s.instance, ASize)
+}
+
+func (s *TSpeedButton) Scale96ToFont(ASize int32) int32 {
+    return SpeedButton_Scale96ToFont(s.instance, ASize)
+}
+
+func (s *TSpeedButton) ScaleFontTo96(ASize int32) int32 {
+    return SpeedButton_ScaleFontTo96(s.instance, ASize)
+}
+
+func (s *TSpeedButton) ScaleScreenToFont(ASize int32) int32 {
+    return SpeedButton_ScaleScreenToFont(s.instance, ASize)
+}
+
+func (s *TSpeedButton) ScaleFontToScreen(ASize int32) int32 {
+    return SpeedButton_ScaleFontToScreen(s.instance, ASize)
+}
+
+func (s *TSpeedButton) Scale96ToScreen(ASize int32) int32 {
+    return SpeedButton_Scale96ToScreen(s.instance, ASize)
+}
+
+func (s *TSpeedButton) ScaleScreenTo96(ASize int32) int32 {
+    return SpeedButton_ScaleScreenTo96(s.instance, ASize)
+}
+
+func (s *TSpeedButton) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    SpeedButton_AutoAdjustLayout(s.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (s *TSpeedButton) FixDesignFontsPPI(ADesignTimePPI int32) {
+    SpeedButton_FixDesignFontsPPI(s.instance, ADesignTimePPI)
+}
+
+func (s *TSpeedButton) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    SpeedButton_ScaleFontsPPI(s.instance, AToPPI , AProportion)
+}
+
 // 获取图像在images中的索引。
 func (s *TSpeedButton) ImageIndex() int32 {
     return SpeedButton_GetImageIndex(s.instance)

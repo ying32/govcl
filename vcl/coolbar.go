@@ -186,6 +186,13 @@ func (c *TCoolBar) Invalidate() {
     CoolBar_Invalidate(c.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (c *TCoolBar) PaintTo(DC HDC, X int32, Y int32) {
+    CoolBar_PaintTo(c.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -445,6 +452,58 @@ func (c *TCoolBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (c *TCoolBar) AnchorClient(ASpace int32) {
     CoolBar_AnchorClient(c.instance, ASpace)
+}
+
+func (c *TCoolBar) ScaleDesignToForm(ASize int32) int32 {
+    return CoolBar_ScaleDesignToForm(c.instance, ASize)
+}
+
+func (c *TCoolBar) ScaleFormToDesign(ASize int32) int32 {
+    return CoolBar_ScaleFormToDesign(c.instance, ASize)
+}
+
+func (c *TCoolBar) Scale96ToForm(ASize int32) int32 {
+    return CoolBar_Scale96ToForm(c.instance, ASize)
+}
+
+func (c *TCoolBar) ScaleFormTo96(ASize int32) int32 {
+    return CoolBar_ScaleFormTo96(c.instance, ASize)
+}
+
+func (c *TCoolBar) Scale96ToFont(ASize int32) int32 {
+    return CoolBar_Scale96ToFont(c.instance, ASize)
+}
+
+func (c *TCoolBar) ScaleFontTo96(ASize int32) int32 {
+    return CoolBar_ScaleFontTo96(c.instance, ASize)
+}
+
+func (c *TCoolBar) ScaleScreenToFont(ASize int32) int32 {
+    return CoolBar_ScaleScreenToFont(c.instance, ASize)
+}
+
+func (c *TCoolBar) ScaleFontToScreen(ASize int32) int32 {
+    return CoolBar_ScaleFontToScreen(c.instance, ASize)
+}
+
+func (c *TCoolBar) Scale96ToScreen(ASize int32) int32 {
+    return CoolBar_Scale96ToScreen(c.instance, ASize)
+}
+
+func (c *TCoolBar) ScaleScreenTo96(ASize int32) int32 {
+    return CoolBar_ScaleScreenTo96(c.instance, ASize)
+}
+
+func (c *TCoolBar) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    CoolBar_AutoAdjustLayout(c.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (c *TCoolBar) FixDesignFontsPPI(ADesignTimePPI int32) {
+    CoolBar_FixDesignFontsPPI(c.instance, ADesignTimePPI)
+}
+
+func (c *TCoolBar) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    CoolBar_ScaleFontsPPI(c.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

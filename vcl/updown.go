@@ -193,6 +193,13 @@ func (u *TUpDown) Invalidate() {
     UpDown_Invalidate(u.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (u *TUpDown) PaintTo(DC HDC, X int32, Y int32) {
+    UpDown_PaintTo(u.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -452,6 +459,58 @@ func (u *TUpDown) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (u *TUpDown) AnchorClient(ASpace int32) {
     UpDown_AnchorClient(u.instance, ASpace)
+}
+
+func (u *TUpDown) ScaleDesignToForm(ASize int32) int32 {
+    return UpDown_ScaleDesignToForm(u.instance, ASize)
+}
+
+func (u *TUpDown) ScaleFormToDesign(ASize int32) int32 {
+    return UpDown_ScaleFormToDesign(u.instance, ASize)
+}
+
+func (u *TUpDown) Scale96ToForm(ASize int32) int32 {
+    return UpDown_Scale96ToForm(u.instance, ASize)
+}
+
+func (u *TUpDown) ScaleFormTo96(ASize int32) int32 {
+    return UpDown_ScaleFormTo96(u.instance, ASize)
+}
+
+func (u *TUpDown) Scale96ToFont(ASize int32) int32 {
+    return UpDown_Scale96ToFont(u.instance, ASize)
+}
+
+func (u *TUpDown) ScaleFontTo96(ASize int32) int32 {
+    return UpDown_ScaleFontTo96(u.instance, ASize)
+}
+
+func (u *TUpDown) ScaleScreenToFont(ASize int32) int32 {
+    return UpDown_ScaleScreenToFont(u.instance, ASize)
+}
+
+func (u *TUpDown) ScaleFontToScreen(ASize int32) int32 {
+    return UpDown_ScaleFontToScreen(u.instance, ASize)
+}
+
+func (u *TUpDown) Scale96ToScreen(ASize int32) int32 {
+    return UpDown_Scale96ToScreen(u.instance, ASize)
+}
+
+func (u *TUpDown) ScaleScreenTo96(ASize int32) int32 {
+    return UpDown_ScaleScreenTo96(u.instance, ASize)
+}
+
+func (u *TUpDown) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    UpDown_AutoAdjustLayout(u.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (u *TUpDown) FixDesignFontsPPI(ADesignTimePPI int32) {
+    UpDown_FixDesignFontsPPI(u.instance, ADesignTimePPI)
+}
+
+func (u *TUpDown) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    UpDown_ScaleFontsPPI(u.instance, AToPPI , AProportion)
 }
 
 // 获取四个角位置的锚点。

@@ -232,6 +232,13 @@ func (l *TListView) Invalidate() {
     ListView_Invalidate(l.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (l *TListView) PaintTo(DC HDC, X int32, Y int32) {
+    ListView_PaintTo(l.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -491,6 +498,58 @@ func (l *TListView) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (l *TListView) AnchorClient(ASpace int32) {
     ListView_AnchorClient(l.instance, ASpace)
+}
+
+func (l *TListView) ScaleDesignToForm(ASize int32) int32 {
+    return ListView_ScaleDesignToForm(l.instance, ASize)
+}
+
+func (l *TListView) ScaleFormToDesign(ASize int32) int32 {
+    return ListView_ScaleFormToDesign(l.instance, ASize)
+}
+
+func (l *TListView) Scale96ToForm(ASize int32) int32 {
+    return ListView_Scale96ToForm(l.instance, ASize)
+}
+
+func (l *TListView) ScaleFormTo96(ASize int32) int32 {
+    return ListView_ScaleFormTo96(l.instance, ASize)
+}
+
+func (l *TListView) Scale96ToFont(ASize int32) int32 {
+    return ListView_Scale96ToFont(l.instance, ASize)
+}
+
+func (l *TListView) ScaleFontTo96(ASize int32) int32 {
+    return ListView_ScaleFontTo96(l.instance, ASize)
+}
+
+func (l *TListView) ScaleScreenToFont(ASize int32) int32 {
+    return ListView_ScaleScreenToFont(l.instance, ASize)
+}
+
+func (l *TListView) ScaleFontToScreen(ASize int32) int32 {
+    return ListView_ScaleFontToScreen(l.instance, ASize)
+}
+
+func (l *TListView) Scale96ToScreen(ASize int32) int32 {
+    return ListView_Scale96ToScreen(l.instance, ASize)
+}
+
+func (l *TListView) ScaleScreenTo96(ASize int32) int32 {
+    return ListView_ScaleScreenTo96(l.instance, ASize)
+}
+
+func (l *TListView) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    ListView_AutoAdjustLayout(l.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (l *TListView) FixDesignFontsPPI(ADesignTimePPI int32) {
+    ListView_FixDesignFontsPPI(l.instance, ADesignTimePPI)
+}
+
+func (l *TListView) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    ListView_ScaleFontsPPI(l.instance, AToPPI , AProportion)
 }
 
 func (l *TListView) AutoSort() bool {

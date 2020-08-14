@@ -354,6 +354,58 @@ func (l *TLinkLabel) AnchorClient(ASpace int32) {
     LinkLabel_AnchorClient(l.instance, ASpace)
 }
 
+func (l *TLinkLabel) ScaleDesignToForm(ASize int32) int32 {
+    return LinkLabel_ScaleDesignToForm(l.instance, ASize)
+}
+
+func (l *TLinkLabel) ScaleFormToDesign(ASize int32) int32 {
+    return LinkLabel_ScaleFormToDesign(l.instance, ASize)
+}
+
+func (l *TLinkLabel) Scale96ToForm(ASize int32) int32 {
+    return LinkLabel_Scale96ToForm(l.instance, ASize)
+}
+
+func (l *TLinkLabel) ScaleFormTo96(ASize int32) int32 {
+    return LinkLabel_ScaleFormTo96(l.instance, ASize)
+}
+
+func (l *TLinkLabel) Scale96ToFont(ASize int32) int32 {
+    return LinkLabel_Scale96ToFont(l.instance, ASize)
+}
+
+func (l *TLinkLabel) ScaleFontTo96(ASize int32) int32 {
+    return LinkLabel_ScaleFontTo96(l.instance, ASize)
+}
+
+func (l *TLinkLabel) ScaleScreenToFont(ASize int32) int32 {
+    return LinkLabel_ScaleScreenToFont(l.instance, ASize)
+}
+
+func (l *TLinkLabel) ScaleFontToScreen(ASize int32) int32 {
+    return LinkLabel_ScaleFontToScreen(l.instance, ASize)
+}
+
+func (l *TLinkLabel) Scale96ToScreen(ASize int32) int32 {
+    return LinkLabel_Scale96ToScreen(l.instance, ASize)
+}
+
+func (l *TLinkLabel) ScaleScreenTo96(ASize int32) int32 {
+    return LinkLabel_ScaleScreenTo96(l.instance, ASize)
+}
+
+func (l *TLinkLabel) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    LinkLabel_AutoAdjustLayout(l.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (l *TLinkLabel) FixDesignFontsPPI(ADesignTimePPI int32) {
+    LinkLabel_FixDesignFontsPPI(l.instance, ADesignTimePPI)
+}
+
+func (l *TLinkLabel) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    LinkLabel_ScaleFontsPPI(l.instance, AToPPI , AProportion)
+}
+
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.

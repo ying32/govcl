@@ -201,6 +201,13 @@ func (p *TPageControl) Invalidate() {
     PageControl_Invalidate(p.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (p *TPageControl) PaintTo(DC HDC, X int32, Y int32) {
+    PageControl_PaintTo(p.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -460,6 +467,58 @@ func (p *TPageControl) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (p *TPageControl) AnchorClient(ASpace int32) {
     PageControl_AnchorClient(p.instance, ASpace)
+}
+
+func (p *TPageControl) ScaleDesignToForm(ASize int32) int32 {
+    return PageControl_ScaleDesignToForm(p.instance, ASize)
+}
+
+func (p *TPageControl) ScaleFormToDesign(ASize int32) int32 {
+    return PageControl_ScaleFormToDesign(p.instance, ASize)
+}
+
+func (p *TPageControl) Scale96ToForm(ASize int32) int32 {
+    return PageControl_Scale96ToForm(p.instance, ASize)
+}
+
+func (p *TPageControl) ScaleFormTo96(ASize int32) int32 {
+    return PageControl_ScaleFormTo96(p.instance, ASize)
+}
+
+func (p *TPageControl) Scale96ToFont(ASize int32) int32 {
+    return PageControl_Scale96ToFont(p.instance, ASize)
+}
+
+func (p *TPageControl) ScaleFontTo96(ASize int32) int32 {
+    return PageControl_ScaleFontTo96(p.instance, ASize)
+}
+
+func (p *TPageControl) ScaleScreenToFont(ASize int32) int32 {
+    return PageControl_ScaleScreenToFont(p.instance, ASize)
+}
+
+func (p *TPageControl) ScaleFontToScreen(ASize int32) int32 {
+    return PageControl_ScaleFontToScreen(p.instance, ASize)
+}
+
+func (p *TPageControl) Scale96ToScreen(ASize int32) int32 {
+    return PageControl_Scale96ToScreen(p.instance, ASize)
+}
+
+func (p *TPageControl) ScaleScreenTo96(ASize int32) int32 {
+    return PageControl_ScaleScreenTo96(p.instance, ASize)
+}
+
+func (p *TPageControl) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    PageControl_AutoAdjustLayout(p.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (p *TPageControl) FixDesignFontsPPI(ADesignTimePPI int32) {
+    PageControl_FixDesignFontsPPI(p.instance, ADesignTimePPI)
+}
+
+func (p *TPageControl) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    PageControl_ScaleFontsPPI(p.instance, AToPPI , AProportion)
 }
 
 func (p *TPageControl) Options() TCTabControlOptions {

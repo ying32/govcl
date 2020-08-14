@@ -205,6 +205,13 @@ func (d *TDrawGrid) Invalidate() {
     DrawGrid_Invalidate(d.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (d *TDrawGrid) PaintTo(DC HDC, X int32, Y int32) {
+    DrawGrid_PaintTo(d.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -464,6 +471,58 @@ func (d *TDrawGrid) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (d *TDrawGrid) AnchorClient(ASpace int32) {
     DrawGrid_AnchorClient(d.instance, ASpace)
+}
+
+func (d *TDrawGrid) ScaleDesignToForm(ASize int32) int32 {
+    return DrawGrid_ScaleDesignToForm(d.instance, ASize)
+}
+
+func (d *TDrawGrid) ScaleFormToDesign(ASize int32) int32 {
+    return DrawGrid_ScaleFormToDesign(d.instance, ASize)
+}
+
+func (d *TDrawGrid) Scale96ToForm(ASize int32) int32 {
+    return DrawGrid_Scale96ToForm(d.instance, ASize)
+}
+
+func (d *TDrawGrid) ScaleFormTo96(ASize int32) int32 {
+    return DrawGrid_ScaleFormTo96(d.instance, ASize)
+}
+
+func (d *TDrawGrid) Scale96ToFont(ASize int32) int32 {
+    return DrawGrid_Scale96ToFont(d.instance, ASize)
+}
+
+func (d *TDrawGrid) ScaleFontTo96(ASize int32) int32 {
+    return DrawGrid_ScaleFontTo96(d.instance, ASize)
+}
+
+func (d *TDrawGrid) ScaleScreenToFont(ASize int32) int32 {
+    return DrawGrid_ScaleScreenToFont(d.instance, ASize)
+}
+
+func (d *TDrawGrid) ScaleFontToScreen(ASize int32) int32 {
+    return DrawGrid_ScaleFontToScreen(d.instance, ASize)
+}
+
+func (d *TDrawGrid) Scale96ToScreen(ASize int32) int32 {
+    return DrawGrid_Scale96ToScreen(d.instance, ASize)
+}
+
+func (d *TDrawGrid) ScaleScreenTo96(ASize int32) int32 {
+    return DrawGrid_ScaleScreenTo96(d.instance, ASize)
+}
+
+func (d *TDrawGrid) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    DrawGrid_AutoAdjustLayout(d.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (d *TDrawGrid) FixDesignFontsPPI(ADesignTimePPI int32) {
+    DrawGrid_FixDesignFontsPPI(d.instance, ADesignTimePPI)
+}
+
+func (d *TDrawGrid) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    DrawGrid_ScaleFontsPPI(d.instance, AToPPI , AProportion)
 }
 
 func (d *TDrawGrid) SetOnColRowMoved(fn TGridOperationEvent) {

@@ -216,6 +216,13 @@ func (v *TValueListEditor) Invalidate() {
     ValueListEditor_Invalidate(v.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (v *TValueListEditor) PaintTo(DC HDC, X int32, Y int32) {
+    ValueListEditor_PaintTo(v.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -468,6 +475,58 @@ func (v *TValueListEditor) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (v *TValueListEditor) AnchorClient(ASpace int32) {
     ValueListEditor_AnchorClient(v.instance, ASpace)
+}
+
+func (v *TValueListEditor) ScaleDesignToForm(ASize int32) int32 {
+    return ValueListEditor_ScaleDesignToForm(v.instance, ASize)
+}
+
+func (v *TValueListEditor) ScaleFormToDesign(ASize int32) int32 {
+    return ValueListEditor_ScaleFormToDesign(v.instance, ASize)
+}
+
+func (v *TValueListEditor) Scale96ToForm(ASize int32) int32 {
+    return ValueListEditor_Scale96ToForm(v.instance, ASize)
+}
+
+func (v *TValueListEditor) ScaleFormTo96(ASize int32) int32 {
+    return ValueListEditor_ScaleFormTo96(v.instance, ASize)
+}
+
+func (v *TValueListEditor) Scale96ToFont(ASize int32) int32 {
+    return ValueListEditor_Scale96ToFont(v.instance, ASize)
+}
+
+func (v *TValueListEditor) ScaleFontTo96(ASize int32) int32 {
+    return ValueListEditor_ScaleFontTo96(v.instance, ASize)
+}
+
+func (v *TValueListEditor) ScaleScreenToFont(ASize int32) int32 {
+    return ValueListEditor_ScaleScreenToFont(v.instance, ASize)
+}
+
+func (v *TValueListEditor) ScaleFontToScreen(ASize int32) int32 {
+    return ValueListEditor_ScaleFontToScreen(v.instance, ASize)
+}
+
+func (v *TValueListEditor) Scale96ToScreen(ASize int32) int32 {
+    return ValueListEditor_Scale96ToScreen(v.instance, ASize)
+}
+
+func (v *TValueListEditor) ScaleScreenTo96(ASize int32) int32 {
+    return ValueListEditor_ScaleScreenTo96(v.instance, ASize)
+}
+
+func (v *TValueListEditor) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    ValueListEditor_AutoAdjustLayout(v.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (v *TValueListEditor) FixDesignFontsPPI(ADesignTimePPI int32) {
+    ValueListEditor_FixDesignFontsPPI(v.instance, ADesignTimePPI)
+}
+
+func (v *TValueListEditor) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    ValueListEditor_ScaleFontsPPI(v.instance, AToPPI , AProportion)
 }
 
 func (v *TValueListEditor) ColCount() int32 {

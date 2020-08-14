@@ -243,6 +243,13 @@ func (m *TMiniWebview) Invalidate() {
     MiniWebview_Invalidate(m.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (m *TMiniWebview) PaintTo(DC HDC, X int32, Y int32) {
+    MiniWebview_PaintTo(m.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -488,6 +495,58 @@ func (m *TMiniWebview) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (m *TMiniWebview) AnchorClient(ASpace int32) {
     MiniWebview_AnchorClient(m.instance, ASpace)
+}
+
+func (m *TMiniWebview) ScaleDesignToForm(ASize int32) int32 {
+    return MiniWebview_ScaleDesignToForm(m.instance, ASize)
+}
+
+func (m *TMiniWebview) ScaleFormToDesign(ASize int32) int32 {
+    return MiniWebview_ScaleFormToDesign(m.instance, ASize)
+}
+
+func (m *TMiniWebview) Scale96ToForm(ASize int32) int32 {
+    return MiniWebview_Scale96ToForm(m.instance, ASize)
+}
+
+func (m *TMiniWebview) ScaleFormTo96(ASize int32) int32 {
+    return MiniWebview_ScaleFormTo96(m.instance, ASize)
+}
+
+func (m *TMiniWebview) Scale96ToFont(ASize int32) int32 {
+    return MiniWebview_Scale96ToFont(m.instance, ASize)
+}
+
+func (m *TMiniWebview) ScaleFontTo96(ASize int32) int32 {
+    return MiniWebview_ScaleFontTo96(m.instance, ASize)
+}
+
+func (m *TMiniWebview) ScaleScreenToFont(ASize int32) int32 {
+    return MiniWebview_ScaleScreenToFont(m.instance, ASize)
+}
+
+func (m *TMiniWebview) ScaleFontToScreen(ASize int32) int32 {
+    return MiniWebview_ScaleFontToScreen(m.instance, ASize)
+}
+
+func (m *TMiniWebview) Scale96ToScreen(ASize int32) int32 {
+    return MiniWebview_Scale96ToScreen(m.instance, ASize)
+}
+
+func (m *TMiniWebview) ScaleScreenTo96(ASize int32) int32 {
+    return MiniWebview_ScaleScreenTo96(m.instance, ASize)
+}
+
+func (m *TMiniWebview) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    MiniWebview_AutoAdjustLayout(m.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (m *TMiniWebview) FixDesignFontsPPI(ADesignTimePPI int32) {
+    MiniWebview_FixDesignFontsPPI(m.instance, ADesignTimePPI)
+}
+
+func (m *TMiniWebview) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    MiniWebview_ScaleFontsPPI(m.instance, AToPPI , AProportion)
 }
 
 func (m *TMiniWebview) ReadyState() TReadyState {

@@ -354,6 +354,58 @@ func (b *TBoundLabel) AnchorClient(ASpace int32) {
     BoundLabel_AnchorClient(b.instance, ASpace)
 }
 
+func (b *TBoundLabel) ScaleDesignToForm(ASize int32) int32 {
+    return BoundLabel_ScaleDesignToForm(b.instance, ASize)
+}
+
+func (b *TBoundLabel) ScaleFormToDesign(ASize int32) int32 {
+    return BoundLabel_ScaleFormToDesign(b.instance, ASize)
+}
+
+func (b *TBoundLabel) Scale96ToForm(ASize int32) int32 {
+    return BoundLabel_Scale96ToForm(b.instance, ASize)
+}
+
+func (b *TBoundLabel) ScaleFormTo96(ASize int32) int32 {
+    return BoundLabel_ScaleFormTo96(b.instance, ASize)
+}
+
+func (b *TBoundLabel) Scale96ToFont(ASize int32) int32 {
+    return BoundLabel_Scale96ToFont(b.instance, ASize)
+}
+
+func (b *TBoundLabel) ScaleFontTo96(ASize int32) int32 {
+    return BoundLabel_ScaleFontTo96(b.instance, ASize)
+}
+
+func (b *TBoundLabel) ScaleScreenToFont(ASize int32) int32 {
+    return BoundLabel_ScaleScreenToFont(b.instance, ASize)
+}
+
+func (b *TBoundLabel) ScaleFontToScreen(ASize int32) int32 {
+    return BoundLabel_ScaleFontToScreen(b.instance, ASize)
+}
+
+func (b *TBoundLabel) Scale96ToScreen(ASize int32) int32 {
+    return BoundLabel_Scale96ToScreen(b.instance, ASize)
+}
+
+func (b *TBoundLabel) ScaleScreenTo96(ASize int32) int32 {
+    return BoundLabel_ScaleScreenTo96(b.instance, ASize)
+}
+
+func (b *TBoundLabel) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    BoundLabel_AutoAdjustLayout(b.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (b *TBoundLabel) FixDesignFontsPPI(ADesignTimePPI int32) {
+    BoundLabel_FixDesignFontsPPI(b.instance, ADesignTimePPI)
+}
+
+func (b *TBoundLabel) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    BoundLabel_ScaleFontsPPI(b.instance, AToPPI , AProportion)
+}
+
 func (b *TBoundLabel) BiDiMode() TBiDiMode {
     return BoundLabel_GetBiDiMode(b.instance)
 }

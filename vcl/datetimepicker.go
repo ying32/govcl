@@ -206,6 +206,13 @@ func (d *TDateTimePicker) Invalidate() {
     DateTimePicker_Invalidate(d.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (d *TDateTimePicker) PaintTo(DC HDC, X int32, Y int32) {
+    DateTimePicker_PaintTo(d.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -465,6 +472,58 @@ func (d *TDateTimePicker) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (d *TDateTimePicker) AnchorClient(ASpace int32) {
     DateTimePicker_AnchorClient(d.instance, ASpace)
+}
+
+func (d *TDateTimePicker) ScaleDesignToForm(ASize int32) int32 {
+    return DateTimePicker_ScaleDesignToForm(d.instance, ASize)
+}
+
+func (d *TDateTimePicker) ScaleFormToDesign(ASize int32) int32 {
+    return DateTimePicker_ScaleFormToDesign(d.instance, ASize)
+}
+
+func (d *TDateTimePicker) Scale96ToForm(ASize int32) int32 {
+    return DateTimePicker_Scale96ToForm(d.instance, ASize)
+}
+
+func (d *TDateTimePicker) ScaleFormTo96(ASize int32) int32 {
+    return DateTimePicker_ScaleFormTo96(d.instance, ASize)
+}
+
+func (d *TDateTimePicker) Scale96ToFont(ASize int32) int32 {
+    return DateTimePicker_Scale96ToFont(d.instance, ASize)
+}
+
+func (d *TDateTimePicker) ScaleFontTo96(ASize int32) int32 {
+    return DateTimePicker_ScaleFontTo96(d.instance, ASize)
+}
+
+func (d *TDateTimePicker) ScaleScreenToFont(ASize int32) int32 {
+    return DateTimePicker_ScaleScreenToFont(d.instance, ASize)
+}
+
+func (d *TDateTimePicker) ScaleFontToScreen(ASize int32) int32 {
+    return DateTimePicker_ScaleFontToScreen(d.instance, ASize)
+}
+
+func (d *TDateTimePicker) Scale96ToScreen(ASize int32) int32 {
+    return DateTimePicker_Scale96ToScreen(d.instance, ASize)
+}
+
+func (d *TDateTimePicker) ScaleScreenTo96(ASize int32) int32 {
+    return DateTimePicker_ScaleScreenTo96(d.instance, ASize)
+}
+
+func (d *TDateTimePicker) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    DateTimePicker_AutoAdjustLayout(d.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (d *TDateTimePicker) FixDesignFontsPPI(ADesignTimePPI int32) {
+    DateTimePicker_FixDesignFontsPPI(d.instance, ADesignTimePPI)
+}
+
+func (d *TDateTimePicker) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    DateTimePicker_ScaleFontsPPI(d.instance, AToPPI , AProportion)
 }
 
 func (d *TDateTimePicker) ArrowShape() TArrowShape {

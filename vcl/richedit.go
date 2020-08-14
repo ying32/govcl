@@ -232,6 +232,13 @@ func (r *TRichEdit) Invalidate() {
     RichEdit_Invalidate(r.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (r *TRichEdit) PaintTo(DC HDC, X int32, Y int32) {
+    RichEdit_PaintTo(r.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -491,6 +498,58 @@ func (r *TRichEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (r *TRichEdit) AnchorClient(ASpace int32) {
     RichEdit_AnchorClient(r.instance, ASpace)
+}
+
+func (r *TRichEdit) ScaleDesignToForm(ASize int32) int32 {
+    return RichEdit_ScaleDesignToForm(r.instance, ASize)
+}
+
+func (r *TRichEdit) ScaleFormToDesign(ASize int32) int32 {
+    return RichEdit_ScaleFormToDesign(r.instance, ASize)
+}
+
+func (r *TRichEdit) Scale96ToForm(ASize int32) int32 {
+    return RichEdit_Scale96ToForm(r.instance, ASize)
+}
+
+func (r *TRichEdit) ScaleFormTo96(ASize int32) int32 {
+    return RichEdit_ScaleFormTo96(r.instance, ASize)
+}
+
+func (r *TRichEdit) Scale96ToFont(ASize int32) int32 {
+    return RichEdit_Scale96ToFont(r.instance, ASize)
+}
+
+func (r *TRichEdit) ScaleFontTo96(ASize int32) int32 {
+    return RichEdit_ScaleFontTo96(r.instance, ASize)
+}
+
+func (r *TRichEdit) ScaleScreenToFont(ASize int32) int32 {
+    return RichEdit_ScaleScreenToFont(r.instance, ASize)
+}
+
+func (r *TRichEdit) ScaleFontToScreen(ASize int32) int32 {
+    return RichEdit_ScaleFontToScreen(r.instance, ASize)
+}
+
+func (r *TRichEdit) Scale96ToScreen(ASize int32) int32 {
+    return RichEdit_Scale96ToScreen(r.instance, ASize)
+}
+
+func (r *TRichEdit) ScaleScreenTo96(ASize int32) int32 {
+    return RichEdit_ScaleScreenTo96(r.instance, ASize)
+}
+
+func (r *TRichEdit) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    RichEdit_AutoAdjustLayout(r.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (r *TRichEdit) FixDesignFontsPPI(ADesignTimePPI int32) {
+    RichEdit_FixDesignFontsPPI(r.instance, ADesignTimePPI)
+}
+
+func (r *TRichEdit) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    RichEdit_ScaleFontsPPI(r.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。

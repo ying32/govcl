@@ -201,6 +201,13 @@ func (p *TProgressBar) Invalidate() {
     ProgressBar_Invalidate(p.instance)
 }
 
+// 绘画至指定DC。
+//
+// Painting to the specified DC.
+func (p *TProgressBar) PaintTo(DC HDC, X int32, Y int32) {
+    ProgressBar_PaintTo(p.instance, DC , X , Y)
+}
+
 // 移除一个控件。
 //
 // Remove a control.
@@ -460,6 +467,58 @@ func (p *TProgressBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
 
 func (p *TProgressBar) AnchorClient(ASpace int32) {
     ProgressBar_AnchorClient(p.instance, ASpace)
+}
+
+func (p *TProgressBar) ScaleDesignToForm(ASize int32) int32 {
+    return ProgressBar_ScaleDesignToForm(p.instance, ASize)
+}
+
+func (p *TProgressBar) ScaleFormToDesign(ASize int32) int32 {
+    return ProgressBar_ScaleFormToDesign(p.instance, ASize)
+}
+
+func (p *TProgressBar) Scale96ToForm(ASize int32) int32 {
+    return ProgressBar_Scale96ToForm(p.instance, ASize)
+}
+
+func (p *TProgressBar) ScaleFormTo96(ASize int32) int32 {
+    return ProgressBar_ScaleFormTo96(p.instance, ASize)
+}
+
+func (p *TProgressBar) Scale96ToFont(ASize int32) int32 {
+    return ProgressBar_Scale96ToFont(p.instance, ASize)
+}
+
+func (p *TProgressBar) ScaleFontTo96(ASize int32) int32 {
+    return ProgressBar_ScaleFontTo96(p.instance, ASize)
+}
+
+func (p *TProgressBar) ScaleScreenToFont(ASize int32) int32 {
+    return ProgressBar_ScaleScreenToFont(p.instance, ASize)
+}
+
+func (p *TProgressBar) ScaleFontToScreen(ASize int32) int32 {
+    return ProgressBar_ScaleFontToScreen(p.instance, ASize)
+}
+
+func (p *TProgressBar) Scale96ToScreen(ASize int32) int32 {
+    return ProgressBar_Scale96ToScreen(p.instance, ASize)
+}
+
+func (p *TProgressBar) ScaleScreenTo96(ASize int32) int32 {
+    return ProgressBar_ScaleScreenTo96(p.instance, ASize)
+}
+
+func (p *TProgressBar) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
+    ProgressBar_AutoAdjustLayout(p.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+}
+
+func (p *TProgressBar) FixDesignFontsPPI(ADesignTimePPI int32) {
+    ProgressBar_FixDesignFontsPPI(p.instance, ADesignTimePPI)
+}
+
+func (p *TProgressBar) ScaleFontsPPI(AToPPI int32, AProportion float64) {
+    ProgressBar_ScaleFontsPPI(p.instance, AToPPI , AProportion)
 }
 
 // 获取控件自动调整。
