@@ -6,6 +6,8 @@ package main
 import (
 	"fmt"
 
+	"github.com/ying32/govcl/vcl/rtl"
+
 	"unsafe"
 
 	"github.com/tryor/gdiplus"
@@ -15,15 +17,41 @@ import (
 	"github.com/ying32/govcl/vcl/win"
 )
 
+type TGPButton struct {
+	Rect      *gdiplus.RectF
+	State     int
+	InControl bool
+	Image     *gdiplus.Bitmap
+}
+
 //::private::
 type TGdipFormFields struct {
+	btn1 *TGPButton
 }
 
 func (f *TGdipForm) OnFormCreate(sender vcl.IObject) {
 	fmt.Println("OnCreate")
+
+	f.btn1 = &TGPButton{}
+	f.btn1.Rect = gdiplus.NewRectF(100.0, 120, 267, 70)
+	f.btn1.State = 0 // 0 = normal 1 = hover 2 = down
+	if rtl.FileExists("btn_scan.png") {
+		var err error
+		f.btn1.Image, err = gdiplus.NewBitmap("btn_scan.png")
+		if err != nil {
+			fmt.Println(err)
+		}
+	}
+
 	style := win.GetWindowLongPtr(f.Handle(), win.GWL_EXSTYLE) | win.WS_EX_LAYERED | win.WS_EX_TOOLWINDOW
 	win.SetWindowLongPtr(f.Handle(), win.GWL_EXSTYLE, uintptr(style))
 	f.UpdateLayer()
+}
+
+func (f *TGdipForm) OnFormDestroy(sender vcl.IObject) {
+	if f.btn1.Image != nil {
+		f.btn1.Image.Release()
+	}
 }
 
 func (f *TGdipForm) UpdateLayer() {
@@ -116,6 +144,17 @@ func (f *TGdipForm) UpdateLayer() {
 	f.DrawText("文字String", 200, g, family, strFormat, gdiplus.NewColor3(0xFF, 0x00, 0x43, 0x93), gdiplus.NewColor3(0xFF, 0x02, 0xB4, 0xEA))
 	// 绿色
 	f.DrawText("文字String", 400, g, family, strFormat, gdiplus.NewColor3(0xFF, 0x0B, 0x63, 0x00), gdiplus.NewColor3(0xFF, 0x8A, 0xF6, 0x22))
+
+	// 根据状态画按钮
+	switch f.btn1.State {
+	case 0:
+		g.DrawImage7(f.btn1.Image, f.btn1.Rect, gdiplus.REAL(0), gdiplus.REAL(0), f.btn1.Rect.Width, f.btn1.Rect.Height, gdiplus.UnitPixel, nil, nil, 0)
+	case 1:
+		g.DrawImage7(f.btn1.Image, f.btn1.Rect, gdiplus.REAL(f.btn1.Rect.Width), gdiplus.REAL(0), f.btn1.Rect.Width, f.btn1.Rect.Height, gdiplus.UnitPixel, nil, nil, 0)
+	case 2:
+		g.DrawImage7(f.btn1.Image, f.btn1.Rect, gdiplus.REAL(f.btn1.Rect.Width*2), gdiplus.REAL(0), f.btn1.Rect.Width, f.btn1.Rect.Height, gdiplus.UnitPixel, nil, nil, 0)
+	}
+
 	// 更新分层窗口
 	winsize := types.TSize{aWidth, aHeight}
 	scrPoint := types.TPoint{}
@@ -166,7 +205,44 @@ func (f *TGdipForm) DrawText(s string, top int, g *gdiplus.Graphics, family *gdi
 
 func (f *TGdipForm) OnFormMouseDown(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
 	if button == types.MbLeft {
+
+		// 判断是否在控件内
+		if f.btn1.InControl {
+			f.btn1.State = 2
+			f.UpdateLayer()
+			fmt.Println("点击了事件")
+			return
+		}
+
 		win.ReleaseCapture()
 		win.PostMessage(f.Handle(), win.WM_SYSCOMMAND, win.SC_MOVE+1, 0)
+	}
+}
+
+func (f *TGdipForm) OnFormMouseMove(sender vcl.IObject, shift types.TShiftState, x, y int32) {
+	f.btn1.InControl = f.btn1.Rect.Contains(gdiplus.REAL(x), gdiplus.REAL(y))
+	if f.btn1.InControl {
+		if f.btn1.State != 1 {
+			f.btn1.State = 1
+			f.UpdateLayer()
+			fmt.Println("---------paint state 1")
+		}
+	} else {
+		if f.btn1.State != 0 {
+			f.btn1.State = 0
+			f.UpdateLayer()
+			fmt.Println("---------paint state 0")
+		}
+	}
+}
+
+func (f *TGdipForm) OnFormMouseUp(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
+	if button == types.MbLeft {
+		if f.btn1.InControl {
+			f.btn1.State = 1
+		} else {
+			f.btn1.State = 0
+		}
+		f.UpdateLayer()
 	}
 }
