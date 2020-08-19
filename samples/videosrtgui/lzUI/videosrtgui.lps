@@ -4,7 +4,7 @@
     <PathDelim Value="\"/>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="13">
+    <Units Count="14">
       <Unit0>
         <Filename Value="videosrtgui.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -18,11 +18,12 @@
         <Filename Value="umain.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="MainForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
         <IsVisibleTab Value="True"/>
         <TopLine Value="161"/>
-        <CursorPos X="22" Y="194"/>
+        <CursorPos X="23" Y="170"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -39,17 +40,6 @@
         <UsageCount Value="20"/>
       </Unit2>
       <Unit3>
-        <Filename Value="uunewaliyunaudioengine.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="NewAliyunAudioEngine"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uuNewAliyunAudioEngine"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="15"/>
-        <CursorPos X="5" Y="46"/>
-        <UsageCount Value="20"/>
-      </Unit3>
-      <Unit4>
         <Filename Value="unewbaidutranslateengine.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="NewBaiduTranslateEngine"/>
@@ -59,8 +49,8 @@
         <TopLine Value="13"/>
         <CursorPos X="5" Y="44"/>
         <UsageCount Value="20"/>
-      </Unit4>
-      <Unit5>
+      </Unit3>
+      <Unit4>
         <Filename Value="unewtencenttranslateengine.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="NewTencentTranslateEngine"/>
@@ -70,14 +60,8 @@
         <TopLine Value="11"/>
         <CursorPos X="5" Y="42"/>
         <UsageCount Value="20"/>
-      </Unit5>
-      <Unit6>
-        <Filename Value="..\uNewTencentTranslateEngine.lfm"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit6>
-      <Unit7>
+      </Unit4>
+      <Unit5>
         <Filename Value="uosssavesettings.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="OSSSaveSettings"/>
@@ -87,8 +71,34 @@
         <TopLine Value="15"/>
         <CursorPos X="5" Y="46"/>
         <UsageCount Value="20"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="unewaliyunaudioengine.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="uunewaliyunaudioengine.pas"/>
+        <ComponentName Value="NewAliyunAudioEngine"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uuNewAliyunAudioEngine"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="15"/>
+        <CursorPos X="5" Y="46"/>
+        <UsageCount Value="20"/>
       </Unit7>
       <Unit8>
+        <Filename Value="..\uNewTencentTranslateEngine.lfm"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit8>
+      <Unit9>
         <Filename Value="F:\lazarus\lcl\menus.pp"/>
         <UnitName Value="Menus"/>
         <EditorIndex Value="4"/>
@@ -96,16 +106,16 @@
         <CursorPos X="17" Y="429"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
-      </Unit8>
-      <Unit9>
+      </Unit9>
+      <Unit10>
         <Filename Value="F:\lazarus\lcl\include\popupmenu.inc"/>
         <EditorIndex Value="5"/>
         <TopLine Value="61"/>
         <CursorPos X="3" Y="65"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
-      </Unit9>
-      <Unit10>
+      </Unit10>
+      <Unit11>
         <Filename Value="F:\lazarus\lcl\comctrls.pp"/>
         <UnitName Value="ComCtrls"/>
         <EditorIndex Value="1"/>
@@ -113,26 +123,25 @@
         <CursorPos X="31" Y="2133"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
-      </Unit10>
-      <Unit11>
+      </Unit11>
+      <Unit12>
         <Filename Value="F:\lazarus\lcl\include\toolbutton.inc"/>
         <EditorIndex Value="3"/>
         <TopLine Value="883"/>
         <CursorPos X="42" Y="907"/>
-        <FoldState Value=" T3;I0e6 pjEkP05111 T1@Z07u"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
-      </Unit11>
-      <Unit12>
+      </Unit12>
+      <Unit13>
         <Filename Value="F:\lazarus\lcl\include\toolbar.inc"/>
         <EditorIndex Value="2"/>
         <TopLine Value="1091"/>
         <CursorPos X="3" Y="1075"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
-      </Unit12>
+      </Unit13>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="umain.pas"/>
         <Caret Line="98" Column="3" TopLine="63"/>
@@ -246,13 +255,9 @@
         <Caret Line="2291" Column="14" TopLine="2273"/>
       </Position28>
       <Position29>
-        <Filename Value="F:\lazarus\lcl\include\toolbar.inc"/>
-        <Caret Line="1075" Column="3" TopLine="1091"/>
-      </Position29>
-      <Position30>
         <Filename Value="F:\lazarus\lcl\comctrls.pp"/>
         <Caret Line="2291" Column="14" TopLine="2273"/>
-      </Position30>
+      </Position29>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

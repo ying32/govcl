@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, uMain, uuAppSettings, uuNewAliyunAudioEngine, uNewBaiduTranslateEngine,
+  Forms, uMain, uuAppSettings, uNewBaiduTranslateEngine,
   uNewTencentTranslateEngine, uOSSSaveSettings
   { you can add units after this };
 
@@ -19,7 +19,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TAppSettings, AppSettings);
-  Application.CreateForm(TNewAliyunAudioEngine, NewAliyunAudioEngine);
   Application.CreateForm(TNewBaiduTranslateEngine, NewBaiduTranslateEngine);
   Application.CreateForm(TNewTencentTranslateEngine, NewTencentTranslateEngine);
   Application.CreateForm(TOSSSaveSettings, OSSSaveSettings);
