@@ -186,7 +186,7 @@ Note: The "current executable file directory" here refers to the location of the
 
 **Special Note: All UI components are non-threaded/non-coroutine safe. When used in goroutine, use [vcl.ThreadSync](https://gitee.com/ying32/govcl/wikis/pages?sort_id=976890&doc_id=102420) to synchronize updates to the UI.**  
 
-**Special Note 2: If you use go>=1.15 to compile Windows amd64 executable files, you must use the `-buildmode=exe` compilation option, otherwise there will be errors.**  
+**Special Note 2: If you use go>=1.15 to compile Windows executable files, you must use the `-buildmode=exe` compilation option, otherwise there will be errors.**  
 
 ---
 

@@ -193,7 +193,7 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 
 **特别注意：所有UI组件都是非线程/协程安全的，当在goroutine中使用时，请使用[vcl.ThreadSync](https://gitee.com/ying32/govcl/wikis/pages?sort_id=976890&doc_id=102420)来同步更新到UI上。**    
 
-**特别注意2：如果你使用go>=1.15编译Windows amd64可执行文件，则必须则必须使用`-buildmode=exe`编译选项，不然会有错误。**  
+**特别注意2：如果你使用go>=1.15编译Windows可执行文件，则必须则必须使用`-buildmode=exe`编译选项，不然会有错误。**  
 
 ### API文档
 
