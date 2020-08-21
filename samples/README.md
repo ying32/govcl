@@ -22,8 +22,9 @@
 | [fileshelltree](fileshelltree) | 文件目录树  | |
 | [formEvents](formEvents) | 演示自动关联事件    |  |
 | [govcl](govcl) | 开发govcl时的总测试例程，包含很多功能的演示 | |  
-| [grids/stringgrid](grids/stringgrid) | 表格控件1 | |
-| [grids/drawgrid](grids/drawgrid) | 表格控件2 | |
+| [grids/stringgrid](grids/stringgrid) | 表格控件1，常规 | |
+| [grids/stringgrid2](grids/stringgrid2) | 表格控件2，高级 | |
+| [grids/drawgrid](grids/drawgrid) | Draw表格控件 | |
 | [imagebutton](imagebutton) | 四态图控件演示  | |
 | [imageviewer](imageviewer) |  一个图片浏览器 |   |
 | [inifile](inifile) | INI配置文件演示  | |
