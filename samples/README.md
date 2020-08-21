@@ -86,7 +86,6 @@
 | [Windows/registerHotkey](Windows/registerHotkey) | windows注册热键  | Windows |
 | [Windows/registry](Windows/registry) | windows注册表演示  | Windows |
 | [Windows/shortcut](Windows/shortcut) | 创建快捷方式相关 | Windows | 
-| [Windows/treeview_checkbox](Windows/treeview_checkbox) |  树型列表框 + 复选框 演示  | windows,libvcl |
 | [Windows/gdiplustest](Windows/gdiplustest) | GDI+画渐变文字及半透明背景    | Windows |
 | [Windows/gdiplustest2](Windows/gdiplustest2) | 移植自Delphi IGDIPlus例程的    | Windows  |
 | [Windows/WindowsMessages](Windows/WindowsMessages) | Windows下消息捕获    | Windows |
