@@ -152,14 +152,16 @@ func (f *TMainFrom) OnListView1MouseDown(sender vcl.IObject, button types.TMouse
 	if f.ListView.Checkboxes() && x <= 16 { //16= f.stateImages.Width
 		item := f.ListView.GetItemAt(x, y)
 		if item != nil {
-			fmt.Println("index:", item.Index())
+			idx := item.Index()
 			r := item.DisplayRect(types.DrIcon)
 			if y >= r.Top && y <= r.Bottom {
-				tempData[item.Index()].Checked = !tempData[item.Index()].Checked
-				// 也可以不管
-				//item.SetChecked(tempData[item.Index()].Checked)
-				f.ListView.Repaint()
-				//f.ListView.Invalidate()
+				tempData[idx].Checked = !tempData[idx].Checked
+				// 不知道为啥idx=0时要repaint，但Repaint效率不如Invalidate
+				if idx == 0 {
+					f.ListView.Repaint()
+				} else {
+					f.ListView.Invalidate()
+				}
 			}
 		}
 	}
