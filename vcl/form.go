@@ -121,6 +121,44 @@ func TFormClass() TClass {
     return Form_StaticClassType()
 }
 
+// OnWndProc必须要调用的， 内部为  inherited WndProc(msg)。
+func (f *TForm) InheritedWndProc(TheMessage *TMessage) {
+    Form_InheritedWndProc(f.instance, TheMessage)
+}
+
+// 启用/禁用 标题栏最大化按钮。
+func (f *TForm) EnabledMaximize(AValue bool) {
+    Form_EnabledMaximize(f.instance, AValue)
+}
+
+// 启用/禁用 标题栏最小化按钮。
+func (f *TForm) EnabledMinimize(AValue bool) {
+    Form_EnabledMinimize(f.instance, AValue)
+}
+
+// 启用/禁用 标题栏系统菜单。
+func (f *TForm) EnabledSystemMenu(AValue bool) {
+    Form_EnabledSystemMenu(f.instance, AValue)
+}
+
+func (f *TForm) ScaleForCurrentDpi() {
+    Form_ScaleForCurrentDpi(f.instance)
+}
+
+func (f *TForm) ScaleForPPI(ANewPPI int32) {
+    Form_ScaleForPPI(f.instance, ANewPPI)
+}
+
+// 居于当前屏幕中心。
+func (f *TForm) ScreenCenter() {
+    Form_ScreenCenter(f.instance)
+}
+
+// 窗口居于工作区中心，工作区为当前屏幕 - 任务栏空间。
+func (f *TForm) WorkAreaCenter() {
+    Form_WorkAreaCenter(f.instance)
+}
+
 func (f *TForm) Cascade() {
     Form_Cascade(f.instance)
 }
@@ -1067,6 +1105,10 @@ func (f *TForm) SetOnCloseQuery(fn TCloseQueryEvent) {
     Form_SetOnCloseQuery(f.instance, fn)
 }
 
+func (f *TForm) SetOnConstrainedResize(fn TConstrainedResizeEvent) {
+    Form_SetOnConstrainedResize(f.instance, fn)
+}
+
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
@@ -1077,6 +1119,10 @@ func (f *TForm) SetOnContextPopup(fn TContextPopupEvent) {
 // 设置双击事件。
 func (f *TForm) SetOnDblClick(fn TNotifyEvent) {
     Form_SetOnDblClick(f.instance, fn)
+}
+
+func (f *TForm) SetOnDestroy(fn TNotifyEvent) {
+    Form_SetOnDestroy(f.instance, fn)
 }
 
 // 设置窗口失去激状态。

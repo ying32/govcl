@@ -389,6 +389,38 @@ func Form_Free(obj uintptr) {
     form_Free.Call(obj)
 }
 
+func Form_InheritedWndProc(obj uintptr, TheMessage *TMessage)  {
+    form_InheritedWndProc.Call(obj, uintptr(unsafe.Pointer(TheMessage)))
+}
+
+func Form_EnabledMaximize(obj uintptr, AValue bool)  {
+    form_EnabledMaximize.Call(obj, GoBoolToDBool(AValue) )
+}
+
+func Form_EnabledMinimize(obj uintptr, AValue bool)  {
+    form_EnabledMinimize.Call(obj, GoBoolToDBool(AValue) )
+}
+
+func Form_EnabledSystemMenu(obj uintptr, AValue bool)  {
+    form_EnabledSystemMenu.Call(obj, GoBoolToDBool(AValue) )
+}
+
+func Form_ScaleForCurrentDpi(obj uintptr)  {
+    form_ScaleForCurrentDpi.Call(obj)
+}
+
+func Form_ScaleForPPI(obj uintptr, ANewPPI int32)  {
+    form_ScaleForPPI.Call(obj, uintptr(ANewPPI) )
+}
+
+func Form_ScreenCenter(obj uintptr)  {
+    form_ScreenCenter.Call(obj)
+}
+
+func Form_WorkAreaCenter(obj uintptr)  {
+    form_WorkAreaCenter.Call(obj)
+}
+
 func Form_Cascade(obj uintptr)  {
     form_Cascade.Call(obj)
 }
@@ -1133,12 +1165,20 @@ func Form_SetOnCloseQuery(obj uintptr, fn interface{}) {
     form_SetOnCloseQuery.Call(obj, addEventToMap(fn))
 }
 
+func Form_SetOnConstrainedResize(obj uintptr, fn interface{}) {
+    form_SetOnConstrainedResize.Call(obj, addEventToMap(fn))
+}
+
 func Form_SetOnContextPopup(obj uintptr, fn interface{}) {
     form_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
 
 func Form_SetOnDblClick(obj uintptr, fn interface{}) {
     form_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func Form_SetOnDestroy(obj uintptr, fn interface{}) {
+    form_SetOnDestroy.Call(obj, addEventToMap(fn))
 }
 
 func Form_SetOnDeactivate(obj uintptr, fn interface{}) {
@@ -47167,6 +47207,10 @@ func ScrollBox_SetOnClick(obj uintptr, fn interface{}) {
     scrollBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func ScrollBox_SetOnConstrainedResize(obj uintptr, fn interface{}) {
+    scrollBox_SetOnConstrainedResize.Call(obj, addEventToMap(fn))
+}
+
 func ScrollBox_SetOnDblClick(obj uintptr, fn interface{}) {
     scrollBox_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
@@ -58451,6 +58495,10 @@ func FlowPanel_SetOnClick(obj uintptr, fn interface{}) {
     flowPanel_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func FlowPanel_SetOnConstrainedResize(obj uintptr, fn interface{}) {
+    flowPanel_SetOnConstrainedResize.Call(obj, addEventToMap(fn))
+}
+
 func FlowPanel_SetOnContextPopup(obj uintptr, fn interface{}) {
     flowPanel_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
@@ -62741,6 +62789,10 @@ func Frame_SetDesignTimePPI(obj uintptr, value int32) {
    frame_SetDesignTimePPI.Call(obj, uintptr(value))
 }
 
+func Frame_SetOnDestroy(obj uintptr, fn interface{}) {
+    frame_SetOnDestroy.Call(obj, addEventToMap(fn))
+}
+
 func Frame_GetAlign(obj uintptr) TAlign {
     ret, _, _ := frame_GetAlign.Call(obj)
     return TAlign(ret)
@@ -62954,6 +63006,10 @@ func Frame_SetOnAlignPosition(obj uintptr, fn interface{}) {
 
 func Frame_SetOnClick(obj uintptr, fn interface{}) {
     frame_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func Frame_SetOnConstrainedResize(obj uintptr, fn interface{}) {
+    frame_SetOnConstrainedResize.Call(obj, addEventToMap(fn))
 }
 
 func Frame_SetOnContextPopup(obj uintptr, fn interface{}) {

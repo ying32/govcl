@@ -14,17 +14,8 @@ var (
 	application_Run        = libvcl.NewProc("Application_Run")
 	application_Initialize = libvcl.NewProc("Application_Initialize")
 
-	form_Create2                = libvcl.NewProc("Form_Create2")
-	form_EnabledMaximize        = libvcl.NewProc("Form_EnabledMaximize")
-	form_EnabledMinimize        = libvcl.NewProc("Form_EnabledMinimize")
-	form_EnabledSystemMenu      = libvcl.NewProc("Form_EnabledSystemMenu")
-	form_SetOnDestroy           = libvcl.NewProc("Form_SetOnDestroy")
-	form_SetOnConstrainedResize = libvcl.NewProc("Form_SetOnConstrainedResize")
-	form_SetOnWndProc           = libvcl.NewProc("Form_SetOnWndProc")
-
-	form_ShowInTaskBar      = libvcl.NewProc("Form_ShowInTaskBar")
-	form_ScaleForCurrentDpi = libvcl.NewProc("Form_ScaleForCurrentDpi")
-	form_InheritedWndProc   = libvcl.NewProc("Form_InheritedWndProc")
+	form_Create2      = libvcl.NewProc("Form_Create2")
+	form_SetOnWndProc = libvcl.NewProc("Form_SetOnWndProc")
 
 	setEventCallback      = libvcl.NewProc("SetEventCallback")
 	setMessageCallback    = libvcl.NewProc("SetMessageCallback")
@@ -97,10 +88,6 @@ var (
 	dPasswordBox      = libvcl.NewProc("DPasswordBox")
 	dInputCombo       = libvcl.NewProc("DInputCombo")
 	dInputComboEx     = libvcl.NewProc("DInputComboEx")
-
-	// TForm相关设置
-	form_ScaleForPPI         = libvcl.NewProc("Form_ScaleForPPI")
-	form_ScaleControlsForDpi = libvcl.NewProc("Form_ScaleControlsForDpi")
 
 	// TSysLocaled
 	dSysLocale = libvcl.NewProc("DSysLocale")

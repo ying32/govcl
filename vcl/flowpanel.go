@@ -909,6 +909,10 @@ func (f *TFlowPanel) SetOnClick(fn TNotifyEvent) {
     FlowPanel_SetOnClick(f.instance, fn)
 }
 
+func (f *TFlowPanel) SetOnConstrainedResize(fn TConstrainedResizeEvent) {
+    FlowPanel_SetOnConstrainedResize(f.instance, fn)
+}
+
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.

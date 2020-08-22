@@ -836,6 +836,10 @@ func (s *TScrollBox) SetOnClick(fn TNotifyEvent) {
     ScrollBox_SetOnClick(s.instance, fn)
 }
 
+func (s *TScrollBox) SetOnConstrainedResize(fn TConstrainedResizeEvent) {
+    ScrollBox_SetOnConstrainedResize(s.instance, fn)
+}
+
 // 设置双击事件。
 func (s *TScrollBox) SetOnDblClick(fn TNotifyEvent) {
     ScrollBox_SetOnDblClick(s.instance, fn)

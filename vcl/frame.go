@@ -525,6 +525,10 @@ func (f *TFrame) SetDesignTimePPI(value int32) {
     Frame_SetDesignTimePPI(f.instance, value)
 }
 
+func (f *TFrame) SetOnDestroy(fn TNotifyEvent) {
+    Frame_SetOnDestroy(f.instance, fn)
+}
+
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
@@ -829,6 +833,10 @@ func (f *TFrame) SetOnAlignPosition(fn TAlignPositionEvent) {
 // Set control click event.
 func (f *TFrame) SetOnClick(fn TNotifyEvent) {
     Frame_SetOnClick(f.instance, fn)
+}
+
+func (f *TFrame) SetOnConstrainedResize(fn TConstrainedResizeEvent) {
+    Frame_SetOnConstrainedResize(f.instance, fn)
 }
 
 // 设置上下文弹出事件，一般是右键时弹出。
