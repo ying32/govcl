@@ -25676,6 +25676,26 @@ func ListView_DeleteSelected(obj uintptr)  {
     listView_DeleteSelected.Call(obj)
 }
 
+func ListView_GetHitTestInfoAt(obj uintptr, X int32, Y int32) THitTests {
+    ret, _, _ := listView_GetHitTestInfoAt.Call(obj, uintptr(X) , uintptr(Y) )
+    return THitTests(ret)
+}
+
+func ListView_GetItemAt(obj uintptr, X int32, Y int32) uintptr {
+    ret, _, _ := listView_GetItemAt.Call(obj, uintptr(X) , uintptr(Y) )
+    return ret
+}
+
+func ListView_GetNearestItem(obj uintptr, Point TPoint, Direction TSearchDirection) uintptr {
+    ret, _, _ := listView_GetNearestItem.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(Direction) )
+    return ret
+}
+
+func ListView_GetNextItem(obj uintptr, StartItem uintptr, Direction TSearchDirection, States TListItemStates) uintptr {
+    ret, _, _ := listView_GetNextItem.Call(obj, StartItem , uintptr(Direction) , uintptr(States) )
+    return ret
+}
+
 func ListView_IsEditing(obj uintptr) bool {
     ret, _, _ := listView_IsEditing.Call(obj)
     return DBoolToGoBool(ret)
@@ -26081,6 +26101,11 @@ func ListView_GetScrollBars(obj uintptr) TScrollStyle {
 
 func ListView_SetScrollBars(obj uintptr, value TScrollStyle) {
    listView_SetScrollBars.Call(obj, uintptr(value))
+}
+
+func ListView_GetColumnCount(obj uintptr) int32 {
+    ret, _, _ := listView_GetColumnCount.Call(obj)
+    return int32(ret)
 }
 
 func ListView_GetAction(obj uintptr) uintptr {
@@ -27023,6 +27048,11 @@ func TreeView_FullCollapse(obj uintptr)  {
 
 func TreeView_FullExpand(obj uintptr)  {
     treeView_FullExpand.Call(obj)
+}
+
+func TreeView_GetHitTestInfoAt(obj uintptr, X int32, Y int32) THitTests {
+    ret, _, _ := treeView_GetHitTestInfoAt.Call(obj, uintptr(X) , uintptr(Y) )
+    return THitTests(ret)
 }
 
 func TreeView_GetNodeAt(obj uintptr, X int32, Y int32) uintptr {

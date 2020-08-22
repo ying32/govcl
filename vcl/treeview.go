@@ -136,6 +136,10 @@ func (t *TTreeView) FullExpand() {
     TreeView_FullExpand(t.instance)
 }
 
+func (t *TTreeView) GetHitTestInfoAt(X int32, Y int32) THitTests {
+    return TreeView_GetHitTestInfoAt(t.instance, X , Y)
+}
+
 func (t *TTreeView) GetNodeAt(X int32, Y int32) *TTreeNode {
     return AsTreeNode(TreeView_GetNodeAt(t.instance, X , Y))
 }

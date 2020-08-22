@@ -2260,3 +2260,37 @@ const (
 	// the y is scaled to fit the DPI
 	LapAutoAdjustForDPI // For desktops using High DPI, scale x and y to fit the DPI
 )
+
+//ENUM:
+type THitTest int32
+
+const (
+	HtAbove = iota + 0
+	HtBelow
+	HtNowhere
+	HtOnItem
+	HtOnButton
+	HtOnIcon
+	HtOnIndent
+	HtOnLabel
+	HtOnRight
+	HtOnStateIcon
+	HtToLeft
+	HtToRight
+)
+
+//SET:THitTest
+type THitTests = TSet
+
+//ENUM:
+type TListItemState int32
+
+const (
+	LisCut = iota + 0
+	LisDropTarget
+	LisFocused
+	LisSelected
+)
+
+//SET:TListItemState
+type TListItemStates = TSet

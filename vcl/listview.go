@@ -144,6 +144,22 @@ func (l *TListView) DeleteSelected() {
     ListView_DeleteSelected(l.instance)
 }
 
+func (l *TListView) GetHitTestInfoAt(X int32, Y int32) THitTests {
+    return ListView_GetHitTestInfoAt(l.instance, X , Y)
+}
+
+func (l *TListView) GetItemAt(X int32, Y int32) *TListItem {
+    return AsListItem(ListView_GetItemAt(l.instance, X , Y))
+}
+
+func (l *TListView) GetNearestItem(Point TPoint, Direction TSearchDirection) *TListItem {
+    return AsListItem(ListView_GetNearestItem(l.instance, Point , Direction))
+}
+
+func (l *TListView) GetNextItem(StartItem *TListItem, Direction TSearchDirection, States TListItemStates) *TListItem {
+    return AsListItem(ListView_GetNextItem(l.instance, CheckPtr(StartItem), Direction , States))
+}
+
 func (l *TListView) IsEditing() bool {
     return ListView_IsEditing(l.instance)
 }
@@ -630,6 +646,10 @@ func (l *TListView) ScrollBars() TScrollStyle {
 
 func (l *TListView) SetScrollBars(value TScrollStyle) {
     ListView_SetScrollBars(l.instance, value)
+}
+
+func (l *TListView) ColumnCount() int32 {
+    return ListView_GetColumnCount(l.instance)
 }
 
 func (l *TListView) Action() *TAction {
