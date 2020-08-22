@@ -66,7 +66,9 @@ func (f *TMainFrom) OnFormCreate(sender vcl.IObject) {
 	f.ListView.SetCheckboxes(true)
 
 	// windows下OwnerData不能显示checkbox
+	// linux和macOS在OwnerData下支持显示CheckBox
 	if f.isWindows {
+		// 这里模拟显示
 		f.stateImages = vcl.NewImageList(f)
 		bmpFileName := "checkbox.png"
 		if rtl.FileExists(bmpFileName) {
@@ -120,8 +122,16 @@ func (f *TMainFrom) OnFormCreate(sender vcl.IObject) {
 	f.ListView.Items().SetCount(int32(len(tempData))) //   必须主动的设置Virtual List的行数
 
 	// 解决subitem数据为空时，不能连续绘制背景色
-	f.ListView.SetOnAdvancedCustomDrawItem(f.onAdvancedCustomDrawItem)
+	if f.isWindows {
+		f.ListView.SetOnAdvancedCustomDrawItem(f.onAdvancedCustomDrawItem)
+	} else {
+		f.ListView.SetOnItemChecked(f.onListView1ItemChecked)
+	}
 
+}
+
+func (f *TMainFrom) onListView1ItemChecked(sender vcl.IObject, item *vcl.TListItem) {
+	tempData[item.Index()].Checked = item.Checked()
 }
 
 func (f *TMainFrom) onAdvancedCustomDrawItem(sender *vcl.TListView, item *vcl.TListItem, state types.TCustomDrawState, Stage types.TCustomDrawStage, defaultDraw *bool) {
@@ -135,11 +145,16 @@ func (f *TMainFrom) onAdvancedCustomDrawItem(sender *vcl.TListView, item *vcl.TL
 
 func (f *TMainFrom) OnListView1Data(sender vcl.IObject, item *vcl.TListItem) {
 	data := tempData[int(item.Index())]
-	if data.Checked {
-		item.SetStateIndex(1)
+	if f.isWindows {
+		if data.Checked {
+			item.SetStateIndex(1)
+		} else {
+			item.SetStateIndex(0)
+		}
 	} else {
-		item.SetStateIndex(0)
+		item.SetChecked(data.Checked)
 	}
+
 	item.SetCaption(data.Caption)
 	item.SubItems().Add(data.Sub1)
 	item.SubItems().Add("") //data.Sub2)
