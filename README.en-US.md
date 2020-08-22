@@ -84,7 +84,7 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
-    vcl.ShowMessage("Hello!")
+    aboutForm.Show()
 }
 
 // -- TAboutForm
