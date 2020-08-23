@@ -47,7 +47,7 @@ func getClassName(aClass interface{}) string {
 func RegisterFormResource(aClass interface{}, data *[]byte) error {
 	className := getClassName(aClass)
 	if className == "" || data == nil {
-		return errors.New("ClassName和data不能为空。")
+		return errors.New("className and data cannot be empty")
 	}
 	// Delphi中不区分大小写的，所以统一转为大写
 	formResMap.Store(className, &formResItem{ClassName: className, Data: data})
@@ -62,5 +62,5 @@ func findFormResource(aClass interface{}) (*formResItem, error) {
 			return val.(*formResItem), nil
 		}
 	}
-	return nil, errors.New("Not found.")
+	return nil, errors.New("not found")
 }
