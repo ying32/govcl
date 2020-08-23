@@ -217,7 +217,7 @@ func (p *TPicture) Graphic() *TGraphic {
     return AsGraphic(Picture_GetGraphic(p.instance))
 }
 
-func (p *TPicture) SetGraphic(value *TGraphic) {
+func (p *TPicture) SetGraphic(value IGraphic) {
     Picture_SetGraphic(p.instance, CheckPtr(value))
 }
 

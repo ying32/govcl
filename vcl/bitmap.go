@@ -18,7 +18,7 @@ import (
 )
 
 type TBitmap struct {
-    IObject
+    IGraphic
     instance uintptr
     // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
@@ -120,6 +120,34 @@ func (b *TBitmap) Is() TIs {
 // Get class information pointer.
 func TBitmapClass() TClass {
     return Bitmap_StaticClassType()
+}
+
+// 从设备驱动中加载Bitmap。
+//
+// Load the Bitmap from the device driver.
+func (b *TBitmap) LoadFromDevice(ADc HDC) {
+    Bitmap_LoadFromDevice(b.instance, ADc)
+}
+
+// 用于ScanLine属性，aStreamIsValid 默认为 false。
+//
+// Used for ScanLine property, aStreamIsValid defaults to false.
+func (b *TBitmap) EndUpdate(AStreamIsValid bool) {
+    Bitmap_EndUpdate(b.instance, AStreamIsValid)
+}
+
+// 用于ScanLine属性，aCanvasOnly 默认为 false。
+//
+// Used for ScanLine properties, aCanvasOnly defaults to false.
+func (b *TBitmap) BeginUpdate(ACanvasOnly bool) {
+    Bitmap_BeginUpdate(b.instance, ACanvasOnly)
+}
+
+// 清除bitmap数据。
+//
+// Clear bitmap data.
+func (b *TBitmap) Clear() {
+    Bitmap_Clear(b.instance)
 }
 
 // 复制一个对象，如果对象实现了此方法的话。

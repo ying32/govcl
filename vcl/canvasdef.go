@@ -24,12 +24,12 @@ func (c *TCanvas) CopyRect(dest TRect, canvas IObject, source TRect) {
 }
 
 // 绘制graphic对象
-func (c *TCanvas) Draw(x, y int32, graphic IObject) {
+func (c *TCanvas) Draw(x, y int32, graphic IGraphic) {
 	Canvas_Draw1(c.instance, x, y, CheckPtr(graphic))
 }
 
 // 绘制graphic对象，opacity透明度
-func (c *TCanvas) Draw2(x, y int32, graphic IObject, opacity uint8) {
+func (c *TCanvas) Draw2(x, y int32, graphic IGraphic, opacity uint8) {
 	Canvas_Draw2(c.instance, x, y, CheckPtr(graphic), opacity)
 }
 

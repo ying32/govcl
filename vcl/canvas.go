@@ -180,7 +180,7 @@ func (c *TCanvas) RoundRect(X1 int32, Y1 int32, X2 int32, Y2 int32, X3 int32, Y3
     Canvas_RoundRect(c.instance, X1 , Y1 , X2 , Y2 , X3 , Y3)
 }
 
-func (c *TCanvas) StretchDraw(Rect TRect, Graphic *TGraphic) {
+func (c *TCanvas) StretchDraw(Rect TRect, Graphic IGraphic) {
     Canvas_StretchDraw(c.instance, Rect , CheckPtr(Graphic))
 }
 

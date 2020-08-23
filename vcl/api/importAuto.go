@@ -6964,6 +6964,10 @@ var (
     // TBitmap
     bitmap_Create = libvcl.NewProc("Bitmap_Create")
     bitmap_Free = libvcl.NewProc("Bitmap_Free")
+    bitmap_LoadFromDevice = libvcl.NewProc("Bitmap_LoadFromDevice")
+    bitmap_EndUpdate = libvcl.NewProc("Bitmap_EndUpdate")
+    bitmap_BeginUpdate = libvcl.NewProc("Bitmap_BeginUpdate")
+    bitmap_Clear = libvcl.NewProc("Bitmap_Clear")
     bitmap_Assign = libvcl.NewProc("Bitmap_Assign")
     bitmap_FreeImage = libvcl.NewProc("Bitmap_FreeImage")
     bitmap_HandleAllocated = libvcl.NewProc("Bitmap_HandleAllocated")

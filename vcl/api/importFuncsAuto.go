@@ -31473,6 +31473,22 @@ func Bitmap_Free(obj uintptr) {
     bitmap_Free.Call(obj)
 }
 
+func Bitmap_LoadFromDevice(obj uintptr, ADc HDC)  {
+    bitmap_LoadFromDevice.Call(obj, uintptr(ADc) )
+}
+
+func Bitmap_EndUpdate(obj uintptr, AStreamIsValid bool)  {
+    bitmap_EndUpdate.Call(obj, GoBoolToDBool(AStreamIsValid) )
+}
+
+func Bitmap_BeginUpdate(obj uintptr, ACanvasOnly bool)  {
+    bitmap_BeginUpdate.Call(obj, GoBoolToDBool(ACanvasOnly) )
+}
+
+func Bitmap_Clear(obj uintptr)  {
+    bitmap_Clear.Call(obj)
+}
+
 func Bitmap_Assign(obj uintptr, Source uintptr)  {
     bitmap_Assign.Call(obj, Source )
 }
