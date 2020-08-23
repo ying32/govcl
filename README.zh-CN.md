@@ -5,7 +5,7 @@
 
 **中文全称：`Go语言可视化组件库`；英文全称：`Go Language Visual Component Library`**    
 
-*govcl最低要求go1.9。*    
+*govcl最低要求go1.9.2。*    
 
 [截图查看](https://z-kit.cc/screenshot.html) | 
 [中文文档](https://gitee.com/ying32/govcl/wikis/pages) | 
@@ -24,7 +24,7 @@
 ----
 
 ### 预编译GUI库二进制下载（[源代码](https://github.com/ying32/liblcl)）       
-[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.5.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.5/liblcl-2.0.5.zip)  
+[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.6.1.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.6/liblcl-2.0.6.1.zip)  
 
 
 ### res2go工具下载（[文档、源代码](Tools/res2go)）  
@@ -40,7 +40,7 @@
 
 > go get -u github.com/ying32/govcl  
 
-*注：也可用go module方式拉取，在go.mod中配置如：`github.com/ying32/govcl v2.0.5+incompatible`，其中的版本号替换为最新版本。*  
+*注：也可用go module方式拉取，在go.mod中配置如：`github.com/ying32/govcl v2.0.6+incompatible`，其中的版本号替换为最新版本。*  
 
 #### 步骤二：编写代码    
 

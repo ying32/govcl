@@ -7,7 +7,7 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 
 **Full name: `Go Language Visual Component Library`**    
 
-*govcl minimum requirement is go1.9.*    
+*govcl minimum requirement is go1.9.2.*    
 
 [Screenshots](https://z-kit.cc/en/screenshot.html) | 
 [WIKI(Chinese)](https://gitee.com/ying32/govcl/wikis/pages) | 
@@ -23,7 +23,7 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 > If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.   
 
 ### Pre-compiled GUI library binary download ([source code](https://github.com/ying32/liblcl))     
-[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.5.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.5/liblcl-2.0.5.zip)   
+[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.6.1.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.6/liblcl-2.0.6.1.zip)  
 
 
 ### res2go Tool([doc, source code](Tools/res2go))    
@@ -38,7 +38,7 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 
 > go get -u github.com/ying32/govcl    
 
-*Note: You can also use go module mode, configure in go.mod, such as: `github.com/ying32/govcl v2.0.5+incompatible`, and replace the version number with the latest version.*  
+*Note: You can also use go module mode, configure in go.mod, such as: `github.com/ying32/govcl v2.0.6+incompatible`, and replace the version number with the latest version.*  
 
 #### Step 2: Write the code
 
