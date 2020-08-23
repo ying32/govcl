@@ -5,6 +5,10 @@
 
 ----
 
+**注意：res2go命令行工具会在将来某个时候废弃，请改用[res2go IDE插件](https://gitee.com/ying32/govcl/wikis/pages?sort_id=2645001&doc_id=102420)，目前在QQ群内测试。**  
+
+----
+
 `res2go是一个将Lazarus资源窗口转go工具，可自动解析lfm、dfm中的组件名、组件类型、事件名称。解析lpr、dpr文件中窗口信息。`  
 
 命令行：  

@@ -2,6 +2,9 @@
 
 * [中文](README.md)  
 * English    
+----
+
+**Note: The res2go command line tool will be deprecated at some point in the future, please use [res2go IDE plug-in](https://gitee.com/ying32/govcl/wikis/pages?sort_id=2645001&doc_id=102420), currently in Test in QQ group. **  
 
 ----
 
