@@ -525,10 +525,6 @@ func (f *TFrame) SetDesignTimePPI(value int32) {
     Frame_SetDesignTimePPI(f.instance, value)
 }
 
-func (f *TFrame) SetOnDestroy(fn TNotifyEvent) {
-    Frame_SetOnDestroy(f.instance, fn)
-}
-
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.

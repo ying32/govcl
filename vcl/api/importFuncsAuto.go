@@ -62805,10 +62805,6 @@ func Frame_SetDesignTimePPI(obj uintptr, value int32) {
    frame_SetDesignTimePPI.Call(obj, uintptr(value))
 }
 
-func Frame_SetOnDestroy(obj uintptr, fn interface{}) {
-    frame_SetOnDestroy.Call(obj, addEventToMap(fn))
-}
-
 func Frame_GetAlign(obj uintptr) TAlign {
     ret, _, _ := frame_GetAlign.Call(obj)
     return TAlign(ret)

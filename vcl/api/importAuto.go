@@ -13907,7 +13907,6 @@ var (
     frame_ScaleFontsPPI = libvcl.NewProc("Frame_ScaleFontsPPI")
     frame_GetDesignTimePPI = libvcl.NewProc("Frame_GetDesignTimePPI")
     frame_SetDesignTimePPI = libvcl.NewProc("Frame_SetDesignTimePPI")
-    frame_SetOnDestroy = libvcl.NewProc("Frame_SetOnDestroy")
     frame_GetAlign = libvcl.NewProc("Frame_GetAlign")
     frame_SetAlign = libvcl.NewProc("Frame_SetAlign")
     frame_GetAnchors = libvcl.NewProc("Frame_GetAnchors")
