@@ -135,9 +135,14 @@ func main() {
 	lv3.SetReadOnly(true)
 	lv3.SetViewStyle(types.VsReport)
 	lv3.SetGridLines(true)
+	// 失去焦点不隐藏选择的
+	lv3.SetHideSelection(false)
 
 	col = lv3.Columns().Add()
 	col.SetCaption("序号")
+	col.SetWidth(100)
+	col = lv3.Columns().Add()
+	col.SetCaption("Sub1")
 	col.SetWidth(100)
 
 	lv3.SetOnClick(func(vcl.IObject) {
@@ -171,6 +176,7 @@ func main() {
 	btnTest := vcl.NewButton(mainForm)
 	btnTest.SetParent(pnlbottom)
 	btnTest.SetCaption("SetSelected")
+	btnTest.SetWidth(120)
 	btnTest.SetTop(10)
 	btnTest.SetLeft(10)
 	btnTest.SetOnClick(func(sender vcl.IObject) {
@@ -185,7 +191,8 @@ func main() {
 	btnTest2 := vcl.NewButton(mainForm)
 	btnTest2.SetParent(pnlbottom)
 	btnTest2.SetTop(10)
-	btnTest2.SetLeft(120)
+	btnTest2.SetLeft(btnTest.Left() + btnTest.Width() + 10)
+	btnTest2.SetWidth(120)
 	btnTest2.SetCaption("DeleteSelected")
 	btnTest2.SetOnClick(func(sender vcl.IObject) {
 
@@ -193,6 +200,25 @@ func main() {
 			fmt.Println("click delete")
 			lv1.DeleteSelected()
 		}
+	})
+
+	btnTest3 := vcl.NewButton(mainForm)
+	btnTest3.SetParent(pnlbottom)
+	btnTest3.SetTop(10)
+	btnTest3.SetLeft(btnTest2.Left() + btnTest2.Width() + 10)
+	btnTest3.SetWidth(120)
+	btnTest3.SetCaption("Add Item")
+	btnTest3.SetOnClick(func(sender vcl.IObject) {
+		item := lv3.Items().Add()
+		item.SetCaption("111")
+		item.SubItems().Add("sub")
+
+		// 总是显示
+		item.MakeVisible(true)
+
+		// 如果要选中的话
+		item.SetSelected(true)
+
 	})
 
 	vcl.Application.Run()
