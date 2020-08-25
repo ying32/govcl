@@ -55,12 +55,13 @@ type eventMethod struct {
 
 // autoBindEvents 自动关联事件。
 func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, afterBindSubComponentsEvents bool) {
-	defer func() {
-		if err := recover(); err != nil {
-			fmt.Println("Calling autoBindEvents exception:", err)
-		}
-	}()
-
+	if !DEBUG {
+		defer func() {
+			if err := recover(); err != nil {
+				fmt.Println("Calling autoBindEvents exception:", err)
+			}
+		}()
+	}
 	// OnFormCreate or OnFrameCreate
 	var doCreate reflect.Value
 
@@ -202,11 +203,13 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 
 // callEvent 调用事件。
 func callEvent(event reflect.Value, params []reflect.Value) {
-	defer func() {
-		if err := recover(); err != nil {
-			fmt.Println("Calling callEvent exception:", err)
-		}
-	}()
+	if !DEBUG {
+		defer func() {
+			if err := recover(); err != nil {
+				fmt.Println("Calling callEvent exception:", err)
+			}
+		}()
+	}
 	if !event.IsValid() {
 		return
 	}
@@ -215,11 +218,13 @@ func callEvent(event reflect.Value, params []reflect.Value) {
 
 // findAndSetEvent 公用的call SetOnXXXX方法
 func findAndSetEvent(v reflect.Value, name, eventType string, method eventMethod, rootName string) {
-	defer func() {
-		if err := recover(); err != nil {
-			fmt.Println("Calling findAndSetEvent exception:", err, ", eventType:", eventType, ", rootName:", rootName)
-		}
-	}()
+	if !DEBUG {
+		defer func() {
+			if err := recover(); err != nil {
+				fmt.Println("Calling findAndSetEvent exception:", err, ", eventType:", eventType, ", rootName:", rootName)
+			}
+		}()
+	}
 	if event := v.MethodByName("SetOn" + eventType); event.IsValid() {
 		// 设置EventId
 		api.BeginAddEvent()
@@ -242,11 +247,13 @@ func findAndSetEvent(v reflect.Value, name, eventType string, method eventMethod
 
 // findAndSetComponentName 查找并设置组件名称
 func findAndSetComponentName(v reflect.Value, name string, clearDefault bool) {
-	defer func() {
-		if err := recover(); err != nil {
-			fmt.Println("Calling findAndSetComponentName exception:", err)
-		}
-	}()
+	if !DEBUG {
+		defer func() {
+			if err := recover(); err != nil {
+				fmt.Println("Calling findAndSetComponentName exception:", err)
+			}
+		}()
+	}
 	if v.Pointer() == 0 {
 		return
 	}

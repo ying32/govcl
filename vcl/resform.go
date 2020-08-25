@@ -78,11 +78,13 @@ func setFiledVal(name string, instance uintptr, v reflect.Value) {
 
 // fullFiledVal 动态创设置字段值
 func fullFiledVal(f IComponent, out interface{}, fullSubComponent, afterBindSubComponentsEvents bool) {
-	defer func() {
-		if err := recover(); err != nil {
-			fmt.Println("err:", err)
-		}
-	}()
+	if !DEBUG {
+		defer func() {
+			if err := recover(); err != nil {
+				fmt.Println("err:", err)
+			}
+		}()
+	}
 	// out是一个 **TXXForm的变量指针，未进行分配内存，表现形式为 **TXXX，每使用一个Elem()减少一个
 	vt := reflect.TypeOf(out).Elem()
 	v := reflect.New(vt.Elem())
@@ -121,12 +123,13 @@ func fullFiledVal(f IComponent, out interface{}, fullSubComponent, afterBindSubC
 
 // 共用的一个从资源中加载构建对象
 func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interface{}) IComponent {
-	defer func() {
-		if err := recover(); err != nil {
-			fmt.Println("resCreateForm Error: ", err)
-		}
-	}()
-
+	if !DEBUG {
+		defer func() {
+			if err := recover(); err != nil {
+				fmt.Println("resCreateForm Error: ", err)
+			}
+		}()
+	}
 	runtime.LockOSThread()
 	defer runtime.UnlockOSThread()
 

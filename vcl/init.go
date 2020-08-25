@@ -40,12 +40,14 @@ func toVersionString(ver uint32) string {
 }
 
 func init() {
-	defer func() {
-		if err := recover(); err != nil {
-			showError(err)
-			os.Exit(1)
-		}
-	}()
+	if !DEBUG {
+		defer func() {
+			if err := recover(); err != nil {
+				showError(err)
+				os.Exit(1)
+			}
+		}()
+	}
 	libVersion := DLibVersion()
 	fmt.Println("Library Version:", toVersionString(libVersion))
 	if libVersion < requireMinBinaryVersion {
