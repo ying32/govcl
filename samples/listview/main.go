@@ -98,17 +98,19 @@ func main() {
 	lv2 := vcl.NewListView(mainForm)
 	lv2.SetParent(mainForm)
 	lv2.SetAlign(types.AlTop)
-	lv2.SetRowSelect(true)
-	lv2.SetReadOnly(true)
+	//lv2.SetRowSelect(true)
+	//lv2.SetReadOnly(true)
 	lv2.SetViewStyle(types.VsIcon)
 	//lv2.SetSmallImages(imgList)
 	lv2.SetLargeImages(imgList)
+	// 因为这时候还没有计算altop的，所以要手动设置宽度，这样添加的值才会根据当前宽度排列
+	lv2.SetWidth(mainForm.Width())
 	//lv2.SetStateImages(imgList)
 
 	lv2.SetOnClick(func(vcl.IObject) {
 		if lv2.ItemIndex() != -1 {
 			item := lv2.Selected()
-			fmt.Println(item.Caption(), ", ", item.SubItems().Strings(0))
+			fmt.Println(item.Caption())
 		}
 	})
 	// 双击删除选中项
@@ -123,11 +125,10 @@ func main() {
 		item.SetImageIndex(0)
 		// 第一列为Caption属性所管理
 		item.SetCaption(fmt.Sprintf("%d", i))
-		item.SubItems().Add(fmt.Sprintf("值：%d", i))
 	}
 	lv2.Items().EndUpdate()
 
-	// lv3 Group
+	// lv3
 	lv3 := vcl.NewListView(mainForm)
 	lv3.SetParent(mainForm)
 	lv3.SetAlign(types.AlClient)
