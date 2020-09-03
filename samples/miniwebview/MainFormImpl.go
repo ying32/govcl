@@ -90,15 +90,11 @@ func (f *TMainForm) OnButton2Click(sender vcl.IObject) {
 
 func (f *TMainForm) OnButton3Click(sender vcl.IObject) {
 	f.EdtURL.SetText("about:blank")
-	encoding := ""
-	if rtl.LcLLoaded() {
-		encoding = ";charset=utf-8"
-	}
 	f.webView.LoadHTML(`
     <html>
       <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta http-equiv="content-type" content="text/html` + encoding + `">       
+		<meta http-equiv="content-type" content="text/html;charset=utf-8">       
         <title>从字符串加载HTML</title>
       </head>
       <body>
