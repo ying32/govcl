@@ -38,10 +38,15 @@ var (
 	dShortCutToText = libvcl.NewProc("DShortCutToText")
 
 	// TClipboard
-	clipboard_Instance       = libvcl.NewProc("Clipboard_Instance")
-	clipboard_HasFormat      = libvcl.NewProc("Clipboard_HasFormat")
-	dSetClipboard            = libvcl.NewProc("DSetClipboard")
-	dRegisterClipboardFormat = libvcl.NewProc("DRegisterClipboardFormat")
+	clipboard_Instance         = libvcl.NewProc("Clipboard_Instance")
+	clipboard_HasFormat        = libvcl.NewProc("Clipboard_HasFormat")
+	dSetClipboard              = libvcl.NewProc("DSetClipboard")
+	dRegisterClipboardFormat   = libvcl.NewProc("DRegisterClipboardFormat")
+	clipboard_GetAsHtml        = libvcl.NewProc("Clipboard_GetAsHtml")
+	clipboard_GetTextBuf       = libvcl.NewProc("Clipboard_GetTextBuf")
+	clipboard_GetAsText        = libvcl.NewProc("Clipboard_GetAsText")
+	clipboard_SetAsText        = libvcl.NewProc("Clipboard_SetAsText")
+	dPredefinedClipboardFormat = libvcl.NewProc("DPredefinedClipboardFormat")
 
 	// DSysOpen
 	dSysOpen = libvcl.NewProc("DSysOpen")

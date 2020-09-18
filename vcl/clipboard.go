@@ -130,10 +130,6 @@ func (c *TClipboard) FindFormatID(FormatName string) TClipboardFormat {
     return Clipboard_FindFormatID(c.instance, FormatName)
 }
 
-func (c *TClipboard) GetAsHtml(ExtractFragmentOnly bool) string {
-    return Clipboard_GetAsHtml(c.instance, ExtractFragmentOnly)
-}
-
 func (c *TClipboard) SupportedFormats(List IStrings) {
     Clipboard_SupportedFormats(c.instance, CheckPtr(List))
 }
@@ -148,6 +144,10 @@ func (c *TClipboard) HasPictureFormat() bool {
 
 func (c *TClipboard) SetAsHtml(Html string, PlainText string) {
     Clipboard_SetAsHtml(c.instance, Html , PlainText)
+}
+
+func (c *TClipboard) GetFormat(FormatID TClipboardFormat, Stream IStream) bool {
+    return Clipboard_GetFormat(c.instance, FormatID , CheckPtr(Stream))
 }
 
 // 复制一个对象，如果对象实现了此方法的话。
@@ -169,13 +169,6 @@ func (c *TClipboard) Close() {
 
 func (c *TClipboard) Open() {
     Clipboard_Open(c.instance)
-}
-
-// 获取控件的字符，如果有。
-//
-// Get the characters of the control, if any.
-func (c *TClipboard) GetTextBuf(Buffer string, BufSize int32) int32 {
-    return Clipboard_GetTextBuf(c.instance, Buffer , BufSize)
 }
 
 // 设置控件字符，如果有。
@@ -239,14 +232,6 @@ func (c *TClipboard) GetHashCode() int32 {
 // Text information.
 func (c *TClipboard) ToString() string {
     return Clipboard_ToString(c.instance)
-}
-
-func (c *TClipboard) AsText() string {
-    return Clipboard_GetAsText(c.instance)
-}
-
-func (c *TClipboard) SetAsText(value string) {
-    Clipboard_SetAsText(c.instance, value)
 }
 
 func (c *TClipboard) FormatCount() int32 {

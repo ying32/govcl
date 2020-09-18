@@ -21848,6 +21848,29 @@ func ImageList_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func ImageList_GetScaled(obj uintptr) bool {
+    ret, _, _ := imageList_GetScaled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ImageList_SetScaled(obj uintptr, value bool) {
+   imageList_SetScaled.Call(obj, GoBoolToDBool(value))
+}
+
+func ImageList_GetShareImages(obj uintptr) bool {
+    ret, _, _ := imageList_GetShareImages.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ImageList_SetShareImages(obj uintptr, value bool) {
+   imageList_SetShareImages.Call(obj, GoBoolToDBool(value))
+}
+
+func ImageList_GetCount(obj uintptr) int32 {
+    ret, _, _ := imageList_GetCount.Call(obj)
+    return int32(ret)
+}
+
 func ImageList_GetBlendColor(obj uintptr) TColor {
     ret, _, _ := imageList_GetBlendColor.Call(obj)
     return TColor(ret)
@@ -21915,15 +21938,6 @@ func ImageList_SetOnChange(obj uintptr, fn interface{}) {
     imageList_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
-func ImageList_GetShareImages(obj uintptr) bool {
-    ret, _, _ := imageList_GetShareImages.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ImageList_SetShareImages(obj uintptr, value bool) {
-   imageList_SetShareImages.Call(obj, GoBoolToDBool(value))
-}
-
 func ImageList_GetWidth(obj uintptr) int32 {
     ret, _, _ := imageList_GetWidth.Call(obj)
     return int32(ret)
@@ -21945,11 +21959,6 @@ func ImageList_SetDragCursor(obj uintptr, value TCursor) {
 func ImageList_GetDragging(obj uintptr) bool {
     ret, _, _ := imageList_GetDragging.Call(obj)
     return DBoolToGoBool(ret)
-}
-
-func ImageList_GetCount(obj uintptr) int32 {
-    ret, _, _ := imageList_GetCount.Call(obj)
-    return int32(ret)
 }
 
 func ImageList_GetComponentCount(obj uintptr) int32 {
@@ -41968,11 +41977,6 @@ func Clipboard_FindFormatID(obj uintptr, FormatName string) TClipboardFormat {
     return TClipboardFormat(ret)
 }
 
-func Clipboard_GetAsHtml(obj uintptr, ExtractFragmentOnly bool) string {
-    ret, _, _ := clipboard_GetAsHtml.Call(obj, GoBoolToDBool(ExtractFragmentOnly) )
-    return DStrToGoStr(ret)
-}
-
 func Clipboard_SupportedFormats(obj uintptr, List uintptr)  {
     clipboard_SupportedFormats.Call(obj, List )
 }
@@ -41991,6 +41995,11 @@ func Clipboard_SetAsHtml(obj uintptr, Html string, PlainText string)  {
     clipboard_SetAsHtml.Call(obj, GoStrToDStr(Html) , GoStrToDStr(PlainText) )
 }
 
+func Clipboard_GetFormat(obj uintptr, FormatID TClipboardFormat, Stream uintptr) bool {
+    ret, _, _ := clipboard_GetFormat.Call(obj, uintptr(FormatID) , Stream )
+    return DBoolToGoBool(ret)
+}
+
 func Clipboard_Assign(obj uintptr, Source uintptr)  {
     clipboard_Assign.Call(obj, Source )
 }
@@ -42005,11 +42014,6 @@ func Clipboard_Close(obj uintptr)  {
 
 func Clipboard_Open(obj uintptr)  {
     clipboard_Open.Call(obj)
-}
-
-func Clipboard_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := clipboard_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
-    return int32(ret)
 }
 
 func Clipboard_SetTextBuf(obj uintptr, Buffer string)  {
@@ -42054,15 +42058,6 @@ func Clipboard_GetHashCode(obj uintptr) int32 {
 func Clipboard_ToString(obj uintptr) string {
     ret, _, _ := clipboard_ToString.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func Clipboard_GetAsText(obj uintptr) string {
-    ret, _, _ := clipboard_GetAsText.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func Clipboard_SetAsText(obj uintptr, value string) {
-   clipboard_SetAsText.Call(obj, GoStrToDStr(value))
 }
 
 func Clipboard_GetFormatCount(obj uintptr) int32 {

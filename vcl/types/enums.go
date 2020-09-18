@@ -2294,3 +2294,18 @@ const (
 
 //SET:TListItemState
 type TListItemStates = TSet
+
+//ENUM:
+type TPredefinedClipboardFormat int32
+
+const (
+	PcfText = iota + 0
+	PcfBitmap
+	PcfPixmap
+	PcfIcon
+	PcfPicture
+	PcfMetaFilePict
+	PcfObject
+	PcfComponent
+	PcfCustomData
+)

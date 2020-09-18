@@ -275,6 +275,26 @@ func (i *TImageList) ToString() string {
     return ImageList_ToString(i.instance)
 }
 
+func (i *TImageList) Scaled() bool {
+    return ImageList_GetScaled(i.instance)
+}
+
+func (i *TImageList) SetScaled(value bool) {
+    ImageList_SetScaled(i.instance, value)
+}
+
+func (i *TImageList) ShareImages() bool {
+    return ImageList_GetShareImages(i.instance)
+}
+
+func (i *TImageList) SetShareImages(value bool) {
+    ImageList_SetShareImages(i.instance, value)
+}
+
+func (i *TImageList) Count() int32 {
+    return ImageList_GetCount(i.instance)
+}
+
 func (i *TImageList) BlendColor() TColor {
     return ImageList_GetBlendColor(i.instance)
 }
@@ -344,14 +364,6 @@ func (i *TImageList) SetOnChange(fn TNotifyEvent) {
     ImageList_SetOnChange(i.instance, fn)
 }
 
-func (i *TImageList) ShareImages() bool {
-    return ImageList_GetShareImages(i.instance)
-}
-
-func (i *TImageList) SetShareImages(value bool) {
-    ImageList_SetShareImages(i.instance, value)
-}
-
 // 获取宽度。
 //
 // Get width.
@@ -385,10 +397,6 @@ func (i *TImageList) SetDragCursor(value TCursor) {
 // Get Is it in the middle of dragging.
 func (i *TImageList) Dragging() bool {
     return ImageList_GetDragging(i.instance)
-}
-
-func (i *TImageList) Count() int32 {
-    return ImageList_GetCount(i.instance)
 }
 
 // 获取组件总数。
