@@ -71,6 +71,10 @@ func hashOf(val interface{}) uintptr {
 	// 反之使用默认的行为。
 	if addingEvent {
 		if currentEventId > 0 {
+			// 防止重复的存在
+			if _, ok := eventCallbackMap.Load(currentEventId); ok {
+				currentEventId = currentEventId + 1024
+			}
 			return currentEventId
 		} else {
 			return 0
