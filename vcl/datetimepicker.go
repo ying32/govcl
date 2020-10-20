@@ -977,6 +977,10 @@ func (d *TDateTimePicker) SetOnClick(fn TNotifyEvent) {
     DateTimePicker_SetOnClick(d.instance, fn)
 }
 
+func (d *TDateTimePicker) SetOnCloseUp(fn TNotifyEvent) {
+    DateTimePicker_SetOnCloseUp(d.instance, fn)
+}
+
 // 设置改变事件。
 //
 // Set changed event.

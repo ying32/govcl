@@ -513,6 +513,10 @@ func (r *TRadioGroup) ScaleFontsPPI(AToPPI int32, AProportion float64) {
     RadioGroup_ScaleFontsPPI(r.instance, AToPPI , AProportion)
 }
 
+func (r *TRadioGroup) SetOnSelectionChanged(fn TNotifyEvent) {
+    RadioGroup_SetOnSelectionChanged(r.instance, fn)
+}
+
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.

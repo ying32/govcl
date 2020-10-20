@@ -65,23 +65,27 @@ func IsNil(val interface{}) bool {
 	return ptr.tpy == 0 || ptr.val == nil
 }
 
+func QueryId(v1, v2 uintptr) uintptr {
+	id := v1 + v2
+	if _, ok := eventCallbackMap.Load(id); ok {
+		id += 1024
+	}
+	return id
+}
+
 // hashOf
-func hashOf(val interface{}) uintptr {
+func hashOf(obj uintptr, val interface{}) uintptr {
 	// 如果正在使用beginAddEvent和EndAddEvent则直接取这个值。
 	// 反之使用默认的行为。
 	if addingEvent {
 		if currentEventId > 0 {
-			// 防止重复的存在
-			if _, ok := eventCallbackMap.Load(currentEventId); ok {
-				currentEventId = currentEventId + 1024
-			}
 			return currentEventId
 		} else {
 			return 0
 		}
 	}
 	// 默认返回ID
-	return reflect.ValueOf(val).Pointer() //getInterfaceVal(val)
+	return QueryId(obj, reflect.ValueOf(val).Pointer()) //getInterfaceVal(val)
 }
 
 // 以下三个函数留给自动绑定事件使用。
@@ -100,14 +104,14 @@ func SetCurrentEventId(id uintptr) {
 }
 
 // 将事件添加到查找表中
-func addEventToMap(f interface{}) uintptr {
-	p := hashOf(f)
+func addEventToMap(obj uintptr, f interface{}) uintptr {
+	p := hashOf(obj, f)
 	eventCallbackMap.Store(p, f)
 	return p
 }
 
 //
-func GetaddEventToMapFn() func(f interface{}) uintptr {
+func GetaddEventToMapFn() func(obj uintptr, f interface{}) uintptr {
 	return addEventToMap
 }
 
@@ -122,8 +126,8 @@ func RemoveEventCallbackOf(Id uintptr) {
 }
 
 // 添加消息事件到消息表中
-func addMessageEventToMap(f interface{}) uintptr {
-	p := hashOf(f)
+func addMessageEventToMap(obj uintptr, f interface{}) uintptr {
+	p := hashOf(obj, f)
 	messageCallbackMap.Store(p, f)
 	return p
 }

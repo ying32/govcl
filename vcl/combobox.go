@@ -903,6 +903,10 @@ func (c *TComboBox) SetOnClick(fn TNotifyEvent) {
     ComboBox_SetOnClick(c.instance, fn)
 }
 
+func (c *TComboBox) SetOnCloseUp(fn TNotifyEvent) {
+    ComboBox_SetOnCloseUp(c.instance, fn)
+}
+
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.

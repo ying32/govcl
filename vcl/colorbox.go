@@ -828,6 +828,10 @@ func (c *TColorBox) SetOnChange(fn TNotifyEvent) {
     ColorBox_SetOnChange(c.instance, fn)
 }
 
+func (c *TColorBox) SetOnCloseUp(fn TNotifyEvent) {
+    ColorBox_SetOnCloseUp(c.instance, fn)
+}
+
 // 设置控件单击事件。
 //
 // Set control click event.

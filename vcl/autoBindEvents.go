@@ -229,9 +229,7 @@ func findAndSetEvent(v reflect.Value, name, eventType string, method eventMethod
 		// 设置EventId
 		api.BeginAddEvent()
 		defer api.EndAddEvent()
-		//fmt.Println("findAndSetEvent: ", method.FuncPtr)
-		api.SetCurrentEventId(method.FuncPtr + v.Pointer())
-
+		api.SetCurrentEventId(api.QueryId(method.FuncPtr, v.Pointer()))
 		event.Call([]reflect.Value{method.Method})
 	} else {
 		if len(eventType) > 0 {
