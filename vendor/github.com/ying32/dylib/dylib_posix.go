@@ -130,15 +130,14 @@ func NewLazyDLL(name string) *LazyDLL {
 	defer C.free(unsafe.Pointer(cRelName))
 
 	if C.realpath(cRelName, cPath) == nil {
-		m.err = fmt.Errorf("NewLazyDLL(\"%s\"): realpath failed.", name)
-		return m
+		m.handle = C.libOpen(cRelName)
+	} else {
+		m.handle = C.libOpen(cPath)
 	}
-	m.handle = C.libOpen(cPath)
 	if m.handle == 0 {
 		m.err = fmt.Errorf("dlopen(\"%s\"), failed.", name)
 		return m
 	}
-
 	// 导入调用的, 实现一个动态调用call的，主要是为了解决异常问题
 	m.mySyscall = m.NewProc("MySyscall")
 	if m.mySyscall.Find() != nil {
@@ -163,26 +162,6 @@ func (l *LazyDLL) libFullPath(name string) string {
 	if runtime.GOOS == "darwin" {
 		file, _ := exec.LookPath(os.Args[0])
 		return filepath.Dir(file) + "/" + name
-	}
-	if fileExists(name) {
-		return name
-	} else {
-		_x86path := "/usr/lib/" + name
-		_x64path := "/usr/lib/x86_64-linux-gnu/" + name
-		if runtime.GOARCH == "amd64" {
-			if fileExists(_x64path) {
-				return _x64path
-			} else {
-				// 先兼容之前的，以后要移除，因为以前的不熟造成的错误。
-				if fileExists(_x86path) {
-					return _x86path
-				}
-			}
-		} else {
-			if fileExists(_x86path) {
-				return _x86path
-			}
-		}
 	}
 	return name
 }
