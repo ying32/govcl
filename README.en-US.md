@@ -26,9 +26,9 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 [![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.7.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.7/liblcl-2.0.7.zip)  
 
 
-### res2go Tool([doc, source code](Tools/res2go))    
+### res2go IDE plugin source code（[source code](https://github.com/ying32/res2go-ide-plugin)）  
 
-**Need to compile yourself: [Compile Guide](Tools/res2go/src/README.en-US.md)**   
+**How to use: [Installation method](https://gitee.com/ying32/govcl/wikis/pages?sort_id=2645001&doc_id=102420)**   
 
 > Note: Designed in Lazarus, code written in Golang.  
  

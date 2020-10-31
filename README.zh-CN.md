@@ -27,9 +27,9 @@
 [![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.7.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.7/liblcl-2.0.7.zip)  
 
 
-### res2go工具下载（[文档、源代码](Tools/res2go)）  
+### res2go IDE插件源代码（[源代码](https://github.com/ying32/res2go-ide-plugin)）  
 
-**需要自己编译: [编译方法](Tools/res2go/src/README.md)**   
+**使用方法: [安装方法](https://gitee.com/ying32/govcl/wikis/pages?sort_id=2645001&doc_id=102420)**   
 
 > 注：用Lazarus设计界面，用Golang写代码。    
   
