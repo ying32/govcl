@@ -672,6 +672,14 @@ func (b *TBitBtn) SetGlyph(value *TBitmap) {
     BitBtn_SetGlyph(b.instance, CheckPtr(value))
 }
 
+func (b *TBitBtn) Kind() TBitBtnKind {
+    return BitBtn_GetKind(b.instance)
+}
+
+func (b *TBitBtn) SetKind(value TBitBtnKind) {
+    BitBtn_SetKind(b.instance, value)
+}
+
 func (b *TBitBtn) Layout() TButtonLayout {
     return BitBtn_GetLayout(b.instance)
 }

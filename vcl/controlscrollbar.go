@@ -168,6 +168,10 @@ func (c *TControlScrollBar) ToString() string {
     return ControlScrollBar_ToString(c.instance)
 }
 
+func (c *TControlScrollBar) Kind() TScrollBarKind {
+    return ControlScrollBar_GetKind(c.instance)
+}
+
 func (c *TControlScrollBar) ScrollPos() int32 {
     return ControlScrollBar_GetScrollPos(c.instance)
 }

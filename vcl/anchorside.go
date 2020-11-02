@@ -171,6 +171,10 @@ func (a *TAnchorSide) Owner() *TControl {
     return AsControl(AnchorSide_GetOwner(a.instance))
 }
 
+func (a *TAnchorSide) Kind() TAnchorKind {
+    return AnchorSide_GetKind(a.instance)
+}
+
 func (a *TAnchorSide) Control() *TControl {
     return AsControl(AnchorSide_GetControl(a.instance))
 }

@@ -629,6 +629,14 @@ func (s *TScrollBar) SetEnabled(value bool) {
     ScrollBar_SetEnabled(s.instance, value)
 }
 
+func (s *TScrollBar) Kind() TScrollBarKind {
+    return ScrollBar_GetKind(s.instance)
+}
+
+func (s *TScrollBar) SetKind(value TScrollBarKind) {
+    ScrollBar_SetKind(s.instance, value)
+}
+
 func (s *TScrollBar) LargeChange() TScrollBarInc {
     return ScrollBar_GetLargeChange(s.instance)
 }

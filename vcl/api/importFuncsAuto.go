@@ -24382,6 +24382,15 @@ func DateTimePicker_SetFont(obj uintptr, value uintptr) {
    dateTimePicker_SetFont.Call(obj, value)
 }
 
+func DateTimePicker_GetKind(obj uintptr) TDateTimeKind {
+    ret, _, _ := dateTimePicker_GetKind.Call(obj)
+    return TDateTimeKind(ret)
+}
+
+func DateTimePicker_SetKind(obj uintptr, value TDateTimeKind) {
+   dateTimePicker_SetKind.Call(obj, uintptr(value))
+}
+
 func DateTimePicker_GetMaxDate(obj uintptr) time.Time {
     ret, _, _ := dateTimePicker_GetMaxDate.Call(obj)
     return time.Unix(int64(ret), 0)
@@ -30848,6 +30857,15 @@ func BitBtn_GetGlyph(obj uintptr) uintptr {
 
 func BitBtn_SetGlyph(obj uintptr, value uintptr) {
    bitBtn_SetGlyph.Call(obj, value)
+}
+
+func BitBtn_GetKind(obj uintptr) TBitBtnKind {
+    ret, _, _ := bitBtn_GetKind.Call(obj)
+    return TBitBtnKind(ret)
+}
+
+func BitBtn_SetKind(obj uintptr, value TBitBtnKind) {
+   bitBtn_SetKind.Call(obj, uintptr(value))
 }
 
 func BitBtn_GetLayout(obj uintptr) TButtonLayout {
@@ -43961,6 +43979,15 @@ func ScrollBar_SetEnabled(obj uintptr, value bool) {
    scrollBar_SetEnabled.Call(obj, GoBoolToDBool(value))
 }
 
+func ScrollBar_GetKind(obj uintptr) TScrollBarKind {
+    ret, _, _ := scrollBar_GetKind.Call(obj)
+    return TScrollBarKind(ret)
+}
+
+func ScrollBar_SetKind(obj uintptr, value TScrollBarKind) {
+   scrollBar_SetKind.Call(obj, uintptr(value))
+}
+
 func ScrollBar_GetLargeChange(obj uintptr) TScrollBarInc {
     ret, _, _ := scrollBar_GetLargeChange.Call(obj)
     return TScrollBarInc(ret)
@@ -49023,6 +49050,15 @@ func Gauge_GetFont(obj uintptr) uintptr {
 
 func Gauge_SetFont(obj uintptr, value uintptr) {
    gauge_SetFont.Call(obj, value)
+}
+
+func Gauge_GetKind(obj uintptr) TGaugeKind {
+    ret, _, _ := gauge_GetKind.Call(obj)
+    return TGaugeKind(ret)
+}
+
+func Gauge_SetKind(obj uintptr, value TGaugeKind) {
+   gauge_SetKind.Call(obj, uintptr(value))
 }
 
 func Gauge_GetMinValue(obj uintptr) int32 {
@@ -63492,6 +63528,11 @@ func ControlScrollBar_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func ControlScrollBar_GetKind(obj uintptr) TScrollBarKind {
+    ret, _, _ := controlScrollBar_GetKind.Call(obj)
+    return TScrollBarKind(ret)
+}
+
 func ControlScrollBar_GetScrollPos(obj uintptr) int32 {
     ret, _, _ := controlScrollBar_GetScrollPos.Call(obj)
     return int32(ret)
@@ -64407,6 +64448,11 @@ func AnchorSide_ToString(obj uintptr) string {
 func AnchorSide_GetOwner(obj uintptr) uintptr {
     ret, _, _ := anchorSide_GetOwner.Call(obj)
     return ret
+}
+
+func AnchorSide_GetKind(obj uintptr) TAnchorKind {
+    ret, _, _ := anchorSide_GetKind.Call(obj)
+    return TAnchorKind(ret)
 }
 
 func AnchorSide_GetControl(obj uintptr) uintptr {

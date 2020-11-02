@@ -516,6 +516,14 @@ func (g *TGauge) SetFont(value *TFont) {
     Gauge_SetFont(g.instance, CheckPtr(value))
 }
 
+func (g *TGauge) Kind() TGaugeKind {
+    return Gauge_GetKind(g.instance)
+}
+
+func (g *TGauge) SetKind(value TGaugeKind) {
+    Gauge_SetKind(g.instance, value)
+}
+
 func (g *TGauge) MinValue() int32 {
     return Gauge_GetMinValue(g.instance)
 }

@@ -832,6 +832,14 @@ func (d *TDateTimePicker) SetFont(value *TFont) {
     DateTimePicker_SetFont(d.instance, CheckPtr(value))
 }
 
+func (d *TDateTimePicker) Kind() TDateTimeKind {
+    return DateTimePicker_GetKind(d.instance)
+}
+
+func (d *TDateTimePicker) SetKind(value TDateTimeKind) {
+    DateTimePicker_SetKind(d.instance, value)
+}
+
 func (d *TDateTimePicker) MaxDate() time.Time {
     return DateTimePicker_GetMaxDate(d.instance)
 }
