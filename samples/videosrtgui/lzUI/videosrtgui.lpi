@@ -18,6 +18,7 @@
     <Res2go>
       <Enabled Value="True"/>
       <OutputPath Value="../"/>
+      <GoRoot Value="F:\Program Files (x86)\Golang\go"/>
     </Res2go>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
@@ -79,7 +80,10 @@
       <Unit6>
         <Filename Value="unewaliyunaudioengine.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="NewAliyunAudioEngine"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uNewAliyunAudioEngine"/>
       </Unit6>
     </Units>
   </ProjectOptions>

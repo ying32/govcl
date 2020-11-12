@@ -2,7 +2,6 @@
 package main
 
 import (
-    _ "github.com/ying32/govcl/pkgs/winappres"
     "github.com/ying32/govcl/vcl"
 )
 
@@ -17,5 +16,6 @@ func main() {
     vcl.Application.CreateForm(&NewBaiduTranslateEngine)
     vcl.Application.CreateForm(&NewTencentTranslateEngine)
     vcl.Application.CreateForm(&OSSSaveSettings)
+    vcl.Application.CreateForm(&NewAliyunAudioEngine)
     vcl.Application.Run()
 }

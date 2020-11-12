@@ -22,6 +22,7 @@ begin
   Application.CreateForm(TNewBaiduTranslateEngine, NewBaiduTranslateEngine);
   Application.CreateForm(TNewTencentTranslateEngine, NewTencentTranslateEngine);
   Application.CreateForm(TOSSSaveSettings, OSSSaveSettings);
+  Application.CreateForm(TNewAliyunAudioEngine, NewAliyunAudioEngine);
   Application.Run;
 end.
 

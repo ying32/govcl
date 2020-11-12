@@ -8,11 +8,11 @@
       <Unit0>
         <Filename Value="videosrtgui.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="-1"/>
-        <TopLine Value="-1"/>
-        <CursorPos X="-1" Y="-1"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="71" Y="25"/>
         <UsageCount Value="20"/>
+        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="umain.pas"/>
@@ -21,12 +21,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMain"/>
-        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="161"/>
         <CursorPos X="23" Y="170"/>
         <UsageCount Value="20"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="uuappsettings.pas"/>
@@ -75,12 +73,14 @@
       <Unit6>
         <Filename Value="unewaliyunaudioengine.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="NewAliyunAudioEngine"/>
         <HasResources Value="True"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="-1"/>
-        <TopLine Value="-1"/>
-        <CursorPos X="-1" Y="-1"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uNewAliyunAudioEngine"/>
+        <EditorIndex Value="1"/>
         <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="uunewaliyunaudioengine.pas"/>
@@ -101,7 +101,7 @@
       <Unit9>
         <Filename Value="F:\lazarus\lcl\menus.pp"/>
         <UnitName Value="Menus"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="411"/>
         <CursorPos X="17" Y="429"/>
         <UsageCount Value="10"/>
@@ -109,7 +109,7 @@
       </Unit9>
       <Unit10>
         <Filename Value="F:\lazarus\lcl\include\popupmenu.inc"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="61"/>
         <CursorPos X="3" Y="65"/>
         <UsageCount Value="10"/>
@@ -118,7 +118,6 @@
       <Unit11>
         <Filename Value="F:\lazarus\lcl\comctrls.pp"/>
         <UnitName Value="ComCtrls"/>
-        <EditorIndex Value="1"/>
         <TopLine Value="2116"/>
         <CursorPos X="31" Y="2133"/>
         <UsageCount Value="10"/>
@@ -126,7 +125,7 @@
       </Unit11>
       <Unit12>
         <Filename Value="F:\lazarus\lcl\include\toolbutton.inc"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="883"/>
         <CursorPos X="42" Y="907"/>
         <UsageCount Value="10"/>
@@ -134,130 +133,34 @@
       </Unit12>
       <Unit13>
         <Filename Value="F:\lazarus\lcl\include\toolbar.inc"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="1091"/>
         <CursorPos X="3" Y="1075"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit13>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="5" HistoryIndex="4">
       <Position1>
-        <Filename Value="umain.pas"/>
-        <Caret Line="98" Column="3" TopLine="63"/>
-      </Position1>
-      <Position2>
-        <Filename Value="umain.pas"/>
-        <Caret Line="99" Column="3" TopLine="64"/>
-      </Position2>
-      <Position3>
-        <Filename Value="umain.pas"/>
-        <Caret Line="80" Column="80" TopLine="70"/>
-      </Position3>
-      <Position4>
-        <Filename Value="umain.pas"/>
-        <Caret Line="110" Column="3" TopLine="75"/>
-      </Position4>
-      <Position5>
-        <Filename Value="umain.pas"/>
-        <Caret Line="111" Column="3" TopLine="76"/>
-      </Position5>
-      <Position6>
-        <Filename Value="umain.pas"/>
-        <Caret Line="107" Column="3" TopLine="76"/>
-      </Position6>
-      <Position7>
-        <Filename Value="umain.pas"/>
-        <Caret Line="118" Column="3" TopLine="94"/>
-      </Position7>
-      <Position8>
-        <Filename Value="umain.pas"/>
-        <Caret Line="129" Column="3" TopLine="95"/>
-      </Position8>
-      <Position9>
-        <Filename Value="umain.pas"/>
-        <Caret Line="118" Column="55" TopLine="106"/>
-      </Position9>
-      <Position10>
-        <Filename Value="umain.pas"/>
-        <Caret Line="131" Column="3" TopLine="107"/>
-      </Position10>
-      <Position11>
-        <Filename Value="umain.pas"/>
-        <Caret Line="112" Column="3" TopLine="112"/>
-      </Position11>
-      <Position12>
-        <Filename Value="umain.pas"/>
-        <Caret Line="133" Column="3" TopLine="113"/>
-      </Position12>
-      <Position13>
-        <Filename Value="umain.pas"/>
-        <Caret Line="139" Column="3" TopLine="114"/>
-      </Position13>
-      <Position14>
-        <Filename Value="umain.pas"/>
-        <Caret Line="145" Column="3" TopLine="115"/>
-      </Position14>
-      <Position15>
-        <Filename Value="umain.pas"/>
-        <Caret Line="120" Column="6" TopLine="115"/>
-      </Position15>
-      <Position16>
-        <Filename Value="umain.pas"/>
-        <Caret Line="119" Column="6" TopLine="114"/>
-      </Position16>
-      <Position17>
-        <Filename Value="umain.pas"/>
-        <Caret Line="121" Column="6" TopLine="116"/>
-      </Position17>
-      <Position18>
-        <Filename Value="umain.pas"/>
-        <Caret Line="175" Column="33" TopLine="147"/>
-      </Position18>
-      <Position19>
-        <Filename Value="umain.pas"/>
-        <Caret Line="178" TopLine="143"/>
-      </Position19>
-      <Position20>
-        <Filename Value="umain.pas"/>
-        <Caret Line="177" Column="3" TopLine="144"/>
-      </Position20>
-      <Position21>
-        <Filename Value="umain.pas"/>
-        <Caret Line="173" Column="3" TopLine="145"/>
-      </Position21>
-      <Position22>
-        <Filename Value="umain.pas"/>
-        <Caret Line="189" Column="3" TopLine="161"/>
-      </Position22>
-      <Position23>
-        <Filename Value="umain.pas"/>
-        <Caret Line="188" Column="31" TopLine="161"/>
-      </Position23>
-      <Position24>
         <Filename Value="F:\lazarus\lcl\menus.pp"/>
         <Caret Line="429" Column="17" TopLine="411"/>
-      </Position24>
-      <Position25>
-        <Filename Value="umain.pas"/>
-        <Caret Line="194" Column="22" TopLine="161"/>
-      </Position25>
-      <Position26>
+      </Position1>
+      <Position2>
         <Filename Value="F:\lazarus\lcl\comctrls.pp"/>
         <Caret Line="2134" Column="15" TopLine="2117"/>
-      </Position26>
-      <Position27>
+      </Position2>
+      <Position3>
         <Filename Value="F:\lazarus\lcl\include\toolbutton.inc"/>
         <Caret Line="907" Column="42" TopLine="883"/>
-      </Position27>
-      <Position28>
+      </Position3>
+      <Position4>
         <Filename Value="F:\lazarus\lcl\comctrls.pp"/>
         <Caret Line="2291" Column="14" TopLine="2273"/>
-      </Position28>
-      <Position29>
+      </Position4>
+      <Position5>
         <Filename Value="F:\lazarus\lcl\comctrls.pp"/>
         <Caret Line="2291" Column="14" TopLine="2273"/>
-      </Position29>
+      </Position5>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
