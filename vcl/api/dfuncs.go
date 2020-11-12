@@ -53,24 +53,27 @@ type interfacePtr struct {
 	val *uintptr
 }
 
-func getInterfaceVal(value interface{}) uintptr {
-	if ptr := (*interfacePtr)(unsafe.Pointer(&value)).val; ptr != nil {
-		return *ptr
-	}
-	return 0
-}
-
 func IsNil(val interface{}) bool {
 	ptr := (*interfacePtr)(unsafe.Pointer(&val))
 	return ptr.tpy == 0 || ptr.val == nil
 }
 
-func QueryId(v1, v2 uintptr) uintptr {
-	id := v1 + v2
-	if _, ok := eventCallbackMap.Load(id); ok {
-		id += 1024
+// 用作事件的唯一id
+func GetUID(v1, v2 uintptr) uintptr {
+	if v1 == 0 && v2 == 0 {
+		return 0
 	}
-	return id
+	val := struct {
+		v1, v2 uintptr
+	}{v1, v2}
+	var result uintptr
+	p := (*byte)(unsafe.Pointer(&val))
+	for i := 0; i < int(unsafe.Sizeof(val)); i++ {
+		result = ((result << 2) | (result >> (unsafe.Sizeof(result)*8 - 2))) ^ uintptr(*p)
+		p = (*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(p)) + 1))
+	}
+	//fmt.Println("UID:", result, ", v1=", v1, ", v2=", v2)
+	return uintptr(result)
 }
 
 // hashOf
@@ -85,7 +88,7 @@ func hashOf(obj uintptr, val interface{}) uintptr {
 		}
 	}
 	// 默认返回ID
-	return QueryId(obj, reflect.ValueOf(val).Pointer()) //getInterfaceVal(val)
+	return GetUID(obj, reflect.ValueOf(val).Pointer())
 }
 
 // 以下三个函数留给自动绑定事件使用。
@@ -111,7 +114,7 @@ func addEventToMap(obj uintptr, f interface{}) uintptr {
 }
 
 //
-func GetaddEventToMapFn() func(obj uintptr, f interface{}) uintptr {
+func GetAddEventToMapFn() func(obj uintptr, f interface{}) uintptr {
 	return addEventToMap
 }
 
