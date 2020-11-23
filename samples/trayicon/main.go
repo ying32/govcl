@@ -100,9 +100,10 @@ func main() {
 // 主要是用于linux跟macOS下，因为不能像Windows一样直接内置到资源中
 func loadMainIconFromStream(outIcon *vcl.TIcon) {
 	if outIcon.IsValid() {
-		mem := vcl.NewMemoryStreamFromBytes(mainIconBytes)
-		defer mem.Free() // 不要在阻塞的时候使用defer不然会一直到阻塞结束才释放，这里使用是因为这个函数结束了就释放了
-		mem.SetPosition(0)
-		outIcon.LoadFromStream(mem)
+		//mem := vcl.NewMemoryStreamFromBytes(mainIconBytes)
+		//defer mem.Free() // 不要在阻塞的时候使用defer不然会一直到阻塞结束才释放，这里使用是因为这个函数结束了就释放了
+		//mem.SetPosition(0)
+		//outIcon.LoadFromStream(mem)
+		outIcon.LoadFromBytes(mainIconBytes)
 	}
 }

@@ -41,11 +41,8 @@ func ToPngImage(img image.Image) (*vcl.TPngImage, error) {
 	if err := png.Encode(buff, img); err != nil {
 		return nil, err
 	}
-	mem := vcl.NewMemoryStreamFromBytes(buff.Bytes())
-	defer mem.Free()
-	mem.SetPosition(0)
 	obj := vcl.NewPngImage()
-	obj.LoadFromStream(mem)
+	obj.LoadFromBytes(buff.Bytes())
 	return obj, nil
 }
 
@@ -96,11 +93,8 @@ func ToJPEGImage(img image.Image, quality int) (*vcl.TJPEGImage, error) {
 	if err := jpeg.Encode(buff, img, &jpeg.Options{quality}); err != nil {
 		return nil, err
 	}
-	mem := vcl.NewMemoryStreamFromBytes(buff.Bytes())
-	defer mem.Free()
-	mem.SetPosition(0)
 	obj := vcl.NewJPEGImage()
-	obj.LoadFromStream(mem)
+	obj.LoadFromBytes(buff.Bytes())
 	return obj, nil
 }
 
@@ -114,11 +108,8 @@ func ToGIFImage(img image.Image) (*vcl.TGIFImage, error) {
 	if err := gif.Encode(buff, img, &gif.Options{NumColors: 256}); err != nil {
 		return nil, err
 	}
-	mem := vcl.NewMemoryStreamFromBytes(buff.Bytes())
-	defer mem.Free()
-	mem.SetPosition(0)
 	obj := vcl.NewGIFImage()
-	obj.LoadFromStream(mem)
+	obj.LoadFromBytes(buff.Bytes())
 	return obj, nil
 }
 

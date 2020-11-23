@@ -75,12 +75,13 @@ func (f *TMainForm) OnButtonClick(sender vcl.IObject) {
 	// 这里画个图片
 
 	jpgImg := vcl.NewJPEGImage()
-	stream := vcl.NewMemoryStreamFromBytes(testImgBytes)
-	stream.SetPosition(0)
-	jpgImg.LoadFromStream(stream)
+	//stream := vcl.NewMemoryStreamFromBytes(testImgBytes)
+	//stream.SetPosition(0)
+	//jpgImg.LoadFromStream(stream)
+	jpgImg.LoadFromBytes(testImgBytes)
 	canvas.Draw(200, 200, jpgImg)
 	//canvas.StretchDraw(types.TRect{10, 10, int32(float64(jpgImg.Width()) * rx), int32(float64(jpgImg.Height()) * rx)}, jpgImg)
-	stream.Free()
+	//stream.Free()
 	jpgImg.Free()
 
 	// 新建一页

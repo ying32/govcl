@@ -31,11 +31,12 @@ func main() {
 	// 本地加载
 	jpgFileName := "./1.jpg"
 	if rtl.FileExists(jpgFileName) {
-		mem := vcl.NewMemoryStream()
-		mem.LoadFromFile(jpgFileName)
-		mem.SetPosition(0)
-		img.Picture().LoadFromStream(mem)
-		mem.Free()
+		//mem := vcl.NewMemoryStream()
+		//mem.LoadFromFile(jpgFileName)
+		//mem.SetPosition(0)
+		//img.Picture().LoadFromStream(mem)
+		img.Picture().LoadFromFile(jpgFileName)
+		//mem.Free()
 	}
 
 	// 网络图片加载
@@ -52,14 +53,15 @@ func main() {
 			defer resp.Body.Close()
 			bs, err := ioutil.ReadAll(resp.Body)
 			if err == nil {
-				mem := vcl.NewMemoryStream()
-				defer mem.Free()
-				mem.Write(bs)
-				mem.SetPosition(0)
+				//mem := vcl.NewMemoryStream()
+				//defer mem.Free()
+				//mem.Write(bs)
+				//mem.SetPosition(0)
 				// 让以下代码运行在主线程中
 				vcl.ThreadSync(func() {
 					fmt.Println("main:currentThreadId3:", GetCurrentThreadId())
-					img2.Picture().LoadFromStream(mem)
+					//img2.Picture().LoadFromStream(mem)
+					img2.Picture().LoadFromBytes(bs)
 				})
 				fmt.Println("测试运行到此。")
 			} else {
