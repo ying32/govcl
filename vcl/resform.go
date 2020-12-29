@@ -76,8 +76,17 @@ func setFiledVal(name string, instance uintptr, v reflect.Value) {
 	}
 }
 
+func newGoFormInstance(out interface{}) reflect.Value {
+	// out是一个 **TXXForm的变量指针，未进行分配内存，表现形式为 **TXXX，每使用一个Elem()减少一个
+	vt := reflect.TypeOf(out).Elem()
+	v := reflect.New(vt.Elem())
+	// 将实例化后的值填充到out指针变量中，这里要能修改的需要使用Elem()方法获取
+	reflect.ValueOf(out).Elem().Set(v)
+	return v
+}
+
 // fullFiledVal 动态创设置字段值
-func fullFiledVal(f IComponent, out interface{}, fullSubComponent, afterBindSubComponentsEvents bool) {
+func fullFiledVal(f IComponent, goInstance reflect.Value, fullSubComponent, afterBindSubComponentsEvents bool) {
 	if !DEBUG {
 		defer func() {
 			if err := recover(); err != nil {
@@ -85,13 +94,8 @@ func fullFiledVal(f IComponent, out interface{}, fullSubComponent, afterBindSubC
 			}
 		}()
 	}
-	// out是一个 **TXXForm的变量指针，未进行分配内存，表现形式为 **TXXX，每使用一个Elem()减少一个
-	vt := reflect.TypeOf(out).Elem()
-	v := reflect.New(vt.Elem())
-	// 将实例化后的值填充到out指针变量中，这里要能修改的需要使用Elem()方法获取
-	reflect.ValueOf(out).Elem().Set(v)
 	// 获取指针类型
-	vPtr := v.Elem()
+	vPtr := goInstance.Elem()
 	// 检查是否有效，并且可以被设置
 	if vPtr.IsValid() && vPtr.CanSet() {
 		// 如果没有名字，就指定一个名字，名字以当前类，如果首个为T则去除
@@ -117,12 +121,12 @@ func fullFiledVal(f IComponent, out interface{}, fullSubComponent, afterBindSubC
 			}
 		}
 		// 关联事件
-		autoBindEvents(v, f, fullSubComponent, afterBindSubComponentsEvents)
+		autoBindEvents(goInstance, f, fullSubComponent, afterBindSubComponentsEvents)
 	}
 }
 
 // 共用的一个从资源中加载构建对象
-func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interface{}) IComponent {
+func resObjectBuild(typ int, owner IComponent, appInst uintptr, fields ...interface{}) IComponent {
 	if !DEBUG {
 		defer func() {
 			if err := recover(); err != nil {
@@ -136,18 +140,26 @@ func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interfac
 	var fullSubComponent bool
 	var afterBindSubComponentsEvents bool
 	var field1 interface{}
+	var goInstance reflect.Value
 
 	// 初始创建时是否使用缩放
 	initScale := false
-	//initScale := len(fields) != 2
-	//if len(fields) >= 2 {
-	//	switch fields[1].(type) {
-	//	case bool:
-	//		initScale = true
-	//	default:
-	//		initScale = false
-	//	}
-	//}
+
+	// 检测是否为MainForm，通过判断 指定方法为nil。
+	isMainForm := Application_GetMainForm(Application.instance) == 0
+	instancePtr := uintptr(0)
+	// 不检查一些了，也不做最初版本的兼容
+	if len(fields) > 0 {
+		goInstance = newGoFormInstance(fields[0])
+		if !isMainForm {
+			instancePtr = goInstance.Pointer()
+		}
+		// 固定名称  CreateParams
+		cFunc := goInstance.MethodByName("CreateParams")
+		if cFunc.IsValid() {
+			addToRequestCreateParamsMap(instancePtr, cFunc)
+		}
+	}
 
 	var resObj IComponent
 
@@ -160,6 +172,12 @@ func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interfac
 	case 2:
 		// TFrame
 		resObj = NewFrame(owner)
+	}
+
+	// 不为TFrame和MainForm时才设置这个
+	if typ != 2 && !isMainForm {
+		// 设置条件
+		Form_SetGoPtr(resObj.Instance(), instancePtr)
 	}
 
 	//条件设置用
@@ -214,7 +232,7 @@ func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interfac
 	default:
 		return resObj
 	}
-	fullFiledVal(resObj, field1, fullSubComponent, afterBindSubComponentsEvents)
+	fullFiledVal(resObj, goInstance, fullSubComponent, afterBindSubComponentsEvents)
 	return nil
 }
 

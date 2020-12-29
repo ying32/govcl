@@ -29,6 +29,11 @@ package vcl
 // static void* doGetThreadSyncCallbackAddr() {
 //    return &doThreadSyncCallbackProc;
 // }
+//
+// extern void* doRequestCallCreateParamsCallbackProc(void* ptr, void* params);
+// static void* doRequestCallCreateParamsCallbackAddr() {
+//    return &doRequestCallCreateParamsCallbackProc;
+// }
 import "C"
 
 import (
@@ -53,8 +58,15 @@ func doThreadSyncCallbackProc() unsafe.Pointer {
 	return nullptr
 }
 
+//export doRequestCallCreateParamsCallbackProc
+func doRequestCallCreateParamsCallbackProc(ptr unsafe.Pointer, params unsafe.Pointer) unsafe.Pointer {
+	requestCallCreateParamsCallbackProc(uintptr(ptr), uintptr(params))
+	return nullptr
+}
+
 var (
-	eventCallback      = uintptr(C.doGetEventCallbackAddr())
-	messageCallback    = uintptr(C.doGetMessageCallbackAddr())
-	threadSyncCallback = uintptr(C.doGetThreadSyncCallbackAddr())
+	eventCallback                   = uintptr(C.doGetEventCallbackAddr())
+	messageCallback                 = uintptr(C.doGetMessageCallbackAddr())
+	threadSyncCallback              = uintptr(C.doGetThreadSyncCallbackAddr())
+	requestCallCreateParamsCallback = uintptr(C.doRequestCallCreateParamsCallbackAddr())
 )

@@ -12,5 +12,5 @@ package vcl
 //
 // Create TFrame from resources.
 func CreateResFrame(owner IComponent, fields ...interface{}) {
-	resObjtBuild(2, owner, 0, fields...)
+	resObjectBuild(2, owner, 0, fields...)
 }

@@ -16,3 +16,7 @@ func Form_Create2(owner uintptr, initScale bool) uintptr {
 func Form_SetOnWndProc(obj uintptr, fn interface{}) {
 	form_SetOnWndProc.Call(obj, addMessageEventToMap(obj, fn))
 }
+
+func Form_SetGoPtr(obj uintptr, ptr uintptr) {
+	form_SetGoPtr.Call(obj, ptr)
+}

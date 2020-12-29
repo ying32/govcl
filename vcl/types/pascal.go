@@ -105,6 +105,20 @@ type TAlignInfo struct {
 	Scratch      int32
 }
 
+// Moved from Controls to avoid circles
+// Since it is part of the interface now
+type TCreateParams struct {
+	Caption       LPCWSTR
+	Style         uint32
+	ExStyle       uint32
+	X, Y          int32
+	Width, Height int32
+	WndParent     HWND
+	Param         uintptr
+	WindowClass   TWndClass
+	WinClassName  [64]int8
+}
+
 // TColor
 func (c TColor) R() byte {
 	return byte(c)

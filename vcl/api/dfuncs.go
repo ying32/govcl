@@ -160,6 +160,10 @@ func SetThreadSyncCallback(ptr uintptr) {
 	setThreadSyncCallback.Call(ptr)
 }
 
+func SetRequestCallCreateParamsCallback(ptr uintptr) {
+	setRequestCallCreateParamsCallback.Call(ptr)
+}
+
 // 从Delphi/Lazarus字符串数组中获取指定索引的值
 func DGetStringArrOf(p uintptr, index int) string {
 	r, _, _ := dGetStringArrOf.Call(p, uintptr(index))

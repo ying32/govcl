@@ -81,7 +81,7 @@ import (
 //
 // Create a TForm.
 func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
-	return AsForm(resObjtBuild(0, nil, a.instance, fields...))
+	return AsForm(resObjectBuild(0, nil, a.instance, fields...))
 }
 
 // 运行APP。

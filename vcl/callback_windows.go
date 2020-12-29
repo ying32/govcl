@@ -13,7 +13,8 @@ import (
 )
 
 var (
-	eventCallback      = syscall.NewCallback(eventCallbackProc)
-	messageCallback    = syscall.NewCallback(messageCallbackProc)
-	threadSyncCallback = syscall.NewCallback(threadSyncCallbackProc)
+	eventCallback                   = syscall.NewCallback(eventCallbackProc)
+	messageCallback                 = syscall.NewCallback(messageCallbackProc)
+	threadSyncCallback              = syscall.NewCallback(threadSyncCallbackProc)
+	requestCallCreateParamsCallback = syscall.NewCallback(requestCallCreateParamsCallbackProc)
 )

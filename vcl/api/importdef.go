@@ -16,10 +16,12 @@ var (
 
 	form_Create2      = libvcl.NewProc("Form_Create2")
 	form_SetOnWndProc = libvcl.NewProc("Form_SetOnWndProc")
+	form_SetGoPtr     = libvcl.NewProc("Form_SetGoPtr")
 
-	setEventCallback      = libvcl.NewProc("SetEventCallback")
-	setMessageCallback    = libvcl.NewProc("SetMessageCallback")
-	setThreadSyncCallback = libvcl.NewProc("SetThreadSyncCallback")
+	setEventCallback                   = libvcl.NewProc("SetEventCallback")
+	setMessageCallback                 = libvcl.NewProc("SetMessageCallback")
+	setThreadSyncCallback              = libvcl.NewProc("SetThreadSyncCallback")
+	setRequestCallCreateParamsCallback = libvcl.NewProc("SetRequestCallCreateParamsCallback")
 
 	dGetStringArrOf = libvcl.NewProc("DGetStringArrOf")
 	dStrLen         = libvcl.NewProc("DStrLen")

@@ -61,6 +61,8 @@ func init() {
 	SetMessageCallback(messageCallback)
 	// 线程同步回调
 	SetThreadSyncCallback(threadSyncCallback)
+	// 调求回调CreateParams方法
+	SetRequestCallCreateParamsCallback(requestCallCreateParamsCallback)
 
 	// 导入几个实例类
 	Application = AsApplication(Application_Instance())
