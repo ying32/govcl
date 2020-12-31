@@ -95,6 +95,7 @@
 | [Windows/wkeWebBrowser](Windows/wkeWebBrowser) | windows下wke浏览器嵌入演示  | Windows,32bit |
 | [Windows/xunleidownloader](Windows/xunleidownloader) | 迅雷下载引擎演示    | Windows,32bit |
 | [Windows/taskbar](Windows/taskbar) | Windows7+开始的任务栏新特性    | Windows7+ |
+| [Windows/createparams](Windows/createparams) |  用于在创建窗口前修改一些窗口的参数  |  |
 
 
 
