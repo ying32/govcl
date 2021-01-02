@@ -31,8 +31,7 @@ func main() {
 
 // --------------MainForm -----------------
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
-	// Main窗口的会无效。。。。
-	//f.SetOnCreateParams(f.OnCreateParams)
+
 	f.SetCaption("Hello")
 	f.EnabledMaximize(false)
 	f.SetWidth(300)
