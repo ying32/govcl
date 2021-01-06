@@ -23,7 +23,7 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 > If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.   
 
 ### Pre-compiled GUI library binary download ([source code](https://github.com/ying32/liblcl))     
-[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.8.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.8/liblcl-2.0.8.zip)  
+[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.9.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.9/liblcl-2.0.9.zip)  
 
 
 ### res2go IDE plugin source code（[source code](https://github.com/ying32/res2go-ide-plugin)）  
@@ -38,7 +38,7 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 
 > go get -u github.com/ying32/govcl    
 
-*Note: You can also use go module mode, configure in go.mod, such as: `github.com/ying32/govcl v2.0.8+incompatible`.*  
+*Note: You can also use go module mode, configure in go.mod, such as: `github.com/ying32/govcl v2.0.9+incompatible`.*  
 
 #### Step 2: Write the code
 
