@@ -277,7 +277,7 @@ func main() {
 	btn.SetTop(top)
 	btn.SetCaption("改变日期")
 	btn.SetOnClick(func(vcl.IObject) {
-		mdtp.SetDate(time.Now().AddDate(-20, 0, 0))
+		mdtp.SetDate(time.Now().AddDate(7777, 1, 23))
 	})
 
 	top += btn.Height() + 10
