@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"runtime"
 
+	"github.com/ying32/govcl/vcl/rtl"
+
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/types"
@@ -42,9 +44,10 @@ func main() {
 	item := vcl.NewMenuItem(mainForm)
 	item.SetCaption("显示(&S)")
 	item.SetOnClick(func(vcl.IObject) {
-		mainForm.Show()
+		vcl.Application.Restore()
+		//mainForm.Show()
 		// Windows上为了最前面显示，有时候要调用SetForegroundWindow
-		// 比如：win.SetForegroundWindow(mainForm.Handle())
+		rtl.SetForegroundWindow(mainForm.Handle())
 	})
 	pm.Items().Add(item)
 
