@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/ying32/govcl/vcl/rtl"
-
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/types"
@@ -47,7 +45,8 @@ func main() {
 		vcl.Application.Restore()
 		//mainForm.Show()
 		// Windows上为了最前面显示，有时候要调用SetForegroundWindow
-		rtl.SetForegroundWindow(mainForm.Handle())
+		//rtl.SetForegroundWindow(mainForm.Handle())
+		//vcl.Application.BringToFront()
 	})
 	pm.Items().Add(item)
 
