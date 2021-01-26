@@ -42,8 +42,8 @@ func main() {
 	item := vcl.NewMenuItem(mainForm)
 	item.SetCaption("显示(&S)")
 	item.SetOnClick(func(vcl.IObject) {
-		vcl.Application.Restore()
-		//mainForm.Show()
+		//vcl.Application.Restore()
+		mainForm.Show()
 		// Windows上为了最前面显示，有时候要调用SetForegroundWindow
 		//rtl.SetForegroundWindow(mainForm.Handle())
 		//vcl.Application.BringToFront()
