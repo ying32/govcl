@@ -167,11 +167,6 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 
 ```
 
-* 方法三  
-```go
-// 不推荐，所以不给出示例了。  
-```
-
 #### 步骤三：复制对应的二进制    
 
 * Windows: 根据编译的二进制是32还是64位的，复制对应的`liblcl.dll`到当前可执行文件目录或系统环境路径下。 

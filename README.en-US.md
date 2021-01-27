@@ -164,11 +164,6 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 }
 ``` 
 
-* Method 3  
-```go
-// Not recommended, so no examples are given.
-```
-
 #### Step 3: Copy the corresponding binary   
 
 * Windows: Depending on whether the compiled binary is 32 or 64 bits, copy the corresponding `liblcl.dll` to the current executable file directory or system environment path.  
