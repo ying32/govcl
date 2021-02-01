@@ -113,3 +113,11 @@ type TMemoryBasicInformation struct {
 	Protect           uint32
 	Type_9            uint32
 }
+
+type TSHFileInfo struct {
+	HIcon         HICON            /* out: icon */
+	IIcon         Integer          /* out: icon index */
+	DwAttributes  DWORD            /* out: SFGAO_ flags */
+	SzDisplayName [MAX_PATH]uint16 /* out: display name (or path) */
+	SzTypeName    [80]uint16       /* out: type name */
+}

@@ -31,6 +31,7 @@ var (
 	_SHGetSpecialFolderPath     = shell32dll.NewProc("SHGetSpecialFolderPathW")
 	_SHGetSpecialFolderLocation = shell32dll.NewProc("SHGetSpecialFolderLocation")
 	_SHGetPathFromIDList        = shell32dll.NewProc("SHGetPathFromIDListW")
+	_SHGetFileInfo              = shell32dll.NewProc("SHGetFileInfoW")
 )
 
 // ShellExecute
@@ -72,4 +73,9 @@ func SHGetPathFromIDList(pidl *TItemIDList) (bool, string) {
 	szPath := make([]uint16, MAX_PATH)
 	r, _, _ := _SHGetPathFromIDList.Call(uintptr(unsafe.Pointer(pidl)), uintptr(unsafe.Pointer(&szPath[0])))
 	return r != 0, GoStr(szPath)
+}
+
+func SHGetFileInfo(pszPath string, dwFileAttributes uint32, psfi *TSHFileInfo, uFlags uint32) DWORD_PTR {
+	r, _, _ := _SHGetFileInfo.Call(CStr(pszPath), uintptr(dwFileAttributes), uintptr(unsafe.Pointer(psfi)), uintptr(uFlags))
+	return DWORD_PTR(r)
 }
