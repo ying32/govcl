@@ -30756,6 +30756,24 @@ func BitBtn_SetGlyphShowMode(obj uintptr, value TGlyphShowMode) {
     bitBtn_SetGlyphShowMode.Call(obj, uintptr(value))
 }
 
+func BitBtn_GetImageIndex(obj uintptr) int32 {
+    ret, _, _ := bitBtn_GetImageIndex.Call(obj)
+    return int32(ret)
+}
+
+func BitBtn_SetImageIndex(obj uintptr, value int32) {
+    bitBtn_SetImageIndex.Call(obj, uintptr(value))
+}
+
+func BitBtn_GetImages(obj uintptr) uintptr {
+    ret, _, _ := bitBtn_GetImages.Call(obj)
+    return ret
+}
+
+func BitBtn_SetImages(obj uintptr, value uintptr) {
+    bitBtn_SetImages.Call(obj, value)
+}
+
 func BitBtn_GetImageWidth(obj uintptr) int32 {
     ret, _, _ := bitBtn_GetImageWidth.Call(obj)
     return int32(ret)

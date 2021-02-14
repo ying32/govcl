@@ -534,6 +534,26 @@ func (b *TBitBtn) SetGlyphShowMode(value TGlyphShowMode) {
     BitBtn_SetGlyphShowMode(b.instance, value)
 }
 
+// 获取图像在images中的索引。
+func (b *TBitBtn) ImageIndex() int32 {
+    return BitBtn_GetImageIndex(b.instance)
+}
+
+// 设置图像在images中的索引。
+func (b *TBitBtn) SetImageIndex(value int32) {
+    BitBtn_SetImageIndex(b.instance, value)
+}
+
+// 获取图标索引列表对象。
+func (b *TBitBtn) Images() *TImageList {
+    return AsImageList(BitBtn_GetImages(b.instance))
+}
+
+// 设置图标索引列表对象。
+func (b *TBitBtn) SetImages(value IComponent) {
+    BitBtn_SetImages(b.instance, CheckPtr(value))
+}
+
 func (b *TBitBtn) ImageWidth() int32 {
     return BitBtn_GetImageWidth(b.instance)
 }
