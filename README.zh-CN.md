@@ -23,7 +23,7 @@
 ----
 
 ### 预编译GUI库二进制下载（[源代码](https://github.com/ying32/liblcl)）       
-[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.9.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.9/liblcl-2.0.9.zip)  
+[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.10.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.10/liblcl-2.0.10.zip)  
 
 
 ### res2go IDE插件源代码（[源代码](https://github.com/ying32/res2go-ide-plugin)）  
@@ -39,7 +39,7 @@
 
 > go get -u github.com/ying32/govcl  
 
-*注：也可用go module方式拉取，在go.mod中配置如：`github.com/ying32/govcl v2.0.9+incompatible`。*  
+*注：也可用go module方式拉取，在go.mod中配置如：`github.com/ying32/govcl v2.0.10+incompatible`。*  
 
 #### 步骤二：编写代码    
 
