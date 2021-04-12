@@ -161,7 +161,10 @@ func fileExists(path string) bool {
 func (l *LazyDLL) libFullPath(name string) string {
 	if runtime.GOOS == "darwin" {
 		file, _ := exec.LookPath(os.Args[0])
-		return filepath.Dir(file) + "/" + name
+		libPath := filepath.Dir(file) + "/" + name
+		if fileExists(libPath) {
+			return libPath
+		}
 	}
 	return name
 }
