@@ -16,7 +16,7 @@ var (
 	_wkeDocumentReadyCallback = syscall.NewCallbackCDecl(fnwkeDocumentReadyCallback)
 )
 
-type TOnCreateViewEvent func(sender *TMiniBlinkWebview, navigationType WkeNavigationType, url WkeString, windowFeatures *WkeWindowFeatures, result *WkeWebView)
+type TOnCreateViewEvent func(sender *TMiniBlinkWebview, navigationType WkeNavigationType, url string, windowFeatures *WkeWindowFeatures, result *WkeWebView)
 type TOnTitleChangedEvent func(sender *TMiniBlinkWebview, title string)
 type TOnURLChangedEvent func(sender *TMiniBlinkWebview, url string)
 type TOnNavigationEvent func(sender *TMiniBlinkWebview, navigationType WkeNavigationType, url string)
@@ -34,7 +34,7 @@ func fnwkeCreateViewCallback(webView WkeWebView, param uintptr, navigationType W
 		obj := getObj(param)
 		proc := obj.OnCreateView
 		if proc != nil {
-			proc(obj, navigationType, url, windowFeatures, &ret)
+			proc(obj, navigationType, wkeGetString(url), windowFeatures, &ret)
 		}
 	}
 	return ret
@@ -48,11 +48,7 @@ func fnwkeTitleChangedCallback(webView unsafe.Pointer, param unsafe.Pointer, tit
 		obj := getObj(uintptr(param))
 		proc := obj.OnTitleChanged
 		if proc != nil {
-			if isLcl {
-				proc(obj, wkeGetString(WkeString(title)))
-			} else {
-				proc(obj, wkeGetStringW(WkeString(title)))
-			}
+			proc(obj, wkeGetString(WkeString(title)))
 		}
 	}
 	return 0
@@ -64,11 +60,7 @@ func fnwkeURLChangedCallback(view WkeWebView, param uintptr, url WkeString) uint
 		obj := getObj(param)
 		proc := obj.OnURLChanged
 		if proc != nil {
-			if isLcl {
-				proc(obj, wkeGetString(url))
-			} else {
-				proc(obj, wkeGetStringW(url))
-			}
+			proc(obj, wkeGetString(url))
 		}
 	}
 	return 1
@@ -80,11 +72,7 @@ func fnwkeNavigationCallback(view WkeWebView, param uintptr, navigationType WkeN
 		obj := getObj(param)
 		proc := obj.OnNavigation
 		if proc != nil {
-			if isLcl {
-				proc(obj, navigationType, wkeGetString(url))
-			} else {
-				proc(obj, navigationType, wkeGetStringW(url))
-			}
+			proc(obj, navigationType, wkeGetString(url))
 		}
 	}
 	return 1
@@ -96,11 +84,7 @@ func fnwkeLoadingFinishCallback(view WkeWebView, param uintptr, url WkeString, r
 		obj := getObj(param)
 		proc := obj.OnLoadingFinish
 		if proc != nil {
-			if isLcl {
-				proc(obj, wkeGetString(url), result, wkeGetString(failedReason))
-			} else {
-				proc(obj, wkeGetStringW(url), result, wkeGetStringW(failedReason))
-			}
+			proc(obj, wkeGetString(url), result, wkeGetString(failedReason))
 		}
 	}
 	return 1

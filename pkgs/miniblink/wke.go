@@ -21,27 +21,15 @@ func (w WkeWebView) SetTransparent(val bool) {
 }
 
 func (w WkeWebView) LoadURL(url string) {
-	if isLcl {
-		wkeLoadURL(w, url)
-	} else {
-		wkeLoadURLW(w, url)
-	}
+	wkeLoadURL(w, url)
 }
 
 func (w WkeWebView) LoadHTML(html string) {
-	if isLcl {
-		wkeLoadHTML(w, html)
-	} else {
-		wkeLoadHTMLW(w, html)
-	}
+	wkeLoadHTML(w, html)
 }
 
 func (w WkeWebView) LoadFile(html string) {
-	if isLcl {
-		wkeLoadFile(w, html)
-	} else {
-		wkeLoadFileW(w, html)
-	}
+	wkeLoadFile(w, html)
 }
 
 func (w WkeWebView) URL() string {
@@ -73,11 +61,7 @@ func (w WkeWebView) Reload() {
 }
 
 func (w WkeWebView) Title() string {
-	if isLcl {
-		return wkeTitle(w)
-	} else {
-		return wkeTitleW(w)
-	}
+	return wkeTitle(w)
 }
 
 func (w WkeWebView) Resize(width, height int) {
@@ -217,11 +201,7 @@ func (w WkeWebView) KillFocus() {
 }
 
 func (w WkeWebView) RunJS(script string) JsValue {
-	if isLcl {
-		return wkeRunJS(w, script)
-	} else {
-		return wkeRunJSW(w, script)
-	}
+	return wkeRunJS(w, script)
 }
 
 func (w WkeWebView) GlobalExec() JsExecState {
