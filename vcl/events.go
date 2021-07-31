@@ -183,7 +183,7 @@ type TGridOperationEvent func(sender IObject, isColumn bool, sIndex, tIndex int3
 //TDrawCellEvent = procedure (Sender: TObject; ACol, ARow: Longint; Rect: TRect; State: TGridDrawState) of object;
 type TDrawCellEvent func(sender IObject, aCol, aRow int32, aRect TRect, state TGridDrawState)
 
-//  TFixedCellClickEvent = procedure (Sender: TObject; ACol, ARow: Longint) of object;
+//TFixedCellClickEvent = procedure (Sender: TObject; ACol, ARow: Longint) of object;
 type TFixedCellClickEvent func(sender IObject, aCol, aRow int32)
 
 // TGetEditEvent = procedure (Sender: TObject; ACol, ARow: Longint; var Value: string) of object;
@@ -196,6 +196,7 @@ type TSelectCellEvent func(sender IObject, aCol, aRow int32, canSelect *bool)
 type TSetEditEvent func(sender IObject, aCol, aRow int32, value string)
 
 // ---- headercontrol
+
 // TDrawSectionEvent = procedure(HeaderControl: THeaderControl; Section: THeaderSection; const Rect: TRect; Pressed: Boolean) of object;
 type TDrawSectionEvent func(headerControl *THeaderControl, section *THeaderSection, aRect TRect, pressed bool)
 
@@ -249,13 +250,13 @@ type TLVEditingEvent func(sender IObject, item *TListItem, allowEdit *bool)
 //TLVEditedEvent = procedure(Sender: TObject; Item: TListItem; var S: string) of object;
 type TLVEditedEvent func(sender IObject, item *TListItem, s *string)
 
-//  TMenuMeasureItemEvent = procedure (Sender: TObject; ACanvas: TCanvas; var Width, Height: Integer) of object;
+// TMenuMeasureItemEvent = procedure (Sender: TObject; ACanvas: TCanvas; var Width, Height: Integer) of object;
 type TMenuMeasureItemEvent func(sender IObject, aCanvas *TCanvas, width, height *int32)
 
 // TTabChangingEvent = procedure(Sender: TObject; var AllowChange: Boolean) of object;
 type TTabChangingEvent func(sender IObject, allowChange *bool)
 
-//   TTVChangingEvent = procedure(Sender: TObject; Node: TTreeNode; var AllowChange: Boolean) of object;
+// TTVChangingEvent = procedure(Sender: TObject; Node: TTreeNode; var AllowChange: Boolean) of object;
 type TTVChangingEvent func(sender IObject, node *TTreeNode, allowChange *bool)
 
 // TTVCollapsingEvent = procedure(Sender: TObject; Node: TTreeNode; var AllowCollapse: Boolean) of object;
@@ -280,6 +281,7 @@ type TUDChangingEvent func(sender IObject, allowChange *bool)
 type TCreatingListErrorEvent func(sender IObject, winErrorCode uint32, errorDescription string, handled *bool)
 
 //--
+
 //TLVCustomDrawEvent = procedure(Sender: TCustomListView; const ARect: TRect; var DefaultDraw: Boolean) of object;
 type TLVCustomDrawEvent func(sender *TListView, aRect TRect, defaultDraw *bool)
 
@@ -302,6 +304,7 @@ type TTVCustomDrawEvent func(sender *TTreeView, aRect TRect, defaultDraw *bool)
 type TTVCustomDrawItemEvent func(sender *TTreeView, node *TTreeNode, state TCustomDrawStage, defaultDraw *bool)
 
 // 消息过程
+
 //TWndProcEvent = procedure(Sender: TObject; var AMsg: TMessage) of object;
 type TWndProcEvent func(msg *TMessage)
 
@@ -323,7 +326,8 @@ type TAlignPositionEvent func(sender *TWinControl, control *TControl, newLeft, n
 //TCheckGroupClicked = procedure(Sender: TObject; Index: integer) of object;
 type TCheckGroupClicked func(sender IObject, index int32)
 
-//--------------
+// --------------
+
 //TOnSelectEvent = procedure(Sender: TObject; aCol, aRow: Integer) of object;
 type TOnSelectEvent func(sender IObject, aCol, aRow int32)
 
@@ -356,3 +360,6 @@ type TUserCheckBoxBitmapEvent func(sender IObject, aCol, aRow int32, CheckedStat
 
 //TValidateEntryEvent = procedure(sender: TObject; aCol, aRow: Integer; const OldValue: string; var NewValue: String) of object;
 type TValidateEntryEvent func(sender IObject, aCol, aRow int32, oldValue string, newValue *string)
+
+// TOnPrepareCanvasEvent = procedure(sender: TObject; aCol, aRow: Integer; aState: TGridDrawState) of object;
+type TOnPrepareCanvasEvent = func(sender IObject, aCol, aRow int32, aState TGridDrawState)

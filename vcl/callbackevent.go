@@ -908,7 +908,13 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 				DStrToGoStr(getVal(3)),
 				&str)
 			setPtrVal(4, GoStrToDStr(str))
-
+			//type TOnPrepareCanvasEvent = func(sender IObject, aCol, aRow int32, aState TGridDrawState)
+		case TOnPrepareCanvasEvent:
+			v.(TOnPrepareCanvasEvent)(
+				AsObject(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				TGridDrawState(getVal(3)))
 		default:
 		}
 	}

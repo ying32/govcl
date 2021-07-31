@@ -529,6 +529,10 @@ func (d *TDrawGrid) SetOnColRowMoved(fn TGridOperationEvent) {
     DrawGrid_SetOnColRowMoved(d.instance, fn)
 }
 
+func (d *TDrawGrid) SetOnPrepareCanvas(fn TOnPrepareCanvasEvent) {
+    DrawGrid_SetOnPrepareCanvas(d.instance, fn)
+}
+
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.

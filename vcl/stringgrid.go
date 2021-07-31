@@ -838,6 +838,10 @@ func (s *TStringGrid) SetOnValidateEntry(fn TValidateEntryEvent) {
     StringGrid_SetOnValidateEntry(s.instance, fn)
 }
 
+func (s *TStringGrid) SetOnPrepareCanvas(fn TOnPrepareCanvasEvent) {
+    StringGrid_SetOnPrepareCanvas(s.instance, fn)
+}
+
 func (s *TStringGrid) AlternateColor() TColor {
     return StringGrid_GetAlternateColor(s.instance)
 }

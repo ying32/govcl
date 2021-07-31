@@ -51785,6 +51785,10 @@ func StringGrid_SetOnValidateEntry(obj uintptr, fn interface{}) {
     getLazyProc("StringGrid_SetOnValidateEntry").Call(obj, addEventToMap(obj, fn))
 }
 
+func StringGrid_SetOnPrepareCanvas(obj uintptr, fn interface{}) {
+    getLazyProc("StringGrid_SetOnPrepareCanvas").Call(obj, addEventToMap(obj, fn))
+}
+
 func StringGrid_GetAlternateColor(obj uintptr) TColor {
     ret, _, _ := getLazyProc("StringGrid_GetAlternateColor").Call(obj)
     return TColor(ret)
@@ -53141,6 +53145,10 @@ func DrawGrid_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
 
 func DrawGrid_SetOnColRowMoved(obj uintptr, fn interface{}) {
     getLazyProc("DrawGrid_SetOnColRowMoved").Call(obj, addEventToMap(obj, fn))
+}
+
+func DrawGrid_SetOnPrepareCanvas(obj uintptr, fn interface{}) {
+    getLazyProc("DrawGrid_SetOnPrepareCanvas").Call(obj, addEventToMap(obj, fn))
 }
 
 func DrawGrid_GetAlign(obj uintptr) TAlign {
