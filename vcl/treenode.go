@@ -122,6 +122,162 @@ func TTreeNodeClass() TClass {
     return TreeNode_StaticClassType()
 }
 
+func (t *TTreeNode) Bottom() int32 {
+    return TreeNode_Bottom(t.instance)
+}
+
+func (t *TTreeNode) BottomExpanded() int32 {
+    return TreeNode_BottomExpanded(t.instance)
+}
+
+func (t *TTreeNode) DefaultTreeViewSort(Node1 *TTreeNode, Node2 *TTreeNode) int32 {
+    return TreeNode_DefaultTreeViewSort(t.instance, CheckPtr(Node1), CheckPtr(Node2))
+}
+
+func (t *TTreeNode) DisplayExpandSignLeft() int32 {
+    return TreeNode_DisplayExpandSignLeft(t.instance)
+}
+
+func (t *TTreeNode) DisplayExpandSignRect() TRect {
+    return TreeNode_DisplayExpandSignRect(t.instance)
+}
+
+func (t *TTreeNode) DisplayExpandSignRight() int32 {
+    return TreeNode_DisplayExpandSignRight(t.instance)
+}
+
+func (t *TTreeNode) DisplayIconLeft() int32 {
+    return TreeNode_DisplayIconLeft(t.instance)
+}
+
+func (t *TTreeNode) DisplayRect(TextOnly bool) TRect {
+    return TreeNode_DisplayRect(t.instance, TextOnly)
+}
+
+func (t *TTreeNode) DisplayStateIconLeft() int32 {
+    return TreeNode_DisplayStateIconLeft(t.instance)
+}
+
+func (t *TTreeNode) DisplayTextLeft() int32 {
+    return TreeNode_DisplayTextLeft(t.instance)
+}
+
+func (t *TTreeNode) DisplayTextRight() int32 {
+    return TreeNode_DisplayTextRight(t.instance)
+}
+
+func (t *TTreeNode) EditText() bool {
+    return TreeNode_EditText(t.instance)
+}
+
+func (t *TTreeNode) FindNode(NodeText string) *TTreeNode {
+    return AsTreeNode(TreeNode_FindNode(t.instance, NodeText))
+}
+
+func (t *TTreeNode) GetFirstChild() *TTreeNode {
+    return AsTreeNode(TreeNode_GetFirstChild(t.instance))
+}
+
+func (t *TTreeNode) GetFirstVisibleChild() *TTreeNode {
+    return AsTreeNode(TreeNode_GetFirstVisibleChild(t.instance))
+}
+
+func (t *TTreeNode) GetLastChild() *TTreeNode {
+    return AsTreeNode(TreeNode_GetLastChild(t.instance))
+}
+
+func (t *TTreeNode) GetLastSibling() *TTreeNode {
+    return AsTreeNode(TreeNode_GetLastSibling(t.instance))
+}
+
+func (t *TTreeNode) GetLastSubChild() *TTreeNode {
+    return AsTreeNode(TreeNode_GetLastSubChild(t.instance))
+}
+
+func (t *TTreeNode) GetLastVisibleChild() *TTreeNode {
+    return AsTreeNode(TreeNode_GetLastVisibleChild(t.instance))
+}
+
+func (t *TTreeNode) GetNext() *TTreeNode {
+    return AsTreeNode(TreeNode_GetNext(t.instance))
+}
+
+func (t *TTreeNode) GetNextChild(AValue *TTreeNode) *TTreeNode {
+    return AsTreeNode(TreeNode_GetNextChild(t.instance, CheckPtr(AValue)))
+}
+
+func (t *TTreeNode) GetNextExpanded() *TTreeNode {
+    return AsTreeNode(TreeNode_GetNextExpanded(t.instance))
+}
+
+func (t *TTreeNode) GetNextMultiSelected() *TTreeNode {
+    return AsTreeNode(TreeNode_GetNextMultiSelected(t.instance))
+}
+
+func (t *TTreeNode) GetNextSibling() *TTreeNode {
+    return AsTreeNode(TreeNode_GetNextSibling(t.instance))
+}
+
+func (t *TTreeNode) GetNextSkipChildren() *TTreeNode {
+    return AsTreeNode(TreeNode_GetNextSkipChildren(t.instance))
+}
+
+func (t *TTreeNode) GetNextVisible() *TTreeNode {
+    return AsTreeNode(TreeNode_GetNextVisible(t.instance))
+}
+
+func (t *TTreeNode) GetNextVisibleSibling() *TTreeNode {
+    return AsTreeNode(TreeNode_GetNextVisibleSibling(t.instance))
+}
+
+func (t *TTreeNode) GetParentNodeOfAbsoluteLevel(TheAbsoluteLevel int32) *TTreeNode {
+    return AsTreeNode(TreeNode_GetParentNodeOfAbsoluteLevel(t.instance, TheAbsoluteLevel))
+}
+
+func (t *TTreeNode) GetPrev() *TTreeNode {
+    return AsTreeNode(TreeNode_GetPrev(t.instance))
+}
+
+func (t *TTreeNode) GetPrevChild(AValue *TTreeNode) *TTreeNode {
+    return AsTreeNode(TreeNode_GetPrevChild(t.instance, CheckPtr(AValue)))
+}
+
+func (t *TTreeNode) GetPrevExpanded() *TTreeNode {
+    return AsTreeNode(TreeNode_GetPrevExpanded(t.instance))
+}
+
+func (t *TTreeNode) GetPrevMultiSelected() *TTreeNode {
+    return AsTreeNode(TreeNode_GetPrevMultiSelected(t.instance))
+}
+
+func (t *TTreeNode) GetPrevSibling() *TTreeNode {
+    return AsTreeNode(TreeNode_GetPrevSibling(t.instance))
+}
+
+func (t *TTreeNode) GetPrevVisible() *TTreeNode {
+    return AsTreeNode(TreeNode_GetPrevVisible(t.instance))
+}
+
+func (t *TTreeNode) GetPrevVisibleSibling() *TTreeNode {
+    return AsTreeNode(TreeNode_GetPrevVisibleSibling(t.instance))
+}
+
+func (t *TTreeNode) GetTextPath() string {
+    return TreeNode_GetTextPath(t.instance)
+}
+
+func (t *TTreeNode) HasAsParent(AValue *TTreeNode) bool {
+    return TreeNode_HasAsParent(t.instance, CheckPtr(AValue))
+}
+
+func (t *TTreeNode) IndexOf(AValue *TTreeNode) int32 {
+    return TreeNode_IndexOf(t.instance, CheckPtr(AValue))
+}
+
+func (t *TTreeNode) IndexOfText(NodeText string) int32 {
+    return TreeNode_IndexOfText(t.instance, NodeText)
+}
+
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
@@ -133,24 +289,32 @@ func (t *TTreeNode) Collapse(Recurse bool) {
     TreeNode_Collapse(t.instance, Recurse)
 }
 
+func (t *TTreeNode) ConsistencyCheck() {
+    TreeNode_ConsistencyCheck(t.instance)
+}
+
 func (t *TTreeNode) Delete() {
     TreeNode_Delete(t.instance)
 }
 
-func (t *TTreeNode) DisplayRect(TextOnly bool) TRect {
-    return TreeNode_DisplayRect(t.instance, TextOnly)
+func (t *TTreeNode) DeleteChildren() {
+    TreeNode_DeleteChildren(t.instance)
 }
 
-func (t *TTreeNode) EditText() bool {
-    return TreeNode_EditText(t.instance)
+func (t *TTreeNode) EndEdit(Cancel bool) {
+    TreeNode_EndEdit(t.instance, Cancel)
 }
 
 func (t *TTreeNode) Expand(Recurse bool) {
     TreeNode_Expand(t.instance, Recurse)
 }
 
-func (t *TTreeNode) IndexOf(Value *TTreeNode) int32 {
-    return TreeNode_IndexOf(t.instance, CheckPtr(Value))
+func (t *TTreeNode) ExpandParents() {
+    TreeNode_ExpandParents(t.instance)
+}
+
+func (t *TTreeNode) FreeAllNodeData() {
+    TreeNode_FreeAllNodeData(t.instance)
 }
 
 func (t *TTreeNode) MakeVisible() {
@@ -159,6 +323,21 @@ func (t *TTreeNode) MakeVisible() {
 
 func (t *TTreeNode) MoveTo(Destination *TTreeNode, Mode TNodeAttachMode) {
     TreeNode_MoveTo(t.instance, CheckPtr(Destination), Mode)
+}
+
+func (t *TTreeNode) MultiSelectGroup() {
+    TreeNode_MultiSelectGroup(t.instance)
+}
+
+// 控件更新。
+//
+// Update.
+func (t *TTreeNode) Update() {
+    TreeNode_Update(t.instance)
+}
+
+func (t *TTreeNode) WriteDebugReport(Prefix string, Recurse bool) {
+    TreeNode_WriteDebugReport(t.instance, Prefix , Recurse)
 }
 
 func (t *TTreeNode) CustomSort(SortProc PFNTVCOMPARE, Data int, ARecurse bool) bool {
@@ -249,6 +428,22 @@ func (t *TTreeNode) Deleting() bool {
     return TreeNode_GetDeleting(t.instance)
 }
 
+func (t *TTreeNode) DropTarget() bool {
+    return TreeNode_GetDropTarget(t.instance)
+}
+
+func (t *TTreeNode) SetDropTarget(value bool) {
+    TreeNode_SetDropTarget(t.instance, value)
+}
+
+func (t *TTreeNode) Expanded() bool {
+    return TreeNode_GetExpanded(t.instance)
+}
+
+func (t *TTreeNode) SetExpanded(value bool) {
+    TreeNode_SetExpanded(t.instance, value)
+}
+
 // 获取返回是否获取焦点。
 //
 // Get Return to get focus.
@@ -263,34 +458,10 @@ func (t *TTreeNode) SetFocused(value bool) {
     TreeNode_SetFocused(t.instance, value)
 }
 
-func (t *TTreeNode) DropTarget() bool {
-    return TreeNode_GetDropTarget(t.instance)
-}
-
-func (t *TTreeNode) SetDropTarget(value bool) {
-    TreeNode_SetDropTarget(t.instance, value)
-}
-
-func (t *TTreeNode) Selected() bool {
-    return TreeNode_GetSelected(t.instance)
-}
-
-func (t *TTreeNode) SetSelected(value bool) {
-    TreeNode_SetSelected(t.instance, value)
-}
-
-func (t *TTreeNode) Expanded() bool {
-    return TreeNode_GetExpanded(t.instance)
-}
-
-func (t *TTreeNode) SetExpanded(value bool) {
-    TreeNode_SetExpanded(t.instance, value)
-}
-
 // 获取控件句柄。
 //
 // Get Control handle.
-func (t *TTreeNode) Handle() HWND {
+func (t *TTreeNode) Handle() uintptr {
     return TreeNode_GetHandle(t.instance)
 }
 
@@ -300,6 +471,20 @@ func (t *TTreeNode) HasChildren() bool {
 
 func (t *TTreeNode) SetHasChildren(value bool) {
     TreeNode_SetHasChildren(t.instance, value)
+}
+
+// 获取高度。
+//
+// Get height.
+func (t *TTreeNode) Height() int32 {
+    return TreeNode_GetHeight(t.instance)
+}
+
+// 设置高度。
+//
+// Set height.
+func (t *TTreeNode) SetHeight(value int32) {
+    TreeNode_SetHeight(t.instance, value)
 }
 
 // 获取图像在images中的索引。
@@ -316,12 +501,36 @@ func (t *TTreeNode) Index() int32 {
     return TreeNode_GetIndex(t.instance)
 }
 
+func (t *TTreeNode) SetIndex(value int32) {
+    TreeNode_SetIndex(t.instance, value)
+}
+
+func (t *TTreeNode) IsFullHeightVisible() bool {
+    return TreeNode_GetIsFullHeightVisible(t.instance)
+}
+
 func (t *TTreeNode) IsVisible() bool {
     return TreeNode_GetIsVisible(t.instance)
 }
 
 func (t *TTreeNode) Level() int32 {
     return TreeNode_GetLevel(t.instance)
+}
+
+func (t *TTreeNode) MultiSelected() bool {
+    return TreeNode_GetMultiSelected(t.instance)
+}
+
+func (t *TTreeNode) SetMultiSelected(value bool) {
+    TreeNode_SetMultiSelected(t.instance, value)
+}
+
+func (t *TTreeNode) OverlayIndex() int32 {
+    return TreeNode_GetOverlayIndex(t.instance)
+}
+
+func (t *TTreeNode) SetOverlayIndex(value int32) {
+    TreeNode_SetOverlayIndex(t.instance, value)
 }
 
 // 获取组件所有者。
@@ -336,6 +545,14 @@ func (t *TTreeNode) Owner() *TTreeNodes {
 // Get control parent container.
 func (t *TTreeNode) Parent() *TTreeNode {
     return AsTreeNode(TreeNode_GetParent(t.instance))
+}
+
+func (t *TTreeNode) Selected() bool {
+    return TreeNode_GetSelected(t.instance)
+}
+
+func (t *TTreeNode) SetSelected(value bool) {
+    TreeNode_SetSelected(t.instance, value)
 }
 
 func (t *TTreeNode) SelectedIndex() int32 {
@@ -354,6 +571,10 @@ func (t *TTreeNode) SetStateIndex(value int32) {
     TreeNode_SetStateIndex(t.instance, value)
 }
 
+func (t *TTreeNode) SubTreeCount() int32 {
+    return TreeNode_GetSubTreeCount(t.instance)
+}
+
 // 获取文本。
 func (t *TTreeNode) Text() string {
     return TreeNode_GetText(t.instance)
@@ -364,8 +585,41 @@ func (t *TTreeNode) SetText(value string) {
     TreeNode_SetText(t.instance, value)
 }
 
+// 获取顶边位置。
+//
+// Get Top position.
+func (t *TTreeNode) Top() int32 {
+    return TreeNode_GetTop(t.instance)
+}
+
+func (t *TTreeNode) TreeNodes() *TTreeNodes {
+    return AsTreeNodes(TreeNode_GetTreeNodes(t.instance))
+}
+
 func (t *TTreeNode) TreeView() *TWinControl {
     return AsWinControl(TreeNode_GetTreeView(t.instance))
+}
+
+// 获取控件可视。
+//
+// Get the control visible.
+func (t *TTreeNode) Visible() bool {
+    return TreeNode_GetVisible(t.instance)
+}
+
+// 设置控件可视。
+//
+// Set the control visible.
+func (t *TTreeNode) SetVisible(value bool) {
+    TreeNode_SetVisible(t.instance, value)
+}
+
+func (t *TTreeNode) Items(ItemIndex int32) *TTreeNode {
+    return AsTreeNode(TreeNode_GetItems(t.instance, ItemIndex))
+}
+
+func (t *TTreeNode) SetItems(ItemIndex int32, value *TTreeNode) {
+    TreeNode_SetItems(t.instance, ItemIndex, CheckPtr(value))
 }
 
 func (t *TTreeNode) Item(Index int32) *TTreeNode {
