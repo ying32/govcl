@@ -1,7 +1,17 @@
 
+中文   | [English](README.md)    
+
+----
+
+#### 计划：等待Lazarus 2.2版本的发布。  
+
+----
+
 ### GoVCL
  
 跨平台的Golang GUI库, 核心绑定自 [Lazarus](https://www.lazarus-ide.org/) 创建的通用跨平台GUI库 [liblcl](https://github.com/ying32/liblcl) 。    
+
+**GoVCL是一个原生GUI库，不是基于HTML，更不是DirectUI库，一切以实用为主。**    
 
 **中文全称：`Go语言可视化组件库`；英文全称：`Go Language Visual Component Library`**    
 
