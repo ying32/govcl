@@ -286,10 +286,10 @@ type TCreatingListErrorEvent func(sender IObject, winErrorCode uint32, errorDesc
 type TLVCustomDrawEvent func(sender *TListView, aRect TRect, defaultDraw *bool)
 
 //TLVCustomDrawItemEvent = procedure(Sender: TCustomListView; Item: TListItem; State: TCustomDrawState; var DefaultDraw: Boolean) of object;
-type TLVCustomDrawItemEvent func(sender *TListView, item *TListItem, state TCustomDrawStage, defaultDraw *bool)
+type TLVCustomDrawItemEvent func(sender *TListView, item *TListItem, state TCustomDrawState, defaultDraw *bool)
 
 //TLVCustomDrawSubItemEvent = procedure(Sender: TCustomListView; Item: TListItem; SubItem: Integer; State: TCustomDrawState; var DefaultDraw: Boolean) of object;
-type TLVCustomDrawSubItemEvent func(sender *TListView, item *TListItem, subItem int32, state TCustomDrawStage, defaultDraw *bool)
+type TLVCustomDrawSubItemEvent func(sender *TListView, item *TListItem, subItem int32, state TCustomDrawState, defaultDraw *bool)
 
 //TLVDrawItemEvent = procedure(Sender: TCustomListView; Item: TListItem; Rect: TRect; State: TOwnerDrawState) of object;
 type TLVDrawItemEvent func(sender *TListView, item *TListItem, rect TRect, state TOwnerDrawState)
@@ -301,7 +301,7 @@ type TLVDataHintEvent func(sender IObject, startIndex, endIndex int32)
 type TTVCustomDrawEvent func(sender *TTreeView, aRect TRect, defaultDraw *bool)
 
 //TTVCustomDrawItemEvent = procedure(Sender: TCustomTreeView; Node: TTreeNode; State: TCustomDrawState; var DefaultDraw: Boolean) of object;
-type TTVCustomDrawItemEvent func(sender *TTreeView, node *TTreeNode, state TCustomDrawStage, defaultDraw *bool)
+type TTVCustomDrawItemEvent func(sender *TTreeView, node *TTreeNode, state TCustomDrawState, defaultDraw *bool)
 
 // 消息过程
 

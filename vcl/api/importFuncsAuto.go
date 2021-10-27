@@ -26665,6 +26665,10 @@ func ListView_SetOnDeletion(obj uintptr, fn interface{}) {
     getLazyProc("ListView_SetOnDeletion").Call(obj, addEventToMap(obj, fn))
 }
 
+func ListView_SetOnDrawItem(obj uintptr, fn interface{}) {
+    getLazyProc("ListView_SetOnDrawItem").Call(obj, addEventToMap(obj, fn))
+}
+
 func ListView_SetOnEdited(obj uintptr, fn interface{}) {
     getLazyProc("ListView_SetOnEdited").Call(obj, addEventToMap(obj, fn))
 }

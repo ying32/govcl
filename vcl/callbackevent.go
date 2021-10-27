@@ -718,7 +718,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 			v.(TLVCustomDrawItemEvent)(
 				AsListView(getVal(0)),
 				AsListItem(getVal(1)),
-				TCustomDrawStage(getVal(2)),
+				TCustomDrawState(getVal(2)),
 				getBoolPtr(3))
 
 			//type TLVCustomDrawSubItemEvent func(sender *TListView, item *TListItem, subItem int32, state TCustomDrawStage, defaultDraw *bool)
@@ -727,7 +727,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 				AsListView(getVal(0)),
 				AsListItem(getVal(1)),
 				int32(getVal(2)),
-				TCustomDrawStage(getVal(3)),
+				TCustomDrawState(getVal(3)),
 				getBoolPtr(4))
 
 			//type TLVDrawItemEvent func(sender *TListView, item *TListItem, rect TRect, state TOwnerDrawState)
@@ -757,7 +757,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 			v.(TTVCustomDrawItemEvent)(
 				AsTreeView(getVal(0)),
 				AsTreeNode(getVal(1)),
-				TCustomDrawStage(getVal(2)),
+				TCustomDrawState(getVal(2)),
 				getBoolPtr(3))
 
 			// type TWebTitleChangeEvent func(sender IObject, text string)

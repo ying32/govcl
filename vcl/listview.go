@@ -1196,6 +1196,10 @@ func (l *TListView) SetOnDeletion(fn TLVDeletedEvent) {
     ListView_SetOnDeletion(l.instance, fn)
 }
 
+func (l *TListView) SetOnDrawItem(fn TLVDrawItemEvent) {
+    ListView_SetOnDrawItem(l.instance, fn)
+}
+
 func (l *TListView) SetOnEdited(fn TLVEditedEvent) {
     ListView_SetOnEdited(l.instance, fn)
 }
