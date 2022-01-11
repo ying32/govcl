@@ -3,10 +3,6 @@
 
 ----
 
-Plan: Waiting for the release of Lazarus 2.2 version.
-
-----
-
 ### GoVCL
 
 Cross-platform Golang GUI library, The core binding is [liblcl](https://github.com/ying32/liblcl), a common cross-platform GUI library created by [Lazarus](https://www.lazarus-ide.org/).    
@@ -31,7 +27,7 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 > If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.   
 
 ### Pre-compiled GUI library binary download ([source code](https://github.com/ying32/liblcl))     
-[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.10.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.10/liblcl-2.0.10.zip)  
+[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.2.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.2.0/liblcl-2.2.0.zip)  
 
 
 ### res2go IDE plugin source code（[source code](https://github.com/ying32/res2go-ide-plugin)）  

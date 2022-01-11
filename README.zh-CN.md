@@ -3,10 +3,6 @@
 
 ----
 
-#### 计划：等待Lazarus 2.2版本的发布。  
-
-----
-
 ### GoVCL
  
 跨平台的Golang GUI库, 核心绑定自 [Lazarus](https://www.lazarus-ide.org/) 创建的通用跨平台GUI库 [liblcl](https://github.com/ying32/liblcl) 。    
@@ -33,7 +29,7 @@
 ----
 
 ### 预编译GUI库二进制下载（[源代码](https://github.com/ying32/liblcl)）       
-[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.10.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.10/liblcl-2.0.10.zip)  
+[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.2.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.2.0/liblcl-2.2.0.zip)  
 
 
 ### res2go IDE插件源代码（[源代码](https://github.com/ying32/res2go-ide-plugin)）  
