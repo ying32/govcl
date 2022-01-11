@@ -62,6 +62,8 @@ func (f *TMainFrom) OnFormCreate(sender vcl.IObject) {
 	f.ListView.SetOnData(f.OnListView1Data)
 
 	// 要显示状态图标就得添加
+	// lazarus 2.2又出新bug了，，windows下ownerdata时会异常
+	f.ListView.SetCheckboxes(!f.isWindows)
 	//f.ListView.SetCheckboxes(true)
 
 	// windows下OwnerData不能显示checkbox
