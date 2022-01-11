@@ -42,7 +42,7 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 
 > go get -u github.com/ying32/govcl    
 
-*Note: You can also use go module mode, configure in go.mod, such as: `github.com/ying32/govcl v2.0.10+incompatible`.*  
+*Note: You can also use go module mode, configure in go.mod, such as: `github.com/ying32/govcl v2.2.0+incompatible`.*  
 
 #### Step 2: Write the code
 

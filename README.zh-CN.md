@@ -45,7 +45,7 @@
 
 > go get -u github.com/ying32/govcl  
 
-*注：也可用go module方式拉取，在go.mod中配置如：`github.com/ying32/govcl v2.0.10+incompatible`。*  
+*注：也可用go module方式拉取，在go.mod中配置如：`github.com/ying32/govcl v2.2.0+incompatible`。*  
 
 #### 步骤二：编写代码    
 
