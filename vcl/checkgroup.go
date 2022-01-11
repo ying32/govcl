@@ -972,6 +972,14 @@ func (c *TCheckGroup) SetVisible(value bool) {
     CheckGroup_SetVisible(c.instance, value)
 }
 
+func (c *TCheckGroup) ParentBackground() bool {
+    return CheckGroup_GetParentBackground(c.instance)
+}
+
+func (c *TCheckGroup) SetParentBackground(value bool) {
+    CheckGroup_SetParentBackground(c.instance, value)
+}
+
 // 获取依靠客户端总数。
 func (c *TCheckGroup) DockClientCount() int32 {
     return CheckGroup_GetDockClientCount(c.instance)

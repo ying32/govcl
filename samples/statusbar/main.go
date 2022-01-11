@@ -53,20 +53,20 @@ func main() {
 	statusbar.SetAutoHint(true)
 
 	// 一般配合AutoHint使用
-	statusbar.SetSimplePanel(true)
+	statusbar.SetSimplePanel(false)
 
 	// 原本是不需这下面这样的，在dll中创建的貌似有些问题，所以手动来操作了
-	vcl.Application.SetOnHint(func(sender vcl.IObject) {
-		if statusbar.IsValid() {
-			if statusbar.SimplePanel() {
-				statusbar.SetSimpleText(vcl.Application.Hint())
-			} else {
-				if statusbar.Panels().Count() > 0 {
-					statusbar.Panels().Items(0).SetText(vcl.Application.Hint())
-				}
-			}
-		}
-	})
+	//vcl.Application.SetOnHint(func(sender vcl.IObject) {
+	//	if statusbar.IsValid() {
+	//		if statusbar.SimplePanel() {
+	//			statusbar.SetSimpleText(vcl.Application.Hint())
+	//		} else {
+	//			if statusbar.Panels().Count() > 0 {
+	//				statusbar.Panels().Items(0).SetText(vcl.Application.Hint())
+	//			}
+	//		}
+	//	}
+	//})
 
 	pnl := statusbar.Panels().Add()
 	pnl.SetText("pnl1")

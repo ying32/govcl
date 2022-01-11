@@ -697,6 +697,14 @@ func (f *TFrame) SetFont(value *TFont) {
     Frame_SetFont(f.instance, CheckPtr(value))
 }
 
+func (f *TFrame) ParentBackground() bool {
+    return Frame_GetParentBackground(f.instance)
+}
+
+func (f *TFrame) SetParentBackground(value bool) {
+    Frame_SetParentBackground(f.instance, value)
+}
+
 // 获取使用父容器颜色。
 //
 // Get parent color.

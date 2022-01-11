@@ -7194,6 +7194,15 @@ func GroupBox_SetFont(obj uintptr, value uintptr) {
     getLazyProc("GroupBox_SetFont").Call(obj, value)
 }
 
+func GroupBox_GetParentBackground(obj uintptr) bool {
+    ret, _, _ := getLazyProc("GroupBox_GetParentBackground").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GroupBox_SetParentBackground(obj uintptr, value bool) {
+    getLazyProc("GroupBox_SetParentBackground").Call(obj, GoBoolToDBool(value))
+}
+
 func GroupBox_GetParentColor(obj uintptr) bool {
     ret, _, _ := getLazyProc("GroupBox_GetParentColor").Call(obj)
     return DBoolToGoBool(ret)
@@ -14627,6 +14636,15 @@ func RadioGroup_GetConstraints(obj uintptr) uintptr {
 
 func RadioGroup_SetConstraints(obj uintptr, value uintptr) {
     getLazyProc("RadioGroup_SetConstraints").Call(obj, value)
+}
+
+func RadioGroup_GetParentBackground(obj uintptr) bool {
+    ret, _, _ := getLazyProc("RadioGroup_GetParentBackground").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RadioGroup_SetParentBackground(obj uintptr, value bool) {
+    getLazyProc("RadioGroup_SetParentBackground").Call(obj, GoBoolToDBool(value))
 }
 
 func RadioGroup_GetParentColor(obj uintptr) bool {
@@ -37369,6 +37387,22 @@ func Screen_Free(obj uintptr) {
     getLazyProc("Screen_Free").Call(obj)
 }
 
+func Screen_BeginTempCursor(obj uintptr, aCursor TCursor)  {
+    getLazyProc("Screen_BeginTempCursor").Call(obj, uintptr(aCursor) )
+}
+
+func Screen_EndTempCursor(obj uintptr, aCursor TCursor)  {
+    getLazyProc("Screen_EndTempCursor").Call(obj, uintptr(aCursor) )
+}
+
+func Screen_BeginWaitCursor(obj uintptr)  {
+    getLazyProc("Screen_BeginWaitCursor").Call(obj)
+}
+
+func Screen_EndWaitCursor(obj uintptr)  {
+    getLazyProc("Screen_EndWaitCursor").Call(obj)
+}
+
 func Screen_FindComponent(obj uintptr, AName string) uintptr {
     ret, _, _ := getLazyProc("Screen_FindComponent").Call(obj, GoStrToDStr(AName) )
     return ret
@@ -37423,6 +37457,16 @@ func Screen_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Screen_GetRealCursor(obj uintptr) TCursor {
+    ret, _, _ := getLazyProc("Screen_GetRealCursor").Call(obj)
+    return TCursor(ret)
+}
+
+func Screen_GetFocusedForm(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("Screen_GetFocusedForm").Call(obj)
+    return ret
+}
+
 func Screen_GetActiveControl(obj uintptr) uintptr {
     ret, _, _ := getLazyProc("Screen_GetActiveControl").Call(obj)
     return ret
@@ -37445,11 +37489,6 @@ func Screen_GetCursor(obj uintptr) TCursor {
 
 func Screen_SetCursor(obj uintptr, value TCursor) {
     getLazyProc("Screen_SetCursor").Call(obj, uintptr(value))
-}
-
-func Screen_GetFocusedForm(obj uintptr) uintptr {
-    ret, _, _ := getLazyProc("Screen_GetFocusedForm").Call(obj)
-    return ret
 }
 
 func Screen_GetMonitorCount(obj uintptr) int32 {
@@ -63310,6 +63349,15 @@ func Frame_SetFont(obj uintptr, value uintptr) {
     getLazyProc("Frame_SetFont").Call(obj, value)
 }
 
+func Frame_GetParentBackground(obj uintptr) bool {
+    ret, _, _ := getLazyProc("Frame_GetParentBackground").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Frame_SetParentBackground(obj uintptr, value bool) {
+    getLazyProc("Frame_SetParentBackground").Call(obj, GoBoolToDBool(value))
+}
+
 func Frame_GetParentColor(obj uintptr) bool {
     ret, _, _ := getLazyProc("Frame_GetParentColor").Call(obj)
     return DBoolToGoBool(ret)
@@ -65791,6 +65839,15 @@ func CheckGroup_GetVisible(obj uintptr) bool {
 
 func CheckGroup_SetVisible(obj uintptr, value bool) {
     getLazyProc("CheckGroup_SetVisible").Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetParentBackground(obj uintptr) bool {
+    ret, _, _ := getLazyProc("CheckGroup_GetParentBackground").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetParentBackground(obj uintptr, value bool) {
+    getLazyProc("CheckGroup_SetParentBackground").Call(obj, GoBoolToDBool(value))
 }
 
 func CheckGroup_GetDockClientCount(obj uintptr) int32 {

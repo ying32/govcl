@@ -681,6 +681,14 @@ func (r *TRadioGroup) SetConstraints(value *TSizeConstraints) {
     RadioGroup_SetConstraints(r.instance, CheckPtr(value))
 }
 
+func (r *TRadioGroup) ParentBackground() bool {
+    return RadioGroup_GetParentBackground(r.instance)
+}
+
+func (r *TRadioGroup) SetParentBackground(value bool) {
+    RadioGroup_SetParentBackground(r.instance, value)
+}
+
 // 获取使用父容器颜色。
 //
 // Get parent color.

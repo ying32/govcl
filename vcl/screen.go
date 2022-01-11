@@ -121,6 +121,22 @@ func TScreenClass() TClass {
     return Screen_StaticClassType()
 }
 
+func (s *TScreen) BeginTempCursor(aCursor TCursor) {
+    Screen_BeginTempCursor(s.instance, aCursor)
+}
+
+func (s *TScreen) EndTempCursor(aCursor TCursor) {
+    Screen_EndTempCursor(s.instance, aCursor)
+}
+
+func (s *TScreen) BeginWaitCursor() {
+    Screen_BeginWaitCursor(s.instance)
+}
+
+func (s *TScreen) EndWaitCursor() {
+    Screen_EndWaitCursor(s.instance)
+}
+
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
@@ -198,6 +214,14 @@ func (s *TScreen) ToString() string {
     return Screen_ToString(s.instance)
 }
 
+func (s *TScreen) RealCursor() TCursor {
+    return Screen_GetRealCursor(s.instance)
+}
+
+func (s *TScreen) FocusedForm() *TForm {
+    return AsForm(Screen_GetFocusedForm(s.instance))
+}
+
 // 获取当前动控件。
 func (s *TScreen) ActiveControl() *TWinControl {
     return AsWinControl(Screen_GetActiveControl(s.instance))
@@ -223,10 +247,6 @@ func (s *TScreen) Cursor() TCursor {
 // Set control cursor.
 func (s *TScreen) SetCursor(value TCursor) {
     Screen_SetCursor(s.instance, value)
-}
-
-func (s *TScreen) FocusedForm() *TForm {
-    return AsForm(Screen_GetFocusedForm(s.instance))
 }
 
 func (s *TScreen) MonitorCount() int32 {

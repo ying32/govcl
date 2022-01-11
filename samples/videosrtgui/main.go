@@ -2,20 +2,21 @@
 package main
 
 import (
-    "github.com/ying32/govcl/vcl"
+	_ "github.com/ying32/govcl/pkgs/winappres"
+	"github.com/ying32/govcl/vcl"
 )
 
 func main() {
 
-    vcl.Application.SetScaled(true)
-    vcl.Application.SetTitle("videosrtgui")
-    vcl.Application.Initialize()
-    vcl.Application.SetMainFormOnTaskBar(true)
-    vcl.Application.CreateForm(&MainForm)
-    vcl.Application.CreateForm(&AppSettings)
-    vcl.Application.CreateForm(&NewBaiduTranslateEngine)
-    vcl.Application.CreateForm(&NewTencentTranslateEngine)
-    vcl.Application.CreateForm(&OSSSaveSettings)
-    vcl.Application.CreateForm(&NewAliyunAudioEngine)
-    vcl.Application.Run()
+	vcl.Application.SetScaled(true)
+	vcl.Application.SetTitle("videosrtgui")
+	vcl.Application.Initialize()
+	vcl.Application.SetMainFormOnTaskBar(true)
+	vcl.Application.CreateForm(&MainForm)
+	vcl.Application.CreateForm(&AppSettings)
+	vcl.Application.CreateForm(&NewBaiduTranslateEngine)
+	vcl.Application.CreateForm(&NewTencentTranslateEngine)
+	vcl.Application.CreateForm(&OSSSaveSettings)
+	vcl.Application.CreateForm(&NewAliyunAudioEngine)
+	vcl.Application.Run()
 }

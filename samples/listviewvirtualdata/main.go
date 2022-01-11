@@ -4,10 +4,9 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/ying32/govcl/vcl/rtl"
-	"github.com/ying32/govcl/vcl/types/colors"
-
 	"time"
+
+	"github.com/ying32/govcl/vcl/rtl"
 
 	"math/rand"
 
@@ -63,7 +62,7 @@ func (f *TMainFrom) OnFormCreate(sender vcl.IObject) {
 	f.ListView.SetOnData(f.OnListView1Data)
 
 	// 要显示状态图标就得添加
-	f.ListView.SetCheckboxes(true)
+	//f.ListView.SetCheckboxes(true)
 
 	// windows下OwnerData不能显示checkbox
 	// linux和macOS在OwnerData下支持显示CheckBox
@@ -121,26 +120,14 @@ func (f *TMainFrom) OnFormCreate(sender vcl.IObject) {
 	fmt.Println("t:", ns, "ns, ", ns/1e6, "ms")
 	f.ListView.Items().SetCount(int32(len(tempData))) //   必须主动的设置Virtual List的行数
 
-	// 解决subitem数据为空时，不能连续绘制背景色
-	if f.isWindows {
-		f.ListView.SetOnAdvancedCustomDrawItem(f.onAdvancedCustomDrawItem)
-	} else {
+	// windows上ownerdata时不能显示checkbox，得自己模拟个
+	if !f.isWindows {
 		f.ListView.SetOnItemChecked(f.onListView1ItemChecked)
 	}
-
 }
 
 func (f *TMainFrom) onListView1ItemChecked(sender vcl.IObject, item *vcl.TListItem) {
 	tempData[item.Index()].Checked = item.Checked()
-}
-
-func (f *TMainFrom) onAdvancedCustomDrawItem(sender *vcl.TListView, item *vcl.TListItem, state types.TCustomDrawState, Stage types.TCustomDrawStage, defaultDraw *bool) {
-	if state.In(types.CdsSelected) && Stage == types.CdPrePaint {
-		r := item.DisplayRect(types.DrBounds)
-		canvas := sender.Canvas()
-		canvas.Brush().SetColor(types.TColor(colors.RGB(0, 120, 215)))
-		canvas.FillRect(r)
-	}
 }
 
 func (f *TMainFrom) OnListView1Data(sender vcl.IObject, item *vcl.TListItem) {
@@ -164,7 +151,9 @@ func (f *TMainFrom) OnListView1Data(sender vcl.IObject, item *vcl.TListItem) {
 }
 
 func (f *TMainFrom) OnListView1MouseDown(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
-	if f.ListView.Checkboxes() && x <= 16 { //16= f.stateImages.Width
+	//if f.ListView.Checkboxes() && x <= 16 { //16= f.stateImages.Width
+	// lazarus 2.2又出新bug。checkbox时windows下的 DoItemChecked 会报错。。。
+	if x <= 16 { //16= f.stateImages.Width
 		item := f.ListView.GetItemAt(x, y)
 		if item != nil {
 			idx := item.Index()

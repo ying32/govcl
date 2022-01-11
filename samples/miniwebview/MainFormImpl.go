@@ -51,14 +51,17 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 //}
 
 func (f *TMainForm) OnBtnGoForwardClick(sender vcl.IObject) {
+	// Windows下失效了，不知道原因。。。
 	f.webView.GoForward()
 }
 
 func (f *TMainForm) OnBtnGoBackClick(sender vcl.IObject) {
+	// Windows下失效了，不知道原因。。。
 	f.webView.GoBack()
 }
 
 func (f *TMainForm) OnBtnRefreshClick(sender vcl.IObject) {
+	// Windows下失效了，不知道原因。。。
 	f.webView.Refresh()
 }
 
