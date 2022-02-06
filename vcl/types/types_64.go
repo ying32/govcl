@@ -6,6 +6,8 @@
 //
 //----------------------------------------
 
+// +build amd64 arm64
+
 package types
 
 type TDWordFiller struct {
