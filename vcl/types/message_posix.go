@@ -7,7 +7,7 @@
 //----------------------------------------
 
 // +build !windows
-// +build amd64
+// +build amd64 arm64
 
 package types
 
