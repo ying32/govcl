@@ -915,6 +915,12 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 				int32(getVal(1)),
 				int32(getVal(2)),
 				TGridDrawState(getVal(3)))
+
+		case TAcceptFileNameEvent:
+			str := DStrToGoStr(getPtrVal(1))
+			v.(TAcceptFileNameEvent)(
+				AsObject(getVal(0)), &str)
+			setPtrVal(1, GoStrToDStr(str))
 		default:
 		}
 	}

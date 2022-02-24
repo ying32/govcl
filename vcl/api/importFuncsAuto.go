@@ -39218,6 +39218,2283 @@ func SpinEdit_StaticClassType() TClass {
     return TClass(r)
 }
 
+//--------------------------- TFloatSpinEdit ---------------------------
+
+func FloatSpinEdit_Create(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_Create").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_Free(obj uintptr) {
+    getLazyProc("FloatSpinEdit_Free").Call(obj)
+}
+
+func FloatSpinEdit_Clear(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_Clear").Call(obj)
+}
+
+func FloatSpinEdit_ClearSelection(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_ClearSelection").Call(obj)
+}
+
+func FloatSpinEdit_CopyToClipboard(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_CopyToClipboard").Call(obj)
+}
+
+func FloatSpinEdit_CutToClipboard(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_CutToClipboard").Call(obj)
+}
+
+func FloatSpinEdit_PasteFromClipboard(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_PasteFromClipboard").Call(obj)
+}
+
+func FloatSpinEdit_Undo(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_Undo").Call(obj)
+}
+
+func FloatSpinEdit_SelectAll(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_SelectAll").Call(obj)
+}
+
+func FloatSpinEdit_CanFocus(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_CanFocus").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_ContainsControl").Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_ControlAtPos").Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func FloatSpinEdit_DisableAlign(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_DisableAlign").Call(obj)
+}
+
+func FloatSpinEdit_EnableAlign(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_EnableAlign").Call(obj)
+}
+
+func FloatSpinEdit_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_FindChildControl").Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
+func FloatSpinEdit_FlipChildren(obj uintptr, AllLevels bool)  {
+    getLazyProc("FloatSpinEdit_FlipChildren").Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func FloatSpinEdit_Focused(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_Focused").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_HandleAllocated").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_InsertControl(obj uintptr, AControl uintptr)  {
+    getLazyProc("FloatSpinEdit_InsertControl").Call(obj, AControl )
+}
+
+func FloatSpinEdit_Invalidate(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_Invalidate").Call(obj)
+}
+
+func FloatSpinEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    getLazyProc("FloatSpinEdit_PaintTo").Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func FloatSpinEdit_RemoveControl(obj uintptr, AControl uintptr)  {
+    getLazyProc("FloatSpinEdit_RemoveControl").Call(obj, AControl )
+}
+
+func FloatSpinEdit_Realign(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_Realign").Call(obj)
+}
+
+func FloatSpinEdit_Repaint(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_Repaint").Call(obj)
+}
+
+func FloatSpinEdit_ScaleBy(obj uintptr, M int32, D int32)  {
+    getLazyProc("FloatSpinEdit_ScaleBy").Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func FloatSpinEdit_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    getLazyProc("FloatSpinEdit_ScrollBy").Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
+func FloatSpinEdit_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    getLazyProc("FloatSpinEdit_SetBounds").Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func FloatSpinEdit_SetFocus(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_SetFocus").Call(obj)
+}
+
+func FloatSpinEdit_Update(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_Update").Call(obj)
+}
+
+func FloatSpinEdit_BringToFront(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_BringToFront").Call(obj)
+}
+
+func FloatSpinEdit_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    getLazyProc("FloatSpinEdit_ClientToScreen").Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FloatSpinEdit_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    getLazyProc("FloatSpinEdit_ClientToParent").Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FloatSpinEdit_Dragging(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_Dragging").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_HasParent(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_HasParent").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_Hide(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_Hide").Call(obj)
+}
+
+func FloatSpinEdit_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := getLazyProc("FloatSpinEdit_Perform").Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func FloatSpinEdit_Refresh(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_Refresh").Call(obj)
+}
+
+func FloatSpinEdit_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    getLazyProc("FloatSpinEdit_ScreenToClient").Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FloatSpinEdit_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    getLazyProc("FloatSpinEdit_ParentToClient").Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FloatSpinEdit_SendToBack(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_SendToBack").Call(obj)
+}
+
+func FloatSpinEdit_Show(obj uintptr)  {
+    getLazyProc("FloatSpinEdit_Show").Call(obj)
+}
+
+func FloatSpinEdit_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetTextBuf").Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer, int(ret))
+    return int32(ret)
+}
+
+func FloatSpinEdit_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetTextLen").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_SetTextBuf(obj uintptr, Buffer string)  {
+    getLazyProc("FloatSpinEdit_SetTextBuf").Call(obj, GoStrToDStr(Buffer) )
+}
+
+func FloatSpinEdit_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_FindComponent").Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func FloatSpinEdit_GetNamePath(obj uintptr) string {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetNamePath").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FloatSpinEdit_Assign(obj uintptr, Source uintptr)  {
+    getLazyProc("FloatSpinEdit_Assign").Call(obj, Source )
+}
+
+func FloatSpinEdit_ClassType(obj uintptr) TClass {
+    ret, _, _ := getLazyProc("FloatSpinEdit_ClassType").Call(obj)
+    return TClass(ret)
+}
+
+func FloatSpinEdit_ClassName(obj uintptr) string {
+    ret, _, _ := getLazyProc("FloatSpinEdit_ClassName").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FloatSpinEdit_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_InstanceSize").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_InheritsFrom").Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_Equals").Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetHashCode").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_ToString(obj uintptr) string {
+    ret, _, _ := getLazyProc("FloatSpinEdit_ToString").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FloatSpinEdit_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    getLazyProc("FloatSpinEdit_AnchorToNeighbour").Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func FloatSpinEdit_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    getLazyProc("FloatSpinEdit_AnchorParallel").Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func FloatSpinEdit_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    getLazyProc("FloatSpinEdit_AnchorHorizontalCenterTo").Call(obj, ASibling )
+}
+
+func FloatSpinEdit_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    getLazyProc("FloatSpinEdit_AnchorVerticalCenterTo").Call(obj, ASibling )
+}
+
+func FloatSpinEdit_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    getLazyProc("FloatSpinEdit_AnchorSame").Call(obj, uintptr(ASide) , ASibling )
+}
+
+func FloatSpinEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    getLazyProc("FloatSpinEdit_AnchorAsAlign").Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func FloatSpinEdit_AnchorClient(obj uintptr, ASpace int32)  {
+    getLazyProc("FloatSpinEdit_AnchorClient").Call(obj, uintptr(ASpace) )
+}
+
+func FloatSpinEdit_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_ScaleDesignToForm").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FloatSpinEdit_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_ScaleFormToDesign").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FloatSpinEdit_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_Scale96ToForm").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FloatSpinEdit_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_ScaleFormTo96").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FloatSpinEdit_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_Scale96ToFont").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FloatSpinEdit_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_ScaleFontTo96").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FloatSpinEdit_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_ScaleScreenToFont").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FloatSpinEdit_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_ScaleFontToScreen").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FloatSpinEdit_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_Scale96ToScreen").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FloatSpinEdit_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_ScaleScreenTo96").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func FloatSpinEdit_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    getLazyProc("FloatSpinEdit_AutoAdjustLayout").Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func FloatSpinEdit_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    getLazyProc("FloatSpinEdit_FixDesignFontsPPI").Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func FloatSpinEdit_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    getLazyProc("FloatSpinEdit_ScaleFontsPPI").Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
+func FloatSpinEdit_GetAutoSelected(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetAutoSelected").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetAutoSelected(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetAutoSelected").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetAlign").Call(obj)
+    return TAlign(ret)
+}
+
+func FloatSpinEdit_SetAlign(obj uintptr, value TAlign) {
+    getLazyProc("FloatSpinEdit_SetAlign").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetAlignment(obj uintptr) TAlignment {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetAlignment").Call(obj)
+    return TAlignment(ret)
+}
+
+func FloatSpinEdit_SetAlignment(obj uintptr, value TAlignment) {
+    getLazyProc("FloatSpinEdit_SetAlignment").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetAnchors").Call(obj)
+    return TAnchors(ret)
+}
+
+func FloatSpinEdit_SetAnchors(obj uintptr, value TAnchors) {
+    getLazyProc("FloatSpinEdit_SetAnchors").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetAutoSelect(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetAutoSelect").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetAutoSelect(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetAutoSelect").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetAutoSize(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetAutoSize").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetAutoSize(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetAutoSize").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetColor(obj uintptr) TColor {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetColor").Call(obj)
+    return TColor(ret)
+}
+
+func FloatSpinEdit_SetColor(obj uintptr, value TColor) {
+    getLazyProc("FloatSpinEdit_SetColor").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetConstraints(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetConstraints").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_SetConstraints(obj uintptr, value uintptr) {
+    getLazyProc("FloatSpinEdit_SetConstraints").Call(obj, value)
+}
+
+func FloatSpinEdit_GetEnabled(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetEnabled").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetEnabled(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetEnabled").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetFont(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetFont").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_SetFont(obj uintptr, value uintptr) {
+    getLazyProc("FloatSpinEdit_SetFont").Call(obj, value)
+}
+
+func FloatSpinEdit_GetIncrement(obj uintptr) float64 {
+    var ret float64
+    getLazyProc("FloatSpinEdit_GetIncrement").Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FloatSpinEdit_SetIncrement(obj uintptr, value float64) {
+    getLazyProc("FloatSpinEdit_SetIncrement").Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func FloatSpinEdit_GetMaxValue(obj uintptr) float64 {
+    var ret float64
+    getLazyProc("FloatSpinEdit_GetMaxValue").Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FloatSpinEdit_SetMaxValue(obj uintptr, value float64) {
+    getLazyProc("FloatSpinEdit_SetMaxValue").Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func FloatSpinEdit_GetMinValue(obj uintptr) float64 {
+    var ret float64
+    getLazyProc("FloatSpinEdit_GetMinValue").Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FloatSpinEdit_SetMinValue(obj uintptr, value float64) {
+    getLazyProc("FloatSpinEdit_SetMinValue").Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func FloatSpinEdit_SetOnChange(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnChange").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnClick(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnClick").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnEnter(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnExit(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnExit").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnMouseWheel(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnMouseWheel").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_SetOnResize(obj uintptr, fn interface{}) {
+    getLazyProc("FloatSpinEdit_SetOnResize").Call(obj, addEventToMap(obj, fn))
+}
+
+func FloatSpinEdit_GetParentColor(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetParentColor").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetParentColor(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetParentColor").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetParentFont(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetParentFont").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetParentFont(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetParentFont").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetParentShowHint").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetParentShowHint(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetParentShowHint").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetPopupMenu").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_SetPopupMenu(obj uintptr, value uintptr) {
+    getLazyProc("FloatSpinEdit_SetPopupMenu").Call(obj, value)
+}
+
+func FloatSpinEdit_GetReadOnly(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetReadOnly").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetReadOnly(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetReadOnly").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetShowHint(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetShowHint").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetShowHint(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetShowHint").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetTabStop(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetTabStop").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetTabStop(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetTabStop").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetTabOrder(obj uintptr) TTabOrder {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetTabOrder").Call(obj)
+    return TTabOrder(ret)
+}
+
+func FloatSpinEdit_SetTabOrder(obj uintptr, value TTabOrder) {
+    getLazyProc("FloatSpinEdit_SetTabOrder").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetValue(obj uintptr) float64 {
+    var ret float64
+    getLazyProc("FloatSpinEdit_GetValue").Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FloatSpinEdit_SetValue(obj uintptr, value float64) {
+    getLazyProc("FloatSpinEdit_SetValue").Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func FloatSpinEdit_GetVisible(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetVisible").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetVisible(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetVisible").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetCanUndo(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetCanUndo").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_GetModified(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetModified").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetModified(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetModified").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetSelLength(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetSelLength").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_SetSelLength(obj uintptr, value int32) {
+    getLazyProc("FloatSpinEdit_SetSelLength").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetSelStart(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetSelStart").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_SetSelStart(obj uintptr, value int32) {
+    getLazyProc("FloatSpinEdit_SetSelStart").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetSelText(obj uintptr) string {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetSelText").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FloatSpinEdit_SetSelText(obj uintptr, value string) {
+    getLazyProc("FloatSpinEdit_SetSelText").Call(obj, GoStrToDStr(value))
+}
+
+func FloatSpinEdit_GetText(obj uintptr) string {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetText").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FloatSpinEdit_SetText(obj uintptr, value string) {
+    getLazyProc("FloatSpinEdit_SetText").Call(obj, GoStrToDStr(value))
+}
+
+func FloatSpinEdit_GetTextHint(obj uintptr) string {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetTextHint").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FloatSpinEdit_SetTextHint(obj uintptr, value string) {
+    getLazyProc("FloatSpinEdit_SetTextHint").Call(obj, GoStrToDStr(value))
+}
+
+func FloatSpinEdit_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetDockClientCount").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_GetDockSite(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetDockSite").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetDockSite(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetDockSite").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetDoubleBuffered").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetDoubleBuffered(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetDoubleBuffered").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetMouseInClient").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetVisibleDockClientCount").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetBrush").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetControlCount").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_GetHandle(obj uintptr) HWND {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetHandle").Call(obj)
+    return HWND(ret)
+}
+
+func FloatSpinEdit_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetParentDoubleBuffered").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetParentDoubleBuffered(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetParentDoubleBuffered").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetParentWindow").Call(obj)
+    return HWND(ret)
+}
+
+func FloatSpinEdit_SetParentWindow(obj uintptr, value HWND) {
+    getLazyProc("FloatSpinEdit_SetParentWindow").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetShowing(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetShowing").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetUseDockManager").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_SetUseDockManager(obj uintptr, value bool) {
+    getLazyProc("FloatSpinEdit_SetUseDockManager").Call(obj, GoBoolToDBool(value))
+}
+
+func FloatSpinEdit_GetAction(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetAction").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_SetAction(obj uintptr, value uintptr) {
+    getLazyProc("FloatSpinEdit_SetAction").Call(obj, value)
+}
+
+func FloatSpinEdit_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetBiDiMode").Call(obj)
+    return TBiDiMode(ret)
+}
+
+func FloatSpinEdit_SetBiDiMode(obj uintptr, value TBiDiMode) {
+    getLazyProc("FloatSpinEdit_SetBiDiMode").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    getLazyProc("FloatSpinEdit_GetBoundsRect").Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FloatSpinEdit_SetBoundsRect(obj uintptr, value TRect) {
+    getLazyProc("FloatSpinEdit_SetBoundsRect").Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func FloatSpinEdit_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetClientHeight").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_SetClientHeight(obj uintptr, value int32) {
+    getLazyProc("FloatSpinEdit_SetClientHeight").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    getLazyProc("FloatSpinEdit_GetClientOrigin").Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FloatSpinEdit_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    getLazyProc("FloatSpinEdit_GetClientRect").Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FloatSpinEdit_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetClientWidth").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_SetClientWidth(obj uintptr, value int32) {
+    getLazyProc("FloatSpinEdit_SetClientWidth").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetControlState").Call(obj)
+    return TControlState(ret)
+}
+
+func FloatSpinEdit_SetControlState(obj uintptr, value TControlState) {
+    getLazyProc("FloatSpinEdit_SetControlState").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetControlStyle").Call(obj)
+    return TControlStyle(ret)
+}
+
+func FloatSpinEdit_SetControlStyle(obj uintptr, value TControlStyle) {
+    getLazyProc("FloatSpinEdit_SetControlStyle").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetFloating(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetFloating").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FloatSpinEdit_GetParent(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetParent").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_SetParent(obj uintptr, value uintptr) {
+    getLazyProc("FloatSpinEdit_SetParent").Call(obj, value)
+}
+
+func FloatSpinEdit_GetLeft(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetLeft").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_SetLeft(obj uintptr, value int32) {
+    getLazyProc("FloatSpinEdit_SetLeft").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetTop(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetTop").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_SetTop(obj uintptr, value int32) {
+    getLazyProc("FloatSpinEdit_SetTop").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetWidth(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetWidth").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_SetWidth(obj uintptr, value int32) {
+    getLazyProc("FloatSpinEdit_SetWidth").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetHeight(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetHeight").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_SetHeight(obj uintptr, value int32) {
+    getLazyProc("FloatSpinEdit_SetHeight").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetCursor").Call(obj)
+    return TCursor(ret)
+}
+
+func FloatSpinEdit_SetCursor(obj uintptr, value TCursor) {
+    getLazyProc("FloatSpinEdit_SetCursor").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetHint(obj uintptr) string {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetHint").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FloatSpinEdit_SetHint(obj uintptr, value string) {
+    getLazyProc("FloatSpinEdit_SetHint").Call(obj, GoStrToDStr(value))
+}
+
+func FloatSpinEdit_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetComponentCount").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetComponentIndex").Call(obj)
+    return int32(ret)
+}
+
+func FloatSpinEdit_SetComponentIndex(obj uintptr, value int32) {
+    getLazyProc("FloatSpinEdit_SetComponentIndex").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetOwner").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_GetName(obj uintptr) string {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetName").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FloatSpinEdit_SetName(obj uintptr, value string) {
+    getLazyProc("FloatSpinEdit_SetName").Call(obj, GoStrToDStr(value))
+}
+
+func FloatSpinEdit_GetTag(obj uintptr) int {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetTag").Call(obj)
+    return int(ret)
+}
+
+func FloatSpinEdit_SetTag(obj uintptr, value int) {
+    getLazyProc("FloatSpinEdit_SetTag").Call(obj, uintptr(value))
+}
+
+func FloatSpinEdit_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetAnchorSideLeft").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_SetAnchorSideLeft(obj uintptr, value uintptr) {
+    getLazyProc("FloatSpinEdit_SetAnchorSideLeft").Call(obj, value)
+}
+
+func FloatSpinEdit_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetAnchorSideTop").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_SetAnchorSideTop(obj uintptr, value uintptr) {
+    getLazyProc("FloatSpinEdit_SetAnchorSideTop").Call(obj, value)
+}
+
+func FloatSpinEdit_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetAnchorSideRight").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_SetAnchorSideRight(obj uintptr, value uintptr) {
+    getLazyProc("FloatSpinEdit_SetAnchorSideRight").Call(obj, value)
+}
+
+func FloatSpinEdit_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetAnchorSideBottom").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_SetAnchorSideBottom(obj uintptr, value uintptr) {
+    getLazyProc("FloatSpinEdit_SetAnchorSideBottom").Call(obj, value)
+}
+
+func FloatSpinEdit_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetChildSizing").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_SetChildSizing(obj uintptr, value uintptr) {
+    getLazyProc("FloatSpinEdit_SetChildSizing").Call(obj, value)
+}
+
+func FloatSpinEdit_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetBorderSpacing").Call(obj)
+    return ret
+}
+
+func FloatSpinEdit_SetBorderSpacing(obj uintptr, value uintptr) {
+    getLazyProc("FloatSpinEdit_SetBorderSpacing").Call(obj, value)
+}
+
+func FloatSpinEdit_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetDockClients").Call(obj, uintptr(Index))
+    return ret
+}
+
+func FloatSpinEdit_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetControls").Call(obj, uintptr(Index))
+    return ret
+}
+
+func FloatSpinEdit_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetComponents").Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func FloatSpinEdit_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := getLazyProc("FloatSpinEdit_GetAnchorSide").Call(obj, uintptr(AKind))
+    return ret
+}
+
+func FloatSpinEdit_StaticClassType() TClass {
+    r, _, _:= getLazyProc("FloatSpinEdit_StaticClassType").Call()
+    return TClass(r)
+}
+
+//--------------------------- TDirectoryEdit ---------------------------
+
+func DirectoryEdit_Create(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_Create").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_Free(obj uintptr) {
+    getLazyProc("DirectoryEdit_Free").Call(obj)
+}
+
+func DirectoryEdit_SetFocus(obj uintptr)  {
+    getLazyProc("DirectoryEdit_SetFocus").Call(obj)
+}
+
+func DirectoryEdit_Focused(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_Focused").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_Clear(obj uintptr)  {
+    getLazyProc("DirectoryEdit_Clear").Call(obj)
+}
+
+func DirectoryEdit_ClearSelection(obj uintptr)  {
+    getLazyProc("DirectoryEdit_ClearSelection").Call(obj)
+}
+
+func DirectoryEdit_CopyToClipboard(obj uintptr)  {
+    getLazyProc("DirectoryEdit_CopyToClipboard").Call(obj)
+}
+
+func DirectoryEdit_CutToClipboard(obj uintptr)  {
+    getLazyProc("DirectoryEdit_CutToClipboard").Call(obj)
+}
+
+func DirectoryEdit_PasteFromClipboard(obj uintptr)  {
+    getLazyProc("DirectoryEdit_PasteFromClipboard").Call(obj)
+}
+
+func DirectoryEdit_SelectAll(obj uintptr)  {
+    getLazyProc("DirectoryEdit_SelectAll").Call(obj)
+}
+
+func DirectoryEdit_Undo(obj uintptr)  {
+    getLazyProc("DirectoryEdit_Undo").Call(obj)
+}
+
+func DirectoryEdit_ValidateEdit(obj uintptr)  {
+    getLazyProc("DirectoryEdit_ValidateEdit").Call(obj)
+}
+
+func DirectoryEdit_CanFocus(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_CanFocus").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_ContainsControl").Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_ControlAtPos").Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func DirectoryEdit_DisableAlign(obj uintptr)  {
+    getLazyProc("DirectoryEdit_DisableAlign").Call(obj)
+}
+
+func DirectoryEdit_EnableAlign(obj uintptr)  {
+    getLazyProc("DirectoryEdit_EnableAlign").Call(obj)
+}
+
+func DirectoryEdit_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_FindChildControl").Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
+func DirectoryEdit_FlipChildren(obj uintptr, AllLevels bool)  {
+    getLazyProc("DirectoryEdit_FlipChildren").Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func DirectoryEdit_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_HandleAllocated").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_InsertControl(obj uintptr, AControl uintptr)  {
+    getLazyProc("DirectoryEdit_InsertControl").Call(obj, AControl )
+}
+
+func DirectoryEdit_Invalidate(obj uintptr)  {
+    getLazyProc("DirectoryEdit_Invalidate").Call(obj)
+}
+
+func DirectoryEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    getLazyProc("DirectoryEdit_PaintTo").Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func DirectoryEdit_RemoveControl(obj uintptr, AControl uintptr)  {
+    getLazyProc("DirectoryEdit_RemoveControl").Call(obj, AControl )
+}
+
+func DirectoryEdit_Realign(obj uintptr)  {
+    getLazyProc("DirectoryEdit_Realign").Call(obj)
+}
+
+func DirectoryEdit_Repaint(obj uintptr)  {
+    getLazyProc("DirectoryEdit_Repaint").Call(obj)
+}
+
+func DirectoryEdit_ScaleBy(obj uintptr, M int32, D int32)  {
+    getLazyProc("DirectoryEdit_ScaleBy").Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func DirectoryEdit_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    getLazyProc("DirectoryEdit_ScrollBy").Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
+func DirectoryEdit_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    getLazyProc("DirectoryEdit_SetBounds").Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func DirectoryEdit_Update(obj uintptr)  {
+    getLazyProc("DirectoryEdit_Update").Call(obj)
+}
+
+func DirectoryEdit_BringToFront(obj uintptr)  {
+    getLazyProc("DirectoryEdit_BringToFront").Call(obj)
+}
+
+func DirectoryEdit_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    getLazyProc("DirectoryEdit_ClientToScreen").Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DirectoryEdit_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    getLazyProc("DirectoryEdit_ClientToParent").Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DirectoryEdit_Dragging(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_Dragging").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_HasParent(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_HasParent").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_Hide(obj uintptr)  {
+    getLazyProc("DirectoryEdit_Hide").Call(obj)
+}
+
+func DirectoryEdit_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := getLazyProc("DirectoryEdit_Perform").Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func DirectoryEdit_Refresh(obj uintptr)  {
+    getLazyProc("DirectoryEdit_Refresh").Call(obj)
+}
+
+func DirectoryEdit_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    getLazyProc("DirectoryEdit_ScreenToClient").Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DirectoryEdit_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    getLazyProc("DirectoryEdit_ParentToClient").Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DirectoryEdit_SendToBack(obj uintptr)  {
+    getLazyProc("DirectoryEdit_SendToBack").Call(obj)
+}
+
+func DirectoryEdit_Show(obj uintptr)  {
+    getLazyProc("DirectoryEdit_Show").Call(obj)
+}
+
+func DirectoryEdit_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := getLazyProc("DirectoryEdit_GetTextBuf").Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer, int(ret))
+    return int32(ret)
+}
+
+func DirectoryEdit_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetTextLen").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetTextBuf(obj uintptr, Buffer string)  {
+    getLazyProc("DirectoryEdit_SetTextBuf").Call(obj, GoStrToDStr(Buffer) )
+}
+
+func DirectoryEdit_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_FindComponent").Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func DirectoryEdit_GetNamePath(obj uintptr) string {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetNamePath").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DirectoryEdit_Assign(obj uintptr, Source uintptr)  {
+    getLazyProc("DirectoryEdit_Assign").Call(obj, Source )
+}
+
+func DirectoryEdit_ClassType(obj uintptr) TClass {
+    ret, _, _ := getLazyProc("DirectoryEdit_ClassType").Call(obj)
+    return TClass(ret)
+}
+
+func DirectoryEdit_ClassName(obj uintptr) string {
+    ret, _, _ := getLazyProc("DirectoryEdit_ClassName").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DirectoryEdit_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_InstanceSize").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_InheritsFrom").Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_Equals").Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetHashCode").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_ToString(obj uintptr) string {
+    ret, _, _ := getLazyProc("DirectoryEdit_ToString").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DirectoryEdit_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    getLazyProc("DirectoryEdit_AnchorToNeighbour").Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func DirectoryEdit_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    getLazyProc("DirectoryEdit_AnchorParallel").Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func DirectoryEdit_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    getLazyProc("DirectoryEdit_AnchorHorizontalCenterTo").Call(obj, ASibling )
+}
+
+func DirectoryEdit_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    getLazyProc("DirectoryEdit_AnchorVerticalCenterTo").Call(obj, ASibling )
+}
+
+func DirectoryEdit_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    getLazyProc("DirectoryEdit_AnchorSame").Call(obj, uintptr(ASide) , ASibling )
+}
+
+func DirectoryEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    getLazyProc("DirectoryEdit_AnchorAsAlign").Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func DirectoryEdit_AnchorClient(obj uintptr, ASpace int32)  {
+    getLazyProc("DirectoryEdit_AnchorClient").Call(obj, uintptr(ASpace) )
+}
+
+func DirectoryEdit_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_ScaleDesignToForm").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DirectoryEdit_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_ScaleFormToDesign").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DirectoryEdit_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_Scale96ToForm").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DirectoryEdit_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_ScaleFormTo96").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DirectoryEdit_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_Scale96ToFont").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DirectoryEdit_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_ScaleFontTo96").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DirectoryEdit_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_ScaleScreenToFont").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DirectoryEdit_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_ScaleFontToScreen").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DirectoryEdit_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_Scale96ToScreen").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DirectoryEdit_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_ScaleScreenTo96").Call(obj, uintptr(ASize) )
+    return int32(ret)
+}
+
+func DirectoryEdit_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    getLazyProc("DirectoryEdit_AutoAdjustLayout").Call(obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func DirectoryEdit_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    getLazyProc("DirectoryEdit_FixDesignFontsPPI").Call(obj, uintptr(ADesignTimePPI) )
+}
+
+func DirectoryEdit_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    getLazyProc("DirectoryEdit_ScaleFontsPPI").Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
+func DirectoryEdit_GetAutoSelected(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetAutoSelected").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetAutoSelected(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetAutoSelected").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetDirectory(obj uintptr) string {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetDirectory").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DirectoryEdit_SetDirectory(obj uintptr, value string) {
+    getLazyProc("DirectoryEdit_SetDirectory").Call(obj, GoStrToDStr(value))
+}
+
+func DirectoryEdit_GetRootDir(obj uintptr) string {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetRootDir").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DirectoryEdit_SetRootDir(obj uintptr, value string) {
+    getLazyProc("DirectoryEdit_SetRootDir").Call(obj, GoStrToDStr(value))
+}
+
+func DirectoryEdit_SetOnAcceptDirectory(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnAcceptDirectory").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_GetDialogTitle(obj uintptr) string {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetDialogTitle").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DirectoryEdit_SetDialogTitle(obj uintptr, value string) {
+    getLazyProc("DirectoryEdit_SetDialogTitle").Call(obj, GoStrToDStr(value))
+}
+
+func DirectoryEdit_GetDialogOptions(obj uintptr) TOpenOptions {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetDialogOptions").Call(obj)
+    return TOpenOptions(ret)
+}
+
+func DirectoryEdit_SetDialogOptions(obj uintptr, value TOpenOptions) {
+    getLazyProc("DirectoryEdit_SetDialogOptions").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetShowHidden(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetShowHidden").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetShowHidden(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetShowHidden").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetButtonCaption(obj uintptr) string {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetButtonCaption").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DirectoryEdit_SetButtonCaption(obj uintptr, value string) {
+    getLazyProc("DirectoryEdit_SetButtonCaption").Call(obj, GoStrToDStr(value))
+}
+
+func DirectoryEdit_GetButtonCursor(obj uintptr) TCursor {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetButtonCursor").Call(obj)
+    return TCursor(ret)
+}
+
+func DirectoryEdit_SetButtonCursor(obj uintptr, value TCursor) {
+    getLazyProc("DirectoryEdit_SetButtonCursor").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetButtonHint(obj uintptr) string {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetButtonHint").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DirectoryEdit_SetButtonHint(obj uintptr, value string) {
+    getLazyProc("DirectoryEdit_SetButtonHint").Call(obj, GoStrToDStr(value))
+}
+
+func DirectoryEdit_GetButtonOnlyWhenFocused(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetButtonOnlyWhenFocused").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetButtonOnlyWhenFocused(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetButtonOnlyWhenFocused").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetButtonWidth(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetButtonWidth").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetButtonWidth(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetButtonWidth").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetConstraints(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetConstraints").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_SetConstraints(obj uintptr, value uintptr) {
+    getLazyProc("DirectoryEdit_SetConstraints").Call(obj, value)
+}
+
+func DirectoryEdit_GetDirectInput(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetDirectInput").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetDirectInput(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetDirectInput").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetGlyph(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetGlyph").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_SetGlyph(obj uintptr, value uintptr) {
+    getLazyProc("DirectoryEdit_SetGlyph").Call(obj, value)
+}
+
+func DirectoryEdit_GetNumGlyphs(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetNumGlyphs").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetNumGlyphs(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetNumGlyphs").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetImages(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetImages").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_SetImages(obj uintptr, value uintptr) {
+    getLazyProc("DirectoryEdit_SetImages").Call(obj, value)
+}
+
+func DirectoryEdit_GetImageIndex(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetImageIndex").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetImageIndex(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetImageIndex").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetImageWidth(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetImageWidth").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetImageWidth(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetImageWidth").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetFlat(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetFlat").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetFlat(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetFlat").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetFocusOnButtonClick(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetFocusOnButtonClick").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetFocusOnButtonClick(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetFocusOnButtonClick").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetAlign").Call(obj)
+    return TAlign(ret)
+}
+
+func DirectoryEdit_SetAlign(obj uintptr, value TAlign) {
+    getLazyProc("DirectoryEdit_SetAlign").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetAnchors").Call(obj)
+    return TAnchors(ret)
+}
+
+func DirectoryEdit_SetAnchors(obj uintptr, value TAnchors) {
+    getLazyProc("DirectoryEdit_SetAnchors").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetAutoSize(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetAutoSize").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetAutoSize(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetAutoSize").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetAutoSelect(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetAutoSelect").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetAutoSelect(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetAutoSelect").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetColor(obj uintptr) TColor {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetColor").Call(obj)
+    return TColor(ret)
+}
+
+func DirectoryEdit_SetColor(obj uintptr, value TColor) {
+    getLazyProc("DirectoryEdit_SetColor").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetDragCursor").Call(obj)
+    return TCursor(ret)
+}
+
+func DirectoryEdit_SetDragCursor(obj uintptr, value TCursor) {
+    getLazyProc("DirectoryEdit_SetDragCursor").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetDragMode").Call(obj)
+    return TDragMode(ret)
+}
+
+func DirectoryEdit_SetDragMode(obj uintptr, value TDragMode) {
+    getLazyProc("DirectoryEdit_SetDragMode").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetEnabled(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetEnabled").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetEnabled(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetEnabled").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetFont(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetFont").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_SetFont(obj uintptr, value uintptr) {
+    getLazyProc("DirectoryEdit_SetFont").Call(obj, value)
+}
+
+func DirectoryEdit_GetLayout(obj uintptr) TLeftRight {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetLayout").Call(obj)
+    return TLeftRight(ret)
+}
+
+func DirectoryEdit_SetLayout(obj uintptr, value TLeftRight) {
+    getLazyProc("DirectoryEdit_SetLayout").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetMaxLength(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetMaxLength").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetMaxLength(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetMaxLength").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetParentColor(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetParentColor").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetParentColor(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetParentColor").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetParentFont(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetParentFont").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetParentFont(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetParentFont").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetParentShowHint").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetParentShowHint(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetParentShowHint").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetPopupMenu").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_SetPopupMenu(obj uintptr, value uintptr) {
+    getLazyProc("DirectoryEdit_SetPopupMenu").Call(obj, value)
+}
+
+func DirectoryEdit_GetReadOnly(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetReadOnly").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetReadOnly(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetReadOnly").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetShowHint(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetShowHint").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetShowHint(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetShowHint").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetTabOrder(obj uintptr) TTabOrder {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetTabOrder").Call(obj)
+    return TTabOrder(ret)
+}
+
+func DirectoryEdit_SetTabOrder(obj uintptr, value TTabOrder) {
+    getLazyProc("DirectoryEdit_SetTabOrder").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetSpacing(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetSpacing").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetSpacing(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetSpacing").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetTabStop(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetTabStop").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetTabStop(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetTabStop").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetVisible(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetVisible").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetVisible(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetVisible").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_SetOnButtonClick(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnButtonClick").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnChange(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnChange").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnClick(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnClick").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnContextPopup(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnDblClick(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnDragOver(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnEditingDone(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnEditingDone").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnEnter(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnExit(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnExit").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnMouseWheel(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnMouseWheel").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    getLazyProc("DirectoryEdit_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+}
+
+func DirectoryEdit_GetText(obj uintptr) string {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetText").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DirectoryEdit_SetText(obj uintptr, value string) {
+    getLazyProc("DirectoryEdit_SetText").Call(obj, GoStrToDStr(value))
+}
+
+func DirectoryEdit_GetTextHint(obj uintptr) string {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetTextHint").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DirectoryEdit_SetTextHint(obj uintptr, value string) {
+    getLazyProc("DirectoryEdit_SetTextHint").Call(obj, GoStrToDStr(value))
+}
+
+func DirectoryEdit_GetAlignment(obj uintptr) TAlignment {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetAlignment").Call(obj)
+    return TAlignment(ret)
+}
+
+func DirectoryEdit_SetAlignment(obj uintptr, value TAlignment) {
+    getLazyProc("DirectoryEdit_SetAlignment").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetCanUndo(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetCanUndo").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_GetCaretPos(obj uintptr) TPoint {
+    var ret TPoint
+    getLazyProc("DirectoryEdit_GetCaretPos").Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DirectoryEdit_SetCaretPos(obj uintptr, value TPoint) {
+    getLazyProc("DirectoryEdit_SetCaretPos").Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func DirectoryEdit_GetCharCase(obj uintptr) TEditCharCase {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetCharCase").Call(obj)
+    return TEditCharCase(ret)
+}
+
+func DirectoryEdit_SetCharCase(obj uintptr, value TEditCharCase) {
+    getLazyProc("DirectoryEdit_SetCharCase").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetHideSelection(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetHideSelection").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetHideSelection(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetHideSelection").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetModified(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetModified").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetModified(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetModified").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetNumbersOnly(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetNumbersOnly").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetNumbersOnly(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetNumbersOnly").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetPasswordChar(obj uintptr) uint16 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetPasswordChar").Call(obj)
+    return uint16(ret)
+}
+
+func DirectoryEdit_SetPasswordChar(obj uintptr, value uint16) {
+    getLazyProc("DirectoryEdit_SetPasswordChar").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetSelLength(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetSelLength").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetSelLength(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetSelLength").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetSelStart(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetSelStart").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetSelStart(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetSelStart").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetSelText(obj uintptr) string {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetSelText").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DirectoryEdit_SetSelText(obj uintptr, value string) {
+    getLazyProc("DirectoryEdit_SetSelText").Call(obj, GoStrToDStr(value))
+}
+
+func DirectoryEdit_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetDockClientCount").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_GetDockSite(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetDockSite").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetDockSite(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetDockSite").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetDoubleBuffered").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetDoubleBuffered(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetDoubleBuffered").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetMouseInClient").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetVisibleDockClientCount").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetBrush").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetControlCount").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_GetHandle(obj uintptr) HWND {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetHandle").Call(obj)
+    return HWND(ret)
+}
+
+func DirectoryEdit_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetParentDoubleBuffered").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetParentDoubleBuffered(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetParentDoubleBuffered").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetParentWindow").Call(obj)
+    return HWND(ret)
+}
+
+func DirectoryEdit_SetParentWindow(obj uintptr, value HWND) {
+    getLazyProc("DirectoryEdit_SetParentWindow").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetShowing(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetShowing").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetUseDockManager").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_SetUseDockManager(obj uintptr, value bool) {
+    getLazyProc("DirectoryEdit_SetUseDockManager").Call(obj, GoBoolToDBool(value))
+}
+
+func DirectoryEdit_GetAction(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetAction").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_SetAction(obj uintptr, value uintptr) {
+    getLazyProc("DirectoryEdit_SetAction").Call(obj, value)
+}
+
+func DirectoryEdit_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetBiDiMode").Call(obj)
+    return TBiDiMode(ret)
+}
+
+func DirectoryEdit_SetBiDiMode(obj uintptr, value TBiDiMode) {
+    getLazyProc("DirectoryEdit_SetBiDiMode").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    getLazyProc("DirectoryEdit_GetBoundsRect").Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DirectoryEdit_SetBoundsRect(obj uintptr, value TRect) {
+    getLazyProc("DirectoryEdit_SetBoundsRect").Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func DirectoryEdit_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetClientHeight").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetClientHeight(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetClientHeight").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    getLazyProc("DirectoryEdit_GetClientOrigin").Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DirectoryEdit_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    getLazyProc("DirectoryEdit_GetClientRect").Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DirectoryEdit_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetClientWidth").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetClientWidth(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetClientWidth").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetControlState").Call(obj)
+    return TControlState(ret)
+}
+
+func DirectoryEdit_SetControlState(obj uintptr, value TControlState) {
+    getLazyProc("DirectoryEdit_SetControlState").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetControlStyle").Call(obj)
+    return TControlStyle(ret)
+}
+
+func DirectoryEdit_SetControlStyle(obj uintptr, value TControlStyle) {
+    getLazyProc("DirectoryEdit_SetControlStyle").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetFloating(obj uintptr) bool {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetFloating").Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DirectoryEdit_GetParent(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetParent").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_SetParent(obj uintptr, value uintptr) {
+    getLazyProc("DirectoryEdit_SetParent").Call(obj, value)
+}
+
+func DirectoryEdit_GetLeft(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetLeft").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetLeft(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetLeft").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetTop(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetTop").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetTop(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetTop").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetWidth(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetWidth").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetWidth(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetWidth").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetHeight(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetHeight").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetHeight(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetHeight").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetCursor").Call(obj)
+    return TCursor(ret)
+}
+
+func DirectoryEdit_SetCursor(obj uintptr, value TCursor) {
+    getLazyProc("DirectoryEdit_SetCursor").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetHint(obj uintptr) string {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetHint").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DirectoryEdit_SetHint(obj uintptr, value string) {
+    getLazyProc("DirectoryEdit_SetHint").Call(obj, GoStrToDStr(value))
+}
+
+func DirectoryEdit_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetComponentCount").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetComponentIndex").Call(obj)
+    return int32(ret)
+}
+
+func DirectoryEdit_SetComponentIndex(obj uintptr, value int32) {
+    getLazyProc("DirectoryEdit_SetComponentIndex").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetOwner").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_GetName(obj uintptr) string {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetName").Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DirectoryEdit_SetName(obj uintptr, value string) {
+    getLazyProc("DirectoryEdit_SetName").Call(obj, GoStrToDStr(value))
+}
+
+func DirectoryEdit_GetTag(obj uintptr) int {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetTag").Call(obj)
+    return int(ret)
+}
+
+func DirectoryEdit_SetTag(obj uintptr, value int) {
+    getLazyProc("DirectoryEdit_SetTag").Call(obj, uintptr(value))
+}
+
+func DirectoryEdit_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetAnchorSideLeft").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_SetAnchorSideLeft(obj uintptr, value uintptr) {
+    getLazyProc("DirectoryEdit_SetAnchorSideLeft").Call(obj, value)
+}
+
+func DirectoryEdit_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetAnchorSideTop").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_SetAnchorSideTop(obj uintptr, value uintptr) {
+    getLazyProc("DirectoryEdit_SetAnchorSideTop").Call(obj, value)
+}
+
+func DirectoryEdit_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetAnchorSideRight").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_SetAnchorSideRight(obj uintptr, value uintptr) {
+    getLazyProc("DirectoryEdit_SetAnchorSideRight").Call(obj, value)
+}
+
+func DirectoryEdit_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetAnchorSideBottom").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_SetAnchorSideBottom(obj uintptr, value uintptr) {
+    getLazyProc("DirectoryEdit_SetAnchorSideBottom").Call(obj, value)
+}
+
+func DirectoryEdit_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetChildSizing").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_SetChildSizing(obj uintptr, value uintptr) {
+    getLazyProc("DirectoryEdit_SetChildSizing").Call(obj, value)
+}
+
+func DirectoryEdit_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetBorderSpacing").Call(obj)
+    return ret
+}
+
+func DirectoryEdit_SetBorderSpacing(obj uintptr, value uintptr) {
+    getLazyProc("DirectoryEdit_SetBorderSpacing").Call(obj, value)
+}
+
+func DirectoryEdit_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetDockClients").Call(obj, uintptr(Index))
+    return ret
+}
+
+func DirectoryEdit_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetControls").Call(obj, uintptr(Index))
+    return ret
+}
+
+func DirectoryEdit_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetComponents").Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func DirectoryEdit_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := getLazyProc("DirectoryEdit_GetAnchorSide").Call(obj, uintptr(AKind))
+    return ret
+}
+
+func DirectoryEdit_StaticClassType() TClass {
+    r, _, _:= getLazyProc("DirectoryEdit_StaticClassType").Call()
+    return TClass(r)
+}
+
 //--------------------------- TMiniWebview ---------------------------
 
 func MiniWebview_Create(obj uintptr) uintptr {

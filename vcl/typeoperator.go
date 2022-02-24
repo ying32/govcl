@@ -634,6 +634,24 @@ func (i TIs) SpinEdit() bool {
 //}
 
 
+func (i TIs) FloatSpinEdit() bool {
+    return FloatSpinEdit_InheritsFrom(uintptr(i), TFloatSpinEditClass())
+}
+
+//func (a TAs) FloatSpinEdit() *TFloatSpinEdit {
+//    return AsFloatSpinEdit(uintptr(a))
+//}
+
+
+func (i TIs) DirectoryEdit() bool {
+    return DirectoryEdit_InheritsFrom(uintptr(i), TDirectoryEditClass())
+}
+
+//func (a TAs) DirectoryEdit() *TDirectoryEdit {
+//    return AsDirectoryEdit(uintptr(a))
+//}
+
+
 func (i TIs) MiniWebview() bool {
     return MiniWebview_InheritsFrom(uintptr(i), TMiniWebviewClass())
 }

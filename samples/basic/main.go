@@ -43,6 +43,23 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.Button1.SetTop(50)
 	f.Button1.SetOnClick(f.OnButton1Click)
 
+	//x := vcl.NewFloatSpinEdit(f)
+	//x.SetParent(f)
+	//x.SetLeft(100)
+	//x.SetTop(100)
+	//x.SetMaxValue(10.0)
+	//x.SetIncrement(0.2)
+	//x.SetMinValue(0.1)
+	//x.SetValue(3.0)
+	//x.SetWidth(100)
+	//
+	//d := vcl.NewDirectoryEdit(f)
+	//d.SetParent(f)
+	//d.SetLeft(100)
+	//d.SetTop(150)
+	//d.SetWidth(200)
+	//d.SetDirectory("C:\\xxxxx")
+
 }
 
 func (f *TMainForm) OnFormCloseQuery(Sender vcl.IObject, CanClose *bool) {
