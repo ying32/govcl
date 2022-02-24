@@ -60,6 +60,12 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	//d.SetWidth(200)
 	//d.SetDirectory("C:\\xxxxx")
 
+	//c := vcl.NewColorButton(f)
+	//c.SetParent(f)
+	//c.SetOnColorChanged(func(sender vcl.IObject) {
+	//	fmt.Println(c.ButtonColor())
+	//})
+
 }
 
 func (f *TMainForm) OnFormCloseQuery(Sender vcl.IObject, CanClose *bool) {

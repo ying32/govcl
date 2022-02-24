@@ -652,6 +652,15 @@ func (i TIs) DirectoryEdit() bool {
 //}
 
 
+func (i TIs) ColorButton() bool {
+    return ColorButton_InheritsFrom(uintptr(i), TColorButtonClass())
+}
+
+//func (a TAs) ColorButton() *TColorButton {
+//    return AsColorButton(uintptr(a))
+//}
+
+
 func (i TIs) MiniWebview() bool {
     return MiniWebview_InheritsFrom(uintptr(i), TMiniWebviewClass())
 }
