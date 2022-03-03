@@ -16,7 +16,6 @@
 [截图查看](https://z-kit.cc/screenshot.html) | 
 [中文文档](https://gitee.com/ying32/govcl/wikis/pages) | 
 [更新日志](https://z-kit.cc/changelog.html) | 
-[视频教程(非官方)](https://video.0-w.cc/videos/1) | 
 [赞助GoVCL](https://z-kit.cc/sponsor.html)   
 
 ----

@@ -16,7 +16,6 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 [Screenshots](https://z-kit.cc/en/screenshot.html) | 
 [WIKI(Chinese)](https://gitee.com/ying32/govcl/wikis/pages) | 
 [What's-new(Chinese)](https://z-kit.cc/changelog.html) | 
-[Video tutorial(Unofficial)](https://video.0-w.cc/videos/1) | 
 [Sponsor govcl](https://z-kit.cc/en/sponsor.html)  
 
 ----
