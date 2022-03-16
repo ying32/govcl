@@ -228,7 +228,7 @@ func InitComponentLang(aOwner vcl.IComponent) {
 				arr := strings.Split(propName, ".")
 				if len(arr) > 1 {
 					obj := aOwner.FindComponent(arr[0])
-					if obj.IsValid() {
+					if obj != nil && obj.IsValid() {
 						switch len(arr) {
 						case 2:
 							rtl.SetPropertyValue(obj.Instance(), arr[1], propValue)
