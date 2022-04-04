@@ -541,6 +541,14 @@ func (p *TPageControl) PageCount() int32 {
     return PageControl_GetPageCount(p.instance)
 }
 
+func (p *TPageControl) ActivePage() *TTabSheet {
+    return AsTabSheet(PageControl_GetActivePage(p.instance))
+}
+
+func (p *TPageControl) SetActivePage(value IWinControl) {
+    PageControl_SetActivePage(p.instance, CheckPtr(value))
+}
+
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.

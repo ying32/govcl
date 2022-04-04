@@ -1120,13 +1120,7 @@ func (d *TDirectoryEdit) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
 
 // 获取文本。
 func (d *TDirectoryEdit) Text() string {
-    strLen := d.GetTextLen()
-    if strLen != 0 {
-        var buffStr string
-        d.GetTextBuf(&buffStr, strLen + 1)
-        return buffStr
-    }
-    return ""
+    return getControlBufferText(d.GetTextLen, d.GetTextBuf)
 }
 
 // 设置文本。

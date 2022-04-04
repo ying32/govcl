@@ -967,13 +967,7 @@ func (f *TFloatSpinEdit) SetSelText(value string) {
 
 // 获取文本。
 func (f *TFloatSpinEdit) Text() string {
-    strLen := f.GetTextLen()
-    if strLen != 0 {
-        var buffStr string
-        f.GetTextBuf(&buffStr, strLen + 1)
-        return buffStr
-    }
-    return ""
+    return getControlBufferText(f.GetTextLen, f.GetTextBuf)
 }
 
 // 设置文本。

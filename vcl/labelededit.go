@@ -892,13 +892,7 @@ func (l *TLabeledEdit) SetTabStop(value bool) {
 
 // 获取文本。
 func (l *TLabeledEdit) Text() string {
-    strLen := l.GetTextLen()
-    if strLen != 0 {
-        var buffStr string
-        l.GetTextBuf(&buffStr, strLen + 1)
-        return buffStr
-    }
-    return ""
+    return getControlBufferText(l.GetTextLen, l.GetTextBuf)
 }
 
 // 设置文本。

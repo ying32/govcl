@@ -921,13 +921,7 @@ func (s *TSpinEdit) SetSelText(value string) {
 
 // 获取文本。
 func (s *TSpinEdit) Text() string {
-    strLen := s.GetTextLen()
-    if strLen != 0 {
-        var buffStr string
-        s.GetTextBuf(&buffStr, strLen + 1)
-        return buffStr
-    }
-    return ""
+    return getControlBufferText(s.GetTextLen, s.GetTextBuf)
 }
 
 // 设置文本。

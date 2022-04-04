@@ -900,13 +900,7 @@ func (e *TEdit) SetTabStop(value bool) {
 
 // 获取文本。
 func (e *TEdit) Text() string {
-    strLen := e.GetTextLen()
-    if strLen != 0 {
-        var buffStr string
-        e.GetTextBuf(&buffStr, strLen + 1)
-        return buffStr
-    }
-    return ""
+    return getControlBufferText(e.GetTextLen, e.GetTextBuf)
 }
 
 // 设置文本。

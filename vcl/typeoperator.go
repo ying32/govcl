@@ -1264,6 +1264,15 @@ func (i TIs) ToggleBox() bool {
 //}
 
 
+func (i TIs) CheckComboBox() bool {
+    return CheckComboBox_InheritsFrom(uintptr(i), TCheckComboBoxClass())
+}
+
+//func (a TAs) CheckComboBox() *TCheckComboBox {
+//    return AsCheckComboBox(uintptr(a))
+//}
+
+
 func (i TIs) GridColumnTitle() bool {
     return GridColumnTitle_InheritsFrom(uintptr(i), TGridColumnTitleClass())
 }

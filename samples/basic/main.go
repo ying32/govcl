@@ -43,6 +43,14 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.Button1.SetTop(50)
 	f.Button1.SetOnClick(f.OnButton1Click)
 
+	//xx := vcl.NewCheckComboBox(f)
+	//xx.SetParent(f)
+	//xx.Items().Add("fff")
+	//xx.Items().Add("bbb")
+	//xx.Items().Add("ccc")
+	//xx.SetOnItemChange(func(sender vcl.IObject, index int32) {
+	//	fmt.Println("checked: ", xx.Checked(index))
+	//})
 	//x := vcl.NewFloatSpinEdit(f)
 	//x.SetParent(f)
 	//x.SetLeft(100)

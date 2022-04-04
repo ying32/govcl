@@ -100,5 +100,6 @@ lib
 /samples/Windows/memloaddll/defaultRes_windows_amd64.syso
 /samples/directUITest/
 /samples/cgoTest/
+/samples/multilanguage2
 go.sum
 /samples/controls

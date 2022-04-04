@@ -20,12 +20,16 @@ func StringToUTF8Ptr(s string) *uint8 {
 	return &utf8StrArr[0]
 }
 
-// Go的string转换为Lazarus的string
-func GoStrToDStr(s string) uintptr {
-	if s == "" {
+func PascalStr(str string) uintptr {
+	if str == "" {
 		return 0
 	}
-	return uintptr(unsafe.Pointer(StringToUTF8Ptr(s)))
+	return uintptr(unsafe.Pointer(StringToUTF8Ptr(str)))
+}
+
+// Deprecated: use PascalStr.
+func GoStrToDStr(str string) uintptr {
+	return PascalStr(str)
 }
 
 // 这种跟copyStr3基本一样，只是用go来处理了
@@ -67,13 +71,18 @@ func copyStr3(str uintptr, strLen int) string {
 	return string(buffer)
 }
 
-// Lazarus的string转换为Go的string
-func DStrToGoStr(ustr uintptr) string {
-	l := DStrLen(ustr)
+// GoStr pascal string to go string
+func GoStr(str uintptr) string {
+	l := DStrLen(str)
 	if l == 0 {
 		return ""
 	}
-	return copyStr(ustr, int(l))
+	return copyStr(str, int(l))
+}
+
+// Deprecated: use GoStr.
+func DStrToGoStr(str uintptr) string {
+	return GoStr(str)
 }
 
 func getBuff(size int32) interface{} {

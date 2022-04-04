@@ -43,15 +43,15 @@ func Canvas_FrameRect(obj uintptr, aRect TRect) {
 }
 
 func Canvas_TextRect2(obj uintptr, aRect *TRect, text string, textFormat TTextFormat) {
-	canvas_TextRect2.Call(obj, uintptr(unsafe.Pointer(aRect)), GoStrToDStr(text), uintptr(textFormat))
+	canvas_TextRect2.Call(obj, uintptr(unsafe.Pointer(aRect)), PascalStr(text), uintptr(textFormat))
 }
 
 func Canvas_TextRect3(obj uintptr, aRect *TRect, text string, textFormat TTextFormat) {
-	canvas_TextRect2.Call(obj, uintptr(unsafe.Pointer(aRect)), GoStrToDStr(text), 0, uintptr(textFormat))
+	canvas_TextRect2.Call(obj, uintptr(unsafe.Pointer(aRect)), PascalStr(text), 0, uintptr(textFormat))
 }
 
 func Canvas_TextRect1(obj uintptr, aRect TRect, x, y int32, text string) {
-	canvas_TextRect1.Call(obj, uintptr(unsafe.Pointer(&aRect)), uintptr(x), uintptr(y), GoStrToDStr(text))
+	canvas_TextRect1.Call(obj, uintptr(unsafe.Pointer(&aRect)), uintptr(x), uintptr(y), PascalStr(text))
 }
 
 func Canvas_Polygon(obj uintptr, points []TPoint) {

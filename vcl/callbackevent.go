@@ -121,7 +121,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 			v.(TMenuChangeEvent)(
 				AsObject(getVal(0)),
 				AsMenuItem(getVal(1)),
-				DBoolToGoBool(getVal(2)))
+				GoBool(getVal(2)))
 
 		// func(sender IObject, node *TreeNode)
 		case TTVChangedEvent:
@@ -133,7 +133,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 		case TSysLinkEvent:
 			v.(TSysLinkEvent)(
 				AsObject(getVal(0)),
-				DStrToGoStr(getVal(1)),
+				GoStr(getVal(1)),
 				TSysLinkType(getVal(2)))
 
 		// func(sender, e IObject)
@@ -198,7 +198,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 				AsObject(getVal(0)),
 				AsCanvas(getVal(1)),
 				*getRectPtr(2),
-				DBoolToGoBool(getVal(3)))
+				GoBool(getVal(3)))
 
 			// type TLVNotifyEvent func(sender IObject, item *TListItem)
 		case TLVNotifyEvent:
@@ -224,7 +224,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 			v.(TLVSelectItemEvent)(
 				AsObject(getVal(0)),
 				AsListItem(getVal(1)),
-				DBoolToGoBool(getVal(2)))
+				GoBool(getVal(2)))
 
 			// type TLVCheckedItemEvent func(sender IObject, item *TListItem)
 		case TLVCheckedItemEvent:
@@ -456,7 +456,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 		case TGridOperationEvent:
 			v.(TGridOperationEvent)(
 				AsObject(getVal(0)),
-				DBoolToGoBool(getVal(1)),
+				GoBool(getVal(1)),
 				int32(getVal(2)),
 				int32(getVal(3)))
 
@@ -478,13 +478,13 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 
 			//type TGetEditEvent func(sender IObject, aCol, aRow int32, value *string)
 		case TGetEditEvent:
-			str := DStrToGoStr(getPtrVal(3))
+			str := GoStr(getPtrVal(3))
 			v.(TGetEditEvent)(
 				AsObject(getVal(0)),
 				int32(getVal(1)),
 				int32(getVal(2)),
 				&str)
-			setPtrVal(3, GoStrToDStr(str))
+			setPtrVal(3, PascalStr(str))
 
 			//type TSelectCellEvent func(sender IObject, aCol, aRow int32, canSelect *bool)
 		case TSelectCellEvent:
@@ -500,7 +500,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 				AsObject(getVal(0)),
 				int32(getVal(1)),
 				int32(getVal(2)),
-				DStrToGoStr(getVal(3)))
+				GoStr(getVal(3)))
 
 			// ---- headercontrol
 			//type TDrawSectionEvent func(headerControl *THeaderControl, section *THeaderSection, aRect TRect, pressed bool)
@@ -552,12 +552,12 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 
 			//type TLBGetDataEvent func(control *TWinControl, index int32, data *string)
 		case TLBGetDataEvent:
-			str := DStrToGoStr(getPtrVal(2))
+			str := GoStr(getPtrVal(2))
 			v.(TLBGetDataEvent)(
 				AsWinControl(getVal(0)),
 				int32(getVal(1)),
 				&str)
-			setPtrVal(2, GoStrToDStr(str))
+			setPtrVal(2, PascalStr(str))
 
 			//type TLBGetDataObjectEvent func(control *TWinControl, index int32, dataObject IObject)
 		case TLBGetDataObjectEvent:
@@ -570,7 +570,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 		case TLBFindDataEvent:
 			result := v.(TLBFindDataEvent)(
 				AsWinControl(getVal(0)),
-				DStrToGoStr(getVal(1)))
+				GoStr(getVal(1)))
 			*getI32Ptr(2) = result
 
 			//type TMeasureItemEvent func(control *TWinControl, index int32, height *int32)
@@ -600,12 +600,12 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 			v.(TLVDataFindEvent)(
 				AsObject(getVal(0)),
 				TItemFind(getVal(1)),
-				DStrToGoStr(getVal(2)),
+				GoStr(getVal(2)),
 				*getPointPtr(3),
 				TCustomData(getVal(4)),
 				int32(getVal(5)),
 				TSearchDirection(getVal(6)),
-				DBoolToGoBool(getVal(7)),
+				GoBool(getVal(7)),
 				getI32Ptr(8))
 
 			//type TLVDeletedEvent func(sender IObject, item *TListItem)
@@ -623,12 +623,12 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 
 			//type TLVEditedEvent func(sender IObject, item *TListItem, s *string)
 		case TLVEditedEvent:
-			str := DStrToGoStr(getPtrVal(2))
+			str := GoStr(getPtrVal(2))
 			v.(TLVEditedEvent)(
 				AsObject(getVal(0)),
 				AsListItem(getVal(1)),
 				&str)
-			setPtrVal(2, GoStrToDStr(str))
+			setPtrVal(2, PascalStr(str))
 
 			//type TMenuMeasureItemEvent func(sender IObject, aCanvas *TCanvas, width, height *int32)
 		case TMenuMeasureItemEvent:
@@ -660,12 +660,12 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 
 			//type TTVEditedEvent func(sender IObject, node *TTreeNode, s *string)
 		case TTVEditedEvent:
-			str := DStrToGoStr(getPtrVal(2))
+			str := GoStr(getPtrVal(2))
 			v.(TTVEditedEvent)(
 				AsObject(getVal(0)),
 				AsTreeNode(getVal(1)),
 				&str)
-			setPtrVal(2, GoStrToDStr(str))
+			setPtrVal(2, PascalStr(str))
 
 			//type TTVEditingEvent func(sender IObject, node *TTreeNode, allowEdit *bool)
 		case TTVEditingEvent:
@@ -683,12 +683,12 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 
 			//type TTVHintEvent func(sender IObject, node *TTreeNode, hint *string)
 		case TTVHintEvent:
-			str := DStrToGoStr(getPtrVal(2))
+			str := GoStr(getPtrVal(2))
 			v.(TTVHintEvent)(
 				AsObject(getVal(0)),
 				AsTreeNode(getVal(1)),
 				&str)
-			setPtrVal(2, GoStrToDStr(str))
+			setPtrVal(2, PascalStr(str))
 
 			//type TUDChangingEvent func(sender IObject, allowChange *bool)
 		case TUDChangingEvent:
@@ -701,7 +701,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 			v.(TCreatingListErrorEvent)(
 				AsObject(getVal(0)),
 				uint32(getVal(1)),
-				DStrToGoStr(getVal(2)),
+				GoStr(getVal(2)),
 				getBoolPtr(3))
 
 		//--
@@ -764,16 +764,16 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 		case TWebTitleChangeEvent:
 			v.(TWebTitleChangeEvent)(
 				AsObject(getVal(0)),
-				DStrToGoStr(getVal(1)))
+				GoStr(getVal(1)))
 
 		case TWebJSExternalEvent:
-			str := DStrToGoStr(getPtrVal(3))
+			str := GoStr(getPtrVal(3))
 			v.(TWebJSExternalEvent)(
 				AsObject(getVal(0)),
-				DStrToGoStr(getVal(1)),
-				DStrToGoStr(getVal(2)),
+				GoStr(getVal(1)),
+				GoStr(getVal(2)),
 				&str)
-			setPtrVal(3, GoStrToDStr(str))
+			setPtrVal(3, PascalStr(str))
 
 			//type TTaskDlgClickEvent func(sender IObject, modalResult TModalResult, canClose *bool)
 		case TTaskDlgClickEvent:
@@ -834,13 +834,13 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 
 		//type TGetCellHintEvent func(sender IObject, ACol, ARow int32, hintText *string)
 		case TGetCellHintEvent:
-			str := DStrToGoStr(getPtrVal(3))
+			str := GoStr(getPtrVal(3))
 			v.(TGetCellHintEvent)(
 				AsObject(getVal(0)),
 				int32(getVal(1)),
 				int32(getVal(2)),
 				&str)
-			setPtrVal(3, GoStrToDStr(str))
+			setPtrVal(3, PascalStr(str))
 
 		//type TGetCheckboxStateEvent func(sender IObject, ACol, ARow int32, value *TCheckBoxState)
 		case TGetCheckboxStateEvent:
@@ -862,14 +862,14 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 		case THdrEvent:
 			v.(THdrEvent)(
 				AsObject(getVal(0)),
-				DBoolToGoBool(getVal(1)),
+				GoBool(getVal(1)),
 				int32(getVal(2)))
 
 		//type THeaderSizingEvent func(sender IObject, isColumn bool, aIndex, aSize int32)
 		case THeaderSizingEvent:
 			v.(THeaderSizingEvent)(
 				AsObject(getVal(0)),
-				DBoolToGoBool(getVal(1)),
+				GoBool(getVal(1)),
 				int32(getVal(2)),
 				int32(getVal(3)))
 
@@ -900,14 +900,14 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 
 			//type TValidateEntryEvent func(sender IObject, aCol, aRow int32, oldValue string, newValue *string)
 		case TValidateEntryEvent:
-			str := DStrToGoStr(getPtrVal(4))
+			str := GoStr(getPtrVal(4))
 			v.(TValidateEntryEvent)(
 				AsObject(getVal(0)),
 				int32(getVal(1)),
 				int32(getVal(2)),
-				DStrToGoStr(getVal(3)),
+				GoStr(getVal(3)),
 				&str)
-			setPtrVal(4, GoStrToDStr(str))
+			setPtrVal(4, PascalStr(str))
 			//type TOnPrepareCanvasEvent = func(sender IObject, aCol, aRow int32, aState TGridDrawState)
 		case TOnPrepareCanvasEvent:
 			v.(TOnPrepareCanvasEvent)(
@@ -917,10 +917,16 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 				TGridDrawState(getVal(3)))
 
 		case TAcceptFileNameEvent:
-			str := DStrToGoStr(getPtrVal(1))
+			str := GoStr(getPtrVal(1))
 			v.(TAcceptFileNameEvent)(
 				AsObject(getVal(0)), &str)
-			setPtrVal(1, GoStrToDStr(str))
+			setPtrVal(1, PascalStr(str))
+
+		// type TCheckItemChange = func(sender IObject, index int32)
+		case TCheckItemChange:
+			v.(TCheckItemChange)(
+				AsObject(getVal(0)),
+				int32(getVal(1)))
 		default:
 		}
 	}

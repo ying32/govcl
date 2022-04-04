@@ -884,13 +884,7 @@ func (m *TMaskEdit) SetTabStop(value bool) {
 
 // 获取文本。
 func (m *TMaskEdit) Text() string {
-    strLen := m.GetTextLen()
-    if strLen != 0 {
-        var buffStr string
-        m.GetTextBuf(&buffStr, strLen + 1)
-        return buffStr
-    }
-    return ""
+    return getControlBufferText(m.GetTextLen, m.GetTextBuf)
 }
 
 // 设置文本。

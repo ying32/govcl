@@ -24,9 +24,9 @@ func ResFormLoadFromStream(obj, root uintptr) {
 }
 
 func ResFormLoadFromFile(filename string, root uintptr) {
-	resFormLoadFromFile.Call(GoStrToDStr(filename), root)
+	resFormLoadFromFile.Call(PascalStr(filename), root)
 }
 
 func ResFormLoadFromResourceName(instance uintptr, resName string, root uintptr) {
-	resFormLoadFromResourceName.Call(instance, GoStrToDStr(resName), root)
+	resFormLoadFromResourceName.Call(instance, PascalStr(resName), root)
 }

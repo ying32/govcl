@@ -53,3 +53,24 @@ func getLazyProc(name string) *dylib.LazyProc {
 		return val.(*dylib.LazyProc)
 	}
 }
+
+func callLazyProc(name string, args ...uintptr) (result uintptr) {
+	result, _, _ = getLazyProc(name).Call(args...)
+	return
+}
+
+func callLazyProcToStr(name string, args ...uintptr) string {
+	return DStrToGoStr(callLazyProc(name, args...))
+}
+
+func callLazyProcToBool(name string, args ...uintptr) bool {
+	return DBoolToGoBool(callLazyProc(name, args...))
+}
+
+//func callLazyProcToTime(name string, args ...uintptr) time.Time {
+//	return time.Unix(int64(callLazyProc(name, args...)), 0)
+//}
+
+//func callLazyProcToRecordOrFloat(name string, result unsafe.Pointer, args ...uintptr)   {
+//
+//}

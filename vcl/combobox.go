@@ -861,13 +861,7 @@ func (c *TComboBox) SetTabStop(value bool) {
 
 // 获取文本。
 func (c *TComboBox) Text() string {
-    strLen := c.GetTextLen()
-    if strLen != 0 {
-        var buffStr string
-        c.GetTextBuf(&buffStr, strLen + 1)
-        return buffStr
-    }
-    return ""
+    return getControlBufferText(c.GetTextLen, c.GetTextBuf)
 }
 
 // 设置文本。

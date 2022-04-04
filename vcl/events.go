@@ -364,5 +364,8 @@ type TValidateEntryEvent func(sender IObject, aCol, aRow int32, oldValue string,
 // TOnPrepareCanvasEvent = procedure(sender: TObject; aCol, aRow: Integer; aState: TGridDrawState) of object;
 type TOnPrepareCanvasEvent = func(sender IObject, aCol, aRow int32, aState TGridDrawState)
 
-//  = procedure (Sender : TObject; Var Value : String) of Object;
+// procedure (Sender : TObject; Var Value : String) of Object;
 type TAcceptFileNameEvent = func(sender IObject, value *string)
+
+// procedure(Sender: TObject; AIndex: Integer) of object;
+type TCheckItemChange = func(sender IObject, index int32)

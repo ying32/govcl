@@ -1111,13 +1111,7 @@ func (r *TRichEdit) SetSelText(value string) {
 
 // 获取文本。
 func (r *TRichEdit) Text() string {
-    strLen := r.GetTextLen()
-    if strLen != 0 {
-        var buffStr string
-        r.GetTextBuf(&buffStr, strLen + 1)
-        return buffStr
-    }
-    return ""
+    return getControlBufferText(r.GetTextLen, r.GetTextBuf)
 }
 
 // 设置文本。

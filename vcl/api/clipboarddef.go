@@ -38,16 +38,16 @@ func Clipboard_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
 
 func Clipboard_GetAsText(obj uintptr) string {
 	ret, _, _ := clipboard_GetAsText.Call(obj)
-	return DStrToGoStr(ret)
+	return GoStr(ret)
 }
 
 func Clipboard_SetAsText(obj uintptr, value string) {
-	clipboard_SetAsText.Call(obj, GoStrToDStr(value))
+	clipboard_SetAsText.Call(obj, PascalStr(value))
 }
 
 func Clipboard_GetAsHtml(obj uintptr, ExtractFragmentOnly bool) string {
-	ret, _, _ := clipboard_GetAsHtml.Call(obj, GoBoolToDBool(ExtractFragmentOnly))
-	return DStrToGoStr(ret)
+	ret, _, _ := clipboard_GetAsHtml.Call(obj, PascalBool(ExtractFragmentOnly))
+	return GoStr(ret)
 }
 
 func DSetClipboard(obj uintptr) uintptr {
@@ -56,7 +56,7 @@ func DSetClipboard(obj uintptr) uintptr {
 }
 
 func DRegisterClipboardFormat(aFormat string) types.TClipboardFormat {
-	r, _, _ := dRegisterClipboardFormat.Call(GoStrToDStr(aFormat))
+	r, _, _ := dRegisterClipboardFormat.Call(PascalStr(aFormat))
 	return types.TClipboardFormat(r)
 }
 

@@ -31,20 +31,28 @@ var (
 	currentEventId uintptr
 )
 
-// Delphi或者Lazarus的Bool类型转为Go bool
-func DBoolToGoBool(val uintptr) bool {
+func GoBool(val uintptr) bool {
 	if val != 0 {
 		return true
 	}
 	return false
 }
 
-// Go bool类型转为Delphi或者Lazarus的Bool类型
-func GoBoolToDBool(val bool) uintptr {
+// Deprecated: use GoBool.
+func DBoolToGoBool(val uintptr) bool {
+	return GoBool(val)
+}
+
+func PascalBool(val bool) uintptr {
 	if val {
 		return 1
 	}
 	return 0
+}
+
+// Deprecated: use PascalBool.
+func GoBoolToDBool(val bool) uintptr {
+	return PascalBool(val)
 }
 
 // typedef struct { void *type; void *value; } GoInterface;
@@ -182,16 +190,16 @@ func DMove(src, dest uintptr, llen int) {
 }
 
 func DShowMessage(s string) {
-	dShowMessage.Call(GoStrToDStr(s))
+	dShowMessage.Call(PascalStr(s))
 }
 
 func DMessageDlg(Msg string, DlgType TMsgDlgType, Buttons TMsgDlgButtons, HelpCtx int32) int32 {
-	ret, _, _ := dMessageDlg.Call(GoStrToDStr(Msg), uintptr(DlgType), uintptr(Buttons), uintptr(HelpCtx))
+	ret, _, _ := dMessageDlg.Call(PascalStr(Msg), uintptr(DlgType), uintptr(Buttons), uintptr(HelpCtx))
 	return int32(ret)
 }
 
 func DTextToShortCut(val string) TShortCut {
-	ret, _, _ := dTextToShortCut.Call(GoStrToDStr(val))
+	ret, _, _ := dTextToShortCut.Call(PascalStr(val))
 	return TShortCut(ret)
 }
 
@@ -201,23 +209,23 @@ func DShortCutToText(val TShortCut) string {
 }
 
 func DSysOpen(filename string) {
-	dSysOpen.Call(GoStrToDStr(filename))
+	dSysOpen.Call(PascalStr(filename))
 }
 
 func DExtractFilePath(filename string) string {
-	r, _, _ := dExtractFilePath.Call(GoStrToDStr(filename))
+	r, _, _ := dExtractFilePath.Call(PascalStr(filename))
 	return DStrToGoStr(r)
 }
 
 func DFileExists(filename string) bool {
-	r, _, _ := dFileExists.Call(GoStrToDStr(filename))
-	return DBoolToGoBool(r)
+	r, _, _ := dFileExists.Call(PascalStr(filename))
+	return GoBool(r)
 }
 
 func DSelectDirectory1(options TSelectDirOpts) (bool, string) {
 	var ptr uintptr
 	r, _, _ := dSelectDirectory1.Call(uintptr(unsafe.Pointer(&ptr)), uintptr(options), 0)
-	v := DBoolToGoBool(r)
+	v := GoBool(r)
 	if v {
 		return true, DStrToGoStr(ptr)
 	}
@@ -226,8 +234,8 @@ func DSelectDirectory1(options TSelectDirOpts) (bool, string) {
 
 func DSelectDirectory2(caption, root string, showHidden bool) (bool, string) {
 	var ptr uintptr
-	r, _, _ := dSelectDirectory2.Call(GoStrToDStr(caption), GoStrToDStr(root), GoBoolToDBool(showHidden), uintptr(unsafe.Pointer(&ptr)))
-	v := DBoolToGoBool(r)
+	r, _, _ := dSelectDirectory2.Call(PascalStr(caption), PascalStr(root), PascalBool(showHidden), uintptr(unsafe.Pointer(&ptr)))
+	v := GoBool(r)
 	if v {
 		return true, DStrToGoStr(ptr)
 	}
@@ -244,7 +252,7 @@ func DSynchronize(fn func(), useMsg uintptr) {
 }
 
 func DInputBox(aCaption, aPrompt, aDefault string) string {
-	r, _, _ := dInputBox.Call(GoStrToDStr(aCaption), GoStrToDStr(aPrompt), GoStrToDStr(aDefault))
+	r, _, _ := dInputBox.Call(PascalStr(aCaption), PascalStr(aPrompt), PascalStr(aDefault))
 	return DStrToGoStr(r)
 }
 
@@ -253,7 +261,7 @@ func DInputQuery(aCaption, aPrompt string, value *string) bool {
 		return false
 	}
 	var strPtr uintptr
-	r, _, _ := dInputQuery.Call(GoStrToDStr(aCaption), GoStrToDStr(aPrompt), GoStrToDStr(*value), uintptr(unsafe.Pointer(&strPtr)))
+	r, _, _ := dInputQuery.Call(PascalStr(aCaption), PascalStr(aPrompt), PascalStr(*value), uintptr(unsafe.Pointer(&strPtr)))
 	if strPtr != 0 {
 		*value = DStrToGoStr(strPtr)
 	}
@@ -261,17 +269,17 @@ func DInputQuery(aCaption, aPrompt string, value *string) bool {
 }
 
 func DPasswordBox(aCaption, aPrompt string) string {
-	r, _, _ := dPasswordBox.Call(GoStrToDStr(aCaption), GoStrToDStr(aPrompt))
+	r, _, _ := dPasswordBox.Call(PascalStr(aCaption), PascalStr(aPrompt))
 	return DStrToGoStr(r)
 }
 
 func DInputCombo(aCaption, aPrompt string, aList uintptr) int32 {
-	r, _, _ := dInputCombo.Call(GoStrToDStr(aCaption), GoStrToDStr(aPrompt), aList)
+	r, _, _ := dInputCombo.Call(PascalStr(aCaption), PascalStr(aPrompt), aList)
 	return int32(r)
 }
 
 func DInputComboEx(aCaption, aPrompt string, aList uintptr, allowCustomText bool) string {
-	r, _, _ := dInputComboEx.Call(GoStrToDStr(aCaption), GoStrToDStr(aPrompt), aList, GoBoolToDBool(allowCustomText))
+	r, _, _ := dInputComboEx.Call(PascalStr(aCaption), PascalStr(aPrompt), aList, PascalBool(allowCustomText))
 	return DStrToGoStr(r)
 }
 
@@ -283,38 +291,38 @@ func DSysLocale(aInfo *TSysLocale) {
 // Shortcut
 //DCreateURLShortCut
 func DCreateURLShortCut(aDestPath, aShortCutName, aURL string) {
-	dCreateURLShortCut.Call(GoStrToDStr(aDestPath), GoStrToDStr(aShortCutName), GoStrToDStr(aURL))
+	dCreateURLShortCut.Call(PascalStr(aDestPath), PascalStr(aShortCutName), PascalStr(aURL))
 }
 
 //DCreateShortCut
 func DCreateShortCut(aDestPath, aShortCutName, aSrcFileName, aIconFileName, aDescription, aCmdArgs string) bool {
-	r, _, _ := dCreateShortCut.Call(GoStrToDStr(aDestPath), GoStrToDStr(aShortCutName), GoStrToDStr(aSrcFileName),
-		GoStrToDStr(aIconFileName), GoStrToDStr(aDescription), GoStrToDStr(aCmdArgs))
-	return DBoolToGoBool(r)
+	r, _, _ := dCreateShortCut.Call(PascalStr(aDestPath), PascalStr(aShortCutName), PascalStr(aSrcFileName),
+		PascalStr(aIconFileName), PascalStr(aDescription), PascalStr(aCmdArgs))
+	return GoBool(r)
 }
 
 // SetProperty
 // DSetPropertyValue
 func DSetPropertyValue(instance uintptr, propName, value string) {
-	dSetPropertyValue.Call(instance, GoStrToDStr(propName), GoStrToDStr(value))
+	dSetPropertyValue.Call(instance, PascalStr(propName), PascalStr(value))
 }
 
 // DSetPropertySecValue
 func DSetPropertySecValue(instance uintptr, propName, secPropName, value string) {
-	dSetPropertySecValue.Call(instance, GoStrToDStr(propName), GoStrToDStr(secPropName), GoStrToDStr(value))
+	dSetPropertySecValue.Call(instance, PascalStr(propName), PascalStr(secPropName), PascalStr(value))
 }
 
 // guid
 // DGUIDToString
 func DGUIDToString(guid TGUID) string {
 	r, _, _ := dGUIDToString.Call(uintptr(unsafe.Pointer(&guid)))
-	return DStrToGoStr(r)
+	return GoStr(r)
 }
 
 // DStringToGUID
 func DStringToGUID(str string) TGUID {
 	var guid TGUID
-	dStringToGUID.Call(GoStrToDStr(str), uintptr(unsafe.Pointer(&guid)))
+	dStringToGUID.Call(PascalStr(str), uintptr(unsafe.Pointer(&guid)))
 	return guid
 }
 
@@ -337,13 +345,13 @@ func DGetLibResourceItem(aIndex int32) (ret TLibResource) {
 		ValuePtr uintptr
 	}{}
 	dGetLibResourceItem.Call(uintptr(aIndex), uintptr(unsafe.Pointer(&item)))
-	ret.Name = DStrToGoStr(item.Name)
+	ret.Name = GoStr(item.Name)
 	ret.Ptr = item.ValuePtr
 	return
 }
 
 func DModifyLibResource(aPtr uintptr, aValue string) {
-	dModifyLibResource.Call(aPtr, GoStrToDStr(aValue))
+	dModifyLibResource.Call(aPtr, PascalStr(aValue))
 }
 
 // 库的信息
@@ -361,7 +369,7 @@ func DLibVersion() uint32 {
 
 func DLibAbout() string {
 	r, _, _ := dLibAbout.Call()
-	return DStrToGoStr(r)
+	return GoStr(r)
 }
 
 func DMainThreadId() uintptr {
@@ -394,16 +402,16 @@ func DFindOwnerControl(handle HWND) uintptr {
 }
 
 func DFindControlAtPosition(position TPoint, allowDisabled bool) uintptr {
-	r, _, _ := dFindControlAtPosition.Call(uintptr(unsafe.Pointer(&position)), GoBoolToDBool(allowDisabled))
+	r, _, _ := dFindControlAtPosition.Call(uintptr(unsafe.Pointer(&position)), PascalBool(allowDisabled))
 	return r
 }
 
 func DFindLCLWindow(screenPos TPoint, allowDisabled bool) uintptr {
-	r, _, _ := dFindLCLWindow.Call(uintptr(unsafe.Pointer(&screenPos)), GoBoolToDBool(allowDisabled))
+	r, _, _ := dFindLCLWindow.Call(uintptr(unsafe.Pointer(&screenPos)), PascalBool(allowDisabled))
 	return r
 }
 
 func DFindDragTarget(position TPoint, allowDisabled bool) uintptr {
-	r, _, _ := dFindDragTarget.Call(uintptr(unsafe.Pointer(&position)), GoBoolToDBool(allowDisabled))
+	r, _, _ := dFindDragTarget.Call(uintptr(unsafe.Pointer(&position)), PascalBool(allowDisabled))
 	return r
 }
