@@ -254,7 +254,16 @@ func main() {
 	dtp := vcl.NewDateTimePicker(mainForm)
 	dtp.SetParent(mainForm)
 	dtp.SetBounds(left, top, 167, 25)
-	//dtp.SetFormat("yyyy-MM-dd HH:mm:ss")
+	//dtp.SetDateMode(types.DmUpDown)
+	dtp.SetKind(types.DtkDateTime)
+	dtp.SetOptions(dtp.Options().Include(types.DtpoFlatButton))
+	//dtp.SetShowMonthNames(true)
+	dtp.SetTimeFormat(types.Tf12)
+	//dtp.SetArrowShape(types.AsYetAnotherShape)
+	dtp.SetDateDisplayOrder(types.DdoMDY)
+	dtp.SetDateSeparator("-")
+	dtp.SetTimeSeparator(".")
+	dtp.SetHideDateTimeParts(dtp.HideDateTimeParts().Include(types.DtpYear))
 
 	top += dtp.Height() + 10
 

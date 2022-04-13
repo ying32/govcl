@@ -24161,6 +24161,15 @@ func DateTimePicker_SetDateSeparator(obj uintptr, value string) {
     getLazyProc("DateTimePicker_SetDateSeparator").Call(obj, PascalStr(value))
 }
 
+func DateTimePicker_GetHideDateTimeParts(obj uintptr) TDateTimeParts {
+    ret, _, _ := getLazyProc("DateTimePicker_GetHideDateTimeParts").Call(obj)
+    return TDateTimeParts(ret)
+}
+
+func DateTimePicker_SetHideDateTimeParts(obj uintptr, value TDateTimeParts) {
+    getLazyProc("DateTimePicker_SetHideDateTimeParts").Call(obj, uintptr(value))
+}
+
 func DateTimePicker_GetLeadingZeros(obj uintptr) bool {
     ret, _, _ := getLazyProc("DateTimePicker_GetLeadingZeros").Call(obj)
     return GoBool(ret)
@@ -24240,6 +24249,15 @@ func DateTimePicker_GetTimeDisplay(obj uintptr) TTimeDisplay {
 
 func DateTimePicker_SetTimeDisplay(obj uintptr, value TTimeDisplay) {
     getLazyProc("DateTimePicker_SetTimeDisplay").Call(obj, uintptr(value))
+}
+
+func DateTimePicker_GetTimeFormat(obj uintptr) TTimeFormat {
+    ret, _, _ := getLazyProc("DateTimePicker_GetTimeFormat").Call(obj)
+    return TTimeFormat(ret)
+}
+
+func DateTimePicker_SetTimeFormat(obj uintptr, value TTimeFormat) {
+    getLazyProc("DateTimePicker_SetTimeFormat").Call(obj, uintptr(value))
 }
 
 func DateTimePicker_GetTimeSeparator(obj uintptr) string {
