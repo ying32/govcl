@@ -42,7 +42,13 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.Button1.SetLeft(50)
 	f.Button1.SetTop(50)
 	f.Button1.SetOnClick(f.OnButton1Click)
+	f.Button1.Hide()
 
+	f.SetOnUTF8KeyPress(func(sender vcl.IObject, utf8key *types.TUTF8Char) {
+		fmt.Println("打印：1111", utf8key.ToString(), utf8key)
+		utf8key.SetString("这") //每次只一个字符
+		fmt.Println("打印：2222", utf8key.ToString(), utf8key)
+	})
 	//xx := vcl.NewCheckComboBox(f)
 	//xx.SetParent(f)
 	//xx.Items().Add("fff")

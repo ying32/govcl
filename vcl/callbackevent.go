@@ -927,6 +927,13 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 			v.(TCheckItemChange)(
 				AsObject(getVal(0)),
 				int32(getVal(1)))
+
+		case TUTF8KeyPressEvent:
+
+			v.(TUTF8KeyPressEvent)(
+				AsObject(getVal(0)),
+				(*TUTF8Char)(getPtr(1)))
+
 		default:
 		}
 	}

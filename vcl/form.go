@@ -606,6 +606,10 @@ func (f *TForm) SetDesignTimePPI(value int32) {
     Form_SetDesignTimePPI(f.instance, value)
 }
 
+func (f *TForm) SetOnUTF8KeyPress(fn TUTF8KeyPressEvent) {
+    Form_SetOnUTF8KeyPress(f.instance, fn)
+}
+
 func (f *TForm) Action() *TAction {
     return AsAction(Form_GetAction(f.instance))
 }

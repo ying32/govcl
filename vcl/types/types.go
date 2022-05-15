@@ -92,6 +92,30 @@ type DWORD_PTR = uintptr
 // Pascal集合类型 set of xxx
 type TSet uint32
 
+// UTF-8 character is at most 6 bytes plus a #0
+type TUTF8Char struct {
+	Len     byte
+	Content [7]byte
+}
+
+func (u *TUTF8Char) ToString() string {
+	if u.Len > 0 && u.Len < 7 {
+		return string(u.Content[0:u.Len])
+	}
+	return ""
+}
+
+func (u *TUTF8Char) SetString(str string) {
+	if str != "" {
+		bs := []byte(str)
+		u.Len = byte(len(bs))
+		if u.Len > 6 {
+			u.Len = 6
+		}
+		copy(u.Content[:], bs[:u.Len])
+	}
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 // -- TRect
 
