@@ -513,6 +513,21 @@ func (p *TPanel) ScaleFontsPPI(AToPPI int32, AProportion float64) {
     Panel_ScaleFontsPPI(p.instance, AToPPI , AProportion)
 }
 
+// 获取画布。
+func (p *TPanel) Canvas() *TCanvas {
+    return AsCanvas(Panel_GetCanvas(p.instance))
+}
+
+// 设置画布。
+func (p *TPanel) SetCanvas(value *TCanvas) {
+    Panel_SetCanvas(p.instance, CheckPtr(value))
+}
+
+// 设置绘画事件。
+func (p *TPanel) SetOnPaint(fn TNotifyEvent) {
+    Panel_SetOnPaint(p.instance, fn)
+}
+
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.

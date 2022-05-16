@@ -10817,6 +10817,19 @@ func Panel_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
     getLazyProc("Panel_ScaleFontsPPI").Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
+func Panel_GetCanvas(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("Panel_GetCanvas").Call(obj)
+    return ret
+}
+
+func Panel_SetCanvas(obj uintptr, value uintptr) {
+    getLazyProc("Panel_SetCanvas").Call(obj, value)
+}
+
+func Panel_SetOnPaint(obj uintptr, fn interface{}) {
+    getLazyProc("Panel_SetOnPaint").Call(obj, addEventToMap(obj, fn))
+}
+
 func Panel_GetAlign(obj uintptr) TAlign {
     ret, _, _ := getLazyProc("Panel_GetAlign").Call(obj)
     return TAlign(ret)
