@@ -537,6 +537,16 @@ func (c *TComboBox) ScaleFontsPPI(AToPPI int32, AProportion float64) {
     ComboBox_ScaleFontsPPI(c.instance, AToPPI , AProportion)
 }
 
+// 获取只读。
+func (c *TComboBox) ReadOnly() bool {
+    return ComboBox_GetReadOnly(c.instance)
+}
+
+// 设置只读。
+func (c *TComboBox) SetReadOnly(value bool) {
+    ComboBox_SetReadOnly(c.instance, value)
+}
+
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.

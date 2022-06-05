@@ -9794,6 +9794,15 @@ func ComboBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
     getLazyProc("ComboBox_ScaleFontsPPI").Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
+func ComboBox_GetReadOnly(obj uintptr) bool {
+    ret, _, _ := getLazyProc("ComboBox_GetReadOnly").Call(obj)
+    return GoBool(ret)
+}
+
+func ComboBox_SetReadOnly(obj uintptr, value bool) {
+    getLazyProc("ComboBox_SetReadOnly").Call(obj, PascalBool(value))
+}
+
 func ComboBox_GetAlign(obj uintptr) TAlign {
     ret, _, _ := getLazyProc("ComboBox_GetAlign").Call(obj)
     return TAlign(ret)
