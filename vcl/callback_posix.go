@@ -11,9 +11,9 @@
 
 package vcl
 
-//// #cgo darwin CFLAGS: -mmacosx-version-min=10.8 -DMACOSX_DEPLOYMENT_TARGET=10.8
-// #cgo darwin CFLAGS: -mmacosx-version-min=10.8
-// #cgo darwin LDFLAGS: -mmacosx-version-min=10.8
+//// #cgo darwin CFLAGS: -mmacosx-version-min=10.10 -DMACOSX_DEPLOYMENT_TARGET=10.10
+// #cgo darwin CFLAGS: -mmacosx-version-min=10.10
+// #cgo darwin LDFLAGS: -mmacosx-version-min=10.10
 //
 // extern void* doEventCallbackProc(void* f, void* args, long argcount);
 // static void* doGetEventCallbackAddr() {
