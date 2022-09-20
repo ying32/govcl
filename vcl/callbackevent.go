@@ -43,7 +43,8 @@ func getParamOf(index int, ptr uintptr) uintptr {
 
 // 移除事件，释放相关的引用
 func removeEventCallbackProc(f unsafe.Pointer) uintptr {
-	RemoveEventElement(PtrToElementPtr(f))
+	//RemoveEventElement(PtrToElementPtr(f))
+	RemoveEventElement(f)
 	return 0
 }
 

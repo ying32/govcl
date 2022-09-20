@@ -1,8 +1,6 @@
 package main
 
 import (
-	"syscall"
-
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/types/colors"
 
@@ -10,11 +8,6 @@ import (
 
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl/types"
-)
-
-var (
-	userdll    = syscall.NewLazyDLL("user32.dll")
-	_SetParent = userdll.NewProc("SetParent")
 )
 
 type TMainForm struct {
@@ -120,7 +113,14 @@ func (f *TMainForm) OnButton1Click(object vcl.IObject) {
 	//_SetParent.Call(0x50C40, uintptr(f.Handle()))
 	//	form1.Show()
 	fmt.Println("清除事件")
-	f.Button1.SetOnClick(nil)
+	//f.Button1.SetOnClick(nil)
+	f.Button1.SetOnClick(f.OnButton1Click)
+	fmt.Println("更换事件")
+	f.Button1.SetOnClick(f.OnButton2Click)
+}
+
+func (f *TMainForm) OnButton2Click(object vcl.IObject) {
+	fmt.Println("换成button2click事件了啊")
 }
 
 // ---------- Form1 ----------------
