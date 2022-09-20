@@ -22,6 +22,7 @@ var (
 	setMessageCallback                 = libvcl.NewProc("SetMessageCallback")
 	setThreadSyncCallback              = libvcl.NewProc("SetThreadSyncCallback")
 	setRequestCallCreateParamsCallback = libvcl.NewProc("SetRequestCallCreateParamsCallback")
+	setRemoveEventCallback             = libvcl.NewProc("SetRemoveEventCallback")
 
 	dGetStringArrOf = libvcl.NewProc("DGetStringArrOf")
 	dStrLen         = libvcl.NewProc("DStrLen")

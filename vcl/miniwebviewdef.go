@@ -19,6 +19,8 @@ import (
 	"github.com/ying32/govcl/vcl/win"
 )
 
+// SetIEVersion
+//
 // Windows下设置TMiiWebview的IE内核版本，需管理员权限才可以写注册表
 //
 // Set the IE kernel version of TMiiWebview under Windows, you need administrator privileges.
@@ -48,6 +50,8 @@ func (m *TMiniWebview) SetIEVersion(version int) {
 	}
 }
 
+// GetIEVersion
+//
 // Windows下读取IE内核版本，需管理员权限才可以写注册表
 //
 // Read the IE kernel version under Windows, you need administrator rights to write the registry.

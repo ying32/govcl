@@ -17,6 +17,8 @@ import (
 
 var (
 
+	// IsWindows
+	//
 	// 专用于判断是否为Windows系统
 	IsWindows = runtime.GOOS == "windows"
 
@@ -60,11 +62,11 @@ func callLazyProc(name string, args ...uintptr) (result uintptr) {
 }
 
 func callLazyProcToStr(name string, args ...uintptr) string {
-	return DStrToGoStr(callLazyProc(name, args...))
+	return GoStr(callLazyProc(name, args...))
 }
 
 func callLazyProcToBool(name string, args ...uintptr) bool {
-	return DBoolToGoBool(callLazyProc(name, args...))
+	return GoBool(callLazyProc(name, args...))
 }
 
 //func callLazyProcToTime(name string, args ...uintptr) time.Time {

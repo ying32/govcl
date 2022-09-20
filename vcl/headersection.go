@@ -19,102 +19,95 @@ import (
 
 type THeaderSection struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewHeaderSection
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewHeaderSection(AOwner *TCollection) *THeaderSection {
     h := new(THeaderSection)
-    h.instance = HeaderSection_Create(CheckPtr(AOwner))
-    h.ptr = unsafe.Pointer(h.instance)
+    h.instance = unsafe.Pointer(HeaderSection_Create(CheckPtr(AOwner)))
     setFinalizer(h, (*THeaderSection).Free)
     return h
 }
 
+// AsHeaderSection
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsHeaderSection(obj interface{}) *THeaderSection {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &THeaderSection{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &THeaderSection{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsHeaderSection.
-func HeaderSectionFromInst(inst uintptr) *THeaderSection {
-    return AsHeaderSection(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsHeaderSection.
-func HeaderSectionFromObj(obj IObject) *THeaderSection {
-    return AsHeaderSection(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsHeaderSection.
-func HeaderSectionFromUnsafePointer(ptr unsafe.Pointer) *THeaderSection {
-    return AsHeaderSection(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (h *THeaderSection) Free() {
-    if h.instance != 0 {
-        HeaderSection_Free(h.instance)
-        h.instance, h.ptr = 0, nullptr
+    if h.instance != nullptr {
+        HeaderSection_Free(h._instance())
+        h.instance  = nullptr
     }
 }
 
+func (h *THeaderSection) _instance() uintptr {
+    return uintptr(h.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (h *THeaderSection) Instance() uintptr {
-    return h.instance
+    return h._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (h *THeaderSection) UnsafeAddr() unsafe.Pointer {
-    return h.ptr
+    return h.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (h *THeaderSection) IsValid() bool {
-    return h.instance != 0
+    return h.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (h *THeaderSection) Is() TIs {
-    return TIs(h.instance)
+    return TIs(h._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (h *THeaderSection) As() TAs {
-//    return TAs(h.instance)
+//    return TAs(h._instance())
 //}
 
+// THeaderSectionClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,165 +115,201 @@ func THeaderSectionClass() TClass {
     return HeaderSection_StaticClassType()
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (h *THeaderSection) Assign(Source IObject) {
-    HeaderSection_Assign(h.instance, CheckPtr(Source))
+    HeaderSection_Assign(h._instance(), CheckPtr(Source))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (h *THeaderSection) GetNamePath() string {
-    return HeaderSection_GetNamePath(h.instance)
+    return HeaderSection_GetNamePath(h._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (h *THeaderSection) ClassType() TClass {
-    return HeaderSection_ClassType(h.instance)
+    return HeaderSection_ClassType(h._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (h *THeaderSection) ClassName() string {
-    return HeaderSection_ClassName(h.instance)
+    return HeaderSection_ClassName(h._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (h *THeaderSection) InstanceSize() int32 {
-    return HeaderSection_InstanceSize(h.instance)
+    return HeaderSection_InstanceSize(h._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (h *THeaderSection) InheritsFrom(AClass TClass) bool {
-    return HeaderSection_InheritsFrom(h.instance, AClass)
+    return HeaderSection_InheritsFrom(h._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (h *THeaderSection) Equals(Obj IObject) bool {
-    return HeaderSection_Equals(h.instance, CheckPtr(Obj))
+    return HeaderSection_Equals(h._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (h *THeaderSection) GetHashCode() int32 {
-    return HeaderSection_GetHashCode(h.instance)
+    return HeaderSection_GetHashCode(h._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (h *THeaderSection) ToString() string {
-    return HeaderSection_ToString(h.instance)
+    return HeaderSection_ToString(h._instance())
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (h *THeaderSection) Left() int32 {
-    return HeaderSection_GetLeft(h.instance)
+    return HeaderSection_GetLeft(h._instance())
 }
 
 func (h *THeaderSection) Right() int32 {
-    return HeaderSection_GetRight(h.instance)
+    return HeaderSection_GetRight(h._instance())
 }
 
+// Alignment
+//
 // 获取文字对齐。
 //
 // Get Text alignment.
 func (h *THeaderSection) Alignment() TAlignment {
-    return HeaderSection_GetAlignment(h.instance)
+    return HeaderSection_GetAlignment(h._instance())
 }
 
+// SetAlignment
+//
 // 设置文字对齐。
 //
 // Set Text alignment.
 func (h *THeaderSection) SetAlignment(value TAlignment) {
-    HeaderSection_SetAlignment(h.instance, value)
+    HeaderSection_SetAlignment(h._instance(), value)
 }
 
+// ImageIndex
+//
 // 获取图像在images中的索引。
 func (h *THeaderSection) ImageIndex() int32 {
-    return HeaderSection_GetImageIndex(h.instance)
+    return HeaderSection_GetImageIndex(h._instance())
 }
 
+// SetImageIndex
+//
 // 设置图像在images中的索引。
 func (h *THeaderSection) SetImageIndex(value int32) {
-    HeaderSection_SetImageIndex(h.instance, value)
+    HeaderSection_SetImageIndex(h._instance(), value)
 }
 
 func (h *THeaderSection) MaxWidth() int32 {
-    return HeaderSection_GetMaxWidth(h.instance)
+    return HeaderSection_GetMaxWidth(h._instance())
 }
 
 func (h *THeaderSection) SetMaxWidth(value int32) {
-    HeaderSection_SetMaxWidth(h.instance, value)
+    HeaderSection_SetMaxWidth(h._instance(), value)
 }
 
 func (h *THeaderSection) MinWidth() int32 {
-    return HeaderSection_GetMinWidth(h.instance)
+    return HeaderSection_GetMinWidth(h._instance())
 }
 
 func (h *THeaderSection) SetMinWidth(value int32) {
-    HeaderSection_SetMinWidth(h.instance, value)
+    HeaderSection_SetMinWidth(h._instance(), value)
 }
 
+// Text
+//
 // 获取文本。
 func (h *THeaderSection) Text() string {
-    return HeaderSection_GetText(h.instance)
+    return HeaderSection_GetText(h._instance())
 }
 
+// SetText
+//
 // 设置文本。
 func (h *THeaderSection) SetText(value string) {
-    HeaderSection_SetText(h.instance, value)
+    HeaderSection_SetText(h._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (h *THeaderSection) Width() int32 {
-    return HeaderSection_GetWidth(h.instance)
+    return HeaderSection_GetWidth(h._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (h *THeaderSection) SetWidth(value int32) {
-    HeaderSection_SetWidth(h.instance, value)
+    HeaderSection_SetWidth(h._instance(), value)
 }
 
 func (h *THeaderSection) Collection() *TCollection {
-    return AsCollection(HeaderSection_GetCollection(h.instance))
+    return AsCollection(HeaderSection_GetCollection(h._instance()))
 }
 
 func (h *THeaderSection) SetCollection(value *TCollection) {
-    HeaderSection_SetCollection(h.instance, CheckPtr(value))
+    HeaderSection_SetCollection(h._instance(), CheckPtr(value))
 }
 
 func (h *THeaderSection) Index() int32 {
-    return HeaderSection_GetIndex(h.instance)
+    return HeaderSection_GetIndex(h._instance())
 }
 
 func (h *THeaderSection) SetIndex(value int32) {
-    HeaderSection_SetIndex(h.instance, value)
+    HeaderSection_SetIndex(h._instance(), value)
 }
 
 func (h *THeaderSection) DisplayName() string {
-    return HeaderSection_GetDisplayName(h.instance)
+    return HeaderSection_GetDisplayName(h._instance())
 }
 
 func (h *THeaderSection) SetDisplayName(value string) {
-    HeaderSection_SetDisplayName(h.instance, value)
+    HeaderSection_SetDisplayName(h._instance(), value)
 }
 

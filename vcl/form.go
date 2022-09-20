@@ -19,101 +19,94 @@ import (
 
 type TForm struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewForm
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewForm(owner IComponent) *TForm {
     f := new(TForm)
-    f.instance = Form_Create(CheckPtr(owner))
-    f.ptr = unsafe.Pointer(f.instance)
+    f.instance = unsafe.Pointer(Form_Create(CheckPtr(owner)))
     return f
 }
 
+// AsForm
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsForm(obj interface{}) *TForm {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TForm{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TForm{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsForm.
-func FormFromInst(inst uintptr) *TForm {
-    return AsForm(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsForm.
-func FormFromObj(obj IObject) *TForm {
-    return AsForm(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsForm.
-func FormFromUnsafePointer(ptr unsafe.Pointer) *TForm {
-    return AsForm(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (f *TForm) Free() {
-    if f.instance != 0 {
-        Form_Free(f.instance)
-        f.instance, f.ptr = 0, nullptr
+    if f.instance != nullptr {
+        Form_Free(f._instance())
+        f.instance  = nullptr
     }
 }
 
+func (f *TForm) _instance() uintptr {
+    return uintptr(f.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (f *TForm) Instance() uintptr {
-    return f.instance
+    return f._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (f *TForm) UnsafeAddr() unsafe.Pointer {
-    return f.ptr
+    return f.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (f *TForm) IsValid() bool {
-    return f.instance != 0
+    return f.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (f *TForm) Is() TIs {
-    return TIs(f.instance)
+    return TIs(f._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (f *TForm) As() TAs {
-//    return TAs(f.instance)
+//    return TAs(f._instance())
 //}
 
+// TFormClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,1526 +114,1952 @@ func TFormClass() TClass {
     return Form_StaticClassType()
 }
 
+// InheritedWndProc
+//
 // OnWndProc必须要调用的， 内部为  inherited WndProc(msg)。
 func (f *TForm) InheritedWndProc(TheMessage *TMessage) {
-    Form_InheritedWndProc(f.instance, TheMessage)
+    Form_InheritedWndProc(f._instance(), TheMessage)
 }
 
+// EnabledMaximize
+//
 // 启用/禁用 标题栏最大化按钮。
 func (f *TForm) EnabledMaximize(AValue bool) {
-    Form_EnabledMaximize(f.instance, AValue)
+    Form_EnabledMaximize(f._instance(), AValue)
 }
 
+// EnabledMinimize
+//
 // 启用/禁用 标题栏最小化按钮。
 func (f *TForm) EnabledMinimize(AValue bool) {
-    Form_EnabledMinimize(f.instance, AValue)
+    Form_EnabledMinimize(f._instance(), AValue)
 }
 
+// EnabledSystemMenu
+//
 // 启用/禁用 标题栏系统菜单。
 func (f *TForm) EnabledSystemMenu(AValue bool) {
-    Form_EnabledSystemMenu(f.instance, AValue)
+    Form_EnabledSystemMenu(f._instance(), AValue)
 }
 
 func (f *TForm) ScaleForCurrentDpi() {
-    Form_ScaleForCurrentDpi(f.instance)
+    Form_ScaleForCurrentDpi(f._instance())
 }
 
 func (f *TForm) ScaleForPPI(ANewPPI int32) {
-    Form_ScaleForPPI(f.instance, ANewPPI)
+    Form_ScaleForPPI(f._instance(), ANewPPI)
 }
 
+// ScreenCenter
+//
 // 居于当前屏幕中心。
 func (f *TForm) ScreenCenter() {
-    Form_ScreenCenter(f.instance)
+    Form_ScreenCenter(f._instance())
 }
 
+// WorkAreaCenter
+//
 // 窗口居于工作区中心，工作区为当前屏幕 - 任务栏空间。
 func (f *TForm) WorkAreaCenter() {
-    Form_WorkAreaCenter(f.instance)
+    Form_WorkAreaCenter(f._instance())
 }
 
 func (f *TForm) Cascade() {
-    Form_Cascade(f.instance)
+    Form_Cascade(f._instance())
 }
 
+// Close
+//
 // 关闭。
 func (f *TForm) Close() {
-    Form_Close(f.instance)
+    Form_Close(f._instance())
 }
 
 func (f *TForm) FocusControl(Control IWinControl) {
-    Form_FocusControl(f.instance, CheckPtr(Control))
+    Form_FocusControl(f._instance(), CheckPtr(Control))
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (f *TForm) Hide() {
-    Form_Hide(f.instance)
+    Form_Hide(f._instance())
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (f *TForm) SetFocus() {
-    Form_SetFocus(f.instance)
+    Form_SetFocus(f._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (f *TForm) Show() {
-    Form_Show(f.instance)
+    Form_Show(f._instance())
 }
 
+// ShowModal
+//
 // 以模态模式显示对话框。
 func (f *TForm) ShowModal() int32 {
-    return Form_ShowModal(f.instance)
+    return Form_ShowModal(f._instance())
 }
 
 func (f *TForm) ScrollInView(AControl IControl) {
-    Form_ScrollInView(f.instance, CheckPtr(AControl))
+    Form_ScrollInView(f._instance(), CheckPtr(AControl))
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (f *TForm) CanFocus() bool {
-    return Form_CanFocus(f.instance)
+    return Form_CanFocus(f._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (f *TForm) ContainsControl(Control IControl) bool {
-    return Form_ContainsControl(f.instance, CheckPtr(Control))
+    return Form_ContainsControl(f._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (f *TForm) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(Form_ControlAtPos(f.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(Form_ControlAtPos(f._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (f *TForm) DisableAlign() {
-    Form_DisableAlign(f.instance)
+    Form_DisableAlign(f._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (f *TForm) EnableAlign() {
-    Form_EnableAlign(f.instance)
+    Form_EnableAlign(f._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (f *TForm) FindChildControl(ControlName string) *TControl {
-    return AsControl(Form_FindChildControl(f.instance, ControlName))
+    return AsControl(Form_FindChildControl(f._instance(), ControlName))
 }
 
 func (f *TForm) FlipChildren(AllLevels bool) {
-    Form_FlipChildren(f.instance, AllLevels)
+    Form_FlipChildren(f._instance(), AllLevels)
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (f *TForm) Focused() bool {
-    return Form_Focused(f.instance)
+    return Form_Focused(f._instance())
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (f *TForm) HandleAllocated() bool {
-    return Form_HandleAllocated(f.instance)
+    return Form_HandleAllocated(f._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (f *TForm) InsertControl(AControl IControl) {
-    Form_InsertControl(f.instance, CheckPtr(AControl))
+    Form_InsertControl(f._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (f *TForm) Invalidate() {
-    Form_Invalidate(f.instance)
+    Form_Invalidate(f._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (f *TForm) PaintTo(DC HDC, X int32, Y int32) {
-    Form_PaintTo(f.instance, DC , X , Y)
+    Form_PaintTo(f._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (f *TForm) RemoveControl(AControl IControl) {
-    Form_RemoveControl(f.instance, CheckPtr(AControl))
+    Form_RemoveControl(f._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (f *TForm) Realign() {
-    Form_Realign(f.instance)
+    Form_Realign(f._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (f *TForm) Repaint() {
-    Form_Repaint(f.instance)
+    Form_Repaint(f._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (f *TForm) ScaleBy(M int32, D int32) {
-    Form_ScaleBy(f.instance, M , D)
+    Form_ScaleBy(f._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (f *TForm) ScrollBy(DeltaX int32, DeltaY int32) {
-    Form_ScrollBy(f.instance, DeltaX , DeltaY)
+    Form_ScrollBy(f._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (f *TForm) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    Form_SetBounds(f.instance, ALeft , ATop , AWidth , AHeight)
+    Form_SetBounds(f._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (f *TForm) Update() {
-    Form_Update(f.instance)
+    Form_Update(f._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (f *TForm) BringToFront() {
-    Form_BringToFront(f.instance)
+    Form_BringToFront(f._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (f *TForm) ClientToScreen(Point TPoint) TPoint {
-    return Form_ClientToScreen(f.instance, Point)
+    return Form_ClientToScreen(f._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (f *TForm) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return Form_ClientToParent(f.instance, Point , CheckPtr(AParent))
+    return Form_ClientToParent(f._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (f *TForm) Dragging() bool {
-    return Form_Dragging(f.instance)
+    return Form_Dragging(f._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (f *TForm) HasParent() bool {
-    return Form_HasParent(f.instance)
+    return Form_HasParent(f._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (f *TForm) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return Form_Perform(f.instance, Msg , WParam , LParam)
+    return Form_Perform(f._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (f *TForm) Refresh() {
-    Form_Refresh(f.instance)
+    Form_Refresh(f._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (f *TForm) ScreenToClient(Point TPoint) TPoint {
-    return Form_ScreenToClient(f.instance, Point)
+    return Form_ScreenToClient(f._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (f *TForm) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return Form_ParentToClient(f.instance, Point , CheckPtr(AParent))
+    return Form_ParentToClient(f._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (f *TForm) SendToBack() {
-    Form_SendToBack(f.instance)
+    Form_SendToBack(f._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (f *TForm) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return Form_GetTextBuf(f.instance, Buffer , BufSize)
+    return Form_GetTextBuf(f._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (f *TForm) GetTextLen() int32 {
-    return Form_GetTextLen(f.instance)
+    return Form_GetTextLen(f._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (f *TForm) SetTextBuf(Buffer string) {
-    Form_SetTextBuf(f.instance, Buffer)
+    Form_SetTextBuf(f._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (f *TForm) FindComponent(AName string) *TComponent {
-    return AsComponent(Form_FindComponent(f.instance, AName))
+    return AsComponent(Form_FindComponent(f._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (f *TForm) GetNamePath() string {
-    return Form_GetNamePath(f.instance)
+    return Form_GetNamePath(f._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (f *TForm) Assign(Source IObject) {
-    Form_Assign(f.instance, CheckPtr(Source))
+    Form_Assign(f._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (f *TForm) ClassType() TClass {
-    return Form_ClassType(f.instance)
+    return Form_ClassType(f._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (f *TForm) ClassName() string {
-    return Form_ClassName(f.instance)
+    return Form_ClassName(f._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (f *TForm) InstanceSize() int32 {
-    return Form_InstanceSize(f.instance)
+    return Form_InstanceSize(f._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (f *TForm) InheritsFrom(AClass TClass) bool {
-    return Form_InheritsFrom(f.instance, AClass)
+    return Form_InheritsFrom(f._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (f *TForm) Equals(Obj IObject) bool {
-    return Form_Equals(f.instance, CheckPtr(Obj))
+    return Form_Equals(f._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (f *TForm) GetHashCode() int32 {
-    return Form_GetHashCode(f.instance)
+    return Form_GetHashCode(f._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (f *TForm) ToString() string {
-    return Form_ToString(f.instance)
+    return Form_ToString(f._instance())
 }
 
 func (f *TForm) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    Form_AnchorToNeighbour(f.instance, ASide , ASpace , CheckPtr(ASibling))
+    Form_AnchorToNeighbour(f._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (f *TForm) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    Form_AnchorParallel(f.instance, ASide , ASpace , CheckPtr(ASibling))
+    Form_AnchorParallel(f._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (f *TForm) AnchorHorizontalCenterTo(ASibling IControl) {
-    Form_AnchorHorizontalCenterTo(f.instance, CheckPtr(ASibling))
+    Form_AnchorHorizontalCenterTo(f._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (f *TForm) AnchorVerticalCenterTo(ASibling IControl) {
-    Form_AnchorVerticalCenterTo(f.instance, CheckPtr(ASibling))
+    Form_AnchorVerticalCenterTo(f._instance(), CheckPtr(ASibling))
 }
 
 func (f *TForm) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    Form_AnchorSame(f.instance, ASide , CheckPtr(ASibling))
+    Form_AnchorSame(f._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (f *TForm) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    Form_AnchorAsAlign(f.instance, ATheAlign , ASpace)
+    Form_AnchorAsAlign(f._instance(), ATheAlign , ASpace)
 }
 
 func (f *TForm) AnchorClient(ASpace int32) {
-    Form_AnchorClient(f.instance, ASpace)
+    Form_AnchorClient(f._instance(), ASpace)
 }
 
 func (f *TForm) ScaleDesignToForm(ASize int32) int32 {
-    return Form_ScaleDesignToForm(f.instance, ASize)
+    return Form_ScaleDesignToForm(f._instance(), ASize)
 }
 
 func (f *TForm) ScaleFormToDesign(ASize int32) int32 {
-    return Form_ScaleFormToDesign(f.instance, ASize)
+    return Form_ScaleFormToDesign(f._instance(), ASize)
 }
 
 func (f *TForm) Scale96ToForm(ASize int32) int32 {
-    return Form_Scale96ToForm(f.instance, ASize)
+    return Form_Scale96ToForm(f._instance(), ASize)
 }
 
 func (f *TForm) ScaleFormTo96(ASize int32) int32 {
-    return Form_ScaleFormTo96(f.instance, ASize)
+    return Form_ScaleFormTo96(f._instance(), ASize)
 }
 
 func (f *TForm) Scale96ToFont(ASize int32) int32 {
-    return Form_Scale96ToFont(f.instance, ASize)
+    return Form_Scale96ToFont(f._instance(), ASize)
 }
 
 func (f *TForm) ScaleFontTo96(ASize int32) int32 {
-    return Form_ScaleFontTo96(f.instance, ASize)
+    return Form_ScaleFontTo96(f._instance(), ASize)
 }
 
 func (f *TForm) ScaleScreenToFont(ASize int32) int32 {
-    return Form_ScaleScreenToFont(f.instance, ASize)
+    return Form_ScaleScreenToFont(f._instance(), ASize)
 }
 
 func (f *TForm) ScaleFontToScreen(ASize int32) int32 {
-    return Form_ScaleFontToScreen(f.instance, ASize)
+    return Form_ScaleFontToScreen(f._instance(), ASize)
 }
 
 func (f *TForm) Scale96ToScreen(ASize int32) int32 {
-    return Form_Scale96ToScreen(f.instance, ASize)
+    return Form_Scale96ToScreen(f._instance(), ASize)
 }
 
 func (f *TForm) ScaleScreenTo96(ASize int32) int32 {
-    return Form_ScaleScreenTo96(f.instance, ASize)
+    return Form_ScaleScreenTo96(f._instance(), ASize)
 }
 
 func (f *TForm) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    Form_AutoAdjustLayout(f.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    Form_AutoAdjustLayout(f._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (f *TForm) FixDesignFontsPPI(ADesignTimePPI int32) {
-    Form_FixDesignFontsPPI(f.instance, ADesignTimePPI)
+    Form_FixDesignFontsPPI(f._instance(), ADesignTimePPI)
 }
 
 func (f *TForm) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    Form_ScaleFontsPPI(f.instance, AToPPI , AProportion)
+    Form_ScaleFontsPPI(f._instance(), AToPPI , AProportion)
 }
 
+// AllowDropFiles
+//
 // 获取允许拖放文件。
 func (f *TForm) AllowDropFiles() bool {
-    return Form_GetAllowDropFiles(f.instance)
+    return Form_GetAllowDropFiles(f._instance())
 }
 
+// SetAllowDropFiles
+//
 // 设置允许拖放文件。
 func (f *TForm) SetAllowDropFiles(value bool) {
-    Form_SetAllowDropFiles(f.instance, value)
+    Form_SetAllowDropFiles(f._instance(), value)
 }
 
+// SetOnDropFiles
+//
 // 设置拖放文件事件。
 func (f *TForm) SetOnDropFiles(fn TDropFilesEvent) {
-    Form_SetOnDropFiles(f.instance, fn)
+    Form_SetOnDropFiles(f._instance(), fn)
 }
 
+// ShowInTaskBar
+//
 // 获取显示在任务栏上。
 func (f *TForm) ShowInTaskBar() TShowInTaskbar {
-    return Form_GetShowInTaskBar(f.instance)
+    return Form_GetShowInTaskBar(f._instance())
 }
 
+// SetShowInTaskBar
+//
 // 设置显示在任务栏上。
 func (f *TForm) SetShowInTaskBar(value TShowInTaskbar) {
-    Form_SetShowInTaskBar(f.instance, value)
+    Form_SetShowInTaskBar(f._instance(), value)
 }
 
 func (f *TForm) DesignTimePPI() int32 {
-    return Form_GetDesignTimePPI(f.instance)
+    return Form_GetDesignTimePPI(f._instance())
 }
 
 func (f *TForm) SetDesignTimePPI(value int32) {
-    Form_SetDesignTimePPI(f.instance, value)
+    Form_SetDesignTimePPI(f._instance(), value)
 }
 
 func (f *TForm) SetOnUTF8KeyPress(fn TUTF8KeyPressEvent) {
-    Form_SetOnUTF8KeyPress(f.instance, fn)
+    Form_SetOnUTF8KeyPress(f._instance(), fn)
 }
 
 func (f *TForm) Action() *TAction {
-    return AsAction(Form_GetAction(f.instance))
+    return AsAction(Form_GetAction(f._instance()))
 }
 
 func (f *TForm) SetAction(value IComponent) {
-    Form_SetAction(f.instance, CheckPtr(value))
+    Form_SetAction(f._instance(), CheckPtr(value))
 }
 
+// ActiveControl
+//
 // 获取当前动控件。
 func (f *TForm) ActiveControl() *TWinControl {
-    return AsWinControl(Form_GetActiveControl(f.instance))
+    return AsWinControl(Form_GetActiveControl(f._instance()))
 }
 
+// SetActiveControl
+//
 // 设置当前动控件。
 func (f *TForm) SetActiveControl(value IWinControl) {
-    Form_SetActiveControl(f.instance, CheckPtr(value))
+    Form_SetActiveControl(f._instance(), CheckPtr(value))
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (f *TForm) Align() TAlign {
-    return Form_GetAlign(f.instance)
+    return Form_GetAlign(f._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (f *TForm) SetAlign(value TAlign) {
-    Form_SetAlign(f.instance, value)
+    Form_SetAlign(f._instance(), value)
 }
 
+// AlphaBlend
+//
 // 获取半透明。
 func (f *TForm) AlphaBlend() bool {
-    return Form_GetAlphaBlend(f.instance)
+    return Form_GetAlphaBlend(f._instance())
 }
 
+// SetAlphaBlend
+//
 // 设置半透明。
 func (f *TForm) SetAlphaBlend(value bool) {
-    Form_SetAlphaBlend(f.instance, value)
+    Form_SetAlphaBlend(f._instance(), value)
 }
 
+// AlphaBlendValue
+//
 // 获取半透明值-0-255。
 func (f *TForm) AlphaBlendValue() uint8 {
-    return Form_GetAlphaBlendValue(f.instance)
+    return Form_GetAlphaBlendValue(f._instance())
 }
 
+// SetAlphaBlendValue
+//
 // 设置半透明值-0-255。
 func (f *TForm) SetAlphaBlendValue(value uint8) {
-    Form_SetAlphaBlendValue(f.instance, value)
+    Form_SetAlphaBlendValue(f._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (f *TForm) Anchors() TAnchors {
-    return Form_GetAnchors(f.instance)
+    return Form_GetAnchors(f._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (f *TForm) SetAnchors(value TAnchors) {
-    Form_SetAnchors(f.instance, value)
+    Form_SetAnchors(f._instance(), value)
 }
 
 func (f *TForm) AutoScroll() bool {
-    return Form_GetAutoScroll(f.instance)
+    return Form_GetAutoScroll(f._instance())
 }
 
 func (f *TForm) SetAutoScroll(value bool) {
-    Form_SetAutoScroll(f.instance, value)
+    Form_SetAutoScroll(f._instance(), value)
 }
 
+// AutoSize
+//
 // 获取自动调整大小。
 func (f *TForm) AutoSize() bool {
-    return Form_GetAutoSize(f.instance)
+    return Form_GetAutoSize(f._instance())
 }
 
+// SetAutoSize
+//
 // 设置自动调整大小。
 func (f *TForm) SetAutoSize(value bool) {
-    Form_SetAutoSize(f.instance, value)
+    Form_SetAutoSize(f._instance(), value)
 }
 
 func (f *TForm) BiDiMode() TBiDiMode {
-    return Form_GetBiDiMode(f.instance)
+    return Form_GetBiDiMode(f._instance())
 }
 
 func (f *TForm) SetBiDiMode(value TBiDiMode) {
-    Form_SetBiDiMode(f.instance, value)
+    Form_SetBiDiMode(f._instance(), value)
 }
 
+// BorderIcons
+//
 // 获取窗口标题栏图标设置。比如：关闭，最大化，最小化等。
 func (f *TForm) BorderIcons() TBorderIcons {
-    return Form_GetBorderIcons(f.instance)
+    return Form_GetBorderIcons(f._instance())
 }
 
+// SetBorderIcons
+//
 // 设置窗口标题栏图标设置。比如：关闭，最大化，最小化等。
 func (f *TForm) SetBorderIcons(value TBorderIcons) {
-    Form_SetBorderIcons(f.instance, value)
+    Form_SetBorderIcons(f._instance(), value)
 }
 
+// BorderStyle
+//
 // 获取窗口边框样式。比如：无边框，单一边框等。
 func (f *TForm) BorderStyle() TFormBorderStyle {
-    return Form_GetBorderStyle(f.instance)
+    return Form_GetBorderStyle(f._instance())
 }
 
+// SetBorderStyle
+//
 // 设置窗口边框样式。比如：无边框，单一边框等。
 func (f *TForm) SetBorderStyle(value TFormBorderStyle) {
-    Form_SetBorderStyle(f.instance, value)
+    Form_SetBorderStyle(f._instance(), value)
 }
 
+// BorderWidth
+//
 // 获取边框的宽度。
 func (f *TForm) BorderWidth() int32 {
-    return Form_GetBorderWidth(f.instance)
+    return Form_GetBorderWidth(f._instance())
 }
 
+// SetBorderWidth
+//
 // 设置边框的宽度。
 func (f *TForm) SetBorderWidth(value int32) {
-    Form_SetBorderWidth(f.instance, value)
+    Form_SetBorderWidth(f._instance(), value)
 }
 
+// Caption
+//
 // 获取控件标题。
 //
 // Get the control title.
 func (f *TForm) Caption() string {
-    return Form_GetCaption(f.instance)
+    return Form_GetCaption(f._instance())
 }
 
+// SetCaption
+//
 // 设置控件标题。
 //
 // Set the control title.
 func (f *TForm) SetCaption(value string) {
-    Form_SetCaption(f.instance, value)
+    Form_SetCaption(f._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (f *TForm) ClientHeight() int32 {
-    return Form_GetClientHeight(f.instance)
+    return Form_GetClientHeight(f._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (f *TForm) SetClientHeight(value int32) {
-    Form_SetClientHeight(f.instance, value)
+    Form_SetClientHeight(f._instance(), value)
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (f *TForm) ClientWidth() int32 {
-    return Form_GetClientWidth(f.instance)
+    return Form_GetClientWidth(f._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (f *TForm) SetClientWidth(value int32) {
-    Form_SetClientWidth(f.instance, value)
+    Form_SetClientWidth(f._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (f *TForm) Color() TColor {
-    return Form_GetColor(f.instance)
+    return Form_GetColor(f._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (f *TForm) SetColor(value TColor) {
-    Form_SetColor(f.instance, value)
+    Form_SetColor(f._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (f *TForm) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(Form_GetConstraints(f.instance))
+    return AsSizeConstraints(Form_GetConstraints(f._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (f *TForm) SetConstraints(value *TSizeConstraints) {
-    Form_SetConstraints(f.instance, CheckPtr(value))
+    Form_SetConstraints(f._instance(), CheckPtr(value))
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (f *TForm) UseDockManager() bool {
-    return Form_GetUseDockManager(f.instance)
+    return Form_GetUseDockManager(f._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (f *TForm) SetUseDockManager(value bool) {
-    Form_SetUseDockManager(f.instance, value)
+    Form_SetUseDockManager(f._instance(), value)
 }
 
+// DefaultMonitor
+//
 // 获取默认监视器。
 func (f *TForm) DefaultMonitor() TDefaultMonitor {
-    return Form_GetDefaultMonitor(f.instance)
+    return Form_GetDefaultMonitor(f._instance())
 }
 
+// SetDefaultMonitor
+//
 // 设置默认监视器。
 func (f *TForm) SetDefaultMonitor(value TDefaultMonitor) {
-    Form_SetDefaultMonitor(f.instance, value)
+    Form_SetDefaultMonitor(f._instance(), value)
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (f *TForm) DockSite() bool {
-    return Form_GetDockSite(f.instance)
+    return Form_GetDockSite(f._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (f *TForm) SetDockSite(value bool) {
-    Form_SetDockSite(f.instance, value)
+    Form_SetDockSite(f._instance(), value)
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (f *TForm) DoubleBuffered() bool {
-    return Form_GetDoubleBuffered(f.instance)
+    return Form_GetDoubleBuffered(f._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (f *TForm) SetDoubleBuffered(value bool) {
-    Form_SetDoubleBuffered(f.instance, value)
+    Form_SetDoubleBuffered(f._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (f *TForm) DragKind() TDragKind {
-    return Form_GetDragKind(f.instance)
+    return Form_GetDragKind(f._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (f *TForm) SetDragKind(value TDragKind) {
-    Form_SetDragKind(f.instance, value)
+    Form_SetDragKind(f._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (f *TForm) DragMode() TDragMode {
-    return Form_GetDragMode(f.instance)
+    return Form_GetDragMode(f._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (f *TForm) SetDragMode(value TDragMode) {
-    Form_SetDragMode(f.instance, value)
+    Form_SetDragMode(f._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (f *TForm) Enabled() bool {
-    return Form_GetEnabled(f.instance)
+    return Form_GetEnabled(f._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (f *TForm) SetEnabled(value bool) {
-    Form_SetEnabled(f.instance, value)
+    Form_SetEnabled(f._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (f *TForm) ParentFont() bool {
-    return Form_GetParentFont(f.instance)
+    return Form_GetParentFont(f._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (f *TForm) SetParentFont(value bool) {
-    Form_SetParentFont(f.instance, value)
+    Form_SetParentFont(f._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (f *TForm) Font() *TFont {
-    return AsFont(Form_GetFont(f.instance))
+    return AsFont(Form_GetFont(f._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (f *TForm) SetFont(value *TFont) {
-    Form_SetFont(f.instance, CheckPtr(value))
+    Form_SetFont(f._instance(), CheckPtr(value))
 }
 
+// FormStyle
+//
 // 获取窗口样式。比如：置顶，MID窗口。
 func (f *TForm) FormStyle() TFormStyle {
-    return Form_GetFormStyle(f.instance)
+    return Form_GetFormStyle(f._instance())
 }
 
+// SetFormStyle
+//
 // 设置窗口样式。比如：置顶，MID窗口。
 func (f *TForm) SetFormStyle(value TFormStyle) {
-    Form_SetFormStyle(f.instance, value)
+    Form_SetFormStyle(f._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (f *TForm) Height() int32 {
-    return Form_GetHeight(f.instance)
+    return Form_GetHeight(f._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (f *TForm) SetHeight(value int32) {
-    Form_SetHeight(f.instance, value)
+    Form_SetHeight(f._instance(), value)
 }
 
 func (f *TForm) HorzScrollBar() *TControlScrollBar {
-    return AsControlScrollBar(Form_GetHorzScrollBar(f.instance))
+    return AsControlScrollBar(Form_GetHorzScrollBar(f._instance()))
 }
 
 func (f *TForm) SetHorzScrollBar(value *TControlScrollBar) {
-    Form_SetHorzScrollBar(f.instance, CheckPtr(value))
+    Form_SetHorzScrollBar(f._instance(), CheckPtr(value))
 }
 
+// Icon
+//
 // 获取图标。
 //
 // Get icon.
 func (f *TForm) Icon() *TIcon {
-    return AsIcon(Form_GetIcon(f.instance))
+    return AsIcon(Form_GetIcon(f._instance()))
 }
 
+// SetIcon
+//
 // 设置图标。
 //
 // Set icon.
 func (f *TForm) SetIcon(value *TIcon) {
-    Form_SetIcon(f.instance, CheckPtr(value))
+    Form_SetIcon(f._instance(), CheckPtr(value))
 }
 
+// KeyPreview
+//
 // 获取窗口优先接收键盘按盘消息。
 func (f *TForm) KeyPreview() bool {
-    return Form_GetKeyPreview(f.instance)
+    return Form_GetKeyPreview(f._instance())
 }
 
+// SetKeyPreview
+//
 // 设置窗口优先接收键盘按盘消息。
 func (f *TForm) SetKeyPreview(value bool) {
-    Form_SetKeyPreview(f.instance, value)
+    Form_SetKeyPreview(f._instance(), value)
 }
 
+// Menu
+//
 // 获取窗口主菜单。
 func (f *TForm) Menu() *TMainMenu {
-    return AsMainMenu(Form_GetMenu(f.instance))
+    return AsMainMenu(Form_GetMenu(f._instance()))
 }
 
+// SetMenu
+//
 // 设置窗口主菜单。
 func (f *TForm) SetMenu(value IComponent) {
-    Form_SetMenu(f.instance, CheckPtr(value))
+    Form_SetMenu(f._instance(), CheckPtr(value))
 }
 
+// PixelsPerInch
+//
 // 获取每英寸像素数。
 func (f *TForm) PixelsPerInch() int32 {
-    return Form_GetPixelsPerInch(f.instance)
+    return Form_GetPixelsPerInch(f._instance())
 }
 
+// SetPixelsPerInch
+//
 // 设置每英寸像素数。
 func (f *TForm) SetPixelsPerInch(value int32) {
-    Form_SetPixelsPerInch(f.instance, value)
+    Form_SetPixelsPerInch(f._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (f *TForm) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(Form_GetPopupMenu(f.instance))
+    return AsPopupMenu(Form_GetPopupMenu(f._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (f *TForm) SetPopupMenu(value IComponent) {
-    Form_SetPopupMenu(f.instance, CheckPtr(value))
+    Form_SetPopupMenu(f._instance(), CheckPtr(value))
 }
 
+// Position
+//
 // 获取窗口的位置。比如：居中等。。
 func (f *TForm) Position() TPosition {
-    return Form_GetPosition(f.instance)
+    return Form_GetPosition(f._instance())
 }
 
+// SetPosition
+//
 // 设置窗口的位置。比如：居中等。。
 func (f *TForm) SetPosition(value TPosition) {
-    Form_SetPosition(f.instance, value)
+    Form_SetPosition(f._instance(), value)
 }
 
+// Scaled
+//
 // 获取自动缩放。
 func (f *TForm) Scaled() bool {
-    return Form_GetScaled(f.instance)
+    return Form_GetScaled(f._instance())
 }
 
+// SetScaled
+//
 // 设置自动缩放。
 func (f *TForm) SetScaled(value bool) {
-    Form_SetScaled(f.instance, value)
+    Form_SetScaled(f._instance(), value)
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (f *TForm) ShowHint() bool {
-    return Form_GetShowHint(f.instance)
+    return Form_GetShowHint(f._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (f *TForm) SetShowHint(value bool) {
-    Form_SetShowHint(f.instance, value)
+    Form_SetShowHint(f._instance(), value)
 }
 
 func (f *TForm) VertScrollBar() *TControlScrollBar {
-    return AsControlScrollBar(Form_GetVertScrollBar(f.instance))
+    return AsControlScrollBar(Form_GetVertScrollBar(f._instance()))
 }
 
 func (f *TForm) SetVertScrollBar(value *TControlScrollBar) {
-    Form_SetVertScrollBar(f.instance, CheckPtr(value))
+    Form_SetVertScrollBar(f._instance(), CheckPtr(value))
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (f *TForm) Visible() bool {
-    return Form_GetVisible(f.instance)
+    return Form_GetVisible(f._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (f *TForm) SetVisible(value bool) {
-    Form_SetVisible(f.instance, value)
+    Form_SetVisible(f._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (f *TForm) Width() int32 {
-    return Form_GetWidth(f.instance)
+    return Form_GetWidth(f._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (f *TForm) SetWidth(value int32) {
-    Form_SetWidth(f.instance, value)
+    Form_SetWidth(f._instance(), value)
 }
 
+// WindowState
+//
 // 获取窗口样式。比如：最大化，最小化等。
 func (f *TForm) WindowState() TWindowState {
-    return Form_GetWindowState(f.instance)
+    return Form_GetWindowState(f._instance())
 }
 
+// SetWindowState
+//
 // 设置窗口样式。比如：最大化，最小化等。
 func (f *TForm) SetWindowState(value TWindowState) {
-    Form_SetWindowState(f.instance, value)
+    Form_SetWindowState(f._instance(), value)
 }
 
+// SetOnActivate
+//
 // 设置窗口激活事件。
 func (f *TForm) SetOnActivate(fn TNotifyEvent) {
-    Form_SetOnActivate(f.instance, fn)
+    Form_SetOnActivate(f._instance(), fn)
 }
 
+// SetOnAlignPosition
+//
 // 设置对齐位置事件，当Align为alCustom时Parent会收到这个消息。
 func (f *TForm) SetOnAlignPosition(fn TAlignPositionEvent) {
-    Form_SetOnAlignPosition(f.instance, fn)
+    Form_SetOnAlignPosition(f._instance(), fn)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (f *TForm) SetOnClick(fn TNotifyEvent) {
-    Form_SetOnClick(f.instance, fn)
+    Form_SetOnClick(f._instance(), fn)
 }
 
+// SetOnClose
+//
 // 设置窗口关闭事件。
 func (f *TForm) SetOnClose(fn TCloseEvent) {
-    Form_SetOnClose(f.instance, fn)
+    Form_SetOnClose(f._instance(), fn)
 }
 
+// SetOnCloseQuery
+//
 // 设置窗口关闭询问事件。
 func (f *TForm) SetOnCloseQuery(fn TCloseQueryEvent) {
-    Form_SetOnCloseQuery(f.instance, fn)
+    Form_SetOnCloseQuery(f._instance(), fn)
 }
 
 func (f *TForm) SetOnConstrainedResize(fn TConstrainedResizeEvent) {
-    Form_SetOnConstrainedResize(f.instance, fn)
+    Form_SetOnConstrainedResize(f._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (f *TForm) SetOnContextPopup(fn TContextPopupEvent) {
-    Form_SetOnContextPopup(f.instance, fn)
+    Form_SetOnContextPopup(f._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (f *TForm) SetOnDblClick(fn TNotifyEvent) {
-    Form_SetOnDblClick(f.instance, fn)
+    Form_SetOnDblClick(f._instance(), fn)
 }
 
 func (f *TForm) SetOnDestroy(fn TNotifyEvent) {
-    Form_SetOnDestroy(f.instance, fn)
+    Form_SetOnDestroy(f._instance(), fn)
 }
 
+// SetOnDeactivate
+//
 // 设置窗口失去激状态。
 func (f *TForm) SetOnDeactivate(fn TNotifyEvent) {
-    Form_SetOnDeactivate(f.instance, fn)
+    Form_SetOnDeactivate(f._instance(), fn)
 }
 
 func (f *TForm) SetOnDockDrop(fn TDockDropEvent) {
-    Form_SetOnDockDrop(f.instance, fn)
+    Form_SetOnDockDrop(f._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (f *TForm) SetOnDragDrop(fn TDragDropEvent) {
-    Form_SetOnDragDrop(f.instance, fn)
+    Form_SetOnDragDrop(f._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (f *TForm) SetOnDragOver(fn TDragOverEvent) {
-    Form_SetOnDragOver(f.instance, fn)
+    Form_SetOnDragOver(f._instance(), fn)
 }
 
+// SetOnEndDock
+//
 // 设置停靠结束事件。
 //
 // Set Dock end event.
 func (f *TForm) SetOnEndDock(fn TEndDragEvent) {
-    Form_SetOnEndDock(f.instance, fn)
+    Form_SetOnEndDock(f._instance(), fn)
 }
 
 func (f *TForm) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
-    Form_SetOnGetSiteInfo(f.instance, fn)
+    Form_SetOnGetSiteInfo(f._instance(), fn)
 }
 
+// SetOnHide
+//
 // 设置隐藏事件。
 func (f *TForm) SetOnHide(fn TNotifyEvent) {
-    Form_SetOnHide(f.instance, fn)
+    Form_SetOnHide(f._instance(), fn)
 }
 
 func (f *TForm) SetOnHelp(fn THelpEvent) {
-    Form_SetOnHelp(f.instance, fn)
+    Form_SetOnHelp(f._instance(), fn)
 }
 
+// SetOnKeyDown
+//
 // 设置键盘按键按下事件。
 //
 // Set Keyboard button press event.
 func (f *TForm) SetOnKeyDown(fn TKeyEvent) {
-    Form_SetOnKeyDown(f.instance, fn)
+    Form_SetOnKeyDown(f._instance(), fn)
 }
 
+// SetOnKeyPress
+//
 // 设置键键下事件。
 func (f *TForm) SetOnKeyPress(fn TKeyPressEvent) {
-    Form_SetOnKeyPress(f.instance, fn)
+    Form_SetOnKeyPress(f._instance(), fn)
 }
 
+// SetOnKeyUp
+//
 // 设置键盘按键抬起事件。
 //
 // Set Keyboard button lift event.
 func (f *TForm) SetOnKeyUp(fn TKeyEvent) {
-    Form_SetOnKeyUp(f.instance, fn)
+    Form_SetOnKeyUp(f._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (f *TForm) SetOnMouseDown(fn TMouseEvent) {
-    Form_SetOnMouseDown(f.instance, fn)
+    Form_SetOnMouseDown(f._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (f *TForm) SetOnMouseEnter(fn TNotifyEvent) {
-    Form_SetOnMouseEnter(f.instance, fn)
+    Form_SetOnMouseEnter(f._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (f *TForm) SetOnMouseLeave(fn TNotifyEvent) {
-    Form_SetOnMouseLeave(f.instance, fn)
+    Form_SetOnMouseLeave(f._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (f *TForm) SetOnMouseMove(fn TMouseMoveEvent) {
-    Form_SetOnMouseMove(f.instance, fn)
+    Form_SetOnMouseMove(f._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (f *TForm) SetOnMouseUp(fn TMouseEvent) {
-    Form_SetOnMouseUp(f.instance, fn)
+    Form_SetOnMouseUp(f._instance(), fn)
 }
 
+// SetOnMouseWheel
+//
 // 设置鼠标滚轮事件。
 func (f *TForm) SetOnMouseWheel(fn TMouseWheelEvent) {
-    Form_SetOnMouseWheel(f.instance, fn)
+    Form_SetOnMouseWheel(f._instance(), fn)
 }
 
+// SetOnMouseWheelDown
+//
 // 设置鼠标滚轮按下事件。
 func (f *TForm) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
-    Form_SetOnMouseWheelDown(f.instance, fn)
+    Form_SetOnMouseWheelDown(f._instance(), fn)
 }
 
+// SetOnMouseWheelUp
+//
 // 设置鼠标滚轮抬起事件。
 func (f *TForm) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
-    Form_SetOnMouseWheelUp(f.instance, fn)
+    Form_SetOnMouseWheelUp(f._instance(), fn)
 }
 
+// SetOnPaint
+//
 // 设置绘画事件。
 func (f *TForm) SetOnPaint(fn TNotifyEvent) {
-    Form_SetOnPaint(f.instance, fn)
+    Form_SetOnPaint(f._instance(), fn)
 }
 
+// SetOnResize
+//
 // 设置大小被改变事件。
 func (f *TForm) SetOnResize(fn TNotifyEvent) {
-    Form_SetOnResize(f.instance, fn)
+    Form_SetOnResize(f._instance(), fn)
 }
 
 func (f *TForm) SetOnShortCut(fn TShortCutEvent) {
-    Form_SetOnShortCut(f.instance, fn)
+    Form_SetOnShortCut(f._instance(), fn)
 }
 
+// SetOnShow
+//
 // 设置显示事件。
 func (f *TForm) SetOnShow(fn TNotifyEvent) {
-    Form_SetOnShow(f.instance, fn)
+    Form_SetOnShow(f._instance(), fn)
 }
 
+// SetOnStartDock
+//
 // 设置启动停靠。
 func (f *TForm) SetOnStartDock(fn TStartDockEvent) {
-    Form_SetOnStartDock(f.instance, fn)
+    Form_SetOnStartDock(f._instance(), fn)
 }
 
 func (f *TForm) SetOnUnDock(fn TUnDockEvent) {
-    Form_SetOnUnDock(f.instance, fn)
+    Form_SetOnUnDock(f._instance(), fn)
 }
 
+// Canvas
+//
 // 获取画布。
 func (f *TForm) Canvas() *TCanvas {
-    return AsCanvas(Form_GetCanvas(f.instance))
+    return AsCanvas(Form_GetCanvas(f._instance()))
 }
 
+// ModalResult
+//
 // 获取模态对话框显示结果。
 func (f *TForm) ModalResult() TModalResult {
-    return Form_GetModalResult(f.instance)
+    return Form_GetModalResult(f._instance())
 }
 
+// SetModalResult
+//
 // 设置模态对话框显示结果。
 func (f *TForm) SetModalResult(value TModalResult) {
-    Form_SetModalResult(f.instance, value)
+    Form_SetModalResult(f._instance(), value)
 }
 
+// Monitor
+//
 // 获取监视器。
 func (f *TForm) Monitor() *TMonitor {
-    return AsMonitor(Form_GetMonitor(f.instance))
+    return AsMonitor(Form_GetMonitor(f._instance()))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (f *TForm) Left() int32 {
-    return Form_GetLeft(f.instance)
+    return Form_GetLeft(f._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (f *TForm) SetLeft(value int32) {
-    Form_SetLeft(f.instance, value)
+    Form_SetLeft(f._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (f *TForm) Top() int32 {
-    return Form_GetTop(f.instance)
+    return Form_GetTop(f._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (f *TForm) SetTop(value int32) {
-    Form_SetTop(f.instance, value)
+    Form_SetTop(f._instance(), value)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (f *TForm) DockClientCount() int32 {
-    return Form_GetDockClientCount(f.instance)
+    return Form_GetDockClientCount(f._instance())
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (f *TForm) MouseInClient() bool {
-    return Form_GetMouseInClient(f.instance)
+    return Form_GetMouseInClient(f._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (f *TForm) VisibleDockClientCount() int32 {
-    return Form_GetVisibleDockClientCount(f.instance)
+    return Form_GetVisibleDockClientCount(f._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (f *TForm) Brush() *TBrush {
-    return AsBrush(Form_GetBrush(f.instance))
+    return AsBrush(Form_GetBrush(f._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (f *TForm) ControlCount() int32 {
-    return Form_GetControlCount(f.instance)
+    return Form_GetControlCount(f._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (f *TForm) Handle() HWND {
-    return Form_GetHandle(f.instance)
+    return Form_GetHandle(f._instance())
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (f *TForm) ParentDoubleBuffered() bool {
-    return Form_GetParentDoubleBuffered(f.instance)
+    return Form_GetParentDoubleBuffered(f._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (f *TForm) SetParentDoubleBuffered(value bool) {
-    Form_SetParentDoubleBuffered(f.instance, value)
+    Form_SetParentDoubleBuffered(f._instance(), value)
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (f *TForm) ParentWindow() HWND {
-    return Form_GetParentWindow(f.instance)
+    return Form_GetParentWindow(f._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (f *TForm) SetParentWindow(value HWND) {
-    Form_SetParentWindow(f.instance, value)
+    Form_SetParentWindow(f._instance(), value)
 }
 
 func (f *TForm) Showing() bool {
-    return Form_GetShowing(f.instance)
+    return Form_GetShowing(f._instance())
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (f *TForm) TabOrder() TTabOrder {
-    return Form_GetTabOrder(f.instance)
+    return Form_GetTabOrder(f._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (f *TForm) SetTabOrder(value TTabOrder) {
-    Form_SetTabOrder(f.instance, value)
+    Form_SetTabOrder(f._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (f *TForm) TabStop() bool {
-    return Form_GetTabStop(f.instance)
+    return Form_GetTabStop(f._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (f *TForm) SetTabStop(value bool) {
-    Form_SetTabStop(f.instance, value)
+    Form_SetTabStop(f._instance(), value)
 }
 
 func (f *TForm) BoundsRect() TRect {
-    return Form_GetBoundsRect(f.instance)
+    return Form_GetBoundsRect(f._instance())
 }
 
 func (f *TForm) SetBoundsRect(value TRect) {
-    Form_SetBoundsRect(f.instance, value)
+    Form_SetBoundsRect(f._instance(), value)
 }
 
 func (f *TForm) ClientOrigin() TPoint {
-    return Form_GetClientOrigin(f.instance)
+    return Form_GetClientOrigin(f._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (f *TForm) ClientRect() TRect {
-    return Form_GetClientRect(f.instance)
+    return Form_GetClientRect(f._instance())
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (f *TForm) ControlState() TControlState {
-    return Form_GetControlState(f.instance)
+    return Form_GetControlState(f._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (f *TForm) SetControlState(value TControlState) {
-    Form_SetControlState(f.instance, value)
+    Form_SetControlState(f._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (f *TForm) ControlStyle() TControlStyle {
-    return Form_GetControlStyle(f.instance)
+    return Form_GetControlStyle(f._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (f *TForm) SetControlStyle(value TControlStyle) {
-    Form_SetControlStyle(f.instance, value)
+    Form_SetControlStyle(f._instance(), value)
 }
 
 func (f *TForm) Floating() bool {
-    return Form_GetFloating(f.instance)
+    return Form_GetFloating(f._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (f *TForm) Parent() *TWinControl {
-    return AsWinControl(Form_GetParent(f.instance))
+    return AsWinControl(Form_GetParent(f._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (f *TForm) SetParent(value IWinControl) {
-    Form_SetParent(f.instance, CheckPtr(value))
+    Form_SetParent(f._instance(), CheckPtr(value))
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (f *TForm) Cursor() TCursor {
-    return Form_GetCursor(f.instance)
+    return Form_GetCursor(f._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (f *TForm) SetCursor(value TCursor) {
-    Form_SetCursor(f.instance, value)
+    Form_SetCursor(f._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (f *TForm) Hint() string {
-    return Form_GetHint(f.instance)
+    return Form_GetHint(f._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (f *TForm) SetHint(value string) {
-    Form_SetHint(f.instance, value)
+    Form_SetHint(f._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (f *TForm) ComponentCount() int32 {
-    return Form_GetComponentCount(f.instance)
+    return Form_GetComponentCount(f._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (f *TForm) ComponentIndex() int32 {
-    return Form_GetComponentIndex(f.instance)
+    return Form_GetComponentIndex(f._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (f *TForm) SetComponentIndex(value int32) {
-    Form_SetComponentIndex(f.instance, value)
+    Form_SetComponentIndex(f._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (f *TForm) Owner() *TComponent {
-    return AsComponent(Form_GetOwner(f.instance))
+    return AsComponent(Form_GetOwner(f._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (f *TForm) Name() string {
-    return Form_GetName(f.instance)
+    return Form_GetName(f._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (f *TForm) SetName(value string) {
-    Form_SetName(f.instance, value)
+    Form_SetName(f._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (f *TForm) Tag() int {
-    return Form_GetTag(f.instance)
+    return Form_GetTag(f._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (f *TForm) SetTag(value int) {
-    Form_SetTag(f.instance, value)
+    Form_SetTag(f._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (f *TForm) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(Form_GetAnchorSideLeft(f.instance))
+    return AsAnchorSide(Form_GetAnchorSideLeft(f._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (f *TForm) SetAnchorSideLeft(value *TAnchorSide) {
-    Form_SetAnchorSideLeft(f.instance, CheckPtr(value))
+    Form_SetAnchorSideLeft(f._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (f *TForm) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(Form_GetAnchorSideTop(f.instance))
+    return AsAnchorSide(Form_GetAnchorSideTop(f._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (f *TForm) SetAnchorSideTop(value *TAnchorSide) {
-    Form_SetAnchorSideTop(f.instance, CheckPtr(value))
+    Form_SetAnchorSideTop(f._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (f *TForm) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(Form_GetAnchorSideRight(f.instance))
+    return AsAnchorSide(Form_GetAnchorSideRight(f._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (f *TForm) SetAnchorSideRight(value *TAnchorSide) {
-    Form_SetAnchorSideRight(f.instance, CheckPtr(value))
+    Form_SetAnchorSideRight(f._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (f *TForm) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(Form_GetAnchorSideBottom(f.instance))
+    return AsAnchorSide(Form_GetAnchorSideBottom(f._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (f *TForm) SetAnchorSideBottom(value *TAnchorSide) {
-    Form_SetAnchorSideBottom(f.instance, CheckPtr(value))
+    Form_SetAnchorSideBottom(f._instance(), CheckPtr(value))
 }
 
 func (f *TForm) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(Form_GetChildSizing(f.instance))
+    return AsControlChildSizing(Form_GetChildSizing(f._instance()))
 }
 
 func (f *TForm) SetChildSizing(value *TControlChildSizing) {
-    Form_SetChildSizing(f.instance, CheckPtr(value))
+    Form_SetChildSizing(f._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (f *TForm) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(Form_GetBorderSpacing(f.instance))
+    return AsControlBorderSpacing(Form_GetBorderSpacing(f._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (f *TForm) SetBorderSpacing(value *TControlBorderSpacing) {
-    Form_SetBorderSpacing(f.instance, CheckPtr(value))
+    Form_SetBorderSpacing(f._instance(), CheckPtr(value))
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (f *TForm) DockClients(Index int32) *TControl {
-    return AsControl(Form_GetDockClients(f.instance, Index))
+    return AsControl(Form_GetDockClients(f._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (f *TForm) Controls(Index int32) *TControl {
-    return AsControl(Form_GetControls(f.instance, Index))
+    return AsControl(Form_GetControls(f._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (f *TForm) Components(AIndex int32) *TComponent {
-    return AsComponent(Form_GetComponents(f.instance, AIndex))
+    return AsComponent(Form_GetComponents(f._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (f *TForm) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(Form_GetAnchorSide(f.instance, AKind))
+    return AsAnchorSide(Form_GetAnchorSide(f._instance(), AKind))
 }
 

@@ -69,7 +69,7 @@ func main() {
 	vcl.Application.Run()
 }
 
-// 两个按钮使用同一个事件回调,Delphi里称为方法(method)
+// 两个按钮使用同一个事件回调,Lazarus里称为方法(method)
 func buttonOnClick(sender vcl.IObject) {
 	// 这里就可以根据sender去做选择了
 	btn := vcl.AsButton(sender)

@@ -10,7 +10,9 @@ package locales
 
 import "github.com/ying32/govcl/vcl/api"
 
-// 修改资源
+// ModifyResources
+//  修改资源
+//  Modify resources.
 func ModifyResources(data map[string]string) {
 	for i := int32(0); i < api.DGetLibResourceCount(); i++ {
 		item := api.DGetLibResourceItem(i)

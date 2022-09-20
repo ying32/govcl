@@ -19,81 +19,71 @@ import (
 
 type TTaskDialogButtons struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// AsTaskDialogButtons
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsTaskDialogButtons(obj interface{}) *TTaskDialogButtons {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TTaskDialogButtons{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TTaskDialogButtons{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsTaskDialogButtons.
-func TaskDialogButtonsFromInst(inst uintptr) *TTaskDialogButtons {
-    return AsTaskDialogButtons(inst)
+func (t *TTaskDialogButtons) _instance() uintptr {
+    return uintptr(t.instance)
 }
 
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsTaskDialogButtons.
-func TaskDialogButtonsFromObj(obj IObject) *TTaskDialogButtons {
-    return AsTaskDialogButtons(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsTaskDialogButtons.
-func TaskDialogButtonsFromUnsafePointer(ptr unsafe.Pointer) *TTaskDialogButtons {
-    return AsTaskDialogButtons(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (t *TTaskDialogButtons) Instance() uintptr {
-    return t.instance
+    return t._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (t *TTaskDialogButtons) UnsafeAddr() unsafe.Pointer {
-    return t.ptr
+    return t.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (t *TTaskDialogButtons) IsValid() bool {
-    return t.instance != 0
+    return t.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (t *TTaskDialogButtons) Is() TIs {
-    return TIs(t.instance)
+    return TIs(t._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (t *TTaskDialogButtons) As() TAs {
-//    return TAs(t.instance)
+//    return TAs(t._instance())
 //}
 
+// TTaskDialogButtonsClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -102,125 +92,147 @@ func TTaskDialogButtonsClass() TClass {
 }
 
 func (t *TTaskDialogButtons) Add() *TTaskDialogBaseButtonItem {
-    return AsTaskDialogBaseButtonItem(TaskDialogButtons_Add(t.instance))
+    return AsTaskDialogBaseButtonItem(TaskDialogButtons_Add(t._instance()))
 }
 
 func (t *TTaskDialogButtons) FindButton(AModalResult TModalResult) *TTaskDialogBaseButtonItem {
-    return AsTaskDialogBaseButtonItem(TaskDialogButtons_FindButton(t.instance, AModalResult))
+    return AsTaskDialogBaseButtonItem(TaskDialogButtons_FindButton(t._instance(), AModalResult))
 }
 
+// Owner
+//
 // 组件所有者。
 //
 // component owner.
 func (t *TTaskDialogButtons) Owner() *TObject {
-    return AsObject(TaskDialogButtons_Owner(t.instance))
+    return AsObject(TaskDialogButtons_Owner(t._instance()))
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (t *TTaskDialogButtons) Assign(Source IObject) {
-    TaskDialogButtons_Assign(t.instance, CheckPtr(Source))
+    TaskDialogButtons_Assign(t._instance(), CheckPtr(Source))
 }
 
 func (t *TTaskDialogButtons) BeginUpdate() {
-    TaskDialogButtons_BeginUpdate(t.instance)
+    TaskDialogButtons_BeginUpdate(t._instance())
 }
 
+// Clear
+//
 // 清除。
 func (t *TTaskDialogButtons) Clear() {
-    TaskDialogButtons_Clear(t.instance)
+    TaskDialogButtons_Clear(t._instance())
 }
 
 func (t *TTaskDialogButtons) Delete(Index int32) {
-    TaskDialogButtons_Delete(t.instance, Index)
+    TaskDialogButtons_Delete(t._instance(), Index)
 }
 
 func (t *TTaskDialogButtons) EndUpdate() {
-    TaskDialogButtons_EndUpdate(t.instance)
+    TaskDialogButtons_EndUpdate(t._instance())
 }
 
 func (t *TTaskDialogButtons) FindItemID(ID int32) *TCollectionItem {
-    return AsCollectionItem(TaskDialogButtons_FindItemID(t.instance, ID))
+    return AsCollectionItem(TaskDialogButtons_FindItemID(t._instance(), ID))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (t *TTaskDialogButtons) GetNamePath() string {
-    return TaskDialogButtons_GetNamePath(t.instance)
+    return TaskDialogButtons_GetNamePath(t._instance())
 }
 
 func (t *TTaskDialogButtons) Insert(Index int32) *TCollectionItem {
-    return AsCollectionItem(TaskDialogButtons_Insert(t.instance, Index))
+    return AsCollectionItem(TaskDialogButtons_Insert(t._instance(), Index))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (t *TTaskDialogButtons) ClassType() TClass {
-    return TaskDialogButtons_ClassType(t.instance)
+    return TaskDialogButtons_ClassType(t._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (t *TTaskDialogButtons) ClassName() string {
-    return TaskDialogButtons_ClassName(t.instance)
+    return TaskDialogButtons_ClassName(t._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (t *TTaskDialogButtons) InstanceSize() int32 {
-    return TaskDialogButtons_InstanceSize(t.instance)
+    return TaskDialogButtons_InstanceSize(t._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (t *TTaskDialogButtons) InheritsFrom(AClass TClass) bool {
-    return TaskDialogButtons_InheritsFrom(t.instance, AClass)
+    return TaskDialogButtons_InheritsFrom(t._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (t *TTaskDialogButtons) Equals(Obj IObject) bool {
-    return TaskDialogButtons_Equals(t.instance, CheckPtr(Obj))
+    return TaskDialogButtons_Equals(t._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (t *TTaskDialogButtons) GetHashCode() int32 {
-    return TaskDialogButtons_GetHashCode(t.instance)
+    return TaskDialogButtons_GetHashCode(t._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (t *TTaskDialogButtons) ToString() string {
-    return TaskDialogButtons_ToString(t.instance)
+    return TaskDialogButtons_ToString(t._instance())
 }
 
 func (t *TTaskDialogButtons) DefaultButton() *TTaskDialogBaseButtonItem {
-    return AsTaskDialogBaseButtonItem(TaskDialogButtons_GetDefaultButton(t.instance))
+    return AsTaskDialogBaseButtonItem(TaskDialogButtons_GetDefaultButton(t._instance()))
 }
 
 func (t *TTaskDialogButtons) SetDefaultButton(value *TTaskDialogBaseButtonItem) {
-    TaskDialogButtons_SetDefaultButton(t.instance, CheckPtr(value))
+    TaskDialogButtons_SetDefaultButton(t._instance(), CheckPtr(value))
 }
 
 func (t *TTaskDialogButtons) Count() int32 {
-    return TaskDialogButtons_GetCount(t.instance)
+    return TaskDialogButtons_GetCount(t._instance())
 }
 
 func (t *TTaskDialogButtons) Items(Index int32) *TTaskDialogBaseButtonItem {
-    return AsTaskDialogBaseButtonItem(TaskDialogButtons_GetItems(t.instance, Index))
+    return AsTaskDialogBaseButtonItem(TaskDialogButtons_GetItems(t._instance(), Index))
 }
 
 func (t *TTaskDialogButtons) SetItems(Index int32, value *TTaskDialogBaseButtonItem) {
-    TaskDialogButtons_SetItems(t.instance, Index, CheckPtr(value))
+    TaskDialogButtons_SetItems(t._instance(), Index, CheckPtr(value))
 }
 

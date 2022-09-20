@@ -10,8 +10,8 @@ package rtl
 
 import "github.com/ying32/govcl/vcl/api"
 
-// Shortcut
-
+// CreateURLShortCut
+//
 // 创建一个url的快捷方式
 //
 // Create a shortcut to a URL
@@ -20,6 +20,8 @@ func CreateURLShortCut(aDestPath, aShortCutName, aURL string) {
 	api.DCreateURLShortCut(aDestPath, aShortCutName, aURL)
 }
 
+// CreateShortCut
+//
 // 创建一个快捷方式
 //
 // Create a shortcut

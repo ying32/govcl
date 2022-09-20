@@ -19,81 +19,71 @@ import (
 
 type TSizeConstraints struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// AsSizeConstraints
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsSizeConstraints(obj interface{}) *TSizeConstraints {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TSizeConstraints{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TSizeConstraints{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsSizeConstraints.
-func SizeConstraintsFromInst(inst uintptr) *TSizeConstraints {
-    return AsSizeConstraints(inst)
+func (s *TSizeConstraints) _instance() uintptr {
+    return uintptr(s.instance)
 }
 
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsSizeConstraints.
-func SizeConstraintsFromObj(obj IObject) *TSizeConstraints {
-    return AsSizeConstraints(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsSizeConstraints.
-func SizeConstraintsFromUnsafePointer(ptr unsafe.Pointer) *TSizeConstraints {
-    return AsSizeConstraints(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (s *TSizeConstraints) Instance() uintptr {
-    return s.instance
+    return s._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (s *TSizeConstraints) UnsafeAddr() unsafe.Pointer {
-    return s.ptr
+    return s.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (s *TSizeConstraints) IsValid() bool {
-    return s.instance != 0
+    return s.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (s *TSizeConstraints) Is() TIs {
-    return TIs(s.instance)
+    return TIs(s._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (s *TSizeConstraints) As() TAs {
-//    return TAs(s.instance)
+//    return TAs(s._instance())
 //}
 
+// TSizeConstraintsClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -101,105 +91,125 @@ func TSizeConstraintsClass() TClass {
     return SizeConstraints_StaticClassType()
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (s *TSizeConstraints) Assign(Source IObject) {
-    SizeConstraints_Assign(s.instance, CheckPtr(Source))
+    SizeConstraints_Assign(s._instance(), CheckPtr(Source))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (s *TSizeConstraints) GetNamePath() string {
-    return SizeConstraints_GetNamePath(s.instance)
+    return SizeConstraints_GetNamePath(s._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (s *TSizeConstraints) ClassType() TClass {
-    return SizeConstraints_ClassType(s.instance)
+    return SizeConstraints_ClassType(s._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (s *TSizeConstraints) ClassName() string {
-    return SizeConstraints_ClassName(s.instance)
+    return SizeConstraints_ClassName(s._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (s *TSizeConstraints) InstanceSize() int32 {
-    return SizeConstraints_InstanceSize(s.instance)
+    return SizeConstraints_InstanceSize(s._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (s *TSizeConstraints) InheritsFrom(AClass TClass) bool {
-    return SizeConstraints_InheritsFrom(s.instance, AClass)
+    return SizeConstraints_InheritsFrom(s._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (s *TSizeConstraints) Equals(Obj IObject) bool {
-    return SizeConstraints_Equals(s.instance, CheckPtr(Obj))
+    return SizeConstraints_Equals(s._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (s *TSizeConstraints) GetHashCode() int32 {
-    return SizeConstraints_GetHashCode(s.instance)
+    return SizeConstraints_GetHashCode(s._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (s *TSizeConstraints) ToString() string {
-    return SizeConstraints_ToString(s.instance)
+    return SizeConstraints_ToString(s._instance())
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (s *TSizeConstraints) SetOnChange(fn TNotifyEvent) {
-    SizeConstraints_SetOnChange(s.instance, fn)
+    SizeConstraints_SetOnChange(s._instance(), fn)
 }
 
 func (s *TSizeConstraints) MaxHeight() TConstraintSize {
-    return SizeConstraints_GetMaxHeight(s.instance)
+    return SizeConstraints_GetMaxHeight(s._instance())
 }
 
 func (s *TSizeConstraints) SetMaxHeight(value TConstraintSize) {
-    SizeConstraints_SetMaxHeight(s.instance, value)
+    SizeConstraints_SetMaxHeight(s._instance(), value)
 }
 
 func (s *TSizeConstraints) MaxWidth() TConstraintSize {
-    return SizeConstraints_GetMaxWidth(s.instance)
+    return SizeConstraints_GetMaxWidth(s._instance())
 }
 
 func (s *TSizeConstraints) SetMaxWidth(value TConstraintSize) {
-    SizeConstraints_SetMaxWidth(s.instance, value)
+    SizeConstraints_SetMaxWidth(s._instance(), value)
 }
 
 func (s *TSizeConstraints) MinHeight() TConstraintSize {
-    return SizeConstraints_GetMinHeight(s.instance)
+    return SizeConstraints_GetMinHeight(s._instance())
 }
 
 func (s *TSizeConstraints) SetMinHeight(value TConstraintSize) {
-    SizeConstraints_SetMinHeight(s.instance, value)
+    SizeConstraints_SetMinHeight(s._instance(), value)
 }
 
 func (s *TSizeConstraints) MinWidth() TConstraintSize {
-    return SizeConstraints_GetMinWidth(s.instance)
+    return SizeConstraints_GetMinWidth(s._instance())
 }
 
 func (s *TSizeConstraints) SetMinWidth(value TConstraintSize) {
-    SizeConstraints_SetMinWidth(s.instance, value)
+    SizeConstraints_SetMinWidth(s._instance(), value)
 }
 

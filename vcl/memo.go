@@ -19,101 +19,94 @@ import (
 
 type TMemo struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewMemo
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewMemo(owner IComponent) *TMemo {
     m := new(TMemo)
-    m.instance = Memo_Create(CheckPtr(owner))
-    m.ptr = unsafe.Pointer(m.instance)
+    m.instance = unsafe.Pointer(Memo_Create(CheckPtr(owner)))
     return m
 }
 
+// AsMemo
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsMemo(obj interface{}) *TMemo {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TMemo{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TMemo{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsMemo.
-func MemoFromInst(inst uintptr) *TMemo {
-    return AsMemo(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsMemo.
-func MemoFromObj(obj IObject) *TMemo {
-    return AsMemo(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsMemo.
-func MemoFromUnsafePointer(ptr unsafe.Pointer) *TMemo {
-    return AsMemo(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (m *TMemo) Free() {
-    if m.instance != 0 {
-        Memo_Free(m.instance)
-        m.instance, m.ptr = 0, nullptr
+    if m.instance != nullptr {
+        Memo_Free(m._instance())
+        m.instance  = nullptr
     }
 }
 
+func (m *TMemo) _instance() uintptr {
+    return uintptr(m.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (m *TMemo) Instance() uintptr {
-    return m.instance
+    return m._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (m *TMemo) UnsafeAddr() unsafe.Pointer {
-    return m.ptr
+    return m.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (m *TMemo) IsValid() bool {
-    return m.instance != 0
+    return m.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (m *TMemo) Is() TIs {
-    return TIs(m.instance)
+    return TIs(m._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (m *TMemo) As() TAs {
-//    return TAs(m.instance)
+//    return TAs(m._instance())
 //}
 
+// TMemoClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,1396 +115,1776 @@ func TMemoClass() TClass {
 }
 
 func (m *TMemo) Append(Value string) {
-    Memo_Append(m.instance, Value)
+    Memo_Append(m._instance(), Value)
 }
 
+// Clear
+//
 // 清除。
 func (m *TMemo) Clear() {
-    Memo_Clear(m.instance)
+    Memo_Clear(m._instance())
 }
 
+// ClearSelection
+//
 // 清除选择。
 func (m *TMemo) ClearSelection() {
-    Memo_ClearSelection(m.instance)
+    Memo_ClearSelection(m._instance())
 }
 
+// CopyToClipboard
+//
 // 复制到粘贴板。
 func (m *TMemo) CopyToClipboard() {
-    Memo_CopyToClipboard(m.instance)
+    Memo_CopyToClipboard(m._instance())
 }
 
+// CutToClipboard
+//
 // 剪切到粘贴板。
 func (m *TMemo) CutToClipboard() {
-    Memo_CutToClipboard(m.instance)
+    Memo_CutToClipboard(m._instance())
 }
 
+// PasteFromClipboard
+//
 // 从剪切板粘贴。
 func (m *TMemo) PasteFromClipboard() {
-    Memo_PasteFromClipboard(m.instance)
+    Memo_PasteFromClipboard(m._instance())
 }
 
+// Undo
+//
 // 撤销上一次操作。
 func (m *TMemo) Undo() {
-    Memo_Undo(m.instance)
+    Memo_Undo(m._instance())
 }
 
+// SelectAll
+//
 // 全选。
 func (m *TMemo) SelectAll() {
-    Memo_SelectAll(m.instance)
+    Memo_SelectAll(m._instance())
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (m *TMemo) CanFocus() bool {
-    return Memo_CanFocus(m.instance)
+    return Memo_CanFocus(m._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (m *TMemo) ContainsControl(Control IControl) bool {
-    return Memo_ContainsControl(m.instance, CheckPtr(Control))
+    return Memo_ContainsControl(m._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (m *TMemo) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(Memo_ControlAtPos(m.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(Memo_ControlAtPos(m._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (m *TMemo) DisableAlign() {
-    Memo_DisableAlign(m.instance)
+    Memo_DisableAlign(m._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (m *TMemo) EnableAlign() {
-    Memo_EnableAlign(m.instance)
+    Memo_EnableAlign(m._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (m *TMemo) FindChildControl(ControlName string) *TControl {
-    return AsControl(Memo_FindChildControl(m.instance, ControlName))
+    return AsControl(Memo_FindChildControl(m._instance(), ControlName))
 }
 
 func (m *TMemo) FlipChildren(AllLevels bool) {
-    Memo_FlipChildren(m.instance, AllLevels)
+    Memo_FlipChildren(m._instance(), AllLevels)
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (m *TMemo) Focused() bool {
-    return Memo_Focused(m.instance)
+    return Memo_Focused(m._instance())
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (m *TMemo) HandleAllocated() bool {
-    return Memo_HandleAllocated(m.instance)
+    return Memo_HandleAllocated(m._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (m *TMemo) InsertControl(AControl IControl) {
-    Memo_InsertControl(m.instance, CheckPtr(AControl))
+    Memo_InsertControl(m._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (m *TMemo) Invalidate() {
-    Memo_Invalidate(m.instance)
+    Memo_Invalidate(m._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (m *TMemo) PaintTo(DC HDC, X int32, Y int32) {
-    Memo_PaintTo(m.instance, DC , X , Y)
+    Memo_PaintTo(m._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (m *TMemo) RemoveControl(AControl IControl) {
-    Memo_RemoveControl(m.instance, CheckPtr(AControl))
+    Memo_RemoveControl(m._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (m *TMemo) Realign() {
-    Memo_Realign(m.instance)
+    Memo_Realign(m._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (m *TMemo) Repaint() {
-    Memo_Repaint(m.instance)
+    Memo_Repaint(m._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (m *TMemo) ScaleBy(M int32, D int32) {
-    Memo_ScaleBy(m.instance, M , D)
+    Memo_ScaleBy(m._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (m *TMemo) ScrollBy(DeltaX int32, DeltaY int32) {
-    Memo_ScrollBy(m.instance, DeltaX , DeltaY)
+    Memo_ScrollBy(m._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (m *TMemo) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    Memo_SetBounds(m.instance, ALeft , ATop , AWidth , AHeight)
+    Memo_SetBounds(m._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (m *TMemo) SetFocus() {
-    Memo_SetFocus(m.instance)
+    Memo_SetFocus(m._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (m *TMemo) Update() {
-    Memo_Update(m.instance)
+    Memo_Update(m._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (m *TMemo) BringToFront() {
-    Memo_BringToFront(m.instance)
+    Memo_BringToFront(m._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (m *TMemo) ClientToScreen(Point TPoint) TPoint {
-    return Memo_ClientToScreen(m.instance, Point)
+    return Memo_ClientToScreen(m._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (m *TMemo) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return Memo_ClientToParent(m.instance, Point , CheckPtr(AParent))
+    return Memo_ClientToParent(m._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (m *TMemo) Dragging() bool {
-    return Memo_Dragging(m.instance)
+    return Memo_Dragging(m._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (m *TMemo) HasParent() bool {
-    return Memo_HasParent(m.instance)
+    return Memo_HasParent(m._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (m *TMemo) Hide() {
-    Memo_Hide(m.instance)
+    Memo_Hide(m._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (m *TMemo) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return Memo_Perform(m.instance, Msg , WParam , LParam)
+    return Memo_Perform(m._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (m *TMemo) Refresh() {
-    Memo_Refresh(m.instance)
+    Memo_Refresh(m._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (m *TMemo) ScreenToClient(Point TPoint) TPoint {
-    return Memo_ScreenToClient(m.instance, Point)
+    return Memo_ScreenToClient(m._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (m *TMemo) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return Memo_ParentToClient(m.instance, Point , CheckPtr(AParent))
+    return Memo_ParentToClient(m._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (m *TMemo) SendToBack() {
-    Memo_SendToBack(m.instance)
+    Memo_SendToBack(m._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (m *TMemo) Show() {
-    Memo_Show(m.instance)
+    Memo_Show(m._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (m *TMemo) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return Memo_GetTextBuf(m.instance, Buffer , BufSize)
+    return Memo_GetTextBuf(m._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (m *TMemo) GetTextLen() int32 {
-    return Memo_GetTextLen(m.instance)
+    return Memo_GetTextLen(m._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (m *TMemo) SetTextBuf(Buffer string) {
-    Memo_SetTextBuf(m.instance, Buffer)
+    Memo_SetTextBuf(m._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (m *TMemo) FindComponent(AName string) *TComponent {
-    return AsComponent(Memo_FindComponent(m.instance, AName))
+    return AsComponent(Memo_FindComponent(m._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (m *TMemo) GetNamePath() string {
-    return Memo_GetNamePath(m.instance)
+    return Memo_GetNamePath(m._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (m *TMemo) Assign(Source IObject) {
-    Memo_Assign(m.instance, CheckPtr(Source))
+    Memo_Assign(m._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (m *TMemo) ClassType() TClass {
-    return Memo_ClassType(m.instance)
+    return Memo_ClassType(m._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (m *TMemo) ClassName() string {
-    return Memo_ClassName(m.instance)
+    return Memo_ClassName(m._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (m *TMemo) InstanceSize() int32 {
-    return Memo_InstanceSize(m.instance)
+    return Memo_InstanceSize(m._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (m *TMemo) InheritsFrom(AClass TClass) bool {
-    return Memo_InheritsFrom(m.instance, AClass)
+    return Memo_InheritsFrom(m._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (m *TMemo) Equals(Obj IObject) bool {
-    return Memo_Equals(m.instance, CheckPtr(Obj))
+    return Memo_Equals(m._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (m *TMemo) GetHashCode() int32 {
-    return Memo_GetHashCode(m.instance)
+    return Memo_GetHashCode(m._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (m *TMemo) ToString() string {
-    return Memo_ToString(m.instance)
+    return Memo_ToString(m._instance())
 }
 
 func (m *TMemo) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    Memo_AnchorToNeighbour(m.instance, ASide , ASpace , CheckPtr(ASibling))
+    Memo_AnchorToNeighbour(m._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (m *TMemo) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    Memo_AnchorParallel(m.instance, ASide , ASpace , CheckPtr(ASibling))
+    Memo_AnchorParallel(m._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (m *TMemo) AnchorHorizontalCenterTo(ASibling IControl) {
-    Memo_AnchorHorizontalCenterTo(m.instance, CheckPtr(ASibling))
+    Memo_AnchorHorizontalCenterTo(m._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (m *TMemo) AnchorVerticalCenterTo(ASibling IControl) {
-    Memo_AnchorVerticalCenterTo(m.instance, CheckPtr(ASibling))
+    Memo_AnchorVerticalCenterTo(m._instance(), CheckPtr(ASibling))
 }
 
 func (m *TMemo) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    Memo_AnchorSame(m.instance, ASide , CheckPtr(ASibling))
+    Memo_AnchorSame(m._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (m *TMemo) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    Memo_AnchorAsAlign(m.instance, ATheAlign , ASpace)
+    Memo_AnchorAsAlign(m._instance(), ATheAlign , ASpace)
 }
 
 func (m *TMemo) AnchorClient(ASpace int32) {
-    Memo_AnchorClient(m.instance, ASpace)
+    Memo_AnchorClient(m._instance(), ASpace)
 }
 
 func (m *TMemo) ScaleDesignToForm(ASize int32) int32 {
-    return Memo_ScaleDesignToForm(m.instance, ASize)
+    return Memo_ScaleDesignToForm(m._instance(), ASize)
 }
 
 func (m *TMemo) ScaleFormToDesign(ASize int32) int32 {
-    return Memo_ScaleFormToDesign(m.instance, ASize)
+    return Memo_ScaleFormToDesign(m._instance(), ASize)
 }
 
 func (m *TMemo) Scale96ToForm(ASize int32) int32 {
-    return Memo_Scale96ToForm(m.instance, ASize)
+    return Memo_Scale96ToForm(m._instance(), ASize)
 }
 
 func (m *TMemo) ScaleFormTo96(ASize int32) int32 {
-    return Memo_ScaleFormTo96(m.instance, ASize)
+    return Memo_ScaleFormTo96(m._instance(), ASize)
 }
 
 func (m *TMemo) Scale96ToFont(ASize int32) int32 {
-    return Memo_Scale96ToFont(m.instance, ASize)
+    return Memo_Scale96ToFont(m._instance(), ASize)
 }
 
 func (m *TMemo) ScaleFontTo96(ASize int32) int32 {
-    return Memo_ScaleFontTo96(m.instance, ASize)
+    return Memo_ScaleFontTo96(m._instance(), ASize)
 }
 
 func (m *TMemo) ScaleScreenToFont(ASize int32) int32 {
-    return Memo_ScaleScreenToFont(m.instance, ASize)
+    return Memo_ScaleScreenToFont(m._instance(), ASize)
 }
 
 func (m *TMemo) ScaleFontToScreen(ASize int32) int32 {
-    return Memo_ScaleFontToScreen(m.instance, ASize)
+    return Memo_ScaleFontToScreen(m._instance(), ASize)
 }
 
 func (m *TMemo) Scale96ToScreen(ASize int32) int32 {
-    return Memo_Scale96ToScreen(m.instance, ASize)
+    return Memo_Scale96ToScreen(m._instance(), ASize)
 }
 
 func (m *TMemo) ScaleScreenTo96(ASize int32) int32 {
-    return Memo_ScaleScreenTo96(m.instance, ASize)
+    return Memo_ScaleScreenTo96(m._instance(), ASize)
 }
 
 func (m *TMemo) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    Memo_AutoAdjustLayout(m.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    Memo_AutoAdjustLayout(m._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (m *TMemo) FixDesignFontsPPI(ADesignTimePPI int32) {
-    Memo_FixDesignFontsPPI(m.instance, ADesignTimePPI)
+    Memo_FixDesignFontsPPI(m._instance(), ADesignTimePPI)
 }
 
 func (m *TMemo) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    Memo_ScaleFontsPPI(m.instance, AToPPI , AProportion)
+    Memo_ScaleFontsPPI(m._instance(), AToPPI , AProportion)
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (m *TMemo) Align() TAlign {
-    return Memo_GetAlign(m.instance)
+    return Memo_GetAlign(m._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (m *TMemo) SetAlign(value TAlign) {
-    Memo_SetAlign(m.instance, value)
+    Memo_SetAlign(m._instance(), value)
 }
 
+// Alignment
+//
 // 获取文字对齐。
 //
 // Get Text alignment.
 func (m *TMemo) Alignment() TAlignment {
-    return Memo_GetAlignment(m.instance)
+    return Memo_GetAlignment(m._instance())
 }
 
+// SetAlignment
+//
 // 设置文字对齐。
 //
 // Set Text alignment.
 func (m *TMemo) SetAlignment(value TAlignment) {
-    Memo_SetAlignment(m.instance, value)
+    Memo_SetAlignment(m._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (m *TMemo) Anchors() TAnchors {
-    return Memo_GetAnchors(m.instance)
+    return Memo_GetAnchors(m._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (m *TMemo) SetAnchors(value TAnchors) {
-    Memo_SetAnchors(m.instance, value)
+    Memo_SetAnchors(m._instance(), value)
 }
 
 func (m *TMemo) BiDiMode() TBiDiMode {
-    return Memo_GetBiDiMode(m.instance)
+    return Memo_GetBiDiMode(m._instance())
 }
 
 func (m *TMemo) SetBiDiMode(value TBiDiMode) {
-    Memo_SetBiDiMode(m.instance, value)
+    Memo_SetBiDiMode(m._instance(), value)
 }
 
+// BorderStyle
+//
 // 获取窗口边框样式。比如：无边框，单一边框等。
 func (m *TMemo) BorderStyle() TBorderStyle {
-    return Memo_GetBorderStyle(m.instance)
+    return Memo_GetBorderStyle(m._instance())
 }
 
+// SetBorderStyle
+//
 // 设置窗口边框样式。比如：无边框，单一边框等。
 func (m *TMemo) SetBorderStyle(value TBorderStyle) {
-    Memo_SetBorderStyle(m.instance, value)
+    Memo_SetBorderStyle(m._instance(), value)
 }
 
 func (m *TMemo) CharCase() TEditCharCase {
-    return Memo_GetCharCase(m.instance)
+    return Memo_GetCharCase(m._instance())
 }
 
 func (m *TMemo) SetCharCase(value TEditCharCase) {
-    Memo_SetCharCase(m.instance, value)
+    Memo_SetCharCase(m._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (m *TMemo) Color() TColor {
-    return Memo_GetColor(m.instance)
+    return Memo_GetColor(m._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (m *TMemo) SetColor(value TColor) {
-    Memo_SetColor(m.instance, value)
+    Memo_SetColor(m._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (m *TMemo) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(Memo_GetConstraints(m.instance))
+    return AsSizeConstraints(Memo_GetConstraints(m._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (m *TMemo) SetConstraints(value *TSizeConstraints) {
-    Memo_SetConstraints(m.instance, CheckPtr(value))
+    Memo_SetConstraints(m._instance(), CheckPtr(value))
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (m *TMemo) DoubleBuffered() bool {
-    return Memo_GetDoubleBuffered(m.instance)
+    return Memo_GetDoubleBuffered(m._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (m *TMemo) SetDoubleBuffered(value bool) {
-    Memo_SetDoubleBuffered(m.instance, value)
+    Memo_SetDoubleBuffered(m._instance(), value)
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (m *TMemo) DragCursor() TCursor {
-    return Memo_GetDragCursor(m.instance)
+    return Memo_GetDragCursor(m._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (m *TMemo) SetDragCursor(value TCursor) {
-    Memo_SetDragCursor(m.instance, value)
+    Memo_SetDragCursor(m._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (m *TMemo) DragKind() TDragKind {
-    return Memo_GetDragKind(m.instance)
+    return Memo_GetDragKind(m._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (m *TMemo) SetDragKind(value TDragKind) {
-    Memo_SetDragKind(m.instance, value)
+    Memo_SetDragKind(m._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (m *TMemo) DragMode() TDragMode {
-    return Memo_GetDragMode(m.instance)
+    return Memo_GetDragMode(m._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (m *TMemo) SetDragMode(value TDragMode) {
-    Memo_SetDragMode(m.instance, value)
+    Memo_SetDragMode(m._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (m *TMemo) Enabled() bool {
-    return Memo_GetEnabled(m.instance)
+    return Memo_GetEnabled(m._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (m *TMemo) SetEnabled(value bool) {
-    Memo_SetEnabled(m.instance, value)
+    Memo_SetEnabled(m._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (m *TMemo) Font() *TFont {
-    return AsFont(Memo_GetFont(m.instance))
+    return AsFont(Memo_GetFont(m._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (m *TMemo) SetFont(value *TFont) {
-    Memo_SetFont(m.instance, CheckPtr(value))
+    Memo_SetFont(m._instance(), CheckPtr(value))
 }
 
+// HideSelection
+//
 // 获取隐藏选择。
 func (m *TMemo) HideSelection() bool {
-    return Memo_GetHideSelection(m.instance)
+    return Memo_GetHideSelection(m._instance())
 }
 
+// SetHideSelection
+//
 // 设置隐藏选择。
 func (m *TMemo) SetHideSelection(value bool) {
-    Memo_SetHideSelection(m.instance, value)
+    Memo_SetHideSelection(m._instance(), value)
 }
 
 func (m *TMemo) Lines() *TStrings {
-    return AsStrings(Memo_GetLines(m.instance))
+    return AsStrings(Memo_GetLines(m._instance()))
 }
 
 func (m *TMemo) SetLines(value IStrings) {
-    Memo_SetLines(m.instance, CheckPtr(value))
+    Memo_SetLines(m._instance(), CheckPtr(value))
 }
 
+// MaxLength
+//
 // 获取最大长度。
 func (m *TMemo) MaxLength() int32 {
-    return Memo_GetMaxLength(m.instance)
+    return Memo_GetMaxLength(m._instance())
 }
 
+// SetMaxLength
+//
 // 设置最大长度。
 func (m *TMemo) SetMaxLength(value int32) {
-    Memo_SetMaxLength(m.instance, value)
+    Memo_SetMaxLength(m._instance(), value)
 }
 
+// ParentColor
+//
 // 获取使用父容器颜色。
 //
 // Get parent color.
 func (m *TMemo) ParentColor() bool {
-    return Memo_GetParentColor(m.instance)
+    return Memo_GetParentColor(m._instance())
 }
 
+// SetParentColor
+//
 // 设置使用父容器颜色。
 //
 // Set parent color.
 func (m *TMemo) SetParentColor(value bool) {
-    Memo_SetParentColor(m.instance, value)
+    Memo_SetParentColor(m._instance(), value)
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (m *TMemo) ParentDoubleBuffered() bool {
-    return Memo_GetParentDoubleBuffered(m.instance)
+    return Memo_GetParentDoubleBuffered(m._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (m *TMemo) SetParentDoubleBuffered(value bool) {
-    Memo_SetParentDoubleBuffered(m.instance, value)
+    Memo_SetParentDoubleBuffered(m._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (m *TMemo) ParentFont() bool {
-    return Memo_GetParentFont(m.instance)
+    return Memo_GetParentFont(m._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (m *TMemo) SetParentFont(value bool) {
-    Memo_SetParentFont(m.instance, value)
+    Memo_SetParentFont(m._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (m *TMemo) ParentShowHint() bool {
-    return Memo_GetParentShowHint(m.instance)
+    return Memo_GetParentShowHint(m._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (m *TMemo) SetParentShowHint(value bool) {
-    Memo_SetParentShowHint(m.instance, value)
+    Memo_SetParentShowHint(m._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (m *TMemo) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(Memo_GetPopupMenu(m.instance))
+    return AsPopupMenu(Memo_GetPopupMenu(m._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (m *TMemo) SetPopupMenu(value IComponent) {
-    Memo_SetPopupMenu(m.instance, CheckPtr(value))
+    Memo_SetPopupMenu(m._instance(), CheckPtr(value))
 }
 
+// ReadOnly
+//
 // 获取只读。
 func (m *TMemo) ReadOnly() bool {
-    return Memo_GetReadOnly(m.instance)
+    return Memo_GetReadOnly(m._instance())
 }
 
+// SetReadOnly
+//
 // 设置只读。
 func (m *TMemo) SetReadOnly(value bool) {
-    Memo_SetReadOnly(m.instance, value)
+    Memo_SetReadOnly(m._instance(), value)
 }
 
 func (m *TMemo) ScrollBars() TScrollStyle {
-    return Memo_GetScrollBars(m.instance)
+    return Memo_GetScrollBars(m._instance())
 }
 
 func (m *TMemo) SetScrollBars(value TScrollStyle) {
-    Memo_SetScrollBars(m.instance, value)
+    Memo_SetScrollBars(m._instance(), value)
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (m *TMemo) ShowHint() bool {
-    return Memo_GetShowHint(m.instance)
+    return Memo_GetShowHint(m._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (m *TMemo) SetShowHint(value bool) {
-    Memo_SetShowHint(m.instance, value)
+    Memo_SetShowHint(m._instance(), value)
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (m *TMemo) TabOrder() TTabOrder {
-    return Memo_GetTabOrder(m.instance)
+    return Memo_GetTabOrder(m._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (m *TMemo) SetTabOrder(value TTabOrder) {
-    Memo_SetTabOrder(m.instance, value)
+    Memo_SetTabOrder(m._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (m *TMemo) TabStop() bool {
-    return Memo_GetTabStop(m.instance)
+    return Memo_GetTabStop(m._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (m *TMemo) SetTabStop(value bool) {
-    Memo_SetTabStop(m.instance, value)
+    Memo_SetTabStop(m._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (m *TMemo) Visible() bool {
-    return Memo_GetVisible(m.instance)
+    return Memo_GetVisible(m._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (m *TMemo) SetVisible(value bool) {
-    Memo_SetVisible(m.instance, value)
+    Memo_SetVisible(m._instance(), value)
 }
 
 func (m *TMemo) WantReturns() bool {
-    return Memo_GetWantReturns(m.instance)
+    return Memo_GetWantReturns(m._instance())
 }
 
 func (m *TMemo) SetWantReturns(value bool) {
-    Memo_SetWantReturns(m.instance, value)
+    Memo_SetWantReturns(m._instance(), value)
 }
 
 func (m *TMemo) WantTabs() bool {
-    return Memo_GetWantTabs(m.instance)
+    return Memo_GetWantTabs(m._instance())
 }
 
 func (m *TMemo) SetWantTabs(value bool) {
-    Memo_SetWantTabs(m.instance, value)
+    Memo_SetWantTabs(m._instance(), value)
 }
 
+// WordWrap
+//
 // 获取自动换行。
 //
 // Get Automatic line break.
 func (m *TMemo) WordWrap() bool {
-    return Memo_GetWordWrap(m.instance)
+    return Memo_GetWordWrap(m._instance())
 }
 
+// SetWordWrap
+//
 // 设置自动换行。
 //
 // Set Automatic line break.
 func (m *TMemo) SetWordWrap(value bool) {
-    Memo_SetWordWrap(m.instance, value)
+    Memo_SetWordWrap(m._instance(), value)
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (m *TMemo) SetOnChange(fn TNotifyEvent) {
-    Memo_SetOnChange(m.instance, fn)
+    Memo_SetOnChange(m._instance(), fn)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (m *TMemo) SetOnClick(fn TNotifyEvent) {
-    Memo_SetOnClick(m.instance, fn)
+    Memo_SetOnClick(m._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (m *TMemo) SetOnContextPopup(fn TContextPopupEvent) {
-    Memo_SetOnContextPopup(m.instance, fn)
+    Memo_SetOnContextPopup(m._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (m *TMemo) SetOnDblClick(fn TNotifyEvent) {
-    Memo_SetOnDblClick(m.instance, fn)
+    Memo_SetOnDblClick(m._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (m *TMemo) SetOnDragDrop(fn TDragDropEvent) {
-    Memo_SetOnDragDrop(m.instance, fn)
+    Memo_SetOnDragDrop(m._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (m *TMemo) SetOnDragOver(fn TDragOverEvent) {
-    Memo_SetOnDragOver(m.instance, fn)
+    Memo_SetOnDragOver(m._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (m *TMemo) SetOnEndDrag(fn TEndDragEvent) {
-    Memo_SetOnEndDrag(m.instance, fn)
+    Memo_SetOnEndDrag(m._instance(), fn)
 }
 
+// SetOnEnter
+//
 // 设置焦点进入。
 //
 // Set Focus entry.
 func (m *TMemo) SetOnEnter(fn TNotifyEvent) {
-    Memo_SetOnEnter(m.instance, fn)
+    Memo_SetOnEnter(m._instance(), fn)
 }
 
+// SetOnExit
+//
 // 设置焦点退出。
 //
 // Set Focus exit.
 func (m *TMemo) SetOnExit(fn TNotifyEvent) {
-    Memo_SetOnExit(m.instance, fn)
+    Memo_SetOnExit(m._instance(), fn)
 }
 
+// SetOnKeyDown
+//
 // 设置键盘按键按下事件。
 //
 // Set Keyboard button press event.
 func (m *TMemo) SetOnKeyDown(fn TKeyEvent) {
-    Memo_SetOnKeyDown(m.instance, fn)
+    Memo_SetOnKeyDown(m._instance(), fn)
 }
 
+// SetOnKeyPress
+//
 // 设置键键下事件。
 func (m *TMemo) SetOnKeyPress(fn TKeyPressEvent) {
-    Memo_SetOnKeyPress(m.instance, fn)
+    Memo_SetOnKeyPress(m._instance(), fn)
 }
 
+// SetOnKeyUp
+//
 // 设置键盘按键抬起事件。
 //
 // Set Keyboard button lift event.
 func (m *TMemo) SetOnKeyUp(fn TKeyEvent) {
-    Memo_SetOnKeyUp(m.instance, fn)
+    Memo_SetOnKeyUp(m._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (m *TMemo) SetOnMouseDown(fn TMouseEvent) {
-    Memo_SetOnMouseDown(m.instance, fn)
+    Memo_SetOnMouseDown(m._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (m *TMemo) SetOnMouseEnter(fn TNotifyEvent) {
-    Memo_SetOnMouseEnter(m.instance, fn)
+    Memo_SetOnMouseEnter(m._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (m *TMemo) SetOnMouseLeave(fn TNotifyEvent) {
-    Memo_SetOnMouseLeave(m.instance, fn)
+    Memo_SetOnMouseLeave(m._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (m *TMemo) SetOnMouseMove(fn TMouseMoveEvent) {
-    Memo_SetOnMouseMove(m.instance, fn)
+    Memo_SetOnMouseMove(m._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (m *TMemo) SetOnMouseUp(fn TMouseEvent) {
-    Memo_SetOnMouseUp(m.instance, fn)
+    Memo_SetOnMouseUp(m._instance(), fn)
 }
 
 func (m *TMemo) CaretPos() TPoint {
-    return Memo_GetCaretPos(m.instance)
+    return Memo_GetCaretPos(m._instance())
 }
 
 func (m *TMemo) SetCaretPos(value TPoint) {
-    Memo_SetCaretPos(m.instance, value)
+    Memo_SetCaretPos(m._instance(), value)
 }
 
+// CanUndo
+//
 // 获取能否撤销。
 func (m *TMemo) CanUndo() bool {
-    return Memo_GetCanUndo(m.instance)
+    return Memo_GetCanUndo(m._instance())
 }
 
+// Modified
+//
 // 获取修改。
 //
 // Get modified.
 func (m *TMemo) Modified() bool {
-    return Memo_GetModified(m.instance)
+    return Memo_GetModified(m._instance())
 }
 
+// SetModified
+//
 // 设置修改。
 //
 // Set modified.
 func (m *TMemo) SetModified(value bool) {
-    Memo_SetModified(m.instance, value)
+    Memo_SetModified(m._instance(), value)
 }
 
+// SelLength
+//
 // 获取选择的长度。
 func (m *TMemo) SelLength() int32 {
-    return Memo_GetSelLength(m.instance)
+    return Memo_GetSelLength(m._instance())
 }
 
+// SetSelLength
+//
 // 设置选择的长度。
 func (m *TMemo) SetSelLength(value int32) {
-    Memo_SetSelLength(m.instance, value)
+    Memo_SetSelLength(m._instance(), value)
 }
 
+// SelStart
+//
 // 获取选择的启始位置。
 func (m *TMemo) SelStart() int32 {
-    return Memo_GetSelStart(m.instance)
+    return Memo_GetSelStart(m._instance())
 }
 
+// SetSelStart
+//
 // 设置选择的启始位置。
 func (m *TMemo) SetSelStart(value int32) {
-    Memo_SetSelStart(m.instance, value)
+    Memo_SetSelStart(m._instance(), value)
 }
 
+// SelText
+//
 // 获取选择的文本。
 func (m *TMemo) SelText() string {
-    return Memo_GetSelText(m.instance)
+    return Memo_GetSelText(m._instance())
 }
 
+// SetSelText
+//
 // 设置选择的文本。
 func (m *TMemo) SetSelText(value string) {
-    Memo_SetSelText(m.instance, value)
+    Memo_SetSelText(m._instance(), value)
 }
 
+// Text
+//
 // 获取文本。
 func (m *TMemo) Text() string {
     return getControlBufferText(m.GetTextLen, m.GetTextBuf)
 }
 
+// SetText
+//
 // 设置文本。
 func (m *TMemo) SetText(value string) {
-    Memo_SetText(m.instance, value)
+    Memo_SetText(m._instance(), value)
 }
 
+// TextHint
+//
 // 获取提示文本。
 func (m *TMemo) TextHint() string {
-    return Memo_GetTextHint(m.instance)
+    return Memo_GetTextHint(m._instance())
 }
 
+// SetTextHint
+//
 // 设置提示文本。
 func (m *TMemo) SetTextHint(value string) {
-    Memo_SetTextHint(m.instance, value)
+    Memo_SetTextHint(m._instance(), value)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (m *TMemo) DockClientCount() int32 {
-    return Memo_GetDockClientCount(m.instance)
+    return Memo_GetDockClientCount(m._instance())
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (m *TMemo) DockSite() bool {
-    return Memo_GetDockSite(m.instance)
+    return Memo_GetDockSite(m._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (m *TMemo) SetDockSite(value bool) {
-    Memo_SetDockSite(m.instance, value)
+    Memo_SetDockSite(m._instance(), value)
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (m *TMemo) MouseInClient() bool {
-    return Memo_GetMouseInClient(m.instance)
+    return Memo_GetMouseInClient(m._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (m *TMemo) VisibleDockClientCount() int32 {
-    return Memo_GetVisibleDockClientCount(m.instance)
+    return Memo_GetVisibleDockClientCount(m._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (m *TMemo) Brush() *TBrush {
-    return AsBrush(Memo_GetBrush(m.instance))
+    return AsBrush(Memo_GetBrush(m._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (m *TMemo) ControlCount() int32 {
-    return Memo_GetControlCount(m.instance)
+    return Memo_GetControlCount(m._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (m *TMemo) Handle() HWND {
-    return Memo_GetHandle(m.instance)
+    return Memo_GetHandle(m._instance())
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (m *TMemo) ParentWindow() HWND {
-    return Memo_GetParentWindow(m.instance)
+    return Memo_GetParentWindow(m._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (m *TMemo) SetParentWindow(value HWND) {
-    Memo_SetParentWindow(m.instance, value)
+    Memo_SetParentWindow(m._instance(), value)
 }
 
 func (m *TMemo) Showing() bool {
-    return Memo_GetShowing(m.instance)
+    return Memo_GetShowing(m._instance())
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (m *TMemo) UseDockManager() bool {
-    return Memo_GetUseDockManager(m.instance)
+    return Memo_GetUseDockManager(m._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (m *TMemo) SetUseDockManager(value bool) {
-    Memo_SetUseDockManager(m.instance, value)
+    Memo_SetUseDockManager(m._instance(), value)
 }
 
 func (m *TMemo) Action() *TAction {
-    return AsAction(Memo_GetAction(m.instance))
+    return AsAction(Memo_GetAction(m._instance()))
 }
 
 func (m *TMemo) SetAction(value IComponent) {
-    Memo_SetAction(m.instance, CheckPtr(value))
+    Memo_SetAction(m._instance(), CheckPtr(value))
 }
 
 func (m *TMemo) BoundsRect() TRect {
-    return Memo_GetBoundsRect(m.instance)
+    return Memo_GetBoundsRect(m._instance())
 }
 
 func (m *TMemo) SetBoundsRect(value TRect) {
-    Memo_SetBoundsRect(m.instance, value)
+    Memo_SetBoundsRect(m._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (m *TMemo) ClientHeight() int32 {
-    return Memo_GetClientHeight(m.instance)
+    return Memo_GetClientHeight(m._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (m *TMemo) SetClientHeight(value int32) {
-    Memo_SetClientHeight(m.instance, value)
+    Memo_SetClientHeight(m._instance(), value)
 }
 
 func (m *TMemo) ClientOrigin() TPoint {
-    return Memo_GetClientOrigin(m.instance)
+    return Memo_GetClientOrigin(m._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (m *TMemo) ClientRect() TRect {
-    return Memo_GetClientRect(m.instance)
+    return Memo_GetClientRect(m._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (m *TMemo) ClientWidth() int32 {
-    return Memo_GetClientWidth(m.instance)
+    return Memo_GetClientWidth(m._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (m *TMemo) SetClientWidth(value int32) {
-    Memo_SetClientWidth(m.instance, value)
+    Memo_SetClientWidth(m._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (m *TMemo) ControlState() TControlState {
-    return Memo_GetControlState(m.instance)
+    return Memo_GetControlState(m._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (m *TMemo) SetControlState(value TControlState) {
-    Memo_SetControlState(m.instance, value)
+    Memo_SetControlState(m._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (m *TMemo) ControlStyle() TControlStyle {
-    return Memo_GetControlStyle(m.instance)
+    return Memo_GetControlStyle(m._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (m *TMemo) SetControlStyle(value TControlStyle) {
-    Memo_SetControlStyle(m.instance, value)
+    Memo_SetControlStyle(m._instance(), value)
 }
 
 func (m *TMemo) Floating() bool {
-    return Memo_GetFloating(m.instance)
+    return Memo_GetFloating(m._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (m *TMemo) Parent() *TWinControl {
-    return AsWinControl(Memo_GetParent(m.instance))
+    return AsWinControl(Memo_GetParent(m._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (m *TMemo) SetParent(value IWinControl) {
-    Memo_SetParent(m.instance, CheckPtr(value))
+    Memo_SetParent(m._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (m *TMemo) Left() int32 {
-    return Memo_GetLeft(m.instance)
+    return Memo_GetLeft(m._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (m *TMemo) SetLeft(value int32) {
-    Memo_SetLeft(m.instance, value)
+    Memo_SetLeft(m._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (m *TMemo) Top() int32 {
-    return Memo_GetTop(m.instance)
+    return Memo_GetTop(m._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (m *TMemo) SetTop(value int32) {
-    Memo_SetTop(m.instance, value)
+    Memo_SetTop(m._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (m *TMemo) Width() int32 {
-    return Memo_GetWidth(m.instance)
+    return Memo_GetWidth(m._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (m *TMemo) SetWidth(value int32) {
-    Memo_SetWidth(m.instance, value)
+    Memo_SetWidth(m._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (m *TMemo) Height() int32 {
-    return Memo_GetHeight(m.instance)
+    return Memo_GetHeight(m._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (m *TMemo) SetHeight(value int32) {
-    Memo_SetHeight(m.instance, value)
+    Memo_SetHeight(m._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (m *TMemo) Cursor() TCursor {
-    return Memo_GetCursor(m.instance)
+    return Memo_GetCursor(m._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (m *TMemo) SetCursor(value TCursor) {
-    Memo_SetCursor(m.instance, value)
+    Memo_SetCursor(m._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (m *TMemo) Hint() string {
-    return Memo_GetHint(m.instance)
+    return Memo_GetHint(m._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (m *TMemo) SetHint(value string) {
-    Memo_SetHint(m.instance, value)
+    Memo_SetHint(m._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (m *TMemo) ComponentCount() int32 {
-    return Memo_GetComponentCount(m.instance)
+    return Memo_GetComponentCount(m._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (m *TMemo) ComponentIndex() int32 {
-    return Memo_GetComponentIndex(m.instance)
+    return Memo_GetComponentIndex(m._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (m *TMemo) SetComponentIndex(value int32) {
-    Memo_SetComponentIndex(m.instance, value)
+    Memo_SetComponentIndex(m._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (m *TMemo) Owner() *TComponent {
-    return AsComponent(Memo_GetOwner(m.instance))
+    return AsComponent(Memo_GetOwner(m._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (m *TMemo) Name() string {
-    return Memo_GetName(m.instance)
+    return Memo_GetName(m._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (m *TMemo) SetName(value string) {
-    Memo_SetName(m.instance, value)
+    Memo_SetName(m._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (m *TMemo) Tag() int {
-    return Memo_GetTag(m.instance)
+    return Memo_GetTag(m._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (m *TMemo) SetTag(value int) {
-    Memo_SetTag(m.instance, value)
+    Memo_SetTag(m._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (m *TMemo) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(Memo_GetAnchorSideLeft(m.instance))
+    return AsAnchorSide(Memo_GetAnchorSideLeft(m._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (m *TMemo) SetAnchorSideLeft(value *TAnchorSide) {
-    Memo_SetAnchorSideLeft(m.instance, CheckPtr(value))
+    Memo_SetAnchorSideLeft(m._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (m *TMemo) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(Memo_GetAnchorSideTop(m.instance))
+    return AsAnchorSide(Memo_GetAnchorSideTop(m._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (m *TMemo) SetAnchorSideTop(value *TAnchorSide) {
-    Memo_SetAnchorSideTop(m.instance, CheckPtr(value))
+    Memo_SetAnchorSideTop(m._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (m *TMemo) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(Memo_GetAnchorSideRight(m.instance))
+    return AsAnchorSide(Memo_GetAnchorSideRight(m._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (m *TMemo) SetAnchorSideRight(value *TAnchorSide) {
-    Memo_SetAnchorSideRight(m.instance, CheckPtr(value))
+    Memo_SetAnchorSideRight(m._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (m *TMemo) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(Memo_GetAnchorSideBottom(m.instance))
+    return AsAnchorSide(Memo_GetAnchorSideBottom(m._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (m *TMemo) SetAnchorSideBottom(value *TAnchorSide) {
-    Memo_SetAnchorSideBottom(m.instance, CheckPtr(value))
+    Memo_SetAnchorSideBottom(m._instance(), CheckPtr(value))
 }
 
 func (m *TMemo) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(Memo_GetChildSizing(m.instance))
+    return AsControlChildSizing(Memo_GetChildSizing(m._instance()))
 }
 
 func (m *TMemo) SetChildSizing(value *TControlChildSizing) {
-    Memo_SetChildSizing(m.instance, CheckPtr(value))
+    Memo_SetChildSizing(m._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (m *TMemo) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(Memo_GetBorderSpacing(m.instance))
+    return AsControlBorderSpacing(Memo_GetBorderSpacing(m._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (m *TMemo) SetBorderSpacing(value *TControlBorderSpacing) {
-    Memo_SetBorderSpacing(m.instance, CheckPtr(value))
+    Memo_SetBorderSpacing(m._instance(), CheckPtr(value))
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (m *TMemo) DockClients(Index int32) *TControl {
-    return AsControl(Memo_GetDockClients(m.instance, Index))
+    return AsControl(Memo_GetDockClients(m._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (m *TMemo) Controls(Index int32) *TControl {
-    return AsControl(Memo_GetControls(m.instance, Index))
+    return AsControl(Memo_GetControls(m._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (m *TMemo) Components(AIndex int32) *TComponent {
-    return AsComponent(Memo_GetComponents(m.instance, AIndex))
+    return AsComponent(Memo_GetComponents(m._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (m *TMemo) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(Memo_GetAnchorSide(m.instance, AKind))
+    return AsAnchorSide(Memo_GetAnchorSide(m._instance(), AKind))
 }
 

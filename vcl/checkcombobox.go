@@ -19,101 +19,94 @@ import (
 
 type TCheckComboBox struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewCheckComboBox
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewCheckComboBox(owner IComponent) *TCheckComboBox {
     c := new(TCheckComboBox)
-    c.instance = CheckComboBox_Create(CheckPtr(owner))
-    c.ptr = unsafe.Pointer(c.instance)
+    c.instance = unsafe.Pointer(CheckComboBox_Create(CheckPtr(owner)))
     return c
 }
 
+// AsCheckComboBox
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsCheckComboBox(obj interface{}) *TCheckComboBox {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TCheckComboBox{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TCheckComboBox{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsCheckComboBox.
-func CheckComboBoxFromInst(inst uintptr) *TCheckComboBox {
-    return AsCheckComboBox(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsCheckComboBox.
-func CheckComboBoxFromObj(obj IObject) *TCheckComboBox {
-    return AsCheckComboBox(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsCheckComboBox.
-func CheckComboBoxFromUnsafePointer(ptr unsafe.Pointer) *TCheckComboBox {
-    return AsCheckComboBox(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (c *TCheckComboBox) Free() {
-    if c.instance != 0 {
-        CheckComboBox_Free(c.instance)
-        c.instance, c.ptr = 0, nullptr
+    if c.instance != nullptr {
+        CheckComboBox_Free(c._instance())
+        c.instance  = nullptr
     }
 }
 
+func (c *TCheckComboBox) _instance() uintptr {
+    return uintptr(c.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (c *TCheckComboBox) Instance() uintptr {
-    return c.instance
+    return c._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (c *TCheckComboBox) UnsafeAddr() unsafe.Pointer {
-    return c.ptr
+    return c.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (c *TCheckComboBox) IsValid() bool {
-    return c.instance != 0
+    return c.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (c *TCheckComboBox) Is() TIs {
-    return TIs(c.instance)
+    return TIs(c._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (c *TCheckComboBox) As() TAs {
-//    return TAs(c.instance)
+//    return TAs(c._instance())
 //}
 
+// TCheckComboBoxClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,1439 +115,1801 @@ func TCheckComboBoxClass() TClass {
 }
 
 func (c *TCheckComboBox) AddItem(AItem string, AState TCheckBoxState, AEnabled bool) {
-    CheckComboBox_AddItem(c.instance, AItem , AState , AEnabled)
+    CheckComboBox_AddItem(c._instance(), AItem , AState , AEnabled)
 }
 
 func (c *TCheckComboBox) AssignItems(AItems IStrings) {
-    CheckComboBox_AssignItems(c.instance, CheckPtr(AItems))
+    CheckComboBox_AssignItems(c._instance(), CheckPtr(AItems))
 }
 
+// Clear
+//
 // 清除。
 func (c *TCheckComboBox) Clear() {
-    CheckComboBox_Clear(c.instance)
+    CheckComboBox_Clear(c._instance())
 }
 
 func (c *TCheckComboBox) DeleteItem(AIndex int32) {
-    CheckComboBox_DeleteItem(c.instance, AIndex)
+    CheckComboBox_DeleteItem(c._instance(), AIndex)
 }
 
 func (c *TCheckComboBox) CheckAll(AState TCheckBoxState, AAllowGrayed bool, AAllowDisabled bool) {
-    CheckComboBox_CheckAll(c.instance, AState , AAllowGrayed , AAllowDisabled)
+    CheckComboBox_CheckAll(c._instance(), AState , AAllowGrayed , AAllowDisabled)
 }
 
 func (c *TCheckComboBox) Toggle(AIndex int32) {
-    CheckComboBox_Toggle(c.instance, AIndex)
+    CheckComboBox_Toggle(c._instance(), AIndex)
 }
 
+// ClearSelection
+//
 // 清除选择。
 func (c *TCheckComboBox) ClearSelection() {
-    CheckComboBox_ClearSelection(c.instance)
+    CheckComboBox_ClearSelection(c._instance())
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (c *TCheckComboBox) Focused() bool {
-    return CheckComboBox_Focused(c.instance)
+    return CheckComboBox_Focused(c._instance())
 }
 
+// SelectAll
+//
 // 全选。
 func (c *TCheckComboBox) SelectAll() {
-    CheckComboBox_SelectAll(c.instance)
+    CheckComboBox_SelectAll(c._instance())
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (c *TCheckComboBox) CanFocus() bool {
-    return CheckComboBox_CanFocus(c.instance)
+    return CheckComboBox_CanFocus(c._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (c *TCheckComboBox) ContainsControl(Control IControl) bool {
-    return CheckComboBox_ContainsControl(c.instance, CheckPtr(Control))
+    return CheckComboBox_ContainsControl(c._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (c *TCheckComboBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(CheckComboBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(CheckComboBox_ControlAtPos(c._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (c *TCheckComboBox) DisableAlign() {
-    CheckComboBox_DisableAlign(c.instance)
+    CheckComboBox_DisableAlign(c._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (c *TCheckComboBox) EnableAlign() {
-    CheckComboBox_EnableAlign(c.instance)
+    CheckComboBox_EnableAlign(c._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (c *TCheckComboBox) FindChildControl(ControlName string) *TControl {
-    return AsControl(CheckComboBox_FindChildControl(c.instance, ControlName))
+    return AsControl(CheckComboBox_FindChildControl(c._instance(), ControlName))
 }
 
 func (c *TCheckComboBox) FlipChildren(AllLevels bool) {
-    CheckComboBox_FlipChildren(c.instance, AllLevels)
+    CheckComboBox_FlipChildren(c._instance(), AllLevels)
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (c *TCheckComboBox) HandleAllocated() bool {
-    return CheckComboBox_HandleAllocated(c.instance)
+    return CheckComboBox_HandleAllocated(c._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (c *TCheckComboBox) InsertControl(AControl IControl) {
-    CheckComboBox_InsertControl(c.instance, CheckPtr(AControl))
+    CheckComboBox_InsertControl(c._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (c *TCheckComboBox) Invalidate() {
-    CheckComboBox_Invalidate(c.instance)
+    CheckComboBox_Invalidate(c._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (c *TCheckComboBox) PaintTo(DC HDC, X int32, Y int32) {
-    CheckComboBox_PaintTo(c.instance, DC , X , Y)
+    CheckComboBox_PaintTo(c._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (c *TCheckComboBox) RemoveControl(AControl IControl) {
-    CheckComboBox_RemoveControl(c.instance, CheckPtr(AControl))
+    CheckComboBox_RemoveControl(c._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (c *TCheckComboBox) Realign() {
-    CheckComboBox_Realign(c.instance)
+    CheckComboBox_Realign(c._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (c *TCheckComboBox) Repaint() {
-    CheckComboBox_Repaint(c.instance)
+    CheckComboBox_Repaint(c._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (c *TCheckComboBox) ScaleBy(M int32, D int32) {
-    CheckComboBox_ScaleBy(c.instance, M , D)
+    CheckComboBox_ScaleBy(c._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (c *TCheckComboBox) ScrollBy(DeltaX int32, DeltaY int32) {
-    CheckComboBox_ScrollBy(c.instance, DeltaX , DeltaY)
+    CheckComboBox_ScrollBy(c._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (c *TCheckComboBox) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    CheckComboBox_SetBounds(c.instance, ALeft , ATop , AWidth , AHeight)
+    CheckComboBox_SetBounds(c._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (c *TCheckComboBox) SetFocus() {
-    CheckComboBox_SetFocus(c.instance)
+    CheckComboBox_SetFocus(c._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (c *TCheckComboBox) Update() {
-    CheckComboBox_Update(c.instance)
+    CheckComboBox_Update(c._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (c *TCheckComboBox) BringToFront() {
-    CheckComboBox_BringToFront(c.instance)
+    CheckComboBox_BringToFront(c._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (c *TCheckComboBox) ClientToScreen(Point TPoint) TPoint {
-    return CheckComboBox_ClientToScreen(c.instance, Point)
+    return CheckComboBox_ClientToScreen(c._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (c *TCheckComboBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return CheckComboBox_ClientToParent(c.instance, Point , CheckPtr(AParent))
+    return CheckComboBox_ClientToParent(c._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (c *TCheckComboBox) Dragging() bool {
-    return CheckComboBox_Dragging(c.instance)
+    return CheckComboBox_Dragging(c._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (c *TCheckComboBox) HasParent() bool {
-    return CheckComboBox_HasParent(c.instance)
+    return CheckComboBox_HasParent(c._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (c *TCheckComboBox) Hide() {
-    CheckComboBox_Hide(c.instance)
+    CheckComboBox_Hide(c._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (c *TCheckComboBox) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return CheckComboBox_Perform(c.instance, Msg , WParam , LParam)
+    return CheckComboBox_Perform(c._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (c *TCheckComboBox) Refresh() {
-    CheckComboBox_Refresh(c.instance)
+    CheckComboBox_Refresh(c._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (c *TCheckComboBox) ScreenToClient(Point TPoint) TPoint {
-    return CheckComboBox_ScreenToClient(c.instance, Point)
+    return CheckComboBox_ScreenToClient(c._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (c *TCheckComboBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return CheckComboBox_ParentToClient(c.instance, Point , CheckPtr(AParent))
+    return CheckComboBox_ParentToClient(c._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (c *TCheckComboBox) SendToBack() {
-    CheckComboBox_SendToBack(c.instance)
+    CheckComboBox_SendToBack(c._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (c *TCheckComboBox) Show() {
-    CheckComboBox_Show(c.instance)
+    CheckComboBox_Show(c._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (c *TCheckComboBox) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return CheckComboBox_GetTextBuf(c.instance, Buffer , BufSize)
+    return CheckComboBox_GetTextBuf(c._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (c *TCheckComboBox) GetTextLen() int32 {
-    return CheckComboBox_GetTextLen(c.instance)
+    return CheckComboBox_GetTextLen(c._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (c *TCheckComboBox) SetTextBuf(Buffer string) {
-    CheckComboBox_SetTextBuf(c.instance, Buffer)
+    CheckComboBox_SetTextBuf(c._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (c *TCheckComboBox) FindComponent(AName string) *TComponent {
-    return AsComponent(CheckComboBox_FindComponent(c.instance, AName))
+    return AsComponent(CheckComboBox_FindComponent(c._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (c *TCheckComboBox) GetNamePath() string {
-    return CheckComboBox_GetNamePath(c.instance)
+    return CheckComboBox_GetNamePath(c._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (c *TCheckComboBox) Assign(Source IObject) {
-    CheckComboBox_Assign(c.instance, CheckPtr(Source))
+    CheckComboBox_Assign(c._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (c *TCheckComboBox) ClassType() TClass {
-    return CheckComboBox_ClassType(c.instance)
+    return CheckComboBox_ClassType(c._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (c *TCheckComboBox) ClassName() string {
-    return CheckComboBox_ClassName(c.instance)
+    return CheckComboBox_ClassName(c._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (c *TCheckComboBox) InstanceSize() int32 {
-    return CheckComboBox_InstanceSize(c.instance)
+    return CheckComboBox_InstanceSize(c._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (c *TCheckComboBox) InheritsFrom(AClass TClass) bool {
-    return CheckComboBox_InheritsFrom(c.instance, AClass)
+    return CheckComboBox_InheritsFrom(c._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (c *TCheckComboBox) Equals(Obj IObject) bool {
-    return CheckComboBox_Equals(c.instance, CheckPtr(Obj))
+    return CheckComboBox_Equals(c._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (c *TCheckComboBox) GetHashCode() int32 {
-    return CheckComboBox_GetHashCode(c.instance)
+    return CheckComboBox_GetHashCode(c._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (c *TCheckComboBox) ToString() string {
-    return CheckComboBox_ToString(c.instance)
+    return CheckComboBox_ToString(c._instance())
 }
 
 func (c *TCheckComboBox) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    CheckComboBox_AnchorToNeighbour(c.instance, ASide , ASpace , CheckPtr(ASibling))
+    CheckComboBox_AnchorToNeighbour(c._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (c *TCheckComboBox) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    CheckComboBox_AnchorParallel(c.instance, ASide , ASpace , CheckPtr(ASibling))
+    CheckComboBox_AnchorParallel(c._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (c *TCheckComboBox) AnchorHorizontalCenterTo(ASibling IControl) {
-    CheckComboBox_AnchorHorizontalCenterTo(c.instance, CheckPtr(ASibling))
+    CheckComboBox_AnchorHorizontalCenterTo(c._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (c *TCheckComboBox) AnchorVerticalCenterTo(ASibling IControl) {
-    CheckComboBox_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
+    CheckComboBox_AnchorVerticalCenterTo(c._instance(), CheckPtr(ASibling))
 }
 
 func (c *TCheckComboBox) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    CheckComboBox_AnchorSame(c.instance, ASide , CheckPtr(ASibling))
+    CheckComboBox_AnchorSame(c._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (c *TCheckComboBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    CheckComboBox_AnchorAsAlign(c.instance, ATheAlign , ASpace)
+    CheckComboBox_AnchorAsAlign(c._instance(), ATheAlign , ASpace)
 }
 
 func (c *TCheckComboBox) AnchorClient(ASpace int32) {
-    CheckComboBox_AnchorClient(c.instance, ASpace)
+    CheckComboBox_AnchorClient(c._instance(), ASpace)
 }
 
 func (c *TCheckComboBox) ScaleDesignToForm(ASize int32) int32 {
-    return CheckComboBox_ScaleDesignToForm(c.instance, ASize)
+    return CheckComboBox_ScaleDesignToForm(c._instance(), ASize)
 }
 
 func (c *TCheckComboBox) ScaleFormToDesign(ASize int32) int32 {
-    return CheckComboBox_ScaleFormToDesign(c.instance, ASize)
+    return CheckComboBox_ScaleFormToDesign(c._instance(), ASize)
 }
 
 func (c *TCheckComboBox) Scale96ToForm(ASize int32) int32 {
-    return CheckComboBox_Scale96ToForm(c.instance, ASize)
+    return CheckComboBox_Scale96ToForm(c._instance(), ASize)
 }
 
 func (c *TCheckComboBox) ScaleFormTo96(ASize int32) int32 {
-    return CheckComboBox_ScaleFormTo96(c.instance, ASize)
+    return CheckComboBox_ScaleFormTo96(c._instance(), ASize)
 }
 
 func (c *TCheckComboBox) Scale96ToFont(ASize int32) int32 {
-    return CheckComboBox_Scale96ToFont(c.instance, ASize)
+    return CheckComboBox_Scale96ToFont(c._instance(), ASize)
 }
 
 func (c *TCheckComboBox) ScaleFontTo96(ASize int32) int32 {
-    return CheckComboBox_ScaleFontTo96(c.instance, ASize)
+    return CheckComboBox_ScaleFontTo96(c._instance(), ASize)
 }
 
 func (c *TCheckComboBox) ScaleScreenToFont(ASize int32) int32 {
-    return CheckComboBox_ScaleScreenToFont(c.instance, ASize)
+    return CheckComboBox_ScaleScreenToFont(c._instance(), ASize)
 }
 
 func (c *TCheckComboBox) ScaleFontToScreen(ASize int32) int32 {
-    return CheckComboBox_ScaleFontToScreen(c.instance, ASize)
+    return CheckComboBox_ScaleFontToScreen(c._instance(), ASize)
 }
 
 func (c *TCheckComboBox) Scale96ToScreen(ASize int32) int32 {
-    return CheckComboBox_Scale96ToScreen(c.instance, ASize)
+    return CheckComboBox_Scale96ToScreen(c._instance(), ASize)
 }
 
 func (c *TCheckComboBox) ScaleScreenTo96(ASize int32) int32 {
-    return CheckComboBox_ScaleScreenTo96(c.instance, ASize)
+    return CheckComboBox_ScaleScreenTo96(c._instance(), ASize)
 }
 
 func (c *TCheckComboBox) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    CheckComboBox_AutoAdjustLayout(c.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    CheckComboBox_AutoAdjustLayout(c._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (c *TCheckComboBox) FixDesignFontsPPI(ADesignTimePPI int32) {
-    CheckComboBox_FixDesignFontsPPI(c.instance, ADesignTimePPI)
+    CheckComboBox_FixDesignFontsPPI(c._instance(), ADesignTimePPI)
 }
 
 func (c *TCheckComboBox) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    CheckComboBox_ScaleFontsPPI(c.instance, AToPPI , AProportion)
+    CheckComboBox_ScaleFontsPPI(c._instance(), AToPPI , AProportion)
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (c *TCheckComboBox) Align() TAlign {
-    return CheckComboBox_GetAlign(c.instance)
+    return CheckComboBox_GetAlign(c._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (c *TCheckComboBox) SetAlign(value TAlign) {
-    CheckComboBox_SetAlign(c.instance, value)
+    CheckComboBox_SetAlign(c._instance(), value)
 }
 
 func (c *TCheckComboBox) AllowGrayed() bool {
-    return CheckComboBox_GetAllowGrayed(c.instance)
+    return CheckComboBox_GetAllowGrayed(c._instance())
 }
 
 func (c *TCheckComboBox) SetAllowGrayed(value bool) {
-    CheckComboBox_SetAllowGrayed(c.instance, value)
+    CheckComboBox_SetAllowGrayed(c._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (c *TCheckComboBox) Anchors() TAnchors {
-    return CheckComboBox_GetAnchors(c.instance)
+    return CheckComboBox_GetAnchors(c._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (c *TCheckComboBox) SetAnchors(value TAnchors) {
-    CheckComboBox_SetAnchors(c.instance, value)
+    CheckComboBox_SetAnchors(c._instance(), value)
 }
 
 func (c *TCheckComboBox) AutoDropDown() bool {
-    return CheckComboBox_GetAutoDropDown(c.instance)
+    return CheckComboBox_GetAutoDropDown(c._instance())
 }
 
 func (c *TCheckComboBox) SetAutoDropDown(value bool) {
-    CheckComboBox_SetAutoDropDown(c.instance, value)
+    CheckComboBox_SetAutoDropDown(c._instance(), value)
 }
 
+// AutoSize
+//
 // 获取自动调整大小。
 func (c *TCheckComboBox) AutoSize() bool {
-    return CheckComboBox_GetAutoSize(c.instance)
+    return CheckComboBox_GetAutoSize(c._instance())
 }
 
+// SetAutoSize
+//
 // 设置自动调整大小。
 func (c *TCheckComboBox) SetAutoSize(value bool) {
-    CheckComboBox_SetAutoSize(c.instance, value)
+    CheckComboBox_SetAutoSize(c._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (c *TCheckComboBox) Color() TColor {
-    return CheckComboBox_GetColor(c.instance)
+    return CheckComboBox_GetColor(c._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (c *TCheckComboBox) SetColor(value TColor) {
-    CheckComboBox_SetColor(c.instance, value)
+    CheckComboBox_SetColor(c._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (c *TCheckComboBox) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(CheckComboBox_GetConstraints(c.instance))
+    return AsSizeConstraints(CheckComboBox_GetConstraints(c._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (c *TCheckComboBox) SetConstraints(value *TSizeConstraints) {
-    CheckComboBox_SetConstraints(c.instance, CheckPtr(value))
+    CheckComboBox_SetConstraints(c._instance(), CheckPtr(value))
 }
 
 func (c *TCheckComboBox) Count() int32 {
-    return CheckComboBox_GetCount(c.instance)
+    return CheckComboBox_GetCount(c._instance())
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (c *TCheckComboBox) DragCursor() TCursor {
-    return CheckComboBox_GetDragCursor(c.instance)
+    return CheckComboBox_GetDragCursor(c._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (c *TCheckComboBox) SetDragCursor(value TCursor) {
-    CheckComboBox_SetDragCursor(c.instance, value)
+    CheckComboBox_SetDragCursor(c._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (c *TCheckComboBox) DragKind() TDragKind {
-    return CheckComboBox_GetDragKind(c.instance)
+    return CheckComboBox_GetDragKind(c._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (c *TCheckComboBox) SetDragKind(value TDragKind) {
-    CheckComboBox_SetDragKind(c.instance, value)
+    CheckComboBox_SetDragKind(c._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (c *TCheckComboBox) DragMode() TDragMode {
-    return CheckComboBox_GetDragMode(c.instance)
+    return CheckComboBox_GetDragMode(c._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (c *TCheckComboBox) SetDragMode(value TDragMode) {
-    CheckComboBox_SetDragMode(c.instance, value)
+    CheckComboBox_SetDragMode(c._instance(), value)
 }
 
 func (c *TCheckComboBox) DropDownCount() int32 {
-    return CheckComboBox_GetDropDownCount(c.instance)
+    return CheckComboBox_GetDropDownCount(c._instance())
 }
 
 func (c *TCheckComboBox) SetDropDownCount(value int32) {
-    CheckComboBox_SetDropDownCount(c.instance, value)
+    CheckComboBox_SetDropDownCount(c._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (c *TCheckComboBox) Enabled() bool {
-    return CheckComboBox_GetEnabled(c.instance)
+    return CheckComboBox_GetEnabled(c._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (c *TCheckComboBox) SetEnabled(value bool) {
-    CheckComboBox_SetEnabled(c.instance, value)
+    CheckComboBox_SetEnabled(c._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (c *TCheckComboBox) Font() *TFont {
-    return AsFont(CheckComboBox_GetFont(c.instance))
+    return AsFont(CheckComboBox_GetFont(c._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (c *TCheckComboBox) SetFont(value *TFont) {
-    CheckComboBox_SetFont(c.instance, CheckPtr(value))
+    CheckComboBox_SetFont(c._instance(), CheckPtr(value))
 }
 
 func (c *TCheckComboBox) ItemHeight() int32 {
-    return CheckComboBox_GetItemHeight(c.instance)
+    return CheckComboBox_GetItemHeight(c._instance())
 }
 
 func (c *TCheckComboBox) SetItemHeight(value int32) {
-    CheckComboBox_SetItemHeight(c.instance, value)
+    CheckComboBox_SetItemHeight(c._instance(), value)
 }
 
 func (c *TCheckComboBox) ItemIndex() int32 {
-    return CheckComboBox_GetItemIndex(c.instance)
+    return CheckComboBox_GetItemIndex(c._instance())
 }
 
 func (c *TCheckComboBox) SetItemIndex(value int32) {
-    CheckComboBox_SetItemIndex(c.instance, value)
+    CheckComboBox_SetItemIndex(c._instance(), value)
 }
 
 func (c *TCheckComboBox) Items() *TStrings {
-    return AsStrings(CheckComboBox_GetItems(c.instance))
+    return AsStrings(CheckComboBox_GetItems(c._instance()))
 }
 
 func (c *TCheckComboBox) SetItems(value IStrings) {
-    CheckComboBox_SetItems(c.instance, CheckPtr(value))
+    CheckComboBox_SetItems(c._instance(), CheckPtr(value))
 }
 
 func (c *TCheckComboBox) ItemWidth() int32 {
-    return CheckComboBox_GetItemWidth(c.instance)
+    return CheckComboBox_GetItemWidth(c._instance())
 }
 
 func (c *TCheckComboBox) SetItemWidth(value int32) {
-    CheckComboBox_SetItemWidth(c.instance, value)
+    CheckComboBox_SetItemWidth(c._instance(), value)
 }
 
+// MaxLength
+//
 // 获取最大长度。
 func (c *TCheckComboBox) MaxLength() int32 {
-    return CheckComboBox_GetMaxLength(c.instance)
+    return CheckComboBox_GetMaxLength(c._instance())
 }
 
+// SetMaxLength
+//
 // 设置最大长度。
 func (c *TCheckComboBox) SetMaxLength(value int32) {
-    CheckComboBox_SetMaxLength(c.instance, value)
+    CheckComboBox_SetMaxLength(c._instance(), value)
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (c *TCheckComboBox) SetOnChange(fn TNotifyEvent) {
-    CheckComboBox_SetOnChange(c.instance, fn)
+    CheckComboBox_SetOnChange(c._instance(), fn)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (c *TCheckComboBox) SetOnClick(fn TNotifyEvent) {
-    CheckComboBox_SetOnClick(c.instance, fn)
+    CheckComboBox_SetOnClick(c._instance(), fn)
 }
 
 func (c *TCheckComboBox) SetOnCloseUp(fn TNotifyEvent) {
-    CheckComboBox_SetOnCloseUp(c.instance, fn)
+    CheckComboBox_SetOnCloseUp(c._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (c *TCheckComboBox) SetOnContextPopup(fn TContextPopupEvent) {
-    CheckComboBox_SetOnContextPopup(c.instance, fn)
+    CheckComboBox_SetOnContextPopup(c._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (c *TCheckComboBox) SetOnDblClick(fn TNotifyEvent) {
-    CheckComboBox_SetOnDblClick(c.instance, fn)
+    CheckComboBox_SetOnDblClick(c._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (c *TCheckComboBox) SetOnDragDrop(fn TDragDropEvent) {
-    CheckComboBox_SetOnDragDrop(c.instance, fn)
+    CheckComboBox_SetOnDragDrop(c._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (c *TCheckComboBox) SetOnDragOver(fn TDragOverEvent) {
-    CheckComboBox_SetOnDragOver(c.instance, fn)
+    CheckComboBox_SetOnDragOver(c._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (c *TCheckComboBox) SetOnEndDrag(fn TEndDragEvent) {
-    CheckComboBox_SetOnEndDrag(c.instance, fn)
+    CheckComboBox_SetOnEndDrag(c._instance(), fn)
 }
 
 func (c *TCheckComboBox) SetOnDropDown(fn TNotifyEvent) {
-    CheckComboBox_SetOnDropDown(c.instance, fn)
+    CheckComboBox_SetOnDropDown(c._instance(), fn)
 }
 
+// SetOnEnter
+//
 // 设置焦点进入。
 //
 // Set Focus entry.
 func (c *TCheckComboBox) SetOnEnter(fn TNotifyEvent) {
-    CheckComboBox_SetOnEnter(c.instance, fn)
+    CheckComboBox_SetOnEnter(c._instance(), fn)
 }
 
+// SetOnExit
+//
 // 设置焦点退出。
 //
 // Set Focus exit.
 func (c *TCheckComboBox) SetOnExit(fn TNotifyEvent) {
-    CheckComboBox_SetOnExit(c.instance, fn)
+    CheckComboBox_SetOnExit(c._instance(), fn)
 }
 
 func (c *TCheckComboBox) SetOnItemChange(fn TCheckItemChange) {
-    CheckComboBox_SetOnItemChange(c.instance, fn)
+    CheckComboBox_SetOnItemChange(c._instance(), fn)
 }
 
+// SetOnKeyDown
+//
 // 设置键盘按键按下事件。
 //
 // Set Keyboard button press event.
 func (c *TCheckComboBox) SetOnKeyDown(fn TKeyEvent) {
-    CheckComboBox_SetOnKeyDown(c.instance, fn)
+    CheckComboBox_SetOnKeyDown(c._instance(), fn)
 }
 
+// SetOnKeyPress
+//
 // 设置键键下事件。
 func (c *TCheckComboBox) SetOnKeyPress(fn TKeyPressEvent) {
-    CheckComboBox_SetOnKeyPress(c.instance, fn)
+    CheckComboBox_SetOnKeyPress(c._instance(), fn)
 }
 
+// SetOnKeyUp
+//
 // 设置键盘按键抬起事件。
 //
 // Set Keyboard button lift event.
 func (c *TCheckComboBox) SetOnKeyUp(fn TKeyEvent) {
-    CheckComboBox_SetOnKeyUp(c.instance, fn)
+    CheckComboBox_SetOnKeyUp(c._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (c *TCheckComboBox) SetOnMouseDown(fn TMouseEvent) {
-    CheckComboBox_SetOnMouseDown(c.instance, fn)
+    CheckComboBox_SetOnMouseDown(c._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (c *TCheckComboBox) SetOnMouseEnter(fn TNotifyEvent) {
-    CheckComboBox_SetOnMouseEnter(c.instance, fn)
+    CheckComboBox_SetOnMouseEnter(c._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (c *TCheckComboBox) SetOnMouseLeave(fn TNotifyEvent) {
-    CheckComboBox_SetOnMouseLeave(c.instance, fn)
+    CheckComboBox_SetOnMouseLeave(c._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (c *TCheckComboBox) SetOnMouseMove(fn TMouseMoveEvent) {
-    CheckComboBox_SetOnMouseMove(c.instance, fn)
+    CheckComboBox_SetOnMouseMove(c._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (c *TCheckComboBox) SetOnMouseUp(fn TMouseEvent) {
-    CheckComboBox_SetOnMouseUp(c.instance, fn)
+    CheckComboBox_SetOnMouseUp(c._instance(), fn)
 }
 
+// SetOnMouseWheel
+//
 // 设置鼠标滚轮事件。
 func (c *TCheckComboBox) SetOnMouseWheel(fn TMouseWheelEvent) {
-    CheckComboBox_SetOnMouseWheel(c.instance, fn)
+    CheckComboBox_SetOnMouseWheel(c._instance(), fn)
 }
 
+// SetOnMouseWheelDown
+//
 // 设置鼠标滚轮按下事件。
 func (c *TCheckComboBox) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
-    CheckComboBox_SetOnMouseWheelDown(c.instance, fn)
+    CheckComboBox_SetOnMouseWheelDown(c._instance(), fn)
 }
 
+// SetOnMouseWheelUp
+//
 // 设置鼠标滚轮抬起事件。
 func (c *TCheckComboBox) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
-    CheckComboBox_SetOnMouseWheelUp(c.instance, fn)
+    CheckComboBox_SetOnMouseWheelUp(c._instance(), fn)
 }
 
 func (c *TCheckComboBox) SetOnSelect(fn TNotifyEvent) {
-    CheckComboBox_SetOnSelect(c.instance, fn)
+    CheckComboBox_SetOnSelect(c._instance(), fn)
 }
 
+// ParentColor
+//
 // 获取使用父容器颜色。
 //
 // Get parent color.
 func (c *TCheckComboBox) ParentColor() bool {
-    return CheckComboBox_GetParentColor(c.instance)
+    return CheckComboBox_GetParentColor(c._instance())
 }
 
+// SetParentColor
+//
 // 设置使用父容器颜色。
 //
 // Set parent color.
 func (c *TCheckComboBox) SetParentColor(value bool) {
-    CheckComboBox_SetParentColor(c.instance, value)
+    CheckComboBox_SetParentColor(c._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (c *TCheckComboBox) ParentFont() bool {
-    return CheckComboBox_GetParentFont(c.instance)
+    return CheckComboBox_GetParentFont(c._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (c *TCheckComboBox) SetParentFont(value bool) {
-    CheckComboBox_SetParentFont(c.instance, value)
+    CheckComboBox_SetParentFont(c._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (c *TCheckComboBox) ParentShowHint() bool {
-    return CheckComboBox_GetParentShowHint(c.instance)
+    return CheckComboBox_GetParentShowHint(c._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (c *TCheckComboBox) SetParentShowHint(value bool) {
-    CheckComboBox_SetParentShowHint(c.instance, value)
+    CheckComboBox_SetParentShowHint(c._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (c *TCheckComboBox) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(CheckComboBox_GetPopupMenu(c.instance))
+    return AsPopupMenu(CheckComboBox_GetPopupMenu(c._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (c *TCheckComboBox) SetPopupMenu(value IComponent) {
-    CheckComboBox_SetPopupMenu(c.instance, CheckPtr(value))
+    CheckComboBox_SetPopupMenu(c._instance(), CheckPtr(value))
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (c *TCheckComboBox) ShowHint() bool {
-    return CheckComboBox_GetShowHint(c.instance)
+    return CheckComboBox_GetShowHint(c._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (c *TCheckComboBox) SetShowHint(value bool) {
-    CheckComboBox_SetShowHint(c.instance, value)
+    CheckComboBox_SetShowHint(c._instance(), value)
 }
 
 func (c *TCheckComboBox) Sorted() bool {
-    return CheckComboBox_GetSorted(c.instance)
+    return CheckComboBox_GetSorted(c._instance())
 }
 
 func (c *TCheckComboBox) SetSorted(value bool) {
-    CheckComboBox_SetSorted(c.instance, value)
+    CheckComboBox_SetSorted(c._instance(), value)
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (c *TCheckComboBox) TabOrder() TTabOrder {
-    return CheckComboBox_GetTabOrder(c.instance)
+    return CheckComboBox_GetTabOrder(c._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (c *TCheckComboBox) SetTabOrder(value TTabOrder) {
-    CheckComboBox_SetTabOrder(c.instance, value)
+    CheckComboBox_SetTabOrder(c._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (c *TCheckComboBox) TabStop() bool {
-    return CheckComboBox_GetTabStop(c.instance)
+    return CheckComboBox_GetTabStop(c._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (c *TCheckComboBox) SetTabStop(value bool) {
-    CheckComboBox_SetTabStop(c.instance, value)
+    CheckComboBox_SetTabStop(c._instance(), value)
 }
 
+// Text
+//
 // 获取文本。
 func (c *TCheckComboBox) Text() string {
     return getControlBufferText(c.GetTextLen, c.GetTextBuf)
 }
 
+// SetText
+//
 // 设置文本。
 func (c *TCheckComboBox) SetText(value string) {
-    CheckComboBox_SetText(c.instance, value)
+    CheckComboBox_SetText(c._instance(), value)
 }
 
+// TextHint
+//
 // 获取提示文本。
 func (c *TCheckComboBox) TextHint() string {
-    return CheckComboBox_GetTextHint(c.instance)
+    return CheckComboBox_GetTextHint(c._instance())
 }
 
+// SetTextHint
+//
 // 设置提示文本。
 func (c *TCheckComboBox) SetTextHint(value string) {
-    CheckComboBox_SetTextHint(c.instance, value)
+    CheckComboBox_SetTextHint(c._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (c *TCheckComboBox) Visible() bool {
-    return CheckComboBox_GetVisible(c.instance)
+    return CheckComboBox_GetVisible(c._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (c *TCheckComboBox) SetVisible(value bool) {
-    CheckComboBox_SetVisible(c.instance, value)
+    CheckComboBox_SetVisible(c._instance(), value)
 }
 
 func (c *TCheckComboBox) AutoComplete() bool {
-    return CheckComboBox_GetAutoComplete(c.instance)
+    return CheckComboBox_GetAutoComplete(c._instance())
 }
 
 func (c *TCheckComboBox) SetAutoComplete(value bool) {
-    CheckComboBox_SetAutoComplete(c.instance, value)
+    CheckComboBox_SetAutoComplete(c._instance(), value)
 }
 
 func (c *TCheckComboBox) CharCase() TEditCharCase {
-    return CheckComboBox_GetCharCase(c.instance)
+    return CheckComboBox_GetCharCase(c._instance())
 }
 
 func (c *TCheckComboBox) SetCharCase(value TEditCharCase) {
-    CheckComboBox_SetCharCase(c.instance, value)
+    CheckComboBox_SetCharCase(c._instance(), value)
 }
 
+// SelText
+//
 // 获取选择的文本。
 func (c *TCheckComboBox) SelText() string {
-    return CheckComboBox_GetSelText(c.instance)
+    return CheckComboBox_GetSelText(c._instance())
 }
 
+// SetSelText
+//
 // 设置选择的文本。
 func (c *TCheckComboBox) SetSelText(value string) {
-    CheckComboBox_SetSelText(c.instance, value)
+    CheckComboBox_SetSelText(c._instance(), value)
 }
 
+// Canvas
+//
 // 获取画布。
 func (c *TCheckComboBox) Canvas() *TCanvas {
-    return AsCanvas(CheckComboBox_GetCanvas(c.instance))
+    return AsCanvas(CheckComboBox_GetCanvas(c._instance()))
 }
 
 func (c *TCheckComboBox) DroppedDown() bool {
-    return CheckComboBox_GetDroppedDown(c.instance)
+    return CheckComboBox_GetDroppedDown(c._instance())
 }
 
 func (c *TCheckComboBox) SetDroppedDown(value bool) {
-    CheckComboBox_SetDroppedDown(c.instance, value)
+    CheckComboBox_SetDroppedDown(c._instance(), value)
 }
 
+// SelLength
+//
 // 获取选择的长度。
 func (c *TCheckComboBox) SelLength() int32 {
-    return CheckComboBox_GetSelLength(c.instance)
+    return CheckComboBox_GetSelLength(c._instance())
 }
 
+// SetSelLength
+//
 // 设置选择的长度。
 func (c *TCheckComboBox) SetSelLength(value int32) {
-    CheckComboBox_SetSelLength(c.instance, value)
+    CheckComboBox_SetSelLength(c._instance(), value)
 }
 
+// SelStart
+//
 // 获取选择的启始位置。
 func (c *TCheckComboBox) SelStart() int32 {
-    return CheckComboBox_GetSelStart(c.instance)
+    return CheckComboBox_GetSelStart(c._instance())
 }
 
+// SetSelStart
+//
 // 设置选择的启始位置。
 func (c *TCheckComboBox) SetSelStart(value int32) {
-    CheckComboBox_SetSelStart(c.instance, value)
+    CheckComboBox_SetSelStart(c._instance(), value)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (c *TCheckComboBox) DockClientCount() int32 {
-    return CheckComboBox_GetDockClientCount(c.instance)
+    return CheckComboBox_GetDockClientCount(c._instance())
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (c *TCheckComboBox) DockSite() bool {
-    return CheckComboBox_GetDockSite(c.instance)
+    return CheckComboBox_GetDockSite(c._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (c *TCheckComboBox) SetDockSite(value bool) {
-    CheckComboBox_SetDockSite(c.instance, value)
+    CheckComboBox_SetDockSite(c._instance(), value)
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (c *TCheckComboBox) DoubleBuffered() bool {
-    return CheckComboBox_GetDoubleBuffered(c.instance)
+    return CheckComboBox_GetDoubleBuffered(c._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (c *TCheckComboBox) SetDoubleBuffered(value bool) {
-    CheckComboBox_SetDoubleBuffered(c.instance, value)
+    CheckComboBox_SetDoubleBuffered(c._instance(), value)
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (c *TCheckComboBox) MouseInClient() bool {
-    return CheckComboBox_GetMouseInClient(c.instance)
+    return CheckComboBox_GetMouseInClient(c._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (c *TCheckComboBox) VisibleDockClientCount() int32 {
-    return CheckComboBox_GetVisibleDockClientCount(c.instance)
+    return CheckComboBox_GetVisibleDockClientCount(c._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (c *TCheckComboBox) Brush() *TBrush {
-    return AsBrush(CheckComboBox_GetBrush(c.instance))
+    return AsBrush(CheckComboBox_GetBrush(c._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (c *TCheckComboBox) ControlCount() int32 {
-    return CheckComboBox_GetControlCount(c.instance)
+    return CheckComboBox_GetControlCount(c._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (c *TCheckComboBox) Handle() HWND {
-    return CheckComboBox_GetHandle(c.instance)
+    return CheckComboBox_GetHandle(c._instance())
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (c *TCheckComboBox) ParentDoubleBuffered() bool {
-    return CheckComboBox_GetParentDoubleBuffered(c.instance)
+    return CheckComboBox_GetParentDoubleBuffered(c._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (c *TCheckComboBox) SetParentDoubleBuffered(value bool) {
-    CheckComboBox_SetParentDoubleBuffered(c.instance, value)
+    CheckComboBox_SetParentDoubleBuffered(c._instance(), value)
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (c *TCheckComboBox) ParentWindow() HWND {
-    return CheckComboBox_GetParentWindow(c.instance)
+    return CheckComboBox_GetParentWindow(c._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (c *TCheckComboBox) SetParentWindow(value HWND) {
-    CheckComboBox_SetParentWindow(c.instance, value)
+    CheckComboBox_SetParentWindow(c._instance(), value)
 }
 
 func (c *TCheckComboBox) Showing() bool {
-    return CheckComboBox_GetShowing(c.instance)
+    return CheckComboBox_GetShowing(c._instance())
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (c *TCheckComboBox) UseDockManager() bool {
-    return CheckComboBox_GetUseDockManager(c.instance)
+    return CheckComboBox_GetUseDockManager(c._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (c *TCheckComboBox) SetUseDockManager(value bool) {
-    CheckComboBox_SetUseDockManager(c.instance, value)
+    CheckComboBox_SetUseDockManager(c._instance(), value)
 }
 
 func (c *TCheckComboBox) Action() *TAction {
-    return AsAction(CheckComboBox_GetAction(c.instance))
+    return AsAction(CheckComboBox_GetAction(c._instance()))
 }
 
 func (c *TCheckComboBox) SetAction(value IComponent) {
-    CheckComboBox_SetAction(c.instance, CheckPtr(value))
+    CheckComboBox_SetAction(c._instance(), CheckPtr(value))
 }
 
 func (c *TCheckComboBox) BiDiMode() TBiDiMode {
-    return CheckComboBox_GetBiDiMode(c.instance)
+    return CheckComboBox_GetBiDiMode(c._instance())
 }
 
 func (c *TCheckComboBox) SetBiDiMode(value TBiDiMode) {
-    CheckComboBox_SetBiDiMode(c.instance, value)
+    CheckComboBox_SetBiDiMode(c._instance(), value)
 }
 
 func (c *TCheckComboBox) BoundsRect() TRect {
-    return CheckComboBox_GetBoundsRect(c.instance)
+    return CheckComboBox_GetBoundsRect(c._instance())
 }
 
 func (c *TCheckComboBox) SetBoundsRect(value TRect) {
-    CheckComboBox_SetBoundsRect(c.instance, value)
+    CheckComboBox_SetBoundsRect(c._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (c *TCheckComboBox) ClientHeight() int32 {
-    return CheckComboBox_GetClientHeight(c.instance)
+    return CheckComboBox_GetClientHeight(c._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (c *TCheckComboBox) SetClientHeight(value int32) {
-    CheckComboBox_SetClientHeight(c.instance, value)
+    CheckComboBox_SetClientHeight(c._instance(), value)
 }
 
 func (c *TCheckComboBox) ClientOrigin() TPoint {
-    return CheckComboBox_GetClientOrigin(c.instance)
+    return CheckComboBox_GetClientOrigin(c._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (c *TCheckComboBox) ClientRect() TRect {
-    return CheckComboBox_GetClientRect(c.instance)
+    return CheckComboBox_GetClientRect(c._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (c *TCheckComboBox) ClientWidth() int32 {
-    return CheckComboBox_GetClientWidth(c.instance)
+    return CheckComboBox_GetClientWidth(c._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (c *TCheckComboBox) SetClientWidth(value int32) {
-    CheckComboBox_SetClientWidth(c.instance, value)
+    CheckComboBox_SetClientWidth(c._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (c *TCheckComboBox) ControlState() TControlState {
-    return CheckComboBox_GetControlState(c.instance)
+    return CheckComboBox_GetControlState(c._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (c *TCheckComboBox) SetControlState(value TControlState) {
-    CheckComboBox_SetControlState(c.instance, value)
+    CheckComboBox_SetControlState(c._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (c *TCheckComboBox) ControlStyle() TControlStyle {
-    return CheckComboBox_GetControlStyle(c.instance)
+    return CheckComboBox_GetControlStyle(c._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (c *TCheckComboBox) SetControlStyle(value TControlStyle) {
-    CheckComboBox_SetControlStyle(c.instance, value)
+    CheckComboBox_SetControlStyle(c._instance(), value)
 }
 
 func (c *TCheckComboBox) Floating() bool {
-    return CheckComboBox_GetFloating(c.instance)
+    return CheckComboBox_GetFloating(c._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (c *TCheckComboBox) Parent() *TWinControl {
-    return AsWinControl(CheckComboBox_GetParent(c.instance))
+    return AsWinControl(CheckComboBox_GetParent(c._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (c *TCheckComboBox) SetParent(value IWinControl) {
-    CheckComboBox_SetParent(c.instance, CheckPtr(value))
+    CheckComboBox_SetParent(c._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (c *TCheckComboBox) Left() int32 {
-    return CheckComboBox_GetLeft(c.instance)
+    return CheckComboBox_GetLeft(c._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (c *TCheckComboBox) SetLeft(value int32) {
-    CheckComboBox_SetLeft(c.instance, value)
+    CheckComboBox_SetLeft(c._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (c *TCheckComboBox) Top() int32 {
-    return CheckComboBox_GetTop(c.instance)
+    return CheckComboBox_GetTop(c._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (c *TCheckComboBox) SetTop(value int32) {
-    CheckComboBox_SetTop(c.instance, value)
+    CheckComboBox_SetTop(c._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (c *TCheckComboBox) Width() int32 {
-    return CheckComboBox_GetWidth(c.instance)
+    return CheckComboBox_GetWidth(c._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (c *TCheckComboBox) SetWidth(value int32) {
-    CheckComboBox_SetWidth(c.instance, value)
+    CheckComboBox_SetWidth(c._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (c *TCheckComboBox) Height() int32 {
-    return CheckComboBox_GetHeight(c.instance)
+    return CheckComboBox_GetHeight(c._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (c *TCheckComboBox) SetHeight(value int32) {
-    CheckComboBox_SetHeight(c.instance, value)
+    CheckComboBox_SetHeight(c._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (c *TCheckComboBox) Cursor() TCursor {
-    return CheckComboBox_GetCursor(c.instance)
+    return CheckComboBox_GetCursor(c._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (c *TCheckComboBox) SetCursor(value TCursor) {
-    CheckComboBox_SetCursor(c.instance, value)
+    CheckComboBox_SetCursor(c._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (c *TCheckComboBox) Hint() string {
-    return CheckComboBox_GetHint(c.instance)
+    return CheckComboBox_GetHint(c._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (c *TCheckComboBox) SetHint(value string) {
-    CheckComboBox_SetHint(c.instance, value)
+    CheckComboBox_SetHint(c._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (c *TCheckComboBox) ComponentCount() int32 {
-    return CheckComboBox_GetComponentCount(c.instance)
+    return CheckComboBox_GetComponentCount(c._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (c *TCheckComboBox) ComponentIndex() int32 {
-    return CheckComboBox_GetComponentIndex(c.instance)
+    return CheckComboBox_GetComponentIndex(c._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (c *TCheckComboBox) SetComponentIndex(value int32) {
-    CheckComboBox_SetComponentIndex(c.instance, value)
+    CheckComboBox_SetComponentIndex(c._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (c *TCheckComboBox) Owner() *TComponent {
-    return AsComponent(CheckComboBox_GetOwner(c.instance))
+    return AsComponent(CheckComboBox_GetOwner(c._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (c *TCheckComboBox) Name() string {
-    return CheckComboBox_GetName(c.instance)
+    return CheckComboBox_GetName(c._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (c *TCheckComboBox) SetName(value string) {
-    CheckComboBox_SetName(c.instance, value)
+    CheckComboBox_SetName(c._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (c *TCheckComboBox) Tag() int {
-    return CheckComboBox_GetTag(c.instance)
+    return CheckComboBox_GetTag(c._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (c *TCheckComboBox) SetTag(value int) {
-    CheckComboBox_SetTag(c.instance, value)
+    CheckComboBox_SetTag(c._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (c *TCheckComboBox) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(CheckComboBox_GetAnchorSideLeft(c.instance))
+    return AsAnchorSide(CheckComboBox_GetAnchorSideLeft(c._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (c *TCheckComboBox) SetAnchorSideLeft(value *TAnchorSide) {
-    CheckComboBox_SetAnchorSideLeft(c.instance, CheckPtr(value))
+    CheckComboBox_SetAnchorSideLeft(c._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (c *TCheckComboBox) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(CheckComboBox_GetAnchorSideTop(c.instance))
+    return AsAnchorSide(CheckComboBox_GetAnchorSideTop(c._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (c *TCheckComboBox) SetAnchorSideTop(value *TAnchorSide) {
-    CheckComboBox_SetAnchorSideTop(c.instance, CheckPtr(value))
+    CheckComboBox_SetAnchorSideTop(c._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (c *TCheckComboBox) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(CheckComboBox_GetAnchorSideRight(c.instance))
+    return AsAnchorSide(CheckComboBox_GetAnchorSideRight(c._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (c *TCheckComboBox) SetAnchorSideRight(value *TAnchorSide) {
-    CheckComboBox_SetAnchorSideRight(c.instance, CheckPtr(value))
+    CheckComboBox_SetAnchorSideRight(c._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (c *TCheckComboBox) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(CheckComboBox_GetAnchorSideBottom(c.instance))
+    return AsAnchorSide(CheckComboBox_GetAnchorSideBottom(c._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (c *TCheckComboBox) SetAnchorSideBottom(value *TAnchorSide) {
-    CheckComboBox_SetAnchorSideBottom(c.instance, CheckPtr(value))
+    CheckComboBox_SetAnchorSideBottom(c._instance(), CheckPtr(value))
 }
 
 func (c *TCheckComboBox) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(CheckComboBox_GetChildSizing(c.instance))
+    return AsControlChildSizing(CheckComboBox_GetChildSizing(c._instance()))
 }
 
 func (c *TCheckComboBox) SetChildSizing(value *TControlChildSizing) {
-    CheckComboBox_SetChildSizing(c.instance, CheckPtr(value))
+    CheckComboBox_SetChildSizing(c._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (c *TCheckComboBox) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(CheckComboBox_GetBorderSpacing(c.instance))
+    return AsControlBorderSpacing(CheckComboBox_GetBorderSpacing(c._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (c *TCheckComboBox) SetBorderSpacing(value *TControlBorderSpacing) {
-    CheckComboBox_SetBorderSpacing(c.instance, CheckPtr(value))
+    CheckComboBox_SetBorderSpacing(c._instance(), CheckPtr(value))
 }
 
+// Checked
+//
 // 获取是否选中。
 func (c *TCheckComboBox) Checked(AIndex int32) bool {
-    return CheckComboBox_GetChecked(c.instance, AIndex)
+    return CheckComboBox_GetChecked(c._instance(), AIndex)
 }
 
+// SetChecked
+//
 // 设置是否选中。
 func (c *TCheckComboBox) SetChecked(AIndex int32, value bool) {
-    CheckComboBox_SetChecked(c.instance, AIndex, value)
+    CheckComboBox_SetChecked(c._instance(), AIndex, value)
 }
 
 func (c *TCheckComboBox) ItemEnabled(AIndex int32) bool {
-    return CheckComboBox_GetItemEnabled(c.instance, AIndex)
+    return CheckComboBox_GetItemEnabled(c._instance(), AIndex)
 }
 
 func (c *TCheckComboBox) SetItemEnabled(AIndex int32, value bool) {
-    CheckComboBox_SetItemEnabled(c.instance, AIndex, value)
+    CheckComboBox_SetItemEnabled(c._instance(), AIndex, value)
 }
 
 func (c *TCheckComboBox) Objects(AIndex int32) *TObject {
-    return AsObject(CheckComboBox_GetObjects(c.instance, AIndex))
+    return AsObject(CheckComboBox_GetObjects(c._instance(), AIndex))
 }
 
 func (c *TCheckComboBox) SetObjects(AIndex int32, value IObject) {
-    CheckComboBox_SetObjects(c.instance, AIndex, CheckPtr(value))
+    CheckComboBox_SetObjects(c._instance(), AIndex, CheckPtr(value))
 }
 
 func (c *TCheckComboBox) State(AIndex int32) TCheckBoxState {
-    return CheckComboBox_GetState(c.instance, AIndex)
+    return CheckComboBox_GetState(c._instance(), AIndex)
 }
 
 func (c *TCheckComboBox) SetState(AIndex int32, value TCheckBoxState) {
-    CheckComboBox_SetState(c.instance, AIndex, value)
+    CheckComboBox_SetState(c._instance(), AIndex, value)
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (c *TCheckComboBox) DockClients(Index int32) *TControl {
-    return AsControl(CheckComboBox_GetDockClients(c.instance, Index))
+    return AsControl(CheckComboBox_GetDockClients(c._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (c *TCheckComboBox) Controls(Index int32) *TControl {
-    return AsControl(CheckComboBox_GetControls(c.instance, Index))
+    return AsControl(CheckComboBox_GetControls(c._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (c *TCheckComboBox) Components(AIndex int32) *TComponent {
-    return AsComponent(CheckComboBox_GetComponents(c.instance, AIndex))
+    return AsComponent(CheckComboBox_GetComponents(c._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (c *TCheckComboBox) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(CheckComboBox_GetAnchorSide(c.instance, AKind))
+    return AsAnchorSide(CheckComboBox_GetAnchorSide(c._instance(), AKind))
 }
 

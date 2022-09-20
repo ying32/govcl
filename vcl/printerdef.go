@@ -13,5 +13,5 @@ import (
 )
 
 func (p *TPrinter) SetPrinter(aName string) {
-	Printer_SetPrinter(p.instance, aName)
+	Printer_SetPrinter(p._instance(), aName)
 }

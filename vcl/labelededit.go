@@ -19,101 +19,94 @@ import (
 
 type TLabeledEdit struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewLabeledEdit
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewLabeledEdit(owner IComponent) *TLabeledEdit {
     l := new(TLabeledEdit)
-    l.instance = LabeledEdit_Create(CheckPtr(owner))
-    l.ptr = unsafe.Pointer(l.instance)
+    l.instance = unsafe.Pointer(LabeledEdit_Create(CheckPtr(owner)))
     return l
 }
 
+// AsLabeledEdit
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsLabeledEdit(obj interface{}) *TLabeledEdit {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TLabeledEdit{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TLabeledEdit{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsLabeledEdit.
-func LabeledEditFromInst(inst uintptr) *TLabeledEdit {
-    return AsLabeledEdit(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsLabeledEdit.
-func LabeledEditFromObj(obj IObject) *TLabeledEdit {
-    return AsLabeledEdit(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsLabeledEdit.
-func LabeledEditFromUnsafePointer(ptr unsafe.Pointer) *TLabeledEdit {
-    return AsLabeledEdit(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (l *TLabeledEdit) Free() {
-    if l.instance != 0 {
-        LabeledEdit_Free(l.instance)
-        l.instance, l.ptr = 0, nullptr
+    if l.instance != nullptr {
+        LabeledEdit_Free(l._instance())
+        l.instance  = nullptr
     }
 }
 
+func (l *TLabeledEdit) _instance() uintptr {
+    return uintptr(l.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (l *TLabeledEdit) Instance() uintptr {
-    return l.instance
+    return l._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (l *TLabeledEdit) UnsafeAddr() unsafe.Pointer {
-    return l.ptr
+    return l.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (l *TLabeledEdit) IsValid() bool {
-    return l.instance != 0
+    return l.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (l *TLabeledEdit) Is() TIs {
-    return TIs(l.instance)
+    return TIs(l._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (l *TLabeledEdit) As() TAs {
-//    return TAs(l.instance)
+//    return TAs(l._instance())
 //}
 
+// TLabeledEditClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,1378 +114,1764 @@ func TLabeledEditClass() TClass {
     return LabeledEdit_StaticClassType()
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (l *TLabeledEdit) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    LabeledEdit_SetBounds(l.instance, ALeft , ATop , AWidth , AHeight)
+    LabeledEdit_SetBounds(l._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// Clear
+//
 // 清除。
 func (l *TLabeledEdit) Clear() {
-    LabeledEdit_Clear(l.instance)
+    LabeledEdit_Clear(l._instance())
 }
 
+// ClearSelection
+//
 // 清除选择。
 func (l *TLabeledEdit) ClearSelection() {
-    LabeledEdit_ClearSelection(l.instance)
+    LabeledEdit_ClearSelection(l._instance())
 }
 
+// CopyToClipboard
+//
 // 复制到粘贴板。
 func (l *TLabeledEdit) CopyToClipboard() {
-    LabeledEdit_CopyToClipboard(l.instance)
+    LabeledEdit_CopyToClipboard(l._instance())
 }
 
+// CutToClipboard
+//
 // 剪切到粘贴板。
 func (l *TLabeledEdit) CutToClipboard() {
-    LabeledEdit_CutToClipboard(l.instance)
+    LabeledEdit_CutToClipboard(l._instance())
 }
 
+// PasteFromClipboard
+//
 // 从剪切板粘贴。
 func (l *TLabeledEdit) PasteFromClipboard() {
-    LabeledEdit_PasteFromClipboard(l.instance)
+    LabeledEdit_PasteFromClipboard(l._instance())
 }
 
+// Undo
+//
 // 撤销上一次操作。
 func (l *TLabeledEdit) Undo() {
-    LabeledEdit_Undo(l.instance)
+    LabeledEdit_Undo(l._instance())
 }
 
+// SelectAll
+//
 // 全选。
 func (l *TLabeledEdit) SelectAll() {
-    LabeledEdit_SelectAll(l.instance)
+    LabeledEdit_SelectAll(l._instance())
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (l *TLabeledEdit) CanFocus() bool {
-    return LabeledEdit_CanFocus(l.instance)
+    return LabeledEdit_CanFocus(l._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (l *TLabeledEdit) ContainsControl(Control IControl) bool {
-    return LabeledEdit_ContainsControl(l.instance, CheckPtr(Control))
+    return LabeledEdit_ContainsControl(l._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (l *TLabeledEdit) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(LabeledEdit_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(LabeledEdit_ControlAtPos(l._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (l *TLabeledEdit) DisableAlign() {
-    LabeledEdit_DisableAlign(l.instance)
+    LabeledEdit_DisableAlign(l._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (l *TLabeledEdit) EnableAlign() {
-    LabeledEdit_EnableAlign(l.instance)
+    LabeledEdit_EnableAlign(l._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (l *TLabeledEdit) FindChildControl(ControlName string) *TControl {
-    return AsControl(LabeledEdit_FindChildControl(l.instance, ControlName))
+    return AsControl(LabeledEdit_FindChildControl(l._instance(), ControlName))
 }
 
 func (l *TLabeledEdit) FlipChildren(AllLevels bool) {
-    LabeledEdit_FlipChildren(l.instance, AllLevels)
+    LabeledEdit_FlipChildren(l._instance(), AllLevels)
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (l *TLabeledEdit) Focused() bool {
-    return LabeledEdit_Focused(l.instance)
+    return LabeledEdit_Focused(l._instance())
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (l *TLabeledEdit) HandleAllocated() bool {
-    return LabeledEdit_HandleAllocated(l.instance)
+    return LabeledEdit_HandleAllocated(l._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (l *TLabeledEdit) InsertControl(AControl IControl) {
-    LabeledEdit_InsertControl(l.instance, CheckPtr(AControl))
+    LabeledEdit_InsertControl(l._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (l *TLabeledEdit) Invalidate() {
-    LabeledEdit_Invalidate(l.instance)
+    LabeledEdit_Invalidate(l._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (l *TLabeledEdit) PaintTo(DC HDC, X int32, Y int32) {
-    LabeledEdit_PaintTo(l.instance, DC , X , Y)
+    LabeledEdit_PaintTo(l._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (l *TLabeledEdit) RemoveControl(AControl IControl) {
-    LabeledEdit_RemoveControl(l.instance, CheckPtr(AControl))
+    LabeledEdit_RemoveControl(l._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (l *TLabeledEdit) Realign() {
-    LabeledEdit_Realign(l.instance)
+    LabeledEdit_Realign(l._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (l *TLabeledEdit) Repaint() {
-    LabeledEdit_Repaint(l.instance)
+    LabeledEdit_Repaint(l._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (l *TLabeledEdit) ScaleBy(M int32, D int32) {
-    LabeledEdit_ScaleBy(l.instance, M , D)
+    LabeledEdit_ScaleBy(l._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (l *TLabeledEdit) ScrollBy(DeltaX int32, DeltaY int32) {
-    LabeledEdit_ScrollBy(l.instance, DeltaX , DeltaY)
+    LabeledEdit_ScrollBy(l._instance(), DeltaX , DeltaY)
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (l *TLabeledEdit) SetFocus() {
-    LabeledEdit_SetFocus(l.instance)
+    LabeledEdit_SetFocus(l._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (l *TLabeledEdit) Update() {
-    LabeledEdit_Update(l.instance)
+    LabeledEdit_Update(l._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (l *TLabeledEdit) BringToFront() {
-    LabeledEdit_BringToFront(l.instance)
+    LabeledEdit_BringToFront(l._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (l *TLabeledEdit) ClientToScreen(Point TPoint) TPoint {
-    return LabeledEdit_ClientToScreen(l.instance, Point)
+    return LabeledEdit_ClientToScreen(l._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (l *TLabeledEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return LabeledEdit_ClientToParent(l.instance, Point , CheckPtr(AParent))
+    return LabeledEdit_ClientToParent(l._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (l *TLabeledEdit) Dragging() bool {
-    return LabeledEdit_Dragging(l.instance)
+    return LabeledEdit_Dragging(l._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (l *TLabeledEdit) HasParent() bool {
-    return LabeledEdit_HasParent(l.instance)
+    return LabeledEdit_HasParent(l._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (l *TLabeledEdit) Hide() {
-    LabeledEdit_Hide(l.instance)
+    LabeledEdit_Hide(l._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (l *TLabeledEdit) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return LabeledEdit_Perform(l.instance, Msg , WParam , LParam)
+    return LabeledEdit_Perform(l._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (l *TLabeledEdit) Refresh() {
-    LabeledEdit_Refresh(l.instance)
+    LabeledEdit_Refresh(l._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (l *TLabeledEdit) ScreenToClient(Point TPoint) TPoint {
-    return LabeledEdit_ScreenToClient(l.instance, Point)
+    return LabeledEdit_ScreenToClient(l._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (l *TLabeledEdit) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return LabeledEdit_ParentToClient(l.instance, Point , CheckPtr(AParent))
+    return LabeledEdit_ParentToClient(l._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (l *TLabeledEdit) SendToBack() {
-    LabeledEdit_SendToBack(l.instance)
+    LabeledEdit_SendToBack(l._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (l *TLabeledEdit) Show() {
-    LabeledEdit_Show(l.instance)
+    LabeledEdit_Show(l._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (l *TLabeledEdit) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return LabeledEdit_GetTextBuf(l.instance, Buffer , BufSize)
+    return LabeledEdit_GetTextBuf(l._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (l *TLabeledEdit) GetTextLen() int32 {
-    return LabeledEdit_GetTextLen(l.instance)
+    return LabeledEdit_GetTextLen(l._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (l *TLabeledEdit) SetTextBuf(Buffer string) {
-    LabeledEdit_SetTextBuf(l.instance, Buffer)
+    LabeledEdit_SetTextBuf(l._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (l *TLabeledEdit) FindComponent(AName string) *TComponent {
-    return AsComponent(LabeledEdit_FindComponent(l.instance, AName))
+    return AsComponent(LabeledEdit_FindComponent(l._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (l *TLabeledEdit) GetNamePath() string {
-    return LabeledEdit_GetNamePath(l.instance)
+    return LabeledEdit_GetNamePath(l._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (l *TLabeledEdit) Assign(Source IObject) {
-    LabeledEdit_Assign(l.instance, CheckPtr(Source))
+    LabeledEdit_Assign(l._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (l *TLabeledEdit) ClassType() TClass {
-    return LabeledEdit_ClassType(l.instance)
+    return LabeledEdit_ClassType(l._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (l *TLabeledEdit) ClassName() string {
-    return LabeledEdit_ClassName(l.instance)
+    return LabeledEdit_ClassName(l._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (l *TLabeledEdit) InstanceSize() int32 {
-    return LabeledEdit_InstanceSize(l.instance)
+    return LabeledEdit_InstanceSize(l._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (l *TLabeledEdit) InheritsFrom(AClass TClass) bool {
-    return LabeledEdit_InheritsFrom(l.instance, AClass)
+    return LabeledEdit_InheritsFrom(l._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (l *TLabeledEdit) Equals(Obj IObject) bool {
-    return LabeledEdit_Equals(l.instance, CheckPtr(Obj))
+    return LabeledEdit_Equals(l._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (l *TLabeledEdit) GetHashCode() int32 {
-    return LabeledEdit_GetHashCode(l.instance)
+    return LabeledEdit_GetHashCode(l._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (l *TLabeledEdit) ToString() string {
-    return LabeledEdit_ToString(l.instance)
+    return LabeledEdit_ToString(l._instance())
 }
 
 func (l *TLabeledEdit) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    LabeledEdit_AnchorToNeighbour(l.instance, ASide , ASpace , CheckPtr(ASibling))
+    LabeledEdit_AnchorToNeighbour(l._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (l *TLabeledEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    LabeledEdit_AnchorParallel(l.instance, ASide , ASpace , CheckPtr(ASibling))
+    LabeledEdit_AnchorParallel(l._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (l *TLabeledEdit) AnchorHorizontalCenterTo(ASibling IControl) {
-    LabeledEdit_AnchorHorizontalCenterTo(l.instance, CheckPtr(ASibling))
+    LabeledEdit_AnchorHorizontalCenterTo(l._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (l *TLabeledEdit) AnchorVerticalCenterTo(ASibling IControl) {
-    LabeledEdit_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
+    LabeledEdit_AnchorVerticalCenterTo(l._instance(), CheckPtr(ASibling))
 }
 
 func (l *TLabeledEdit) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    LabeledEdit_AnchorSame(l.instance, ASide , CheckPtr(ASibling))
+    LabeledEdit_AnchorSame(l._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (l *TLabeledEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    LabeledEdit_AnchorAsAlign(l.instance, ATheAlign , ASpace)
+    LabeledEdit_AnchorAsAlign(l._instance(), ATheAlign , ASpace)
 }
 
 func (l *TLabeledEdit) AnchorClient(ASpace int32) {
-    LabeledEdit_AnchorClient(l.instance, ASpace)
+    LabeledEdit_AnchorClient(l._instance(), ASpace)
 }
 
 func (l *TLabeledEdit) ScaleDesignToForm(ASize int32) int32 {
-    return LabeledEdit_ScaleDesignToForm(l.instance, ASize)
+    return LabeledEdit_ScaleDesignToForm(l._instance(), ASize)
 }
 
 func (l *TLabeledEdit) ScaleFormToDesign(ASize int32) int32 {
-    return LabeledEdit_ScaleFormToDesign(l.instance, ASize)
+    return LabeledEdit_ScaleFormToDesign(l._instance(), ASize)
 }
 
 func (l *TLabeledEdit) Scale96ToForm(ASize int32) int32 {
-    return LabeledEdit_Scale96ToForm(l.instance, ASize)
+    return LabeledEdit_Scale96ToForm(l._instance(), ASize)
 }
 
 func (l *TLabeledEdit) ScaleFormTo96(ASize int32) int32 {
-    return LabeledEdit_ScaleFormTo96(l.instance, ASize)
+    return LabeledEdit_ScaleFormTo96(l._instance(), ASize)
 }
 
 func (l *TLabeledEdit) Scale96ToFont(ASize int32) int32 {
-    return LabeledEdit_Scale96ToFont(l.instance, ASize)
+    return LabeledEdit_Scale96ToFont(l._instance(), ASize)
 }
 
 func (l *TLabeledEdit) ScaleFontTo96(ASize int32) int32 {
-    return LabeledEdit_ScaleFontTo96(l.instance, ASize)
+    return LabeledEdit_ScaleFontTo96(l._instance(), ASize)
 }
 
 func (l *TLabeledEdit) ScaleScreenToFont(ASize int32) int32 {
-    return LabeledEdit_ScaleScreenToFont(l.instance, ASize)
+    return LabeledEdit_ScaleScreenToFont(l._instance(), ASize)
 }
 
 func (l *TLabeledEdit) ScaleFontToScreen(ASize int32) int32 {
-    return LabeledEdit_ScaleFontToScreen(l.instance, ASize)
+    return LabeledEdit_ScaleFontToScreen(l._instance(), ASize)
 }
 
 func (l *TLabeledEdit) Scale96ToScreen(ASize int32) int32 {
-    return LabeledEdit_Scale96ToScreen(l.instance, ASize)
+    return LabeledEdit_Scale96ToScreen(l._instance(), ASize)
 }
 
 func (l *TLabeledEdit) ScaleScreenTo96(ASize int32) int32 {
-    return LabeledEdit_ScaleScreenTo96(l.instance, ASize)
+    return LabeledEdit_ScaleScreenTo96(l._instance(), ASize)
 }
 
 func (l *TLabeledEdit) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    LabeledEdit_AutoAdjustLayout(l.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    LabeledEdit_AutoAdjustLayout(l._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (l *TLabeledEdit) FixDesignFontsPPI(ADesignTimePPI int32) {
-    LabeledEdit_FixDesignFontsPPI(l.instance, ADesignTimePPI)
+    LabeledEdit_FixDesignFontsPPI(l._instance(), ADesignTimePPI)
 }
 
 func (l *TLabeledEdit) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    LabeledEdit_ScaleFontsPPI(l.instance, AToPPI , AProportion)
+    LabeledEdit_ScaleFontsPPI(l._instance(), AToPPI , AProportion)
 }
 
+// Alignment
+//
 // 获取文字对齐。
 //
 // Get Text alignment.
 func (l *TLabeledEdit) Alignment() TAlignment {
-    return LabeledEdit_GetAlignment(l.instance)
+    return LabeledEdit_GetAlignment(l._instance())
 }
 
+// SetAlignment
+//
 // 设置文字对齐。
 //
 // Set Text alignment.
 func (l *TLabeledEdit) SetAlignment(value TAlignment) {
-    LabeledEdit_SetAlignment(l.instance, value)
+    LabeledEdit_SetAlignment(l._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (l *TLabeledEdit) Anchors() TAnchors {
-    return LabeledEdit_GetAnchors(l.instance)
+    return LabeledEdit_GetAnchors(l._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (l *TLabeledEdit) SetAnchors(value TAnchors) {
-    LabeledEdit_SetAnchors(l.instance, value)
+    LabeledEdit_SetAnchors(l._instance(), value)
 }
 
+// AutoSelect
+//
 // 获取自动选择。
 func (l *TLabeledEdit) AutoSelect() bool {
-    return LabeledEdit_GetAutoSelect(l.instance)
+    return LabeledEdit_GetAutoSelect(l._instance())
 }
 
+// SetAutoSelect
+//
 // 设置自动选择。
 func (l *TLabeledEdit) SetAutoSelect(value bool) {
-    LabeledEdit_SetAutoSelect(l.instance, value)
+    LabeledEdit_SetAutoSelect(l._instance(), value)
 }
 
+// AutoSize
+//
 // 获取自动调整大小。
 func (l *TLabeledEdit) AutoSize() bool {
-    return LabeledEdit_GetAutoSize(l.instance)
+    return LabeledEdit_GetAutoSize(l._instance())
 }
 
+// SetAutoSize
+//
 // 设置自动调整大小。
 func (l *TLabeledEdit) SetAutoSize(value bool) {
-    LabeledEdit_SetAutoSize(l.instance, value)
+    LabeledEdit_SetAutoSize(l._instance(), value)
 }
 
 func (l *TLabeledEdit) BiDiMode() TBiDiMode {
-    return LabeledEdit_GetBiDiMode(l.instance)
+    return LabeledEdit_GetBiDiMode(l._instance())
 }
 
 func (l *TLabeledEdit) SetBiDiMode(value TBiDiMode) {
-    LabeledEdit_SetBiDiMode(l.instance, value)
+    LabeledEdit_SetBiDiMode(l._instance(), value)
 }
 
+// BorderStyle
+//
 // 获取窗口边框样式。比如：无边框，单一边框等。
 func (l *TLabeledEdit) BorderStyle() TBorderStyle {
-    return LabeledEdit_GetBorderStyle(l.instance)
+    return LabeledEdit_GetBorderStyle(l._instance())
 }
 
+// SetBorderStyle
+//
 // 设置窗口边框样式。比如：无边框，单一边框等。
 func (l *TLabeledEdit) SetBorderStyle(value TBorderStyle) {
-    LabeledEdit_SetBorderStyle(l.instance, value)
+    LabeledEdit_SetBorderStyle(l._instance(), value)
 }
 
 func (l *TLabeledEdit) CharCase() TEditCharCase {
-    return LabeledEdit_GetCharCase(l.instance)
+    return LabeledEdit_GetCharCase(l._instance())
 }
 
 func (l *TLabeledEdit) SetCharCase(value TEditCharCase) {
-    LabeledEdit_SetCharCase(l.instance, value)
+    LabeledEdit_SetCharCase(l._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (l *TLabeledEdit) Color() TColor {
-    return LabeledEdit_GetColor(l.instance)
+    return LabeledEdit_GetColor(l._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (l *TLabeledEdit) SetColor(value TColor) {
-    LabeledEdit_SetColor(l.instance, value)
+    LabeledEdit_SetColor(l._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (l *TLabeledEdit) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(LabeledEdit_GetConstraints(l.instance))
+    return AsSizeConstraints(LabeledEdit_GetConstraints(l._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (l *TLabeledEdit) SetConstraints(value *TSizeConstraints) {
-    LabeledEdit_SetConstraints(l.instance, CheckPtr(value))
+    LabeledEdit_SetConstraints(l._instance(), CheckPtr(value))
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (l *TLabeledEdit) DoubleBuffered() bool {
-    return LabeledEdit_GetDoubleBuffered(l.instance)
+    return LabeledEdit_GetDoubleBuffered(l._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (l *TLabeledEdit) SetDoubleBuffered(value bool) {
-    LabeledEdit_SetDoubleBuffered(l.instance, value)
+    LabeledEdit_SetDoubleBuffered(l._instance(), value)
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (l *TLabeledEdit) DragCursor() TCursor {
-    return LabeledEdit_GetDragCursor(l.instance)
+    return LabeledEdit_GetDragCursor(l._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (l *TLabeledEdit) SetDragCursor(value TCursor) {
-    LabeledEdit_SetDragCursor(l.instance, value)
+    LabeledEdit_SetDragCursor(l._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (l *TLabeledEdit) DragMode() TDragMode {
-    return LabeledEdit_GetDragMode(l.instance)
+    return LabeledEdit_GetDragMode(l._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (l *TLabeledEdit) SetDragMode(value TDragMode) {
-    LabeledEdit_SetDragMode(l.instance, value)
+    LabeledEdit_SetDragMode(l._instance(), value)
 }
 
 func (l *TLabeledEdit) EditLabel() *TBoundLabel {
-    return AsBoundLabel(LabeledEdit_GetEditLabel(l.instance))
+    return AsBoundLabel(LabeledEdit_GetEditLabel(l._instance()))
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (l *TLabeledEdit) Enabled() bool {
-    return LabeledEdit_GetEnabled(l.instance)
+    return LabeledEdit_GetEnabled(l._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (l *TLabeledEdit) SetEnabled(value bool) {
-    LabeledEdit_SetEnabled(l.instance, value)
+    LabeledEdit_SetEnabled(l._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (l *TLabeledEdit) Font() *TFont {
-    return AsFont(LabeledEdit_GetFont(l.instance))
+    return AsFont(LabeledEdit_GetFont(l._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (l *TLabeledEdit) SetFont(value *TFont) {
-    LabeledEdit_SetFont(l.instance, CheckPtr(value))
+    LabeledEdit_SetFont(l._instance(), CheckPtr(value))
 }
 
+// HideSelection
+//
 // 获取隐藏选择。
 func (l *TLabeledEdit) HideSelection() bool {
-    return LabeledEdit_GetHideSelection(l.instance)
+    return LabeledEdit_GetHideSelection(l._instance())
 }
 
+// SetHideSelection
+//
 // 设置隐藏选择。
 func (l *TLabeledEdit) SetHideSelection(value bool) {
-    LabeledEdit_SetHideSelection(l.instance, value)
+    LabeledEdit_SetHideSelection(l._instance(), value)
 }
 
 func (l *TLabeledEdit) LabelPosition() TLabelPosition {
-    return LabeledEdit_GetLabelPosition(l.instance)
+    return LabeledEdit_GetLabelPosition(l._instance())
 }
 
 func (l *TLabeledEdit) SetLabelPosition(value TLabelPosition) {
-    LabeledEdit_SetLabelPosition(l.instance, value)
+    LabeledEdit_SetLabelPosition(l._instance(), value)
 }
 
 func (l *TLabeledEdit) LabelSpacing() int32 {
-    return LabeledEdit_GetLabelSpacing(l.instance)
+    return LabeledEdit_GetLabelSpacing(l._instance())
 }
 
 func (l *TLabeledEdit) SetLabelSpacing(value int32) {
-    LabeledEdit_SetLabelSpacing(l.instance, value)
+    LabeledEdit_SetLabelSpacing(l._instance(), value)
 }
 
+// MaxLength
+//
 // 获取最大长度。
 func (l *TLabeledEdit) MaxLength() int32 {
-    return LabeledEdit_GetMaxLength(l.instance)
+    return LabeledEdit_GetMaxLength(l._instance())
 }
 
+// SetMaxLength
+//
 // 设置最大长度。
 func (l *TLabeledEdit) SetMaxLength(value int32) {
-    LabeledEdit_SetMaxLength(l.instance, value)
+    LabeledEdit_SetMaxLength(l._instance(), value)
 }
 
+// NumbersOnly
+//
 // 获取只能输入数字。
 func (l *TLabeledEdit) NumbersOnly() bool {
-    return LabeledEdit_GetNumbersOnly(l.instance)
+    return LabeledEdit_GetNumbersOnly(l._instance())
 }
 
+// SetNumbersOnly
+//
 // 设置只能输入数字。
 func (l *TLabeledEdit) SetNumbersOnly(value bool) {
-    LabeledEdit_SetNumbersOnly(l.instance, value)
+    LabeledEdit_SetNumbersOnly(l._instance(), value)
 }
 
+// ParentColor
+//
 // 获取使用父容器颜色。
 //
 // Get parent color.
 func (l *TLabeledEdit) ParentColor() bool {
-    return LabeledEdit_GetParentColor(l.instance)
+    return LabeledEdit_GetParentColor(l._instance())
 }
 
+// SetParentColor
+//
 // 设置使用父容器颜色。
 //
 // Set parent color.
 func (l *TLabeledEdit) SetParentColor(value bool) {
-    LabeledEdit_SetParentColor(l.instance, value)
+    LabeledEdit_SetParentColor(l._instance(), value)
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (l *TLabeledEdit) ParentDoubleBuffered() bool {
-    return LabeledEdit_GetParentDoubleBuffered(l.instance)
+    return LabeledEdit_GetParentDoubleBuffered(l._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (l *TLabeledEdit) SetParentDoubleBuffered(value bool) {
-    LabeledEdit_SetParentDoubleBuffered(l.instance, value)
+    LabeledEdit_SetParentDoubleBuffered(l._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (l *TLabeledEdit) ParentFont() bool {
-    return LabeledEdit_GetParentFont(l.instance)
+    return LabeledEdit_GetParentFont(l._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (l *TLabeledEdit) SetParentFont(value bool) {
-    LabeledEdit_SetParentFont(l.instance, value)
+    LabeledEdit_SetParentFont(l._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (l *TLabeledEdit) ParentShowHint() bool {
-    return LabeledEdit_GetParentShowHint(l.instance)
+    return LabeledEdit_GetParentShowHint(l._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (l *TLabeledEdit) SetParentShowHint(value bool) {
-    LabeledEdit_SetParentShowHint(l.instance, value)
+    LabeledEdit_SetParentShowHint(l._instance(), value)
 }
 
+// PasswordChar
+//
 // 获取密码掩码字符。
 func (l *TLabeledEdit) PasswordChar() uint16 {
-    return LabeledEdit_GetPasswordChar(l.instance)
+    return LabeledEdit_GetPasswordChar(l._instance())
 }
 
+// SetPasswordChar
+//
 // 设置密码掩码字符。
 func (l *TLabeledEdit) SetPasswordChar(value uint16) {
-    LabeledEdit_SetPasswordChar(l.instance, value)
+    LabeledEdit_SetPasswordChar(l._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (l *TLabeledEdit) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(LabeledEdit_GetPopupMenu(l.instance))
+    return AsPopupMenu(LabeledEdit_GetPopupMenu(l._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (l *TLabeledEdit) SetPopupMenu(value IComponent) {
-    LabeledEdit_SetPopupMenu(l.instance, CheckPtr(value))
+    LabeledEdit_SetPopupMenu(l._instance(), CheckPtr(value))
 }
 
+// ReadOnly
+//
 // 获取只读。
 func (l *TLabeledEdit) ReadOnly() bool {
-    return LabeledEdit_GetReadOnly(l.instance)
+    return LabeledEdit_GetReadOnly(l._instance())
 }
 
+// SetReadOnly
+//
 // 设置只读。
 func (l *TLabeledEdit) SetReadOnly(value bool) {
-    LabeledEdit_SetReadOnly(l.instance, value)
+    LabeledEdit_SetReadOnly(l._instance(), value)
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (l *TLabeledEdit) ShowHint() bool {
-    return LabeledEdit_GetShowHint(l.instance)
+    return LabeledEdit_GetShowHint(l._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (l *TLabeledEdit) SetShowHint(value bool) {
-    LabeledEdit_SetShowHint(l.instance, value)
+    LabeledEdit_SetShowHint(l._instance(), value)
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (l *TLabeledEdit) TabOrder() TTabOrder {
-    return LabeledEdit_GetTabOrder(l.instance)
+    return LabeledEdit_GetTabOrder(l._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (l *TLabeledEdit) SetTabOrder(value TTabOrder) {
-    LabeledEdit_SetTabOrder(l.instance, value)
+    LabeledEdit_SetTabOrder(l._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (l *TLabeledEdit) TabStop() bool {
-    return LabeledEdit_GetTabStop(l.instance)
+    return LabeledEdit_GetTabStop(l._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (l *TLabeledEdit) SetTabStop(value bool) {
-    LabeledEdit_SetTabStop(l.instance, value)
+    LabeledEdit_SetTabStop(l._instance(), value)
 }
 
+// Text
+//
 // 获取文本。
 func (l *TLabeledEdit) Text() string {
     return getControlBufferText(l.GetTextLen, l.GetTextBuf)
 }
 
+// SetText
+//
 // 设置文本。
 func (l *TLabeledEdit) SetText(value string) {
-    LabeledEdit_SetText(l.instance, value)
+    LabeledEdit_SetText(l._instance(), value)
 }
 
+// TextHint
+//
 // 获取提示文本。
 func (l *TLabeledEdit) TextHint() string {
-    return LabeledEdit_GetTextHint(l.instance)
+    return LabeledEdit_GetTextHint(l._instance())
 }
 
+// SetTextHint
+//
 // 设置提示文本。
 func (l *TLabeledEdit) SetTextHint(value string) {
-    LabeledEdit_SetTextHint(l.instance, value)
+    LabeledEdit_SetTextHint(l._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (l *TLabeledEdit) Visible() bool {
-    return LabeledEdit_GetVisible(l.instance)
+    return LabeledEdit_GetVisible(l._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (l *TLabeledEdit) SetVisible(value bool) {
-    LabeledEdit_SetVisible(l.instance, value)
+    LabeledEdit_SetVisible(l._instance(), value)
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (l *TLabeledEdit) SetOnChange(fn TNotifyEvent) {
-    LabeledEdit_SetOnChange(l.instance, fn)
+    LabeledEdit_SetOnChange(l._instance(), fn)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (l *TLabeledEdit) SetOnClick(fn TNotifyEvent) {
-    LabeledEdit_SetOnClick(l.instance, fn)
+    LabeledEdit_SetOnClick(l._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (l *TLabeledEdit) SetOnDblClick(fn TNotifyEvent) {
-    LabeledEdit_SetOnDblClick(l.instance, fn)
+    LabeledEdit_SetOnDblClick(l._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (l *TLabeledEdit) SetOnDragDrop(fn TDragDropEvent) {
-    LabeledEdit_SetOnDragDrop(l.instance, fn)
+    LabeledEdit_SetOnDragDrop(l._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (l *TLabeledEdit) SetOnDragOver(fn TDragOverEvent) {
-    LabeledEdit_SetOnDragOver(l.instance, fn)
+    LabeledEdit_SetOnDragOver(l._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (l *TLabeledEdit) SetOnEndDrag(fn TEndDragEvent) {
-    LabeledEdit_SetOnEndDrag(l.instance, fn)
+    LabeledEdit_SetOnEndDrag(l._instance(), fn)
 }
 
+// SetOnEnter
+//
 // 设置焦点进入。
 //
 // Set Focus entry.
 func (l *TLabeledEdit) SetOnEnter(fn TNotifyEvent) {
-    LabeledEdit_SetOnEnter(l.instance, fn)
+    LabeledEdit_SetOnEnter(l._instance(), fn)
 }
 
+// SetOnExit
+//
 // 设置焦点退出。
 //
 // Set Focus exit.
 func (l *TLabeledEdit) SetOnExit(fn TNotifyEvent) {
-    LabeledEdit_SetOnExit(l.instance, fn)
+    LabeledEdit_SetOnExit(l._instance(), fn)
 }
 
+// SetOnKeyDown
+//
 // 设置键盘按键按下事件。
 //
 // Set Keyboard button press event.
 func (l *TLabeledEdit) SetOnKeyDown(fn TKeyEvent) {
-    LabeledEdit_SetOnKeyDown(l.instance, fn)
+    LabeledEdit_SetOnKeyDown(l._instance(), fn)
 }
 
+// SetOnKeyPress
+//
 // 设置键键下事件。
 func (l *TLabeledEdit) SetOnKeyPress(fn TKeyPressEvent) {
-    LabeledEdit_SetOnKeyPress(l.instance, fn)
+    LabeledEdit_SetOnKeyPress(l._instance(), fn)
 }
 
+// SetOnKeyUp
+//
 // 设置键盘按键抬起事件。
 //
 // Set Keyboard button lift event.
 func (l *TLabeledEdit) SetOnKeyUp(fn TKeyEvent) {
-    LabeledEdit_SetOnKeyUp(l.instance, fn)
+    LabeledEdit_SetOnKeyUp(l._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (l *TLabeledEdit) SetOnMouseDown(fn TMouseEvent) {
-    LabeledEdit_SetOnMouseDown(l.instance, fn)
+    LabeledEdit_SetOnMouseDown(l._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (l *TLabeledEdit) SetOnMouseEnter(fn TNotifyEvent) {
-    LabeledEdit_SetOnMouseEnter(l.instance, fn)
+    LabeledEdit_SetOnMouseEnter(l._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (l *TLabeledEdit) SetOnMouseLeave(fn TNotifyEvent) {
-    LabeledEdit_SetOnMouseLeave(l.instance, fn)
+    LabeledEdit_SetOnMouseLeave(l._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (l *TLabeledEdit) SetOnMouseMove(fn TMouseMoveEvent) {
-    LabeledEdit_SetOnMouseMove(l.instance, fn)
+    LabeledEdit_SetOnMouseMove(l._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (l *TLabeledEdit) SetOnMouseUp(fn TMouseEvent) {
-    LabeledEdit_SetOnMouseUp(l.instance, fn)
+    LabeledEdit_SetOnMouseUp(l._instance(), fn)
 }
 
+// CanUndo
+//
 // 获取能否撤销。
 func (l *TLabeledEdit) CanUndo() bool {
-    return LabeledEdit_GetCanUndo(l.instance)
+    return LabeledEdit_GetCanUndo(l._instance())
 }
 
+// Modified
+//
 // 获取修改。
 //
 // Get modified.
 func (l *TLabeledEdit) Modified() bool {
-    return LabeledEdit_GetModified(l.instance)
+    return LabeledEdit_GetModified(l._instance())
 }
 
+// SetModified
+//
 // 设置修改。
 //
 // Set modified.
 func (l *TLabeledEdit) SetModified(value bool) {
-    LabeledEdit_SetModified(l.instance, value)
+    LabeledEdit_SetModified(l._instance(), value)
 }
 
+// SelLength
+//
 // 获取选择的长度。
 func (l *TLabeledEdit) SelLength() int32 {
-    return LabeledEdit_GetSelLength(l.instance)
+    return LabeledEdit_GetSelLength(l._instance())
 }
 
+// SetSelLength
+//
 // 设置选择的长度。
 func (l *TLabeledEdit) SetSelLength(value int32) {
-    LabeledEdit_SetSelLength(l.instance, value)
+    LabeledEdit_SetSelLength(l._instance(), value)
 }
 
+// SelStart
+//
 // 获取选择的启始位置。
 func (l *TLabeledEdit) SelStart() int32 {
-    return LabeledEdit_GetSelStart(l.instance)
+    return LabeledEdit_GetSelStart(l._instance())
 }
 
+// SetSelStart
+//
 // 设置选择的启始位置。
 func (l *TLabeledEdit) SetSelStart(value int32) {
-    LabeledEdit_SetSelStart(l.instance, value)
+    LabeledEdit_SetSelStart(l._instance(), value)
 }
 
+// SelText
+//
 // 获取选择的文本。
 func (l *TLabeledEdit) SelText() string {
-    return LabeledEdit_GetSelText(l.instance)
+    return LabeledEdit_GetSelText(l._instance())
 }
 
+// SetSelText
+//
 // 设置选择的文本。
 func (l *TLabeledEdit) SetSelText(value string) {
-    LabeledEdit_SetSelText(l.instance, value)
+    LabeledEdit_SetSelText(l._instance(), value)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (l *TLabeledEdit) DockClientCount() int32 {
-    return LabeledEdit_GetDockClientCount(l.instance)
+    return LabeledEdit_GetDockClientCount(l._instance())
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (l *TLabeledEdit) DockSite() bool {
-    return LabeledEdit_GetDockSite(l.instance)
+    return LabeledEdit_GetDockSite(l._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (l *TLabeledEdit) SetDockSite(value bool) {
-    LabeledEdit_SetDockSite(l.instance, value)
+    LabeledEdit_SetDockSite(l._instance(), value)
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (l *TLabeledEdit) MouseInClient() bool {
-    return LabeledEdit_GetMouseInClient(l.instance)
+    return LabeledEdit_GetMouseInClient(l._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (l *TLabeledEdit) VisibleDockClientCount() int32 {
-    return LabeledEdit_GetVisibleDockClientCount(l.instance)
+    return LabeledEdit_GetVisibleDockClientCount(l._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (l *TLabeledEdit) Brush() *TBrush {
-    return AsBrush(LabeledEdit_GetBrush(l.instance))
+    return AsBrush(LabeledEdit_GetBrush(l._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (l *TLabeledEdit) ControlCount() int32 {
-    return LabeledEdit_GetControlCount(l.instance)
+    return LabeledEdit_GetControlCount(l._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (l *TLabeledEdit) Handle() HWND {
-    return LabeledEdit_GetHandle(l.instance)
+    return LabeledEdit_GetHandle(l._instance())
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (l *TLabeledEdit) ParentWindow() HWND {
-    return LabeledEdit_GetParentWindow(l.instance)
+    return LabeledEdit_GetParentWindow(l._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (l *TLabeledEdit) SetParentWindow(value HWND) {
-    LabeledEdit_SetParentWindow(l.instance, value)
+    LabeledEdit_SetParentWindow(l._instance(), value)
 }
 
 func (l *TLabeledEdit) Showing() bool {
-    return LabeledEdit_GetShowing(l.instance)
+    return LabeledEdit_GetShowing(l._instance())
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (l *TLabeledEdit) UseDockManager() bool {
-    return LabeledEdit_GetUseDockManager(l.instance)
+    return LabeledEdit_GetUseDockManager(l._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (l *TLabeledEdit) SetUseDockManager(value bool) {
-    LabeledEdit_SetUseDockManager(l.instance, value)
+    LabeledEdit_SetUseDockManager(l._instance(), value)
 }
 
 func (l *TLabeledEdit) Action() *TAction {
-    return AsAction(LabeledEdit_GetAction(l.instance))
+    return AsAction(LabeledEdit_GetAction(l._instance()))
 }
 
 func (l *TLabeledEdit) SetAction(value IComponent) {
-    LabeledEdit_SetAction(l.instance, CheckPtr(value))
+    LabeledEdit_SetAction(l._instance(), CheckPtr(value))
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (l *TLabeledEdit) Align() TAlign {
-    return LabeledEdit_GetAlign(l.instance)
+    return LabeledEdit_GetAlign(l._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (l *TLabeledEdit) SetAlign(value TAlign) {
-    LabeledEdit_SetAlign(l.instance, value)
+    LabeledEdit_SetAlign(l._instance(), value)
 }
 
 func (l *TLabeledEdit) BoundsRect() TRect {
-    return LabeledEdit_GetBoundsRect(l.instance)
+    return LabeledEdit_GetBoundsRect(l._instance())
 }
 
 func (l *TLabeledEdit) SetBoundsRect(value TRect) {
-    LabeledEdit_SetBoundsRect(l.instance, value)
+    LabeledEdit_SetBoundsRect(l._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (l *TLabeledEdit) ClientHeight() int32 {
-    return LabeledEdit_GetClientHeight(l.instance)
+    return LabeledEdit_GetClientHeight(l._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (l *TLabeledEdit) SetClientHeight(value int32) {
-    LabeledEdit_SetClientHeight(l.instance, value)
+    LabeledEdit_SetClientHeight(l._instance(), value)
 }
 
 func (l *TLabeledEdit) ClientOrigin() TPoint {
-    return LabeledEdit_GetClientOrigin(l.instance)
+    return LabeledEdit_GetClientOrigin(l._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (l *TLabeledEdit) ClientRect() TRect {
-    return LabeledEdit_GetClientRect(l.instance)
+    return LabeledEdit_GetClientRect(l._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (l *TLabeledEdit) ClientWidth() int32 {
-    return LabeledEdit_GetClientWidth(l.instance)
+    return LabeledEdit_GetClientWidth(l._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (l *TLabeledEdit) SetClientWidth(value int32) {
-    LabeledEdit_SetClientWidth(l.instance, value)
+    LabeledEdit_SetClientWidth(l._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (l *TLabeledEdit) ControlState() TControlState {
-    return LabeledEdit_GetControlState(l.instance)
+    return LabeledEdit_GetControlState(l._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (l *TLabeledEdit) SetControlState(value TControlState) {
-    LabeledEdit_SetControlState(l.instance, value)
+    LabeledEdit_SetControlState(l._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (l *TLabeledEdit) ControlStyle() TControlStyle {
-    return LabeledEdit_GetControlStyle(l.instance)
+    return LabeledEdit_GetControlStyle(l._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (l *TLabeledEdit) SetControlStyle(value TControlStyle) {
-    LabeledEdit_SetControlStyle(l.instance, value)
+    LabeledEdit_SetControlStyle(l._instance(), value)
 }
 
 func (l *TLabeledEdit) Floating() bool {
-    return LabeledEdit_GetFloating(l.instance)
+    return LabeledEdit_GetFloating(l._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (l *TLabeledEdit) Parent() *TWinControl {
-    return AsWinControl(LabeledEdit_GetParent(l.instance))
+    return AsWinControl(LabeledEdit_GetParent(l._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (l *TLabeledEdit) SetParent(value IWinControl) {
-    LabeledEdit_SetParent(l.instance, CheckPtr(value))
+    LabeledEdit_SetParent(l._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (l *TLabeledEdit) Left() int32 {
-    return LabeledEdit_GetLeft(l.instance)
+    return LabeledEdit_GetLeft(l._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (l *TLabeledEdit) SetLeft(value int32) {
-    LabeledEdit_SetLeft(l.instance, value)
+    LabeledEdit_SetLeft(l._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (l *TLabeledEdit) Top() int32 {
-    return LabeledEdit_GetTop(l.instance)
+    return LabeledEdit_GetTop(l._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (l *TLabeledEdit) SetTop(value int32) {
-    LabeledEdit_SetTop(l.instance, value)
+    LabeledEdit_SetTop(l._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (l *TLabeledEdit) Width() int32 {
-    return LabeledEdit_GetWidth(l.instance)
+    return LabeledEdit_GetWidth(l._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (l *TLabeledEdit) SetWidth(value int32) {
-    LabeledEdit_SetWidth(l.instance, value)
+    LabeledEdit_SetWidth(l._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (l *TLabeledEdit) Height() int32 {
-    return LabeledEdit_GetHeight(l.instance)
+    return LabeledEdit_GetHeight(l._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (l *TLabeledEdit) SetHeight(value int32) {
-    LabeledEdit_SetHeight(l.instance, value)
+    LabeledEdit_SetHeight(l._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (l *TLabeledEdit) Cursor() TCursor {
-    return LabeledEdit_GetCursor(l.instance)
+    return LabeledEdit_GetCursor(l._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (l *TLabeledEdit) SetCursor(value TCursor) {
-    LabeledEdit_SetCursor(l.instance, value)
+    LabeledEdit_SetCursor(l._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (l *TLabeledEdit) Hint() string {
-    return LabeledEdit_GetHint(l.instance)
+    return LabeledEdit_GetHint(l._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (l *TLabeledEdit) SetHint(value string) {
-    LabeledEdit_SetHint(l.instance, value)
+    LabeledEdit_SetHint(l._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (l *TLabeledEdit) ComponentCount() int32 {
-    return LabeledEdit_GetComponentCount(l.instance)
+    return LabeledEdit_GetComponentCount(l._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (l *TLabeledEdit) ComponentIndex() int32 {
-    return LabeledEdit_GetComponentIndex(l.instance)
+    return LabeledEdit_GetComponentIndex(l._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (l *TLabeledEdit) SetComponentIndex(value int32) {
-    LabeledEdit_SetComponentIndex(l.instance, value)
+    LabeledEdit_SetComponentIndex(l._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (l *TLabeledEdit) Owner() *TComponent {
-    return AsComponent(LabeledEdit_GetOwner(l.instance))
+    return AsComponent(LabeledEdit_GetOwner(l._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (l *TLabeledEdit) Name() string {
-    return LabeledEdit_GetName(l.instance)
+    return LabeledEdit_GetName(l._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (l *TLabeledEdit) SetName(value string) {
-    LabeledEdit_SetName(l.instance, value)
+    LabeledEdit_SetName(l._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (l *TLabeledEdit) Tag() int {
-    return LabeledEdit_GetTag(l.instance)
+    return LabeledEdit_GetTag(l._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (l *TLabeledEdit) SetTag(value int) {
-    LabeledEdit_SetTag(l.instance, value)
+    LabeledEdit_SetTag(l._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (l *TLabeledEdit) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(LabeledEdit_GetAnchorSideLeft(l.instance))
+    return AsAnchorSide(LabeledEdit_GetAnchorSideLeft(l._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (l *TLabeledEdit) SetAnchorSideLeft(value *TAnchorSide) {
-    LabeledEdit_SetAnchorSideLeft(l.instance, CheckPtr(value))
+    LabeledEdit_SetAnchorSideLeft(l._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (l *TLabeledEdit) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(LabeledEdit_GetAnchorSideTop(l.instance))
+    return AsAnchorSide(LabeledEdit_GetAnchorSideTop(l._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (l *TLabeledEdit) SetAnchorSideTop(value *TAnchorSide) {
-    LabeledEdit_SetAnchorSideTop(l.instance, CheckPtr(value))
+    LabeledEdit_SetAnchorSideTop(l._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (l *TLabeledEdit) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(LabeledEdit_GetAnchorSideRight(l.instance))
+    return AsAnchorSide(LabeledEdit_GetAnchorSideRight(l._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (l *TLabeledEdit) SetAnchorSideRight(value *TAnchorSide) {
-    LabeledEdit_SetAnchorSideRight(l.instance, CheckPtr(value))
+    LabeledEdit_SetAnchorSideRight(l._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (l *TLabeledEdit) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(LabeledEdit_GetAnchorSideBottom(l.instance))
+    return AsAnchorSide(LabeledEdit_GetAnchorSideBottom(l._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (l *TLabeledEdit) SetAnchorSideBottom(value *TAnchorSide) {
-    LabeledEdit_SetAnchorSideBottom(l.instance, CheckPtr(value))
+    LabeledEdit_SetAnchorSideBottom(l._instance(), CheckPtr(value))
 }
 
 func (l *TLabeledEdit) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(LabeledEdit_GetChildSizing(l.instance))
+    return AsControlChildSizing(LabeledEdit_GetChildSizing(l._instance()))
 }
 
 func (l *TLabeledEdit) SetChildSizing(value *TControlChildSizing) {
-    LabeledEdit_SetChildSizing(l.instance, CheckPtr(value))
+    LabeledEdit_SetChildSizing(l._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (l *TLabeledEdit) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(LabeledEdit_GetBorderSpacing(l.instance))
+    return AsControlBorderSpacing(LabeledEdit_GetBorderSpacing(l._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (l *TLabeledEdit) SetBorderSpacing(value *TControlBorderSpacing) {
-    LabeledEdit_SetBorderSpacing(l.instance, CheckPtr(value))
+    LabeledEdit_SetBorderSpacing(l._instance(), CheckPtr(value))
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (l *TLabeledEdit) DockClients(Index int32) *TControl {
-    return AsControl(LabeledEdit_GetDockClients(l.instance, Index))
+    return AsControl(LabeledEdit_GetDockClients(l._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (l *TLabeledEdit) Controls(Index int32) *TControl {
-    return AsControl(LabeledEdit_GetControls(l.instance, Index))
+    return AsControl(LabeledEdit_GetControls(l._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (l *TLabeledEdit) Components(AIndex int32) *TComponent {
-    return AsComponent(LabeledEdit_GetComponents(l.instance, AIndex))
+    return AsComponent(LabeledEdit_GetComponents(l._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (l *TLabeledEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(LabeledEdit_GetAnchorSide(l.instance, AKind))
+    return AsAnchorSide(LabeledEdit_GetAnchorSide(l._instance(), AKind))
 }
 

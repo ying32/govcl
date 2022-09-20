@@ -19,101 +19,94 @@ import (
 
 type TDrawGrid struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewDrawGrid
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewDrawGrid(owner IComponent) *TDrawGrid {
     d := new(TDrawGrid)
-    d.instance = DrawGrid_Create(CheckPtr(owner))
-    d.ptr = unsafe.Pointer(d.instance)
+    d.instance = unsafe.Pointer(DrawGrid_Create(CheckPtr(owner)))
     return d
 }
 
+// AsDrawGrid
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsDrawGrid(obj interface{}) *TDrawGrid {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TDrawGrid{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TDrawGrid{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsDrawGrid.
-func DrawGridFromInst(inst uintptr) *TDrawGrid {
-    return AsDrawGrid(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsDrawGrid.
-func DrawGridFromObj(obj IObject) *TDrawGrid {
-    return AsDrawGrid(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsDrawGrid.
-func DrawGridFromUnsafePointer(ptr unsafe.Pointer) *TDrawGrid {
-    return AsDrawGrid(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (d *TDrawGrid) Free() {
-    if d.instance != 0 {
-        DrawGrid_Free(d.instance)
-        d.instance, d.ptr = 0, nullptr
+    if d.instance != nullptr {
+        DrawGrid_Free(d._instance())
+        d.instance  = nullptr
     }
 }
 
+func (d *TDrawGrid) _instance() uintptr {
+    return uintptr(d.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (d *TDrawGrid) Instance() uintptr {
-    return d.instance
+    return d._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (d *TDrawGrid) UnsafeAddr() unsafe.Pointer {
-    return d.ptr
+    return d.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (d *TDrawGrid) IsValid() bool {
-    return d.instance != 0
+    return d.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (d *TDrawGrid) Is() TIs {
-    return TIs(d.instance)
+    return TIs(d._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (d *TDrawGrid) As() TAs {
-//    return TAs(d.instance)
+//    return TAs(d._instance())
 //}
 
+// TDrawGridClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,1414 +115,1742 @@ func TDrawGridClass() TClass {
 }
 
 func (d *TDrawGrid) CellRect(ACol int32, ARow int32) TRect {
-    return DrawGrid_CellRect(d.instance, ACol , ARow)
+    return DrawGrid_CellRect(d._instance(), ACol , ARow)
 }
 
 func (d *TDrawGrid) MouseToCell(X int32, Y int32, ACol *int32, ARow *int32) {
-    DrawGrid_MouseToCell(d.instance, X , Y , ACol , ARow)
+    DrawGrid_MouseToCell(d._instance(), X , Y , ACol , ARow)
 }
 
 func (d *TDrawGrid) MouseCoord(X int32, Y int32) TGridCoord {
-    return DrawGrid_MouseCoord(d.instance, X , Y)
+    return DrawGrid_MouseCoord(d._instance(), X , Y)
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (d *TDrawGrid) CanFocus() bool {
-    return DrawGrid_CanFocus(d.instance)
+    return DrawGrid_CanFocus(d._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (d *TDrawGrid) ContainsControl(Control IControl) bool {
-    return DrawGrid_ContainsControl(d.instance, CheckPtr(Control))
+    return DrawGrid_ContainsControl(d._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (d *TDrawGrid) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(DrawGrid_ControlAtPos(d.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(DrawGrid_ControlAtPos(d._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (d *TDrawGrid) DisableAlign() {
-    DrawGrid_DisableAlign(d.instance)
+    DrawGrid_DisableAlign(d._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (d *TDrawGrid) EnableAlign() {
-    DrawGrid_EnableAlign(d.instance)
+    DrawGrid_EnableAlign(d._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (d *TDrawGrid) FindChildControl(ControlName string) *TControl {
-    return AsControl(DrawGrid_FindChildControl(d.instance, ControlName))
+    return AsControl(DrawGrid_FindChildControl(d._instance(), ControlName))
 }
 
 func (d *TDrawGrid) FlipChildren(AllLevels bool) {
-    DrawGrid_FlipChildren(d.instance, AllLevels)
+    DrawGrid_FlipChildren(d._instance(), AllLevels)
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (d *TDrawGrid) Focused() bool {
-    return DrawGrid_Focused(d.instance)
+    return DrawGrid_Focused(d._instance())
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (d *TDrawGrid) HandleAllocated() bool {
-    return DrawGrid_HandleAllocated(d.instance)
+    return DrawGrid_HandleAllocated(d._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (d *TDrawGrid) InsertControl(AControl IControl) {
-    DrawGrid_InsertControl(d.instance, CheckPtr(AControl))
+    DrawGrid_InsertControl(d._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (d *TDrawGrid) Invalidate() {
-    DrawGrid_Invalidate(d.instance)
+    DrawGrid_Invalidate(d._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (d *TDrawGrid) PaintTo(DC HDC, X int32, Y int32) {
-    DrawGrid_PaintTo(d.instance, DC , X , Y)
+    DrawGrid_PaintTo(d._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (d *TDrawGrid) RemoveControl(AControl IControl) {
-    DrawGrid_RemoveControl(d.instance, CheckPtr(AControl))
+    DrawGrid_RemoveControl(d._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (d *TDrawGrid) Realign() {
-    DrawGrid_Realign(d.instance)
+    DrawGrid_Realign(d._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (d *TDrawGrid) Repaint() {
-    DrawGrid_Repaint(d.instance)
+    DrawGrid_Repaint(d._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (d *TDrawGrid) ScaleBy(M int32, D int32) {
-    DrawGrid_ScaleBy(d.instance, M , D)
+    DrawGrid_ScaleBy(d._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (d *TDrawGrid) ScrollBy(DeltaX int32, DeltaY int32) {
-    DrawGrid_ScrollBy(d.instance, DeltaX , DeltaY)
+    DrawGrid_ScrollBy(d._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (d *TDrawGrid) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    DrawGrid_SetBounds(d.instance, ALeft , ATop , AWidth , AHeight)
+    DrawGrid_SetBounds(d._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (d *TDrawGrid) SetFocus() {
-    DrawGrid_SetFocus(d.instance)
+    DrawGrid_SetFocus(d._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (d *TDrawGrid) Update() {
-    DrawGrid_Update(d.instance)
+    DrawGrid_Update(d._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (d *TDrawGrid) BringToFront() {
-    DrawGrid_BringToFront(d.instance)
+    DrawGrid_BringToFront(d._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (d *TDrawGrid) ClientToScreen(Point TPoint) TPoint {
-    return DrawGrid_ClientToScreen(d.instance, Point)
+    return DrawGrid_ClientToScreen(d._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (d *TDrawGrid) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return DrawGrid_ClientToParent(d.instance, Point , CheckPtr(AParent))
+    return DrawGrid_ClientToParent(d._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (d *TDrawGrid) Dragging() bool {
-    return DrawGrid_Dragging(d.instance)
+    return DrawGrid_Dragging(d._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (d *TDrawGrid) HasParent() bool {
-    return DrawGrid_HasParent(d.instance)
+    return DrawGrid_HasParent(d._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (d *TDrawGrid) Hide() {
-    DrawGrid_Hide(d.instance)
+    DrawGrid_Hide(d._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (d *TDrawGrid) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return DrawGrid_Perform(d.instance, Msg , WParam , LParam)
+    return DrawGrid_Perform(d._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (d *TDrawGrid) Refresh() {
-    DrawGrid_Refresh(d.instance)
+    DrawGrid_Refresh(d._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (d *TDrawGrid) ScreenToClient(Point TPoint) TPoint {
-    return DrawGrid_ScreenToClient(d.instance, Point)
+    return DrawGrid_ScreenToClient(d._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (d *TDrawGrid) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return DrawGrid_ParentToClient(d.instance, Point , CheckPtr(AParent))
+    return DrawGrid_ParentToClient(d._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (d *TDrawGrid) SendToBack() {
-    DrawGrid_SendToBack(d.instance)
+    DrawGrid_SendToBack(d._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (d *TDrawGrid) Show() {
-    DrawGrid_Show(d.instance)
+    DrawGrid_Show(d._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (d *TDrawGrid) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return DrawGrid_GetTextBuf(d.instance, Buffer , BufSize)
+    return DrawGrid_GetTextBuf(d._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (d *TDrawGrid) GetTextLen() int32 {
-    return DrawGrid_GetTextLen(d.instance)
+    return DrawGrid_GetTextLen(d._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (d *TDrawGrid) SetTextBuf(Buffer string) {
-    DrawGrid_SetTextBuf(d.instance, Buffer)
+    DrawGrid_SetTextBuf(d._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (d *TDrawGrid) FindComponent(AName string) *TComponent {
-    return AsComponent(DrawGrid_FindComponent(d.instance, AName))
+    return AsComponent(DrawGrid_FindComponent(d._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (d *TDrawGrid) GetNamePath() string {
-    return DrawGrid_GetNamePath(d.instance)
+    return DrawGrid_GetNamePath(d._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (d *TDrawGrid) Assign(Source IObject) {
-    DrawGrid_Assign(d.instance, CheckPtr(Source))
+    DrawGrid_Assign(d._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (d *TDrawGrid) ClassType() TClass {
-    return DrawGrid_ClassType(d.instance)
+    return DrawGrid_ClassType(d._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (d *TDrawGrid) ClassName() string {
-    return DrawGrid_ClassName(d.instance)
+    return DrawGrid_ClassName(d._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (d *TDrawGrid) InstanceSize() int32 {
-    return DrawGrid_InstanceSize(d.instance)
+    return DrawGrid_InstanceSize(d._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (d *TDrawGrid) InheritsFrom(AClass TClass) bool {
-    return DrawGrid_InheritsFrom(d.instance, AClass)
+    return DrawGrid_InheritsFrom(d._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (d *TDrawGrid) Equals(Obj IObject) bool {
-    return DrawGrid_Equals(d.instance, CheckPtr(Obj))
+    return DrawGrid_Equals(d._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (d *TDrawGrid) GetHashCode() int32 {
-    return DrawGrid_GetHashCode(d.instance)
+    return DrawGrid_GetHashCode(d._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (d *TDrawGrid) ToString() string {
-    return DrawGrid_ToString(d.instance)
+    return DrawGrid_ToString(d._instance())
 }
 
 func (d *TDrawGrid) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    DrawGrid_AnchorToNeighbour(d.instance, ASide , ASpace , CheckPtr(ASibling))
+    DrawGrid_AnchorToNeighbour(d._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (d *TDrawGrid) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    DrawGrid_AnchorParallel(d.instance, ASide , ASpace , CheckPtr(ASibling))
+    DrawGrid_AnchorParallel(d._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (d *TDrawGrid) AnchorHorizontalCenterTo(ASibling IControl) {
-    DrawGrid_AnchorHorizontalCenterTo(d.instance, CheckPtr(ASibling))
+    DrawGrid_AnchorHorizontalCenterTo(d._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (d *TDrawGrid) AnchorVerticalCenterTo(ASibling IControl) {
-    DrawGrid_AnchorVerticalCenterTo(d.instance, CheckPtr(ASibling))
+    DrawGrid_AnchorVerticalCenterTo(d._instance(), CheckPtr(ASibling))
 }
 
 func (d *TDrawGrid) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    DrawGrid_AnchorSame(d.instance, ASide , CheckPtr(ASibling))
+    DrawGrid_AnchorSame(d._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (d *TDrawGrid) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    DrawGrid_AnchorAsAlign(d.instance, ATheAlign , ASpace)
+    DrawGrid_AnchorAsAlign(d._instance(), ATheAlign , ASpace)
 }
 
 func (d *TDrawGrid) AnchorClient(ASpace int32) {
-    DrawGrid_AnchorClient(d.instance, ASpace)
+    DrawGrid_AnchorClient(d._instance(), ASpace)
 }
 
 func (d *TDrawGrid) ScaleDesignToForm(ASize int32) int32 {
-    return DrawGrid_ScaleDesignToForm(d.instance, ASize)
+    return DrawGrid_ScaleDesignToForm(d._instance(), ASize)
 }
 
 func (d *TDrawGrid) ScaleFormToDesign(ASize int32) int32 {
-    return DrawGrid_ScaleFormToDesign(d.instance, ASize)
+    return DrawGrid_ScaleFormToDesign(d._instance(), ASize)
 }
 
 func (d *TDrawGrid) Scale96ToForm(ASize int32) int32 {
-    return DrawGrid_Scale96ToForm(d.instance, ASize)
+    return DrawGrid_Scale96ToForm(d._instance(), ASize)
 }
 
 func (d *TDrawGrid) ScaleFormTo96(ASize int32) int32 {
-    return DrawGrid_ScaleFormTo96(d.instance, ASize)
+    return DrawGrid_ScaleFormTo96(d._instance(), ASize)
 }
 
 func (d *TDrawGrid) Scale96ToFont(ASize int32) int32 {
-    return DrawGrid_Scale96ToFont(d.instance, ASize)
+    return DrawGrid_Scale96ToFont(d._instance(), ASize)
 }
 
 func (d *TDrawGrid) ScaleFontTo96(ASize int32) int32 {
-    return DrawGrid_ScaleFontTo96(d.instance, ASize)
+    return DrawGrid_ScaleFontTo96(d._instance(), ASize)
 }
 
 func (d *TDrawGrid) ScaleScreenToFont(ASize int32) int32 {
-    return DrawGrid_ScaleScreenToFont(d.instance, ASize)
+    return DrawGrid_ScaleScreenToFont(d._instance(), ASize)
 }
 
 func (d *TDrawGrid) ScaleFontToScreen(ASize int32) int32 {
-    return DrawGrid_ScaleFontToScreen(d.instance, ASize)
+    return DrawGrid_ScaleFontToScreen(d._instance(), ASize)
 }
 
 func (d *TDrawGrid) Scale96ToScreen(ASize int32) int32 {
-    return DrawGrid_Scale96ToScreen(d.instance, ASize)
+    return DrawGrid_Scale96ToScreen(d._instance(), ASize)
 }
 
 func (d *TDrawGrid) ScaleScreenTo96(ASize int32) int32 {
-    return DrawGrid_ScaleScreenTo96(d.instance, ASize)
+    return DrawGrid_ScaleScreenTo96(d._instance(), ASize)
 }
 
 func (d *TDrawGrid) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    DrawGrid_AutoAdjustLayout(d.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    DrawGrid_AutoAdjustLayout(d._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (d *TDrawGrid) FixDesignFontsPPI(ADesignTimePPI int32) {
-    DrawGrid_FixDesignFontsPPI(d.instance, ADesignTimePPI)
+    DrawGrid_FixDesignFontsPPI(d._instance(), ADesignTimePPI)
 }
 
 func (d *TDrawGrid) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    DrawGrid_ScaleFontsPPI(d.instance, AToPPI , AProportion)
+    DrawGrid_ScaleFontsPPI(d._instance(), AToPPI , AProportion)
 }
 
 func (d *TDrawGrid) SetOnColRowMoved(fn TGridOperationEvent) {
-    DrawGrid_SetOnColRowMoved(d.instance, fn)
+    DrawGrid_SetOnColRowMoved(d._instance(), fn)
 }
 
 func (d *TDrawGrid) SetOnPrepareCanvas(fn TOnPrepareCanvasEvent) {
-    DrawGrid_SetOnPrepareCanvas(d.instance, fn)
+    DrawGrid_SetOnPrepareCanvas(d._instance(), fn)
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (d *TDrawGrid) Align() TAlign {
-    return DrawGrid_GetAlign(d.instance)
+    return DrawGrid_GetAlign(d._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (d *TDrawGrid) SetAlign(value TAlign) {
-    DrawGrid_SetAlign(d.instance, value)
+    DrawGrid_SetAlign(d._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (d *TDrawGrid) Anchors() TAnchors {
-    return DrawGrid_GetAnchors(d.instance)
+    return DrawGrid_GetAnchors(d._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (d *TDrawGrid) SetAnchors(value TAnchors) {
-    DrawGrid_SetAnchors(d.instance, value)
+    DrawGrid_SetAnchors(d._instance(), value)
 }
 
 func (d *TDrawGrid) BiDiMode() TBiDiMode {
-    return DrawGrid_GetBiDiMode(d.instance)
+    return DrawGrid_GetBiDiMode(d._instance())
 }
 
 func (d *TDrawGrid) SetBiDiMode(value TBiDiMode) {
-    DrawGrid_SetBiDiMode(d.instance, value)
+    DrawGrid_SetBiDiMode(d._instance(), value)
 }
 
+// BorderStyle
+//
 // 获取窗口边框样式。比如：无边框，单一边框等。
 func (d *TDrawGrid) BorderStyle() TBorderStyle {
-    return DrawGrid_GetBorderStyle(d.instance)
+    return DrawGrid_GetBorderStyle(d._instance())
 }
 
+// SetBorderStyle
+//
 // 设置窗口边框样式。比如：无边框，单一边框等。
 func (d *TDrawGrid) SetBorderStyle(value TBorderStyle) {
-    DrawGrid_SetBorderStyle(d.instance, value)
+    DrawGrid_SetBorderStyle(d._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (d *TDrawGrid) Color() TColor {
-    return DrawGrid_GetColor(d.instance)
+    return DrawGrid_GetColor(d._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (d *TDrawGrid) SetColor(value TColor) {
-    DrawGrid_SetColor(d.instance, value)
+    DrawGrid_SetColor(d._instance(), value)
 }
 
 func (d *TDrawGrid) ColCount() int32 {
-    return DrawGrid_GetColCount(d.instance)
+    return DrawGrid_GetColCount(d._instance())
 }
 
 func (d *TDrawGrid) SetColCount(value int32) {
-    DrawGrid_SetColCount(d.instance, value)
+    DrawGrid_SetColCount(d._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (d *TDrawGrid) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(DrawGrid_GetConstraints(d.instance))
+    return AsSizeConstraints(DrawGrid_GetConstraints(d._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (d *TDrawGrid) SetConstraints(value *TSizeConstraints) {
-    DrawGrid_SetConstraints(d.instance, CheckPtr(value))
+    DrawGrid_SetConstraints(d._instance(), CheckPtr(value))
 }
 
 func (d *TDrawGrid) DefaultColWidth() int32 {
-    return DrawGrid_GetDefaultColWidth(d.instance)
+    return DrawGrid_GetDefaultColWidth(d._instance())
 }
 
 func (d *TDrawGrid) SetDefaultColWidth(value int32) {
-    DrawGrid_SetDefaultColWidth(d.instance, value)
+    DrawGrid_SetDefaultColWidth(d._instance(), value)
 }
 
 func (d *TDrawGrid) DefaultRowHeight() int32 {
-    return DrawGrid_GetDefaultRowHeight(d.instance)
+    return DrawGrid_GetDefaultRowHeight(d._instance())
 }
 
 func (d *TDrawGrid) SetDefaultRowHeight(value int32) {
-    DrawGrid_SetDefaultRowHeight(d.instance, value)
+    DrawGrid_SetDefaultRowHeight(d._instance(), value)
 }
 
 func (d *TDrawGrid) DefaultDrawing() bool {
-    return DrawGrid_GetDefaultDrawing(d.instance)
+    return DrawGrid_GetDefaultDrawing(d._instance())
 }
 
 func (d *TDrawGrid) SetDefaultDrawing(value bool) {
-    DrawGrid_SetDefaultDrawing(d.instance, value)
+    DrawGrid_SetDefaultDrawing(d._instance(), value)
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (d *TDrawGrid) DoubleBuffered() bool {
-    return DrawGrid_GetDoubleBuffered(d.instance)
+    return DrawGrid_GetDoubleBuffered(d._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (d *TDrawGrid) SetDoubleBuffered(value bool) {
-    DrawGrid_SetDoubleBuffered(d.instance, value)
+    DrawGrid_SetDoubleBuffered(d._instance(), value)
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (d *TDrawGrid) DragCursor() TCursor {
-    return DrawGrid_GetDragCursor(d.instance)
+    return DrawGrid_GetDragCursor(d._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (d *TDrawGrid) SetDragCursor(value TCursor) {
-    DrawGrid_SetDragCursor(d.instance, value)
+    DrawGrid_SetDragCursor(d._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (d *TDrawGrid) DragKind() TDragKind {
-    return DrawGrid_GetDragKind(d.instance)
+    return DrawGrid_GetDragKind(d._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (d *TDrawGrid) SetDragKind(value TDragKind) {
-    DrawGrid_SetDragKind(d.instance, value)
+    DrawGrid_SetDragKind(d._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (d *TDrawGrid) DragMode() TDragMode {
-    return DrawGrid_GetDragMode(d.instance)
+    return DrawGrid_GetDragMode(d._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (d *TDrawGrid) SetDragMode(value TDragMode) {
-    DrawGrid_SetDragMode(d.instance, value)
+    DrawGrid_SetDragMode(d._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (d *TDrawGrid) Enabled() bool {
-    return DrawGrid_GetEnabled(d.instance)
+    return DrawGrid_GetEnabled(d._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (d *TDrawGrid) SetEnabled(value bool) {
-    DrawGrid_SetEnabled(d.instance, value)
+    DrawGrid_SetEnabled(d._instance(), value)
 }
 
 func (d *TDrawGrid) FixedColor() TColor {
-    return DrawGrid_GetFixedColor(d.instance)
+    return DrawGrid_GetFixedColor(d._instance())
 }
 
 func (d *TDrawGrid) SetFixedColor(value TColor) {
-    DrawGrid_SetFixedColor(d.instance, value)
+    DrawGrid_SetFixedColor(d._instance(), value)
 }
 
 func (d *TDrawGrid) FixedCols() int32 {
-    return DrawGrid_GetFixedCols(d.instance)
+    return DrawGrid_GetFixedCols(d._instance())
 }
 
 func (d *TDrawGrid) SetFixedCols(value int32) {
-    DrawGrid_SetFixedCols(d.instance, value)
+    DrawGrid_SetFixedCols(d._instance(), value)
 }
 
 func (d *TDrawGrid) RowCount() int32 {
-    return DrawGrid_GetRowCount(d.instance)
+    return DrawGrid_GetRowCount(d._instance())
 }
 
 func (d *TDrawGrid) SetRowCount(value int32) {
-    DrawGrid_SetRowCount(d.instance, value)
+    DrawGrid_SetRowCount(d._instance(), value)
 }
 
 func (d *TDrawGrid) FixedRows() int32 {
-    return DrawGrid_GetFixedRows(d.instance)
+    return DrawGrid_GetFixedRows(d._instance())
 }
 
 func (d *TDrawGrid) SetFixedRows(value int32) {
-    DrawGrid_SetFixedRows(d.instance, value)
+    DrawGrid_SetFixedRows(d._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (d *TDrawGrid) Font() *TFont {
-    return AsFont(DrawGrid_GetFont(d.instance))
+    return AsFont(DrawGrid_GetFont(d._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (d *TDrawGrid) SetFont(value *TFont) {
-    DrawGrid_SetFont(d.instance, CheckPtr(value))
+    DrawGrid_SetFont(d._instance(), CheckPtr(value))
 }
 
 func (d *TDrawGrid) GridLineWidth() int32 {
-    return DrawGrid_GetGridLineWidth(d.instance)
+    return DrawGrid_GetGridLineWidth(d._instance())
 }
 
 func (d *TDrawGrid) SetGridLineWidth(value int32) {
-    DrawGrid_SetGridLineWidth(d.instance, value)
+    DrawGrid_SetGridLineWidth(d._instance(), value)
 }
 
 func (d *TDrawGrid) Options() TGridOptions {
-    return DrawGrid_GetOptions(d.instance)
+    return DrawGrid_GetOptions(d._instance())
 }
 
 func (d *TDrawGrid) SetOptions(value TGridOptions) {
-    DrawGrid_SetOptions(d.instance, value)
+    DrawGrid_SetOptions(d._instance(), value)
 }
 
+// ParentColor
+//
 // 获取使用父容器颜色。
 //
 // Get parent color.
 func (d *TDrawGrid) ParentColor() bool {
-    return DrawGrid_GetParentColor(d.instance)
+    return DrawGrid_GetParentColor(d._instance())
 }
 
+// SetParentColor
+//
 // 设置使用父容器颜色。
 //
 // Set parent color.
 func (d *TDrawGrid) SetParentColor(value bool) {
-    DrawGrid_SetParentColor(d.instance, value)
+    DrawGrid_SetParentColor(d._instance(), value)
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (d *TDrawGrid) ParentDoubleBuffered() bool {
-    return DrawGrid_GetParentDoubleBuffered(d.instance)
+    return DrawGrid_GetParentDoubleBuffered(d._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (d *TDrawGrid) SetParentDoubleBuffered(value bool) {
-    DrawGrid_SetParentDoubleBuffered(d.instance, value)
+    DrawGrid_SetParentDoubleBuffered(d._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (d *TDrawGrid) ParentFont() bool {
-    return DrawGrid_GetParentFont(d.instance)
+    return DrawGrid_GetParentFont(d._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (d *TDrawGrid) SetParentFont(value bool) {
-    DrawGrid_SetParentFont(d.instance, value)
+    DrawGrid_SetParentFont(d._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (d *TDrawGrid) ParentShowHint() bool {
-    return DrawGrid_GetParentShowHint(d.instance)
+    return DrawGrid_GetParentShowHint(d._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (d *TDrawGrid) SetParentShowHint(value bool) {
-    DrawGrid_SetParentShowHint(d.instance, value)
+    DrawGrid_SetParentShowHint(d._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (d *TDrawGrid) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(DrawGrid_GetPopupMenu(d.instance))
+    return AsPopupMenu(DrawGrid_GetPopupMenu(d._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (d *TDrawGrid) SetPopupMenu(value IComponent) {
-    DrawGrid_SetPopupMenu(d.instance, CheckPtr(value))
+    DrawGrid_SetPopupMenu(d._instance(), CheckPtr(value))
 }
 
 func (d *TDrawGrid) ScrollBars() TScrollStyle {
-    return DrawGrid_GetScrollBars(d.instance)
+    return DrawGrid_GetScrollBars(d._instance())
 }
 
 func (d *TDrawGrid) SetScrollBars(value TScrollStyle) {
-    DrawGrid_SetScrollBars(d.instance, value)
+    DrawGrid_SetScrollBars(d._instance(), value)
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (d *TDrawGrid) ShowHint() bool {
-    return DrawGrid_GetShowHint(d.instance)
+    return DrawGrid_GetShowHint(d._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (d *TDrawGrid) SetShowHint(value bool) {
-    DrawGrid_SetShowHint(d.instance, value)
+    DrawGrid_SetShowHint(d._instance(), value)
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (d *TDrawGrid) TabOrder() TTabOrder {
-    return DrawGrid_GetTabOrder(d.instance)
+    return DrawGrid_GetTabOrder(d._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (d *TDrawGrid) SetTabOrder(value TTabOrder) {
-    DrawGrid_SetTabOrder(d.instance, value)
+    DrawGrid_SetTabOrder(d._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (d *TDrawGrid) Visible() bool {
-    return DrawGrid_GetVisible(d.instance)
+    return DrawGrid_GetVisible(d._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (d *TDrawGrid) SetVisible(value bool) {
-    DrawGrid_SetVisible(d.instance, value)
+    DrawGrid_SetVisible(d._instance(), value)
 }
 
 func (d *TDrawGrid) VisibleColCount() int32 {
-    return DrawGrid_GetVisibleColCount(d.instance)
+    return DrawGrid_GetVisibleColCount(d._instance())
 }
 
 func (d *TDrawGrid) VisibleRowCount() int32 {
-    return DrawGrid_GetVisibleRowCount(d.instance)
+    return DrawGrid_GetVisibleRowCount(d._instance())
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (d *TDrawGrid) SetOnClick(fn TNotifyEvent) {
-    DrawGrid_SetOnClick(d.instance, fn)
+    DrawGrid_SetOnClick(d._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (d *TDrawGrid) SetOnContextPopup(fn TContextPopupEvent) {
-    DrawGrid_SetOnContextPopup(d.instance, fn)
+    DrawGrid_SetOnContextPopup(d._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (d *TDrawGrid) SetOnDblClick(fn TNotifyEvent) {
-    DrawGrid_SetOnDblClick(d.instance, fn)
+    DrawGrid_SetOnDblClick(d._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (d *TDrawGrid) SetOnDragDrop(fn TDragDropEvent) {
-    DrawGrid_SetOnDragDrop(d.instance, fn)
+    DrawGrid_SetOnDragDrop(d._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (d *TDrawGrid) SetOnDragOver(fn TDragOverEvent) {
-    DrawGrid_SetOnDragOver(d.instance, fn)
+    DrawGrid_SetOnDragOver(d._instance(), fn)
 }
 
 func (d *TDrawGrid) SetOnDrawCell(fn TDrawCellEvent) {
-    DrawGrid_SetOnDrawCell(d.instance, fn)
+    DrawGrid_SetOnDrawCell(d._instance(), fn)
 }
 
+// SetOnEndDock
+//
 // 设置停靠结束事件。
 //
 // Set Dock end event.
 func (d *TDrawGrid) SetOnEndDock(fn TEndDragEvent) {
-    DrawGrid_SetOnEndDock(d.instance, fn)
+    DrawGrid_SetOnEndDock(d._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (d *TDrawGrid) SetOnEndDrag(fn TEndDragEvent) {
-    DrawGrid_SetOnEndDrag(d.instance, fn)
+    DrawGrid_SetOnEndDrag(d._instance(), fn)
 }
 
+// SetOnEnter
+//
 // 设置焦点进入。
 //
 // Set Focus entry.
 func (d *TDrawGrid) SetOnEnter(fn TNotifyEvent) {
-    DrawGrid_SetOnEnter(d.instance, fn)
+    DrawGrid_SetOnEnter(d._instance(), fn)
 }
 
+// SetOnExit
+//
 // 设置焦点退出。
 //
 // Set Focus exit.
 func (d *TDrawGrid) SetOnExit(fn TNotifyEvent) {
-    DrawGrid_SetOnExit(d.instance, fn)
+    DrawGrid_SetOnExit(d._instance(), fn)
 }
 
 func (d *TDrawGrid) SetOnGetEditMask(fn TGetEditEvent) {
-    DrawGrid_SetOnGetEditMask(d.instance, fn)
+    DrawGrid_SetOnGetEditMask(d._instance(), fn)
 }
 
 func (d *TDrawGrid) SetOnGetEditText(fn TGetEditEvent) {
-    DrawGrid_SetOnGetEditText(d.instance, fn)
+    DrawGrid_SetOnGetEditText(d._instance(), fn)
 }
 
+// SetOnKeyDown
+//
 // 设置键盘按键按下事件。
 //
 // Set Keyboard button press event.
 func (d *TDrawGrid) SetOnKeyDown(fn TKeyEvent) {
-    DrawGrid_SetOnKeyDown(d.instance, fn)
+    DrawGrid_SetOnKeyDown(d._instance(), fn)
 }
 
+// SetOnKeyPress
+//
 // 设置键键下事件。
 func (d *TDrawGrid) SetOnKeyPress(fn TKeyPressEvent) {
-    DrawGrid_SetOnKeyPress(d.instance, fn)
+    DrawGrid_SetOnKeyPress(d._instance(), fn)
 }
 
+// SetOnKeyUp
+//
 // 设置键盘按键抬起事件。
 //
 // Set Keyboard button lift event.
 func (d *TDrawGrid) SetOnKeyUp(fn TKeyEvent) {
-    DrawGrid_SetOnKeyUp(d.instance, fn)
+    DrawGrid_SetOnKeyUp(d._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (d *TDrawGrid) SetOnMouseDown(fn TMouseEvent) {
-    DrawGrid_SetOnMouseDown(d.instance, fn)
+    DrawGrid_SetOnMouseDown(d._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (d *TDrawGrid) SetOnMouseEnter(fn TNotifyEvent) {
-    DrawGrid_SetOnMouseEnter(d.instance, fn)
+    DrawGrid_SetOnMouseEnter(d._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (d *TDrawGrid) SetOnMouseLeave(fn TNotifyEvent) {
-    DrawGrid_SetOnMouseLeave(d.instance, fn)
+    DrawGrid_SetOnMouseLeave(d._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (d *TDrawGrid) SetOnMouseMove(fn TMouseMoveEvent) {
-    DrawGrid_SetOnMouseMove(d.instance, fn)
+    DrawGrid_SetOnMouseMove(d._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (d *TDrawGrid) SetOnMouseUp(fn TMouseEvent) {
-    DrawGrid_SetOnMouseUp(d.instance, fn)
+    DrawGrid_SetOnMouseUp(d._instance(), fn)
 }
 
+// SetOnMouseWheelDown
+//
 // 设置鼠标滚轮按下事件。
 func (d *TDrawGrid) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
-    DrawGrid_SetOnMouseWheelDown(d.instance, fn)
+    DrawGrid_SetOnMouseWheelDown(d._instance(), fn)
 }
 
+// SetOnMouseWheelUp
+//
 // 设置鼠标滚轮抬起事件。
 func (d *TDrawGrid) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
-    DrawGrid_SetOnMouseWheelUp(d.instance, fn)
+    DrawGrid_SetOnMouseWheelUp(d._instance(), fn)
 }
 
 func (d *TDrawGrid) SetOnSelectCell(fn TSelectCellEvent) {
-    DrawGrid_SetOnSelectCell(d.instance, fn)
+    DrawGrid_SetOnSelectCell(d._instance(), fn)
 }
 
 func (d *TDrawGrid) SetOnSetEditText(fn TSetEditEvent) {
-    DrawGrid_SetOnSetEditText(d.instance, fn)
+    DrawGrid_SetOnSetEditText(d._instance(), fn)
 }
 
+// SetOnStartDock
+//
 // 设置启动停靠。
 func (d *TDrawGrid) SetOnStartDock(fn TStartDockEvent) {
-    DrawGrid_SetOnStartDock(d.instance, fn)
+    DrawGrid_SetOnStartDock(d._instance(), fn)
 }
 
 func (d *TDrawGrid) SetOnTopLeftChanged(fn TNotifyEvent) {
-    DrawGrid_SetOnTopLeftChanged(d.instance, fn)
+    DrawGrid_SetOnTopLeftChanged(d._instance(), fn)
 }
 
+// Canvas
+//
 // 获取画布。
 func (d *TDrawGrid) Canvas() *TCanvas {
-    return AsCanvas(DrawGrid_GetCanvas(d.instance))
+    return AsCanvas(DrawGrid_GetCanvas(d._instance()))
 }
 
 func (d *TDrawGrid) Col() int32 {
-    return DrawGrid_GetCol(d.instance)
+    return DrawGrid_GetCol(d._instance())
 }
 
 func (d *TDrawGrid) SetCol(value int32) {
-    DrawGrid_SetCol(d.instance, value)
+    DrawGrid_SetCol(d._instance(), value)
 }
 
 func (d *TDrawGrid) EditorMode() bool {
-    return DrawGrid_GetEditorMode(d.instance)
+    return DrawGrid_GetEditorMode(d._instance())
 }
 
 func (d *TDrawGrid) SetEditorMode(value bool) {
-    DrawGrid_SetEditorMode(d.instance, value)
+    DrawGrid_SetEditorMode(d._instance(), value)
 }
 
 func (d *TDrawGrid) GridHeight() int32 {
-    return DrawGrid_GetGridHeight(d.instance)
+    return DrawGrid_GetGridHeight(d._instance())
 }
 
 func (d *TDrawGrid) GridWidth() int32 {
-    return DrawGrid_GetGridWidth(d.instance)
+    return DrawGrid_GetGridWidth(d._instance())
 }
 
 func (d *TDrawGrid) LeftCol() int32 {
-    return DrawGrid_GetLeftCol(d.instance)
+    return DrawGrid_GetLeftCol(d._instance())
 }
 
 func (d *TDrawGrid) SetLeftCol(value int32) {
-    DrawGrid_SetLeftCol(d.instance, value)
+    DrawGrid_SetLeftCol(d._instance(), value)
 }
 
 func (d *TDrawGrid) Selection() TGridRect {
-    return DrawGrid_GetSelection(d.instance)
+    return DrawGrid_GetSelection(d._instance())
 }
 
 func (d *TDrawGrid) SetSelection(value TGridRect) {
-    DrawGrid_SetSelection(d.instance, value)
+    DrawGrid_SetSelection(d._instance(), value)
 }
 
 func (d *TDrawGrid) Row() int32 {
-    return DrawGrid_GetRow(d.instance)
+    return DrawGrid_GetRow(d._instance())
 }
 
 func (d *TDrawGrid) SetRow(value int32) {
-    DrawGrid_SetRow(d.instance, value)
+    DrawGrid_SetRow(d._instance(), value)
 }
 
 func (d *TDrawGrid) TopRow() int32 {
-    return DrawGrid_GetTopRow(d.instance)
+    return DrawGrid_GetTopRow(d._instance())
 }
 
 func (d *TDrawGrid) SetTopRow(value int32) {
-    DrawGrid_SetTopRow(d.instance, value)
+    DrawGrid_SetTopRow(d._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (d *TDrawGrid) TabStop() bool {
-    return DrawGrid_GetTabStop(d.instance)
+    return DrawGrid_GetTabStop(d._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (d *TDrawGrid) SetTabStop(value bool) {
-    DrawGrid_SetTabStop(d.instance, value)
+    DrawGrid_SetTabStop(d._instance(), value)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (d *TDrawGrid) DockClientCount() int32 {
-    return DrawGrid_GetDockClientCount(d.instance)
+    return DrawGrid_GetDockClientCount(d._instance())
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (d *TDrawGrid) DockSite() bool {
-    return DrawGrid_GetDockSite(d.instance)
+    return DrawGrid_GetDockSite(d._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (d *TDrawGrid) SetDockSite(value bool) {
-    DrawGrid_SetDockSite(d.instance, value)
+    DrawGrid_SetDockSite(d._instance(), value)
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (d *TDrawGrid) MouseInClient() bool {
-    return DrawGrid_GetMouseInClient(d.instance)
+    return DrawGrid_GetMouseInClient(d._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (d *TDrawGrid) VisibleDockClientCount() int32 {
-    return DrawGrid_GetVisibleDockClientCount(d.instance)
+    return DrawGrid_GetVisibleDockClientCount(d._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (d *TDrawGrid) Brush() *TBrush {
-    return AsBrush(DrawGrid_GetBrush(d.instance))
+    return AsBrush(DrawGrid_GetBrush(d._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (d *TDrawGrid) ControlCount() int32 {
-    return DrawGrid_GetControlCount(d.instance)
+    return DrawGrid_GetControlCount(d._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (d *TDrawGrid) Handle() HWND {
-    return DrawGrid_GetHandle(d.instance)
+    return DrawGrid_GetHandle(d._instance())
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (d *TDrawGrid) ParentWindow() HWND {
-    return DrawGrid_GetParentWindow(d.instance)
+    return DrawGrid_GetParentWindow(d._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (d *TDrawGrid) SetParentWindow(value HWND) {
-    DrawGrid_SetParentWindow(d.instance, value)
+    DrawGrid_SetParentWindow(d._instance(), value)
 }
 
 func (d *TDrawGrid) Showing() bool {
-    return DrawGrid_GetShowing(d.instance)
+    return DrawGrid_GetShowing(d._instance())
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (d *TDrawGrid) UseDockManager() bool {
-    return DrawGrid_GetUseDockManager(d.instance)
+    return DrawGrid_GetUseDockManager(d._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (d *TDrawGrid) SetUseDockManager(value bool) {
-    DrawGrid_SetUseDockManager(d.instance, value)
+    DrawGrid_SetUseDockManager(d._instance(), value)
 }
 
 func (d *TDrawGrid) Action() *TAction {
-    return AsAction(DrawGrid_GetAction(d.instance))
+    return AsAction(DrawGrid_GetAction(d._instance()))
 }
 
 func (d *TDrawGrid) SetAction(value IComponent) {
-    DrawGrid_SetAction(d.instance, CheckPtr(value))
+    DrawGrid_SetAction(d._instance(), CheckPtr(value))
 }
 
 func (d *TDrawGrid) BoundsRect() TRect {
-    return DrawGrid_GetBoundsRect(d.instance)
+    return DrawGrid_GetBoundsRect(d._instance())
 }
 
 func (d *TDrawGrid) SetBoundsRect(value TRect) {
-    DrawGrid_SetBoundsRect(d.instance, value)
+    DrawGrid_SetBoundsRect(d._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (d *TDrawGrid) ClientHeight() int32 {
-    return DrawGrid_GetClientHeight(d.instance)
+    return DrawGrid_GetClientHeight(d._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (d *TDrawGrid) SetClientHeight(value int32) {
-    DrawGrid_SetClientHeight(d.instance, value)
+    DrawGrid_SetClientHeight(d._instance(), value)
 }
 
 func (d *TDrawGrid) ClientOrigin() TPoint {
-    return DrawGrid_GetClientOrigin(d.instance)
+    return DrawGrid_GetClientOrigin(d._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (d *TDrawGrid) ClientRect() TRect {
-    return DrawGrid_GetClientRect(d.instance)
+    return DrawGrid_GetClientRect(d._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (d *TDrawGrid) ClientWidth() int32 {
-    return DrawGrid_GetClientWidth(d.instance)
+    return DrawGrid_GetClientWidth(d._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (d *TDrawGrid) SetClientWidth(value int32) {
-    DrawGrid_SetClientWidth(d.instance, value)
+    DrawGrid_SetClientWidth(d._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (d *TDrawGrid) ControlState() TControlState {
-    return DrawGrid_GetControlState(d.instance)
+    return DrawGrid_GetControlState(d._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (d *TDrawGrid) SetControlState(value TControlState) {
-    DrawGrid_SetControlState(d.instance, value)
+    DrawGrid_SetControlState(d._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (d *TDrawGrid) ControlStyle() TControlStyle {
-    return DrawGrid_GetControlStyle(d.instance)
+    return DrawGrid_GetControlStyle(d._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (d *TDrawGrid) SetControlStyle(value TControlStyle) {
-    DrawGrid_SetControlStyle(d.instance, value)
+    DrawGrid_SetControlStyle(d._instance(), value)
 }
 
 func (d *TDrawGrid) Floating() bool {
-    return DrawGrid_GetFloating(d.instance)
+    return DrawGrid_GetFloating(d._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (d *TDrawGrid) Parent() *TWinControl {
-    return AsWinControl(DrawGrid_GetParent(d.instance))
+    return AsWinControl(DrawGrid_GetParent(d._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (d *TDrawGrid) SetParent(value IWinControl) {
-    DrawGrid_SetParent(d.instance, CheckPtr(value))
+    DrawGrid_SetParent(d._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (d *TDrawGrid) Left() int32 {
-    return DrawGrid_GetLeft(d.instance)
+    return DrawGrid_GetLeft(d._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (d *TDrawGrid) SetLeft(value int32) {
-    DrawGrid_SetLeft(d.instance, value)
+    DrawGrid_SetLeft(d._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (d *TDrawGrid) Top() int32 {
-    return DrawGrid_GetTop(d.instance)
+    return DrawGrid_GetTop(d._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (d *TDrawGrid) SetTop(value int32) {
-    DrawGrid_SetTop(d.instance, value)
+    DrawGrid_SetTop(d._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (d *TDrawGrid) Width() int32 {
-    return DrawGrid_GetWidth(d.instance)
+    return DrawGrid_GetWidth(d._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (d *TDrawGrid) SetWidth(value int32) {
-    DrawGrid_SetWidth(d.instance, value)
+    DrawGrid_SetWidth(d._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (d *TDrawGrid) Height() int32 {
-    return DrawGrid_GetHeight(d.instance)
+    return DrawGrid_GetHeight(d._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (d *TDrawGrid) SetHeight(value int32) {
-    DrawGrid_SetHeight(d.instance, value)
+    DrawGrid_SetHeight(d._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (d *TDrawGrid) Cursor() TCursor {
-    return DrawGrid_GetCursor(d.instance)
+    return DrawGrid_GetCursor(d._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (d *TDrawGrid) SetCursor(value TCursor) {
-    DrawGrid_SetCursor(d.instance, value)
+    DrawGrid_SetCursor(d._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (d *TDrawGrid) Hint() string {
-    return DrawGrid_GetHint(d.instance)
+    return DrawGrid_GetHint(d._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (d *TDrawGrid) SetHint(value string) {
-    DrawGrid_SetHint(d.instance, value)
+    DrawGrid_SetHint(d._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (d *TDrawGrid) ComponentCount() int32 {
-    return DrawGrid_GetComponentCount(d.instance)
+    return DrawGrid_GetComponentCount(d._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (d *TDrawGrid) ComponentIndex() int32 {
-    return DrawGrid_GetComponentIndex(d.instance)
+    return DrawGrid_GetComponentIndex(d._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (d *TDrawGrid) SetComponentIndex(value int32) {
-    DrawGrid_SetComponentIndex(d.instance, value)
+    DrawGrid_SetComponentIndex(d._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (d *TDrawGrid) Owner() *TComponent {
-    return AsComponent(DrawGrid_GetOwner(d.instance))
+    return AsComponent(DrawGrid_GetOwner(d._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (d *TDrawGrid) Name() string {
-    return DrawGrid_GetName(d.instance)
+    return DrawGrid_GetName(d._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (d *TDrawGrid) SetName(value string) {
-    DrawGrid_SetName(d.instance, value)
+    DrawGrid_SetName(d._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (d *TDrawGrid) Tag() int {
-    return DrawGrid_GetTag(d.instance)
+    return DrawGrid_GetTag(d._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (d *TDrawGrid) SetTag(value int) {
-    DrawGrid_SetTag(d.instance, value)
+    DrawGrid_SetTag(d._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (d *TDrawGrid) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(DrawGrid_GetAnchorSideLeft(d.instance))
+    return AsAnchorSide(DrawGrid_GetAnchorSideLeft(d._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (d *TDrawGrid) SetAnchorSideLeft(value *TAnchorSide) {
-    DrawGrid_SetAnchorSideLeft(d.instance, CheckPtr(value))
+    DrawGrid_SetAnchorSideLeft(d._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (d *TDrawGrid) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(DrawGrid_GetAnchorSideTop(d.instance))
+    return AsAnchorSide(DrawGrid_GetAnchorSideTop(d._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (d *TDrawGrid) SetAnchorSideTop(value *TAnchorSide) {
-    DrawGrid_SetAnchorSideTop(d.instance, CheckPtr(value))
+    DrawGrid_SetAnchorSideTop(d._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (d *TDrawGrid) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(DrawGrid_GetAnchorSideRight(d.instance))
+    return AsAnchorSide(DrawGrid_GetAnchorSideRight(d._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (d *TDrawGrid) SetAnchorSideRight(value *TAnchorSide) {
-    DrawGrid_SetAnchorSideRight(d.instance, CheckPtr(value))
+    DrawGrid_SetAnchorSideRight(d._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (d *TDrawGrid) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(DrawGrid_GetAnchorSideBottom(d.instance))
+    return AsAnchorSide(DrawGrid_GetAnchorSideBottom(d._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (d *TDrawGrid) SetAnchorSideBottom(value *TAnchorSide) {
-    DrawGrid_SetAnchorSideBottom(d.instance, CheckPtr(value))
+    DrawGrid_SetAnchorSideBottom(d._instance(), CheckPtr(value))
 }
 
 func (d *TDrawGrid) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(DrawGrid_GetChildSizing(d.instance))
+    return AsControlChildSizing(DrawGrid_GetChildSizing(d._instance()))
 }
 
 func (d *TDrawGrid) SetChildSizing(value *TControlChildSizing) {
-    DrawGrid_SetChildSizing(d.instance, CheckPtr(value))
+    DrawGrid_SetChildSizing(d._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (d *TDrawGrid) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(DrawGrid_GetBorderSpacing(d.instance))
+    return AsControlBorderSpacing(DrawGrid_GetBorderSpacing(d._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (d *TDrawGrid) SetBorderSpacing(value *TControlBorderSpacing) {
-    DrawGrid_SetBorderSpacing(d.instance, CheckPtr(value))
+    DrawGrid_SetBorderSpacing(d._instance(), CheckPtr(value))
 }
 
 func (d *TDrawGrid) ColWidths(Index int32) int32 {
-    return DrawGrid_GetColWidths(d.instance, Index)
+    return DrawGrid_GetColWidths(d._instance(), Index)
 }
 
 func (d *TDrawGrid) SetColWidths(Index int32, value int32) {
-    DrawGrid_SetColWidths(d.instance, Index, value)
+    DrawGrid_SetColWidths(d._instance(), Index, value)
 }
 
 func (d *TDrawGrid) RowHeights(Index int32) int32 {
-    return DrawGrid_GetRowHeights(d.instance, Index)
+    return DrawGrid_GetRowHeights(d._instance(), Index)
 }
 
 func (d *TDrawGrid) SetRowHeights(Index int32, value int32) {
-    DrawGrid_SetRowHeights(d.instance, Index, value)
+    DrawGrid_SetRowHeights(d._instance(), Index, value)
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (d *TDrawGrid) DockClients(Index int32) *TControl {
-    return AsControl(DrawGrid_GetDockClients(d.instance, Index))
+    return AsControl(DrawGrid_GetDockClients(d._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (d *TDrawGrid) Controls(Index int32) *TControl {
-    return AsControl(DrawGrid_GetControls(d.instance, Index))
+    return AsControl(DrawGrid_GetControls(d._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (d *TDrawGrid) Components(AIndex int32) *TComponent {
-    return AsComponent(DrawGrid_GetComponents(d.instance, AIndex))
+    return AsComponent(DrawGrid_GetComponents(d._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (d *TDrawGrid) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(DrawGrid_GetAnchorSide(d.instance, AKind))
+    return AsAnchorSide(DrawGrid_GetAnchorSide(d._instance(), AKind))
 }
 

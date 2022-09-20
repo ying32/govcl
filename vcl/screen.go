@@ -19,101 +19,94 @@ import (
 
 type TScreen struct {
     IComponent
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewScreen
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewScreen(owner IComponent) *TScreen {
     s := new(TScreen)
-    s.instance = Screen_Create(CheckPtr(owner))
-    s.ptr = unsafe.Pointer(s.instance)
+    s.instance = unsafe.Pointer(Screen_Create(CheckPtr(owner)))
     return s
 }
 
+// AsScreen
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsScreen(obj interface{}) *TScreen {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TScreen{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TScreen{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsScreen.
-func ScreenFromInst(inst uintptr) *TScreen {
-    return AsScreen(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsScreen.
-func ScreenFromObj(obj IObject) *TScreen {
-    return AsScreen(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsScreen.
-func ScreenFromUnsafePointer(ptr unsafe.Pointer) *TScreen {
-    return AsScreen(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (s *TScreen) Free() {
-    if s.instance != 0 {
-        Screen_Free(s.instance)
-        s.instance, s.ptr = 0, nullptr
+    if s.instance != nullptr {
+        Screen_Free(s._instance())
+        s.instance  = nullptr
     }
 }
 
+func (s *TScreen) _instance() uintptr {
+    return uintptr(s.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (s *TScreen) Instance() uintptr {
-    return s.instance
+    return s._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (s *TScreen) UnsafeAddr() unsafe.Pointer {
-    return s.ptr
+    return s.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (s *TScreen) IsValid() bool {
-    return s.instance != 0
+    return s.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (s *TScreen) Is() TIs {
-    return TIs(s.instance)
+    return TIs(s._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (s *TScreen) As() TAs {
-//    return TAs(s.instance)
+//    return TAs(s._instance())
 //}
 
+// TScreenClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,283 +115,333 @@ func TScreenClass() TClass {
 }
 
 func (s *TScreen) BeginTempCursor(aCursor TCursor) {
-    Screen_BeginTempCursor(s.instance, aCursor)
+    Screen_BeginTempCursor(s._instance(), aCursor)
 }
 
 func (s *TScreen) EndTempCursor(aCursor TCursor) {
-    Screen_EndTempCursor(s.instance, aCursor)
+    Screen_EndTempCursor(s._instance(), aCursor)
 }
 
 func (s *TScreen) BeginWaitCursor() {
-    Screen_BeginWaitCursor(s.instance)
+    Screen_BeginWaitCursor(s._instance())
 }
 
 func (s *TScreen) EndWaitCursor() {
-    Screen_EndWaitCursor(s.instance)
+    Screen_EndWaitCursor(s._instance())
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (s *TScreen) FindComponent(AName string) *TComponent {
-    return AsComponent(Screen_FindComponent(s.instance, AName))
+    return AsComponent(Screen_FindComponent(s._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (s *TScreen) GetNamePath() string {
-    return Screen_GetNamePath(s.instance)
+    return Screen_GetNamePath(s._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (s *TScreen) HasParent() bool {
-    return Screen_HasParent(s.instance)
+    return Screen_HasParent(s._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (s *TScreen) Assign(Source IObject) {
-    Screen_Assign(s.instance, CheckPtr(Source))
+    Screen_Assign(s._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (s *TScreen) ClassType() TClass {
-    return Screen_ClassType(s.instance)
+    return Screen_ClassType(s._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (s *TScreen) ClassName() string {
-    return Screen_ClassName(s.instance)
+    return Screen_ClassName(s._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (s *TScreen) InstanceSize() int32 {
-    return Screen_InstanceSize(s.instance)
+    return Screen_InstanceSize(s._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (s *TScreen) InheritsFrom(AClass TClass) bool {
-    return Screen_InheritsFrom(s.instance, AClass)
+    return Screen_InheritsFrom(s._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (s *TScreen) Equals(Obj IObject) bool {
-    return Screen_Equals(s.instance, CheckPtr(Obj))
+    return Screen_Equals(s._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (s *TScreen) GetHashCode() int32 {
-    return Screen_GetHashCode(s.instance)
+    return Screen_GetHashCode(s._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (s *TScreen) ToString() string {
-    return Screen_ToString(s.instance)
+    return Screen_ToString(s._instance())
 }
 
 func (s *TScreen) RealCursor() TCursor {
-    return Screen_GetRealCursor(s.instance)
+    return Screen_GetRealCursor(s._instance())
 }
 
 func (s *TScreen) FocusedForm() *TForm {
-    return AsForm(Screen_GetFocusedForm(s.instance))
+    return AsForm(Screen_GetFocusedForm(s._instance()))
 }
 
+// ActiveControl
+//
 // 获取当前动控件。
 func (s *TScreen) ActiveControl() *TWinControl {
-    return AsWinControl(Screen_GetActiveControl(s.instance))
+    return AsWinControl(Screen_GetActiveControl(s._instance()))
 }
 
 func (s *TScreen) ActiveForm() *TForm {
-    return AsForm(Screen_GetActiveForm(s.instance))
+    return AsForm(Screen_GetActiveForm(s._instance()))
 }
 
 func (s *TScreen) CustomFormCount() int32 {
-    return Screen_GetCustomFormCount(s.instance)
+    return Screen_GetCustomFormCount(s._instance())
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (s *TScreen) Cursor() TCursor {
-    return Screen_GetCursor(s.instance)
+    return Screen_GetCursor(s._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (s *TScreen) SetCursor(value TCursor) {
-    Screen_SetCursor(s.instance, value)
+    Screen_SetCursor(s._instance(), value)
 }
 
 func (s *TScreen) MonitorCount() int32 {
-    return Screen_GetMonitorCount(s.instance)
+    return Screen_GetMonitorCount(s._instance())
 }
 
 func (s *TScreen) DesktopRect() TRect {
-    return Screen_GetDesktopRect(s.instance)
+    return Screen_GetDesktopRect(s._instance())
 }
 
 func (s *TScreen) DesktopHeight() int32 {
-    return Screen_GetDesktopHeight(s.instance)
+    return Screen_GetDesktopHeight(s._instance())
 }
 
 func (s *TScreen) DesktopLeft() int32 {
-    return Screen_GetDesktopLeft(s.instance)
+    return Screen_GetDesktopLeft(s._instance())
 }
 
 func (s *TScreen) DesktopTop() int32 {
-    return Screen_GetDesktopTop(s.instance)
+    return Screen_GetDesktopTop(s._instance())
 }
 
 func (s *TScreen) DesktopWidth() int32 {
-    return Screen_GetDesktopWidth(s.instance)
+    return Screen_GetDesktopWidth(s._instance())
 }
 
 func (s *TScreen) WorkAreaRect() TRect {
-    return Screen_GetWorkAreaRect(s.instance)
+    return Screen_GetWorkAreaRect(s._instance())
 }
 
 func (s *TScreen) WorkAreaHeight() int32 {
-    return Screen_GetWorkAreaHeight(s.instance)
+    return Screen_GetWorkAreaHeight(s._instance())
 }
 
 func (s *TScreen) WorkAreaLeft() int32 {
-    return Screen_GetWorkAreaLeft(s.instance)
+    return Screen_GetWorkAreaLeft(s._instance())
 }
 
 func (s *TScreen) WorkAreaTop() int32 {
-    return Screen_GetWorkAreaTop(s.instance)
+    return Screen_GetWorkAreaTop(s._instance())
 }
 
 func (s *TScreen) WorkAreaWidth() int32 {
-    return Screen_GetWorkAreaWidth(s.instance)
+    return Screen_GetWorkAreaWidth(s._instance())
 }
 
 func (s *TScreen) Fonts() *TStrings {
-    return AsStrings(Screen_GetFonts(s.instance))
+    return AsStrings(Screen_GetFonts(s._instance()))
 }
 
 func (s *TScreen) FormCount() int32 {
-    return Screen_GetFormCount(s.instance)
+    return Screen_GetFormCount(s._instance())
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (s *TScreen) Height() int32 {
-    return Screen_GetHeight(s.instance)
+    return Screen_GetHeight(s._instance())
 }
 
 func (s *TScreen) PixelsPerInch() int32 {
-    return Screen_GetPixelsPerInch(s.instance)
+    return Screen_GetPixelsPerInch(s._instance())
 }
 
 func (s *TScreen) PrimaryMonitor() *TMonitor {
-    return AsMonitor(Screen_GetPrimaryMonitor(s.instance))
+    return AsMonitor(Screen_GetPrimaryMonitor(s._instance()))
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (s *TScreen) Width() int32 {
-    return Screen_GetWidth(s.instance)
+    return Screen_GetWidth(s._instance())
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (s *TScreen) ComponentCount() int32 {
-    return Screen_GetComponentCount(s.instance)
+    return Screen_GetComponentCount(s._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (s *TScreen) ComponentIndex() int32 {
-    return Screen_GetComponentIndex(s.instance)
+    return Screen_GetComponentIndex(s._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (s *TScreen) SetComponentIndex(value int32) {
-    Screen_SetComponentIndex(s.instance, value)
+    Screen_SetComponentIndex(s._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (s *TScreen) Owner() *TComponent {
-    return AsComponent(Screen_GetOwner(s.instance))
+    return AsComponent(Screen_GetOwner(s._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (s *TScreen) Name() string {
-    return Screen_GetName(s.instance)
+    return Screen_GetName(s._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (s *TScreen) SetName(value string) {
-    Screen_SetName(s.instance, value)
+    Screen_SetName(s._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (s *TScreen) Tag() int {
-    return Screen_GetTag(s.instance)
+    return Screen_GetTag(s._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (s *TScreen) SetTag(value int) {
-    Screen_SetTag(s.instance, value)
+    Screen_SetTag(s._instance(), value)
 }
 
 func (s *TScreen) Cursors(Index int32) HICON {
-    return Screen_GetCursors(s.instance, Index)
+    return Screen_GetCursors(s._instance(), Index)
 }
 
 func (s *TScreen) SetCursors(Index int32, value HICON) {
-    Screen_SetCursors(s.instance, Index, value)
+    Screen_SetCursors(s._instance(), Index, value)
 }
 
 func (s *TScreen) Monitors(Index int32) *TMonitor {
-    return AsMonitor(Screen_GetMonitors(s.instance, Index))
+    return AsMonitor(Screen_GetMonitors(s._instance(), Index))
 }
 
 func (s *TScreen) Forms(Index int32) *TForm {
-    return AsForm(Screen_GetForms(s.instance, Index))
+    return AsForm(Screen_GetForms(s._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (s *TScreen) Components(AIndex int32) *TComponent {
-    return AsComponent(Screen_GetComponents(s.instance, AIndex))
+    return AsComponent(Screen_GetComponents(s._instance(), AIndex))
 }
 

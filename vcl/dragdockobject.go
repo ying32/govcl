@@ -19,102 +19,95 @@ import (
 
 type TDragDockObject struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewDragDockObject
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewDragDockObject(AOwner IControl) *TDragDockObject {
     d := new(TDragDockObject)
-    d.instance = DragDockObject_Create(CheckPtr(AOwner))
-    d.ptr = unsafe.Pointer(d.instance)
+    d.instance = unsafe.Pointer(DragDockObject_Create(CheckPtr(AOwner)))
     setFinalizer(d, (*TDragDockObject).Free)
     return d
 }
 
+// AsDragDockObject
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsDragDockObject(obj interface{}) *TDragDockObject {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TDragDockObject{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TDragDockObject{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsDragDockObject.
-func DragDockObjectFromInst(inst uintptr) *TDragDockObject {
-    return AsDragDockObject(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsDragDockObject.
-func DragDockObjectFromObj(obj IObject) *TDragDockObject {
-    return AsDragDockObject(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsDragDockObject.
-func DragDockObjectFromUnsafePointer(ptr unsafe.Pointer) *TDragDockObject {
-    return AsDragDockObject(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (d *TDragDockObject) Free() {
-    if d.instance != 0 {
-        DragDockObject_Free(d.instance)
-        d.instance, d.ptr = 0, nullptr
+    if d.instance != nullptr {
+        DragDockObject_Free(d._instance())
+        d.instance  = nullptr
     }
 }
 
+func (d *TDragDockObject) _instance() uintptr {
+    return uintptr(d.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (d *TDragDockObject) Instance() uintptr {
-    return d.instance
+    return d._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (d *TDragDockObject) UnsafeAddr() unsafe.Pointer {
-    return d.ptr
+    return d.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (d *TDragDockObject) IsValid() bool {
-    return d.instance != 0
+    return d.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (d *TDragDockObject) Is() TIs {
-    return TIs(d.instance)
+    return TIs(d._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (d *TDragDockObject) As() TAs {
-//    return TAs(d.instance)
+//    return TAs(d._instance())
 //}
 
+// TDragDockObjectClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,143 +115,159 @@ func TDragDockObjectClass() TClass {
     return DragDockObject_StaticClassType()
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (d *TDragDockObject) Assign(Source *TDragObject) {
-    DragDockObject_Assign(d.instance, CheckPtr(Source))
+    DragDockObject_Assign(d._instance(), CheckPtr(Source))
 }
 
 func (d *TDragDockObject) HideDragImage() {
-    DragDockObject_HideDragImage(d.instance)
+    DragDockObject_HideDragImage(d._instance())
 }
 
 func (d *TDragDockObject) ShowDragImage() {
-    DragDockObject_ShowDragImage(d.instance)
+    DragDockObject_ShowDragImage(d._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (d *TDragDockObject) ClassType() TClass {
-    return DragDockObject_ClassType(d.instance)
+    return DragDockObject_ClassType(d._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (d *TDragDockObject) ClassName() string {
-    return DragDockObject_ClassName(d.instance)
+    return DragDockObject_ClassName(d._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (d *TDragDockObject) InstanceSize() int32 {
-    return DragDockObject_InstanceSize(d.instance)
+    return DragDockObject_InstanceSize(d._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (d *TDragDockObject) InheritsFrom(AClass TClass) bool {
-    return DragDockObject_InheritsFrom(d.instance, AClass)
+    return DragDockObject_InheritsFrom(d._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (d *TDragDockObject) Equals(Obj IObject) bool {
-    return DragDockObject_Equals(d.instance, CheckPtr(Obj))
+    return DragDockObject_Equals(d._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (d *TDragDockObject) GetHashCode() int32 {
-    return DragDockObject_GetHashCode(d.instance)
+    return DragDockObject_GetHashCode(d._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (d *TDragDockObject) ToString() string {
-    return DragDockObject_ToString(d.instance)
+    return DragDockObject_ToString(d._instance())
 }
 
 func (d *TDragDockObject) DockRect() TRect {
-    return DragDockObject_GetDockRect(d.instance)
+    return DragDockObject_GetDockRect(d._instance())
 }
 
 func (d *TDragDockObject) SetDockRect(value TRect) {
-    DragDockObject_SetDockRect(d.instance, value)
+    DragDockObject_SetDockRect(d._instance(), value)
 }
 
 func (d *TDragDockObject) DropAlign() TAlign {
-    return DragDockObject_GetDropAlign(d.instance)
+    return DragDockObject_GetDropAlign(d._instance())
 }
 
 func (d *TDragDockObject) DropOnControl() *TControl {
-    return AsControl(DragDockObject_GetDropOnControl(d.instance))
+    return AsControl(DragDockObject_GetDropOnControl(d._instance()))
 }
 
 func (d *TDragDockObject) EraseDockRect() TRect {
-    return DragDockObject_GetEraseDockRect(d.instance)
+    return DragDockObject_GetEraseDockRect(d._instance())
 }
 
 func (d *TDragDockObject) SetEraseDockRect(value TRect) {
-    DragDockObject_SetEraseDockRect(d.instance, value)
+    DragDockObject_SetEraseDockRect(d._instance(), value)
 }
 
 func (d *TDragDockObject) Floating() bool {
-    return DragDockObject_GetFloating(d.instance)
+    return DragDockObject_GetFloating(d._instance())
 }
 
 func (d *TDragDockObject) SetFloating(value bool) {
-    DragDockObject_SetFloating(d.instance, value)
+    DragDockObject_SetFloating(d._instance(), value)
 }
 
 func (d *TDragDockObject) Control() *TControl {
-    return AsControl(DragDockObject_GetControl(d.instance))
+    return AsControl(DragDockObject_GetControl(d._instance()))
 }
 
 func (d *TDragDockObject) SetControl(value IControl) {
-    DragDockObject_SetControl(d.instance, CheckPtr(value))
+    DragDockObject_SetControl(d._instance(), CheckPtr(value))
 }
 
 func (d *TDragDockObject) AlwaysShowDragImages() bool {
-    return DragDockObject_GetAlwaysShowDragImages(d.instance)
+    return DragDockObject_GetAlwaysShowDragImages(d._instance())
 }
 
 func (d *TDragDockObject) SetAlwaysShowDragImages(value bool) {
-    DragDockObject_SetAlwaysShowDragImages(d.instance, value)
+    DragDockObject_SetAlwaysShowDragImages(d._instance(), value)
 }
 
 func (d *TDragDockObject) DragPos() TPoint {
-    return DragDockObject_GetDragPos(d.instance)
+    return DragDockObject_GetDragPos(d._instance())
 }
 
 func (d *TDragDockObject) SetDragPos(value TPoint) {
-    DragDockObject_SetDragPos(d.instance, value)
+    DragDockObject_SetDragPos(d._instance(), value)
 }
 
 func (d *TDragDockObject) DragTarget() uintptr {
-    return DragDockObject_GetDragTarget(d.instance)
+    return DragDockObject_GetDragTarget(d._instance())
 }
 
 func (d *TDragDockObject) SetDragTarget(value uintptr) {
-    DragDockObject_SetDragTarget(d.instance, value)
+    DragDockObject_SetDragTarget(d._instance(), value)
 }
 
 func (d *TDragDockObject) DragTargetPos() TPoint {
-    return DragDockObject_GetDragTargetPos(d.instance)
+    return DragDockObject_GetDragTargetPos(d._instance())
 }
 
 func (d *TDragDockObject) SetDragTargetPos(value TPoint) {
-    DragDockObject_SetDragTargetPos(d.instance, value)
+    DragDockObject_SetDragTargetPos(d._instance(), value)
 }
 
 func (d *TDragDockObject) Dropped() bool {
-    return DragDockObject_GetDropped(d.instance)
+    return DragDockObject_GetDropped(d._instance())
 }
 

@@ -15,5 +15,5 @@ func Printer_Instance() uintptr {
 }
 
 func Printer_SetPrinter(obj uintptr, aName string) {
-	printer_SetPrinter.Call(obj, GoStrToDStr(aName))
+	printer_SetPrinter.Call(obj, PascalStr(aName))
 }

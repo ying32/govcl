@@ -15,8 +15,9 @@ import (
 	. "github.com/ying32/govcl/vcl/types"
 )
 
-func messageCallbackProc(f uintptr, msg uintptr) uintptr {
-	if v, ok := MessageCallbackOf(f); ok {
+func messageCallbackProc(f unsafe.Pointer, msg uintptr) uintptr {
+	v := PtrToElementValue(f)
+	if v != nil {
 		v.(TWndProcEvent)(
 			(*TMessage)(unsafe.Pointer(msg)),
 		)

@@ -14,26 +14,25 @@ import "unsafe"
 //
 // Simplification of As operation.
 //go:noinline
-func getInstance(value interface{}) (uintptr, unsafe.Pointer) {
-	var ptr uintptr
+func getInstance(value interface{}) unsafe.Pointer {
+
 	switch value.(type) {
 	case uintptr:
 		// 一个对象来自已经存在的对象实例指针
 		// an object from a pointer to an existing object instance
-		ptr = value.(uintptr)
+		return unsafe.Pointer(value.(uintptr))
 	case unsafe.Pointer:
 		// 一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 		// An object from an unsafe address. Note: Using this function may cause some unknown situations. Use it with caution.
-		ptr = uintptr(value.(unsafe.Pointer))
+		return value.(unsafe.Pointer)
 	case IObject:
 		// 一个对象来自已经存在的对象实例。
 		// An object from an existing object instance.
-		ptr = CheckPtr(value)
+		return unsafe.Pointer(CheckPtr(value))
 	default:
 		// 尝试
-		ptr = getUIntPtr(value)
+		return unsafe.Pointer(getUIntPtr(value))
 	}
-	return ptr, unsafe.Pointer(ptr)
 }
 
 func getUIntPtr(v interface{}) uintptr {

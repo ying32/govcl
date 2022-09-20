@@ -19,102 +19,95 @@ import (
 
 type TList struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewList
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewList() *TList {
     l := new(TList)
-    l.instance = List_Create()
-    l.ptr = unsafe.Pointer(l.instance)
+    l.instance = unsafe.Pointer(List_Create())
     setFinalizer(l, (*TList).Free)
     return l
 }
 
+// AsList
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsList(obj interface{}) *TList {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TList{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TList{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsList.
-func ListFromInst(inst uintptr) *TList {
-    return AsList(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsList.
-func ListFromObj(obj IObject) *TList {
-    return AsList(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsList.
-func ListFromUnsafePointer(ptr unsafe.Pointer) *TList {
-    return AsList(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (l *TList) Free() {
-    if l.instance != 0 {
-        List_Free(l.instance)
-        l.instance, l.ptr = 0, nullptr
+    if l.instance != nullptr {
+        List_Free(l._instance())
+        l.instance  = nullptr
     }
 }
 
+func (l *TList) _instance() uintptr {
+    return uintptr(l.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (l *TList) Instance() uintptr {
-    return l.instance
+    return l._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (l *TList) UnsafeAddr() unsafe.Pointer {
-    return l.ptr
+    return l.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (l *TList) IsValid() bool {
-    return l.instance != 0
+    return l.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (l *TList) Is() TIs {
-    return TIs(l.instance)
+    return TIs(l._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (l *TList) As() TAs {
-//    return TAs(l.instance)
+//    return TAs(l._instance())
 //}
 
+// TListClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -123,123 +116,153 @@ func TListClass() TClass {
 }
 
 func (l *TList) Add(Item uintptr) int32 {
-    return List_Add(l.instance, Item)
+    return List_Add(l._instance(), Item)
 }
 
+// Clear
+//
 // 清除。
 func (l *TList) Clear() {
-    List_Clear(l.instance)
+    List_Clear(l._instance())
 }
 
 func (l *TList) Delete(Index int32) {
-    List_Delete(l.instance, Index)
+    List_Delete(l._instance(), Index)
+}
+
+func (l *TList) Exchange(Index1 int32, Index2 int32) {
+    List_Exchange(l._instance(), Index1 , Index2)
 }
 
 func (l *TList) Expand() *TList {
-    return AsList(List_Expand(l.instance))
+    return AsList(List_Expand(l._instance()))
 }
 
 func (l *TList) IndexOf(Item uintptr) int32 {
-    return List_IndexOf(l.instance, Item)
+    return List_IndexOf(l._instance(), Item)
 }
 
 func (l *TList) Insert(Index int32, Item uintptr) {
-    List_Insert(l.instance, Index , Item)
+    List_Insert(l._instance(), Index , Item)
 }
 
 func (l *TList) Move(CurIndex int32, NewIndex int32) {
-    List_Move(l.instance, CurIndex , NewIndex)
+    List_Move(l._instance(), CurIndex , NewIndex)
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (l *TList) ClassType() TClass {
-    return List_ClassType(l.instance)
+    return List_ClassType(l._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (l *TList) ClassName() string {
-    return List_ClassName(l.instance)
+    return List_ClassName(l._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (l *TList) InstanceSize() int32 {
-    return List_InstanceSize(l.instance)
+    return List_InstanceSize(l._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (l *TList) InheritsFrom(AClass TClass) bool {
-    return List_InheritsFrom(l.instance, AClass)
+    return List_InheritsFrom(l._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (l *TList) Equals(Obj IObject) bool {
-    return List_Equals(l.instance, CheckPtr(Obj))
+    return List_Equals(l._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (l *TList) GetHashCode() int32 {
-    return List_GetHashCode(l.instance)
+    return List_GetHashCode(l._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (l *TList) ToString() string {
-    return List_ToString(l.instance)
+    return List_ToString(l._instance())
 }
 
 func (l *TList) Capacity() int32 {
-    return List_GetCapacity(l.instance)
+    return List_GetCapacity(l._instance())
 }
 
 func (l *TList) SetCapacity(value int32) {
-    List_SetCapacity(l.instance, value)
+    List_SetCapacity(l._instance(), value)
 }
 
+// Count
+//
 // 获取项目总数。
 //
 // Get Total number of projects.
 func (l *TList) Count() int32 {
-    return List_GetCount(l.instance)
+    return List_GetCount(l._instance())
 }
 
+// SetCount
+//
 // 设置项目总数。
 //
 // Set Total number of projects.
 func (l *TList) SetCount(value int32) {
-    List_SetCount(l.instance, value)
+    List_SetCount(l._instance(), value)
 }
 
+// List
+//
 // 获取获取列表指针。
 //
 // Get Get list pointer.
 func (l *TList) List() uintptr {
-    return List_GetList(l.instance)
+    return List_GetList(l._instance())
 }
 
+// Items
+//
 // 获取获取指定索引项目。
 //
 // Get Get the specified index item.
 func (l *TList) Items(Index int32) uintptr {
-    return List_GetItems(l.instance, Index)
+    return List_GetItems(l._instance(), Index)
 }
 
+// SetItems
+//
 // 设置获取指定索引项目。
 //
 // Set Get the specified index item.
 func (l *TList) SetItems(Index int32, value uintptr) {
-    List_SetItems(l.instance, Index, value)
+    List_SetItems(l._instance(), Index, value)
 }
 

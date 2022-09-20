@@ -2309,3 +2309,13 @@ const (
 	PcfComponent
 	PcfCustomData
 )
+
+//ENUM:
+type TWrapAfter int32
+
+const (
+	WaAuto   = iota + 0 // auto
+	WaForce             // always wrap after this control
+	WaAvoid             // try not to wrap after this control, if the control is already at the beginning of the row, wrap though
+	WaForbid            // never wrap after this control
+)

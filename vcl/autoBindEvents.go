@@ -44,8 +44,6 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-
-	"github.com/ying32/govcl/vcl/api"
 )
 
 type eventMethod struct {
@@ -227,9 +225,9 @@ func findAndSetEvent(v reflect.Value, name, eventType string, method eventMethod
 	}
 	if event := v.MethodByName("SetOn" + eventType); event.IsValid() {
 		// 设置EventId
-		api.BeginAddEvent()
-		defer api.EndAddEvent()
-		api.SetCurrentEventId(api.GetUID(v.Pointer(), method.FuncPtr))
+		//api.BeginAddEvent()
+		//defer api.EndAddEvent()
+		//api.SetCurrentEventId(api.GetUID(v.Pointer(), method.FuncPtr))
 		event.Call([]reflect.Value{method.Method})
 	} else {
 		if len(eventType) > 0 {

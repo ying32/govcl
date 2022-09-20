@@ -26,15 +26,15 @@ func PredefinedClipboardFormat(aFormat types.TPredefinedClipboardFormat) types.T
 }
 
 func (c *TClipboard) HasFormat(aFormatID types.TClipboardFormat) bool {
-	return Clipboard_HasFormat(c.instance, aFormatID)
+	return Clipboard_HasFormat(c._instance(), aFormatID)
 }
 
 func (c *TClipboard) GetAsHtml(ExtractFragmentOnly bool) string {
-	return Clipboard_GetAsHtml(c.instance, ExtractFragmentOnly)
+	return Clipboard_GetAsHtml(c._instance(), ExtractFragmentOnly)
 }
 
 func (c *TClipboard) GetTextBuf(Buffer *string, BufSize int32) int32 {
-	return Clipboard_GetTextBuf(c.instance, Buffer, BufSize)
+	return Clipboard_GetTextBuf(c._instance(), Buffer, BufSize)
 }
 
 func (c *TClipboard) AsText() string {
@@ -47,5 +47,5 @@ func (c *TClipboard) AsText() string {
 }
 
 func (c *TClipboard) SetAsText(value string) {
-	Clipboard_SetAsText(c.instance, value)
+	Clipboard_SetAsText(c._instance(), value)
 }

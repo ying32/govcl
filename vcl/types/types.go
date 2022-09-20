@@ -219,7 +219,9 @@ func (p *TPoint) Scale2(val int) {
 	p.Scale(float64(val))
 }
 
-// TMsg: Only Windows,  tagMSG
+// TMsg
+//
+// Only Windows, tagMSG
 type TMsg struct {
 	Hwnd    HWND
 	Message uint32
@@ -267,12 +269,16 @@ type TWndClass struct {
 
 // -------------- TSet
 
+// NewSet
+//
 // 新建TSet，初始值为0，然后添加元素
 func NewSet(opts ...uint8) TSet {
 	var s TSet
 	return s.Include(opts...)
 }
 
+// Include
+//
 // 集合加法，val...中存储为位的索引，下标为0
 func (s TSet) Include(val ...uint8) TSet {
 	r := uint32(s)
@@ -282,6 +288,8 @@ func (s TSet) Include(val ...uint8) TSet {
 	return TSet(r)
 }
 
+// Exclude
+//
 // 集合减法，val...中存储为位的索引，下标为0
 func (s TSet) Exclude(val ...uint8) TSet {
 	r := uint32(s)
@@ -291,6 +299,8 @@ func (s TSet) Exclude(val ...uint8) TSet {
 	return TSet(r)
 }
 
+// In
+//
 // 集合类型的判断，val表示位数，下标为0
 func (s TSet) In(val uint32) bool {
 	if s&(1<<uint8(val)) != 0 {

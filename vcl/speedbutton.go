@@ -19,101 +19,94 @@ import (
 
 type TSpeedButton struct {
     IControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewSpeedButton
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewSpeedButton(owner IComponent) *TSpeedButton {
     s := new(TSpeedButton)
-    s.instance = SpeedButton_Create(CheckPtr(owner))
-    s.ptr = unsafe.Pointer(s.instance)
+    s.instance = unsafe.Pointer(SpeedButton_Create(CheckPtr(owner)))
     return s
 }
 
+// AsSpeedButton
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsSpeedButton(obj interface{}) *TSpeedButton {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TSpeedButton{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TSpeedButton{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsSpeedButton.
-func SpeedButtonFromInst(inst uintptr) *TSpeedButton {
-    return AsSpeedButton(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsSpeedButton.
-func SpeedButtonFromObj(obj IObject) *TSpeedButton {
-    return AsSpeedButton(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsSpeedButton.
-func SpeedButtonFromUnsafePointer(ptr unsafe.Pointer) *TSpeedButton {
-    return AsSpeedButton(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (s *TSpeedButton) Free() {
-    if s.instance != 0 {
-        SpeedButton_Free(s.instance)
-        s.instance, s.ptr = 0, nullptr
+    if s.instance != nullptr {
+        SpeedButton_Free(s._instance())
+        s.instance  = nullptr
     }
 }
 
+func (s *TSpeedButton) _instance() uintptr {
+    return uintptr(s.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (s *TSpeedButton) Instance() uintptr {
-    return s.instance
+    return s._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (s *TSpeedButton) UnsafeAddr() unsafe.Pointer {
-    return s.ptr
+    return s.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (s *TSpeedButton) IsValid() bool {
-    return s.instance != 0
+    return s.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (s *TSpeedButton) Is() TIs {
-    return TIs(s.instance)
+    return TIs(s._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (s *TSpeedButton) As() TAs {
-//    return TAs(s.instance)
+//    return TAs(s._instance())
 //}
 
+// TSpeedButtonClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,909 +114,1137 @@ func TSpeedButtonClass() TClass {
     return SpeedButton_StaticClassType()
 }
 
+// Click
+//
 // 单击。
 func (s *TSpeedButton) Click() {
-    SpeedButton_Click(s.instance)
+    SpeedButton_Click(s._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (s *TSpeedButton) BringToFront() {
-    SpeedButton_BringToFront(s.instance)
+    SpeedButton_BringToFront(s._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (s *TSpeedButton) ClientToScreen(Point TPoint) TPoint {
-    return SpeedButton_ClientToScreen(s.instance, Point)
+    return SpeedButton_ClientToScreen(s._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (s *TSpeedButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return SpeedButton_ClientToParent(s.instance, Point , CheckPtr(AParent))
+    return SpeedButton_ClientToParent(s._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (s *TSpeedButton) Dragging() bool {
-    return SpeedButton_Dragging(s.instance)
+    return SpeedButton_Dragging(s._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (s *TSpeedButton) HasParent() bool {
-    return SpeedButton_HasParent(s.instance)
+    return SpeedButton_HasParent(s._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (s *TSpeedButton) Hide() {
-    SpeedButton_Hide(s.instance)
+    SpeedButton_Hide(s._instance())
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (s *TSpeedButton) Invalidate() {
-    SpeedButton_Invalidate(s.instance)
+    SpeedButton_Invalidate(s._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (s *TSpeedButton) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return SpeedButton_Perform(s.instance, Msg , WParam , LParam)
+    return SpeedButton_Perform(s._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (s *TSpeedButton) Refresh() {
-    SpeedButton_Refresh(s.instance)
+    SpeedButton_Refresh(s._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (s *TSpeedButton) Repaint() {
-    SpeedButton_Repaint(s.instance)
+    SpeedButton_Repaint(s._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (s *TSpeedButton) ScreenToClient(Point TPoint) TPoint {
-    return SpeedButton_ScreenToClient(s.instance, Point)
+    return SpeedButton_ScreenToClient(s._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (s *TSpeedButton) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return SpeedButton_ParentToClient(s.instance, Point , CheckPtr(AParent))
+    return SpeedButton_ParentToClient(s._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (s *TSpeedButton) SendToBack() {
-    SpeedButton_SendToBack(s.instance)
+    SpeedButton_SendToBack(s._instance())
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (s *TSpeedButton) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    SpeedButton_SetBounds(s.instance, ALeft , ATop , AWidth , AHeight)
+    SpeedButton_SetBounds(s._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (s *TSpeedButton) Show() {
-    SpeedButton_Show(s.instance)
+    SpeedButton_Show(s._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (s *TSpeedButton) Update() {
-    SpeedButton_Update(s.instance)
+    SpeedButton_Update(s._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (s *TSpeedButton) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return SpeedButton_GetTextBuf(s.instance, Buffer , BufSize)
+    return SpeedButton_GetTextBuf(s._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (s *TSpeedButton) GetTextLen() int32 {
-    return SpeedButton_GetTextLen(s.instance)
+    return SpeedButton_GetTextLen(s._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (s *TSpeedButton) SetTextBuf(Buffer string) {
-    SpeedButton_SetTextBuf(s.instance, Buffer)
+    SpeedButton_SetTextBuf(s._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (s *TSpeedButton) FindComponent(AName string) *TComponent {
-    return AsComponent(SpeedButton_FindComponent(s.instance, AName))
+    return AsComponent(SpeedButton_FindComponent(s._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (s *TSpeedButton) GetNamePath() string {
-    return SpeedButton_GetNamePath(s.instance)
+    return SpeedButton_GetNamePath(s._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (s *TSpeedButton) Assign(Source IObject) {
-    SpeedButton_Assign(s.instance, CheckPtr(Source))
+    SpeedButton_Assign(s._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (s *TSpeedButton) ClassType() TClass {
-    return SpeedButton_ClassType(s.instance)
+    return SpeedButton_ClassType(s._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (s *TSpeedButton) ClassName() string {
-    return SpeedButton_ClassName(s.instance)
+    return SpeedButton_ClassName(s._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (s *TSpeedButton) InstanceSize() int32 {
-    return SpeedButton_InstanceSize(s.instance)
+    return SpeedButton_InstanceSize(s._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (s *TSpeedButton) InheritsFrom(AClass TClass) bool {
-    return SpeedButton_InheritsFrom(s.instance, AClass)
+    return SpeedButton_InheritsFrom(s._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (s *TSpeedButton) Equals(Obj IObject) bool {
-    return SpeedButton_Equals(s.instance, CheckPtr(Obj))
+    return SpeedButton_Equals(s._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (s *TSpeedButton) GetHashCode() int32 {
-    return SpeedButton_GetHashCode(s.instance)
+    return SpeedButton_GetHashCode(s._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (s *TSpeedButton) ToString() string {
-    return SpeedButton_ToString(s.instance)
+    return SpeedButton_ToString(s._instance())
 }
 
 func (s *TSpeedButton) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    SpeedButton_AnchorToNeighbour(s.instance, ASide , ASpace , CheckPtr(ASibling))
+    SpeedButton_AnchorToNeighbour(s._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (s *TSpeedButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    SpeedButton_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
+    SpeedButton_AnchorParallel(s._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (s *TSpeedButton) AnchorHorizontalCenterTo(ASibling IControl) {
-    SpeedButton_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
+    SpeedButton_AnchorHorizontalCenterTo(s._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (s *TSpeedButton) AnchorVerticalCenterTo(ASibling IControl) {
-    SpeedButton_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
+    SpeedButton_AnchorVerticalCenterTo(s._instance(), CheckPtr(ASibling))
 }
 
 func (s *TSpeedButton) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    SpeedButton_AnchorSame(s.instance, ASide , CheckPtr(ASibling))
+    SpeedButton_AnchorSame(s._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (s *TSpeedButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    SpeedButton_AnchorAsAlign(s.instance, ATheAlign , ASpace)
+    SpeedButton_AnchorAsAlign(s._instance(), ATheAlign , ASpace)
 }
 
 func (s *TSpeedButton) AnchorClient(ASpace int32) {
-    SpeedButton_AnchorClient(s.instance, ASpace)
+    SpeedButton_AnchorClient(s._instance(), ASpace)
 }
 
 func (s *TSpeedButton) ScaleDesignToForm(ASize int32) int32 {
-    return SpeedButton_ScaleDesignToForm(s.instance, ASize)
+    return SpeedButton_ScaleDesignToForm(s._instance(), ASize)
 }
 
 func (s *TSpeedButton) ScaleFormToDesign(ASize int32) int32 {
-    return SpeedButton_ScaleFormToDesign(s.instance, ASize)
+    return SpeedButton_ScaleFormToDesign(s._instance(), ASize)
 }
 
 func (s *TSpeedButton) Scale96ToForm(ASize int32) int32 {
-    return SpeedButton_Scale96ToForm(s.instance, ASize)
+    return SpeedButton_Scale96ToForm(s._instance(), ASize)
 }
 
 func (s *TSpeedButton) ScaleFormTo96(ASize int32) int32 {
-    return SpeedButton_ScaleFormTo96(s.instance, ASize)
+    return SpeedButton_ScaleFormTo96(s._instance(), ASize)
 }
 
 func (s *TSpeedButton) Scale96ToFont(ASize int32) int32 {
-    return SpeedButton_Scale96ToFont(s.instance, ASize)
+    return SpeedButton_Scale96ToFont(s._instance(), ASize)
 }
 
 func (s *TSpeedButton) ScaleFontTo96(ASize int32) int32 {
-    return SpeedButton_ScaleFontTo96(s.instance, ASize)
+    return SpeedButton_ScaleFontTo96(s._instance(), ASize)
 }
 
 func (s *TSpeedButton) ScaleScreenToFont(ASize int32) int32 {
-    return SpeedButton_ScaleScreenToFont(s.instance, ASize)
+    return SpeedButton_ScaleScreenToFont(s._instance(), ASize)
 }
 
 func (s *TSpeedButton) ScaleFontToScreen(ASize int32) int32 {
-    return SpeedButton_ScaleFontToScreen(s.instance, ASize)
+    return SpeedButton_ScaleFontToScreen(s._instance(), ASize)
 }
 
 func (s *TSpeedButton) Scale96ToScreen(ASize int32) int32 {
-    return SpeedButton_Scale96ToScreen(s.instance, ASize)
+    return SpeedButton_Scale96ToScreen(s._instance(), ASize)
 }
 
 func (s *TSpeedButton) ScaleScreenTo96(ASize int32) int32 {
-    return SpeedButton_ScaleScreenTo96(s.instance, ASize)
+    return SpeedButton_ScaleScreenTo96(s._instance(), ASize)
 }
 
 func (s *TSpeedButton) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    SpeedButton_AutoAdjustLayout(s.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    SpeedButton_AutoAdjustLayout(s._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (s *TSpeedButton) FixDesignFontsPPI(ADesignTimePPI int32) {
-    SpeedButton_FixDesignFontsPPI(s.instance, ADesignTimePPI)
+    SpeedButton_FixDesignFontsPPI(s._instance(), ADesignTimePPI)
 }
 
 func (s *TSpeedButton) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    SpeedButton_ScaleFontsPPI(s.instance, AToPPI , AProportion)
+    SpeedButton_ScaleFontsPPI(s._instance(), AToPPI , AProportion)
 }
 
+// ImageIndex
+//
 // 获取图像在images中的索引。
 func (s *TSpeedButton) ImageIndex() int32 {
-    return SpeedButton_GetImageIndex(s.instance)
+    return SpeedButton_GetImageIndex(s._instance())
 }
 
+// SetImageIndex
+//
 // 设置图像在images中的索引。
 func (s *TSpeedButton) SetImageIndex(value int32) {
-    SpeedButton_SetImageIndex(s.instance, value)
+    SpeedButton_SetImageIndex(s._instance(), value)
 }
 
+// Images
+//
 // 获取图标索引列表对象。
 func (s *TSpeedButton) Images() *TImageList {
-    return AsImageList(SpeedButton_GetImages(s.instance))
+    return AsImageList(SpeedButton_GetImages(s._instance()))
 }
 
+// SetImages
+//
 // 设置图标索引列表对象。
 func (s *TSpeedButton) SetImages(value IComponent) {
-    SpeedButton_SetImages(s.instance, CheckPtr(value))
+    SpeedButton_SetImages(s._instance(), CheckPtr(value))
 }
 
 func (s *TSpeedButton) ImageWidth() int32 {
-    return SpeedButton_GetImageWidth(s.instance)
+    return SpeedButton_GetImageWidth(s._instance())
 }
 
 func (s *TSpeedButton) SetImageWidth(value int32) {
-    SpeedButton_SetImageWidth(s.instance, value)
+    SpeedButton_SetImageWidth(s._instance(), value)
 }
 
 func (s *TSpeedButton) ShowCaption() bool {
-    return SpeedButton_GetShowCaption(s.instance)
+    return SpeedButton_GetShowCaption(s._instance())
 }
 
 func (s *TSpeedButton) SetShowCaption(value bool) {
-    SpeedButton_SetShowCaption(s.instance, value)
+    SpeedButton_SetShowCaption(s._instance(), value)
 }
 
 func (s *TSpeedButton) Action() *TAction {
-    return AsAction(SpeedButton_GetAction(s.instance))
+    return AsAction(SpeedButton_GetAction(s._instance()))
 }
 
 func (s *TSpeedButton) SetAction(value IComponent) {
-    SpeedButton_SetAction(s.instance, CheckPtr(value))
+    SpeedButton_SetAction(s._instance(), CheckPtr(value))
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (s *TSpeedButton) Align() TAlign {
-    return SpeedButton_GetAlign(s.instance)
+    return SpeedButton_GetAlign(s._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (s *TSpeedButton) SetAlign(value TAlign) {
-    SpeedButton_SetAlign(s.instance, value)
+    SpeedButton_SetAlign(s._instance(), value)
 }
 
 func (s *TSpeedButton) AllowAllUp() bool {
-    return SpeedButton_GetAllowAllUp(s.instance)
+    return SpeedButton_GetAllowAllUp(s._instance())
 }
 
 func (s *TSpeedButton) SetAllowAllUp(value bool) {
-    SpeedButton_SetAllowAllUp(s.instance, value)
+    SpeedButton_SetAllowAllUp(s._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (s *TSpeedButton) Anchors() TAnchors {
-    return SpeedButton_GetAnchors(s.instance)
+    return SpeedButton_GetAnchors(s._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (s *TSpeedButton) SetAnchors(value TAnchors) {
-    SpeedButton_SetAnchors(s.instance, value)
+    SpeedButton_SetAnchors(s._instance(), value)
 }
 
 func (s *TSpeedButton) BiDiMode() TBiDiMode {
-    return SpeedButton_GetBiDiMode(s.instance)
+    return SpeedButton_GetBiDiMode(s._instance())
 }
 
 func (s *TSpeedButton) SetBiDiMode(value TBiDiMode) {
-    SpeedButton_SetBiDiMode(s.instance, value)
+    SpeedButton_SetBiDiMode(s._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (s *TSpeedButton) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(SpeedButton_GetConstraints(s.instance))
+    return AsSizeConstraints(SpeedButton_GetConstraints(s._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (s *TSpeedButton) SetConstraints(value *TSizeConstraints) {
-    SpeedButton_SetConstraints(s.instance, CheckPtr(value))
+    SpeedButton_SetConstraints(s._instance(), CheckPtr(value))
 }
 
+// GroupIndex
+//
 // 获取团组索引。
 func (s *TSpeedButton) GroupIndex() int32 {
-    return SpeedButton_GetGroupIndex(s.instance)
+    return SpeedButton_GetGroupIndex(s._instance())
 }
 
+// SetGroupIndex
+//
 // 设置团组索引。
 func (s *TSpeedButton) SetGroupIndex(value int32) {
-    SpeedButton_SetGroupIndex(s.instance, value)
+    SpeedButton_SetGroupIndex(s._instance(), value)
 }
 
 func (s *TSpeedButton) Down() bool {
-    return SpeedButton_GetDown(s.instance)
+    return SpeedButton_GetDown(s._instance())
 }
 
 func (s *TSpeedButton) SetDown(value bool) {
-    SpeedButton_SetDown(s.instance, value)
+    SpeedButton_SetDown(s._instance(), value)
 }
 
+// Caption
+//
 // 获取控件标题。
 //
 // Get the control title.
 func (s *TSpeedButton) Caption() string {
-    return SpeedButton_GetCaption(s.instance)
+    return SpeedButton_GetCaption(s._instance())
 }
 
+// SetCaption
+//
 // 设置控件标题。
 //
 // Set the control title.
 func (s *TSpeedButton) SetCaption(value string) {
-    SpeedButton_SetCaption(s.instance, value)
+    SpeedButton_SetCaption(s._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (s *TSpeedButton) Enabled() bool {
-    return SpeedButton_GetEnabled(s.instance)
+    return SpeedButton_GetEnabled(s._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (s *TSpeedButton) SetEnabled(value bool) {
-    SpeedButton_SetEnabled(s.instance, value)
+    SpeedButton_SetEnabled(s._instance(), value)
 }
 
+// Flat
+//
 // 获取平面样式。
 func (s *TSpeedButton) Flat() bool {
-    return SpeedButton_GetFlat(s.instance)
+    return SpeedButton_GetFlat(s._instance())
 }
 
+// SetFlat
+//
 // 设置平面样式。
 func (s *TSpeedButton) SetFlat(value bool) {
-    SpeedButton_SetFlat(s.instance, value)
+    SpeedButton_SetFlat(s._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (s *TSpeedButton) Font() *TFont {
-    return AsFont(SpeedButton_GetFont(s.instance))
+    return AsFont(SpeedButton_GetFont(s._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (s *TSpeedButton) SetFont(value *TFont) {
-    SpeedButton_SetFont(s.instance, CheckPtr(value))
+    SpeedButton_SetFont(s._instance(), CheckPtr(value))
 }
 
 func (s *TSpeedButton) Glyph() *TBitmap {
-    return AsBitmap(SpeedButton_GetGlyph(s.instance))
+    return AsBitmap(SpeedButton_GetGlyph(s._instance()))
 }
 
 func (s *TSpeedButton) SetGlyph(value *TBitmap) {
-    SpeedButton_SetGlyph(s.instance, CheckPtr(value))
+    SpeedButton_SetGlyph(s._instance(), CheckPtr(value))
 }
 
 func (s *TSpeedButton) Layout() TButtonLayout {
-    return SpeedButton_GetLayout(s.instance)
+    return SpeedButton_GetLayout(s._instance())
 }
 
 func (s *TSpeedButton) SetLayout(value TButtonLayout) {
-    SpeedButton_SetLayout(s.instance, value)
+    SpeedButton_SetLayout(s._instance(), value)
 }
 
 func (s *TSpeedButton) NumGlyphs() TNumGlyphs {
-    return SpeedButton_GetNumGlyphs(s.instance)
+    return SpeedButton_GetNumGlyphs(s._instance())
 }
 
 func (s *TSpeedButton) SetNumGlyphs(value TNumGlyphs) {
-    SpeedButton_SetNumGlyphs(s.instance, value)
+    SpeedButton_SetNumGlyphs(s._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (s *TSpeedButton) ParentFont() bool {
-    return SpeedButton_GetParentFont(s.instance)
+    return SpeedButton_GetParentFont(s._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (s *TSpeedButton) SetParentFont(value bool) {
-    SpeedButton_SetParentFont(s.instance, value)
+    SpeedButton_SetParentFont(s._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (s *TSpeedButton) ParentShowHint() bool {
-    return SpeedButton_GetParentShowHint(s.instance)
+    return SpeedButton_GetParentShowHint(s._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (s *TSpeedButton) SetParentShowHint(value bool) {
-    SpeedButton_SetParentShowHint(s.instance, value)
+    SpeedButton_SetParentShowHint(s._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (s *TSpeedButton) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(SpeedButton_GetPopupMenu(s.instance))
+    return AsPopupMenu(SpeedButton_GetPopupMenu(s._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (s *TSpeedButton) SetPopupMenu(value IComponent) {
-    SpeedButton_SetPopupMenu(s.instance, CheckPtr(value))
+    SpeedButton_SetPopupMenu(s._instance(), CheckPtr(value))
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (s *TSpeedButton) ShowHint() bool {
-    return SpeedButton_GetShowHint(s.instance)
+    return SpeedButton_GetShowHint(s._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (s *TSpeedButton) SetShowHint(value bool) {
-    SpeedButton_SetShowHint(s.instance, value)
+    SpeedButton_SetShowHint(s._instance(), value)
 }
 
 func (s *TSpeedButton) Spacing() int32 {
-    return SpeedButton_GetSpacing(s.instance)
+    return SpeedButton_GetSpacing(s._instance())
 }
 
 func (s *TSpeedButton) SetSpacing(value int32) {
-    SpeedButton_SetSpacing(s.instance, value)
+    SpeedButton_SetSpacing(s._instance(), value)
 }
 
+// Transparent
+//
 // 获取透明。
 //
 // Get transparent.
 func (s *TSpeedButton) Transparent() bool {
-    return SpeedButton_GetTransparent(s.instance)
+    return SpeedButton_GetTransparent(s._instance())
 }
 
+// SetTransparent
+//
 // 设置透明。
 //
 // Set transparent.
 func (s *TSpeedButton) SetTransparent(value bool) {
-    SpeedButton_SetTransparent(s.instance, value)
+    SpeedButton_SetTransparent(s._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (s *TSpeedButton) Visible() bool {
-    return SpeedButton_GetVisible(s.instance)
+    return SpeedButton_GetVisible(s._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (s *TSpeedButton) SetVisible(value bool) {
-    SpeedButton_SetVisible(s.instance, value)
+    SpeedButton_SetVisible(s._instance(), value)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (s *TSpeedButton) SetOnClick(fn TNotifyEvent) {
-    SpeedButton_SetOnClick(s.instance, fn)
+    SpeedButton_SetOnClick(s._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (s *TSpeedButton) SetOnDblClick(fn TNotifyEvent) {
-    SpeedButton_SetOnDblClick(s.instance, fn)
+    SpeedButton_SetOnDblClick(s._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (s *TSpeedButton) SetOnMouseDown(fn TMouseEvent) {
-    SpeedButton_SetOnMouseDown(s.instance, fn)
+    SpeedButton_SetOnMouseDown(s._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (s *TSpeedButton) SetOnMouseEnter(fn TNotifyEvent) {
-    SpeedButton_SetOnMouseEnter(s.instance, fn)
+    SpeedButton_SetOnMouseEnter(s._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (s *TSpeedButton) SetOnMouseLeave(fn TNotifyEvent) {
-    SpeedButton_SetOnMouseLeave(s.instance, fn)
+    SpeedButton_SetOnMouseLeave(s._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (s *TSpeedButton) SetOnMouseMove(fn TMouseMoveEvent) {
-    SpeedButton_SetOnMouseMove(s.instance, fn)
+    SpeedButton_SetOnMouseMove(s._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (s *TSpeedButton) SetOnMouseUp(fn TMouseEvent) {
-    SpeedButton_SetOnMouseUp(s.instance, fn)
+    SpeedButton_SetOnMouseUp(s._instance(), fn)
 }
 
 func (s *TSpeedButton) BoundsRect() TRect {
-    return SpeedButton_GetBoundsRect(s.instance)
+    return SpeedButton_GetBoundsRect(s._instance())
 }
 
 func (s *TSpeedButton) SetBoundsRect(value TRect) {
-    SpeedButton_SetBoundsRect(s.instance, value)
+    SpeedButton_SetBoundsRect(s._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (s *TSpeedButton) ClientHeight() int32 {
-    return SpeedButton_GetClientHeight(s.instance)
+    return SpeedButton_GetClientHeight(s._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (s *TSpeedButton) SetClientHeight(value int32) {
-    SpeedButton_SetClientHeight(s.instance, value)
+    SpeedButton_SetClientHeight(s._instance(), value)
 }
 
 func (s *TSpeedButton) ClientOrigin() TPoint {
-    return SpeedButton_GetClientOrigin(s.instance)
+    return SpeedButton_GetClientOrigin(s._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (s *TSpeedButton) ClientRect() TRect {
-    return SpeedButton_GetClientRect(s.instance)
+    return SpeedButton_GetClientRect(s._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (s *TSpeedButton) ClientWidth() int32 {
-    return SpeedButton_GetClientWidth(s.instance)
+    return SpeedButton_GetClientWidth(s._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (s *TSpeedButton) SetClientWidth(value int32) {
-    SpeedButton_SetClientWidth(s.instance, value)
+    SpeedButton_SetClientWidth(s._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (s *TSpeedButton) ControlState() TControlState {
-    return SpeedButton_GetControlState(s.instance)
+    return SpeedButton_GetControlState(s._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (s *TSpeedButton) SetControlState(value TControlState) {
-    SpeedButton_SetControlState(s.instance, value)
+    SpeedButton_SetControlState(s._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (s *TSpeedButton) ControlStyle() TControlStyle {
-    return SpeedButton_GetControlStyle(s.instance)
+    return SpeedButton_GetControlStyle(s._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (s *TSpeedButton) SetControlStyle(value TControlStyle) {
-    SpeedButton_SetControlStyle(s.instance, value)
+    SpeedButton_SetControlStyle(s._instance(), value)
 }
 
 func (s *TSpeedButton) Floating() bool {
-    return SpeedButton_GetFloating(s.instance)
+    return SpeedButton_GetFloating(s._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (s *TSpeedButton) Parent() *TWinControl {
-    return AsWinControl(SpeedButton_GetParent(s.instance))
+    return AsWinControl(SpeedButton_GetParent(s._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (s *TSpeedButton) SetParent(value IWinControl) {
-    SpeedButton_SetParent(s.instance, CheckPtr(value))
+    SpeedButton_SetParent(s._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (s *TSpeedButton) Left() int32 {
-    return SpeedButton_GetLeft(s.instance)
+    return SpeedButton_GetLeft(s._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (s *TSpeedButton) SetLeft(value int32) {
-    SpeedButton_SetLeft(s.instance, value)
+    SpeedButton_SetLeft(s._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (s *TSpeedButton) Top() int32 {
-    return SpeedButton_GetTop(s.instance)
+    return SpeedButton_GetTop(s._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (s *TSpeedButton) SetTop(value int32) {
-    SpeedButton_SetTop(s.instance, value)
+    SpeedButton_SetTop(s._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (s *TSpeedButton) Width() int32 {
-    return SpeedButton_GetWidth(s.instance)
+    return SpeedButton_GetWidth(s._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (s *TSpeedButton) SetWidth(value int32) {
-    SpeedButton_SetWidth(s.instance, value)
+    SpeedButton_SetWidth(s._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (s *TSpeedButton) Height() int32 {
-    return SpeedButton_GetHeight(s.instance)
+    return SpeedButton_GetHeight(s._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (s *TSpeedButton) SetHeight(value int32) {
-    SpeedButton_SetHeight(s.instance, value)
+    SpeedButton_SetHeight(s._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (s *TSpeedButton) Cursor() TCursor {
-    return SpeedButton_GetCursor(s.instance)
+    return SpeedButton_GetCursor(s._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (s *TSpeedButton) SetCursor(value TCursor) {
-    SpeedButton_SetCursor(s.instance, value)
+    SpeedButton_SetCursor(s._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (s *TSpeedButton) Hint() string {
-    return SpeedButton_GetHint(s.instance)
+    return SpeedButton_GetHint(s._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (s *TSpeedButton) SetHint(value string) {
-    SpeedButton_SetHint(s.instance, value)
+    SpeedButton_SetHint(s._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (s *TSpeedButton) ComponentCount() int32 {
-    return SpeedButton_GetComponentCount(s.instance)
+    return SpeedButton_GetComponentCount(s._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (s *TSpeedButton) ComponentIndex() int32 {
-    return SpeedButton_GetComponentIndex(s.instance)
+    return SpeedButton_GetComponentIndex(s._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (s *TSpeedButton) SetComponentIndex(value int32) {
-    SpeedButton_SetComponentIndex(s.instance, value)
+    SpeedButton_SetComponentIndex(s._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (s *TSpeedButton) Owner() *TComponent {
-    return AsComponent(SpeedButton_GetOwner(s.instance))
+    return AsComponent(SpeedButton_GetOwner(s._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (s *TSpeedButton) Name() string {
-    return SpeedButton_GetName(s.instance)
+    return SpeedButton_GetName(s._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (s *TSpeedButton) SetName(value string) {
-    SpeedButton_SetName(s.instance, value)
+    SpeedButton_SetName(s._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (s *TSpeedButton) Tag() int {
-    return SpeedButton_GetTag(s.instance)
+    return SpeedButton_GetTag(s._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (s *TSpeedButton) SetTag(value int) {
-    SpeedButton_SetTag(s.instance, value)
+    SpeedButton_SetTag(s._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (s *TSpeedButton) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(SpeedButton_GetAnchorSideLeft(s.instance))
+    return AsAnchorSide(SpeedButton_GetAnchorSideLeft(s._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (s *TSpeedButton) SetAnchorSideLeft(value *TAnchorSide) {
-    SpeedButton_SetAnchorSideLeft(s.instance, CheckPtr(value))
+    SpeedButton_SetAnchorSideLeft(s._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (s *TSpeedButton) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(SpeedButton_GetAnchorSideTop(s.instance))
+    return AsAnchorSide(SpeedButton_GetAnchorSideTop(s._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (s *TSpeedButton) SetAnchorSideTop(value *TAnchorSide) {
-    SpeedButton_SetAnchorSideTop(s.instance, CheckPtr(value))
+    SpeedButton_SetAnchorSideTop(s._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (s *TSpeedButton) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(SpeedButton_GetAnchorSideRight(s.instance))
+    return AsAnchorSide(SpeedButton_GetAnchorSideRight(s._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (s *TSpeedButton) SetAnchorSideRight(value *TAnchorSide) {
-    SpeedButton_SetAnchorSideRight(s.instance, CheckPtr(value))
+    SpeedButton_SetAnchorSideRight(s._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (s *TSpeedButton) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(SpeedButton_GetAnchorSideBottom(s.instance))
+    return AsAnchorSide(SpeedButton_GetAnchorSideBottom(s._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (s *TSpeedButton) SetAnchorSideBottom(value *TAnchorSide) {
-    SpeedButton_SetAnchorSideBottom(s.instance, CheckPtr(value))
+    SpeedButton_SetAnchorSideBottom(s._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (s *TSpeedButton) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(SpeedButton_GetBorderSpacing(s.instance))
+    return AsControlBorderSpacing(SpeedButton_GetBorderSpacing(s._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (s *TSpeedButton) SetBorderSpacing(value *TControlBorderSpacing) {
-    SpeedButton_SetBorderSpacing(s.instance, CheckPtr(value))
+    SpeedButton_SetBorderSpacing(s._instance(), CheckPtr(value))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (s *TSpeedButton) Components(AIndex int32) *TComponent {
-    return AsComponent(SpeedButton_GetComponents(s.instance, AIndex))
+    return AsComponent(SpeedButton_GetComponents(s._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (s *TSpeedButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(SpeedButton_GetAnchorSide(s.instance, AKind))
+    return AsAnchorSide(SpeedButton_GetAnchorSide(s._instance(), AKind))
 }
 

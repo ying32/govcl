@@ -8,9 +8,8 @@
 
 // +build windows linux
 // +build tempdll
-// +build !memorydll
 
-// 指令为：target == windows || target == linux && tempdll && !memorydll
+// 指令为：target == windows || target == linux && tempdll
 
 package api
 

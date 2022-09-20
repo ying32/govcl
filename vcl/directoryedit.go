@@ -19,101 +19,94 @@ import (
 
 type TDirectoryEdit struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewDirectoryEdit
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewDirectoryEdit(owner IComponent) *TDirectoryEdit {
     d := new(TDirectoryEdit)
-    d.instance = DirectoryEdit_Create(CheckPtr(owner))
-    d.ptr = unsafe.Pointer(d.instance)
+    d.instance = unsafe.Pointer(DirectoryEdit_Create(CheckPtr(owner)))
     return d
 }
 
+// AsDirectoryEdit
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsDirectoryEdit(obj interface{}) *TDirectoryEdit {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TDirectoryEdit{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TDirectoryEdit{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsDirectoryEdit.
-func DirectoryEditFromInst(inst uintptr) *TDirectoryEdit {
-    return AsDirectoryEdit(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsDirectoryEdit.
-func DirectoryEditFromObj(obj IObject) *TDirectoryEdit {
-    return AsDirectoryEdit(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsDirectoryEdit.
-func DirectoryEditFromUnsafePointer(ptr unsafe.Pointer) *TDirectoryEdit {
-    return AsDirectoryEdit(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (d *TDirectoryEdit) Free() {
-    if d.instance != 0 {
-        DirectoryEdit_Free(d.instance)
-        d.instance, d.ptr = 0, nullptr
+    if d.instance != nullptr {
+        DirectoryEdit_Free(d._instance())
+        d.instance  = nullptr
     }
 }
 
+func (d *TDirectoryEdit) _instance() uintptr {
+    return uintptr(d.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (d *TDirectoryEdit) Instance() uintptr {
-    return d.instance
+    return d._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (d *TDirectoryEdit) UnsafeAddr() unsafe.Pointer {
-    return d.ptr
+    return d.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (d *TDirectoryEdit) IsValid() bool {
-    return d.instance != 0
+    return d.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (d *TDirectoryEdit) Is() TIs {
-    return TIs(d.instance)
+    return TIs(d._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (d *TDirectoryEdit) As() TAs {
-//    return TAs(d.instance)
+//    return TAs(d._instance())
 //}
 
+// TDirectoryEditClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,1568 +114,1970 @@ func TDirectoryEditClass() TClass {
     return DirectoryEdit_StaticClassType()
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (d *TDirectoryEdit) SetFocus() {
-    DirectoryEdit_SetFocus(d.instance)
+    DirectoryEdit_SetFocus(d._instance())
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (d *TDirectoryEdit) Focused() bool {
-    return DirectoryEdit_Focused(d.instance)
+    return DirectoryEdit_Focused(d._instance())
 }
 
+// Clear
+//
 // 清除。
 func (d *TDirectoryEdit) Clear() {
-    DirectoryEdit_Clear(d.instance)
+    DirectoryEdit_Clear(d._instance())
 }
 
+// ClearSelection
+//
 // 清除选择。
 func (d *TDirectoryEdit) ClearSelection() {
-    DirectoryEdit_ClearSelection(d.instance)
+    DirectoryEdit_ClearSelection(d._instance())
 }
 
+// CopyToClipboard
+//
 // 复制到粘贴板。
 func (d *TDirectoryEdit) CopyToClipboard() {
-    DirectoryEdit_CopyToClipboard(d.instance)
+    DirectoryEdit_CopyToClipboard(d._instance())
 }
 
+// CutToClipboard
+//
 // 剪切到粘贴板。
 func (d *TDirectoryEdit) CutToClipboard() {
-    DirectoryEdit_CutToClipboard(d.instance)
+    DirectoryEdit_CutToClipboard(d._instance())
 }
 
+// PasteFromClipboard
+//
 // 从剪切板粘贴。
 func (d *TDirectoryEdit) PasteFromClipboard() {
-    DirectoryEdit_PasteFromClipboard(d.instance)
+    DirectoryEdit_PasteFromClipboard(d._instance())
 }
 
+// SelectAll
+//
 // 全选。
 func (d *TDirectoryEdit) SelectAll() {
-    DirectoryEdit_SelectAll(d.instance)
+    DirectoryEdit_SelectAll(d._instance())
 }
 
+// Undo
+//
 // 撤销上一次操作。
 func (d *TDirectoryEdit) Undo() {
-    DirectoryEdit_Undo(d.instance)
+    DirectoryEdit_Undo(d._instance())
 }
 
 func (d *TDirectoryEdit) ValidateEdit() {
-    DirectoryEdit_ValidateEdit(d.instance)
+    DirectoryEdit_ValidateEdit(d._instance())
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (d *TDirectoryEdit) CanFocus() bool {
-    return DirectoryEdit_CanFocus(d.instance)
+    return DirectoryEdit_CanFocus(d._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (d *TDirectoryEdit) ContainsControl(Control IControl) bool {
-    return DirectoryEdit_ContainsControl(d.instance, CheckPtr(Control))
+    return DirectoryEdit_ContainsControl(d._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (d *TDirectoryEdit) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(DirectoryEdit_ControlAtPos(d.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(DirectoryEdit_ControlAtPos(d._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (d *TDirectoryEdit) DisableAlign() {
-    DirectoryEdit_DisableAlign(d.instance)
+    DirectoryEdit_DisableAlign(d._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (d *TDirectoryEdit) EnableAlign() {
-    DirectoryEdit_EnableAlign(d.instance)
+    DirectoryEdit_EnableAlign(d._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (d *TDirectoryEdit) FindChildControl(ControlName string) *TControl {
-    return AsControl(DirectoryEdit_FindChildControl(d.instance, ControlName))
+    return AsControl(DirectoryEdit_FindChildControl(d._instance(), ControlName))
 }
 
 func (d *TDirectoryEdit) FlipChildren(AllLevels bool) {
-    DirectoryEdit_FlipChildren(d.instance, AllLevels)
+    DirectoryEdit_FlipChildren(d._instance(), AllLevels)
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (d *TDirectoryEdit) HandleAllocated() bool {
-    return DirectoryEdit_HandleAllocated(d.instance)
+    return DirectoryEdit_HandleAllocated(d._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (d *TDirectoryEdit) InsertControl(AControl IControl) {
-    DirectoryEdit_InsertControl(d.instance, CheckPtr(AControl))
+    DirectoryEdit_InsertControl(d._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (d *TDirectoryEdit) Invalidate() {
-    DirectoryEdit_Invalidate(d.instance)
+    DirectoryEdit_Invalidate(d._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (d *TDirectoryEdit) PaintTo(DC HDC, X int32, Y int32) {
-    DirectoryEdit_PaintTo(d.instance, DC , X , Y)
+    DirectoryEdit_PaintTo(d._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (d *TDirectoryEdit) RemoveControl(AControl IControl) {
-    DirectoryEdit_RemoveControl(d.instance, CheckPtr(AControl))
+    DirectoryEdit_RemoveControl(d._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (d *TDirectoryEdit) Realign() {
-    DirectoryEdit_Realign(d.instance)
+    DirectoryEdit_Realign(d._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (d *TDirectoryEdit) Repaint() {
-    DirectoryEdit_Repaint(d.instance)
+    DirectoryEdit_Repaint(d._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (d *TDirectoryEdit) ScaleBy(M int32, D int32) {
-    DirectoryEdit_ScaleBy(d.instance, M , D)
+    DirectoryEdit_ScaleBy(d._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (d *TDirectoryEdit) ScrollBy(DeltaX int32, DeltaY int32) {
-    DirectoryEdit_ScrollBy(d.instance, DeltaX , DeltaY)
+    DirectoryEdit_ScrollBy(d._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (d *TDirectoryEdit) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    DirectoryEdit_SetBounds(d.instance, ALeft , ATop , AWidth , AHeight)
+    DirectoryEdit_SetBounds(d._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (d *TDirectoryEdit) Update() {
-    DirectoryEdit_Update(d.instance)
+    DirectoryEdit_Update(d._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (d *TDirectoryEdit) BringToFront() {
-    DirectoryEdit_BringToFront(d.instance)
+    DirectoryEdit_BringToFront(d._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (d *TDirectoryEdit) ClientToScreen(Point TPoint) TPoint {
-    return DirectoryEdit_ClientToScreen(d.instance, Point)
+    return DirectoryEdit_ClientToScreen(d._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (d *TDirectoryEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return DirectoryEdit_ClientToParent(d.instance, Point , CheckPtr(AParent))
+    return DirectoryEdit_ClientToParent(d._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (d *TDirectoryEdit) Dragging() bool {
-    return DirectoryEdit_Dragging(d.instance)
+    return DirectoryEdit_Dragging(d._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (d *TDirectoryEdit) HasParent() bool {
-    return DirectoryEdit_HasParent(d.instance)
+    return DirectoryEdit_HasParent(d._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (d *TDirectoryEdit) Hide() {
-    DirectoryEdit_Hide(d.instance)
+    DirectoryEdit_Hide(d._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (d *TDirectoryEdit) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return DirectoryEdit_Perform(d.instance, Msg , WParam , LParam)
+    return DirectoryEdit_Perform(d._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (d *TDirectoryEdit) Refresh() {
-    DirectoryEdit_Refresh(d.instance)
+    DirectoryEdit_Refresh(d._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (d *TDirectoryEdit) ScreenToClient(Point TPoint) TPoint {
-    return DirectoryEdit_ScreenToClient(d.instance, Point)
+    return DirectoryEdit_ScreenToClient(d._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (d *TDirectoryEdit) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return DirectoryEdit_ParentToClient(d.instance, Point , CheckPtr(AParent))
+    return DirectoryEdit_ParentToClient(d._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (d *TDirectoryEdit) SendToBack() {
-    DirectoryEdit_SendToBack(d.instance)
+    DirectoryEdit_SendToBack(d._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (d *TDirectoryEdit) Show() {
-    DirectoryEdit_Show(d.instance)
+    DirectoryEdit_Show(d._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (d *TDirectoryEdit) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return DirectoryEdit_GetTextBuf(d.instance, Buffer , BufSize)
+    return DirectoryEdit_GetTextBuf(d._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (d *TDirectoryEdit) GetTextLen() int32 {
-    return DirectoryEdit_GetTextLen(d.instance)
+    return DirectoryEdit_GetTextLen(d._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (d *TDirectoryEdit) SetTextBuf(Buffer string) {
-    DirectoryEdit_SetTextBuf(d.instance, Buffer)
+    DirectoryEdit_SetTextBuf(d._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (d *TDirectoryEdit) FindComponent(AName string) *TComponent {
-    return AsComponent(DirectoryEdit_FindComponent(d.instance, AName))
+    return AsComponent(DirectoryEdit_FindComponent(d._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (d *TDirectoryEdit) GetNamePath() string {
-    return DirectoryEdit_GetNamePath(d.instance)
+    return DirectoryEdit_GetNamePath(d._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (d *TDirectoryEdit) Assign(Source IObject) {
-    DirectoryEdit_Assign(d.instance, CheckPtr(Source))
+    DirectoryEdit_Assign(d._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (d *TDirectoryEdit) ClassType() TClass {
-    return DirectoryEdit_ClassType(d.instance)
+    return DirectoryEdit_ClassType(d._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (d *TDirectoryEdit) ClassName() string {
-    return DirectoryEdit_ClassName(d.instance)
+    return DirectoryEdit_ClassName(d._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (d *TDirectoryEdit) InstanceSize() int32 {
-    return DirectoryEdit_InstanceSize(d.instance)
+    return DirectoryEdit_InstanceSize(d._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (d *TDirectoryEdit) InheritsFrom(AClass TClass) bool {
-    return DirectoryEdit_InheritsFrom(d.instance, AClass)
+    return DirectoryEdit_InheritsFrom(d._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (d *TDirectoryEdit) Equals(Obj IObject) bool {
-    return DirectoryEdit_Equals(d.instance, CheckPtr(Obj))
+    return DirectoryEdit_Equals(d._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (d *TDirectoryEdit) GetHashCode() int32 {
-    return DirectoryEdit_GetHashCode(d.instance)
+    return DirectoryEdit_GetHashCode(d._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (d *TDirectoryEdit) ToString() string {
-    return DirectoryEdit_ToString(d.instance)
+    return DirectoryEdit_ToString(d._instance())
 }
 
 func (d *TDirectoryEdit) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    DirectoryEdit_AnchorToNeighbour(d.instance, ASide , ASpace , CheckPtr(ASibling))
+    DirectoryEdit_AnchorToNeighbour(d._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (d *TDirectoryEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    DirectoryEdit_AnchorParallel(d.instance, ASide , ASpace , CheckPtr(ASibling))
+    DirectoryEdit_AnchorParallel(d._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (d *TDirectoryEdit) AnchorHorizontalCenterTo(ASibling IControl) {
-    DirectoryEdit_AnchorHorizontalCenterTo(d.instance, CheckPtr(ASibling))
+    DirectoryEdit_AnchorHorizontalCenterTo(d._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (d *TDirectoryEdit) AnchorVerticalCenterTo(ASibling IControl) {
-    DirectoryEdit_AnchorVerticalCenterTo(d.instance, CheckPtr(ASibling))
+    DirectoryEdit_AnchorVerticalCenterTo(d._instance(), CheckPtr(ASibling))
 }
 
 func (d *TDirectoryEdit) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    DirectoryEdit_AnchorSame(d.instance, ASide , CheckPtr(ASibling))
+    DirectoryEdit_AnchorSame(d._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (d *TDirectoryEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    DirectoryEdit_AnchorAsAlign(d.instance, ATheAlign , ASpace)
+    DirectoryEdit_AnchorAsAlign(d._instance(), ATheAlign , ASpace)
 }
 
 func (d *TDirectoryEdit) AnchorClient(ASpace int32) {
-    DirectoryEdit_AnchorClient(d.instance, ASpace)
+    DirectoryEdit_AnchorClient(d._instance(), ASpace)
 }
 
 func (d *TDirectoryEdit) ScaleDesignToForm(ASize int32) int32 {
-    return DirectoryEdit_ScaleDesignToForm(d.instance, ASize)
+    return DirectoryEdit_ScaleDesignToForm(d._instance(), ASize)
 }
 
 func (d *TDirectoryEdit) ScaleFormToDesign(ASize int32) int32 {
-    return DirectoryEdit_ScaleFormToDesign(d.instance, ASize)
+    return DirectoryEdit_ScaleFormToDesign(d._instance(), ASize)
 }
 
 func (d *TDirectoryEdit) Scale96ToForm(ASize int32) int32 {
-    return DirectoryEdit_Scale96ToForm(d.instance, ASize)
+    return DirectoryEdit_Scale96ToForm(d._instance(), ASize)
 }
 
 func (d *TDirectoryEdit) ScaleFormTo96(ASize int32) int32 {
-    return DirectoryEdit_ScaleFormTo96(d.instance, ASize)
+    return DirectoryEdit_ScaleFormTo96(d._instance(), ASize)
 }
 
 func (d *TDirectoryEdit) Scale96ToFont(ASize int32) int32 {
-    return DirectoryEdit_Scale96ToFont(d.instance, ASize)
+    return DirectoryEdit_Scale96ToFont(d._instance(), ASize)
 }
 
 func (d *TDirectoryEdit) ScaleFontTo96(ASize int32) int32 {
-    return DirectoryEdit_ScaleFontTo96(d.instance, ASize)
+    return DirectoryEdit_ScaleFontTo96(d._instance(), ASize)
 }
 
 func (d *TDirectoryEdit) ScaleScreenToFont(ASize int32) int32 {
-    return DirectoryEdit_ScaleScreenToFont(d.instance, ASize)
+    return DirectoryEdit_ScaleScreenToFont(d._instance(), ASize)
 }
 
 func (d *TDirectoryEdit) ScaleFontToScreen(ASize int32) int32 {
-    return DirectoryEdit_ScaleFontToScreen(d.instance, ASize)
+    return DirectoryEdit_ScaleFontToScreen(d._instance(), ASize)
 }
 
 func (d *TDirectoryEdit) Scale96ToScreen(ASize int32) int32 {
-    return DirectoryEdit_Scale96ToScreen(d.instance, ASize)
+    return DirectoryEdit_Scale96ToScreen(d._instance(), ASize)
 }
 
 func (d *TDirectoryEdit) ScaleScreenTo96(ASize int32) int32 {
-    return DirectoryEdit_ScaleScreenTo96(d.instance, ASize)
+    return DirectoryEdit_ScaleScreenTo96(d._instance(), ASize)
 }
 
 func (d *TDirectoryEdit) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    DirectoryEdit_AutoAdjustLayout(d.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    DirectoryEdit_AutoAdjustLayout(d._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (d *TDirectoryEdit) FixDesignFontsPPI(ADesignTimePPI int32) {
-    DirectoryEdit_FixDesignFontsPPI(d.instance, ADesignTimePPI)
+    DirectoryEdit_FixDesignFontsPPI(d._instance(), ADesignTimePPI)
 }
 
 func (d *TDirectoryEdit) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    DirectoryEdit_ScaleFontsPPI(d.instance, AToPPI , AProportion)
+    DirectoryEdit_ScaleFontsPPI(d._instance(), AToPPI , AProportion)
 }
 
 func (d *TDirectoryEdit) AutoSelected() bool {
-    return DirectoryEdit_GetAutoSelected(d.instance)
+    return DirectoryEdit_GetAutoSelected(d._instance())
 }
 
 func (d *TDirectoryEdit) SetAutoSelected(value bool) {
-    DirectoryEdit_SetAutoSelected(d.instance, value)
+    DirectoryEdit_SetAutoSelected(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) Directory() string {
-    return DirectoryEdit_GetDirectory(d.instance)
+    return DirectoryEdit_GetDirectory(d._instance())
 }
 
 func (d *TDirectoryEdit) SetDirectory(value string) {
-    DirectoryEdit_SetDirectory(d.instance, value)
+    DirectoryEdit_SetDirectory(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) RootDir() string {
-    return DirectoryEdit_GetRootDir(d.instance)
+    return DirectoryEdit_GetRootDir(d._instance())
 }
 
 func (d *TDirectoryEdit) SetRootDir(value string) {
-    DirectoryEdit_SetRootDir(d.instance, value)
+    DirectoryEdit_SetRootDir(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) SetOnAcceptDirectory(fn TAcceptFileNameEvent) {
-    DirectoryEdit_SetOnAcceptDirectory(d.instance, fn)
+    DirectoryEdit_SetOnAcceptDirectory(d._instance(), fn)
 }
 
 func (d *TDirectoryEdit) DialogTitle() string {
-    return DirectoryEdit_GetDialogTitle(d.instance)
+    return DirectoryEdit_GetDialogTitle(d._instance())
 }
 
 func (d *TDirectoryEdit) SetDialogTitle(value string) {
-    DirectoryEdit_SetDialogTitle(d.instance, value)
+    DirectoryEdit_SetDialogTitle(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) DialogOptions() TOpenOptions {
-    return DirectoryEdit_GetDialogOptions(d.instance)
+    return DirectoryEdit_GetDialogOptions(d._instance())
 }
 
 func (d *TDirectoryEdit) SetDialogOptions(value TOpenOptions) {
-    DirectoryEdit_SetDialogOptions(d.instance, value)
+    DirectoryEdit_SetDialogOptions(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) ShowHidden() bool {
-    return DirectoryEdit_GetShowHidden(d.instance)
+    return DirectoryEdit_GetShowHidden(d._instance())
 }
 
 func (d *TDirectoryEdit) SetShowHidden(value bool) {
-    DirectoryEdit_SetShowHidden(d.instance, value)
+    DirectoryEdit_SetShowHidden(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) ButtonCaption() string {
-    return DirectoryEdit_GetButtonCaption(d.instance)
+    return DirectoryEdit_GetButtonCaption(d._instance())
 }
 
 func (d *TDirectoryEdit) SetButtonCaption(value string) {
-    DirectoryEdit_SetButtonCaption(d.instance, value)
+    DirectoryEdit_SetButtonCaption(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) ButtonCursor() TCursor {
-    return DirectoryEdit_GetButtonCursor(d.instance)
+    return DirectoryEdit_GetButtonCursor(d._instance())
 }
 
 func (d *TDirectoryEdit) SetButtonCursor(value TCursor) {
-    DirectoryEdit_SetButtonCursor(d.instance, value)
+    DirectoryEdit_SetButtonCursor(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) ButtonHint() string {
-    return DirectoryEdit_GetButtonHint(d.instance)
+    return DirectoryEdit_GetButtonHint(d._instance())
 }
 
 func (d *TDirectoryEdit) SetButtonHint(value string) {
-    DirectoryEdit_SetButtonHint(d.instance, value)
+    DirectoryEdit_SetButtonHint(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) ButtonOnlyWhenFocused() bool {
-    return DirectoryEdit_GetButtonOnlyWhenFocused(d.instance)
+    return DirectoryEdit_GetButtonOnlyWhenFocused(d._instance())
 }
 
 func (d *TDirectoryEdit) SetButtonOnlyWhenFocused(value bool) {
-    DirectoryEdit_SetButtonOnlyWhenFocused(d.instance, value)
+    DirectoryEdit_SetButtonOnlyWhenFocused(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) ButtonWidth() int32 {
-    return DirectoryEdit_GetButtonWidth(d.instance)
+    return DirectoryEdit_GetButtonWidth(d._instance())
 }
 
 func (d *TDirectoryEdit) SetButtonWidth(value int32) {
-    DirectoryEdit_SetButtonWidth(d.instance, value)
+    DirectoryEdit_SetButtonWidth(d._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (d *TDirectoryEdit) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(DirectoryEdit_GetConstraints(d.instance))
+    return AsSizeConstraints(DirectoryEdit_GetConstraints(d._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (d *TDirectoryEdit) SetConstraints(value *TSizeConstraints) {
-    DirectoryEdit_SetConstraints(d.instance, CheckPtr(value))
+    DirectoryEdit_SetConstraints(d._instance(), CheckPtr(value))
 }
 
 func (d *TDirectoryEdit) DirectInput() bool {
-    return DirectoryEdit_GetDirectInput(d.instance)
+    return DirectoryEdit_GetDirectInput(d._instance())
 }
 
 func (d *TDirectoryEdit) SetDirectInput(value bool) {
-    DirectoryEdit_SetDirectInput(d.instance, value)
+    DirectoryEdit_SetDirectInput(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) Glyph() *TBitmap {
-    return AsBitmap(DirectoryEdit_GetGlyph(d.instance))
+    return AsBitmap(DirectoryEdit_GetGlyph(d._instance()))
 }
 
 func (d *TDirectoryEdit) SetGlyph(value *TBitmap) {
-    DirectoryEdit_SetGlyph(d.instance, CheckPtr(value))
+    DirectoryEdit_SetGlyph(d._instance(), CheckPtr(value))
 }
 
 func (d *TDirectoryEdit) NumGlyphs() int32 {
-    return DirectoryEdit_GetNumGlyphs(d.instance)
+    return DirectoryEdit_GetNumGlyphs(d._instance())
 }
 
 func (d *TDirectoryEdit) SetNumGlyphs(value int32) {
-    DirectoryEdit_SetNumGlyphs(d.instance, value)
+    DirectoryEdit_SetNumGlyphs(d._instance(), value)
 }
 
+// Images
+//
 // 获取图标索引列表对象。
 func (d *TDirectoryEdit) Images() *TImageList {
-    return AsImageList(DirectoryEdit_GetImages(d.instance))
+    return AsImageList(DirectoryEdit_GetImages(d._instance()))
 }
 
+// SetImages
+//
 // 设置图标索引列表对象。
 func (d *TDirectoryEdit) SetImages(value IComponent) {
-    DirectoryEdit_SetImages(d.instance, CheckPtr(value))
+    DirectoryEdit_SetImages(d._instance(), CheckPtr(value))
 }
 
+// ImageIndex
+//
 // 获取图像在images中的索引。
 func (d *TDirectoryEdit) ImageIndex() int32 {
-    return DirectoryEdit_GetImageIndex(d.instance)
+    return DirectoryEdit_GetImageIndex(d._instance())
 }
 
+// SetImageIndex
+//
 // 设置图像在images中的索引。
 func (d *TDirectoryEdit) SetImageIndex(value int32) {
-    DirectoryEdit_SetImageIndex(d.instance, value)
+    DirectoryEdit_SetImageIndex(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) ImageWidth() int32 {
-    return DirectoryEdit_GetImageWidth(d.instance)
+    return DirectoryEdit_GetImageWidth(d._instance())
 }
 
 func (d *TDirectoryEdit) SetImageWidth(value int32) {
-    DirectoryEdit_SetImageWidth(d.instance, value)
+    DirectoryEdit_SetImageWidth(d._instance(), value)
 }
 
+// Flat
+//
 // 获取平面样式。
 func (d *TDirectoryEdit) Flat() bool {
-    return DirectoryEdit_GetFlat(d.instance)
+    return DirectoryEdit_GetFlat(d._instance())
 }
 
+// SetFlat
+//
 // 设置平面样式。
 func (d *TDirectoryEdit) SetFlat(value bool) {
-    DirectoryEdit_SetFlat(d.instance, value)
+    DirectoryEdit_SetFlat(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) FocusOnButtonClick() bool {
-    return DirectoryEdit_GetFocusOnButtonClick(d.instance)
+    return DirectoryEdit_GetFocusOnButtonClick(d._instance())
 }
 
 func (d *TDirectoryEdit) SetFocusOnButtonClick(value bool) {
-    DirectoryEdit_SetFocusOnButtonClick(d.instance, value)
+    DirectoryEdit_SetFocusOnButtonClick(d._instance(), value)
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (d *TDirectoryEdit) Align() TAlign {
-    return DirectoryEdit_GetAlign(d.instance)
+    return DirectoryEdit_GetAlign(d._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (d *TDirectoryEdit) SetAlign(value TAlign) {
-    DirectoryEdit_SetAlign(d.instance, value)
+    DirectoryEdit_SetAlign(d._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (d *TDirectoryEdit) Anchors() TAnchors {
-    return DirectoryEdit_GetAnchors(d.instance)
+    return DirectoryEdit_GetAnchors(d._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (d *TDirectoryEdit) SetAnchors(value TAnchors) {
-    DirectoryEdit_SetAnchors(d.instance, value)
+    DirectoryEdit_SetAnchors(d._instance(), value)
 }
 
+// AutoSize
+//
 // 获取自动调整大小。
 func (d *TDirectoryEdit) AutoSize() bool {
-    return DirectoryEdit_GetAutoSize(d.instance)
+    return DirectoryEdit_GetAutoSize(d._instance())
 }
 
+// SetAutoSize
+//
 // 设置自动调整大小。
 func (d *TDirectoryEdit) SetAutoSize(value bool) {
-    DirectoryEdit_SetAutoSize(d.instance, value)
+    DirectoryEdit_SetAutoSize(d._instance(), value)
 }
 
+// AutoSelect
+//
 // 获取自动选择。
 func (d *TDirectoryEdit) AutoSelect() bool {
-    return DirectoryEdit_GetAutoSelect(d.instance)
+    return DirectoryEdit_GetAutoSelect(d._instance())
 }
 
+// SetAutoSelect
+//
 // 设置自动选择。
 func (d *TDirectoryEdit) SetAutoSelect(value bool) {
-    DirectoryEdit_SetAutoSelect(d.instance, value)
+    DirectoryEdit_SetAutoSelect(d._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (d *TDirectoryEdit) Color() TColor {
-    return DirectoryEdit_GetColor(d.instance)
+    return DirectoryEdit_GetColor(d._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (d *TDirectoryEdit) SetColor(value TColor) {
-    DirectoryEdit_SetColor(d.instance, value)
+    DirectoryEdit_SetColor(d._instance(), value)
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (d *TDirectoryEdit) DragCursor() TCursor {
-    return DirectoryEdit_GetDragCursor(d.instance)
+    return DirectoryEdit_GetDragCursor(d._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (d *TDirectoryEdit) SetDragCursor(value TCursor) {
-    DirectoryEdit_SetDragCursor(d.instance, value)
+    DirectoryEdit_SetDragCursor(d._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (d *TDirectoryEdit) DragMode() TDragMode {
-    return DirectoryEdit_GetDragMode(d.instance)
+    return DirectoryEdit_GetDragMode(d._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (d *TDirectoryEdit) SetDragMode(value TDragMode) {
-    DirectoryEdit_SetDragMode(d.instance, value)
+    DirectoryEdit_SetDragMode(d._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (d *TDirectoryEdit) Enabled() bool {
-    return DirectoryEdit_GetEnabled(d.instance)
+    return DirectoryEdit_GetEnabled(d._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (d *TDirectoryEdit) SetEnabled(value bool) {
-    DirectoryEdit_SetEnabled(d.instance, value)
+    DirectoryEdit_SetEnabled(d._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (d *TDirectoryEdit) Font() *TFont {
-    return AsFont(DirectoryEdit_GetFont(d.instance))
+    return AsFont(DirectoryEdit_GetFont(d._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (d *TDirectoryEdit) SetFont(value *TFont) {
-    DirectoryEdit_SetFont(d.instance, CheckPtr(value))
+    DirectoryEdit_SetFont(d._instance(), CheckPtr(value))
 }
 
 func (d *TDirectoryEdit) Layout() TLeftRight {
-    return DirectoryEdit_GetLayout(d.instance)
+    return DirectoryEdit_GetLayout(d._instance())
 }
 
 func (d *TDirectoryEdit) SetLayout(value TLeftRight) {
-    DirectoryEdit_SetLayout(d.instance, value)
+    DirectoryEdit_SetLayout(d._instance(), value)
 }
 
+// MaxLength
+//
 // 获取最大长度。
 func (d *TDirectoryEdit) MaxLength() int32 {
-    return DirectoryEdit_GetMaxLength(d.instance)
+    return DirectoryEdit_GetMaxLength(d._instance())
 }
 
+// SetMaxLength
+//
 // 设置最大长度。
 func (d *TDirectoryEdit) SetMaxLength(value int32) {
-    DirectoryEdit_SetMaxLength(d.instance, value)
+    DirectoryEdit_SetMaxLength(d._instance(), value)
 }
 
+// ParentColor
+//
 // 获取使用父容器颜色。
 //
 // Get parent color.
 func (d *TDirectoryEdit) ParentColor() bool {
-    return DirectoryEdit_GetParentColor(d.instance)
+    return DirectoryEdit_GetParentColor(d._instance())
 }
 
+// SetParentColor
+//
 // 设置使用父容器颜色。
 //
 // Set parent color.
 func (d *TDirectoryEdit) SetParentColor(value bool) {
-    DirectoryEdit_SetParentColor(d.instance, value)
+    DirectoryEdit_SetParentColor(d._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (d *TDirectoryEdit) ParentFont() bool {
-    return DirectoryEdit_GetParentFont(d.instance)
+    return DirectoryEdit_GetParentFont(d._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (d *TDirectoryEdit) SetParentFont(value bool) {
-    DirectoryEdit_SetParentFont(d.instance, value)
+    DirectoryEdit_SetParentFont(d._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (d *TDirectoryEdit) ParentShowHint() bool {
-    return DirectoryEdit_GetParentShowHint(d.instance)
+    return DirectoryEdit_GetParentShowHint(d._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (d *TDirectoryEdit) SetParentShowHint(value bool) {
-    DirectoryEdit_SetParentShowHint(d.instance, value)
+    DirectoryEdit_SetParentShowHint(d._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (d *TDirectoryEdit) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(DirectoryEdit_GetPopupMenu(d.instance))
+    return AsPopupMenu(DirectoryEdit_GetPopupMenu(d._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (d *TDirectoryEdit) SetPopupMenu(value IComponent) {
-    DirectoryEdit_SetPopupMenu(d.instance, CheckPtr(value))
+    DirectoryEdit_SetPopupMenu(d._instance(), CheckPtr(value))
 }
 
+// ReadOnly
+//
 // 获取只读。
 func (d *TDirectoryEdit) ReadOnly() bool {
-    return DirectoryEdit_GetReadOnly(d.instance)
+    return DirectoryEdit_GetReadOnly(d._instance())
 }
 
+// SetReadOnly
+//
 // 设置只读。
 func (d *TDirectoryEdit) SetReadOnly(value bool) {
-    DirectoryEdit_SetReadOnly(d.instance, value)
+    DirectoryEdit_SetReadOnly(d._instance(), value)
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (d *TDirectoryEdit) ShowHint() bool {
-    return DirectoryEdit_GetShowHint(d.instance)
+    return DirectoryEdit_GetShowHint(d._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (d *TDirectoryEdit) SetShowHint(value bool) {
-    DirectoryEdit_SetShowHint(d.instance, value)
+    DirectoryEdit_SetShowHint(d._instance(), value)
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (d *TDirectoryEdit) TabOrder() TTabOrder {
-    return DirectoryEdit_GetTabOrder(d.instance)
+    return DirectoryEdit_GetTabOrder(d._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (d *TDirectoryEdit) SetTabOrder(value TTabOrder) {
-    DirectoryEdit_SetTabOrder(d.instance, value)
+    DirectoryEdit_SetTabOrder(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) Spacing() int32 {
-    return DirectoryEdit_GetSpacing(d.instance)
+    return DirectoryEdit_GetSpacing(d._instance())
 }
 
 func (d *TDirectoryEdit) SetSpacing(value int32) {
-    DirectoryEdit_SetSpacing(d.instance, value)
+    DirectoryEdit_SetSpacing(d._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (d *TDirectoryEdit) TabStop() bool {
-    return DirectoryEdit_GetTabStop(d.instance)
+    return DirectoryEdit_GetTabStop(d._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (d *TDirectoryEdit) SetTabStop(value bool) {
-    DirectoryEdit_SetTabStop(d.instance, value)
+    DirectoryEdit_SetTabStop(d._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (d *TDirectoryEdit) Visible() bool {
-    return DirectoryEdit_GetVisible(d.instance)
+    return DirectoryEdit_GetVisible(d._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (d *TDirectoryEdit) SetVisible(value bool) {
-    DirectoryEdit_SetVisible(d.instance, value)
+    DirectoryEdit_SetVisible(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) SetOnButtonClick(fn TNotifyEvent) {
-    DirectoryEdit_SetOnButtonClick(d.instance, fn)
+    DirectoryEdit_SetOnButtonClick(d._instance(), fn)
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (d *TDirectoryEdit) SetOnChange(fn TNotifyEvent) {
-    DirectoryEdit_SetOnChange(d.instance, fn)
+    DirectoryEdit_SetOnChange(d._instance(), fn)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (d *TDirectoryEdit) SetOnClick(fn TNotifyEvent) {
-    DirectoryEdit_SetOnClick(d.instance, fn)
+    DirectoryEdit_SetOnClick(d._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (d *TDirectoryEdit) SetOnContextPopup(fn TContextPopupEvent) {
-    DirectoryEdit_SetOnContextPopup(d.instance, fn)
+    DirectoryEdit_SetOnContextPopup(d._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (d *TDirectoryEdit) SetOnDblClick(fn TNotifyEvent) {
-    DirectoryEdit_SetOnDblClick(d.instance, fn)
+    DirectoryEdit_SetOnDblClick(d._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (d *TDirectoryEdit) SetOnDragDrop(fn TDragDropEvent) {
-    DirectoryEdit_SetOnDragDrop(d.instance, fn)
+    DirectoryEdit_SetOnDragDrop(d._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (d *TDirectoryEdit) SetOnDragOver(fn TDragOverEvent) {
-    DirectoryEdit_SetOnDragOver(d.instance, fn)
+    DirectoryEdit_SetOnDragOver(d._instance(), fn)
 }
 
 func (d *TDirectoryEdit) SetOnEditingDone(fn TNotifyEvent) {
-    DirectoryEdit_SetOnEditingDone(d.instance, fn)
+    DirectoryEdit_SetOnEditingDone(d._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (d *TDirectoryEdit) SetOnEndDrag(fn TEndDragEvent) {
-    DirectoryEdit_SetOnEndDrag(d.instance, fn)
+    DirectoryEdit_SetOnEndDrag(d._instance(), fn)
 }
 
+// SetOnEnter
+//
 // 设置焦点进入。
 //
 // Set Focus entry.
 func (d *TDirectoryEdit) SetOnEnter(fn TNotifyEvent) {
-    DirectoryEdit_SetOnEnter(d.instance, fn)
+    DirectoryEdit_SetOnEnter(d._instance(), fn)
 }
 
+// SetOnExit
+//
 // 设置焦点退出。
 //
 // Set Focus exit.
 func (d *TDirectoryEdit) SetOnExit(fn TNotifyEvent) {
-    DirectoryEdit_SetOnExit(d.instance, fn)
+    DirectoryEdit_SetOnExit(d._instance(), fn)
 }
 
+// SetOnKeyDown
+//
 // 设置键盘按键按下事件。
 //
 // Set Keyboard button press event.
 func (d *TDirectoryEdit) SetOnKeyDown(fn TKeyEvent) {
-    DirectoryEdit_SetOnKeyDown(d.instance, fn)
+    DirectoryEdit_SetOnKeyDown(d._instance(), fn)
 }
 
+// SetOnKeyPress
+//
 // 设置键键下事件。
 func (d *TDirectoryEdit) SetOnKeyPress(fn TKeyPressEvent) {
-    DirectoryEdit_SetOnKeyPress(d.instance, fn)
+    DirectoryEdit_SetOnKeyPress(d._instance(), fn)
 }
 
+// SetOnKeyUp
+//
 // 设置键盘按键抬起事件。
 //
 // Set Keyboard button lift event.
 func (d *TDirectoryEdit) SetOnKeyUp(fn TKeyEvent) {
-    DirectoryEdit_SetOnKeyUp(d.instance, fn)
+    DirectoryEdit_SetOnKeyUp(d._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (d *TDirectoryEdit) SetOnMouseDown(fn TMouseEvent) {
-    DirectoryEdit_SetOnMouseDown(d.instance, fn)
+    DirectoryEdit_SetOnMouseDown(d._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (d *TDirectoryEdit) SetOnMouseEnter(fn TNotifyEvent) {
-    DirectoryEdit_SetOnMouseEnter(d.instance, fn)
+    DirectoryEdit_SetOnMouseEnter(d._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (d *TDirectoryEdit) SetOnMouseLeave(fn TNotifyEvent) {
-    DirectoryEdit_SetOnMouseLeave(d.instance, fn)
+    DirectoryEdit_SetOnMouseLeave(d._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (d *TDirectoryEdit) SetOnMouseMove(fn TMouseMoveEvent) {
-    DirectoryEdit_SetOnMouseMove(d.instance, fn)
+    DirectoryEdit_SetOnMouseMove(d._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (d *TDirectoryEdit) SetOnMouseUp(fn TMouseEvent) {
-    DirectoryEdit_SetOnMouseUp(d.instance, fn)
+    DirectoryEdit_SetOnMouseUp(d._instance(), fn)
 }
 
+// SetOnMouseWheel
+//
 // 设置鼠标滚轮事件。
 func (d *TDirectoryEdit) SetOnMouseWheel(fn TMouseWheelEvent) {
-    DirectoryEdit_SetOnMouseWheel(d.instance, fn)
+    DirectoryEdit_SetOnMouseWheel(d._instance(), fn)
 }
 
+// SetOnMouseWheelDown
+//
 // 设置鼠标滚轮按下事件。
 func (d *TDirectoryEdit) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
-    DirectoryEdit_SetOnMouseWheelDown(d.instance, fn)
+    DirectoryEdit_SetOnMouseWheelDown(d._instance(), fn)
 }
 
+// SetOnMouseWheelUp
+//
 // 设置鼠标滚轮抬起事件。
 func (d *TDirectoryEdit) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
-    DirectoryEdit_SetOnMouseWheelUp(d.instance, fn)
+    DirectoryEdit_SetOnMouseWheelUp(d._instance(), fn)
 }
 
+// Text
+//
 // 获取文本。
 func (d *TDirectoryEdit) Text() string {
     return getControlBufferText(d.GetTextLen, d.GetTextBuf)
 }
 
+// SetText
+//
 // 设置文本。
 func (d *TDirectoryEdit) SetText(value string) {
-    DirectoryEdit_SetText(d.instance, value)
+    DirectoryEdit_SetText(d._instance(), value)
 }
 
+// TextHint
+//
 // 获取提示文本。
 func (d *TDirectoryEdit) TextHint() string {
-    return DirectoryEdit_GetTextHint(d.instance)
+    return DirectoryEdit_GetTextHint(d._instance())
 }
 
+// SetTextHint
+//
 // 设置提示文本。
 func (d *TDirectoryEdit) SetTextHint(value string) {
-    DirectoryEdit_SetTextHint(d.instance, value)
+    DirectoryEdit_SetTextHint(d._instance(), value)
 }
 
+// Alignment
+//
 // 获取文字对齐。
 //
 // Get Text alignment.
 func (d *TDirectoryEdit) Alignment() TAlignment {
-    return DirectoryEdit_GetAlignment(d.instance)
+    return DirectoryEdit_GetAlignment(d._instance())
 }
 
+// SetAlignment
+//
 // 设置文字对齐。
 //
 // Set Text alignment.
 func (d *TDirectoryEdit) SetAlignment(value TAlignment) {
-    DirectoryEdit_SetAlignment(d.instance, value)
+    DirectoryEdit_SetAlignment(d._instance(), value)
 }
 
+// CanUndo
+//
 // 获取能否撤销。
 func (d *TDirectoryEdit) CanUndo() bool {
-    return DirectoryEdit_GetCanUndo(d.instance)
+    return DirectoryEdit_GetCanUndo(d._instance())
 }
 
 func (d *TDirectoryEdit) CaretPos() TPoint {
-    return DirectoryEdit_GetCaretPos(d.instance)
+    return DirectoryEdit_GetCaretPos(d._instance())
 }
 
 func (d *TDirectoryEdit) SetCaretPos(value TPoint) {
-    DirectoryEdit_SetCaretPos(d.instance, value)
+    DirectoryEdit_SetCaretPos(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) CharCase() TEditCharCase {
-    return DirectoryEdit_GetCharCase(d.instance)
+    return DirectoryEdit_GetCharCase(d._instance())
 }
 
 func (d *TDirectoryEdit) SetCharCase(value TEditCharCase) {
-    DirectoryEdit_SetCharCase(d.instance, value)
+    DirectoryEdit_SetCharCase(d._instance(), value)
 }
 
+// HideSelection
+//
 // 获取隐藏选择。
 func (d *TDirectoryEdit) HideSelection() bool {
-    return DirectoryEdit_GetHideSelection(d.instance)
+    return DirectoryEdit_GetHideSelection(d._instance())
 }
 
+// SetHideSelection
+//
 // 设置隐藏选择。
 func (d *TDirectoryEdit) SetHideSelection(value bool) {
-    DirectoryEdit_SetHideSelection(d.instance, value)
+    DirectoryEdit_SetHideSelection(d._instance(), value)
 }
 
+// Modified
+//
 // 获取修改。
 //
 // Get modified.
 func (d *TDirectoryEdit) Modified() bool {
-    return DirectoryEdit_GetModified(d.instance)
+    return DirectoryEdit_GetModified(d._instance())
 }
 
+// SetModified
+//
 // 设置修改。
 //
 // Set modified.
 func (d *TDirectoryEdit) SetModified(value bool) {
-    DirectoryEdit_SetModified(d.instance, value)
+    DirectoryEdit_SetModified(d._instance(), value)
 }
 
+// NumbersOnly
+//
 // 获取只能输入数字。
 func (d *TDirectoryEdit) NumbersOnly() bool {
-    return DirectoryEdit_GetNumbersOnly(d.instance)
+    return DirectoryEdit_GetNumbersOnly(d._instance())
 }
 
+// SetNumbersOnly
+//
 // 设置只能输入数字。
 func (d *TDirectoryEdit) SetNumbersOnly(value bool) {
-    DirectoryEdit_SetNumbersOnly(d.instance, value)
+    DirectoryEdit_SetNumbersOnly(d._instance(), value)
 }
 
+// PasswordChar
+//
 // 获取密码掩码字符。
 func (d *TDirectoryEdit) PasswordChar() uint16 {
-    return DirectoryEdit_GetPasswordChar(d.instance)
+    return DirectoryEdit_GetPasswordChar(d._instance())
 }
 
+// SetPasswordChar
+//
 // 设置密码掩码字符。
 func (d *TDirectoryEdit) SetPasswordChar(value uint16) {
-    DirectoryEdit_SetPasswordChar(d.instance, value)
+    DirectoryEdit_SetPasswordChar(d._instance(), value)
 }
 
+// SelLength
+//
 // 获取选择的长度。
 func (d *TDirectoryEdit) SelLength() int32 {
-    return DirectoryEdit_GetSelLength(d.instance)
+    return DirectoryEdit_GetSelLength(d._instance())
 }
 
+// SetSelLength
+//
 // 设置选择的长度。
 func (d *TDirectoryEdit) SetSelLength(value int32) {
-    DirectoryEdit_SetSelLength(d.instance, value)
+    DirectoryEdit_SetSelLength(d._instance(), value)
 }
 
+// SelStart
+//
 // 获取选择的启始位置。
 func (d *TDirectoryEdit) SelStart() int32 {
-    return DirectoryEdit_GetSelStart(d.instance)
+    return DirectoryEdit_GetSelStart(d._instance())
 }
 
+// SetSelStart
+//
 // 设置选择的启始位置。
 func (d *TDirectoryEdit) SetSelStart(value int32) {
-    DirectoryEdit_SetSelStart(d.instance, value)
+    DirectoryEdit_SetSelStart(d._instance(), value)
 }
 
+// SelText
+//
 // 获取选择的文本。
 func (d *TDirectoryEdit) SelText() string {
-    return DirectoryEdit_GetSelText(d.instance)
+    return DirectoryEdit_GetSelText(d._instance())
 }
 
+// SetSelText
+//
 // 设置选择的文本。
 func (d *TDirectoryEdit) SetSelText(value string) {
-    DirectoryEdit_SetSelText(d.instance, value)
+    DirectoryEdit_SetSelText(d._instance(), value)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (d *TDirectoryEdit) DockClientCount() int32 {
-    return DirectoryEdit_GetDockClientCount(d.instance)
+    return DirectoryEdit_GetDockClientCount(d._instance())
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (d *TDirectoryEdit) DockSite() bool {
-    return DirectoryEdit_GetDockSite(d.instance)
+    return DirectoryEdit_GetDockSite(d._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (d *TDirectoryEdit) SetDockSite(value bool) {
-    DirectoryEdit_SetDockSite(d.instance, value)
+    DirectoryEdit_SetDockSite(d._instance(), value)
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (d *TDirectoryEdit) DoubleBuffered() bool {
-    return DirectoryEdit_GetDoubleBuffered(d.instance)
+    return DirectoryEdit_GetDoubleBuffered(d._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (d *TDirectoryEdit) SetDoubleBuffered(value bool) {
-    DirectoryEdit_SetDoubleBuffered(d.instance, value)
+    DirectoryEdit_SetDoubleBuffered(d._instance(), value)
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (d *TDirectoryEdit) MouseInClient() bool {
-    return DirectoryEdit_GetMouseInClient(d.instance)
+    return DirectoryEdit_GetMouseInClient(d._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (d *TDirectoryEdit) VisibleDockClientCount() int32 {
-    return DirectoryEdit_GetVisibleDockClientCount(d.instance)
+    return DirectoryEdit_GetVisibleDockClientCount(d._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (d *TDirectoryEdit) Brush() *TBrush {
-    return AsBrush(DirectoryEdit_GetBrush(d.instance))
+    return AsBrush(DirectoryEdit_GetBrush(d._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (d *TDirectoryEdit) ControlCount() int32 {
-    return DirectoryEdit_GetControlCount(d.instance)
+    return DirectoryEdit_GetControlCount(d._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (d *TDirectoryEdit) Handle() HWND {
-    return DirectoryEdit_GetHandle(d.instance)
+    return DirectoryEdit_GetHandle(d._instance())
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (d *TDirectoryEdit) ParentDoubleBuffered() bool {
-    return DirectoryEdit_GetParentDoubleBuffered(d.instance)
+    return DirectoryEdit_GetParentDoubleBuffered(d._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (d *TDirectoryEdit) SetParentDoubleBuffered(value bool) {
-    DirectoryEdit_SetParentDoubleBuffered(d.instance, value)
+    DirectoryEdit_SetParentDoubleBuffered(d._instance(), value)
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (d *TDirectoryEdit) ParentWindow() HWND {
-    return DirectoryEdit_GetParentWindow(d.instance)
+    return DirectoryEdit_GetParentWindow(d._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (d *TDirectoryEdit) SetParentWindow(value HWND) {
-    DirectoryEdit_SetParentWindow(d.instance, value)
+    DirectoryEdit_SetParentWindow(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) Showing() bool {
-    return DirectoryEdit_GetShowing(d.instance)
+    return DirectoryEdit_GetShowing(d._instance())
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (d *TDirectoryEdit) UseDockManager() bool {
-    return DirectoryEdit_GetUseDockManager(d.instance)
+    return DirectoryEdit_GetUseDockManager(d._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (d *TDirectoryEdit) SetUseDockManager(value bool) {
-    DirectoryEdit_SetUseDockManager(d.instance, value)
+    DirectoryEdit_SetUseDockManager(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) Action() *TAction {
-    return AsAction(DirectoryEdit_GetAction(d.instance))
+    return AsAction(DirectoryEdit_GetAction(d._instance()))
 }
 
 func (d *TDirectoryEdit) SetAction(value IComponent) {
-    DirectoryEdit_SetAction(d.instance, CheckPtr(value))
+    DirectoryEdit_SetAction(d._instance(), CheckPtr(value))
 }
 
 func (d *TDirectoryEdit) BiDiMode() TBiDiMode {
-    return DirectoryEdit_GetBiDiMode(d.instance)
+    return DirectoryEdit_GetBiDiMode(d._instance())
 }
 
 func (d *TDirectoryEdit) SetBiDiMode(value TBiDiMode) {
-    DirectoryEdit_SetBiDiMode(d.instance, value)
+    DirectoryEdit_SetBiDiMode(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) BoundsRect() TRect {
-    return DirectoryEdit_GetBoundsRect(d.instance)
+    return DirectoryEdit_GetBoundsRect(d._instance())
 }
 
 func (d *TDirectoryEdit) SetBoundsRect(value TRect) {
-    DirectoryEdit_SetBoundsRect(d.instance, value)
+    DirectoryEdit_SetBoundsRect(d._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (d *TDirectoryEdit) ClientHeight() int32 {
-    return DirectoryEdit_GetClientHeight(d.instance)
+    return DirectoryEdit_GetClientHeight(d._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (d *TDirectoryEdit) SetClientHeight(value int32) {
-    DirectoryEdit_SetClientHeight(d.instance, value)
+    DirectoryEdit_SetClientHeight(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) ClientOrigin() TPoint {
-    return DirectoryEdit_GetClientOrigin(d.instance)
+    return DirectoryEdit_GetClientOrigin(d._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (d *TDirectoryEdit) ClientRect() TRect {
-    return DirectoryEdit_GetClientRect(d.instance)
+    return DirectoryEdit_GetClientRect(d._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (d *TDirectoryEdit) ClientWidth() int32 {
-    return DirectoryEdit_GetClientWidth(d.instance)
+    return DirectoryEdit_GetClientWidth(d._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (d *TDirectoryEdit) SetClientWidth(value int32) {
-    DirectoryEdit_SetClientWidth(d.instance, value)
+    DirectoryEdit_SetClientWidth(d._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (d *TDirectoryEdit) ControlState() TControlState {
-    return DirectoryEdit_GetControlState(d.instance)
+    return DirectoryEdit_GetControlState(d._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (d *TDirectoryEdit) SetControlState(value TControlState) {
-    DirectoryEdit_SetControlState(d.instance, value)
+    DirectoryEdit_SetControlState(d._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (d *TDirectoryEdit) ControlStyle() TControlStyle {
-    return DirectoryEdit_GetControlStyle(d.instance)
+    return DirectoryEdit_GetControlStyle(d._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (d *TDirectoryEdit) SetControlStyle(value TControlStyle) {
-    DirectoryEdit_SetControlStyle(d.instance, value)
+    DirectoryEdit_SetControlStyle(d._instance(), value)
 }
 
 func (d *TDirectoryEdit) Floating() bool {
-    return DirectoryEdit_GetFloating(d.instance)
+    return DirectoryEdit_GetFloating(d._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (d *TDirectoryEdit) Parent() *TWinControl {
-    return AsWinControl(DirectoryEdit_GetParent(d.instance))
+    return AsWinControl(DirectoryEdit_GetParent(d._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (d *TDirectoryEdit) SetParent(value IWinControl) {
-    DirectoryEdit_SetParent(d.instance, CheckPtr(value))
+    DirectoryEdit_SetParent(d._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (d *TDirectoryEdit) Left() int32 {
-    return DirectoryEdit_GetLeft(d.instance)
+    return DirectoryEdit_GetLeft(d._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (d *TDirectoryEdit) SetLeft(value int32) {
-    DirectoryEdit_SetLeft(d.instance, value)
+    DirectoryEdit_SetLeft(d._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (d *TDirectoryEdit) Top() int32 {
-    return DirectoryEdit_GetTop(d.instance)
+    return DirectoryEdit_GetTop(d._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (d *TDirectoryEdit) SetTop(value int32) {
-    DirectoryEdit_SetTop(d.instance, value)
+    DirectoryEdit_SetTop(d._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (d *TDirectoryEdit) Width() int32 {
-    return DirectoryEdit_GetWidth(d.instance)
+    return DirectoryEdit_GetWidth(d._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (d *TDirectoryEdit) SetWidth(value int32) {
-    DirectoryEdit_SetWidth(d.instance, value)
+    DirectoryEdit_SetWidth(d._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (d *TDirectoryEdit) Height() int32 {
-    return DirectoryEdit_GetHeight(d.instance)
+    return DirectoryEdit_GetHeight(d._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (d *TDirectoryEdit) SetHeight(value int32) {
-    DirectoryEdit_SetHeight(d.instance, value)
+    DirectoryEdit_SetHeight(d._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (d *TDirectoryEdit) Cursor() TCursor {
-    return DirectoryEdit_GetCursor(d.instance)
+    return DirectoryEdit_GetCursor(d._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (d *TDirectoryEdit) SetCursor(value TCursor) {
-    DirectoryEdit_SetCursor(d.instance, value)
+    DirectoryEdit_SetCursor(d._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (d *TDirectoryEdit) Hint() string {
-    return DirectoryEdit_GetHint(d.instance)
+    return DirectoryEdit_GetHint(d._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (d *TDirectoryEdit) SetHint(value string) {
-    DirectoryEdit_SetHint(d.instance, value)
+    DirectoryEdit_SetHint(d._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (d *TDirectoryEdit) ComponentCount() int32 {
-    return DirectoryEdit_GetComponentCount(d.instance)
+    return DirectoryEdit_GetComponentCount(d._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (d *TDirectoryEdit) ComponentIndex() int32 {
-    return DirectoryEdit_GetComponentIndex(d.instance)
+    return DirectoryEdit_GetComponentIndex(d._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (d *TDirectoryEdit) SetComponentIndex(value int32) {
-    DirectoryEdit_SetComponentIndex(d.instance, value)
+    DirectoryEdit_SetComponentIndex(d._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (d *TDirectoryEdit) Owner() *TComponent {
-    return AsComponent(DirectoryEdit_GetOwner(d.instance))
+    return AsComponent(DirectoryEdit_GetOwner(d._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (d *TDirectoryEdit) Name() string {
-    return DirectoryEdit_GetName(d.instance)
+    return DirectoryEdit_GetName(d._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (d *TDirectoryEdit) SetName(value string) {
-    DirectoryEdit_SetName(d.instance, value)
+    DirectoryEdit_SetName(d._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (d *TDirectoryEdit) Tag() int {
-    return DirectoryEdit_GetTag(d.instance)
+    return DirectoryEdit_GetTag(d._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (d *TDirectoryEdit) SetTag(value int) {
-    DirectoryEdit_SetTag(d.instance, value)
+    DirectoryEdit_SetTag(d._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (d *TDirectoryEdit) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(DirectoryEdit_GetAnchorSideLeft(d.instance))
+    return AsAnchorSide(DirectoryEdit_GetAnchorSideLeft(d._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (d *TDirectoryEdit) SetAnchorSideLeft(value *TAnchorSide) {
-    DirectoryEdit_SetAnchorSideLeft(d.instance, CheckPtr(value))
+    DirectoryEdit_SetAnchorSideLeft(d._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (d *TDirectoryEdit) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(DirectoryEdit_GetAnchorSideTop(d.instance))
+    return AsAnchorSide(DirectoryEdit_GetAnchorSideTop(d._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (d *TDirectoryEdit) SetAnchorSideTop(value *TAnchorSide) {
-    DirectoryEdit_SetAnchorSideTop(d.instance, CheckPtr(value))
+    DirectoryEdit_SetAnchorSideTop(d._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (d *TDirectoryEdit) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(DirectoryEdit_GetAnchorSideRight(d.instance))
+    return AsAnchorSide(DirectoryEdit_GetAnchorSideRight(d._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (d *TDirectoryEdit) SetAnchorSideRight(value *TAnchorSide) {
-    DirectoryEdit_SetAnchorSideRight(d.instance, CheckPtr(value))
+    DirectoryEdit_SetAnchorSideRight(d._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (d *TDirectoryEdit) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(DirectoryEdit_GetAnchorSideBottom(d.instance))
+    return AsAnchorSide(DirectoryEdit_GetAnchorSideBottom(d._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (d *TDirectoryEdit) SetAnchorSideBottom(value *TAnchorSide) {
-    DirectoryEdit_SetAnchorSideBottom(d.instance, CheckPtr(value))
+    DirectoryEdit_SetAnchorSideBottom(d._instance(), CheckPtr(value))
 }
 
 func (d *TDirectoryEdit) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(DirectoryEdit_GetChildSizing(d.instance))
+    return AsControlChildSizing(DirectoryEdit_GetChildSizing(d._instance()))
 }
 
 func (d *TDirectoryEdit) SetChildSizing(value *TControlChildSizing) {
-    DirectoryEdit_SetChildSizing(d.instance, CheckPtr(value))
+    DirectoryEdit_SetChildSizing(d._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (d *TDirectoryEdit) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(DirectoryEdit_GetBorderSpacing(d.instance))
+    return AsControlBorderSpacing(DirectoryEdit_GetBorderSpacing(d._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (d *TDirectoryEdit) SetBorderSpacing(value *TControlBorderSpacing) {
-    DirectoryEdit_SetBorderSpacing(d.instance, CheckPtr(value))
+    DirectoryEdit_SetBorderSpacing(d._instance(), CheckPtr(value))
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (d *TDirectoryEdit) DockClients(Index int32) *TControl {
-    return AsControl(DirectoryEdit_GetDockClients(d.instance, Index))
+    return AsControl(DirectoryEdit_GetDockClients(d._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (d *TDirectoryEdit) Controls(Index int32) *TControl {
-    return AsControl(DirectoryEdit_GetControls(d.instance, Index))
+    return AsControl(DirectoryEdit_GetControls(d._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (d *TDirectoryEdit) Components(AIndex int32) *TComponent {
-    return AsComponent(DirectoryEdit_GetComponents(d.instance, AIndex))
+    return AsComponent(DirectoryEdit_GetComponents(d._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (d *TDirectoryEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(DirectoryEdit_GetAnchorSide(d.instance, AKind))
+    return AsAnchorSide(DirectoryEdit_GetAnchorSide(d._instance(), AKind))
 }
 

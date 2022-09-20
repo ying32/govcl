@@ -19,101 +19,94 @@ import (
 
 type TComponent struct {
     IComponent
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewComponent
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewComponent(owner IComponent) *TComponent {
     c := new(TComponent)
-    c.instance = Component_Create(CheckPtr(owner))
-    c.ptr = unsafe.Pointer(c.instance)
+    c.instance = unsafe.Pointer(Component_Create(CheckPtr(owner)))
     return c
 }
 
+// AsComponent
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsComponent(obj interface{}) *TComponent {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TComponent{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TComponent{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsComponent.
-func ComponentFromInst(inst uintptr) *TComponent {
-    return AsComponent(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsComponent.
-func ComponentFromObj(obj IObject) *TComponent {
-    return AsComponent(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsComponent.
-func ComponentFromUnsafePointer(ptr unsafe.Pointer) *TComponent {
-    return AsComponent(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (c *TComponent) Free() {
-    if c.instance != 0 {
-        Component_Free(c.instance)
-        c.instance, c.ptr = 0, nullptr
+    if c.instance != nullptr {
+        Component_Free(c._instance())
+        c.instance  = nullptr
     }
 }
 
+func (c *TComponent) _instance() uintptr {
+    return uintptr(c.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (c *TComponent) Instance() uintptr {
-    return c.instance
+    return c._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (c *TComponent) UnsafeAddr() unsafe.Pointer {
-    return c.ptr
+    return c.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (c *TComponent) IsValid() bool {
-    return c.instance != 0
+    return c.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (c *TComponent) Is() TIs {
-    return TIs(c.instance)
+    return TIs(c._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (c *TComponent) As() TAs {
-//    return TAs(c.instance)
+//    return TAs(c._instance())
 //}
 
+// TComponentClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,143 +114,183 @@ func TComponentClass() TClass {
     return Component_StaticClassType()
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (c *TComponent) FindComponent(AName string) *TComponent {
-    return AsComponent(Component_FindComponent(c.instance, AName))
+    return AsComponent(Component_FindComponent(c._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (c *TComponent) GetNamePath() string {
-    return Component_GetNamePath(c.instance)
+    return Component_GetNamePath(c._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (c *TComponent) HasParent() bool {
-    return Component_HasParent(c.instance)
+    return Component_HasParent(c._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (c *TComponent) Assign(Source IObject) {
-    Component_Assign(c.instance, CheckPtr(Source))
+    Component_Assign(c._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (c *TComponent) ClassType() TClass {
-    return Component_ClassType(c.instance)
+    return Component_ClassType(c._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (c *TComponent) ClassName() string {
-    return Component_ClassName(c.instance)
+    return Component_ClassName(c._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (c *TComponent) InstanceSize() int32 {
-    return Component_InstanceSize(c.instance)
+    return Component_InstanceSize(c._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (c *TComponent) InheritsFrom(AClass TClass) bool {
-    return Component_InheritsFrom(c.instance, AClass)
+    return Component_InheritsFrom(c._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (c *TComponent) Equals(Obj IObject) bool {
-    return Component_Equals(c.instance, CheckPtr(Obj))
+    return Component_Equals(c._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (c *TComponent) GetHashCode() int32 {
-    return Component_GetHashCode(c.instance)
+    return Component_GetHashCode(c._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (c *TComponent) ToString() string {
-    return Component_ToString(c.instance)
+    return Component_ToString(c._instance())
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (c *TComponent) ComponentCount() int32 {
-    return Component_GetComponentCount(c.instance)
+    return Component_GetComponentCount(c._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (c *TComponent) ComponentIndex() int32 {
-    return Component_GetComponentIndex(c.instance)
+    return Component_GetComponentIndex(c._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (c *TComponent) SetComponentIndex(value int32) {
-    Component_SetComponentIndex(c.instance, value)
+    Component_SetComponentIndex(c._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (c *TComponent) Owner() *TComponent {
-    return AsComponent(Component_GetOwner(c.instance))
+    return AsComponent(Component_GetOwner(c._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (c *TComponent) Name() string {
-    return Component_GetName(c.instance)
+    return Component_GetName(c._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (c *TComponent) SetName(value string) {
-    Component_SetName(c.instance, value)
+    Component_SetName(c._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (c *TComponent) Tag() int {
-    return Component_GetTag(c.instance)
+    return Component_GetTag(c._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (c *TComponent) SetTag(value int) {
-    Component_SetTag(c.instance, value)
+    Component_SetTag(c._instance(), value)
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (c *TComponent) Components(AIndex int32) *TComponent {
-    return AsComponent(Component_GetComponents(c.instance, AIndex))
+    return AsComponent(Component_GetComponents(c._instance(), AIndex))
 }
 

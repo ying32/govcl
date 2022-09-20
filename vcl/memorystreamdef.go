@@ -12,25 +12,31 @@ import (
 	. "github.com/ying32/govcl/vcl/api"
 )
 
-// 新建Delphi/Lazarus内存流来自Go字节数组。
+// NewMemoryStreamFromBytes
 //
-// New Delphi/Lazarus memory stream from Go byte array.
+// 新建FreePascal内存流来自Go字节数组。
+//
+// New FreePascal memory stream from Go byte array.
 func NewMemoryStreamFromBytes(data []byte) *TMemoryStream {
 	m := NewMemoryStream()
 	m.Write(data)
 	return m
 }
 
+// Read
+//
 // 读数据
 //
 // Read Data.
 func (m *TMemoryStream) Read(count int32) (int32, []byte) {
-	return MemoryStream_Read(m.instance, count)
+	return MemoryStream_Read(m._instance(), count)
 }
 
+// Write
+//
 // 写数据
 //
 // Write Data.
 func (m *TMemoryStream) Write(buffer []byte) int32 {
-	return MemoryStream_Write(m.instance, buffer)
+	return MemoryStream_Write(m._instance(), buffer)
 }

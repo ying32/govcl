@@ -17,7 +17,7 @@ import (
 	"strings"
 )
 
-// 解析 dfm或者lfm资源文件的
+// 解析 dfm或者lfm资源文件的(未完成)
 
 type Char = byte
 

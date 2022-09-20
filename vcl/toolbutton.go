@@ -19,101 +19,94 @@ import (
 
 type TToolButton struct {
     IControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewToolButton
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewToolButton(owner IComponent) *TToolButton {
     t := new(TToolButton)
-    t.instance = ToolButton_Create(CheckPtr(owner))
-    t.ptr = unsafe.Pointer(t.instance)
+    t.instance = unsafe.Pointer(ToolButton_Create(CheckPtr(owner)))
     return t
 }
 
+// AsToolButton
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsToolButton(obj interface{}) *TToolButton {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TToolButton{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TToolButton{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsToolButton.
-func ToolButtonFromInst(inst uintptr) *TToolButton {
-    return AsToolButton(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsToolButton.
-func ToolButtonFromObj(obj IObject) *TToolButton {
-    return AsToolButton(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsToolButton.
-func ToolButtonFromUnsafePointer(ptr unsafe.Pointer) *TToolButton {
-    return AsToolButton(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (t *TToolButton) Free() {
-    if t.instance != 0 {
-        ToolButton_Free(t.instance)
-        t.instance, t.ptr = 0, nullptr
+    if t.instance != nullptr {
+        ToolButton_Free(t._instance())
+        t.instance  = nullptr
     }
 }
 
+func (t *TToolButton) _instance() uintptr {
+    return uintptr(t.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (t *TToolButton) Instance() uintptr {
-    return t.instance
+    return t._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (t *TToolButton) UnsafeAddr() unsafe.Pointer {
-    return t.ptr
+    return t.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (t *TToolButton) IsValid() bool {
-    return t.instance != 0
+    return t.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (t *TToolButton) Is() TIs {
-    return TIs(t.instance)
+    return TIs(t._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (t *TToolButton) As() TAs {
-//    return TAs(t.instance)
+//    return TAs(t._instance())
 //}
 
+// TToolButtonClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,931 +115,1161 @@ func TToolButtonClass() TClass {
 }
 
 func (t *TToolButton) CheckMenuDropdown() bool {
-    return ToolButton_CheckMenuDropdown(t.instance)
+    return ToolButton_CheckMenuDropdown(t._instance())
 }
 
+// Click
+//
 // 单击。
 func (t *TToolButton) Click() {
-    ToolButton_Click(t.instance)
+    ToolButton_Click(t._instance())
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (t *TToolButton) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    ToolButton_SetBounds(t.instance, ALeft , ATop , AWidth , AHeight)
+    ToolButton_SetBounds(t._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (t *TToolButton) BringToFront() {
-    ToolButton_BringToFront(t.instance)
+    ToolButton_BringToFront(t._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (t *TToolButton) ClientToScreen(Point TPoint) TPoint {
-    return ToolButton_ClientToScreen(t.instance, Point)
+    return ToolButton_ClientToScreen(t._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (t *TToolButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return ToolButton_ClientToParent(t.instance, Point , CheckPtr(AParent))
+    return ToolButton_ClientToParent(t._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (t *TToolButton) Dragging() bool {
-    return ToolButton_Dragging(t.instance)
+    return ToolButton_Dragging(t._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (t *TToolButton) HasParent() bool {
-    return ToolButton_HasParent(t.instance)
+    return ToolButton_HasParent(t._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (t *TToolButton) Hide() {
-    ToolButton_Hide(t.instance)
+    ToolButton_Hide(t._instance())
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (t *TToolButton) Invalidate() {
-    ToolButton_Invalidate(t.instance)
+    ToolButton_Invalidate(t._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (t *TToolButton) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return ToolButton_Perform(t.instance, Msg , WParam , LParam)
+    return ToolButton_Perform(t._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (t *TToolButton) Refresh() {
-    ToolButton_Refresh(t.instance)
+    ToolButton_Refresh(t._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (t *TToolButton) Repaint() {
-    ToolButton_Repaint(t.instance)
+    ToolButton_Repaint(t._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (t *TToolButton) ScreenToClient(Point TPoint) TPoint {
-    return ToolButton_ScreenToClient(t.instance, Point)
+    return ToolButton_ScreenToClient(t._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (t *TToolButton) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return ToolButton_ParentToClient(t.instance, Point , CheckPtr(AParent))
+    return ToolButton_ParentToClient(t._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (t *TToolButton) SendToBack() {
-    ToolButton_SendToBack(t.instance)
+    ToolButton_SendToBack(t._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (t *TToolButton) Show() {
-    ToolButton_Show(t.instance)
+    ToolButton_Show(t._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (t *TToolButton) Update() {
-    ToolButton_Update(t.instance)
+    ToolButton_Update(t._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (t *TToolButton) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return ToolButton_GetTextBuf(t.instance, Buffer , BufSize)
+    return ToolButton_GetTextBuf(t._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (t *TToolButton) GetTextLen() int32 {
-    return ToolButton_GetTextLen(t.instance)
+    return ToolButton_GetTextLen(t._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (t *TToolButton) SetTextBuf(Buffer string) {
-    ToolButton_SetTextBuf(t.instance, Buffer)
+    ToolButton_SetTextBuf(t._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (t *TToolButton) FindComponent(AName string) *TComponent {
-    return AsComponent(ToolButton_FindComponent(t.instance, AName))
+    return AsComponent(ToolButton_FindComponent(t._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (t *TToolButton) GetNamePath() string {
-    return ToolButton_GetNamePath(t.instance)
+    return ToolButton_GetNamePath(t._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (t *TToolButton) Assign(Source IObject) {
-    ToolButton_Assign(t.instance, CheckPtr(Source))
+    ToolButton_Assign(t._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (t *TToolButton) ClassType() TClass {
-    return ToolButton_ClassType(t.instance)
+    return ToolButton_ClassType(t._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (t *TToolButton) ClassName() string {
-    return ToolButton_ClassName(t.instance)
+    return ToolButton_ClassName(t._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (t *TToolButton) InstanceSize() int32 {
-    return ToolButton_InstanceSize(t.instance)
+    return ToolButton_InstanceSize(t._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (t *TToolButton) InheritsFrom(AClass TClass) bool {
-    return ToolButton_InheritsFrom(t.instance, AClass)
+    return ToolButton_InheritsFrom(t._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (t *TToolButton) Equals(Obj IObject) bool {
-    return ToolButton_Equals(t.instance, CheckPtr(Obj))
+    return ToolButton_Equals(t._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (t *TToolButton) GetHashCode() int32 {
-    return ToolButton_GetHashCode(t.instance)
+    return ToolButton_GetHashCode(t._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (t *TToolButton) ToString() string {
-    return ToolButton_ToString(t.instance)
+    return ToolButton_ToString(t._instance())
 }
 
 func (t *TToolButton) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    ToolButton_AnchorToNeighbour(t.instance, ASide , ASpace , CheckPtr(ASibling))
+    ToolButton_AnchorToNeighbour(t._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (t *TToolButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    ToolButton_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
+    ToolButton_AnchorParallel(t._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (t *TToolButton) AnchorHorizontalCenterTo(ASibling IControl) {
-    ToolButton_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
+    ToolButton_AnchorHorizontalCenterTo(t._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (t *TToolButton) AnchorVerticalCenterTo(ASibling IControl) {
-    ToolButton_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
+    ToolButton_AnchorVerticalCenterTo(t._instance(), CheckPtr(ASibling))
 }
 
 func (t *TToolButton) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    ToolButton_AnchorSame(t.instance, ASide , CheckPtr(ASibling))
+    ToolButton_AnchorSame(t._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (t *TToolButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    ToolButton_AnchorAsAlign(t.instance, ATheAlign , ASpace)
+    ToolButton_AnchorAsAlign(t._instance(), ATheAlign , ASpace)
 }
 
 func (t *TToolButton) AnchorClient(ASpace int32) {
-    ToolButton_AnchorClient(t.instance, ASpace)
+    ToolButton_AnchorClient(t._instance(), ASpace)
 }
 
 func (t *TToolButton) ScaleDesignToForm(ASize int32) int32 {
-    return ToolButton_ScaleDesignToForm(t.instance, ASize)
+    return ToolButton_ScaleDesignToForm(t._instance(), ASize)
 }
 
 func (t *TToolButton) ScaleFormToDesign(ASize int32) int32 {
-    return ToolButton_ScaleFormToDesign(t.instance, ASize)
+    return ToolButton_ScaleFormToDesign(t._instance(), ASize)
 }
 
 func (t *TToolButton) Scale96ToForm(ASize int32) int32 {
-    return ToolButton_Scale96ToForm(t.instance, ASize)
+    return ToolButton_Scale96ToForm(t._instance(), ASize)
 }
 
 func (t *TToolButton) ScaleFormTo96(ASize int32) int32 {
-    return ToolButton_ScaleFormTo96(t.instance, ASize)
+    return ToolButton_ScaleFormTo96(t._instance(), ASize)
 }
 
 func (t *TToolButton) Scale96ToFont(ASize int32) int32 {
-    return ToolButton_Scale96ToFont(t.instance, ASize)
+    return ToolButton_Scale96ToFont(t._instance(), ASize)
 }
 
 func (t *TToolButton) ScaleFontTo96(ASize int32) int32 {
-    return ToolButton_ScaleFontTo96(t.instance, ASize)
+    return ToolButton_ScaleFontTo96(t._instance(), ASize)
 }
 
 func (t *TToolButton) ScaleScreenToFont(ASize int32) int32 {
-    return ToolButton_ScaleScreenToFont(t.instance, ASize)
+    return ToolButton_ScaleScreenToFont(t._instance(), ASize)
 }
 
 func (t *TToolButton) ScaleFontToScreen(ASize int32) int32 {
-    return ToolButton_ScaleFontToScreen(t.instance, ASize)
+    return ToolButton_ScaleFontToScreen(t._instance(), ASize)
 }
 
 func (t *TToolButton) Scale96ToScreen(ASize int32) int32 {
-    return ToolButton_Scale96ToScreen(t.instance, ASize)
+    return ToolButton_Scale96ToScreen(t._instance(), ASize)
 }
 
 func (t *TToolButton) ScaleScreenTo96(ASize int32) int32 {
-    return ToolButton_ScaleScreenTo96(t.instance, ASize)
+    return ToolButton_ScaleScreenTo96(t._instance(), ASize)
 }
 
 func (t *TToolButton) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    ToolButton_AutoAdjustLayout(t.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    ToolButton_AutoAdjustLayout(t._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (t *TToolButton) FixDesignFontsPPI(ADesignTimePPI int32) {
-    ToolButton_FixDesignFontsPPI(t.instance, ADesignTimePPI)
+    ToolButton_FixDesignFontsPPI(t._instance(), ADesignTimePPI)
 }
 
 func (t *TToolButton) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    ToolButton_ScaleFontsPPI(t.instance, AToPPI , AProportion)
+    ToolButton_ScaleFontsPPI(t._instance(), AToPPI , AProportion)
 }
 
 func (t *TToolButton) Index() int32 {
-    return ToolButton_GetIndex(t.instance)
+    return ToolButton_GetIndex(t._instance())
 }
 
 func (t *TToolButton) Action() *TAction {
-    return AsAction(ToolButton_GetAction(t.instance))
+    return AsAction(ToolButton_GetAction(t._instance()))
 }
 
 func (t *TToolButton) SetAction(value IComponent) {
-    ToolButton_SetAction(t.instance, CheckPtr(value))
+    ToolButton_SetAction(t._instance(), CheckPtr(value))
 }
 
 func (t *TToolButton) AllowAllUp() bool {
-    return ToolButton_GetAllowAllUp(t.instance)
+    return ToolButton_GetAllowAllUp(t._instance())
 }
 
 func (t *TToolButton) SetAllowAllUp(value bool) {
-    ToolButton_SetAllowAllUp(t.instance, value)
+    ToolButton_SetAllowAllUp(t._instance(), value)
 }
 
+// AutoSize
+//
 // 获取自动调整大小。
 func (t *TToolButton) AutoSize() bool {
-    return ToolButton_GetAutoSize(t.instance)
+    return ToolButton_GetAutoSize(t._instance())
 }
 
+// SetAutoSize
+//
 // 设置自动调整大小。
 func (t *TToolButton) SetAutoSize(value bool) {
-    ToolButton_SetAutoSize(t.instance, value)
+    ToolButton_SetAutoSize(t._instance(), value)
 }
 
+// Caption
+//
 // 获取控件标题。
 //
 // Get the control title.
 func (t *TToolButton) Caption() string {
-    return ToolButton_GetCaption(t.instance)
+    return ToolButton_GetCaption(t._instance())
 }
 
+// SetCaption
+//
 // 设置控件标题。
 //
 // Set the control title.
 func (t *TToolButton) SetCaption(value string) {
-    ToolButton_SetCaption(t.instance, value)
+    ToolButton_SetCaption(t._instance(), value)
 }
 
 func (t *TToolButton) Down() bool {
-    return ToolButton_GetDown(t.instance)
+    return ToolButton_GetDown(t._instance())
 }
 
 func (t *TToolButton) SetDown(value bool) {
-    ToolButton_SetDown(t.instance, value)
+    ToolButton_SetDown(t._instance(), value)
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (t *TToolButton) DragCursor() TCursor {
-    return ToolButton_GetDragCursor(t.instance)
+    return ToolButton_GetDragCursor(t._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (t *TToolButton) SetDragCursor(value TCursor) {
-    ToolButton_SetDragCursor(t.instance, value)
+    ToolButton_SetDragCursor(t._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (t *TToolButton) DragKind() TDragKind {
-    return ToolButton_GetDragKind(t.instance)
+    return ToolButton_GetDragKind(t._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (t *TToolButton) SetDragKind(value TDragKind) {
-    ToolButton_SetDragKind(t.instance, value)
+    ToolButton_SetDragKind(t._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (t *TToolButton) DragMode() TDragMode {
-    return ToolButton_GetDragMode(t.instance)
+    return ToolButton_GetDragMode(t._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (t *TToolButton) SetDragMode(value TDragMode) {
-    ToolButton_SetDragMode(t.instance, value)
+    ToolButton_SetDragMode(t._instance(), value)
 }
 
 func (t *TToolButton) DropdownMenu() *TPopupMenu {
-    return AsPopupMenu(ToolButton_GetDropdownMenu(t.instance))
+    return AsPopupMenu(ToolButton_GetDropdownMenu(t._instance()))
 }
 
 func (t *TToolButton) SetDropdownMenu(value IComponent) {
-    ToolButton_SetDropdownMenu(t.instance, CheckPtr(value))
+    ToolButton_SetDropdownMenu(t._instance(), CheckPtr(value))
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (t *TToolButton) Enabled() bool {
-    return ToolButton_GetEnabled(t.instance)
+    return ToolButton_GetEnabled(t._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (t *TToolButton) SetEnabled(value bool) {
-    ToolButton_SetEnabled(t.instance, value)
+    ToolButton_SetEnabled(t._instance(), value)
 }
 
 func (t *TToolButton) Grouped() bool {
-    return ToolButton_GetGrouped(t.instance)
+    return ToolButton_GetGrouped(t._instance())
 }
 
 func (t *TToolButton) SetGrouped(value bool) {
-    ToolButton_SetGrouped(t.instance, value)
+    ToolButton_SetGrouped(t._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (t *TToolButton) Height() int32 {
-    return ToolButton_GetHeight(t.instance)
+    return ToolButton_GetHeight(t._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (t *TToolButton) SetHeight(value int32) {
-    ToolButton_SetHeight(t.instance, value)
+    ToolButton_SetHeight(t._instance(), value)
 }
 
+// ImageIndex
+//
 // 获取图像在images中的索引。
 func (t *TToolButton) ImageIndex() int32 {
-    return ToolButton_GetImageIndex(t.instance)
+    return ToolButton_GetImageIndex(t._instance())
 }
 
+// SetImageIndex
+//
 // 设置图像在images中的索引。
 func (t *TToolButton) SetImageIndex(value int32) {
-    ToolButton_SetImageIndex(t.instance, value)
+    ToolButton_SetImageIndex(t._instance(), value)
 }
 
 func (t *TToolButton) Indeterminate() bool {
-    return ToolButton_GetIndeterminate(t.instance)
+    return ToolButton_GetIndeterminate(t._instance())
 }
 
 func (t *TToolButton) SetIndeterminate(value bool) {
-    ToolButton_SetIndeterminate(t.instance, value)
+    ToolButton_SetIndeterminate(t._instance(), value)
 }
 
 func (t *TToolButton) Marked() bool {
-    return ToolButton_GetMarked(t.instance)
+    return ToolButton_GetMarked(t._instance())
 }
 
 func (t *TToolButton) SetMarked(value bool) {
-    ToolButton_SetMarked(t.instance, value)
+    ToolButton_SetMarked(t._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (t *TToolButton) ParentShowHint() bool {
-    return ToolButton_GetParentShowHint(t.instance)
+    return ToolButton_GetParentShowHint(t._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (t *TToolButton) SetParentShowHint(value bool) {
-    ToolButton_SetParentShowHint(t.instance, value)
+    ToolButton_SetParentShowHint(t._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (t *TToolButton) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(ToolButton_GetPopupMenu(t.instance))
+    return AsPopupMenu(ToolButton_GetPopupMenu(t._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (t *TToolButton) SetPopupMenu(value IComponent) {
-    ToolButton_SetPopupMenu(t.instance, CheckPtr(value))
+    ToolButton_SetPopupMenu(t._instance(), CheckPtr(value))
 }
 
 func (t *TToolButton) Wrap() bool {
-    return ToolButton_GetWrap(t.instance)
+    return ToolButton_GetWrap(t._instance())
 }
 
 func (t *TToolButton) SetWrap(value bool) {
-    ToolButton_SetWrap(t.instance, value)
+    ToolButton_SetWrap(t._instance(), value)
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (t *TToolButton) ShowHint() bool {
-    return ToolButton_GetShowHint(t.instance)
+    return ToolButton_GetShowHint(t._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (t *TToolButton) SetShowHint(value bool) {
-    ToolButton_SetShowHint(t.instance, value)
+    ToolButton_SetShowHint(t._instance(), value)
 }
 
 func (t *TToolButton) Style() TToolButtonStyle {
-    return ToolButton_GetStyle(t.instance)
+    return ToolButton_GetStyle(t._instance())
 }
 
 func (t *TToolButton) SetStyle(value TToolButtonStyle) {
-    ToolButton_SetStyle(t.instance, value)
+    ToolButton_SetStyle(t._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (t *TToolButton) Visible() bool {
-    return ToolButton_GetVisible(t.instance)
+    return ToolButton_GetVisible(t._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (t *TToolButton) SetVisible(value bool) {
-    ToolButton_SetVisible(t.instance, value)
+    ToolButton_SetVisible(t._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (t *TToolButton) Width() int32 {
-    return ToolButton_GetWidth(t.instance)
+    return ToolButton_GetWidth(t._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (t *TToolButton) SetWidth(value int32) {
-    ToolButton_SetWidth(t.instance, value)
+    ToolButton_SetWidth(t._instance(), value)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (t *TToolButton) SetOnClick(fn TNotifyEvent) {
-    ToolButton_SetOnClick(t.instance, fn)
+    ToolButton_SetOnClick(t._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (t *TToolButton) SetOnContextPopup(fn TContextPopupEvent) {
-    ToolButton_SetOnContextPopup(t.instance, fn)
+    ToolButton_SetOnContextPopup(t._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (t *TToolButton) SetOnDragDrop(fn TDragDropEvent) {
-    ToolButton_SetOnDragDrop(t.instance, fn)
+    ToolButton_SetOnDragDrop(t._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (t *TToolButton) SetOnDragOver(fn TDragOverEvent) {
-    ToolButton_SetOnDragOver(t.instance, fn)
+    ToolButton_SetOnDragOver(t._instance(), fn)
 }
 
+// SetOnEndDock
+//
 // 设置停靠结束事件。
 //
 // Set Dock end event.
 func (t *TToolButton) SetOnEndDock(fn TEndDragEvent) {
-    ToolButton_SetOnEndDock(t.instance, fn)
+    ToolButton_SetOnEndDock(t._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (t *TToolButton) SetOnEndDrag(fn TEndDragEvent) {
-    ToolButton_SetOnEndDrag(t.instance, fn)
+    ToolButton_SetOnEndDrag(t._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (t *TToolButton) SetOnMouseDown(fn TMouseEvent) {
-    ToolButton_SetOnMouseDown(t.instance, fn)
+    ToolButton_SetOnMouseDown(t._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (t *TToolButton) SetOnMouseEnter(fn TNotifyEvent) {
-    ToolButton_SetOnMouseEnter(t.instance, fn)
+    ToolButton_SetOnMouseEnter(t._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (t *TToolButton) SetOnMouseLeave(fn TNotifyEvent) {
-    ToolButton_SetOnMouseLeave(t.instance, fn)
+    ToolButton_SetOnMouseLeave(t._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (t *TToolButton) SetOnMouseMove(fn TMouseMoveEvent) {
-    ToolButton_SetOnMouseMove(t.instance, fn)
+    ToolButton_SetOnMouseMove(t._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (t *TToolButton) SetOnMouseUp(fn TMouseEvent) {
-    ToolButton_SetOnMouseUp(t.instance, fn)
+    ToolButton_SetOnMouseUp(t._instance(), fn)
 }
 
+// SetOnStartDock
+//
 // 设置启动停靠。
 func (t *TToolButton) SetOnStartDock(fn TStartDockEvent) {
-    ToolButton_SetOnStartDock(t.instance, fn)
+    ToolButton_SetOnStartDock(t._instance(), fn)
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (t *TToolButton) Align() TAlign {
-    return ToolButton_GetAlign(t.instance)
+    return ToolButton_GetAlign(t._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (t *TToolButton) SetAlign(value TAlign) {
-    ToolButton_SetAlign(t.instance, value)
+    ToolButton_SetAlign(t._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (t *TToolButton) Anchors() TAnchors {
-    return ToolButton_GetAnchors(t.instance)
+    return ToolButton_GetAnchors(t._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (t *TToolButton) SetAnchors(value TAnchors) {
-    ToolButton_SetAnchors(t.instance, value)
+    ToolButton_SetAnchors(t._instance(), value)
 }
 
 func (t *TToolButton) BiDiMode() TBiDiMode {
-    return ToolButton_GetBiDiMode(t.instance)
+    return ToolButton_GetBiDiMode(t._instance())
 }
 
 func (t *TToolButton) SetBiDiMode(value TBiDiMode) {
-    ToolButton_SetBiDiMode(t.instance, value)
+    ToolButton_SetBiDiMode(t._instance(), value)
 }
 
 func (t *TToolButton) BoundsRect() TRect {
-    return ToolButton_GetBoundsRect(t.instance)
+    return ToolButton_GetBoundsRect(t._instance())
 }
 
 func (t *TToolButton) SetBoundsRect(value TRect) {
-    ToolButton_SetBoundsRect(t.instance, value)
+    ToolButton_SetBoundsRect(t._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (t *TToolButton) ClientHeight() int32 {
-    return ToolButton_GetClientHeight(t.instance)
+    return ToolButton_GetClientHeight(t._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (t *TToolButton) SetClientHeight(value int32) {
-    ToolButton_SetClientHeight(t.instance, value)
+    ToolButton_SetClientHeight(t._instance(), value)
 }
 
 func (t *TToolButton) ClientOrigin() TPoint {
-    return ToolButton_GetClientOrigin(t.instance)
+    return ToolButton_GetClientOrigin(t._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (t *TToolButton) ClientRect() TRect {
-    return ToolButton_GetClientRect(t.instance)
+    return ToolButton_GetClientRect(t._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (t *TToolButton) ClientWidth() int32 {
-    return ToolButton_GetClientWidth(t.instance)
+    return ToolButton_GetClientWidth(t._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (t *TToolButton) SetClientWidth(value int32) {
-    ToolButton_SetClientWidth(t.instance, value)
+    ToolButton_SetClientWidth(t._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (t *TToolButton) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(ToolButton_GetConstraints(t.instance))
+    return AsSizeConstraints(ToolButton_GetConstraints(t._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (t *TToolButton) SetConstraints(value *TSizeConstraints) {
-    ToolButton_SetConstraints(t.instance, CheckPtr(value))
+    ToolButton_SetConstraints(t._instance(), CheckPtr(value))
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (t *TToolButton) ControlState() TControlState {
-    return ToolButton_GetControlState(t.instance)
+    return ToolButton_GetControlState(t._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (t *TToolButton) SetControlState(value TControlState) {
-    ToolButton_SetControlState(t.instance, value)
+    ToolButton_SetControlState(t._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (t *TToolButton) ControlStyle() TControlStyle {
-    return ToolButton_GetControlStyle(t.instance)
+    return ToolButton_GetControlStyle(t._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (t *TToolButton) SetControlStyle(value TControlStyle) {
-    ToolButton_SetControlStyle(t.instance, value)
+    ToolButton_SetControlStyle(t._instance(), value)
 }
 
 func (t *TToolButton) Floating() bool {
-    return ToolButton_GetFloating(t.instance)
+    return ToolButton_GetFloating(t._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (t *TToolButton) Parent() *TWinControl {
-    return AsWinControl(ToolButton_GetParent(t.instance))
+    return AsWinControl(ToolButton_GetParent(t._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (t *TToolButton) SetParent(value IWinControl) {
-    ToolButton_SetParent(t.instance, CheckPtr(value))
+    ToolButton_SetParent(t._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (t *TToolButton) Left() int32 {
-    return ToolButton_GetLeft(t.instance)
+    return ToolButton_GetLeft(t._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (t *TToolButton) SetLeft(value int32) {
-    ToolButton_SetLeft(t.instance, value)
+    ToolButton_SetLeft(t._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (t *TToolButton) Top() int32 {
-    return ToolButton_GetTop(t.instance)
+    return ToolButton_GetTop(t._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (t *TToolButton) SetTop(value int32) {
-    ToolButton_SetTop(t.instance, value)
+    ToolButton_SetTop(t._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (t *TToolButton) Cursor() TCursor {
-    return ToolButton_GetCursor(t.instance)
+    return ToolButton_GetCursor(t._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (t *TToolButton) SetCursor(value TCursor) {
-    ToolButton_SetCursor(t.instance, value)
+    ToolButton_SetCursor(t._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (t *TToolButton) Hint() string {
-    return ToolButton_GetHint(t.instance)
+    return ToolButton_GetHint(t._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (t *TToolButton) SetHint(value string) {
-    ToolButton_SetHint(t.instance, value)
+    ToolButton_SetHint(t._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (t *TToolButton) ComponentCount() int32 {
-    return ToolButton_GetComponentCount(t.instance)
+    return ToolButton_GetComponentCount(t._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (t *TToolButton) ComponentIndex() int32 {
-    return ToolButton_GetComponentIndex(t.instance)
+    return ToolButton_GetComponentIndex(t._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (t *TToolButton) SetComponentIndex(value int32) {
-    ToolButton_SetComponentIndex(t.instance, value)
+    ToolButton_SetComponentIndex(t._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (t *TToolButton) Owner() *TComponent {
-    return AsComponent(ToolButton_GetOwner(t.instance))
+    return AsComponent(ToolButton_GetOwner(t._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (t *TToolButton) Name() string {
-    return ToolButton_GetName(t.instance)
+    return ToolButton_GetName(t._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (t *TToolButton) SetName(value string) {
-    ToolButton_SetName(t.instance, value)
+    ToolButton_SetName(t._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (t *TToolButton) Tag() int {
-    return ToolButton_GetTag(t.instance)
+    return ToolButton_GetTag(t._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (t *TToolButton) SetTag(value int) {
-    ToolButton_SetTag(t.instance, value)
+    ToolButton_SetTag(t._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (t *TToolButton) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(ToolButton_GetAnchorSideLeft(t.instance))
+    return AsAnchorSide(ToolButton_GetAnchorSideLeft(t._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (t *TToolButton) SetAnchorSideLeft(value *TAnchorSide) {
-    ToolButton_SetAnchorSideLeft(t.instance, CheckPtr(value))
+    ToolButton_SetAnchorSideLeft(t._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (t *TToolButton) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(ToolButton_GetAnchorSideTop(t.instance))
+    return AsAnchorSide(ToolButton_GetAnchorSideTop(t._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (t *TToolButton) SetAnchorSideTop(value *TAnchorSide) {
-    ToolButton_SetAnchorSideTop(t.instance, CheckPtr(value))
+    ToolButton_SetAnchorSideTop(t._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (t *TToolButton) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(ToolButton_GetAnchorSideRight(t.instance))
+    return AsAnchorSide(ToolButton_GetAnchorSideRight(t._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (t *TToolButton) SetAnchorSideRight(value *TAnchorSide) {
-    ToolButton_SetAnchorSideRight(t.instance, CheckPtr(value))
+    ToolButton_SetAnchorSideRight(t._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (t *TToolButton) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(ToolButton_GetAnchorSideBottom(t.instance))
+    return AsAnchorSide(ToolButton_GetAnchorSideBottom(t._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (t *TToolButton) SetAnchorSideBottom(value *TAnchorSide) {
-    ToolButton_SetAnchorSideBottom(t.instance, CheckPtr(value))
+    ToolButton_SetAnchorSideBottom(t._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (t *TToolButton) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(ToolButton_GetBorderSpacing(t.instance))
+    return AsControlBorderSpacing(ToolButton_GetBorderSpacing(t._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (t *TToolButton) SetBorderSpacing(value *TControlBorderSpacing) {
-    ToolButton_SetBorderSpacing(t.instance, CheckPtr(value))
+    ToolButton_SetBorderSpacing(t._instance(), CheckPtr(value))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (t *TToolButton) Components(AIndex int32) *TComponent {
-    return AsComponent(ToolButton_GetComponents(t.instance, AIndex))
+    return AsComponent(ToolButton_GetComponents(t._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (t *TToolButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(ToolButton_GetAnchorSide(t.instance, AKind))
+    return AsAnchorSide(ToolButton_GetAnchorSide(t._instance(), AKind))
 }
 

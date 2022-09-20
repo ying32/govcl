@@ -9,8 +9,8 @@
 package vcl
 
 var (
-	// 如果DEBUG=true则不会屏蔽recover()。
-
-	// If DEBUG=true, recover() will not be blocked.
+	// DEBUG
+	// 如果DEBUG = true则不会屏蔽recover()。
+	// If DEBUG = true, recover() will not be blocked.
 	DEBUG = false
 )

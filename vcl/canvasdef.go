@@ -13,62 +13,62 @@ import (
 	. "github.com/ying32/govcl/vcl/types"
 )
 
-// 画刷复制
+// BrushCopy 画刷复制
 func (c *TCanvas) BrushCopy(dest TRect, bitmap IObject, source TRect, color TColor) {
-	Canvas_BrushCopy(c.instance, dest, CheckPtr(bitmap), source, color)
+	Canvas_BrushCopy(c._instance(), dest, CheckPtr(bitmap), source, color)
 }
 
-// 复制矩形
+// CopyRect 制矩形
 func (c *TCanvas) CopyRect(dest TRect, canvas IObject, source TRect) {
-	Canvas_CopyRect(c.instance, dest, CheckPtr(canvas), source)
+	Canvas_CopyRect(c._instance(), dest, CheckPtr(canvas), source)
 }
 
-// 绘制graphic对象
+// Draw 绘制graphic对象
 func (c *TCanvas) Draw(x, y int32, graphic IGraphic) {
-	Canvas_Draw1(c.instance, x, y, CheckPtr(graphic))
+	Canvas_Draw1(c._instance(), x, y, CheckPtr(graphic))
 }
 
-// 绘制graphic对象，opacity透明度
+// Draw2 绘制graphic对象，opacity透明度
 func (c *TCanvas) Draw2(x, y int32, graphic IGraphic, opacity uint8) {
-	Canvas_Draw2(c.instance, x, y, CheckPtr(graphic), opacity)
+	Canvas_Draw2(c._instance(), x, y, CheckPtr(graphic), opacity)
 }
 
-// 画焦点矩形
+// DrawFocusRect 画焦点矩形
 func (c *TCanvas) DrawFocusRect(aRect TRect) {
-	Canvas_DrawFocusRect(c.instance, aRect)
+	Canvas_DrawFocusRect(c._instance(), aRect)
 }
 
-// 填充矩形
+// FillRect 填充矩形
 func (c *TCanvas) FillRect(aRect TRect) {
-	Canvas_FillRect(c.instance, aRect)
+	Canvas_FillRect(c._instance(), aRect)
 }
 
-// 绘制边框
+// FrameRect 绘制边框
 func (c *TCanvas) FrameRect(aRect TRect) {
-	Canvas_FrameRect(c.instance, aRect)
+	Canvas_FrameRect(c._instance(), aRect)
 }
 
-// 在矩形内绘制文字
+// TextRect 在矩形内绘制文字
 func (c *TCanvas) TextRect(aRect TRect, x, y int32, text string) {
-	Canvas_TextRect1(c.instance, aRect, x, y, text)
+	Canvas_TextRect1(c._instance(), aRect, x, y, text)
 }
 
-// 在矩形内绘制文字
+// TextRect2 在矩形内绘制文字
 func (c *TCanvas) TextRect2(aRect *TRect, text string, textFormat TTextFormat) {
-	Canvas_TextRect2(c.instance, aRect, text, textFormat)
+	Canvas_TextRect2(c._instance(), aRect, text, textFormat)
 }
 
-// 填充多边形
+// Polygon 填充多边形
 func (c *TCanvas) Polygon(points []TPoint) {
-	Canvas_Polygon(c.instance, points)
+	Canvas_Polygon(c._instance(), points)
 }
 
-// 画多边形，不填充
+// Polyline 画多边形，不填充
 func (c *TCanvas) Polyline(points []TPoint) {
-	Canvas_Polyline(c.instance, points)
+	Canvas_Polyline(c._instance(), points)
 }
 
-// 多边形贝塞尔曲线
+// PolyBezier 多边形贝塞尔曲线
 func (c *TCanvas) PolyBezier(points []TPoint) {
-	Canvas_PolyBezier(c.instance, points)
+	Canvas_PolyBezier(c._instance(), points)
 }

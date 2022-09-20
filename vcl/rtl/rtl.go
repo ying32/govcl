@@ -17,50 +17,54 @@ import (
 )
 
 var (
+	// SysLocale
+	//
 	// 本地化相关
 	//
 	// localization.
 	SysLocale types.TSysLocale
 )
 
-// Delphi/Lazarus中的内存操作，不过这里传入的是指针
+// Move
 //
-// Memory operations in Delphi/Lazarus, but pointers are passed here.
+// FreePascal中的内存操作，不过这里传入的是指针
+//
+// Memory operations in FreePascal, but pointers are passed here.
 func Move(src, dest uintptr, llen int) {
 	api.DMove(src, dest, llen)
 }
 
-// Delphi/Lazarus的字符串长度。
+// StrLen
 //
-// Delphi/Lazarus string length.
+// FreePascal的字符串长度。
+//
+// FreePascal string length.
 func StrLen(str uintptr) int {
 	return api.DStrLen(str)
 }
 
-// 从一个Delphi/Lazarus字符串数组获取成员
+// GetStringArrOf
+//
+// 从一个FreePascal字符串数组获取成员
 func GetStringArrOf(p uintptr, index int) string {
 	return api.DGetStringArrOf(p, index)
 }
 
-func IsNil(val interface{}) bool {
-	return api.IsNil(val)
-}
-
 //----------------------------Delphi/Lazarus集合操作-------------------------------------------------------
 
-// 集合加法，val...中存储为位的索引，下标为0
+// Include
 // Deprecated: use value.Include.
 func Include(r uint32, val ...uint8) uint32 {
 	return uint32(types.TSet(r).Include(val...))
 }
 
-// 集合减法，val...中存储为位的索引，下标为0
+// Exclude
 // Deprecated: use value.Exclude.
 func Exclude(r uint32, val ...uint8) uint32 {
 	return uint32(types.TSet(r).Exclude(val...))
 }
 
-// 集合类型的判断，val表示位数，下标为0
+// InSets
 // Deprecated: use value.In.
 func InSets(r uint32, s uint32) bool {
 	return types.TSet(r).In(s)
@@ -68,12 +72,20 @@ func InSets(r uint32, s uint32) bool {
 
 //-------------------------------------------------------------------------------------------------------
 
+// TextToShortCut
+//
 // 将字符串转为ShortCut类型
+//
+// Convert string to ShortCut type.
 func TextToShortCut(val string) types.TShortCut {
 	return api.DTextToShortCut(val)
 }
 
+// ShortCutToText
+//
 // 将ShortCut类型转为字符串
+//
+// Convert ShortCut type to string.
 func ShortCutToText(val types.TShortCut) string {
 	return api.DShortCutToText(val)
 }
@@ -93,32 +105,44 @@ func SysOpen(filename string) {
 	api.DSysOpen(filename)
 }
 
+// ExtractFilePath
+//
 // 提取文件名的路径，带“\”的
 func ExtractFilePath(filename string) string {
 	return api.DExtractFilePath(filename)
 }
 
+// FileExists
+//
 // 判断文件是否存在
 func FileExists(filename string) bool {
 	return api.DFileExists(filename)
 }
 
-// 获取文件扩展名
+// ExtractFileExt
+//
+// 提取文件扩展名
 func ExtractFileExt(path string) string {
 	return filepath.Ext(path)
 }
 
+// ExtractFileName
+//
 // 获取一个文件名
 func ExtractFileName(path string) string {
 	return filepath.Base(path)
 }
 
+// GetFileNameWithoutExt
+//
 // 获取一个无扩展的文件名
 func GetFileNameWithoutExt(path string) string {
 	filename := ExtractFileName(path)
 	return filename[:len(filename)-len(ExtractFileExt(filename))]
 }
 
+// ExtractFilePath
+//
 // 提取文件名路径
 //func ExtractFilePath(path string) string {
 //	filename := GetFileName(path)
@@ -126,7 +150,9 @@ func GetFileNameWithoutExt(path string) string {
 //	//return filepath.Dir(path) + string(filepath.Separator)
 //}
 
-// 合并
+// Combine
+//
+// 路径合并
 func Combine(path, name string) string {
 	if path != "" && !strings.HasSuffix(path, PathSeparator) {
 		path += PathSeparator
@@ -137,7 +163,6 @@ func Combine(path, name string) string {
 	return path + name
 }
 
-// FileExists
 //func FileExists(path string) bool  {
 //	_, err := os.Stat(path)
 //	if err == nil {
@@ -149,14 +174,10 @@ func Combine(path, name string) string {
 //	return false
 //}
 
-// 是否加载的为lcl库，true表是是，false表示不是
-// Deprecated
-func LcLLoaded() bool {
-	return true
-}
-
 // ------------------- SetProperty
 
+// SetPropertyValue
+//
 // 设置对象属性值
 //
 // Set object property value
@@ -164,6 +185,8 @@ func SetPropertyValue(instance uintptr, propName, value string) {
 	api.DSetPropertyValue(instance, propName, value)
 }
 
+// SetPropertySecValue
+//
 // 设置对象二级属性值
 //
 // Set the secondary attribute value of the object
@@ -171,15 +194,23 @@ func SetPropertySecValue(instance uintptr, propName, secPropName, value string) 
 	api.DSetPropertySecValue(instance, propName, secPropName, value)
 }
 
-// LibResources
+// GetLibResourceCount
+//
+// 获取Lib中资源字符数组总数
 func GetLibResourceCount() int32 {
 	return api.DGetLibResourceCount()
 }
 
+// GetLibResourceItem
+//
+// 从指定索引中获取字符资源项目
 func GetLibResourceItem(aIndex int32) types.TLibResource {
 	return api.DGetLibResourceItem(aIndex)
 }
 
+// GetLibResourceItems
+//
+// 获取资源字符串数组
 func GetLibResourceItems() []types.TLibResource {
 	ret := make([]types.TLibResource, GetLibResourceCount())
 	for i := 0; i < len(ret); i++ {
@@ -188,17 +219,23 @@ func GetLibResourceItems() []types.TLibResource {
 	return ret
 }
 
+// ModifyLibResource
+//
+// 修改指定资源字符串
 func ModifyLibResource(aPtr uintptr, aValue string) {
 	api.DModifyLibResource(aPtr, aValue)
 }
 
-// 库的信息
+// LibStringEncoding
+//
 // 获取当前库使用的字符串编码
 func LibStringEncoding() types.TStringEncoding {
 	return api.DLibStringEncoding()
 }
 
-// 共8位，2位2位的，如：$01020100 表示 1.2.1.0
+// LibVersion
+//
+// 获取库的版本，共8位，2位2位的，如：$01020100 表示 1.2.1.0
 func LibVersion() uint32 {
 	return api.DLibVersion()
 }
@@ -229,11 +266,15 @@ func ShiftStateToWord(shift types.TShiftState) uint32 {
 	return result
 }
 
-// liblcl About
+// LibAbout
+//
+// liblcl的关于信息
 func LibAbout() string {
 	return api.DLibAbout()
 }
 
+// MainThreadId
+//
 // 返回主线程ID
 //
 // Return the main thread id.
@@ -241,6 +282,8 @@ func MainThreadId() uintptr {
 	return api.DMainThreadId()
 }
 
+// CurrentThreadId
+//
 // 返回当前线程iD
 //
 // Return the current thread id.
@@ -248,6 +291,9 @@ func CurrentThreadId() uintptr {
 	return api.DCurrentThreadId()
 }
 
+// InitGoDll
+//
+// 一般无用，主要用来在go生成的dll中使用liblcl。
 func InitGoDll(aMainThreadId uintptr) {
 	api.DInitGoDll(aMainThreadId)
 }

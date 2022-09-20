@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	. "github.com/ying32/govcl/vcl"
-	. "github.com/ying32/govcl/vcl/rtl"
 	. "github.com/ying32/govcl/vcl/types"
 	"github.com/ying32/govcl/vcl/types/colors"
 )
@@ -58,11 +57,8 @@ func NewPlayControl(owner IComponent) *TPlayControl {
 	m.TDrawGrid.SetSelection(TGridRect{-24, -24, -24, -24})
 
 	m.TDrawGrid.SetColWidths(0, 60)
-	if LcLLoaded() {
-		m.TDrawGrid.SetColWidths(1, 215)
-	} else {
-		m.TDrawGrid.SetColWidths(1, 230)
-	}
+
+	m.TDrawGrid.SetColWidths(1, 215)
 
 	m.TDrawGrid.SetColWidths(2, 100)
 	m.TDrawGrid.SetColWidths(3, 80)

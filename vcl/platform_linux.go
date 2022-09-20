@@ -13,7 +13,6 @@ package vcl
 import (
 	"unsafe"
 
-	. "github.com/ying32/govcl/vcl/api"
 	"github.com/ying32/govcl/vcl/types"
 )
 
@@ -40,6 +39,8 @@ func (g GdkWindow) XID() (xid XID) {
 	return
 }
 
+// FixedWidget
+//
 // lz中首先是一个widget，然后上面用了一个fixedWidget来处理的。
 func (g GtkWidget) FixedWidget() GtkFixed {
 	r, _, _ := GtkWidget_GetGtkFixed.Call(uintptr(g))

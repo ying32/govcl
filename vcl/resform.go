@@ -62,7 +62,7 @@ func setFiledVal(name string, instance uintptr, v reflect.Value) {
 		}
 		// idx = 0 = TForm
 		setVal(1, instance) // idx = 1 = instance
-		setVal(2, instance) // idx = 2 = ptr
+		//setVal(2, instance) // idx = 2 = ptr
 		// instance ord = 1
 		//*(*uintptr)(unsafe.Pointer(fv.Elem().Field(1).UnsafeAddr())) = instance
 		// ptr ord = 2
@@ -146,7 +146,7 @@ func resObjectBuild(typ int, owner IComponent, appInst uintptr, fields ...interf
 	initScale := false
 
 	// 检测是否为MainForm，通过判断 指定方法为nil。
-	isMainForm := Application_GetMainForm(Application.instance) == 0
+	isMainForm := Application_GetMainForm(Application._instance()) == 0
 	instancePtr := uintptr(0)
 	// 不检查一些了，也不做最初版本的兼容
 	if len(fields) > 0 {

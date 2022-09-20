@@ -12,6 +12,8 @@ import (
 	"unsafe"
 )
 
+// StringToUTF8Ptr
+//
 // 字符串到UTF8指针
 func StringToUTF8Ptr(s string) *uint8 {
 	temp := []byte(s)

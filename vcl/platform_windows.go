@@ -14,7 +14,6 @@ import . "github.com/ying32/govcl/vcl/types"
 
 type Window HWND
 
-// Handle
 func HandleToPlatformHandle(h HWND) Window {
 	return Window(h)
 }

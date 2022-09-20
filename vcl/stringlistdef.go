@@ -46,7 +46,6 @@ func (s *TStringList) AddPair2(name, value string, object IObject) *TStrings {
 	return AsStrings(s)
 }
 
-// 文件流加载。
 func (s *TStringList) LoadFromBytes(data []byte) {
 	if len(data) == 0 {
 		return

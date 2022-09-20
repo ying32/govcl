@@ -32,6 +32,9 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 
 	// TMainMenu
 	f.mainMenu = vcl.NewMainMenu(f)
+	f.mainMenu.SetOnMeasureItem(func(sender vcl.IObject, aCanvas *vcl.TCanvas, width, height *int32) {
+		*height = 44
+	})
 
 	// macOS下专有的
 	if runtime.GOOS == "darwin" {

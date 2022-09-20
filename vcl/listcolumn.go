@@ -19,102 +19,95 @@ import (
 
 type TListColumn struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewListColumn
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewListColumn(AOwner *TCollection) *TListColumn {
     l := new(TListColumn)
-    l.instance = ListColumn_Create(CheckPtr(AOwner))
-    l.ptr = unsafe.Pointer(l.instance)
+    l.instance = unsafe.Pointer(ListColumn_Create(CheckPtr(AOwner)))
     setFinalizer(l, (*TListColumn).Free)
     return l
 }
 
+// AsListColumn
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsListColumn(obj interface{}) *TListColumn {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TListColumn{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TListColumn{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsListColumn.
-func ListColumnFromInst(inst uintptr) *TListColumn {
-    return AsListColumn(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsListColumn.
-func ListColumnFromObj(obj IObject) *TListColumn {
-    return AsListColumn(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsListColumn.
-func ListColumnFromUnsafePointer(ptr unsafe.Pointer) *TListColumn {
-    return AsListColumn(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (l *TListColumn) Free() {
-    if l.instance != 0 {
-        ListColumn_Free(l.instance)
-        l.instance, l.ptr = 0, nullptr
+    if l.instance != nullptr {
+        ListColumn_Free(l._instance())
+        l.instance  = nullptr
     }
 }
 
+func (l *TListColumn) _instance() uintptr {
+    return uintptr(l.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (l *TListColumn) Instance() uintptr {
-    return l.instance
+    return l._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (l *TListColumn) UnsafeAddr() unsafe.Pointer {
-    return l.ptr
+    return l.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (l *TListColumn) IsValid() bool {
-    return l.instance != 0
+    return l.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (l *TListColumn) Is() TIs {
-    return TIs(l.instance)
+    return TIs(l._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (l *TListColumn) As() TAs {
-//    return TAs(l.instance)
+//    return TAs(l._instance())
 //}
 
+// TListColumnClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,190 +115,232 @@ func TListColumnClass() TClass {
     return ListColumn_StaticClassType()
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (l *TListColumn) Assign(Source IObject) {
-    ListColumn_Assign(l.instance, CheckPtr(Source))
+    ListColumn_Assign(l._instance(), CheckPtr(Source))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (l *TListColumn) GetNamePath() string {
-    return ListColumn_GetNamePath(l.instance)
+    return ListColumn_GetNamePath(l._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (l *TListColumn) ClassType() TClass {
-    return ListColumn_ClassType(l.instance)
+    return ListColumn_ClassType(l._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (l *TListColumn) ClassName() string {
-    return ListColumn_ClassName(l.instance)
+    return ListColumn_ClassName(l._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (l *TListColumn) InstanceSize() int32 {
-    return ListColumn_InstanceSize(l.instance)
+    return ListColumn_InstanceSize(l._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (l *TListColumn) InheritsFrom(AClass TClass) bool {
-    return ListColumn_InheritsFrom(l.instance, AClass)
+    return ListColumn_InheritsFrom(l._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (l *TListColumn) Equals(Obj IObject) bool {
-    return ListColumn_Equals(l.instance, CheckPtr(Obj))
+    return ListColumn_Equals(l._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (l *TListColumn) GetHashCode() int32 {
-    return ListColumn_GetHashCode(l.instance)
+    return ListColumn_GetHashCode(l._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (l *TListColumn) ToString() string {
-    return ListColumn_ToString(l.instance)
+    return ListColumn_ToString(l._instance())
 }
 
 func (l *TListColumn) SortIndicator() TSortIndicator {
-    return ListColumn_GetSortIndicator(l.instance)
+    return ListColumn_GetSortIndicator(l._instance())
 }
 
 func (l *TListColumn) SetSortIndicator(value TSortIndicator) {
-    ListColumn_SetSortIndicator(l.instance, value)
+    ListColumn_SetSortIndicator(l._instance(), value)
 }
 
+// Alignment
+//
 // 获取文字对齐。
 //
 // Get Text alignment.
 func (l *TListColumn) Alignment() TAlignment {
-    return ListColumn_GetAlignment(l.instance)
+    return ListColumn_GetAlignment(l._instance())
 }
 
+// SetAlignment
+//
 // 设置文字对齐。
 //
 // Set Text alignment.
 func (l *TListColumn) SetAlignment(value TAlignment) {
-    ListColumn_SetAlignment(l.instance, value)
+    ListColumn_SetAlignment(l._instance(), value)
 }
 
+// AutoSize
+//
 // 获取自动调整大小。
 func (l *TListColumn) AutoSize() bool {
-    return ListColumn_GetAutoSize(l.instance)
+    return ListColumn_GetAutoSize(l._instance())
 }
 
+// SetAutoSize
+//
 // 设置自动调整大小。
 func (l *TListColumn) SetAutoSize(value bool) {
-    ListColumn_SetAutoSize(l.instance, value)
+    ListColumn_SetAutoSize(l._instance(), value)
 }
 
+// Caption
+//
 // 获取控件标题。
 //
 // Get the control title.
 func (l *TListColumn) Caption() string {
-    return ListColumn_GetCaption(l.instance)
+    return ListColumn_GetCaption(l._instance())
 }
 
+// SetCaption
+//
 // 设置控件标题。
 //
 // Set the control title.
 func (l *TListColumn) SetCaption(value string) {
-    ListColumn_SetCaption(l.instance, value)
+    ListColumn_SetCaption(l._instance(), value)
 }
 
+// ImageIndex
+//
 // 获取图像在images中的索引。
 func (l *TListColumn) ImageIndex() int32 {
-    return ListColumn_GetImageIndex(l.instance)
+    return ListColumn_GetImageIndex(l._instance())
 }
 
+// SetImageIndex
+//
 // 设置图像在images中的索引。
 func (l *TListColumn) SetImageIndex(value int32) {
-    ListColumn_SetImageIndex(l.instance, value)
+    ListColumn_SetImageIndex(l._instance(), value)
 }
 
 func (l *TListColumn) MaxWidth() int32 {
-    return ListColumn_GetMaxWidth(l.instance)
+    return ListColumn_GetMaxWidth(l._instance())
 }
 
 func (l *TListColumn) SetMaxWidth(value int32) {
-    ListColumn_SetMaxWidth(l.instance, value)
+    ListColumn_SetMaxWidth(l._instance(), value)
 }
 
 func (l *TListColumn) MinWidth() int32 {
-    return ListColumn_GetMinWidth(l.instance)
+    return ListColumn_GetMinWidth(l._instance())
 }
 
 func (l *TListColumn) SetMinWidth(value int32) {
-    ListColumn_SetMinWidth(l.instance, value)
+    ListColumn_SetMinWidth(l._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (l *TListColumn) Tag() int32 {
-    return ListColumn_GetTag(l.instance)
+    return ListColumn_GetTag(l._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (l *TListColumn) SetTag(value int32) {
-    ListColumn_SetTag(l.instance, value)
+    ListColumn_SetTag(l._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (l *TListColumn) Width() int32 {
-    return ListColumn_GetWidth(l.instance)
+    return ListColumn_GetWidth(l._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (l *TListColumn) SetWidth(value int32) {
-    ListColumn_SetWidth(l.instance, value)
+    ListColumn_SetWidth(l._instance(), value)
 }
 
 func (l *TListColumn) Collection() *TCollection {
-    return AsCollection(ListColumn_GetCollection(l.instance))
+    return AsCollection(ListColumn_GetCollection(l._instance()))
 }
 
 func (l *TListColumn) SetCollection(value *TCollection) {
-    ListColumn_SetCollection(l.instance, CheckPtr(value))
+    ListColumn_SetCollection(l._instance(), CheckPtr(value))
 }
 
 func (l *TListColumn) Index() int32 {
-    return ListColumn_GetIndex(l.instance)
+    return ListColumn_GetIndex(l._instance())
 }
 
 func (l *TListColumn) SetIndex(value int32) {
-    ListColumn_SetIndex(l.instance, value)
+    ListColumn_SetIndex(l._instance(), value)
 }
 
 func (l *TListColumn) DisplayName() string {
-    return ListColumn_GetDisplayName(l.instance)
+    return ListColumn_GetDisplayName(l._instance())
 }
 
 func (l *TListColumn) SetDisplayName(value string) {
-    ListColumn_SetDisplayName(l.instance, value)
+    ListColumn_SetDisplayName(l._instance(), value)
 }
 

@@ -42,6 +42,7 @@ func getClassName(aClass interface{}) string {
 	return strings.ToUpper(className)
 }
 
+// RegisterFormResource
 // 注册一个Form的资源
 // 此种方式用于不指定Form资源，直接通过类名查找方式
 func RegisterFormResource(aClass interface{}, data *[]byte) error {
@@ -49,7 +50,7 @@ func RegisterFormResource(aClass interface{}, data *[]byte) error {
 	if className == "" || data == nil {
 		return errors.New("className and data cannot be empty")
 	}
-	// Delphi中不区分大小写的，所以统一转为大写
+	// FreePascal中不区分大小写的，所以统一转为大写
 	formResMap.Store(className, &formResItem{ClassName: className, Data: data})
 	return nil
 }

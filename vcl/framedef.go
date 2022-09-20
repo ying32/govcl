@@ -8,6 +8,8 @@
 
 package vcl
 
+// CreateResFrame
+//
 // 从资源中创建TFrame。
 //
 // Create TFrame from resources.

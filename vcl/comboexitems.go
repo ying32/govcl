@@ -19,81 +19,71 @@ import (
 
 type TComboExItems struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// AsComboExItems
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsComboExItems(obj interface{}) *TComboExItems {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TComboExItems{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TComboExItems{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsComboExItems.
-func ComboExItemsFromInst(inst uintptr) *TComboExItems {
-    return AsComboExItems(inst)
+func (c *TComboExItems) _instance() uintptr {
+    return uintptr(c.instance)
 }
 
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsComboExItems.
-func ComboExItemsFromObj(obj IObject) *TComboExItems {
-    return AsComboExItems(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsComboExItems.
-func ComboExItemsFromUnsafePointer(ptr unsafe.Pointer) *TComboExItems {
-    return AsComboExItems(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (c *TComboExItems) Instance() uintptr {
-    return c.instance
+    return c._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (c *TComboExItems) UnsafeAddr() unsafe.Pointer {
-    return c.ptr
+    return c.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (c *TComboExItems) IsValid() bool {
-    return c.instance != 0
+    return c.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (c *TComboExItems) Is() TIs {
-    return TIs(c.instance)
+    return TIs(c._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (c *TComboExItems) As() TAs {
-//    return TAs(c.instance)
+//    return TAs(c._instance())
 //}
 
+// TComboExItemsClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -102,113 +92,135 @@ func TComboExItemsClass() TClass {
 }
 
 func (c *TComboExItems) Add() *TComboExItem {
-    return AsComboExItem(ComboExItems_Add(c.instance))
+    return AsComboExItem(ComboExItems_Add(c._instance()))
 }
 
 func (c *TComboExItems) AddItem(Caption string, ImageIndex int32, SelectedImageIndex int32, OverlayImageIndex int32, Indent int32, Data uintptr) *TComboExItem {
-    return AsComboExItem(ComboExItems_AddItem(c.instance, Caption , ImageIndex , SelectedImageIndex , OverlayImageIndex , Indent , Data))
+    return AsComboExItem(ComboExItems_AddItem(c._instance(), Caption , ImageIndex , SelectedImageIndex , OverlayImageIndex , Indent , Data))
 }
 
 func (c *TComboExItems) Insert(Index int32) *TComboExItem {
-    return AsComboExItem(ComboExItems_Insert(c.instance, Index))
+    return AsComboExItem(ComboExItems_Insert(c._instance(), Index))
 }
 
+// Owner
+//
 // 组件所有者。
 //
 // component owner.
 func (c *TComboExItems) Owner() *TObject {
-    return AsObject(ComboExItems_Owner(c.instance))
+    return AsObject(ComboExItems_Owner(c._instance()))
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (c *TComboExItems) Assign(Source IObject) {
-    ComboExItems_Assign(c.instance, CheckPtr(Source))
+    ComboExItems_Assign(c._instance(), CheckPtr(Source))
 }
 
 func (c *TComboExItems) BeginUpdate() {
-    ComboExItems_BeginUpdate(c.instance)
+    ComboExItems_BeginUpdate(c._instance())
 }
 
+// Clear
+//
 // 清除。
 func (c *TComboExItems) Clear() {
-    ComboExItems_Clear(c.instance)
+    ComboExItems_Clear(c._instance())
 }
 
 func (c *TComboExItems) Delete(Index int32) {
-    ComboExItems_Delete(c.instance, Index)
+    ComboExItems_Delete(c._instance(), Index)
 }
 
 func (c *TComboExItems) EndUpdate() {
-    ComboExItems_EndUpdate(c.instance)
+    ComboExItems_EndUpdate(c._instance())
 }
 
 func (c *TComboExItems) FindItemID(ID int32) *TCollectionItem {
-    return AsCollectionItem(ComboExItems_FindItemID(c.instance, ID))
+    return AsCollectionItem(ComboExItems_FindItemID(c._instance(), ID))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (c *TComboExItems) GetNamePath() string {
-    return ComboExItems_GetNamePath(c.instance)
+    return ComboExItems_GetNamePath(c._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (c *TComboExItems) ClassType() TClass {
-    return ComboExItems_ClassType(c.instance)
+    return ComboExItems_ClassType(c._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (c *TComboExItems) ClassName() string {
-    return ComboExItems_ClassName(c.instance)
+    return ComboExItems_ClassName(c._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (c *TComboExItems) InstanceSize() int32 {
-    return ComboExItems_InstanceSize(c.instance)
+    return ComboExItems_InstanceSize(c._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (c *TComboExItems) InheritsFrom(AClass TClass) bool {
-    return ComboExItems_InheritsFrom(c.instance, AClass)
+    return ComboExItems_InheritsFrom(c._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (c *TComboExItems) Equals(Obj IObject) bool {
-    return ComboExItems_Equals(c.instance, CheckPtr(Obj))
+    return ComboExItems_Equals(c._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (c *TComboExItems) GetHashCode() int32 {
-    return ComboExItems_GetHashCode(c.instance)
+    return ComboExItems_GetHashCode(c._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (c *TComboExItems) ToString() string {
-    return ComboExItems_ToString(c.instance)
+    return ComboExItems_ToString(c._instance())
 }
 
 func (c *TComboExItems) Count() int32 {
-    return ComboExItems_GetCount(c.instance)
+    return ComboExItems_GetCount(c._instance())
 }
 
 func (c *TComboExItems) ComboItems(Index int32) *TComboExItem {
-    return AsComboExItem(ComboExItems_GetComboItems(c.instance, Index))
+    return AsComboExItem(ComboExItems_GetComboItems(c._instance(), Index))
 }
 

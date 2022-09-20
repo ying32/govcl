@@ -12,7 +12,6 @@ import (
 	"unsafe"
 )
 
-// MemoryStream_Read 还需要待测试
 func MemoryStream_Read(obj uintptr, count int32) (int32, []byte) {
 	if count <= 0 {
 		return 0, nil

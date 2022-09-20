@@ -22,7 +22,9 @@ import (
 	"github.com/ying32/govcl/vcl/types"
 )
 
-// TLangItem 本地已经存在语言列表的项目定义
+// TLangItem
+//
+// 本地已经存在语言列表的项目定义
 type TLangItem struct {
 	Language struct {
 		Id          int    // 2052
@@ -35,47 +37,69 @@ type TLangItem struct {
 }
 
 var (
-	//-------- 导出
+	// :: public
 
-	// 本地已经添加了的语言列表
+	// LocalLangs
+	//
+	// 本地已经添加了的语言列表。
+	//
+	// List of languages that have been added locally.
 	LocalLangs = make(map[int]TLangItem, 0)
 
+	// AppNodeName
+	//
 	// 默认应用的节点名称
+	//
+	// Node name applied by default.
 	AppNodeName string
 
+	// CurrentLang
+	//
 	// 当前语言
+	//
+	// Current language
 	CurrentLang string
 
-	//-------- 不导出
+	// :: private
 
-	// 语言存放目录
+	//  语言存放目录
+	//  language storage directory
 	langsPath = extractFilePath(os.Args[0]) + "Langs" + string(filepath.Separator)
 
-	// 强制显示的语言文件名
+	//  强制显示的语言文件名
+	//  Forced language filename to be displayed
 	langSetFileName = langsPath + "lang.s"
 
 	// 公共资源
+	// Public resource
 	commonResouces map[string]string
 
 	// 当前app资源
+	// Current app resources
 	appResouces map[string]string
 
 	// lib中的资源
+	// Resources in the library
 	libResouces map[string]string
 
 	// 当前app节点信息
+	// Current app node information
 	appNode map[string]interface{}
 
 	// 已经注册的Form
+	// Registered Form
 	regForms = make(map[uintptr]vcl.IComponent, 0)
 
 	// 需要注册的资源
+	// Resources that require registration
 	regResources = make(map[string]*string, 0)
 
 	// lib中注册的资源
+	// Resources registered in the library
 	regLibResources []types.TLibResource
 
 	// 修改lib中资源的函数
+	// Functions that modify resources in the library
 	modifyLibResourceFN func(aPtr uintptr, aValue string)
 )
 
@@ -125,7 +149,7 @@ func parseLangFile(lang string) {
 	}
 }
 
-// 翻译资源，这里不UI上的资源，只是一些常量什么的
+// 翻译资源，这里不翻译UI上的资源，只是一些常量什么的
 func translateStrings() {
 	// 这里先翻译lib中的资源
 	if len(regLibResources) > 0 && len(libResouces) > 0 {
@@ -152,6 +176,9 @@ func translateStrings() {
 	}
 }
 
+// InitDefaultLang
+//  初始默认语言
+//  Initial default language.
 func InitDefaultLang() {
 	slang := ReadSetLang()
 	if slang != "" {
@@ -163,7 +190,9 @@ func InitDefaultLang() {
 	}
 }
 
-// 读当前强制显示语言
+// ReadSetLang
+//  读当前强制显示语言
+//  Read the current mandatory display language.
 func ReadSetLang() string {
 	bs, err := ioutil.ReadFile(langSetFileName)
 	if err == nil {
@@ -172,12 +201,16 @@ func ReadSetLang() string {
 	return ""
 }
 
-// 写入强显示制语言
+// WriteSetLang
+//  写入强显示制语言
+//  Write mandatory language.
 func WriteSetLang(lang string) {
 	ioutil.WriteFile(langSetFileName, []byte(lang), 0775)
 }
 
-// 改变语言
+// ChangeLang
+//  改变语言
+//  Change language.
 func ChangeLang(lang string) {
 	if lang == CurrentLang {
 		return
@@ -197,7 +230,9 @@ func ChangeLang(lang string) {
 	}
 }
 
-// IdRes 通过key查询当前资源中的，顺序为 当前app资源 -> 共享资源 -> lib资源
+// IdRes
+//  通过key查询当前资源中的，顺序为当前app资源 -> 共享资源 -> lib资源
+//  Query the current resources by key, the order is current app resources -> shared resources -> lib resources.
 func IdRes(key string) string {
 	if v, ok := appResouces[key]; ok {
 		return v
@@ -211,7 +246,9 @@ func IdRes(key string) string {
 	return ""
 }
 
-// 初始一个Form的语言
+// InitComponentLang
+//  初始一个Form的语言
+//  The language of the initial Form.
 func InitComponentLang(aOwner vcl.IComponent) {
 	ptr := vcl.CheckPtr(aOwner)
 	if ptr == 0 {
@@ -244,8 +281,10 @@ func InitComponentLang(aOwner vcl.IComponent) {
 	}
 }
 
-// RegsiterVarString 注册需要翻译的字符
-func RegsiterVarString(name string, value *string) {
+// RegisterVarString
+//  注册需要翻译的字符
+//  Register characters that need to be translated.
+func RegisterVarString(name string, value *string) {
 	regResources[name] = value
 }
 

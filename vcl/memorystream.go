@@ -19,102 +19,95 @@ import (
 
 type TMemoryStream struct {
     IStream
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewMemoryStream
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewMemoryStream() *TMemoryStream {
     m := new(TMemoryStream)
-    m.instance = MemoryStream_Create()
-    m.ptr = unsafe.Pointer(m.instance)
+    m.instance = unsafe.Pointer(MemoryStream_Create())
     setFinalizer(m, (*TMemoryStream).Free)
     return m
 }
 
+// AsMemoryStream
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsMemoryStream(obj interface{}) *TMemoryStream {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TMemoryStream{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TMemoryStream{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsMemoryStream.
-func MemoryStreamFromInst(inst uintptr) *TMemoryStream {
-    return AsMemoryStream(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsMemoryStream.
-func MemoryStreamFromObj(obj IObject) *TMemoryStream {
-    return AsMemoryStream(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsMemoryStream.
-func MemoryStreamFromUnsafePointer(ptr unsafe.Pointer) *TMemoryStream {
-    return AsMemoryStream(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (m *TMemoryStream) Free() {
-    if m.instance != 0 {
-        MemoryStream_Free(m.instance)
-        m.instance, m.ptr = 0, nullptr
+    if m.instance != nullptr {
+        MemoryStream_Free(m._instance())
+        m.instance  = nullptr
     }
 }
 
+func (m *TMemoryStream) _instance() uintptr {
+    return uintptr(m.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (m *TMemoryStream) Instance() uintptr {
-    return m.instance
+    return m._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (m *TMemoryStream) UnsafeAddr() unsafe.Pointer {
-    return m.ptr
+    return m.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (m *TMemoryStream) IsValid() bool {
-    return m.instance != 0
+    return m.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (m *TMemoryStream) Is() TIs {
-    return TIs(m.instance)
+    return TIs(m._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (m *TMemoryStream) As() TAs {
-//    return TAs(m.instance)
+//    return TAs(m._instance())
 //}
 
+// TMemoryStreamClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,112 +115,150 @@ func TMemoryStreamClass() TClass {
     return MemoryStream_StaticClassType()
 }
 
+// Clear
+//
 // 清除。
 func (m *TMemoryStream) Clear() {
-    MemoryStream_Clear(m.instance)
+    MemoryStream_Clear(m._instance())
 }
 
+// LoadFromStream
+//
 // 文件流加载。
 func (m *TMemoryStream) LoadFromStream(Stream IStream) {
-    MemoryStream_LoadFromStream(m.instance, CheckPtr(Stream))
+    MemoryStream_LoadFromStream(m._instance(), CheckPtr(Stream))
 }
 
+// LoadFromFile
+//
 // 从文件加载。
 func (m *TMemoryStream) LoadFromFile(FileName string) {
-    MemoryStream_LoadFromFile(m.instance, FileName)
+    MemoryStream_LoadFromFile(m._instance(), FileName)
 }
 
+// Seek
+//
 // 移动流指针位置。
 func (m *TMemoryStream) Seek(Offset int64, Origin TSeekOrigin) int64 {
-    return MemoryStream_Seek(m.instance, Offset , Origin)
+    return MemoryStream_Seek(m._instance(), Offset , Origin)
 }
 
+// SaveToStream
+//
 // 保存至流。
 func (m *TMemoryStream) SaveToStream(Stream IStream) {
-    MemoryStream_SaveToStream(m.instance, CheckPtr(Stream))
+    MemoryStream_SaveToStream(m._instance(), CheckPtr(Stream))
 }
 
+// SaveToFile
+//
 // 保存至文件。
 func (m *TMemoryStream) SaveToFile(FileName string) {
-    MemoryStream_SaveToFile(m.instance, FileName)
+    MemoryStream_SaveToFile(m._instance(), FileName)
 }
 
+// CopyFrom
+//
 // 从指定流中复制。
 func (m *TMemoryStream) CopyFrom(Source IStream, Count int64) int64 {
-    return MemoryStream_CopyFrom(m.instance, CheckPtr(Source), Count)
+    return MemoryStream_CopyFrom(m._instance(), CheckPtr(Source), Count)
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (m *TMemoryStream) ClassType() TClass {
-    return MemoryStream_ClassType(m.instance)
+    return MemoryStream_ClassType(m._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (m *TMemoryStream) ClassName() string {
-    return MemoryStream_ClassName(m.instance)
+    return MemoryStream_ClassName(m._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (m *TMemoryStream) InstanceSize() int32 {
-    return MemoryStream_InstanceSize(m.instance)
+    return MemoryStream_InstanceSize(m._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (m *TMemoryStream) InheritsFrom(AClass TClass) bool {
-    return MemoryStream_InheritsFrom(m.instance, AClass)
+    return MemoryStream_InheritsFrom(m._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (m *TMemoryStream) Equals(Obj IObject) bool {
-    return MemoryStream_Equals(m.instance, CheckPtr(Obj))
+    return MemoryStream_Equals(m._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (m *TMemoryStream) GetHashCode() int32 {
-    return MemoryStream_GetHashCode(m.instance)
+    return MemoryStream_GetHashCode(m._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (m *TMemoryStream) ToString() string {
-    return MemoryStream_ToString(m.instance)
+    return MemoryStream_ToString(m._instance())
 }
 
+// Memory
+//
 // 获取内存指针。
 func (m *TMemoryStream) Memory() uintptr {
-    return MemoryStream_GetMemory(m.instance)
+    return MemoryStream_GetMemory(m._instance())
 }
 
+// Position
+//
 // 获取流指针位置。
 func (m *TMemoryStream) Position() int64 {
-    return MemoryStream_GetPosition(m.instance)
+    return MemoryStream_GetPosition(m._instance())
 }
 
+// SetPosition
+//
 // 设置流指针位置。
 func (m *TMemoryStream) SetPosition(value int64) {
-    MemoryStream_SetPosition(m.instance, value)
+    MemoryStream_SetPosition(m._instance(), value)
 }
 
+// Size
+//
 // 获取流的大小。
 func (m *TMemoryStream) Size() int64 {
-    return MemoryStream_GetSize(m.instance)
+    return MemoryStream_GetSize(m._instance())
 }
 
+// SetSize
+//
 // 设置流的大小。
 func (m *TMemoryStream) SetSize(value int64) {
-    MemoryStream_SetSize(m.instance, value)
+    MemoryStream_SetSize(m._instance(), value)
 }
 

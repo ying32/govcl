@@ -17,4 +17,5 @@ var (
 	messageCallback                 = syscall.NewCallback(messageCallbackProc)
 	threadSyncCallback              = syscall.NewCallback(threadSyncCallbackProc)
 	requestCallCreateParamsCallback = syscall.NewCallback(requestCallCreateParamsCallbackProc)
+	removeEventCallback             = syscall.NewCallback(removeEventCallbackProc)
 )

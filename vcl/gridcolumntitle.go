@@ -19,81 +19,71 @@ import (
 
 type TGridColumnTitle struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// AsGridColumnTitle
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsGridColumnTitle(obj interface{}) *TGridColumnTitle {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TGridColumnTitle{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TGridColumnTitle{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsGridColumnTitle.
-func GridColumnTitleFromInst(inst uintptr) *TGridColumnTitle {
-    return AsGridColumnTitle(inst)
+func (g *TGridColumnTitle) _instance() uintptr {
+    return uintptr(g.instance)
 }
 
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsGridColumnTitle.
-func GridColumnTitleFromObj(obj IObject) *TGridColumnTitle {
-    return AsGridColumnTitle(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsGridColumnTitle.
-func GridColumnTitleFromUnsafePointer(ptr unsafe.Pointer) *TGridColumnTitle {
-    return AsGridColumnTitle(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (g *TGridColumnTitle) Instance() uintptr {
-    return g.instance
+    return g._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (g *TGridColumnTitle) UnsafeAddr() unsafe.Pointer {
-    return g.ptr
+    return g.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (g *TGridColumnTitle) IsValid() bool {
-    return g.instance != 0
+    return g.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (g *TGridColumnTitle) Is() TIs {
-    return TIs(g.instance)
+    return TIs(g._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (g *TGridColumnTitle) As() TAs {
-//    return TAs(g.instance)
+//    return TAs(g._instance())
 //}
 
+// TGridColumnTitleClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -101,184 +91,222 @@ func TGridColumnTitleClass() TClass {
     return GridColumnTitle_StaticClassType()
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (g *TGridColumnTitle) Assign(Source IObject) {
-    GridColumnTitle_Assign(g.instance, CheckPtr(Source))
+    GridColumnTitle_Assign(g._instance(), CheckPtr(Source))
 }
 
 func (g *TGridColumnTitle) FillTitleDefaultFont() {
-    GridColumnTitle_FillTitleDefaultFont(g.instance)
+    GridColumnTitle_FillTitleDefaultFont(g._instance())
 }
 
 func (g *TGridColumnTitle) FixDesignFontsPPI(ADesignTimePPI int32) {
-    GridColumnTitle_FixDesignFontsPPI(g.instance, ADesignTimePPI)
+    GridColumnTitle_FixDesignFontsPPI(g._instance(), ADesignTimePPI)
 }
 
 func (g *TGridColumnTitle) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    GridColumnTitle_ScaleFontsPPI(g.instance, AToPPI , AProportion)
+    GridColumnTitle_ScaleFontsPPI(g._instance(), AToPPI , AProportion)
 }
 
 func (g *TGridColumnTitle) IsDefault() bool {
-    return GridColumnTitle_IsDefault(g.instance)
+    return GridColumnTitle_IsDefault(g._instance())
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (g *TGridColumnTitle) GetNamePath() string {
-    return GridColumnTitle_GetNamePath(g.instance)
+    return GridColumnTitle_GetNamePath(g._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (g *TGridColumnTitle) ClassType() TClass {
-    return GridColumnTitle_ClassType(g.instance)
+    return GridColumnTitle_ClassType(g._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (g *TGridColumnTitle) ClassName() string {
-    return GridColumnTitle_ClassName(g.instance)
+    return GridColumnTitle_ClassName(g._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (g *TGridColumnTitle) InstanceSize() int32 {
-    return GridColumnTitle_InstanceSize(g.instance)
+    return GridColumnTitle_InstanceSize(g._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (g *TGridColumnTitle) InheritsFrom(AClass TClass) bool {
-    return GridColumnTitle_InheritsFrom(g.instance, AClass)
+    return GridColumnTitle_InheritsFrom(g._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (g *TGridColumnTitle) Equals(Obj IObject) bool {
-    return GridColumnTitle_Equals(g.instance, CheckPtr(Obj))
+    return GridColumnTitle_Equals(g._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (g *TGridColumnTitle) GetHashCode() int32 {
-    return GridColumnTitle_GetHashCode(g.instance)
+    return GridColumnTitle_GetHashCode(g._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (g *TGridColumnTitle) ToString() string {
-    return GridColumnTitle_ToString(g.instance)
+    return GridColumnTitle_ToString(g._instance())
 }
 
 func (g *TGridColumnTitle) Column() *TGridColumn {
-    return AsGridColumn(GridColumnTitle_GetColumn(g.instance))
+    return AsGridColumn(GridColumnTitle_GetColumn(g._instance()))
 }
 
+// Alignment
+//
 // 获取文字对齐。
 //
 // Get Text alignment.
 func (g *TGridColumnTitle) Alignment() TAlignment {
-    return GridColumnTitle_GetAlignment(g.instance)
+    return GridColumnTitle_GetAlignment(g._instance())
 }
 
+// SetAlignment
+//
 // 设置文字对齐。
 //
 // Set Text alignment.
 func (g *TGridColumnTitle) SetAlignment(value TAlignment) {
-    GridColumnTitle_SetAlignment(g.instance, value)
+    GridColumnTitle_SetAlignment(g._instance(), value)
 }
 
+// Caption
+//
 // 获取控件标题。
 //
 // Get the control title.
 func (g *TGridColumnTitle) Caption() string {
-    return GridColumnTitle_GetCaption(g.instance)
+    return GridColumnTitle_GetCaption(g._instance())
 }
 
+// SetCaption
+//
 // 设置控件标题。
 //
 // Set the control title.
 func (g *TGridColumnTitle) SetCaption(value string) {
-    GridColumnTitle_SetCaption(g.instance, value)
+    GridColumnTitle_SetCaption(g._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (g *TGridColumnTitle) Color() TColor {
-    return GridColumnTitle_GetColor(g.instance)
+    return GridColumnTitle_GetColor(g._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (g *TGridColumnTitle) SetColor(value TColor) {
-    GridColumnTitle_SetColor(g.instance, value)
+    GridColumnTitle_SetColor(g._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (g *TGridColumnTitle) Font() *TFont {
-    return AsFont(GridColumnTitle_GetFont(g.instance))
+    return AsFont(GridColumnTitle_GetFont(g._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (g *TGridColumnTitle) SetFont(value *TFont) {
-    GridColumnTitle_SetFont(g.instance, CheckPtr(value))
+    GridColumnTitle_SetFont(g._instance(), CheckPtr(value))
 }
 
+// ImageIndex
+//
 // 获取图像在images中的索引。
 func (g *TGridColumnTitle) ImageIndex() int32 {
-    return GridColumnTitle_GetImageIndex(g.instance)
+    return GridColumnTitle_GetImageIndex(g._instance())
 }
 
+// SetImageIndex
+//
 // 设置图像在images中的索引。
 func (g *TGridColumnTitle) SetImageIndex(value int32) {
-    GridColumnTitle_SetImageIndex(g.instance, value)
+    GridColumnTitle_SetImageIndex(g._instance(), value)
 }
 
 func (g *TGridColumnTitle) ImageLayout() TButtonLayout {
-    return GridColumnTitle_GetImageLayout(g.instance)
+    return GridColumnTitle_GetImageLayout(g._instance())
 }
 
 func (g *TGridColumnTitle) SetImageLayout(value TButtonLayout) {
-    GridColumnTitle_SetImageLayout(g.instance, value)
+    GridColumnTitle_SetImageLayout(g._instance(), value)
 }
 
 func (g *TGridColumnTitle) Layout() TTextLayout {
-    return GridColumnTitle_GetLayout(g.instance)
+    return GridColumnTitle_GetLayout(g._instance())
 }
 
 func (g *TGridColumnTitle) SetLayout(value TTextLayout) {
-    GridColumnTitle_SetLayout(g.instance, value)
+    GridColumnTitle_SetLayout(g._instance(), value)
 }
 
 func (g *TGridColumnTitle) MultiLine() bool {
-    return GridColumnTitle_GetMultiLine(g.instance)
+    return GridColumnTitle_GetMultiLine(g._instance())
 }
 
 func (g *TGridColumnTitle) SetMultiLine(value bool) {
-    GridColumnTitle_SetMultiLine(g.instance, value)
+    GridColumnTitle_SetMultiLine(g._instance(), value)
 }
 
 func (g *TGridColumnTitle) PrefixOption() TPrefixOption {
-    return GridColumnTitle_GetPrefixOption(g.instance)
+    return GridColumnTitle_GetPrefixOption(g._instance())
 }
 
 func (g *TGridColumnTitle) SetPrefixOption(value TPrefixOption) {
-    GridColumnTitle_SetPrefixOption(g.instance, value)
+    GridColumnTitle_SetPrefixOption(g._instance(), value)
 }
 

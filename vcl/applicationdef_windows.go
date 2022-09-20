@@ -12,12 +12,14 @@ import (
 	"github.com/ying32/govcl/vcl/win"
 )
 
+// SetIconResId
+//
 // 从资源中设置图标的id
 //
 // Sets the id of the icon from the resource.
 func (a *TApplication) SetIconResId(id int) {
-	hicon := win.LoadIcon(win.GetSelfModuleHandle(), id)
-	if hicon != 0 {
-		a.Icon().SetHandle(hicon)
+	hIcon := win.LoadIcon(win.GetSelfModuleHandle(), id)
+	if hIcon != 0 {
+		a.Icon().SetHandle(hIcon)
 	}
 }

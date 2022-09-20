@@ -19,102 +19,95 @@ import (
 
 type TMonitor struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewMonitor
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewMonitor() *TMonitor {
     m := new(TMonitor)
-    m.instance = Monitor_Create()
-    m.ptr = unsafe.Pointer(m.instance)
+    m.instance = unsafe.Pointer(Monitor_Create())
     setFinalizer(m, (*TMonitor).Free)
     return m
 }
 
+// AsMonitor
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsMonitor(obj interface{}) *TMonitor {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TMonitor{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TMonitor{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsMonitor.
-func MonitorFromInst(inst uintptr) *TMonitor {
-    return AsMonitor(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsMonitor.
-func MonitorFromObj(obj IObject) *TMonitor {
-    return AsMonitor(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsMonitor.
-func MonitorFromUnsafePointer(ptr unsafe.Pointer) *TMonitor {
-    return AsMonitor(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (m *TMonitor) Free() {
-    if m.instance != 0 {
-        Monitor_Free(m.instance)
-        m.instance, m.ptr = 0, nullptr
+    if m.instance != nullptr {
+        Monitor_Free(m._instance())
+        m.instance  = nullptr
     }
 }
 
+func (m *TMonitor) _instance() uintptr {
+    return uintptr(m.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (m *TMonitor) Instance() uintptr {
-    return m.instance
+    return m._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (m *TMonitor) UnsafeAddr() unsafe.Pointer {
-    return m.ptr
+    return m.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (m *TMonitor) IsValid() bool {
-    return m.instance != 0
+    return m.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (m *TMonitor) Is() TIs {
-    return TIs(m.instance)
+    return TIs(m._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (m *TMonitor) As() TAs {
-//    return TAs(m.instance)
+//    return TAs(m._instance())
 //}
 
+// TMonitorClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,107 +115,131 @@ func TMonitorClass() TClass {
     return Monitor_StaticClassType()
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (m *TMonitor) ClassType() TClass {
-    return Monitor_ClassType(m.instance)
+    return Monitor_ClassType(m._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (m *TMonitor) ClassName() string {
-    return Monitor_ClassName(m.instance)
+    return Monitor_ClassName(m._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (m *TMonitor) InstanceSize() int32 {
-    return Monitor_InstanceSize(m.instance)
+    return Monitor_InstanceSize(m._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (m *TMonitor) InheritsFrom(AClass TClass) bool {
-    return Monitor_InheritsFrom(m.instance, AClass)
+    return Monitor_InheritsFrom(m._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (m *TMonitor) Equals(Obj IObject) bool {
-    return Monitor_Equals(m.instance, CheckPtr(Obj))
+    return Monitor_Equals(m._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (m *TMonitor) GetHashCode() int32 {
-    return Monitor_GetHashCode(m.instance)
+    return Monitor_GetHashCode(m._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (m *TMonitor) ToString() string {
-    return Monitor_ToString(m.instance)
+    return Monitor_ToString(m._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (m *TMonitor) Handle() HMONITOR {
-    return Monitor_GetHandle(m.instance)
+    return Monitor_GetHandle(m._instance())
 }
 
 func (m *TMonitor) MonitorNum() int32 {
-    return Monitor_GetMonitorNum(m.instance)
+    return Monitor_GetMonitorNum(m._instance())
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (m *TMonitor) Left() int32 {
-    return Monitor_GetLeft(m.instance)
+    return Monitor_GetLeft(m._instance())
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (m *TMonitor) Height() int32 {
-    return Monitor_GetHeight(m.instance)
+    return Monitor_GetHeight(m._instance())
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (m *TMonitor) Top() int32 {
-    return Monitor_GetTop(m.instance)
+    return Monitor_GetTop(m._instance())
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (m *TMonitor) Width() int32 {
-    return Monitor_GetWidth(m.instance)
+    return Monitor_GetWidth(m._instance())
 }
 
 func (m *TMonitor) BoundsRect() TRect {
-    return Monitor_GetBoundsRect(m.instance)
+    return Monitor_GetBoundsRect(m._instance())
 }
 
 func (m *TMonitor) WorkareaRect() TRect {
-    return Monitor_GetWorkareaRect(m.instance)
+    return Monitor_GetWorkareaRect(m._instance())
 }
 
 func (m *TMonitor) Primary() bool {
-    return Monitor_GetPrimary(m.instance)
+    return Monitor_GetPrimary(m._instance())
 }
 
 func (m *TMonitor) PixelsPerInch() int32 {
-    return Monitor_GetPixelsPerInch(m.instance)
+    return Monitor_GetPixelsPerInch(m._instance())
 }
 

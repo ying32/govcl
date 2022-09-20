@@ -65,11 +65,11 @@ func (n NSWindow) SetTitleVisibility(flag NSWindowTitleVisibility) {
 
 func (n NSWindow) TitleBarAppearsTransparent() bool {
 	r, _, _ := NSWindow_titlebarAppearsTransparent.Call(uintptr(n))
-	return DBoolToGoBool(r)
+	return GoBool(r)
 }
 
 func (n NSWindow) SetTitleBarAppearsTransparent(flag bool) {
-	NSWindow_setTitlebarAppearsTransparent.Call(uintptr(n), GoBoolToDBool(flag))
+	NSWindow_setTitlebarAppearsTransparent.Call(uintptr(n), PascalBool(flag))
 }
 
 func (n NSWindow) SetRepresentedURL(url NSURL) {

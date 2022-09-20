@@ -9,8 +9,8 @@
 
 package vcl
 
-// Is操作符
+// TIs : Is操作符
 type TIs uintptr
 
-// As操作符
+// TAs : As操作符
 type TAs uintptr

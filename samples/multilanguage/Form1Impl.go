@@ -66,7 +66,6 @@ func (f *TForm1) OnButton3Click(sender vcl.IObject) {
 
 // 初始就注册
 func init() {
-	i18n.RegsiterVarString("testMessage", &testMessage)
-	i18n.RegsiterVarString("testMessage2", &testMessage2)
-	//multilang.RegsiterVar(&testMessage)
+	i18n.RegisterVarString("testMessage", &testMessage)
+	i18n.RegisterVarString("testMessage2", &testMessage2)
 }

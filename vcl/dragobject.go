@@ -19,102 +19,95 @@ import (
 
 type TDragObject struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewDragObject
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewDragObject(AOwner IControl) *TDragObject {
     d := new(TDragObject)
-    d.instance = DragObject_Create(CheckPtr(AOwner))
-    d.ptr = unsafe.Pointer(d.instance)
+    d.instance = unsafe.Pointer(DragObject_Create(CheckPtr(AOwner)))
     setFinalizer(d, (*TDragObject).Free)
     return d
 }
 
+// AsDragObject
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsDragObject(obj interface{}) *TDragObject {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TDragObject{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TDragObject{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsDragObject.
-func DragObjectFromInst(inst uintptr) *TDragObject {
-    return AsDragObject(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsDragObject.
-func DragObjectFromObj(obj IObject) *TDragObject {
-    return AsDragObject(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsDragObject.
-func DragObjectFromUnsafePointer(ptr unsafe.Pointer) *TDragObject {
-    return AsDragObject(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (d *TDragObject) Free() {
-    if d.instance != 0 {
-        DragObject_Free(d.instance)
-        d.instance, d.ptr = 0, nullptr
+    if d.instance != nullptr {
+        DragObject_Free(d._instance())
+        d.instance  = nullptr
     }
 }
 
+func (d *TDragObject) _instance() uintptr {
+    return uintptr(d.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (d *TDragObject) Instance() uintptr {
-    return d.instance
+    return d._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (d *TDragObject) UnsafeAddr() unsafe.Pointer {
-    return d.ptr
+    return d.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (d *TDragObject) IsValid() bool {
-    return d.instance != 0
+    return d.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (d *TDragObject) Is() TIs {
-    return TIs(d.instance)
+    return TIs(d._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (d *TDragObject) As() TAs {
-//    return TAs(d.instance)
+//    return TAs(d._instance())
 //}
 
+// TDragObjectClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,103 +115,119 @@ func TDragObjectClass() TClass {
     return DragObject_StaticClassType()
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (d *TDragObject) Assign(Source *TDragObject) {
-    DragObject_Assign(d.instance, CheckPtr(Source))
+    DragObject_Assign(d._instance(), CheckPtr(Source))
 }
 
 func (d *TDragObject) HideDragImage() {
-    DragObject_HideDragImage(d.instance)
+    DragObject_HideDragImage(d._instance())
 }
 
 func (d *TDragObject) ShowDragImage() {
-    DragObject_ShowDragImage(d.instance)
+    DragObject_ShowDragImage(d._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (d *TDragObject) ClassType() TClass {
-    return DragObject_ClassType(d.instance)
+    return DragObject_ClassType(d._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (d *TDragObject) ClassName() string {
-    return DragObject_ClassName(d.instance)
+    return DragObject_ClassName(d._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (d *TDragObject) InstanceSize() int32 {
-    return DragObject_InstanceSize(d.instance)
+    return DragObject_InstanceSize(d._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (d *TDragObject) InheritsFrom(AClass TClass) bool {
-    return DragObject_InheritsFrom(d.instance, AClass)
+    return DragObject_InheritsFrom(d._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (d *TDragObject) Equals(Obj IObject) bool {
-    return DragObject_Equals(d.instance, CheckPtr(Obj))
+    return DragObject_Equals(d._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (d *TDragObject) GetHashCode() int32 {
-    return DragObject_GetHashCode(d.instance)
+    return DragObject_GetHashCode(d._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (d *TDragObject) ToString() string {
-    return DragObject_ToString(d.instance)
+    return DragObject_ToString(d._instance())
 }
 
 func (d *TDragObject) AlwaysShowDragImages() bool {
-    return DragObject_GetAlwaysShowDragImages(d.instance)
+    return DragObject_GetAlwaysShowDragImages(d._instance())
 }
 
 func (d *TDragObject) SetAlwaysShowDragImages(value bool) {
-    DragObject_SetAlwaysShowDragImages(d.instance, value)
+    DragObject_SetAlwaysShowDragImages(d._instance(), value)
 }
 
 func (d *TDragObject) DragPos() TPoint {
-    return DragObject_GetDragPos(d.instance)
+    return DragObject_GetDragPos(d._instance())
 }
 
 func (d *TDragObject) SetDragPos(value TPoint) {
-    DragObject_SetDragPos(d.instance, value)
+    DragObject_SetDragPos(d._instance(), value)
 }
 
 func (d *TDragObject) DragTarget() uintptr {
-    return DragObject_GetDragTarget(d.instance)
+    return DragObject_GetDragTarget(d._instance())
 }
 
 func (d *TDragObject) SetDragTarget(value uintptr) {
-    DragObject_SetDragTarget(d.instance, value)
+    DragObject_SetDragTarget(d._instance(), value)
 }
 
 func (d *TDragObject) DragTargetPos() TPoint {
-    return DragObject_GetDragTargetPos(d.instance)
+    return DragObject_GetDragTargetPos(d._instance())
 }
 
 func (d *TDragObject) SetDragTargetPos(value TPoint) {
-    DragObject_SetDragTargetPos(d.instance, value)
+    DragObject_SetDragTargetPos(d._instance(), value)
 }
 
 func (d *TDragObject) Dropped() bool {
-    return DragObject_GetDropped(d.instance)
+    return DragObject_GetDropped(d._instance())
 }
 

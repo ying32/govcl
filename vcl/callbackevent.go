@@ -15,6 +15,8 @@ import (
 	. "github.com/ying32/govcl/vcl/types"
 )
 
+// TExtEventCallback
+//
 // 外部回调事件
 // 参数一：函数地址
 // 参数二：获取参数值的函数
@@ -24,6 +26,8 @@ type TExtEventCallback func(fn interface{}, getVal func(idx int) uintptr) bool
 // 外部扩展的事件回调，先不管重复注册的问题
 var extEventCallback []TExtEventCallback
 
+// RegisterExtEventCallback
+//
 // 注册外部扩展回调事件
 //
 // Registering external extension callback events.
@@ -32,15 +36,21 @@ func RegisterExtEventCallback(callback TExtEventCallback) {
 }
 
 // getParam 从指定索引和地址获取事件中的参数
-// 不再使用Delphi导出的了，直接在这处理
+// 不再使用FreePascal导出的了，直接在这处理
 func getParamOf(index int, ptr uintptr) uintptr {
 	return *(*uintptr)(unsafe.Pointer(ptr + uintptr(index)*unsafe.Sizeof(ptr)))
 }
 
+// 移除事件，释放相关的引用
+func removeEventCallbackProc(f unsafe.Pointer) uintptr {
+	RemoveEventElement(PtrToElementPtr(f))
+	return 0
+}
+
 // 回调过程
-func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
-	v, ok := EventCallbackOf(f)
-	if ok {
+func eventCallbackProc(f unsafe.Pointer, args uintptr, _ int) uintptr {
+	v := PtrToElementValue(f)
+	if v != nil {
 
 		// 获取值
 		getVal := func(i int) uintptr {
@@ -198,7 +208,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 				AsObject(getVal(0)),
 				AsCanvas(getVal(1)),
 				*getRectPtr(2),
-				GoBool(getVal(3)))
+				TOwnerDrawState(getVal(3)))
 
 			// type TLVNotifyEvent func(sender IObject, item *TListItem)
 		case TLVNotifyEvent:
@@ -431,7 +441,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 				AsObject(getVal(0)),
 				&obj)
 			if obj != nil {
-				setPtrVal(1, obj.instance)
+				setPtrVal(1, obj._instance())
 			}
 
 			//func(sender IObject, dockClient *TControl, influenceRect *TRect, mousePos TPoint, canDock *bool)
@@ -882,7 +892,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 				int32(getVal(2)),
 				&obj)
 			if obj != nil {
-				setPtrVal(3, obj.instance)
+				setPtrVal(3, obj._instance())
 			}
 
 		//type TUserCheckBoxBitmapEvent func(sender IObject, aCol, aRow int32, CheckedState TCheckBoxState, aBitmap **TBitmap)
@@ -895,7 +905,7 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 				TCheckBoxState(getVal(1)),
 				&obj)
 			if obj != nil {
-				setPtrVal(4, obj.instance)
+				setPtrVal(4, obj._instance())
 			}
 
 			//type TValidateEntryEvent func(sender IObject, aCol, aRow int32, oldValue string, newValue *string)

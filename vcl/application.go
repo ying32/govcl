@@ -19,101 +19,94 @@ import (
 
 type TApplication struct {
     IComponent
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewApplication
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewApplication(owner IComponent) *TApplication {
     a := new(TApplication)
-    a.instance = Application_Create(CheckPtr(owner))
-    a.ptr = unsafe.Pointer(a.instance)
+    a.instance = unsafe.Pointer(Application_Create(CheckPtr(owner)))
     return a
 }
 
+// AsApplication
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsApplication(obj interface{}) *TApplication {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TApplication{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TApplication{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsApplication.
-func ApplicationFromInst(inst uintptr) *TApplication {
-    return AsApplication(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsApplication.
-func ApplicationFromObj(obj IObject) *TApplication {
-    return AsApplication(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsApplication.
-func ApplicationFromUnsafePointer(ptr unsafe.Pointer) *TApplication {
-    return AsApplication(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (a *TApplication) Free() {
-    if a.instance != 0 {
-        Application_Free(a.instance)
-        a.instance, a.ptr = 0, nullptr
+    if a.instance != nullptr {
+        Application_Free(a._instance())
+        a.instance  = nullptr
     }
 }
 
+func (a *TApplication) _instance() uintptr {
+    return uintptr(a.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (a *TApplication) Instance() uintptr {
-    return a.instance
+    return a._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (a *TApplication) UnsafeAddr() unsafe.Pointer {
-    return a.ptr
+    return a.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (a *TApplication) IsValid() bool {
-    return a.instance != 0
+    return a.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (a *TApplication) Is() TIs {
-    return TIs(a.instance)
+    return TIs(a._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (a *TApplication) As() TAs {
-//    return TAs(a.instance)
+//    return TAs(a._instance())
 //}
 
+// TApplicationClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,431 +114,539 @@ func TApplicationClass() TClass {
     return Application_StaticClassType()
 }
 
+// ActivateHint
+//
 // 激活鼠标悬停提示。
 func (a *TApplication) ActivateHint(CursorPos TPoint) {
-    Application_ActivateHint(a.instance, CursorPos)
+    Application_ActivateHint(a._instance(), CursorPos)
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (a *TApplication) BringToFront() {
-    Application_BringToFront(a.instance)
+    Application_BringToFront(a._instance())
 }
 
+// CancelHint
+//
 // 取消鼠标悬停提示。
 func (a *TApplication) CancelHint() {
-    Application_CancelHint(a.instance)
+    Application_CancelHint(a._instance())
 }
 
+// HandleMessage
+//
 // 消息循环，不要使用。
 func (a *TApplication) HandleMessage() {
-    Application_HandleMessage(a.instance)
+    Application_HandleMessage(a._instance())
 }
 
+// HideHint
+//
 // 隐藏鼠标悬停提示。
 func (a *TApplication) HideHint() {
-    Application_HideHint(a.instance)
+    Application_HideHint(a._instance())
 }
 
+// Minimize
+//
 // 最小化应用程序。
 func (a *TApplication) Minimize() {
-    Application_Minimize(a.instance)
+    Application_Minimize(a._instance())
 }
 
 func (a *TApplication) ModalStarted() {
-    Application_ModalStarted(a.instance)
+    Application_ModalStarted(a._instance())
 }
 
 func (a *TApplication) ModalFinished() {
-    Application_ModalFinished(a.instance)
+    Application_ModalFinished(a._instance())
 }
 
+// ProcessMessages
+//
 // 处理消息循环。
 func (a *TApplication) ProcessMessages() {
-    Application_ProcessMessages(a.instance)
+    Application_ProcessMessages(a._instance())
 }
 
+// Restore
+//
 // 恢复小最小的应用。
 func (a *TApplication) Restore() {
-    Application_Restore(a.instance)
+    Application_Restore(a._instance())
 }
 
+// RestoreTopMosts
+//
 // 恢复最小化的应用并置顶。
 func (a *TApplication) RestoreTopMosts() {
-    Application_RestoreTopMosts(a.instance)
+    Application_RestoreTopMosts(a._instance())
 }
 
+// Terminate
+//
 // 结束应用程序。
 func (a *TApplication) Terminate() {
-    Application_Terminate(a.instance)
+    Application_Terminate(a._instance())
 }
 
+// MessageBox
+//
 // 显示消息框。
 func (a *TApplication) MessageBox(Text string, Caption string, Flags int32) int32 {
-    return Application_MessageBox(a.instance, Text , Caption , Flags)
+    return Application_MessageBox(a._instance(), Text , Caption , Flags)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (a *TApplication) FindComponent(AName string) *TComponent {
-    return AsComponent(Application_FindComponent(a.instance, AName))
+    return AsComponent(Application_FindComponent(a._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (a *TApplication) GetNamePath() string {
-    return Application_GetNamePath(a.instance)
+    return Application_GetNamePath(a._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (a *TApplication) HasParent() bool {
-    return Application_HasParent(a.instance)
+    return Application_HasParent(a._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (a *TApplication) Assign(Source IObject) {
-    Application_Assign(a.instance, CheckPtr(Source))
+    Application_Assign(a._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (a *TApplication) ClassType() TClass {
-    return Application_ClassType(a.instance)
+    return Application_ClassType(a._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (a *TApplication) ClassName() string {
-    return Application_ClassName(a.instance)
+    return Application_ClassName(a._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (a *TApplication) InstanceSize() int32 {
-    return Application_InstanceSize(a.instance)
+    return Application_InstanceSize(a._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (a *TApplication) InheritsFrom(AClass TClass) bool {
-    return Application_InheritsFrom(a.instance, AClass)
+    return Application_InheritsFrom(a._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (a *TApplication) Equals(Obj IObject) bool {
-    return Application_Equals(a.instance, CheckPtr(Obj))
+    return Application_Equals(a._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (a *TApplication) GetHashCode() int32 {
-    return Application_GetHashCode(a.instance)
+    return Application_GetHashCode(a._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (a *TApplication) ToString() string {
-    return Application_ToString(a.instance)
+    return Application_ToString(a._instance())
 }
 
 func (a *TApplication) Scaled() bool {
-    return Application_GetScaled(a.instance)
+    return Application_GetScaled(a._instance())
 }
 
 func (a *TApplication) SetScaled(value bool) {
-    Application_SetScaled(a.instance, value)
+    Application_SetScaled(a._instance(), value)
 }
 
 func (a *TApplication) SingleInstanceEnabled() bool {
-    return Application_GetSingleInstanceEnabled(a.instance)
+    return Application_GetSingleInstanceEnabled(a._instance())
 }
 
 func (a *TApplication) SetSingleInstanceEnabled(value bool) {
-    Application_SetSingleInstanceEnabled(a.instance, value)
+    Application_SetSingleInstanceEnabled(a._instance(), value)
 }
 
 func (a *TApplication) Location() string {
-    return Application_GetLocation(a.instance)
+    return Application_GetLocation(a._instance())
 }
 
 func (a *TApplication) StopOnException() bool {
-    return Application_GetStopOnException(a.instance)
+    return Application_GetStopOnException(a._instance())
 }
 
 func (a *TApplication) SetStopOnException(value bool) {
-    Application_SetStopOnException(a.instance, value)
+    Application_SetStopOnException(a._instance(), value)
 }
 
 func (a *TApplication) ExceptionExitCode() int32 {
-    return Application_GetExceptionExitCode(a.instance)
+    return Application_GetExceptionExitCode(a._instance())
 }
 
 func (a *TApplication) SetExceptionExitCode(value int32) {
-    Application_SetExceptionExitCode(a.instance, value)
+    Application_SetExceptionExitCode(a._instance(), value)
 }
 
+// ExeName
+//
 // 获取当前exe文件名，包含全路径。
 func (a *TApplication) ExeName() string {
-    return Application_GetExeName(a.instance)
+    return Application_GetExeName(a._instance())
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (a *TApplication) Hint() string {
-    return Application_GetHint(a.instance)
+    return Application_GetHint(a._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (a *TApplication) SetHint(value string) {
-    Application_SetHint(a.instance, value)
+    Application_SetHint(a._instance(), value)
 }
 
+// HintColor
+//
 // 获取鼠标悬停提示颜色。
 func (a *TApplication) HintColor() TColor {
-    return Application_GetHintColor(a.instance)
+    return Application_GetHintColor(a._instance())
 }
 
+// SetHintColor
+//
 // 设置鼠标悬停提示颜色。
 func (a *TApplication) SetHintColor(value TColor) {
-    Application_SetHintColor(a.instance, value)
+    Application_SetHintColor(a._instance(), value)
 }
 
+// HintHidePause
+//
 // 获取鼠标悬停提示暂停时间，ms。
 func (a *TApplication) HintHidePause() int32 {
-    return Application_GetHintHidePause(a.instance)
+    return Application_GetHintHidePause(a._instance())
 }
 
+// SetHintHidePause
+//
 // 设置鼠标悬停提示暂停时间，ms。
 func (a *TApplication) SetHintHidePause(value int32) {
-    Application_SetHintHidePause(a.instance, value)
+    Application_SetHintHidePause(a._instance(), value)
 }
 
+// HintPause
+//
 // 获取鼠标悬停暂时时间。
 func (a *TApplication) HintPause() int32 {
-    return Application_GetHintPause(a.instance)
+    return Application_GetHintPause(a._instance())
 }
 
+// SetHintPause
+//
 // 设置鼠标悬停暂时时间。
 func (a *TApplication) SetHintPause(value int32) {
-    Application_SetHintPause(a.instance, value)
+    Application_SetHintPause(a._instance(), value)
 }
 
 func (a *TApplication) HintShortCuts() bool {
-    return Application_GetHintShortCuts(a.instance)
+    return Application_GetHintShortCuts(a._instance())
 }
 
 func (a *TApplication) SetHintShortCuts(value bool) {
-    Application_SetHintShortCuts(a.instance, value)
+    Application_SetHintShortCuts(a._instance(), value)
 }
 
 func (a *TApplication) HintShortPause() int32 {
-    return Application_GetHintShortPause(a.instance)
+    return Application_GetHintShortPause(a._instance())
 }
 
 func (a *TApplication) SetHintShortPause(value int32) {
-    Application_SetHintShortPause(a.instance, value)
+    Application_SetHintShortPause(a._instance(), value)
 }
 
+// Icon
+//
 // 获取图标。
 //
 // Get icon.
 func (a *TApplication) Icon() *TIcon {
-    return AsIcon(Application_GetIcon(a.instance))
+    return AsIcon(Application_GetIcon(a._instance()))
 }
 
+// SetIcon
+//
 // 设置图标。
 //
 // Set icon.
 func (a *TApplication) SetIcon(value *TIcon) {
-    Application_SetIcon(a.instance, CheckPtr(value))
+    Application_SetIcon(a._instance(), CheckPtr(value))
 }
 
 func (a *TApplication) MainForm() *TForm {
-    return AsForm(Application_GetMainForm(a.instance))
+    return AsForm(Application_GetMainForm(a._instance()))
 }
 
 func (a *TApplication) MainFormHandle() HWND {
-    return Application_GetMainFormHandle(a.instance)
+    return Application_GetMainFormHandle(a._instance())
 }
 
+// MainFormOnTaskBar
+//
 // 获取主窗口显示在任务栏上。
 func (a *TApplication) MainFormOnTaskBar() bool {
-    return Application_GetMainFormOnTaskBar(a.instance)
+    return Application_GetMainFormOnTaskBar(a._instance())
 }
 
+// SetMainFormOnTaskBar
+//
 // 设置主窗口显示在任务栏上。
 func (a *TApplication) SetMainFormOnTaskBar(value bool) {
-    Application_SetMainFormOnTaskBar(a.instance, value)
+    Application_SetMainFormOnTaskBar(a._instance(), value)
 }
 
 func (a *TApplication) BiDiMode() TBiDiMode {
-    return Application_GetBiDiMode(a.instance)
+    return Application_GetBiDiMode(a._instance())
 }
 
 func (a *TApplication) SetBiDiMode(value TBiDiMode) {
-    Application_SetBiDiMode(a.instance, value)
+    Application_SetBiDiMode(a._instance(), value)
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (a *TApplication) ShowHint() bool {
-    return Application_GetShowHint(a.instance)
+    return Application_GetShowHint(a._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (a *TApplication) SetShowHint(value bool) {
-    Application_SetShowHint(a.instance, value)
+    Application_SetShowHint(a._instance(), value)
 }
 
+// ShowMainForm
+//
 // 获取初始显示主窗口。
 func (a *TApplication) ShowMainForm() bool {
-    return Application_GetShowMainForm(a.instance)
+    return Application_GetShowMainForm(a._instance())
 }
 
+// SetShowMainForm
+//
 // 设置初始显示主窗口。
 func (a *TApplication) SetShowMainForm(value bool) {
-    Application_SetShowMainForm(a.instance, value)
+    Application_SetShowMainForm(a._instance(), value)
 }
 
 func (a *TApplication) Title() string {
-    return Application_GetTitle(a.instance)
+    return Application_GetTitle(a._instance())
 }
 
 func (a *TApplication) SetTitle(value string) {
-    Application_SetTitle(a.instance, value)
+    Application_SetTitle(a._instance(), value)
 }
 
 func (a *TApplication) SetOnActivate(fn TNotifyEvent) {
-    Application_SetOnActivate(a.instance, fn)
+    Application_SetOnActivate(a._instance(), fn)
 }
 
 func (a *TApplication) SetOnDeactivate(fn TNotifyEvent) {
-    Application_SetOnDeactivate(a.instance, fn)
+    Application_SetOnDeactivate(a._instance(), fn)
 }
 
+// SetOnException
+//
 // 设置应用程序异常事件。
 func (a *TApplication) SetOnException(fn TExceptionEvent) {
-    Application_SetOnException(a.instance, fn)
+    Application_SetOnException(a._instance(), fn)
 }
 
 func (a *TApplication) SetOnHelp(fn THelpEvent) {
-    Application_SetOnHelp(a.instance, fn)
+    Application_SetOnHelp(a._instance(), fn)
 }
 
+// SetOnHint
+//
 // 设置鼠标悬停提示事件。
 func (a *TApplication) SetOnHint(fn TNotifyEvent) {
-    Application_SetOnHint(a.instance, fn)
+    Application_SetOnHint(a._instance(), fn)
 }
 
+// SetOnMinimize
+//
 // 设置App或者窗口最小化事件。
 func (a *TApplication) SetOnMinimize(fn TNotifyEvent) {
-    Application_SetOnMinimize(a.instance, fn)
+    Application_SetOnMinimize(a._instance(), fn)
 }
 
+// SetOnRestore
+//
 // 设置App或者窗口恢复事件。
 func (a *TApplication) SetOnRestore(fn TNotifyEvent) {
-    Application_SetOnRestore(a.instance, fn)
+    Application_SetOnRestore(a._instance(), fn)
 }
 
 func (a *TApplication) SetOnShortCut(fn TShortCutEvent) {
-    Application_SetOnShortCut(a.instance, fn)
+    Application_SetOnShortCut(a._instance(), fn)
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (a *TApplication) Handle() HWND {
-    return Application_GetHandle(a.instance)
+    return Application_GetHandle(a._instance())
 }
 
+// SetHandle
+//
 // 设置控件句柄。
 //
 // Set Control handle.
 func (a *TApplication) SetHandle(value HWND) {
-    Application_SetHandle(a.instance, value)
+    Application_SetHandle(a._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (a *TApplication) ComponentCount() int32 {
-    return Application_GetComponentCount(a.instance)
+    return Application_GetComponentCount(a._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (a *TApplication) ComponentIndex() int32 {
-    return Application_GetComponentIndex(a.instance)
+    return Application_GetComponentIndex(a._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (a *TApplication) SetComponentIndex(value int32) {
-    Application_SetComponentIndex(a.instance, value)
+    Application_SetComponentIndex(a._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (a *TApplication) Owner() *TComponent {
-    return AsComponent(Application_GetOwner(a.instance))
+    return AsComponent(Application_GetOwner(a._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (a *TApplication) Name() string {
-    return Application_GetName(a.instance)
+    return Application_GetName(a._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (a *TApplication) SetName(value string) {
-    Application_SetName(a.instance, value)
+    Application_SetName(a._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (a *TApplication) Tag() int {
-    return Application_GetTag(a.instance)
+    return Application_GetTag(a._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (a *TApplication) SetTag(value int) {
-    Application_SetTag(a.instance, value)
+    Application_SetTag(a._instance(), value)
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (a *TApplication) Components(AIndex int32) *TComponent {
-    return AsComponent(Application_GetComponents(a.instance, AIndex))
+    return AsComponent(Application_GetComponents(a._instance(), AIndex))
 }
 

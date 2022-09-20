@@ -19,101 +19,94 @@ import (
 
 type TTimer struct {
     IComponent
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewTimer
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewTimer(owner IComponent) *TTimer {
     t := new(TTimer)
-    t.instance = Timer_Create(CheckPtr(owner))
-    t.ptr = unsafe.Pointer(t.instance)
+    t.instance = unsafe.Pointer(Timer_Create(CheckPtr(owner)))
     return t
 }
 
+// AsTimer
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsTimer(obj interface{}) *TTimer {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TTimer{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TTimer{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsTimer.
-func TimerFromInst(inst uintptr) *TTimer {
-    return AsTimer(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsTimer.
-func TimerFromObj(obj IObject) *TTimer {
-    return AsTimer(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsTimer.
-func TimerFromUnsafePointer(ptr unsafe.Pointer) *TTimer {
-    return AsTimer(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (t *TTimer) Free() {
-    if t.instance != 0 {
-        Timer_Free(t.instance)
-        t.instance, t.ptr = 0, nullptr
+    if t.instance != nullptr {
+        Timer_Free(t._instance())
+        t.instance  = nullptr
     }
 }
 
+func (t *TTimer) _instance() uintptr {
+    return uintptr(t.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (t *TTimer) Instance() uintptr {
-    return t.instance
+    return t._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (t *TTimer) UnsafeAddr() unsafe.Pointer {
-    return t.ptr
+    return t.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (t *TTimer) IsValid() bool {
-    return t.instance != 0
+    return t.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (t *TTimer) Is() TIs {
-    return TIs(t.instance)
+    return TIs(t._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (t *TTimer) As() TAs {
-//    return TAs(t.instance)
+//    return TAs(t._instance())
 //}
 
+// TTimerClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,172 +114,222 @@ func TTimerClass() TClass {
     return Timer_StaticClassType()
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (t *TTimer) FindComponent(AName string) *TComponent {
-    return AsComponent(Timer_FindComponent(t.instance, AName))
+    return AsComponent(Timer_FindComponent(t._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (t *TTimer) GetNamePath() string {
-    return Timer_GetNamePath(t.instance)
+    return Timer_GetNamePath(t._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (t *TTimer) HasParent() bool {
-    return Timer_HasParent(t.instance)
+    return Timer_HasParent(t._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (t *TTimer) Assign(Source IObject) {
-    Timer_Assign(t.instance, CheckPtr(Source))
+    Timer_Assign(t._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (t *TTimer) ClassType() TClass {
-    return Timer_ClassType(t.instance)
+    return Timer_ClassType(t._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (t *TTimer) ClassName() string {
-    return Timer_ClassName(t.instance)
+    return Timer_ClassName(t._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (t *TTimer) InstanceSize() int32 {
-    return Timer_InstanceSize(t.instance)
+    return Timer_InstanceSize(t._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (t *TTimer) InheritsFrom(AClass TClass) bool {
-    return Timer_InheritsFrom(t.instance, AClass)
+    return Timer_InheritsFrom(t._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (t *TTimer) Equals(Obj IObject) bool {
-    return Timer_Equals(t.instance, CheckPtr(Obj))
+    return Timer_Equals(t._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (t *TTimer) GetHashCode() int32 {
-    return Timer_GetHashCode(t.instance)
+    return Timer_GetHashCode(t._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (t *TTimer) ToString() string {
-    return Timer_ToString(t.instance)
+    return Timer_ToString(t._instance())
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (t *TTimer) Enabled() bool {
-    return Timer_GetEnabled(t.instance)
+    return Timer_GetEnabled(t._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (t *TTimer) SetEnabled(value bool) {
-    Timer_SetEnabled(t.instance, value)
+    Timer_SetEnabled(t._instance(), value)
 }
 
+// Interval
+//
 // 获取时钟每次跳动间隔时间，ms。
 func (t *TTimer) Interval() uint32 {
-    return Timer_GetInterval(t.instance)
+    return Timer_GetInterval(t._instance())
 }
 
+// SetInterval
+//
 // 设置时钟每次跳动间隔时间，ms。
 func (t *TTimer) SetInterval(value uint32) {
-    Timer_SetInterval(t.instance, value)
+    Timer_SetInterval(t._instance(), value)
 }
 
+// SetOnTimer
+//
 // 设置时钟事件。
 func (t *TTimer) SetOnTimer(fn TNotifyEvent) {
-    Timer_SetOnTimer(t.instance, fn)
+    Timer_SetOnTimer(t._instance(), fn)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (t *TTimer) ComponentCount() int32 {
-    return Timer_GetComponentCount(t.instance)
+    return Timer_GetComponentCount(t._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (t *TTimer) ComponentIndex() int32 {
-    return Timer_GetComponentIndex(t.instance)
+    return Timer_GetComponentIndex(t._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (t *TTimer) SetComponentIndex(value int32) {
-    Timer_SetComponentIndex(t.instance, value)
+    Timer_SetComponentIndex(t._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (t *TTimer) Owner() *TComponent {
-    return AsComponent(Timer_GetOwner(t.instance))
+    return AsComponent(Timer_GetOwner(t._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (t *TTimer) Name() string {
-    return Timer_GetName(t.instance)
+    return Timer_GetName(t._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (t *TTimer) SetName(value string) {
-    Timer_SetName(t.instance, value)
+    Timer_SetName(t._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (t *TTimer) Tag() int {
-    return Timer_GetTag(t.instance)
+    return Timer_GetTag(t._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (t *TTimer) SetTag(value int) {
-    Timer_SetTag(t.instance, value)
+    Timer_SetTag(t._instance(), value)
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (t *TTimer) Components(AIndex int32) *TComponent {
-    return AsComponent(Timer_GetComponents(t.instance, AIndex))
+    return AsComponent(Timer_GetComponents(t._instance(), AIndex))
 }
 

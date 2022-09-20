@@ -19,102 +19,95 @@ import (
 
 type TJPEGImage struct {
     IGraphic
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewJPEGImage
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewJPEGImage() *TJPEGImage {
     j := new(TJPEGImage)
-    j.instance = JPEGImage_Create()
-    j.ptr = unsafe.Pointer(j.instance)
+    j.instance = unsafe.Pointer(JPEGImage_Create())
     setFinalizer(j, (*TJPEGImage).Free)
     return j
 }
 
+// AsJPEGImage
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsJPEGImage(obj interface{}) *TJPEGImage {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TJPEGImage{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TJPEGImage{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsJPEGImage.
-func JPEGImageFromInst(inst uintptr) *TJPEGImage {
-    return AsJPEGImage(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsJPEGImage.
-func JPEGImageFromObj(obj IObject) *TJPEGImage {
-    return AsJPEGImage(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsJPEGImage.
-func JPEGImageFromUnsafePointer(ptr unsafe.Pointer) *TJPEGImage {
-    return AsJPEGImage(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (j *TJPEGImage) Free() {
-    if j.instance != 0 {
-        JPEGImage_Free(j.instance)
-        j.instance, j.ptr = 0, nullptr
+    if j.instance != nullptr {
+        JPEGImage_Free(j._instance())
+        j.instance  = nullptr
     }
 }
 
+func (j *TJPEGImage) _instance() uintptr {
+    return uintptr(j.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (j *TJPEGImage) Instance() uintptr {
-    return j.instance
+    return j._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (j *TJPEGImage) UnsafeAddr() unsafe.Pointer {
-    return j.ptr
+    return j.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (j *TJPEGImage) IsValid() bool {
-    return j.instance != 0
+    return j.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (j *TJPEGImage) Is() TIs {
-    return TIs(j.instance)
+    return TIs(j._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (j *TJPEGImage) As() TAs {
-//    return TAs(j.instance)
+//    return TAs(j._instance())
 //}
 
+// TJPEGImageClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,194 +115,240 @@ func TJPEGImageClass() TClass {
     return JPEGImage_StaticClassType()
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (j *TJPEGImage) Assign(Source IObject) {
-    JPEGImage_Assign(j.instance, CheckPtr(Source))
+    JPEGImage_Assign(j._instance(), CheckPtr(Source))
 }
 
+// LoadFromStream
+//
 // 文件流加载。
 func (j *TJPEGImage) LoadFromStream(Stream IStream) {
-    JPEGImage_LoadFromStream(j.instance, CheckPtr(Stream))
+    JPEGImage_LoadFromStream(j._instance(), CheckPtr(Stream))
 }
 
+// SaveToStream
+//
 // 保存至流。
 func (j *TJPEGImage) SaveToStream(Stream IStream) {
-    JPEGImage_SaveToStream(j.instance, CheckPtr(Stream))
+    JPEGImage_SaveToStream(j._instance(), CheckPtr(Stream))
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (j *TJPEGImage) Equals(Obj IObject) bool {
-    return JPEGImage_Equals(j.instance, CheckPtr(Obj))
+    return JPEGImage_Equals(j._instance(), CheckPtr(Obj))
 }
 
+// LoadFromFile
+//
 // 从文件加载。
 func (j *TJPEGImage) LoadFromFile(Filename string) {
-    JPEGImage_LoadFromFile(j.instance, Filename)
+    JPEGImage_LoadFromFile(j._instance(), Filename)
 }
 
+// SaveToFile
+//
 // 保存至文件。
 func (j *TJPEGImage) SaveToFile(Filename string) {
-    JPEGImage_SaveToFile(j.instance, Filename)
+    JPEGImage_SaveToFile(j._instance(), Filename)
 }
 
 func (j *TJPEGImage) SetSize(AWidth int32, AHeight int32) {
-    JPEGImage_SetSize(j.instance, AWidth , AHeight)
+    JPEGImage_SetSize(j._instance(), AWidth , AHeight)
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (j *TJPEGImage) GetNamePath() string {
-    return JPEGImage_GetNamePath(j.instance)
+    return JPEGImage_GetNamePath(j._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (j *TJPEGImage) ClassType() TClass {
-    return JPEGImage_ClassType(j.instance)
+    return JPEGImage_ClassType(j._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (j *TJPEGImage) ClassName() string {
-    return JPEGImage_ClassName(j.instance)
+    return JPEGImage_ClassName(j._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (j *TJPEGImage) InstanceSize() int32 {
-    return JPEGImage_InstanceSize(j.instance)
+    return JPEGImage_InstanceSize(j._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (j *TJPEGImage) InheritsFrom(AClass TClass) bool {
-    return JPEGImage_InheritsFrom(j.instance, AClass)
+    return JPEGImage_InheritsFrom(j._instance(), AClass)
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (j *TJPEGImage) GetHashCode() int32 {
-    return JPEGImage_GetHashCode(j.instance)
+    return JPEGImage_GetHashCode(j._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (j *TJPEGImage) ToString() string {
-    return JPEGImage_ToString(j.instance)
+    return JPEGImage_ToString(j._instance())
 }
 
 func (j *TJPEGImage) PixelFormat() TJPEGPixelFormat {
-    return JPEGImage_GetPixelFormat(j.instance)
+    return JPEGImage_GetPixelFormat(j._instance())
 }
 
 func (j *TJPEGImage) SetPixelFormat(value TJPEGPixelFormat) {
-    JPEGImage_SetPixelFormat(j.instance, value)
+    JPEGImage_SetPixelFormat(j._instance(), value)
 }
 
 func (j *TJPEGImage) Performance() TJPEGPerformance {
-    return JPEGImage_GetPerformance(j.instance)
+    return JPEGImage_GetPerformance(j._instance())
 }
 
 func (j *TJPEGImage) SetPerformance(value TJPEGPerformance) {
-    JPEGImage_SetPerformance(j.instance, value)
+    JPEGImage_SetPerformance(j._instance(), value)
 }
 
+// Canvas
+//
 // 获取画布。
 func (j *TJPEGImage) Canvas() *TCanvas {
-    return AsCanvas(JPEGImage_GetCanvas(j.instance))
+    return AsCanvas(JPEGImage_GetCanvas(j._instance()))
 }
 
 func (j *TJPEGImage) Empty() bool {
-    return JPEGImage_GetEmpty(j.instance)
+    return JPEGImage_GetEmpty(j._instance())
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (j *TJPEGImage) Height() int32 {
-    return JPEGImage_GetHeight(j.instance)
+    return JPEGImage_GetHeight(j._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (j *TJPEGImage) SetHeight(value int32) {
-    JPEGImage_SetHeight(j.instance, value)
+    JPEGImage_SetHeight(j._instance(), value)
 }
 
+// Modified
+//
 // 获取修改。
 //
 // Get modified.
 func (j *TJPEGImage) Modified() bool {
-    return JPEGImage_GetModified(j.instance)
+    return JPEGImage_GetModified(j._instance())
 }
 
+// SetModified
+//
 // 设置修改。
 //
 // Set modified.
 func (j *TJPEGImage) SetModified(value bool) {
-    JPEGImage_SetModified(j.instance, value)
+    JPEGImage_SetModified(j._instance(), value)
 }
 
 func (j *TJPEGImage) Palette() HPALETTE {
-    return JPEGImage_GetPalette(j.instance)
+    return JPEGImage_GetPalette(j._instance())
 }
 
 func (j *TJPEGImage) SetPalette(value HPALETTE) {
-    JPEGImage_SetPalette(j.instance, value)
+    JPEGImage_SetPalette(j._instance(), value)
 }
 
 func (j *TJPEGImage) PaletteModified() bool {
-    return JPEGImage_GetPaletteModified(j.instance)
+    return JPEGImage_GetPaletteModified(j._instance())
 }
 
 func (j *TJPEGImage) SetPaletteModified(value bool) {
-    JPEGImage_SetPaletteModified(j.instance, value)
+    JPEGImage_SetPaletteModified(j._instance(), value)
 }
 
+// Transparent
+//
 // 获取透明。
 //
 // Get transparent.
 func (j *TJPEGImage) Transparent() bool {
-    return JPEGImage_GetTransparent(j.instance)
+    return JPEGImage_GetTransparent(j._instance())
 }
 
+// SetTransparent
+//
 // 设置透明。
 //
 // Set transparent.
 func (j *TJPEGImage) SetTransparent(value bool) {
-    JPEGImage_SetTransparent(j.instance, value)
+    JPEGImage_SetTransparent(j._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (j *TJPEGImage) Width() int32 {
-    return JPEGImage_GetWidth(j.instance)
+    return JPEGImage_GetWidth(j._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (j *TJPEGImage) SetWidth(value int32) {
-    JPEGImage_SetWidth(j.instance, value)
+    JPEGImage_SetWidth(j._instance(), value)
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (j *TJPEGImage) SetOnChange(fn TNotifyEvent) {
-    JPEGImage_SetOnChange(j.instance, fn)
+    JPEGImage_SetOnChange(j._instance(), fn)
 }
 

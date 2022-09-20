@@ -6,7 +6,6 @@ import (
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
 
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 )
 
@@ -67,11 +66,8 @@ func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
 	btn.SetCaption("保持")
 	btn.SetModalResult(types.MrNo)
 
-	if rtl.LcLLoaded() {
-		taskdlg.SetMainIcon(types.TdiQuestion)
-	} else {
-		taskdlg.SetMainIcon(types.TdiInformation)
-	}
+	taskdlg.SetMainIcon(types.TdiQuestion)
+
 	if taskdlg.Execute() {
 		if taskdlg.ModalResult() == types.MrYes {
 			vcl.ShowMessage("项目已移除")

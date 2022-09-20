@@ -79,7 +79,7 @@ type TItemIDList struct {
 	Mkid TSHItemID
 }
 
-// ShellExecuteEx
+// TShellExecuteInfo ShellExecuteEx
 type TShellExecuteInfo struct {
 	CbSize       uint32
 	FMask        uint32

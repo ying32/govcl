@@ -19,81 +19,71 @@ import (
 
 type TParaAttributes struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// AsParaAttributes
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsParaAttributes(obj interface{}) *TParaAttributes {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TParaAttributes{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TParaAttributes{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsParaAttributes.
-func ParaAttributesFromInst(inst uintptr) *TParaAttributes {
-    return AsParaAttributes(inst)
+func (p *TParaAttributes) _instance() uintptr {
+    return uintptr(p.instance)
 }
 
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsParaAttributes.
-func ParaAttributesFromObj(obj IObject) *TParaAttributes {
-    return AsParaAttributes(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsParaAttributes.
-func ParaAttributesFromUnsafePointer(ptr unsafe.Pointer) *TParaAttributes {
-    return AsParaAttributes(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (p *TParaAttributes) Instance() uintptr {
-    return p.instance
+    return p._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (p *TParaAttributes) UnsafeAddr() unsafe.Pointer {
-    return p.ptr
+    return p.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (p *TParaAttributes) IsValid() bool {
-    return p.instance != 0
+    return p.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (p *TParaAttributes) Is() TIs {
-    return TIs(p.instance)
+    return TIs(p._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (p *TParaAttributes) As() TAs {
-//    return TAs(p.instance)
+//    return TAs(p._instance())
 //}
 
+// TParaAttributesClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -101,128 +91,150 @@ func TParaAttributesClass() TClass {
     return ParaAttributes_StaticClassType()
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (p *TParaAttributes) Assign(Source IObject) {
-    ParaAttributes_Assign(p.instance, CheckPtr(Source))
+    ParaAttributes_Assign(p._instance(), CheckPtr(Source))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (p *TParaAttributes) GetNamePath() string {
-    return ParaAttributes_GetNamePath(p.instance)
+    return ParaAttributes_GetNamePath(p._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (p *TParaAttributes) ClassType() TClass {
-    return ParaAttributes_ClassType(p.instance)
+    return ParaAttributes_ClassType(p._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (p *TParaAttributes) ClassName() string {
-    return ParaAttributes_ClassName(p.instance)
+    return ParaAttributes_ClassName(p._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (p *TParaAttributes) InstanceSize() int32 {
-    return ParaAttributes_InstanceSize(p.instance)
+    return ParaAttributes_InstanceSize(p._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (p *TParaAttributes) InheritsFrom(AClass TClass) bool {
-    return ParaAttributes_InheritsFrom(p.instance, AClass)
+    return ParaAttributes_InheritsFrom(p._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (p *TParaAttributes) Equals(Obj IObject) bool {
-    return ParaAttributes_Equals(p.instance, CheckPtr(Obj))
+    return ParaAttributes_Equals(p._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (p *TParaAttributes) GetHashCode() int32 {
-    return ParaAttributes_GetHashCode(p.instance)
+    return ParaAttributes_GetHashCode(p._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (p *TParaAttributes) ToString() string {
-    return ParaAttributes_ToString(p.instance)
+    return ParaAttributes_ToString(p._instance())
 }
 
+// Alignment
+//
 // 获取文字对齐。
 //
 // Get Text alignment.
 func (p *TParaAttributes) Alignment() TAlignment {
-    return ParaAttributes_GetAlignment(p.instance)
+    return ParaAttributes_GetAlignment(p._instance())
 }
 
+// SetAlignment
+//
 // 设置文字对齐。
 //
 // Set Text alignment.
 func (p *TParaAttributes) SetAlignment(value TAlignment) {
-    ParaAttributes_SetAlignment(p.instance, value)
+    ParaAttributes_SetAlignment(p._instance(), value)
 }
 
 func (p *TParaAttributes) FirstIndent() int32 {
-    return ParaAttributes_GetFirstIndent(p.instance)
+    return ParaAttributes_GetFirstIndent(p._instance())
 }
 
 func (p *TParaAttributes) SetFirstIndent(value int32) {
-    ParaAttributes_SetFirstIndent(p.instance, value)
+    ParaAttributes_SetFirstIndent(p._instance(), value)
 }
 
 func (p *TParaAttributes) LeftIndent() int32 {
-    return ParaAttributes_GetLeftIndent(p.instance)
+    return ParaAttributes_GetLeftIndent(p._instance())
 }
 
 func (p *TParaAttributes) SetLeftIndent(value int32) {
-    ParaAttributes_SetLeftIndent(p.instance, value)
+    ParaAttributes_SetLeftIndent(p._instance(), value)
 }
 
 func (p *TParaAttributes) Numbering() TNumberingStyle {
-    return ParaAttributes_GetNumbering(p.instance)
+    return ParaAttributes_GetNumbering(p._instance())
 }
 
 func (p *TParaAttributes) SetNumbering(value TNumberingStyle) {
-    ParaAttributes_SetNumbering(p.instance, value)
+    ParaAttributes_SetNumbering(p._instance(), value)
 }
 
 func (p *TParaAttributes) RightIndent() int32 {
-    return ParaAttributes_GetRightIndent(p.instance)
+    return ParaAttributes_GetRightIndent(p._instance())
 }
 
 func (p *TParaAttributes) SetRightIndent(value int32) {
-    ParaAttributes_SetRightIndent(p.instance, value)
+    ParaAttributes_SetRightIndent(p._instance(), value)
 }
 
 func (p *TParaAttributes) TabCount() int32 {
-    return ParaAttributes_GetTabCount(p.instance)
+    return ParaAttributes_GetTabCount(p._instance())
 }
 
 func (p *TParaAttributes) SetTabCount(value int32) {
-    ParaAttributes_SetTabCount(p.instance, value)
+    ParaAttributes_SetTabCount(p._instance(), value)
 }
 
 func (p *TParaAttributes) Tab(Index uint8) int32 {
-    return ParaAttributes_GetTab(p.instance, Index)
+    return ParaAttributes_GetTab(p._instance(), Index)
 }
 
 func (p *TParaAttributes) SetTab(Index uint8, value int32) {
-    ParaAttributes_SetTab(p.instance, Index, value)
+    ParaAttributes_SetTab(p._instance(), Index, value)
 }
 

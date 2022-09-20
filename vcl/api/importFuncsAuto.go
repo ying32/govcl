@@ -291,35 +291,35 @@ func Application_SetTitle(obj uintptr, value string) {
 }
 
 func Application_SetOnActivate(obj uintptr, fn interface{}) {
-    getLazyProc("Application_SetOnActivate").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Application_SetOnActivate").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Application_SetOnDeactivate(obj uintptr, fn interface{}) {
-    getLazyProc("Application_SetOnDeactivate").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Application_SetOnDeactivate").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Application_SetOnException(obj uintptr, fn interface{}) {
-    getLazyProc("Application_SetOnException").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Application_SetOnException").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Application_SetOnHelp(obj uintptr, fn interface{}) {
-    getLazyProc("Application_SetOnHelp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Application_SetOnHelp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Application_SetOnHint(obj uintptr, fn interface{}) {
-    getLazyProc("Application_SetOnHint").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Application_SetOnHint").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Application_SetOnMinimize(obj uintptr, fn interface{}) {
-    getLazyProc("Application_SetOnMinimize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Application_SetOnMinimize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Application_SetOnRestore(obj uintptr, fn interface{}) {
-    getLazyProc("Application_SetOnRestore").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Application_SetOnRestore").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Application_SetOnShortCut(obj uintptr, fn interface{}) {
-    getLazyProc("Application_SetOnShortCut").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Application_SetOnShortCut").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Application_GetHandle(obj uintptr) HWND {
@@ -755,7 +755,7 @@ func Form_SetAllowDropFiles(obj uintptr, value bool) {
 }
 
 func Form_SetOnDropFiles(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnDropFiles").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnDropFiles").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_GetShowInTaskBar(obj uintptr) TShowInTaskbar {
@@ -777,7 +777,7 @@ func Form_SetDesignTimePPI(obj uintptr, value int32) {
 }
 
 func Form_SetOnUTF8KeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnUTF8KeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnUTF8KeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_GetAction(obj uintptr) uintptr {
@@ -1150,139 +1150,139 @@ func Form_SetWindowState(obj uintptr, value TWindowState) {
 }
 
 func Form_SetOnActivate(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnActivate").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnActivate").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnAlignPosition(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnAlignPosition").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnAlignPosition").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnClose(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnClose").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnClose").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnCloseQuery(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnCloseQuery").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnCloseQuery").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnConstrainedResize(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnConstrainedResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnConstrainedResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnDestroy(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnDestroy").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnDestroy").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnDeactivate(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnDeactivate").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnDeactivate").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnDockDrop(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnDockDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnDockDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnGetSiteInfo").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnGetSiteInfo").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnHide(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnHide").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnHide").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnHelp(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnHelp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnHelp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnMouseWheel(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnMouseWheel").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnMouseWheel").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnMouseWheelDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnMouseWheelUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnPaint(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnPaint").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnPaint").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnShortCut(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnShortCut").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnShortCut").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetOnUnDock(obj uintptr, fn interface{}) {
-    getLazyProc("Form_SetOnUnDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Form_SetOnUnDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_GetCanvas(obj uintptr) uintptr {
@@ -2107,63 +2107,63 @@ func Button_SetVisible(obj uintptr, value bool) {
 }
 
 func Button_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("Button_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Button_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Button_GetDockClientCount(obj uintptr) int32 {
@@ -3101,71 +3101,71 @@ func Edit_SetVisible(obj uintptr, value bool) {
 }
 
 func Edit_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("Edit_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Edit_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Edit_GetCanUndo(obj uintptr) bool {
@@ -3596,6 +3596,14 @@ func MainMenu_SetImagesWidth(obj uintptr, value int32) {
     getLazyProc("MainMenu_SetImagesWidth").Call(obj, uintptr(value))
 }
 
+func MainMenu_SetOnDrawItem(obj uintptr, fn interface{}) {
+    getLazyProc("MainMenu_SetOnDrawItem").Call(obj, MakeEventDataPtr(fn))
+}
+
+func MainMenu_SetOnMeasureItem(obj uintptr, fn interface{}) {
+    getLazyProc("MainMenu_SetOnMeasureItem").Call(obj, MakeEventDataPtr(fn))
+}
+
 func MainMenu_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := getLazyProc("MainMenu_GetBiDiMode").Call(obj)
     return TBiDiMode(ret)
@@ -3624,7 +3632,7 @@ func MainMenu_SetOwnerDraw(obj uintptr, value bool) {
 }
 
 func MainMenu_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("MainMenu_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MainMenu_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MainMenu_GetHandle(obj uintptr) HMENU {
@@ -3766,6 +3774,14 @@ func PopupMenu_SetImagesWidth(obj uintptr, value int32) {
     getLazyProc("PopupMenu_SetImagesWidth").Call(obj, uintptr(value))
 }
 
+func PopupMenu_SetOnDrawItem(obj uintptr, fn interface{}) {
+    getLazyProc("PopupMenu_SetOnDrawItem").Call(obj, MakeEventDataPtr(fn))
+}
+
+func PopupMenu_SetOnMeasureItem(obj uintptr, fn interface{}) {
+    getLazyProc("PopupMenu_SetOnMeasureItem").Call(obj, MakeEventDataPtr(fn))
+}
+
 func PopupMenu_GetPopupComponent(obj uintptr) uintptr {
     ret, _, _ := getLazyProc("PopupMenu_GetPopupComponent").Call(obj)
     return ret
@@ -3818,7 +3834,7 @@ func PopupMenu_SetOwnerDraw(obj uintptr, value bool) {
 }
 
 func PopupMenu_SetOnPopup(obj uintptr, fn interface{}) {
-    getLazyProc("PopupMenu_SetOnPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PopupMenu_SetOnPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PopupMenu_GetHandle(obj uintptr) HMENU {
@@ -4504,71 +4520,71 @@ func Memo_SetWordWrap(obj uintptr, value bool) {
 }
 
 func Memo_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("Memo_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Memo_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Memo_GetCaretPos(obj uintptr) TPoint {
@@ -5268,7 +5284,7 @@ func CheckBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
 }
 
 func CheckBox_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_GetAction(obj uintptr) uintptr {
@@ -5506,63 +5522,63 @@ func CheckBox_SetVisible(obj uintptr, value bool) {
 }
 
 func CheckBox_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("CheckBox_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckBox_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckBox_GetDockClientCount(obj uintptr) int32 {
@@ -6184,7 +6200,7 @@ func RadioButton_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  
 }
 
 func RadioButton_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_GetAction(obj uintptr) uintptr {
@@ -6404,63 +6420,63 @@ func RadioButton_SetVisible(obj uintptr, value bool) {
 }
 
 func RadioButton_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("RadioButton_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioButton_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioButton_GetDockClientCount(obj uintptr) int32 {
@@ -7289,79 +7305,79 @@ func GroupBox_SetVisible(obj uintptr, value bool) {
 }
 
 func GroupBox_SetOnAlignPosition(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnAlignPosition").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnAlignPosition").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnDockDrop(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnDockDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnDockDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnGetSiteInfo").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnGetSiteInfo").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_SetOnUnDock(obj uintptr, fn interface{}) {
-    getLazyProc("GroupBox_SetOnUnDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GroupBox_SetOnUnDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GroupBox_GetDockClientCount(obj uintptr) int32 {
@@ -8138,47 +8154,47 @@ func Label_SetWordWrap(obj uintptr, value bool) {
 }
 
 func Label_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("Label_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Label_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Label_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("Label_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Label_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Label_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("Label_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Label_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Label_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("Label_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Label_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Label_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("Label_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Label_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Label_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("Label_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Label_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Label_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("Label_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Label_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Label_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("Label_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Label_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Label_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("Label_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Label_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Label_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Label_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Label_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Label_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("Label_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Label_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Label_GetCanvas(obj uintptr) uintptr {
@@ -9043,75 +9059,75 @@ func ListBox_SetVisible(obj uintptr, value bool) {
 }
 
 func ListBox_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnDrawItem(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnDrawItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnDrawItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnMeasureItem(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnMeasureItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnMeasureItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("ListBox_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListBox_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListBox_GetCanvas(obj uintptr) uintptr {
@@ -10074,79 +10090,79 @@ func ComboBox_SetVisible(obj uintptr, value bool) {
 }
 
 func ComboBox_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnCloseUp(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnCloseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnCloseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnDrawItem(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnDrawItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnDrawItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnDropDown(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnDropDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnDropDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnMeasureItem(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnMeasureItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnMeasureItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_SetOnSelect(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBox_SetOnSelect").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBox_SetOnSelect").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBox_GetItems(obj uintptr) uintptr {
@@ -10836,7 +10852,7 @@ func Panel_SetCanvas(obj uintptr, value uintptr) {
 }
 
 func Panel_SetOnPaint(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnPaint").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnPaint").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_GetAlign(obj uintptr) TAlign {
@@ -11119,83 +11135,83 @@ func Panel_SetVisible(obj uintptr, value bool) {
 }
 
 func Panel_SetOnAlignPosition(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnAlignPosition").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnAlignPosition").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnDockDrop(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnDockDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnDockDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnGetSiteInfo").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnGetSiteInfo").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_SetOnUnDock(obj uintptr, fn interface{}) {
-    getLazyProc("Panel_SetOnUnDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Panel_SetOnUnDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Panel_GetDockClientCount(obj uintptr) int32 {
@@ -11932,43 +11948,43 @@ func Image_SetVisible(obj uintptr, value bool) {
 }
 
 func Image_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("Image_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Image_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Image_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("Image_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Image_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Image_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("Image_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Image_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Image_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("Image_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Image_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Image_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("Image_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Image_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Image_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("Image_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Image_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Image_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Image_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Image_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Image_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("Image_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Image_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Image_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("Image_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Image_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Image_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("Image_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Image_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Image_GetAction(obj uintptr) uintptr {
@@ -12619,51 +12635,51 @@ func LinkLabel_SetVisible(obj uintptr, value bool) {
 }
 
 func LinkLabel_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("LinkLabel_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LinkLabel_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LinkLabel_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("LinkLabel_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LinkLabel_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LinkLabel_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("LinkLabel_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LinkLabel_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LinkLabel_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("LinkLabel_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LinkLabel_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LinkLabel_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("LinkLabel_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LinkLabel_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LinkLabel_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("LinkLabel_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LinkLabel_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LinkLabel_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("LinkLabel_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LinkLabel_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LinkLabel_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("LinkLabel_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LinkLabel_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LinkLabel_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("LinkLabel_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LinkLabel_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LinkLabel_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("LinkLabel_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LinkLabel_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LinkLabel_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("LinkLabel_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LinkLabel_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LinkLabel_SetOnLinkClick(obj uintptr, fn interface{}) {
-    getLazyProc("LinkLabel_SetOnLinkClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LinkLabel_SetOnLinkClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LinkLabel_GetMouseInClient(obj uintptr) bool {
@@ -13386,31 +13402,31 @@ func SpeedButton_SetVisible(obj uintptr, value bool) {
 }
 
 func SpeedButton_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("SpeedButton_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpeedButton_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpeedButton_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("SpeedButton_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpeedButton_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpeedButton_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("SpeedButton_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpeedButton_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpeedButton_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("SpeedButton_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpeedButton_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpeedButton_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("SpeedButton_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpeedButton_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpeedButton_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("SpeedButton_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpeedButton_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpeedButton_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("SpeedButton_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpeedButton_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpeedButton_GetBoundsRect(obj uintptr) TRect {
@@ -13967,7 +13983,7 @@ func Splitter_SetWidth(obj uintptr, value int32) {
 }
 
 func Splitter_SetOnPaint(obj uintptr, fn interface{}) {
-    getLazyProc("Splitter_SetOnPaint").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Splitter_SetOnPaint").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Splitter_GetEnabled(obj uintptr) bool {
@@ -14535,7 +14551,7 @@ func RadioGroup_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
 }
 
 func RadioGroup_SetOnSelectionChanged(obj uintptr, fn interface{}) {
-    getLazyProc("RadioGroup_SetOnSelectionChanged").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioGroup_SetOnSelectionChanged").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioGroup_GetAlign(obj uintptr) TAlign {
@@ -14755,27 +14771,27 @@ func RadioGroup_SetVisible(obj uintptr, value bool) {
 }
 
 func RadioGroup_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("RadioGroup_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioGroup_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioGroup_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("RadioGroup_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioGroup_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioGroup_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("RadioGroup_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioGroup_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioGroup_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("RadioGroup_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioGroup_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioGroup_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("RadioGroup_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioGroup_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioGroup_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("RadioGroup_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RadioGroup_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RadioGroup_GetDockClientCount(obj uintptr) int32 {
@@ -15649,47 +15665,47 @@ func StaticText_SetVisible(obj uintptr, value bool) {
 }
 
 func StaticText_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("StaticText_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StaticText_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StaticText_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("StaticText_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StaticText_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StaticText_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("StaticText_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StaticText_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StaticText_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("StaticText_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StaticText_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StaticText_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("StaticText_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StaticText_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StaticText_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("StaticText_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StaticText_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StaticText_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("StaticText_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StaticText_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StaticText_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("StaticText_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StaticText_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StaticText_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("StaticText_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StaticText_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StaticText_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("StaticText_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StaticText_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StaticText_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("StaticText_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StaticText_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StaticText_GetDockClientCount(obj uintptr) int32 {
@@ -16565,67 +16581,67 @@ func ColorBox_SetVisible(obj uintptr, value bool) {
 }
 
 func ColorBox_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnCloseUp(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnCloseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnCloseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnDropDown(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnDropDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnDropDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_SetOnSelect(obj uintptr, fn interface{}) {
-    getLazyProc("ColorBox_SetOnSelect").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorBox_SetOnSelect").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorBox_GetCharCase(obj uintptr) TEditCharCase {
@@ -17563,67 +17579,67 @@ func ColorListBox_SetVisible(obj uintptr, value bool) {
 }
 
 func ColorListBox_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("ColorListBox_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorListBox_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorListBox_GetCanvas(obj uintptr) uintptr {
@@ -18151,23 +18167,23 @@ func TrayIcon_SetVisible(obj uintptr, value bool) {
 }
 
 func TrayIcon_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("TrayIcon_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrayIcon_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrayIcon_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("TrayIcon_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrayIcon_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrayIcon_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("TrayIcon_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrayIcon_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrayIcon_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("TrayIcon_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrayIcon_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrayIcon_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("TrayIcon_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrayIcon_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrayIcon_GetComponentCount(obj uintptr) int32 {
@@ -18361,11 +18377,11 @@ func OpenDialog_GetHandle(obj uintptr) HWND {
 }
 
 func OpenDialog_SetOnClose(obj uintptr, fn interface{}) {
-    getLazyProc("OpenDialog_SetOnClose").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("OpenDialog_SetOnClose").Call(obj, MakeEventDataPtr(fn))
 }
 
 func OpenDialog_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("OpenDialog_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("OpenDialog_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func OpenDialog_GetComponentCount(obj uintptr) int32 {
@@ -18559,11 +18575,11 @@ func SaveDialog_GetHandle(obj uintptr) HWND {
 }
 
 func SaveDialog_SetOnClose(obj uintptr, fn interface{}) {
-    getLazyProc("SaveDialog_SetOnClose").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SaveDialog_SetOnClose").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SaveDialog_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("SaveDialog_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SaveDialog_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SaveDialog_GetComponentCount(obj uintptr) int32 {
@@ -18707,11 +18723,11 @@ func ColorDialog_GetHandle(obj uintptr) HWND {
 }
 
 func ColorDialog_SetOnClose(obj uintptr, fn interface{}) {
-    getLazyProc("ColorDialog_SetOnClose").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorDialog_SetOnClose").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorDialog_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("ColorDialog_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorDialog_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorDialog_GetComponentCount(obj uintptr) int32 {
@@ -18855,11 +18871,11 @@ func FontDialog_GetHandle(obj uintptr) HWND {
 }
 
 func FontDialog_SetOnClose(obj uintptr, fn interface{}) {
-    getLazyProc("FontDialog_SetOnClose").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FontDialog_SetOnClose").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FontDialog_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("FontDialog_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FontDialog_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FontDialog_GetComponentCount(obj uintptr) int32 {
@@ -19066,11 +19082,11 @@ func PrintDialog_GetHandle(obj uintptr) HWND {
 }
 
 func PrintDialog_SetOnClose(obj uintptr, fn interface{}) {
-    getLazyProc("PrintDialog_SetOnClose").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PrintDialog_SetOnClose").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PrintDialog_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("PrintDialog_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PrintDialog_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PrintDialog_GetComponentCount(obj uintptr) int32 {
@@ -19264,11 +19280,11 @@ func OpenPictureDialog_GetHandle(obj uintptr) HWND {
 }
 
 func OpenPictureDialog_SetOnClose(obj uintptr, fn interface{}) {
-    getLazyProc("OpenPictureDialog_SetOnClose").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("OpenPictureDialog_SetOnClose").Call(obj, MakeEventDataPtr(fn))
 }
 
 func OpenPictureDialog_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("OpenPictureDialog_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("OpenPictureDialog_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func OpenPictureDialog_GetComponentCount(obj uintptr) int32 {
@@ -19462,11 +19478,11 @@ func SavePictureDialog_GetHandle(obj uintptr) HWND {
 }
 
 func SavePictureDialog_SetOnClose(obj uintptr, fn interface{}) {
-    getLazyProc("SavePictureDialog_SetOnClose").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SavePictureDialog_SetOnClose").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SavePictureDialog_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("SavePictureDialog_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SavePictureDialog_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SavePictureDialog_GetComponentCount(obj uintptr) int32 {
@@ -19660,11 +19676,11 @@ func SelectDirectoryDialog_GetHandle(obj uintptr) HWND {
 }
 
 func SelectDirectoryDialog_SetOnClose(obj uintptr, fn interface{}) {
-    getLazyProc("SelectDirectoryDialog_SetOnClose").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SelectDirectoryDialog_SetOnClose").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SelectDirectoryDialog_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("SelectDirectoryDialog_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SelectDirectoryDialog_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SelectDirectoryDialog_GetComponentCount(obj uintptr) int32 {
@@ -20332,83 +20348,83 @@ func RichEdit_SetZoom(obj uintptr, value int32) {
 }
 
 func RichEdit_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnMouseWheel(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnMouseWheel").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnMouseWheel").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnMouseWheelDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    getLazyProc("RichEdit_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("RichEdit_SetOnMouseWheelUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func RichEdit_GetDefAttributes(obj uintptr) uintptr {
@@ -21396,43 +21412,43 @@ func TrackBar_SetVisible(obj uintptr, value bool) {
 }
 
 func TrackBar_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("TrackBar_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrackBar_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrackBar_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("TrackBar_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrackBar_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrackBar_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("TrackBar_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrackBar_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrackBar_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("TrackBar_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrackBar_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrackBar_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("TrackBar_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrackBar_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrackBar_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("TrackBar_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrackBar_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrackBar_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("TrackBar_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrackBar_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrackBar_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("TrackBar_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrackBar_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrackBar_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("TrackBar_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrackBar_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrackBar_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("TrackBar_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TrackBar_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TrackBar_GetDockClientCount(obj uintptr) int32 {
@@ -21991,7 +22007,7 @@ func ImageList_SetMasked(obj uintptr, value bool) {
 }
 
 func ImageList_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("ImageList_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ImageList_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ImageList_GetWidth(obj uintptr) int32 {
@@ -22541,43 +22557,43 @@ func UpDown_SetWrap(obj uintptr, value bool) {
 }
 
 func UpDown_SetOnChanging(obj uintptr, fn interface{}) {
-    getLazyProc("UpDown_SetOnChanging").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("UpDown_SetOnChanging").Call(obj, MakeEventDataPtr(fn))
 }
 
 func UpDown_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("UpDown_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("UpDown_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func UpDown_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("UpDown_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("UpDown_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func UpDown_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("UpDown_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("UpDown_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func UpDown_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("UpDown_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("UpDown_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func UpDown_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("UpDown_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("UpDown_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func UpDown_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("UpDown_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("UpDown_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func UpDown_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("UpDown_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("UpDown_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func UpDown_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("UpDown_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("UpDown_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func UpDown_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("UpDown_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("UpDown_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func UpDown_GetDockClientCount(obj uintptr) int32 {
@@ -23441,47 +23457,47 @@ func ProgressBar_SetVisible(obj uintptr, value bool) {
 }
 
 func ProgressBar_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("ProgressBar_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ProgressBar_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ProgressBar_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ProgressBar_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ProgressBar_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ProgressBar_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ProgressBar_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ProgressBar_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ProgressBar_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ProgressBar_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ProgressBar_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ProgressBar_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ProgressBar_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ProgressBar_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ProgressBar_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("ProgressBar_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ProgressBar_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ProgressBar_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("ProgressBar_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ProgressBar_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ProgressBar_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ProgressBar_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ProgressBar_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ProgressBar_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("ProgressBar_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ProgressBar_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ProgressBar_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("ProgressBar_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ProgressBar_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ProgressBar_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("ProgressBar_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ProgressBar_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ProgressBar_GetDockClientCount(obj uintptr) int32 {
@@ -24563,51 +24579,51 @@ func DateTimePicker_SetVisible(obj uintptr, value bool) {
 }
 
 func DateTimePicker_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("DateTimePicker_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DateTimePicker_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DateTimePicker_SetOnCloseUp(obj uintptr, fn interface{}) {
-    getLazyProc("DateTimePicker_SetOnCloseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DateTimePicker_SetOnCloseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DateTimePicker_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("DateTimePicker_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DateTimePicker_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DateTimePicker_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("DateTimePicker_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DateTimePicker_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DateTimePicker_SetOnDropDown(obj uintptr, fn interface{}) {
-    getLazyProc("DateTimePicker_SetOnDropDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DateTimePicker_SetOnDropDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DateTimePicker_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("DateTimePicker_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DateTimePicker_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DateTimePicker_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("DateTimePicker_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DateTimePicker_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DateTimePicker_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("DateTimePicker_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DateTimePicker_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DateTimePicker_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("DateTimePicker_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DateTimePicker_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DateTimePicker_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("DateTimePicker_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DateTimePicker_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DateTimePicker_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("DateTimePicker_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DateTimePicker_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DateTimePicker_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("DateTimePicker_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DateTimePicker_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DateTimePicker_GetDockClientCount(obj uintptr) int32 {
@@ -25422,63 +25438,63 @@ func MonthCalendar_SetVisible(obj uintptr, value bool) {
 }
 
 func MonthCalendar_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("MonthCalendar_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MonthCalendar_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MonthCalendar_GetDockClientCount(obj uintptr) int32 {
@@ -26664,155 +26680,155 @@ func ListView_SetVisible(obj uintptr, value bool) {
 }
 
 func ListView_SetOnAdvancedCustomDraw(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnAdvancedCustomDraw").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnAdvancedCustomDraw").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnAdvancedCustomDrawItem(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnAdvancedCustomDrawItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnAdvancedCustomDrawItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnAdvancedCustomDrawSubItem(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnAdvancedCustomDrawSubItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnAdvancedCustomDrawSubItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnColumnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnColumnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnColumnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnCompare(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnCompare").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnCompare").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnCustomDraw(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnCustomDraw").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnCustomDraw").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnCustomDrawItem(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnCustomDrawItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnCustomDrawItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnCustomDrawSubItem(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnCustomDrawSubItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnCustomDrawSubItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnData(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnData").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnData").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnDataFind(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnDataFind").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnDataFind").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnDataHint(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnDataHint").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnDataHint").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnDeletion(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnDeletion").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnDeletion").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnDrawItem(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnDrawItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnDrawItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnEdited(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnEdited").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnEdited").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnEditing(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnEditing").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnEditing").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnInsert(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnInsert").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnInsert").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnSelectItem(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnSelectItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnSelectItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnItemChecked(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnItemChecked").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnItemChecked").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("ListView_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ListView_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ListView_GetCanvas(obj uintptr) uintptr {
@@ -28025,131 +28041,131 @@ func TreeView_SetVisible(obj uintptr, value bool) {
 }
 
 func TreeView_SetOnAddition(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnAddition").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnAddition").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnAdvancedCustomDraw(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnAdvancedCustomDraw").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnAdvancedCustomDraw").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnAdvancedCustomDrawItem(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnAdvancedCustomDrawItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnAdvancedCustomDrawItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnChanging(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnChanging").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnChanging").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnCollapsed(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnCollapsed").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnCollapsed").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnCollapsing(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnCollapsing").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnCollapsing").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnCompare(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnCompare").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnCompare").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnCustomDraw(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnCustomDraw").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnCustomDraw").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnCustomDrawItem(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnCustomDrawItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnCustomDrawItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnDeletion(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnDeletion").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnDeletion").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnEdited(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnEdited").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnEdited").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnEditing(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnEditing").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnEditing").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnExpanding(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnExpanding").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnExpanding").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnExpanded(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnExpanded").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnExpanded").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnGetSelectedIndex(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnGetSelectedIndex").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnGetSelectedIndex").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("TreeView_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TreeView_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TreeView_GetItems(obj uintptr) uintptr {
@@ -29065,63 +29081,63 @@ func StatusBar_SetVisible(obj uintptr, value bool) {
 }
 
 func StatusBar_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnHint(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnHint").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnHint").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("StatusBar_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StatusBar_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StatusBar_GetCanvas(obj uintptr) uintptr {
@@ -30114,67 +30130,67 @@ func ToolBar_SetWrapable(obj uintptr, value bool) {
 }
 
 func ToolBar_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnDockDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnDockDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnDockDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_SetOnUnDock(obj uintptr, fn interface{}) {
-    getLazyProc("ToolBar_SetOnUnDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolBar_SetOnUnDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolBar_GetDockClientCount(obj uintptr) int32 {
@@ -31075,63 +31091,63 @@ func BitBtn_SetVisible(obj uintptr, value bool) {
 }
 
 func BitBtn_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("BitBtn_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BitBtn_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BitBtn_GetDockClientCount(obj uintptr) int32 {
@@ -31595,7 +31611,7 @@ func Icon_SetWidth(obj uintptr, value int32) {
 }
 
 func Icon_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("Icon_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Icon_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Icon_StaticClassType() TClass {
@@ -31821,7 +31837,7 @@ func Bitmap_SetWidth(obj uintptr, value int32) {
 }
 
 func Bitmap_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("Bitmap_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Bitmap_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Bitmap_GetScanLine(obj uintptr, Row int32) uintptr {
@@ -32102,7 +32118,7 @@ func Font_SetQuality(obj uintptr, value TFontQuality) {
 }
 
 func Font_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("Font_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Font_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Font_StaticClassType() TClass {
@@ -32158,6 +32174,10 @@ func Strings_EndUpdate(obj uintptr)  {
 func Strings_Equals(obj uintptr, Strings uintptr) bool {
     ret, _, _ := getLazyProc("Strings_Equals").Call(obj, Strings )
     return GoBool(ret)
+}
+
+func Strings_Exchange(obj uintptr, Index1 int32, Index2 int32)  {
+    getLazyProc("Strings_Exchange").Call(obj, uintptr(Index1) , uintptr(Index2) )
 }
 
 func Strings_IndexOf(obj uintptr, S string) int32 {
@@ -32362,6 +32382,10 @@ func StringList_Delete(obj uintptr, Index int32)  {
     getLazyProc("StringList_Delete").Call(obj, uintptr(Index) )
 }
 
+func StringList_Exchange(obj uintptr, Index1 int32, Index2 int32)  {
+    getLazyProc("StringList_Exchange").Call(obj, uintptr(Index1) , uintptr(Index2) )
+}
+
 func StringList_IndexOf(obj uintptr, S string) int32 {
     ret, _, _ := getLazyProc("StringList_IndexOf").Call(obj, PascalStr(S) )
     return int32(ret)
@@ -32467,11 +32491,11 @@ func StringList_SetSorted(obj uintptr, value bool) {
 }
 
 func StringList_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("StringList_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringList_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringList_SetOnChanging(obj uintptr, fn interface{}) {
-    getLazyProc("StringList_SetOnChanging").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringList_SetOnChanging").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringList_GetCapacity(obj uintptr) int32 {
@@ -32657,7 +32681,7 @@ func Brush_SetStyle(obj uintptr, value TBrushStyle) {
 }
 
 func Brush_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("Brush_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Brush_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Brush_StaticClassType() TClass {
@@ -32766,7 +32790,7 @@ func Pen_SetWidth(obj uintptr, value int32) {
 }
 
 func Pen_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("Pen_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Pen_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Pen_StaticClassType() TClass {
@@ -32997,11 +33021,11 @@ func MenuItem_SetVisible(obj uintptr, value bool) {
 }
 
 func MenuItem_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("MenuItem_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MenuItem_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MenuItem_SetOnMeasureItem(obj uintptr, fn interface{}) {
-    getLazyProc("MenuItem_SetOnMeasureItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MenuItem_SetOnMeasureItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MenuItem_GetComponentCount(obj uintptr) int32 {
@@ -33165,7 +33189,7 @@ func Picture_GetWidth(obj uintptr) int32 {
 }
 
 func Picture_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("Picture_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Picture_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Picture_StaticClassType() TClass {
@@ -34903,79 +34927,79 @@ func PageControl_SetVisible(obj uintptr, value bool) {
 }
 
 func PageControl_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnChanging(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnChanging").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnChanging").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnDockDrop(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnDockDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnDockDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnGetSiteInfo").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnGetSiteInfo").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_SetOnUnDock(obj uintptr, fn interface{}) {
-    getLazyProc("PageControl_SetOnUnDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageControl_SetOnUnDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageControl_GetDockClientCount(obj uintptr) int32 {
@@ -35787,59 +35811,59 @@ func TabSheet_SetWidth(obj uintptr, value int32) {
 }
 
 func TabSheet_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_SetOnHide(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnHide").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnHide").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("TabSheet_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TabSheet_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TabSheet_GetDockClientCount(obj uintptr) int32 {
@@ -38815,43 +38839,43 @@ func SpinEdit_SetVisible(obj uintptr, value bool) {
 }
 
 func SpinEdit_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("SpinEdit_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpinEdit_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpinEdit_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("SpinEdit_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpinEdit_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpinEdit_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("SpinEdit_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpinEdit_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpinEdit_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("SpinEdit_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpinEdit_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpinEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("SpinEdit_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpinEdit_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpinEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("SpinEdit_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpinEdit_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpinEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("SpinEdit_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpinEdit_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpinEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("SpinEdit_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpinEdit_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpinEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("SpinEdit_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpinEdit_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpinEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("SpinEdit_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SpinEdit_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SpinEdit_GetAlignment(obj uintptr) TAlignment {
@@ -39734,67 +39758,67 @@ func FloatSpinEdit_SetMinValue(obj uintptr, value float64) {
 }
 
 func FloatSpinEdit_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnMouseWheel(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnMouseWheel").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnMouseWheel").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnMouseWheelDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnMouseWheelUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("FloatSpinEdit_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FloatSpinEdit_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FloatSpinEdit_GetParentColor(obj uintptr) bool {
@@ -40661,7 +40685,7 @@ func DirectoryEdit_SetRootDir(obj uintptr, value string) {
 }
 
 func DirectoryEdit_SetOnAcceptDirectory(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnAcceptDirectory").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnAcceptDirectory").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_GetDialogTitle(obj uintptr) string {
@@ -41007,91 +41031,91 @@ func DirectoryEdit_SetVisible(obj uintptr, value bool) {
 }
 
 func DirectoryEdit_SetOnButtonClick(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnButtonClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnButtonClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnEditingDone(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnEditingDone").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnEditingDone").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnMouseWheel(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnMouseWheel").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnMouseWheel").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnMouseWheelDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    getLazyProc("DirectoryEdit_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DirectoryEdit_SetOnMouseWheelUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DirectoryEdit_GetText(obj uintptr) string {
@@ -41995,55 +42019,55 @@ func ColorButton_SetVisible(obj uintptr, value bool) {
 }
 
 func ColorButton_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ColorButton_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorButton_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorButton_SetOnColorChanged(obj uintptr, fn interface{}) {
-    getLazyProc("ColorButton_SetOnColorChanged").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorButton_SetOnColorChanged").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorButton_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("ColorButton_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorButton_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorButton_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("ColorButton_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorButton_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorButton_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ColorButton_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorButton_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorButton_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("ColorButton_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorButton_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorButton_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("ColorButton_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorButton_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorButton_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("ColorButton_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorButton_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorButton_SetOnMouseWheel(obj uintptr, fn interface{}) {
-    getLazyProc("ColorButton_SetOnMouseWheel").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorButton_SetOnMouseWheel").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorButton_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    getLazyProc("ColorButton_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorButton_SetOnMouseWheelDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorButton_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    getLazyProc("ColorButton_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorButton_SetOnMouseWheelUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorButton_SetOnPaint(obj uintptr, fn interface{}) {
-    getLazyProc("ColorButton_SetOnPaint").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorButton_SetOnPaint").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorButton_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("ColorButton_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ColorButton_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ColorButton_GetShowHint(obj uintptr) bool {
@@ -42762,11 +42786,11 @@ func MiniWebview_SetVisible(obj uintptr, value bool) {
 }
 
 func MiniWebview_SetOnTitleChange(obj uintptr, fn interface{}) {
-    getLazyProc("MiniWebview_SetOnTitleChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MiniWebview_SetOnTitleChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MiniWebview_SetOnJSExternal(obj uintptr, fn interface{}) {
-    getLazyProc("MiniWebview_SetOnJSExternal").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MiniWebview_SetOnJSExternal").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MiniWebview_GetDockClientCount(obj uintptr) int32 {
@@ -43318,11 +43342,11 @@ func Canvas_SetPen(obj uintptr, value uintptr) {
 }
 
 func Canvas_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("Canvas_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Canvas_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Canvas_SetOnChanging(obj uintptr, fn interface{}) {
-    getLazyProc("Canvas_SetOnChanging").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Canvas_SetOnChanging").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Canvas_GetPixels(obj uintptr, X int32, Y int32) TColor {
@@ -43521,7 +43545,7 @@ func Graphic_SetWidth(obj uintptr, value int32) {
 }
 
 func Graphic_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("Graphic_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Graphic_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Graphic_StaticClassType() TClass {
@@ -43669,7 +43693,7 @@ func PngImage_SetTransparent(obj uintptr, value bool) {
 }
 
 func PngImage_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("PngImage_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PngImage_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PngImage_StaticClassType() TClass {
@@ -43835,7 +43859,7 @@ func JPEGImage_SetWidth(obj uintptr, value int32) {
 }
 
 func JPEGImage_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("JPEGImage_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("JPEGImage_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func JPEGImage_StaticClassType() TClass {
@@ -43983,7 +44007,7 @@ func GIFImage_SetWidth(obj uintptr, value int32) {
 }
 
 func GIFImage_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("GIFImage_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("GIFImage_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func GIFImage_StaticClassType() TClass {
@@ -44075,7 +44099,7 @@ func ActionList_SetState(obj uintptr, value TActionListState) {
 }
 
 func ActionList_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("ActionList_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ActionList_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ActionList_GetComponentCount(obj uintptr) int32 {
@@ -44282,11 +44306,11 @@ func Action_SetVisible(obj uintptr, value bool) {
 }
 
 func Action_SetOnExecute(obj uintptr, fn interface{}) {
-    getLazyProc("Action_SetOnExecute").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Action_SetOnExecute").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Action_SetOnUpdate(obj uintptr, fn interface{}) {
-    getLazyProc("Action_SetOnUpdate").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Action_SetOnUpdate").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Action_GetIndex(obj uintptr) int32 {
@@ -44802,51 +44826,51 @@ func ToolButton_SetWidth(obj uintptr, value int32) {
 }
 
 func ToolButton_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ToolButton_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolButton_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolButton_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("ToolButton_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolButton_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolButton_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ToolButton_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolButton_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolButton_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ToolButton_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolButton_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolButton_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("ToolButton_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolButton_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolButton_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ToolButton_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolButton_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolButton_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("ToolButton_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolButton_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolButton_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ToolButton_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolButton_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolButton_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("ToolButton_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolButton_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolButton_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("ToolButton_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolButton_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolButton_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("ToolButton_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolButton_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolButton_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("ToolButton_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToolButton_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToolButton_GetAlign(obj uintptr) TAlign {
@@ -46092,47 +46116,47 @@ func PaintBox_SetVisible(obj uintptr, value bool) {
 }
 
 func PaintBox_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("PaintBox_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PaintBox_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PaintBox_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("PaintBox_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PaintBox_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PaintBox_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("PaintBox_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PaintBox_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PaintBox_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("PaintBox_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PaintBox_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PaintBox_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("PaintBox_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PaintBox_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PaintBox_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("PaintBox_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PaintBox_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PaintBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("PaintBox_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PaintBox_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PaintBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("PaintBox_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PaintBox_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PaintBox_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("PaintBox_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PaintBox_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PaintBox_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("PaintBox_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PaintBox_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PaintBox_SetOnPaint(obj uintptr, fn interface{}) {
-    getLazyProc("PaintBox_SetOnPaint").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PaintBox_SetOnPaint").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PaintBox_GetAction(obj uintptr) uintptr {
@@ -46460,7 +46484,7 @@ func Timer_SetInterval(obj uintptr, value uint32) {
 }
 
 func Timer_SetOnTimer(obj uintptr, fn interface{}) {
-    getLazyProc("Timer_SetOnTimer").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Timer_SetOnTimer").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Timer_GetComponentCount(obj uintptr) int32 {
@@ -46532,6 +46556,10 @@ func List_Clear(obj uintptr)  {
 
 func List_Delete(obj uintptr, Index int32)  {
     getLazyProc("List_Delete").Call(obj, uintptr(Index) )
+}
+
+func List_Exchange(obj uintptr, Index1 int32, Index2 int32)  {
+    getLazyProc("List_Exchange").Call(obj, uintptr(Index1) , uintptr(Index2) )
 }
 
 func List_Expand(obj uintptr) uintptr {
@@ -47610,43 +47638,43 @@ func ScrollBar_SetVisible(obj uintptr, value bool) {
 }
 
 func ScrollBar_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBar_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBar_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBar_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBar_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBar_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBar_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBar_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBar_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBar_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBar_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBar_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBar_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBar_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBar_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBar_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBar_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBar_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBar_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBar_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBar_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBar_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBar_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBar_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBar_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBar_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBar_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBar_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBar_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBar_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBar_GetDockClientCount(obj uintptr) int32 {
@@ -48579,75 +48607,75 @@ func MaskEdit_SetVisible(obj uintptr, value bool) {
 }
 
 func MaskEdit_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("MaskEdit_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("MaskEdit_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func MaskEdit_GetIsMasked(obj uintptr) bool {
@@ -49380,35 +49408,35 @@ func Shape_SetVisible(obj uintptr, value bool) {
 }
 
 func Shape_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("Shape_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Shape_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Shape_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("Shape_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Shape_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Shape_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("Shape_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Shape_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Shape_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("Shape_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Shape_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Shape_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Shape_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Shape_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Shape_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("Shape_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Shape_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Shape_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("Shape_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Shape_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Shape_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("Shape_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Shape_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Shape_GetAction(obj uintptr) uintptr {
@@ -50762,87 +50790,87 @@ func ScrollBox_SetVisible(obj uintptr, value bool) {
 }
 
 func ScrollBox_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnConstrainedResize(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnConstrainedResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnConstrainedResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnDockDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnDockDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnDockDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnGetSiteInfo").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnGetSiteInfo").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnMouseWheel(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnMouseWheel").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnMouseWheel").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnMouseWheelDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnMouseWheelUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnUnDock(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnUnDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnUnDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_SetOnAlignPosition(obj uintptr, fn interface{}) {
-    getLazyProc("ScrollBox_SetOnAlignPosition").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ScrollBox_SetOnAlignPosition").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ScrollBox_GetHorzScrollBar(obj uintptr) uintptr {
@@ -51517,7 +51545,7 @@ func CheckListBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64) 
 }
 
 func CheckListBox_SetOnClickCheck(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnClickCheck").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnClickCheck").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_GetAlign(obj uintptr) TAlign {
@@ -51755,71 +51783,71 @@ func CheckListBox_SetVisible(obj uintptr, value bool) {
 }
 
 func CheckListBox_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnMeasureItem(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnMeasureItem").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnMeasureItem").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("CheckListBox_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckListBox_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_GetCanvas(obj uintptr) uintptr {
@@ -53334,51 +53362,51 @@ func ImageButton_SetVisible(obj uintptr, value bool) {
 }
 
 func ImageButton_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ImageButton_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ImageButton_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ImageButton_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("ImageButton_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ImageButton_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ImageButton_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("ImageButton_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ImageButton_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ImageButton_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ImageButton_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ImageButton_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ImageButton_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ImageButton_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ImageButton_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ImageButton_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("ImageButton_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ImageButton_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ImageButton_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ImageButton_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ImageButton_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ImageButton_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("ImageButton_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ImageButton_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ImageButton_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ImageButton_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ImageButton_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ImageButton_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("ImageButton_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ImageButton_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ImageButton_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("ImageButton_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ImageButton_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ImageButton_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("ImageButton_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ImageButton_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ImageButton_GetBiDiMode(obj uintptr) TBiDiMode {
@@ -53734,7 +53762,7 @@ func FindDialog_SetOptions(obj uintptr, value TFindOptions) {
 }
 
 func FindDialog_SetOnFind(obj uintptr, fn interface{}) {
-    getLazyProc("FindDialog_SetOnFind").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FindDialog_SetOnFind").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FindDialog_GetHandle(obj uintptr) HWND {
@@ -53743,11 +53771,11 @@ func FindDialog_GetHandle(obj uintptr) HWND {
 }
 
 func FindDialog_SetOnClose(obj uintptr, fn interface{}) {
-    getLazyProc("FindDialog_SetOnClose").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FindDialog_SetOnClose").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FindDialog_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("FindDialog_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FindDialog_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FindDialog_GetComponentCount(obj uintptr) int32 {
@@ -53881,7 +53909,7 @@ func ReplaceDialog_SetReplaceText(obj uintptr, value string) {
 }
 
 func ReplaceDialog_SetOnReplace(obj uintptr, fn interface{}) {
-    getLazyProc("ReplaceDialog_SetOnReplace").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ReplaceDialog_SetOnReplace").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ReplaceDialog_GetLeft(obj uintptr) int32 {
@@ -53931,7 +53959,7 @@ func ReplaceDialog_SetOptions(obj uintptr, value TFindOptions) {
 }
 
 func ReplaceDialog_SetOnFind(obj uintptr, fn interface{}) {
-    getLazyProc("ReplaceDialog_SetOnFind").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ReplaceDialog_SetOnFind").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ReplaceDialog_GetHandle(obj uintptr) HWND {
@@ -53940,11 +53968,11 @@ func ReplaceDialog_GetHandle(obj uintptr) HWND {
 }
 
 func ReplaceDialog_SetOnClose(obj uintptr, fn interface{}) {
-    getLazyProc("ReplaceDialog_SetOnClose").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ReplaceDialog_SetOnClose").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ReplaceDialog_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("ReplaceDialog_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ReplaceDialog_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ReplaceDialog_GetComponentCount(obj uintptr) int32 {
@@ -54070,11 +54098,11 @@ func PrinterSetupDialog_GetHandle(obj uintptr) HWND {
 }
 
 func PrinterSetupDialog_SetOnClose(obj uintptr, fn interface{}) {
-    getLazyProc("PrinterSetupDialog_SetOnClose").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PrinterSetupDialog_SetOnClose").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PrinterSetupDialog_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("PrinterSetupDialog_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PrinterSetupDialog_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PrinterSetupDialog_GetComponentCount(obj uintptr) int32 {
@@ -54268,11 +54296,11 @@ func PageSetupDialog_GetHandle(obj uintptr) HWND {
 }
 
 func PageSetupDialog_SetOnClose(obj uintptr, fn interface{}) {
-    getLazyProc("PageSetupDialog_SetOnClose").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageSetupDialog_SetOnClose").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageSetupDialog_SetOnShow(obj uintptr, fn interface{}) {
-    getLazyProc("PageSetupDialog_SetOnShow").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("PageSetupDialog_SetOnShow").Call(obj, MakeEventDataPtr(fn))
 }
 
 func PageSetupDialog_GetComponentCount(obj uintptr) int32 {
@@ -55168,91 +55196,91 @@ func StringGrid_GetSortColumn(obj uintptr) int32 {
 }
 
 func StringGrid_SetOnAfterSelection(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnAfterSelection").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnAfterSelection").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnBeforeSelection(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnBeforeSelection").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnBeforeSelection").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnButtonClick(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnButtonClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnButtonClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnCheckboxToggled(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnCheckboxToggled").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnCheckboxToggled").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnColRowDeleted(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnColRowDeleted").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnColRowDeleted").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnColRowExchanged(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnColRowExchanged").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnColRowExchanged").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnColRowInserted(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnColRowInserted").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnColRowInserted").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnColRowMoved(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnColRowMoved").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnColRowMoved").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnCompareCells(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnCompareCells").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnCompareCells").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnEditingDone(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnEditingDone").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnEditingDone").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnGetCellHint(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnGetCellHint").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnGetCellHint").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnGetCheckboxState(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnGetCheckboxState").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnGetCheckboxState").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnSetCheckboxState(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnSetCheckboxState").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnSetCheckboxState").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnHeaderClick(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnHeaderClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnHeaderClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnHeaderSized(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnHeaderSized").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnHeaderSized").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnHeaderSizing(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnHeaderSizing").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnHeaderSizing").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnPickListSelect(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnPickListSelect").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnPickListSelect").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnSelection(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnSelection").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnSelection").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnSelectEditor(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnSelectEditor").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnSelectEditor").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnUserCheckboxBitmap(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnUserCheckboxBitmap").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnUserCheckboxBitmap").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnValidateEntry(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnValidateEntry").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnValidateEntry").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnPrepareCanvas(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnPrepareCanvas").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnPrepareCanvas").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_GetAlternateColor(obj uintptr) TColor {
@@ -55734,107 +55762,107 @@ func StringGrid_GetVisibleRowCount(obj uintptr) int32 {
 }
 
 func StringGrid_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnDrawCell(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnDrawCell").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnDrawCell").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnGetEditMask").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnGetEditMask").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnGetEditText(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnGetEditText").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnGetEditText").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnMouseWheelDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnMouseWheelUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnSelectCell(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnSelectCell").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnSelectCell").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnSetEditText(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnSetEditText").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnSetEditText").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_SetOnTopLeftChanged(obj uintptr, fn interface{}) {
-    getLazyProc("StringGrid_SetOnTopLeftChanged").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("StringGrid_SetOnTopLeftChanged").Call(obj, MakeEventDataPtr(fn))
 }
 
 func StringGrid_GetCanvas(obj uintptr) uintptr {
@@ -56610,11 +56638,11 @@ func DrawGrid_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
 }
 
 func DrawGrid_SetOnColRowMoved(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnColRowMoved").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnColRowMoved").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnPrepareCanvas(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnPrepareCanvas").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnPrepareCanvas").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_GetAlign(obj uintptr) TAlign {
@@ -56907,107 +56935,107 @@ func DrawGrid_GetVisibleRowCount(obj uintptr) int32 {
 }
 
 func DrawGrid_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnDrawCell(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnDrawCell").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnDrawCell").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnGetEditMask").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnGetEditMask").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnGetEditText(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnGetEditText").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnGetEditText").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnMouseWheelDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnMouseWheelUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnSelectCell(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnSelectCell").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnSelectCell").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnSetEditText(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnSetEditText").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnSetEditText").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnTopLeftChanged(obj uintptr, fn interface{}) {
-    getLazyProc("DrawGrid_SetOnTopLeftChanged").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("DrawGrid_SetOnTopLeftChanged").Call(obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_GetCanvas(obj uintptr) uintptr {
@@ -58049,107 +58077,107 @@ func ValueListEditor_SetVisible(obj uintptr, value bool) {
 }
 
 func ValueListEditor_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnDrawCell(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnDrawCell").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnDrawCell").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnGetEditMask(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnGetEditMask").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnGetEditMask").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnGetEditText(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnGetEditText").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnGetEditText").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnMouseWheelDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnMouseWheelUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnSelectCell(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnSelectCell").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnSelectCell").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnSetEditText(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnSetEditText").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnSetEditText").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_SetOnTopLeftChanged(obj uintptr, fn interface{}) {
-    getLazyProc("ValueListEditor_SetOnTopLeftChanged").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ValueListEditor_SetOnTopLeftChanged").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ValueListEditor_GetCanvas(obj uintptr) uintptr {
@@ -59057,67 +59085,67 @@ func HeaderControl_SetVisible(obj uintptr, value bool) {
 }
 
 func HeaderControl_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnSectionClick(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnSectionClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnSectionClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnSectionResize(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnSectionResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnSectionResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnSectionTrack(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnSectionTrack").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnSectionTrack").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnSectionDrag(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnSectionDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnSectionDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_SetOnSectionEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("HeaderControl_SetOnSectionEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("HeaderControl_SetOnSectionEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func HeaderControl_GetCanvas(obj uintptr) uintptr {
@@ -60358,67 +60386,67 @@ func LabeledEdit_SetVisible(obj uintptr, value bool) {
 }
 
 func LabeledEdit_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("LabeledEdit_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("LabeledEdit_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func LabeledEdit_GetCanUndo(obj uintptr) bool {
@@ -61183,35 +61211,35 @@ func BoundLabel_SetWidth(obj uintptr, value int32) {
 }
 
 func BoundLabel_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("BoundLabel_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BoundLabel_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BoundLabel_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("BoundLabel_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BoundLabel_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BoundLabel_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("BoundLabel_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BoundLabel_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BoundLabel_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("BoundLabel_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BoundLabel_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BoundLabel_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("BoundLabel_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BoundLabel_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BoundLabel_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("BoundLabel_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BoundLabel_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BoundLabel_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("BoundLabel_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BoundLabel_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BoundLabel_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("BoundLabel_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("BoundLabel_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func BoundLabel_GetCanvas(obj uintptr) uintptr {
@@ -61783,6 +61811,15 @@ func FlowPanel_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
     getLazyProc("FlowPanel_ScaleFontsPPI").Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
+func FlowPanel_GetControlList(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FlowPanel_GetControlList").Call(obj)
+    return ret
+}
+
+func FlowPanel_SetControlList(obj uintptr, value uintptr) {
+    getLazyProc("FlowPanel_SetControlList").Call(obj, value)
+}
+
 func FlowPanel_GetAlign(obj uintptr) TAlign {
     ret, _, _ := getLazyProc("FlowPanel_GetAlign").Call(obj)
     return TAlign(ret)
@@ -62063,87 +62100,87 @@ func FlowPanel_SetVisible(obj uintptr, value bool) {
 }
 
 func FlowPanel_SetOnAlignPosition(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnAlignPosition").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnAlignPosition").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnConstrainedResize(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnConstrainedResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnConstrainedResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnDockDrop(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnDockDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnDockDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnGetSiteInfo").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnGetSiteInfo").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_SetOnUnDock(obj uintptr, fn interface{}) {
-    getLazyProc("FlowPanel_SetOnUnDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("FlowPanel_SetOnUnDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func FlowPanel_GetDockClientCount(obj uintptr) int32 {
@@ -62438,6 +62475,236 @@ func FlowPanel_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
 
 func FlowPanel_StaticClassType() TClass {
     r, _, _:= getLazyProc("FlowPanel_StaticClassType").Call()
+    return TClass(r)
+}
+
+//--------------------------- TFlowPanelControlList ---------------------------
+
+func FlowPanelControlList_IndexOf(obj uintptr, AControl uintptr) int32 {
+    ret, _, _ := getLazyProc("FlowPanelControlList_IndexOf").Call(obj, AControl )
+    return int32(ret)
+}
+
+func FlowPanelControlList_Exchange(obj uintptr, Index1 int32, index2 int32)  {
+    getLazyProc("FlowPanelControlList_Exchange").Call(obj, uintptr(Index1) , uintptr(index2) )
+}
+
+func FlowPanelControlList_Move(obj uintptr, Index1 int32, index2 int32)  {
+    getLazyProc("FlowPanelControlList_Move").Call(obj, uintptr(Index1) , uintptr(index2) )
+}
+
+func FlowPanelControlList_AllowAdd(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FlowPanelControlList_AllowAdd").Call(obj)
+    return GoBool(ret)
+}
+
+func FlowPanelControlList_AllowDelete(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FlowPanelControlList_AllowDelete").Call(obj)
+    return GoBool(ret)
+}
+
+func FlowPanelControlList_Owner(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FlowPanelControlList_Owner").Call(obj)
+    return ret
+}
+
+func FlowPanelControlList_Add(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FlowPanelControlList_Add").Call(obj)
+    return ret
+}
+
+func FlowPanelControlList_Assign(obj uintptr, Source uintptr)  {
+    getLazyProc("FlowPanelControlList_Assign").Call(obj, Source )
+}
+
+func FlowPanelControlList_BeginUpdate(obj uintptr)  {
+    getLazyProc("FlowPanelControlList_BeginUpdate").Call(obj)
+}
+
+func FlowPanelControlList_Clear(obj uintptr)  {
+    getLazyProc("FlowPanelControlList_Clear").Call(obj)
+}
+
+func FlowPanelControlList_Delete(obj uintptr, Index int32)  {
+    getLazyProc("FlowPanelControlList_Delete").Call(obj, uintptr(Index) )
+}
+
+func FlowPanelControlList_EndUpdate(obj uintptr)  {
+    getLazyProc("FlowPanelControlList_EndUpdate").Call(obj)
+}
+
+func FlowPanelControlList_FindItemID(obj uintptr, ID int32) uintptr {
+    ret, _, _ := getLazyProc("FlowPanelControlList_FindItemID").Call(obj, uintptr(ID) )
+    return ret
+}
+
+func FlowPanelControlList_GetNamePath(obj uintptr) string {
+    ret, _, _ := getLazyProc("FlowPanelControlList_GetNamePath").Call(obj)
+    return GoStr(ret)
+}
+
+func FlowPanelControlList_Insert(obj uintptr, Index int32) uintptr {
+    ret, _, _ := getLazyProc("FlowPanelControlList_Insert").Call(obj, uintptr(Index) )
+    return ret
+}
+
+func FlowPanelControlList_ClassType(obj uintptr) TClass {
+    ret, _, _ := getLazyProc("FlowPanelControlList_ClassType").Call(obj)
+    return TClass(ret)
+}
+
+func FlowPanelControlList_ClassName(obj uintptr) string {
+    ret, _, _ := getLazyProc("FlowPanelControlList_ClassName").Call(obj)
+    return GoStr(ret)
+}
+
+func FlowPanelControlList_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FlowPanelControlList_InstanceSize").Call(obj)
+    return int32(ret)
+}
+
+func FlowPanelControlList_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := getLazyProc("FlowPanelControlList_InheritsFrom").Call(obj, uintptr(AClass) )
+    return GoBool(ret)
+}
+
+func FlowPanelControlList_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := getLazyProc("FlowPanelControlList_Equals").Call(obj, Obj )
+    return GoBool(ret)
+}
+
+func FlowPanelControlList_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FlowPanelControlList_GetHashCode").Call(obj)
+    return int32(ret)
+}
+
+func FlowPanelControlList_ToString(obj uintptr) string {
+    ret, _, _ := getLazyProc("FlowPanelControlList_ToString").Call(obj)
+    return GoStr(ret)
+}
+
+func FlowPanelControlList_GetCount(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FlowPanelControlList_GetCount").Call(obj)
+    return int32(ret)
+}
+
+func FlowPanelControlList_GetItems(obj uintptr, Index int32) uintptr {
+    ret, _, _ := getLazyProc("FlowPanelControlList_GetItems").Call(obj, uintptr(Index))
+    return ret
+}
+
+func FlowPanelControlList_SetItems(obj uintptr, Index int32, value uintptr) {
+    getLazyProc("FlowPanelControlList_SetItems").Call(obj, uintptr(Index), value)
+}
+
+func FlowPanelControlList_StaticClassType() TClass {
+    r, _, _:= getLazyProc("FlowPanelControlList_StaticClassType").Call()
+    return TClass(r)
+}
+
+//--------------------------- TFlowPanelControl ---------------------------
+
+func FlowPanelControl_AllowAdd(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FlowPanelControl_AllowAdd").Call(obj)
+    return GoBool(ret)
+}
+
+func FlowPanelControl_AllowDelete(obj uintptr) bool {
+    ret, _, _ := getLazyProc("FlowPanelControl_AllowDelete").Call(obj)
+    return GoBool(ret)
+}
+
+func FlowPanelControl_GetNamePath(obj uintptr) string {
+    ret, _, _ := getLazyProc("FlowPanelControl_GetNamePath").Call(obj)
+    return GoStr(ret)
+}
+
+func FlowPanelControl_Assign(obj uintptr, Source uintptr)  {
+    getLazyProc("FlowPanelControl_Assign").Call(obj, Source )
+}
+
+func FlowPanelControl_ClassType(obj uintptr) TClass {
+    ret, _, _ := getLazyProc("FlowPanelControl_ClassType").Call(obj)
+    return TClass(ret)
+}
+
+func FlowPanelControl_ClassName(obj uintptr) string {
+    ret, _, _ := getLazyProc("FlowPanelControl_ClassName").Call(obj)
+    return GoStr(ret)
+}
+
+func FlowPanelControl_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FlowPanelControl_InstanceSize").Call(obj)
+    return int32(ret)
+}
+
+func FlowPanelControl_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := getLazyProc("FlowPanelControl_InheritsFrom").Call(obj, uintptr(AClass) )
+    return GoBool(ret)
+}
+
+func FlowPanelControl_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := getLazyProc("FlowPanelControl_Equals").Call(obj, Obj )
+    return GoBool(ret)
+}
+
+func FlowPanelControl_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FlowPanelControl_GetHashCode").Call(obj)
+    return int32(ret)
+}
+
+func FlowPanelControl_ToString(obj uintptr) string {
+    ret, _, _ := getLazyProc("FlowPanelControl_ToString").Call(obj)
+    return GoStr(ret)
+}
+
+func FlowPanelControl_GetControl(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FlowPanelControl_GetControl").Call(obj)
+    return ret
+}
+
+func FlowPanelControl_SetControl(obj uintptr, value uintptr) {
+    getLazyProc("FlowPanelControl_SetControl").Call(obj, value)
+}
+
+func FlowPanelControl_GetWrapAfter(obj uintptr) TWrapAfter {
+    ret, _, _ := getLazyProc("FlowPanelControl_GetWrapAfter").Call(obj)
+    return TWrapAfter(ret)
+}
+
+func FlowPanelControl_SetWrapAfter(obj uintptr, value TWrapAfter) {
+    getLazyProc("FlowPanelControl_SetWrapAfter").Call(obj, uintptr(value))
+}
+
+func FlowPanelControl_GetIndex(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("FlowPanelControl_GetIndex").Call(obj)
+    return int32(ret)
+}
+
+func FlowPanelControl_SetIndex(obj uintptr, value int32) {
+    getLazyProc("FlowPanelControl_SetIndex").Call(obj, uintptr(value))
+}
+
+func FlowPanelControl_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("FlowPanelControl_GetCollection").Call(obj)
+    return ret
+}
+
+func FlowPanelControl_SetCollection(obj uintptr, value uintptr) {
+    getLazyProc("FlowPanelControl_SetCollection").Call(obj, value)
+}
+
+func FlowPanelControl_GetDisplayName(obj uintptr) string {
+    ret, _, _ := getLazyProc("FlowPanelControl_GetDisplayName").Call(obj)
+    return GoStr(ret)
+}
+
+func FlowPanelControl_SetDisplayName(obj uintptr, value string) {
+    getLazyProc("FlowPanelControl_SetDisplayName").Call(obj, PascalStr(value))
+}
+
+func FlowPanelControl_StaticClassType() TClass {
+    r, _, _:= getLazyProc("FlowPanelControl_StaticClassType").Call()
     return TClass(r)
 }
 
@@ -63040,75 +63307,75 @@ func CoolBar_SetVisible(obj uintptr, value bool) {
 }
 
 func CoolBar_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnDockDrop(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnDockDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnDockDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnGetSiteInfo").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnGetSiteInfo").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_SetOnUnDock(obj uintptr, fn interface{}) {
-    getLazyProc("CoolBar_SetOnUnDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CoolBar_SetOnUnDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CoolBar_GetDockClientCount(obj uintptr) int32 {
@@ -64247,7 +64514,7 @@ func TaskDialog_SetVerificationText(obj uintptr, value string) {
 }
 
 func TaskDialog_SetOnButtonClicked(obj uintptr, fn interface{}) {
-    getLazyProc("TaskDialog_SetOnButtonClicked").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("TaskDialog_SetOnButtonClicked").Call(obj, MakeEventDataPtr(fn))
 }
 
 func TaskDialog_GetButton(obj uintptr) uintptr {
@@ -65364,71 +65631,71 @@ func ComboBoxEx_SetVisible(obj uintptr, value bool) {
 }
 
 func ComboBoxEx_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnDropDown(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnDropDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnDropDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnSelect(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnSelect").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnSelect").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("ComboBoxEx_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ComboBoxEx_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ComboBoxEx_GetImages(obj uintptr) uintptr {
@@ -66581,99 +66848,99 @@ func Frame_SetVisible(obj uintptr, value bool) {
 }
 
 func Frame_SetOnAlignPosition(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnAlignPosition").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnAlignPosition").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnConstrainedResize(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnConstrainedResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnConstrainedResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnDockDrop(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnDockDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnDockDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnEndDock(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnEndDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnEndDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnGetSiteInfo").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnGetSiteInfo").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnMouseWheel(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnMouseWheel").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnMouseWheel").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnMouseWheelDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnMouseWheelUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnStartDock(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnStartDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnStartDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_SetOnUnDock(obj uintptr, fn interface{}) {
-    getLazyProc("Frame_SetOnUnDock").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("Frame_SetOnUnDock").Call(obj, MakeEventDataPtr(fn))
 }
 
 func Frame_GetHorzScrollBar(obj uintptr) uintptr {
@@ -67165,7 +67432,7 @@ func SizeConstraints_ToString(obj uintptr) string {
 }
 
 func SizeConstraints_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("SizeConstraints_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("SizeConstraints_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func SizeConstraints_GetMaxHeight(obj uintptr) TConstraintSize {
@@ -67670,31 +67937,31 @@ func XButton_SetVisible(obj uintptr, value bool) {
 }
 
 func XButton_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("XButton_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("XButton_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func XButton_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("XButton_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("XButton_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func XButton_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("XButton_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("XButton_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func XButton_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("XButton_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("XButton_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func XButton_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("XButton_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("XButton_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func XButton_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("XButton_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("XButton_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func XButton_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("XButton_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("XButton_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func XButton_GetBoundsRect(obj uintptr) TRect {
@@ -68101,7 +68368,7 @@ func ControlBorderSpacing_GetControlBottom(obj uintptr) int32 {
 }
 
 func ControlBorderSpacing_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("ControlBorderSpacing_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ControlBorderSpacing_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ControlBorderSpacing_GetLeft(obj uintptr) int32 {
@@ -68242,7 +68509,7 @@ func ControlChildSizing_GetControl(obj uintptr) uintptr {
 }
 
 func ControlChildSizing_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("ControlChildSizing_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ControlChildSizing_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ControlChildSizing_GetLeftRightSpacing(obj uintptr) int32 {
@@ -68822,83 +69089,83 @@ func CheckGroup_SetItems(obj uintptr, value uintptr) {
 }
 
 func CheckGroup_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnItemClick(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnItemClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnItemClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseWheel(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnMouseWheel").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnMouseWheel").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnMouseWheelDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnMouseWheelUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnResize(obj uintptr, fn interface{}) {
-    getLazyProc("CheckGroup_SetOnResize").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckGroup_SetOnResize").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_GetParentFont(obj uintptr) bool {
@@ -69754,63 +70021,63 @@ func ToggleBox_SetHint(obj uintptr, value string) {
 }
 
 func ToggleBox_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseWheel(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnMouseWheel").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnMouseWheel").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnMouseWheelDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    getLazyProc("ToggleBox_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("ToggleBox_SetOnMouseWheelUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_GetParentDoubleBuffered(obj uintptr) bool {
@@ -70721,99 +70988,99 @@ func CheckComboBox_SetMaxLength(obj uintptr, value int32) {
 }
 
 func CheckComboBox_SetOnChange(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnClick(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnCloseUp(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnCloseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnCloseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnContextPopup(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnContextPopup").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnContextPopup").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnDblClick(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnDblClick").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnDblClick").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnDragDrop(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnDragDrop").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnDragDrop").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnDragOver(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnDragOver").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnDragOver").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnEndDrag(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnEndDrag").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnEndDrag").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnDropDown(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnDropDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnDropDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnEnter(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnExit(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnExit").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnExit").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnItemChange(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnItemChange").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnItemChange").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnKeyDown(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnKeyDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnKeyDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnKeyPress(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnKeyPress").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnKeyPress").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnKeyUp(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnKeyUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnKeyUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseDown(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnMouseDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnMouseDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnMouseEnter").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnMouseEnter").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnMouseLeave").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnMouseLeave").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseMove(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnMouseMove").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnMouseMove").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseUp(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnMouseUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnMouseUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseWheel(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnMouseWheel").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnMouseWheel").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnMouseWheelDown").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnMouseWheelDown").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnMouseWheelUp").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnMouseWheelUp").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnSelect(obj uintptr, fn interface{}) {
-    getLazyProc("CheckComboBox_SetOnSelect").Call(obj, addEventToMap(obj, fn))
+    getLazyProc("CheckComboBox_SetOnSelect").Call(obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_GetParentColor(obj uintptr) bool {

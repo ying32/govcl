@@ -19,81 +19,71 @@ import (
 
 type TGridColumns struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// AsGridColumns
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsGridColumns(obj interface{}) *TGridColumns {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TGridColumns{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TGridColumns{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsGridColumns.
-func GridColumnsFromInst(inst uintptr) *TGridColumns {
-    return AsGridColumns(inst)
+func (g *TGridColumns) _instance() uintptr {
+    return uintptr(g.instance)
 }
 
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsGridColumns.
-func GridColumnsFromObj(obj IObject) *TGridColumns {
-    return AsGridColumns(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsGridColumns.
-func GridColumnsFromUnsafePointer(ptr unsafe.Pointer) *TGridColumns {
-    return AsGridColumns(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (g *TGridColumns) Instance() uintptr {
-    return g.instance
+    return g._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (g *TGridColumns) UnsafeAddr() unsafe.Pointer {
-    return g.ptr
+    return g.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (g *TGridColumns) IsValid() bool {
-    return g.instance != 0
+    return g.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (g *TGridColumns) Is() TIs {
-    return TIs(g.instance)
+    return TIs(g._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (g *TGridColumns) As() TAs {
-//    return TAs(g.instance)
+//    return TAs(g._instance())
 //}
 
+// TGridColumnsClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -102,144 +92,168 @@ func TGridColumnsClass() TClass {
 }
 
 func (g *TGridColumns) Add() *TGridColumn {
-    return AsGridColumn(GridColumns_Add(g.instance))
+    return AsGridColumn(GridColumns_Add(g._instance()))
 }
 
+// Clear
+//
 // 清除。
 func (g *TGridColumns) Clear() {
-    GridColumns_Clear(g.instance)
+    GridColumns_Clear(g._instance())
 }
 
 func (g *TGridColumns) RealIndex(Index int32) int32 {
-    return GridColumns_RealIndex(g.instance, Index)
+    return GridColumns_RealIndex(g._instance(), Index)
 }
 
 func (g *TGridColumns) IndexOf(Column *TGridColumn) int32 {
-    return GridColumns_IndexOf(g.instance, CheckPtr(Column))
+    return GridColumns_IndexOf(g._instance(), CheckPtr(Column))
 }
 
 func (g *TGridColumns) IsDefault() bool {
-    return GridColumns_IsDefault(g.instance)
+    return GridColumns_IsDefault(g._instance())
 }
 
 func (g *TGridColumns) HasIndex(Index int32) bool {
-    return GridColumns_HasIndex(g.instance, Index)
+    return GridColumns_HasIndex(g._instance(), Index)
 }
 
+// Owner
+//
 // 组件所有者。
 //
 // component owner.
 func (g *TGridColumns) Owner() *TObject {
-    return AsObject(GridColumns_Owner(g.instance))
+    return AsObject(GridColumns_Owner(g._instance()))
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (g *TGridColumns) Assign(Source IObject) {
-    GridColumns_Assign(g.instance, CheckPtr(Source))
+    GridColumns_Assign(g._instance(), CheckPtr(Source))
 }
 
 func (g *TGridColumns) BeginUpdate() {
-    GridColumns_BeginUpdate(g.instance)
+    GridColumns_BeginUpdate(g._instance())
 }
 
 func (g *TGridColumns) Delete(Index int32) {
-    GridColumns_Delete(g.instance, Index)
+    GridColumns_Delete(g._instance(), Index)
 }
 
 func (g *TGridColumns) EndUpdate() {
-    GridColumns_EndUpdate(g.instance)
+    GridColumns_EndUpdate(g._instance())
 }
 
 func (g *TGridColumns) FindItemID(ID int32) *TCollectionItem {
-    return AsCollectionItem(GridColumns_FindItemID(g.instance, ID))
+    return AsCollectionItem(GridColumns_FindItemID(g._instance(), ID))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (g *TGridColumns) GetNamePath() string {
-    return GridColumns_GetNamePath(g.instance)
+    return GridColumns_GetNamePath(g._instance())
 }
 
 func (g *TGridColumns) Insert(Index int32) *TCollectionItem {
-    return AsCollectionItem(GridColumns_Insert(g.instance, Index))
+    return AsCollectionItem(GridColumns_Insert(g._instance(), Index))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (g *TGridColumns) ClassType() TClass {
-    return GridColumns_ClassType(g.instance)
+    return GridColumns_ClassType(g._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (g *TGridColumns) ClassName() string {
-    return GridColumns_ClassName(g.instance)
+    return GridColumns_ClassName(g._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (g *TGridColumns) InstanceSize() int32 {
-    return GridColumns_InstanceSize(g.instance)
+    return GridColumns_InstanceSize(g._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (g *TGridColumns) InheritsFrom(AClass TClass) bool {
-    return GridColumns_InheritsFrom(g.instance, AClass)
+    return GridColumns_InheritsFrom(g._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (g *TGridColumns) Equals(Obj IObject) bool {
-    return GridColumns_Equals(g.instance, CheckPtr(Obj))
+    return GridColumns_Equals(g._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (g *TGridColumns) GetHashCode() int32 {
-    return GridColumns_GetHashCode(g.instance)
+    return GridColumns_GetHashCode(g._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (g *TGridColumns) ToString() string {
-    return GridColumns_ToString(g.instance)
+    return GridColumns_ToString(g._instance())
 }
 
 func (g *TGridColumns) Grid() *TStringGrid {
-    return AsStringGrid(GridColumns_GetGrid(g.instance))
+    return AsStringGrid(GridColumns_GetGrid(g._instance()))
 }
 
 func (g *TGridColumns) VisibleCount() int32 {
-    return GridColumns_GetVisibleCount(g.instance)
+    return GridColumns_GetVisibleCount(g._instance())
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (g *TGridColumns) Enabled() bool {
-    return GridColumns_GetEnabled(g.instance)
+    return GridColumns_GetEnabled(g._instance())
 }
 
 func (g *TGridColumns) Count() int32 {
-    return GridColumns_GetCount(g.instance)
+    return GridColumns_GetCount(g._instance())
 }
 
 func (g *TGridColumns) Items(Index int32) *TGridColumn {
-    return AsGridColumn(GridColumns_GetItems(g.instance, Index))
+    return AsGridColumn(GridColumns_GetItems(g._instance(), Index))
 }
 
 func (g *TGridColumns) SetItems(Index int32, value *TGridColumn) {
-    GridColumns_SetItems(g.instance, Index, CheckPtr(value))
+    GridColumns_SetItems(g._instance(), Index, CheckPtr(value))
 }
 

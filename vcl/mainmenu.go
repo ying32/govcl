@@ -19,101 +19,94 @@ import (
 
 type TMainMenu struct {
     IComponent
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewMainMenu
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewMainMenu(owner IComponent) *TMainMenu {
     m := new(TMainMenu)
-    m.instance = MainMenu_Create(CheckPtr(owner))
-    m.ptr = unsafe.Pointer(m.instance)
+    m.instance = unsafe.Pointer(MainMenu_Create(CheckPtr(owner)))
     return m
 }
 
+// AsMainMenu
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsMainMenu(obj interface{}) *TMainMenu {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TMainMenu{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TMainMenu{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsMainMenu.
-func MainMenuFromInst(inst uintptr) *TMainMenu {
-    return AsMainMenu(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsMainMenu.
-func MainMenuFromObj(obj IObject) *TMainMenu {
-    return AsMainMenu(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsMainMenu.
-func MainMenuFromUnsafePointer(ptr unsafe.Pointer) *TMainMenu {
-    return AsMainMenu(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (m *TMainMenu) Free() {
-    if m.instance != 0 {
-        MainMenu_Free(m.instance)
-        m.instance, m.ptr = 0, nullptr
+    if m.instance != nullptr {
+        MainMenu_Free(m._instance())
+        m.instance  = nullptr
     }
 }
 
+func (m *TMainMenu) _instance() uintptr {
+    return uintptr(m.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (m *TMainMenu) Instance() uintptr {
-    return m.instance
+    return m._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (m *TMainMenu) UnsafeAddr() unsafe.Pointer {
-    return m.ptr
+    return m.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (m *TMainMenu) IsValid() bool {
-    return m.instance != 0
+    return m.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (m *TMainMenu) Is() TIs {
-    return TIs(m.instance)
+    return TIs(m._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (m *TMainMenu) As() TAs {
-//    return TAs(m.instance)
+//    return TAs(m._instance())
 //}
 
+// TMainMenuClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,195 +114,251 @@ func TMainMenuClass() TClass {
     return MainMenu_StaticClassType()
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (m *TMainMenu) FindComponent(AName string) *TComponent {
-    return AsComponent(MainMenu_FindComponent(m.instance, AName))
+    return AsComponent(MainMenu_FindComponent(m._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (m *TMainMenu) GetNamePath() string {
-    return MainMenu_GetNamePath(m.instance)
+    return MainMenu_GetNamePath(m._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (m *TMainMenu) HasParent() bool {
-    return MainMenu_HasParent(m.instance)
+    return MainMenu_HasParent(m._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (m *TMainMenu) Assign(Source IObject) {
-    MainMenu_Assign(m.instance, CheckPtr(Source))
+    MainMenu_Assign(m._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (m *TMainMenu) ClassType() TClass {
-    return MainMenu_ClassType(m.instance)
+    return MainMenu_ClassType(m._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (m *TMainMenu) ClassName() string {
-    return MainMenu_ClassName(m.instance)
+    return MainMenu_ClassName(m._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (m *TMainMenu) InstanceSize() int32 {
-    return MainMenu_InstanceSize(m.instance)
+    return MainMenu_InstanceSize(m._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (m *TMainMenu) InheritsFrom(AClass TClass) bool {
-    return MainMenu_InheritsFrom(m.instance, AClass)
+    return MainMenu_InheritsFrom(m._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (m *TMainMenu) Equals(Obj IObject) bool {
-    return MainMenu_Equals(m.instance, CheckPtr(Obj))
+    return MainMenu_Equals(m._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (m *TMainMenu) GetHashCode() int32 {
-    return MainMenu_GetHashCode(m.instance)
+    return MainMenu_GetHashCode(m._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (m *TMainMenu) ToString() string {
-    return MainMenu_ToString(m.instance)
+    return MainMenu_ToString(m._instance())
 }
 
 func (m *TMainMenu) ImagesWidth() int32 {
-    return MainMenu_GetImagesWidth(m.instance)
+    return MainMenu_GetImagesWidth(m._instance())
 }
 
 func (m *TMainMenu) SetImagesWidth(value int32) {
-    MainMenu_SetImagesWidth(m.instance, value)
+    MainMenu_SetImagesWidth(m._instance(), value)
+}
+
+func (m *TMainMenu) SetOnDrawItem(fn TMenuDrawItemEvent) {
+    MainMenu_SetOnDrawItem(m._instance(), fn)
+}
+
+func (m *TMainMenu) SetOnMeasureItem(fn TMenuMeasureItemEvent) {
+    MainMenu_SetOnMeasureItem(m._instance(), fn)
 }
 
 func (m *TMainMenu) BiDiMode() TBiDiMode {
-    return MainMenu_GetBiDiMode(m.instance)
+    return MainMenu_GetBiDiMode(m._instance())
 }
 
 func (m *TMainMenu) SetBiDiMode(value TBiDiMode) {
-    MainMenu_SetBiDiMode(m.instance, value)
+    MainMenu_SetBiDiMode(m._instance(), value)
 }
 
+// Images
+//
 // 获取图标索引列表对象。
 func (m *TMainMenu) Images() *TImageList {
-    return AsImageList(MainMenu_GetImages(m.instance))
+    return AsImageList(MainMenu_GetImages(m._instance()))
 }
 
+// SetImages
+//
 // 设置图标索引列表对象。
 func (m *TMainMenu) SetImages(value IComponent) {
-    MainMenu_SetImages(m.instance, CheckPtr(value))
+    MainMenu_SetImages(m._instance(), CheckPtr(value))
 }
 
 func (m *TMainMenu) OwnerDraw() bool {
-    return MainMenu_GetOwnerDraw(m.instance)
+    return MainMenu_GetOwnerDraw(m._instance())
 }
 
 func (m *TMainMenu) SetOwnerDraw(value bool) {
-    MainMenu_SetOwnerDraw(m.instance, value)
+    MainMenu_SetOwnerDraw(m._instance(), value)
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (m *TMainMenu) SetOnChange(fn TMenuChangeEvent) {
-    MainMenu_SetOnChange(m.instance, fn)
+    MainMenu_SetOnChange(m._instance(), fn)
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (m *TMainMenu) Handle() HMENU {
-    return MainMenu_GetHandle(m.instance)
+    return MainMenu_GetHandle(m._instance())
 }
 
 func (m *TMainMenu) Items() *TMenuItem {
-    return AsMenuItem(MainMenu_GetItems(m.instance))
+    return AsMenuItem(MainMenu_GetItems(m._instance()))
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (m *TMainMenu) ComponentCount() int32 {
-    return MainMenu_GetComponentCount(m.instance)
+    return MainMenu_GetComponentCount(m._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (m *TMainMenu) ComponentIndex() int32 {
-    return MainMenu_GetComponentIndex(m.instance)
+    return MainMenu_GetComponentIndex(m._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (m *TMainMenu) SetComponentIndex(value int32) {
-    MainMenu_SetComponentIndex(m.instance, value)
+    MainMenu_SetComponentIndex(m._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (m *TMainMenu) Owner() *TComponent {
-    return AsComponent(MainMenu_GetOwner(m.instance))
+    return AsComponent(MainMenu_GetOwner(m._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (m *TMainMenu) Name() string {
-    return MainMenu_GetName(m.instance)
+    return MainMenu_GetName(m._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (m *TMainMenu) SetName(value string) {
-    MainMenu_SetName(m.instance, value)
+    MainMenu_SetName(m._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (m *TMainMenu) Tag() int {
-    return MainMenu_GetTag(m.instance)
+    return MainMenu_GetTag(m._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (m *TMainMenu) SetTag(value int) {
-    MainMenu_SetTag(m.instance, value)
+    MainMenu_SetTag(m._instance(), value)
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (m *TMainMenu) Components(AIndex int32) *TComponent {
-    return AsComponent(MainMenu_GetComponents(m.instance, AIndex))
+    return AsComponent(MainMenu_GetComponents(m._instance(), AIndex))
 }
 

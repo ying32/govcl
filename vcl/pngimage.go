@@ -19,102 +19,95 @@ import (
 
 type TPngImage struct {
     IGraphic
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewPngImage
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewPngImage() *TPngImage {
     p := new(TPngImage)
-    p.instance = PngImage_Create()
-    p.ptr = unsafe.Pointer(p.instance)
+    p.instance = unsafe.Pointer(PngImage_Create())
     setFinalizer(p, (*TPngImage).Free)
     return p
 }
 
+// AsPngImage
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsPngImage(obj interface{}) *TPngImage {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TPngImage{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TPngImage{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsPngImage.
-func PngImageFromInst(inst uintptr) *TPngImage {
-    return AsPngImage(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsPngImage.
-func PngImageFromObj(obj IObject) *TPngImage {
-    return AsPngImage(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsPngImage.
-func PngImageFromUnsafePointer(ptr unsafe.Pointer) *TPngImage {
-    return AsPngImage(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (p *TPngImage) Free() {
-    if p.instance != 0 {
-        PngImage_Free(p.instance)
-        p.instance, p.ptr = 0, nullptr
+    if p.instance != nullptr {
+        PngImage_Free(p._instance())
+        p.instance  = nullptr
     }
 }
 
+func (p *TPngImage) _instance() uintptr {
+    return uintptr(p.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (p *TPngImage) Instance() uintptr {
-    return p.instance
+    return p._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (p *TPngImage) UnsafeAddr() unsafe.Pointer {
-    return p.ptr
+    return p.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (p *TPngImage) IsValid() bool {
-    return p.instance != 0
+    return p.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (p *TPngImage) Is() TIs {
-    return TIs(p.instance)
+    return TIs(p._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (p *TPngImage) As() TAs {
-//    return TAs(p.instance)
+//    return TAs(p._instance())
 //}
 
+// TPngImageClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,172 +115,214 @@ func TPngImageClass() TClass {
     return PngImage_StaticClassType()
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (p *TPngImage) Assign(Source IObject) {
-    PngImage_Assign(p.instance, CheckPtr(Source))
+    PngImage_Assign(p._instance(), CheckPtr(Source))
 }
 
+// LoadFromStream
+//
 // 文件流加载。
 func (p *TPngImage) LoadFromStream(Stream IStream) {
-    PngImage_LoadFromStream(p.instance, CheckPtr(Stream))
+    PngImage_LoadFromStream(p._instance(), CheckPtr(Stream))
 }
 
+// SaveToStream
+//
 // 保存至流。
 func (p *TPngImage) SaveToStream(Stream IStream) {
-    PngImage_SaveToStream(p.instance, CheckPtr(Stream))
+    PngImage_SaveToStream(p._instance(), CheckPtr(Stream))
 }
 
 func (p *TPngImage) LoadFromResourceName(Instance uintptr, Name string) {
-    PngImage_LoadFromResourceName(p.instance, Instance , Name)
+    PngImage_LoadFromResourceName(p._instance(), Instance , Name)
 }
 
 func (p *TPngImage) LoadFromResourceID(Instance uintptr, ResID int32) {
-    PngImage_LoadFromResourceID(p.instance, Instance , ResID)
+    PngImage_LoadFromResourceID(p._instance(), Instance , ResID)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (p *TPngImage) Equals(Obj IObject) bool {
-    return PngImage_Equals(p.instance, CheckPtr(Obj))
+    return PngImage_Equals(p._instance(), CheckPtr(Obj))
 }
 
+// LoadFromFile
+//
 // 从文件加载。
 func (p *TPngImage) LoadFromFile(Filename string) {
-    PngImage_LoadFromFile(p.instance, Filename)
+    PngImage_LoadFromFile(p._instance(), Filename)
 }
 
+// SaveToFile
+//
 // 保存至文件。
 func (p *TPngImage) SaveToFile(Filename string) {
-    PngImage_SaveToFile(p.instance, Filename)
+    PngImage_SaveToFile(p._instance(), Filename)
 }
 
 func (p *TPngImage) SetSize(AWidth int32, AHeight int32) {
-    PngImage_SetSize(p.instance, AWidth , AHeight)
+    PngImage_SetSize(p._instance(), AWidth , AHeight)
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (p *TPngImage) GetNamePath() string {
-    return PngImage_GetNamePath(p.instance)
+    return PngImage_GetNamePath(p._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (p *TPngImage) ClassType() TClass {
-    return PngImage_ClassType(p.instance)
+    return PngImage_ClassType(p._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (p *TPngImage) ClassName() string {
-    return PngImage_ClassName(p.instance)
+    return PngImage_ClassName(p._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (p *TPngImage) InstanceSize() int32 {
-    return PngImage_InstanceSize(p.instance)
+    return PngImage_InstanceSize(p._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (p *TPngImage) InheritsFrom(AClass TClass) bool {
-    return PngImage_InheritsFrom(p.instance, AClass)
+    return PngImage_InheritsFrom(p._instance(), AClass)
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (p *TPngImage) GetHashCode() int32 {
-    return PngImage_GetHashCode(p.instance)
+    return PngImage_GetHashCode(p._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (p *TPngImage) ToString() string {
-    return PngImage_ToString(p.instance)
+    return PngImage_ToString(p._instance())
 }
 
+// Canvas
+//
 // 获取画布。
 func (p *TPngImage) Canvas() *TCanvas {
-    return AsCanvas(PngImage_GetCanvas(p.instance))
+    return AsCanvas(PngImage_GetCanvas(p._instance()))
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (p *TPngImage) Width() int32 {
-    return PngImage_GetWidth(p.instance)
+    return PngImage_GetWidth(p._instance())
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (p *TPngImage) Height() int32 {
-    return PngImage_GetHeight(p.instance)
+    return PngImage_GetHeight(p._instance())
 }
 
 func (p *TPngImage) Empty() bool {
-    return PngImage_GetEmpty(p.instance)
+    return PngImage_GetEmpty(p._instance())
 }
 
+// Modified
+//
 // 获取修改。
 //
 // Get modified.
 func (p *TPngImage) Modified() bool {
-    return PngImage_GetModified(p.instance)
+    return PngImage_GetModified(p._instance())
 }
 
+// SetModified
+//
 // 设置修改。
 //
 // Set modified.
 func (p *TPngImage) SetModified(value bool) {
-    PngImage_SetModified(p.instance, value)
+    PngImage_SetModified(p._instance(), value)
 }
 
 func (p *TPngImage) Palette() HPALETTE {
-    return PngImage_GetPalette(p.instance)
+    return PngImage_GetPalette(p._instance())
 }
 
 func (p *TPngImage) SetPalette(value HPALETTE) {
-    PngImage_SetPalette(p.instance, value)
+    PngImage_SetPalette(p._instance(), value)
 }
 
 func (p *TPngImage) PaletteModified() bool {
-    return PngImage_GetPaletteModified(p.instance)
+    return PngImage_GetPaletteModified(p._instance())
 }
 
 func (p *TPngImage) SetPaletteModified(value bool) {
-    PngImage_SetPaletteModified(p.instance, value)
+    PngImage_SetPaletteModified(p._instance(), value)
 }
 
+// Transparent
+//
 // 获取透明。
 //
 // Get transparent.
 func (p *TPngImage) Transparent() bool {
-    return PngImage_GetTransparent(p.instance)
+    return PngImage_GetTransparent(p._instance())
 }
 
+// SetTransparent
+//
 // 设置透明。
 //
 // Set transparent.
 func (p *TPngImage) SetTransparent(value bool) {
-    PngImage_SetTransparent(p.instance, value)
+    PngImage_SetTransparent(p._instance(), value)
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (p *TPngImage) SetOnChange(fn TNotifyEvent) {
-    PngImage_SetOnChange(p.instance, fn)
+    PngImage_SetOnChange(p._instance(), fn)
 }
 

@@ -1066,6 +1066,24 @@ func (i TIs) FlowPanel() bool {
 //}
 
 
+func (i TIs) FlowPanelControlList() bool {
+    return FlowPanelControlList_InheritsFrom(uintptr(i), TFlowPanelControlListClass())
+}
+
+//func (a TAs) FlowPanelControlList() *TFlowPanelControlList {
+//    return AsFlowPanelControlList(uintptr(a))
+//}
+
+
+func (i TIs) FlowPanelControl() bool {
+    return FlowPanelControl_InheritsFrom(uintptr(i), TFlowPanelControlClass())
+}
+
+//func (a TAs) FlowPanelControl() *TFlowPanelControl {
+//    return AsFlowPanelControl(uintptr(a))
+//}
+
+
 func (i TIs) CoolBar() bool {
     return CoolBar_InheritsFrom(uintptr(i), TCoolBarClass())
 }

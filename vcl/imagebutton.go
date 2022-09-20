@@ -19,101 +19,94 @@ import (
 
 type TImageButton struct {
     IControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewImageButton
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewImageButton(owner IComponent) *TImageButton {
     i := new(TImageButton)
-    i.instance = ImageButton_Create(CheckPtr(owner))
-    i.ptr = unsafe.Pointer(i.instance)
+    i.instance = unsafe.Pointer(ImageButton_Create(CheckPtr(owner)))
     return i
 }
 
+// AsImageButton
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsImageButton(obj interface{}) *TImageButton {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TImageButton{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TImageButton{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsImageButton.
-func ImageButtonFromInst(inst uintptr) *TImageButton {
-    return AsImageButton(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsImageButton.
-func ImageButtonFromObj(obj IObject) *TImageButton {
-    return AsImageButton(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsImageButton.
-func ImageButtonFromUnsafePointer(ptr unsafe.Pointer) *TImageButton {
-    return AsImageButton(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (i *TImageButton) Free() {
-    if i.instance != 0 {
-        ImageButton_Free(i.instance)
-        i.instance, i.ptr = 0, nullptr
+    if i.instance != nullptr {
+        ImageButton_Free(i._instance())
+        i.instance  = nullptr
     }
 }
 
+func (i *TImageButton) _instance() uintptr {
+    return uintptr(i.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (i *TImageButton) Instance() uintptr {
-    return i.instance
+    return i._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (i *TImageButton) UnsafeAddr() unsafe.Pointer {
-    return i.ptr
+    return i.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (i *TImageButton) IsValid() bool {
-    return i.instance != 0
+    return i.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (i *TImageButton) Is() TIs {
-    return TIs(i.instance)
+    return TIs(i._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (i *TImageButton) As() TAs {
-//    return TAs(i.instance)
+//    return TAs(i._instance())
 //}
 
+// TImageButtonClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,922 +114,1164 @@ func TImageButtonClass() TClass {
     return ImageButton_StaticClassType()
 }
 
+// Click
+//
 // 单击。
 func (i *TImageButton) Click() {
-    ImageButton_Click(i.instance)
+    ImageButton_Click(i._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (i *TImageButton) BringToFront() {
-    ImageButton_BringToFront(i.instance)
+    ImageButton_BringToFront(i._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (i *TImageButton) ClientToScreen(Point TPoint) TPoint {
-    return ImageButton_ClientToScreen(i.instance, Point)
+    return ImageButton_ClientToScreen(i._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (i *TImageButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return ImageButton_ClientToParent(i.instance, Point , CheckPtr(AParent))
+    return ImageButton_ClientToParent(i._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (i *TImageButton) Dragging() bool {
-    return ImageButton_Dragging(i.instance)
+    return ImageButton_Dragging(i._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (i *TImageButton) HasParent() bool {
-    return ImageButton_HasParent(i.instance)
+    return ImageButton_HasParent(i._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (i *TImageButton) Hide() {
-    ImageButton_Hide(i.instance)
+    ImageButton_Hide(i._instance())
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (i *TImageButton) Invalidate() {
-    ImageButton_Invalidate(i.instance)
+    ImageButton_Invalidate(i._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (i *TImageButton) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return ImageButton_Perform(i.instance, Msg , WParam , LParam)
+    return ImageButton_Perform(i._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (i *TImageButton) Refresh() {
-    ImageButton_Refresh(i.instance)
+    ImageButton_Refresh(i._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (i *TImageButton) Repaint() {
-    ImageButton_Repaint(i.instance)
+    ImageButton_Repaint(i._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (i *TImageButton) ScreenToClient(Point TPoint) TPoint {
-    return ImageButton_ScreenToClient(i.instance, Point)
+    return ImageButton_ScreenToClient(i._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (i *TImageButton) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return ImageButton_ParentToClient(i.instance, Point , CheckPtr(AParent))
+    return ImageButton_ParentToClient(i._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (i *TImageButton) SendToBack() {
-    ImageButton_SendToBack(i.instance)
+    ImageButton_SendToBack(i._instance())
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (i *TImageButton) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    ImageButton_SetBounds(i.instance, ALeft , ATop , AWidth , AHeight)
+    ImageButton_SetBounds(i._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (i *TImageButton) Show() {
-    ImageButton_Show(i.instance)
+    ImageButton_Show(i._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (i *TImageButton) Update() {
-    ImageButton_Update(i.instance)
+    ImageButton_Update(i._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (i *TImageButton) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return ImageButton_GetTextBuf(i.instance, Buffer , BufSize)
+    return ImageButton_GetTextBuf(i._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (i *TImageButton) GetTextLen() int32 {
-    return ImageButton_GetTextLen(i.instance)
+    return ImageButton_GetTextLen(i._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (i *TImageButton) SetTextBuf(Buffer string) {
-    ImageButton_SetTextBuf(i.instance, Buffer)
+    ImageButton_SetTextBuf(i._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (i *TImageButton) FindComponent(AName string) *TComponent {
-    return AsComponent(ImageButton_FindComponent(i.instance, AName))
+    return AsComponent(ImageButton_FindComponent(i._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (i *TImageButton) GetNamePath() string {
-    return ImageButton_GetNamePath(i.instance)
+    return ImageButton_GetNamePath(i._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (i *TImageButton) Assign(Source IObject) {
-    ImageButton_Assign(i.instance, CheckPtr(Source))
+    ImageButton_Assign(i._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (i *TImageButton) ClassType() TClass {
-    return ImageButton_ClassType(i.instance)
+    return ImageButton_ClassType(i._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (i *TImageButton) ClassName() string {
-    return ImageButton_ClassName(i.instance)
+    return ImageButton_ClassName(i._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (i *TImageButton) InstanceSize() int32 {
-    return ImageButton_InstanceSize(i.instance)
+    return ImageButton_InstanceSize(i._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (i *TImageButton) InheritsFrom(AClass TClass) bool {
-    return ImageButton_InheritsFrom(i.instance, AClass)
+    return ImageButton_InheritsFrom(i._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (i *TImageButton) Equals(Obj IObject) bool {
-    return ImageButton_Equals(i.instance, CheckPtr(Obj))
+    return ImageButton_Equals(i._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (i *TImageButton) GetHashCode() int32 {
-    return ImageButton_GetHashCode(i.instance)
+    return ImageButton_GetHashCode(i._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (i *TImageButton) ToString() string {
-    return ImageButton_ToString(i.instance)
+    return ImageButton_ToString(i._instance())
 }
 
 func (i *TImageButton) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    ImageButton_AnchorToNeighbour(i.instance, ASide , ASpace , CheckPtr(ASibling))
+    ImageButton_AnchorToNeighbour(i._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (i *TImageButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    ImageButton_AnchorParallel(i.instance, ASide , ASpace , CheckPtr(ASibling))
+    ImageButton_AnchorParallel(i._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (i *TImageButton) AnchorHorizontalCenterTo(ASibling IControl) {
-    ImageButton_AnchorHorizontalCenterTo(i.instance, CheckPtr(ASibling))
+    ImageButton_AnchorHorizontalCenterTo(i._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (i *TImageButton) AnchorVerticalCenterTo(ASibling IControl) {
-    ImageButton_AnchorVerticalCenterTo(i.instance, CheckPtr(ASibling))
+    ImageButton_AnchorVerticalCenterTo(i._instance(), CheckPtr(ASibling))
 }
 
 func (i *TImageButton) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    ImageButton_AnchorSame(i.instance, ASide , CheckPtr(ASibling))
+    ImageButton_AnchorSame(i._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (i *TImageButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    ImageButton_AnchorAsAlign(i.instance, ATheAlign , ASpace)
+    ImageButton_AnchorAsAlign(i._instance(), ATheAlign , ASpace)
 }
 
 func (i *TImageButton) AnchorClient(ASpace int32) {
-    ImageButton_AnchorClient(i.instance, ASpace)
+    ImageButton_AnchorClient(i._instance(), ASpace)
 }
 
 func (i *TImageButton) ScaleDesignToForm(ASize int32) int32 {
-    return ImageButton_ScaleDesignToForm(i.instance, ASize)
+    return ImageButton_ScaleDesignToForm(i._instance(), ASize)
 }
 
 func (i *TImageButton) ScaleFormToDesign(ASize int32) int32 {
-    return ImageButton_ScaleFormToDesign(i.instance, ASize)
+    return ImageButton_ScaleFormToDesign(i._instance(), ASize)
 }
 
 func (i *TImageButton) Scale96ToForm(ASize int32) int32 {
-    return ImageButton_Scale96ToForm(i.instance, ASize)
+    return ImageButton_Scale96ToForm(i._instance(), ASize)
 }
 
 func (i *TImageButton) ScaleFormTo96(ASize int32) int32 {
-    return ImageButton_ScaleFormTo96(i.instance, ASize)
+    return ImageButton_ScaleFormTo96(i._instance(), ASize)
 }
 
 func (i *TImageButton) Scale96ToFont(ASize int32) int32 {
-    return ImageButton_Scale96ToFont(i.instance, ASize)
+    return ImageButton_Scale96ToFont(i._instance(), ASize)
 }
 
 func (i *TImageButton) ScaleFontTo96(ASize int32) int32 {
-    return ImageButton_ScaleFontTo96(i.instance, ASize)
+    return ImageButton_ScaleFontTo96(i._instance(), ASize)
 }
 
 func (i *TImageButton) ScaleScreenToFont(ASize int32) int32 {
-    return ImageButton_ScaleScreenToFont(i.instance, ASize)
+    return ImageButton_ScaleScreenToFont(i._instance(), ASize)
 }
 
 func (i *TImageButton) ScaleFontToScreen(ASize int32) int32 {
-    return ImageButton_ScaleFontToScreen(i.instance, ASize)
+    return ImageButton_ScaleFontToScreen(i._instance(), ASize)
 }
 
 func (i *TImageButton) Scale96ToScreen(ASize int32) int32 {
-    return ImageButton_Scale96ToScreen(i.instance, ASize)
+    return ImageButton_Scale96ToScreen(i._instance(), ASize)
 }
 
 func (i *TImageButton) ScaleScreenTo96(ASize int32) int32 {
-    return ImageButton_ScaleScreenTo96(i.instance, ASize)
+    return ImageButton_ScaleScreenTo96(i._instance(), ASize)
 }
 
 func (i *TImageButton) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    ImageButton_AutoAdjustLayout(i.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    ImageButton_AutoAdjustLayout(i._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (i *TImageButton) FixDesignFontsPPI(ADesignTimePPI int32) {
-    ImageButton_FixDesignFontsPPI(i.instance, ADesignTimePPI)
+    ImageButton_FixDesignFontsPPI(i._instance(), ADesignTimePPI)
 }
 
 func (i *TImageButton) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    ImageButton_ScaleFontsPPI(i.instance, AToPPI , AProportion)
+    ImageButton_ScaleFontsPPI(i._instance(), AToPPI , AProportion)
 }
 
 func (i *TImageButton) Action() *TAction {
-    return AsAction(ImageButton_GetAction(i.instance))
+    return AsAction(ImageButton_GetAction(i._instance()))
 }
 
 func (i *TImageButton) SetAction(value IComponent) {
-    ImageButton_SetAction(i.instance, CheckPtr(value))
+    ImageButton_SetAction(i._instance(), CheckPtr(value))
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (i *TImageButton) Align() TAlign {
-    return ImageButton_GetAlign(i.instance)
+    return ImageButton_GetAlign(i._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (i *TImageButton) SetAlign(value TAlign) {
-    ImageButton_SetAlign(i.instance, value)
+    ImageButton_SetAlign(i._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (i *TImageButton) Anchors() TAnchors {
-    return ImageButton_GetAnchors(i.instance)
+    return ImageButton_GetAnchors(i._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (i *TImageButton) SetAnchors(value TAnchors) {
-    ImageButton_SetAnchors(i.instance, value)
+    ImageButton_SetAnchors(i._instance(), value)
 }
 
+// AutoSize
+//
 // 获取自动调整大小。
 func (i *TImageButton) AutoSize() bool {
-    return ImageButton_GetAutoSize(i.instance)
+    return ImageButton_GetAutoSize(i._instance())
 }
 
+// SetAutoSize
+//
 // 设置自动调整大小。
 func (i *TImageButton) SetAutoSize(value bool) {
-    ImageButton_SetAutoSize(i.instance, value)
+    ImageButton_SetAutoSize(i._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (i *TImageButton) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(ImageButton_GetConstraints(i.instance))
+    return AsSizeConstraints(ImageButton_GetConstraints(i._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (i *TImageButton) SetConstraints(value *TSizeConstraints) {
-    ImageButton_SetConstraints(i.instance, CheckPtr(value))
+    ImageButton_SetConstraints(i._instance(), CheckPtr(value))
 }
 
+// Caption
+//
 // 获取控件标题。
 //
 // Get the control title.
 func (i *TImageButton) Caption() string {
-    return ImageButton_GetCaption(i.instance)
+    return ImageButton_GetCaption(i._instance())
 }
 
+// SetCaption
+//
 // 设置控件标题。
 //
 // Set the control title.
 func (i *TImageButton) SetCaption(value string) {
-    ImageButton_SetCaption(i.instance, value)
+    ImageButton_SetCaption(i._instance(), value)
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (i *TImageButton) DragCursor() TCursor {
-    return ImageButton_GetDragCursor(i.instance)
+    return ImageButton_GetDragCursor(i._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (i *TImageButton) SetDragCursor(value TCursor) {
-    ImageButton_SetDragCursor(i.instance, value)
+    ImageButton_SetDragCursor(i._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (i *TImageButton) DragKind() TDragKind {
-    return ImageButton_GetDragKind(i.instance)
+    return ImageButton_GetDragKind(i._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (i *TImageButton) SetDragKind(value TDragKind) {
-    ImageButton_SetDragKind(i.instance, value)
+    ImageButton_SetDragKind(i._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (i *TImageButton) DragMode() TDragMode {
-    return ImageButton_GetDragMode(i.instance)
+    return ImageButton_GetDragMode(i._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (i *TImageButton) SetDragMode(value TDragMode) {
-    ImageButton_SetDragMode(i.instance, value)
+    ImageButton_SetDragMode(i._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (i *TImageButton) Enabled() bool {
-    return ImageButton_GetEnabled(i.instance)
+    return ImageButton_GetEnabled(i._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (i *TImageButton) SetEnabled(value bool) {
-    ImageButton_SetEnabled(i.instance, value)
+    ImageButton_SetEnabled(i._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (i *TImageButton) Font() *TFont {
-    return AsFont(ImageButton_GetFont(i.instance))
+    return AsFont(ImageButton_GetFont(i._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (i *TImageButton) SetFont(value *TFont) {
-    ImageButton_SetFont(i.instance, CheckPtr(value))
+    ImageButton_SetFont(i._instance(), CheckPtr(value))
 }
 
 func (i *TImageButton) ImageCount() int32 {
-    return ImageButton_GetImageCount(i.instance)
+    return ImageButton_GetImageCount(i._instance())
 }
 
 func (i *TImageButton) SetImageCount(value int32) {
-    ImageButton_SetImageCount(i.instance, value)
+    ImageButton_SetImageCount(i._instance(), value)
 }
 
 func (i *TImageButton) Orientation() TImageOrientation {
-    return ImageButton_GetOrientation(i.instance)
+    return ImageButton_GetOrientation(i._instance())
 }
 
 func (i *TImageButton) SetOrientation(value TImageOrientation) {
-    ImageButton_SetOrientation(i.instance, value)
+    ImageButton_SetOrientation(i._instance(), value)
 }
 
+// ModalResult
+//
 // 获取模态对话框显示结果。
 func (i *TImageButton) ModalResult() TModalResult {
-    return ImageButton_GetModalResult(i.instance)
+    return ImageButton_GetModalResult(i._instance())
 }
 
+// SetModalResult
+//
 // 设置模态对话框显示结果。
 func (i *TImageButton) SetModalResult(value TModalResult) {
-    ImageButton_SetModalResult(i.instance, value)
+    ImageButton_SetModalResult(i._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (i *TImageButton) ParentShowHint() bool {
-    return ImageButton_GetParentShowHint(i.instance)
+    return ImageButton_GetParentShowHint(i._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (i *TImageButton) SetParentShowHint(value bool) {
-    ImageButton_SetParentShowHint(i.instance, value)
+    ImageButton_SetParentShowHint(i._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (i *TImageButton) ParentFont() bool {
-    return ImageButton_GetParentFont(i.instance)
+    return ImageButton_GetParentFont(i._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (i *TImageButton) SetParentFont(value bool) {
-    ImageButton_SetParentFont(i.instance, value)
+    ImageButton_SetParentFont(i._instance(), value)
 }
 
+// Picture
+//
 // 获取图片。
 func (i *TImageButton) Picture() *TPicture {
-    return AsPicture(ImageButton_GetPicture(i.instance))
+    return AsPicture(ImageButton_GetPicture(i._instance()))
 }
 
+// SetPicture
+//
 // 设置图片。
 func (i *TImageButton) SetPicture(value *TPicture) {
-    ImageButton_SetPicture(i.instance, CheckPtr(value))
+    ImageButton_SetPicture(i._instance(), CheckPtr(value))
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (i *TImageButton) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(ImageButton_GetPopupMenu(i.instance))
+    return AsPopupMenu(ImageButton_GetPopupMenu(i._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (i *TImageButton) SetPopupMenu(value IComponent) {
-    ImageButton_SetPopupMenu(i.instance, CheckPtr(value))
+    ImageButton_SetPopupMenu(i._instance(), CheckPtr(value))
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (i *TImageButton) ShowHint() bool {
-    return ImageButton_GetShowHint(i.instance)
+    return ImageButton_GetShowHint(i._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (i *TImageButton) SetShowHint(value bool) {
-    ImageButton_SetShowHint(i.instance, value)
+    ImageButton_SetShowHint(i._instance(), value)
 }
 
 func (i *TImageButton) ShowCaption() bool {
-    return ImageButton_GetShowCaption(i.instance)
+    return ImageButton_GetShowCaption(i._instance())
 }
 
 func (i *TImageButton) SetShowCaption(value bool) {
-    ImageButton_SetShowCaption(i.instance, value)
+    ImageButton_SetShowCaption(i._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (i *TImageButton) Visible() bool {
-    return ImageButton_GetVisible(i.instance)
+    return ImageButton_GetVisible(i._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (i *TImageButton) SetVisible(value bool) {
-    ImageButton_SetVisible(i.instance, value)
+    ImageButton_SetVisible(i._instance(), value)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (i *TImageButton) SetOnClick(fn TNotifyEvent) {
-    ImageButton_SetOnClick(i.instance, fn)
+    ImageButton_SetOnClick(i._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (i *TImageButton) SetOnContextPopup(fn TContextPopupEvent) {
-    ImageButton_SetOnContextPopup(i.instance, fn)
+    ImageButton_SetOnContextPopup(i._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (i *TImageButton) SetOnDblClick(fn TNotifyEvent) {
-    ImageButton_SetOnDblClick(i.instance, fn)
+    ImageButton_SetOnDblClick(i._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (i *TImageButton) SetOnDragDrop(fn TDragDropEvent) {
-    ImageButton_SetOnDragDrop(i.instance, fn)
+    ImageButton_SetOnDragDrop(i._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (i *TImageButton) SetOnDragOver(fn TDragOverEvent) {
-    ImageButton_SetOnDragOver(i.instance, fn)
+    ImageButton_SetOnDragOver(i._instance(), fn)
 }
 
+// SetOnEndDock
+//
 // 设置停靠结束事件。
 //
 // Set Dock end event.
 func (i *TImageButton) SetOnEndDock(fn TEndDragEvent) {
-    ImageButton_SetOnEndDock(i.instance, fn)
+    ImageButton_SetOnEndDock(i._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (i *TImageButton) SetOnEndDrag(fn TEndDragEvent) {
-    ImageButton_SetOnEndDrag(i.instance, fn)
+    ImageButton_SetOnEndDrag(i._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (i *TImageButton) SetOnMouseDown(fn TMouseEvent) {
-    ImageButton_SetOnMouseDown(i.instance, fn)
+    ImageButton_SetOnMouseDown(i._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (i *TImageButton) SetOnMouseEnter(fn TNotifyEvent) {
-    ImageButton_SetOnMouseEnter(i.instance, fn)
+    ImageButton_SetOnMouseEnter(i._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (i *TImageButton) SetOnMouseLeave(fn TNotifyEvent) {
-    ImageButton_SetOnMouseLeave(i.instance, fn)
+    ImageButton_SetOnMouseLeave(i._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (i *TImageButton) SetOnMouseMove(fn TMouseMoveEvent) {
-    ImageButton_SetOnMouseMove(i.instance, fn)
+    ImageButton_SetOnMouseMove(i._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (i *TImageButton) SetOnMouseUp(fn TMouseEvent) {
-    ImageButton_SetOnMouseUp(i.instance, fn)
+    ImageButton_SetOnMouseUp(i._instance(), fn)
 }
 
 func (i *TImageButton) BiDiMode() TBiDiMode {
-    return ImageButton_GetBiDiMode(i.instance)
+    return ImageButton_GetBiDiMode(i._instance())
 }
 
 func (i *TImageButton) SetBiDiMode(value TBiDiMode) {
-    ImageButton_SetBiDiMode(i.instance, value)
+    ImageButton_SetBiDiMode(i._instance(), value)
 }
 
 func (i *TImageButton) BoundsRect() TRect {
-    return ImageButton_GetBoundsRect(i.instance)
+    return ImageButton_GetBoundsRect(i._instance())
 }
 
 func (i *TImageButton) SetBoundsRect(value TRect) {
-    ImageButton_SetBoundsRect(i.instance, value)
+    ImageButton_SetBoundsRect(i._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (i *TImageButton) ClientHeight() int32 {
-    return ImageButton_GetClientHeight(i.instance)
+    return ImageButton_GetClientHeight(i._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (i *TImageButton) SetClientHeight(value int32) {
-    ImageButton_SetClientHeight(i.instance, value)
+    ImageButton_SetClientHeight(i._instance(), value)
 }
 
 func (i *TImageButton) ClientOrigin() TPoint {
-    return ImageButton_GetClientOrigin(i.instance)
+    return ImageButton_GetClientOrigin(i._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (i *TImageButton) ClientRect() TRect {
-    return ImageButton_GetClientRect(i.instance)
+    return ImageButton_GetClientRect(i._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (i *TImageButton) ClientWidth() int32 {
-    return ImageButton_GetClientWidth(i.instance)
+    return ImageButton_GetClientWidth(i._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (i *TImageButton) SetClientWidth(value int32) {
-    ImageButton_SetClientWidth(i.instance, value)
+    ImageButton_SetClientWidth(i._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (i *TImageButton) ControlState() TControlState {
-    return ImageButton_GetControlState(i.instance)
+    return ImageButton_GetControlState(i._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (i *TImageButton) SetControlState(value TControlState) {
-    ImageButton_SetControlState(i.instance, value)
+    ImageButton_SetControlState(i._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (i *TImageButton) ControlStyle() TControlStyle {
-    return ImageButton_GetControlStyle(i.instance)
+    return ImageButton_GetControlStyle(i._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (i *TImageButton) SetControlStyle(value TControlStyle) {
-    ImageButton_SetControlStyle(i.instance, value)
+    ImageButton_SetControlStyle(i._instance(), value)
 }
 
 func (i *TImageButton) Floating() bool {
-    return ImageButton_GetFloating(i.instance)
+    return ImageButton_GetFloating(i._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (i *TImageButton) Parent() *TWinControl {
-    return AsWinControl(ImageButton_GetParent(i.instance))
+    return AsWinControl(ImageButton_GetParent(i._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (i *TImageButton) SetParent(value IWinControl) {
-    ImageButton_SetParent(i.instance, CheckPtr(value))
+    ImageButton_SetParent(i._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (i *TImageButton) Left() int32 {
-    return ImageButton_GetLeft(i.instance)
+    return ImageButton_GetLeft(i._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (i *TImageButton) SetLeft(value int32) {
-    ImageButton_SetLeft(i.instance, value)
+    ImageButton_SetLeft(i._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (i *TImageButton) Top() int32 {
-    return ImageButton_GetTop(i.instance)
+    return ImageButton_GetTop(i._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (i *TImageButton) SetTop(value int32) {
-    ImageButton_SetTop(i.instance, value)
+    ImageButton_SetTop(i._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (i *TImageButton) Width() int32 {
-    return ImageButton_GetWidth(i.instance)
+    return ImageButton_GetWidth(i._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (i *TImageButton) SetWidth(value int32) {
-    ImageButton_SetWidth(i.instance, value)
+    ImageButton_SetWidth(i._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (i *TImageButton) Height() int32 {
-    return ImageButton_GetHeight(i.instance)
+    return ImageButton_GetHeight(i._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (i *TImageButton) SetHeight(value int32) {
-    ImageButton_SetHeight(i.instance, value)
+    ImageButton_SetHeight(i._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (i *TImageButton) Cursor() TCursor {
-    return ImageButton_GetCursor(i.instance)
+    return ImageButton_GetCursor(i._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (i *TImageButton) SetCursor(value TCursor) {
-    ImageButton_SetCursor(i.instance, value)
+    ImageButton_SetCursor(i._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (i *TImageButton) Hint() string {
-    return ImageButton_GetHint(i.instance)
+    return ImageButton_GetHint(i._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (i *TImageButton) SetHint(value string) {
-    ImageButton_SetHint(i.instance, value)
+    ImageButton_SetHint(i._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (i *TImageButton) ComponentCount() int32 {
-    return ImageButton_GetComponentCount(i.instance)
+    return ImageButton_GetComponentCount(i._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (i *TImageButton) ComponentIndex() int32 {
-    return ImageButton_GetComponentIndex(i.instance)
+    return ImageButton_GetComponentIndex(i._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (i *TImageButton) SetComponentIndex(value int32) {
-    ImageButton_SetComponentIndex(i.instance, value)
+    ImageButton_SetComponentIndex(i._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (i *TImageButton) Owner() *TComponent {
-    return AsComponent(ImageButton_GetOwner(i.instance))
+    return AsComponent(ImageButton_GetOwner(i._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (i *TImageButton) Name() string {
-    return ImageButton_GetName(i.instance)
+    return ImageButton_GetName(i._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (i *TImageButton) SetName(value string) {
-    ImageButton_SetName(i.instance, value)
+    ImageButton_SetName(i._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (i *TImageButton) Tag() int {
-    return ImageButton_GetTag(i.instance)
+    return ImageButton_GetTag(i._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (i *TImageButton) SetTag(value int) {
-    ImageButton_SetTag(i.instance, value)
+    ImageButton_SetTag(i._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (i *TImageButton) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(ImageButton_GetAnchorSideLeft(i.instance))
+    return AsAnchorSide(ImageButton_GetAnchorSideLeft(i._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (i *TImageButton) SetAnchorSideLeft(value *TAnchorSide) {
-    ImageButton_SetAnchorSideLeft(i.instance, CheckPtr(value))
+    ImageButton_SetAnchorSideLeft(i._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (i *TImageButton) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(ImageButton_GetAnchorSideTop(i.instance))
+    return AsAnchorSide(ImageButton_GetAnchorSideTop(i._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (i *TImageButton) SetAnchorSideTop(value *TAnchorSide) {
-    ImageButton_SetAnchorSideTop(i.instance, CheckPtr(value))
+    ImageButton_SetAnchorSideTop(i._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (i *TImageButton) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(ImageButton_GetAnchorSideRight(i.instance))
+    return AsAnchorSide(ImageButton_GetAnchorSideRight(i._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (i *TImageButton) SetAnchorSideRight(value *TAnchorSide) {
-    ImageButton_SetAnchorSideRight(i.instance, CheckPtr(value))
+    ImageButton_SetAnchorSideRight(i._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (i *TImageButton) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(ImageButton_GetAnchorSideBottom(i.instance))
+    return AsAnchorSide(ImageButton_GetAnchorSideBottom(i._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (i *TImageButton) SetAnchorSideBottom(value *TAnchorSide) {
-    ImageButton_SetAnchorSideBottom(i.instance, CheckPtr(value))
+    ImageButton_SetAnchorSideBottom(i._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (i *TImageButton) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(ImageButton_GetBorderSpacing(i.instance))
+    return AsControlBorderSpacing(ImageButton_GetBorderSpacing(i._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (i *TImageButton) SetBorderSpacing(value *TControlBorderSpacing) {
-    ImageButton_SetBorderSpacing(i.instance, CheckPtr(value))
+    ImageButton_SetBorderSpacing(i._instance(), CheckPtr(value))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (i *TImageButton) Components(AIndex int32) *TComponent {
-    return AsComponent(ImageButton_GetComponents(i.instance, AIndex))
+    return AsComponent(ImageButton_GetComponents(i._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (i *TImageButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(ImageButton_GetAnchorSide(i.instance, AKind))
+    return AsAnchorSide(ImageButton_GetAnchorSide(i._instance(), AKind))
 }
 

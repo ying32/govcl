@@ -19,102 +19,95 @@ import (
 
 type TStringList struct {
     IStrings
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewStringList
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewStringList() *TStringList {
     s := new(TStringList)
-    s.instance = StringList_Create()
-    s.ptr = unsafe.Pointer(s.instance)
+    s.instance = unsafe.Pointer(StringList_Create())
     setFinalizer(s, (*TStringList).Free)
     return s
 }
 
+// AsStringList
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsStringList(obj interface{}) *TStringList {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TStringList{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TStringList{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsStringList.
-func StringListFromInst(inst uintptr) *TStringList {
-    return AsStringList(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsStringList.
-func StringListFromObj(obj IObject) *TStringList {
-    return AsStringList(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsStringList.
-func StringListFromUnsafePointer(ptr unsafe.Pointer) *TStringList {
-    return AsStringList(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (s *TStringList) Free() {
-    if s.instance != 0 {
-        StringList_Free(s.instance)
-        s.instance, s.ptr = 0, nullptr
+    if s.instance != nullptr {
+        StringList_Free(s._instance())
+        s.instance  = nullptr
     }
 }
 
+func (s *TStringList) _instance() uintptr {
+    return uintptr(s.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (s *TStringList) Instance() uintptr {
-    return s.instance
+    return s._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (s *TStringList) UnsafeAddr() unsafe.Pointer {
-    return s.ptr
+    return s.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (s *TStringList) IsValid() bool {
-    return s.instance != 0
+    return s.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (s *TStringList) Is() TIs {
-    return TIs(s.instance)
+    return TIs(s._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (s *TStringList) As() TAs {
-//    return TAs(s.instance)
+//    return TAs(s._instance())
 //}
 
+// TStringListClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,6 +115,8 @@ func TStringListClass() TClass {
     return StringList_StaticClassType()
 }
 
+// S 
+//
 // Strings()的别名。
 // 
 // Alias of Strings().
@@ -129,6 +124,8 @@ func (s *TStringList) S(Index int32) string {
     return s.Strings(Index)
 }
 
+// SetS 
+//
 // SetStrings()的别名。
 // 
 // Alias of SetStrings().
@@ -137,235 +134,273 @@ func (s *TStringList) SetS(Index int32, value string) {
 }
 
 func (s *TStringList) Add(S string) int32 {
-    return StringList_Add(s.instance, S)
+    return StringList_Add(s._instance(), S)
 }
 
 func (s *TStringList) AddObject(S string, AObject IObject) int32 {
-    return StringList_AddObject(s.instance, S , CheckPtr(AObject))
+    return StringList_AddObject(s._instance(), S , CheckPtr(AObject))
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (s *TStringList) Assign(Source IObject) {
-    StringList_Assign(s.instance, CheckPtr(Source))
+    StringList_Assign(s._instance(), CheckPtr(Source))
 }
 
+// Clear
+//
 // 清除。
 func (s *TStringList) Clear() {
-    StringList_Clear(s.instance)
+    StringList_Clear(s._instance())
 }
 
 func (s *TStringList) Delete(Index int32) {
-    StringList_Delete(s.instance, Index)
+    StringList_Delete(s._instance(), Index)
+}
+
+func (s *TStringList) Exchange(Index1 int32, Index2 int32) {
+    StringList_Exchange(s._instance(), Index1 , Index2)
 }
 
 func (s *TStringList) IndexOf(S string) int32 {
-    return StringList_IndexOf(s.instance, S)
+    return StringList_IndexOf(s._instance(), S)
 }
 
 func (s *TStringList) Insert(Index int32, S string) {
-    StringList_Insert(s.instance, Index , S)
+    StringList_Insert(s._instance(), Index , S)
 }
 
 func (s *TStringList) InsertObject(Index int32, S string, AObject IObject) {
-    StringList_InsertObject(s.instance, Index , S , CheckPtr(AObject))
+    StringList_InsertObject(s._instance(), Index , S , CheckPtr(AObject))
 }
 
 func (s *TStringList) Append(S string) {
-    StringList_Append(s.instance, S)
+    StringList_Append(s._instance(), S)
 }
 
 func (s *TStringList) BeginUpdate() {
-    StringList_BeginUpdate(s.instance)
+    StringList_BeginUpdate(s._instance())
 }
 
 func (s *TStringList) EndUpdate() {
-    StringList_EndUpdate(s.instance)
+    StringList_EndUpdate(s._instance())
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (s *TStringList) Equals(Strings IObject) bool {
-    return StringList_Equals(s.instance, CheckPtr(Strings))
+    return StringList_Equals(s._instance(), CheckPtr(Strings))
 }
 
 func (s *TStringList) IndexOfName(Name string) int32 {
-    return StringList_IndexOfName(s.instance, Name)
+    return StringList_IndexOfName(s._instance(), Name)
 }
 
 func (s *TStringList) IndexOfObject(AObject IObject) int32 {
-    return StringList_IndexOfObject(s.instance, CheckPtr(AObject))
+    return StringList_IndexOfObject(s._instance(), CheckPtr(AObject))
 }
 
+// LoadFromFile
+//
 // 从文件加载。
 func (s *TStringList) LoadFromFile(FileName string) {
-    StringList_LoadFromFile(s.instance, FileName)
+    StringList_LoadFromFile(s._instance(), FileName)
 }
 
+// LoadFromStream
+//
 // 文件流加载。
 func (s *TStringList) LoadFromStream(Stream IStream) {
-    StringList_LoadFromStream(s.instance, CheckPtr(Stream))
+    StringList_LoadFromStream(s._instance(), CheckPtr(Stream))
 }
 
 func (s *TStringList) Move(CurIndex int32, NewIndex int32) {
-    StringList_Move(s.instance, CurIndex , NewIndex)
+    StringList_Move(s._instance(), CurIndex , NewIndex)
 }
 
+// SaveToFile
+//
 // 保存至文件。
 func (s *TStringList) SaveToFile(FileName string) {
-    StringList_SaveToFile(s.instance, FileName)
+    StringList_SaveToFile(s._instance(), FileName)
 }
 
+// SaveToStream
+//
 // 保存至流。
 func (s *TStringList) SaveToStream(Stream IStream) {
-    StringList_SaveToStream(s.instance, CheckPtr(Stream))
+    StringList_SaveToStream(s._instance(), CheckPtr(Stream))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (s *TStringList) GetNamePath() string {
-    return StringList_GetNamePath(s.instance)
+    return StringList_GetNamePath(s._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (s *TStringList) ClassType() TClass {
-    return StringList_ClassType(s.instance)
+    return StringList_ClassType(s._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (s *TStringList) ClassName() string {
-    return StringList_ClassName(s.instance)
+    return StringList_ClassName(s._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (s *TStringList) InstanceSize() int32 {
-    return StringList_InstanceSize(s.instance)
+    return StringList_InstanceSize(s._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (s *TStringList) InheritsFrom(AClass TClass) bool {
-    return StringList_InheritsFrom(s.instance, AClass)
+    return StringList_InheritsFrom(s._instance(), AClass)
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (s *TStringList) GetHashCode() int32 {
-    return StringList_GetHashCode(s.instance)
+    return StringList_GetHashCode(s._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (s *TStringList) ToString() string {
-    return StringList_ToString(s.instance)
+    return StringList_ToString(s._instance())
 }
 
 func (s *TStringList) Sorted() bool {
-    return StringList_GetSorted(s.instance)
+    return StringList_GetSorted(s._instance())
 }
 
 func (s *TStringList) SetSorted(value bool) {
-    StringList_SetSorted(s.instance, value)
+    StringList_SetSorted(s._instance(), value)
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (s *TStringList) SetOnChange(fn TNotifyEvent) {
-    StringList_SetOnChange(s.instance, fn)
+    StringList_SetOnChange(s._instance(), fn)
 }
 
 func (s *TStringList) SetOnChanging(fn TNotifyEvent) {
-    StringList_SetOnChanging(s.instance, fn)
+    StringList_SetOnChanging(s._instance(), fn)
 }
 
 func (s *TStringList) Capacity() int32 {
-    return StringList_GetCapacity(s.instance)
+    return StringList_GetCapacity(s._instance())
 }
 
 func (s *TStringList) SetCapacity(value int32) {
-    StringList_SetCapacity(s.instance, value)
+    StringList_SetCapacity(s._instance(), value)
 }
 
 func (s *TStringList) CommaText() string {
-    return StringList_GetCommaText(s.instance)
+    return StringList_GetCommaText(s._instance())
 }
 
 func (s *TStringList) SetCommaText(value string) {
-    StringList_SetCommaText(s.instance, value)
+    StringList_SetCommaText(s._instance(), value)
 }
 
 func (s *TStringList) Count() int32 {
-    return StringList_GetCount(s.instance)
+    return StringList_GetCount(s._instance())
 }
 
 func (s *TStringList) Delimiter() uint16 {
-    return StringList_GetDelimiter(s.instance)
+    return StringList_GetDelimiter(s._instance())
 }
 
 func (s *TStringList) SetDelimiter(value uint16) {
-    StringList_SetDelimiter(s.instance, value)
+    StringList_SetDelimiter(s._instance(), value)
 }
 
 func (s *TStringList) NameValueSeparator() uint16 {
-    return StringList_GetNameValueSeparator(s.instance)
+    return StringList_GetNameValueSeparator(s._instance())
 }
 
 func (s *TStringList) SetNameValueSeparator(value uint16) {
-    StringList_SetNameValueSeparator(s.instance, value)
+    StringList_SetNameValueSeparator(s._instance(), value)
 }
 
+// Text
+//
 // 获取文本。
 func (s *TStringList) Text() string {
-    return StringList_GetText(s.instance)
+    return StringList_GetText(s._instance())
 }
 
+// SetText
+//
 // 设置文本。
 func (s *TStringList) SetText(value string) {
-    StringList_SetText(s.instance, value)
+    StringList_SetText(s._instance(), value)
 }
 
 func (s *TStringList) Objects(Index int32) *TObject {
-    return AsObject(StringList_GetObjects(s.instance, Index))
+    return AsObject(StringList_GetObjects(s._instance(), Index))
 }
 
 func (s *TStringList) SetObjects(Index int32, value IObject) {
-    StringList_SetObjects(s.instance, Index, CheckPtr(value))
+    StringList_SetObjects(s._instance(), Index, CheckPtr(value))
 }
 
 func (s *TStringList) Values(Name string) string {
-    return StringList_GetValues(s.instance, Name)
+    return StringList_GetValues(s._instance(), Name)
 }
 
 func (s *TStringList) SetValues(Name string, value string) {
-    StringList_SetValues(s.instance, Name, value)
+    StringList_SetValues(s._instance(), Name, value)
 }
 
 func (s *TStringList) ValueFromIndex(Index int32) string {
-    return StringList_GetValueFromIndex(s.instance, Index)
+    return StringList_GetValueFromIndex(s._instance(), Index)
 }
 
 func (s *TStringList) SetValueFromIndex(Index int32, value string) {
-    StringList_SetValueFromIndex(s.instance, Index, value)
+    StringList_SetValueFromIndex(s._instance(), Index, value)
 }
 
 func (s *TStringList) Strings(Index int32) string {
-    return StringList_GetStrings(s.instance, Index)
+    return StringList_GetStrings(s._instance(), Index)
 }
 
 func (s *TStringList) SetStrings(Index int32, value string) {
-    StringList_SetStrings(s.instance, Index, value)
+    StringList_SetStrings(s._instance(), Index, value)
 }
 

@@ -19,102 +19,95 @@ import (
 
 type TCoolBand struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewCoolBand
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewCoolBand(AOwner *TCollection) *TCoolBand {
     c := new(TCoolBand)
-    c.instance = CoolBand_Create(CheckPtr(AOwner))
-    c.ptr = unsafe.Pointer(c.instance)
+    c.instance = unsafe.Pointer(CoolBand_Create(CheckPtr(AOwner)))
     setFinalizer(c, (*TCoolBand).Free)
     return c
 }
 
+// AsCoolBand
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsCoolBand(obj interface{}) *TCoolBand {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TCoolBand{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TCoolBand{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsCoolBand.
-func CoolBandFromInst(inst uintptr) *TCoolBand {
-    return AsCoolBand(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsCoolBand.
-func CoolBandFromObj(obj IObject) *TCoolBand {
-    return AsCoolBand(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsCoolBand.
-func CoolBandFromUnsafePointer(ptr unsafe.Pointer) *TCoolBand {
-    return AsCoolBand(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (c *TCoolBand) Free() {
-    if c.instance != 0 {
-        CoolBand_Free(c.instance)
-        c.instance, c.ptr = 0, nullptr
+    if c.instance != nullptr {
+        CoolBand_Free(c._instance())
+        c.instance  = nullptr
     }
 }
 
+func (c *TCoolBand) _instance() uintptr {
+    return uintptr(c.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (c *TCoolBand) Instance() uintptr {
-    return c.instance
+    return c._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (c *TCoolBand) UnsafeAddr() unsafe.Pointer {
-    return c.ptr
+    return c.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (c *TCoolBand) IsValid() bool {
-    return c.instance != 0
+    return c.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (c *TCoolBand) Is() TIs {
-    return TIs(c.instance)
+    return TIs(c._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (c *TCoolBand) As() TAs {
-//    return TAs(c.instance)
+//    return TAs(c._instance())
 //}
 
+// TCoolBandClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,255 +115,303 @@ func TCoolBandClass() TClass {
     return CoolBand_StaticClassType()
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (c *TCoolBand) Assign(Source IObject) {
-    CoolBand_Assign(c.instance, CheckPtr(Source))
+    CoolBand_Assign(c._instance(), CheckPtr(Source))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (c *TCoolBand) GetNamePath() string {
-    return CoolBand_GetNamePath(c.instance)
+    return CoolBand_GetNamePath(c._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (c *TCoolBand) ClassType() TClass {
-    return CoolBand_ClassType(c.instance)
+    return CoolBand_ClassType(c._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (c *TCoolBand) ClassName() string {
-    return CoolBand_ClassName(c.instance)
+    return CoolBand_ClassName(c._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (c *TCoolBand) InstanceSize() int32 {
-    return CoolBand_InstanceSize(c.instance)
+    return CoolBand_InstanceSize(c._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (c *TCoolBand) InheritsFrom(AClass TClass) bool {
-    return CoolBand_InheritsFrom(c.instance, AClass)
+    return CoolBand_InheritsFrom(c._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (c *TCoolBand) Equals(Obj IObject) bool {
-    return CoolBand_Equals(c.instance, CheckPtr(Obj))
+    return CoolBand_Equals(c._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (c *TCoolBand) GetHashCode() int32 {
-    return CoolBand_GetHashCode(c.instance)
+    return CoolBand_GetHashCode(c._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (c *TCoolBand) ToString() string {
-    return CoolBand_ToString(c.instance)
+    return CoolBand_ToString(c._instance())
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (c *TCoolBand) Height() int32 {
-    return CoolBand_GetHeight(c.instance)
+    return CoolBand_GetHeight(c._instance())
 }
 
 func (c *TCoolBand) Bitmap() *TBitmap {
-    return AsBitmap(CoolBand_GetBitmap(c.instance))
+    return AsBitmap(CoolBand_GetBitmap(c._instance()))
 }
 
 func (c *TCoolBand) SetBitmap(value *TBitmap) {
-    CoolBand_SetBitmap(c.instance, CheckPtr(value))
+    CoolBand_SetBitmap(c._instance(), CheckPtr(value))
 }
 
+// BorderStyle
+//
 // 获取窗口边框样式。比如：无边框，单一边框等。
 func (c *TCoolBand) BorderStyle() TBorderStyle {
-    return CoolBand_GetBorderStyle(c.instance)
+    return CoolBand_GetBorderStyle(c._instance())
 }
 
+// SetBorderStyle
+//
 // 设置窗口边框样式。比如：无边框，单一边框等。
 func (c *TCoolBand) SetBorderStyle(value TBorderStyle) {
-    CoolBand_SetBorderStyle(c.instance, value)
+    CoolBand_SetBorderStyle(c._instance(), value)
 }
 
 func (c *TCoolBand) Break() bool {
-    return CoolBand_GetBreak(c.instance)
+    return CoolBand_GetBreak(c._instance())
 }
 
 func (c *TCoolBand) SetBreak(value bool) {
-    CoolBand_SetBreak(c.instance, value)
+    CoolBand_SetBreak(c._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (c *TCoolBand) Color() TColor {
-    return CoolBand_GetColor(c.instance)
+    return CoolBand_GetColor(c._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (c *TCoolBand) SetColor(value TColor) {
-    CoolBand_SetColor(c.instance, value)
+    CoolBand_SetColor(c._instance(), value)
 }
 
 func (c *TCoolBand) Control() *TWinControl {
-    return AsWinControl(CoolBand_GetControl(c.instance))
+    return AsWinControl(CoolBand_GetControl(c._instance()))
 }
 
 func (c *TCoolBand) SetControl(value IWinControl) {
-    CoolBand_SetControl(c.instance, CheckPtr(value))
+    CoolBand_SetControl(c._instance(), CheckPtr(value))
 }
 
 func (c *TCoolBand) FixedBackground() bool {
-    return CoolBand_GetFixedBackground(c.instance)
+    return CoolBand_GetFixedBackground(c._instance())
 }
 
 func (c *TCoolBand) SetFixedBackground(value bool) {
-    CoolBand_SetFixedBackground(c.instance, value)
+    CoolBand_SetFixedBackground(c._instance(), value)
 }
 
 func (c *TCoolBand) FixedSize() bool {
-    return CoolBand_GetFixedSize(c.instance)
+    return CoolBand_GetFixedSize(c._instance())
 }
 
 func (c *TCoolBand) SetFixedSize(value bool) {
-    CoolBand_SetFixedSize(c.instance, value)
+    CoolBand_SetFixedSize(c._instance(), value)
 }
 
 func (c *TCoolBand) HorizontalOnly() bool {
-    return CoolBand_GetHorizontalOnly(c.instance)
+    return CoolBand_GetHorizontalOnly(c._instance())
 }
 
 func (c *TCoolBand) SetHorizontalOnly(value bool) {
-    CoolBand_SetHorizontalOnly(c.instance, value)
+    CoolBand_SetHorizontalOnly(c._instance(), value)
 }
 
+// ImageIndex
+//
 // 获取图像在images中的索引。
 func (c *TCoolBand) ImageIndex() int32 {
-    return CoolBand_GetImageIndex(c.instance)
+    return CoolBand_GetImageIndex(c._instance())
 }
 
+// SetImageIndex
+//
 // 设置图像在images中的索引。
 func (c *TCoolBand) SetImageIndex(value int32) {
-    CoolBand_SetImageIndex(c.instance, value)
+    CoolBand_SetImageIndex(c._instance(), value)
 }
 
 func (c *TCoolBand) MinHeight() int32 {
-    return CoolBand_GetMinHeight(c.instance)
+    return CoolBand_GetMinHeight(c._instance())
 }
 
 func (c *TCoolBand) SetMinHeight(value int32) {
-    CoolBand_SetMinHeight(c.instance, value)
+    CoolBand_SetMinHeight(c._instance(), value)
 }
 
 func (c *TCoolBand) MinWidth() int32 {
-    return CoolBand_GetMinWidth(c.instance)
+    return CoolBand_GetMinWidth(c._instance())
 }
 
 func (c *TCoolBand) SetMinWidth(value int32) {
-    CoolBand_SetMinWidth(c.instance, value)
+    CoolBand_SetMinWidth(c._instance(), value)
 }
 
+// ParentColor
+//
 // 获取使用父容器颜色。
 //
 // Get parent color.
 func (c *TCoolBand) ParentColor() bool {
-    return CoolBand_GetParentColor(c.instance)
+    return CoolBand_GetParentColor(c._instance())
 }
 
+// SetParentColor
+//
 // 设置使用父容器颜色。
 //
 // Set parent color.
 func (c *TCoolBand) SetParentColor(value bool) {
-    CoolBand_SetParentColor(c.instance, value)
+    CoolBand_SetParentColor(c._instance(), value)
 }
 
 func (c *TCoolBand) ParentBitmap() bool {
-    return CoolBand_GetParentBitmap(c.instance)
+    return CoolBand_GetParentBitmap(c._instance())
 }
 
 func (c *TCoolBand) SetParentBitmap(value bool) {
-    CoolBand_SetParentBitmap(c.instance, value)
+    CoolBand_SetParentBitmap(c._instance(), value)
 }
 
+// Text
+//
 // 获取文本。
 func (c *TCoolBand) Text() string {
-    return CoolBand_GetText(c.instance)
+    return CoolBand_GetText(c._instance())
 }
 
+// SetText
+//
 // 设置文本。
 func (c *TCoolBand) SetText(value string) {
-    CoolBand_SetText(c.instance, value)
+    CoolBand_SetText(c._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (c *TCoolBand) Visible() bool {
-    return CoolBand_GetVisible(c.instance)
+    return CoolBand_GetVisible(c._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (c *TCoolBand) SetVisible(value bool) {
-    CoolBand_SetVisible(c.instance, value)
+    CoolBand_SetVisible(c._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (c *TCoolBand) Width() int32 {
-    return CoolBand_GetWidth(c.instance)
+    return CoolBand_GetWidth(c._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (c *TCoolBand) SetWidth(value int32) {
-    CoolBand_SetWidth(c.instance, value)
+    CoolBand_SetWidth(c._instance(), value)
 }
 
 func (c *TCoolBand) Collection() *TCollection {
-    return AsCollection(CoolBand_GetCollection(c.instance))
+    return AsCollection(CoolBand_GetCollection(c._instance()))
 }
 
 func (c *TCoolBand) SetCollection(value *TCollection) {
-    CoolBand_SetCollection(c.instance, CheckPtr(value))
+    CoolBand_SetCollection(c._instance(), CheckPtr(value))
 }
 
 func (c *TCoolBand) Index() int32 {
-    return CoolBand_GetIndex(c.instance)
+    return CoolBand_GetIndex(c._instance())
 }
 
 func (c *TCoolBand) SetIndex(value int32) {
-    CoolBand_SetIndex(c.instance, value)
+    CoolBand_SetIndex(c._instance(), value)
 }
 
 func (c *TCoolBand) DisplayName() string {
-    return CoolBand_GetDisplayName(c.instance)
+    return CoolBand_GetDisplayName(c._instance())
 }
 
 func (c *TCoolBand) SetDisplayName(value string) {
-    CoolBand_SetDisplayName(c.instance, value)
+    CoolBand_SetDisplayName(c._instance(), value)
 }
 

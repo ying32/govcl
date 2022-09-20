@@ -19,101 +19,94 @@ import (
 
 type TStringGrid struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewStringGrid
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewStringGrid(owner IComponent) *TStringGrid {
     s := new(TStringGrid)
-    s.instance = StringGrid_Create(CheckPtr(owner))
-    s.ptr = unsafe.Pointer(s.instance)
+    s.instance = unsafe.Pointer(StringGrid_Create(CheckPtr(owner)))
     return s
 }
 
+// AsStringGrid
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsStringGrid(obj interface{}) *TStringGrid {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TStringGrid{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TStringGrid{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsStringGrid.
-func StringGridFromInst(inst uintptr) *TStringGrid {
-    return AsStringGrid(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsStringGrid.
-func StringGridFromObj(obj IObject) *TStringGrid {
-    return AsStringGrid(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsStringGrid.
-func StringGridFromUnsafePointer(ptr unsafe.Pointer) *TStringGrid {
-    return AsStringGrid(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (s *TStringGrid) Free() {
-    if s.instance != 0 {
-        StringGrid_Free(s.instance)
-        s.instance, s.ptr = 0, nullptr
+    if s.instance != nullptr {
+        StringGrid_Free(s._instance())
+        s.instance  = nullptr
     }
 }
 
+func (s *TStringGrid) _instance() uintptr {
+    return uintptr(s.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (s *TStringGrid) Instance() uintptr {
-    return s.instance
+    return s._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (s *TStringGrid) UnsafeAddr() unsafe.Pointer {
-    return s.ptr
+    return s.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (s *TStringGrid) IsValid() bool {
-    return s.instance != 0
+    return s.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (s *TStringGrid) Is() TIs {
-    return TIs(s.instance)
+    return TIs(s._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (s *TStringGrid) As() TAs {
-//    return TAs(s.instance)
+//    return TAs(s._instance())
 //}
 
+// TStringGridClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,1921 +115,2255 @@ func TStringGridClass() TClass {
 }
 
 func (s *TStringGrid) DeleteColRow(IsColumn bool, index int32) {
-    StringGrid_DeleteColRow(s.instance, IsColumn , index)
+    StringGrid_DeleteColRow(s._instance(), IsColumn , index)
 }
 
 func (s *TStringGrid) DeleteCol(Index int32) {
-    StringGrid_DeleteCol(s.instance, Index)
+    StringGrid_DeleteCol(s._instance(), Index)
 }
 
 func (s *TStringGrid) DeleteRow(Index int32) {
-    StringGrid_DeleteRow(s.instance, Index)
+    StringGrid_DeleteRow(s._instance(), Index)
 }
 
 func (s *TStringGrid) ExchangeColRow(IsColumn bool, index int32, WithIndex int32) {
-    StringGrid_ExchangeColRow(s.instance, IsColumn , index , WithIndex)
+    StringGrid_ExchangeColRow(s._instance(), IsColumn , index , WithIndex)
 }
 
 func (s *TStringGrid) InsertColRow(IsColumn bool, index int32) {
-    StringGrid_InsertColRow(s.instance, IsColumn , index)
+    StringGrid_InsertColRow(s._instance(), IsColumn , index)
 }
 
 func (s *TStringGrid) MoveColRow(IsColumn bool, FromIndex int32, ToIndex int32) {
-    StringGrid_MoveColRow(s.instance, IsColumn , FromIndex , ToIndex)
+    StringGrid_MoveColRow(s._instance(), IsColumn , FromIndex , ToIndex)
 }
 
 func (s *TStringGrid) SortColRow(IsColumn bool, Index int32, FromIndex int32, ToIndex int32) {
-    StringGrid_SortColRow(s.instance, IsColumn , Index , FromIndex , ToIndex)
+    StringGrid_SortColRow(s._instance(), IsColumn , Index , FromIndex , ToIndex)
 }
 
 func (s *TStringGrid) EditorByStyle(Style TColumnButtonStyle) *TWinControl {
-    return AsWinControl(StringGrid_EditorByStyle(s.instance, Style))
+    return AsWinControl(StringGrid_EditorByStyle(s._instance(), Style))
 }
 
 func (s *TStringGrid) EditorKeyDown(Sender IObject, Key *uint16, Shift TShiftState) {
-    StringGrid_EditorKeyDown(s.instance, CheckPtr(Sender), Key , Shift)
+    StringGrid_EditorKeyDown(s._instance(), CheckPtr(Sender), Key , Shift)
 }
 
 func (s *TStringGrid) EditorKeyPress(Sender IObject, Key *uint16) {
-    StringGrid_EditorKeyPress(s.instance, CheckPtr(Sender), Key)
+    StringGrid_EditorKeyPress(s._instance(), CheckPtr(Sender), Key)
 }
 
 func (s *TStringGrid) EditorKeyUp(Sender IObject, key *uint16, shift TShiftState) {
-    StringGrid_EditorKeyUp(s.instance, CheckPtr(Sender), key , shift)
+    StringGrid_EditorKeyUp(s._instance(), CheckPtr(Sender), key , shift)
 }
 
 func (s *TStringGrid) EditorTextChanged(aCol int32, aRow int32, aText string) {
-    StringGrid_EditorTextChanged(s.instance, aCol , aRow , aText)
+    StringGrid_EditorTextChanged(s._instance(), aCol , aRow , aText)
 }
 
 func (s *TStringGrid) EditingDone() {
-    StringGrid_EditingDone(s.instance)
+    StringGrid_EditingDone(s._instance())
 }
 
 func (s *TStringGrid) AutoAdjustColumns() {
-    StringGrid_AutoAdjustColumns(s.instance)
+    StringGrid_AutoAdjustColumns(s._instance())
 }
 
 func (s *TStringGrid) CellRect(ACol int32, ARow int32) TRect {
-    return StringGrid_CellRect(s.instance, ACol , ARow)
+    return StringGrid_CellRect(s._instance(), ACol , ARow)
 }
 
 func (s *TStringGrid) CellToGridZone(aCol int32, aRow int32) TGridZone {
-    return StringGrid_CellToGridZone(s.instance, aCol , aRow)
+    return StringGrid_CellToGridZone(s._instance(), aCol , aRow)
 }
 
 func (s *TStringGrid) CheckPosition() {
-    StringGrid_CheckPosition(s.instance)
+    StringGrid_CheckPosition(s._instance())
 }
 
 func (s *TStringGrid) ClearCols() bool {
-    return StringGrid_ClearCols(s.instance)
+    return StringGrid_ClearCols(s._instance())
 }
 
 func (s *TStringGrid) ClearRows() bool {
-    return StringGrid_ClearRows(s.instance)
+    return StringGrid_ClearRows(s._instance())
 }
 
+// Clear
+//
 // 清除。
 func (s *TStringGrid) Clear() {
-    StringGrid_Clear(s.instance)
+    StringGrid_Clear(s._instance())
 }
 
 func (s *TStringGrid) ClearSelections() {
-    StringGrid_ClearSelections(s.instance)
+    StringGrid_ClearSelections(s._instance())
 }
 
 func (s *TStringGrid) HasMultiSelection() bool {
-    return StringGrid_HasMultiSelection(s.instance)
+    return StringGrid_HasMultiSelection(s._instance())
 }
 
 func (s *TStringGrid) InvalidateCell(aCol int32, aRow int32) {
-    StringGrid_InvalidateCell(s.instance, aCol , aRow)
+    StringGrid_InvalidateCell(s._instance(), aCol , aRow)
 }
 
 func (s *TStringGrid) InvalidateCol(ACol int32) {
-    StringGrid_InvalidateCol(s.instance, ACol)
+    StringGrid_InvalidateCol(s._instance(), ACol)
 }
 
 func (s *TStringGrid) InvalidateRange(aRange TRect) {
-    StringGrid_InvalidateRange(s.instance, aRange)
+    StringGrid_InvalidateRange(s._instance(), aRange)
 }
 
 func (s *TStringGrid) InvalidateRow(ARow int32) {
-    StringGrid_InvalidateRow(s.instance, ARow)
+    StringGrid_InvalidateRow(s._instance(), ARow)
 }
 
 func (s *TStringGrid) IsCellVisible(aCol int32, aRow int32) bool {
-    return StringGrid_IsCellVisible(s.instance, aCol , aRow)
+    return StringGrid_IsCellVisible(s._instance(), aCol , aRow)
 }
 
 func (s *TStringGrid) IsFixedCellVisible(aCol int32, aRow int32) bool {
-    return StringGrid_IsFixedCellVisible(s.instance, aCol , aRow)
+    return StringGrid_IsFixedCellVisible(s._instance(), aCol , aRow)
 }
 
 func (s *TStringGrid) MouseCoord(X int32, Y int32) TGridCoord {
-    return StringGrid_MouseCoord(s.instance, X , Y)
+    return StringGrid_MouseCoord(s._instance(), X , Y)
 }
 
 func (s *TStringGrid) MouseToCell(Mouse TPoint) TPoint {
-    return StringGrid_MouseToCell(s.instance, Mouse)
+    return StringGrid_MouseToCell(s._instance(), Mouse)
 }
 
 func (s *TStringGrid) MouseToLogcell(Mouse TPoint) TPoint {
-    return StringGrid_MouseToLogcell(s.instance, Mouse)
+    return StringGrid_MouseToLogcell(s._instance(), Mouse)
 }
 
 func (s *TStringGrid) MouseToGridZone(X int32, Y int32) TGridZone {
-    return StringGrid_MouseToGridZone(s.instance, X , Y)
+    return StringGrid_MouseToGridZone(s._instance(), X , Y)
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (s *TStringGrid) CanFocus() bool {
-    return StringGrid_CanFocus(s.instance)
+    return StringGrid_CanFocus(s._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (s *TStringGrid) ContainsControl(Control IControl) bool {
-    return StringGrid_ContainsControl(s.instance, CheckPtr(Control))
+    return StringGrid_ContainsControl(s._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (s *TStringGrid) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(StringGrid_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(StringGrid_ControlAtPos(s._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (s *TStringGrid) DisableAlign() {
-    StringGrid_DisableAlign(s.instance)
+    StringGrid_DisableAlign(s._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (s *TStringGrid) EnableAlign() {
-    StringGrid_EnableAlign(s.instance)
+    StringGrid_EnableAlign(s._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (s *TStringGrid) FindChildControl(ControlName string) *TControl {
-    return AsControl(StringGrid_FindChildControl(s.instance, ControlName))
+    return AsControl(StringGrid_FindChildControl(s._instance(), ControlName))
 }
 
 func (s *TStringGrid) FlipChildren(AllLevels bool) {
-    StringGrid_FlipChildren(s.instance, AllLevels)
+    StringGrid_FlipChildren(s._instance(), AllLevels)
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (s *TStringGrid) Focused() bool {
-    return StringGrid_Focused(s.instance)
+    return StringGrid_Focused(s._instance())
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (s *TStringGrid) HandleAllocated() bool {
-    return StringGrid_HandleAllocated(s.instance)
+    return StringGrid_HandleAllocated(s._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (s *TStringGrid) InsertControl(AControl IControl) {
-    StringGrid_InsertControl(s.instance, CheckPtr(AControl))
+    StringGrid_InsertControl(s._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (s *TStringGrid) Invalidate() {
-    StringGrid_Invalidate(s.instance)
+    StringGrid_Invalidate(s._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (s *TStringGrid) PaintTo(DC HDC, X int32, Y int32) {
-    StringGrid_PaintTo(s.instance, DC , X , Y)
+    StringGrid_PaintTo(s._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (s *TStringGrid) RemoveControl(AControl IControl) {
-    StringGrid_RemoveControl(s.instance, CheckPtr(AControl))
+    StringGrid_RemoveControl(s._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (s *TStringGrid) Realign() {
-    StringGrid_Realign(s.instance)
+    StringGrid_Realign(s._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (s *TStringGrid) Repaint() {
-    StringGrid_Repaint(s.instance)
+    StringGrid_Repaint(s._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (s *TStringGrid) ScaleBy(M int32, D int32) {
-    StringGrid_ScaleBy(s.instance, M , D)
+    StringGrid_ScaleBy(s._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (s *TStringGrid) ScrollBy(DeltaX int32, DeltaY int32) {
-    StringGrid_ScrollBy(s.instance, DeltaX , DeltaY)
+    StringGrid_ScrollBy(s._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (s *TStringGrid) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    StringGrid_SetBounds(s.instance, ALeft , ATop , AWidth , AHeight)
+    StringGrid_SetBounds(s._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (s *TStringGrid) SetFocus() {
-    StringGrid_SetFocus(s.instance)
+    StringGrid_SetFocus(s._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (s *TStringGrid) Update() {
-    StringGrid_Update(s.instance)
+    StringGrid_Update(s._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (s *TStringGrid) BringToFront() {
-    StringGrid_BringToFront(s.instance)
+    StringGrid_BringToFront(s._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (s *TStringGrid) ClientToScreen(Point TPoint) TPoint {
-    return StringGrid_ClientToScreen(s.instance, Point)
+    return StringGrid_ClientToScreen(s._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (s *TStringGrid) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return StringGrid_ClientToParent(s.instance, Point , CheckPtr(AParent))
+    return StringGrid_ClientToParent(s._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (s *TStringGrid) Dragging() bool {
-    return StringGrid_Dragging(s.instance)
+    return StringGrid_Dragging(s._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (s *TStringGrid) HasParent() bool {
-    return StringGrid_HasParent(s.instance)
+    return StringGrid_HasParent(s._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (s *TStringGrid) Hide() {
-    StringGrid_Hide(s.instance)
+    StringGrid_Hide(s._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (s *TStringGrid) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return StringGrid_Perform(s.instance, Msg , WParam , LParam)
+    return StringGrid_Perform(s._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (s *TStringGrid) Refresh() {
-    StringGrid_Refresh(s.instance)
+    StringGrid_Refresh(s._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (s *TStringGrid) ScreenToClient(Point TPoint) TPoint {
-    return StringGrid_ScreenToClient(s.instance, Point)
+    return StringGrid_ScreenToClient(s._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (s *TStringGrid) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return StringGrid_ParentToClient(s.instance, Point , CheckPtr(AParent))
+    return StringGrid_ParentToClient(s._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (s *TStringGrid) SendToBack() {
-    StringGrid_SendToBack(s.instance)
+    StringGrid_SendToBack(s._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (s *TStringGrid) Show() {
-    StringGrid_Show(s.instance)
+    StringGrid_Show(s._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (s *TStringGrid) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return StringGrid_GetTextBuf(s.instance, Buffer , BufSize)
+    return StringGrid_GetTextBuf(s._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (s *TStringGrid) GetTextLen() int32 {
-    return StringGrid_GetTextLen(s.instance)
+    return StringGrid_GetTextLen(s._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (s *TStringGrid) SetTextBuf(Buffer string) {
-    StringGrid_SetTextBuf(s.instance, Buffer)
+    StringGrid_SetTextBuf(s._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (s *TStringGrid) FindComponent(AName string) *TComponent {
-    return AsComponent(StringGrid_FindComponent(s.instance, AName))
+    return AsComponent(StringGrid_FindComponent(s._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (s *TStringGrid) GetNamePath() string {
-    return StringGrid_GetNamePath(s.instance)
+    return StringGrid_GetNamePath(s._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (s *TStringGrid) Assign(Source IObject) {
-    StringGrid_Assign(s.instance, CheckPtr(Source))
+    StringGrid_Assign(s._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (s *TStringGrid) ClassType() TClass {
-    return StringGrid_ClassType(s.instance)
+    return StringGrid_ClassType(s._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (s *TStringGrid) ClassName() string {
-    return StringGrid_ClassName(s.instance)
+    return StringGrid_ClassName(s._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (s *TStringGrid) InstanceSize() int32 {
-    return StringGrid_InstanceSize(s.instance)
+    return StringGrid_InstanceSize(s._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (s *TStringGrid) InheritsFrom(AClass TClass) bool {
-    return StringGrid_InheritsFrom(s.instance, AClass)
+    return StringGrid_InheritsFrom(s._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (s *TStringGrid) Equals(Obj IObject) bool {
-    return StringGrid_Equals(s.instance, CheckPtr(Obj))
+    return StringGrid_Equals(s._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (s *TStringGrid) GetHashCode() int32 {
-    return StringGrid_GetHashCode(s.instance)
+    return StringGrid_GetHashCode(s._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (s *TStringGrid) ToString() string {
-    return StringGrid_ToString(s.instance)
+    return StringGrid_ToString(s._instance())
 }
 
 func (s *TStringGrid) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    StringGrid_AnchorToNeighbour(s.instance, ASide , ASpace , CheckPtr(ASibling))
+    StringGrid_AnchorToNeighbour(s._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (s *TStringGrid) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    StringGrid_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
+    StringGrid_AnchorParallel(s._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (s *TStringGrid) AnchorHorizontalCenterTo(ASibling IControl) {
-    StringGrid_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
+    StringGrid_AnchorHorizontalCenterTo(s._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (s *TStringGrid) AnchorVerticalCenterTo(ASibling IControl) {
-    StringGrid_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
+    StringGrid_AnchorVerticalCenterTo(s._instance(), CheckPtr(ASibling))
 }
 
 func (s *TStringGrid) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    StringGrid_AnchorSame(s.instance, ASide , CheckPtr(ASibling))
+    StringGrid_AnchorSame(s._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (s *TStringGrid) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    StringGrid_AnchorAsAlign(s.instance, ATheAlign , ASpace)
+    StringGrid_AnchorAsAlign(s._instance(), ATheAlign , ASpace)
 }
 
 func (s *TStringGrid) AnchorClient(ASpace int32) {
-    StringGrid_AnchorClient(s.instance, ASpace)
+    StringGrid_AnchorClient(s._instance(), ASpace)
 }
 
 func (s *TStringGrid) ScaleDesignToForm(ASize int32) int32 {
-    return StringGrid_ScaleDesignToForm(s.instance, ASize)
+    return StringGrid_ScaleDesignToForm(s._instance(), ASize)
 }
 
 func (s *TStringGrid) ScaleFormToDesign(ASize int32) int32 {
-    return StringGrid_ScaleFormToDesign(s.instance, ASize)
+    return StringGrid_ScaleFormToDesign(s._instance(), ASize)
 }
 
 func (s *TStringGrid) Scale96ToForm(ASize int32) int32 {
-    return StringGrid_Scale96ToForm(s.instance, ASize)
+    return StringGrid_Scale96ToForm(s._instance(), ASize)
 }
 
 func (s *TStringGrid) ScaleFormTo96(ASize int32) int32 {
-    return StringGrid_ScaleFormTo96(s.instance, ASize)
+    return StringGrid_ScaleFormTo96(s._instance(), ASize)
 }
 
 func (s *TStringGrid) Scale96ToFont(ASize int32) int32 {
-    return StringGrid_Scale96ToFont(s.instance, ASize)
+    return StringGrid_Scale96ToFont(s._instance(), ASize)
 }
 
 func (s *TStringGrid) ScaleFontTo96(ASize int32) int32 {
-    return StringGrid_ScaleFontTo96(s.instance, ASize)
+    return StringGrid_ScaleFontTo96(s._instance(), ASize)
 }
 
 func (s *TStringGrid) ScaleScreenToFont(ASize int32) int32 {
-    return StringGrid_ScaleScreenToFont(s.instance, ASize)
+    return StringGrid_ScaleScreenToFont(s._instance(), ASize)
 }
 
 func (s *TStringGrid) ScaleFontToScreen(ASize int32) int32 {
-    return StringGrid_ScaleFontToScreen(s.instance, ASize)
+    return StringGrid_ScaleFontToScreen(s._instance(), ASize)
 }
 
 func (s *TStringGrid) Scale96ToScreen(ASize int32) int32 {
-    return StringGrid_Scale96ToScreen(s.instance, ASize)
+    return StringGrid_Scale96ToScreen(s._instance(), ASize)
 }
 
 func (s *TStringGrid) ScaleScreenTo96(ASize int32) int32 {
-    return StringGrid_ScaleScreenTo96(s.instance, ASize)
+    return StringGrid_ScaleScreenTo96(s._instance(), ASize)
 }
 
 func (s *TStringGrid) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    StringGrid_AutoAdjustLayout(s.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    StringGrid_AutoAdjustLayout(s._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (s *TStringGrid) FixDesignFontsPPI(ADesignTimePPI int32) {
-    StringGrid_FixDesignFontsPPI(s.instance, ADesignTimePPI)
+    StringGrid_FixDesignFontsPPI(s._instance(), ADesignTimePPI)
 }
 
 func (s *TStringGrid) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    StringGrid_ScaleFontsPPI(s.instance, AToPPI , AProportion)
+    StringGrid_ScaleFontsPPI(s._instance(), AToPPI , AProportion)
 }
 
 func (s *TStringGrid) SelectedColor() TColor {
-    return StringGrid_GetSelectedColor(s.instance)
+    return StringGrid_GetSelectedColor(s._instance())
 }
 
 func (s *TStringGrid) SetSelectedColor(value TColor) {
-    StringGrid_SetSelectedColor(s.instance, value)
+    StringGrid_SetSelectedColor(s._instance(), value)
 }
 
 func (s *TStringGrid) SelectedColumn() *TGridColumn {
-    return AsGridColumn(StringGrid_GetSelectedColumn(s.instance))
+    return AsGridColumn(StringGrid_GetSelectedColumn(s._instance()))
 }
 
 func (s *TStringGrid) StrictSort() bool {
-    return StringGrid_GetStrictSort(s.instance)
+    return StringGrid_GetStrictSort(s._instance())
 }
 
 func (s *TStringGrid) SetStrictSort(value bool) {
-    StringGrid_SetStrictSort(s.instance, value)
+    StringGrid_SetStrictSort(s._instance(), value)
 }
 
 func (s *TStringGrid) FixedHotColor() TColor {
-    return StringGrid_GetFixedHotColor(s.instance)
+    return StringGrid_GetFixedHotColor(s._instance())
 }
 
 func (s *TStringGrid) SetFixedHotColor(value TColor) {
-    StringGrid_SetFixedHotColor(s.instance, value)
+    StringGrid_SetFixedHotColor(s._instance(), value)
 }
 
 func (s *TStringGrid) FastEditing() bool {
-    return StringGrid_GetFastEditing(s.instance)
+    return StringGrid_GetFastEditing(s._instance())
 }
 
 func (s *TStringGrid) SetFastEditing(value bool) {
-    StringGrid_SetFastEditing(s.instance, value)
+    StringGrid_SetFastEditing(s._instance(), value)
 }
 
 func (s *TStringGrid) FixedGridLineColor() TColor {
-    return StringGrid_GetFixedGridLineColor(s.instance)
+    return StringGrid_GetFixedGridLineColor(s._instance())
 }
 
 func (s *TStringGrid) SetFixedGridLineColor(value TColor) {
-    StringGrid_SetFixedGridLineColor(s.instance, value)
+    StringGrid_SetFixedGridLineColor(s._instance(), value)
 }
 
 func (s *TStringGrid) FocusColor() TColor {
-    return StringGrid_GetFocusColor(s.instance)
+    return StringGrid_GetFocusColor(s._instance())
 }
 
 func (s *TStringGrid) SetFocusColor(value TColor) {
-    StringGrid_SetFocusColor(s.instance, value)
+    StringGrid_SetFocusColor(s._instance(), value)
 }
 
 func (s *TStringGrid) FocusRectVisible() bool {
-    return StringGrid_GetFocusRectVisible(s.instance)
+    return StringGrid_GetFocusRectVisible(s._instance())
 }
 
 func (s *TStringGrid) SetFocusRectVisible(value bool) {
-    StringGrid_SetFocusRectVisible(s.instance, value)
+    StringGrid_SetFocusRectVisible(s._instance(), value)
 }
 
 func (s *TStringGrid) GridLineColor() TColor {
-    return StringGrid_GetGridLineColor(s.instance)
+    return StringGrid_GetGridLineColor(s._instance())
 }
 
 func (s *TStringGrid) SetGridLineColor(value TColor) {
-    StringGrid_SetGridLineColor(s.instance, value)
+    StringGrid_SetGridLineColor(s._instance(), value)
 }
 
 func (s *TStringGrid) GridLineStyle() TPenStyle {
-    return StringGrid_GetGridLineStyle(s.instance)
+    return StringGrid_GetGridLineStyle(s._instance())
 }
 
 func (s *TStringGrid) SetGridLineStyle(value TPenStyle) {
-    StringGrid_SetGridLineStyle(s.instance, value)
+    StringGrid_SetGridLineStyle(s._instance(), value)
 }
 
 func (s *TStringGrid) Editor() *TWinControl {
-    return AsWinControl(StringGrid_GetEditor(s.instance))
+    return AsWinControl(StringGrid_GetEditor(s._instance()))
 }
 
 func (s *TStringGrid) SetEditor(value IWinControl) {
-    StringGrid_SetEditor(s.instance, CheckPtr(value))
+    StringGrid_SetEditor(s._instance(), CheckPtr(value))
 }
 
 func (s *TStringGrid) EditorBorderStyle() TBorderStyle {
-    return StringGrid_GetEditorBorderStyle(s.instance)
+    return StringGrid_GetEditorBorderStyle(s._instance())
 }
 
 func (s *TStringGrid) SetEditorBorderStyle(value TBorderStyle) {
-    StringGrid_SetEditorBorderStyle(s.instance, value)
+    StringGrid_SetEditorBorderStyle(s._instance(), value)
 }
 
 func (s *TStringGrid) EditorMode() bool {
-    return StringGrid_GetEditorMode(s.instance)
+    return StringGrid_GetEditorMode(s._instance())
 }
 
 func (s *TStringGrid) SetEditorMode(value bool) {
-    StringGrid_SetEditorMode(s.instance, value)
+    StringGrid_SetEditorMode(s._instance(), value)
 }
 
 func (s *TStringGrid) SortOrder() TSortOrder {
-    return StringGrid_GetSortOrder(s.instance)
+    return StringGrid_GetSortOrder(s._instance())
 }
 
 func (s *TStringGrid) SetSortOrder(value TSortOrder) {
-    StringGrid_SetSortOrder(s.instance, value)
+    StringGrid_SetSortOrder(s._instance(), value)
 }
 
 func (s *TStringGrid) SortColumn() int32 {
-    return StringGrid_GetSortColumn(s.instance)
+    return StringGrid_GetSortColumn(s._instance())
 }
 
 func (s *TStringGrid) SetOnAfterSelection(fn TOnSelectEvent) {
-    StringGrid_SetOnAfterSelection(s.instance, fn)
+    StringGrid_SetOnAfterSelection(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnBeforeSelection(fn TOnSelectEvent) {
-    StringGrid_SetOnBeforeSelection(s.instance, fn)
+    StringGrid_SetOnBeforeSelection(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnButtonClick(fn TOnSelectEvent) {
-    StringGrid_SetOnButtonClick(s.instance, fn)
+    StringGrid_SetOnButtonClick(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnCheckboxToggled(fn TToggledCheckboxEvent) {
-    StringGrid_SetOnCheckboxToggled(s.instance, fn)
+    StringGrid_SetOnCheckboxToggled(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnColRowDeleted(fn TGridOperationEvent) {
-    StringGrid_SetOnColRowDeleted(s.instance, fn)
+    StringGrid_SetOnColRowDeleted(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnColRowExchanged(fn TGridOperationEvent) {
-    StringGrid_SetOnColRowExchanged(s.instance, fn)
+    StringGrid_SetOnColRowExchanged(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnColRowInserted(fn TGridOperationEvent) {
-    StringGrid_SetOnColRowInserted(s.instance, fn)
+    StringGrid_SetOnColRowInserted(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnColRowMoved(fn TGridOperationEvent) {
-    StringGrid_SetOnColRowMoved(s.instance, fn)
+    StringGrid_SetOnColRowMoved(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnCompareCells(fn TOnCompareCells) {
-    StringGrid_SetOnCompareCells(s.instance, fn)
+    StringGrid_SetOnCompareCells(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnEditingDone(fn TNotifyEvent) {
-    StringGrid_SetOnEditingDone(s.instance, fn)
+    StringGrid_SetOnEditingDone(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnGetCellHint(fn TGetCellHintEvent) {
-    StringGrid_SetOnGetCellHint(s.instance, fn)
+    StringGrid_SetOnGetCellHint(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnGetCheckboxState(fn TGetCheckboxStateEvent) {
-    StringGrid_SetOnGetCheckboxState(s.instance, fn)
+    StringGrid_SetOnGetCheckboxState(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnSetCheckboxState(fn TSetCheckboxStateEvent) {
-    StringGrid_SetOnSetCheckboxState(s.instance, fn)
+    StringGrid_SetOnSetCheckboxState(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnHeaderClick(fn THdrEvent) {
-    StringGrid_SetOnHeaderClick(s.instance, fn)
+    StringGrid_SetOnHeaderClick(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnHeaderSized(fn THdrEvent) {
-    StringGrid_SetOnHeaderSized(s.instance, fn)
+    StringGrid_SetOnHeaderSized(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnHeaderSizing(fn THeaderSizingEvent) {
-    StringGrid_SetOnHeaderSizing(s.instance, fn)
+    StringGrid_SetOnHeaderSizing(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnPickListSelect(fn TNotifyEvent) {
-    StringGrid_SetOnPickListSelect(s.instance, fn)
+    StringGrid_SetOnPickListSelect(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnSelection(fn TOnSelectEvent) {
-    StringGrid_SetOnSelection(s.instance, fn)
+    StringGrid_SetOnSelection(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnSelectEditor(fn TSelectEditorEvent) {
-    StringGrid_SetOnSelectEditor(s.instance, fn)
+    StringGrid_SetOnSelectEditor(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnUserCheckboxBitmap(fn TUserCheckBoxBitmapEvent) {
-    StringGrid_SetOnUserCheckboxBitmap(s.instance, fn)
+    StringGrid_SetOnUserCheckboxBitmap(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnValidateEntry(fn TValidateEntryEvent) {
-    StringGrid_SetOnValidateEntry(s.instance, fn)
+    StringGrid_SetOnValidateEntry(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnPrepareCanvas(fn TOnPrepareCanvasEvent) {
-    StringGrid_SetOnPrepareCanvas(s.instance, fn)
+    StringGrid_SetOnPrepareCanvas(s._instance(), fn)
 }
 
 func (s *TStringGrid) AlternateColor() TColor {
-    return StringGrid_GetAlternateColor(s.instance)
+    return StringGrid_GetAlternateColor(s._instance())
 }
 
 func (s *TStringGrid) SetAlternateColor(value TColor) {
-    StringGrid_SetAlternateColor(s.instance, value)
+    StringGrid_SetAlternateColor(s._instance(), value)
 }
 
 func (s *TStringGrid) AutoAdvance() TAutoAdvance {
-    return StringGrid_GetAutoAdvance(s.instance)
+    return StringGrid_GetAutoAdvance(s._instance())
 }
 
 func (s *TStringGrid) SetAutoAdvance(value TAutoAdvance) {
-    StringGrid_SetAutoAdvance(s.instance, value)
+    StringGrid_SetAutoAdvance(s._instance(), value)
 }
 
 func (s *TStringGrid) AutoEdit() bool {
-    return StringGrid_GetAutoEdit(s.instance)
+    return StringGrid_GetAutoEdit(s._instance())
 }
 
 func (s *TStringGrid) SetAutoEdit(value bool) {
-    StringGrid_SetAutoEdit(s.instance, value)
+    StringGrid_SetAutoEdit(s._instance(), value)
 }
 
 func (s *TStringGrid) AutoFillColumns() bool {
-    return StringGrid_GetAutoFillColumns(s.instance)
+    return StringGrid_GetAutoFillColumns(s._instance())
 }
 
 func (s *TStringGrid) SetAutoFillColumns(value bool) {
-    StringGrid_SetAutoFillColumns(s.instance, value)
+    StringGrid_SetAutoFillColumns(s._instance(), value)
 }
 
 func (s *TStringGrid) CellHintPriority() TCellHintPriority {
-    return StringGrid_GetCellHintPriority(s.instance)
+    return StringGrid_GetCellHintPriority(s._instance())
 }
 
 func (s *TStringGrid) SetCellHintPriority(value TCellHintPriority) {
-    StringGrid_SetCellHintPriority(s.instance, value)
+    StringGrid_SetCellHintPriority(s._instance(), value)
 }
 
 func (s *TStringGrid) ColumnClickSorts() bool {
-    return StringGrid_GetColumnClickSorts(s.instance)
+    return StringGrid_GetColumnClickSorts(s._instance())
 }
 
 func (s *TStringGrid) SetColumnClickSorts(value bool) {
-    StringGrid_SetColumnClickSorts(s.instance, value)
+    StringGrid_SetColumnClickSorts(s._instance(), value)
 }
 
 func (s *TStringGrid) Columns() *TGridColumns {
-    return AsGridColumns(StringGrid_GetColumns(s.instance))
+    return AsGridColumns(StringGrid_GetColumns(s._instance()))
 }
 
 func (s *TStringGrid) SetColumns(value *TGridColumns) {
-    StringGrid_SetColumns(s.instance, CheckPtr(value))
+    StringGrid_SetColumns(s._instance(), CheckPtr(value))
 }
 
 func (s *TStringGrid) ExtendedSelect() bool {
-    return StringGrid_GetExtendedSelect(s.instance)
+    return StringGrid_GetExtendedSelect(s._instance())
 }
 
 func (s *TStringGrid) SetExtendedSelect(value bool) {
-    StringGrid_SetExtendedSelect(s.instance, value)
+    StringGrid_SetExtendedSelect(s._instance(), value)
 }
 
+// Flat
+//
 // 获取平面样式。
 func (s *TStringGrid) Flat() bool {
-    return StringGrid_GetFlat(s.instance)
+    return StringGrid_GetFlat(s._instance())
 }
 
+// SetFlat
+//
 // 设置平面样式。
 func (s *TStringGrid) SetFlat(value bool) {
-    StringGrid_SetFlat(s.instance, value)
+    StringGrid_SetFlat(s._instance(), value)
 }
 
 func (s *TStringGrid) HeaderHotZones() TGridZoneSet {
-    return StringGrid_GetHeaderHotZones(s.instance)
+    return StringGrid_GetHeaderHotZones(s._instance())
 }
 
 func (s *TStringGrid) SetHeaderHotZones(value TGridZoneSet) {
-    StringGrid_SetHeaderHotZones(s.instance, value)
+    StringGrid_SetHeaderHotZones(s._instance(), value)
 }
 
 func (s *TStringGrid) HeaderPushZones() TGridZoneSet {
-    return StringGrid_GetHeaderPushZones(s.instance)
+    return StringGrid_GetHeaderPushZones(s._instance())
 }
 
 func (s *TStringGrid) SetHeaderPushZones(value TGridZoneSet) {
-    StringGrid_SetHeaderPushZones(s.instance, value)
+    StringGrid_SetHeaderPushZones(s._instance(), value)
 }
 
 func (s *TStringGrid) ImageIndexSortAsc() int32 {
-    return StringGrid_GetImageIndexSortAsc(s.instance)
+    return StringGrid_GetImageIndexSortAsc(s._instance())
 }
 
 func (s *TStringGrid) SetImageIndexSortAsc(value int32) {
-    StringGrid_SetImageIndexSortAsc(s.instance, value)
+    StringGrid_SetImageIndexSortAsc(s._instance(), value)
 }
 
 func (s *TStringGrid) ImageIndexSortDesc() int32 {
-    return StringGrid_GetImageIndexSortDesc(s.instance)
+    return StringGrid_GetImageIndexSortDesc(s._instance())
 }
 
 func (s *TStringGrid) SetImageIndexSortDesc(value int32) {
-    StringGrid_SetImageIndexSortDesc(s.instance, value)
+    StringGrid_SetImageIndexSortDesc(s._instance(), value)
 }
 
 func (s *TStringGrid) MouseWheelOption() TMouseWheelOption {
-    return StringGrid_GetMouseWheelOption(s.instance)
+    return StringGrid_GetMouseWheelOption(s._instance())
 }
 
 func (s *TStringGrid) SetMouseWheelOption(value TMouseWheelOption) {
-    StringGrid_SetMouseWheelOption(s.instance, value)
+    StringGrid_SetMouseWheelOption(s._instance(), value)
 }
 
 func (s *TStringGrid) Options2() TGridOptions2 {
-    return StringGrid_GetOptions2(s.instance)
+    return StringGrid_GetOptions2(s._instance())
 }
 
 func (s *TStringGrid) SetOptions2(value TGridOptions2) {
-    StringGrid_SetOptions2(s.instance, value)
+    StringGrid_SetOptions2(s._instance(), value)
 }
 
 func (s *TStringGrid) RangeSelectMode() TRangeSelectMode {
-    return StringGrid_GetRangeSelectMode(s.instance)
+    return StringGrid_GetRangeSelectMode(s._instance())
 }
 
 func (s *TStringGrid) SetRangeSelectMode(value TRangeSelectMode) {
-    StringGrid_SetRangeSelectMode(s.instance, value)
+    StringGrid_SetRangeSelectMode(s._instance(), value)
 }
 
 func (s *TStringGrid) TabAdvance() TAutoAdvance {
-    return StringGrid_GetTabAdvance(s.instance)
+    return StringGrid_GetTabAdvance(s._instance())
 }
 
 func (s *TStringGrid) SetTabAdvance(value TAutoAdvance) {
-    StringGrid_SetTabAdvance(s.instance, value)
+    StringGrid_SetTabAdvance(s._instance(), value)
 }
 
 func (s *TStringGrid) TitleFont() *TFont {
-    return AsFont(StringGrid_GetTitleFont(s.instance))
+    return AsFont(StringGrid_GetTitleFont(s._instance()))
 }
 
 func (s *TStringGrid) SetTitleFont(value *TFont) {
-    StringGrid_SetTitleFont(s.instance, CheckPtr(value))
+    StringGrid_SetTitleFont(s._instance(), CheckPtr(value))
 }
 
 func (s *TStringGrid) TitleImageList() *TImageList {
-    return AsImageList(StringGrid_GetTitleImageList(s.instance))
+    return AsImageList(StringGrid_GetTitleImageList(s._instance()))
 }
 
 func (s *TStringGrid) SetTitleImageList(value IComponent) {
-    StringGrid_SetTitleImageList(s.instance, CheckPtr(value))
+    StringGrid_SetTitleImageList(s._instance(), CheckPtr(value))
 }
 
 func (s *TStringGrid) TitleStyle() TTitleStyle {
-    return StringGrid_GetTitleStyle(s.instance)
+    return StringGrid_GetTitleStyle(s._instance())
 }
 
 func (s *TStringGrid) SetTitleStyle(value TTitleStyle) {
-    StringGrid_SetTitleStyle(s.instance, value)
+    StringGrid_SetTitleStyle(s._instance(), value)
 }
 
 func (s *TStringGrid) UseXORFeatures() bool {
-    return StringGrid_GetUseXORFeatures(s.instance)
+    return StringGrid_GetUseXORFeatures(s._instance())
 }
 
 func (s *TStringGrid) SetUseXORFeatures(value bool) {
-    StringGrid_SetUseXORFeatures(s.instance, value)
+    StringGrid_SetUseXORFeatures(s._instance(), value)
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (s *TStringGrid) Align() TAlign {
-    return StringGrid_GetAlign(s.instance)
+    return StringGrid_GetAlign(s._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (s *TStringGrid) SetAlign(value TAlign) {
-    StringGrid_SetAlign(s.instance, value)
+    StringGrid_SetAlign(s._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (s *TStringGrid) Anchors() TAnchors {
-    return StringGrid_GetAnchors(s.instance)
+    return StringGrid_GetAnchors(s._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (s *TStringGrid) SetAnchors(value TAnchors) {
-    StringGrid_SetAnchors(s.instance, value)
+    StringGrid_SetAnchors(s._instance(), value)
 }
 
 func (s *TStringGrid) BiDiMode() TBiDiMode {
-    return StringGrid_GetBiDiMode(s.instance)
+    return StringGrid_GetBiDiMode(s._instance())
 }
 
 func (s *TStringGrid) SetBiDiMode(value TBiDiMode) {
-    StringGrid_SetBiDiMode(s.instance, value)
+    StringGrid_SetBiDiMode(s._instance(), value)
 }
 
+// BorderStyle
+//
 // 获取窗口边框样式。比如：无边框，单一边框等。
 func (s *TStringGrid) BorderStyle() TBorderStyle {
-    return StringGrid_GetBorderStyle(s.instance)
+    return StringGrid_GetBorderStyle(s._instance())
 }
 
+// SetBorderStyle
+//
 // 设置窗口边框样式。比如：无边框，单一边框等。
 func (s *TStringGrid) SetBorderStyle(value TBorderStyle) {
-    StringGrid_SetBorderStyle(s.instance, value)
+    StringGrid_SetBorderStyle(s._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (s *TStringGrid) Color() TColor {
-    return StringGrid_GetColor(s.instance)
+    return StringGrid_GetColor(s._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (s *TStringGrid) SetColor(value TColor) {
-    StringGrid_SetColor(s.instance, value)
+    StringGrid_SetColor(s._instance(), value)
 }
 
 func (s *TStringGrid) ColCount() int32 {
-    return StringGrid_GetColCount(s.instance)
+    return StringGrid_GetColCount(s._instance())
 }
 
 func (s *TStringGrid) SetColCount(value int32) {
-    StringGrid_SetColCount(s.instance, value)
+    StringGrid_SetColCount(s._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (s *TStringGrid) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(StringGrid_GetConstraints(s.instance))
+    return AsSizeConstraints(StringGrid_GetConstraints(s._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (s *TStringGrid) SetConstraints(value *TSizeConstraints) {
-    StringGrid_SetConstraints(s.instance, CheckPtr(value))
+    StringGrid_SetConstraints(s._instance(), CheckPtr(value))
 }
 
 func (s *TStringGrid) DefaultColWidth() int32 {
-    return StringGrid_GetDefaultColWidth(s.instance)
+    return StringGrid_GetDefaultColWidth(s._instance())
 }
 
 func (s *TStringGrid) SetDefaultColWidth(value int32) {
-    StringGrid_SetDefaultColWidth(s.instance, value)
+    StringGrid_SetDefaultColWidth(s._instance(), value)
 }
 
 func (s *TStringGrid) DefaultRowHeight() int32 {
-    return StringGrid_GetDefaultRowHeight(s.instance)
+    return StringGrid_GetDefaultRowHeight(s._instance())
 }
 
 func (s *TStringGrid) SetDefaultRowHeight(value int32) {
-    StringGrid_SetDefaultRowHeight(s.instance, value)
+    StringGrid_SetDefaultRowHeight(s._instance(), value)
 }
 
 func (s *TStringGrid) DefaultDrawing() bool {
-    return StringGrid_GetDefaultDrawing(s.instance)
+    return StringGrid_GetDefaultDrawing(s._instance())
 }
 
 func (s *TStringGrid) SetDefaultDrawing(value bool) {
-    StringGrid_SetDefaultDrawing(s.instance, value)
+    StringGrid_SetDefaultDrawing(s._instance(), value)
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (s *TStringGrid) DoubleBuffered() bool {
-    return StringGrid_GetDoubleBuffered(s.instance)
+    return StringGrid_GetDoubleBuffered(s._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (s *TStringGrid) SetDoubleBuffered(value bool) {
-    StringGrid_SetDoubleBuffered(s.instance, value)
+    StringGrid_SetDoubleBuffered(s._instance(), value)
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (s *TStringGrid) DragCursor() TCursor {
-    return StringGrid_GetDragCursor(s.instance)
+    return StringGrid_GetDragCursor(s._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (s *TStringGrid) SetDragCursor(value TCursor) {
-    StringGrid_SetDragCursor(s.instance, value)
+    StringGrid_SetDragCursor(s._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (s *TStringGrid) DragKind() TDragKind {
-    return StringGrid_GetDragKind(s.instance)
+    return StringGrid_GetDragKind(s._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (s *TStringGrid) SetDragKind(value TDragKind) {
-    StringGrid_SetDragKind(s.instance, value)
+    StringGrid_SetDragKind(s._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (s *TStringGrid) DragMode() TDragMode {
-    return StringGrid_GetDragMode(s.instance)
+    return StringGrid_GetDragMode(s._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (s *TStringGrid) SetDragMode(value TDragMode) {
-    StringGrid_SetDragMode(s.instance, value)
+    StringGrid_SetDragMode(s._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (s *TStringGrid) Enabled() bool {
-    return StringGrid_GetEnabled(s.instance)
+    return StringGrid_GetEnabled(s._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (s *TStringGrid) SetEnabled(value bool) {
-    StringGrid_SetEnabled(s.instance, value)
+    StringGrid_SetEnabled(s._instance(), value)
 }
 
 func (s *TStringGrid) FixedColor() TColor {
-    return StringGrid_GetFixedColor(s.instance)
+    return StringGrid_GetFixedColor(s._instance())
 }
 
 func (s *TStringGrid) SetFixedColor(value TColor) {
-    StringGrid_SetFixedColor(s.instance, value)
+    StringGrid_SetFixedColor(s._instance(), value)
 }
 
 func (s *TStringGrid) FixedCols() int32 {
-    return StringGrid_GetFixedCols(s.instance)
+    return StringGrid_GetFixedCols(s._instance())
 }
 
 func (s *TStringGrid) SetFixedCols(value int32) {
-    StringGrid_SetFixedCols(s.instance, value)
+    StringGrid_SetFixedCols(s._instance(), value)
 }
 
 func (s *TStringGrid) RowCount() int32 {
-    return StringGrid_GetRowCount(s.instance)
+    return StringGrid_GetRowCount(s._instance())
 }
 
 func (s *TStringGrid) SetRowCount(value int32) {
-    StringGrid_SetRowCount(s.instance, value)
+    StringGrid_SetRowCount(s._instance(), value)
 }
 
 func (s *TStringGrid) FixedRows() int32 {
-    return StringGrid_GetFixedRows(s.instance)
+    return StringGrid_GetFixedRows(s._instance())
 }
 
 func (s *TStringGrid) SetFixedRows(value int32) {
-    StringGrid_SetFixedRows(s.instance, value)
+    StringGrid_SetFixedRows(s._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (s *TStringGrid) Font() *TFont {
-    return AsFont(StringGrid_GetFont(s.instance))
+    return AsFont(StringGrid_GetFont(s._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (s *TStringGrid) SetFont(value *TFont) {
-    StringGrid_SetFont(s.instance, CheckPtr(value))
+    StringGrid_SetFont(s._instance(), CheckPtr(value))
 }
 
 func (s *TStringGrid) GridLineWidth() int32 {
-    return StringGrid_GetGridLineWidth(s.instance)
+    return StringGrid_GetGridLineWidth(s._instance())
 }
 
 func (s *TStringGrid) SetGridLineWidth(value int32) {
-    StringGrid_SetGridLineWidth(s.instance, value)
+    StringGrid_SetGridLineWidth(s._instance(), value)
 }
 
 func (s *TStringGrid) Options() TGridOptions {
-    return StringGrid_GetOptions(s.instance)
+    return StringGrid_GetOptions(s._instance())
 }
 
 func (s *TStringGrid) SetOptions(value TGridOptions) {
-    StringGrid_SetOptions(s.instance, value)
+    StringGrid_SetOptions(s._instance(), value)
 }
 
+// ParentColor
+//
 // 获取使用父容器颜色。
 //
 // Get parent color.
 func (s *TStringGrid) ParentColor() bool {
-    return StringGrid_GetParentColor(s.instance)
+    return StringGrid_GetParentColor(s._instance())
 }
 
+// SetParentColor
+//
 // 设置使用父容器颜色。
 //
 // Set parent color.
 func (s *TStringGrid) SetParentColor(value bool) {
-    StringGrid_SetParentColor(s.instance, value)
+    StringGrid_SetParentColor(s._instance(), value)
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (s *TStringGrid) ParentDoubleBuffered() bool {
-    return StringGrid_GetParentDoubleBuffered(s.instance)
+    return StringGrid_GetParentDoubleBuffered(s._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (s *TStringGrid) SetParentDoubleBuffered(value bool) {
-    StringGrid_SetParentDoubleBuffered(s.instance, value)
+    StringGrid_SetParentDoubleBuffered(s._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (s *TStringGrid) ParentFont() bool {
-    return StringGrid_GetParentFont(s.instance)
+    return StringGrid_GetParentFont(s._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (s *TStringGrid) SetParentFont(value bool) {
-    StringGrid_SetParentFont(s.instance, value)
+    StringGrid_SetParentFont(s._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (s *TStringGrid) ParentShowHint() bool {
-    return StringGrid_GetParentShowHint(s.instance)
+    return StringGrid_GetParentShowHint(s._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (s *TStringGrid) SetParentShowHint(value bool) {
-    StringGrid_SetParentShowHint(s.instance, value)
+    StringGrid_SetParentShowHint(s._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (s *TStringGrid) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(StringGrid_GetPopupMenu(s.instance))
+    return AsPopupMenu(StringGrid_GetPopupMenu(s._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (s *TStringGrid) SetPopupMenu(value IComponent) {
-    StringGrid_SetPopupMenu(s.instance, CheckPtr(value))
+    StringGrid_SetPopupMenu(s._instance(), CheckPtr(value))
 }
 
 func (s *TStringGrid) ScrollBars() TScrollStyle {
-    return StringGrid_GetScrollBars(s.instance)
+    return StringGrid_GetScrollBars(s._instance())
 }
 
 func (s *TStringGrid) SetScrollBars(value TScrollStyle) {
-    StringGrid_SetScrollBars(s.instance, value)
+    StringGrid_SetScrollBars(s._instance(), value)
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (s *TStringGrid) ShowHint() bool {
-    return StringGrid_GetShowHint(s.instance)
+    return StringGrid_GetShowHint(s._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (s *TStringGrid) SetShowHint(value bool) {
-    StringGrid_SetShowHint(s.instance, value)
+    StringGrid_SetShowHint(s._instance(), value)
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (s *TStringGrid) TabOrder() TTabOrder {
-    return StringGrid_GetTabOrder(s.instance)
+    return StringGrid_GetTabOrder(s._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (s *TStringGrid) SetTabOrder(value TTabOrder) {
-    StringGrid_SetTabOrder(s.instance, value)
+    StringGrid_SetTabOrder(s._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (s *TStringGrid) Visible() bool {
-    return StringGrid_GetVisible(s.instance)
+    return StringGrid_GetVisible(s._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (s *TStringGrid) SetVisible(value bool) {
-    StringGrid_SetVisible(s.instance, value)
+    StringGrid_SetVisible(s._instance(), value)
 }
 
 func (s *TStringGrid) VisibleColCount() int32 {
-    return StringGrid_GetVisibleColCount(s.instance)
+    return StringGrid_GetVisibleColCount(s._instance())
 }
 
 func (s *TStringGrid) VisibleRowCount() int32 {
-    return StringGrid_GetVisibleRowCount(s.instance)
+    return StringGrid_GetVisibleRowCount(s._instance())
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (s *TStringGrid) SetOnClick(fn TNotifyEvent) {
-    StringGrid_SetOnClick(s.instance, fn)
+    StringGrid_SetOnClick(s._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (s *TStringGrid) SetOnContextPopup(fn TContextPopupEvent) {
-    StringGrid_SetOnContextPopup(s.instance, fn)
+    StringGrid_SetOnContextPopup(s._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (s *TStringGrid) SetOnDblClick(fn TNotifyEvent) {
-    StringGrid_SetOnDblClick(s.instance, fn)
+    StringGrid_SetOnDblClick(s._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (s *TStringGrid) SetOnDragDrop(fn TDragDropEvent) {
-    StringGrid_SetOnDragDrop(s.instance, fn)
+    StringGrid_SetOnDragDrop(s._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (s *TStringGrid) SetOnDragOver(fn TDragOverEvent) {
-    StringGrid_SetOnDragOver(s.instance, fn)
+    StringGrid_SetOnDragOver(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnDrawCell(fn TDrawCellEvent) {
-    StringGrid_SetOnDrawCell(s.instance, fn)
+    StringGrid_SetOnDrawCell(s._instance(), fn)
 }
 
+// SetOnEndDock
+//
 // 设置停靠结束事件。
 //
 // Set Dock end event.
 func (s *TStringGrid) SetOnEndDock(fn TEndDragEvent) {
-    StringGrid_SetOnEndDock(s.instance, fn)
+    StringGrid_SetOnEndDock(s._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (s *TStringGrid) SetOnEndDrag(fn TEndDragEvent) {
-    StringGrid_SetOnEndDrag(s.instance, fn)
+    StringGrid_SetOnEndDrag(s._instance(), fn)
 }
 
+// SetOnEnter
+//
 // 设置焦点进入。
 //
 // Set Focus entry.
 func (s *TStringGrid) SetOnEnter(fn TNotifyEvent) {
-    StringGrid_SetOnEnter(s.instance, fn)
+    StringGrid_SetOnEnter(s._instance(), fn)
 }
 
+// SetOnExit
+//
 // 设置焦点退出。
 //
 // Set Focus exit.
 func (s *TStringGrid) SetOnExit(fn TNotifyEvent) {
-    StringGrid_SetOnExit(s.instance, fn)
+    StringGrid_SetOnExit(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnGetEditMask(fn TGetEditEvent) {
-    StringGrid_SetOnGetEditMask(s.instance, fn)
+    StringGrid_SetOnGetEditMask(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnGetEditText(fn TGetEditEvent) {
-    StringGrid_SetOnGetEditText(s.instance, fn)
+    StringGrid_SetOnGetEditText(s._instance(), fn)
 }
 
+// SetOnKeyDown
+//
 // 设置键盘按键按下事件。
 //
 // Set Keyboard button press event.
 func (s *TStringGrid) SetOnKeyDown(fn TKeyEvent) {
-    StringGrid_SetOnKeyDown(s.instance, fn)
+    StringGrid_SetOnKeyDown(s._instance(), fn)
 }
 
+// SetOnKeyPress
+//
 // 设置键键下事件。
 func (s *TStringGrid) SetOnKeyPress(fn TKeyPressEvent) {
-    StringGrid_SetOnKeyPress(s.instance, fn)
+    StringGrid_SetOnKeyPress(s._instance(), fn)
 }
 
+// SetOnKeyUp
+//
 // 设置键盘按键抬起事件。
 //
 // Set Keyboard button lift event.
 func (s *TStringGrid) SetOnKeyUp(fn TKeyEvent) {
-    StringGrid_SetOnKeyUp(s.instance, fn)
+    StringGrid_SetOnKeyUp(s._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (s *TStringGrid) SetOnMouseDown(fn TMouseEvent) {
-    StringGrid_SetOnMouseDown(s.instance, fn)
+    StringGrid_SetOnMouseDown(s._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (s *TStringGrid) SetOnMouseEnter(fn TNotifyEvent) {
-    StringGrid_SetOnMouseEnter(s.instance, fn)
+    StringGrid_SetOnMouseEnter(s._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (s *TStringGrid) SetOnMouseLeave(fn TNotifyEvent) {
-    StringGrid_SetOnMouseLeave(s.instance, fn)
+    StringGrid_SetOnMouseLeave(s._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (s *TStringGrid) SetOnMouseMove(fn TMouseMoveEvent) {
-    StringGrid_SetOnMouseMove(s.instance, fn)
+    StringGrid_SetOnMouseMove(s._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (s *TStringGrid) SetOnMouseUp(fn TMouseEvent) {
-    StringGrid_SetOnMouseUp(s.instance, fn)
+    StringGrid_SetOnMouseUp(s._instance(), fn)
 }
 
+// SetOnMouseWheelDown
+//
 // 设置鼠标滚轮按下事件。
 func (s *TStringGrid) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
-    StringGrid_SetOnMouseWheelDown(s.instance, fn)
+    StringGrid_SetOnMouseWheelDown(s._instance(), fn)
 }
 
+// SetOnMouseWheelUp
+//
 // 设置鼠标滚轮抬起事件。
 func (s *TStringGrid) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
-    StringGrid_SetOnMouseWheelUp(s.instance, fn)
+    StringGrid_SetOnMouseWheelUp(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnSelectCell(fn TSelectCellEvent) {
-    StringGrid_SetOnSelectCell(s.instance, fn)
+    StringGrid_SetOnSelectCell(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnSetEditText(fn TSetEditEvent) {
-    StringGrid_SetOnSetEditText(s.instance, fn)
+    StringGrid_SetOnSetEditText(s._instance(), fn)
 }
 
+// SetOnStartDock
+//
 // 设置启动停靠。
 func (s *TStringGrid) SetOnStartDock(fn TStartDockEvent) {
-    StringGrid_SetOnStartDock(s.instance, fn)
+    StringGrid_SetOnStartDock(s._instance(), fn)
 }
 
 func (s *TStringGrid) SetOnTopLeftChanged(fn TNotifyEvent) {
-    StringGrid_SetOnTopLeftChanged(s.instance, fn)
+    StringGrid_SetOnTopLeftChanged(s._instance(), fn)
 }
 
+// Canvas
+//
 // 获取画布。
 func (s *TStringGrid) Canvas() *TCanvas {
-    return AsCanvas(StringGrid_GetCanvas(s.instance))
+    return AsCanvas(StringGrid_GetCanvas(s._instance()))
 }
 
 func (s *TStringGrid) Col() int32 {
-    return StringGrid_GetCol(s.instance)
+    return StringGrid_GetCol(s._instance())
 }
 
 func (s *TStringGrid) SetCol(value int32) {
-    StringGrid_SetCol(s.instance, value)
+    StringGrid_SetCol(s._instance(), value)
 }
 
 func (s *TStringGrid) GridHeight() int32 {
-    return StringGrid_GetGridHeight(s.instance)
+    return StringGrid_GetGridHeight(s._instance())
 }
 
 func (s *TStringGrid) GridWidth() int32 {
-    return StringGrid_GetGridWidth(s.instance)
+    return StringGrid_GetGridWidth(s._instance())
 }
 
 func (s *TStringGrid) LeftCol() int32 {
-    return StringGrid_GetLeftCol(s.instance)
+    return StringGrid_GetLeftCol(s._instance())
 }
 
 func (s *TStringGrid) SetLeftCol(value int32) {
-    StringGrid_SetLeftCol(s.instance, value)
+    StringGrid_SetLeftCol(s._instance(), value)
 }
 
 func (s *TStringGrid) Selection() TGridRect {
-    return StringGrid_GetSelection(s.instance)
+    return StringGrid_GetSelection(s._instance())
 }
 
 func (s *TStringGrid) SetSelection(value TGridRect) {
-    StringGrid_SetSelection(s.instance, value)
+    StringGrid_SetSelection(s._instance(), value)
 }
 
 func (s *TStringGrid) Row() int32 {
-    return StringGrid_GetRow(s.instance)
+    return StringGrid_GetRow(s._instance())
 }
 
 func (s *TStringGrid) SetRow(value int32) {
-    StringGrid_SetRow(s.instance, value)
+    StringGrid_SetRow(s._instance(), value)
 }
 
 func (s *TStringGrid) TopRow() int32 {
-    return StringGrid_GetTopRow(s.instance)
+    return StringGrid_GetTopRow(s._instance())
 }
 
 func (s *TStringGrid) SetTopRow(value int32) {
-    StringGrid_SetTopRow(s.instance, value)
+    StringGrid_SetTopRow(s._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (s *TStringGrid) TabStop() bool {
-    return StringGrid_GetTabStop(s.instance)
+    return StringGrid_GetTabStop(s._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (s *TStringGrid) SetTabStop(value bool) {
-    StringGrid_SetTabStop(s.instance, value)
+    StringGrid_SetTabStop(s._instance(), value)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (s *TStringGrid) DockClientCount() int32 {
-    return StringGrid_GetDockClientCount(s.instance)
+    return StringGrid_GetDockClientCount(s._instance())
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (s *TStringGrid) DockSite() bool {
-    return StringGrid_GetDockSite(s.instance)
+    return StringGrid_GetDockSite(s._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (s *TStringGrid) SetDockSite(value bool) {
-    StringGrid_SetDockSite(s.instance, value)
+    StringGrid_SetDockSite(s._instance(), value)
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (s *TStringGrid) MouseInClient() bool {
-    return StringGrid_GetMouseInClient(s.instance)
+    return StringGrid_GetMouseInClient(s._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (s *TStringGrid) VisibleDockClientCount() int32 {
-    return StringGrid_GetVisibleDockClientCount(s.instance)
+    return StringGrid_GetVisibleDockClientCount(s._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (s *TStringGrid) Brush() *TBrush {
-    return AsBrush(StringGrid_GetBrush(s.instance))
+    return AsBrush(StringGrid_GetBrush(s._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (s *TStringGrid) ControlCount() int32 {
-    return StringGrid_GetControlCount(s.instance)
+    return StringGrid_GetControlCount(s._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (s *TStringGrid) Handle() HWND {
-    return StringGrid_GetHandle(s.instance)
+    return StringGrid_GetHandle(s._instance())
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (s *TStringGrid) ParentWindow() HWND {
-    return StringGrid_GetParentWindow(s.instance)
+    return StringGrid_GetParentWindow(s._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (s *TStringGrid) SetParentWindow(value HWND) {
-    StringGrid_SetParentWindow(s.instance, value)
+    StringGrid_SetParentWindow(s._instance(), value)
 }
 
 func (s *TStringGrid) Showing() bool {
-    return StringGrid_GetShowing(s.instance)
+    return StringGrid_GetShowing(s._instance())
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (s *TStringGrid) UseDockManager() bool {
-    return StringGrid_GetUseDockManager(s.instance)
+    return StringGrid_GetUseDockManager(s._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (s *TStringGrid) SetUseDockManager(value bool) {
-    StringGrid_SetUseDockManager(s.instance, value)
+    StringGrid_SetUseDockManager(s._instance(), value)
 }
 
 func (s *TStringGrid) Action() *TAction {
-    return AsAction(StringGrid_GetAction(s.instance))
+    return AsAction(StringGrid_GetAction(s._instance()))
 }
 
 func (s *TStringGrid) SetAction(value IComponent) {
-    StringGrid_SetAction(s.instance, CheckPtr(value))
+    StringGrid_SetAction(s._instance(), CheckPtr(value))
 }
 
 func (s *TStringGrid) BoundsRect() TRect {
-    return StringGrid_GetBoundsRect(s.instance)
+    return StringGrid_GetBoundsRect(s._instance())
 }
 
 func (s *TStringGrid) SetBoundsRect(value TRect) {
-    StringGrid_SetBoundsRect(s.instance, value)
+    StringGrid_SetBoundsRect(s._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (s *TStringGrid) ClientHeight() int32 {
-    return StringGrid_GetClientHeight(s.instance)
+    return StringGrid_GetClientHeight(s._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (s *TStringGrid) SetClientHeight(value int32) {
-    StringGrid_SetClientHeight(s.instance, value)
+    StringGrid_SetClientHeight(s._instance(), value)
 }
 
 func (s *TStringGrid) ClientOrigin() TPoint {
-    return StringGrid_GetClientOrigin(s.instance)
+    return StringGrid_GetClientOrigin(s._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (s *TStringGrid) ClientRect() TRect {
-    return StringGrid_GetClientRect(s.instance)
+    return StringGrid_GetClientRect(s._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (s *TStringGrid) ClientWidth() int32 {
-    return StringGrid_GetClientWidth(s.instance)
+    return StringGrid_GetClientWidth(s._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (s *TStringGrid) SetClientWidth(value int32) {
-    StringGrid_SetClientWidth(s.instance, value)
+    StringGrid_SetClientWidth(s._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (s *TStringGrid) ControlState() TControlState {
-    return StringGrid_GetControlState(s.instance)
+    return StringGrid_GetControlState(s._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (s *TStringGrid) SetControlState(value TControlState) {
-    StringGrid_SetControlState(s.instance, value)
+    StringGrid_SetControlState(s._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (s *TStringGrid) ControlStyle() TControlStyle {
-    return StringGrid_GetControlStyle(s.instance)
+    return StringGrid_GetControlStyle(s._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (s *TStringGrid) SetControlStyle(value TControlStyle) {
-    StringGrid_SetControlStyle(s.instance, value)
+    StringGrid_SetControlStyle(s._instance(), value)
 }
 
 func (s *TStringGrid) Floating() bool {
-    return StringGrid_GetFloating(s.instance)
+    return StringGrid_GetFloating(s._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (s *TStringGrid) Parent() *TWinControl {
-    return AsWinControl(StringGrid_GetParent(s.instance))
+    return AsWinControl(StringGrid_GetParent(s._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (s *TStringGrid) SetParent(value IWinControl) {
-    StringGrid_SetParent(s.instance, CheckPtr(value))
+    StringGrid_SetParent(s._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (s *TStringGrid) Left() int32 {
-    return StringGrid_GetLeft(s.instance)
+    return StringGrid_GetLeft(s._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (s *TStringGrid) SetLeft(value int32) {
-    StringGrid_SetLeft(s.instance, value)
+    StringGrid_SetLeft(s._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (s *TStringGrid) Top() int32 {
-    return StringGrid_GetTop(s.instance)
+    return StringGrid_GetTop(s._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (s *TStringGrid) SetTop(value int32) {
-    StringGrid_SetTop(s.instance, value)
+    StringGrid_SetTop(s._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (s *TStringGrid) Width() int32 {
-    return StringGrid_GetWidth(s.instance)
+    return StringGrid_GetWidth(s._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (s *TStringGrid) SetWidth(value int32) {
-    StringGrid_SetWidth(s.instance, value)
+    StringGrid_SetWidth(s._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (s *TStringGrid) Height() int32 {
-    return StringGrid_GetHeight(s.instance)
+    return StringGrid_GetHeight(s._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (s *TStringGrid) SetHeight(value int32) {
-    StringGrid_SetHeight(s.instance, value)
+    StringGrid_SetHeight(s._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (s *TStringGrid) Cursor() TCursor {
-    return StringGrid_GetCursor(s.instance)
+    return StringGrid_GetCursor(s._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (s *TStringGrid) SetCursor(value TCursor) {
-    StringGrid_SetCursor(s.instance, value)
+    StringGrid_SetCursor(s._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (s *TStringGrid) Hint() string {
-    return StringGrid_GetHint(s.instance)
+    return StringGrid_GetHint(s._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (s *TStringGrid) SetHint(value string) {
-    StringGrid_SetHint(s.instance, value)
+    StringGrid_SetHint(s._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (s *TStringGrid) ComponentCount() int32 {
-    return StringGrid_GetComponentCount(s.instance)
+    return StringGrid_GetComponentCount(s._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (s *TStringGrid) ComponentIndex() int32 {
-    return StringGrid_GetComponentIndex(s.instance)
+    return StringGrid_GetComponentIndex(s._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (s *TStringGrid) SetComponentIndex(value int32) {
-    StringGrid_SetComponentIndex(s.instance, value)
+    StringGrid_SetComponentIndex(s._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (s *TStringGrid) Owner() *TComponent {
-    return AsComponent(StringGrid_GetOwner(s.instance))
+    return AsComponent(StringGrid_GetOwner(s._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (s *TStringGrid) Name() string {
-    return StringGrid_GetName(s.instance)
+    return StringGrid_GetName(s._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (s *TStringGrid) SetName(value string) {
-    StringGrid_SetName(s.instance, value)
+    StringGrid_SetName(s._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (s *TStringGrid) Tag() int {
-    return StringGrid_GetTag(s.instance)
+    return StringGrid_GetTag(s._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (s *TStringGrid) SetTag(value int) {
-    StringGrid_SetTag(s.instance, value)
+    StringGrid_SetTag(s._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (s *TStringGrid) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(StringGrid_GetAnchorSideLeft(s.instance))
+    return AsAnchorSide(StringGrid_GetAnchorSideLeft(s._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (s *TStringGrid) SetAnchorSideLeft(value *TAnchorSide) {
-    StringGrid_SetAnchorSideLeft(s.instance, CheckPtr(value))
+    StringGrid_SetAnchorSideLeft(s._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (s *TStringGrid) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(StringGrid_GetAnchorSideTop(s.instance))
+    return AsAnchorSide(StringGrid_GetAnchorSideTop(s._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (s *TStringGrid) SetAnchorSideTop(value *TAnchorSide) {
-    StringGrid_SetAnchorSideTop(s.instance, CheckPtr(value))
+    StringGrid_SetAnchorSideTop(s._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (s *TStringGrid) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(StringGrid_GetAnchorSideRight(s.instance))
+    return AsAnchorSide(StringGrid_GetAnchorSideRight(s._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (s *TStringGrid) SetAnchorSideRight(value *TAnchorSide) {
-    StringGrid_SetAnchorSideRight(s.instance, CheckPtr(value))
+    StringGrid_SetAnchorSideRight(s._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (s *TStringGrid) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(StringGrid_GetAnchorSideBottom(s.instance))
+    return AsAnchorSide(StringGrid_GetAnchorSideBottom(s._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (s *TStringGrid) SetAnchorSideBottom(value *TAnchorSide) {
-    StringGrid_SetAnchorSideBottom(s.instance, CheckPtr(value))
+    StringGrid_SetAnchorSideBottom(s._instance(), CheckPtr(value))
 }
 
 func (s *TStringGrid) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(StringGrid_GetChildSizing(s.instance))
+    return AsControlChildSizing(StringGrid_GetChildSizing(s._instance()))
 }
 
 func (s *TStringGrid) SetChildSizing(value *TControlChildSizing) {
-    StringGrid_SetChildSizing(s.instance, CheckPtr(value))
+    StringGrid_SetChildSizing(s._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (s *TStringGrid) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(StringGrid_GetBorderSpacing(s.instance))
+    return AsControlBorderSpacing(StringGrid_GetBorderSpacing(s._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (s *TStringGrid) SetBorderSpacing(value *TControlBorderSpacing) {
-    StringGrid_SetBorderSpacing(s.instance, CheckPtr(value))
+    StringGrid_SetBorderSpacing(s._instance(), CheckPtr(value))
 }
 
 func (s *TStringGrid) IsCellSelected(aCol int32, aRow int32) bool {
-    return StringGrid_GetIsCellSelected(s.instance, aCol, aRow)
+    return StringGrid_GetIsCellSelected(s._instance(), aCol, aRow)
 }
 
 func (s *TStringGrid) Cells(ACol int32, ARow int32) string {
-    return StringGrid_GetCells(s.instance, ACol, ARow)
+    return StringGrid_GetCells(s._instance(), ACol, ARow)
 }
 
 func (s *TStringGrid) SetCells(ACol int32, ARow int32, value string) {
-    StringGrid_SetCells(s.instance, ACol, ARow, value)
+    StringGrid_SetCells(s._instance(), ACol, ARow, value)
 }
 
 func (s *TStringGrid) Cols(Index int32) *TStrings {
-    return AsStrings(StringGrid_GetCols(s.instance, Index))
+    return AsStrings(StringGrid_GetCols(s._instance(), Index))
 }
 
 func (s *TStringGrid) SetCols(Index int32, value IStrings) {
-    StringGrid_SetCols(s.instance, Index, CheckPtr(value))
+    StringGrid_SetCols(s._instance(), Index, CheckPtr(value))
 }
 
 func (s *TStringGrid) Objects(ACol int32, ARow int32) *TObject {
-    return AsObject(StringGrid_GetObjects(s.instance, ACol, ARow))
+    return AsObject(StringGrid_GetObjects(s._instance(), ACol, ARow))
 }
 
 func (s *TStringGrid) SetObjects(ACol int32, ARow int32, value IObject) {
-    StringGrid_SetObjects(s.instance, ACol, ARow, CheckPtr(value))
+    StringGrid_SetObjects(s._instance(), ACol, ARow, CheckPtr(value))
 }
 
 func (s *TStringGrid) Rows(Index int32) *TStrings {
-    return AsStrings(StringGrid_GetRows(s.instance, Index))
+    return AsStrings(StringGrid_GetRows(s._instance(), Index))
 }
 
 func (s *TStringGrid) SetRows(Index int32, value IStrings) {
-    StringGrid_SetRows(s.instance, Index, CheckPtr(value))
+    StringGrid_SetRows(s._instance(), Index, CheckPtr(value))
 }
 
 func (s *TStringGrid) ColWidths(Index int32) int32 {
-    return StringGrid_GetColWidths(s.instance, Index)
+    return StringGrid_GetColWidths(s._instance(), Index)
 }
 
 func (s *TStringGrid) SetColWidths(Index int32, value int32) {
-    StringGrid_SetColWidths(s.instance, Index, value)
+    StringGrid_SetColWidths(s._instance(), Index, value)
 }
 
 func (s *TStringGrid) RowHeights(Index int32) int32 {
-    return StringGrid_GetRowHeights(s.instance, Index)
+    return StringGrid_GetRowHeights(s._instance(), Index)
 }
 
 func (s *TStringGrid) SetRowHeights(Index int32, value int32) {
-    StringGrid_SetRowHeights(s.instance, Index, value)
+    StringGrid_SetRowHeights(s._instance(), Index, value)
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (s *TStringGrid) DockClients(Index int32) *TControl {
-    return AsControl(StringGrid_GetDockClients(s.instance, Index))
+    return AsControl(StringGrid_GetDockClients(s._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (s *TStringGrid) Controls(Index int32) *TControl {
-    return AsControl(StringGrid_GetControls(s.instance, Index))
+    return AsControl(StringGrid_GetControls(s._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (s *TStringGrid) Components(AIndex int32) *TComponent {
-    return AsComponent(StringGrid_GetComponents(s.instance, AIndex))
+    return AsComponent(StringGrid_GetComponents(s._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (s *TStringGrid) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(StringGrid_GetAnchorSide(s.instance, AKind))
+    return AsAnchorSide(StringGrid_GetAnchorSide(s._instance(), AKind))
 }
 

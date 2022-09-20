@@ -19,102 +19,95 @@ import (
 
 type TStatusPanels struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewStatusPanels
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewStatusPanels(AOwner *TStatusBar) *TStatusPanels {
     s := new(TStatusPanels)
-    s.instance = StatusPanels_Create(CheckPtr(AOwner))
-    s.ptr = unsafe.Pointer(s.instance)
+    s.instance = unsafe.Pointer(StatusPanels_Create(CheckPtr(AOwner)))
     setFinalizer(s, (*TStatusPanels).Free)
     return s
 }
 
+// AsStatusPanels
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsStatusPanels(obj interface{}) *TStatusPanels {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TStatusPanels{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TStatusPanels{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsStatusPanels.
-func StatusPanelsFromInst(inst uintptr) *TStatusPanels {
-    return AsStatusPanels(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsStatusPanels.
-func StatusPanelsFromObj(obj IObject) *TStatusPanels {
-    return AsStatusPanels(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsStatusPanels.
-func StatusPanelsFromUnsafePointer(ptr unsafe.Pointer) *TStatusPanels {
-    return AsStatusPanels(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (s *TStatusPanels) Free() {
-    if s.instance != 0 {
-        StatusPanels_Free(s.instance)
-        s.instance, s.ptr = 0, nullptr
+    if s.instance != nullptr {
+        StatusPanels_Free(s._instance())
+        s.instance  = nullptr
     }
 }
 
+func (s *TStatusPanels) _instance() uintptr {
+    return uintptr(s.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (s *TStatusPanels) Instance() uintptr {
-    return s.instance
+    return s._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (s *TStatusPanels) UnsafeAddr() unsafe.Pointer {
-    return s.ptr
+    return s.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (s *TStatusPanels) IsValid() bool {
-    return s.instance != 0
+    return s.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (s *TStatusPanels) Is() TIs {
-    return TIs(s.instance)
+    return TIs(s._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (s *TStatusPanels) As() TAs {
-//    return TAs(s.instance)
+//    return TAs(s._instance())
 //}
 
+// TStatusPanelsClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -123,121 +116,143 @@ func TStatusPanelsClass() TClass {
 }
 
 func (s *TStatusPanels) Add() *TStatusPanel {
-    return AsStatusPanel(StatusPanels_Add(s.instance))
+    return AsStatusPanel(StatusPanels_Add(s._instance()))
 }
 
 func (s *TStatusPanels) Insert(Index int32) *TStatusPanel {
-    return AsStatusPanel(StatusPanels_Insert(s.instance, Index))
+    return AsStatusPanel(StatusPanels_Insert(s._instance(), Index))
 }
 
+// Owner
+//
 // 组件所有者。
 //
 // component owner.
 func (s *TStatusPanels) Owner() *TObject {
-    return AsObject(StatusPanels_Owner(s.instance))
+    return AsObject(StatusPanels_Owner(s._instance()))
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (s *TStatusPanels) Assign(Source IObject) {
-    StatusPanels_Assign(s.instance, CheckPtr(Source))
+    StatusPanels_Assign(s._instance(), CheckPtr(Source))
 }
 
 func (s *TStatusPanels) BeginUpdate() {
-    StatusPanels_BeginUpdate(s.instance)
+    StatusPanels_BeginUpdate(s._instance())
 }
 
+// Clear
+//
 // 清除。
 func (s *TStatusPanels) Clear() {
-    StatusPanels_Clear(s.instance)
+    StatusPanels_Clear(s._instance())
 }
 
 func (s *TStatusPanels) Delete(Index int32) {
-    StatusPanels_Delete(s.instance, Index)
+    StatusPanels_Delete(s._instance(), Index)
 }
 
 func (s *TStatusPanels) EndUpdate() {
-    StatusPanels_EndUpdate(s.instance)
+    StatusPanels_EndUpdate(s._instance())
 }
 
 func (s *TStatusPanels) FindItemID(ID int32) *TCollectionItem {
-    return AsCollectionItem(StatusPanels_FindItemID(s.instance, ID))
+    return AsCollectionItem(StatusPanels_FindItemID(s._instance(), ID))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (s *TStatusPanels) GetNamePath() string {
-    return StatusPanels_GetNamePath(s.instance)
+    return StatusPanels_GetNamePath(s._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (s *TStatusPanels) ClassType() TClass {
-    return StatusPanels_ClassType(s.instance)
+    return StatusPanels_ClassType(s._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (s *TStatusPanels) ClassName() string {
-    return StatusPanels_ClassName(s.instance)
+    return StatusPanels_ClassName(s._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (s *TStatusPanels) InstanceSize() int32 {
-    return StatusPanels_InstanceSize(s.instance)
+    return StatusPanels_InstanceSize(s._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (s *TStatusPanels) InheritsFrom(AClass TClass) bool {
-    return StatusPanels_InheritsFrom(s.instance, AClass)
+    return StatusPanels_InheritsFrom(s._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (s *TStatusPanels) Equals(Obj IObject) bool {
-    return StatusPanels_Equals(s.instance, CheckPtr(Obj))
+    return StatusPanels_Equals(s._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (s *TStatusPanels) GetHashCode() int32 {
-    return StatusPanels_GetHashCode(s.instance)
+    return StatusPanels_GetHashCode(s._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (s *TStatusPanels) ToString() string {
-    return StatusPanels_ToString(s.instance)
+    return StatusPanels_ToString(s._instance())
 }
 
 func (s *TStatusPanels) Capacity() int32 {
-    return StatusPanels_GetCapacity(s.instance)
+    return StatusPanels_GetCapacity(s._instance())
 }
 
 func (s *TStatusPanels) SetCapacity(value int32) {
-    StatusPanels_SetCapacity(s.instance, value)
+    StatusPanels_SetCapacity(s._instance(), value)
 }
 
 func (s *TStatusPanels) Count() int32 {
-    return StatusPanels_GetCount(s.instance)
+    return StatusPanels_GetCount(s._instance())
 }
 
 func (s *TStatusPanels) Items(Index int32) *TStatusPanel {
-    return AsStatusPanel(StatusPanels_GetItems(s.instance, Index))
+    return AsStatusPanel(StatusPanels_GetItems(s._instance(), Index))
 }
 
 func (s *TStatusPanels) SetItems(Index int32, value *TStatusPanel) {
-    StatusPanels_SetItems(s.instance, Index, CheckPtr(value))
+    StatusPanels_SetItems(s._instance(), Index, CheckPtr(value))
 }
 

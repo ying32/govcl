@@ -7,9 +7,8 @@
 //----------------------------------------
 
 // +build !tempdll
-// +build !memorydll
 
-// 指令为：!tempdll && !memorydll
+// 指令为：!tempdll
 
 package api
 

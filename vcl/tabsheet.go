@@ -19,101 +19,94 @@ import (
 
 type TTabSheet struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewTabSheet
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewTabSheet(owner IComponent) *TTabSheet {
     t := new(TTabSheet)
-    t.instance = TabSheet_Create(CheckPtr(owner))
-    t.ptr = unsafe.Pointer(t.instance)
+    t.instance = unsafe.Pointer(TabSheet_Create(CheckPtr(owner)))
     return t
 }
 
+// AsTabSheet
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsTabSheet(obj interface{}) *TTabSheet {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TTabSheet{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TTabSheet{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsTabSheet.
-func TabSheetFromInst(inst uintptr) *TTabSheet {
-    return AsTabSheet(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsTabSheet.
-func TabSheetFromObj(obj IObject) *TTabSheet {
-    return AsTabSheet(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsTabSheet.
-func TabSheetFromUnsafePointer(ptr unsafe.Pointer) *TTabSheet {
-    return AsTabSheet(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (t *TTabSheet) Free() {
-    if t.instance != 0 {
-        TabSheet_Free(t.instance)
-        t.instance, t.ptr = 0, nullptr
+    if t.instance != nullptr {
+        TabSheet_Free(t._instance())
+        t.instance  = nullptr
     }
 }
 
+func (t *TTabSheet) _instance() uintptr {
+    return uintptr(t.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (t *TTabSheet) Instance() uintptr {
-    return t.instance
+    return t._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (t *TTabSheet) UnsafeAddr() unsafe.Pointer {
-    return t.ptr
+    return t.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (t *TTabSheet) IsValid() bool {
-    return t.instance != 0
+    return t.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (t *TTabSheet) Is() TIs {
-    return TIs(t.instance)
+    return TIs(t._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (t *TTabSheet) As() TAs {
-//    return TAs(t.instance)
+//    return TAs(t._instance())
 //}
 
+// TTabSheetClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,1142 +114,1444 @@ func TTabSheetClass() TClass {
     return TabSheet_StaticClassType()
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (t *TTabSheet) CanFocus() bool {
-    return TabSheet_CanFocus(t.instance)
+    return TabSheet_CanFocus(t._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (t *TTabSheet) ContainsControl(Control IControl) bool {
-    return TabSheet_ContainsControl(t.instance, CheckPtr(Control))
+    return TabSheet_ContainsControl(t._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (t *TTabSheet) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(TabSheet_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(TabSheet_ControlAtPos(t._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (t *TTabSheet) DisableAlign() {
-    TabSheet_DisableAlign(t.instance)
+    TabSheet_DisableAlign(t._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (t *TTabSheet) EnableAlign() {
-    TabSheet_EnableAlign(t.instance)
+    TabSheet_EnableAlign(t._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (t *TTabSheet) FindChildControl(ControlName string) *TControl {
-    return AsControl(TabSheet_FindChildControl(t.instance, ControlName))
+    return AsControl(TabSheet_FindChildControl(t._instance(), ControlName))
 }
 
 func (t *TTabSheet) FlipChildren(AllLevels bool) {
-    TabSheet_FlipChildren(t.instance, AllLevels)
+    TabSheet_FlipChildren(t._instance(), AllLevels)
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (t *TTabSheet) Focused() bool {
-    return TabSheet_Focused(t.instance)
+    return TabSheet_Focused(t._instance())
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (t *TTabSheet) HandleAllocated() bool {
-    return TabSheet_HandleAllocated(t.instance)
+    return TabSheet_HandleAllocated(t._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (t *TTabSheet) InsertControl(AControl IControl) {
-    TabSheet_InsertControl(t.instance, CheckPtr(AControl))
+    TabSheet_InsertControl(t._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (t *TTabSheet) Invalidate() {
-    TabSheet_Invalidate(t.instance)
+    TabSheet_Invalidate(t._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (t *TTabSheet) PaintTo(DC HDC, X int32, Y int32) {
-    TabSheet_PaintTo(t.instance, DC , X , Y)
+    TabSheet_PaintTo(t._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (t *TTabSheet) RemoveControl(AControl IControl) {
-    TabSheet_RemoveControl(t.instance, CheckPtr(AControl))
+    TabSheet_RemoveControl(t._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (t *TTabSheet) Realign() {
-    TabSheet_Realign(t.instance)
+    TabSheet_Realign(t._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (t *TTabSheet) Repaint() {
-    TabSheet_Repaint(t.instance)
+    TabSheet_Repaint(t._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (t *TTabSheet) ScaleBy(M int32, D int32) {
-    TabSheet_ScaleBy(t.instance, M , D)
+    TabSheet_ScaleBy(t._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (t *TTabSheet) ScrollBy(DeltaX int32, DeltaY int32) {
-    TabSheet_ScrollBy(t.instance, DeltaX , DeltaY)
+    TabSheet_ScrollBy(t._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (t *TTabSheet) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    TabSheet_SetBounds(t.instance, ALeft , ATop , AWidth , AHeight)
+    TabSheet_SetBounds(t._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (t *TTabSheet) SetFocus() {
-    TabSheet_SetFocus(t.instance)
+    TabSheet_SetFocus(t._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (t *TTabSheet) Update() {
-    TabSheet_Update(t.instance)
+    TabSheet_Update(t._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (t *TTabSheet) BringToFront() {
-    TabSheet_BringToFront(t.instance)
+    TabSheet_BringToFront(t._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (t *TTabSheet) ClientToScreen(Point TPoint) TPoint {
-    return TabSheet_ClientToScreen(t.instance, Point)
+    return TabSheet_ClientToScreen(t._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (t *TTabSheet) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return TabSheet_ClientToParent(t.instance, Point , CheckPtr(AParent))
+    return TabSheet_ClientToParent(t._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (t *TTabSheet) Dragging() bool {
-    return TabSheet_Dragging(t.instance)
+    return TabSheet_Dragging(t._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (t *TTabSheet) HasParent() bool {
-    return TabSheet_HasParent(t.instance)
+    return TabSheet_HasParent(t._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (t *TTabSheet) Hide() {
-    TabSheet_Hide(t.instance)
+    TabSheet_Hide(t._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (t *TTabSheet) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return TabSheet_Perform(t.instance, Msg , WParam , LParam)
+    return TabSheet_Perform(t._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (t *TTabSheet) Refresh() {
-    TabSheet_Refresh(t.instance)
+    TabSheet_Refresh(t._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (t *TTabSheet) ScreenToClient(Point TPoint) TPoint {
-    return TabSheet_ScreenToClient(t.instance, Point)
+    return TabSheet_ScreenToClient(t._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (t *TTabSheet) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return TabSheet_ParentToClient(t.instance, Point , CheckPtr(AParent))
+    return TabSheet_ParentToClient(t._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (t *TTabSheet) SendToBack() {
-    TabSheet_SendToBack(t.instance)
+    TabSheet_SendToBack(t._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (t *TTabSheet) Show() {
-    TabSheet_Show(t.instance)
+    TabSheet_Show(t._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (t *TTabSheet) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return TabSheet_GetTextBuf(t.instance, Buffer , BufSize)
+    return TabSheet_GetTextBuf(t._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (t *TTabSheet) GetTextLen() int32 {
-    return TabSheet_GetTextLen(t.instance)
+    return TabSheet_GetTextLen(t._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (t *TTabSheet) SetTextBuf(Buffer string) {
-    TabSheet_SetTextBuf(t.instance, Buffer)
+    TabSheet_SetTextBuf(t._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (t *TTabSheet) FindComponent(AName string) *TComponent {
-    return AsComponent(TabSheet_FindComponent(t.instance, AName))
+    return AsComponent(TabSheet_FindComponent(t._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (t *TTabSheet) GetNamePath() string {
-    return TabSheet_GetNamePath(t.instance)
+    return TabSheet_GetNamePath(t._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (t *TTabSheet) Assign(Source IObject) {
-    TabSheet_Assign(t.instance, CheckPtr(Source))
+    TabSheet_Assign(t._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (t *TTabSheet) ClassType() TClass {
-    return TabSheet_ClassType(t.instance)
+    return TabSheet_ClassType(t._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (t *TTabSheet) ClassName() string {
-    return TabSheet_ClassName(t.instance)
+    return TabSheet_ClassName(t._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (t *TTabSheet) InstanceSize() int32 {
-    return TabSheet_InstanceSize(t.instance)
+    return TabSheet_InstanceSize(t._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (t *TTabSheet) InheritsFrom(AClass TClass) bool {
-    return TabSheet_InheritsFrom(t.instance, AClass)
+    return TabSheet_InheritsFrom(t._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (t *TTabSheet) Equals(Obj IObject) bool {
-    return TabSheet_Equals(t.instance, CheckPtr(Obj))
+    return TabSheet_Equals(t._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (t *TTabSheet) GetHashCode() int32 {
-    return TabSheet_GetHashCode(t.instance)
+    return TabSheet_GetHashCode(t._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (t *TTabSheet) ToString() string {
-    return TabSheet_ToString(t.instance)
+    return TabSheet_ToString(t._instance())
 }
 
 func (t *TTabSheet) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    TabSheet_AnchorToNeighbour(t.instance, ASide , ASpace , CheckPtr(ASibling))
+    TabSheet_AnchorToNeighbour(t._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (t *TTabSheet) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    TabSheet_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
+    TabSheet_AnchorParallel(t._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (t *TTabSheet) AnchorHorizontalCenterTo(ASibling IControl) {
-    TabSheet_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
+    TabSheet_AnchorHorizontalCenterTo(t._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (t *TTabSheet) AnchorVerticalCenterTo(ASibling IControl) {
-    TabSheet_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
+    TabSheet_AnchorVerticalCenterTo(t._instance(), CheckPtr(ASibling))
 }
 
 func (t *TTabSheet) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    TabSheet_AnchorSame(t.instance, ASide , CheckPtr(ASibling))
+    TabSheet_AnchorSame(t._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (t *TTabSheet) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    TabSheet_AnchorAsAlign(t.instance, ATheAlign , ASpace)
+    TabSheet_AnchorAsAlign(t._instance(), ATheAlign , ASpace)
 }
 
 func (t *TTabSheet) AnchorClient(ASpace int32) {
-    TabSheet_AnchorClient(t.instance, ASpace)
+    TabSheet_AnchorClient(t._instance(), ASpace)
 }
 
 func (t *TTabSheet) ScaleDesignToForm(ASize int32) int32 {
-    return TabSheet_ScaleDesignToForm(t.instance, ASize)
+    return TabSheet_ScaleDesignToForm(t._instance(), ASize)
 }
 
 func (t *TTabSheet) ScaleFormToDesign(ASize int32) int32 {
-    return TabSheet_ScaleFormToDesign(t.instance, ASize)
+    return TabSheet_ScaleFormToDesign(t._instance(), ASize)
 }
 
 func (t *TTabSheet) Scale96ToForm(ASize int32) int32 {
-    return TabSheet_Scale96ToForm(t.instance, ASize)
+    return TabSheet_Scale96ToForm(t._instance(), ASize)
 }
 
 func (t *TTabSheet) ScaleFormTo96(ASize int32) int32 {
-    return TabSheet_ScaleFormTo96(t.instance, ASize)
+    return TabSheet_ScaleFormTo96(t._instance(), ASize)
 }
 
 func (t *TTabSheet) Scale96ToFont(ASize int32) int32 {
-    return TabSheet_Scale96ToFont(t.instance, ASize)
+    return TabSheet_Scale96ToFont(t._instance(), ASize)
 }
 
 func (t *TTabSheet) ScaleFontTo96(ASize int32) int32 {
-    return TabSheet_ScaleFontTo96(t.instance, ASize)
+    return TabSheet_ScaleFontTo96(t._instance(), ASize)
 }
 
 func (t *TTabSheet) ScaleScreenToFont(ASize int32) int32 {
-    return TabSheet_ScaleScreenToFont(t.instance, ASize)
+    return TabSheet_ScaleScreenToFont(t._instance(), ASize)
 }
 
 func (t *TTabSheet) ScaleFontToScreen(ASize int32) int32 {
-    return TabSheet_ScaleFontToScreen(t.instance, ASize)
+    return TabSheet_ScaleFontToScreen(t._instance(), ASize)
 }
 
 func (t *TTabSheet) Scale96ToScreen(ASize int32) int32 {
-    return TabSheet_Scale96ToScreen(t.instance, ASize)
+    return TabSheet_Scale96ToScreen(t._instance(), ASize)
 }
 
 func (t *TTabSheet) ScaleScreenTo96(ASize int32) int32 {
-    return TabSheet_ScaleScreenTo96(t.instance, ASize)
+    return TabSheet_ScaleScreenTo96(t._instance(), ASize)
 }
 
 func (t *TTabSheet) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    TabSheet_AutoAdjustLayout(t.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    TabSheet_AutoAdjustLayout(t._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (t *TTabSheet) FixDesignFontsPPI(ADesignTimePPI int32) {
-    TabSheet_FixDesignFontsPPI(t.instance, ADesignTimePPI)
+    TabSheet_FixDesignFontsPPI(t._instance(), ADesignTimePPI)
 }
 
 func (t *TTabSheet) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    TabSheet_ScaleFontsPPI(t.instance, AToPPI , AProportion)
+    TabSheet_ScaleFontsPPI(t._instance(), AToPPI , AProportion)
 }
 
 func (t *TTabSheet) PageControl() *TPageControl {
-    return AsPageControl(TabSheet_GetPageControl(t.instance))
+    return AsPageControl(TabSheet_GetPageControl(t._instance()))
 }
 
 func (t *TTabSheet) SetPageControl(value IWinControl) {
-    TabSheet_SetPageControl(t.instance, CheckPtr(value))
+    TabSheet_SetPageControl(t._instance(), CheckPtr(value))
 }
 
 func (t *TTabSheet) TabIndex() int32 {
-    return TabSheet_GetTabIndex(t.instance)
+    return TabSheet_GetTabIndex(t._instance())
 }
 
+// BorderWidth
+//
 // 获取边框的宽度。
 func (t *TTabSheet) BorderWidth() int32 {
-    return TabSheet_GetBorderWidth(t.instance)
+    return TabSheet_GetBorderWidth(t._instance())
 }
 
+// SetBorderWidth
+//
 // 设置边框的宽度。
 func (t *TTabSheet) SetBorderWidth(value int32) {
-    TabSheet_SetBorderWidth(t.instance, value)
+    TabSheet_SetBorderWidth(t._instance(), value)
 }
 
+// Caption
+//
 // 获取控件标题。
 //
 // Get the control title.
 func (t *TTabSheet) Caption() string {
-    return TabSheet_GetCaption(t.instance)
+    return TabSheet_GetCaption(t._instance())
 }
 
+// SetCaption
+//
 // 设置控件标题。
 //
 // Set the control title.
 func (t *TTabSheet) SetCaption(value string) {
-    TabSheet_SetCaption(t.instance, value)
+    TabSheet_SetCaption(t._instance(), value)
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (t *TTabSheet) DoubleBuffered() bool {
-    return TabSheet_GetDoubleBuffered(t.instance)
+    return TabSheet_GetDoubleBuffered(t._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (t *TTabSheet) SetDoubleBuffered(value bool) {
-    TabSheet_SetDoubleBuffered(t.instance, value)
+    TabSheet_SetDoubleBuffered(t._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (t *TTabSheet) Enabled() bool {
-    return TabSheet_GetEnabled(t.instance)
+    return TabSheet_GetEnabled(t._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (t *TTabSheet) SetEnabled(value bool) {
-    TabSheet_SetEnabled(t.instance, value)
+    TabSheet_SetEnabled(t._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (t *TTabSheet) Font() *TFont {
-    return AsFont(TabSheet_GetFont(t.instance))
+    return AsFont(TabSheet_GetFont(t._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (t *TTabSheet) SetFont(value *TFont) {
-    TabSheet_SetFont(t.instance, CheckPtr(value))
+    TabSheet_SetFont(t._instance(), CheckPtr(value))
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (t *TTabSheet) Height() int32 {
-    return TabSheet_GetHeight(t.instance)
+    return TabSheet_GetHeight(t._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (t *TTabSheet) SetHeight(value int32) {
-    TabSheet_SetHeight(t.instance, value)
+    TabSheet_SetHeight(t._instance(), value)
 }
 
+// ImageIndex
+//
 // 获取图像在images中的索引。
 func (t *TTabSheet) ImageIndex() int32 {
-    return TabSheet_GetImageIndex(t.instance)
+    return TabSheet_GetImageIndex(t._instance())
 }
 
+// SetImageIndex
+//
 // 设置图像在images中的索引。
 func (t *TTabSheet) SetImageIndex(value int32) {
-    TabSheet_SetImageIndex(t.instance, value)
+    TabSheet_SetImageIndex(t._instance(), value)
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (t *TTabSheet) Left() int32 {
-    return TabSheet_GetLeft(t.instance)
+    return TabSheet_GetLeft(t._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (t *TTabSheet) SetLeft(value int32) {
-    TabSheet_SetLeft(t.instance, value)
+    TabSheet_SetLeft(t._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (t *TTabSheet) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(TabSheet_GetConstraints(t.instance))
+    return AsSizeConstraints(TabSheet_GetConstraints(t._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (t *TTabSheet) SetConstraints(value *TSizeConstraints) {
-    TabSheet_SetConstraints(t.instance, CheckPtr(value))
+    TabSheet_SetConstraints(t._instance(), CheckPtr(value))
 }
 
 func (t *TTabSheet) PageIndex() int32 {
-    return TabSheet_GetPageIndex(t.instance)
+    return TabSheet_GetPageIndex(t._instance())
 }
 
 func (t *TTabSheet) SetPageIndex(value int32) {
-    TabSheet_SetPageIndex(t.instance, value)
+    TabSheet_SetPageIndex(t._instance(), value)
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (t *TTabSheet) ParentDoubleBuffered() bool {
-    return TabSheet_GetParentDoubleBuffered(t.instance)
+    return TabSheet_GetParentDoubleBuffered(t._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (t *TTabSheet) SetParentDoubleBuffered(value bool) {
-    TabSheet_SetParentDoubleBuffered(t.instance, value)
+    TabSheet_SetParentDoubleBuffered(t._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (t *TTabSheet) ParentFont() bool {
-    return TabSheet_GetParentFont(t.instance)
+    return TabSheet_GetParentFont(t._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (t *TTabSheet) SetParentFont(value bool) {
-    TabSheet_SetParentFont(t.instance, value)
+    TabSheet_SetParentFont(t._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (t *TTabSheet) ParentShowHint() bool {
-    return TabSheet_GetParentShowHint(t.instance)
+    return TabSheet_GetParentShowHint(t._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (t *TTabSheet) SetParentShowHint(value bool) {
-    TabSheet_SetParentShowHint(t.instance, value)
+    TabSheet_SetParentShowHint(t._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (t *TTabSheet) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(TabSheet_GetPopupMenu(t.instance))
+    return AsPopupMenu(TabSheet_GetPopupMenu(t._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (t *TTabSheet) SetPopupMenu(value IComponent) {
-    TabSheet_SetPopupMenu(t.instance, CheckPtr(value))
+    TabSheet_SetPopupMenu(t._instance(), CheckPtr(value))
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (t *TTabSheet) ShowHint() bool {
-    return TabSheet_GetShowHint(t.instance)
+    return TabSheet_GetShowHint(t._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (t *TTabSheet) SetShowHint(value bool) {
-    TabSheet_SetShowHint(t.instance, value)
+    TabSheet_SetShowHint(t._instance(), value)
 }
 
 func (t *TTabSheet) TabVisible() bool {
-    return TabSheet_GetTabVisible(t.instance)
+    return TabSheet_GetTabVisible(t._instance())
 }
 
 func (t *TTabSheet) SetTabVisible(value bool) {
-    TabSheet_SetTabVisible(t.instance, value)
+    TabSheet_SetTabVisible(t._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (t *TTabSheet) Top() int32 {
-    return TabSheet_GetTop(t.instance)
+    return TabSheet_GetTop(t._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (t *TTabSheet) SetTop(value int32) {
-    TabSheet_SetTop(t.instance, value)
+    TabSheet_SetTop(t._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (t *TTabSheet) Visible() bool {
-    return TabSheet_GetVisible(t.instance)
+    return TabSheet_GetVisible(t._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (t *TTabSheet) SetVisible(value bool) {
-    TabSheet_SetVisible(t.instance, value)
+    TabSheet_SetVisible(t._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (t *TTabSheet) Width() int32 {
-    return TabSheet_GetWidth(t.instance)
+    return TabSheet_GetWidth(t._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (t *TTabSheet) SetWidth(value int32) {
-    TabSheet_SetWidth(t.instance, value)
+    TabSheet_SetWidth(t._instance(), value)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (t *TTabSheet) SetOnContextPopup(fn TContextPopupEvent) {
-    TabSheet_SetOnContextPopup(t.instance, fn)
+    TabSheet_SetOnContextPopup(t._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (t *TTabSheet) SetOnDragDrop(fn TDragDropEvent) {
-    TabSheet_SetOnDragDrop(t.instance, fn)
+    TabSheet_SetOnDragDrop(t._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (t *TTabSheet) SetOnDragOver(fn TDragOverEvent) {
-    TabSheet_SetOnDragOver(t.instance, fn)
+    TabSheet_SetOnDragOver(t._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (t *TTabSheet) SetOnEndDrag(fn TEndDragEvent) {
-    TabSheet_SetOnEndDrag(t.instance, fn)
+    TabSheet_SetOnEndDrag(t._instance(), fn)
 }
 
+// SetOnEnter
+//
 // 设置焦点进入。
 //
 // Set Focus entry.
 func (t *TTabSheet) SetOnEnter(fn TNotifyEvent) {
-    TabSheet_SetOnEnter(t.instance, fn)
+    TabSheet_SetOnEnter(t._instance(), fn)
 }
 
+// SetOnExit
+//
 // 设置焦点退出。
 //
 // Set Focus exit.
 func (t *TTabSheet) SetOnExit(fn TNotifyEvent) {
-    TabSheet_SetOnExit(t.instance, fn)
+    TabSheet_SetOnExit(t._instance(), fn)
 }
 
+// SetOnHide
+//
 // 设置隐藏事件。
 func (t *TTabSheet) SetOnHide(fn TNotifyEvent) {
-    TabSheet_SetOnHide(t.instance, fn)
+    TabSheet_SetOnHide(t._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (t *TTabSheet) SetOnMouseDown(fn TMouseEvent) {
-    TabSheet_SetOnMouseDown(t.instance, fn)
+    TabSheet_SetOnMouseDown(t._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (t *TTabSheet) SetOnMouseEnter(fn TNotifyEvent) {
-    TabSheet_SetOnMouseEnter(t.instance, fn)
+    TabSheet_SetOnMouseEnter(t._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (t *TTabSheet) SetOnMouseLeave(fn TNotifyEvent) {
-    TabSheet_SetOnMouseLeave(t.instance, fn)
+    TabSheet_SetOnMouseLeave(t._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (t *TTabSheet) SetOnMouseMove(fn TMouseMoveEvent) {
-    TabSheet_SetOnMouseMove(t.instance, fn)
+    TabSheet_SetOnMouseMove(t._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (t *TTabSheet) SetOnMouseUp(fn TMouseEvent) {
-    TabSheet_SetOnMouseUp(t.instance, fn)
+    TabSheet_SetOnMouseUp(t._instance(), fn)
 }
 
+// SetOnResize
+//
 // 设置大小被改变事件。
 func (t *TTabSheet) SetOnResize(fn TNotifyEvent) {
-    TabSheet_SetOnResize(t.instance, fn)
+    TabSheet_SetOnResize(t._instance(), fn)
 }
 
+// SetOnShow
+//
 // 设置显示事件。
 func (t *TTabSheet) SetOnShow(fn TNotifyEvent) {
-    TabSheet_SetOnShow(t.instance, fn)
+    TabSheet_SetOnShow(t._instance(), fn)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (t *TTabSheet) DockClientCount() int32 {
-    return TabSheet_GetDockClientCount(t.instance)
+    return TabSheet_GetDockClientCount(t._instance())
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (t *TTabSheet) DockSite() bool {
-    return TabSheet_GetDockSite(t.instance)
+    return TabSheet_GetDockSite(t._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (t *TTabSheet) SetDockSite(value bool) {
-    TabSheet_SetDockSite(t.instance, value)
+    TabSheet_SetDockSite(t._instance(), value)
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (t *TTabSheet) MouseInClient() bool {
-    return TabSheet_GetMouseInClient(t.instance)
+    return TabSheet_GetMouseInClient(t._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (t *TTabSheet) VisibleDockClientCount() int32 {
-    return TabSheet_GetVisibleDockClientCount(t.instance)
+    return TabSheet_GetVisibleDockClientCount(t._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (t *TTabSheet) Brush() *TBrush {
-    return AsBrush(TabSheet_GetBrush(t.instance))
+    return AsBrush(TabSheet_GetBrush(t._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (t *TTabSheet) ControlCount() int32 {
-    return TabSheet_GetControlCount(t.instance)
+    return TabSheet_GetControlCount(t._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (t *TTabSheet) Handle() HWND {
-    return TabSheet_GetHandle(t.instance)
+    return TabSheet_GetHandle(t._instance())
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (t *TTabSheet) ParentWindow() HWND {
-    return TabSheet_GetParentWindow(t.instance)
+    return TabSheet_GetParentWindow(t._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (t *TTabSheet) SetParentWindow(value HWND) {
-    TabSheet_SetParentWindow(t.instance, value)
+    TabSheet_SetParentWindow(t._instance(), value)
 }
 
 func (t *TTabSheet) Showing() bool {
-    return TabSheet_GetShowing(t.instance)
+    return TabSheet_GetShowing(t._instance())
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (t *TTabSheet) TabOrder() TTabOrder {
-    return TabSheet_GetTabOrder(t.instance)
+    return TabSheet_GetTabOrder(t._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (t *TTabSheet) SetTabOrder(value TTabOrder) {
-    TabSheet_SetTabOrder(t.instance, value)
+    TabSheet_SetTabOrder(t._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (t *TTabSheet) TabStop() bool {
-    return TabSheet_GetTabStop(t.instance)
+    return TabSheet_GetTabStop(t._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (t *TTabSheet) SetTabStop(value bool) {
-    TabSheet_SetTabStop(t.instance, value)
+    TabSheet_SetTabStop(t._instance(), value)
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (t *TTabSheet) UseDockManager() bool {
-    return TabSheet_GetUseDockManager(t.instance)
+    return TabSheet_GetUseDockManager(t._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (t *TTabSheet) SetUseDockManager(value bool) {
-    TabSheet_SetUseDockManager(t.instance, value)
+    TabSheet_SetUseDockManager(t._instance(), value)
 }
 
 func (t *TTabSheet) Action() *TAction {
-    return AsAction(TabSheet_GetAction(t.instance))
+    return AsAction(TabSheet_GetAction(t._instance()))
 }
 
 func (t *TTabSheet) SetAction(value IComponent) {
-    TabSheet_SetAction(t.instance, CheckPtr(value))
+    TabSheet_SetAction(t._instance(), CheckPtr(value))
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (t *TTabSheet) Align() TAlign {
-    return TabSheet_GetAlign(t.instance)
+    return TabSheet_GetAlign(t._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (t *TTabSheet) SetAlign(value TAlign) {
-    TabSheet_SetAlign(t.instance, value)
+    TabSheet_SetAlign(t._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (t *TTabSheet) Anchors() TAnchors {
-    return TabSheet_GetAnchors(t.instance)
+    return TabSheet_GetAnchors(t._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (t *TTabSheet) SetAnchors(value TAnchors) {
-    TabSheet_SetAnchors(t.instance, value)
+    TabSheet_SetAnchors(t._instance(), value)
 }
 
 func (t *TTabSheet) BiDiMode() TBiDiMode {
-    return TabSheet_GetBiDiMode(t.instance)
+    return TabSheet_GetBiDiMode(t._instance())
 }
 
 func (t *TTabSheet) SetBiDiMode(value TBiDiMode) {
-    TabSheet_SetBiDiMode(t.instance, value)
+    TabSheet_SetBiDiMode(t._instance(), value)
 }
 
 func (t *TTabSheet) BoundsRect() TRect {
-    return TabSheet_GetBoundsRect(t.instance)
+    return TabSheet_GetBoundsRect(t._instance())
 }
 
 func (t *TTabSheet) SetBoundsRect(value TRect) {
-    TabSheet_SetBoundsRect(t.instance, value)
+    TabSheet_SetBoundsRect(t._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (t *TTabSheet) ClientHeight() int32 {
-    return TabSheet_GetClientHeight(t.instance)
+    return TabSheet_GetClientHeight(t._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (t *TTabSheet) SetClientHeight(value int32) {
-    TabSheet_SetClientHeight(t.instance, value)
+    TabSheet_SetClientHeight(t._instance(), value)
 }
 
 func (t *TTabSheet) ClientOrigin() TPoint {
-    return TabSheet_GetClientOrigin(t.instance)
+    return TabSheet_GetClientOrigin(t._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (t *TTabSheet) ClientRect() TRect {
-    return TabSheet_GetClientRect(t.instance)
+    return TabSheet_GetClientRect(t._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (t *TTabSheet) ClientWidth() int32 {
-    return TabSheet_GetClientWidth(t.instance)
+    return TabSheet_GetClientWidth(t._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (t *TTabSheet) SetClientWidth(value int32) {
-    TabSheet_SetClientWidth(t.instance, value)
+    TabSheet_SetClientWidth(t._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (t *TTabSheet) ControlState() TControlState {
-    return TabSheet_GetControlState(t.instance)
+    return TabSheet_GetControlState(t._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (t *TTabSheet) SetControlState(value TControlState) {
-    TabSheet_SetControlState(t.instance, value)
+    TabSheet_SetControlState(t._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (t *TTabSheet) ControlStyle() TControlStyle {
-    return TabSheet_GetControlStyle(t.instance)
+    return TabSheet_GetControlStyle(t._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (t *TTabSheet) SetControlStyle(value TControlStyle) {
-    TabSheet_SetControlStyle(t.instance, value)
+    TabSheet_SetControlStyle(t._instance(), value)
 }
 
 func (t *TTabSheet) Floating() bool {
-    return TabSheet_GetFloating(t.instance)
+    return TabSheet_GetFloating(t._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (t *TTabSheet) Parent() *TWinControl {
-    return AsWinControl(TabSheet_GetParent(t.instance))
+    return AsWinControl(TabSheet_GetParent(t._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (t *TTabSheet) SetParent(value IWinControl) {
-    TabSheet_SetParent(t.instance, CheckPtr(value))
+    TabSheet_SetParent(t._instance(), CheckPtr(value))
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (t *TTabSheet) Cursor() TCursor {
-    return TabSheet_GetCursor(t.instance)
+    return TabSheet_GetCursor(t._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (t *TTabSheet) SetCursor(value TCursor) {
-    TabSheet_SetCursor(t.instance, value)
+    TabSheet_SetCursor(t._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (t *TTabSheet) Hint() string {
-    return TabSheet_GetHint(t.instance)
+    return TabSheet_GetHint(t._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (t *TTabSheet) SetHint(value string) {
-    TabSheet_SetHint(t.instance, value)
+    TabSheet_SetHint(t._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (t *TTabSheet) ComponentCount() int32 {
-    return TabSheet_GetComponentCount(t.instance)
+    return TabSheet_GetComponentCount(t._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (t *TTabSheet) ComponentIndex() int32 {
-    return TabSheet_GetComponentIndex(t.instance)
+    return TabSheet_GetComponentIndex(t._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (t *TTabSheet) SetComponentIndex(value int32) {
-    TabSheet_SetComponentIndex(t.instance, value)
+    TabSheet_SetComponentIndex(t._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (t *TTabSheet) Owner() *TComponent {
-    return AsComponent(TabSheet_GetOwner(t.instance))
+    return AsComponent(TabSheet_GetOwner(t._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (t *TTabSheet) Name() string {
-    return TabSheet_GetName(t.instance)
+    return TabSheet_GetName(t._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (t *TTabSheet) SetName(value string) {
-    TabSheet_SetName(t.instance, value)
+    TabSheet_SetName(t._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (t *TTabSheet) Tag() int {
-    return TabSheet_GetTag(t.instance)
+    return TabSheet_GetTag(t._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (t *TTabSheet) SetTag(value int) {
-    TabSheet_SetTag(t.instance, value)
+    TabSheet_SetTag(t._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (t *TTabSheet) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(TabSheet_GetAnchorSideLeft(t.instance))
+    return AsAnchorSide(TabSheet_GetAnchorSideLeft(t._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (t *TTabSheet) SetAnchorSideLeft(value *TAnchorSide) {
-    TabSheet_SetAnchorSideLeft(t.instance, CheckPtr(value))
+    TabSheet_SetAnchorSideLeft(t._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (t *TTabSheet) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(TabSheet_GetAnchorSideTop(t.instance))
+    return AsAnchorSide(TabSheet_GetAnchorSideTop(t._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (t *TTabSheet) SetAnchorSideTop(value *TAnchorSide) {
-    TabSheet_SetAnchorSideTop(t.instance, CheckPtr(value))
+    TabSheet_SetAnchorSideTop(t._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (t *TTabSheet) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(TabSheet_GetAnchorSideRight(t.instance))
+    return AsAnchorSide(TabSheet_GetAnchorSideRight(t._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (t *TTabSheet) SetAnchorSideRight(value *TAnchorSide) {
-    TabSheet_SetAnchorSideRight(t.instance, CheckPtr(value))
+    TabSheet_SetAnchorSideRight(t._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (t *TTabSheet) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(TabSheet_GetAnchorSideBottom(t.instance))
+    return AsAnchorSide(TabSheet_GetAnchorSideBottom(t._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (t *TTabSheet) SetAnchorSideBottom(value *TAnchorSide) {
-    TabSheet_SetAnchorSideBottom(t.instance, CheckPtr(value))
+    TabSheet_SetAnchorSideBottom(t._instance(), CheckPtr(value))
 }
 
 func (t *TTabSheet) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(TabSheet_GetChildSizing(t.instance))
+    return AsControlChildSizing(TabSheet_GetChildSizing(t._instance()))
 }
 
 func (t *TTabSheet) SetChildSizing(value *TControlChildSizing) {
-    TabSheet_SetChildSizing(t.instance, CheckPtr(value))
+    TabSheet_SetChildSizing(t._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (t *TTabSheet) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(TabSheet_GetBorderSpacing(t.instance))
+    return AsControlBorderSpacing(TabSheet_GetBorderSpacing(t._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (t *TTabSheet) SetBorderSpacing(value *TControlBorderSpacing) {
-    TabSheet_SetBorderSpacing(t.instance, CheckPtr(value))
+    TabSheet_SetBorderSpacing(t._instance(), CheckPtr(value))
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (t *TTabSheet) DockClients(Index int32) *TControl {
-    return AsControl(TabSheet_GetDockClients(t.instance, Index))
+    return AsControl(TabSheet_GetDockClients(t._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (t *TTabSheet) Controls(Index int32) *TControl {
-    return AsControl(TabSheet_GetControls(t.instance, Index))
+    return AsControl(TabSheet_GetControls(t._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (t *TTabSheet) Components(AIndex int32) *TComponent {
-    return AsComponent(TabSheet_GetComponents(t.instance, AIndex))
+    return AsComponent(TabSheet_GetComponents(t._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (t *TTabSheet) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(TabSheet_GetAnchorSide(t.instance, AKind))
+    return AsAnchorSide(TabSheet_GetAnchorSide(t._instance(), AKind))
 }
 

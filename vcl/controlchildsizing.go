@@ -19,81 +19,71 @@ import (
 
 type TControlChildSizing struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// AsControlChildSizing
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsControlChildSizing(obj interface{}) *TControlChildSizing {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TControlChildSizing{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TControlChildSizing{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsControlChildSizing.
-func ControlChildSizingFromInst(inst uintptr) *TControlChildSizing {
-    return AsControlChildSizing(inst)
+func (c *TControlChildSizing) _instance() uintptr {
+    return uintptr(c.instance)
 }
 
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsControlChildSizing.
-func ControlChildSizingFromObj(obj IObject) *TControlChildSizing {
-    return AsControlChildSizing(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsControlChildSizing.
-func ControlChildSizingFromUnsafePointer(ptr unsafe.Pointer) *TControlChildSizing {
-    return AsControlChildSizing(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (c *TControlChildSizing) Instance() uintptr {
-    return c.instance
+    return c._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (c *TControlChildSizing) UnsafeAddr() unsafe.Pointer {
-    return c.ptr
+    return c.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (c *TControlChildSizing) IsValid() bool {
-    return c.instance != 0
+    return c.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (c *TControlChildSizing) Is() TIs {
-    return TIs(c.instance)
+    return TIs(c._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (c *TControlChildSizing) As() TAs {
-//    return TAs(c.instance)
+//    return TAs(c._instance())
 //}
 
+// TControlChildSizingClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -101,157 +91,177 @@ func TControlChildSizingClass() TClass {
     return ControlChildSizing_StaticClassType()
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (c *TControlChildSizing) Assign(Source IObject) {
-    ControlChildSizing_Assign(c.instance, CheckPtr(Source))
+    ControlChildSizing_Assign(c._instance(), CheckPtr(Source))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (c *TControlChildSizing) GetNamePath() string {
-    return ControlChildSizing_GetNamePath(c.instance)
+    return ControlChildSizing_GetNamePath(c._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (c *TControlChildSizing) ClassType() TClass {
-    return ControlChildSizing_ClassType(c.instance)
+    return ControlChildSizing_ClassType(c._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (c *TControlChildSizing) ClassName() string {
-    return ControlChildSizing_ClassName(c.instance)
+    return ControlChildSizing_ClassName(c._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (c *TControlChildSizing) InstanceSize() int32 {
-    return ControlChildSizing_InstanceSize(c.instance)
+    return ControlChildSizing_InstanceSize(c._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (c *TControlChildSizing) InheritsFrom(AClass TClass) bool {
-    return ControlChildSizing_InheritsFrom(c.instance, AClass)
+    return ControlChildSizing_InheritsFrom(c._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (c *TControlChildSizing) Equals(Obj IObject) bool {
-    return ControlChildSizing_Equals(c.instance, CheckPtr(Obj))
+    return ControlChildSizing_Equals(c._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (c *TControlChildSizing) GetHashCode() int32 {
-    return ControlChildSizing_GetHashCode(c.instance)
+    return ControlChildSizing_GetHashCode(c._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (c *TControlChildSizing) ToString() string {
-    return ControlChildSizing_ToString(c.instance)
+    return ControlChildSizing_ToString(c._instance())
 }
 
 func (c *TControlChildSizing) Control() *TWinControl {
-    return AsWinControl(ControlChildSizing_GetControl(c.instance))
+    return AsWinControl(ControlChildSizing_GetControl(c._instance()))
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (c *TControlChildSizing) SetOnChange(fn TNotifyEvent) {
-    ControlChildSizing_SetOnChange(c.instance, fn)
+    ControlChildSizing_SetOnChange(c._instance(), fn)
 }
 
 func (c *TControlChildSizing) LeftRightSpacing() int32 {
-    return ControlChildSizing_GetLeftRightSpacing(c.instance)
+    return ControlChildSizing_GetLeftRightSpacing(c._instance())
 }
 
 func (c *TControlChildSizing) SetLeftRightSpacing(value int32) {
-    ControlChildSizing_SetLeftRightSpacing(c.instance, value)
+    ControlChildSizing_SetLeftRightSpacing(c._instance(), value)
 }
 
 func (c *TControlChildSizing) TopBottomSpacing() int32 {
-    return ControlChildSizing_GetTopBottomSpacing(c.instance)
+    return ControlChildSizing_GetTopBottomSpacing(c._instance())
 }
 
 func (c *TControlChildSizing) SetTopBottomSpacing(value int32) {
-    ControlChildSizing_SetTopBottomSpacing(c.instance, value)
+    ControlChildSizing_SetTopBottomSpacing(c._instance(), value)
 }
 
 func (c *TControlChildSizing) HorizontalSpacing() int32 {
-    return ControlChildSizing_GetHorizontalSpacing(c.instance)
+    return ControlChildSizing_GetHorizontalSpacing(c._instance())
 }
 
 func (c *TControlChildSizing) SetHorizontalSpacing(value int32) {
-    ControlChildSizing_SetHorizontalSpacing(c.instance, value)
+    ControlChildSizing_SetHorizontalSpacing(c._instance(), value)
 }
 
 func (c *TControlChildSizing) VerticalSpacing() int32 {
-    return ControlChildSizing_GetVerticalSpacing(c.instance)
+    return ControlChildSizing_GetVerticalSpacing(c._instance())
 }
 
 func (c *TControlChildSizing) SetVerticalSpacing(value int32) {
-    ControlChildSizing_SetVerticalSpacing(c.instance, value)
+    ControlChildSizing_SetVerticalSpacing(c._instance(), value)
 }
 
 func (c *TControlChildSizing) EnlargeHorizontal() TChildControlResizeStyle {
-    return ControlChildSizing_GetEnlargeHorizontal(c.instance)
+    return ControlChildSizing_GetEnlargeHorizontal(c._instance())
 }
 
 func (c *TControlChildSizing) SetEnlargeHorizontal(value TChildControlResizeStyle) {
-    ControlChildSizing_SetEnlargeHorizontal(c.instance, value)
+    ControlChildSizing_SetEnlargeHorizontal(c._instance(), value)
 }
 
 func (c *TControlChildSizing) EnlargeVertical() TChildControlResizeStyle {
-    return ControlChildSizing_GetEnlargeVertical(c.instance)
+    return ControlChildSizing_GetEnlargeVertical(c._instance())
 }
 
 func (c *TControlChildSizing) SetEnlargeVertical(value TChildControlResizeStyle) {
-    ControlChildSizing_SetEnlargeVertical(c.instance, value)
+    ControlChildSizing_SetEnlargeVertical(c._instance(), value)
 }
 
 func (c *TControlChildSizing) ShrinkHorizontal() TChildControlResizeStyle {
-    return ControlChildSizing_GetShrinkHorizontal(c.instance)
+    return ControlChildSizing_GetShrinkHorizontal(c._instance())
 }
 
 func (c *TControlChildSizing) SetShrinkHorizontal(value TChildControlResizeStyle) {
-    ControlChildSizing_SetShrinkHorizontal(c.instance, value)
+    ControlChildSizing_SetShrinkHorizontal(c._instance(), value)
 }
 
 func (c *TControlChildSizing) ShrinkVertical() TChildControlResizeStyle {
-    return ControlChildSizing_GetShrinkVertical(c.instance)
+    return ControlChildSizing_GetShrinkVertical(c._instance())
 }
 
 func (c *TControlChildSizing) SetShrinkVertical(value TChildControlResizeStyle) {
-    ControlChildSizing_SetShrinkVertical(c.instance, value)
+    ControlChildSizing_SetShrinkVertical(c._instance(), value)
 }
 
 func (c *TControlChildSizing) Layout() TControlChildrenLayout {
-    return ControlChildSizing_GetLayout(c.instance)
+    return ControlChildSizing_GetLayout(c._instance())
 }
 
 func (c *TControlChildSizing) SetLayout(value TControlChildrenLayout) {
-    ControlChildSizing_SetLayout(c.instance, value)
+    ControlChildSizing_SetLayout(c._instance(), value)
 }
 
 func (c *TControlChildSizing) ControlsPerLine() int32 {
-    return ControlChildSizing_GetControlsPerLine(c.instance)
+    return ControlChildSizing_GetControlsPerLine(c._instance())
 }
 
 func (c *TControlChildSizing) SetControlsPerLine(value int32) {
-    ControlChildSizing_SetControlsPerLine(c.instance, value)
+    ControlChildSizing_SetControlsPerLine(c._instance(), value)
 }
 

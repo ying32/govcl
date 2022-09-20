@@ -19,101 +19,94 @@ import (
 
 type TValueListEditor struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewValueListEditor
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewValueListEditor(owner IComponent) *TValueListEditor {
     v := new(TValueListEditor)
-    v.instance = ValueListEditor_Create(CheckPtr(owner))
-    v.ptr = unsafe.Pointer(v.instance)
+    v.instance = unsafe.Pointer(ValueListEditor_Create(CheckPtr(owner)))
     return v
 }
 
+// AsValueListEditor
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsValueListEditor(obj interface{}) *TValueListEditor {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TValueListEditor{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TValueListEditor{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsValueListEditor.
-func ValueListEditorFromInst(inst uintptr) *TValueListEditor {
-    return AsValueListEditor(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsValueListEditor.
-func ValueListEditorFromObj(obj IObject) *TValueListEditor {
-    return AsValueListEditor(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsValueListEditor.
-func ValueListEditorFromUnsafePointer(ptr unsafe.Pointer) *TValueListEditor {
-    return AsValueListEditor(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (v *TValueListEditor) Free() {
-    if v.instance != 0 {
-        ValueListEditor_Free(v.instance)
-        v.instance, v.ptr = 0, nullptr
+    if v.instance != nullptr {
+        ValueListEditor_Free(v._instance())
+        v.instance  = nullptr
     }
 }
 
+func (v *TValueListEditor) _instance() uintptr {
+    return uintptr(v.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (v *TValueListEditor) Instance() uintptr {
-    return v.instance
+    return v._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (v *TValueListEditor) UnsafeAddr() unsafe.Pointer {
-    return v.ptr
+    return v.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (v *TValueListEditor) IsValid() bool {
-    return v.instance != 0
+    return v.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (v *TValueListEditor) Is() TIs {
-    return TIs(v.instance)
+    return TIs(v._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (v *TValueListEditor) As() TAs {
-//    return TAs(v.instance)
+//    return TAs(v._instance())
 //}
 
+// TValueListEditorClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,1430 +115,1758 @@ func TValueListEditorClass() TClass {
 }
 
 func (v *TValueListEditor) DeleteRow(ARow int32) {
-    ValueListEditor_DeleteRow(v.instance, ARow)
+    ValueListEditor_DeleteRow(v._instance(), ARow)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (v *TValueListEditor) Refresh() {
-    ValueListEditor_Refresh(v.instance)
+    ValueListEditor_Refresh(v._instance())
 }
 
 func (v *TValueListEditor) CellRect(ACol int32, ARow int32) TRect {
-    return ValueListEditor_CellRect(v.instance, ACol , ARow)
+    return ValueListEditor_CellRect(v._instance(), ACol , ARow)
 }
 
 func (v *TValueListEditor) MouseToCell(X int32, Y int32, ACol *int32, ARow *int32) {
-    ValueListEditor_MouseToCell(v.instance, X , Y , ACol , ARow)
+    ValueListEditor_MouseToCell(v._instance(), X , Y , ACol , ARow)
 }
 
 func (v *TValueListEditor) MouseCoord(X int32, Y int32) TGridCoord {
-    return ValueListEditor_MouseCoord(v.instance, X , Y)
+    return ValueListEditor_MouseCoord(v._instance(), X , Y)
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (v *TValueListEditor) CanFocus() bool {
-    return ValueListEditor_CanFocus(v.instance)
+    return ValueListEditor_CanFocus(v._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (v *TValueListEditor) ContainsControl(Control IControl) bool {
-    return ValueListEditor_ContainsControl(v.instance, CheckPtr(Control))
+    return ValueListEditor_ContainsControl(v._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (v *TValueListEditor) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(ValueListEditor_ControlAtPos(v.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(ValueListEditor_ControlAtPos(v._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (v *TValueListEditor) DisableAlign() {
-    ValueListEditor_DisableAlign(v.instance)
+    ValueListEditor_DisableAlign(v._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (v *TValueListEditor) EnableAlign() {
-    ValueListEditor_EnableAlign(v.instance)
+    ValueListEditor_EnableAlign(v._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (v *TValueListEditor) FindChildControl(ControlName string) *TControl {
-    return AsControl(ValueListEditor_FindChildControl(v.instance, ControlName))
+    return AsControl(ValueListEditor_FindChildControl(v._instance(), ControlName))
 }
 
 func (v *TValueListEditor) FlipChildren(AllLevels bool) {
-    ValueListEditor_FlipChildren(v.instance, AllLevels)
+    ValueListEditor_FlipChildren(v._instance(), AllLevels)
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (v *TValueListEditor) Focused() bool {
-    return ValueListEditor_Focused(v.instance)
+    return ValueListEditor_Focused(v._instance())
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (v *TValueListEditor) HandleAllocated() bool {
-    return ValueListEditor_HandleAllocated(v.instance)
+    return ValueListEditor_HandleAllocated(v._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (v *TValueListEditor) InsertControl(AControl IControl) {
-    ValueListEditor_InsertControl(v.instance, CheckPtr(AControl))
+    ValueListEditor_InsertControl(v._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (v *TValueListEditor) Invalidate() {
-    ValueListEditor_Invalidate(v.instance)
+    ValueListEditor_Invalidate(v._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (v *TValueListEditor) PaintTo(DC HDC, X int32, Y int32) {
-    ValueListEditor_PaintTo(v.instance, DC , X , Y)
+    ValueListEditor_PaintTo(v._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (v *TValueListEditor) RemoveControl(AControl IControl) {
-    ValueListEditor_RemoveControl(v.instance, CheckPtr(AControl))
+    ValueListEditor_RemoveControl(v._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (v *TValueListEditor) Realign() {
-    ValueListEditor_Realign(v.instance)
+    ValueListEditor_Realign(v._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (v *TValueListEditor) Repaint() {
-    ValueListEditor_Repaint(v.instance)
+    ValueListEditor_Repaint(v._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (v *TValueListEditor) ScaleBy(M int32, D int32) {
-    ValueListEditor_ScaleBy(v.instance, M , D)
+    ValueListEditor_ScaleBy(v._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (v *TValueListEditor) ScrollBy(DeltaX int32, DeltaY int32) {
-    ValueListEditor_ScrollBy(v.instance, DeltaX , DeltaY)
+    ValueListEditor_ScrollBy(v._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (v *TValueListEditor) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    ValueListEditor_SetBounds(v.instance, ALeft , ATop , AWidth , AHeight)
+    ValueListEditor_SetBounds(v._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (v *TValueListEditor) SetFocus() {
-    ValueListEditor_SetFocus(v.instance)
+    ValueListEditor_SetFocus(v._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (v *TValueListEditor) Update() {
-    ValueListEditor_Update(v.instance)
+    ValueListEditor_Update(v._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (v *TValueListEditor) BringToFront() {
-    ValueListEditor_BringToFront(v.instance)
+    ValueListEditor_BringToFront(v._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (v *TValueListEditor) ClientToScreen(Point TPoint) TPoint {
-    return ValueListEditor_ClientToScreen(v.instance, Point)
+    return ValueListEditor_ClientToScreen(v._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (v *TValueListEditor) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return ValueListEditor_ClientToParent(v.instance, Point , CheckPtr(AParent))
+    return ValueListEditor_ClientToParent(v._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (v *TValueListEditor) Dragging() bool {
-    return ValueListEditor_Dragging(v.instance)
+    return ValueListEditor_Dragging(v._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (v *TValueListEditor) HasParent() bool {
-    return ValueListEditor_HasParent(v.instance)
+    return ValueListEditor_HasParent(v._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (v *TValueListEditor) Hide() {
-    ValueListEditor_Hide(v.instance)
+    ValueListEditor_Hide(v._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (v *TValueListEditor) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return ValueListEditor_Perform(v.instance, Msg , WParam , LParam)
+    return ValueListEditor_Perform(v._instance(), Msg , WParam , LParam)
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (v *TValueListEditor) ScreenToClient(Point TPoint) TPoint {
-    return ValueListEditor_ScreenToClient(v.instance, Point)
+    return ValueListEditor_ScreenToClient(v._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (v *TValueListEditor) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return ValueListEditor_ParentToClient(v.instance, Point , CheckPtr(AParent))
+    return ValueListEditor_ParentToClient(v._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (v *TValueListEditor) SendToBack() {
-    ValueListEditor_SendToBack(v.instance)
+    ValueListEditor_SendToBack(v._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (v *TValueListEditor) Show() {
-    ValueListEditor_Show(v.instance)
+    ValueListEditor_Show(v._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (v *TValueListEditor) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return ValueListEditor_GetTextBuf(v.instance, Buffer , BufSize)
+    return ValueListEditor_GetTextBuf(v._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (v *TValueListEditor) GetTextLen() int32 {
-    return ValueListEditor_GetTextLen(v.instance)
+    return ValueListEditor_GetTextLen(v._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (v *TValueListEditor) SetTextBuf(Buffer string) {
-    ValueListEditor_SetTextBuf(v.instance, Buffer)
+    ValueListEditor_SetTextBuf(v._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (v *TValueListEditor) FindComponent(AName string) *TComponent {
-    return AsComponent(ValueListEditor_FindComponent(v.instance, AName))
+    return AsComponent(ValueListEditor_FindComponent(v._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (v *TValueListEditor) GetNamePath() string {
-    return ValueListEditor_GetNamePath(v.instance)
+    return ValueListEditor_GetNamePath(v._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (v *TValueListEditor) Assign(Source IObject) {
-    ValueListEditor_Assign(v.instance, CheckPtr(Source))
+    ValueListEditor_Assign(v._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (v *TValueListEditor) ClassType() TClass {
-    return ValueListEditor_ClassType(v.instance)
+    return ValueListEditor_ClassType(v._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (v *TValueListEditor) ClassName() string {
-    return ValueListEditor_ClassName(v.instance)
+    return ValueListEditor_ClassName(v._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (v *TValueListEditor) InstanceSize() int32 {
-    return ValueListEditor_InstanceSize(v.instance)
+    return ValueListEditor_InstanceSize(v._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (v *TValueListEditor) InheritsFrom(AClass TClass) bool {
-    return ValueListEditor_InheritsFrom(v.instance, AClass)
+    return ValueListEditor_InheritsFrom(v._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (v *TValueListEditor) Equals(Obj IObject) bool {
-    return ValueListEditor_Equals(v.instance, CheckPtr(Obj))
+    return ValueListEditor_Equals(v._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (v *TValueListEditor) GetHashCode() int32 {
-    return ValueListEditor_GetHashCode(v.instance)
+    return ValueListEditor_GetHashCode(v._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (v *TValueListEditor) ToString() string {
-    return ValueListEditor_ToString(v.instance)
+    return ValueListEditor_ToString(v._instance())
 }
 
 func (v *TValueListEditor) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    ValueListEditor_AnchorToNeighbour(v.instance, ASide , ASpace , CheckPtr(ASibling))
+    ValueListEditor_AnchorToNeighbour(v._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (v *TValueListEditor) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    ValueListEditor_AnchorParallel(v.instance, ASide , ASpace , CheckPtr(ASibling))
+    ValueListEditor_AnchorParallel(v._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (v *TValueListEditor) AnchorHorizontalCenterTo(ASibling IControl) {
-    ValueListEditor_AnchorHorizontalCenterTo(v.instance, CheckPtr(ASibling))
+    ValueListEditor_AnchorHorizontalCenterTo(v._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (v *TValueListEditor) AnchorVerticalCenterTo(ASibling IControl) {
-    ValueListEditor_AnchorVerticalCenterTo(v.instance, CheckPtr(ASibling))
+    ValueListEditor_AnchorVerticalCenterTo(v._instance(), CheckPtr(ASibling))
 }
 
 func (v *TValueListEditor) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    ValueListEditor_AnchorSame(v.instance, ASide , CheckPtr(ASibling))
+    ValueListEditor_AnchorSame(v._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (v *TValueListEditor) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    ValueListEditor_AnchorAsAlign(v.instance, ATheAlign , ASpace)
+    ValueListEditor_AnchorAsAlign(v._instance(), ATheAlign , ASpace)
 }
 
 func (v *TValueListEditor) AnchorClient(ASpace int32) {
-    ValueListEditor_AnchorClient(v.instance, ASpace)
+    ValueListEditor_AnchorClient(v._instance(), ASpace)
 }
 
 func (v *TValueListEditor) ScaleDesignToForm(ASize int32) int32 {
-    return ValueListEditor_ScaleDesignToForm(v.instance, ASize)
+    return ValueListEditor_ScaleDesignToForm(v._instance(), ASize)
 }
 
 func (v *TValueListEditor) ScaleFormToDesign(ASize int32) int32 {
-    return ValueListEditor_ScaleFormToDesign(v.instance, ASize)
+    return ValueListEditor_ScaleFormToDesign(v._instance(), ASize)
 }
 
 func (v *TValueListEditor) Scale96ToForm(ASize int32) int32 {
-    return ValueListEditor_Scale96ToForm(v.instance, ASize)
+    return ValueListEditor_Scale96ToForm(v._instance(), ASize)
 }
 
 func (v *TValueListEditor) ScaleFormTo96(ASize int32) int32 {
-    return ValueListEditor_ScaleFormTo96(v.instance, ASize)
+    return ValueListEditor_ScaleFormTo96(v._instance(), ASize)
 }
 
 func (v *TValueListEditor) Scale96ToFont(ASize int32) int32 {
-    return ValueListEditor_Scale96ToFont(v.instance, ASize)
+    return ValueListEditor_Scale96ToFont(v._instance(), ASize)
 }
 
 func (v *TValueListEditor) ScaleFontTo96(ASize int32) int32 {
-    return ValueListEditor_ScaleFontTo96(v.instance, ASize)
+    return ValueListEditor_ScaleFontTo96(v._instance(), ASize)
 }
 
 func (v *TValueListEditor) ScaleScreenToFont(ASize int32) int32 {
-    return ValueListEditor_ScaleScreenToFont(v.instance, ASize)
+    return ValueListEditor_ScaleScreenToFont(v._instance(), ASize)
 }
 
 func (v *TValueListEditor) ScaleFontToScreen(ASize int32) int32 {
-    return ValueListEditor_ScaleFontToScreen(v.instance, ASize)
+    return ValueListEditor_ScaleFontToScreen(v._instance(), ASize)
 }
 
 func (v *TValueListEditor) Scale96ToScreen(ASize int32) int32 {
-    return ValueListEditor_Scale96ToScreen(v.instance, ASize)
+    return ValueListEditor_Scale96ToScreen(v._instance(), ASize)
 }
 
 func (v *TValueListEditor) ScaleScreenTo96(ASize int32) int32 {
-    return ValueListEditor_ScaleScreenTo96(v.instance, ASize)
+    return ValueListEditor_ScaleScreenTo96(v._instance(), ASize)
 }
 
 func (v *TValueListEditor) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    ValueListEditor_AutoAdjustLayout(v.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    ValueListEditor_AutoAdjustLayout(v._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (v *TValueListEditor) FixDesignFontsPPI(ADesignTimePPI int32) {
-    ValueListEditor_FixDesignFontsPPI(v.instance, ADesignTimePPI)
+    ValueListEditor_FixDesignFontsPPI(v._instance(), ADesignTimePPI)
 }
 
 func (v *TValueListEditor) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    ValueListEditor_ScaleFontsPPI(v.instance, AToPPI , AProportion)
+    ValueListEditor_ScaleFontsPPI(v._instance(), AToPPI , AProportion)
 }
 
 func (v *TValueListEditor) ColCount() int32 {
-    return ValueListEditor_GetColCount(v.instance)
+    return ValueListEditor_GetColCount(v._instance())
 }
 
 func (v *TValueListEditor) SetColCount(value int32) {
-    ValueListEditor_SetColCount(v.instance, value)
+    ValueListEditor_SetColCount(v._instance(), value)
 }
 
 func (v *TValueListEditor) RowCount() int32 {
-    return ValueListEditor_GetRowCount(v.instance)
+    return ValueListEditor_GetRowCount(v._instance())
 }
 
 func (v *TValueListEditor) VisibleColCount() int32 {
-    return ValueListEditor_GetVisibleColCount(v.instance)
+    return ValueListEditor_GetVisibleColCount(v._instance())
 }
 
 func (v *TValueListEditor) VisibleRowCount() int32 {
-    return ValueListEditor_GetVisibleRowCount(v.instance)
+    return ValueListEditor_GetVisibleRowCount(v._instance())
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (v *TValueListEditor) Align() TAlign {
-    return ValueListEditor_GetAlign(v.instance)
+    return ValueListEditor_GetAlign(v._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (v *TValueListEditor) SetAlign(value TAlign) {
-    ValueListEditor_SetAlign(v.instance, value)
+    ValueListEditor_SetAlign(v._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (v *TValueListEditor) Anchors() TAnchors {
-    return ValueListEditor_GetAnchors(v.instance)
+    return ValueListEditor_GetAnchors(v._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (v *TValueListEditor) SetAnchors(value TAnchors) {
-    ValueListEditor_SetAnchors(v.instance, value)
+    ValueListEditor_SetAnchors(v._instance(), value)
 }
 
 func (v *TValueListEditor) BiDiMode() TBiDiMode {
-    return ValueListEditor_GetBiDiMode(v.instance)
+    return ValueListEditor_GetBiDiMode(v._instance())
 }
 
 func (v *TValueListEditor) SetBiDiMode(value TBiDiMode) {
-    ValueListEditor_SetBiDiMode(v.instance, value)
+    ValueListEditor_SetBiDiMode(v._instance(), value)
 }
 
+// BorderStyle
+//
 // 获取窗口边框样式。比如：无边框，单一边框等。
 func (v *TValueListEditor) BorderStyle() TBorderStyle {
-    return ValueListEditor_GetBorderStyle(v.instance)
+    return ValueListEditor_GetBorderStyle(v._instance())
 }
 
+// SetBorderStyle
+//
 // 设置窗口边框样式。比如：无边框，单一边框等。
 func (v *TValueListEditor) SetBorderStyle(value TBorderStyle) {
-    ValueListEditor_SetBorderStyle(v.instance, value)
+    ValueListEditor_SetBorderStyle(v._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (v *TValueListEditor) Color() TColor {
-    return ValueListEditor_GetColor(v.instance)
+    return ValueListEditor_GetColor(v._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (v *TValueListEditor) SetColor(value TColor) {
-    ValueListEditor_SetColor(v.instance, value)
+    ValueListEditor_SetColor(v._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (v *TValueListEditor) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(ValueListEditor_GetConstraints(v.instance))
+    return AsSizeConstraints(ValueListEditor_GetConstraints(v._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (v *TValueListEditor) SetConstraints(value *TSizeConstraints) {
-    ValueListEditor_SetConstraints(v.instance, CheckPtr(value))
+    ValueListEditor_SetConstraints(v._instance(), CheckPtr(value))
 }
 
 func (v *TValueListEditor) DefaultColWidth() int32 {
-    return ValueListEditor_GetDefaultColWidth(v.instance)
+    return ValueListEditor_GetDefaultColWidth(v._instance())
 }
 
 func (v *TValueListEditor) SetDefaultColWidth(value int32) {
-    ValueListEditor_SetDefaultColWidth(v.instance, value)
+    ValueListEditor_SetDefaultColWidth(v._instance(), value)
 }
 
 func (v *TValueListEditor) DefaultDrawing() bool {
-    return ValueListEditor_GetDefaultDrawing(v.instance)
+    return ValueListEditor_GetDefaultDrawing(v._instance())
 }
 
 func (v *TValueListEditor) SetDefaultDrawing(value bool) {
-    ValueListEditor_SetDefaultDrawing(v.instance, value)
+    ValueListEditor_SetDefaultDrawing(v._instance(), value)
 }
 
 func (v *TValueListEditor) DefaultRowHeight() int32 {
-    return ValueListEditor_GetDefaultRowHeight(v.instance)
+    return ValueListEditor_GetDefaultRowHeight(v._instance())
 }
 
 func (v *TValueListEditor) SetDefaultRowHeight(value int32) {
-    ValueListEditor_SetDefaultRowHeight(v.instance, value)
+    ValueListEditor_SetDefaultRowHeight(v._instance(), value)
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (v *TValueListEditor) DoubleBuffered() bool {
-    return ValueListEditor_GetDoubleBuffered(v.instance)
+    return ValueListEditor_GetDoubleBuffered(v._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (v *TValueListEditor) SetDoubleBuffered(value bool) {
-    ValueListEditor_SetDoubleBuffered(v.instance, value)
+    ValueListEditor_SetDoubleBuffered(v._instance(), value)
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (v *TValueListEditor) DragCursor() TCursor {
-    return ValueListEditor_GetDragCursor(v.instance)
+    return ValueListEditor_GetDragCursor(v._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (v *TValueListEditor) SetDragCursor(value TCursor) {
-    ValueListEditor_SetDragCursor(v.instance, value)
+    ValueListEditor_SetDragCursor(v._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (v *TValueListEditor) DragKind() TDragKind {
-    return ValueListEditor_GetDragKind(v.instance)
+    return ValueListEditor_GetDragKind(v._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (v *TValueListEditor) SetDragKind(value TDragKind) {
-    ValueListEditor_SetDragKind(v.instance, value)
+    ValueListEditor_SetDragKind(v._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (v *TValueListEditor) DragMode() TDragMode {
-    return ValueListEditor_GetDragMode(v.instance)
+    return ValueListEditor_GetDragMode(v._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (v *TValueListEditor) SetDragMode(value TDragMode) {
-    ValueListEditor_SetDragMode(v.instance, value)
+    ValueListEditor_SetDragMode(v._instance(), value)
 }
 
 func (v *TValueListEditor) DropDownRows() int32 {
-    return ValueListEditor_GetDropDownRows(v.instance)
+    return ValueListEditor_GetDropDownRows(v._instance())
 }
 
 func (v *TValueListEditor) SetDropDownRows(value int32) {
-    ValueListEditor_SetDropDownRows(v.instance, value)
+    ValueListEditor_SetDropDownRows(v._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (v *TValueListEditor) Enabled() bool {
-    return ValueListEditor_GetEnabled(v.instance)
+    return ValueListEditor_GetEnabled(v._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (v *TValueListEditor) SetEnabled(value bool) {
-    ValueListEditor_SetEnabled(v.instance, value)
+    ValueListEditor_SetEnabled(v._instance(), value)
 }
 
 func (v *TValueListEditor) FixedColor() TColor {
-    return ValueListEditor_GetFixedColor(v.instance)
+    return ValueListEditor_GetFixedColor(v._instance())
 }
 
 func (v *TValueListEditor) SetFixedColor(value TColor) {
-    ValueListEditor_SetFixedColor(v.instance, value)
+    ValueListEditor_SetFixedColor(v._instance(), value)
 }
 
 func (v *TValueListEditor) FixedCols() int32 {
-    return ValueListEditor_GetFixedCols(v.instance)
+    return ValueListEditor_GetFixedCols(v._instance())
 }
 
 func (v *TValueListEditor) SetFixedCols(value int32) {
-    ValueListEditor_SetFixedCols(v.instance, value)
+    ValueListEditor_SetFixedCols(v._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (v *TValueListEditor) Font() *TFont {
-    return AsFont(ValueListEditor_GetFont(v.instance))
+    return AsFont(ValueListEditor_GetFont(v._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (v *TValueListEditor) SetFont(value *TFont) {
-    ValueListEditor_SetFont(v.instance, CheckPtr(value))
+    ValueListEditor_SetFont(v._instance(), CheckPtr(value))
 }
 
 func (v *TValueListEditor) GridLineWidth() int32 {
-    return ValueListEditor_GetGridLineWidth(v.instance)
+    return ValueListEditor_GetGridLineWidth(v._instance())
 }
 
 func (v *TValueListEditor) SetGridLineWidth(value int32) {
-    ValueListEditor_SetGridLineWidth(v.instance, value)
+    ValueListEditor_SetGridLineWidth(v._instance(), value)
 }
 
 func (v *TValueListEditor) Options() TGridOptions {
-    return ValueListEditor_GetOptions(v.instance)
+    return ValueListEditor_GetOptions(v._instance())
 }
 
 func (v *TValueListEditor) SetOptions(value TGridOptions) {
-    ValueListEditor_SetOptions(v.instance, value)
+    ValueListEditor_SetOptions(v._instance(), value)
 }
 
+// ParentColor
+//
 // 获取使用父容器颜色。
 //
 // Get parent color.
 func (v *TValueListEditor) ParentColor() bool {
-    return ValueListEditor_GetParentColor(v.instance)
+    return ValueListEditor_GetParentColor(v._instance())
 }
 
+// SetParentColor
+//
 // 设置使用父容器颜色。
 //
 // Set parent color.
 func (v *TValueListEditor) SetParentColor(value bool) {
-    ValueListEditor_SetParentColor(v.instance, value)
+    ValueListEditor_SetParentColor(v._instance(), value)
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (v *TValueListEditor) ParentDoubleBuffered() bool {
-    return ValueListEditor_GetParentDoubleBuffered(v.instance)
+    return ValueListEditor_GetParentDoubleBuffered(v._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (v *TValueListEditor) SetParentDoubleBuffered(value bool) {
-    ValueListEditor_SetParentDoubleBuffered(v.instance, value)
+    ValueListEditor_SetParentDoubleBuffered(v._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (v *TValueListEditor) ParentFont() bool {
-    return ValueListEditor_GetParentFont(v.instance)
+    return ValueListEditor_GetParentFont(v._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (v *TValueListEditor) SetParentFont(value bool) {
-    ValueListEditor_SetParentFont(v.instance, value)
+    ValueListEditor_SetParentFont(v._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (v *TValueListEditor) ParentShowHint() bool {
-    return ValueListEditor_GetParentShowHint(v.instance)
+    return ValueListEditor_GetParentShowHint(v._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (v *TValueListEditor) SetParentShowHint(value bool) {
-    ValueListEditor_SetParentShowHint(v.instance, value)
+    ValueListEditor_SetParentShowHint(v._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (v *TValueListEditor) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(ValueListEditor_GetPopupMenu(v.instance))
+    return AsPopupMenu(ValueListEditor_GetPopupMenu(v._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (v *TValueListEditor) SetPopupMenu(value IComponent) {
-    ValueListEditor_SetPopupMenu(v.instance, CheckPtr(value))
+    ValueListEditor_SetPopupMenu(v._instance(), CheckPtr(value))
 }
 
 func (v *TValueListEditor) ScrollBars() TScrollStyle {
-    return ValueListEditor_GetScrollBars(v.instance)
+    return ValueListEditor_GetScrollBars(v._instance())
 }
 
 func (v *TValueListEditor) SetScrollBars(value TScrollStyle) {
-    ValueListEditor_SetScrollBars(v.instance, value)
+    ValueListEditor_SetScrollBars(v._instance(), value)
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (v *TValueListEditor) ShowHint() bool {
-    return ValueListEditor_GetShowHint(v.instance)
+    return ValueListEditor_GetShowHint(v._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (v *TValueListEditor) SetShowHint(value bool) {
-    ValueListEditor_SetShowHint(v.instance, value)
+    ValueListEditor_SetShowHint(v._instance(), value)
 }
 
 func (v *TValueListEditor) Strings() *TStrings {
-    return AsStrings(ValueListEditor_GetStrings(v.instance))
+    return AsStrings(ValueListEditor_GetStrings(v._instance()))
 }
 
 func (v *TValueListEditor) SetStrings(value IStrings) {
-    ValueListEditor_SetStrings(v.instance, CheckPtr(value))
+    ValueListEditor_SetStrings(v._instance(), CheckPtr(value))
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (v *TValueListEditor) TabOrder() TTabOrder {
-    return ValueListEditor_GetTabOrder(v.instance)
+    return ValueListEditor_GetTabOrder(v._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (v *TValueListEditor) SetTabOrder(value TTabOrder) {
-    ValueListEditor_SetTabOrder(v.instance, value)
+    ValueListEditor_SetTabOrder(v._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (v *TValueListEditor) Visible() bool {
-    return ValueListEditor_GetVisible(v.instance)
+    return ValueListEditor_GetVisible(v._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (v *TValueListEditor) SetVisible(value bool) {
-    ValueListEditor_SetVisible(v.instance, value)
+    ValueListEditor_SetVisible(v._instance(), value)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (v *TValueListEditor) SetOnClick(fn TNotifyEvent) {
-    ValueListEditor_SetOnClick(v.instance, fn)
+    ValueListEditor_SetOnClick(v._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (v *TValueListEditor) SetOnContextPopup(fn TContextPopupEvent) {
-    ValueListEditor_SetOnContextPopup(v.instance, fn)
+    ValueListEditor_SetOnContextPopup(v._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (v *TValueListEditor) SetOnDblClick(fn TNotifyEvent) {
-    ValueListEditor_SetOnDblClick(v.instance, fn)
+    ValueListEditor_SetOnDblClick(v._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (v *TValueListEditor) SetOnDragDrop(fn TDragDropEvent) {
-    ValueListEditor_SetOnDragDrop(v.instance, fn)
+    ValueListEditor_SetOnDragDrop(v._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (v *TValueListEditor) SetOnDragOver(fn TDragOverEvent) {
-    ValueListEditor_SetOnDragOver(v.instance, fn)
+    ValueListEditor_SetOnDragOver(v._instance(), fn)
 }
 
 func (v *TValueListEditor) SetOnDrawCell(fn TDrawCellEvent) {
-    ValueListEditor_SetOnDrawCell(v.instance, fn)
+    ValueListEditor_SetOnDrawCell(v._instance(), fn)
 }
 
+// SetOnEndDock
+//
 // 设置停靠结束事件。
 //
 // Set Dock end event.
 func (v *TValueListEditor) SetOnEndDock(fn TEndDragEvent) {
-    ValueListEditor_SetOnEndDock(v.instance, fn)
+    ValueListEditor_SetOnEndDock(v._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (v *TValueListEditor) SetOnEndDrag(fn TEndDragEvent) {
-    ValueListEditor_SetOnEndDrag(v.instance, fn)
+    ValueListEditor_SetOnEndDrag(v._instance(), fn)
 }
 
+// SetOnEnter
+//
 // 设置焦点进入。
 //
 // Set Focus entry.
 func (v *TValueListEditor) SetOnEnter(fn TNotifyEvent) {
-    ValueListEditor_SetOnEnter(v.instance, fn)
+    ValueListEditor_SetOnEnter(v._instance(), fn)
 }
 
+// SetOnExit
+//
 // 设置焦点退出。
 //
 // Set Focus exit.
 func (v *TValueListEditor) SetOnExit(fn TNotifyEvent) {
-    ValueListEditor_SetOnExit(v.instance, fn)
+    ValueListEditor_SetOnExit(v._instance(), fn)
 }
 
 func (v *TValueListEditor) SetOnGetEditMask(fn TGetEditEvent) {
-    ValueListEditor_SetOnGetEditMask(v.instance, fn)
+    ValueListEditor_SetOnGetEditMask(v._instance(), fn)
 }
 
 func (v *TValueListEditor) SetOnGetEditText(fn TGetEditEvent) {
-    ValueListEditor_SetOnGetEditText(v.instance, fn)
+    ValueListEditor_SetOnGetEditText(v._instance(), fn)
 }
 
+// SetOnKeyDown
+//
 // 设置键盘按键按下事件。
 //
 // Set Keyboard button press event.
 func (v *TValueListEditor) SetOnKeyDown(fn TKeyEvent) {
-    ValueListEditor_SetOnKeyDown(v.instance, fn)
+    ValueListEditor_SetOnKeyDown(v._instance(), fn)
 }
 
+// SetOnKeyPress
+//
 // 设置键键下事件。
 func (v *TValueListEditor) SetOnKeyPress(fn TKeyPressEvent) {
-    ValueListEditor_SetOnKeyPress(v.instance, fn)
+    ValueListEditor_SetOnKeyPress(v._instance(), fn)
 }
 
+// SetOnKeyUp
+//
 // 设置键盘按键抬起事件。
 //
 // Set Keyboard button lift event.
 func (v *TValueListEditor) SetOnKeyUp(fn TKeyEvent) {
-    ValueListEditor_SetOnKeyUp(v.instance, fn)
+    ValueListEditor_SetOnKeyUp(v._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (v *TValueListEditor) SetOnMouseDown(fn TMouseEvent) {
-    ValueListEditor_SetOnMouseDown(v.instance, fn)
+    ValueListEditor_SetOnMouseDown(v._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (v *TValueListEditor) SetOnMouseEnter(fn TNotifyEvent) {
-    ValueListEditor_SetOnMouseEnter(v.instance, fn)
+    ValueListEditor_SetOnMouseEnter(v._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (v *TValueListEditor) SetOnMouseLeave(fn TNotifyEvent) {
-    ValueListEditor_SetOnMouseLeave(v.instance, fn)
+    ValueListEditor_SetOnMouseLeave(v._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (v *TValueListEditor) SetOnMouseMove(fn TMouseMoveEvent) {
-    ValueListEditor_SetOnMouseMove(v.instance, fn)
+    ValueListEditor_SetOnMouseMove(v._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (v *TValueListEditor) SetOnMouseUp(fn TMouseEvent) {
-    ValueListEditor_SetOnMouseUp(v.instance, fn)
+    ValueListEditor_SetOnMouseUp(v._instance(), fn)
 }
 
+// SetOnMouseWheelDown
+//
 // 设置鼠标滚轮按下事件。
 func (v *TValueListEditor) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
-    ValueListEditor_SetOnMouseWheelDown(v.instance, fn)
+    ValueListEditor_SetOnMouseWheelDown(v._instance(), fn)
 }
 
+// SetOnMouseWheelUp
+//
 // 设置鼠标滚轮抬起事件。
 func (v *TValueListEditor) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
-    ValueListEditor_SetOnMouseWheelUp(v.instance, fn)
+    ValueListEditor_SetOnMouseWheelUp(v._instance(), fn)
 }
 
 func (v *TValueListEditor) SetOnSelectCell(fn TSelectCellEvent) {
-    ValueListEditor_SetOnSelectCell(v.instance, fn)
+    ValueListEditor_SetOnSelectCell(v._instance(), fn)
 }
 
 func (v *TValueListEditor) SetOnSetEditText(fn TSetEditEvent) {
-    ValueListEditor_SetOnSetEditText(v.instance, fn)
+    ValueListEditor_SetOnSetEditText(v._instance(), fn)
 }
 
+// SetOnStartDock
+//
 // 设置启动停靠。
 func (v *TValueListEditor) SetOnStartDock(fn TStartDockEvent) {
-    ValueListEditor_SetOnStartDock(v.instance, fn)
+    ValueListEditor_SetOnStartDock(v._instance(), fn)
 }
 
 func (v *TValueListEditor) SetOnTopLeftChanged(fn TNotifyEvent) {
-    ValueListEditor_SetOnTopLeftChanged(v.instance, fn)
+    ValueListEditor_SetOnTopLeftChanged(v._instance(), fn)
 }
 
+// Canvas
+//
 // 获取画布。
 func (v *TValueListEditor) Canvas() *TCanvas {
-    return AsCanvas(ValueListEditor_GetCanvas(v.instance))
+    return AsCanvas(ValueListEditor_GetCanvas(v._instance()))
 }
 
 func (v *TValueListEditor) Col() int32 {
-    return ValueListEditor_GetCol(v.instance)
+    return ValueListEditor_GetCol(v._instance())
 }
 
 func (v *TValueListEditor) SetCol(value int32) {
-    ValueListEditor_SetCol(v.instance, value)
+    ValueListEditor_SetCol(v._instance(), value)
 }
 
 func (v *TValueListEditor) EditorMode() bool {
-    return ValueListEditor_GetEditorMode(v.instance)
+    return ValueListEditor_GetEditorMode(v._instance())
 }
 
 func (v *TValueListEditor) SetEditorMode(value bool) {
-    ValueListEditor_SetEditorMode(v.instance, value)
+    ValueListEditor_SetEditorMode(v._instance(), value)
 }
 
 func (v *TValueListEditor) GridHeight() int32 {
-    return ValueListEditor_GetGridHeight(v.instance)
+    return ValueListEditor_GetGridHeight(v._instance())
 }
 
 func (v *TValueListEditor) GridWidth() int32 {
-    return ValueListEditor_GetGridWidth(v.instance)
+    return ValueListEditor_GetGridWidth(v._instance())
 }
 
 func (v *TValueListEditor) LeftCol() int32 {
-    return ValueListEditor_GetLeftCol(v.instance)
+    return ValueListEditor_GetLeftCol(v._instance())
 }
 
 func (v *TValueListEditor) SetLeftCol(value int32) {
-    ValueListEditor_SetLeftCol(v.instance, value)
+    ValueListEditor_SetLeftCol(v._instance(), value)
 }
 
 func (v *TValueListEditor) Selection() TGridRect {
-    return ValueListEditor_GetSelection(v.instance)
+    return ValueListEditor_GetSelection(v._instance())
 }
 
 func (v *TValueListEditor) SetSelection(value TGridRect) {
-    ValueListEditor_SetSelection(v.instance, value)
+    ValueListEditor_SetSelection(v._instance(), value)
 }
 
 func (v *TValueListEditor) Row() int32 {
-    return ValueListEditor_GetRow(v.instance)
+    return ValueListEditor_GetRow(v._instance())
 }
 
 func (v *TValueListEditor) SetRow(value int32) {
-    ValueListEditor_SetRow(v.instance, value)
+    ValueListEditor_SetRow(v._instance(), value)
 }
 
 func (v *TValueListEditor) TopRow() int32 {
-    return ValueListEditor_GetTopRow(v.instance)
+    return ValueListEditor_GetTopRow(v._instance())
 }
 
 func (v *TValueListEditor) SetTopRow(value int32) {
-    ValueListEditor_SetTopRow(v.instance, value)
+    ValueListEditor_SetTopRow(v._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (v *TValueListEditor) TabStop() bool {
-    return ValueListEditor_GetTabStop(v.instance)
+    return ValueListEditor_GetTabStop(v._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (v *TValueListEditor) SetTabStop(value bool) {
-    ValueListEditor_SetTabStop(v.instance, value)
+    ValueListEditor_SetTabStop(v._instance(), value)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (v *TValueListEditor) DockClientCount() int32 {
-    return ValueListEditor_GetDockClientCount(v.instance)
+    return ValueListEditor_GetDockClientCount(v._instance())
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (v *TValueListEditor) DockSite() bool {
-    return ValueListEditor_GetDockSite(v.instance)
+    return ValueListEditor_GetDockSite(v._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (v *TValueListEditor) SetDockSite(value bool) {
-    ValueListEditor_SetDockSite(v.instance, value)
+    ValueListEditor_SetDockSite(v._instance(), value)
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (v *TValueListEditor) MouseInClient() bool {
-    return ValueListEditor_GetMouseInClient(v.instance)
+    return ValueListEditor_GetMouseInClient(v._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (v *TValueListEditor) VisibleDockClientCount() int32 {
-    return ValueListEditor_GetVisibleDockClientCount(v.instance)
+    return ValueListEditor_GetVisibleDockClientCount(v._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (v *TValueListEditor) Brush() *TBrush {
-    return AsBrush(ValueListEditor_GetBrush(v.instance))
+    return AsBrush(ValueListEditor_GetBrush(v._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (v *TValueListEditor) ControlCount() int32 {
-    return ValueListEditor_GetControlCount(v.instance)
+    return ValueListEditor_GetControlCount(v._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (v *TValueListEditor) Handle() HWND {
-    return ValueListEditor_GetHandle(v.instance)
+    return ValueListEditor_GetHandle(v._instance())
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (v *TValueListEditor) ParentWindow() HWND {
-    return ValueListEditor_GetParentWindow(v.instance)
+    return ValueListEditor_GetParentWindow(v._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (v *TValueListEditor) SetParentWindow(value HWND) {
-    ValueListEditor_SetParentWindow(v.instance, value)
+    ValueListEditor_SetParentWindow(v._instance(), value)
 }
 
 func (v *TValueListEditor) Showing() bool {
-    return ValueListEditor_GetShowing(v.instance)
+    return ValueListEditor_GetShowing(v._instance())
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (v *TValueListEditor) UseDockManager() bool {
-    return ValueListEditor_GetUseDockManager(v.instance)
+    return ValueListEditor_GetUseDockManager(v._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (v *TValueListEditor) SetUseDockManager(value bool) {
-    ValueListEditor_SetUseDockManager(v.instance, value)
+    ValueListEditor_SetUseDockManager(v._instance(), value)
 }
 
 func (v *TValueListEditor) Action() *TAction {
-    return AsAction(ValueListEditor_GetAction(v.instance))
+    return AsAction(ValueListEditor_GetAction(v._instance()))
 }
 
 func (v *TValueListEditor) SetAction(value IComponent) {
-    ValueListEditor_SetAction(v.instance, CheckPtr(value))
+    ValueListEditor_SetAction(v._instance(), CheckPtr(value))
 }
 
 func (v *TValueListEditor) BoundsRect() TRect {
-    return ValueListEditor_GetBoundsRect(v.instance)
+    return ValueListEditor_GetBoundsRect(v._instance())
 }
 
 func (v *TValueListEditor) SetBoundsRect(value TRect) {
-    ValueListEditor_SetBoundsRect(v.instance, value)
+    ValueListEditor_SetBoundsRect(v._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (v *TValueListEditor) ClientHeight() int32 {
-    return ValueListEditor_GetClientHeight(v.instance)
+    return ValueListEditor_GetClientHeight(v._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (v *TValueListEditor) SetClientHeight(value int32) {
-    ValueListEditor_SetClientHeight(v.instance, value)
+    ValueListEditor_SetClientHeight(v._instance(), value)
 }
 
 func (v *TValueListEditor) ClientOrigin() TPoint {
-    return ValueListEditor_GetClientOrigin(v.instance)
+    return ValueListEditor_GetClientOrigin(v._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (v *TValueListEditor) ClientRect() TRect {
-    return ValueListEditor_GetClientRect(v.instance)
+    return ValueListEditor_GetClientRect(v._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (v *TValueListEditor) ClientWidth() int32 {
-    return ValueListEditor_GetClientWidth(v.instance)
+    return ValueListEditor_GetClientWidth(v._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (v *TValueListEditor) SetClientWidth(value int32) {
-    ValueListEditor_SetClientWidth(v.instance, value)
+    ValueListEditor_SetClientWidth(v._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (v *TValueListEditor) ControlState() TControlState {
-    return ValueListEditor_GetControlState(v.instance)
+    return ValueListEditor_GetControlState(v._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (v *TValueListEditor) SetControlState(value TControlState) {
-    ValueListEditor_SetControlState(v.instance, value)
+    ValueListEditor_SetControlState(v._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (v *TValueListEditor) ControlStyle() TControlStyle {
-    return ValueListEditor_GetControlStyle(v.instance)
+    return ValueListEditor_GetControlStyle(v._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (v *TValueListEditor) SetControlStyle(value TControlStyle) {
-    ValueListEditor_SetControlStyle(v.instance, value)
+    ValueListEditor_SetControlStyle(v._instance(), value)
 }
 
 func (v *TValueListEditor) Floating() bool {
-    return ValueListEditor_GetFloating(v.instance)
+    return ValueListEditor_GetFloating(v._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (v *TValueListEditor) Parent() *TWinControl {
-    return AsWinControl(ValueListEditor_GetParent(v.instance))
+    return AsWinControl(ValueListEditor_GetParent(v._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (v *TValueListEditor) SetParent(value IWinControl) {
-    ValueListEditor_SetParent(v.instance, CheckPtr(value))
+    ValueListEditor_SetParent(v._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (v *TValueListEditor) Left() int32 {
-    return ValueListEditor_GetLeft(v.instance)
+    return ValueListEditor_GetLeft(v._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (v *TValueListEditor) SetLeft(value int32) {
-    ValueListEditor_SetLeft(v.instance, value)
+    ValueListEditor_SetLeft(v._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (v *TValueListEditor) Top() int32 {
-    return ValueListEditor_GetTop(v.instance)
+    return ValueListEditor_GetTop(v._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (v *TValueListEditor) SetTop(value int32) {
-    ValueListEditor_SetTop(v.instance, value)
+    ValueListEditor_SetTop(v._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (v *TValueListEditor) Width() int32 {
-    return ValueListEditor_GetWidth(v.instance)
+    return ValueListEditor_GetWidth(v._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (v *TValueListEditor) SetWidth(value int32) {
-    ValueListEditor_SetWidth(v.instance, value)
+    ValueListEditor_SetWidth(v._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (v *TValueListEditor) Height() int32 {
-    return ValueListEditor_GetHeight(v.instance)
+    return ValueListEditor_GetHeight(v._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (v *TValueListEditor) SetHeight(value int32) {
-    ValueListEditor_SetHeight(v.instance, value)
+    ValueListEditor_SetHeight(v._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (v *TValueListEditor) Cursor() TCursor {
-    return ValueListEditor_GetCursor(v.instance)
+    return ValueListEditor_GetCursor(v._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (v *TValueListEditor) SetCursor(value TCursor) {
-    ValueListEditor_SetCursor(v.instance, value)
+    ValueListEditor_SetCursor(v._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (v *TValueListEditor) Hint() string {
-    return ValueListEditor_GetHint(v.instance)
+    return ValueListEditor_GetHint(v._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (v *TValueListEditor) SetHint(value string) {
-    ValueListEditor_SetHint(v.instance, value)
+    ValueListEditor_SetHint(v._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (v *TValueListEditor) ComponentCount() int32 {
-    return ValueListEditor_GetComponentCount(v.instance)
+    return ValueListEditor_GetComponentCount(v._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (v *TValueListEditor) ComponentIndex() int32 {
-    return ValueListEditor_GetComponentIndex(v.instance)
+    return ValueListEditor_GetComponentIndex(v._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (v *TValueListEditor) SetComponentIndex(value int32) {
-    ValueListEditor_SetComponentIndex(v.instance, value)
+    ValueListEditor_SetComponentIndex(v._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (v *TValueListEditor) Owner() *TComponent {
-    return AsComponent(ValueListEditor_GetOwner(v.instance))
+    return AsComponent(ValueListEditor_GetOwner(v._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (v *TValueListEditor) Name() string {
-    return ValueListEditor_GetName(v.instance)
+    return ValueListEditor_GetName(v._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (v *TValueListEditor) SetName(value string) {
-    ValueListEditor_SetName(v.instance, value)
+    ValueListEditor_SetName(v._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (v *TValueListEditor) Tag() int {
-    return ValueListEditor_GetTag(v.instance)
+    return ValueListEditor_GetTag(v._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (v *TValueListEditor) SetTag(value int) {
-    ValueListEditor_SetTag(v.instance, value)
+    ValueListEditor_SetTag(v._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (v *TValueListEditor) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(ValueListEditor_GetAnchorSideLeft(v.instance))
+    return AsAnchorSide(ValueListEditor_GetAnchorSideLeft(v._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (v *TValueListEditor) SetAnchorSideLeft(value *TAnchorSide) {
-    ValueListEditor_SetAnchorSideLeft(v.instance, CheckPtr(value))
+    ValueListEditor_SetAnchorSideLeft(v._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (v *TValueListEditor) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(ValueListEditor_GetAnchorSideTop(v.instance))
+    return AsAnchorSide(ValueListEditor_GetAnchorSideTop(v._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (v *TValueListEditor) SetAnchorSideTop(value *TAnchorSide) {
-    ValueListEditor_SetAnchorSideTop(v.instance, CheckPtr(value))
+    ValueListEditor_SetAnchorSideTop(v._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (v *TValueListEditor) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(ValueListEditor_GetAnchorSideRight(v.instance))
+    return AsAnchorSide(ValueListEditor_GetAnchorSideRight(v._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (v *TValueListEditor) SetAnchorSideRight(value *TAnchorSide) {
-    ValueListEditor_SetAnchorSideRight(v.instance, CheckPtr(value))
+    ValueListEditor_SetAnchorSideRight(v._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (v *TValueListEditor) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(ValueListEditor_GetAnchorSideBottom(v.instance))
+    return AsAnchorSide(ValueListEditor_GetAnchorSideBottom(v._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (v *TValueListEditor) SetAnchorSideBottom(value *TAnchorSide) {
-    ValueListEditor_SetAnchorSideBottom(v.instance, CheckPtr(value))
+    ValueListEditor_SetAnchorSideBottom(v._instance(), CheckPtr(value))
 }
 
 func (v *TValueListEditor) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(ValueListEditor_GetChildSizing(v.instance))
+    return AsControlChildSizing(ValueListEditor_GetChildSizing(v._instance()))
 }
 
 func (v *TValueListEditor) SetChildSizing(value *TControlChildSizing) {
-    ValueListEditor_SetChildSizing(v.instance, CheckPtr(value))
+    ValueListEditor_SetChildSizing(v._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (v *TValueListEditor) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(ValueListEditor_GetBorderSpacing(v.instance))
+    return AsControlBorderSpacing(ValueListEditor_GetBorderSpacing(v._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (v *TValueListEditor) SetBorderSpacing(value *TControlBorderSpacing) {
-    ValueListEditor_SetBorderSpacing(v.instance, CheckPtr(value))
+    ValueListEditor_SetBorderSpacing(v._instance(), CheckPtr(value))
 }
 
 func (v *TValueListEditor) Cells(ACol int32, ARow int32) string {
-    return ValueListEditor_GetCells(v.instance, ACol, ARow)
+    return ValueListEditor_GetCells(v._instance(), ACol, ARow)
 }
 
 func (v *TValueListEditor) SetCells(ACol int32, ARow int32, value string) {
-    ValueListEditor_SetCells(v.instance, ACol, ARow, value)
+    ValueListEditor_SetCells(v._instance(), ACol, ARow, value)
 }
 
 func (v *TValueListEditor) Values(Key string) string {
-    return ValueListEditor_GetValues(v.instance, Key)
+    return ValueListEditor_GetValues(v._instance(), Key)
 }
 
 func (v *TValueListEditor) SetValues(Key string, value string) {
-    ValueListEditor_SetValues(v.instance, Key, value)
+    ValueListEditor_SetValues(v._instance(), Key, value)
 }
 
 func (v *TValueListEditor) ColWidths(Index int32) int32 {
-    return ValueListEditor_GetColWidths(v.instance, Index)
+    return ValueListEditor_GetColWidths(v._instance(), Index)
 }
 
 func (v *TValueListEditor) SetColWidths(Index int32, value int32) {
-    ValueListEditor_SetColWidths(v.instance, Index, value)
+    ValueListEditor_SetColWidths(v._instance(), Index, value)
 }
 
 func (v *TValueListEditor) RowHeights(Index int32) int32 {
-    return ValueListEditor_GetRowHeights(v.instance, Index)
+    return ValueListEditor_GetRowHeights(v._instance(), Index)
 }
 
 func (v *TValueListEditor) SetRowHeights(Index int32, value int32) {
-    ValueListEditor_SetRowHeights(v.instance, Index, value)
+    ValueListEditor_SetRowHeights(v._instance(), Index, value)
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (v *TValueListEditor) DockClients(Index int32) *TControl {
-    return AsControl(ValueListEditor_GetDockClients(v.instance, Index))
+    return AsControl(ValueListEditor_GetDockClients(v._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (v *TValueListEditor) Controls(Index int32) *TControl {
-    return AsControl(ValueListEditor_GetControls(v.instance, Index))
+    return AsControl(ValueListEditor_GetControls(v._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (v *TValueListEditor) Components(AIndex int32) *TComponent {
-    return AsComponent(ValueListEditor_GetComponents(v.instance, AIndex))
+    return AsComponent(ValueListEditor_GetComponents(v._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (v *TValueListEditor) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(ValueListEditor_GetAnchorSide(v.instance, AKind))
+    return AsAnchorSide(ValueListEditor_GetAnchorSide(v._instance(), AKind))
 }
 

@@ -6,8 +6,6 @@
 //
 //----------------------------------------
 
-// +build !memorydll
-
 package api
 
 import (
@@ -44,6 +42,8 @@ func getLibType(lib *dylib.LazyDLL) int32 {
 	return int32(r)
 }
 
+// GetLibVcl
+//
 // 获取dll库实例，用于在外扩展第三方组件的。移动来自dfuncs.go
 func GetLibVcl() *dylib.LazyDLL {
 	return libvcl

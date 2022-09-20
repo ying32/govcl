@@ -19,102 +19,95 @@ import (
 
 type TObject struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewObject
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewObject() *TObject {
     o := new(TObject)
-    o.instance = Object_Create()
-    o.ptr = unsafe.Pointer(o.instance)
+    o.instance = unsafe.Pointer(Object_Create())
     setFinalizer(o, (*TObject).Free)
     return o
 }
 
+// AsObject
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsObject(obj interface{}) *TObject {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TObject{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TObject{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsObject.
-func ObjectFromInst(inst uintptr) *TObject {
-    return AsObject(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsObject.
-func ObjectFromObj(obj IObject) *TObject {
-    return AsObject(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsObject.
-func ObjectFromUnsafePointer(ptr unsafe.Pointer) *TObject {
-    return AsObject(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (o *TObject) Free() {
-    if o.instance != 0 {
-        Object_Free(o.instance)
-        o.instance, o.ptr = 0, nullptr
+    if o.instance != nullptr {
+        Object_Free(o._instance())
+        o.instance  = nullptr
     }
 }
 
+func (o *TObject) _instance() uintptr {
+    return uintptr(o.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (o *TObject) Instance() uintptr {
-    return o.instance
+    return o._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (o *TObject) UnsafeAddr() unsafe.Pointer {
-    return o.ptr
+    return o.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (o *TObject) IsValid() bool {
-    return o.instance != 0
+    return o.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (o *TObject) Is() TIs {
-    return TIs(o.instance)
+    return TIs(o._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (o *TObject) As() TAs {
-//    return TAs(o.instance)
+//    return TAs(o._instance())
 //}
 
+// TObjectClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,52 +115,66 @@ func TObjectClass() TClass {
     return Object_StaticClassType()
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (o *TObject) ClassType() TClass {
-    return Object_ClassType(o.instance)
+    return Object_ClassType(o._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (o *TObject) ClassName() string {
-    return Object_ClassName(o.instance)
+    return Object_ClassName(o._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (o *TObject) InstanceSize() int32 {
-    return Object_InstanceSize(o.instance)
+    return Object_InstanceSize(o._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (o *TObject) InheritsFrom(AClass TClass) bool {
-    return Object_InheritsFrom(o.instance, AClass)
+    return Object_InheritsFrom(o._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (o *TObject) Equals(Obj IObject) bool {
-    return Object_Equals(o.instance, CheckPtr(Obj))
+    return Object_Equals(o._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (o *TObject) GetHashCode() int32 {
-    return Object_GetHashCode(o.instance)
+    return Object_GetHashCode(o._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (o *TObject) ToString() string {
-    return Object_ToString(o.instance)
+    return Object_ToString(o._instance())
 }
 

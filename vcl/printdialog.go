@@ -19,101 +19,94 @@ import (
 
 type TPrintDialog struct {
     IComponent
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewPrintDialog
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewPrintDialog(owner IComponent) *TPrintDialog {
     p := new(TPrintDialog)
-    p.instance = PrintDialog_Create(CheckPtr(owner))
-    p.ptr = unsafe.Pointer(p.instance)
+    p.instance = unsafe.Pointer(PrintDialog_Create(CheckPtr(owner)))
     return p
 }
 
+// AsPrintDialog
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsPrintDialog(obj interface{}) *TPrintDialog {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TPrintDialog{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TPrintDialog{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsPrintDialog.
-func PrintDialogFromInst(inst uintptr) *TPrintDialog {
-    return AsPrintDialog(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsPrintDialog.
-func PrintDialogFromObj(obj IObject) *TPrintDialog {
-    return AsPrintDialog(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsPrintDialog.
-func PrintDialogFromUnsafePointer(ptr unsafe.Pointer) *TPrintDialog {
-    return AsPrintDialog(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (p *TPrintDialog) Free() {
-    if p.instance != 0 {
-        PrintDialog_Free(p.instance)
-        p.instance, p.ptr = 0, nullptr
+    if p.instance != nullptr {
+        PrintDialog_Free(p._instance())
+        p.instance  = nullptr
     }
 }
 
+func (p *TPrintDialog) _instance() uintptr {
+    return uintptr(p.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (p *TPrintDialog) Instance() uintptr {
-    return p.instance
+    return p._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (p *TPrintDialog) UnsafeAddr() unsafe.Pointer {
-    return p.ptr
+    return p.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (p *TPrintDialog) IsValid() bool {
-    return p.instance != 0
+    return p.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (p *TPrintDialog) Is() TIs {
-    return TIs(p.instance)
+    return TIs(p._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (p *TPrintDialog) As() TAs {
-//    return TAs(p.instance)
+//    return TAs(p._instance())
 //}
 
+// TPrintDialogClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,236 +114,282 @@ func TPrintDialogClass() TClass {
     return PrintDialog_StaticClassType()
 }
 
+// Execute
+//
 // 执行。
 func (p *TPrintDialog) Execute() bool {
-    return PrintDialog_Execute(p.instance)
+    return PrintDialog_Execute(p._instance())
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (p *TPrintDialog) FindComponent(AName string) *TComponent {
-    return AsComponent(PrintDialog_FindComponent(p.instance, AName))
+    return AsComponent(PrintDialog_FindComponent(p._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (p *TPrintDialog) GetNamePath() string {
-    return PrintDialog_GetNamePath(p.instance)
+    return PrintDialog_GetNamePath(p._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (p *TPrintDialog) HasParent() bool {
-    return PrintDialog_HasParent(p.instance)
+    return PrintDialog_HasParent(p._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (p *TPrintDialog) Assign(Source IObject) {
-    PrintDialog_Assign(p.instance, CheckPtr(Source))
+    PrintDialog_Assign(p._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (p *TPrintDialog) ClassType() TClass {
-    return PrintDialog_ClassType(p.instance)
+    return PrintDialog_ClassType(p._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (p *TPrintDialog) ClassName() string {
-    return PrintDialog_ClassName(p.instance)
+    return PrintDialog_ClassName(p._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (p *TPrintDialog) InstanceSize() int32 {
-    return PrintDialog_InstanceSize(p.instance)
+    return PrintDialog_InstanceSize(p._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (p *TPrintDialog) InheritsFrom(AClass TClass) bool {
-    return PrintDialog_InheritsFrom(p.instance, AClass)
+    return PrintDialog_InheritsFrom(p._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (p *TPrintDialog) Equals(Obj IObject) bool {
-    return PrintDialog_Equals(p.instance, CheckPtr(Obj))
+    return PrintDialog_Equals(p._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (p *TPrintDialog) GetHashCode() int32 {
-    return PrintDialog_GetHashCode(p.instance)
+    return PrintDialog_GetHashCode(p._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (p *TPrintDialog) ToString() string {
-    return PrintDialog_ToString(p.instance)
+    return PrintDialog_ToString(p._instance())
 }
 
 func (p *TPrintDialog) Collate() bool {
-    return PrintDialog_GetCollate(p.instance)
+    return PrintDialog_GetCollate(p._instance())
 }
 
 func (p *TPrintDialog) SetCollate(value bool) {
-    PrintDialog_SetCollate(p.instance, value)
+    PrintDialog_SetCollate(p._instance(), value)
 }
 
 func (p *TPrintDialog) Copies() int32 {
-    return PrintDialog_GetCopies(p.instance)
+    return PrintDialog_GetCopies(p._instance())
 }
 
 func (p *TPrintDialog) SetCopies(value int32) {
-    PrintDialog_SetCopies(p.instance, value)
+    PrintDialog_SetCopies(p._instance(), value)
 }
 
 func (p *TPrintDialog) FromPage() int32 {
-    return PrintDialog_GetFromPage(p.instance)
+    return PrintDialog_GetFromPage(p._instance())
 }
 
 func (p *TPrintDialog) SetFromPage(value int32) {
-    PrintDialog_SetFromPage(p.instance, value)
+    PrintDialog_SetFromPage(p._instance(), value)
 }
 
 func (p *TPrintDialog) MinPage() int32 {
-    return PrintDialog_GetMinPage(p.instance)
+    return PrintDialog_GetMinPage(p._instance())
 }
 
 func (p *TPrintDialog) SetMinPage(value int32) {
-    PrintDialog_SetMinPage(p.instance, value)
+    PrintDialog_SetMinPage(p._instance(), value)
 }
 
 func (p *TPrintDialog) MaxPage() int32 {
-    return PrintDialog_GetMaxPage(p.instance)
+    return PrintDialog_GetMaxPage(p._instance())
 }
 
 func (p *TPrintDialog) SetMaxPage(value int32) {
-    PrintDialog_SetMaxPage(p.instance, value)
+    PrintDialog_SetMaxPage(p._instance(), value)
 }
 
 func (p *TPrintDialog) Options() TPrintDialogOptions {
-    return PrintDialog_GetOptions(p.instance)
+    return PrintDialog_GetOptions(p._instance())
 }
 
 func (p *TPrintDialog) SetOptions(value TPrintDialogOptions) {
-    PrintDialog_SetOptions(p.instance, value)
+    PrintDialog_SetOptions(p._instance(), value)
 }
 
 func (p *TPrintDialog) PrintToFile() bool {
-    return PrintDialog_GetPrintToFile(p.instance)
+    return PrintDialog_GetPrintToFile(p._instance())
 }
 
 func (p *TPrintDialog) SetPrintToFile(value bool) {
-    PrintDialog_SetPrintToFile(p.instance, value)
+    PrintDialog_SetPrintToFile(p._instance(), value)
 }
 
 func (p *TPrintDialog) PrintRange() TPrintRange {
-    return PrintDialog_GetPrintRange(p.instance)
+    return PrintDialog_GetPrintRange(p._instance())
 }
 
 func (p *TPrintDialog) SetPrintRange(value TPrintRange) {
-    PrintDialog_SetPrintRange(p.instance, value)
+    PrintDialog_SetPrintRange(p._instance(), value)
 }
 
 func (p *TPrintDialog) ToPage() int32 {
-    return PrintDialog_GetToPage(p.instance)
+    return PrintDialog_GetToPage(p._instance())
 }
 
 func (p *TPrintDialog) SetToPage(value int32) {
-    PrintDialog_SetToPage(p.instance, value)
+    PrintDialog_SetToPage(p._instance(), value)
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (p *TPrintDialog) Handle() HWND {
-    return PrintDialog_GetHandle(p.instance)
+    return PrintDialog_GetHandle(p._instance())
 }
 
 func (p *TPrintDialog) SetOnClose(fn TNotifyEvent) {
-    PrintDialog_SetOnClose(p.instance, fn)
+    PrintDialog_SetOnClose(p._instance(), fn)
 }
 
+// SetOnShow
+//
 // 设置显示事件。
 func (p *TPrintDialog) SetOnShow(fn TNotifyEvent) {
-    PrintDialog_SetOnShow(p.instance, fn)
+    PrintDialog_SetOnShow(p._instance(), fn)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (p *TPrintDialog) ComponentCount() int32 {
-    return PrintDialog_GetComponentCount(p.instance)
+    return PrintDialog_GetComponentCount(p._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (p *TPrintDialog) ComponentIndex() int32 {
-    return PrintDialog_GetComponentIndex(p.instance)
+    return PrintDialog_GetComponentIndex(p._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (p *TPrintDialog) SetComponentIndex(value int32) {
-    PrintDialog_SetComponentIndex(p.instance, value)
+    PrintDialog_SetComponentIndex(p._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (p *TPrintDialog) Owner() *TComponent {
-    return AsComponent(PrintDialog_GetOwner(p.instance))
+    return AsComponent(PrintDialog_GetOwner(p._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (p *TPrintDialog) Name() string {
-    return PrintDialog_GetName(p.instance)
+    return PrintDialog_GetName(p._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (p *TPrintDialog) SetName(value string) {
-    PrintDialog_SetName(p.instance, value)
+    PrintDialog_SetName(p._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (p *TPrintDialog) Tag() int {
-    return PrintDialog_GetTag(p.instance)
+    return PrintDialog_GetTag(p._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (p *TPrintDialog) SetTag(value int) {
-    PrintDialog_SetTag(p.instance, value)
+    PrintDialog_SetTag(p._instance(), value)
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (p *TPrintDialog) Components(AIndex int32) *TComponent {
-    return AsComponent(PrintDialog_GetComponents(p.instance, AIndex))
+    return AsComponent(PrintDialog_GetComponents(p._instance(), AIndex))
 }
 

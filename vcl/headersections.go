@@ -19,102 +19,95 @@ import (
 
 type THeaderSections struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewHeaderSections
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewHeaderSections(AOwner *THeaderControl) *THeaderSections {
     h := new(THeaderSections)
-    h.instance = HeaderSections_Create(CheckPtr(AOwner))
-    h.ptr = unsafe.Pointer(h.instance)
+    h.instance = unsafe.Pointer(HeaderSections_Create(CheckPtr(AOwner)))
     setFinalizer(h, (*THeaderSections).Free)
     return h
 }
 
+// AsHeaderSections
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsHeaderSections(obj interface{}) *THeaderSections {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &THeaderSections{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &THeaderSections{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsHeaderSections.
-func HeaderSectionsFromInst(inst uintptr) *THeaderSections {
-    return AsHeaderSections(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsHeaderSections.
-func HeaderSectionsFromObj(obj IObject) *THeaderSections {
-    return AsHeaderSections(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsHeaderSections.
-func HeaderSectionsFromUnsafePointer(ptr unsafe.Pointer) *THeaderSections {
-    return AsHeaderSections(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (h *THeaderSections) Free() {
-    if h.instance != 0 {
-        HeaderSections_Free(h.instance)
-        h.instance, h.ptr = 0, nullptr
+    if h.instance != nullptr {
+        HeaderSections_Free(h._instance())
+        h.instance  = nullptr
     }
 }
 
+func (h *THeaderSections) _instance() uintptr {
+    return uintptr(h.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (h *THeaderSections) Instance() uintptr {
-    return h.instance
+    return h._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (h *THeaderSections) UnsafeAddr() unsafe.Pointer {
-    return h.ptr
+    return h.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (h *THeaderSections) IsValid() bool {
-    return h.instance != 0
+    return h.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (h *THeaderSections) Is() TIs {
-    return TIs(h.instance)
+    return TIs(h._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (h *THeaderSections) As() TAs {
-//    return TAs(h.instance)
+//    return TAs(h._instance())
 //}
 
+// THeaderSectionsClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -123,117 +116,139 @@ func THeaderSectionsClass() TClass {
 }
 
 func (h *THeaderSections) Add() *THeaderSection {
-    return AsHeaderSection(HeaderSections_Add(h.instance))
+    return AsHeaderSection(HeaderSections_Add(h._instance()))
 }
 
 func (h *THeaderSections) AddItem(Item *THeaderSection, Index int32) *THeaderSection {
-    return AsHeaderSection(HeaderSections_AddItem(h.instance, CheckPtr(Item), Index))
+    return AsHeaderSection(HeaderSections_AddItem(h._instance(), CheckPtr(Item), Index))
 }
 
 func (h *THeaderSections) Insert(Index int32) *THeaderSection {
-    return AsHeaderSection(HeaderSections_Insert(h.instance, Index))
+    return AsHeaderSection(HeaderSections_Insert(h._instance(), Index))
 }
 
+// Owner
+//
 // 组件所有者。
 //
 // component owner.
 func (h *THeaderSections) Owner() *TObject {
-    return AsObject(HeaderSections_Owner(h.instance))
+    return AsObject(HeaderSections_Owner(h._instance()))
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (h *THeaderSections) Assign(Source IObject) {
-    HeaderSections_Assign(h.instance, CheckPtr(Source))
+    HeaderSections_Assign(h._instance(), CheckPtr(Source))
 }
 
 func (h *THeaderSections) BeginUpdate() {
-    HeaderSections_BeginUpdate(h.instance)
+    HeaderSections_BeginUpdate(h._instance())
 }
 
+// Clear
+//
 // 清除。
 func (h *THeaderSections) Clear() {
-    HeaderSections_Clear(h.instance)
+    HeaderSections_Clear(h._instance())
 }
 
 func (h *THeaderSections) Delete(Index int32) {
-    HeaderSections_Delete(h.instance, Index)
+    HeaderSections_Delete(h._instance(), Index)
 }
 
 func (h *THeaderSections) EndUpdate() {
-    HeaderSections_EndUpdate(h.instance)
+    HeaderSections_EndUpdate(h._instance())
 }
 
 func (h *THeaderSections) FindItemID(ID int32) *TCollectionItem {
-    return AsCollectionItem(HeaderSections_FindItemID(h.instance, ID))
+    return AsCollectionItem(HeaderSections_FindItemID(h._instance(), ID))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (h *THeaderSections) GetNamePath() string {
-    return HeaderSections_GetNamePath(h.instance)
+    return HeaderSections_GetNamePath(h._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (h *THeaderSections) ClassType() TClass {
-    return HeaderSections_ClassType(h.instance)
+    return HeaderSections_ClassType(h._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (h *THeaderSections) ClassName() string {
-    return HeaderSections_ClassName(h.instance)
+    return HeaderSections_ClassName(h._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (h *THeaderSections) InstanceSize() int32 {
-    return HeaderSections_InstanceSize(h.instance)
+    return HeaderSections_InstanceSize(h._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (h *THeaderSections) InheritsFrom(AClass TClass) bool {
-    return HeaderSections_InheritsFrom(h.instance, AClass)
+    return HeaderSections_InheritsFrom(h._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (h *THeaderSections) Equals(Obj IObject) bool {
-    return HeaderSections_Equals(h.instance, CheckPtr(Obj))
+    return HeaderSections_Equals(h._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (h *THeaderSections) GetHashCode() int32 {
-    return HeaderSections_GetHashCode(h.instance)
+    return HeaderSections_GetHashCode(h._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (h *THeaderSections) ToString() string {
-    return HeaderSections_ToString(h.instance)
+    return HeaderSections_ToString(h._instance())
 }
 
 func (h *THeaderSections) Count() int32 {
-    return HeaderSections_GetCount(h.instance)
+    return HeaderSections_GetCount(h._instance())
 }
 
 func (h *THeaderSections) Items(Index int32) *THeaderSection {
-    return AsHeaderSection(HeaderSections_GetItems(h.instance, Index))
+    return AsHeaderSection(HeaderSections_GetItems(h._instance(), Index))
 }
 
 func (h *THeaderSections) SetItems(Index int32, value *THeaderSection) {
-    HeaderSections_SetItems(h.instance, Index, CheckPtr(value))
+    HeaderSections_SetItems(h._instance(), Index, CheckPtr(value))
 }
 

@@ -9,7 +9,8 @@
 package api
 
 import (
-	"reflect"
+	"container/list"
+
 	"sync"
 	"unsafe"
 
@@ -17,18 +18,13 @@ import (
 )
 
 var (
-	// 事件回调查找表
-	eventCallbackMap sync.Map
-	// 独立的消息事件查找表
-	messageCallbackMap sync.Map
+	// 防止GC的表
+	events = list.New()
 	// ThreadSync
 	threadSync   sync.Mutex
 	threadSyncFn func()
-
-	// 标识，主要是解决反射时事件的函数地址获取问题
-	// 当标识为true时addEventToMap直接取currentEventId的值。
-	addingEvent    bool
-	currentEventId uintptr
+	// sync
+	makeSync sync.Mutex
 )
 
 func GoBool(val uintptr) bool {
@@ -58,112 +54,77 @@ func GoBoolToDBool(val bool) uintptr {
 // typedef struct { void *type; void *value; } GoInterface;
 type interfacePtr struct {
 	tpy uintptr
-	val *uintptr
+	val uintptr
 }
 
-func IsNil(val interface{}) bool {
-	ptr := (*interfacePtr)(unsafe.Pointer(&val))
-	return ptr.tpy == 0 || ptr.val == nil
+func interfaceNotNil(v interface{}) bool {
+	ptr := (*interfacePtr)(unsafe.Pointer(&v))
+	return ptr != nil && ptr.tpy != 0 && ptr.val != 0
 }
 
-// 用作事件的唯一id
-func GetUID(v1, v2 uintptr) uintptr {
-	if v1 == 0 && v2 == 0 {
-		return 0
-	}
-	val := struct {
-		v1, v2 uintptr
-	}{v1, v2}
-	var result uintptr
-	p := (*byte)(unsafe.Pointer(&val))
-	for i := 0; i < int(unsafe.Sizeof(val)); i++ {
-		result = ((result << 2) | (result >> (unsafe.Sizeof(result)*8 - 2))) ^ uintptr(*p)
-		p = (*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(p)) + 1))
-	}
-	//fmt.Println("UID:", result, ", v1=", v1, ", v2=", v2)
-	return uintptr(result)
-}
-
-// hashOf
-func hashOf(obj uintptr, val interface{}) uintptr {
-	// 如果正在使用beginAddEvent和EndAddEvent则直接取这个值。
-	// 反之使用默认的行为。
-	if addingEvent {
-		if currentEventId > 0 {
-			return currentEventId
-		} else {
-			return 0
-		}
-	}
-	// 默认返回ID
-	return GetUID(obj, reflect.ValueOf(val).Pointer())
-}
-
-// 以下三个函数留给自动绑定事件使用。
-func BeginAddEvent() {
-	addingEvent = true
-	currentEventId = 0
-}
-
-func EndAddEvent() {
-	addingEvent = false
-	currentEventId = 0
-}
-
-func SetCurrentEventId(id uintptr) {
-	currentEventId = id
-}
-
-// 将事件添加到查找表中
-func addEventToMap(obj uintptr, f interface{}) uintptr {
-	p := hashOf(obj, f)
-	eventCallbackMap.Store(p, f)
-	return p
-}
-
+//// GoInterfaceToPtr interface{}转指针
+//func GoInterfaceToPtr(v interface{}) unsafe.Pointer {
+//	if !interfaceNotNil(v) {
+//		return nil
+//	}
+//	return unsafe.Pointer(&v)
+//}
 //
-func GetAddEventToMapFn() func(obj uintptr, f interface{}) uintptr {
-	return addEventToMap
+//// PtrToGoInterface 指针转interface{}
+//func PtrToGoInterface(v unsafe.Pointer) interface{} {
+//	if v == nil {
+//		return nil
+//	}
+//	return *((*interface{})(v))
+//}
+
+func PtrToElementPtr(v unsafe.Pointer) *list.Element {
+	if v == nil {
+		return nil
+	}
+	return (*list.Element)(v)
 }
 
-// 从事件表中查找指定id的函数
-func EventCallbackOf(Id uintptr) (interface{}, bool) {
-	return eventCallbackMap.Load(Id)
+func PtrToElementValue(v unsafe.Pointer) interface{} {
+	element := PtrToElementPtr(v)
+	if element != nil {
+		return element.Value
+	}
+	return nil
 }
 
-// 从事件表中移除指定的函数
-func RemoveEventCallbackOf(Id uintptr) {
-	eventCallbackMap.Delete(Id)
+func RemoveEventElement(v *list.Element) bool {
+	if v != nil {
+		makeSync.Lock()
+		defer makeSync.Unlock()
+		events.Remove(v)
+		return true
+	}
+	return false
 }
 
-// 添加消息事件到消息表中
-func addMessageEventToMap(obj uintptr, f interface{}) uintptr {
-	p := hashOf(obj, f)
-	messageCallbackMap.Store(p, f)
-	return p
+func MakeEventDataPtr(fn interface{}) uintptr {
+
+	makeSync.Lock()
+	defer makeSync.Unlock()
+	if interfaceNotNil(fn) {
+		return uintptr(unsafe.Pointer(events.PushBack(fn)))
+	}
+	return 0
 }
 
-// 从消息表中查找指定id的函数
-func MessageCallbackOf(Id uintptr) (interface{}, bool) {
-	return messageCallbackMap.Load(Id)
-}
-
-// 返回当前需要调用的线程同步函数
 func ThreadSyncCallbackFn() func() {
 	return threadSyncFn
 }
 
-// 设置事件回调函数指针
 func SetEventCallback(ptr uintptr) {
 	setEventCallback.Call(ptr)
 }
 
-// 设置消息事件回调函数指针
 func SetMessageCallback(ptr uintptr) {
 	setMessageCallback.Call(ptr)
 }
 
-// 设置线程同步事件回调函数指针
 func SetThreadSyncCallback(ptr uintptr) {
 	setThreadSyncCallback.Call(ptr)
 }
@@ -172,19 +133,20 @@ func SetRequestCallCreateParamsCallback(ptr uintptr) {
 	setRequestCallCreateParamsCallback.Call(ptr)
 }
 
-// 从Delphi/Lazarus字符串数组中获取指定索引的值
-func DGetStringArrOf(p uintptr, index int) string {
-	r, _, _ := dGetStringArrOf.Call(p, uintptr(index))
-	return DStrToGoStr(r)
+func SetRemoveEventCallback(ptr uintptr) {
+	setRemoveEventCallback.Call(ptr)
 }
 
-// 获取Delphi/Lazarus字符串长度
+func DGetStringArrOf(p uintptr, index int) string {
+	r, _, _ := dGetStringArrOf.Call(p, uintptr(index))
+	return GoStr(r)
+}
+
 func DStrLen(p uintptr) int {
 	ret, _, _ := dStrLen.Call(p)
 	return int(ret)
 }
 
-// Delphi/Lazarus内存操作
 func DMove(src, dest uintptr, llen int) {
 	dMove.Call(src, dest, uintptr(llen))
 }
@@ -205,7 +167,7 @@ func DTextToShortCut(val string) TShortCut {
 
 func DShortCutToText(val TShortCut) string {
 	ret, _, _ := dShortCutToText.Call(uintptr(val))
-	return DStrToGoStr(ret)
+	return GoStr(ret)
 }
 
 func DSysOpen(filename string) {
@@ -214,7 +176,7 @@ func DSysOpen(filename string) {
 
 func DExtractFilePath(filename string) string {
 	r, _, _ := dExtractFilePath.Call(PascalStr(filename))
-	return DStrToGoStr(r)
+	return GoStr(r)
 }
 
 func DFileExists(filename string) bool {
@@ -227,7 +189,7 @@ func DSelectDirectory1(options TSelectDirOpts) (bool, string) {
 	r, _, _ := dSelectDirectory1.Call(uintptr(unsafe.Pointer(&ptr)), uintptr(options), 0)
 	v := GoBool(r)
 	if v {
-		return true, DStrToGoStr(ptr)
+		return true, GoStr(ptr)
 	}
 	return false, ""
 }
@@ -237,12 +199,11 @@ func DSelectDirectory2(caption, root string, showHidden bool) (bool, string) {
 	r, _, _ := dSelectDirectory2.Call(PascalStr(caption), PascalStr(root), PascalBool(showHidden), uintptr(unsafe.Pointer(&ptr)))
 	v := GoBool(r)
 	if v {
-		return true, DStrToGoStr(ptr)
+		return true, GoStr(ptr)
 	}
 	return false, ""
 }
 
-// 线程同步
 func DSynchronize(fn func(), useMsg uintptr) {
 	threadSync.Lock()
 	defer threadSync.Unlock()
@@ -253,7 +214,7 @@ func DSynchronize(fn func(), useMsg uintptr) {
 
 func DInputBox(aCaption, aPrompt, aDefault string) string {
 	r, _, _ := dInputBox.Call(PascalStr(aCaption), PascalStr(aPrompt), PascalStr(aDefault))
-	return DStrToGoStr(r)
+	return GoStr(r)
 }
 
 func DInputQuery(aCaption, aPrompt string, value *string) bool {
@@ -263,14 +224,14 @@ func DInputQuery(aCaption, aPrompt string, value *string) bool {
 	var strPtr uintptr
 	r, _, _ := dInputQuery.Call(PascalStr(aCaption), PascalStr(aPrompt), PascalStr(*value), uintptr(unsafe.Pointer(&strPtr)))
 	if strPtr != 0 {
-		*value = DStrToGoStr(strPtr)
+		*value = GoStr(strPtr)
 	}
-	return DBoolToGoBool(r)
+	return GoBool(r)
 }
 
 func DPasswordBox(aCaption, aPrompt string) string {
 	r, _, _ := dPasswordBox.Call(PascalStr(aCaption), PascalStr(aPrompt))
-	return DStrToGoStr(r)
+	return GoStr(r)
 }
 
 func DInputCombo(aCaption, aPrompt string, aList uintptr) int32 {
@@ -280,60 +241,48 @@ func DInputCombo(aCaption, aPrompt string, aList uintptr) int32 {
 
 func DInputComboEx(aCaption, aPrompt string, aList uintptr, allowCustomText bool) string {
 	r, _, _ := dInputComboEx.Call(PascalStr(aCaption), PascalStr(aPrompt), aList, PascalBool(allowCustomText))
-	return DStrToGoStr(r)
+	return GoStr(r)
 }
 
-// DSysLocaled
 func DSysLocale(aInfo *TSysLocale) {
 	dSysLocale.Call(uintptr(unsafe.Pointer(aInfo)))
 }
 
-// Shortcut
-//DCreateURLShortCut
 func DCreateURLShortCut(aDestPath, aShortCutName, aURL string) {
 	dCreateURLShortCut.Call(PascalStr(aDestPath), PascalStr(aShortCutName), PascalStr(aURL))
 }
 
-//DCreateShortCut
 func DCreateShortCut(aDestPath, aShortCutName, aSrcFileName, aIconFileName, aDescription, aCmdArgs string) bool {
 	r, _, _ := dCreateShortCut.Call(PascalStr(aDestPath), PascalStr(aShortCutName), PascalStr(aSrcFileName),
 		PascalStr(aIconFileName), PascalStr(aDescription), PascalStr(aCmdArgs))
 	return GoBool(r)
 }
 
-// SetProperty
-// DSetPropertyValue
 func DSetPropertyValue(instance uintptr, propName, value string) {
 	dSetPropertyValue.Call(instance, PascalStr(propName), PascalStr(value))
 }
 
-// DSetPropertySecValue
 func DSetPropertySecValue(instance uintptr, propName, secPropName, value string) {
 	dSetPropertySecValue.Call(instance, PascalStr(propName), PascalStr(secPropName), PascalStr(value))
 }
 
-// guid
-// DGUIDToString
 func DGUIDToString(guid TGUID) string {
 	r, _, _ := dGUIDToString.Call(uintptr(unsafe.Pointer(&guid)))
 	return GoStr(r)
 }
 
-// DStringToGUID
 func DStringToGUID(str string) TGUID {
 	var guid TGUID
 	dStringToGUID.Call(PascalStr(str), uintptr(unsafe.Pointer(&guid)))
 	return guid
 }
 
-// DCreateGUID
 func DCreateGUID() TGUID {
 	var guid TGUID
 	dCreateGUID.Call(uintptr(unsafe.Pointer(&guid)))
 	return guid
 }
 
-// LibResources
 func DGetLibResourceCount() int32 {
 	r, _, _ := dGetLibResourceCount.Call()
 	return int32(r)
@@ -354,14 +303,11 @@ func DModifyLibResource(aPtr uintptr, aValue string) {
 	dModifyLibResource.Call(aPtr, PascalStr(aValue))
 }
 
-// 库的信息
-// 获取当前库使用的字符串编码
 func DLibStringEncoding() TStringEncoding {
 	r, _, _ := dLibStringEncoding.Call()
 	return TStringEncoding(r)
 }
 
-// 库版本信息
 func DLibVersion() uint32 {
 	r, _, _ := dLibVersion.Call()
 	return uint32(r)

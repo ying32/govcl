@@ -19,101 +19,94 @@ import (
 
 type TGroupBox struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewGroupBox
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewGroupBox(owner IComponent) *TGroupBox {
     g := new(TGroupBox)
-    g.instance = GroupBox_Create(CheckPtr(owner))
-    g.ptr = unsafe.Pointer(g.instance)
+    g.instance = unsafe.Pointer(GroupBox_Create(CheckPtr(owner)))
     return g
 }
 
+// AsGroupBox
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsGroupBox(obj interface{}) *TGroupBox {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TGroupBox{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TGroupBox{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsGroupBox.
-func GroupBoxFromInst(inst uintptr) *TGroupBox {
-    return AsGroupBox(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsGroupBox.
-func GroupBoxFromObj(obj IObject) *TGroupBox {
-    return AsGroupBox(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsGroupBox.
-func GroupBoxFromUnsafePointer(ptr unsafe.Pointer) *TGroupBox {
-    return AsGroupBox(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (g *TGroupBox) Free() {
-    if g.instance != 0 {
-        GroupBox_Free(g.instance)
-        g.instance, g.ptr = 0, nullptr
+    if g.instance != nullptr {
+        GroupBox_Free(g._instance())
+        g.instance  = nullptr
     }
 }
 
+func (g *TGroupBox) _instance() uintptr {
+    return uintptr(g.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (g *TGroupBox) Instance() uintptr {
-    return g.instance
+    return g._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (g *TGroupBox) UnsafeAddr() unsafe.Pointer {
-    return g.ptr
+    return g.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (g *TGroupBox) IsValid() bool {
-    return g.instance != 0
+    return g.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (g *TGroupBox) Is() TIs {
-    return TIs(g.instance)
+    return TIs(g._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (g *TGroupBox) As() TAs {
-//    return TAs(g.instance)
+//    return TAs(g._instance())
 //}
 
+// TGroupBoxClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,1198 +114,1516 @@ func TGroupBoxClass() TClass {
     return GroupBox_StaticClassType()
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (g *TGroupBox) CanFocus() bool {
-    return GroupBox_CanFocus(g.instance)
+    return GroupBox_CanFocus(g._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (g *TGroupBox) ContainsControl(Control IControl) bool {
-    return GroupBox_ContainsControl(g.instance, CheckPtr(Control))
+    return GroupBox_ContainsControl(g._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (g *TGroupBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(GroupBox_ControlAtPos(g.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(GroupBox_ControlAtPos(g._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (g *TGroupBox) DisableAlign() {
-    GroupBox_DisableAlign(g.instance)
+    GroupBox_DisableAlign(g._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (g *TGroupBox) EnableAlign() {
-    GroupBox_EnableAlign(g.instance)
+    GroupBox_EnableAlign(g._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (g *TGroupBox) FindChildControl(ControlName string) *TControl {
-    return AsControl(GroupBox_FindChildControl(g.instance, ControlName))
+    return AsControl(GroupBox_FindChildControl(g._instance(), ControlName))
 }
 
 func (g *TGroupBox) FlipChildren(AllLevels bool) {
-    GroupBox_FlipChildren(g.instance, AllLevels)
+    GroupBox_FlipChildren(g._instance(), AllLevels)
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (g *TGroupBox) Focused() bool {
-    return GroupBox_Focused(g.instance)
+    return GroupBox_Focused(g._instance())
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (g *TGroupBox) HandleAllocated() bool {
-    return GroupBox_HandleAllocated(g.instance)
+    return GroupBox_HandleAllocated(g._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (g *TGroupBox) InsertControl(AControl IControl) {
-    GroupBox_InsertControl(g.instance, CheckPtr(AControl))
+    GroupBox_InsertControl(g._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (g *TGroupBox) Invalidate() {
-    GroupBox_Invalidate(g.instance)
+    GroupBox_Invalidate(g._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (g *TGroupBox) PaintTo(DC HDC, X int32, Y int32) {
-    GroupBox_PaintTo(g.instance, DC , X , Y)
+    GroupBox_PaintTo(g._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (g *TGroupBox) RemoveControl(AControl IControl) {
-    GroupBox_RemoveControl(g.instance, CheckPtr(AControl))
+    GroupBox_RemoveControl(g._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (g *TGroupBox) Realign() {
-    GroupBox_Realign(g.instance)
+    GroupBox_Realign(g._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (g *TGroupBox) Repaint() {
-    GroupBox_Repaint(g.instance)
+    GroupBox_Repaint(g._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (g *TGroupBox) ScaleBy(M int32, D int32) {
-    GroupBox_ScaleBy(g.instance, M , D)
+    GroupBox_ScaleBy(g._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (g *TGroupBox) ScrollBy(DeltaX int32, DeltaY int32) {
-    GroupBox_ScrollBy(g.instance, DeltaX , DeltaY)
+    GroupBox_ScrollBy(g._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (g *TGroupBox) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    GroupBox_SetBounds(g.instance, ALeft , ATop , AWidth , AHeight)
+    GroupBox_SetBounds(g._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (g *TGroupBox) SetFocus() {
-    GroupBox_SetFocus(g.instance)
+    GroupBox_SetFocus(g._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (g *TGroupBox) Update() {
-    GroupBox_Update(g.instance)
+    GroupBox_Update(g._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (g *TGroupBox) BringToFront() {
-    GroupBox_BringToFront(g.instance)
+    GroupBox_BringToFront(g._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (g *TGroupBox) ClientToScreen(Point TPoint) TPoint {
-    return GroupBox_ClientToScreen(g.instance, Point)
+    return GroupBox_ClientToScreen(g._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (g *TGroupBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return GroupBox_ClientToParent(g.instance, Point , CheckPtr(AParent))
+    return GroupBox_ClientToParent(g._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (g *TGroupBox) Dragging() bool {
-    return GroupBox_Dragging(g.instance)
+    return GroupBox_Dragging(g._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (g *TGroupBox) HasParent() bool {
-    return GroupBox_HasParent(g.instance)
+    return GroupBox_HasParent(g._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (g *TGroupBox) Hide() {
-    GroupBox_Hide(g.instance)
+    GroupBox_Hide(g._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (g *TGroupBox) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return GroupBox_Perform(g.instance, Msg , WParam , LParam)
+    return GroupBox_Perform(g._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (g *TGroupBox) Refresh() {
-    GroupBox_Refresh(g.instance)
+    GroupBox_Refresh(g._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (g *TGroupBox) ScreenToClient(Point TPoint) TPoint {
-    return GroupBox_ScreenToClient(g.instance, Point)
+    return GroupBox_ScreenToClient(g._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (g *TGroupBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return GroupBox_ParentToClient(g.instance, Point , CheckPtr(AParent))
+    return GroupBox_ParentToClient(g._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (g *TGroupBox) SendToBack() {
-    GroupBox_SendToBack(g.instance)
+    GroupBox_SendToBack(g._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (g *TGroupBox) Show() {
-    GroupBox_Show(g.instance)
+    GroupBox_Show(g._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (g *TGroupBox) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return GroupBox_GetTextBuf(g.instance, Buffer , BufSize)
+    return GroupBox_GetTextBuf(g._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (g *TGroupBox) GetTextLen() int32 {
-    return GroupBox_GetTextLen(g.instance)
+    return GroupBox_GetTextLen(g._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (g *TGroupBox) SetTextBuf(Buffer string) {
-    GroupBox_SetTextBuf(g.instance, Buffer)
+    GroupBox_SetTextBuf(g._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (g *TGroupBox) FindComponent(AName string) *TComponent {
-    return AsComponent(GroupBox_FindComponent(g.instance, AName))
+    return AsComponent(GroupBox_FindComponent(g._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (g *TGroupBox) GetNamePath() string {
-    return GroupBox_GetNamePath(g.instance)
+    return GroupBox_GetNamePath(g._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (g *TGroupBox) Assign(Source IObject) {
-    GroupBox_Assign(g.instance, CheckPtr(Source))
+    GroupBox_Assign(g._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (g *TGroupBox) ClassType() TClass {
-    return GroupBox_ClassType(g.instance)
+    return GroupBox_ClassType(g._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (g *TGroupBox) ClassName() string {
-    return GroupBox_ClassName(g.instance)
+    return GroupBox_ClassName(g._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (g *TGroupBox) InstanceSize() int32 {
-    return GroupBox_InstanceSize(g.instance)
+    return GroupBox_InstanceSize(g._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (g *TGroupBox) InheritsFrom(AClass TClass) bool {
-    return GroupBox_InheritsFrom(g.instance, AClass)
+    return GroupBox_InheritsFrom(g._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (g *TGroupBox) Equals(Obj IObject) bool {
-    return GroupBox_Equals(g.instance, CheckPtr(Obj))
+    return GroupBox_Equals(g._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (g *TGroupBox) GetHashCode() int32 {
-    return GroupBox_GetHashCode(g.instance)
+    return GroupBox_GetHashCode(g._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (g *TGroupBox) ToString() string {
-    return GroupBox_ToString(g.instance)
+    return GroupBox_ToString(g._instance())
 }
 
 func (g *TGroupBox) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    GroupBox_AnchorToNeighbour(g.instance, ASide , ASpace , CheckPtr(ASibling))
+    GroupBox_AnchorToNeighbour(g._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (g *TGroupBox) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    GroupBox_AnchorParallel(g.instance, ASide , ASpace , CheckPtr(ASibling))
+    GroupBox_AnchorParallel(g._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (g *TGroupBox) AnchorHorizontalCenterTo(ASibling IControl) {
-    GroupBox_AnchorHorizontalCenterTo(g.instance, CheckPtr(ASibling))
+    GroupBox_AnchorHorizontalCenterTo(g._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (g *TGroupBox) AnchorVerticalCenterTo(ASibling IControl) {
-    GroupBox_AnchorVerticalCenterTo(g.instance, CheckPtr(ASibling))
+    GroupBox_AnchorVerticalCenterTo(g._instance(), CheckPtr(ASibling))
 }
 
 func (g *TGroupBox) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    GroupBox_AnchorSame(g.instance, ASide , CheckPtr(ASibling))
+    GroupBox_AnchorSame(g._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (g *TGroupBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    GroupBox_AnchorAsAlign(g.instance, ATheAlign , ASpace)
+    GroupBox_AnchorAsAlign(g._instance(), ATheAlign , ASpace)
 }
 
 func (g *TGroupBox) AnchorClient(ASpace int32) {
-    GroupBox_AnchorClient(g.instance, ASpace)
+    GroupBox_AnchorClient(g._instance(), ASpace)
 }
 
 func (g *TGroupBox) ScaleDesignToForm(ASize int32) int32 {
-    return GroupBox_ScaleDesignToForm(g.instance, ASize)
+    return GroupBox_ScaleDesignToForm(g._instance(), ASize)
 }
 
 func (g *TGroupBox) ScaleFormToDesign(ASize int32) int32 {
-    return GroupBox_ScaleFormToDesign(g.instance, ASize)
+    return GroupBox_ScaleFormToDesign(g._instance(), ASize)
 }
 
 func (g *TGroupBox) Scale96ToForm(ASize int32) int32 {
-    return GroupBox_Scale96ToForm(g.instance, ASize)
+    return GroupBox_Scale96ToForm(g._instance(), ASize)
 }
 
 func (g *TGroupBox) ScaleFormTo96(ASize int32) int32 {
-    return GroupBox_ScaleFormTo96(g.instance, ASize)
+    return GroupBox_ScaleFormTo96(g._instance(), ASize)
 }
 
 func (g *TGroupBox) Scale96ToFont(ASize int32) int32 {
-    return GroupBox_Scale96ToFont(g.instance, ASize)
+    return GroupBox_Scale96ToFont(g._instance(), ASize)
 }
 
 func (g *TGroupBox) ScaleFontTo96(ASize int32) int32 {
-    return GroupBox_ScaleFontTo96(g.instance, ASize)
+    return GroupBox_ScaleFontTo96(g._instance(), ASize)
 }
 
 func (g *TGroupBox) ScaleScreenToFont(ASize int32) int32 {
-    return GroupBox_ScaleScreenToFont(g.instance, ASize)
+    return GroupBox_ScaleScreenToFont(g._instance(), ASize)
 }
 
 func (g *TGroupBox) ScaleFontToScreen(ASize int32) int32 {
-    return GroupBox_ScaleFontToScreen(g.instance, ASize)
+    return GroupBox_ScaleFontToScreen(g._instance(), ASize)
 }
 
 func (g *TGroupBox) Scale96ToScreen(ASize int32) int32 {
-    return GroupBox_Scale96ToScreen(g.instance, ASize)
+    return GroupBox_Scale96ToScreen(g._instance(), ASize)
 }
 
 func (g *TGroupBox) ScaleScreenTo96(ASize int32) int32 {
-    return GroupBox_ScaleScreenTo96(g.instance, ASize)
+    return GroupBox_ScaleScreenTo96(g._instance(), ASize)
 }
 
 func (g *TGroupBox) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    GroupBox_AutoAdjustLayout(g.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    GroupBox_AutoAdjustLayout(g._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (g *TGroupBox) FixDesignFontsPPI(ADesignTimePPI int32) {
-    GroupBox_FixDesignFontsPPI(g.instance, ADesignTimePPI)
+    GroupBox_FixDesignFontsPPI(g._instance(), ADesignTimePPI)
 }
 
 func (g *TGroupBox) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    GroupBox_ScaleFontsPPI(g.instance, AToPPI , AProportion)
+    GroupBox_ScaleFontsPPI(g._instance(), AToPPI , AProportion)
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (g *TGroupBox) Align() TAlign {
-    return GroupBox_GetAlign(g.instance)
+    return GroupBox_GetAlign(g._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (g *TGroupBox) SetAlign(value TAlign) {
-    GroupBox_SetAlign(g.instance, value)
+    GroupBox_SetAlign(g._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (g *TGroupBox) Anchors() TAnchors {
-    return GroupBox_GetAnchors(g.instance)
+    return GroupBox_GetAnchors(g._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (g *TGroupBox) SetAnchors(value TAnchors) {
-    GroupBox_SetAnchors(g.instance, value)
+    GroupBox_SetAnchors(g._instance(), value)
 }
 
 func (g *TGroupBox) BiDiMode() TBiDiMode {
-    return GroupBox_GetBiDiMode(g.instance)
+    return GroupBox_GetBiDiMode(g._instance())
 }
 
 func (g *TGroupBox) SetBiDiMode(value TBiDiMode) {
-    GroupBox_SetBiDiMode(g.instance, value)
+    GroupBox_SetBiDiMode(g._instance(), value)
 }
 
+// Caption
+//
 // 获取控件标题。
 //
 // Get the control title.
 func (g *TGroupBox) Caption() string {
-    return GroupBox_GetCaption(g.instance)
+    return GroupBox_GetCaption(g._instance())
 }
 
+// SetCaption
+//
 // 设置控件标题。
 //
 // Set the control title.
 func (g *TGroupBox) SetCaption(value string) {
-    GroupBox_SetCaption(g.instance, value)
+    GroupBox_SetCaption(g._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (g *TGroupBox) Color() TColor {
-    return GroupBox_GetColor(g.instance)
+    return GroupBox_GetColor(g._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (g *TGroupBox) SetColor(value TColor) {
-    GroupBox_SetColor(g.instance, value)
+    GroupBox_SetColor(g._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (g *TGroupBox) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(GroupBox_GetConstraints(g.instance))
+    return AsSizeConstraints(GroupBox_GetConstraints(g._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (g *TGroupBox) SetConstraints(value *TSizeConstraints) {
-    GroupBox_SetConstraints(g.instance, CheckPtr(value))
+    GroupBox_SetConstraints(g._instance(), CheckPtr(value))
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (g *TGroupBox) DockSite() bool {
-    return GroupBox_GetDockSite(g.instance)
+    return GroupBox_GetDockSite(g._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (g *TGroupBox) SetDockSite(value bool) {
-    GroupBox_SetDockSite(g.instance, value)
+    GroupBox_SetDockSite(g._instance(), value)
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (g *TGroupBox) DoubleBuffered() bool {
-    return GroupBox_GetDoubleBuffered(g.instance)
+    return GroupBox_GetDoubleBuffered(g._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (g *TGroupBox) SetDoubleBuffered(value bool) {
-    GroupBox_SetDoubleBuffered(g.instance, value)
+    GroupBox_SetDoubleBuffered(g._instance(), value)
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (g *TGroupBox) DragCursor() TCursor {
-    return GroupBox_GetDragCursor(g.instance)
+    return GroupBox_GetDragCursor(g._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (g *TGroupBox) SetDragCursor(value TCursor) {
-    GroupBox_SetDragCursor(g.instance, value)
+    GroupBox_SetDragCursor(g._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (g *TGroupBox) DragKind() TDragKind {
-    return GroupBox_GetDragKind(g.instance)
+    return GroupBox_GetDragKind(g._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (g *TGroupBox) SetDragKind(value TDragKind) {
-    GroupBox_SetDragKind(g.instance, value)
+    GroupBox_SetDragKind(g._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (g *TGroupBox) DragMode() TDragMode {
-    return GroupBox_GetDragMode(g.instance)
+    return GroupBox_GetDragMode(g._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (g *TGroupBox) SetDragMode(value TDragMode) {
-    GroupBox_SetDragMode(g.instance, value)
+    GroupBox_SetDragMode(g._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (g *TGroupBox) Enabled() bool {
-    return GroupBox_GetEnabled(g.instance)
+    return GroupBox_GetEnabled(g._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (g *TGroupBox) SetEnabled(value bool) {
-    GroupBox_SetEnabled(g.instance, value)
+    GroupBox_SetEnabled(g._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (g *TGroupBox) Font() *TFont {
-    return AsFont(GroupBox_GetFont(g.instance))
+    return AsFont(GroupBox_GetFont(g._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (g *TGroupBox) SetFont(value *TFont) {
-    GroupBox_SetFont(g.instance, CheckPtr(value))
+    GroupBox_SetFont(g._instance(), CheckPtr(value))
 }
 
 func (g *TGroupBox) ParentBackground() bool {
-    return GroupBox_GetParentBackground(g.instance)
+    return GroupBox_GetParentBackground(g._instance())
 }
 
 func (g *TGroupBox) SetParentBackground(value bool) {
-    GroupBox_SetParentBackground(g.instance, value)
+    GroupBox_SetParentBackground(g._instance(), value)
 }
 
+// ParentColor
+//
 // 获取使用父容器颜色。
 //
 // Get parent color.
 func (g *TGroupBox) ParentColor() bool {
-    return GroupBox_GetParentColor(g.instance)
+    return GroupBox_GetParentColor(g._instance())
 }
 
+// SetParentColor
+//
 // 设置使用父容器颜色。
 //
 // Set parent color.
 func (g *TGroupBox) SetParentColor(value bool) {
-    GroupBox_SetParentColor(g.instance, value)
+    GroupBox_SetParentColor(g._instance(), value)
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (g *TGroupBox) ParentDoubleBuffered() bool {
-    return GroupBox_GetParentDoubleBuffered(g.instance)
+    return GroupBox_GetParentDoubleBuffered(g._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (g *TGroupBox) SetParentDoubleBuffered(value bool) {
-    GroupBox_SetParentDoubleBuffered(g.instance, value)
+    GroupBox_SetParentDoubleBuffered(g._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (g *TGroupBox) ParentFont() bool {
-    return GroupBox_GetParentFont(g.instance)
+    return GroupBox_GetParentFont(g._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (g *TGroupBox) SetParentFont(value bool) {
-    GroupBox_SetParentFont(g.instance, value)
+    GroupBox_SetParentFont(g._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (g *TGroupBox) ParentShowHint() bool {
-    return GroupBox_GetParentShowHint(g.instance)
+    return GroupBox_GetParentShowHint(g._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (g *TGroupBox) SetParentShowHint(value bool) {
-    GroupBox_SetParentShowHint(g.instance, value)
+    GroupBox_SetParentShowHint(g._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (g *TGroupBox) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(GroupBox_GetPopupMenu(g.instance))
+    return AsPopupMenu(GroupBox_GetPopupMenu(g._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (g *TGroupBox) SetPopupMenu(value IComponent) {
-    GroupBox_SetPopupMenu(g.instance, CheckPtr(value))
+    GroupBox_SetPopupMenu(g._instance(), CheckPtr(value))
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (g *TGroupBox) ShowHint() bool {
-    return GroupBox_GetShowHint(g.instance)
+    return GroupBox_GetShowHint(g._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (g *TGroupBox) SetShowHint(value bool) {
-    GroupBox_SetShowHint(g.instance, value)
+    GroupBox_SetShowHint(g._instance(), value)
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (g *TGroupBox) TabOrder() TTabOrder {
-    return GroupBox_GetTabOrder(g.instance)
+    return GroupBox_GetTabOrder(g._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (g *TGroupBox) SetTabOrder(value TTabOrder) {
-    GroupBox_SetTabOrder(g.instance, value)
+    GroupBox_SetTabOrder(g._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (g *TGroupBox) TabStop() bool {
-    return GroupBox_GetTabStop(g.instance)
+    return GroupBox_GetTabStop(g._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (g *TGroupBox) SetTabStop(value bool) {
-    GroupBox_SetTabStop(g.instance, value)
+    GroupBox_SetTabStop(g._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (g *TGroupBox) Visible() bool {
-    return GroupBox_GetVisible(g.instance)
+    return GroupBox_GetVisible(g._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (g *TGroupBox) SetVisible(value bool) {
-    GroupBox_SetVisible(g.instance, value)
+    GroupBox_SetVisible(g._instance(), value)
 }
 
+// SetOnAlignPosition
+//
 // 设置对齐位置事件，当Align为alCustom时Parent会收到这个消息。
 func (g *TGroupBox) SetOnAlignPosition(fn TAlignPositionEvent) {
-    GroupBox_SetOnAlignPosition(g.instance, fn)
+    GroupBox_SetOnAlignPosition(g._instance(), fn)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (g *TGroupBox) SetOnClick(fn TNotifyEvent) {
-    GroupBox_SetOnClick(g.instance, fn)
+    GroupBox_SetOnClick(g._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (g *TGroupBox) SetOnContextPopup(fn TContextPopupEvent) {
-    GroupBox_SetOnContextPopup(g.instance, fn)
+    GroupBox_SetOnContextPopup(g._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (g *TGroupBox) SetOnDblClick(fn TNotifyEvent) {
-    GroupBox_SetOnDblClick(g.instance, fn)
+    GroupBox_SetOnDblClick(g._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (g *TGroupBox) SetOnDragDrop(fn TDragDropEvent) {
-    GroupBox_SetOnDragDrop(g.instance, fn)
+    GroupBox_SetOnDragDrop(g._instance(), fn)
 }
 
 func (g *TGroupBox) SetOnDockDrop(fn TDockDropEvent) {
-    GroupBox_SetOnDockDrop(g.instance, fn)
+    GroupBox_SetOnDockDrop(g._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (g *TGroupBox) SetOnDragOver(fn TDragOverEvent) {
-    GroupBox_SetOnDragOver(g.instance, fn)
+    GroupBox_SetOnDragOver(g._instance(), fn)
 }
 
+// SetOnEndDock
+//
 // 设置停靠结束事件。
 //
 // Set Dock end event.
 func (g *TGroupBox) SetOnEndDock(fn TEndDragEvent) {
-    GroupBox_SetOnEndDock(g.instance, fn)
+    GroupBox_SetOnEndDock(g._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (g *TGroupBox) SetOnEndDrag(fn TEndDragEvent) {
-    GroupBox_SetOnEndDrag(g.instance, fn)
+    GroupBox_SetOnEndDrag(g._instance(), fn)
 }
 
+// SetOnEnter
+//
 // 设置焦点进入。
 //
 // Set Focus entry.
 func (g *TGroupBox) SetOnEnter(fn TNotifyEvent) {
-    GroupBox_SetOnEnter(g.instance, fn)
+    GroupBox_SetOnEnter(g._instance(), fn)
 }
 
+// SetOnExit
+//
 // 设置焦点退出。
 //
 // Set Focus exit.
 func (g *TGroupBox) SetOnExit(fn TNotifyEvent) {
-    GroupBox_SetOnExit(g.instance, fn)
+    GroupBox_SetOnExit(g._instance(), fn)
 }
 
 func (g *TGroupBox) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
-    GroupBox_SetOnGetSiteInfo(g.instance, fn)
+    GroupBox_SetOnGetSiteInfo(g._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (g *TGroupBox) SetOnMouseDown(fn TMouseEvent) {
-    GroupBox_SetOnMouseDown(g.instance, fn)
+    GroupBox_SetOnMouseDown(g._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (g *TGroupBox) SetOnMouseEnter(fn TNotifyEvent) {
-    GroupBox_SetOnMouseEnter(g.instance, fn)
+    GroupBox_SetOnMouseEnter(g._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (g *TGroupBox) SetOnMouseLeave(fn TNotifyEvent) {
-    GroupBox_SetOnMouseLeave(g.instance, fn)
+    GroupBox_SetOnMouseLeave(g._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (g *TGroupBox) SetOnMouseMove(fn TMouseMoveEvent) {
-    GroupBox_SetOnMouseMove(g.instance, fn)
+    GroupBox_SetOnMouseMove(g._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (g *TGroupBox) SetOnMouseUp(fn TMouseEvent) {
-    GroupBox_SetOnMouseUp(g.instance, fn)
+    GroupBox_SetOnMouseUp(g._instance(), fn)
 }
 
+// SetOnStartDock
+//
 // 设置启动停靠。
 func (g *TGroupBox) SetOnStartDock(fn TStartDockEvent) {
-    GroupBox_SetOnStartDock(g.instance, fn)
+    GroupBox_SetOnStartDock(g._instance(), fn)
 }
 
 func (g *TGroupBox) SetOnUnDock(fn TUnDockEvent) {
-    GroupBox_SetOnUnDock(g.instance, fn)
+    GroupBox_SetOnUnDock(g._instance(), fn)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (g *TGroupBox) DockClientCount() int32 {
-    return GroupBox_GetDockClientCount(g.instance)
+    return GroupBox_GetDockClientCount(g._instance())
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (g *TGroupBox) MouseInClient() bool {
-    return GroupBox_GetMouseInClient(g.instance)
+    return GroupBox_GetMouseInClient(g._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (g *TGroupBox) VisibleDockClientCount() int32 {
-    return GroupBox_GetVisibleDockClientCount(g.instance)
+    return GroupBox_GetVisibleDockClientCount(g._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (g *TGroupBox) Brush() *TBrush {
-    return AsBrush(GroupBox_GetBrush(g.instance))
+    return AsBrush(GroupBox_GetBrush(g._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (g *TGroupBox) ControlCount() int32 {
-    return GroupBox_GetControlCount(g.instance)
+    return GroupBox_GetControlCount(g._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (g *TGroupBox) Handle() HWND {
-    return GroupBox_GetHandle(g.instance)
+    return GroupBox_GetHandle(g._instance())
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (g *TGroupBox) ParentWindow() HWND {
-    return GroupBox_GetParentWindow(g.instance)
+    return GroupBox_GetParentWindow(g._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (g *TGroupBox) SetParentWindow(value HWND) {
-    GroupBox_SetParentWindow(g.instance, value)
+    GroupBox_SetParentWindow(g._instance(), value)
 }
 
 func (g *TGroupBox) Showing() bool {
-    return GroupBox_GetShowing(g.instance)
+    return GroupBox_GetShowing(g._instance())
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (g *TGroupBox) UseDockManager() bool {
-    return GroupBox_GetUseDockManager(g.instance)
+    return GroupBox_GetUseDockManager(g._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (g *TGroupBox) SetUseDockManager(value bool) {
-    GroupBox_SetUseDockManager(g.instance, value)
+    GroupBox_SetUseDockManager(g._instance(), value)
 }
 
 func (g *TGroupBox) Action() *TAction {
-    return AsAction(GroupBox_GetAction(g.instance))
+    return AsAction(GroupBox_GetAction(g._instance()))
 }
 
 func (g *TGroupBox) SetAction(value IComponent) {
-    GroupBox_SetAction(g.instance, CheckPtr(value))
+    GroupBox_SetAction(g._instance(), CheckPtr(value))
 }
 
 func (g *TGroupBox) BoundsRect() TRect {
-    return GroupBox_GetBoundsRect(g.instance)
+    return GroupBox_GetBoundsRect(g._instance())
 }
 
 func (g *TGroupBox) SetBoundsRect(value TRect) {
-    GroupBox_SetBoundsRect(g.instance, value)
+    GroupBox_SetBoundsRect(g._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (g *TGroupBox) ClientHeight() int32 {
-    return GroupBox_GetClientHeight(g.instance)
+    return GroupBox_GetClientHeight(g._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (g *TGroupBox) SetClientHeight(value int32) {
-    GroupBox_SetClientHeight(g.instance, value)
+    GroupBox_SetClientHeight(g._instance(), value)
 }
 
 func (g *TGroupBox) ClientOrigin() TPoint {
-    return GroupBox_GetClientOrigin(g.instance)
+    return GroupBox_GetClientOrigin(g._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (g *TGroupBox) ClientRect() TRect {
-    return GroupBox_GetClientRect(g.instance)
+    return GroupBox_GetClientRect(g._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (g *TGroupBox) ClientWidth() int32 {
-    return GroupBox_GetClientWidth(g.instance)
+    return GroupBox_GetClientWidth(g._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (g *TGroupBox) SetClientWidth(value int32) {
-    GroupBox_SetClientWidth(g.instance, value)
+    GroupBox_SetClientWidth(g._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (g *TGroupBox) ControlState() TControlState {
-    return GroupBox_GetControlState(g.instance)
+    return GroupBox_GetControlState(g._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (g *TGroupBox) SetControlState(value TControlState) {
-    GroupBox_SetControlState(g.instance, value)
+    GroupBox_SetControlState(g._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (g *TGroupBox) ControlStyle() TControlStyle {
-    return GroupBox_GetControlStyle(g.instance)
+    return GroupBox_GetControlStyle(g._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (g *TGroupBox) SetControlStyle(value TControlStyle) {
-    GroupBox_SetControlStyle(g.instance, value)
+    GroupBox_SetControlStyle(g._instance(), value)
 }
 
 func (g *TGroupBox) Floating() bool {
-    return GroupBox_GetFloating(g.instance)
+    return GroupBox_GetFloating(g._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (g *TGroupBox) Parent() *TWinControl {
-    return AsWinControl(GroupBox_GetParent(g.instance))
+    return AsWinControl(GroupBox_GetParent(g._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (g *TGroupBox) SetParent(value IWinControl) {
-    GroupBox_SetParent(g.instance, CheckPtr(value))
+    GroupBox_SetParent(g._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (g *TGroupBox) Left() int32 {
-    return GroupBox_GetLeft(g.instance)
+    return GroupBox_GetLeft(g._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (g *TGroupBox) SetLeft(value int32) {
-    GroupBox_SetLeft(g.instance, value)
+    GroupBox_SetLeft(g._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (g *TGroupBox) Top() int32 {
-    return GroupBox_GetTop(g.instance)
+    return GroupBox_GetTop(g._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (g *TGroupBox) SetTop(value int32) {
-    GroupBox_SetTop(g.instance, value)
+    GroupBox_SetTop(g._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (g *TGroupBox) Width() int32 {
-    return GroupBox_GetWidth(g.instance)
+    return GroupBox_GetWidth(g._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (g *TGroupBox) SetWidth(value int32) {
-    GroupBox_SetWidth(g.instance, value)
+    GroupBox_SetWidth(g._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (g *TGroupBox) Height() int32 {
-    return GroupBox_GetHeight(g.instance)
+    return GroupBox_GetHeight(g._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (g *TGroupBox) SetHeight(value int32) {
-    GroupBox_SetHeight(g.instance, value)
+    GroupBox_SetHeight(g._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (g *TGroupBox) Cursor() TCursor {
-    return GroupBox_GetCursor(g.instance)
+    return GroupBox_GetCursor(g._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (g *TGroupBox) SetCursor(value TCursor) {
-    GroupBox_SetCursor(g.instance, value)
+    GroupBox_SetCursor(g._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (g *TGroupBox) Hint() string {
-    return GroupBox_GetHint(g.instance)
+    return GroupBox_GetHint(g._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (g *TGroupBox) SetHint(value string) {
-    GroupBox_SetHint(g.instance, value)
+    GroupBox_SetHint(g._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (g *TGroupBox) ComponentCount() int32 {
-    return GroupBox_GetComponentCount(g.instance)
+    return GroupBox_GetComponentCount(g._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (g *TGroupBox) ComponentIndex() int32 {
-    return GroupBox_GetComponentIndex(g.instance)
+    return GroupBox_GetComponentIndex(g._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (g *TGroupBox) SetComponentIndex(value int32) {
-    GroupBox_SetComponentIndex(g.instance, value)
+    GroupBox_SetComponentIndex(g._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (g *TGroupBox) Owner() *TComponent {
-    return AsComponent(GroupBox_GetOwner(g.instance))
+    return AsComponent(GroupBox_GetOwner(g._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (g *TGroupBox) Name() string {
-    return GroupBox_GetName(g.instance)
+    return GroupBox_GetName(g._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (g *TGroupBox) SetName(value string) {
-    GroupBox_SetName(g.instance, value)
+    GroupBox_SetName(g._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (g *TGroupBox) Tag() int {
-    return GroupBox_GetTag(g.instance)
+    return GroupBox_GetTag(g._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (g *TGroupBox) SetTag(value int) {
-    GroupBox_SetTag(g.instance, value)
+    GroupBox_SetTag(g._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (g *TGroupBox) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(GroupBox_GetAnchorSideLeft(g.instance))
+    return AsAnchorSide(GroupBox_GetAnchorSideLeft(g._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (g *TGroupBox) SetAnchorSideLeft(value *TAnchorSide) {
-    GroupBox_SetAnchorSideLeft(g.instance, CheckPtr(value))
+    GroupBox_SetAnchorSideLeft(g._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (g *TGroupBox) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(GroupBox_GetAnchorSideTop(g.instance))
+    return AsAnchorSide(GroupBox_GetAnchorSideTop(g._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (g *TGroupBox) SetAnchorSideTop(value *TAnchorSide) {
-    GroupBox_SetAnchorSideTop(g.instance, CheckPtr(value))
+    GroupBox_SetAnchorSideTop(g._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (g *TGroupBox) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(GroupBox_GetAnchorSideRight(g.instance))
+    return AsAnchorSide(GroupBox_GetAnchorSideRight(g._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (g *TGroupBox) SetAnchorSideRight(value *TAnchorSide) {
-    GroupBox_SetAnchorSideRight(g.instance, CheckPtr(value))
+    GroupBox_SetAnchorSideRight(g._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (g *TGroupBox) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(GroupBox_GetAnchorSideBottom(g.instance))
+    return AsAnchorSide(GroupBox_GetAnchorSideBottom(g._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (g *TGroupBox) SetAnchorSideBottom(value *TAnchorSide) {
-    GroupBox_SetAnchorSideBottom(g.instance, CheckPtr(value))
+    GroupBox_SetAnchorSideBottom(g._instance(), CheckPtr(value))
 }
 
 func (g *TGroupBox) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(GroupBox_GetChildSizing(g.instance))
+    return AsControlChildSizing(GroupBox_GetChildSizing(g._instance()))
 }
 
 func (g *TGroupBox) SetChildSizing(value *TControlChildSizing) {
-    GroupBox_SetChildSizing(g.instance, CheckPtr(value))
+    GroupBox_SetChildSizing(g._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (g *TGroupBox) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(GroupBox_GetBorderSpacing(g.instance))
+    return AsControlBorderSpacing(GroupBox_GetBorderSpacing(g._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (g *TGroupBox) SetBorderSpacing(value *TControlBorderSpacing) {
-    GroupBox_SetBorderSpacing(g.instance, CheckPtr(value))
+    GroupBox_SetBorderSpacing(g._instance(), CheckPtr(value))
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (g *TGroupBox) DockClients(Index int32) *TControl {
-    return AsControl(GroupBox_GetDockClients(g.instance, Index))
+    return AsControl(GroupBox_GetDockClients(g._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (g *TGroupBox) Controls(Index int32) *TControl {
-    return AsControl(GroupBox_GetControls(g.instance, Index))
+    return AsControl(GroupBox_GetControls(g._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (g *TGroupBox) Components(AIndex int32) *TComponent {
-    return AsComponent(GroupBox_GetComponents(g.instance, AIndex))
+    return AsComponent(GroupBox_GetComponents(g._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (g *TGroupBox) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(GroupBox_GetAnchorSide(g.instance, AKind))
+    return AsAnchorSide(GroupBox_GetAnchorSide(g._instance(), AKind))
 }
 

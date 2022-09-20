@@ -19,101 +19,94 @@ import (
 
 type TShape struct {
     IControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewShape
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewShape(owner IComponent) *TShape {
     s := new(TShape)
-    s.instance = Shape_Create(CheckPtr(owner))
-    s.ptr = unsafe.Pointer(s.instance)
+    s.instance = unsafe.Pointer(Shape_Create(CheckPtr(owner)))
     return s
 }
 
+// AsShape
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsShape(obj interface{}) *TShape {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TShape{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TShape{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsShape.
-func ShapeFromInst(inst uintptr) *TShape {
-    return AsShape(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsShape.
-func ShapeFromObj(obj IObject) *TShape {
-    return AsShape(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsShape.
-func ShapeFromUnsafePointer(ptr unsafe.Pointer) *TShape {
-    return AsShape(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (s *TShape) Free() {
-    if s.instance != 0 {
-        Shape_Free(s.instance)
-        s.instance, s.ptr = 0, nullptr
+    if s.instance != nullptr {
+        Shape_Free(s._instance())
+        s.instance  = nullptr
     }
 }
 
+func (s *TShape) _instance() uintptr {
+    return uintptr(s.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (s *TShape) Instance() uintptr {
-    return s.instance
+    return s._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (s *TShape) UnsafeAddr() unsafe.Pointer {
-    return s.ptr
+    return s.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (s *TShape) IsValid() bool {
-    return s.instance != 0
+    return s.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (s *TShape) Is() TIs {
-    return TIs(s.instance)
+    return TIs(s._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (s *TShape) As() TAs {
-//    return TAs(s.instance)
+//    return TAs(s._instance())
 //}
 
+// TShapeClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,811 +114,1019 @@ func TShapeClass() TClass {
     return Shape_StaticClassType()
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (s *TShape) BringToFront() {
-    Shape_BringToFront(s.instance)
+    Shape_BringToFront(s._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (s *TShape) ClientToScreen(Point TPoint) TPoint {
-    return Shape_ClientToScreen(s.instance, Point)
+    return Shape_ClientToScreen(s._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (s *TShape) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return Shape_ClientToParent(s.instance, Point , CheckPtr(AParent))
+    return Shape_ClientToParent(s._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (s *TShape) Dragging() bool {
-    return Shape_Dragging(s.instance)
+    return Shape_Dragging(s._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (s *TShape) HasParent() bool {
-    return Shape_HasParent(s.instance)
+    return Shape_HasParent(s._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (s *TShape) Hide() {
-    Shape_Hide(s.instance)
+    Shape_Hide(s._instance())
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (s *TShape) Invalidate() {
-    Shape_Invalidate(s.instance)
+    Shape_Invalidate(s._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (s *TShape) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return Shape_Perform(s.instance, Msg , WParam , LParam)
+    return Shape_Perform(s._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (s *TShape) Refresh() {
-    Shape_Refresh(s.instance)
+    Shape_Refresh(s._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (s *TShape) Repaint() {
-    Shape_Repaint(s.instance)
+    Shape_Repaint(s._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (s *TShape) ScreenToClient(Point TPoint) TPoint {
-    return Shape_ScreenToClient(s.instance, Point)
+    return Shape_ScreenToClient(s._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (s *TShape) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return Shape_ParentToClient(s.instance, Point , CheckPtr(AParent))
+    return Shape_ParentToClient(s._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (s *TShape) SendToBack() {
-    Shape_SendToBack(s.instance)
+    Shape_SendToBack(s._instance())
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (s *TShape) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    Shape_SetBounds(s.instance, ALeft , ATop , AWidth , AHeight)
+    Shape_SetBounds(s._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (s *TShape) Show() {
-    Shape_Show(s.instance)
+    Shape_Show(s._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (s *TShape) Update() {
-    Shape_Update(s.instance)
+    Shape_Update(s._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (s *TShape) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return Shape_GetTextBuf(s.instance, Buffer , BufSize)
+    return Shape_GetTextBuf(s._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (s *TShape) GetTextLen() int32 {
-    return Shape_GetTextLen(s.instance)
+    return Shape_GetTextLen(s._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (s *TShape) SetTextBuf(Buffer string) {
-    Shape_SetTextBuf(s.instance, Buffer)
+    Shape_SetTextBuf(s._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (s *TShape) FindComponent(AName string) *TComponent {
-    return AsComponent(Shape_FindComponent(s.instance, AName))
+    return AsComponent(Shape_FindComponent(s._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (s *TShape) GetNamePath() string {
-    return Shape_GetNamePath(s.instance)
+    return Shape_GetNamePath(s._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (s *TShape) Assign(Source IObject) {
-    Shape_Assign(s.instance, CheckPtr(Source))
+    Shape_Assign(s._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (s *TShape) ClassType() TClass {
-    return Shape_ClassType(s.instance)
+    return Shape_ClassType(s._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (s *TShape) ClassName() string {
-    return Shape_ClassName(s.instance)
+    return Shape_ClassName(s._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (s *TShape) InstanceSize() int32 {
-    return Shape_InstanceSize(s.instance)
+    return Shape_InstanceSize(s._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (s *TShape) InheritsFrom(AClass TClass) bool {
-    return Shape_InheritsFrom(s.instance, AClass)
+    return Shape_InheritsFrom(s._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (s *TShape) Equals(Obj IObject) bool {
-    return Shape_Equals(s.instance, CheckPtr(Obj))
+    return Shape_Equals(s._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (s *TShape) GetHashCode() int32 {
-    return Shape_GetHashCode(s.instance)
+    return Shape_GetHashCode(s._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (s *TShape) ToString() string {
-    return Shape_ToString(s.instance)
+    return Shape_ToString(s._instance())
 }
 
 func (s *TShape) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    Shape_AnchorToNeighbour(s.instance, ASide , ASpace , CheckPtr(ASibling))
+    Shape_AnchorToNeighbour(s._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (s *TShape) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    Shape_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
+    Shape_AnchorParallel(s._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (s *TShape) AnchorHorizontalCenterTo(ASibling IControl) {
-    Shape_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
+    Shape_AnchorHorizontalCenterTo(s._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (s *TShape) AnchorVerticalCenterTo(ASibling IControl) {
-    Shape_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
+    Shape_AnchorVerticalCenterTo(s._instance(), CheckPtr(ASibling))
 }
 
 func (s *TShape) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    Shape_AnchorSame(s.instance, ASide , CheckPtr(ASibling))
+    Shape_AnchorSame(s._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (s *TShape) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    Shape_AnchorAsAlign(s.instance, ATheAlign , ASpace)
+    Shape_AnchorAsAlign(s._instance(), ATheAlign , ASpace)
 }
 
 func (s *TShape) AnchorClient(ASpace int32) {
-    Shape_AnchorClient(s.instance, ASpace)
+    Shape_AnchorClient(s._instance(), ASpace)
 }
 
 func (s *TShape) ScaleDesignToForm(ASize int32) int32 {
-    return Shape_ScaleDesignToForm(s.instance, ASize)
+    return Shape_ScaleDesignToForm(s._instance(), ASize)
 }
 
 func (s *TShape) ScaleFormToDesign(ASize int32) int32 {
-    return Shape_ScaleFormToDesign(s.instance, ASize)
+    return Shape_ScaleFormToDesign(s._instance(), ASize)
 }
 
 func (s *TShape) Scale96ToForm(ASize int32) int32 {
-    return Shape_Scale96ToForm(s.instance, ASize)
+    return Shape_Scale96ToForm(s._instance(), ASize)
 }
 
 func (s *TShape) ScaleFormTo96(ASize int32) int32 {
-    return Shape_ScaleFormTo96(s.instance, ASize)
+    return Shape_ScaleFormTo96(s._instance(), ASize)
 }
 
 func (s *TShape) Scale96ToFont(ASize int32) int32 {
-    return Shape_Scale96ToFont(s.instance, ASize)
+    return Shape_Scale96ToFont(s._instance(), ASize)
 }
 
 func (s *TShape) ScaleFontTo96(ASize int32) int32 {
-    return Shape_ScaleFontTo96(s.instance, ASize)
+    return Shape_ScaleFontTo96(s._instance(), ASize)
 }
 
 func (s *TShape) ScaleScreenToFont(ASize int32) int32 {
-    return Shape_ScaleScreenToFont(s.instance, ASize)
+    return Shape_ScaleScreenToFont(s._instance(), ASize)
 }
 
 func (s *TShape) ScaleFontToScreen(ASize int32) int32 {
-    return Shape_ScaleFontToScreen(s.instance, ASize)
+    return Shape_ScaleFontToScreen(s._instance(), ASize)
 }
 
 func (s *TShape) Scale96ToScreen(ASize int32) int32 {
-    return Shape_Scale96ToScreen(s.instance, ASize)
+    return Shape_Scale96ToScreen(s._instance(), ASize)
 }
 
 func (s *TShape) ScaleScreenTo96(ASize int32) int32 {
-    return Shape_ScaleScreenTo96(s.instance, ASize)
+    return Shape_ScaleScreenTo96(s._instance(), ASize)
 }
 
 func (s *TShape) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    Shape_AutoAdjustLayout(s.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    Shape_AutoAdjustLayout(s._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (s *TShape) FixDesignFontsPPI(ADesignTimePPI int32) {
-    Shape_FixDesignFontsPPI(s.instance, ADesignTimePPI)
+    Shape_FixDesignFontsPPI(s._instance(), ADesignTimePPI)
 }
 
 func (s *TShape) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    Shape_ScaleFontsPPI(s.instance, AToPPI , AProportion)
+    Shape_ScaleFontsPPI(s._instance(), AToPPI , AProportion)
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (s *TShape) Align() TAlign {
-    return Shape_GetAlign(s.instance)
+    return Shape_GetAlign(s._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (s *TShape) SetAlign(value TAlign) {
-    Shape_SetAlign(s.instance, value)
+    Shape_SetAlign(s._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (s *TShape) Anchors() TAnchors {
-    return Shape_GetAnchors(s.instance)
+    return Shape_GetAnchors(s._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (s *TShape) SetAnchors(value TAnchors) {
-    Shape_SetAnchors(s.instance, value)
+    Shape_SetAnchors(s._instance(), value)
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (s *TShape) Brush() *TBrush {
-    return AsBrush(Shape_GetBrush(s.instance))
+    return AsBrush(Shape_GetBrush(s._instance()))
 }
 
+// SetBrush
+//
 // 设置画刷对象。
 //
 // Set Brush.
 func (s *TShape) SetBrush(value *TBrush) {
-    Shape_SetBrush(s.instance, CheckPtr(value))
+    Shape_SetBrush(s._instance(), CheckPtr(value))
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (s *TShape) DragCursor() TCursor {
-    return Shape_GetDragCursor(s.instance)
+    return Shape_GetDragCursor(s._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (s *TShape) SetDragCursor(value TCursor) {
-    Shape_SetDragCursor(s.instance, value)
+    Shape_SetDragCursor(s._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (s *TShape) DragKind() TDragKind {
-    return Shape_GetDragKind(s.instance)
+    return Shape_GetDragKind(s._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (s *TShape) SetDragKind(value TDragKind) {
-    Shape_SetDragKind(s.instance, value)
+    Shape_SetDragKind(s._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (s *TShape) DragMode() TDragMode {
-    return Shape_GetDragMode(s.instance)
+    return Shape_GetDragMode(s._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (s *TShape) SetDragMode(value TDragMode) {
-    Shape_SetDragMode(s.instance, value)
+    Shape_SetDragMode(s._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (s *TShape) Enabled() bool {
-    return Shape_GetEnabled(s.instance)
+    return Shape_GetEnabled(s._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (s *TShape) SetEnabled(value bool) {
-    Shape_SetEnabled(s.instance, value)
+    Shape_SetEnabled(s._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (s *TShape) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(Shape_GetConstraints(s.instance))
+    return AsSizeConstraints(Shape_GetConstraints(s._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (s *TShape) SetConstraints(value *TSizeConstraints) {
-    Shape_SetConstraints(s.instance, CheckPtr(value))
+    Shape_SetConstraints(s._instance(), CheckPtr(value))
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (s *TShape) ParentShowHint() bool {
-    return Shape_GetParentShowHint(s.instance)
+    return Shape_GetParentShowHint(s._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (s *TShape) SetParentShowHint(value bool) {
-    Shape_SetParentShowHint(s.instance, value)
+    Shape_SetParentShowHint(s._instance(), value)
 }
 
 func (s *TShape) Pen() *TPen {
-    return AsPen(Shape_GetPen(s.instance))
+    return AsPen(Shape_GetPen(s._instance()))
 }
 
 func (s *TShape) SetPen(value *TPen) {
-    Shape_SetPen(s.instance, CheckPtr(value))
+    Shape_SetPen(s._instance(), CheckPtr(value))
 }
 
 func (s *TShape) Shape() TShapeType {
-    return Shape_GetShape(s.instance)
+    return Shape_GetShape(s._instance())
 }
 
 func (s *TShape) SetShape(value TShapeType) {
-    Shape_SetShape(s.instance, value)
+    Shape_SetShape(s._instance(), value)
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (s *TShape) ShowHint() bool {
-    return Shape_GetShowHint(s.instance)
+    return Shape_GetShowHint(s._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (s *TShape) SetShowHint(value bool) {
-    Shape_SetShowHint(s.instance, value)
+    Shape_SetShowHint(s._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (s *TShape) Visible() bool {
-    return Shape_GetVisible(s.instance)
+    return Shape_GetVisible(s._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (s *TShape) SetVisible(value bool) {
-    Shape_SetVisible(s.instance, value)
+    Shape_SetVisible(s._instance(), value)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (s *TShape) SetOnDragDrop(fn TDragDropEvent) {
-    Shape_SetOnDragDrop(s.instance, fn)
+    Shape_SetOnDragDrop(s._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (s *TShape) SetOnDragOver(fn TDragOverEvent) {
-    Shape_SetOnDragOver(s.instance, fn)
+    Shape_SetOnDragOver(s._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (s *TShape) SetOnEndDrag(fn TEndDragEvent) {
-    Shape_SetOnEndDrag(s.instance, fn)
+    Shape_SetOnEndDrag(s._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (s *TShape) SetOnMouseDown(fn TMouseEvent) {
-    Shape_SetOnMouseDown(s.instance, fn)
+    Shape_SetOnMouseDown(s._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (s *TShape) SetOnMouseEnter(fn TNotifyEvent) {
-    Shape_SetOnMouseEnter(s.instance, fn)
+    Shape_SetOnMouseEnter(s._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (s *TShape) SetOnMouseLeave(fn TNotifyEvent) {
-    Shape_SetOnMouseLeave(s.instance, fn)
+    Shape_SetOnMouseLeave(s._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (s *TShape) SetOnMouseMove(fn TMouseMoveEvent) {
-    Shape_SetOnMouseMove(s.instance, fn)
+    Shape_SetOnMouseMove(s._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (s *TShape) SetOnMouseUp(fn TMouseEvent) {
-    Shape_SetOnMouseUp(s.instance, fn)
+    Shape_SetOnMouseUp(s._instance(), fn)
 }
 
 func (s *TShape) Action() *TAction {
-    return AsAction(Shape_GetAction(s.instance))
+    return AsAction(Shape_GetAction(s._instance()))
 }
 
 func (s *TShape) SetAction(value IComponent) {
-    Shape_SetAction(s.instance, CheckPtr(value))
+    Shape_SetAction(s._instance(), CheckPtr(value))
 }
 
 func (s *TShape) BiDiMode() TBiDiMode {
-    return Shape_GetBiDiMode(s.instance)
+    return Shape_GetBiDiMode(s._instance())
 }
 
 func (s *TShape) SetBiDiMode(value TBiDiMode) {
-    Shape_SetBiDiMode(s.instance, value)
+    Shape_SetBiDiMode(s._instance(), value)
 }
 
 func (s *TShape) BoundsRect() TRect {
-    return Shape_GetBoundsRect(s.instance)
+    return Shape_GetBoundsRect(s._instance())
 }
 
 func (s *TShape) SetBoundsRect(value TRect) {
-    Shape_SetBoundsRect(s.instance, value)
+    Shape_SetBoundsRect(s._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (s *TShape) ClientHeight() int32 {
-    return Shape_GetClientHeight(s.instance)
+    return Shape_GetClientHeight(s._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (s *TShape) SetClientHeight(value int32) {
-    Shape_SetClientHeight(s.instance, value)
+    Shape_SetClientHeight(s._instance(), value)
 }
 
 func (s *TShape) ClientOrigin() TPoint {
-    return Shape_GetClientOrigin(s.instance)
+    return Shape_GetClientOrigin(s._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (s *TShape) ClientRect() TRect {
-    return Shape_GetClientRect(s.instance)
+    return Shape_GetClientRect(s._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (s *TShape) ClientWidth() int32 {
-    return Shape_GetClientWidth(s.instance)
+    return Shape_GetClientWidth(s._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (s *TShape) SetClientWidth(value int32) {
-    Shape_SetClientWidth(s.instance, value)
+    Shape_SetClientWidth(s._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (s *TShape) ControlState() TControlState {
-    return Shape_GetControlState(s.instance)
+    return Shape_GetControlState(s._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (s *TShape) SetControlState(value TControlState) {
-    Shape_SetControlState(s.instance, value)
+    Shape_SetControlState(s._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (s *TShape) ControlStyle() TControlStyle {
-    return Shape_GetControlStyle(s.instance)
+    return Shape_GetControlStyle(s._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (s *TShape) SetControlStyle(value TControlStyle) {
-    Shape_SetControlStyle(s.instance, value)
+    Shape_SetControlStyle(s._instance(), value)
 }
 
 func (s *TShape) Floating() bool {
-    return Shape_GetFloating(s.instance)
+    return Shape_GetFloating(s._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (s *TShape) Parent() *TWinControl {
-    return AsWinControl(Shape_GetParent(s.instance))
+    return AsWinControl(Shape_GetParent(s._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (s *TShape) SetParent(value IWinControl) {
-    Shape_SetParent(s.instance, CheckPtr(value))
+    Shape_SetParent(s._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (s *TShape) Left() int32 {
-    return Shape_GetLeft(s.instance)
+    return Shape_GetLeft(s._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (s *TShape) SetLeft(value int32) {
-    Shape_SetLeft(s.instance, value)
+    Shape_SetLeft(s._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (s *TShape) Top() int32 {
-    return Shape_GetTop(s.instance)
+    return Shape_GetTop(s._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (s *TShape) SetTop(value int32) {
-    Shape_SetTop(s.instance, value)
+    Shape_SetTop(s._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (s *TShape) Width() int32 {
-    return Shape_GetWidth(s.instance)
+    return Shape_GetWidth(s._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (s *TShape) SetWidth(value int32) {
-    Shape_SetWidth(s.instance, value)
+    Shape_SetWidth(s._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (s *TShape) Height() int32 {
-    return Shape_GetHeight(s.instance)
+    return Shape_GetHeight(s._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (s *TShape) SetHeight(value int32) {
-    Shape_SetHeight(s.instance, value)
+    Shape_SetHeight(s._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (s *TShape) Cursor() TCursor {
-    return Shape_GetCursor(s.instance)
+    return Shape_GetCursor(s._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (s *TShape) SetCursor(value TCursor) {
-    Shape_SetCursor(s.instance, value)
+    Shape_SetCursor(s._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (s *TShape) Hint() string {
-    return Shape_GetHint(s.instance)
+    return Shape_GetHint(s._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (s *TShape) SetHint(value string) {
-    Shape_SetHint(s.instance, value)
+    Shape_SetHint(s._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (s *TShape) ComponentCount() int32 {
-    return Shape_GetComponentCount(s.instance)
+    return Shape_GetComponentCount(s._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (s *TShape) ComponentIndex() int32 {
-    return Shape_GetComponentIndex(s.instance)
+    return Shape_GetComponentIndex(s._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (s *TShape) SetComponentIndex(value int32) {
-    Shape_SetComponentIndex(s.instance, value)
+    Shape_SetComponentIndex(s._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (s *TShape) Owner() *TComponent {
-    return AsComponent(Shape_GetOwner(s.instance))
+    return AsComponent(Shape_GetOwner(s._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (s *TShape) Name() string {
-    return Shape_GetName(s.instance)
+    return Shape_GetName(s._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (s *TShape) SetName(value string) {
-    Shape_SetName(s.instance, value)
+    Shape_SetName(s._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (s *TShape) Tag() int {
-    return Shape_GetTag(s.instance)
+    return Shape_GetTag(s._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (s *TShape) SetTag(value int) {
-    Shape_SetTag(s.instance, value)
+    Shape_SetTag(s._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (s *TShape) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(Shape_GetAnchorSideLeft(s.instance))
+    return AsAnchorSide(Shape_GetAnchorSideLeft(s._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (s *TShape) SetAnchorSideLeft(value *TAnchorSide) {
-    Shape_SetAnchorSideLeft(s.instance, CheckPtr(value))
+    Shape_SetAnchorSideLeft(s._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (s *TShape) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(Shape_GetAnchorSideTop(s.instance))
+    return AsAnchorSide(Shape_GetAnchorSideTop(s._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (s *TShape) SetAnchorSideTop(value *TAnchorSide) {
-    Shape_SetAnchorSideTop(s.instance, CheckPtr(value))
+    Shape_SetAnchorSideTop(s._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (s *TShape) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(Shape_GetAnchorSideRight(s.instance))
+    return AsAnchorSide(Shape_GetAnchorSideRight(s._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (s *TShape) SetAnchorSideRight(value *TAnchorSide) {
-    Shape_SetAnchorSideRight(s.instance, CheckPtr(value))
+    Shape_SetAnchorSideRight(s._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (s *TShape) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(Shape_GetAnchorSideBottom(s.instance))
+    return AsAnchorSide(Shape_GetAnchorSideBottom(s._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (s *TShape) SetAnchorSideBottom(value *TAnchorSide) {
-    Shape_SetAnchorSideBottom(s.instance, CheckPtr(value))
+    Shape_SetAnchorSideBottom(s._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (s *TShape) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(Shape_GetBorderSpacing(s.instance))
+    return AsControlBorderSpacing(Shape_GetBorderSpacing(s._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (s *TShape) SetBorderSpacing(value *TControlBorderSpacing) {
-    Shape_SetBorderSpacing(s.instance, CheckPtr(value))
+    Shape_SetBorderSpacing(s._instance(), CheckPtr(value))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (s *TShape) Components(AIndex int32) *TComponent {
-    return AsComponent(Shape_GetComponents(s.instance, AIndex))
+    return AsComponent(Shape_GetComponents(s._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (s *TShape) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(Shape_GetAnchorSide(s.instance, AKind))
+    return AsAnchorSide(Shape_GetAnchorSide(s._instance(), AKind))
 }
 

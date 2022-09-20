@@ -19,101 +19,94 @@ import (
 
 type TFloatSpinEdit struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewFloatSpinEdit
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewFloatSpinEdit(owner IComponent) *TFloatSpinEdit {
     f := new(TFloatSpinEdit)
-    f.instance = FloatSpinEdit_Create(CheckPtr(owner))
-    f.ptr = unsafe.Pointer(f.instance)
+    f.instance = unsafe.Pointer(FloatSpinEdit_Create(CheckPtr(owner)))
     return f
 }
 
+// AsFloatSpinEdit
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsFloatSpinEdit(obj interface{}) *TFloatSpinEdit {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TFloatSpinEdit{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TFloatSpinEdit{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsFloatSpinEdit.
-func FloatSpinEditFromInst(inst uintptr) *TFloatSpinEdit {
-    return AsFloatSpinEdit(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsFloatSpinEdit.
-func FloatSpinEditFromObj(obj IObject) *TFloatSpinEdit {
-    return AsFloatSpinEdit(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsFloatSpinEdit.
-func FloatSpinEditFromUnsafePointer(ptr unsafe.Pointer) *TFloatSpinEdit {
-    return AsFloatSpinEdit(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (f *TFloatSpinEdit) Free() {
-    if f.instance != 0 {
-        FloatSpinEdit_Free(f.instance)
-        f.instance, f.ptr = 0, nullptr
+    if f.instance != nullptr {
+        FloatSpinEdit_Free(f._instance())
+        f.instance  = nullptr
     }
 }
 
+func (f *TFloatSpinEdit) _instance() uintptr {
+    return uintptr(f.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (f *TFloatSpinEdit) Instance() uintptr {
-    return f.instance
+    return f._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (f *TFloatSpinEdit) UnsafeAddr() unsafe.Pointer {
-    return f.ptr
+    return f.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (f *TFloatSpinEdit) IsValid() bool {
-    return f.instance != 0
+    return f.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (f *TFloatSpinEdit) Is() TIs {
-    return TIs(f.instance)
+    return TIs(f._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (f *TFloatSpinEdit) As() TAs {
-//    return TAs(f.instance)
+//    return TAs(f._instance())
 //}
 
+// TFloatSpinEditClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,1306 +114,1664 @@ func TFloatSpinEditClass() TClass {
     return FloatSpinEdit_StaticClassType()
 }
 
+// Clear
+//
 // 清除。
 func (f *TFloatSpinEdit) Clear() {
-    FloatSpinEdit_Clear(f.instance)
+    FloatSpinEdit_Clear(f._instance())
 }
 
+// ClearSelection
+//
 // 清除选择。
 func (f *TFloatSpinEdit) ClearSelection() {
-    FloatSpinEdit_ClearSelection(f.instance)
+    FloatSpinEdit_ClearSelection(f._instance())
 }
 
+// CopyToClipboard
+//
 // 复制到粘贴板。
 func (f *TFloatSpinEdit) CopyToClipboard() {
-    FloatSpinEdit_CopyToClipboard(f.instance)
+    FloatSpinEdit_CopyToClipboard(f._instance())
 }
 
+// CutToClipboard
+//
 // 剪切到粘贴板。
 func (f *TFloatSpinEdit) CutToClipboard() {
-    FloatSpinEdit_CutToClipboard(f.instance)
+    FloatSpinEdit_CutToClipboard(f._instance())
 }
 
+// PasteFromClipboard
+//
 // 从剪切板粘贴。
 func (f *TFloatSpinEdit) PasteFromClipboard() {
-    FloatSpinEdit_PasteFromClipboard(f.instance)
+    FloatSpinEdit_PasteFromClipboard(f._instance())
 }
 
+// Undo
+//
 // 撤销上一次操作。
 func (f *TFloatSpinEdit) Undo() {
-    FloatSpinEdit_Undo(f.instance)
+    FloatSpinEdit_Undo(f._instance())
 }
 
+// SelectAll
+//
 // 全选。
 func (f *TFloatSpinEdit) SelectAll() {
-    FloatSpinEdit_SelectAll(f.instance)
+    FloatSpinEdit_SelectAll(f._instance())
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (f *TFloatSpinEdit) CanFocus() bool {
-    return FloatSpinEdit_CanFocus(f.instance)
+    return FloatSpinEdit_CanFocus(f._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (f *TFloatSpinEdit) ContainsControl(Control IControl) bool {
-    return FloatSpinEdit_ContainsControl(f.instance, CheckPtr(Control))
+    return FloatSpinEdit_ContainsControl(f._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (f *TFloatSpinEdit) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(FloatSpinEdit_ControlAtPos(f.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(FloatSpinEdit_ControlAtPos(f._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (f *TFloatSpinEdit) DisableAlign() {
-    FloatSpinEdit_DisableAlign(f.instance)
+    FloatSpinEdit_DisableAlign(f._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (f *TFloatSpinEdit) EnableAlign() {
-    FloatSpinEdit_EnableAlign(f.instance)
+    FloatSpinEdit_EnableAlign(f._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (f *TFloatSpinEdit) FindChildControl(ControlName string) *TControl {
-    return AsControl(FloatSpinEdit_FindChildControl(f.instance, ControlName))
+    return AsControl(FloatSpinEdit_FindChildControl(f._instance(), ControlName))
 }
 
 func (f *TFloatSpinEdit) FlipChildren(AllLevels bool) {
-    FloatSpinEdit_FlipChildren(f.instance, AllLevels)
+    FloatSpinEdit_FlipChildren(f._instance(), AllLevels)
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (f *TFloatSpinEdit) Focused() bool {
-    return FloatSpinEdit_Focused(f.instance)
+    return FloatSpinEdit_Focused(f._instance())
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (f *TFloatSpinEdit) HandleAllocated() bool {
-    return FloatSpinEdit_HandleAllocated(f.instance)
+    return FloatSpinEdit_HandleAllocated(f._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (f *TFloatSpinEdit) InsertControl(AControl IControl) {
-    FloatSpinEdit_InsertControl(f.instance, CheckPtr(AControl))
+    FloatSpinEdit_InsertControl(f._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (f *TFloatSpinEdit) Invalidate() {
-    FloatSpinEdit_Invalidate(f.instance)
+    FloatSpinEdit_Invalidate(f._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (f *TFloatSpinEdit) PaintTo(DC HDC, X int32, Y int32) {
-    FloatSpinEdit_PaintTo(f.instance, DC , X , Y)
+    FloatSpinEdit_PaintTo(f._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (f *TFloatSpinEdit) RemoveControl(AControl IControl) {
-    FloatSpinEdit_RemoveControl(f.instance, CheckPtr(AControl))
+    FloatSpinEdit_RemoveControl(f._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (f *TFloatSpinEdit) Realign() {
-    FloatSpinEdit_Realign(f.instance)
+    FloatSpinEdit_Realign(f._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (f *TFloatSpinEdit) Repaint() {
-    FloatSpinEdit_Repaint(f.instance)
+    FloatSpinEdit_Repaint(f._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (f *TFloatSpinEdit) ScaleBy(M int32, D int32) {
-    FloatSpinEdit_ScaleBy(f.instance, M , D)
+    FloatSpinEdit_ScaleBy(f._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (f *TFloatSpinEdit) ScrollBy(DeltaX int32, DeltaY int32) {
-    FloatSpinEdit_ScrollBy(f.instance, DeltaX , DeltaY)
+    FloatSpinEdit_ScrollBy(f._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (f *TFloatSpinEdit) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    FloatSpinEdit_SetBounds(f.instance, ALeft , ATop , AWidth , AHeight)
+    FloatSpinEdit_SetBounds(f._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (f *TFloatSpinEdit) SetFocus() {
-    FloatSpinEdit_SetFocus(f.instance)
+    FloatSpinEdit_SetFocus(f._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (f *TFloatSpinEdit) Update() {
-    FloatSpinEdit_Update(f.instance)
+    FloatSpinEdit_Update(f._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (f *TFloatSpinEdit) BringToFront() {
-    FloatSpinEdit_BringToFront(f.instance)
+    FloatSpinEdit_BringToFront(f._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (f *TFloatSpinEdit) ClientToScreen(Point TPoint) TPoint {
-    return FloatSpinEdit_ClientToScreen(f.instance, Point)
+    return FloatSpinEdit_ClientToScreen(f._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (f *TFloatSpinEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return FloatSpinEdit_ClientToParent(f.instance, Point , CheckPtr(AParent))
+    return FloatSpinEdit_ClientToParent(f._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (f *TFloatSpinEdit) Dragging() bool {
-    return FloatSpinEdit_Dragging(f.instance)
+    return FloatSpinEdit_Dragging(f._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (f *TFloatSpinEdit) HasParent() bool {
-    return FloatSpinEdit_HasParent(f.instance)
+    return FloatSpinEdit_HasParent(f._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (f *TFloatSpinEdit) Hide() {
-    FloatSpinEdit_Hide(f.instance)
+    FloatSpinEdit_Hide(f._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (f *TFloatSpinEdit) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return FloatSpinEdit_Perform(f.instance, Msg , WParam , LParam)
+    return FloatSpinEdit_Perform(f._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (f *TFloatSpinEdit) Refresh() {
-    FloatSpinEdit_Refresh(f.instance)
+    FloatSpinEdit_Refresh(f._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (f *TFloatSpinEdit) ScreenToClient(Point TPoint) TPoint {
-    return FloatSpinEdit_ScreenToClient(f.instance, Point)
+    return FloatSpinEdit_ScreenToClient(f._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (f *TFloatSpinEdit) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return FloatSpinEdit_ParentToClient(f.instance, Point , CheckPtr(AParent))
+    return FloatSpinEdit_ParentToClient(f._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (f *TFloatSpinEdit) SendToBack() {
-    FloatSpinEdit_SendToBack(f.instance)
+    FloatSpinEdit_SendToBack(f._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (f *TFloatSpinEdit) Show() {
-    FloatSpinEdit_Show(f.instance)
+    FloatSpinEdit_Show(f._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (f *TFloatSpinEdit) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return FloatSpinEdit_GetTextBuf(f.instance, Buffer , BufSize)
+    return FloatSpinEdit_GetTextBuf(f._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (f *TFloatSpinEdit) GetTextLen() int32 {
-    return FloatSpinEdit_GetTextLen(f.instance)
+    return FloatSpinEdit_GetTextLen(f._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (f *TFloatSpinEdit) SetTextBuf(Buffer string) {
-    FloatSpinEdit_SetTextBuf(f.instance, Buffer)
+    FloatSpinEdit_SetTextBuf(f._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (f *TFloatSpinEdit) FindComponent(AName string) *TComponent {
-    return AsComponent(FloatSpinEdit_FindComponent(f.instance, AName))
+    return AsComponent(FloatSpinEdit_FindComponent(f._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (f *TFloatSpinEdit) GetNamePath() string {
-    return FloatSpinEdit_GetNamePath(f.instance)
+    return FloatSpinEdit_GetNamePath(f._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (f *TFloatSpinEdit) Assign(Source IObject) {
-    FloatSpinEdit_Assign(f.instance, CheckPtr(Source))
+    FloatSpinEdit_Assign(f._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (f *TFloatSpinEdit) ClassType() TClass {
-    return FloatSpinEdit_ClassType(f.instance)
+    return FloatSpinEdit_ClassType(f._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (f *TFloatSpinEdit) ClassName() string {
-    return FloatSpinEdit_ClassName(f.instance)
+    return FloatSpinEdit_ClassName(f._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (f *TFloatSpinEdit) InstanceSize() int32 {
-    return FloatSpinEdit_InstanceSize(f.instance)
+    return FloatSpinEdit_InstanceSize(f._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (f *TFloatSpinEdit) InheritsFrom(AClass TClass) bool {
-    return FloatSpinEdit_InheritsFrom(f.instance, AClass)
+    return FloatSpinEdit_InheritsFrom(f._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (f *TFloatSpinEdit) Equals(Obj IObject) bool {
-    return FloatSpinEdit_Equals(f.instance, CheckPtr(Obj))
+    return FloatSpinEdit_Equals(f._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (f *TFloatSpinEdit) GetHashCode() int32 {
-    return FloatSpinEdit_GetHashCode(f.instance)
+    return FloatSpinEdit_GetHashCode(f._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (f *TFloatSpinEdit) ToString() string {
-    return FloatSpinEdit_ToString(f.instance)
+    return FloatSpinEdit_ToString(f._instance())
 }
 
 func (f *TFloatSpinEdit) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    FloatSpinEdit_AnchorToNeighbour(f.instance, ASide , ASpace , CheckPtr(ASibling))
+    FloatSpinEdit_AnchorToNeighbour(f._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (f *TFloatSpinEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    FloatSpinEdit_AnchorParallel(f.instance, ASide , ASpace , CheckPtr(ASibling))
+    FloatSpinEdit_AnchorParallel(f._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (f *TFloatSpinEdit) AnchorHorizontalCenterTo(ASibling IControl) {
-    FloatSpinEdit_AnchorHorizontalCenterTo(f.instance, CheckPtr(ASibling))
+    FloatSpinEdit_AnchorHorizontalCenterTo(f._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (f *TFloatSpinEdit) AnchorVerticalCenterTo(ASibling IControl) {
-    FloatSpinEdit_AnchorVerticalCenterTo(f.instance, CheckPtr(ASibling))
+    FloatSpinEdit_AnchorVerticalCenterTo(f._instance(), CheckPtr(ASibling))
 }
 
 func (f *TFloatSpinEdit) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    FloatSpinEdit_AnchorSame(f.instance, ASide , CheckPtr(ASibling))
+    FloatSpinEdit_AnchorSame(f._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (f *TFloatSpinEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    FloatSpinEdit_AnchorAsAlign(f.instance, ATheAlign , ASpace)
+    FloatSpinEdit_AnchorAsAlign(f._instance(), ATheAlign , ASpace)
 }
 
 func (f *TFloatSpinEdit) AnchorClient(ASpace int32) {
-    FloatSpinEdit_AnchorClient(f.instance, ASpace)
+    FloatSpinEdit_AnchorClient(f._instance(), ASpace)
 }
 
 func (f *TFloatSpinEdit) ScaleDesignToForm(ASize int32) int32 {
-    return FloatSpinEdit_ScaleDesignToForm(f.instance, ASize)
+    return FloatSpinEdit_ScaleDesignToForm(f._instance(), ASize)
 }
 
 func (f *TFloatSpinEdit) ScaleFormToDesign(ASize int32) int32 {
-    return FloatSpinEdit_ScaleFormToDesign(f.instance, ASize)
+    return FloatSpinEdit_ScaleFormToDesign(f._instance(), ASize)
 }
 
 func (f *TFloatSpinEdit) Scale96ToForm(ASize int32) int32 {
-    return FloatSpinEdit_Scale96ToForm(f.instance, ASize)
+    return FloatSpinEdit_Scale96ToForm(f._instance(), ASize)
 }
 
 func (f *TFloatSpinEdit) ScaleFormTo96(ASize int32) int32 {
-    return FloatSpinEdit_ScaleFormTo96(f.instance, ASize)
+    return FloatSpinEdit_ScaleFormTo96(f._instance(), ASize)
 }
 
 func (f *TFloatSpinEdit) Scale96ToFont(ASize int32) int32 {
-    return FloatSpinEdit_Scale96ToFont(f.instance, ASize)
+    return FloatSpinEdit_Scale96ToFont(f._instance(), ASize)
 }
 
 func (f *TFloatSpinEdit) ScaleFontTo96(ASize int32) int32 {
-    return FloatSpinEdit_ScaleFontTo96(f.instance, ASize)
+    return FloatSpinEdit_ScaleFontTo96(f._instance(), ASize)
 }
 
 func (f *TFloatSpinEdit) ScaleScreenToFont(ASize int32) int32 {
-    return FloatSpinEdit_ScaleScreenToFont(f.instance, ASize)
+    return FloatSpinEdit_ScaleScreenToFont(f._instance(), ASize)
 }
 
 func (f *TFloatSpinEdit) ScaleFontToScreen(ASize int32) int32 {
-    return FloatSpinEdit_ScaleFontToScreen(f.instance, ASize)
+    return FloatSpinEdit_ScaleFontToScreen(f._instance(), ASize)
 }
 
 func (f *TFloatSpinEdit) Scale96ToScreen(ASize int32) int32 {
-    return FloatSpinEdit_Scale96ToScreen(f.instance, ASize)
+    return FloatSpinEdit_Scale96ToScreen(f._instance(), ASize)
 }
 
 func (f *TFloatSpinEdit) ScaleScreenTo96(ASize int32) int32 {
-    return FloatSpinEdit_ScaleScreenTo96(f.instance, ASize)
+    return FloatSpinEdit_ScaleScreenTo96(f._instance(), ASize)
 }
 
 func (f *TFloatSpinEdit) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    FloatSpinEdit_AutoAdjustLayout(f.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    FloatSpinEdit_AutoAdjustLayout(f._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (f *TFloatSpinEdit) FixDesignFontsPPI(ADesignTimePPI int32) {
-    FloatSpinEdit_FixDesignFontsPPI(f.instance, ADesignTimePPI)
+    FloatSpinEdit_FixDesignFontsPPI(f._instance(), ADesignTimePPI)
 }
 
 func (f *TFloatSpinEdit) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    FloatSpinEdit_ScaleFontsPPI(f.instance, AToPPI , AProportion)
+    FloatSpinEdit_ScaleFontsPPI(f._instance(), AToPPI , AProportion)
 }
 
 func (f *TFloatSpinEdit) AutoSelected() bool {
-    return FloatSpinEdit_GetAutoSelected(f.instance)
+    return FloatSpinEdit_GetAutoSelected(f._instance())
 }
 
 func (f *TFloatSpinEdit) SetAutoSelected(value bool) {
-    FloatSpinEdit_SetAutoSelected(f.instance, value)
+    FloatSpinEdit_SetAutoSelected(f._instance(), value)
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (f *TFloatSpinEdit) Align() TAlign {
-    return FloatSpinEdit_GetAlign(f.instance)
+    return FloatSpinEdit_GetAlign(f._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (f *TFloatSpinEdit) SetAlign(value TAlign) {
-    FloatSpinEdit_SetAlign(f.instance, value)
+    FloatSpinEdit_SetAlign(f._instance(), value)
 }
 
+// Alignment
+//
 // 获取文字对齐。
 //
 // Get Text alignment.
 func (f *TFloatSpinEdit) Alignment() TAlignment {
-    return FloatSpinEdit_GetAlignment(f.instance)
+    return FloatSpinEdit_GetAlignment(f._instance())
 }
 
+// SetAlignment
+//
 // 设置文字对齐。
 //
 // Set Text alignment.
 func (f *TFloatSpinEdit) SetAlignment(value TAlignment) {
-    FloatSpinEdit_SetAlignment(f.instance, value)
+    FloatSpinEdit_SetAlignment(f._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (f *TFloatSpinEdit) Anchors() TAnchors {
-    return FloatSpinEdit_GetAnchors(f.instance)
+    return FloatSpinEdit_GetAnchors(f._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (f *TFloatSpinEdit) SetAnchors(value TAnchors) {
-    FloatSpinEdit_SetAnchors(f.instance, value)
+    FloatSpinEdit_SetAnchors(f._instance(), value)
 }
 
+// AutoSelect
+//
 // 获取自动选择。
 func (f *TFloatSpinEdit) AutoSelect() bool {
-    return FloatSpinEdit_GetAutoSelect(f.instance)
+    return FloatSpinEdit_GetAutoSelect(f._instance())
 }
 
+// SetAutoSelect
+//
 // 设置自动选择。
 func (f *TFloatSpinEdit) SetAutoSelect(value bool) {
-    FloatSpinEdit_SetAutoSelect(f.instance, value)
+    FloatSpinEdit_SetAutoSelect(f._instance(), value)
 }
 
+// AutoSize
+//
 // 获取自动调整大小。
 func (f *TFloatSpinEdit) AutoSize() bool {
-    return FloatSpinEdit_GetAutoSize(f.instance)
+    return FloatSpinEdit_GetAutoSize(f._instance())
 }
 
+// SetAutoSize
+//
 // 设置自动调整大小。
 func (f *TFloatSpinEdit) SetAutoSize(value bool) {
-    FloatSpinEdit_SetAutoSize(f.instance, value)
+    FloatSpinEdit_SetAutoSize(f._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (f *TFloatSpinEdit) Color() TColor {
-    return FloatSpinEdit_GetColor(f.instance)
+    return FloatSpinEdit_GetColor(f._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (f *TFloatSpinEdit) SetColor(value TColor) {
-    FloatSpinEdit_SetColor(f.instance, value)
+    FloatSpinEdit_SetColor(f._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (f *TFloatSpinEdit) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(FloatSpinEdit_GetConstraints(f.instance))
+    return AsSizeConstraints(FloatSpinEdit_GetConstraints(f._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (f *TFloatSpinEdit) SetConstraints(value *TSizeConstraints) {
-    FloatSpinEdit_SetConstraints(f.instance, CheckPtr(value))
+    FloatSpinEdit_SetConstraints(f._instance(), CheckPtr(value))
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (f *TFloatSpinEdit) Enabled() bool {
-    return FloatSpinEdit_GetEnabled(f.instance)
+    return FloatSpinEdit_GetEnabled(f._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (f *TFloatSpinEdit) SetEnabled(value bool) {
-    FloatSpinEdit_SetEnabled(f.instance, value)
+    FloatSpinEdit_SetEnabled(f._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (f *TFloatSpinEdit) Font() *TFont {
-    return AsFont(FloatSpinEdit_GetFont(f.instance))
+    return AsFont(FloatSpinEdit_GetFont(f._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (f *TFloatSpinEdit) SetFont(value *TFont) {
-    FloatSpinEdit_SetFont(f.instance, CheckPtr(value))
+    FloatSpinEdit_SetFont(f._instance(), CheckPtr(value))
 }
 
 func (f *TFloatSpinEdit) Increment() float64 {
-    return FloatSpinEdit_GetIncrement(f.instance)
+    return FloatSpinEdit_GetIncrement(f._instance())
 }
 
 func (f *TFloatSpinEdit) SetIncrement(value float64) {
-    FloatSpinEdit_SetIncrement(f.instance, value)
+    FloatSpinEdit_SetIncrement(f._instance(), value)
 }
 
 func (f *TFloatSpinEdit) MaxValue() float64 {
-    return FloatSpinEdit_GetMaxValue(f.instance)
+    return FloatSpinEdit_GetMaxValue(f._instance())
 }
 
 func (f *TFloatSpinEdit) SetMaxValue(value float64) {
-    FloatSpinEdit_SetMaxValue(f.instance, value)
+    FloatSpinEdit_SetMaxValue(f._instance(), value)
 }
 
 func (f *TFloatSpinEdit) MinValue() float64 {
-    return FloatSpinEdit_GetMinValue(f.instance)
+    return FloatSpinEdit_GetMinValue(f._instance())
 }
 
 func (f *TFloatSpinEdit) SetMinValue(value float64) {
-    FloatSpinEdit_SetMinValue(f.instance, value)
+    FloatSpinEdit_SetMinValue(f._instance(), value)
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (f *TFloatSpinEdit) SetOnChange(fn TNotifyEvent) {
-    FloatSpinEdit_SetOnChange(f.instance, fn)
+    FloatSpinEdit_SetOnChange(f._instance(), fn)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (f *TFloatSpinEdit) SetOnClick(fn TNotifyEvent) {
-    FloatSpinEdit_SetOnClick(f.instance, fn)
+    FloatSpinEdit_SetOnClick(f._instance(), fn)
 }
 
+// SetOnEnter
+//
 // 设置焦点进入。
 //
 // Set Focus entry.
 func (f *TFloatSpinEdit) SetOnEnter(fn TNotifyEvent) {
-    FloatSpinEdit_SetOnEnter(f.instance, fn)
+    FloatSpinEdit_SetOnEnter(f._instance(), fn)
 }
 
+// SetOnExit
+//
 // 设置焦点退出。
 //
 // Set Focus exit.
 func (f *TFloatSpinEdit) SetOnExit(fn TNotifyEvent) {
-    FloatSpinEdit_SetOnExit(f.instance, fn)
+    FloatSpinEdit_SetOnExit(f._instance(), fn)
 }
 
+// SetOnKeyDown
+//
 // 设置键盘按键按下事件。
 //
 // Set Keyboard button press event.
 func (f *TFloatSpinEdit) SetOnKeyDown(fn TKeyEvent) {
-    FloatSpinEdit_SetOnKeyDown(f.instance, fn)
+    FloatSpinEdit_SetOnKeyDown(f._instance(), fn)
 }
 
+// SetOnKeyPress
+//
 // 设置键键下事件。
 func (f *TFloatSpinEdit) SetOnKeyPress(fn TKeyPressEvent) {
-    FloatSpinEdit_SetOnKeyPress(f.instance, fn)
+    FloatSpinEdit_SetOnKeyPress(f._instance(), fn)
 }
 
+// SetOnKeyUp
+//
 // 设置键盘按键抬起事件。
 //
 // Set Keyboard button lift event.
 func (f *TFloatSpinEdit) SetOnKeyUp(fn TKeyEvent) {
-    FloatSpinEdit_SetOnKeyUp(f.instance, fn)
+    FloatSpinEdit_SetOnKeyUp(f._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (f *TFloatSpinEdit) SetOnMouseDown(fn TMouseEvent) {
-    FloatSpinEdit_SetOnMouseDown(f.instance, fn)
+    FloatSpinEdit_SetOnMouseDown(f._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (f *TFloatSpinEdit) SetOnMouseEnter(fn TNotifyEvent) {
-    FloatSpinEdit_SetOnMouseEnter(f.instance, fn)
+    FloatSpinEdit_SetOnMouseEnter(f._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (f *TFloatSpinEdit) SetOnMouseLeave(fn TNotifyEvent) {
-    FloatSpinEdit_SetOnMouseLeave(f.instance, fn)
+    FloatSpinEdit_SetOnMouseLeave(f._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (f *TFloatSpinEdit) SetOnMouseMove(fn TMouseMoveEvent) {
-    FloatSpinEdit_SetOnMouseMove(f.instance, fn)
+    FloatSpinEdit_SetOnMouseMove(f._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (f *TFloatSpinEdit) SetOnMouseUp(fn TMouseEvent) {
-    FloatSpinEdit_SetOnMouseUp(f.instance, fn)
+    FloatSpinEdit_SetOnMouseUp(f._instance(), fn)
 }
 
+// SetOnMouseWheel
+//
 // 设置鼠标滚轮事件。
 func (f *TFloatSpinEdit) SetOnMouseWheel(fn TMouseWheelEvent) {
-    FloatSpinEdit_SetOnMouseWheel(f.instance, fn)
+    FloatSpinEdit_SetOnMouseWheel(f._instance(), fn)
 }
 
+// SetOnMouseWheelDown
+//
 // 设置鼠标滚轮按下事件。
 func (f *TFloatSpinEdit) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
-    FloatSpinEdit_SetOnMouseWheelDown(f.instance, fn)
+    FloatSpinEdit_SetOnMouseWheelDown(f._instance(), fn)
 }
 
+// SetOnMouseWheelUp
+//
 // 设置鼠标滚轮抬起事件。
 func (f *TFloatSpinEdit) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
-    FloatSpinEdit_SetOnMouseWheelUp(f.instance, fn)
+    FloatSpinEdit_SetOnMouseWheelUp(f._instance(), fn)
 }
 
+// SetOnResize
+//
 // 设置大小被改变事件。
 func (f *TFloatSpinEdit) SetOnResize(fn TNotifyEvent) {
-    FloatSpinEdit_SetOnResize(f.instance, fn)
+    FloatSpinEdit_SetOnResize(f._instance(), fn)
 }
 
+// ParentColor
+//
 // 获取使用父容器颜色。
 //
 // Get parent color.
 func (f *TFloatSpinEdit) ParentColor() bool {
-    return FloatSpinEdit_GetParentColor(f.instance)
+    return FloatSpinEdit_GetParentColor(f._instance())
 }
 
+// SetParentColor
+//
 // 设置使用父容器颜色。
 //
 // Set parent color.
 func (f *TFloatSpinEdit) SetParentColor(value bool) {
-    FloatSpinEdit_SetParentColor(f.instance, value)
+    FloatSpinEdit_SetParentColor(f._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (f *TFloatSpinEdit) ParentFont() bool {
-    return FloatSpinEdit_GetParentFont(f.instance)
+    return FloatSpinEdit_GetParentFont(f._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (f *TFloatSpinEdit) SetParentFont(value bool) {
-    FloatSpinEdit_SetParentFont(f.instance, value)
+    FloatSpinEdit_SetParentFont(f._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (f *TFloatSpinEdit) ParentShowHint() bool {
-    return FloatSpinEdit_GetParentShowHint(f.instance)
+    return FloatSpinEdit_GetParentShowHint(f._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (f *TFloatSpinEdit) SetParentShowHint(value bool) {
-    FloatSpinEdit_SetParentShowHint(f.instance, value)
+    FloatSpinEdit_SetParentShowHint(f._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (f *TFloatSpinEdit) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(FloatSpinEdit_GetPopupMenu(f.instance))
+    return AsPopupMenu(FloatSpinEdit_GetPopupMenu(f._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (f *TFloatSpinEdit) SetPopupMenu(value IComponent) {
-    FloatSpinEdit_SetPopupMenu(f.instance, CheckPtr(value))
+    FloatSpinEdit_SetPopupMenu(f._instance(), CheckPtr(value))
 }
 
+// ReadOnly
+//
 // 获取只读。
 func (f *TFloatSpinEdit) ReadOnly() bool {
-    return FloatSpinEdit_GetReadOnly(f.instance)
+    return FloatSpinEdit_GetReadOnly(f._instance())
 }
 
+// SetReadOnly
+//
 // 设置只读。
 func (f *TFloatSpinEdit) SetReadOnly(value bool) {
-    FloatSpinEdit_SetReadOnly(f.instance, value)
+    FloatSpinEdit_SetReadOnly(f._instance(), value)
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (f *TFloatSpinEdit) ShowHint() bool {
-    return FloatSpinEdit_GetShowHint(f.instance)
+    return FloatSpinEdit_GetShowHint(f._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (f *TFloatSpinEdit) SetShowHint(value bool) {
-    FloatSpinEdit_SetShowHint(f.instance, value)
+    FloatSpinEdit_SetShowHint(f._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (f *TFloatSpinEdit) TabStop() bool {
-    return FloatSpinEdit_GetTabStop(f.instance)
+    return FloatSpinEdit_GetTabStop(f._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (f *TFloatSpinEdit) SetTabStop(value bool) {
-    FloatSpinEdit_SetTabStop(f.instance, value)
+    FloatSpinEdit_SetTabStop(f._instance(), value)
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (f *TFloatSpinEdit) TabOrder() TTabOrder {
-    return FloatSpinEdit_GetTabOrder(f.instance)
+    return FloatSpinEdit_GetTabOrder(f._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (f *TFloatSpinEdit) SetTabOrder(value TTabOrder) {
-    FloatSpinEdit_SetTabOrder(f.instance, value)
+    FloatSpinEdit_SetTabOrder(f._instance(), value)
 }
 
 func (f *TFloatSpinEdit) Value() float64 {
-    return FloatSpinEdit_GetValue(f.instance)
+    return FloatSpinEdit_GetValue(f._instance())
 }
 
 func (f *TFloatSpinEdit) SetValue(value float64) {
-    FloatSpinEdit_SetValue(f.instance, value)
+    FloatSpinEdit_SetValue(f._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (f *TFloatSpinEdit) Visible() bool {
-    return FloatSpinEdit_GetVisible(f.instance)
+    return FloatSpinEdit_GetVisible(f._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (f *TFloatSpinEdit) SetVisible(value bool) {
-    FloatSpinEdit_SetVisible(f.instance, value)
+    FloatSpinEdit_SetVisible(f._instance(), value)
 }
 
+// CanUndo
+//
 // 获取能否撤销。
 func (f *TFloatSpinEdit) CanUndo() bool {
-    return FloatSpinEdit_GetCanUndo(f.instance)
+    return FloatSpinEdit_GetCanUndo(f._instance())
 }
 
+// Modified
+//
 // 获取修改。
 //
 // Get modified.
 func (f *TFloatSpinEdit) Modified() bool {
-    return FloatSpinEdit_GetModified(f.instance)
+    return FloatSpinEdit_GetModified(f._instance())
 }
 
+// SetModified
+//
 // 设置修改。
 //
 // Set modified.
 func (f *TFloatSpinEdit) SetModified(value bool) {
-    FloatSpinEdit_SetModified(f.instance, value)
+    FloatSpinEdit_SetModified(f._instance(), value)
 }
 
+// SelLength
+//
 // 获取选择的长度。
 func (f *TFloatSpinEdit) SelLength() int32 {
-    return FloatSpinEdit_GetSelLength(f.instance)
+    return FloatSpinEdit_GetSelLength(f._instance())
 }
 
+// SetSelLength
+//
 // 设置选择的长度。
 func (f *TFloatSpinEdit) SetSelLength(value int32) {
-    FloatSpinEdit_SetSelLength(f.instance, value)
+    FloatSpinEdit_SetSelLength(f._instance(), value)
 }
 
+// SelStart
+//
 // 获取选择的启始位置。
 func (f *TFloatSpinEdit) SelStart() int32 {
-    return FloatSpinEdit_GetSelStart(f.instance)
+    return FloatSpinEdit_GetSelStart(f._instance())
 }
 
+// SetSelStart
+//
 // 设置选择的启始位置。
 func (f *TFloatSpinEdit) SetSelStart(value int32) {
-    FloatSpinEdit_SetSelStart(f.instance, value)
+    FloatSpinEdit_SetSelStart(f._instance(), value)
 }
 
+// SelText
+//
 // 获取选择的文本。
 func (f *TFloatSpinEdit) SelText() string {
-    return FloatSpinEdit_GetSelText(f.instance)
+    return FloatSpinEdit_GetSelText(f._instance())
 }
 
+// SetSelText
+//
 // 设置选择的文本。
 func (f *TFloatSpinEdit) SetSelText(value string) {
-    FloatSpinEdit_SetSelText(f.instance, value)
+    FloatSpinEdit_SetSelText(f._instance(), value)
 }
 
+// Text
+//
 // 获取文本。
 func (f *TFloatSpinEdit) Text() string {
     return getControlBufferText(f.GetTextLen, f.GetTextBuf)
 }
 
+// SetText
+//
 // 设置文本。
 func (f *TFloatSpinEdit) SetText(value string) {
-    FloatSpinEdit_SetText(f.instance, value)
+    FloatSpinEdit_SetText(f._instance(), value)
 }
 
+// TextHint
+//
 // 获取提示文本。
 func (f *TFloatSpinEdit) TextHint() string {
-    return FloatSpinEdit_GetTextHint(f.instance)
+    return FloatSpinEdit_GetTextHint(f._instance())
 }
 
+// SetTextHint
+//
 // 设置提示文本。
 func (f *TFloatSpinEdit) SetTextHint(value string) {
-    FloatSpinEdit_SetTextHint(f.instance, value)
+    FloatSpinEdit_SetTextHint(f._instance(), value)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (f *TFloatSpinEdit) DockClientCount() int32 {
-    return FloatSpinEdit_GetDockClientCount(f.instance)
+    return FloatSpinEdit_GetDockClientCount(f._instance())
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (f *TFloatSpinEdit) DockSite() bool {
-    return FloatSpinEdit_GetDockSite(f.instance)
+    return FloatSpinEdit_GetDockSite(f._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (f *TFloatSpinEdit) SetDockSite(value bool) {
-    FloatSpinEdit_SetDockSite(f.instance, value)
+    FloatSpinEdit_SetDockSite(f._instance(), value)
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (f *TFloatSpinEdit) DoubleBuffered() bool {
-    return FloatSpinEdit_GetDoubleBuffered(f.instance)
+    return FloatSpinEdit_GetDoubleBuffered(f._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (f *TFloatSpinEdit) SetDoubleBuffered(value bool) {
-    FloatSpinEdit_SetDoubleBuffered(f.instance, value)
+    FloatSpinEdit_SetDoubleBuffered(f._instance(), value)
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (f *TFloatSpinEdit) MouseInClient() bool {
-    return FloatSpinEdit_GetMouseInClient(f.instance)
+    return FloatSpinEdit_GetMouseInClient(f._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (f *TFloatSpinEdit) VisibleDockClientCount() int32 {
-    return FloatSpinEdit_GetVisibleDockClientCount(f.instance)
+    return FloatSpinEdit_GetVisibleDockClientCount(f._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (f *TFloatSpinEdit) Brush() *TBrush {
-    return AsBrush(FloatSpinEdit_GetBrush(f.instance))
+    return AsBrush(FloatSpinEdit_GetBrush(f._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (f *TFloatSpinEdit) ControlCount() int32 {
-    return FloatSpinEdit_GetControlCount(f.instance)
+    return FloatSpinEdit_GetControlCount(f._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (f *TFloatSpinEdit) Handle() HWND {
-    return FloatSpinEdit_GetHandle(f.instance)
+    return FloatSpinEdit_GetHandle(f._instance())
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (f *TFloatSpinEdit) ParentDoubleBuffered() bool {
-    return FloatSpinEdit_GetParentDoubleBuffered(f.instance)
+    return FloatSpinEdit_GetParentDoubleBuffered(f._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (f *TFloatSpinEdit) SetParentDoubleBuffered(value bool) {
-    FloatSpinEdit_SetParentDoubleBuffered(f.instance, value)
+    FloatSpinEdit_SetParentDoubleBuffered(f._instance(), value)
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (f *TFloatSpinEdit) ParentWindow() HWND {
-    return FloatSpinEdit_GetParentWindow(f.instance)
+    return FloatSpinEdit_GetParentWindow(f._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (f *TFloatSpinEdit) SetParentWindow(value HWND) {
-    FloatSpinEdit_SetParentWindow(f.instance, value)
+    FloatSpinEdit_SetParentWindow(f._instance(), value)
 }
 
 func (f *TFloatSpinEdit) Showing() bool {
-    return FloatSpinEdit_GetShowing(f.instance)
+    return FloatSpinEdit_GetShowing(f._instance())
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (f *TFloatSpinEdit) UseDockManager() bool {
-    return FloatSpinEdit_GetUseDockManager(f.instance)
+    return FloatSpinEdit_GetUseDockManager(f._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (f *TFloatSpinEdit) SetUseDockManager(value bool) {
-    FloatSpinEdit_SetUseDockManager(f.instance, value)
+    FloatSpinEdit_SetUseDockManager(f._instance(), value)
 }
 
 func (f *TFloatSpinEdit) Action() *TAction {
-    return AsAction(FloatSpinEdit_GetAction(f.instance))
+    return AsAction(FloatSpinEdit_GetAction(f._instance()))
 }
 
 func (f *TFloatSpinEdit) SetAction(value IComponent) {
-    FloatSpinEdit_SetAction(f.instance, CheckPtr(value))
+    FloatSpinEdit_SetAction(f._instance(), CheckPtr(value))
 }
 
 func (f *TFloatSpinEdit) BiDiMode() TBiDiMode {
-    return FloatSpinEdit_GetBiDiMode(f.instance)
+    return FloatSpinEdit_GetBiDiMode(f._instance())
 }
 
 func (f *TFloatSpinEdit) SetBiDiMode(value TBiDiMode) {
-    FloatSpinEdit_SetBiDiMode(f.instance, value)
+    FloatSpinEdit_SetBiDiMode(f._instance(), value)
 }
 
 func (f *TFloatSpinEdit) BoundsRect() TRect {
-    return FloatSpinEdit_GetBoundsRect(f.instance)
+    return FloatSpinEdit_GetBoundsRect(f._instance())
 }
 
 func (f *TFloatSpinEdit) SetBoundsRect(value TRect) {
-    FloatSpinEdit_SetBoundsRect(f.instance, value)
+    FloatSpinEdit_SetBoundsRect(f._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (f *TFloatSpinEdit) ClientHeight() int32 {
-    return FloatSpinEdit_GetClientHeight(f.instance)
+    return FloatSpinEdit_GetClientHeight(f._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (f *TFloatSpinEdit) SetClientHeight(value int32) {
-    FloatSpinEdit_SetClientHeight(f.instance, value)
+    FloatSpinEdit_SetClientHeight(f._instance(), value)
 }
 
 func (f *TFloatSpinEdit) ClientOrigin() TPoint {
-    return FloatSpinEdit_GetClientOrigin(f.instance)
+    return FloatSpinEdit_GetClientOrigin(f._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (f *TFloatSpinEdit) ClientRect() TRect {
-    return FloatSpinEdit_GetClientRect(f.instance)
+    return FloatSpinEdit_GetClientRect(f._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (f *TFloatSpinEdit) ClientWidth() int32 {
-    return FloatSpinEdit_GetClientWidth(f.instance)
+    return FloatSpinEdit_GetClientWidth(f._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (f *TFloatSpinEdit) SetClientWidth(value int32) {
-    FloatSpinEdit_SetClientWidth(f.instance, value)
+    FloatSpinEdit_SetClientWidth(f._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (f *TFloatSpinEdit) ControlState() TControlState {
-    return FloatSpinEdit_GetControlState(f.instance)
+    return FloatSpinEdit_GetControlState(f._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (f *TFloatSpinEdit) SetControlState(value TControlState) {
-    FloatSpinEdit_SetControlState(f.instance, value)
+    FloatSpinEdit_SetControlState(f._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (f *TFloatSpinEdit) ControlStyle() TControlStyle {
-    return FloatSpinEdit_GetControlStyle(f.instance)
+    return FloatSpinEdit_GetControlStyle(f._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (f *TFloatSpinEdit) SetControlStyle(value TControlStyle) {
-    FloatSpinEdit_SetControlStyle(f.instance, value)
+    FloatSpinEdit_SetControlStyle(f._instance(), value)
 }
 
 func (f *TFloatSpinEdit) Floating() bool {
-    return FloatSpinEdit_GetFloating(f.instance)
+    return FloatSpinEdit_GetFloating(f._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (f *TFloatSpinEdit) Parent() *TWinControl {
-    return AsWinControl(FloatSpinEdit_GetParent(f.instance))
+    return AsWinControl(FloatSpinEdit_GetParent(f._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (f *TFloatSpinEdit) SetParent(value IWinControl) {
-    FloatSpinEdit_SetParent(f.instance, CheckPtr(value))
+    FloatSpinEdit_SetParent(f._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (f *TFloatSpinEdit) Left() int32 {
-    return FloatSpinEdit_GetLeft(f.instance)
+    return FloatSpinEdit_GetLeft(f._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (f *TFloatSpinEdit) SetLeft(value int32) {
-    FloatSpinEdit_SetLeft(f.instance, value)
+    FloatSpinEdit_SetLeft(f._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (f *TFloatSpinEdit) Top() int32 {
-    return FloatSpinEdit_GetTop(f.instance)
+    return FloatSpinEdit_GetTop(f._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (f *TFloatSpinEdit) SetTop(value int32) {
-    FloatSpinEdit_SetTop(f.instance, value)
+    FloatSpinEdit_SetTop(f._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (f *TFloatSpinEdit) Width() int32 {
-    return FloatSpinEdit_GetWidth(f.instance)
+    return FloatSpinEdit_GetWidth(f._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (f *TFloatSpinEdit) SetWidth(value int32) {
-    FloatSpinEdit_SetWidth(f.instance, value)
+    FloatSpinEdit_SetWidth(f._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (f *TFloatSpinEdit) Height() int32 {
-    return FloatSpinEdit_GetHeight(f.instance)
+    return FloatSpinEdit_GetHeight(f._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (f *TFloatSpinEdit) SetHeight(value int32) {
-    FloatSpinEdit_SetHeight(f.instance, value)
+    FloatSpinEdit_SetHeight(f._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (f *TFloatSpinEdit) Cursor() TCursor {
-    return FloatSpinEdit_GetCursor(f.instance)
+    return FloatSpinEdit_GetCursor(f._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (f *TFloatSpinEdit) SetCursor(value TCursor) {
-    FloatSpinEdit_SetCursor(f.instance, value)
+    FloatSpinEdit_SetCursor(f._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (f *TFloatSpinEdit) Hint() string {
-    return FloatSpinEdit_GetHint(f.instance)
+    return FloatSpinEdit_GetHint(f._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (f *TFloatSpinEdit) SetHint(value string) {
-    FloatSpinEdit_SetHint(f.instance, value)
+    FloatSpinEdit_SetHint(f._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (f *TFloatSpinEdit) ComponentCount() int32 {
-    return FloatSpinEdit_GetComponentCount(f.instance)
+    return FloatSpinEdit_GetComponentCount(f._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (f *TFloatSpinEdit) ComponentIndex() int32 {
-    return FloatSpinEdit_GetComponentIndex(f.instance)
+    return FloatSpinEdit_GetComponentIndex(f._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (f *TFloatSpinEdit) SetComponentIndex(value int32) {
-    FloatSpinEdit_SetComponentIndex(f.instance, value)
+    FloatSpinEdit_SetComponentIndex(f._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (f *TFloatSpinEdit) Owner() *TComponent {
-    return AsComponent(FloatSpinEdit_GetOwner(f.instance))
+    return AsComponent(FloatSpinEdit_GetOwner(f._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (f *TFloatSpinEdit) Name() string {
-    return FloatSpinEdit_GetName(f.instance)
+    return FloatSpinEdit_GetName(f._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (f *TFloatSpinEdit) SetName(value string) {
-    FloatSpinEdit_SetName(f.instance, value)
+    FloatSpinEdit_SetName(f._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (f *TFloatSpinEdit) Tag() int {
-    return FloatSpinEdit_GetTag(f.instance)
+    return FloatSpinEdit_GetTag(f._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (f *TFloatSpinEdit) SetTag(value int) {
-    FloatSpinEdit_SetTag(f.instance, value)
+    FloatSpinEdit_SetTag(f._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (f *TFloatSpinEdit) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(FloatSpinEdit_GetAnchorSideLeft(f.instance))
+    return AsAnchorSide(FloatSpinEdit_GetAnchorSideLeft(f._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (f *TFloatSpinEdit) SetAnchorSideLeft(value *TAnchorSide) {
-    FloatSpinEdit_SetAnchorSideLeft(f.instance, CheckPtr(value))
+    FloatSpinEdit_SetAnchorSideLeft(f._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (f *TFloatSpinEdit) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(FloatSpinEdit_GetAnchorSideTop(f.instance))
+    return AsAnchorSide(FloatSpinEdit_GetAnchorSideTop(f._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (f *TFloatSpinEdit) SetAnchorSideTop(value *TAnchorSide) {
-    FloatSpinEdit_SetAnchorSideTop(f.instance, CheckPtr(value))
+    FloatSpinEdit_SetAnchorSideTop(f._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (f *TFloatSpinEdit) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(FloatSpinEdit_GetAnchorSideRight(f.instance))
+    return AsAnchorSide(FloatSpinEdit_GetAnchorSideRight(f._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (f *TFloatSpinEdit) SetAnchorSideRight(value *TAnchorSide) {
-    FloatSpinEdit_SetAnchorSideRight(f.instance, CheckPtr(value))
+    FloatSpinEdit_SetAnchorSideRight(f._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (f *TFloatSpinEdit) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(FloatSpinEdit_GetAnchorSideBottom(f.instance))
+    return AsAnchorSide(FloatSpinEdit_GetAnchorSideBottom(f._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (f *TFloatSpinEdit) SetAnchorSideBottom(value *TAnchorSide) {
-    FloatSpinEdit_SetAnchorSideBottom(f.instance, CheckPtr(value))
+    FloatSpinEdit_SetAnchorSideBottom(f._instance(), CheckPtr(value))
 }
 
 func (f *TFloatSpinEdit) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(FloatSpinEdit_GetChildSizing(f.instance))
+    return AsControlChildSizing(FloatSpinEdit_GetChildSizing(f._instance()))
 }
 
 func (f *TFloatSpinEdit) SetChildSizing(value *TControlChildSizing) {
-    FloatSpinEdit_SetChildSizing(f.instance, CheckPtr(value))
+    FloatSpinEdit_SetChildSizing(f._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (f *TFloatSpinEdit) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(FloatSpinEdit_GetBorderSpacing(f.instance))
+    return AsControlBorderSpacing(FloatSpinEdit_GetBorderSpacing(f._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (f *TFloatSpinEdit) SetBorderSpacing(value *TControlBorderSpacing) {
-    FloatSpinEdit_SetBorderSpacing(f.instance, CheckPtr(value))
+    FloatSpinEdit_SetBorderSpacing(f._instance(), CheckPtr(value))
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (f *TFloatSpinEdit) DockClients(Index int32) *TControl {
-    return AsControl(FloatSpinEdit_GetDockClients(f.instance, Index))
+    return AsControl(FloatSpinEdit_GetDockClients(f._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (f *TFloatSpinEdit) Controls(Index int32) *TControl {
-    return AsControl(FloatSpinEdit_GetControls(f.instance, Index))
+    return AsControl(FloatSpinEdit_GetControls(f._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (f *TFloatSpinEdit) Components(AIndex int32) *TComponent {
-    return AsComponent(FloatSpinEdit_GetComponents(f.instance, AIndex))
+    return AsComponent(FloatSpinEdit_GetComponents(f._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (f *TFloatSpinEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(FloatSpinEdit_GetAnchorSide(f.instance, AKind))
+    return AsAnchorSide(FloatSpinEdit_GetAnchorSide(f._instance(), AKind))
 }
 

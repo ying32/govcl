@@ -19,101 +19,94 @@ import (
 
 type TEdit struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewEdit
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewEdit(owner IComponent) *TEdit {
     e := new(TEdit)
-    e.instance = Edit_Create(CheckPtr(owner))
-    e.ptr = unsafe.Pointer(e.instance)
+    e.instance = unsafe.Pointer(Edit_Create(CheckPtr(owner)))
     return e
 }
 
+// AsEdit
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsEdit(obj interface{}) *TEdit {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TEdit{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TEdit{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsEdit.
-func EditFromInst(inst uintptr) *TEdit {
-    return AsEdit(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsEdit.
-func EditFromObj(obj IObject) *TEdit {
-    return AsEdit(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsEdit.
-func EditFromUnsafePointer(ptr unsafe.Pointer) *TEdit {
-    return AsEdit(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (e *TEdit) Free() {
-    if e.instance != 0 {
-        Edit_Free(e.instance)
-        e.instance, e.ptr = 0, nullptr
+    if e.instance != nullptr {
+        Edit_Free(e._instance())
+        e.instance  = nullptr
     }
 }
 
+func (e *TEdit) _instance() uintptr {
+    return uintptr(e.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (e *TEdit) Instance() uintptr {
-    return e.instance
+    return e._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (e *TEdit) UnsafeAddr() unsafe.Pointer {
-    return e.ptr
+    return e.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (e *TEdit) IsValid() bool {
-    return e.instance != 0
+    return e.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (e *TEdit) Is() TIs {
-    return TIs(e.instance)
+    return TIs(e._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (e *TEdit) As() TAs {
-//    return TAs(e.instance)
+//    return TAs(e._instance())
 //}
 
+// TEditClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,1379 +114,1771 @@ func TEditClass() TClass {
     return Edit_StaticClassType()
 }
 
+// Clear
+//
 // 清除。
 func (e *TEdit) Clear() {
-    Edit_Clear(e.instance)
+    Edit_Clear(e._instance())
 }
 
+// ClearSelection
+//
 // 清除选择。
 func (e *TEdit) ClearSelection() {
-    Edit_ClearSelection(e.instance)
+    Edit_ClearSelection(e._instance())
 }
 
+// CopyToClipboard
+//
 // 复制到粘贴板。
 func (e *TEdit) CopyToClipboard() {
-    Edit_CopyToClipboard(e.instance)
+    Edit_CopyToClipboard(e._instance())
 }
 
+// CutToClipboard
+//
 // 剪切到粘贴板。
 func (e *TEdit) CutToClipboard() {
-    Edit_CutToClipboard(e.instance)
+    Edit_CutToClipboard(e._instance())
 }
 
+// PasteFromClipboard
+//
 // 从剪切板粘贴。
 func (e *TEdit) PasteFromClipboard() {
-    Edit_PasteFromClipboard(e.instance)
+    Edit_PasteFromClipboard(e._instance())
 }
 
+// Undo
+//
 // 撤销上一次操作。
 func (e *TEdit) Undo() {
-    Edit_Undo(e.instance)
+    Edit_Undo(e._instance())
 }
 
+// SelectAll
+//
 // 全选。
 func (e *TEdit) SelectAll() {
-    Edit_SelectAll(e.instance)
+    Edit_SelectAll(e._instance())
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (e *TEdit) CanFocus() bool {
-    return Edit_CanFocus(e.instance)
+    return Edit_CanFocus(e._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (e *TEdit) ContainsControl(Control IControl) bool {
-    return Edit_ContainsControl(e.instance, CheckPtr(Control))
+    return Edit_ContainsControl(e._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (e *TEdit) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(Edit_ControlAtPos(e.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(Edit_ControlAtPos(e._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (e *TEdit) DisableAlign() {
-    Edit_DisableAlign(e.instance)
+    Edit_DisableAlign(e._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (e *TEdit) EnableAlign() {
-    Edit_EnableAlign(e.instance)
+    Edit_EnableAlign(e._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (e *TEdit) FindChildControl(ControlName string) *TControl {
-    return AsControl(Edit_FindChildControl(e.instance, ControlName))
+    return AsControl(Edit_FindChildControl(e._instance(), ControlName))
 }
 
 func (e *TEdit) FlipChildren(AllLevels bool) {
-    Edit_FlipChildren(e.instance, AllLevels)
+    Edit_FlipChildren(e._instance(), AllLevels)
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (e *TEdit) Focused() bool {
-    return Edit_Focused(e.instance)
+    return Edit_Focused(e._instance())
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (e *TEdit) HandleAllocated() bool {
-    return Edit_HandleAllocated(e.instance)
+    return Edit_HandleAllocated(e._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (e *TEdit) InsertControl(AControl IControl) {
-    Edit_InsertControl(e.instance, CheckPtr(AControl))
+    Edit_InsertControl(e._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (e *TEdit) Invalidate() {
-    Edit_Invalidate(e.instance)
+    Edit_Invalidate(e._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (e *TEdit) PaintTo(DC HDC, X int32, Y int32) {
-    Edit_PaintTo(e.instance, DC , X , Y)
+    Edit_PaintTo(e._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (e *TEdit) RemoveControl(AControl IControl) {
-    Edit_RemoveControl(e.instance, CheckPtr(AControl))
+    Edit_RemoveControl(e._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (e *TEdit) Realign() {
-    Edit_Realign(e.instance)
+    Edit_Realign(e._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (e *TEdit) Repaint() {
-    Edit_Repaint(e.instance)
+    Edit_Repaint(e._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (e *TEdit) ScaleBy(M int32, D int32) {
-    Edit_ScaleBy(e.instance, M , D)
+    Edit_ScaleBy(e._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (e *TEdit) ScrollBy(DeltaX int32, DeltaY int32) {
-    Edit_ScrollBy(e.instance, DeltaX , DeltaY)
+    Edit_ScrollBy(e._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (e *TEdit) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    Edit_SetBounds(e.instance, ALeft , ATop , AWidth , AHeight)
+    Edit_SetBounds(e._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (e *TEdit) SetFocus() {
-    Edit_SetFocus(e.instance)
+    Edit_SetFocus(e._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (e *TEdit) Update() {
-    Edit_Update(e.instance)
+    Edit_Update(e._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (e *TEdit) BringToFront() {
-    Edit_BringToFront(e.instance)
+    Edit_BringToFront(e._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (e *TEdit) ClientToScreen(Point TPoint) TPoint {
-    return Edit_ClientToScreen(e.instance, Point)
+    return Edit_ClientToScreen(e._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (e *TEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return Edit_ClientToParent(e.instance, Point , CheckPtr(AParent))
+    return Edit_ClientToParent(e._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (e *TEdit) Dragging() bool {
-    return Edit_Dragging(e.instance)
+    return Edit_Dragging(e._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (e *TEdit) HasParent() bool {
-    return Edit_HasParent(e.instance)
+    return Edit_HasParent(e._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (e *TEdit) Hide() {
-    Edit_Hide(e.instance)
+    Edit_Hide(e._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (e *TEdit) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return Edit_Perform(e.instance, Msg , WParam , LParam)
+    return Edit_Perform(e._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (e *TEdit) Refresh() {
-    Edit_Refresh(e.instance)
+    Edit_Refresh(e._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (e *TEdit) ScreenToClient(Point TPoint) TPoint {
-    return Edit_ScreenToClient(e.instance, Point)
+    return Edit_ScreenToClient(e._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (e *TEdit) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return Edit_ParentToClient(e.instance, Point , CheckPtr(AParent))
+    return Edit_ParentToClient(e._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (e *TEdit) SendToBack() {
-    Edit_SendToBack(e.instance)
+    Edit_SendToBack(e._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (e *TEdit) Show() {
-    Edit_Show(e.instance)
+    Edit_Show(e._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (e *TEdit) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return Edit_GetTextBuf(e.instance, Buffer , BufSize)
+    return Edit_GetTextBuf(e._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (e *TEdit) GetTextLen() int32 {
-    return Edit_GetTextLen(e.instance)
+    return Edit_GetTextLen(e._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (e *TEdit) SetTextBuf(Buffer string) {
-    Edit_SetTextBuf(e.instance, Buffer)
+    Edit_SetTextBuf(e._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (e *TEdit) FindComponent(AName string) *TComponent {
-    return AsComponent(Edit_FindComponent(e.instance, AName))
+    return AsComponent(Edit_FindComponent(e._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (e *TEdit) GetNamePath() string {
-    return Edit_GetNamePath(e.instance)
+    return Edit_GetNamePath(e._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (e *TEdit) Assign(Source IObject) {
-    Edit_Assign(e.instance, CheckPtr(Source))
+    Edit_Assign(e._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (e *TEdit) ClassType() TClass {
-    return Edit_ClassType(e.instance)
+    return Edit_ClassType(e._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (e *TEdit) ClassName() string {
-    return Edit_ClassName(e.instance)
+    return Edit_ClassName(e._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (e *TEdit) InstanceSize() int32 {
-    return Edit_InstanceSize(e.instance)
+    return Edit_InstanceSize(e._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (e *TEdit) InheritsFrom(AClass TClass) bool {
-    return Edit_InheritsFrom(e.instance, AClass)
+    return Edit_InheritsFrom(e._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (e *TEdit) Equals(Obj IObject) bool {
-    return Edit_Equals(e.instance, CheckPtr(Obj))
+    return Edit_Equals(e._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (e *TEdit) GetHashCode() int32 {
-    return Edit_GetHashCode(e.instance)
+    return Edit_GetHashCode(e._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (e *TEdit) ToString() string {
-    return Edit_ToString(e.instance)
+    return Edit_ToString(e._instance())
 }
 
 func (e *TEdit) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    Edit_AnchorToNeighbour(e.instance, ASide , ASpace , CheckPtr(ASibling))
+    Edit_AnchorToNeighbour(e._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (e *TEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    Edit_AnchorParallel(e.instance, ASide , ASpace , CheckPtr(ASibling))
+    Edit_AnchorParallel(e._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (e *TEdit) AnchorHorizontalCenterTo(ASibling IControl) {
-    Edit_AnchorHorizontalCenterTo(e.instance, CheckPtr(ASibling))
+    Edit_AnchorHorizontalCenterTo(e._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (e *TEdit) AnchorVerticalCenterTo(ASibling IControl) {
-    Edit_AnchorVerticalCenterTo(e.instance, CheckPtr(ASibling))
+    Edit_AnchorVerticalCenterTo(e._instance(), CheckPtr(ASibling))
 }
 
 func (e *TEdit) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    Edit_AnchorSame(e.instance, ASide , CheckPtr(ASibling))
+    Edit_AnchorSame(e._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (e *TEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    Edit_AnchorAsAlign(e.instance, ATheAlign , ASpace)
+    Edit_AnchorAsAlign(e._instance(), ATheAlign , ASpace)
 }
 
 func (e *TEdit) AnchorClient(ASpace int32) {
-    Edit_AnchorClient(e.instance, ASpace)
+    Edit_AnchorClient(e._instance(), ASpace)
 }
 
 func (e *TEdit) ScaleDesignToForm(ASize int32) int32 {
-    return Edit_ScaleDesignToForm(e.instance, ASize)
+    return Edit_ScaleDesignToForm(e._instance(), ASize)
 }
 
 func (e *TEdit) ScaleFormToDesign(ASize int32) int32 {
-    return Edit_ScaleFormToDesign(e.instance, ASize)
+    return Edit_ScaleFormToDesign(e._instance(), ASize)
 }
 
 func (e *TEdit) Scale96ToForm(ASize int32) int32 {
-    return Edit_Scale96ToForm(e.instance, ASize)
+    return Edit_Scale96ToForm(e._instance(), ASize)
 }
 
 func (e *TEdit) ScaleFormTo96(ASize int32) int32 {
-    return Edit_ScaleFormTo96(e.instance, ASize)
+    return Edit_ScaleFormTo96(e._instance(), ASize)
 }
 
 func (e *TEdit) Scale96ToFont(ASize int32) int32 {
-    return Edit_Scale96ToFont(e.instance, ASize)
+    return Edit_Scale96ToFont(e._instance(), ASize)
 }
 
 func (e *TEdit) ScaleFontTo96(ASize int32) int32 {
-    return Edit_ScaleFontTo96(e.instance, ASize)
+    return Edit_ScaleFontTo96(e._instance(), ASize)
 }
 
 func (e *TEdit) ScaleScreenToFont(ASize int32) int32 {
-    return Edit_ScaleScreenToFont(e.instance, ASize)
+    return Edit_ScaleScreenToFont(e._instance(), ASize)
 }
 
 func (e *TEdit) ScaleFontToScreen(ASize int32) int32 {
-    return Edit_ScaleFontToScreen(e.instance, ASize)
+    return Edit_ScaleFontToScreen(e._instance(), ASize)
 }
 
 func (e *TEdit) Scale96ToScreen(ASize int32) int32 {
-    return Edit_Scale96ToScreen(e.instance, ASize)
+    return Edit_Scale96ToScreen(e._instance(), ASize)
 }
 
 func (e *TEdit) ScaleScreenTo96(ASize int32) int32 {
-    return Edit_ScaleScreenTo96(e.instance, ASize)
+    return Edit_ScaleScreenTo96(e._instance(), ASize)
 }
 
 func (e *TEdit) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    Edit_AutoAdjustLayout(e.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    Edit_AutoAdjustLayout(e._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (e *TEdit) FixDesignFontsPPI(ADesignTimePPI int32) {
-    Edit_FixDesignFontsPPI(e.instance, ADesignTimePPI)
+    Edit_FixDesignFontsPPI(e._instance(), ADesignTimePPI)
 }
 
 func (e *TEdit) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    Edit_ScaleFontsPPI(e.instance, AToPPI , AProportion)
+    Edit_ScaleFontsPPI(e._instance(), AToPPI , AProportion)
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (e *TEdit) Align() TAlign {
-    return Edit_GetAlign(e.instance)
+    return Edit_GetAlign(e._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (e *TEdit) SetAlign(value TAlign) {
-    Edit_SetAlign(e.instance, value)
+    Edit_SetAlign(e._instance(), value)
 }
 
+// Alignment
+//
 // 获取文字对齐。
 //
 // Get Text alignment.
 func (e *TEdit) Alignment() TAlignment {
-    return Edit_GetAlignment(e.instance)
+    return Edit_GetAlignment(e._instance())
 }
 
+// SetAlignment
+//
 // 设置文字对齐。
 //
 // Set Text alignment.
 func (e *TEdit) SetAlignment(value TAlignment) {
-    Edit_SetAlignment(e.instance, value)
+    Edit_SetAlignment(e._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (e *TEdit) Anchors() TAnchors {
-    return Edit_GetAnchors(e.instance)
+    return Edit_GetAnchors(e._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (e *TEdit) SetAnchors(value TAnchors) {
-    Edit_SetAnchors(e.instance, value)
+    Edit_SetAnchors(e._instance(), value)
 }
 
+// AutoSelect
+//
 // 获取自动选择。
 func (e *TEdit) AutoSelect() bool {
-    return Edit_GetAutoSelect(e.instance)
+    return Edit_GetAutoSelect(e._instance())
 }
 
+// SetAutoSelect
+//
 // 设置自动选择。
 func (e *TEdit) SetAutoSelect(value bool) {
-    Edit_SetAutoSelect(e.instance, value)
+    Edit_SetAutoSelect(e._instance(), value)
 }
 
+// AutoSize
+//
 // 获取自动调整大小。
 func (e *TEdit) AutoSize() bool {
-    return Edit_GetAutoSize(e.instance)
+    return Edit_GetAutoSize(e._instance())
 }
 
+// SetAutoSize
+//
 // 设置自动调整大小。
 func (e *TEdit) SetAutoSize(value bool) {
-    Edit_SetAutoSize(e.instance, value)
+    Edit_SetAutoSize(e._instance(), value)
 }
 
 func (e *TEdit) BiDiMode() TBiDiMode {
-    return Edit_GetBiDiMode(e.instance)
+    return Edit_GetBiDiMode(e._instance())
 }
 
 func (e *TEdit) SetBiDiMode(value TBiDiMode) {
-    Edit_SetBiDiMode(e.instance, value)
+    Edit_SetBiDiMode(e._instance(), value)
 }
 
+// BorderStyle
+//
 // 获取窗口边框样式。比如：无边框，单一边框等。
 func (e *TEdit) BorderStyle() TBorderStyle {
-    return Edit_GetBorderStyle(e.instance)
+    return Edit_GetBorderStyle(e._instance())
 }
 
+// SetBorderStyle
+//
 // 设置窗口边框样式。比如：无边框，单一边框等。
 func (e *TEdit) SetBorderStyle(value TBorderStyle) {
-    Edit_SetBorderStyle(e.instance, value)
+    Edit_SetBorderStyle(e._instance(), value)
 }
 
 func (e *TEdit) CharCase() TEditCharCase {
-    return Edit_GetCharCase(e.instance)
+    return Edit_GetCharCase(e._instance())
 }
 
 func (e *TEdit) SetCharCase(value TEditCharCase) {
-    Edit_SetCharCase(e.instance, value)
+    Edit_SetCharCase(e._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (e *TEdit) Color() TColor {
-    return Edit_GetColor(e.instance)
+    return Edit_GetColor(e._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (e *TEdit) SetColor(value TColor) {
-    Edit_SetColor(e.instance, value)
+    Edit_SetColor(e._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (e *TEdit) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(Edit_GetConstraints(e.instance))
+    return AsSizeConstraints(Edit_GetConstraints(e._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (e *TEdit) SetConstraints(value *TSizeConstraints) {
-    Edit_SetConstraints(e.instance, CheckPtr(value))
+    Edit_SetConstraints(e._instance(), CheckPtr(value))
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (e *TEdit) DoubleBuffered() bool {
-    return Edit_GetDoubleBuffered(e.instance)
+    return Edit_GetDoubleBuffered(e._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (e *TEdit) SetDoubleBuffered(value bool) {
-    Edit_SetDoubleBuffered(e.instance, value)
+    Edit_SetDoubleBuffered(e._instance(), value)
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (e *TEdit) DragCursor() TCursor {
-    return Edit_GetDragCursor(e.instance)
+    return Edit_GetDragCursor(e._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (e *TEdit) SetDragCursor(value TCursor) {
-    Edit_SetDragCursor(e.instance, value)
+    Edit_SetDragCursor(e._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (e *TEdit) DragKind() TDragKind {
-    return Edit_GetDragKind(e.instance)
+    return Edit_GetDragKind(e._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (e *TEdit) SetDragKind(value TDragKind) {
-    Edit_SetDragKind(e.instance, value)
+    Edit_SetDragKind(e._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (e *TEdit) DragMode() TDragMode {
-    return Edit_GetDragMode(e.instance)
+    return Edit_GetDragMode(e._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (e *TEdit) SetDragMode(value TDragMode) {
-    Edit_SetDragMode(e.instance, value)
+    Edit_SetDragMode(e._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (e *TEdit) Enabled() bool {
-    return Edit_GetEnabled(e.instance)
+    return Edit_GetEnabled(e._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (e *TEdit) SetEnabled(value bool) {
-    Edit_SetEnabled(e.instance, value)
+    Edit_SetEnabled(e._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (e *TEdit) Font() *TFont {
-    return AsFont(Edit_GetFont(e.instance))
+    return AsFont(Edit_GetFont(e._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (e *TEdit) SetFont(value *TFont) {
-    Edit_SetFont(e.instance, CheckPtr(value))
+    Edit_SetFont(e._instance(), CheckPtr(value))
 }
 
+// HideSelection
+//
 // 获取隐藏选择。
 func (e *TEdit) HideSelection() bool {
-    return Edit_GetHideSelection(e.instance)
+    return Edit_GetHideSelection(e._instance())
 }
 
+// SetHideSelection
+//
 // 设置隐藏选择。
 func (e *TEdit) SetHideSelection(value bool) {
-    Edit_SetHideSelection(e.instance, value)
+    Edit_SetHideSelection(e._instance(), value)
 }
 
+// MaxLength
+//
 // 获取最大长度。
 func (e *TEdit) MaxLength() int32 {
-    return Edit_GetMaxLength(e.instance)
+    return Edit_GetMaxLength(e._instance())
 }
 
+// SetMaxLength
+//
 // 设置最大长度。
 func (e *TEdit) SetMaxLength(value int32) {
-    Edit_SetMaxLength(e.instance, value)
+    Edit_SetMaxLength(e._instance(), value)
 }
 
+// NumbersOnly
+//
 // 获取只能输入数字。
 func (e *TEdit) NumbersOnly() bool {
-    return Edit_GetNumbersOnly(e.instance)
+    return Edit_GetNumbersOnly(e._instance())
 }
 
+// SetNumbersOnly
+//
 // 设置只能输入数字。
 func (e *TEdit) SetNumbersOnly(value bool) {
-    Edit_SetNumbersOnly(e.instance, value)
+    Edit_SetNumbersOnly(e._instance(), value)
 }
 
+// ParentColor
+//
 // 获取使用父容器颜色。
 //
 // Get parent color.
 func (e *TEdit) ParentColor() bool {
-    return Edit_GetParentColor(e.instance)
+    return Edit_GetParentColor(e._instance())
 }
 
+// SetParentColor
+//
 // 设置使用父容器颜色。
 //
 // Set parent color.
 func (e *TEdit) SetParentColor(value bool) {
-    Edit_SetParentColor(e.instance, value)
+    Edit_SetParentColor(e._instance(), value)
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (e *TEdit) ParentDoubleBuffered() bool {
-    return Edit_GetParentDoubleBuffered(e.instance)
+    return Edit_GetParentDoubleBuffered(e._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (e *TEdit) SetParentDoubleBuffered(value bool) {
-    Edit_SetParentDoubleBuffered(e.instance, value)
+    Edit_SetParentDoubleBuffered(e._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (e *TEdit) ParentFont() bool {
-    return Edit_GetParentFont(e.instance)
+    return Edit_GetParentFont(e._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (e *TEdit) SetParentFont(value bool) {
-    Edit_SetParentFont(e.instance, value)
+    Edit_SetParentFont(e._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (e *TEdit) ParentShowHint() bool {
-    return Edit_GetParentShowHint(e.instance)
+    return Edit_GetParentShowHint(e._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (e *TEdit) SetParentShowHint(value bool) {
-    Edit_SetParentShowHint(e.instance, value)
+    Edit_SetParentShowHint(e._instance(), value)
 }
 
+// PasswordChar
+//
 // 获取密码掩码字符。
 func (e *TEdit) PasswordChar() uint16 {
-    return Edit_GetPasswordChar(e.instance)
+    return Edit_GetPasswordChar(e._instance())
 }
 
+// SetPasswordChar
+//
 // 设置密码掩码字符。
 func (e *TEdit) SetPasswordChar(value uint16) {
-    Edit_SetPasswordChar(e.instance, value)
+    Edit_SetPasswordChar(e._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (e *TEdit) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(Edit_GetPopupMenu(e.instance))
+    return AsPopupMenu(Edit_GetPopupMenu(e._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (e *TEdit) SetPopupMenu(value IComponent) {
-    Edit_SetPopupMenu(e.instance, CheckPtr(value))
+    Edit_SetPopupMenu(e._instance(), CheckPtr(value))
 }
 
+// ReadOnly
+//
 // 获取只读。
 func (e *TEdit) ReadOnly() bool {
-    return Edit_GetReadOnly(e.instance)
+    return Edit_GetReadOnly(e._instance())
 }
 
+// SetReadOnly
+//
 // 设置只读。
 func (e *TEdit) SetReadOnly(value bool) {
-    Edit_SetReadOnly(e.instance, value)
+    Edit_SetReadOnly(e._instance(), value)
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (e *TEdit) ShowHint() bool {
-    return Edit_GetShowHint(e.instance)
+    return Edit_GetShowHint(e._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (e *TEdit) SetShowHint(value bool) {
-    Edit_SetShowHint(e.instance, value)
+    Edit_SetShowHint(e._instance(), value)
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (e *TEdit) TabOrder() TTabOrder {
-    return Edit_GetTabOrder(e.instance)
+    return Edit_GetTabOrder(e._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (e *TEdit) SetTabOrder(value TTabOrder) {
-    Edit_SetTabOrder(e.instance, value)
+    Edit_SetTabOrder(e._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (e *TEdit) TabStop() bool {
-    return Edit_GetTabStop(e.instance)
+    return Edit_GetTabStop(e._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (e *TEdit) SetTabStop(value bool) {
-    Edit_SetTabStop(e.instance, value)
+    Edit_SetTabStop(e._instance(), value)
 }
 
+// Text
+//
 // 获取文本。
 func (e *TEdit) Text() string {
     return getControlBufferText(e.GetTextLen, e.GetTextBuf)
 }
 
+// SetText
+//
 // 设置文本。
 func (e *TEdit) SetText(value string) {
-    Edit_SetText(e.instance, value)
+    Edit_SetText(e._instance(), value)
 }
 
+// TextHint
+//
 // 获取提示文本。
 func (e *TEdit) TextHint() string {
-    return Edit_GetTextHint(e.instance)
+    return Edit_GetTextHint(e._instance())
 }
 
+// SetTextHint
+//
 // 设置提示文本。
 func (e *TEdit) SetTextHint(value string) {
-    Edit_SetTextHint(e.instance, value)
+    Edit_SetTextHint(e._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (e *TEdit) Visible() bool {
-    return Edit_GetVisible(e.instance)
+    return Edit_GetVisible(e._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (e *TEdit) SetVisible(value bool) {
-    Edit_SetVisible(e.instance, value)
+    Edit_SetVisible(e._instance(), value)
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (e *TEdit) SetOnChange(fn TNotifyEvent) {
-    Edit_SetOnChange(e.instance, fn)
+    Edit_SetOnChange(e._instance(), fn)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (e *TEdit) SetOnClick(fn TNotifyEvent) {
-    Edit_SetOnClick(e.instance, fn)
+    Edit_SetOnClick(e._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (e *TEdit) SetOnContextPopup(fn TContextPopupEvent) {
-    Edit_SetOnContextPopup(e.instance, fn)
+    Edit_SetOnContextPopup(e._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (e *TEdit) SetOnDblClick(fn TNotifyEvent) {
-    Edit_SetOnDblClick(e.instance, fn)
+    Edit_SetOnDblClick(e._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (e *TEdit) SetOnDragDrop(fn TDragDropEvent) {
-    Edit_SetOnDragDrop(e.instance, fn)
+    Edit_SetOnDragDrop(e._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (e *TEdit) SetOnDragOver(fn TDragOverEvent) {
-    Edit_SetOnDragOver(e.instance, fn)
+    Edit_SetOnDragOver(e._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (e *TEdit) SetOnEndDrag(fn TEndDragEvent) {
-    Edit_SetOnEndDrag(e.instance, fn)
+    Edit_SetOnEndDrag(e._instance(), fn)
 }
 
+// SetOnEnter
+//
 // 设置焦点进入。
 //
 // Set Focus entry.
 func (e *TEdit) SetOnEnter(fn TNotifyEvent) {
-    Edit_SetOnEnter(e.instance, fn)
+    Edit_SetOnEnter(e._instance(), fn)
 }
 
+// SetOnExit
+//
 // 设置焦点退出。
 //
 // Set Focus exit.
 func (e *TEdit) SetOnExit(fn TNotifyEvent) {
-    Edit_SetOnExit(e.instance, fn)
+    Edit_SetOnExit(e._instance(), fn)
 }
 
+// SetOnKeyDown
+//
 // 设置键盘按键按下事件。
 //
 // Set Keyboard button press event.
 func (e *TEdit) SetOnKeyDown(fn TKeyEvent) {
-    Edit_SetOnKeyDown(e.instance, fn)
+    Edit_SetOnKeyDown(e._instance(), fn)
 }
 
+// SetOnKeyPress
+//
 // 设置键键下事件。
 func (e *TEdit) SetOnKeyPress(fn TKeyPressEvent) {
-    Edit_SetOnKeyPress(e.instance, fn)
+    Edit_SetOnKeyPress(e._instance(), fn)
 }
 
+// SetOnKeyUp
+//
 // 设置键盘按键抬起事件。
 //
 // Set Keyboard button lift event.
 func (e *TEdit) SetOnKeyUp(fn TKeyEvent) {
-    Edit_SetOnKeyUp(e.instance, fn)
+    Edit_SetOnKeyUp(e._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (e *TEdit) SetOnMouseDown(fn TMouseEvent) {
-    Edit_SetOnMouseDown(e.instance, fn)
+    Edit_SetOnMouseDown(e._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (e *TEdit) SetOnMouseEnter(fn TNotifyEvent) {
-    Edit_SetOnMouseEnter(e.instance, fn)
+    Edit_SetOnMouseEnter(e._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (e *TEdit) SetOnMouseLeave(fn TNotifyEvent) {
-    Edit_SetOnMouseLeave(e.instance, fn)
+    Edit_SetOnMouseLeave(e._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (e *TEdit) SetOnMouseMove(fn TMouseMoveEvent) {
-    Edit_SetOnMouseMove(e.instance, fn)
+    Edit_SetOnMouseMove(e._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (e *TEdit) SetOnMouseUp(fn TMouseEvent) {
-    Edit_SetOnMouseUp(e.instance, fn)
+    Edit_SetOnMouseUp(e._instance(), fn)
 }
 
+// CanUndo
+//
 // 获取能否撤销。
 func (e *TEdit) CanUndo() bool {
-    return Edit_GetCanUndo(e.instance)
+    return Edit_GetCanUndo(e._instance())
 }
 
+// Modified
+//
 // 获取修改。
 //
 // Get modified.
 func (e *TEdit) Modified() bool {
-    return Edit_GetModified(e.instance)
+    return Edit_GetModified(e._instance())
 }
 
+// SetModified
+//
 // 设置修改。
 //
 // Set modified.
 func (e *TEdit) SetModified(value bool) {
-    Edit_SetModified(e.instance, value)
+    Edit_SetModified(e._instance(), value)
 }
 
+// SelLength
+//
 // 获取选择的长度。
 func (e *TEdit) SelLength() int32 {
-    return Edit_GetSelLength(e.instance)
+    return Edit_GetSelLength(e._instance())
 }
 
+// SetSelLength
+//
 // 设置选择的长度。
 func (e *TEdit) SetSelLength(value int32) {
-    Edit_SetSelLength(e.instance, value)
+    Edit_SetSelLength(e._instance(), value)
 }
 
+// SelStart
+//
 // 获取选择的启始位置。
 func (e *TEdit) SelStart() int32 {
-    return Edit_GetSelStart(e.instance)
+    return Edit_GetSelStart(e._instance())
 }
 
+// SetSelStart
+//
 // 设置选择的启始位置。
 func (e *TEdit) SetSelStart(value int32) {
-    Edit_SetSelStart(e.instance, value)
+    Edit_SetSelStart(e._instance(), value)
 }
 
+// SelText
+//
 // 获取选择的文本。
 func (e *TEdit) SelText() string {
-    return Edit_GetSelText(e.instance)
+    return Edit_GetSelText(e._instance())
 }
 
+// SetSelText
+//
 // 设置选择的文本。
 func (e *TEdit) SetSelText(value string) {
-    Edit_SetSelText(e.instance, value)
+    Edit_SetSelText(e._instance(), value)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (e *TEdit) DockClientCount() int32 {
-    return Edit_GetDockClientCount(e.instance)
+    return Edit_GetDockClientCount(e._instance())
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (e *TEdit) DockSite() bool {
-    return Edit_GetDockSite(e.instance)
+    return Edit_GetDockSite(e._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (e *TEdit) SetDockSite(value bool) {
-    Edit_SetDockSite(e.instance, value)
+    Edit_SetDockSite(e._instance(), value)
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (e *TEdit) MouseInClient() bool {
-    return Edit_GetMouseInClient(e.instance)
+    return Edit_GetMouseInClient(e._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (e *TEdit) VisibleDockClientCount() int32 {
-    return Edit_GetVisibleDockClientCount(e.instance)
+    return Edit_GetVisibleDockClientCount(e._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (e *TEdit) Brush() *TBrush {
-    return AsBrush(Edit_GetBrush(e.instance))
+    return AsBrush(Edit_GetBrush(e._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (e *TEdit) ControlCount() int32 {
-    return Edit_GetControlCount(e.instance)
+    return Edit_GetControlCount(e._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (e *TEdit) Handle() HWND {
-    return Edit_GetHandle(e.instance)
+    return Edit_GetHandle(e._instance())
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (e *TEdit) ParentWindow() HWND {
-    return Edit_GetParentWindow(e.instance)
+    return Edit_GetParentWindow(e._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (e *TEdit) SetParentWindow(value HWND) {
-    Edit_SetParentWindow(e.instance, value)
+    Edit_SetParentWindow(e._instance(), value)
 }
 
 func (e *TEdit) Showing() bool {
-    return Edit_GetShowing(e.instance)
+    return Edit_GetShowing(e._instance())
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (e *TEdit) UseDockManager() bool {
-    return Edit_GetUseDockManager(e.instance)
+    return Edit_GetUseDockManager(e._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (e *TEdit) SetUseDockManager(value bool) {
-    Edit_SetUseDockManager(e.instance, value)
+    Edit_SetUseDockManager(e._instance(), value)
 }
 
 func (e *TEdit) Action() *TAction {
-    return AsAction(Edit_GetAction(e.instance))
+    return AsAction(Edit_GetAction(e._instance()))
 }
 
 func (e *TEdit) SetAction(value IComponent) {
-    Edit_SetAction(e.instance, CheckPtr(value))
+    Edit_SetAction(e._instance(), CheckPtr(value))
 }
 
 func (e *TEdit) BoundsRect() TRect {
-    return Edit_GetBoundsRect(e.instance)
+    return Edit_GetBoundsRect(e._instance())
 }
 
 func (e *TEdit) SetBoundsRect(value TRect) {
-    Edit_SetBoundsRect(e.instance, value)
+    Edit_SetBoundsRect(e._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (e *TEdit) ClientHeight() int32 {
-    return Edit_GetClientHeight(e.instance)
+    return Edit_GetClientHeight(e._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (e *TEdit) SetClientHeight(value int32) {
-    Edit_SetClientHeight(e.instance, value)
+    Edit_SetClientHeight(e._instance(), value)
 }
 
 func (e *TEdit) ClientOrigin() TPoint {
-    return Edit_GetClientOrigin(e.instance)
+    return Edit_GetClientOrigin(e._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (e *TEdit) ClientRect() TRect {
-    return Edit_GetClientRect(e.instance)
+    return Edit_GetClientRect(e._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (e *TEdit) ClientWidth() int32 {
-    return Edit_GetClientWidth(e.instance)
+    return Edit_GetClientWidth(e._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (e *TEdit) SetClientWidth(value int32) {
-    Edit_SetClientWidth(e.instance, value)
+    Edit_SetClientWidth(e._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (e *TEdit) ControlState() TControlState {
-    return Edit_GetControlState(e.instance)
+    return Edit_GetControlState(e._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (e *TEdit) SetControlState(value TControlState) {
-    Edit_SetControlState(e.instance, value)
+    Edit_SetControlState(e._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (e *TEdit) ControlStyle() TControlStyle {
-    return Edit_GetControlStyle(e.instance)
+    return Edit_GetControlStyle(e._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (e *TEdit) SetControlStyle(value TControlStyle) {
-    Edit_SetControlStyle(e.instance, value)
+    Edit_SetControlStyle(e._instance(), value)
 }
 
 func (e *TEdit) Floating() bool {
-    return Edit_GetFloating(e.instance)
+    return Edit_GetFloating(e._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (e *TEdit) Parent() *TWinControl {
-    return AsWinControl(Edit_GetParent(e.instance))
+    return AsWinControl(Edit_GetParent(e._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (e *TEdit) SetParent(value IWinControl) {
-    Edit_SetParent(e.instance, CheckPtr(value))
+    Edit_SetParent(e._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (e *TEdit) Left() int32 {
-    return Edit_GetLeft(e.instance)
+    return Edit_GetLeft(e._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (e *TEdit) SetLeft(value int32) {
-    Edit_SetLeft(e.instance, value)
+    Edit_SetLeft(e._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (e *TEdit) Top() int32 {
-    return Edit_GetTop(e.instance)
+    return Edit_GetTop(e._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (e *TEdit) SetTop(value int32) {
-    Edit_SetTop(e.instance, value)
+    Edit_SetTop(e._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (e *TEdit) Width() int32 {
-    return Edit_GetWidth(e.instance)
+    return Edit_GetWidth(e._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (e *TEdit) SetWidth(value int32) {
-    Edit_SetWidth(e.instance, value)
+    Edit_SetWidth(e._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (e *TEdit) Height() int32 {
-    return Edit_GetHeight(e.instance)
+    return Edit_GetHeight(e._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (e *TEdit) SetHeight(value int32) {
-    Edit_SetHeight(e.instance, value)
+    Edit_SetHeight(e._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (e *TEdit) Cursor() TCursor {
-    return Edit_GetCursor(e.instance)
+    return Edit_GetCursor(e._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (e *TEdit) SetCursor(value TCursor) {
-    Edit_SetCursor(e.instance, value)
+    Edit_SetCursor(e._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (e *TEdit) Hint() string {
-    return Edit_GetHint(e.instance)
+    return Edit_GetHint(e._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (e *TEdit) SetHint(value string) {
-    Edit_SetHint(e.instance, value)
+    Edit_SetHint(e._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (e *TEdit) ComponentCount() int32 {
-    return Edit_GetComponentCount(e.instance)
+    return Edit_GetComponentCount(e._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (e *TEdit) ComponentIndex() int32 {
-    return Edit_GetComponentIndex(e.instance)
+    return Edit_GetComponentIndex(e._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (e *TEdit) SetComponentIndex(value int32) {
-    Edit_SetComponentIndex(e.instance, value)
+    Edit_SetComponentIndex(e._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (e *TEdit) Owner() *TComponent {
-    return AsComponent(Edit_GetOwner(e.instance))
+    return AsComponent(Edit_GetOwner(e._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (e *TEdit) Name() string {
-    return Edit_GetName(e.instance)
+    return Edit_GetName(e._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (e *TEdit) SetName(value string) {
-    Edit_SetName(e.instance, value)
+    Edit_SetName(e._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (e *TEdit) Tag() int {
-    return Edit_GetTag(e.instance)
+    return Edit_GetTag(e._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (e *TEdit) SetTag(value int) {
-    Edit_SetTag(e.instance, value)
+    Edit_SetTag(e._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (e *TEdit) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(Edit_GetAnchorSideLeft(e.instance))
+    return AsAnchorSide(Edit_GetAnchorSideLeft(e._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (e *TEdit) SetAnchorSideLeft(value *TAnchorSide) {
-    Edit_SetAnchorSideLeft(e.instance, CheckPtr(value))
+    Edit_SetAnchorSideLeft(e._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (e *TEdit) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(Edit_GetAnchorSideTop(e.instance))
+    return AsAnchorSide(Edit_GetAnchorSideTop(e._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (e *TEdit) SetAnchorSideTop(value *TAnchorSide) {
-    Edit_SetAnchorSideTop(e.instance, CheckPtr(value))
+    Edit_SetAnchorSideTop(e._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (e *TEdit) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(Edit_GetAnchorSideRight(e.instance))
+    return AsAnchorSide(Edit_GetAnchorSideRight(e._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (e *TEdit) SetAnchorSideRight(value *TAnchorSide) {
-    Edit_SetAnchorSideRight(e.instance, CheckPtr(value))
+    Edit_SetAnchorSideRight(e._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (e *TEdit) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(Edit_GetAnchorSideBottom(e.instance))
+    return AsAnchorSide(Edit_GetAnchorSideBottom(e._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (e *TEdit) SetAnchorSideBottom(value *TAnchorSide) {
-    Edit_SetAnchorSideBottom(e.instance, CheckPtr(value))
+    Edit_SetAnchorSideBottom(e._instance(), CheckPtr(value))
 }
 
 func (e *TEdit) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(Edit_GetChildSizing(e.instance))
+    return AsControlChildSizing(Edit_GetChildSizing(e._instance()))
 }
 
 func (e *TEdit) SetChildSizing(value *TControlChildSizing) {
-    Edit_SetChildSizing(e.instance, CheckPtr(value))
+    Edit_SetChildSizing(e._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (e *TEdit) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(Edit_GetBorderSpacing(e.instance))
+    return AsControlBorderSpacing(Edit_GetBorderSpacing(e._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (e *TEdit) SetBorderSpacing(value *TControlBorderSpacing) {
-    Edit_SetBorderSpacing(e.instance, CheckPtr(value))
+    Edit_SetBorderSpacing(e._instance(), CheckPtr(value))
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (e *TEdit) DockClients(Index int32) *TControl {
-    return AsControl(Edit_GetDockClients(e.instance, Index))
+    return AsControl(Edit_GetDockClients(e._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (e *TEdit) Controls(Index int32) *TControl {
-    return AsControl(Edit_GetControls(e.instance, Index))
+    return AsControl(Edit_GetControls(e._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (e *TEdit) Components(AIndex int32) *TComponent {
-    return AsComponent(Edit_GetComponents(e.instance, AIndex))
+    return AsComponent(Edit_GetComponents(e._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (e *TEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(Edit_GetAnchorSide(e.instance, AKind))
+    return AsAnchorSide(Edit_GetAnchorSide(e._instance(), AKind))
 }
 

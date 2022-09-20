@@ -19,101 +19,94 @@ import (
 
 type TListView struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewListView
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewListView(owner IComponent) *TListView {
     l := new(TListView)
-    l.instance = ListView_Create(CheckPtr(owner))
-    l.ptr = unsafe.Pointer(l.instance)
+    l.instance = unsafe.Pointer(ListView_Create(CheckPtr(owner)))
     return l
 }
 
+// AsListView
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsListView(obj interface{}) *TListView {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TListView{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TListView{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsListView.
-func ListViewFromInst(inst uintptr) *TListView {
-    return AsListView(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsListView.
-func ListViewFromObj(obj IObject) *TListView {
-    return AsListView(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsListView.
-func ListViewFromUnsafePointer(ptr unsafe.Pointer) *TListView {
-    return AsListView(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (l *TListView) Free() {
-    if l.instance != 0 {
-        ListView_Free(l.instance)
-        l.instance, l.ptr = 0, nullptr
+    if l.instance != nullptr {
+        ListView_Free(l._instance())
+        l.instance  = nullptr
     }
 }
 
+func (l *TListView) _instance() uintptr {
+    return uintptr(l.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (l *TListView) Instance() uintptr {
-    return l.instance
+    return l._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (l *TListView) UnsafeAddr() unsafe.Pointer {
-    return l.ptr
+    return l.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (l *TListView) IsValid() bool {
-    return l.instance != 0
+    return l.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (l *TListView) Is() TIs {
-    return TIs(l.instance)
+    return TIs(l._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (l *TListView) As() TAs {
-//    return TAs(l.instance)
+//    return TAs(l._instance())
 //}
 
+// TListViewClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,1653 +115,2003 @@ func TListViewClass() TClass {
 }
 
 func (l *TListView) AddItem(Item string, AObject IObject) {
-    ListView_AddItem(l.instance, Item , CheckPtr(AObject))
+    ListView_AddItem(l._instance(), Item , CheckPtr(AObject))
 }
 
 func (l *TListView) AlphaSort() bool {
-    return ListView_AlphaSort(l.instance)
+    return ListView_AlphaSort(l._instance())
 }
 
+// Clear
+//
 // 清除。
 func (l *TListView) Clear() {
-    ListView_Clear(l.instance)
+    ListView_Clear(l._instance())
 }
 
+// ClearSelection
+//
 // 清除选择。
 func (l *TListView) ClearSelection() {
-    ListView_ClearSelection(l.instance)
+    ListView_ClearSelection(l._instance())
 }
 
+// DeleteSelected
+//
 // 删除选择的。
 func (l *TListView) DeleteSelected() {
-    ListView_DeleteSelected(l.instance)
+    ListView_DeleteSelected(l._instance())
 }
 
 func (l *TListView) GetHitTestInfoAt(X int32, Y int32) THitTests {
-    return ListView_GetHitTestInfoAt(l.instance, X , Y)
+    return ListView_GetHitTestInfoAt(l._instance(), X , Y)
 }
 
 func (l *TListView) GetItemAt(X int32, Y int32) *TListItem {
-    return AsListItem(ListView_GetItemAt(l.instance, X , Y))
+    return AsListItem(ListView_GetItemAt(l._instance(), X , Y))
 }
 
 func (l *TListView) GetNearestItem(Point TPoint, Direction TSearchDirection) *TListItem {
-    return AsListItem(ListView_GetNearestItem(l.instance, Point , Direction))
+    return AsListItem(ListView_GetNearestItem(l._instance(), Point , Direction))
 }
 
 func (l *TListView) GetNextItem(StartItem *TListItem, Direction TSearchDirection, States TListItemStates) *TListItem {
-    return AsListItem(ListView_GetNextItem(l.instance, CheckPtr(StartItem), Direction , States))
+    return AsListItem(ListView_GetNextItem(l._instance(), CheckPtr(StartItem), Direction , States))
 }
 
 func (l *TListView) IsEditing() bool {
-    return ListView_IsEditing(l.instance)
+    return ListView_IsEditing(l._instance())
 }
 
+// SelectAll
+//
 // 全选。
 func (l *TListView) SelectAll() {
-    ListView_SelectAll(l.instance)
+    ListView_SelectAll(l._instance())
 }
 
+// CustomSort
+//
 // 自定义排序，ASortProc参数无效，仅仅用来兼容Delphi的。
 //
 // Custom sorting, ASortProc parameter is invalid, Only used to be compatible with Delphi.
 func (l *TListView) CustomSort(SortProc PFNLVCOMPARE, lParam int) bool {
-    return ListView_CustomSort(l.instance, SortProc , lParam)
+    return ListView_CustomSort(l._instance(), SortProc , lParam)
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (l *TListView) CanFocus() bool {
-    return ListView_CanFocus(l.instance)
+    return ListView_CanFocus(l._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (l *TListView) ContainsControl(Control IControl) bool {
-    return ListView_ContainsControl(l.instance, CheckPtr(Control))
+    return ListView_ContainsControl(l._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (l *TListView) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(ListView_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(ListView_ControlAtPos(l._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (l *TListView) DisableAlign() {
-    ListView_DisableAlign(l.instance)
+    ListView_DisableAlign(l._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (l *TListView) EnableAlign() {
-    ListView_EnableAlign(l.instance)
+    ListView_EnableAlign(l._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (l *TListView) FindChildControl(ControlName string) *TControl {
-    return AsControl(ListView_FindChildControl(l.instance, ControlName))
+    return AsControl(ListView_FindChildControl(l._instance(), ControlName))
 }
 
 func (l *TListView) FlipChildren(AllLevels bool) {
-    ListView_FlipChildren(l.instance, AllLevels)
+    ListView_FlipChildren(l._instance(), AllLevels)
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (l *TListView) Focused() bool {
-    return ListView_Focused(l.instance)
+    return ListView_Focused(l._instance())
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (l *TListView) HandleAllocated() bool {
-    return ListView_HandleAllocated(l.instance)
+    return ListView_HandleAllocated(l._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (l *TListView) InsertControl(AControl IControl) {
-    ListView_InsertControl(l.instance, CheckPtr(AControl))
+    ListView_InsertControl(l._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (l *TListView) Invalidate() {
-    ListView_Invalidate(l.instance)
+    ListView_Invalidate(l._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (l *TListView) PaintTo(DC HDC, X int32, Y int32) {
-    ListView_PaintTo(l.instance, DC , X , Y)
+    ListView_PaintTo(l._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (l *TListView) RemoveControl(AControl IControl) {
-    ListView_RemoveControl(l.instance, CheckPtr(AControl))
+    ListView_RemoveControl(l._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (l *TListView) Realign() {
-    ListView_Realign(l.instance)
+    ListView_Realign(l._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (l *TListView) Repaint() {
-    ListView_Repaint(l.instance)
+    ListView_Repaint(l._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (l *TListView) ScaleBy(M int32, D int32) {
-    ListView_ScaleBy(l.instance, M , D)
+    ListView_ScaleBy(l._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (l *TListView) ScrollBy(DeltaX int32, DeltaY int32) {
-    ListView_ScrollBy(l.instance, DeltaX , DeltaY)
+    ListView_ScrollBy(l._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (l *TListView) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    ListView_SetBounds(l.instance, ALeft , ATop , AWidth , AHeight)
+    ListView_SetBounds(l._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (l *TListView) SetFocus() {
-    ListView_SetFocus(l.instance)
+    ListView_SetFocus(l._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (l *TListView) Update() {
-    ListView_Update(l.instance)
+    ListView_Update(l._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (l *TListView) BringToFront() {
-    ListView_BringToFront(l.instance)
+    ListView_BringToFront(l._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (l *TListView) ClientToScreen(Point TPoint) TPoint {
-    return ListView_ClientToScreen(l.instance, Point)
+    return ListView_ClientToScreen(l._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (l *TListView) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return ListView_ClientToParent(l.instance, Point , CheckPtr(AParent))
+    return ListView_ClientToParent(l._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (l *TListView) Dragging() bool {
-    return ListView_Dragging(l.instance)
+    return ListView_Dragging(l._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (l *TListView) HasParent() bool {
-    return ListView_HasParent(l.instance)
+    return ListView_HasParent(l._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (l *TListView) Hide() {
-    ListView_Hide(l.instance)
+    ListView_Hide(l._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (l *TListView) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return ListView_Perform(l.instance, Msg , WParam , LParam)
+    return ListView_Perform(l._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (l *TListView) Refresh() {
-    ListView_Refresh(l.instance)
+    ListView_Refresh(l._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (l *TListView) ScreenToClient(Point TPoint) TPoint {
-    return ListView_ScreenToClient(l.instance, Point)
+    return ListView_ScreenToClient(l._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (l *TListView) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return ListView_ParentToClient(l.instance, Point , CheckPtr(AParent))
+    return ListView_ParentToClient(l._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (l *TListView) SendToBack() {
-    ListView_SendToBack(l.instance)
+    ListView_SendToBack(l._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (l *TListView) Show() {
-    ListView_Show(l.instance)
+    ListView_Show(l._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (l *TListView) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return ListView_GetTextBuf(l.instance, Buffer , BufSize)
+    return ListView_GetTextBuf(l._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (l *TListView) GetTextLen() int32 {
-    return ListView_GetTextLen(l.instance)
+    return ListView_GetTextLen(l._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (l *TListView) SetTextBuf(Buffer string) {
-    ListView_SetTextBuf(l.instance, Buffer)
+    ListView_SetTextBuf(l._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (l *TListView) FindComponent(AName string) *TComponent {
-    return AsComponent(ListView_FindComponent(l.instance, AName))
+    return AsComponent(ListView_FindComponent(l._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (l *TListView) GetNamePath() string {
-    return ListView_GetNamePath(l.instance)
+    return ListView_GetNamePath(l._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (l *TListView) Assign(Source IObject) {
-    ListView_Assign(l.instance, CheckPtr(Source))
+    ListView_Assign(l._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (l *TListView) ClassType() TClass {
-    return ListView_ClassType(l.instance)
+    return ListView_ClassType(l._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (l *TListView) ClassName() string {
-    return ListView_ClassName(l.instance)
+    return ListView_ClassName(l._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (l *TListView) InstanceSize() int32 {
-    return ListView_InstanceSize(l.instance)
+    return ListView_InstanceSize(l._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (l *TListView) InheritsFrom(AClass TClass) bool {
-    return ListView_InheritsFrom(l.instance, AClass)
+    return ListView_InheritsFrom(l._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (l *TListView) Equals(Obj IObject) bool {
-    return ListView_Equals(l.instance, CheckPtr(Obj))
+    return ListView_Equals(l._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (l *TListView) GetHashCode() int32 {
-    return ListView_GetHashCode(l.instance)
+    return ListView_GetHashCode(l._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (l *TListView) ToString() string {
-    return ListView_ToString(l.instance)
+    return ListView_ToString(l._instance())
 }
 
 func (l *TListView) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    ListView_AnchorToNeighbour(l.instance, ASide , ASpace , CheckPtr(ASibling))
+    ListView_AnchorToNeighbour(l._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (l *TListView) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    ListView_AnchorParallel(l.instance, ASide , ASpace , CheckPtr(ASibling))
+    ListView_AnchorParallel(l._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (l *TListView) AnchorHorizontalCenterTo(ASibling IControl) {
-    ListView_AnchorHorizontalCenterTo(l.instance, CheckPtr(ASibling))
+    ListView_AnchorHorizontalCenterTo(l._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (l *TListView) AnchorVerticalCenterTo(ASibling IControl) {
-    ListView_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
+    ListView_AnchorVerticalCenterTo(l._instance(), CheckPtr(ASibling))
 }
 
 func (l *TListView) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    ListView_AnchorSame(l.instance, ASide , CheckPtr(ASibling))
+    ListView_AnchorSame(l._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (l *TListView) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    ListView_AnchorAsAlign(l.instance, ATheAlign , ASpace)
+    ListView_AnchorAsAlign(l._instance(), ATheAlign , ASpace)
 }
 
 func (l *TListView) AnchorClient(ASpace int32) {
-    ListView_AnchorClient(l.instance, ASpace)
+    ListView_AnchorClient(l._instance(), ASpace)
 }
 
 func (l *TListView) ScaleDesignToForm(ASize int32) int32 {
-    return ListView_ScaleDesignToForm(l.instance, ASize)
+    return ListView_ScaleDesignToForm(l._instance(), ASize)
 }
 
 func (l *TListView) ScaleFormToDesign(ASize int32) int32 {
-    return ListView_ScaleFormToDesign(l.instance, ASize)
+    return ListView_ScaleFormToDesign(l._instance(), ASize)
 }
 
 func (l *TListView) Scale96ToForm(ASize int32) int32 {
-    return ListView_Scale96ToForm(l.instance, ASize)
+    return ListView_Scale96ToForm(l._instance(), ASize)
 }
 
 func (l *TListView) ScaleFormTo96(ASize int32) int32 {
-    return ListView_ScaleFormTo96(l.instance, ASize)
+    return ListView_ScaleFormTo96(l._instance(), ASize)
 }
 
 func (l *TListView) Scale96ToFont(ASize int32) int32 {
-    return ListView_Scale96ToFont(l.instance, ASize)
+    return ListView_Scale96ToFont(l._instance(), ASize)
 }
 
 func (l *TListView) ScaleFontTo96(ASize int32) int32 {
-    return ListView_ScaleFontTo96(l.instance, ASize)
+    return ListView_ScaleFontTo96(l._instance(), ASize)
 }
 
 func (l *TListView) ScaleScreenToFont(ASize int32) int32 {
-    return ListView_ScaleScreenToFont(l.instance, ASize)
+    return ListView_ScaleScreenToFont(l._instance(), ASize)
 }
 
 func (l *TListView) ScaleFontToScreen(ASize int32) int32 {
-    return ListView_ScaleFontToScreen(l.instance, ASize)
+    return ListView_ScaleFontToScreen(l._instance(), ASize)
 }
 
 func (l *TListView) Scale96ToScreen(ASize int32) int32 {
-    return ListView_Scale96ToScreen(l.instance, ASize)
+    return ListView_Scale96ToScreen(l._instance(), ASize)
 }
 
 func (l *TListView) ScaleScreenTo96(ASize int32) int32 {
-    return ListView_ScaleScreenTo96(l.instance, ASize)
+    return ListView_ScaleScreenTo96(l._instance(), ASize)
 }
 
 func (l *TListView) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    ListView_AutoAdjustLayout(l.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    ListView_AutoAdjustLayout(l._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (l *TListView) FixDesignFontsPPI(ADesignTimePPI int32) {
-    ListView_FixDesignFontsPPI(l.instance, ADesignTimePPI)
+    ListView_FixDesignFontsPPI(l._instance(), ADesignTimePPI)
 }
 
 func (l *TListView) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    ListView_ScaleFontsPPI(l.instance, AToPPI , AProportion)
+    ListView_ScaleFontsPPI(l._instance(), AToPPI , AProportion)
 }
 
 func (l *TListView) AutoSort() bool {
-    return ListView_GetAutoSort(l.instance)
+    return ListView_GetAutoSort(l._instance())
 }
 
 func (l *TListView) SetAutoSort(value bool) {
-    ListView_SetAutoSort(l.instance, value)
+    ListView_SetAutoSort(l._instance(), value)
 }
 
 func (l *TListView) AutoSortIndicator() bool {
-    return ListView_GetAutoSortIndicator(l.instance)
+    return ListView_GetAutoSortIndicator(l._instance())
 }
 
 func (l *TListView) SetAutoSortIndicator(value bool) {
-    ListView_SetAutoSortIndicator(l.instance, value)
+    ListView_SetAutoSortIndicator(l._instance(), value)
 }
 
 func (l *TListView) AutoWidthLastColumn() bool {
-    return ListView_GetAutoWidthLastColumn(l.instance)
+    return ListView_GetAutoWidthLastColumn(l._instance())
 }
 
 func (l *TListView) SetAutoWidthLastColumn(value bool) {
-    ListView_SetAutoWidthLastColumn(l.instance, value)
+    ListView_SetAutoWidthLastColumn(l._instance(), value)
 }
 
 func (l *TListView) SmallImagesWidth() int32 {
-    return ListView_GetSmallImagesWidth(l.instance)
+    return ListView_GetSmallImagesWidth(l._instance())
 }
 
 func (l *TListView) SetSmallImagesWidth(value int32) {
-    ListView_SetSmallImagesWidth(l.instance, value)
+    ListView_SetSmallImagesWidth(l._instance(), value)
 }
 
 func (l *TListView) SortColumn() int32 {
-    return ListView_GetSortColumn(l.instance)
+    return ListView_GetSortColumn(l._instance())
 }
 
 func (l *TListView) SetSortColumn(value int32) {
-    ListView_SetSortColumn(l.instance, value)
+    ListView_SetSortColumn(l._instance(), value)
 }
 
 func (l *TListView) SortDirection() TSortDirection {
-    return ListView_GetSortDirection(l.instance)
+    return ListView_GetSortDirection(l._instance())
 }
 
 func (l *TListView) SetSortDirection(value TSortDirection) {
-    ListView_SetSortDirection(l.instance, value)
+    ListView_SetSortDirection(l._instance(), value)
 }
 
 func (l *TListView) LargeImagesWidth() int32 {
-    return ListView_GetLargeImagesWidth(l.instance)
+    return ListView_GetLargeImagesWidth(l._instance())
 }
 
 func (l *TListView) SetLargeImagesWidth(value int32) {
-    ListView_SetLargeImagesWidth(l.instance, value)
+    ListView_SetLargeImagesWidth(l._instance(), value)
 }
 
 func (l *TListView) StateImagesWidth() int32 {
-    return ListView_GetStateImagesWidth(l.instance)
+    return ListView_GetStateImagesWidth(l._instance())
 }
 
 func (l *TListView) SetStateImagesWidth(value int32) {
-    ListView_SetStateImagesWidth(l.instance, value)
+    ListView_SetStateImagesWidth(l._instance(), value)
 }
 
 func (l *TListView) ToolTips() bool {
-    return ListView_GetToolTips(l.instance)
+    return ListView_GetToolTips(l._instance())
 }
 
 func (l *TListView) SetToolTips(value bool) {
-    ListView_SetToolTips(l.instance, value)
+    ListView_SetToolTips(l._instance(), value)
 }
 
 func (l *TListView) ScrollBars() TScrollStyle {
-    return ListView_GetScrollBars(l.instance)
+    return ListView_GetScrollBars(l._instance())
 }
 
 func (l *TListView) SetScrollBars(value TScrollStyle) {
-    ListView_SetScrollBars(l.instance, value)
+    ListView_SetScrollBars(l._instance(), value)
 }
 
 func (l *TListView) ColumnCount() int32 {
-    return ListView_GetColumnCount(l.instance)
+    return ListView_GetColumnCount(l._instance())
 }
 
 func (l *TListView) Action() *TAction {
-    return AsAction(ListView_GetAction(l.instance))
+    return AsAction(ListView_GetAction(l._instance()))
 }
 
 func (l *TListView) SetAction(value IComponent) {
-    ListView_SetAction(l.instance, CheckPtr(value))
+    ListView_SetAction(l._instance(), CheckPtr(value))
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (l *TListView) Align() TAlign {
-    return ListView_GetAlign(l.instance)
+    return ListView_GetAlign(l._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (l *TListView) SetAlign(value TAlign) {
-    ListView_SetAlign(l.instance, value)
+    ListView_SetAlign(l._instance(), value)
 }
 
 func (l *TListView) AllocBy() int32 {
-    return ListView_GetAllocBy(l.instance)
+    return ListView_GetAllocBy(l._instance())
 }
 
 func (l *TListView) SetAllocBy(value int32) {
-    ListView_SetAllocBy(l.instance, value)
+    ListView_SetAllocBy(l._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (l *TListView) Anchors() TAnchors {
-    return ListView_GetAnchors(l.instance)
+    return ListView_GetAnchors(l._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (l *TListView) SetAnchors(value TAnchors) {
-    ListView_SetAnchors(l.instance, value)
+    ListView_SetAnchors(l._instance(), value)
 }
 
 func (l *TListView) BiDiMode() TBiDiMode {
-    return ListView_GetBiDiMode(l.instance)
+    return ListView_GetBiDiMode(l._instance())
 }
 
 func (l *TListView) SetBiDiMode(value TBiDiMode) {
-    ListView_SetBiDiMode(l.instance, value)
+    ListView_SetBiDiMode(l._instance(), value)
 }
 
+// BorderStyle
+//
 // 获取窗口边框样式。比如：无边框，单一边框等。
 func (l *TListView) BorderStyle() TBorderStyle {
-    return ListView_GetBorderStyle(l.instance)
+    return ListView_GetBorderStyle(l._instance())
 }
 
+// SetBorderStyle
+//
 // 设置窗口边框样式。比如：无边框，单一边框等。
 func (l *TListView) SetBorderStyle(value TBorderStyle) {
-    ListView_SetBorderStyle(l.instance, value)
+    ListView_SetBorderStyle(l._instance(), value)
 }
 
+// BorderWidth
+//
 // 获取边框的宽度。
 func (l *TListView) BorderWidth() int32 {
-    return ListView_GetBorderWidth(l.instance)
+    return ListView_GetBorderWidth(l._instance())
 }
 
+// SetBorderWidth
+//
 // 设置边框的宽度。
 func (l *TListView) SetBorderWidth(value int32) {
-    ListView_SetBorderWidth(l.instance, value)
+    ListView_SetBorderWidth(l._instance(), value)
 }
 
 func (l *TListView) Checkboxes() bool {
-    return ListView_GetCheckboxes(l.instance)
+    return ListView_GetCheckboxes(l._instance())
 }
 
 func (l *TListView) SetCheckboxes(value bool) {
-    ListView_SetCheckboxes(l.instance, value)
+    ListView_SetCheckboxes(l._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (l *TListView) Color() TColor {
-    return ListView_GetColor(l.instance)
+    return ListView_GetColor(l._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (l *TListView) SetColor(value TColor) {
-    ListView_SetColor(l.instance, value)
+    ListView_SetColor(l._instance(), value)
 }
 
 func (l *TListView) Columns() *TListColumns {
-    return AsListColumns(ListView_GetColumns(l.instance))
+    return AsListColumns(ListView_GetColumns(l._instance()))
 }
 
 func (l *TListView) SetColumns(value *TListColumns) {
-    ListView_SetColumns(l.instance, CheckPtr(value))
+    ListView_SetColumns(l._instance(), CheckPtr(value))
 }
 
 func (l *TListView) ColumnClick() bool {
-    return ListView_GetColumnClick(l.instance)
+    return ListView_GetColumnClick(l._instance())
 }
 
 func (l *TListView) SetColumnClick(value bool) {
-    ListView_SetColumnClick(l.instance, value)
+    ListView_SetColumnClick(l._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (l *TListView) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(ListView_GetConstraints(l.instance))
+    return AsSizeConstraints(ListView_GetConstraints(l._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (l *TListView) SetConstraints(value *TSizeConstraints) {
-    ListView_SetConstraints(l.instance, CheckPtr(value))
+    ListView_SetConstraints(l._instance(), CheckPtr(value))
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (l *TListView) DoubleBuffered() bool {
-    return ListView_GetDoubleBuffered(l.instance)
+    return ListView_GetDoubleBuffered(l._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (l *TListView) SetDoubleBuffered(value bool) {
-    ListView_SetDoubleBuffered(l.instance, value)
+    ListView_SetDoubleBuffered(l._instance(), value)
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (l *TListView) DragCursor() TCursor {
-    return ListView_GetDragCursor(l.instance)
+    return ListView_GetDragCursor(l._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (l *TListView) SetDragCursor(value TCursor) {
-    ListView_SetDragCursor(l.instance, value)
+    ListView_SetDragCursor(l._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (l *TListView) DragKind() TDragKind {
-    return ListView_GetDragKind(l.instance)
+    return ListView_GetDragKind(l._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (l *TListView) SetDragKind(value TDragKind) {
-    ListView_SetDragKind(l.instance, value)
+    ListView_SetDragKind(l._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (l *TListView) DragMode() TDragMode {
-    return ListView_GetDragMode(l.instance)
+    return ListView_GetDragMode(l._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (l *TListView) SetDragMode(value TDragMode) {
-    ListView_SetDragMode(l.instance, value)
+    ListView_SetDragMode(l._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (l *TListView) Enabled() bool {
-    return ListView_GetEnabled(l.instance)
+    return ListView_GetEnabled(l._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (l *TListView) SetEnabled(value bool) {
-    ListView_SetEnabled(l.instance, value)
+    ListView_SetEnabled(l._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (l *TListView) Font() *TFont {
-    return AsFont(ListView_GetFont(l.instance))
+    return AsFont(ListView_GetFont(l._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (l *TListView) SetFont(value *TFont) {
-    ListView_SetFont(l.instance, CheckPtr(value))
+    ListView_SetFont(l._instance(), CheckPtr(value))
 }
 
 func (l *TListView) FlatScrollBars() bool {
-    return ListView_GetFlatScrollBars(l.instance)
+    return ListView_GetFlatScrollBars(l._instance())
 }
 
 func (l *TListView) SetFlatScrollBars(value bool) {
-    ListView_SetFlatScrollBars(l.instance, value)
+    ListView_SetFlatScrollBars(l._instance(), value)
 }
 
 func (l *TListView) FullDrag() bool {
-    return ListView_GetFullDrag(l.instance)
+    return ListView_GetFullDrag(l._instance())
 }
 
 func (l *TListView) SetFullDrag(value bool) {
-    ListView_SetFullDrag(l.instance, value)
+    ListView_SetFullDrag(l._instance(), value)
 }
 
 func (l *TListView) GridLines() bool {
-    return ListView_GetGridLines(l.instance)
+    return ListView_GetGridLines(l._instance())
 }
 
 func (l *TListView) SetGridLines(value bool) {
-    ListView_SetGridLines(l.instance, value)
+    ListView_SetGridLines(l._instance(), value)
 }
 
+// HideSelection
+//
 // 获取隐藏选择。
 func (l *TListView) HideSelection() bool {
-    return ListView_GetHideSelection(l.instance)
+    return ListView_GetHideSelection(l._instance())
 }
 
+// SetHideSelection
+//
 // 设置隐藏选择。
 func (l *TListView) SetHideSelection(value bool) {
-    ListView_SetHideSelection(l.instance, value)
+    ListView_SetHideSelection(l._instance(), value)
 }
 
 func (l *TListView) HotTrack() bool {
-    return ListView_GetHotTrack(l.instance)
+    return ListView_GetHotTrack(l._instance())
 }
 
 func (l *TListView) SetHotTrack(value bool) {
-    ListView_SetHotTrack(l.instance, value)
+    ListView_SetHotTrack(l._instance(), value)
 }
 
 func (l *TListView) IconOptions() *TIconOptions {
-    return AsIconOptions(ListView_GetIconOptions(l.instance))
+    return AsIconOptions(ListView_GetIconOptions(l._instance()))
 }
 
 func (l *TListView) SetIconOptions(value IObject) {
-    ListView_SetIconOptions(l.instance, CheckPtr(value))
+    ListView_SetIconOptions(l._instance(), CheckPtr(value))
 }
 
 func (l *TListView) Items() *TListItems {
-    return AsListItems(ListView_GetItems(l.instance))
+    return AsListItems(ListView_GetItems(l._instance()))
 }
 
 func (l *TListView) SetItems(value *TListItems) {
-    ListView_SetItems(l.instance, CheckPtr(value))
+    ListView_SetItems(l._instance(), CheckPtr(value))
 }
 
 func (l *TListView) LargeImages() *TImageList {
-    return AsImageList(ListView_GetLargeImages(l.instance))
+    return AsImageList(ListView_GetLargeImages(l._instance()))
 }
 
 func (l *TListView) SetLargeImages(value IComponent) {
-    ListView_SetLargeImages(l.instance, CheckPtr(value))
+    ListView_SetLargeImages(l._instance(), CheckPtr(value))
 }
 
 func (l *TListView) MultiSelect() bool {
-    return ListView_GetMultiSelect(l.instance)
+    return ListView_GetMultiSelect(l._instance())
 }
 
 func (l *TListView) SetMultiSelect(value bool) {
-    ListView_SetMultiSelect(l.instance, value)
+    ListView_SetMultiSelect(l._instance(), value)
 }
 
 func (l *TListView) OwnerData() bool {
-    return ListView_GetOwnerData(l.instance)
+    return ListView_GetOwnerData(l._instance())
 }
 
 func (l *TListView) SetOwnerData(value bool) {
-    ListView_SetOwnerData(l.instance, value)
+    ListView_SetOwnerData(l._instance(), value)
 }
 
 func (l *TListView) OwnerDraw() bool {
-    return ListView_GetOwnerDraw(l.instance)
+    return ListView_GetOwnerDraw(l._instance())
 }
 
 func (l *TListView) SetOwnerDraw(value bool) {
-    ListView_SetOwnerDraw(l.instance, value)
+    ListView_SetOwnerDraw(l._instance(), value)
 }
 
+// ReadOnly
+//
 // 获取只读。
 func (l *TListView) ReadOnly() bool {
-    return ListView_GetReadOnly(l.instance)
+    return ListView_GetReadOnly(l._instance())
 }
 
+// SetReadOnly
+//
 // 设置只读。
 func (l *TListView) SetReadOnly(value bool) {
-    ListView_SetReadOnly(l.instance, value)
+    ListView_SetReadOnly(l._instance(), value)
 }
 
 func (l *TListView) RowSelect() bool {
-    return ListView_GetRowSelect(l.instance)
+    return ListView_GetRowSelect(l._instance())
 }
 
 func (l *TListView) SetRowSelect(value bool) {
-    ListView_SetRowSelect(l.instance, value)
+    ListView_SetRowSelect(l._instance(), value)
 }
 
+// ParentColor
+//
 // 获取使用父容器颜色。
 //
 // Get parent color.
 func (l *TListView) ParentColor() bool {
-    return ListView_GetParentColor(l.instance)
+    return ListView_GetParentColor(l._instance())
 }
 
+// SetParentColor
+//
 // 设置使用父容器颜色。
 //
 // Set parent color.
 func (l *TListView) SetParentColor(value bool) {
-    ListView_SetParentColor(l.instance, value)
+    ListView_SetParentColor(l._instance(), value)
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (l *TListView) ParentDoubleBuffered() bool {
-    return ListView_GetParentDoubleBuffered(l.instance)
+    return ListView_GetParentDoubleBuffered(l._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (l *TListView) SetParentDoubleBuffered(value bool) {
-    ListView_SetParentDoubleBuffered(l.instance, value)
+    ListView_SetParentDoubleBuffered(l._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (l *TListView) ParentFont() bool {
-    return ListView_GetParentFont(l.instance)
+    return ListView_GetParentFont(l._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (l *TListView) SetParentFont(value bool) {
-    ListView_SetParentFont(l.instance, value)
+    ListView_SetParentFont(l._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (l *TListView) ParentShowHint() bool {
-    return ListView_GetParentShowHint(l.instance)
+    return ListView_GetParentShowHint(l._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (l *TListView) SetParentShowHint(value bool) {
-    ListView_SetParentShowHint(l.instance, value)
+    ListView_SetParentShowHint(l._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (l *TListView) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(ListView_GetPopupMenu(l.instance))
+    return AsPopupMenu(ListView_GetPopupMenu(l._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (l *TListView) SetPopupMenu(value IComponent) {
-    ListView_SetPopupMenu(l.instance, CheckPtr(value))
+    ListView_SetPopupMenu(l._instance(), CheckPtr(value))
 }
 
 func (l *TListView) ShowColumnHeaders() bool {
-    return ListView_GetShowColumnHeaders(l.instance)
+    return ListView_GetShowColumnHeaders(l._instance())
 }
 
 func (l *TListView) SetShowColumnHeaders(value bool) {
-    ListView_SetShowColumnHeaders(l.instance, value)
+    ListView_SetShowColumnHeaders(l._instance(), value)
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (l *TListView) ShowHint() bool {
-    return ListView_GetShowHint(l.instance)
+    return ListView_GetShowHint(l._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (l *TListView) SetShowHint(value bool) {
-    ListView_SetShowHint(l.instance, value)
+    ListView_SetShowHint(l._instance(), value)
 }
 
 func (l *TListView) SmallImages() *TImageList {
-    return AsImageList(ListView_GetSmallImages(l.instance))
+    return AsImageList(ListView_GetSmallImages(l._instance()))
 }
 
 func (l *TListView) SetSmallImages(value IComponent) {
-    ListView_SetSmallImages(l.instance, CheckPtr(value))
+    ListView_SetSmallImages(l._instance(), CheckPtr(value))
 }
 
 func (l *TListView) SortType() TSortType {
-    return ListView_GetSortType(l.instance)
+    return ListView_GetSortType(l._instance())
 }
 
 func (l *TListView) SetSortType(value TSortType) {
-    ListView_SetSortType(l.instance, value)
+    ListView_SetSortType(l._instance(), value)
 }
 
 func (l *TListView) StateImages() *TImageList {
-    return AsImageList(ListView_GetStateImages(l.instance))
+    return AsImageList(ListView_GetStateImages(l._instance()))
 }
 
 func (l *TListView) SetStateImages(value IComponent) {
-    ListView_SetStateImages(l.instance, CheckPtr(value))
+    ListView_SetStateImages(l._instance(), CheckPtr(value))
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (l *TListView) TabOrder() TTabOrder {
-    return ListView_GetTabOrder(l.instance)
+    return ListView_GetTabOrder(l._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (l *TListView) SetTabOrder(value TTabOrder) {
-    ListView_SetTabOrder(l.instance, value)
+    ListView_SetTabOrder(l._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (l *TListView) TabStop() bool {
-    return ListView_GetTabStop(l.instance)
+    return ListView_GetTabStop(l._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (l *TListView) SetTabStop(value bool) {
-    ListView_SetTabStop(l.instance, value)
+    ListView_SetTabStop(l._instance(), value)
 }
 
 func (l *TListView) ViewStyle() TViewStyle {
-    return ListView_GetViewStyle(l.instance)
+    return ListView_GetViewStyle(l._instance())
 }
 
 func (l *TListView) SetViewStyle(value TViewStyle) {
-    ListView_SetViewStyle(l.instance, value)
+    ListView_SetViewStyle(l._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (l *TListView) Visible() bool {
-    return ListView_GetVisible(l.instance)
+    return ListView_GetVisible(l._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (l *TListView) SetVisible(value bool) {
-    ListView_SetVisible(l.instance, value)
+    ListView_SetVisible(l._instance(), value)
 }
 
 func (l *TListView) SetOnAdvancedCustomDraw(fn TLVAdvancedCustomDrawEvent) {
-    ListView_SetOnAdvancedCustomDraw(l.instance, fn)
+    ListView_SetOnAdvancedCustomDraw(l._instance(), fn)
 }
 
 func (l *TListView) SetOnAdvancedCustomDrawItem(fn TLVAdvancedCustomDrawItemEvent) {
-    ListView_SetOnAdvancedCustomDrawItem(l.instance, fn)
+    ListView_SetOnAdvancedCustomDrawItem(l._instance(), fn)
 }
 
 func (l *TListView) SetOnAdvancedCustomDrawSubItem(fn TLVAdvancedCustomDrawSubItemEvent) {
-    ListView_SetOnAdvancedCustomDrawSubItem(l.instance, fn)
+    ListView_SetOnAdvancedCustomDrawSubItem(l._instance(), fn)
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (l *TListView) SetOnChange(fn TLVChangeEvent) {
-    ListView_SetOnChange(l.instance, fn)
+    ListView_SetOnChange(l._instance(), fn)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (l *TListView) SetOnClick(fn TNotifyEvent) {
-    ListView_SetOnClick(l.instance, fn)
+    ListView_SetOnClick(l._instance(), fn)
 }
 
 func (l *TListView) SetOnColumnClick(fn TLVColumnClickEvent) {
-    ListView_SetOnColumnClick(l.instance, fn)
+    ListView_SetOnColumnClick(l._instance(), fn)
 }
 
 func (l *TListView) SetOnCompare(fn TLVCompareEvent) {
-    ListView_SetOnCompare(l.instance, fn)
+    ListView_SetOnCompare(l._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (l *TListView) SetOnContextPopup(fn TContextPopupEvent) {
-    ListView_SetOnContextPopup(l.instance, fn)
+    ListView_SetOnContextPopup(l._instance(), fn)
 }
 
 func (l *TListView) SetOnCustomDraw(fn TLVCustomDrawEvent) {
-    ListView_SetOnCustomDraw(l.instance, fn)
+    ListView_SetOnCustomDraw(l._instance(), fn)
 }
 
 func (l *TListView) SetOnCustomDrawItem(fn TLVCustomDrawItemEvent) {
-    ListView_SetOnCustomDrawItem(l.instance, fn)
+    ListView_SetOnCustomDrawItem(l._instance(), fn)
 }
 
 func (l *TListView) SetOnCustomDrawSubItem(fn TLVCustomDrawSubItemEvent) {
-    ListView_SetOnCustomDrawSubItem(l.instance, fn)
+    ListView_SetOnCustomDrawSubItem(l._instance(), fn)
 }
 
 func (l *TListView) SetOnData(fn TLVDataEvent) {
-    ListView_SetOnData(l.instance, fn)
+    ListView_SetOnData(l._instance(), fn)
 }
 
 func (l *TListView) SetOnDataFind(fn TLVDataFindEvent) {
-    ListView_SetOnDataFind(l.instance, fn)
+    ListView_SetOnDataFind(l._instance(), fn)
 }
 
 func (l *TListView) SetOnDataHint(fn TLVDataHintEvent) {
-    ListView_SetOnDataHint(l.instance, fn)
+    ListView_SetOnDataHint(l._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (l *TListView) SetOnDblClick(fn TNotifyEvent) {
-    ListView_SetOnDblClick(l.instance, fn)
+    ListView_SetOnDblClick(l._instance(), fn)
 }
 
 func (l *TListView) SetOnDeletion(fn TLVDeletedEvent) {
-    ListView_SetOnDeletion(l.instance, fn)
+    ListView_SetOnDeletion(l._instance(), fn)
 }
 
 func (l *TListView) SetOnDrawItem(fn TLVDrawItemEvent) {
-    ListView_SetOnDrawItem(l.instance, fn)
+    ListView_SetOnDrawItem(l._instance(), fn)
 }
 
 func (l *TListView) SetOnEdited(fn TLVEditedEvent) {
-    ListView_SetOnEdited(l.instance, fn)
+    ListView_SetOnEdited(l._instance(), fn)
 }
 
 func (l *TListView) SetOnEditing(fn TLVEditingEvent) {
-    ListView_SetOnEditing(l.instance, fn)
+    ListView_SetOnEditing(l._instance(), fn)
 }
 
+// SetOnEndDock
+//
 // 设置停靠结束事件。
 //
 // Set Dock end event.
 func (l *TListView) SetOnEndDock(fn TEndDragEvent) {
-    ListView_SetOnEndDock(l.instance, fn)
+    ListView_SetOnEndDock(l._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (l *TListView) SetOnEndDrag(fn TEndDragEvent) {
-    ListView_SetOnEndDrag(l.instance, fn)
+    ListView_SetOnEndDrag(l._instance(), fn)
 }
 
+// SetOnEnter
+//
 // 设置焦点进入。
 //
 // Set Focus entry.
 func (l *TListView) SetOnEnter(fn TNotifyEvent) {
-    ListView_SetOnEnter(l.instance, fn)
+    ListView_SetOnEnter(l._instance(), fn)
 }
 
+// SetOnExit
+//
 // 设置焦点退出。
 //
 // Set Focus exit.
 func (l *TListView) SetOnExit(fn TNotifyEvent) {
-    ListView_SetOnExit(l.instance, fn)
+    ListView_SetOnExit(l._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (l *TListView) SetOnDragDrop(fn TDragDropEvent) {
-    ListView_SetOnDragDrop(l.instance, fn)
+    ListView_SetOnDragDrop(l._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (l *TListView) SetOnDragOver(fn TDragOverEvent) {
-    ListView_SetOnDragOver(l.instance, fn)
+    ListView_SetOnDragOver(l._instance(), fn)
 }
 
 func (l *TListView) SetOnInsert(fn TLVDeletedEvent) {
-    ListView_SetOnInsert(l.instance, fn)
+    ListView_SetOnInsert(l._instance(), fn)
 }
 
+// SetOnKeyDown
+//
 // 设置键盘按键按下事件。
 //
 // Set Keyboard button press event.
 func (l *TListView) SetOnKeyDown(fn TKeyEvent) {
-    ListView_SetOnKeyDown(l.instance, fn)
+    ListView_SetOnKeyDown(l._instance(), fn)
 }
 
+// SetOnKeyPress
+//
 // 设置键键下事件。
 func (l *TListView) SetOnKeyPress(fn TKeyPressEvent) {
-    ListView_SetOnKeyPress(l.instance, fn)
+    ListView_SetOnKeyPress(l._instance(), fn)
 }
 
+// SetOnKeyUp
+//
 // 设置键盘按键抬起事件。
 //
 // Set Keyboard button lift event.
 func (l *TListView) SetOnKeyUp(fn TKeyEvent) {
-    ListView_SetOnKeyUp(l.instance, fn)
+    ListView_SetOnKeyUp(l._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (l *TListView) SetOnMouseDown(fn TMouseEvent) {
-    ListView_SetOnMouseDown(l.instance, fn)
+    ListView_SetOnMouseDown(l._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (l *TListView) SetOnMouseEnter(fn TNotifyEvent) {
-    ListView_SetOnMouseEnter(l.instance, fn)
+    ListView_SetOnMouseEnter(l._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (l *TListView) SetOnMouseLeave(fn TNotifyEvent) {
-    ListView_SetOnMouseLeave(l.instance, fn)
+    ListView_SetOnMouseLeave(l._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (l *TListView) SetOnMouseMove(fn TMouseMoveEvent) {
-    ListView_SetOnMouseMove(l.instance, fn)
+    ListView_SetOnMouseMove(l._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (l *TListView) SetOnMouseUp(fn TMouseEvent) {
-    ListView_SetOnMouseUp(l.instance, fn)
+    ListView_SetOnMouseUp(l._instance(), fn)
 }
 
+// SetOnResize
+//
 // 设置大小被改变事件。
 func (l *TListView) SetOnResize(fn TNotifyEvent) {
-    ListView_SetOnResize(l.instance, fn)
+    ListView_SetOnResize(l._instance(), fn)
 }
 
 func (l *TListView) SetOnSelectItem(fn TLVSelectItemEvent) {
-    ListView_SetOnSelectItem(l.instance, fn)
+    ListView_SetOnSelectItem(l._instance(), fn)
 }
 
 func (l *TListView) SetOnItemChecked(fn TLVCheckedItemEvent) {
-    ListView_SetOnItemChecked(l.instance, fn)
+    ListView_SetOnItemChecked(l._instance(), fn)
 }
 
+// SetOnStartDock
+//
 // 设置启动停靠。
 func (l *TListView) SetOnStartDock(fn TStartDockEvent) {
-    ListView_SetOnStartDock(l.instance, fn)
+    ListView_SetOnStartDock(l._instance(), fn)
 }
 
+// Canvas
+//
 // 获取画布。
 func (l *TListView) Canvas() *TCanvas {
-    return AsCanvas(ListView_GetCanvas(l.instance))
+    return AsCanvas(ListView_GetCanvas(l._instance()))
 }
 
 func (l *TListView) DropTarget() *TListItem {
-    return AsListItem(ListView_GetDropTarget(l.instance))
+    return AsListItem(ListView_GetDropTarget(l._instance()))
 }
 
 func (l *TListView) SetDropTarget(value *TListItem) {
-    ListView_SetDropTarget(l.instance, CheckPtr(value))
+    ListView_SetDropTarget(l._instance(), CheckPtr(value))
 }
 
 func (l *TListView) ItemFocused() *TListItem {
-    return AsListItem(ListView_GetItemFocused(l.instance))
+    return AsListItem(ListView_GetItemFocused(l._instance()))
 }
 
 func (l *TListView) SetItemFocused(value *TListItem) {
-    ListView_SetItemFocused(l.instance, CheckPtr(value))
+    ListView_SetItemFocused(l._instance(), CheckPtr(value))
 }
 
 func (l *TListView) SelCount() int32 {
-    return ListView_GetSelCount(l.instance)
+    return ListView_GetSelCount(l._instance())
 }
 
 func (l *TListView) Selected() *TListItem {
-    return AsListItem(ListView_GetSelected(l.instance))
+    return AsListItem(ListView_GetSelected(l._instance()))
 }
 
 func (l *TListView) SetSelected(value *TListItem) {
-    ListView_SetSelected(l.instance, CheckPtr(value))
+    ListView_SetSelected(l._instance(), CheckPtr(value))
 }
 
 func (l *TListView) TopItem() *TListItem {
-    return AsListItem(ListView_GetTopItem(l.instance))
+    return AsListItem(ListView_GetTopItem(l._instance()))
 }
 
 func (l *TListView) VisibleRowCount() int32 {
-    return ListView_GetVisibleRowCount(l.instance)
+    return ListView_GetVisibleRowCount(l._instance())
 }
 
 func (l *TListView) ItemIndex() int32 {
-    return ListView_GetItemIndex(l.instance)
+    return ListView_GetItemIndex(l._instance())
 }
 
 func (l *TListView) SetItemIndex(value int32) {
-    ListView_SetItemIndex(l.instance, value)
+    ListView_SetItemIndex(l._instance(), value)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (l *TListView) DockClientCount() int32 {
-    return ListView_GetDockClientCount(l.instance)
+    return ListView_GetDockClientCount(l._instance())
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (l *TListView) DockSite() bool {
-    return ListView_GetDockSite(l.instance)
+    return ListView_GetDockSite(l._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (l *TListView) SetDockSite(value bool) {
-    ListView_SetDockSite(l.instance, value)
+    ListView_SetDockSite(l._instance(), value)
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (l *TListView) MouseInClient() bool {
-    return ListView_GetMouseInClient(l.instance)
+    return ListView_GetMouseInClient(l._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (l *TListView) VisibleDockClientCount() int32 {
-    return ListView_GetVisibleDockClientCount(l.instance)
+    return ListView_GetVisibleDockClientCount(l._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (l *TListView) Brush() *TBrush {
-    return AsBrush(ListView_GetBrush(l.instance))
+    return AsBrush(ListView_GetBrush(l._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (l *TListView) ControlCount() int32 {
-    return ListView_GetControlCount(l.instance)
+    return ListView_GetControlCount(l._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (l *TListView) Handle() HWND {
-    return ListView_GetHandle(l.instance)
+    return ListView_GetHandle(l._instance())
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (l *TListView) ParentWindow() HWND {
-    return ListView_GetParentWindow(l.instance)
+    return ListView_GetParentWindow(l._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (l *TListView) SetParentWindow(value HWND) {
-    ListView_SetParentWindow(l.instance, value)
+    ListView_SetParentWindow(l._instance(), value)
 }
 
 func (l *TListView) Showing() bool {
-    return ListView_GetShowing(l.instance)
+    return ListView_GetShowing(l._instance())
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (l *TListView) UseDockManager() bool {
-    return ListView_GetUseDockManager(l.instance)
+    return ListView_GetUseDockManager(l._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (l *TListView) SetUseDockManager(value bool) {
-    ListView_SetUseDockManager(l.instance, value)
+    ListView_SetUseDockManager(l._instance(), value)
 }
 
 func (l *TListView) BoundsRect() TRect {
-    return ListView_GetBoundsRect(l.instance)
+    return ListView_GetBoundsRect(l._instance())
 }
 
 func (l *TListView) SetBoundsRect(value TRect) {
-    ListView_SetBoundsRect(l.instance, value)
+    ListView_SetBoundsRect(l._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (l *TListView) ClientHeight() int32 {
-    return ListView_GetClientHeight(l.instance)
+    return ListView_GetClientHeight(l._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (l *TListView) SetClientHeight(value int32) {
-    ListView_SetClientHeight(l.instance, value)
+    ListView_SetClientHeight(l._instance(), value)
 }
 
 func (l *TListView) ClientOrigin() TPoint {
-    return ListView_GetClientOrigin(l.instance)
+    return ListView_GetClientOrigin(l._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (l *TListView) ClientRect() TRect {
-    return ListView_GetClientRect(l.instance)
+    return ListView_GetClientRect(l._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (l *TListView) ClientWidth() int32 {
-    return ListView_GetClientWidth(l.instance)
+    return ListView_GetClientWidth(l._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (l *TListView) SetClientWidth(value int32) {
-    ListView_SetClientWidth(l.instance, value)
+    ListView_SetClientWidth(l._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (l *TListView) ControlState() TControlState {
-    return ListView_GetControlState(l.instance)
+    return ListView_GetControlState(l._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (l *TListView) SetControlState(value TControlState) {
-    ListView_SetControlState(l.instance, value)
+    ListView_SetControlState(l._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (l *TListView) ControlStyle() TControlStyle {
-    return ListView_GetControlStyle(l.instance)
+    return ListView_GetControlStyle(l._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (l *TListView) SetControlStyle(value TControlStyle) {
-    ListView_SetControlStyle(l.instance, value)
+    ListView_SetControlStyle(l._instance(), value)
 }
 
 func (l *TListView) Floating() bool {
-    return ListView_GetFloating(l.instance)
+    return ListView_GetFloating(l._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (l *TListView) Parent() *TWinControl {
-    return AsWinControl(ListView_GetParent(l.instance))
+    return AsWinControl(ListView_GetParent(l._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (l *TListView) SetParent(value IWinControl) {
-    ListView_SetParent(l.instance, CheckPtr(value))
+    ListView_SetParent(l._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (l *TListView) Left() int32 {
-    return ListView_GetLeft(l.instance)
+    return ListView_GetLeft(l._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (l *TListView) SetLeft(value int32) {
-    ListView_SetLeft(l.instance, value)
+    ListView_SetLeft(l._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (l *TListView) Top() int32 {
-    return ListView_GetTop(l.instance)
+    return ListView_GetTop(l._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (l *TListView) SetTop(value int32) {
-    ListView_SetTop(l.instance, value)
+    ListView_SetTop(l._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (l *TListView) Width() int32 {
-    return ListView_GetWidth(l.instance)
+    return ListView_GetWidth(l._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (l *TListView) SetWidth(value int32) {
-    ListView_SetWidth(l.instance, value)
+    ListView_SetWidth(l._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (l *TListView) Height() int32 {
-    return ListView_GetHeight(l.instance)
+    return ListView_GetHeight(l._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (l *TListView) SetHeight(value int32) {
-    ListView_SetHeight(l.instance, value)
+    ListView_SetHeight(l._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (l *TListView) Cursor() TCursor {
-    return ListView_GetCursor(l.instance)
+    return ListView_GetCursor(l._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (l *TListView) SetCursor(value TCursor) {
-    ListView_SetCursor(l.instance, value)
+    ListView_SetCursor(l._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (l *TListView) Hint() string {
-    return ListView_GetHint(l.instance)
+    return ListView_GetHint(l._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (l *TListView) SetHint(value string) {
-    ListView_SetHint(l.instance, value)
+    ListView_SetHint(l._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (l *TListView) ComponentCount() int32 {
-    return ListView_GetComponentCount(l.instance)
+    return ListView_GetComponentCount(l._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (l *TListView) ComponentIndex() int32 {
-    return ListView_GetComponentIndex(l.instance)
+    return ListView_GetComponentIndex(l._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (l *TListView) SetComponentIndex(value int32) {
-    ListView_SetComponentIndex(l.instance, value)
+    ListView_SetComponentIndex(l._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (l *TListView) Owner() *TComponent {
-    return AsComponent(ListView_GetOwner(l.instance))
+    return AsComponent(ListView_GetOwner(l._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (l *TListView) Name() string {
-    return ListView_GetName(l.instance)
+    return ListView_GetName(l._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (l *TListView) SetName(value string) {
-    ListView_SetName(l.instance, value)
+    ListView_SetName(l._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (l *TListView) Tag() int {
-    return ListView_GetTag(l.instance)
+    return ListView_GetTag(l._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (l *TListView) SetTag(value int) {
-    ListView_SetTag(l.instance, value)
+    ListView_SetTag(l._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (l *TListView) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(ListView_GetAnchorSideLeft(l.instance))
+    return AsAnchorSide(ListView_GetAnchorSideLeft(l._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (l *TListView) SetAnchorSideLeft(value *TAnchorSide) {
-    ListView_SetAnchorSideLeft(l.instance, CheckPtr(value))
+    ListView_SetAnchorSideLeft(l._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (l *TListView) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(ListView_GetAnchorSideTop(l.instance))
+    return AsAnchorSide(ListView_GetAnchorSideTop(l._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (l *TListView) SetAnchorSideTop(value *TAnchorSide) {
-    ListView_SetAnchorSideTop(l.instance, CheckPtr(value))
+    ListView_SetAnchorSideTop(l._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (l *TListView) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(ListView_GetAnchorSideRight(l.instance))
+    return AsAnchorSide(ListView_GetAnchorSideRight(l._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (l *TListView) SetAnchorSideRight(value *TAnchorSide) {
-    ListView_SetAnchorSideRight(l.instance, CheckPtr(value))
+    ListView_SetAnchorSideRight(l._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (l *TListView) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(ListView_GetAnchorSideBottom(l.instance))
+    return AsAnchorSide(ListView_GetAnchorSideBottom(l._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (l *TListView) SetAnchorSideBottom(value *TAnchorSide) {
-    ListView_SetAnchorSideBottom(l.instance, CheckPtr(value))
+    ListView_SetAnchorSideBottom(l._instance(), CheckPtr(value))
 }
 
 func (l *TListView) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(ListView_GetChildSizing(l.instance))
+    return AsControlChildSizing(ListView_GetChildSizing(l._instance()))
 }
 
 func (l *TListView) SetChildSizing(value *TControlChildSizing) {
-    ListView_SetChildSizing(l.instance, CheckPtr(value))
+    ListView_SetChildSizing(l._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (l *TListView) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(ListView_GetBorderSpacing(l.instance))
+    return AsControlBorderSpacing(ListView_GetBorderSpacing(l._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (l *TListView) SetBorderSpacing(value *TControlBorderSpacing) {
-    ListView_SetBorderSpacing(l.instance, CheckPtr(value))
+    ListView_SetBorderSpacing(l._instance(), CheckPtr(value))
 }
 
 func (l *TListView) Column(Index int32) *TListColumn {
-    return AsListColumn(ListView_GetColumn(l.instance, Index))
+    return AsListColumn(ListView_GetColumn(l._instance(), Index))
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (l *TListView) DockClients(Index int32) *TControl {
-    return AsControl(ListView_GetDockClients(l.instance, Index))
+    return AsControl(ListView_GetDockClients(l._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (l *TListView) Controls(Index int32) *TControl {
-    return AsControl(ListView_GetControls(l.instance, Index))
+    return AsControl(ListView_GetControls(l._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (l *TListView) Components(AIndex int32) *TComponent {
-    return AsComponent(ListView_GetComponents(l.instance, AIndex))
+    return AsComponent(ListView_GetComponents(l._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (l *TListView) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(ListView_GetAnchorSide(l.instance, AKind))
+    return AsAnchorSide(ListView_GetAnchorSide(l._instance(), AKind))
 }
 

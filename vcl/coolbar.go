@@ -19,101 +19,94 @@ import (
 
 type TCoolBar struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewCoolBar
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewCoolBar(owner IComponent) *TCoolBar {
     c := new(TCoolBar)
-    c.instance = CoolBar_Create(CheckPtr(owner))
-    c.ptr = unsafe.Pointer(c.instance)
+    c.instance = unsafe.Pointer(CoolBar_Create(CheckPtr(owner)))
     return c
 }
 
+// AsCoolBar
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsCoolBar(obj interface{}) *TCoolBar {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TCoolBar{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TCoolBar{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsCoolBar.
-func CoolBarFromInst(inst uintptr) *TCoolBar {
-    return AsCoolBar(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsCoolBar.
-func CoolBarFromObj(obj IObject) *TCoolBar {
-    return AsCoolBar(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsCoolBar.
-func CoolBarFromUnsafePointer(ptr unsafe.Pointer) *TCoolBar {
-    return AsCoolBar(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (c *TCoolBar) Free() {
-    if c.instance != 0 {
-        CoolBar_Free(c.instance)
-        c.instance, c.ptr = 0, nullptr
+    if c.instance != nullptr {
+        CoolBar_Free(c._instance())
+        c.instance  = nullptr
     }
 }
 
+func (c *TCoolBar) _instance() uintptr {
+    return uintptr(c.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (c *TCoolBar) Instance() uintptr {
-    return c.instance
+    return c._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (c *TCoolBar) UnsafeAddr() unsafe.Pointer {
-    return c.ptr
+    return c.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (c *TCoolBar) IsValid() bool {
-    return c.instance != 0
+    return c.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (c *TCoolBar) Is() TIs {
-    return TIs(c.instance)
+    return TIs(c._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (c *TCoolBar) As() TAs {
-//    return TAs(c.instance)
+//    return TAs(c._instance())
 //}
 
+// TCoolBarClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,1279 +115,1601 @@ func TCoolBarClass() TClass {
 }
 
 func (c *TCoolBar) FlipChildren(AllLevels bool) {
-    CoolBar_FlipChildren(c.instance, AllLevels)
+    CoolBar_FlipChildren(c._instance(), AllLevels)
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (c *TCoolBar) CanFocus() bool {
-    return CoolBar_CanFocus(c.instance)
+    return CoolBar_CanFocus(c._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (c *TCoolBar) ContainsControl(Control IControl) bool {
-    return CoolBar_ContainsControl(c.instance, CheckPtr(Control))
+    return CoolBar_ContainsControl(c._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (c *TCoolBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(CoolBar_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(CoolBar_ControlAtPos(c._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (c *TCoolBar) DisableAlign() {
-    CoolBar_DisableAlign(c.instance)
+    CoolBar_DisableAlign(c._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (c *TCoolBar) EnableAlign() {
-    CoolBar_EnableAlign(c.instance)
+    CoolBar_EnableAlign(c._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (c *TCoolBar) FindChildControl(ControlName string) *TControl {
-    return AsControl(CoolBar_FindChildControl(c.instance, ControlName))
+    return AsControl(CoolBar_FindChildControl(c._instance(), ControlName))
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (c *TCoolBar) Focused() bool {
-    return CoolBar_Focused(c.instance)
+    return CoolBar_Focused(c._instance())
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (c *TCoolBar) HandleAllocated() bool {
-    return CoolBar_HandleAllocated(c.instance)
+    return CoolBar_HandleAllocated(c._instance())
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (c *TCoolBar) Invalidate() {
-    CoolBar_Invalidate(c.instance)
+    CoolBar_Invalidate(c._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (c *TCoolBar) PaintTo(DC HDC, X int32, Y int32) {
-    CoolBar_PaintTo(c.instance, DC , X , Y)
+    CoolBar_PaintTo(c._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (c *TCoolBar) RemoveControl(AControl IControl) {
-    CoolBar_RemoveControl(c.instance, CheckPtr(AControl))
+    CoolBar_RemoveControl(c._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (c *TCoolBar) Realign() {
-    CoolBar_Realign(c.instance)
+    CoolBar_Realign(c._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (c *TCoolBar) Repaint() {
-    CoolBar_Repaint(c.instance)
+    CoolBar_Repaint(c._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (c *TCoolBar) ScaleBy(M int32, D int32) {
-    CoolBar_ScaleBy(c.instance, M , D)
+    CoolBar_ScaleBy(c._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (c *TCoolBar) ScrollBy(DeltaX int32, DeltaY int32) {
-    CoolBar_ScrollBy(c.instance, DeltaX , DeltaY)
+    CoolBar_ScrollBy(c._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (c *TCoolBar) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    CoolBar_SetBounds(c.instance, ALeft , ATop , AWidth , AHeight)
+    CoolBar_SetBounds(c._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (c *TCoolBar) SetFocus() {
-    CoolBar_SetFocus(c.instance)
+    CoolBar_SetFocus(c._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (c *TCoolBar) Update() {
-    CoolBar_Update(c.instance)
+    CoolBar_Update(c._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (c *TCoolBar) BringToFront() {
-    CoolBar_BringToFront(c.instance)
+    CoolBar_BringToFront(c._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (c *TCoolBar) ClientToScreen(Point TPoint) TPoint {
-    return CoolBar_ClientToScreen(c.instance, Point)
+    return CoolBar_ClientToScreen(c._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (c *TCoolBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return CoolBar_ClientToParent(c.instance, Point , CheckPtr(AParent))
+    return CoolBar_ClientToParent(c._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (c *TCoolBar) Dragging() bool {
-    return CoolBar_Dragging(c.instance)
+    return CoolBar_Dragging(c._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (c *TCoolBar) HasParent() bool {
-    return CoolBar_HasParent(c.instance)
+    return CoolBar_HasParent(c._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (c *TCoolBar) Hide() {
-    CoolBar_Hide(c.instance)
+    CoolBar_Hide(c._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (c *TCoolBar) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return CoolBar_Perform(c.instance, Msg , WParam , LParam)
+    return CoolBar_Perform(c._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (c *TCoolBar) Refresh() {
-    CoolBar_Refresh(c.instance)
+    CoolBar_Refresh(c._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (c *TCoolBar) ScreenToClient(Point TPoint) TPoint {
-    return CoolBar_ScreenToClient(c.instance, Point)
+    return CoolBar_ScreenToClient(c._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (c *TCoolBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return CoolBar_ParentToClient(c.instance, Point , CheckPtr(AParent))
+    return CoolBar_ParentToClient(c._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (c *TCoolBar) SendToBack() {
-    CoolBar_SendToBack(c.instance)
+    CoolBar_SendToBack(c._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (c *TCoolBar) Show() {
-    CoolBar_Show(c.instance)
+    CoolBar_Show(c._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (c *TCoolBar) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return CoolBar_GetTextBuf(c.instance, Buffer , BufSize)
+    return CoolBar_GetTextBuf(c._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (c *TCoolBar) GetTextLen() int32 {
-    return CoolBar_GetTextLen(c.instance)
+    return CoolBar_GetTextLen(c._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (c *TCoolBar) SetTextBuf(Buffer string) {
-    CoolBar_SetTextBuf(c.instance, Buffer)
+    CoolBar_SetTextBuf(c._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (c *TCoolBar) FindComponent(AName string) *TComponent {
-    return AsComponent(CoolBar_FindComponent(c.instance, AName))
+    return AsComponent(CoolBar_FindComponent(c._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (c *TCoolBar) GetNamePath() string {
-    return CoolBar_GetNamePath(c.instance)
+    return CoolBar_GetNamePath(c._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (c *TCoolBar) Assign(Source IObject) {
-    CoolBar_Assign(c.instance, CheckPtr(Source))
+    CoolBar_Assign(c._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (c *TCoolBar) ClassType() TClass {
-    return CoolBar_ClassType(c.instance)
+    return CoolBar_ClassType(c._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (c *TCoolBar) ClassName() string {
-    return CoolBar_ClassName(c.instance)
+    return CoolBar_ClassName(c._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (c *TCoolBar) InstanceSize() int32 {
-    return CoolBar_InstanceSize(c.instance)
+    return CoolBar_InstanceSize(c._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (c *TCoolBar) InheritsFrom(AClass TClass) bool {
-    return CoolBar_InheritsFrom(c.instance, AClass)
+    return CoolBar_InheritsFrom(c._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (c *TCoolBar) Equals(Obj IObject) bool {
-    return CoolBar_Equals(c.instance, CheckPtr(Obj))
+    return CoolBar_Equals(c._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (c *TCoolBar) GetHashCode() int32 {
-    return CoolBar_GetHashCode(c.instance)
+    return CoolBar_GetHashCode(c._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (c *TCoolBar) ToString() string {
-    return CoolBar_ToString(c.instance)
+    return CoolBar_ToString(c._instance())
 }
 
 func (c *TCoolBar) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    CoolBar_AnchorToNeighbour(c.instance, ASide , ASpace , CheckPtr(ASibling))
+    CoolBar_AnchorToNeighbour(c._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (c *TCoolBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    CoolBar_AnchorParallel(c.instance, ASide , ASpace , CheckPtr(ASibling))
+    CoolBar_AnchorParallel(c._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (c *TCoolBar) AnchorHorizontalCenterTo(ASibling IControl) {
-    CoolBar_AnchorHorizontalCenterTo(c.instance, CheckPtr(ASibling))
+    CoolBar_AnchorHorizontalCenterTo(c._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (c *TCoolBar) AnchorVerticalCenterTo(ASibling IControl) {
-    CoolBar_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
+    CoolBar_AnchorVerticalCenterTo(c._instance(), CheckPtr(ASibling))
 }
 
 func (c *TCoolBar) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    CoolBar_AnchorSame(c.instance, ASide , CheckPtr(ASibling))
+    CoolBar_AnchorSame(c._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (c *TCoolBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    CoolBar_AnchorAsAlign(c.instance, ATheAlign , ASpace)
+    CoolBar_AnchorAsAlign(c._instance(), ATheAlign , ASpace)
 }
 
 func (c *TCoolBar) AnchorClient(ASpace int32) {
-    CoolBar_AnchorClient(c.instance, ASpace)
+    CoolBar_AnchorClient(c._instance(), ASpace)
 }
 
 func (c *TCoolBar) ScaleDesignToForm(ASize int32) int32 {
-    return CoolBar_ScaleDesignToForm(c.instance, ASize)
+    return CoolBar_ScaleDesignToForm(c._instance(), ASize)
 }
 
 func (c *TCoolBar) ScaleFormToDesign(ASize int32) int32 {
-    return CoolBar_ScaleFormToDesign(c.instance, ASize)
+    return CoolBar_ScaleFormToDesign(c._instance(), ASize)
 }
 
 func (c *TCoolBar) Scale96ToForm(ASize int32) int32 {
-    return CoolBar_Scale96ToForm(c.instance, ASize)
+    return CoolBar_Scale96ToForm(c._instance(), ASize)
 }
 
 func (c *TCoolBar) ScaleFormTo96(ASize int32) int32 {
-    return CoolBar_ScaleFormTo96(c.instance, ASize)
+    return CoolBar_ScaleFormTo96(c._instance(), ASize)
 }
 
 func (c *TCoolBar) Scale96ToFont(ASize int32) int32 {
-    return CoolBar_Scale96ToFont(c.instance, ASize)
+    return CoolBar_Scale96ToFont(c._instance(), ASize)
 }
 
 func (c *TCoolBar) ScaleFontTo96(ASize int32) int32 {
-    return CoolBar_ScaleFontTo96(c.instance, ASize)
+    return CoolBar_ScaleFontTo96(c._instance(), ASize)
 }
 
 func (c *TCoolBar) ScaleScreenToFont(ASize int32) int32 {
-    return CoolBar_ScaleScreenToFont(c.instance, ASize)
+    return CoolBar_ScaleScreenToFont(c._instance(), ASize)
 }
 
 func (c *TCoolBar) ScaleFontToScreen(ASize int32) int32 {
-    return CoolBar_ScaleFontToScreen(c.instance, ASize)
+    return CoolBar_ScaleFontToScreen(c._instance(), ASize)
 }
 
 func (c *TCoolBar) Scale96ToScreen(ASize int32) int32 {
-    return CoolBar_Scale96ToScreen(c.instance, ASize)
+    return CoolBar_Scale96ToScreen(c._instance(), ASize)
 }
 
 func (c *TCoolBar) ScaleScreenTo96(ASize int32) int32 {
-    return CoolBar_ScaleScreenTo96(c.instance, ASize)
+    return CoolBar_ScaleScreenTo96(c._instance(), ASize)
 }
 
 func (c *TCoolBar) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    CoolBar_AutoAdjustLayout(c.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    CoolBar_AutoAdjustLayout(c._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (c *TCoolBar) FixDesignFontsPPI(ADesignTimePPI int32) {
-    CoolBar_FixDesignFontsPPI(c.instance, ADesignTimePPI)
+    CoolBar_FixDesignFontsPPI(c._instance(), ADesignTimePPI)
 }
 
 func (c *TCoolBar) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    CoolBar_ScaleFontsPPI(c.instance, AToPPI , AProportion)
+    CoolBar_ScaleFontsPPI(c._instance(), AToPPI , AProportion)
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (c *TCoolBar) Align() TAlign {
-    return CoolBar_GetAlign(c.instance)
+    return CoolBar_GetAlign(c._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (c *TCoolBar) SetAlign(value TAlign) {
-    CoolBar_SetAlign(c.instance, value)
+    CoolBar_SetAlign(c._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (c *TCoolBar) Anchors() TAnchors {
-    return CoolBar_GetAnchors(c.instance)
+    return CoolBar_GetAnchors(c._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (c *TCoolBar) SetAnchors(value TAnchors) {
-    CoolBar_SetAnchors(c.instance, value)
+    CoolBar_SetAnchors(c._instance(), value)
 }
 
+// AutoSize
+//
 // 获取自动调整大小。
 func (c *TCoolBar) AutoSize() bool {
-    return CoolBar_GetAutoSize(c.instance)
+    return CoolBar_GetAutoSize(c._instance())
 }
 
+// SetAutoSize
+//
 // 设置自动调整大小。
 func (c *TCoolBar) SetAutoSize(value bool) {
-    CoolBar_SetAutoSize(c.instance, value)
+    CoolBar_SetAutoSize(c._instance(), value)
 }
 
 func (c *TCoolBar) BandBorderStyle() TBorderStyle {
-    return CoolBar_GetBandBorderStyle(c.instance)
+    return CoolBar_GetBandBorderStyle(c._instance())
 }
 
 func (c *TCoolBar) SetBandBorderStyle(value TBorderStyle) {
-    CoolBar_SetBandBorderStyle(c.instance, value)
+    CoolBar_SetBandBorderStyle(c._instance(), value)
 }
 
 func (c *TCoolBar) BandMaximize() TCoolBandMaximize {
-    return CoolBar_GetBandMaximize(c.instance)
+    return CoolBar_GetBandMaximize(c._instance())
 }
 
 func (c *TCoolBar) SetBandMaximize(value TCoolBandMaximize) {
-    CoolBar_SetBandMaximize(c.instance, value)
+    CoolBar_SetBandMaximize(c._instance(), value)
 }
 
 func (c *TCoolBar) Bands() *TCoolBands {
-    return AsCoolBands(CoolBar_GetBands(c.instance))
+    return AsCoolBands(CoolBar_GetBands(c._instance()))
 }
 
 func (c *TCoolBar) SetBands(value *TCoolBands) {
-    CoolBar_SetBands(c.instance, CheckPtr(value))
+    CoolBar_SetBands(c._instance(), CheckPtr(value))
 }
 
+// BorderWidth
+//
 // 获取边框的宽度。
 func (c *TCoolBar) BorderWidth() int32 {
-    return CoolBar_GetBorderWidth(c.instance)
+    return CoolBar_GetBorderWidth(c._instance())
 }
 
+// SetBorderWidth
+//
 // 设置边框的宽度。
 func (c *TCoolBar) SetBorderWidth(value int32) {
-    CoolBar_SetBorderWidth(c.instance, value)
+    CoolBar_SetBorderWidth(c._instance(), value)
 }
 
+// Color
+//
 // 获取颜色。
 //
 // Get color.
 func (c *TCoolBar) Color() TColor {
-    return CoolBar_GetColor(c.instance)
+    return CoolBar_GetColor(c._instance())
 }
 
+// SetColor
+//
 // 设置颜色。
 //
 // Set color.
 func (c *TCoolBar) SetColor(value TColor) {
-    CoolBar_SetColor(c.instance, value)
+    CoolBar_SetColor(c._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (c *TCoolBar) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(CoolBar_GetConstraints(c.instance))
+    return AsSizeConstraints(CoolBar_GetConstraints(c._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (c *TCoolBar) SetConstraints(value *TSizeConstraints) {
-    CoolBar_SetConstraints(c.instance, CheckPtr(value))
+    CoolBar_SetConstraints(c._instance(), CheckPtr(value))
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (c *TCoolBar) DockSite() bool {
-    return CoolBar_GetDockSite(c.instance)
+    return CoolBar_GetDockSite(c._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (c *TCoolBar) SetDockSite(value bool) {
-    CoolBar_SetDockSite(c.instance, value)
+    CoolBar_SetDockSite(c._instance(), value)
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (c *TCoolBar) DoubleBuffered() bool {
-    return CoolBar_GetDoubleBuffered(c.instance)
+    return CoolBar_GetDoubleBuffered(c._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (c *TCoolBar) SetDoubleBuffered(value bool) {
-    CoolBar_SetDoubleBuffered(c.instance, value)
+    CoolBar_SetDoubleBuffered(c._instance(), value)
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (c *TCoolBar) DragCursor() TCursor {
-    return CoolBar_GetDragCursor(c.instance)
+    return CoolBar_GetDragCursor(c._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (c *TCoolBar) SetDragCursor(value TCursor) {
-    CoolBar_SetDragCursor(c.instance, value)
+    CoolBar_SetDragCursor(c._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (c *TCoolBar) DragKind() TDragKind {
-    return CoolBar_GetDragKind(c.instance)
+    return CoolBar_GetDragKind(c._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (c *TCoolBar) SetDragKind(value TDragKind) {
-    CoolBar_SetDragKind(c.instance, value)
+    CoolBar_SetDragKind(c._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (c *TCoolBar) DragMode() TDragMode {
-    return CoolBar_GetDragMode(c.instance)
+    return CoolBar_GetDragMode(c._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (c *TCoolBar) SetDragMode(value TDragMode) {
-    CoolBar_SetDragMode(c.instance, value)
+    CoolBar_SetDragMode(c._instance(), value)
 }
 
 func (c *TCoolBar) EdgeBorders() TEdgeBorders {
-    return CoolBar_GetEdgeBorders(c.instance)
+    return CoolBar_GetEdgeBorders(c._instance())
 }
 
 func (c *TCoolBar) SetEdgeBorders(value TEdgeBorders) {
-    CoolBar_SetEdgeBorders(c.instance, value)
+    CoolBar_SetEdgeBorders(c._instance(), value)
 }
 
 func (c *TCoolBar) EdgeInner() TEdgeStyle {
-    return CoolBar_GetEdgeInner(c.instance)
+    return CoolBar_GetEdgeInner(c._instance())
 }
 
 func (c *TCoolBar) SetEdgeInner(value TEdgeStyle) {
-    CoolBar_SetEdgeInner(c.instance, value)
+    CoolBar_SetEdgeInner(c._instance(), value)
 }
 
 func (c *TCoolBar) EdgeOuter() TEdgeStyle {
-    return CoolBar_GetEdgeOuter(c.instance)
+    return CoolBar_GetEdgeOuter(c._instance())
 }
 
 func (c *TCoolBar) SetEdgeOuter(value TEdgeStyle) {
-    CoolBar_SetEdgeOuter(c.instance, value)
+    CoolBar_SetEdgeOuter(c._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (c *TCoolBar) Enabled() bool {
-    return CoolBar_GetEnabled(c.instance)
+    return CoolBar_GetEnabled(c._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (c *TCoolBar) SetEnabled(value bool) {
-    CoolBar_SetEnabled(c.instance, value)
+    CoolBar_SetEnabled(c._instance(), value)
 }
 
 func (c *TCoolBar) FixedSize() bool {
-    return CoolBar_GetFixedSize(c.instance)
+    return CoolBar_GetFixedSize(c._instance())
 }
 
 func (c *TCoolBar) SetFixedSize(value bool) {
-    CoolBar_SetFixedSize(c.instance, value)
+    CoolBar_SetFixedSize(c._instance(), value)
 }
 
 func (c *TCoolBar) FixedOrder() bool {
-    return CoolBar_GetFixedOrder(c.instance)
+    return CoolBar_GetFixedOrder(c._instance())
 }
 
 func (c *TCoolBar) SetFixedOrder(value bool) {
-    CoolBar_SetFixedOrder(c.instance, value)
+    CoolBar_SetFixedOrder(c._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (c *TCoolBar) Font() *TFont {
-    return AsFont(CoolBar_GetFont(c.instance))
+    return AsFont(CoolBar_GetFont(c._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (c *TCoolBar) SetFont(value *TFont) {
-    CoolBar_SetFont(c.instance, CheckPtr(value))
+    CoolBar_SetFont(c._instance(), CheckPtr(value))
 }
 
+// Images
+//
 // 获取图标索引列表对象。
 func (c *TCoolBar) Images() *TImageList {
-    return AsImageList(CoolBar_GetImages(c.instance))
+    return AsImageList(CoolBar_GetImages(c._instance()))
 }
 
+// SetImages
+//
 // 设置图标索引列表对象。
 func (c *TCoolBar) SetImages(value IComponent) {
-    CoolBar_SetImages(c.instance, CheckPtr(value))
+    CoolBar_SetImages(c._instance(), CheckPtr(value))
 }
 
+// ParentColor
+//
 // 获取使用父容器颜色。
 //
 // Get parent color.
 func (c *TCoolBar) ParentColor() bool {
-    return CoolBar_GetParentColor(c.instance)
+    return CoolBar_GetParentColor(c._instance())
 }
 
+// SetParentColor
+//
 // 设置使用父容器颜色。
 //
 // Set parent color.
 func (c *TCoolBar) SetParentColor(value bool) {
-    CoolBar_SetParentColor(c.instance, value)
+    CoolBar_SetParentColor(c._instance(), value)
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (c *TCoolBar) ParentDoubleBuffered() bool {
-    return CoolBar_GetParentDoubleBuffered(c.instance)
+    return CoolBar_GetParentDoubleBuffered(c._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (c *TCoolBar) SetParentDoubleBuffered(value bool) {
-    CoolBar_SetParentDoubleBuffered(c.instance, value)
+    CoolBar_SetParentDoubleBuffered(c._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (c *TCoolBar) ParentFont() bool {
-    return CoolBar_GetParentFont(c.instance)
+    return CoolBar_GetParentFont(c._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (c *TCoolBar) SetParentFont(value bool) {
-    CoolBar_SetParentFont(c.instance, value)
+    CoolBar_SetParentFont(c._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (c *TCoolBar) ParentShowHint() bool {
-    return CoolBar_GetParentShowHint(c.instance)
+    return CoolBar_GetParentShowHint(c._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (c *TCoolBar) SetParentShowHint(value bool) {
-    CoolBar_SetParentShowHint(c.instance, value)
+    CoolBar_SetParentShowHint(c._instance(), value)
 }
 
 func (c *TCoolBar) Bitmap() *TBitmap {
-    return AsBitmap(CoolBar_GetBitmap(c.instance))
+    return AsBitmap(CoolBar_GetBitmap(c._instance()))
 }
 
 func (c *TCoolBar) SetBitmap(value *TBitmap) {
-    CoolBar_SetBitmap(c.instance, CheckPtr(value))
+    CoolBar_SetBitmap(c._instance(), CheckPtr(value))
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (c *TCoolBar) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(CoolBar_GetPopupMenu(c.instance))
+    return AsPopupMenu(CoolBar_GetPopupMenu(c._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (c *TCoolBar) SetPopupMenu(value IComponent) {
-    CoolBar_SetPopupMenu(c.instance, CheckPtr(value))
+    CoolBar_SetPopupMenu(c._instance(), CheckPtr(value))
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (c *TCoolBar) ShowHint() bool {
-    return CoolBar_GetShowHint(c.instance)
+    return CoolBar_GetShowHint(c._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (c *TCoolBar) SetShowHint(value bool) {
-    CoolBar_SetShowHint(c.instance, value)
+    CoolBar_SetShowHint(c._instance(), value)
 }
 
 func (c *TCoolBar) ShowText() bool {
-    return CoolBar_GetShowText(c.instance)
+    return CoolBar_GetShowText(c._instance())
 }
 
 func (c *TCoolBar) SetShowText(value bool) {
-    CoolBar_SetShowText(c.instance, value)
+    CoolBar_SetShowText(c._instance(), value)
 }
 
 func (c *TCoolBar) Vertical() bool {
-    return CoolBar_GetVertical(c.instance)
+    return CoolBar_GetVertical(c._instance())
 }
 
 func (c *TCoolBar) SetVertical(value bool) {
-    CoolBar_SetVertical(c.instance, value)
+    CoolBar_SetVertical(c._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (c *TCoolBar) Visible() bool {
-    return CoolBar_GetVisible(c.instance)
+    return CoolBar_GetVisible(c._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (c *TCoolBar) SetVisible(value bool) {
-    CoolBar_SetVisible(c.instance, value)
+    CoolBar_SetVisible(c._instance(), value)
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (c *TCoolBar) SetOnChange(fn TNotifyEvent) {
-    CoolBar_SetOnChange(c.instance, fn)
+    CoolBar_SetOnChange(c._instance(), fn)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (c *TCoolBar) SetOnClick(fn TNotifyEvent) {
-    CoolBar_SetOnClick(c.instance, fn)
+    CoolBar_SetOnClick(c._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (c *TCoolBar) SetOnContextPopup(fn TContextPopupEvent) {
-    CoolBar_SetOnContextPopup(c.instance, fn)
+    CoolBar_SetOnContextPopup(c._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (c *TCoolBar) SetOnDblClick(fn TNotifyEvent) {
-    CoolBar_SetOnDblClick(c.instance, fn)
+    CoolBar_SetOnDblClick(c._instance(), fn)
 }
 
 func (c *TCoolBar) SetOnDockDrop(fn TDockDropEvent) {
-    CoolBar_SetOnDockDrop(c.instance, fn)
+    CoolBar_SetOnDockDrop(c._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (c *TCoolBar) SetOnDragDrop(fn TDragDropEvent) {
-    CoolBar_SetOnDragDrop(c.instance, fn)
+    CoolBar_SetOnDragDrop(c._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (c *TCoolBar) SetOnDragOver(fn TDragOverEvent) {
-    CoolBar_SetOnDragOver(c.instance, fn)
+    CoolBar_SetOnDragOver(c._instance(), fn)
 }
 
+// SetOnEndDock
+//
 // 设置停靠结束事件。
 //
 // Set Dock end event.
 func (c *TCoolBar) SetOnEndDock(fn TEndDragEvent) {
-    CoolBar_SetOnEndDock(c.instance, fn)
+    CoolBar_SetOnEndDock(c._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (c *TCoolBar) SetOnEndDrag(fn TEndDragEvent) {
-    CoolBar_SetOnEndDrag(c.instance, fn)
+    CoolBar_SetOnEndDrag(c._instance(), fn)
 }
 
 func (c *TCoolBar) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
-    CoolBar_SetOnGetSiteInfo(c.instance, fn)
+    CoolBar_SetOnGetSiteInfo(c._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (c *TCoolBar) SetOnMouseDown(fn TMouseEvent) {
-    CoolBar_SetOnMouseDown(c.instance, fn)
+    CoolBar_SetOnMouseDown(c._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (c *TCoolBar) SetOnMouseEnter(fn TNotifyEvent) {
-    CoolBar_SetOnMouseEnter(c.instance, fn)
+    CoolBar_SetOnMouseEnter(c._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (c *TCoolBar) SetOnMouseLeave(fn TNotifyEvent) {
-    CoolBar_SetOnMouseLeave(c.instance, fn)
+    CoolBar_SetOnMouseLeave(c._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (c *TCoolBar) SetOnMouseMove(fn TMouseMoveEvent) {
-    CoolBar_SetOnMouseMove(c.instance, fn)
+    CoolBar_SetOnMouseMove(c._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (c *TCoolBar) SetOnMouseUp(fn TMouseEvent) {
-    CoolBar_SetOnMouseUp(c.instance, fn)
+    CoolBar_SetOnMouseUp(c._instance(), fn)
 }
 
+// SetOnResize
+//
 // 设置大小被改变事件。
 func (c *TCoolBar) SetOnResize(fn TNotifyEvent) {
-    CoolBar_SetOnResize(c.instance, fn)
+    CoolBar_SetOnResize(c._instance(), fn)
 }
 
+// SetOnStartDock
+//
 // 设置启动停靠。
 func (c *TCoolBar) SetOnStartDock(fn TStartDockEvent) {
-    CoolBar_SetOnStartDock(c.instance, fn)
+    CoolBar_SetOnStartDock(c._instance(), fn)
 }
 
 func (c *TCoolBar) SetOnUnDock(fn TUnDockEvent) {
-    CoolBar_SetOnUnDock(c.instance, fn)
+    CoolBar_SetOnUnDock(c._instance(), fn)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (c *TCoolBar) DockClientCount() int32 {
-    return CoolBar_GetDockClientCount(c.instance)
+    return CoolBar_GetDockClientCount(c._instance())
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (c *TCoolBar) MouseInClient() bool {
-    return CoolBar_GetMouseInClient(c.instance)
+    return CoolBar_GetMouseInClient(c._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (c *TCoolBar) VisibleDockClientCount() int32 {
-    return CoolBar_GetVisibleDockClientCount(c.instance)
+    return CoolBar_GetVisibleDockClientCount(c._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (c *TCoolBar) Brush() *TBrush {
-    return AsBrush(CoolBar_GetBrush(c.instance))
+    return AsBrush(CoolBar_GetBrush(c._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (c *TCoolBar) ControlCount() int32 {
-    return CoolBar_GetControlCount(c.instance)
+    return CoolBar_GetControlCount(c._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (c *TCoolBar) Handle() HWND {
-    return CoolBar_GetHandle(c.instance)
+    return CoolBar_GetHandle(c._instance())
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (c *TCoolBar) ParentWindow() HWND {
-    return CoolBar_GetParentWindow(c.instance)
+    return CoolBar_GetParentWindow(c._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (c *TCoolBar) SetParentWindow(value HWND) {
-    CoolBar_SetParentWindow(c.instance, value)
+    CoolBar_SetParentWindow(c._instance(), value)
 }
 
 func (c *TCoolBar) Showing() bool {
-    return CoolBar_GetShowing(c.instance)
+    return CoolBar_GetShowing(c._instance())
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (c *TCoolBar) TabOrder() TTabOrder {
-    return CoolBar_GetTabOrder(c.instance)
+    return CoolBar_GetTabOrder(c._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (c *TCoolBar) SetTabOrder(value TTabOrder) {
-    CoolBar_SetTabOrder(c.instance, value)
+    CoolBar_SetTabOrder(c._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (c *TCoolBar) TabStop() bool {
-    return CoolBar_GetTabStop(c.instance)
+    return CoolBar_GetTabStop(c._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (c *TCoolBar) SetTabStop(value bool) {
-    CoolBar_SetTabStop(c.instance, value)
+    CoolBar_SetTabStop(c._instance(), value)
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (c *TCoolBar) UseDockManager() bool {
-    return CoolBar_GetUseDockManager(c.instance)
+    return CoolBar_GetUseDockManager(c._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (c *TCoolBar) SetUseDockManager(value bool) {
-    CoolBar_SetUseDockManager(c.instance, value)
+    CoolBar_SetUseDockManager(c._instance(), value)
 }
 
 func (c *TCoolBar) Action() *TAction {
-    return AsAction(CoolBar_GetAction(c.instance))
+    return AsAction(CoolBar_GetAction(c._instance()))
 }
 
 func (c *TCoolBar) SetAction(value IComponent) {
-    CoolBar_SetAction(c.instance, CheckPtr(value))
+    CoolBar_SetAction(c._instance(), CheckPtr(value))
 }
 
 func (c *TCoolBar) BiDiMode() TBiDiMode {
-    return CoolBar_GetBiDiMode(c.instance)
+    return CoolBar_GetBiDiMode(c._instance())
 }
 
 func (c *TCoolBar) SetBiDiMode(value TBiDiMode) {
-    CoolBar_SetBiDiMode(c.instance, value)
+    CoolBar_SetBiDiMode(c._instance(), value)
 }
 
 func (c *TCoolBar) BoundsRect() TRect {
-    return CoolBar_GetBoundsRect(c.instance)
+    return CoolBar_GetBoundsRect(c._instance())
 }
 
 func (c *TCoolBar) SetBoundsRect(value TRect) {
-    CoolBar_SetBoundsRect(c.instance, value)
+    CoolBar_SetBoundsRect(c._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (c *TCoolBar) ClientHeight() int32 {
-    return CoolBar_GetClientHeight(c.instance)
+    return CoolBar_GetClientHeight(c._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (c *TCoolBar) SetClientHeight(value int32) {
-    CoolBar_SetClientHeight(c.instance, value)
+    CoolBar_SetClientHeight(c._instance(), value)
 }
 
 func (c *TCoolBar) ClientOrigin() TPoint {
-    return CoolBar_GetClientOrigin(c.instance)
+    return CoolBar_GetClientOrigin(c._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (c *TCoolBar) ClientRect() TRect {
-    return CoolBar_GetClientRect(c.instance)
+    return CoolBar_GetClientRect(c._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (c *TCoolBar) ClientWidth() int32 {
-    return CoolBar_GetClientWidth(c.instance)
+    return CoolBar_GetClientWidth(c._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (c *TCoolBar) SetClientWidth(value int32) {
-    CoolBar_SetClientWidth(c.instance, value)
+    CoolBar_SetClientWidth(c._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (c *TCoolBar) ControlState() TControlState {
-    return CoolBar_GetControlState(c.instance)
+    return CoolBar_GetControlState(c._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (c *TCoolBar) SetControlState(value TControlState) {
-    CoolBar_SetControlState(c.instance, value)
+    CoolBar_SetControlState(c._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (c *TCoolBar) ControlStyle() TControlStyle {
-    return CoolBar_GetControlStyle(c.instance)
+    return CoolBar_GetControlStyle(c._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (c *TCoolBar) SetControlStyle(value TControlStyle) {
-    CoolBar_SetControlStyle(c.instance, value)
+    CoolBar_SetControlStyle(c._instance(), value)
 }
 
 func (c *TCoolBar) Floating() bool {
-    return CoolBar_GetFloating(c.instance)
+    return CoolBar_GetFloating(c._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (c *TCoolBar) Parent() *TWinControl {
-    return AsWinControl(CoolBar_GetParent(c.instance))
+    return AsWinControl(CoolBar_GetParent(c._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (c *TCoolBar) SetParent(value IWinControl) {
-    CoolBar_SetParent(c.instance, CheckPtr(value))
+    CoolBar_SetParent(c._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (c *TCoolBar) Left() int32 {
-    return CoolBar_GetLeft(c.instance)
+    return CoolBar_GetLeft(c._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (c *TCoolBar) SetLeft(value int32) {
-    CoolBar_SetLeft(c.instance, value)
+    CoolBar_SetLeft(c._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (c *TCoolBar) Top() int32 {
-    return CoolBar_GetTop(c.instance)
+    return CoolBar_GetTop(c._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (c *TCoolBar) SetTop(value int32) {
-    CoolBar_SetTop(c.instance, value)
+    CoolBar_SetTop(c._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (c *TCoolBar) Width() int32 {
-    return CoolBar_GetWidth(c.instance)
+    return CoolBar_GetWidth(c._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (c *TCoolBar) SetWidth(value int32) {
-    CoolBar_SetWidth(c.instance, value)
+    CoolBar_SetWidth(c._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (c *TCoolBar) Height() int32 {
-    return CoolBar_GetHeight(c.instance)
+    return CoolBar_GetHeight(c._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (c *TCoolBar) SetHeight(value int32) {
-    CoolBar_SetHeight(c.instance, value)
+    CoolBar_SetHeight(c._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (c *TCoolBar) Cursor() TCursor {
-    return CoolBar_GetCursor(c.instance)
+    return CoolBar_GetCursor(c._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (c *TCoolBar) SetCursor(value TCursor) {
-    CoolBar_SetCursor(c.instance, value)
+    CoolBar_SetCursor(c._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (c *TCoolBar) Hint() string {
-    return CoolBar_GetHint(c.instance)
+    return CoolBar_GetHint(c._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (c *TCoolBar) SetHint(value string) {
-    CoolBar_SetHint(c.instance, value)
+    CoolBar_SetHint(c._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (c *TCoolBar) ComponentCount() int32 {
-    return CoolBar_GetComponentCount(c.instance)
+    return CoolBar_GetComponentCount(c._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (c *TCoolBar) ComponentIndex() int32 {
-    return CoolBar_GetComponentIndex(c.instance)
+    return CoolBar_GetComponentIndex(c._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (c *TCoolBar) SetComponentIndex(value int32) {
-    CoolBar_SetComponentIndex(c.instance, value)
+    CoolBar_SetComponentIndex(c._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (c *TCoolBar) Owner() *TComponent {
-    return AsComponent(CoolBar_GetOwner(c.instance))
+    return AsComponent(CoolBar_GetOwner(c._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (c *TCoolBar) Name() string {
-    return CoolBar_GetName(c.instance)
+    return CoolBar_GetName(c._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (c *TCoolBar) SetName(value string) {
-    CoolBar_SetName(c.instance, value)
+    CoolBar_SetName(c._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (c *TCoolBar) Tag() int {
-    return CoolBar_GetTag(c.instance)
+    return CoolBar_GetTag(c._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (c *TCoolBar) SetTag(value int) {
-    CoolBar_SetTag(c.instance, value)
+    CoolBar_SetTag(c._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (c *TCoolBar) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(CoolBar_GetAnchorSideLeft(c.instance))
+    return AsAnchorSide(CoolBar_GetAnchorSideLeft(c._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (c *TCoolBar) SetAnchorSideLeft(value *TAnchorSide) {
-    CoolBar_SetAnchorSideLeft(c.instance, CheckPtr(value))
+    CoolBar_SetAnchorSideLeft(c._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (c *TCoolBar) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(CoolBar_GetAnchorSideTop(c.instance))
+    return AsAnchorSide(CoolBar_GetAnchorSideTop(c._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (c *TCoolBar) SetAnchorSideTop(value *TAnchorSide) {
-    CoolBar_SetAnchorSideTop(c.instance, CheckPtr(value))
+    CoolBar_SetAnchorSideTop(c._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (c *TCoolBar) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(CoolBar_GetAnchorSideRight(c.instance))
+    return AsAnchorSide(CoolBar_GetAnchorSideRight(c._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (c *TCoolBar) SetAnchorSideRight(value *TAnchorSide) {
-    CoolBar_SetAnchorSideRight(c.instance, CheckPtr(value))
+    CoolBar_SetAnchorSideRight(c._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (c *TCoolBar) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(CoolBar_GetAnchorSideBottom(c.instance))
+    return AsAnchorSide(CoolBar_GetAnchorSideBottom(c._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (c *TCoolBar) SetAnchorSideBottom(value *TAnchorSide) {
-    CoolBar_SetAnchorSideBottom(c.instance, CheckPtr(value))
+    CoolBar_SetAnchorSideBottom(c._instance(), CheckPtr(value))
 }
 
 func (c *TCoolBar) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(CoolBar_GetChildSizing(c.instance))
+    return AsControlChildSizing(CoolBar_GetChildSizing(c._instance()))
 }
 
 func (c *TCoolBar) SetChildSizing(value *TControlChildSizing) {
-    CoolBar_SetChildSizing(c.instance, CheckPtr(value))
+    CoolBar_SetChildSizing(c._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (c *TCoolBar) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(CoolBar_GetBorderSpacing(c.instance))
+    return AsControlBorderSpacing(CoolBar_GetBorderSpacing(c._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (c *TCoolBar) SetBorderSpacing(value *TControlBorderSpacing) {
-    CoolBar_SetBorderSpacing(c.instance, CheckPtr(value))
+    CoolBar_SetBorderSpacing(c._instance(), CheckPtr(value))
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (c *TCoolBar) DockClients(Index int32) *TControl {
-    return AsControl(CoolBar_GetDockClients(c.instance, Index))
+    return AsControl(CoolBar_GetDockClients(c._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (c *TCoolBar) Controls(Index int32) *TControl {
-    return AsControl(CoolBar_GetControls(c.instance, Index))
+    return AsControl(CoolBar_GetControls(c._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (c *TCoolBar) Components(AIndex int32) *TComponent {
-    return AsComponent(CoolBar_GetComponents(c.instance, AIndex))
+    return AsComponent(CoolBar_GetComponents(c._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (c *TCoolBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(CoolBar_GetAnchorSide(c.instance, AKind))
+    return AsAnchorSide(CoolBar_GetAnchorSide(c._instance(), AKind))
 }
 

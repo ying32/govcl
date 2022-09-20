@@ -19,101 +19,94 @@ import (
 
 type TMenuItem struct {
     IComponent
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewMenuItem
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewMenuItem(owner IComponent) *TMenuItem {
     m := new(TMenuItem)
-    m.instance = MenuItem_Create(CheckPtr(owner))
-    m.ptr = unsafe.Pointer(m.instance)
+    m.instance = unsafe.Pointer(MenuItem_Create(CheckPtr(owner)))
     return m
 }
 
+// AsMenuItem
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsMenuItem(obj interface{}) *TMenuItem {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TMenuItem{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TMenuItem{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsMenuItem.
-func MenuItemFromInst(inst uintptr) *TMenuItem {
-    return AsMenuItem(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsMenuItem.
-func MenuItemFromObj(obj IObject) *TMenuItem {
-    return AsMenuItem(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsMenuItem.
-func MenuItemFromUnsafePointer(ptr unsafe.Pointer) *TMenuItem {
-    return AsMenuItem(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (m *TMenuItem) Free() {
-    if m.instance != 0 {
-        MenuItem_Free(m.instance)
-        m.instance, m.ptr = 0, nullptr
+    if m.instance != nullptr {
+        MenuItem_Free(m._instance())
+        m.instance  = nullptr
     }
 }
 
+func (m *TMenuItem) _instance() uintptr {
+    return uintptr(m.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (m *TMenuItem) Instance() uintptr {
-    return m.instance
+    return m._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (m *TMenuItem) UnsafeAddr() unsafe.Pointer {
-    return m.ptr
+    return m.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (m *TMenuItem) IsValid() bool {
-    return m.instance != 0
+    return m.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (m *TMenuItem) Is() TIs {
-    return TIs(m.instance)
+    return TIs(m._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (m *TMenuItem) As() TAs {
-//    return TAs(m.instance)
+//    return TAs(m._instance())
 //}
 
+// TMenuItemClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,337 +115,419 @@ func TMenuItemClass() TClass {
 }
 
 func (m *TMenuItem) Insert(Index int32, Item IComponent) {
-    MenuItem_Insert(m.instance, Index , CheckPtr(Item))
+    MenuItem_Insert(m._instance(), Index , CheckPtr(Item))
 }
 
 func (m *TMenuItem) Delete(Index int32) {
-    MenuItem_Delete(m.instance, Index)
+    MenuItem_Delete(m._instance(), Index)
 }
 
+// Clear
+//
 // 清除。
 func (m *TMenuItem) Clear() {
-    MenuItem_Clear(m.instance)
+    MenuItem_Clear(m._instance())
 }
 
+// Click
+//
 // 单击。
 func (m *TMenuItem) Click() {
-    MenuItem_Click(m.instance)
+    MenuItem_Click(m._instance())
 }
 
 func (m *TMenuItem) IndexOf(Item IComponent) int32 {
-    return MenuItem_IndexOf(m.instance, CheckPtr(Item))
+    return MenuItem_IndexOf(m._instance(), CheckPtr(Item))
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (m *TMenuItem) HasParent() bool {
-    return MenuItem_HasParent(m.instance)
+    return MenuItem_HasParent(m._instance())
 }
 
 func (m *TMenuItem) Add(Item IComponent) {
-    MenuItem_Add(m.instance, CheckPtr(Item))
+    MenuItem_Add(m._instance(), CheckPtr(Item))
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (m *TMenuItem) FindComponent(AName string) *TComponent {
-    return AsComponent(MenuItem_FindComponent(m.instance, AName))
+    return AsComponent(MenuItem_FindComponent(m._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (m *TMenuItem) GetNamePath() string {
-    return MenuItem_GetNamePath(m.instance)
+    return MenuItem_GetNamePath(m._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (m *TMenuItem) Assign(Source IObject) {
-    MenuItem_Assign(m.instance, CheckPtr(Source))
+    MenuItem_Assign(m._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (m *TMenuItem) ClassType() TClass {
-    return MenuItem_ClassType(m.instance)
+    return MenuItem_ClassType(m._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (m *TMenuItem) ClassName() string {
-    return MenuItem_ClassName(m.instance)
+    return MenuItem_ClassName(m._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (m *TMenuItem) InstanceSize() int32 {
-    return MenuItem_InstanceSize(m.instance)
+    return MenuItem_InstanceSize(m._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (m *TMenuItem) InheritsFrom(AClass TClass) bool {
-    return MenuItem_InheritsFrom(m.instance, AClass)
+    return MenuItem_InheritsFrom(m._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (m *TMenuItem) Equals(Obj IObject) bool {
-    return MenuItem_Equals(m.instance, CheckPtr(Obj))
+    return MenuItem_Equals(m._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (m *TMenuItem) GetHashCode() int32 {
-    return MenuItem_GetHashCode(m.instance)
+    return MenuItem_GetHashCode(m._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (m *TMenuItem) ToString() string {
-    return MenuItem_ToString(m.instance)
+    return MenuItem_ToString(m._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (m *TMenuItem) Handle() HMENU {
-    return MenuItem_GetHandle(m.instance)
+    return MenuItem_GetHandle(m._instance())
 }
 
 func (m *TMenuItem) Count() int32 {
-    return MenuItem_GetCount(m.instance)
+    return MenuItem_GetCount(m._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (m *TMenuItem) Parent() *TMenuItem {
-    return AsMenuItem(MenuItem_GetParent(m.instance))
+    return AsMenuItem(MenuItem_GetParent(m._instance()))
 }
 
 func (m *TMenuItem) Action() *TAction {
-    return AsAction(MenuItem_GetAction(m.instance))
+    return AsAction(MenuItem_GetAction(m._instance()))
 }
 
 func (m *TMenuItem) SetAction(value IComponent) {
-    MenuItem_SetAction(m.instance, CheckPtr(value))
+    MenuItem_SetAction(m._instance(), CheckPtr(value))
 }
 
 func (m *TMenuItem) AutoCheck() bool {
-    return MenuItem_GetAutoCheck(m.instance)
+    return MenuItem_GetAutoCheck(m._instance())
 }
 
 func (m *TMenuItem) SetAutoCheck(value bool) {
-    MenuItem_SetAutoCheck(m.instance, value)
+    MenuItem_SetAutoCheck(m._instance(), value)
 }
 
 func (m *TMenuItem) Bitmap() *TBitmap {
-    return AsBitmap(MenuItem_GetBitmap(m.instance))
+    return AsBitmap(MenuItem_GetBitmap(m._instance()))
 }
 
 func (m *TMenuItem) SetBitmap(value *TBitmap) {
-    MenuItem_SetBitmap(m.instance, CheckPtr(value))
+    MenuItem_SetBitmap(m._instance(), CheckPtr(value))
 }
 
+// Caption
+//
 // 获取控件标题。
 //
 // Get the control title.
 func (m *TMenuItem) Caption() string {
-    return MenuItem_GetCaption(m.instance)
+    return MenuItem_GetCaption(m._instance())
 }
 
+// SetCaption
+//
 // 设置控件标题。
 //
 // Set the control title.
 func (m *TMenuItem) SetCaption(value string) {
-    MenuItem_SetCaption(m.instance, value)
+    MenuItem_SetCaption(m._instance(), value)
 }
 
+// Checked
+//
 // 获取是否选中。
 func (m *TMenuItem) Checked() bool {
-    return MenuItem_GetChecked(m.instance)
+    return MenuItem_GetChecked(m._instance())
 }
 
+// SetChecked
+//
 // 设置是否选中。
 func (m *TMenuItem) SetChecked(value bool) {
-    MenuItem_SetChecked(m.instance, value)
+    MenuItem_SetChecked(m._instance(), value)
 }
 
 func (m *TMenuItem) Default() bool {
-    return MenuItem_GetDefault(m.instance)
+    return MenuItem_GetDefault(m._instance())
 }
 
 func (m *TMenuItem) SetDefault(value bool) {
-    MenuItem_SetDefault(m.instance, value)
+    MenuItem_SetDefault(m._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (m *TMenuItem) Enabled() bool {
-    return MenuItem_GetEnabled(m.instance)
+    return MenuItem_GetEnabled(m._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (m *TMenuItem) SetEnabled(value bool) {
-    MenuItem_SetEnabled(m.instance, value)
+    MenuItem_SetEnabled(m._instance(), value)
 }
 
+// GroupIndex
+//
 // 获取团组索引。
 func (m *TMenuItem) GroupIndex() uint8 {
-    return MenuItem_GetGroupIndex(m.instance)
+    return MenuItem_GetGroupIndex(m._instance())
 }
 
+// SetGroupIndex
+//
 // 设置团组索引。
 func (m *TMenuItem) SetGroupIndex(value uint8) {
-    MenuItem_SetGroupIndex(m.instance, value)
+    MenuItem_SetGroupIndex(m._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (m *TMenuItem) Hint() string {
-    return MenuItem_GetHint(m.instance)
+    return MenuItem_GetHint(m._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (m *TMenuItem) SetHint(value string) {
-    MenuItem_SetHint(m.instance, value)
+    MenuItem_SetHint(m._instance(), value)
 }
 
+// ImageIndex
+//
 // 获取图像在images中的索引。
 func (m *TMenuItem) ImageIndex() int32 {
-    return MenuItem_GetImageIndex(m.instance)
+    return MenuItem_GetImageIndex(m._instance())
 }
 
+// SetImageIndex
+//
 // 设置图像在images中的索引。
 func (m *TMenuItem) SetImageIndex(value int32) {
-    MenuItem_SetImageIndex(m.instance, value)
+    MenuItem_SetImageIndex(m._instance(), value)
 }
 
 func (m *TMenuItem) RadioItem() bool {
-    return MenuItem_GetRadioItem(m.instance)
+    return MenuItem_GetRadioItem(m._instance())
 }
 
 func (m *TMenuItem) SetRadioItem(value bool) {
-    MenuItem_SetRadioItem(m.instance, value)
+    MenuItem_SetRadioItem(m._instance(), value)
 }
 
+// ShortCut
+//
 // 获取快捷键。
 func (m *TMenuItem) ShortCut() TShortCut {
-    return MenuItem_GetShortCut(m.instance)
+    return MenuItem_GetShortCut(m._instance())
 }
 
+// SetShortCut
+//
 // 设置快捷键。
 func (m *TMenuItem) SetShortCut(value TShortCut) {
-    MenuItem_SetShortCut(m.instance, value)
+    MenuItem_SetShortCut(m._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (m *TMenuItem) Visible() bool {
-    return MenuItem_GetVisible(m.instance)
+    return MenuItem_GetVisible(m._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (m *TMenuItem) SetVisible(value bool) {
-    MenuItem_SetVisible(m.instance, value)
+    MenuItem_SetVisible(m._instance(), value)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (m *TMenuItem) SetOnClick(fn TNotifyEvent) {
-    MenuItem_SetOnClick(m.instance, fn)
+    MenuItem_SetOnClick(m._instance(), fn)
 }
 
 func (m *TMenuItem) SetOnMeasureItem(fn TMenuMeasureItemEvent) {
-    MenuItem_SetOnMeasureItem(m.instance, fn)
+    MenuItem_SetOnMeasureItem(m._instance(), fn)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (m *TMenuItem) ComponentCount() int32 {
-    return MenuItem_GetComponentCount(m.instance)
+    return MenuItem_GetComponentCount(m._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (m *TMenuItem) ComponentIndex() int32 {
-    return MenuItem_GetComponentIndex(m.instance)
+    return MenuItem_GetComponentIndex(m._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (m *TMenuItem) SetComponentIndex(value int32) {
-    MenuItem_SetComponentIndex(m.instance, value)
+    MenuItem_SetComponentIndex(m._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (m *TMenuItem) Owner() *TComponent {
-    return AsComponent(MenuItem_GetOwner(m.instance))
+    return AsComponent(MenuItem_GetOwner(m._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (m *TMenuItem) Name() string {
-    return MenuItem_GetName(m.instance)
+    return MenuItem_GetName(m._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (m *TMenuItem) SetName(value string) {
-    MenuItem_SetName(m.instance, value)
+    MenuItem_SetName(m._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (m *TMenuItem) Tag() int {
-    return MenuItem_GetTag(m.instance)
+    return MenuItem_GetTag(m._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (m *TMenuItem) SetTag(value int) {
-    MenuItem_SetTag(m.instance, value)
+    MenuItem_SetTag(m._instance(), value)
 }
 
 func (m *TMenuItem) Items(Index int32) *TMenuItem {
-    return AsMenuItem(MenuItem_GetItems(m.instance, Index))
+    return AsMenuItem(MenuItem_GetItems(m._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (m *TMenuItem) Components(AIndex int32) *TComponent {
-    return AsComponent(MenuItem_GetComponents(m.instance, AIndex))
+    return AsComponent(MenuItem_GetComponents(m._instance(), AIndex))
 }
 

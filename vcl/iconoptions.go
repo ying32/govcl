@@ -19,81 +19,71 @@ import (
 
 type TIconOptions struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// AsIconOptions
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsIconOptions(obj interface{}) *TIconOptions {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TIconOptions{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TIconOptions{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsIconOptions.
-func IconOptionsFromInst(inst uintptr) *TIconOptions {
-    return AsIconOptions(inst)
+func (i *TIconOptions) _instance() uintptr {
+    return uintptr(i.instance)
 }
 
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsIconOptions.
-func IconOptionsFromObj(obj IObject) *TIconOptions {
-    return AsIconOptions(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsIconOptions.
-func IconOptionsFromUnsafePointer(ptr unsafe.Pointer) *TIconOptions {
-    return AsIconOptions(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (i *TIconOptions) Instance() uintptr {
-    return i.instance
+    return i._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (i *TIconOptions) UnsafeAddr() unsafe.Pointer {
-    return i.ptr
+    return i.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (i *TIconOptions) IsValid() bool {
-    return i.instance != 0
+    return i.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (i *TIconOptions) Is() TIs {
-    return TIs(i.instance)
+    return TIs(i._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (i *TIconOptions) As() TAs {
-//    return TAs(i.instance)
+//    return TAs(i._instance())
 //}
 
+// TIconOptionsClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -101,82 +91,100 @@ func TIconOptionsClass() TClass {
     return IconOptions_StaticClassType()
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (i *TIconOptions) Assign(Source IObject) {
-    IconOptions_Assign(i.instance, CheckPtr(Source))
+    IconOptions_Assign(i._instance(), CheckPtr(Source))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (i *TIconOptions) GetNamePath() string {
-    return IconOptions_GetNamePath(i.instance)
+    return IconOptions_GetNamePath(i._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (i *TIconOptions) ClassType() TClass {
-    return IconOptions_ClassType(i.instance)
+    return IconOptions_ClassType(i._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (i *TIconOptions) ClassName() string {
-    return IconOptions_ClassName(i.instance)
+    return IconOptions_ClassName(i._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (i *TIconOptions) InstanceSize() int32 {
-    return IconOptions_InstanceSize(i.instance)
+    return IconOptions_InstanceSize(i._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (i *TIconOptions) InheritsFrom(AClass TClass) bool {
-    return IconOptions_InheritsFrom(i.instance, AClass)
+    return IconOptions_InheritsFrom(i._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (i *TIconOptions) Equals(Obj IObject) bool {
-    return IconOptions_Equals(i.instance, CheckPtr(Obj))
+    return IconOptions_Equals(i._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (i *TIconOptions) GetHashCode() int32 {
-    return IconOptions_GetHashCode(i.instance)
+    return IconOptions_GetHashCode(i._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (i *TIconOptions) ToString() string {
-    return IconOptions_ToString(i.instance)
+    return IconOptions_ToString(i._instance())
 }
 
 func (i *TIconOptions) Arrangement() TIconArrangement {
-    return IconOptions_GetArrangement(i.instance)
+    return IconOptions_GetArrangement(i._instance())
 }
 
 func (i *TIconOptions) SetArrangement(value TIconArrangement) {
-    IconOptions_SetArrangement(i.instance, value)
+    IconOptions_SetArrangement(i._instance(), value)
 }
 
 func (i *TIconOptions) AutoArrange() bool {
-    return IconOptions_GetAutoArrange(i.instance)
+    return IconOptions_GetAutoArrange(i._instance())
 }
 
 func (i *TIconOptions) SetAutoArrange(value bool) {
-    IconOptions_SetAutoArrange(i.instance, value)
+    IconOptions_SetAutoArrange(i._instance(), value)
 }
 

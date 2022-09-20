@@ -77,23 +77,29 @@ import (
   5、vcl.Application.CreateForm(form1Bytes, &mainForm)   // 从字节中填充子组件，并绑定所有事件
 */
 
+// CreateForm
+//
 // 创建一个TForm。
 //
 // Create a TForm.
 func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
-	return AsForm(resObjectBuild(0, nil, a.instance, fields...))
+	return AsForm(resObjectBuild(0, nil, a._instance(), fields...))
 }
 
+// Run
+//
 // 运行APP。
 //
 // Run the app.
 func (a *TApplication) Run() {
-	Application_Run(a.instance)
+	Application_Run(a._instance())
 }
 
+// Initialize
+//
 // 初始APP信息。
 //
 // Initial APP information.
 func (a *TApplication) Initialize() {
-	Application_Initialize(a.instance)
+	Application_Initialize(a._instance())
 }

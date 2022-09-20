@@ -14,7 +14,7 @@ func Application_Instance() uintptr {
 }
 
 func Application_CreateForm(app uintptr, initScale bool) uintptr {
-	ret, _, _ := application_CreateForm.Call(app, GoBoolToDBool(initScale))
+	ret, _, _ := application_CreateForm.Call(app, PascalBool(initScale))
 	return ret
 }
 

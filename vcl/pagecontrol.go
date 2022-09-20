@@ -19,101 +19,94 @@ import (
 
 type TPageControl struct {
     IWinControl
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewPageControl
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewPageControl(owner IComponent) *TPageControl {
     p := new(TPageControl)
-    p.instance = PageControl_Create(CheckPtr(owner))
-    p.ptr = unsafe.Pointer(p.instance)
+    p.instance = unsafe.Pointer(PageControl_Create(CheckPtr(owner)))
     return p
 }
 
+// AsPageControl
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsPageControl(obj interface{}) *TPageControl {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TPageControl{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TPageControl{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsPageControl.
-func PageControlFromInst(inst uintptr) *TPageControl {
-    return AsPageControl(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsPageControl.
-func PageControlFromObj(obj IObject) *TPageControl {
-    return AsPageControl(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsPageControl.
-func PageControlFromUnsafePointer(ptr unsafe.Pointer) *TPageControl {
-    return AsPageControl(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (p *TPageControl) Free() {
-    if p.instance != 0 {
-        PageControl_Free(p.instance)
-        p.instance, p.ptr = 0, nullptr
+    if p.instance != nullptr {
+        PageControl_Free(p._instance())
+        p.instance  = nullptr
     }
 }
 
+func (p *TPageControl) _instance() uintptr {
+    return uintptr(p.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (p *TPageControl) Instance() uintptr {
-    return p.instance
+    return p._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (p *TPageControl) UnsafeAddr() unsafe.Pointer {
-    return p.ptr
+    return p.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (p *TPageControl) IsValid() bool {
-    return p.instance != 0
+    return p.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (p *TPageControl) Is() TIs {
-    return TIs(p.instance)
+    return TIs(p._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (p *TPageControl) As() TAs {
-//    return TAs(p.instance)
+//    return TAs(p._instance())
 //}
 
+// TPageControlClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,1236 +115,1544 @@ func TPageControlClass() TClass {
 }
 
 func (p *TPageControl) SelectNextPage(GoForward bool, CheckTabVisible bool) {
-    PageControl_SelectNextPage(p.instance, GoForward , CheckTabVisible)
+    PageControl_SelectNextPage(p._instance(), GoForward , CheckTabVisible)
 }
 
 func (p *TPageControl) TabRect(Index int32) TRect {
-    return PageControl_TabRect(p.instance, Index)
+    return PageControl_TabRect(p._instance(), Index)
 }
 
+// CanFocus
+//
 // 是否可以获得焦点。
 func (p *TPageControl) CanFocus() bool {
-    return PageControl_CanFocus(p.instance)
+    return PageControl_CanFocus(p._instance())
 }
 
+// ContainsControl
+//
 // 返回是否包含指定控件。
 //
 // it's contain a specified control.
 func (p *TPageControl) ContainsControl(Control IControl) bool {
-    return PageControl_ContainsControl(p.instance, CheckPtr(Control))
+    return PageControl_ContainsControl(p._instance(), CheckPtr(Control))
 }
 
+// ControlAtPos
+//
 // 返回指定坐标及相关属性位置控件。
 //
 // Returns the specified coordinate and the relevant attribute position control..
 func (p *TPageControl) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return AsControl(PageControl_ControlAtPos(p.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(PageControl_ControlAtPos(p._instance(), Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
+// DisableAlign
+//
 // 禁用控件的对齐。
 //
 // Disable control alignment.
 func (p *TPageControl) DisableAlign() {
-    PageControl_DisableAlign(p.instance)
+    PageControl_DisableAlign(p._instance())
 }
 
+// EnableAlign
+//
 // 启用控件对齐。
 //
 // Enabled control alignment.
 func (p *TPageControl) EnableAlign() {
-    PageControl_EnableAlign(p.instance)
+    PageControl_EnableAlign(p._instance())
 }
 
+// FindChildControl
+//
 // 查找子控件。
 //
 // Find sub controls.
 func (p *TPageControl) FindChildControl(ControlName string) *TControl {
-    return AsControl(PageControl_FindChildControl(p.instance, ControlName))
+    return AsControl(PageControl_FindChildControl(p._instance(), ControlName))
 }
 
 func (p *TPageControl) FlipChildren(AllLevels bool) {
-    PageControl_FlipChildren(p.instance, AllLevels)
+    PageControl_FlipChildren(p._instance(), AllLevels)
 }
 
+// Focused
+//
 // 返回是否获取焦点。
 //
 // Return to get focus.
 func (p *TPageControl) Focused() bool {
-    return PageControl_Focused(p.instance)
+    return PageControl_Focused(p._instance())
 }
 
+// HandleAllocated
+//
 // 句柄是否已经分配。
 //
 // Is the handle already allocated.
 func (p *TPageControl) HandleAllocated() bool {
-    return PageControl_HandleAllocated(p.instance)
+    return PageControl_HandleAllocated(p._instance())
 }
 
+// InsertControl
+//
 // 插入一个控件。
 //
 // Insert a control.
 func (p *TPageControl) InsertControl(AControl IControl) {
-    PageControl_InsertControl(p.instance, CheckPtr(AControl))
+    PageControl_InsertControl(p._instance(), CheckPtr(AControl))
 }
 
+// Invalidate
+//
 // 要求重绘。
 //
 // Redraw.
 func (p *TPageControl) Invalidate() {
-    PageControl_Invalidate(p.instance)
+    PageControl_Invalidate(p._instance())
 }
 
+// PaintTo
+//
 // 绘画至指定DC。
 //
 // Painting to the specified DC.
 func (p *TPageControl) PaintTo(DC HDC, X int32, Y int32) {
-    PageControl_PaintTo(p.instance, DC , X , Y)
+    PageControl_PaintTo(p._instance(), DC , X , Y)
 }
 
+// RemoveControl
+//
 // 移除一个控件。
 //
 // Remove a control.
 func (p *TPageControl) RemoveControl(AControl IControl) {
-    PageControl_RemoveControl(p.instance, CheckPtr(AControl))
+    PageControl_RemoveControl(p._instance(), CheckPtr(AControl))
 }
 
+// Realign
+//
 // 重新对齐。
 //
 // Realign.
 func (p *TPageControl) Realign() {
-    PageControl_Realign(p.instance)
+    PageControl_Realign(p._instance())
 }
 
+// Repaint
+//
 // 重绘。
 //
 // Repaint.
 func (p *TPageControl) Repaint() {
-    PageControl_Repaint(p.instance)
+    PageControl_Repaint(p._instance())
 }
 
+// ScaleBy
+//
 // 按比例缩放。
 //
 // Scale by.
 func (p *TPageControl) ScaleBy(M int32, D int32) {
-    PageControl_ScaleBy(p.instance, M , D)
+    PageControl_ScaleBy(p._instance(), M , D)
 }
 
+// ScrollBy
+//
 // 滚动至指定位置。
 //
 // Scroll by.
 func (p *TPageControl) ScrollBy(DeltaX int32, DeltaY int32) {
-    PageControl_ScrollBy(p.instance, DeltaX , DeltaY)
+    PageControl_ScrollBy(p._instance(), DeltaX , DeltaY)
 }
 
+// SetBounds
+//
 // 设置组件边界。
 //
 // Set component boundaries.
 func (p *TPageControl) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
-    PageControl_SetBounds(p.instance, ALeft , ATop , AWidth , AHeight)
+    PageControl_SetBounds(p._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+// SetFocus
+//
 // 设置控件焦点。
 //
 // Set control focus.
 func (p *TPageControl) SetFocus() {
-    PageControl_SetFocus(p.instance)
+    PageControl_SetFocus(p._instance())
 }
 
+// Update
+//
 // 控件更新。
 //
 // Update.
 func (p *TPageControl) Update() {
-    PageControl_Update(p.instance)
+    PageControl_Update(p._instance())
 }
 
+// BringToFront
+//
 // 将控件置于最前。
 //
 // Bring the control to the front.
 func (p *TPageControl) BringToFront() {
-    PageControl_BringToFront(p.instance)
+    PageControl_BringToFront(p._instance())
 }
 
+// ClientToScreen
+//
 // 将客户端坐标转为绝对的屏幕坐标。
 //
 // Convert client coordinates to absolute screen coordinates.
 func (p *TPageControl) ClientToScreen(Point TPoint) TPoint {
-    return PageControl_ClientToScreen(p.instance, Point)
+    return PageControl_ClientToScreen(p._instance(), Point)
 }
 
+// ClientToParent
+//
 // 将客户端坐标转为父容器坐标。
 //
 // Convert client coordinates to parent container coordinates.
 func (p *TPageControl) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
-    return PageControl_ClientToParent(p.instance, Point , CheckPtr(AParent))
+    return PageControl_ClientToParent(p._instance(), Point , CheckPtr(AParent))
 }
 
+// Dragging
+//
 // 是否在拖拽中。
 //
 // Is it in the middle of dragging.
 func (p *TPageControl) Dragging() bool {
-    return PageControl_Dragging(p.instance)
+    return PageControl_Dragging(p._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (p *TPageControl) HasParent() bool {
-    return PageControl_HasParent(p.instance)
+    return PageControl_HasParent(p._instance())
 }
 
+// Hide
+//
 // 隐藏控件。
 //
 // Hidden control.
 func (p *TPageControl) Hide() {
-    PageControl_Hide(p.instance)
+    PageControl_Hide(p._instance())
 }
 
+// Perform
+//
 // 发送一个消息。
 //
 // Send a message.
 func (p *TPageControl) Perform(Msg uint32, WParam uintptr, LParam int) int {
-    return PageControl_Perform(p.instance, Msg , WParam , LParam)
+    return PageControl_Perform(p._instance(), Msg , WParam , LParam)
 }
 
+// Refresh
+//
 // 刷新控件。
 //
 // Refresh control.
 func (p *TPageControl) Refresh() {
-    PageControl_Refresh(p.instance)
+    PageControl_Refresh(p._instance())
 }
 
+// ScreenToClient
+//
 // 将屏幕坐标转为客户端坐标。
 //
 // Convert screen coordinates to client coordinates.
 func (p *TPageControl) ScreenToClient(Point TPoint) TPoint {
-    return PageControl_ScreenToClient(p.instance, Point)
+    return PageControl_ScreenToClient(p._instance(), Point)
 }
 
+// ParentToClient
+//
 // 将父容器坐标转为客户端坐标。
 //
 // Convert parent container coordinates to client coordinates.
 func (p *TPageControl) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
-    return PageControl_ParentToClient(p.instance, Point , CheckPtr(AParent))
+    return PageControl_ParentToClient(p._instance(), Point , CheckPtr(AParent))
 }
 
+// SendToBack
+//
 // 控件至于最后面。
 //
 // The control is placed at the end.
 func (p *TPageControl) SendToBack() {
-    PageControl_SendToBack(p.instance)
+    PageControl_SendToBack(p._instance())
 }
 
+// Show
+//
 // 显示控件。
 //
 // Show control.
 func (p *TPageControl) Show() {
-    PageControl_Show(p.instance)
+    PageControl_Show(p._instance())
 }
 
+// GetTextBuf
+//
 // 获取控件的字符，如果有。
 //
 // Get the characters of the control, if any.
 func (p *TPageControl) GetTextBuf(Buffer *string, BufSize int32) int32 {
-    return PageControl_GetTextBuf(p.instance, Buffer , BufSize)
+    return PageControl_GetTextBuf(p._instance(), Buffer , BufSize)
 }
 
+// GetTextLen
+//
 // 获取控件的字符长，如果有。
 //
 // Get the character length of the control, if any.
 func (p *TPageControl) GetTextLen() int32 {
-    return PageControl_GetTextLen(p.instance)
+    return PageControl_GetTextLen(p._instance())
 }
 
+// SetTextBuf
+//
 // 设置控件字符，如果有。
 //
 // Set control characters, if any.
 func (p *TPageControl) SetTextBuf(Buffer string) {
-    PageControl_SetTextBuf(p.instance, Buffer)
+    PageControl_SetTextBuf(p._instance(), Buffer)
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (p *TPageControl) FindComponent(AName string) *TComponent {
-    return AsComponent(PageControl_FindComponent(p.instance, AName))
+    return AsComponent(PageControl_FindComponent(p._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (p *TPageControl) GetNamePath() string {
-    return PageControl_GetNamePath(p.instance)
+    return PageControl_GetNamePath(p._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (p *TPageControl) Assign(Source IObject) {
-    PageControl_Assign(p.instance, CheckPtr(Source))
+    PageControl_Assign(p._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (p *TPageControl) ClassType() TClass {
-    return PageControl_ClassType(p.instance)
+    return PageControl_ClassType(p._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (p *TPageControl) ClassName() string {
-    return PageControl_ClassName(p.instance)
+    return PageControl_ClassName(p._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (p *TPageControl) InstanceSize() int32 {
-    return PageControl_InstanceSize(p.instance)
+    return PageControl_InstanceSize(p._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (p *TPageControl) InheritsFrom(AClass TClass) bool {
-    return PageControl_InheritsFrom(p.instance, AClass)
+    return PageControl_InheritsFrom(p._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (p *TPageControl) Equals(Obj IObject) bool {
-    return PageControl_Equals(p.instance, CheckPtr(Obj))
+    return PageControl_Equals(p._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (p *TPageControl) GetHashCode() int32 {
-    return PageControl_GetHashCode(p.instance)
+    return PageControl_GetHashCode(p._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (p *TPageControl) ToString() string {
-    return PageControl_ToString(p.instance)
+    return PageControl_ToString(p._instance())
 }
 
 func (p *TPageControl) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    PageControl_AnchorToNeighbour(p.instance, ASide , ASpace , CheckPtr(ASibling))
+    PageControl_AnchorToNeighbour(p._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
 func (p *TPageControl) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
-    PageControl_AnchorParallel(p.instance, ASide , ASpace , CheckPtr(ASibling))
+    PageControl_AnchorParallel(p._instance(), ASide , ASpace , CheckPtr(ASibling))
 }
 
+// AnchorHorizontalCenterTo
+//
 // 置于指定控件的横向中心。
 func (p *TPageControl) AnchorHorizontalCenterTo(ASibling IControl) {
-    PageControl_AnchorHorizontalCenterTo(p.instance, CheckPtr(ASibling))
+    PageControl_AnchorHorizontalCenterTo(p._instance(), CheckPtr(ASibling))
 }
 
+// AnchorVerticalCenterTo
+//
 // 置于指定控件的纵向中心。
 func (p *TPageControl) AnchorVerticalCenterTo(ASibling IControl) {
-    PageControl_AnchorVerticalCenterTo(p.instance, CheckPtr(ASibling))
+    PageControl_AnchorVerticalCenterTo(p._instance(), CheckPtr(ASibling))
 }
 
 func (p *TPageControl) AnchorSame(ASide TAnchorKind, ASibling IControl) {
-    PageControl_AnchorSame(p.instance, ASide , CheckPtr(ASibling))
+    PageControl_AnchorSame(p._instance(), ASide , CheckPtr(ASibling))
 }
 
 func (p *TPageControl) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
-    PageControl_AnchorAsAlign(p.instance, ATheAlign , ASpace)
+    PageControl_AnchorAsAlign(p._instance(), ATheAlign , ASpace)
 }
 
 func (p *TPageControl) AnchorClient(ASpace int32) {
-    PageControl_AnchorClient(p.instance, ASpace)
+    PageControl_AnchorClient(p._instance(), ASpace)
 }
 
 func (p *TPageControl) ScaleDesignToForm(ASize int32) int32 {
-    return PageControl_ScaleDesignToForm(p.instance, ASize)
+    return PageControl_ScaleDesignToForm(p._instance(), ASize)
 }
 
 func (p *TPageControl) ScaleFormToDesign(ASize int32) int32 {
-    return PageControl_ScaleFormToDesign(p.instance, ASize)
+    return PageControl_ScaleFormToDesign(p._instance(), ASize)
 }
 
 func (p *TPageControl) Scale96ToForm(ASize int32) int32 {
-    return PageControl_Scale96ToForm(p.instance, ASize)
+    return PageControl_Scale96ToForm(p._instance(), ASize)
 }
 
 func (p *TPageControl) ScaleFormTo96(ASize int32) int32 {
-    return PageControl_ScaleFormTo96(p.instance, ASize)
+    return PageControl_ScaleFormTo96(p._instance(), ASize)
 }
 
 func (p *TPageControl) Scale96ToFont(ASize int32) int32 {
-    return PageControl_Scale96ToFont(p.instance, ASize)
+    return PageControl_Scale96ToFont(p._instance(), ASize)
 }
 
 func (p *TPageControl) ScaleFontTo96(ASize int32) int32 {
-    return PageControl_ScaleFontTo96(p.instance, ASize)
+    return PageControl_ScaleFontTo96(p._instance(), ASize)
 }
 
 func (p *TPageControl) ScaleScreenToFont(ASize int32) int32 {
-    return PageControl_ScaleScreenToFont(p.instance, ASize)
+    return PageControl_ScaleScreenToFont(p._instance(), ASize)
 }
 
 func (p *TPageControl) ScaleFontToScreen(ASize int32) int32 {
-    return PageControl_ScaleFontToScreen(p.instance, ASize)
+    return PageControl_ScaleFontToScreen(p._instance(), ASize)
 }
 
 func (p *TPageControl) Scale96ToScreen(ASize int32) int32 {
-    return PageControl_Scale96ToScreen(p.instance, ASize)
+    return PageControl_Scale96ToScreen(p._instance(), ASize)
 }
 
 func (p *TPageControl) ScaleScreenTo96(ASize int32) int32 {
-    return PageControl_ScaleScreenTo96(p.instance, ASize)
+    return PageControl_ScaleScreenTo96(p._instance(), ASize)
 }
 
 func (p *TPageControl) AutoAdjustLayout(AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32) {
-    PageControl_AutoAdjustLayout(p.instance, AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
+    PageControl_AutoAdjustLayout(p._instance(), AMode , AFromPPI , AToPPI , AOldFormWidth , ANewFormWidth)
 }
 
 func (p *TPageControl) FixDesignFontsPPI(ADesignTimePPI int32) {
-    PageControl_FixDesignFontsPPI(p.instance, ADesignTimePPI)
+    PageControl_FixDesignFontsPPI(p._instance(), ADesignTimePPI)
 }
 
 func (p *TPageControl) ScaleFontsPPI(AToPPI int32, AProportion float64) {
-    PageControl_ScaleFontsPPI(p.instance, AToPPI , AProportion)
+    PageControl_ScaleFontsPPI(p._instance(), AToPPI , AProportion)
 }
 
 func (p *TPageControl) Options() TCTabControlOptions {
-    return PageControl_GetOptions(p.instance)
+    return PageControl_GetOptions(p._instance())
 }
 
 func (p *TPageControl) SetOptions(value TCTabControlOptions) {
-    PageControl_SetOptions(p.instance, value)
+    PageControl_SetOptions(p._instance(), value)
 }
 
 func (p *TPageControl) ActivePageIndex() int32 {
-    return PageControl_GetActivePageIndex(p.instance)
+    return PageControl_GetActivePageIndex(p._instance())
 }
 
 func (p *TPageControl) SetActivePageIndex(value int32) {
-    PageControl_SetActivePageIndex(p.instance, value)
+    PageControl_SetActivePageIndex(p._instance(), value)
 }
 
 func (p *TPageControl) PageCount() int32 {
-    return PageControl_GetPageCount(p.instance)
+    return PageControl_GetPageCount(p._instance())
 }
 
 func (p *TPageControl) ActivePage() *TTabSheet {
-    return AsTabSheet(PageControl_GetActivePage(p.instance))
+    return AsTabSheet(PageControl_GetActivePage(p._instance()))
 }
 
 func (p *TPageControl) SetActivePage(value IWinControl) {
-    PageControl_SetActivePage(p.instance, CheckPtr(value))
+    PageControl_SetActivePage(p._instance(), CheckPtr(value))
 }
 
+// Align
+//
 // 获取控件自动调整。
 //
 // Get Control automatically adjusts.
 func (p *TPageControl) Align() TAlign {
-    return PageControl_GetAlign(p.instance)
+    return PageControl_GetAlign(p._instance())
 }
 
+// SetAlign
+//
 // 设置控件自动调整。
 //
 // Set Control automatically adjusts.
 func (p *TPageControl) SetAlign(value TAlign) {
-    PageControl_SetAlign(p.instance, value)
+    PageControl_SetAlign(p._instance(), value)
 }
 
+// Anchors
+//
 // 获取四个角位置的锚点。
 func (p *TPageControl) Anchors() TAnchors {
-    return PageControl_GetAnchors(p.instance)
+    return PageControl_GetAnchors(p._instance())
 }
 
+// SetAnchors
+//
 // 设置四个角位置的锚点。
 func (p *TPageControl) SetAnchors(value TAnchors) {
-    PageControl_SetAnchors(p.instance, value)
+    PageControl_SetAnchors(p._instance(), value)
 }
 
 func (p *TPageControl) BiDiMode() TBiDiMode {
-    return PageControl_GetBiDiMode(p.instance)
+    return PageControl_GetBiDiMode(p._instance())
 }
 
 func (p *TPageControl) SetBiDiMode(value TBiDiMode) {
-    PageControl_SetBiDiMode(p.instance, value)
+    PageControl_SetBiDiMode(p._instance(), value)
 }
 
+// Constraints
+//
 // 获取约束控件大小。
 func (p *TPageControl) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(PageControl_GetConstraints(p.instance))
+    return AsSizeConstraints(PageControl_GetConstraints(p._instance()))
 }
 
+// SetConstraints
+//
 // 设置约束控件大小。
 func (p *TPageControl) SetConstraints(value *TSizeConstraints) {
-    PageControl_SetConstraints(p.instance, CheckPtr(value))
+    PageControl_SetConstraints(p._instance(), CheckPtr(value))
 }
 
+// DockSite
+//
 // 获取停靠站点。
 //
 // Get Docking site.
 func (p *TPageControl) DockSite() bool {
-    return PageControl_GetDockSite(p.instance)
+    return PageControl_GetDockSite(p._instance())
 }
 
+// SetDockSite
+//
 // 设置停靠站点。
 //
 // Set Docking site.
 func (p *TPageControl) SetDockSite(value bool) {
-    PageControl_SetDockSite(p.instance, value)
+    PageControl_SetDockSite(p._instance(), value)
 }
 
+// DoubleBuffered
+//
 // 获取设置控件双缓冲。
 //
 // Get Set control double buffering.
 func (p *TPageControl) DoubleBuffered() bool {
-    return PageControl_GetDoubleBuffered(p.instance)
+    return PageControl_GetDoubleBuffered(p._instance())
 }
 
+// SetDoubleBuffered
+//
 // 设置设置控件双缓冲。
 //
 // Set Set control double buffering.
 func (p *TPageControl) SetDoubleBuffered(value bool) {
-    PageControl_SetDoubleBuffered(p.instance, value)
+    PageControl_SetDoubleBuffered(p._instance(), value)
 }
 
+// DragCursor
+//
 // 获取设置控件拖拽时的光标。
 //
 // Get Set the cursor when the control is dragged.
 func (p *TPageControl) DragCursor() TCursor {
-    return PageControl_GetDragCursor(p.instance)
+    return PageControl_GetDragCursor(p._instance())
 }
 
+// SetDragCursor
+//
 // 设置设置控件拖拽时的光标。
 //
 // Set Set the cursor when the control is dragged.
 func (p *TPageControl) SetDragCursor(value TCursor) {
-    PageControl_SetDragCursor(p.instance, value)
+    PageControl_SetDragCursor(p._instance(), value)
 }
 
+// DragKind
+//
 // 获取拖拽方式。
 //
 // Get Drag and drop.
 func (p *TPageControl) DragKind() TDragKind {
-    return PageControl_GetDragKind(p.instance)
+    return PageControl_GetDragKind(p._instance())
 }
 
+// SetDragKind
+//
 // 设置拖拽方式。
 //
 // Set Drag and drop.
 func (p *TPageControl) SetDragKind(value TDragKind) {
-    PageControl_SetDragKind(p.instance, value)
+    PageControl_SetDragKind(p._instance(), value)
 }
 
+// DragMode
+//
 // 获取拖拽模式。
 //
 // Get Drag mode.
 func (p *TPageControl) DragMode() TDragMode {
-    return PageControl_GetDragMode(p.instance)
+    return PageControl_GetDragMode(p._instance())
 }
 
+// SetDragMode
+//
 // 设置拖拽模式。
 //
 // Set Drag mode.
 func (p *TPageControl) SetDragMode(value TDragMode) {
-    PageControl_SetDragMode(p.instance, value)
+    PageControl_SetDragMode(p._instance(), value)
 }
 
+// Enabled
+//
 // 获取控件启用。
 //
 // Get the control enabled.
 func (p *TPageControl) Enabled() bool {
-    return PageControl_GetEnabled(p.instance)
+    return PageControl_GetEnabled(p._instance())
 }
 
+// SetEnabled
+//
 // 设置控件启用。
 //
 // Set the control enabled.
 func (p *TPageControl) SetEnabled(value bool) {
-    PageControl_SetEnabled(p.instance, value)
+    PageControl_SetEnabled(p._instance(), value)
 }
 
+// Font
+//
 // 获取字体。
 //
 // Get Font.
 func (p *TPageControl) Font() *TFont {
-    return AsFont(PageControl_GetFont(p.instance))
+    return AsFont(PageControl_GetFont(p._instance()))
 }
 
+// SetFont
+//
 // 设置字体。
 //
 // Set Font.
 func (p *TPageControl) SetFont(value *TFont) {
-    PageControl_SetFont(p.instance, CheckPtr(value))
+    PageControl_SetFont(p._instance(), CheckPtr(value))
 }
 
+// Images
+//
 // 获取图标索引列表对象。
 func (p *TPageControl) Images() *TImageList {
-    return AsImageList(PageControl_GetImages(p.instance))
+    return AsImageList(PageControl_GetImages(p._instance()))
 }
 
+// SetImages
+//
 // 设置图标索引列表对象。
 func (p *TPageControl) SetImages(value IComponent) {
-    PageControl_SetImages(p.instance, CheckPtr(value))
+    PageControl_SetImages(p._instance(), CheckPtr(value))
 }
 
 func (p *TPageControl) MultiLine() bool {
-    return PageControl_GetMultiLine(p.instance)
+    return PageControl_GetMultiLine(p._instance())
 }
 
 func (p *TPageControl) SetMultiLine(value bool) {
-    PageControl_SetMultiLine(p.instance, value)
+    PageControl_SetMultiLine(p._instance(), value)
 }
 
+// ParentDoubleBuffered
+//
 // 获取使用父容器双缓冲。
 //
 // Get Parent container double buffering.
 func (p *TPageControl) ParentDoubleBuffered() bool {
-    return PageControl_GetParentDoubleBuffered(p.instance)
+    return PageControl_GetParentDoubleBuffered(p._instance())
 }
 
+// SetParentDoubleBuffered
+//
 // 设置使用父容器双缓冲。
 //
 // Set Parent container double buffering.
 func (p *TPageControl) SetParentDoubleBuffered(value bool) {
-    PageControl_SetParentDoubleBuffered(p.instance, value)
+    PageControl_SetParentDoubleBuffered(p._instance(), value)
 }
 
+// ParentFont
+//
 // 获取使用父容器字体。
 //
 // Get Parent container font.
 func (p *TPageControl) ParentFont() bool {
-    return PageControl_GetParentFont(p.instance)
+    return PageControl_GetParentFont(p._instance())
 }
 
+// SetParentFont
+//
 // 设置使用父容器字体。
 //
 // Set Parent container font.
 func (p *TPageControl) SetParentFont(value bool) {
-    PageControl_SetParentFont(p.instance, value)
+    PageControl_SetParentFont(p._instance(), value)
 }
 
+// ParentShowHint
+//
 // 获取以父容器的ShowHint属性为准。
 func (p *TPageControl) ParentShowHint() bool {
-    return PageControl_GetParentShowHint(p.instance)
+    return PageControl_GetParentShowHint(p._instance())
 }
 
+// SetParentShowHint
+//
 // 设置以父容器的ShowHint属性为准。
 func (p *TPageControl) SetParentShowHint(value bool) {
-    PageControl_SetParentShowHint(p.instance, value)
+    PageControl_SetParentShowHint(p._instance(), value)
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (p *TPageControl) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(PageControl_GetPopupMenu(p.instance))
+    return AsPopupMenu(PageControl_GetPopupMenu(p._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (p *TPageControl) SetPopupMenu(value IComponent) {
-    PageControl_SetPopupMenu(p.instance, CheckPtr(value))
+    PageControl_SetPopupMenu(p._instance(), CheckPtr(value))
 }
 
+// ShowHint
+//
 // 获取显示鼠标悬停提示。
 //
 // Get Show mouseover tips.
 func (p *TPageControl) ShowHint() bool {
-    return PageControl_GetShowHint(p.instance)
+    return PageControl_GetShowHint(p._instance())
 }
 
+// SetShowHint
+//
 // 设置显示鼠标悬停提示。
 //
 // Set Show mouseover tips.
 func (p *TPageControl) SetShowHint(value bool) {
-    PageControl_SetShowHint(p.instance, value)
+    PageControl_SetShowHint(p._instance(), value)
 }
 
 func (p *TPageControl) TabHeight() int16 {
-    return PageControl_GetTabHeight(p.instance)
+    return PageControl_GetTabHeight(p._instance())
 }
 
 func (p *TPageControl) SetTabHeight(value int16) {
-    PageControl_SetTabHeight(p.instance, value)
+    PageControl_SetTabHeight(p._instance(), value)
 }
 
 func (p *TPageControl) TabIndex() int32 {
-    return PageControl_GetTabIndex(p.instance)
+    return PageControl_GetTabIndex(p._instance())
 }
 
 func (p *TPageControl) SetTabIndex(value int32) {
-    PageControl_SetTabIndex(p.instance, value)
+    PageControl_SetTabIndex(p._instance(), value)
 }
 
+// TabOrder
+//
 // 获取Tab切换顺序序号。
 //
 // Get Tab switching sequence number.
 func (p *TPageControl) TabOrder() TTabOrder {
-    return PageControl_GetTabOrder(p.instance)
+    return PageControl_GetTabOrder(p._instance())
 }
 
+// SetTabOrder
+//
 // 设置Tab切换顺序序号。
 //
 // Set Tab switching sequence number.
 func (p *TPageControl) SetTabOrder(value TTabOrder) {
-    PageControl_SetTabOrder(p.instance, value)
+    PageControl_SetTabOrder(p._instance(), value)
 }
 
 func (p *TPageControl) TabPosition() TTabPosition {
-    return PageControl_GetTabPosition(p.instance)
+    return PageControl_GetTabPosition(p._instance())
 }
 
 func (p *TPageControl) SetTabPosition(value TTabPosition) {
-    PageControl_SetTabPosition(p.instance, value)
+    PageControl_SetTabPosition(p._instance(), value)
 }
 
+// TabStop
+//
 // 获取Tab可停留。
 //
 // Get Tab can stay.
 func (p *TPageControl) TabStop() bool {
-    return PageControl_GetTabStop(p.instance)
+    return PageControl_GetTabStop(p._instance())
 }
 
+// SetTabStop
+//
 // 设置Tab可停留。
 //
 // Set Tab can stay.
 func (p *TPageControl) SetTabStop(value bool) {
-    PageControl_SetTabStop(p.instance, value)
+    PageControl_SetTabStop(p._instance(), value)
 }
 
 func (p *TPageControl) TabWidth() int16 {
-    return PageControl_GetTabWidth(p.instance)
+    return PageControl_GetTabWidth(p._instance())
 }
 
 func (p *TPageControl) SetTabWidth(value int16) {
-    PageControl_SetTabWidth(p.instance, value)
+    PageControl_SetTabWidth(p._instance(), value)
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (p *TPageControl) Visible() bool {
-    return PageControl_GetVisible(p.instance)
+    return PageControl_GetVisible(p._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (p *TPageControl) SetVisible(value bool) {
-    PageControl_SetVisible(p.instance, value)
+    PageControl_SetVisible(p._instance(), value)
 }
 
+// SetOnChange
+//
 // 设置改变事件。
 //
 // Set changed event.
 func (p *TPageControl) SetOnChange(fn TNotifyEvent) {
-    PageControl_SetOnChange(p.instance, fn)
+    PageControl_SetOnChange(p._instance(), fn)
 }
 
 func (p *TPageControl) SetOnChanging(fn TTabChangingEvent) {
-    PageControl_SetOnChanging(p.instance, fn)
+    PageControl_SetOnChanging(p._instance(), fn)
 }
 
+// SetOnContextPopup
+//
 // 设置上下文弹出事件，一般是右键时弹出。
 //
 // Set Context popup event, usually pop up when right click.
 func (p *TPageControl) SetOnContextPopup(fn TContextPopupEvent) {
-    PageControl_SetOnContextPopup(p.instance, fn)
+    PageControl_SetOnContextPopup(p._instance(), fn)
 }
 
 func (p *TPageControl) SetOnDockDrop(fn TDockDropEvent) {
-    PageControl_SetOnDockDrop(p.instance, fn)
+    PageControl_SetOnDockDrop(p._instance(), fn)
 }
 
+// SetOnDragDrop
+//
 // 设置拖拽下落事件。
 //
 // Set Drag and drop event.
 func (p *TPageControl) SetOnDragDrop(fn TDragDropEvent) {
-    PageControl_SetOnDragDrop(p.instance, fn)
+    PageControl_SetOnDragDrop(p._instance(), fn)
 }
 
+// SetOnDragOver
+//
 // 设置拖拽完成事件。
 //
 // Set Drag and drop completion event.
 func (p *TPageControl) SetOnDragOver(fn TDragOverEvent) {
-    PageControl_SetOnDragOver(p.instance, fn)
+    PageControl_SetOnDragOver(p._instance(), fn)
 }
 
+// SetOnEndDock
+//
 // 设置停靠结束事件。
 //
 // Set Dock end event.
 func (p *TPageControl) SetOnEndDock(fn TEndDragEvent) {
-    PageControl_SetOnEndDock(p.instance, fn)
+    PageControl_SetOnEndDock(p._instance(), fn)
 }
 
+// SetOnEndDrag
+//
 // 设置拖拽结束。
 //
 // Set End of drag.
 func (p *TPageControl) SetOnEndDrag(fn TEndDragEvent) {
-    PageControl_SetOnEndDrag(p.instance, fn)
+    PageControl_SetOnEndDrag(p._instance(), fn)
 }
 
+// SetOnEnter
+//
 // 设置焦点进入。
 //
 // Set Focus entry.
 func (p *TPageControl) SetOnEnter(fn TNotifyEvent) {
-    PageControl_SetOnEnter(p.instance, fn)
+    PageControl_SetOnEnter(p._instance(), fn)
 }
 
+// SetOnExit
+//
 // 设置焦点退出。
 //
 // Set Focus exit.
 func (p *TPageControl) SetOnExit(fn TNotifyEvent) {
-    PageControl_SetOnExit(p.instance, fn)
+    PageControl_SetOnExit(p._instance(), fn)
 }
 
 func (p *TPageControl) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
-    PageControl_SetOnGetSiteInfo(p.instance, fn)
+    PageControl_SetOnGetSiteInfo(p._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (p *TPageControl) SetOnMouseDown(fn TMouseEvent) {
-    PageControl_SetOnMouseDown(p.instance, fn)
+    PageControl_SetOnMouseDown(p._instance(), fn)
 }
 
+// SetOnMouseEnter
+//
 // 设置鼠标进入事件。
 //
 // Set Mouse entry event.
 func (p *TPageControl) SetOnMouseEnter(fn TNotifyEvent) {
-    PageControl_SetOnMouseEnter(p.instance, fn)
+    PageControl_SetOnMouseEnter(p._instance(), fn)
 }
 
+// SetOnMouseLeave
+//
 // 设置鼠标离开事件。
 //
 // Set Mouse leave event.
 func (p *TPageControl) SetOnMouseLeave(fn TNotifyEvent) {
-    PageControl_SetOnMouseLeave(p.instance, fn)
+    PageControl_SetOnMouseLeave(p._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (p *TPageControl) SetOnMouseMove(fn TMouseMoveEvent) {
-    PageControl_SetOnMouseMove(p.instance, fn)
+    PageControl_SetOnMouseMove(p._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (p *TPageControl) SetOnMouseUp(fn TMouseEvent) {
-    PageControl_SetOnMouseUp(p.instance, fn)
+    PageControl_SetOnMouseUp(p._instance(), fn)
 }
 
+// SetOnResize
+//
 // 设置大小被改变事件。
 func (p *TPageControl) SetOnResize(fn TNotifyEvent) {
-    PageControl_SetOnResize(p.instance, fn)
+    PageControl_SetOnResize(p._instance(), fn)
 }
 
+// SetOnStartDock
+//
 // 设置启动停靠。
 func (p *TPageControl) SetOnStartDock(fn TStartDockEvent) {
-    PageControl_SetOnStartDock(p.instance, fn)
+    PageControl_SetOnStartDock(p._instance(), fn)
 }
 
 func (p *TPageControl) SetOnUnDock(fn TUnDockEvent) {
-    PageControl_SetOnUnDock(p.instance, fn)
+    PageControl_SetOnUnDock(p._instance(), fn)
 }
 
+// DockClientCount
+//
 // 获取依靠客户端总数。
 func (p *TPageControl) DockClientCount() int32 {
-    return PageControl_GetDockClientCount(p.instance)
+    return PageControl_GetDockClientCount(p._instance())
 }
 
+// MouseInClient
+//
 // 获取鼠标是否在客户端，仅VCL有效。
 //
 // Get Whether the mouse is on the client, only VCL is valid.
 func (p *TPageControl) MouseInClient() bool {
-    return PageControl_GetMouseInClient(p.instance)
+    return PageControl_GetMouseInClient(p._instance())
 }
 
+// VisibleDockClientCount
+//
 // 获取当前停靠的可视总数。
 //
 // Get The total number of visible calls currently docked.
 func (p *TPageControl) VisibleDockClientCount() int32 {
-    return PageControl_GetVisibleDockClientCount(p.instance)
+    return PageControl_GetVisibleDockClientCount(p._instance())
 }
 
+// Brush
+//
 // 获取画刷对象。
 //
 // Get Brush.
 func (p *TPageControl) Brush() *TBrush {
-    return AsBrush(PageControl_GetBrush(p.instance))
+    return AsBrush(PageControl_GetBrush(p._instance()))
 }
 
+// ControlCount
+//
 // 获取子控件数。
 //
 // Get Number of child controls.
 func (p *TPageControl) ControlCount() int32 {
-    return PageControl_GetControlCount(p.instance)
+    return PageControl_GetControlCount(p._instance())
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (p *TPageControl) Handle() HWND {
-    return PageControl_GetHandle(p.instance)
+    return PageControl_GetHandle(p._instance())
 }
 
+// ParentWindow
+//
 // 获取父容器句柄。
 //
 // Get Parent container handle.
 func (p *TPageControl) ParentWindow() HWND {
-    return PageControl_GetParentWindow(p.instance)
+    return PageControl_GetParentWindow(p._instance())
 }
 
+// SetParentWindow
+//
 // 设置父容器句柄。
 //
 // Set Parent container handle.
 func (p *TPageControl) SetParentWindow(value HWND) {
-    PageControl_SetParentWindow(p.instance, value)
+    PageControl_SetParentWindow(p._instance(), value)
 }
 
 func (p *TPageControl) Showing() bool {
-    return PageControl_GetShowing(p.instance)
+    return PageControl_GetShowing(p._instance())
 }
 
+// UseDockManager
+//
 // 获取使用停靠管理。
 func (p *TPageControl) UseDockManager() bool {
-    return PageControl_GetUseDockManager(p.instance)
+    return PageControl_GetUseDockManager(p._instance())
 }
 
+// SetUseDockManager
+//
 // 设置使用停靠管理。
 func (p *TPageControl) SetUseDockManager(value bool) {
-    PageControl_SetUseDockManager(p.instance, value)
+    PageControl_SetUseDockManager(p._instance(), value)
 }
 
 func (p *TPageControl) Action() *TAction {
-    return AsAction(PageControl_GetAction(p.instance))
+    return AsAction(PageControl_GetAction(p._instance()))
 }
 
 func (p *TPageControl) SetAction(value IComponent) {
-    PageControl_SetAction(p.instance, CheckPtr(value))
+    PageControl_SetAction(p._instance(), CheckPtr(value))
 }
 
 func (p *TPageControl) BoundsRect() TRect {
-    return PageControl_GetBoundsRect(p.instance)
+    return PageControl_GetBoundsRect(p._instance())
 }
 
 func (p *TPageControl) SetBoundsRect(value TRect) {
-    PageControl_SetBoundsRect(p.instance, value)
+    PageControl_SetBoundsRect(p._instance(), value)
 }
 
+// ClientHeight
+//
 // 获取客户区高度。
 //
 // Get client height.
 func (p *TPageControl) ClientHeight() int32 {
-    return PageControl_GetClientHeight(p.instance)
+    return PageControl_GetClientHeight(p._instance())
 }
 
+// SetClientHeight
+//
 // 设置客户区高度。
 //
 // Set client height.
 func (p *TPageControl) SetClientHeight(value int32) {
-    PageControl_SetClientHeight(p.instance, value)
+    PageControl_SetClientHeight(p._instance(), value)
 }
 
 func (p *TPageControl) ClientOrigin() TPoint {
-    return PageControl_GetClientOrigin(p.instance)
+    return PageControl_GetClientOrigin(p._instance())
 }
 
+// ClientRect
+//
 // 获取客户区矩形。
 //
 // Get client rectangle.
 func (p *TPageControl) ClientRect() TRect {
-    return PageControl_GetClientRect(p.instance)
+    return PageControl_GetClientRect(p._instance())
 }
 
+// ClientWidth
+//
 // 获取客户区宽度。
 //
 // Get client width.
 func (p *TPageControl) ClientWidth() int32 {
-    return PageControl_GetClientWidth(p.instance)
+    return PageControl_GetClientWidth(p._instance())
 }
 
+// SetClientWidth
+//
 // 设置客户区宽度。
 //
 // Set client width.
 func (p *TPageControl) SetClientWidth(value int32) {
-    PageControl_SetClientWidth(p.instance, value)
+    PageControl_SetClientWidth(p._instance(), value)
 }
 
+// ControlState
+//
 // 获取控件状态。
 //
 // Get control state.
 func (p *TPageControl) ControlState() TControlState {
-    return PageControl_GetControlState(p.instance)
+    return PageControl_GetControlState(p._instance())
 }
 
+// SetControlState
+//
 // 设置控件状态。
 //
 // Set control state.
 func (p *TPageControl) SetControlState(value TControlState) {
-    PageControl_SetControlState(p.instance, value)
+    PageControl_SetControlState(p._instance(), value)
 }
 
+// ControlStyle
+//
 // 获取控件样式。
 //
 // Get control style.
 func (p *TPageControl) ControlStyle() TControlStyle {
-    return PageControl_GetControlStyle(p.instance)
+    return PageControl_GetControlStyle(p._instance())
 }
 
+// SetControlStyle
+//
 // 设置控件样式。
 //
 // Set control style.
 func (p *TPageControl) SetControlStyle(value TControlStyle) {
-    PageControl_SetControlStyle(p.instance, value)
+    PageControl_SetControlStyle(p._instance(), value)
 }
 
 func (p *TPageControl) Floating() bool {
-    return PageControl_GetFloating(p.instance)
+    return PageControl_GetFloating(p._instance())
 }
 
+// Parent
+//
 // 获取控件父容器。
 //
 // Get control parent container.
 func (p *TPageControl) Parent() *TWinControl {
-    return AsWinControl(PageControl_GetParent(p.instance))
+    return AsWinControl(PageControl_GetParent(p._instance()))
 }
 
+// SetParent
+//
 // 设置控件父容器。
 //
 // Set control parent container.
 func (p *TPageControl) SetParent(value IWinControl) {
-    PageControl_SetParent(p.instance, CheckPtr(value))
+    PageControl_SetParent(p._instance(), CheckPtr(value))
 }
 
+// Left
+//
 // 获取左边位置。
 //
 // Get Left position.
 func (p *TPageControl) Left() int32 {
-    return PageControl_GetLeft(p.instance)
+    return PageControl_GetLeft(p._instance())
 }
 
+// SetLeft
+//
 // 设置左边位置。
 //
 // Set Left position.
 func (p *TPageControl) SetLeft(value int32) {
-    PageControl_SetLeft(p.instance, value)
+    PageControl_SetLeft(p._instance(), value)
 }
 
+// Top
+//
 // 获取顶边位置。
 //
 // Get Top position.
 func (p *TPageControl) Top() int32 {
-    return PageControl_GetTop(p.instance)
+    return PageControl_GetTop(p._instance())
 }
 
+// SetTop
+//
 // 设置顶边位置。
 //
 // Set Top position.
 func (p *TPageControl) SetTop(value int32) {
-    PageControl_SetTop(p.instance, value)
+    PageControl_SetTop(p._instance(), value)
 }
 
+// Width
+//
 // 获取宽度。
 //
 // Get width.
 func (p *TPageControl) Width() int32 {
-    return PageControl_GetWidth(p.instance)
+    return PageControl_GetWidth(p._instance())
 }
 
+// SetWidth
+//
 // 设置宽度。
 //
 // Set width.
 func (p *TPageControl) SetWidth(value int32) {
-    PageControl_SetWidth(p.instance, value)
+    PageControl_SetWidth(p._instance(), value)
 }
 
+// Height
+//
 // 获取高度。
 //
 // Get height.
 func (p *TPageControl) Height() int32 {
-    return PageControl_GetHeight(p.instance)
+    return PageControl_GetHeight(p._instance())
 }
 
+// SetHeight
+//
 // 设置高度。
 //
 // Set height.
 func (p *TPageControl) SetHeight(value int32) {
-    PageControl_SetHeight(p.instance, value)
+    PageControl_SetHeight(p._instance(), value)
 }
 
+// Cursor
+//
 // 获取控件光标。
 //
 // Get control cursor.
 func (p *TPageControl) Cursor() TCursor {
-    return PageControl_GetCursor(p.instance)
+    return PageControl_GetCursor(p._instance())
 }
 
+// SetCursor
+//
 // 设置控件光标。
 //
 // Set control cursor.
 func (p *TPageControl) SetCursor(value TCursor) {
-    PageControl_SetCursor(p.instance, value)
+    PageControl_SetCursor(p._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (p *TPageControl) Hint() string {
-    return PageControl_GetHint(p.instance)
+    return PageControl_GetHint(p._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (p *TPageControl) SetHint(value string) {
-    PageControl_SetHint(p.instance, value)
+    PageControl_SetHint(p._instance(), value)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (p *TPageControl) ComponentCount() int32 {
-    return PageControl_GetComponentCount(p.instance)
+    return PageControl_GetComponentCount(p._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (p *TPageControl) ComponentIndex() int32 {
-    return PageControl_GetComponentIndex(p.instance)
+    return PageControl_GetComponentIndex(p._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (p *TPageControl) SetComponentIndex(value int32) {
-    PageControl_SetComponentIndex(p.instance, value)
+    PageControl_SetComponentIndex(p._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (p *TPageControl) Owner() *TComponent {
-    return AsComponent(PageControl_GetOwner(p.instance))
+    return AsComponent(PageControl_GetOwner(p._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (p *TPageControl) Name() string {
-    return PageControl_GetName(p.instance)
+    return PageControl_GetName(p._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (p *TPageControl) SetName(value string) {
-    PageControl_SetName(p.instance, value)
+    PageControl_SetName(p._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (p *TPageControl) Tag() int {
-    return PageControl_GetTag(p.instance)
+    return PageControl_GetTag(p._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (p *TPageControl) SetTag(value int) {
-    PageControl_SetTag(p.instance, value)
+    PageControl_SetTag(p._instance(), value)
 }
 
+// AnchorSideLeft
+//
 // 获取左边锚点。
 func (p *TPageControl) AnchorSideLeft() *TAnchorSide {
-    return AsAnchorSide(PageControl_GetAnchorSideLeft(p.instance))
+    return AsAnchorSide(PageControl_GetAnchorSideLeft(p._instance()))
 }
 
+// SetAnchorSideLeft
+//
 // 设置左边锚点。
 func (p *TPageControl) SetAnchorSideLeft(value *TAnchorSide) {
-    PageControl_SetAnchorSideLeft(p.instance, CheckPtr(value))
+    PageControl_SetAnchorSideLeft(p._instance(), CheckPtr(value))
 }
 
+// AnchorSideTop
+//
 // 获取顶边锚点。
 func (p *TPageControl) AnchorSideTop() *TAnchorSide {
-    return AsAnchorSide(PageControl_GetAnchorSideTop(p.instance))
+    return AsAnchorSide(PageControl_GetAnchorSideTop(p._instance()))
 }
 
+// SetAnchorSideTop
+//
 // 设置顶边锚点。
 func (p *TPageControl) SetAnchorSideTop(value *TAnchorSide) {
-    PageControl_SetAnchorSideTop(p.instance, CheckPtr(value))
+    PageControl_SetAnchorSideTop(p._instance(), CheckPtr(value))
 }
 
+// AnchorSideRight
+//
 // 获取右边锚点。
 func (p *TPageControl) AnchorSideRight() *TAnchorSide {
-    return AsAnchorSide(PageControl_GetAnchorSideRight(p.instance))
+    return AsAnchorSide(PageControl_GetAnchorSideRight(p._instance()))
 }
 
+// SetAnchorSideRight
+//
 // 设置右边锚点。
 func (p *TPageControl) SetAnchorSideRight(value *TAnchorSide) {
-    PageControl_SetAnchorSideRight(p.instance, CheckPtr(value))
+    PageControl_SetAnchorSideRight(p._instance(), CheckPtr(value))
 }
 
+// AnchorSideBottom
+//
 // 获取底边锚点。
 func (p *TPageControl) AnchorSideBottom() *TAnchorSide {
-    return AsAnchorSide(PageControl_GetAnchorSideBottom(p.instance))
+    return AsAnchorSide(PageControl_GetAnchorSideBottom(p._instance()))
 }
 
+// SetAnchorSideBottom
+//
 // 设置底边锚点。
 func (p *TPageControl) SetAnchorSideBottom(value *TAnchorSide) {
-    PageControl_SetAnchorSideBottom(p.instance, CheckPtr(value))
+    PageControl_SetAnchorSideBottom(p._instance(), CheckPtr(value))
 }
 
 func (p *TPageControl) ChildSizing() *TControlChildSizing {
-    return AsControlChildSizing(PageControl_GetChildSizing(p.instance))
+    return AsControlChildSizing(PageControl_GetChildSizing(p._instance()))
 }
 
 func (p *TPageControl) SetChildSizing(value *TControlChildSizing) {
-    PageControl_SetChildSizing(p.instance, CheckPtr(value))
+    PageControl_SetChildSizing(p._instance(), CheckPtr(value))
 }
 
+// BorderSpacing
+//
 // 获取边框间距。
 func (p *TPageControl) BorderSpacing() *TControlBorderSpacing {
-    return AsControlBorderSpacing(PageControl_GetBorderSpacing(p.instance))
+    return AsControlBorderSpacing(PageControl_GetBorderSpacing(p._instance()))
 }
 
+// SetBorderSpacing
+//
 // 设置边框间距。
 func (p *TPageControl) SetBorderSpacing(value *TControlBorderSpacing) {
-    PageControl_SetBorderSpacing(p.instance, CheckPtr(value))
+    PageControl_SetBorderSpacing(p._instance(), CheckPtr(value))
 }
 
 func (p *TPageControl) Pages(Index int32) *TTabSheet {
-    return AsTabSheet(PageControl_GetPages(p.instance, Index))
+    return AsTabSheet(PageControl_GetPages(p._instance(), Index))
 }
 
+// DockClients
+//
 // 获取指定索引停靠客户端。
 func (p *TPageControl) DockClients(Index int32) *TControl {
-    return AsControl(PageControl_GetDockClients(p.instance, Index))
+    return AsControl(PageControl_GetDockClients(p._instance(), Index))
 }
 
+// Controls
+//
 // 获取指定索引子控件。
 func (p *TPageControl) Controls(Index int32) *TControl {
-    return AsControl(PageControl_GetControls(p.instance, Index))
+    return AsControl(PageControl_GetControls(p._instance(), Index))
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (p *TPageControl) Components(AIndex int32) *TComponent {
-    return AsComponent(PageControl_GetComponents(p.instance, AIndex))
+    return AsComponent(PageControl_GetComponents(p._instance(), AIndex))
 }
 
+// AnchorSide
+//
 // 获取锚侧面。
 func (p *TPageControl) AnchorSide(AKind TAnchorKind) *TAnchorSide {
-    return AsAnchorSide(PageControl_GetAnchorSide(p.instance, AKind))
+    return AsAnchorSide(PageControl_GetAnchorSide(p._instance(), AKind))
 }
 

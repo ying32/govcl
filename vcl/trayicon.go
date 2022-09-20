@@ -19,101 +19,94 @@ import (
 
 type TTrayIcon struct {
     IComponent
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewTrayIcon
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewTrayIcon(owner IComponent) *TTrayIcon {
     t := new(TTrayIcon)
-    t.instance = TrayIcon_Create(CheckPtr(owner))
-    t.ptr = unsafe.Pointer(t.instance)
+    t.instance = unsafe.Pointer(TrayIcon_Create(CheckPtr(owner)))
     return t
 }
 
+// AsTrayIcon
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsTrayIcon(obj interface{}) *TTrayIcon {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TTrayIcon{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TTrayIcon{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsTrayIcon.
-func TrayIconFromInst(inst uintptr) *TTrayIcon {
-    return AsTrayIcon(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsTrayIcon.
-func TrayIconFromObj(obj IObject) *TTrayIcon {
-    return AsTrayIcon(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsTrayIcon.
-func TrayIconFromUnsafePointer(ptr unsafe.Pointer) *TTrayIcon {
-    return AsTrayIcon(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (t *TTrayIcon) Free() {
-    if t.instance != 0 {
-        TrayIcon_Free(t.instance)
-        t.instance, t.ptr = 0, nullptr
+    if t.instance != nullptr {
+        TrayIcon_Free(t._instance())
+        t.instance  = nullptr
     }
 }
 
+func (t *TTrayIcon) _instance() uintptr {
+    return uintptr(t.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (t *TTrayIcon) Instance() uintptr {
-    return t.instance
+    return t._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (t *TTrayIcon) UnsafeAddr() unsafe.Pointer {
-    return t.ptr
+    return t.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (t *TTrayIcon) IsValid() bool {
-    return t.instance != 0
+    return t.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (t *TTrayIcon) Is() TIs {
-    return TIs(t.instance)
+    return TIs(t._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (t *TTrayIcon) As() TAs {
-//    return TAs(t.instance)
+//    return TAs(t._instance())
 //}
 
+// TTrayIconClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -122,273 +115,339 @@ func TTrayIconClass() TClass {
 }
 
 func (t *TTrayIcon) ShowBalloonHint() {
-    TrayIcon_ShowBalloonHint(t.instance)
+    TrayIcon_ShowBalloonHint(t._instance())
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (t *TTrayIcon) FindComponent(AName string) *TComponent {
-    return AsComponent(TrayIcon_FindComponent(t.instance, AName))
+    return AsComponent(TrayIcon_FindComponent(t._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (t *TTrayIcon) GetNamePath() string {
-    return TrayIcon_GetNamePath(t.instance)
+    return TrayIcon_GetNamePath(t._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (t *TTrayIcon) HasParent() bool {
-    return TrayIcon_HasParent(t.instance)
+    return TrayIcon_HasParent(t._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (t *TTrayIcon) Assign(Source IObject) {
-    TrayIcon_Assign(t.instance, CheckPtr(Source))
+    TrayIcon_Assign(t._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (t *TTrayIcon) ClassType() TClass {
-    return TrayIcon_ClassType(t.instance)
+    return TrayIcon_ClassType(t._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (t *TTrayIcon) ClassName() string {
-    return TrayIcon_ClassName(t.instance)
+    return TrayIcon_ClassName(t._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (t *TTrayIcon) InstanceSize() int32 {
-    return TrayIcon_InstanceSize(t.instance)
+    return TrayIcon_InstanceSize(t._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (t *TTrayIcon) InheritsFrom(AClass TClass) bool {
-    return TrayIcon_InheritsFrom(t.instance, AClass)
+    return TrayIcon_InheritsFrom(t._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (t *TTrayIcon) Equals(Obj IObject) bool {
-    return TrayIcon_Equals(t.instance, CheckPtr(Obj))
+    return TrayIcon_Equals(t._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (t *TTrayIcon) GetHashCode() int32 {
-    return TrayIcon_GetHashCode(t.instance)
+    return TrayIcon_GetHashCode(t._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (t *TTrayIcon) ToString() string {
-    return TrayIcon_ToString(t.instance)
+    return TrayIcon_ToString(t._instance())
 }
 
 func (t *TTrayIcon) AnimateInterval() uint32 {
-    return TrayIcon_GetAnimateInterval(t.instance)
+    return TrayIcon_GetAnimateInterval(t._instance())
 }
 
 func (t *TTrayIcon) SetAnimateInterval(value uint32) {
-    TrayIcon_SetAnimateInterval(t.instance, value)
+    TrayIcon_SetAnimateInterval(t._instance(), value)
 }
 
+// Hint
+//
 // 获取组件鼠标悬停提示。
 //
 // Get component mouse hints.
 func (t *TTrayIcon) Hint() string {
-    return TrayIcon_GetHint(t.instance)
+    return TrayIcon_GetHint(t._instance())
 }
 
+// SetHint
+//
 // 设置组件鼠标悬停提示。
 //
 // Set component mouse hints.
 func (t *TTrayIcon) SetHint(value string) {
-    TrayIcon_SetHint(t.instance, value)
+    TrayIcon_SetHint(t._instance(), value)
 }
 
 func (t *TTrayIcon) BalloonHint() string {
-    return TrayIcon_GetBalloonHint(t.instance)
+    return TrayIcon_GetBalloonHint(t._instance())
 }
 
 func (t *TTrayIcon) SetBalloonHint(value string) {
-    TrayIcon_SetBalloonHint(t.instance, value)
+    TrayIcon_SetBalloonHint(t._instance(), value)
 }
 
 func (t *TTrayIcon) BalloonTitle() string {
-    return TrayIcon_GetBalloonTitle(t.instance)
+    return TrayIcon_GetBalloonTitle(t._instance())
 }
 
 func (t *TTrayIcon) SetBalloonTitle(value string) {
-    TrayIcon_SetBalloonTitle(t.instance, value)
+    TrayIcon_SetBalloonTitle(t._instance(), value)
 }
 
 func (t *TTrayIcon) BalloonTimeout() int32 {
-    return TrayIcon_GetBalloonTimeout(t.instance)
+    return TrayIcon_GetBalloonTimeout(t._instance())
 }
 
 func (t *TTrayIcon) SetBalloonTimeout(value int32) {
-    TrayIcon_SetBalloonTimeout(t.instance, value)
+    TrayIcon_SetBalloonTimeout(t._instance(), value)
 }
 
 func (t *TTrayIcon) BalloonFlags() TBalloonFlags {
-    return TrayIcon_GetBalloonFlags(t.instance)
+    return TrayIcon_GetBalloonFlags(t._instance())
 }
 
 func (t *TTrayIcon) SetBalloonFlags(value TBalloonFlags) {
-    TrayIcon_SetBalloonFlags(t.instance, value)
+    TrayIcon_SetBalloonFlags(t._instance(), value)
 }
 
+// Icon
+//
 // 获取图标。
 //
 // Get icon.
 func (t *TTrayIcon) Icon() *TIcon {
-    return AsIcon(TrayIcon_GetIcon(t.instance))
+    return AsIcon(TrayIcon_GetIcon(t._instance()))
 }
 
+// SetIcon
+//
 // 设置图标。
 //
 // Set icon.
 func (t *TTrayIcon) SetIcon(value *TIcon) {
-    TrayIcon_SetIcon(t.instance, CheckPtr(value))
+    TrayIcon_SetIcon(t._instance(), CheckPtr(value))
 }
 
+// PopupMenu
+//
 // 获取右键菜单。
 //
 // Get Right click menu.
 func (t *TTrayIcon) PopupMenu() *TPopupMenu {
-    return AsPopupMenu(TrayIcon_GetPopupMenu(t.instance))
+    return AsPopupMenu(TrayIcon_GetPopupMenu(t._instance()))
 }
 
+// SetPopupMenu
+//
 // 设置右键菜单。
 //
 // Set Right click menu.
 func (t *TTrayIcon) SetPopupMenu(value IComponent) {
-    TrayIcon_SetPopupMenu(t.instance, CheckPtr(value))
+    TrayIcon_SetPopupMenu(t._instance(), CheckPtr(value))
 }
 
+// Visible
+//
 // 获取控件可视。
 //
 // Get the control visible.
 func (t *TTrayIcon) Visible() bool {
-    return TrayIcon_GetVisible(t.instance)
+    return TrayIcon_GetVisible(t._instance())
 }
 
+// SetVisible
+//
 // 设置控件可视。
 //
 // Set the control visible.
 func (t *TTrayIcon) SetVisible(value bool) {
-    TrayIcon_SetVisible(t.instance, value)
+    TrayIcon_SetVisible(t._instance(), value)
 }
 
+// SetOnClick
+//
 // 设置控件单击事件。
 //
 // Set control click event.
 func (t *TTrayIcon) SetOnClick(fn TNotifyEvent) {
-    TrayIcon_SetOnClick(t.instance, fn)
+    TrayIcon_SetOnClick(t._instance(), fn)
 }
 
+// SetOnDblClick
+//
 // 设置双击事件。
 func (t *TTrayIcon) SetOnDblClick(fn TNotifyEvent) {
-    TrayIcon_SetOnDblClick(t.instance, fn)
+    TrayIcon_SetOnDblClick(t._instance(), fn)
 }
 
+// SetOnMouseMove
+//
 // 设置鼠标移动事件。
 func (t *TTrayIcon) SetOnMouseMove(fn TMouseMoveEvent) {
-    TrayIcon_SetOnMouseMove(t.instance, fn)
+    TrayIcon_SetOnMouseMove(t._instance(), fn)
 }
 
+// SetOnMouseUp
+//
 // 设置鼠标抬起事件。
 //
 // Set Mouse lift event.
 func (t *TTrayIcon) SetOnMouseUp(fn TMouseEvent) {
-    TrayIcon_SetOnMouseUp(t.instance, fn)
+    TrayIcon_SetOnMouseUp(t._instance(), fn)
 }
 
+// SetOnMouseDown
+//
 // 设置鼠标按下事件。
 //
 // Set Mouse down event.
 func (t *TTrayIcon) SetOnMouseDown(fn TMouseEvent) {
-    TrayIcon_SetOnMouseDown(t.instance, fn)
+    TrayIcon_SetOnMouseDown(t._instance(), fn)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (t *TTrayIcon) ComponentCount() int32 {
-    return TrayIcon_GetComponentCount(t.instance)
+    return TrayIcon_GetComponentCount(t._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (t *TTrayIcon) ComponentIndex() int32 {
-    return TrayIcon_GetComponentIndex(t.instance)
+    return TrayIcon_GetComponentIndex(t._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (t *TTrayIcon) SetComponentIndex(value int32) {
-    TrayIcon_SetComponentIndex(t.instance, value)
+    TrayIcon_SetComponentIndex(t._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (t *TTrayIcon) Owner() *TComponent {
-    return AsComponent(TrayIcon_GetOwner(t.instance))
+    return AsComponent(TrayIcon_GetOwner(t._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (t *TTrayIcon) Name() string {
-    return TrayIcon_GetName(t.instance)
+    return TrayIcon_GetName(t._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (t *TTrayIcon) SetName(value string) {
-    TrayIcon_SetName(t.instance, value)
+    TrayIcon_SetName(t._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (t *TTrayIcon) Tag() int {
-    return TrayIcon_GetTag(t.instance)
+    return TrayIcon_GetTag(t._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (t *TTrayIcon) SetTag(value int) {
-    TrayIcon_SetTag(t.instance, value)
+    TrayIcon_SetTag(t._instance(), value)
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (t *TTrayIcon) Components(AIndex int32) *TComponent {
-    return AsComponent(TrayIcon_GetComponents(t.instance, AIndex))
+    return AsComponent(TrayIcon_GetComponents(t._instance(), AIndex))
 }
 

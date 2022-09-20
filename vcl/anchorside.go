@@ -19,81 +19,71 @@ import (
 
 type TAnchorSide struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// AsAnchorSide
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsAnchorSide(obj interface{}) *TAnchorSide {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TAnchorSide{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TAnchorSide{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsAnchorSide.
-func AnchorSideFromInst(inst uintptr) *TAnchorSide {
-    return AsAnchorSide(inst)
+func (a *TAnchorSide) _instance() uintptr {
+    return uintptr(a.instance)
 }
 
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsAnchorSide.
-func AnchorSideFromObj(obj IObject) *TAnchorSide {
-    return AsAnchorSide(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsAnchorSide.
-func AnchorSideFromUnsafePointer(ptr unsafe.Pointer) *TAnchorSide {
-    return AsAnchorSide(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (a *TAnchorSide) Instance() uintptr {
-    return a.instance
+    return a._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (a *TAnchorSide) UnsafeAddr() unsafe.Pointer {
-    return a.ptr
+    return a.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (a *TAnchorSide) IsValid() bool {
-    return a.instance != 0
+    return a.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (a *TAnchorSide) Is() TIs {
-    return TIs(a.instance)
+    return TIs(a._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (a *TAnchorSide) As() TAs {
-//    return TAs(a.instance)
+//    return TAs(a._instance())
 //}
 
+// TAnchorSideClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -101,93 +91,113 @@ func TAnchorSideClass() TClass {
     return AnchorSide_StaticClassType()
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (a *TAnchorSide) Assign(Source IObject) {
-    AnchorSide_Assign(a.instance, CheckPtr(Source))
+    AnchorSide_Assign(a._instance(), CheckPtr(Source))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (a *TAnchorSide) GetNamePath() string {
-    return AnchorSide_GetNamePath(a.instance)
+    return AnchorSide_GetNamePath(a._instance())
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (a *TAnchorSide) ClassType() TClass {
-    return AnchorSide_ClassType(a.instance)
+    return AnchorSide_ClassType(a._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (a *TAnchorSide) ClassName() string {
-    return AnchorSide_ClassName(a.instance)
+    return AnchorSide_ClassName(a._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (a *TAnchorSide) InstanceSize() int32 {
-    return AnchorSide_InstanceSize(a.instance)
+    return AnchorSide_InstanceSize(a._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (a *TAnchorSide) InheritsFrom(AClass TClass) bool {
-    return AnchorSide_InheritsFrom(a.instance, AClass)
+    return AnchorSide_InheritsFrom(a._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (a *TAnchorSide) Equals(Obj IObject) bool {
-    return AnchorSide_Equals(a.instance, CheckPtr(Obj))
+    return AnchorSide_Equals(a._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (a *TAnchorSide) GetHashCode() int32 {
-    return AnchorSide_GetHashCode(a.instance)
+    return AnchorSide_GetHashCode(a._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (a *TAnchorSide) ToString() string {
-    return AnchorSide_ToString(a.instance)
+    return AnchorSide_ToString(a._instance())
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (a *TAnchorSide) Owner() *TControl {
-    return AsControl(AnchorSide_GetOwner(a.instance))
+    return AsControl(AnchorSide_GetOwner(a._instance()))
 }
 
 func (a *TAnchorSide) Kind() TAnchorKind {
-    return AnchorSide_GetKind(a.instance)
+    return AnchorSide_GetKind(a._instance())
 }
 
 func (a *TAnchorSide) Control() *TControl {
-    return AsControl(AnchorSide_GetControl(a.instance))
+    return AsControl(AnchorSide_GetControl(a._instance()))
 }
 
 func (a *TAnchorSide) SetControl(value IControl) {
-    AnchorSide_SetControl(a.instance, CheckPtr(value))
+    AnchorSide_SetControl(a._instance(), CheckPtr(value))
 }
 
 func (a *TAnchorSide) Side() TAnchorSideReference {
-    return AnchorSide_GetSide(a.instance)
+    return AnchorSide_GetSide(a._instance())
 }
 
 func (a *TAnchorSide) SetSide(value TAnchorSideReference) {
-    AnchorSide_SetSide(a.instance, value)
+    AnchorSide_SetSide(a._instance(), value)
 }
 

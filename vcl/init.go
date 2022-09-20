@@ -19,7 +19,7 @@ import (
 const (
 	// CN: 要求最小liblcl二进制版本
 	// EN: Requires a minimum liblcl binary version.
-	requireMinBinaryVersion = 0x02020000
+	requireMinBinaryVersion = 0x02020200
 )
 
 var (
@@ -63,6 +63,8 @@ func init() {
 	SetThreadSyncCallback(threadSyncCallback)
 	// 调求回调CreateParams方法
 	SetRequestCallCreateParamsCallback(requestCallCreateParamsCallback)
+	// 清除事件回调
+	SetRemoveEventCallback(removeEventCallback)
 
 	// 导入几个实例类
 	Application = AsApplication(Application_Instance())

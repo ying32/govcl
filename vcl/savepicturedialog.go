@@ -19,101 +19,94 @@ import (
 
 type TSavePictureDialog struct {
     IComponent
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewSavePictureDialog
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewSavePictureDialog(owner IComponent) *TSavePictureDialog {
     s := new(TSavePictureDialog)
-    s.instance = SavePictureDialog_Create(CheckPtr(owner))
-    s.ptr = unsafe.Pointer(s.instance)
+    s.instance = unsafe.Pointer(SavePictureDialog_Create(CheckPtr(owner)))
     return s
 }
 
+// AsSavePictureDialog
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsSavePictureDialog(obj interface{}) *TSavePictureDialog {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TSavePictureDialog{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TSavePictureDialog{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsSavePictureDialog.
-func SavePictureDialogFromInst(inst uintptr) *TSavePictureDialog {
-    return AsSavePictureDialog(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsSavePictureDialog.
-func SavePictureDialogFromObj(obj IObject) *TSavePictureDialog {
-    return AsSavePictureDialog(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsSavePictureDialog.
-func SavePictureDialogFromUnsafePointer(ptr unsafe.Pointer) *TSavePictureDialog {
-    return AsSavePictureDialog(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (s *TSavePictureDialog) Free() {
-    if s.instance != 0 {
-        SavePictureDialog_Free(s.instance)
-        s.instance, s.ptr = 0, nullptr
+    if s.instance != nullptr {
+        SavePictureDialog_Free(s._instance())
+        s.instance  = nullptr
     }
 }
 
+func (s *TSavePictureDialog) _instance() uintptr {
+    return uintptr(s.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (s *TSavePictureDialog) Instance() uintptr {
-    return s.instance
+    return s._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (s *TSavePictureDialog) UnsafeAddr() unsafe.Pointer {
-    return s.ptr
+    return s.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (s *TSavePictureDialog) IsValid() bool {
-    return s.instance != 0
+    return s.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (s *TSavePictureDialog) Is() TIs {
-    return TIs(s.instance)
+    return TIs(s._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (s *TSavePictureDialog) As() TAs {
-//    return TAs(s.instance)
+//    return TAs(s._instance())
 //}
 
+// TSavePictureDialogClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -121,224 +114,270 @@ func TSavePictureDialogClass() TClass {
     return SavePictureDialog_StaticClassType()
 }
 
+// Execute
+//
 // 执行。
 func (s *TSavePictureDialog) Execute() bool {
-    return SavePictureDialog_Execute(s.instance)
+    return SavePictureDialog_Execute(s._instance())
 }
 
+// FindComponent
+//
 // 查找指定名称的组件。
 //
 // Find the component with the specified name.
 func (s *TSavePictureDialog) FindComponent(AName string) *TComponent {
-    return AsComponent(SavePictureDialog_FindComponent(s.instance, AName))
+    return AsComponent(SavePictureDialog_FindComponent(s._instance(), AName))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (s *TSavePictureDialog) GetNamePath() string {
-    return SavePictureDialog_GetNamePath(s.instance)
+    return SavePictureDialog_GetNamePath(s._instance())
 }
 
+// HasParent
+//
 // 是否有父容器。
 //
 // Is there a parent container.
 func (s *TSavePictureDialog) HasParent() bool {
-    return SavePictureDialog_HasParent(s.instance)
+    return SavePictureDialog_HasParent(s._instance())
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (s *TSavePictureDialog) Assign(Source IObject) {
-    SavePictureDialog_Assign(s.instance, CheckPtr(Source))
+    SavePictureDialog_Assign(s._instance(), CheckPtr(Source))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (s *TSavePictureDialog) ClassType() TClass {
-    return SavePictureDialog_ClassType(s.instance)
+    return SavePictureDialog_ClassType(s._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (s *TSavePictureDialog) ClassName() string {
-    return SavePictureDialog_ClassName(s.instance)
+    return SavePictureDialog_ClassName(s._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (s *TSavePictureDialog) InstanceSize() int32 {
-    return SavePictureDialog_InstanceSize(s.instance)
+    return SavePictureDialog_InstanceSize(s._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (s *TSavePictureDialog) InheritsFrom(AClass TClass) bool {
-    return SavePictureDialog_InheritsFrom(s.instance, AClass)
+    return SavePictureDialog_InheritsFrom(s._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (s *TSavePictureDialog) Equals(Obj IObject) bool {
-    return SavePictureDialog_Equals(s.instance, CheckPtr(Obj))
+    return SavePictureDialog_Equals(s._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (s *TSavePictureDialog) GetHashCode() int32 {
-    return SavePictureDialog_GetHashCode(s.instance)
+    return SavePictureDialog_GetHashCode(s._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (s *TSavePictureDialog) ToString() string {
-    return SavePictureDialog_ToString(s.instance)
+    return SavePictureDialog_ToString(s._instance())
 }
 
 func (s *TSavePictureDialog) Filter() string {
-    return SavePictureDialog_GetFilter(s.instance)
+    return SavePictureDialog_GetFilter(s._instance())
 }
 
 func (s *TSavePictureDialog) SetFilter(value string) {
-    SavePictureDialog_SetFilter(s.instance, value)
+    SavePictureDialog_SetFilter(s._instance(), value)
 }
 
 func (s *TSavePictureDialog) Files() *TStrings {
-    return AsStrings(SavePictureDialog_GetFiles(s.instance))
+    return AsStrings(SavePictureDialog_GetFiles(s._instance()))
 }
 
 func (s *TSavePictureDialog) DefaultExt() string {
-    return SavePictureDialog_GetDefaultExt(s.instance)
+    return SavePictureDialog_GetDefaultExt(s._instance())
 }
 
 func (s *TSavePictureDialog) SetDefaultExt(value string) {
-    SavePictureDialog_SetDefaultExt(s.instance, value)
+    SavePictureDialog_SetDefaultExt(s._instance(), value)
 }
 
 func (s *TSavePictureDialog) FileName() string {
-    return SavePictureDialog_GetFileName(s.instance)
+    return SavePictureDialog_GetFileName(s._instance())
 }
 
 func (s *TSavePictureDialog) SetFileName(value string) {
-    SavePictureDialog_SetFileName(s.instance, value)
+    SavePictureDialog_SetFileName(s._instance(), value)
 }
 
 func (s *TSavePictureDialog) FilterIndex() int32 {
-    return SavePictureDialog_GetFilterIndex(s.instance)
+    return SavePictureDialog_GetFilterIndex(s._instance())
 }
 
 func (s *TSavePictureDialog) SetFilterIndex(value int32) {
-    SavePictureDialog_SetFilterIndex(s.instance, value)
+    SavePictureDialog_SetFilterIndex(s._instance(), value)
 }
 
 func (s *TSavePictureDialog) InitialDir() string {
-    return SavePictureDialog_GetInitialDir(s.instance)
+    return SavePictureDialog_GetInitialDir(s._instance())
 }
 
 func (s *TSavePictureDialog) SetInitialDir(value string) {
-    SavePictureDialog_SetInitialDir(s.instance, value)
+    SavePictureDialog_SetInitialDir(s._instance(), value)
 }
 
 func (s *TSavePictureDialog) Options() TOpenOptions {
-    return SavePictureDialog_GetOptions(s.instance)
+    return SavePictureDialog_GetOptions(s._instance())
 }
 
 func (s *TSavePictureDialog) SetOptions(value TOpenOptions) {
-    SavePictureDialog_SetOptions(s.instance, value)
+    SavePictureDialog_SetOptions(s._instance(), value)
 }
 
 func (s *TSavePictureDialog) Title() string {
-    return SavePictureDialog_GetTitle(s.instance)
+    return SavePictureDialog_GetTitle(s._instance())
 }
 
 func (s *TSavePictureDialog) SetTitle(value string) {
-    SavePictureDialog_SetTitle(s.instance, value)
+    SavePictureDialog_SetTitle(s._instance(), value)
 }
 
+// Handle
+//
 // 获取控件句柄。
 //
 // Get Control handle.
 func (s *TSavePictureDialog) Handle() HWND {
-    return SavePictureDialog_GetHandle(s.instance)
+    return SavePictureDialog_GetHandle(s._instance())
 }
 
 func (s *TSavePictureDialog) SetOnClose(fn TNotifyEvent) {
-    SavePictureDialog_SetOnClose(s.instance, fn)
+    SavePictureDialog_SetOnClose(s._instance(), fn)
 }
 
+// SetOnShow
+//
 // 设置显示事件。
 func (s *TSavePictureDialog) SetOnShow(fn TNotifyEvent) {
-    SavePictureDialog_SetOnShow(s.instance, fn)
+    SavePictureDialog_SetOnShow(s._instance(), fn)
 }
 
+// ComponentCount
+//
 // 获取组件总数。
 //
 // Get the total number of components.
 func (s *TSavePictureDialog) ComponentCount() int32 {
-    return SavePictureDialog_GetComponentCount(s.instance)
+    return SavePictureDialog_GetComponentCount(s._instance())
 }
 
+// ComponentIndex
+//
 // 获取组件索引。
 //
 // Get component index.
 func (s *TSavePictureDialog) ComponentIndex() int32 {
-    return SavePictureDialog_GetComponentIndex(s.instance)
+    return SavePictureDialog_GetComponentIndex(s._instance())
 }
 
+// SetComponentIndex
+//
 // 设置组件索引。
 //
 // Set component index.
 func (s *TSavePictureDialog) SetComponentIndex(value int32) {
-    SavePictureDialog_SetComponentIndex(s.instance, value)
+    SavePictureDialog_SetComponentIndex(s._instance(), value)
 }
 
+// Owner
+//
 // 获取组件所有者。
 //
 // Get component owner.
 func (s *TSavePictureDialog) Owner() *TComponent {
-    return AsComponent(SavePictureDialog_GetOwner(s.instance))
+    return AsComponent(SavePictureDialog_GetOwner(s._instance()))
 }
 
+// Name
+//
 // 获取组件名称。
 //
 // Get the component name.
 func (s *TSavePictureDialog) Name() string {
-    return SavePictureDialog_GetName(s.instance)
+    return SavePictureDialog_GetName(s._instance())
 }
 
+// SetName
+//
 // 设置组件名称。
 //
 // Set the component name.
 func (s *TSavePictureDialog) SetName(value string) {
-    SavePictureDialog_SetName(s.instance, value)
+    SavePictureDialog_SetName(s._instance(), value)
 }
 
+// Tag
+//
 // 获取对象标记。
 //
 // Get the control tag.
 func (s *TSavePictureDialog) Tag() int {
-    return SavePictureDialog_GetTag(s.instance)
+    return SavePictureDialog_GetTag(s._instance())
 }
 
+// SetTag
+//
 // 设置对象标记。
 //
 // Set the control tag.
 func (s *TSavePictureDialog) SetTag(value int) {
-    SavePictureDialog_SetTag(s.instance, value)
+    SavePictureDialog_SetTag(s._instance(), value)
 }
 
+// Components
+//
 // 获取指定索引组件。
 //
 // Get the specified index component.
 func (s *TSavePictureDialog) Components(AIndex int32) *TComponent {
-    return AsComponent(SavePictureDialog_GetComponents(s.instance, AIndex))
+    return AsComponent(SavePictureDialog_GetComponents(s._instance(), AIndex))
 }
 

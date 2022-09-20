@@ -127,9 +127,7 @@ func main() {
 	btn.SetAction(action)
 
 	trayicon = vcl.NewTrayIcon(mainForm)
-	if rtl.LcLLoaded() {
-		trayicon.SetIcon(vcl.Application.Icon()) //不设置会自动使用Application.Icon
-	}
+	trayicon.SetIcon(vcl.Application.Icon()) //不设置会自动使用Application.Icon
 
 	trayicon.SetHint(mainForm.Caption())
 	trayicon.SetVisible(true)

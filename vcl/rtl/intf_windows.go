@@ -13,6 +13,8 @@ import (
 	"github.com/ying32/govcl/vcl/win"
 )
 
+// MainInstance
+//
 // exe自身实例。
 //
 // Instance of an EXE.

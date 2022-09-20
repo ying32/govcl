@@ -55,5 +55,8 @@ func (f *TForm1) OnFormWndProc(msg *types.TMessage) {
 	case messages.WM_RBUTTONDBLCLK:
 		fmt.Println("右键双击")
 
+	case messages.WM_MOUSEWHEEL:
+		fmt.Println("鼠标滚轮")
+
 	}
 }

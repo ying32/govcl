@@ -19,102 +19,95 @@ import (
 
 type TCoolBands struct {
     IObject
-    instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
-    ptr unsafe.Pointer
+    instance unsafe.Pointer
 }
 
+// NewCoolBands
+//
 // 创建一个新的对象。
 // 
 // Create a new object.
 func NewCoolBands(AOwner *TCoolBar) *TCoolBands {
     c := new(TCoolBands)
-    c.instance = CoolBands_Create(CheckPtr(AOwner))
-    c.ptr = unsafe.Pointer(c.instance)
+    c.instance = unsafe.Pointer(CoolBands_Create(CheckPtr(AOwner)))
     setFinalizer(c, (*TCoolBands).Free)
     return c
 }
 
+// AsCoolBands
+//
 // 动态转换一个已存在的对象实例。
 // 
 // Dynamically convert an existing object instance.
 func AsCoolBands(obj interface{}) *TCoolBands {
-    instance, ptr := getInstance(obj)
-    if instance == 0 { return nil }
-    return &TCoolBands{instance: instance, ptr: ptr}
+    instance := getInstance(obj)
+    if instance == nullptr { return nil }
+    return &TCoolBands{instance: instance}
 }
 
-// -------------------------- Deprecated begin --------------------------
-// 新建一个对象来自已经存在的对象实例指针。
-// 
-// Create a new object from an existing object instance pointer.
-// Deprecated: use AsCoolBands.
-func CoolBandsFromInst(inst uintptr) *TCoolBands {
-    return AsCoolBands(inst)
-}
-
-// 新建一个对象来自已经存在的对象实例。
-// 
-// Create a new object from an existing object instance.
-// Deprecated: use AsCoolBands.
-func CoolBandsFromObj(obj IObject) *TCoolBands {
-    return AsCoolBands(obj)
-}
-
-// 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// 
-// Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
-// Deprecated: use AsCoolBands.
-func CoolBandsFromUnsafePointer(ptr unsafe.Pointer) *TCoolBands {
-    return AsCoolBands(ptr)
-}
-
-// -------------------------- Deprecated end --------------------------
+// Free 
+//
 // 释放对象。
 // 
 // Free object.
 func (c *TCoolBands) Free() {
-    if c.instance != 0 {
-        CoolBands_Free(c.instance)
-        c.instance, c.ptr = 0, nullptr
+    if c.instance != nullptr {
+        CoolBands_Free(c._instance())
+        c.instance  = nullptr
     }
 }
 
+func (c *TCoolBands) _instance() uintptr {
+    return uintptr(c.instance)
+}
+
+// Instance 
+//
 // 返回对象实例指针。
 // 
 // Return object instance pointer.
 func (c *TCoolBands) Instance() uintptr {
-    return c.instance
+    return c._instance()
 }
 
+// UnsafeAddr 
+//
 // 获取一个不安全的地址。
 // 
 // Get an unsafe address.
 func (c *TCoolBands) UnsafeAddr() unsafe.Pointer {
-    return c.ptr
+    return c.instance
 }
 
+// IsValid 
+//
 // 检测地址是否为空。
 // 
 // Check if the address is empty.
 func (c *TCoolBands) IsValid() bool {
-    return c.instance != 0
+    return c.instance != nullptr
 }
 
+// Is 
+// 
 // 检测当前对象是否继承自目标对象。
 // 
 // Checks whether the current object is inherited from the target object.
 func (c *TCoolBands) Is() TIs {
-    return TIs(c.instance)
+    return TIs(c._instance())
 }
 
+// As 
+//
 // 动态转换当前对象为目标对象。
 // 
 // Dynamically convert the current object to the target object.
 //func (c *TCoolBands) As() TAs {
-//    return TAs(c.instance)
+//    return TAs(c._instance())
 //}
 
+// TCoolBandsClass
+//
 // 获取类信息指针。
 // 
 // Get class information pointer.
@@ -123,117 +116,139 @@ func TCoolBandsClass() TClass {
 }
 
 func (c *TCoolBands) Add() *TCoolBand {
-    return AsCoolBand(CoolBands_Add(c.instance))
+    return AsCoolBand(CoolBands_Add(c._instance()))
 }
 
 func (c *TCoolBands) FindBand(AControl IControl) *TCoolBand {
-    return AsCoolBand(CoolBands_FindBand(c.instance, CheckPtr(AControl)))
+    return AsCoolBand(CoolBands_FindBand(c._instance(), CheckPtr(AControl)))
 }
 
+// Owner
+//
 // 组件所有者。
 //
 // component owner.
 func (c *TCoolBands) Owner() *TObject {
-    return AsObject(CoolBands_Owner(c.instance))
+    return AsObject(CoolBands_Owner(c._instance()))
 }
 
+// Assign
+//
 // 复制一个对象，如果对象实现了此方法的话。
 //
 // Copy an object, if the object implements this method.
 func (c *TCoolBands) Assign(Source IObject) {
-    CoolBands_Assign(c.instance, CheckPtr(Source))
+    CoolBands_Assign(c._instance(), CheckPtr(Source))
 }
 
 func (c *TCoolBands) BeginUpdate() {
-    CoolBands_BeginUpdate(c.instance)
+    CoolBands_BeginUpdate(c._instance())
 }
 
+// Clear
+//
 // 清除。
 func (c *TCoolBands) Clear() {
-    CoolBands_Clear(c.instance)
+    CoolBands_Clear(c._instance())
 }
 
 func (c *TCoolBands) Delete(Index int32) {
-    CoolBands_Delete(c.instance, Index)
+    CoolBands_Delete(c._instance(), Index)
 }
 
 func (c *TCoolBands) EndUpdate() {
-    CoolBands_EndUpdate(c.instance)
+    CoolBands_EndUpdate(c._instance())
 }
 
 func (c *TCoolBands) FindItemID(ID int32) *TCollectionItem {
-    return AsCollectionItem(CoolBands_FindItemID(c.instance, ID))
+    return AsCollectionItem(CoolBands_FindItemID(c._instance(), ID))
 }
 
+// GetNamePath
+//
 // 获取类名路径。
 //
 // Get the class name path.
 func (c *TCoolBands) GetNamePath() string {
-    return CoolBands_GetNamePath(c.instance)
+    return CoolBands_GetNamePath(c._instance())
 }
 
 func (c *TCoolBands) Insert(Index int32) *TCollectionItem {
-    return AsCollectionItem(CoolBands_Insert(c.instance, Index))
+    return AsCollectionItem(CoolBands_Insert(c._instance(), Index))
 }
 
+// ClassType
+//
 // 获取类的类型信息。
 //
 // Get class type information.
 func (c *TCoolBands) ClassType() TClass {
-    return CoolBands_ClassType(c.instance)
+    return CoolBands_ClassType(c._instance())
 }
 
+// ClassName
+//
 // 获取当前对象类名称。
 //
 // Get the current object class name.
 func (c *TCoolBands) ClassName() string {
-    return CoolBands_ClassName(c.instance)
+    return CoolBands_ClassName(c._instance())
 }
 
+// InstanceSize
+//
 // 获取当前对象实例大小。
 //
 // Get the current object instance size.
 func (c *TCoolBands) InstanceSize() int32 {
-    return CoolBands_InstanceSize(c.instance)
+    return CoolBands_InstanceSize(c._instance())
 }
 
+// InheritsFrom
+//
 // 判断当前类是否继承自指定类。
 //
 // Determine whether the current class inherits from the specified class.
 func (c *TCoolBands) InheritsFrom(AClass TClass) bool {
-    return CoolBands_InheritsFrom(c.instance, AClass)
+    return CoolBands_InheritsFrom(c._instance(), AClass)
 }
 
+// Equals
+//
 // 与一个对象进行比较。
 //
 // Compare with an object.
 func (c *TCoolBands) Equals(Obj IObject) bool {
-    return CoolBands_Equals(c.instance, CheckPtr(Obj))
+    return CoolBands_Equals(c._instance(), CheckPtr(Obj))
 }
 
+// GetHashCode
+//
 // 获取类的哈希值。
 //
 // Get the hash value of the class.
 func (c *TCoolBands) GetHashCode() int32 {
-    return CoolBands_GetHashCode(c.instance)
+    return CoolBands_GetHashCode(c._instance())
 }
 
+// ToString
+//
 // 文本类信息。
 //
 // Text information.
 func (c *TCoolBands) ToString() string {
-    return CoolBands_ToString(c.instance)
+    return CoolBands_ToString(c._instance())
 }
 
 func (c *TCoolBands) Count() int32 {
-    return CoolBands_GetCount(c.instance)
+    return CoolBands_GetCount(c._instance())
 }
 
 func (c *TCoolBands) Items(Index int32) *TCoolBand {
-    return AsCoolBand(CoolBands_GetItems(c.instance, Index))
+    return AsCoolBand(CoolBands_GetItems(c._instance(), Index))
 }
 
 func (c *TCoolBands) SetItems(Index int32, value *TCoolBand) {
-    CoolBands_SetItems(c.instance, Index, CheckPtr(value))
+    CoolBands_SetItems(c._instance(), Index, CheckPtr(value))
 }
 

@@ -9,12 +9,12 @@
 package api
 
 func Form_Create2(owner uintptr, initScale bool) uintptr {
-	ret, _, _ := form_Create2.Call(owner, GoBoolToDBool(initScale))
+	ret, _, _ := form_Create2.Call(owner, PascalBool(initScale))
 	return ret
 }
 
 func Form_SetOnWndProc(obj uintptr, fn interface{}) {
-	form_SetOnWndProc.Call(obj, addMessageEventToMap(obj, fn))
+	form_SetOnWndProc.Call(obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetGoPtr(obj uintptr, ptr uintptr) {
