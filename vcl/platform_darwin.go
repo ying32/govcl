@@ -49,7 +49,7 @@ func HandleToPlatformHandle(h HWND) NSObject {
 }
 
 func (f *TForm) PlatformWindow() NSWindow {
-	r, _, _ := NSWindow_FromForm.Call(f.instance)
+	r, _, _ := NSWindow_FromForm.Call(f._instance())
 	return NSWindow(r)
 }
 

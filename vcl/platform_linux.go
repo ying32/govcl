@@ -13,6 +13,7 @@ package vcl
 import (
 	"unsafe"
 
+	. "github.com/ying32/govcl/vcl/api"
 	"github.com/ying32/govcl/vcl/types"
 )
 
@@ -30,7 +31,7 @@ func HandleToPlatformHandle(h types.HWND) GtkWidget {
 }
 
 func (f *TForm) PlatformWindow() GdkWindow {
-	r, _, _ := GdkWindow_FromForm.Call(f.instance)
+	r, _, _ := GdkWindow_FromForm.Call(f._instance())
 	return GdkWindow(r)
 }
 
