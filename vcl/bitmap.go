@@ -18,7 +18,7 @@ import (
 )
 
 type TBitmap struct {
-    IGraphic
+    IBitmap
     instance unsafe.Pointer
 }
 

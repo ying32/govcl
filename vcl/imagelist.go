@@ -118,8 +118,40 @@ func (i *TImageList) StretchDraw(ACanvas *TCanvas, AIndex int32, ARect TRect, AE
     ImageList_StretchDraw(i._instance(), CheckPtr(ACanvas), AIndex , ARect , AEnabled)
 }
 
-func (i *TImageList) AddSliced(Image *TBitmap, AHorizontalCount int32, AVerticalCount int32) int32 {
+func (i *TImageList) AddSliced(Image IBitmap, AHorizontalCount int32, AVerticalCount int32) int32 {
     return ImageList_AddSliced(i._instance(), CheckPtr(Image), AHorizontalCount , AVerticalCount)
+}
+
+func (i *TImageList) Add(Image IBitmap, Mask IBitmap) int32 {
+    return ImageList_Add(i._instance(), CheckPtr(Image), CheckPtr(Mask))
+}
+
+func (i *TImageList) Insert(AIndex int32, AImage IBitmap, AMask IBitmap) {
+    ImageList_Insert(i._instance(), AIndex , CheckPtr(AImage), CheckPtr(AMask))
+}
+
+func (i *TImageList) InsertMasked(Index int32, AImage IBitmap, MaskColor TColor) {
+    ImageList_InsertMasked(i._instance(), Index , CheckPtr(AImage), MaskColor)
+}
+
+func (i *TImageList) Replace(AIndex int32, AImage IBitmap, AMask IBitmap, AllResolutions bool) {
+    ImageList_Replace(i._instance(), AIndex , CheckPtr(AImage), CheckPtr(AMask), AllResolutions)
+}
+
+func (i *TImageList) ReplaceMasked(Index int32, NewImage IBitmap, MaskColor TColor, AllResolutions bool) {
+    ImageList_ReplaceMasked(i._instance(), Index , CheckPtr(NewImage), MaskColor , AllResolutions)
+}
+
+func (i *TImageList) ReplaceIcon(AIndex int32, AIcon *TIcon) {
+    ImageList_ReplaceIcon(i._instance(), AIndex , CheckPtr(AIcon))
+}
+
+func (i *TImageList) GetBitmap(Index int32, Image IBitmap, AEffect TGraphicsDrawEffect) {
+    ImageList_GetBitmap(i._instance(), Index , CheckPtr(Image), AEffect)
+}
+
+func (i *TImageList) GetFullBitmap(Image IBitmap, AEffect TGraphicsDrawEffect) {
+    ImageList_GetFullBitmap(i._instance(), CheckPtr(Image), AEffect)
 }
 
 func (i *TImageList) GetHotSpot() TPoint {
@@ -141,10 +173,6 @@ func (i *TImageList) ShowDragImage() {
 // Copy an object, if the object implements this method.
 func (i *TImageList) Assign(Source IObject) {
     ImageList_Assign(i._instance(), CheckPtr(Source))
-}
-
-func (i *TImageList) Add(Image *TBitmap, Mask *TBitmap) int32 {
-    return ImageList_Add(i._instance(), CheckPtr(Image), CheckPtr(Mask))
 }
 
 func (i *TImageList) AddIcon(Image *TIcon) int32 {
@@ -170,28 +198,12 @@ func (i *TImageList) Delete(Index int32) {
     ImageList_Delete(i._instance(), Index)
 }
 
-func (i *TImageList) Insert(Index int32, Image *TBitmap, Mask *TBitmap) {
-    ImageList_Insert(i._instance(), Index , CheckPtr(Image), CheckPtr(Mask))
-}
-
 func (i *TImageList) InsertIcon(Index int32, Image *TIcon) {
     ImageList_InsertIcon(i._instance(), Index , CheckPtr(Image))
 }
 
-func (i *TImageList) InsertMasked(Index int32, Image *TBitmap, MaskColor TColor) {
-    ImageList_InsertMasked(i._instance(), Index , CheckPtr(Image), MaskColor)
-}
-
 func (i *TImageList) Move(CurIndex int32, NewIndex int32) {
     ImageList_Move(i._instance(), CurIndex , NewIndex)
-}
-
-func (i *TImageList) Replace(Index int32, Image *TBitmap, Mask *TBitmap) {
-    ImageList_Replace(i._instance(), Index , CheckPtr(Image), CheckPtr(Mask))
-}
-
-func (i *TImageList) ReplaceMasked(Index int32, NewImage *TBitmap, MaskColor TColor) {
-    ImageList_ReplaceMasked(i._instance(), Index , CheckPtr(NewImage), MaskColor)
 }
 
 func (i *TImageList) BeginUpdate() {

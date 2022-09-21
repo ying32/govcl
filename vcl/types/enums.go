@@ -2319,3 +2319,14 @@ const (
 	WaAvoid             // try not to wrap after this control, if the control is already at the beginning of the row, wrap though
 	WaForbid            // never wrap after this control
 )
+
+//ENUM:
+type TGraphicsDrawEffect int32
+
+const (
+	GdeNormal      = iota + 0 // no effect
+	GdeDisabled               // grayed image
+	GdeHighlighted            // a bit highlighted image
+	GdeShadowed               // a bit shadowed image
+	Gde1Bit                   // 1 Bit image (for non-XP windows buttons)
+)

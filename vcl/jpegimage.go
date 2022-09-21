@@ -18,7 +18,7 @@ import (
 )
 
 type TJPEGImage struct {
-    IGraphic
+    IBitmap
     instance unsafe.Pointer
 }
 

@@ -21793,6 +21793,39 @@ func ImageList_AddSliced(obj uintptr, Image uintptr, AHorizontalCount int32, AVe
     return int32(ret)
 }
 
+func ImageList_Add(obj uintptr, Image uintptr, Mask uintptr) int32 {
+    ret, _, _ := getLazyProc("ImageList_Add").Call(obj, Image , Mask )
+    return int32(ret)
+}
+
+func ImageList_Insert(obj uintptr, AIndex int32, AImage uintptr, AMask uintptr)  {
+    getLazyProc("ImageList_Insert").Call(obj, uintptr(AIndex) , AImage , AMask )
+}
+
+func ImageList_InsertMasked(obj uintptr, Index int32, AImage uintptr, MaskColor TColor)  {
+    getLazyProc("ImageList_InsertMasked").Call(obj, uintptr(Index) , AImage , uintptr(MaskColor) )
+}
+
+func ImageList_Replace(obj uintptr, AIndex int32, AImage uintptr, AMask uintptr, AllResolutions bool)  {
+    getLazyProc("ImageList_Replace").Call(obj, uintptr(AIndex) , AImage , AMask , PascalBool(AllResolutions) )
+}
+
+func ImageList_ReplaceMasked(obj uintptr, Index int32, NewImage uintptr, MaskColor TColor, AllResolutions bool)  {
+    getLazyProc("ImageList_ReplaceMasked").Call(obj, uintptr(Index) , NewImage , uintptr(MaskColor) , PascalBool(AllResolutions) )
+}
+
+func ImageList_ReplaceIcon(obj uintptr, AIndex int32, AIcon uintptr)  {
+    getLazyProc("ImageList_ReplaceIcon").Call(obj, uintptr(AIndex) , AIcon )
+}
+
+func ImageList_GetBitmap(obj uintptr, Index int32, Image uintptr, AEffect TGraphicsDrawEffect)  {
+    getLazyProc("ImageList_GetBitmap").Call(obj, uintptr(Index) , Image , uintptr(AEffect) )
+}
+
+func ImageList_GetFullBitmap(obj uintptr, Image uintptr, AEffect TGraphicsDrawEffect)  {
+    getLazyProc("ImageList_GetFullBitmap").Call(obj, Image , uintptr(AEffect) )
+}
+
 func ImageList_GetHotSpot(obj uintptr) TPoint {
     var ret TPoint
     getLazyProc("ImageList_GetHotSpot").Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -21809,11 +21842,6 @@ func ImageList_ShowDragImage(obj uintptr)  {
 
 func ImageList_Assign(obj uintptr, Source uintptr)  {
     getLazyProc("ImageList_Assign").Call(obj, Source )
-}
-
-func ImageList_Add(obj uintptr, Image uintptr, Mask uintptr) int32 {
-    ret, _, _ := getLazyProc("ImageList_Add").Call(obj, Image , Mask )
-    return int32(ret)
 }
 
 func ImageList_AddIcon(obj uintptr, Image uintptr) int32 {
@@ -21838,28 +21866,12 @@ func ImageList_Delete(obj uintptr, Index int32)  {
     getLazyProc("ImageList_Delete").Call(obj, uintptr(Index) )
 }
 
-func ImageList_Insert(obj uintptr, Index int32, Image uintptr, Mask uintptr)  {
-    getLazyProc("ImageList_Insert").Call(obj, uintptr(Index) , Image , Mask )
-}
-
 func ImageList_InsertIcon(obj uintptr, Index int32, Image uintptr)  {
     getLazyProc("ImageList_InsertIcon").Call(obj, uintptr(Index) , Image )
 }
 
-func ImageList_InsertMasked(obj uintptr, Index int32, Image uintptr, MaskColor TColor)  {
-    getLazyProc("ImageList_InsertMasked").Call(obj, uintptr(Index) , Image , uintptr(MaskColor) )
-}
-
 func ImageList_Move(obj uintptr, CurIndex int32, NewIndex int32)  {
     getLazyProc("ImageList_Move").Call(obj, uintptr(CurIndex) , uintptr(NewIndex) )
-}
-
-func ImageList_Replace(obj uintptr, Index int32, Image uintptr, Mask uintptr)  {
-    getLazyProc("ImageList_Replace").Call(obj, uintptr(Index) , Image , Mask )
-}
-
-func ImageList_ReplaceMasked(obj uintptr, Index int32, NewImage uintptr, MaskColor TColor)  {
-    getLazyProc("ImageList_ReplaceMasked").Call(obj, uintptr(Index) , NewImage , uintptr(MaskColor) )
 }
 
 func ImageList_BeginUpdate(obj uintptr)  {

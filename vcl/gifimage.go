@@ -18,7 +18,7 @@ import (
 )
 
 type TGIFImage struct {
-    IGraphic
+    IBitmap
     instance unsafe.Pointer
 }
 

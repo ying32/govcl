@@ -43,7 +43,7 @@ func main() {
 	item := vcl.NewMenuItem(mainForm)
 	item.SetCaption("显示(&S)")
 	item.SetOnClick(func(vcl.IObject) {
-		 
+
 		mainForm.Show()
 		// Windows上为了最前面显示，有时候要调用SetForegroundWindow
 		//rtl.SetForegroundWindow(mainForm.Handle())
@@ -98,6 +98,31 @@ func main() {
 			fmt.Println("TrayIcon DClick.")
 		})
 	}
+
+	// 托盘图片可闪烁 1 秒闪一次
+	//tmr1 := vcl.NewTimer(mainForm)
+	//tmr1.SetOnTimer(func(sender vcl.IObject) {
+	//	if trayicon.Icon().Empty() {
+	//		trayicon.SetIcon(vcl.Application.Icon())
+	//	} else {
+	//		trayicon.SetIcon(nil)
+	//	}
+	//})
+	//tmr1.SetEnabled(true)
+
+	// 加载其他格式的ico方式一
+	//png := vcl.NewPngImage()
+	//png.LoadFromFile("bow.png")
+	//trayicon.Icon().Assign(png)
+	//png.Free()
+	// 方式二可以通过imagelist操作
+	//imglist := vcl.NewImageList(mainForm)
+	//png := vcl.NewPngImage()
+	//png.LoadFromFile("bow.png")
+	//imglist.Add(png, nil)
+	//png.Free()
+	//imglist.GetIcon(0, trayicon.Icon())
+
 	vcl.Application.Run()
 }
 

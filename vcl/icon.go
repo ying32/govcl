@@ -18,7 +18,7 @@ import (
 )
 
 type TIcon struct {
-    IGraphic
+    IBitmap
     instance unsafe.Pointer
 }
 
