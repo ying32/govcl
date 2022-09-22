@@ -114,8 +114,31 @@ func TPageControlClass() TClass {
     return PageControl_StaticClassType()
 }
 
-func (p *TPageControl) SelectNextPage(GoForward bool, CheckTabVisible bool) {
-    PageControl_SelectNextPage(p._instance(), GoForward , CheckTabVisible)
+// Clear
+//
+// 清除。
+func (p *TPageControl) Clear() {
+    PageControl_Clear(p._instance())
+}
+
+func (p *TPageControl) FindNextPage(CurPage IWinControl, GoForward bool, CheckTabVisible bool) *TTabSheet {
+    return AsTabSheet(PageControl_FindNextPage(p._instance(), CheckPtr(CurPage), GoForward , CheckTabVisible))
+}
+
+func (p *TPageControl) SelectNextPage(GoForward bool) {
+    PageControl_SelectNextPage(p._instance(), GoForward)
+}
+
+func (p *TPageControl) AddTabSheet() *TTabSheet {
+    return AsTabSheet(PageControl_AddTabSheet(p._instance()))
+}
+
+func (p *TPageControl) IndexOfTabAt(X int32, Y int32) int32 {
+    return PageControl_IndexOfTabAt(p._instance(), X , Y)
+}
+
+func (p *TPageControl) IndexOfPageAt(X int32, Y int32) int32 {
+    return PageControl_IndexOfPageAt(p._instance(), X , Y)
 }
 
 func (p *TPageControl) TabRect(Index int32) TRect {
@@ -606,12 +629,48 @@ func (p *TPageControl) ScaleFontsPPI(AToPPI int32, AProportion float64) {
     PageControl_ScaleFontsPPI(p._instance(), AToPPI , AProportion)
 }
 
+func (p *TPageControl) RaggedRight() bool {
+    return PageControl_GetRaggedRight(p._instance())
+}
+
+func (p *TPageControl) SetRaggedRight(value bool) {
+    PageControl_SetRaggedRight(p._instance(), value)
+}
+
+func (p *TPageControl) ScrollOpposite() bool {
+    return PageControl_GetScrollOpposite(p._instance())
+}
+
+func (p *TPageControl) SetScrollOpposite(value bool) {
+    PageControl_SetScrollOpposite(p._instance(), value)
+}
+
+func (p *TPageControl) PageIndex() int32 {
+    return PageControl_GetPageIndex(p._instance())
+}
+
+func (p *TPageControl) SetPageIndex(value int32) {
+    PageControl_SetPageIndex(p._instance(), value)
+}
+
 func (p *TPageControl) Options() TCTabControlOptions {
     return PageControl_GetOptions(p._instance())
 }
 
 func (p *TPageControl) SetOptions(value TCTabControlOptions) {
     PageControl_SetOptions(p._instance(), value)
+}
+
+func (p *TPageControl) SetOnCloseTabClicked(fn TNotifyEvent) {
+    PageControl_SetOnCloseTabClicked(p._instance(), fn)
+}
+
+func (p *TPageControl) MultiSelect() bool {
+    return PageControl_GetMultiSelect(p._instance())
+}
+
+func (p *TPageControl) SetMultiSelect(value bool) {
+    PageControl_SetMultiSelect(p._instance(), value)
 }
 
 func (p *TPageControl) ActivePageIndex() int32 {

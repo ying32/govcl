@@ -34368,8 +34368,32 @@ func PageControl_Free(obj uintptr) {
     getLazyProc("PageControl_Free").Call(obj)
 }
 
-func PageControl_SelectNextPage(obj uintptr, GoForward bool, CheckTabVisible bool)  {
-    getLazyProc("PageControl_SelectNextPage").Call(obj, PascalBool(GoForward) , PascalBool(CheckTabVisible) )
+func PageControl_Clear(obj uintptr)  {
+    getLazyProc("PageControl_Clear").Call(obj)
+}
+
+func PageControl_FindNextPage(obj uintptr, CurPage uintptr, GoForward bool, CheckTabVisible bool) uintptr {
+    ret, _, _ := getLazyProc("PageControl_FindNextPage").Call(obj, CurPage , PascalBool(GoForward) , PascalBool(CheckTabVisible) )
+    return ret
+}
+
+func PageControl_SelectNextPage(obj uintptr, GoForward bool)  {
+    getLazyProc("PageControl_SelectNextPage").Call(obj, PascalBool(GoForward) )
+}
+
+func PageControl_AddTabSheet(obj uintptr) uintptr {
+    ret, _, _ := getLazyProc("PageControl_AddTabSheet").Call(obj)
+    return ret
+}
+
+func PageControl_IndexOfTabAt(obj uintptr, X int32, Y int32) int32 {
+    ret, _, _ := getLazyProc("PageControl_IndexOfTabAt").Call(obj, uintptr(X) , uintptr(Y) )
+    return int32(ret)
+}
+
+func PageControl_IndexOfPageAt(obj uintptr, X int32, Y int32) int32 {
+    ret, _, _ := getLazyProc("PageControl_IndexOfPageAt").Call(obj, uintptr(X) , uintptr(Y) )
+    return int32(ret)
 }
 
 func PageControl_TabRect(obj uintptr, Index int32) TRect {
@@ -34681,6 +34705,33 @@ func PageControl_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  
     getLazyProc("PageControl_ScaleFontsPPI").Call(obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
+func PageControl_GetRaggedRight(obj uintptr) bool {
+    ret, _, _ := getLazyProc("PageControl_GetRaggedRight").Call(obj)
+    return GoBool(ret)
+}
+
+func PageControl_SetRaggedRight(obj uintptr, value bool) {
+    getLazyProc("PageControl_SetRaggedRight").Call(obj, PascalBool(value))
+}
+
+func PageControl_GetScrollOpposite(obj uintptr) bool {
+    ret, _, _ := getLazyProc("PageControl_GetScrollOpposite").Call(obj)
+    return GoBool(ret)
+}
+
+func PageControl_SetScrollOpposite(obj uintptr, value bool) {
+    getLazyProc("PageControl_SetScrollOpposite").Call(obj, PascalBool(value))
+}
+
+func PageControl_GetPageIndex(obj uintptr) int32 {
+    ret, _, _ := getLazyProc("PageControl_GetPageIndex").Call(obj)
+    return int32(ret)
+}
+
+func PageControl_SetPageIndex(obj uintptr, value int32) {
+    getLazyProc("PageControl_SetPageIndex").Call(obj, uintptr(value))
+}
+
 func PageControl_GetOptions(obj uintptr) TCTabControlOptions {
     ret, _, _ := getLazyProc("PageControl_GetOptions").Call(obj)
     return TCTabControlOptions(ret)
@@ -34688,6 +34739,19 @@ func PageControl_GetOptions(obj uintptr) TCTabControlOptions {
 
 func PageControl_SetOptions(obj uintptr, value TCTabControlOptions) {
     getLazyProc("PageControl_SetOptions").Call(obj, uintptr(value))
+}
+
+func PageControl_SetOnCloseTabClicked(obj uintptr, fn interface{}) {
+    getLazyProc("PageControl_SetOnCloseTabClicked").Call(obj, MakeEventDataPtr(fn))
+}
+
+func PageControl_GetMultiSelect(obj uintptr) bool {
+    ret, _, _ := getLazyProc("PageControl_GetMultiSelect").Call(obj)
+    return GoBool(ret)
+}
+
+func PageControl_SetMultiSelect(obj uintptr, value bool) {
+    getLazyProc("PageControl_SetMultiSelect").Call(obj, PascalBool(value))
 }
 
 func PageControl_GetActivePageIndex(obj uintptr) int32 {
