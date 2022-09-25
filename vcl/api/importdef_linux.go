@@ -6,13 +6,14 @@
 //
 //----------------------------------------
 
+//go:build linux
 // +build linux
 
 package api
 
 var (
-	GdkWindow_GetXId      = libvcl.NewProc("GdkWindow_GetXId")
-	GdkWindow_FromForm    = libvcl.NewProc("GdkWindow_FromForm")
-	GtkWidget_GetGtkFixed = libvcl.NewProc("GtkWidget_GetGtkFixed")
-	GtkWidget_Window      = libvcl.NewProc("GtkWidget_Window")
+	GdkWindow_GetXId      = newDLLProc("GdkWindow_GetXId")
+	GdkWindow_FromForm    = newDLLProc("GdkWindow_FromForm")
+	GtkWidget_GetGtkFixed = newDLLProc("GtkWidget_GetGtkFixed")
+	GtkWidget_Window      = newDLLProc("GtkWidget_Window")
 )

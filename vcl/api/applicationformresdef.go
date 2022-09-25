@@ -14,9 +14,9 @@
 package api
 
 var (
-	resFormLoadFromStream       = libvcl.NewProc("ResFormLoadFromStream")
-	resFormLoadFromFile         = libvcl.NewProc("ResFormLoadFromFile")
-	resFormLoadFromResourceName = libvcl.NewProc("ResFormLoadFromResourceName")
+	resFormLoadFromStream       = newDLLProc("ResFormLoadFromStream")
+	resFormLoadFromFile         = newDLLProc("ResFormLoadFromFile")
+	resFormLoadFromResourceName = newDLLProc("ResFormLoadFromResourceName")
 )
 
 // ResFormLoadFromStream

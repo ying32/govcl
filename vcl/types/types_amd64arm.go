@@ -6,6 +6,7 @@
 //
 //----------------------------------------
 
+//go:build amd64 || arm64
 // +build amd64 arm64
 
 package types
@@ -14,7 +15,7 @@ type TDWordFiller struct {
 	Filler [4]uint8
 }
 
-//  TWMKey
+// TWMKey
 type TWMKey struct {
 	Msg       uint32
 	MsgFiller TDWordFiller

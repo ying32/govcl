@@ -89,10 +89,11 @@ type SIZE_T = uintptr
 
 type DWORD_PTR = uintptr
 
-// Pascal集合类型 set of xxx
+// TSet Pascal集合类型 set of xxx
 type TSet uint32
 
-// UTF-8 character is at most 6 bytes plus a #0
+// TUTF8Char
+//  UTF-8 character is at most 6 bytes plus a #0
 type TUTF8Char struct {
 	Len     byte
 	Content [7]byte
@@ -272,6 +273,8 @@ type TWndClass struct {
 // NewSet
 //
 // 新建TSet，初始值为0，然后添加元素
+//
+// Create a new TSet, the initial value is 0, and then add elements.
 func NewSet(opts ...uint8) TSet {
 	var s TSet
 	return s.Include(opts...)
@@ -280,6 +283,8 @@ func NewSet(opts ...uint8) TSet {
 // Include
 //
 // 集合加法，val...中存储为位的索引，下标为0
+//
+// Set addition, stored as bit index in val..., subscript 0.
 func (s TSet) Include(val ...uint8) TSet {
 	r := uint32(s)
 	for _, v := range val {
@@ -291,6 +296,8 @@ func (s TSet) Include(val ...uint8) TSet {
 // Exclude
 //
 // 集合减法，val...中存储为位的索引，下标为0
+//
+// Set subtraction, stored as bit index in val..., subscript 0.
 func (s TSet) Exclude(val ...uint8) TSet {
 	r := uint32(s)
 	for _, v := range val {
@@ -302,6 +309,8 @@ func (s TSet) Exclude(val ...uint8) TSet {
 // In
 //
 // 集合类型的判断，val表示位数，下标为0
+//
+// Judgment of the Set type, val represents the number of digits, and the subscript is 0.
 func (s TSet) In(val uint32) bool {
 	if s&(1<<uint8(val)) != 0 {
 		return true

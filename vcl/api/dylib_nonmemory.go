@@ -46,12 +46,12 @@ func getLibType(lib *dylib.LazyDLL) int32 {
 //
 // 获取dll库实例，用于在外扩展第三方组件的。移动来自dfuncs.go
 func GetLibVcl() *dylib.LazyDLL {
-	return libvcl
+	return uiLib
 }
 
 func closeLib() {
-	if libvcl != nil {
-		libvcl.Close()
-		libvcl = nil
+	if uiLib != nil {
+		uiLib.Close()
+		uiLib = nil
 	}
 }

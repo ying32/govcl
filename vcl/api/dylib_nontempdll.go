@@ -6,6 +6,7 @@
 //
 //----------------------------------------
 
+//go:build !tempdll
 // +build !tempdll
 
 // 指令为：!tempdll

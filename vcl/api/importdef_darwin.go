@@ -6,18 +6,19 @@
 //
 //----------------------------------------
 
+//go:build darwin
 // +build darwin
 
 package api
 
 var (
-	NSWindow_FromForm                      = libvcl.NewProc("NSWindow_FromForm")
-	NSWindow_titleVisibility               = libvcl.NewProc("NSWindow_titleVisibility")
-	NSWindow_setTitleVisibility            = libvcl.NewProc("NSWindow_setTitleVisibility")
-	NSWindow_titlebarAppearsTransparent    = libvcl.NewProc("NSWindow_titlebarAppearsTransparent")
-	NSWindow_setTitlebarAppearsTransparent = libvcl.NewProc("NSWindow_setTitlebarAppearsTransparent")
-	NSWindow_styleMask                     = libvcl.NewProc("NSWindow_styleMask")
-	NSWindow_setStyleMask                  = libvcl.NewProc("NSWindow_setStyleMask")
-	NSWindow_setRepresentedURL             = libvcl.NewProc("NSWindow_setRepresentedURL")
-	//NSWindow_release                       = libvcl.NewProc("NSWindow_release")
+	NSWindow_FromForm                      = newDLLProc("NSWindow_FromForm")
+	NSWindow_titleVisibility               = newDLLProc("NSWindow_titleVisibility")
+	NSWindow_setTitleVisibility            = newDLLProc("NSWindow_setTitleVisibility")
+	NSWindow_titlebarAppearsTransparent    = newDLLProc("NSWindow_titlebarAppearsTransparent")
+	NSWindow_setTitlebarAppearsTransparent = newDLLProc("NSWindow_setTitlebarAppearsTransparent")
+	NSWindow_styleMask                     = newDLLProc("NSWindow_styleMask")
+	NSWindow_setStyleMask                  = newDLLProc("NSWindow_setStyleMask")
+	NSWindow_setRepresentedURL             = newDLLProc("NSWindow_setRepresentedURL")
+	//NSWindow_release                       = newDLLProc("NSWindow_release")
 )

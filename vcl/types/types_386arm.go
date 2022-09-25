@@ -6,6 +6,7 @@
 //
 //----------------------------------------
 
+//go:build arm || 386
 // +build arm 386
 
 package types
@@ -13,7 +14,7 @@ package types
 type TDWordFiller struct {
 }
 
-//  TWMKey
+// TWMKey
 type TWMKey struct {
 	Msg       uint32
 	MsgFiller TDWordFiller

@@ -6,6 +6,7 @@
 //
 //----------------------------------------
 
+//go:build !windows
 // +build !windows
 
 package api
@@ -17,16 +18,16 @@ import (
 )
 
 var (
-	dSendMessage         = libvcl.NewProc("DSendMessage")
-	dPostMessage         = libvcl.NewProc("DPostMessage")
-	dIsIconic            = libvcl.NewProc("DIsIconic")
-	dIsWindow            = libvcl.NewProc("DIsWindow")
-	dIsZoomed            = libvcl.NewProc("DIsZoomed")
-	dIsWindowVisible     = libvcl.NewProc("DIsWindowVisible")
-	dGetDC               = libvcl.NewProc("DGetDC")
-	dReleaseDC           = libvcl.NewProc("DReleaseDC")
-	dSetForegroundWindow = libvcl.NewProc("DSetForegroundWindow")
-	dWindowFromPoint     = libvcl.NewProc("DWindowFromPoint")
+	dSendMessage         = newDLLProc("DSendMessage")
+	dPostMessage         = newDLLProc("DPostMessage")
+	dIsIconic            = newDLLProc("DIsIconic")
+	dIsWindow            = newDLLProc("DIsWindow")
+	dIsZoomed            = newDLLProc("DIsZoomed")
+	dIsWindowVisible     = newDLLProc("DIsWindowVisible")
+	dGetDC               = newDLLProc("DGetDC")
+	dReleaseDC           = newDLLProc("DReleaseDC")
+	dSetForegroundWindow = newDLLProc("DSetForegroundWindow")
+	dWindowFromPoint     = newDLLProc("DWindowFromPoint")
 )
 
 func DSendMessage(hWd HWND, msg uint32, wParam, lParam uintptr) uintptr {

@@ -8,7 +8,8 @@
 
 package types
 
-// 光标定义
+// 鼠标光标定义
+// mouse cursor definition.
 const (
 	CrHigh = TCursor(0)
 

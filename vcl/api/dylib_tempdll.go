@@ -6,6 +6,7 @@
 //
 //----------------------------------------
 
+//go:build (windows || linux) && tempdll
 // +build windows linux
 // +build tempdll
 

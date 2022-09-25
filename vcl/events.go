@@ -82,7 +82,7 @@ type TDropFilesEvent func(sender IObject, aFileNames []string)
 
 type TConstrainedResizeEvent func(sender IObject, minWidth, minHeight, maxWidth, maxHeight *int32)
 
-type THelpEvent func(command uint16, data THelpEventData, callhelp, result *bool)
+type THelpEvent func(command uint16, data THelpEventData, callHelp, result *bool)
 
 type TShortCutEvent func(msg *TWMKey, handled *bool)
 
@@ -227,12 +227,12 @@ type TUserCheckBoxBitmapEvent func(sender IObject, aCol, aRow int32, CheckedStat
 
 type TValidateEntryEvent func(sender IObject, aCol, aRow int32, oldValue string, newValue *string)
 
-type TOnPrepareCanvasEvent = func(sender IObject, aCol, aRow int32, aState TGridDrawState)
+type TOnPrepareCanvasEvent func(sender IObject, aCol, aRow int32, aState TGridDrawState)
 
-type TAcceptFileNameEvent = func(sender IObject, value *string)
+type TAcceptFileNameEvent func(sender IObject, value *string)
 
-type TCheckItemChange = func(sender IObject, index int32)
+type TCheckItemChange func(sender IObject, index int32)
 
-type TUTF8KeyPressEvent = func(sender IObject, utf8key *TUTF8Char)
+type TUTF8KeyPressEvent func(sender IObject, utf8key *TUTF8Char)
 
-type TMenuDrawItemEvent = func(sender IObject, aCanvas *TCanvas, aRect TRect, aState TOwnerDrawState)
+type TMenuDrawItemEvent func(sender IObject, aCanvas *TCanvas, aRect TRect, aState TOwnerDrawState)

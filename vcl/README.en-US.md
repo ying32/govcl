@@ -4,7 +4,7 @@
 ----  
 
 * api  
-Function import of vcl or lcl library.      
+Function import of lcl library.      
 
 * i18n    
 App multi-language settings.    
@@ -19,4 +19,4 @@ All type definitions.
 A winapi interface, constants, etc. under Windows.  
 
 * bitmap
-Convert Go's Image to VCL/LCL image object.
+Convert Go's Image to LCL image object.
