@@ -267,8 +267,8 @@ type TStaticBorderStyle int32
 
 const (
 	SbsNone = iota + 0
-	sbsSingle
-	sbsSunken
+	SbsSingle
+	SbsSunken
 )
 
 //ENUM:
@@ -969,8 +969,8 @@ const (
 	MbLeft = iota + 0
 	MbRight
 	MbMiddle
-	mbExtra1
-	mbExtra2
+	MbExtra1
+	MbExtra2
 )
 
 //ENUM:
@@ -2245,8 +2245,8 @@ type TDateTimePickerOptions = TSet
 type TImageOrientation int32
 
 const (
-	ioHorizontal = iota + 0
-	ioVertical
+	IoHorizontal = iota + 0
+	IoVertical
 )
 
 //ENUM:
