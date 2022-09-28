@@ -8,14 +8,14 @@
 
 package api
 
+import "github.com/ying32/govcl/vcl/api/dllimports"
+
 func Application_Instance() uintptr {
-	ret, _, _ := application_Instance.Call()
-	return ret
+	return defSyscallN(dllimports.APPLICATION_INSTANCE)
 }
 
 func Application_CreateForm(app uintptr, initScale bool) uintptr {
-	ret, _, _ := application_CreateForm.Call(app, PascalBool(initScale))
-	return ret
+	return defSyscallN(dllimports.APPLICATION_CREATEFORM, app, PascalBool(initScale))
 }
 
 func Application_Run(app uintptr) {
@@ -25,9 +25,9 @@ func Application_Run(app uintptr) {
 		// 运行结束后就结束close掉lib，不然他不会关掉的
 		closeLib()
 	}()
-	application_Run.Call(app)
+	defSyscallN(dllimports.APPLICATION_RUN, app)
 }
 
 func Application_Initialize(obj uintptr) {
-	application_Initialize.Call(obj)
+	defSyscallN(dllimports.APPLICATION_INITIALIZE, obj)
 }

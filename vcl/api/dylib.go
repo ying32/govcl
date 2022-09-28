@@ -53,6 +53,11 @@ func syscallGetTextBuf(trap int, obj uintptr, Buffer *string, BufSize uintptr) u
 	return result
 }
 
+func defSyscallN(trap int, args ...uintptr) uintptr {
+	r1, _, _ := dllimports.GetImportDefFunc(uiLib, trap).Call(args...)
+	return r1
+}
+
 func newDLLProc(name string) *dylib.LazyProc {
 	return uiLib.NewProc(name)
 }

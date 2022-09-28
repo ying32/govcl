@@ -49,7 +49,8 @@ func init() {
 		}()
 	}
 	libVersion := DLibVersion()
-	fmt.Println("Library Version:", toVersionString(libVersion))
+	// go build -tags hideversion 可以不打印版本号
+	printVersion(toVersionString(libVersion))
 	if libVersion < requireMinBinaryVersion {
 		panic(fmt.Sprintf("Require liblcl binary version >=%s. Please go to \"https://github.com/ying32/govcl\" to download the latest binary.", toVersionString(requireMinBinaryVersion)))
 	}
