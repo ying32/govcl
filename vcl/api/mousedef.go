@@ -8,7 +8,8 @@
 
 package api
 
+import "github.com/ying32/govcl/vcl/api/dllimports"
+
 func Mouse_Instance() uintptr {
-	ret, _, _ := mouse_Instance.Call()
-	return ret
+	return defSyscallN(dllimports.MOUSE_INSTANCE)
 }

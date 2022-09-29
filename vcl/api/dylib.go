@@ -10,6 +10,9 @@ package api
 
 import (
 	"runtime"
+	"unsafe"
+
+	"github.com/ying32/govcl/pkgs/libname"
 
 	"github.com/ying32/govcl/vcl/api/dllimports"
 
@@ -30,6 +33,32 @@ var (
 	}
 )
 
+// Load liblcl
+func loadUILib() *dylib.LazyDLL {
+	libName := getDLLName()
+	// 如果支持运行时释放，则使用此种方法
+	if support, newDLLPath := checkAndReleaseDLL(); support {
+		libName = newDLLPath
+	} else {
+		if libname.LibName != "" {
+			libName = libname.LibName
+		}
+	}
+	lib := dylib.NewLazyDLL(libName)
+	err := lib.Load()
+	if err != nil {
+		panic(err)
+	}
+	return lib
+}
+
+func closeLib() {
+	if uiLib != nil {
+		uiLib.Close()
+		uiLib = nil
+	}
+}
+
 func getDLLName() string {
 	libName := "liblcl"
 	if ext, ok := platformExtNames[runtime.GOOS]; ok {
@@ -43,14 +72,22 @@ func syscallN(trap int, args ...uintptr) uintptr {
 	return r1
 }
 
-func syscallGetTextBuf(trap int, obj uintptr, Buffer *string, BufSize uintptr) uintptr {
-	if Buffer == nil || BufSize == 0 {
+func syscallGetTextBuf(trap int, obj uintptr, buffer *string, bufSize uintptr) uintptr {
+	if buffer == nil || bufSize == 0 {
 		return 0
 	}
-	strPtr := getBuff(int32(BufSize))
-	result := syscallN(trap, obj, getBuffPtr(strPtr), BufSize)
-	getTextBuf(strPtr, Buffer, int(result))
-	return result
+	strPtr := make([]uint8, bufSize+1)
+	sLen := syscallN(trap, obj, uintptr(unsafe.Pointer(&strPtr[0])), bufSize)
+	if sLen > 0 {
+		*buffer = string(strPtr[:sLen])
+	}
+
+	/*
+		strPtr := getBuff(int32(BufSize))
+		result := syscallN(trap, obj, getBuffPtr(strPtr), BufSize)
+		getTextBuf(strPtr, Buffer, int(result))
+	*/
+	return sLen
 }
 
 func defSyscallN(trap int, args ...uintptr) uintptr {

@@ -20,6 +20,15 @@ type importTable struct {
 	proc *dylib.LazyProc
 }
 
+//func internalGetImportFunc(uiLib *dylib.LazyDLL, table []importTable, index int) *dylib.LazyProc {
+//	item := table[index]
+//	if atomic.LoadPointer((*unsafe.Pointer)(unsafe.Pointer(&item.proc))) == nil {
+//		item.proc = uiLib.NewProc(item.name)
+//		atomic.StorePointer((*unsafe.Pointer)(unsafe.Pointer(&table[index].proc)), unsafe.Pointer(item.proc))
+//	}
+//	return item.proc
+//}
+
 func GetImportFunc(uiLib *dylib.LazyDLL, index int) *dylib.LazyProc {
 	item := dllImports[index]
 	if atomic.LoadPointer((*unsafe.Pointer)(unsafe.Pointer(&item.proc))) == nil {

@@ -8,12 +8,12 @@
 
 package api
 
-// Printer
+import "github.com/ying32/govcl/vcl/api/dllimports"
+
 func Printer_Instance() uintptr {
-	r, _, _ := printer_Instance.Call()
-	return r
+	return defSyscallN(dllimports.PRINTER_INSTANCE)
 }
 
 func Printer_SetPrinter(obj uintptr, aName string) {
-	printer_SetPrinter.Call(obj, PascalStr(aName))
+	defSyscallN(dllimports.PRINTER_SETPRINTER, obj, PascalStr(aName))
 }

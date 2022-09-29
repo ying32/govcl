@@ -9,14 +9,14 @@
 package api
 
 var (
-	application_Instance   = newDLLProc("Application_Instance")
-	application_CreateForm = newDLLProc("Application_CreateForm")
-	application_Run        = newDLLProc("Application_Run")
-	application_Initialize = newDLLProc("Application_Initialize")
-
-	form_Create2      = newDLLProc("Form_Create2")
-	form_SetOnWndProc = newDLLProc("Form_SetOnWndProc")
-	form_SetGoPtr     = newDLLProc("Form_SetGoPtr")
+	//application_Instance   = newDLLProc("Application_Instance")
+	//application_CreateForm = newDLLProc("Application_CreateForm")
+	//application_Run        = newDLLProc("Application_Run")
+	//application_Initialize = newDLLProc("Application_Initialize")
+	//
+	//form_Create2      = newDLLProc("Form_Create2")
+	//form_SetOnWndProc = newDLLProc("Form_SetOnWndProc")
+	//form_SetGoPtr     = newDLLProc("Form_SetGoPtr")
 
 	setEventCallback                   = newDLLProc("SetEventCallback")
 	setMessageCallback                 = newDLLProc("SetMessageCallback")
@@ -31,8 +31,8 @@ var (
 	dShowMessage = newDLLProc("DShowMessage")
 	dMessageDlg  = newDLLProc("DMessageDlg")
 
-	mouse_Instance  = newDLLProc("Mouse_Instance")
-	screen_Instance = newDLLProc("Screen_Instance")
+	//mouse_Instance  = newDLLProc("Mouse_Instance")
+	//screen_Instance = newDLLProc("Screen_Instance")
 
 	dSynchronize = newDLLProc("DSynchronize")
 
@@ -55,8 +55,8 @@ var (
 	dSysOpen = newDLLProc("DSysOpen")
 
 	// TMemoryStream
-	memoryStream_Read  = newDLLProc("MemoryStream_Read")
-	memoryStream_Write = newDLLProc("MemoryStream_Write")
+	//memoryStream_Read  = newDLLProc("MemoryStream_Read")
+	//memoryStream_Write = newDLLProc("MemoryStream_Write")
 
 	// TCanvas
 	canvas_BrushCopy     = newDLLProc("Canvas_BrushCopy")
@@ -103,8 +103,8 @@ var (
 	dSetPropertySecValue = newDLLProc("DSetPropertySecValue")
 
 	// Printer
-	printer_Instance   = newDLLProc("Printer_Instance")
-	printer_SetPrinter = newDLLProc("Printer_SetPrinter")
+	//printer_Instance   = newDLLProc("Printer_Instance")
+	//printer_SetPrinter = newDLLProc("Printer_SetPrinter")
 
 	// guid
 	dGUIDToString = newDLLProc("DGUIDToString")

@@ -8,15 +8,16 @@
 
 package api
 
+import "github.com/ying32/govcl/vcl/api/dllimports"
+
 func Form_Create2(owner uintptr, initScale bool) uintptr {
-	ret, _, _ := form_Create2.Call(owner, PascalBool(initScale))
-	return ret
+	return defSyscallN(dllimports.FORM_CREATE2, owner, PascalBool(initScale))
 }
 
 func Form_SetOnWndProc(obj uintptr, fn interface{}) {
-	form_SetOnWndProc.Call(obj, MakeEventDataPtr(fn))
+	defSyscallN(dllimports.FORM_SETONWNDPROC, obj, MakeEventDataPtr(fn))
 }
 
 func Form_SetGoPtr(obj uintptr, ptr uintptr) {
-	form_SetGoPtr.Call(obj, ptr)
+	defSyscallN(dllimports.FORM_SETGOPTR, obj, ptr)
 }

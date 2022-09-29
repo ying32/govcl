@@ -8,7 +8,8 @@
 
 package api
 
+import "github.com/ying32/govcl/vcl/api/dllimports"
+
 func Screen_Instance() uintptr {
-	ret, _, _ := screen_Instance.Call()
-	return ret
+	return defSyscallN(dllimports.SCREEN_INSTANCE)
 }

@@ -29,11 +29,6 @@ func PascalStr(str string) uintptr {
 	return uintptr(unsafe.Pointer(StringToUTF8Ptr(str)))
 }
 
-// Deprecated: use PascalStr.
-func GoStrToDStr(str string) uintptr {
-	return PascalStr(str)
-}
-
 // 这种跟copyStr3基本一样，只是用go来处理了
 func copyStr(src uintptr, strLen int) string {
 	if strLen == 0 {
@@ -80,21 +75,4 @@ func GoStr(str uintptr) string {
 		return ""
 	}
 	return copyStr(str, int(l))
-}
-
-// Deprecated: use GoStr.
-func DStrToGoStr(str uintptr) string {
-	return GoStr(str)
-}
-
-func getBuff(size int32) interface{} {
-	return make([]uint8, size+1)
-}
-
-func getBuffPtr(buff interface{}) uintptr {
-	return uintptr(unsafe.Pointer(&(buff.([]uint8))[0]))
-}
-
-func getTextBuf(strBuff interface{}, Buffer *string, slen int) {
-	*Buffer = string((strBuff.([]uint8))[:slen])
 }

@@ -36,21 +36,11 @@ func GoBool(val uintptr) bool {
 	return false
 }
 
-// Deprecated: use GoBool.
-func DBoolToGoBool(val uintptr) bool {
-	return GoBool(val)
-}
-
 func PascalBool(val bool) uintptr {
 	if val {
 		return 1
 	}
 	return 0
-}
-
-// Deprecated: use PascalBool.
-func GoBoolToDBool(val bool) uintptr {
-	return PascalBool(val)
 }
 
 // typedef struct { void *type; void *value; } GoInterface;

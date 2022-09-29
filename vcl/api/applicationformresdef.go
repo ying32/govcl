@@ -13,29 +13,25 @@
 
 package api
 
-var (
-	resFormLoadFromStream       = newDLLProc("ResFormLoadFromStream")
-	resFormLoadFromFile         = newDLLProc("ResFormLoadFromFile")
-	resFormLoadFromResourceName = newDLLProc("ResFormLoadFromResourceName")
-)
+import "github.com/ying32/govcl/vcl/api/dllimports"
 
 // ResFormLoadFromStream
 //
 // 从流中加载窗口资源
 func ResFormLoadFromStream(obj, root uintptr) {
-	resFormLoadFromStream.Call(obj, root)
+	defSyscallN(dllimports.RESFORMLOADFROMSTREAM, obj, root)
 }
 
 // ResFormLoadFromFile
 //
 // 从文件中加载窗口资源
 func ResFormLoadFromFile(filename string, root uintptr) {
-	resFormLoadFromFile.Call(PascalStr(filename), root)
+	defSyscallN(dllimports.RESFORMLOADFROMFILE, PascalStr(filename), root)
 }
 
 // ResFormLoadFromResourceName
 //
 // 从指定资源中加载窗口资源
 func ResFormLoadFromResourceName(instance uintptr, resName string, root uintptr) {
-	resFormLoadFromResourceName.Call(instance, PascalStr(resName), root)
+	defSyscallN(dllimports.RESFORMLOADFROMRESOURCENAME, instance, PascalStr(resName), root)
 }
