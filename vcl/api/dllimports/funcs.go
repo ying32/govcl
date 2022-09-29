@@ -33,7 +33,7 @@ func GetImportDefFunc(uiLib *dylib.LazyDLL, index int) *dylib.LazyProc {
 	item := dllImportDefs[index]
 	if atomic.LoadPointer((*unsafe.Pointer)(unsafe.Pointer(&item.proc))) == nil {
 		item.proc = uiLib.NewProc(item.name)
-		atomic.StorePointer((*unsafe.Pointer)(unsafe.Pointer(&dllImports[index].proc)), unsafe.Pointer(item.proc))
+		atomic.StorePointer((*unsafe.Pointer)(unsafe.Pointer(&dllImportDefs[index].proc)), unsafe.Pointer(item.proc))
 	}
 	return item.proc
 }
