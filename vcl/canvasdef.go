@@ -28,11 +28,6 @@ func (c *TCanvas) Draw(x, y int32, graphic IGraphic) {
 	Canvas_Draw1(c._instance(), x, y, CheckPtr(graphic))
 }
 
-// Draw2 绘制graphic对象，opacity透明度
-func (c *TCanvas) Draw2(x, y int32, graphic IGraphic, opacity uint8) {
-	Canvas_Draw2(c._instance(), x, y, CheckPtr(graphic), opacity)
-}
-
 // DrawFocusRect 画焦点矩形
 func (c *TCanvas) DrawFocusRect(aRect TRect) {
 	Canvas_DrawFocusRect(c._instance(), aRect)

@@ -14,8 +14,8 @@ func Application_Instance() uintptr {
 	return defSyscallN(dllimports.APPLICATION_INSTANCE)
 }
 
-func Application_CreateForm(app uintptr, initScale bool) uintptr {
-	return defSyscallN(dllimports.APPLICATION_CREATEFORM, app, PascalBool(initScale))
+func Application_CreateForm(app uintptr) uintptr {
+	return defSyscallN(dllimports.APPLICATION_CREATEFORM, app)
 }
 
 func Application_Run(app uintptr) {

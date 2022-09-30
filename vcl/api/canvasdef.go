@@ -26,10 +26,6 @@ func Canvas_Draw1(obj uintptr, x, y int32, graphic uintptr) {
 	canvas_Draw1.Call(obj, uintptr(x), uintptr(y), graphic)
 }
 
-func Canvas_Draw2(obj uintptr, x, y int32, graphic uintptr, opacity uint8) {
-	canvas_Draw2.Call(obj, uintptr(x), uintptr(y), graphic, uintptr(opacity))
-}
-
 func Canvas_DrawFocusRect(obj uintptr, aRect TRect) {
 	canvas_DrawFocusRect.Call(obj, uintptr(unsafe.Pointer(&aRect)))
 }

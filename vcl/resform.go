@@ -142,9 +142,6 @@ func resObjectBuild(typ int, owner IComponent, appInst uintptr, fields ...interf
 	var field1 interface{}
 	var goInstance reflect.Value
 
-	// 初始创建时是否使用缩放
-	initScale := false
-
 	// 检测是否为MainForm，通过判断 指定方法为nil。
 	isMainForm := Application_GetMainForm(Application._instance()) == 0
 	instancePtr := uintptr(0)
@@ -166,9 +163,9 @@ func resObjectBuild(typ int, owner IComponent, appInst uintptr, fields ...interf
 	switch typ {
 	case 0:
 		// 由参数的个数决定，创建窗口时是否使用缩放，此值需要 vcl.Application.SetScaled(true) 后才能生效。
-		resObj = AsForm(Application_CreateForm(appInst, initScale))
+		resObj = AsForm(Application_CreateForm(appInst))
 	case 1:
-		resObj = AsForm(Form_Create2(CheckPtr(owner), initScale))
+		resObj = AsForm(Form_Create2(CheckPtr(owner)))
 	case 2:
 		// TFrame
 		resObj = NewFrame(owner)

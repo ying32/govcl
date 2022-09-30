@@ -22,10 +22,7 @@ import (
 var (
 
 	// 全局导入库
-	uiLib = loadUILib()
-)
-
-var (
+	uiLib            = loadUILib()
 	platformExtNames = map[string]string{
 		"windows": ".dll",
 		"linux":   ".so",
@@ -67,6 +64,7 @@ func getDLLName() string {
 	return libName
 }
 
+// 调用自动生成的API列表中的函数
 func syscallN(trap int, args ...uintptr) uintptr {
 	r1, _, _ := dllimports.GetImportFunc(uiLib, trap).Call(args...)
 	return r1
@@ -81,15 +79,10 @@ func syscallGetTextBuf(trap int, obj uintptr, buffer *string, bufSize uintptr) u
 	if sLen > 0 {
 		*buffer = string(strPtr[:sLen])
 	}
-
-	/*
-		strPtr := getBuff(int32(BufSize))
-		result := syscallN(trap, obj, getBuffPtr(strPtr), BufSize)
-		getTextBuf(strPtr, Buffer, int(result))
-	*/
 	return sLen
 }
 
+// 调用手动导入的API列表中的函数
 func defSyscallN(trap int, args ...uintptr) uintptr {
 	r1, _, _ := dllimports.GetImportDefFunc(uiLib, trap).Call(args...)
 	return r1
