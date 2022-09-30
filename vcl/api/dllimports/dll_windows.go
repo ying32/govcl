@@ -9,16 +9,12 @@
 package dllimports
 
 import (
-	"fmt"
 	"syscall"
 )
 
-func NewDLL(name string) DLL {
+func NewDLL(name string) (DLL, error) {
 	h, err := syscall.LoadLibrary(name)
-	if err != nil {
-		panic(err)
-	}
-	return DLL(h)
+	return DLL(h), err
 }
 
 func (h DLL) Release() error {
@@ -28,13 +24,9 @@ func (h DLL) Release() error {
 	return nil
 }
 
-func (h DLL) GetProcAddr(name string) ProcAddr {
-	proc, err := syscall.GetProcAddress(syscall.Handle(h), name)
-	if err != nil {
-		fmt.Println(err)
-		return 0
-	}
-	return ProcAddr(proc)
+func (h DLL) GetProcAddr(name string) (ProcAddr, error) {
+	addr, err := syscall.GetProcAddress(syscall.Handle(h), name)
+	return ProcAddr(addr), err
 }
 
 func (p ProcAddr) Call(args ...uintptr) (r1, r2 uintptr, err syscall.Errno) {

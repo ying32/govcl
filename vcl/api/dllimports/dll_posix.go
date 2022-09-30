@@ -22,13 +22,12 @@ package dllimports
 import "C"
 import (
 	"errors"
-	"fmt"
 	"runtime"
 	"syscall"
 	"unsafe"
 )
 
-func NewDLL(name string) DLL {
+func NewDLL(name string) (DLL, error) {
 
 	cPath := (*C.char)(C.malloc(C.PATH_MAX + 1))
 	defer C.free(unsafe.Pointer(cPath))
@@ -46,14 +45,10 @@ func NewDLL(name string) DLL {
 	} else {
 		h = DLL(C.dlopen(cPath, C.RTLD_LAZY|C.RTLD_GLOBAL))
 	}
-	err := h.dlError()
-	if err != nil {
-		panic(err)
-	}
-	return h
+	return h, dlError()
 }
 
-func (h DLL) dlError() error {
+func dlError() error {
 	err := C.dlerror()
 	if err != nil {
 		return errors.New(C.GoString(err))
@@ -64,20 +59,15 @@ func (h DLL) dlError() error {
 func (h DLL) Release() error {
 	if h != 0 {
 		C.dlclose(unsafe.Pointer(h))
-		return h.dlError()
+		return dlError()
 	}
 	return nil
 }
 
-func (h DLL) GetProcAddr(name string) ProcAddr {
+func (h DLL) GetProcAddr(name string) (ProcAddr, error) {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
-	proc := C.dlsym(unsafe.Pointer(h), cName)
-	if err := h.dlError(); err != nil {
-		fmt.Println(err)
-		return 0
-	}
-	return ProcAddr(proc)
+	return ProcAddr(C.dlsym(unsafe.Pointer(h), cName)), dlError()
 }
 
 func toPtr(p uintptr) unsafe.Pointer {

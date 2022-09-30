@@ -9,6 +9,7 @@
 package dllimports
 
 import (
+	"fmt"
 	"sync/atomic"
 	"unsafe"
 )
@@ -18,19 +19,29 @@ type importTable struct {
 	addr ProcAddr
 }
 
-//func internalGetImportFunc(uiLib DLL, table []importTable, index int) *dylib.LazyProc {
+//func internalGetImportFunc(uiLib DLL, table []importTable, index int) ProcAddr {
 //	item := table[index]
-//	if atomic.LoadPointer((*unsafe.Pointer)(unsafe.Pointer(&item.proc))) == nil {
-//		item.proc = uiLib.GetProcAddr(item.name)
-//		atomic.StorePointer((*unsafe.Pointer)(unsafe.Pointer(&table[index].proc)), unsafe.Pointer(item.proc))
+//	if atomic.LoadPointer((*unsafe.Pointer)(unsafe.Pointer(&item.addr))) == nil {
+//		var err error
+//		item.addr, err = uiLib.GetProcAddr(item.name)
+//		if err != nil {
+//			fmt.Println(err)
+//			return 0
+//		}
+//		atomic.StorePointer((*unsafe.Pointer)(unsafe.Pointer(&table[index].addr)), unsafe.Pointer(item.addr))
 //	}
-//	return item.proc
+//	return item.addr
 //}
 
 func GetImportFunc(uiLib DLL, index int) ProcAddr {
 	item := dllImports[index]
 	if atomic.LoadPointer((*unsafe.Pointer)(unsafe.Pointer(&item.addr))) == nil {
-		item.addr = uiLib.GetProcAddr(item.name)
+		var err error
+		item.addr, err = uiLib.GetProcAddr(item.name)
+		if err != nil {
+			fmt.Println(err)
+			return 0
+		}
 		atomic.StorePointer((*unsafe.Pointer)(unsafe.Pointer(&dllImports[index].addr)), unsafe.Pointer(item.addr))
 	}
 	return item.addr
@@ -39,7 +50,12 @@ func GetImportFunc(uiLib DLL, index int) ProcAddr {
 func GetImportDefFunc(uiLib DLL, index int) ProcAddr {
 	item := dllImportDefs[index]
 	if atomic.LoadPointer((*unsafe.Pointer)(unsafe.Pointer(&item.addr))) == nil {
-		item.addr = uiLib.GetProcAddr(item.name)
+		var err error
+		item.addr, err = uiLib.GetProcAddr(item.name)
+		if err != nil {
+			fmt.Println(err)
+			return 0
+		}
 		atomic.StorePointer((*unsafe.Pointer)(unsafe.Pointer(&dllImportDefs[index].addr)), unsafe.Pointer(item.addr))
 	}
 	return item.addr

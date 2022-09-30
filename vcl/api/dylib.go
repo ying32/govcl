@@ -28,7 +28,6 @@ var (
 	}
 )
 
-// Load liblcl
 func loadUILib() dllimports.DLL {
 	libName := getDLLName()
 	// 如果支持运行时释放，则使用此种方法
@@ -39,7 +38,10 @@ func loadUILib() dllimports.DLL {
 			libName = libname.LibName
 		}
 	}
-	lib := dllimports.NewDLL(libName)
+	lib, err := dllimports.NewDLL(libName)
+	if err != nil {
+		panic(err)
+	}
 	return lib
 }
 
