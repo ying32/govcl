@@ -14,68 +14,47 @@ package api
 import (
 	"unsafe"
 
+	"github.com/ying32/govcl/vcl/api/dllimports"
+
 	. "github.com/ying32/govcl/vcl/types"
 )
 
-var (
-	dSendMessage         = newDLLProc("DSendMessage")
-	dPostMessage         = newDLLProc("DPostMessage")
-	dIsIconic            = newDLLProc("DIsIconic")
-	dIsWindow            = newDLLProc("DIsWindow")
-	dIsZoomed            = newDLLProc("DIsZoomed")
-	dIsWindowVisible     = newDLLProc("DIsWindowVisible")
-	dGetDC               = newDLLProc("DGetDC")
-	dReleaseDC           = newDLLProc("DReleaseDC")
-	dSetForegroundWindow = newDLLProc("DSetForegroundWindow")
-	dWindowFromPoint     = newDLLProc("DWindowFromPoint")
-)
-
 func DSendMessage(hWd HWND, msg uint32, wParam, lParam uintptr) uintptr {
-	r, _, _ := dSendMessage.Call(hWd, uintptr(msg), wParam, lParam)
-	return r
+	return defSyscallN(dllimports.DSENDMESSAGE, hWd, uintptr(msg), wParam, lParam)
 }
 
 func DPostMessage(hWd HWND, msg uint32, wParam, lParam uintptr) bool {
-	r, _, _ := dPostMessage.Call(hWd, uintptr(msg), wParam, lParam)
-	return r != 0
+	return GoBool(defSyscallN(dllimports.DPOSTMESSAGE, hWd, uintptr(msg), wParam, lParam))
 }
 
 func DIsIconic(hWnd HWND) bool {
-	r, _, _ := dIsIconic.Call(uintptr(hWnd))
-	return r != 0
+	return GoBool(defSyscallN(dllimports.DISICONIC, hWnd))
 }
 
 func DIsWindow(hWnd HWND) bool {
-	r, _, _ := dIsWindow.Call(uintptr(hWnd))
-	return r != 0
+	return GoBool(defSyscallN(dllimports.DISWINDOW, hWnd))
 }
 
 func DIsZoomed(hWnd HWND) bool {
-	r, _, _ := dIsZoomed.Call(uintptr(hWnd))
-	return r != 0
+	return GoBool(defSyscallN(dllimports.DISZOOMED, hWnd))
 }
 
 func DIsWindowVisible(hWnd HWND) bool {
-	r, _, _ := dIsWindowVisible.Call(uintptr(hWnd))
-	return r != 0
+	return GoBool(defSyscallN(dllimports.DISWINDOWVISIBLE, hWnd))
 }
 
 func DGetDC(hWnd HWND) HDC {
-	r, _, _ := dGetDC.Call(uintptr(hWnd))
-	return HDC(r)
+	return defSyscallN(dllimports.DGETDC, hWnd)
 }
 
 func DReleaseDC(hWnd HWND, dc HDC) int {
-	r, _, _ := dReleaseDC.Call(uintptr(hWnd), uintptr(dc))
-	return int(r)
+	return int(defSyscallN(dllimports.DRELEASEDC, hWnd, dc))
 }
 
 func DSetForegroundWindow(hWnd HWND) bool {
-	r, _, _ := dSetForegroundWindow.Call(uintptr(hWnd))
-	return r != 0
+	return GoBool(defSyscallN(dllimports.DSETFOREGROUNDWINDOW, hWnd))
 }
 
 func DWindowFromPoint(point TPoint) HWND {
-	r, _, _ := dWindowFromPoint.Call(uintptr(unsafe.Pointer(&point)))
-	return HWND(r)
+	return defSyscallN(dllimports.DWINDOWFROMPOINT, uintptr(unsafe.Pointer(&point)))
 }

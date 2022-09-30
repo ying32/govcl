@@ -15,8 +15,6 @@ import (
 	"github.com/ying32/govcl/pkgs/libname"
 
 	"github.com/ying32/govcl/vcl/api/dllimports"
-
-	"github.com/ying32/dylib"
 )
 
 var (
@@ -31,7 +29,7 @@ var (
 )
 
 // Load liblcl
-func loadUILib() *dylib.LazyDLL {
+func loadUILib() dllimports.DLL {
 	libName := getDLLName()
 	// 如果支持运行时释放，则使用此种方法
 	if support, newDLLPath := checkAndReleaseDLL(); support {
@@ -41,18 +39,14 @@ func loadUILib() *dylib.LazyDLL {
 			libName = libname.LibName
 		}
 	}
-	lib := dylib.NewLazyDLL(libName)
-	err := lib.Load()
-	if err != nil {
-		panic(err)
-	}
+	lib := dllimports.NewDLL(libName)
 	return lib
 }
 
 func closeLib() {
-	if uiLib != nil {
-		uiLib.Close()
-		uiLib = nil
+	if uiLib != 0 {
+		uiLib.Release()
+		uiLib = 0
 	}
 }
 
@@ -86,8 +80,4 @@ func syscallGetTextBuf(trap int, obj uintptr, buffer *string, bufSize uintptr) u
 func defSyscallN(trap int, args ...uintptr) uintptr {
 	r1, _, _ := dllimports.GetImportDefFunc(uiLib, trap).Call(args...)
 	return r1
-}
-
-func newDLLProc(name string) *dylib.LazyProc {
-	return uiLib.NewProc(name)
 }

@@ -11,9 +11,25 @@
 
 package api
 
-var (
-	GdkWindow_GetXId      = newDLLProc("GdkWindow_GetXId")
-	GdkWindow_FromForm    = newDLLProc("GdkWindow_FromForm")
-	GtkWidget_GetGtkFixed = newDLLProc("GtkWidget_GetGtkFixed")
-	GtkWidget_Window      = newDLLProc("GtkWidget_Window")
+import (
+	"unsafe"
+
+	"github.com/ying32/govcl/vcl/api/dllimports"
 )
+
+func GdkWindow_GetXId(g uintptr) (res uintptr) {
+	defSyscallN(dllimports.GDKWINDOW_GETXID, g, uintptr(unsafe.Pointer(&res)))
+	return
+}
+
+func GdkWindow_FromForm(obj uintptr) uintptr {
+	return defSyscallN(dllimports.GDKWINDOW_FROMFORM, obj)
+}
+
+func GtkWidget_GetGtkFixed(g uintptr) uintptr {
+	return defSyscallN(dllimports.GTKWIDGET_GETGTKFIXED, g)
+}
+
+func GtkWidget_Window(g uintptr) uintptr {
+	return defSyscallN(dllimports.GTKWIDGET_WINDOW, g)
+}

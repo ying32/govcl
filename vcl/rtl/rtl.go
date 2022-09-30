@@ -226,13 +226,6 @@ func ModifyLibResource(aPtr uintptr, aValue string) {
 	api.DModifyLibResource(aPtr, aValue)
 }
 
-// LibStringEncoding
-//
-// 获取当前库使用的字符串编码
-func LibStringEncoding() types.TStringEncoding {
-	return api.DLibStringEncoding()
-}
-
 // LibVersion
 //
 // 获取库的版本，共8位，2位2位的，如：$01020100 表示 1.2.1.0

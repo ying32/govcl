@@ -95,6 +95,3 @@ lib
 /samples/multilanguage2
 go.sum
 /samples/controls
-/vcl/api/dllimports/posix_syscall.h
-/vcl/api/dllimports/dll_posix.go
-/vcl/api/dllimports/dll_windows.go

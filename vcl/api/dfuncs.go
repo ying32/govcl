@@ -12,6 +12,8 @@ import (
 	"sync"
 	"unsafe"
 
+	"github.com/ying32/govcl/vcl/api/dllimports"
+
 	. "github.com/ying32/govcl/vcl/types"
 )
 
@@ -125,76 +127,68 @@ func ThreadSyncCallbackFn() func() {
 }
 
 func SetEventCallback(ptr uintptr) {
-	setEventCallback.Call(ptr)
+	defSyscallN(dllimports.SETEVENTCALLBACK, ptr)
 }
 
 func SetMessageCallback(ptr uintptr) {
-	setMessageCallback.Call(ptr)
+	defSyscallN(dllimports.SETMESSAGECALLBACK, ptr)
 }
 
 func SetThreadSyncCallback(ptr uintptr) {
-	setThreadSyncCallback.Call(ptr)
+	defSyscallN(dllimports.SETTHREADSYNCCALLBACK, ptr)
 }
 
 func SetRequestCallCreateParamsCallback(ptr uintptr) {
-	setRequestCallCreateParamsCallback.Call(ptr)
+	defSyscallN(dllimports.SETREQUESTCALLCREATEPARAMSCALLBACK, ptr)
 }
 
 func SetRemoveEventCallback(ptr uintptr) {
-	setRemoveEventCallback.Call(ptr)
+	defSyscallN(dllimports.SETREMOVEEVENTCALLBACK, ptr)
 }
 
 func DGetStringArrOf(p uintptr, index int) string {
-	r, _, _ := dGetStringArrOf.Call(p, uintptr(index))
-	return GoStr(r)
+	return GoStr(defSyscallN(dllimports.DGETSTRINGARROF, p, uintptr(index)))
 }
 
 func DStrLen(p uintptr) int {
-	ret, _, _ := dStrLen.Call(p)
-	return int(ret)
+	return int(defSyscallN(dllimports.DSTRLEN, p))
 }
 
-func DMove(src, dest uintptr, llen int) {
-	dMove.Call(src, dest, uintptr(llen))
+func DMove(src, dest uintptr, nLen int) {
+	defSyscallN(dllimports.DMOVE, src, dest, uintptr(nLen))
 }
 
 func DShowMessage(s string) {
-	dShowMessage.Call(PascalStr(s))
+	defSyscallN(dllimports.DSHOWMESSAGE, PascalStr(s))
 }
 
 func DMessageDlg(Msg string, DlgType TMsgDlgType, Buttons TMsgDlgButtons, HelpCtx int32) int32 {
-	ret, _, _ := dMessageDlg.Call(PascalStr(Msg), uintptr(DlgType), uintptr(Buttons), uintptr(HelpCtx))
-	return int32(ret)
+	return int32(defSyscallN(dllimports.DMESSAGEDLG, PascalStr(Msg), uintptr(DlgType), uintptr(Buttons), uintptr(HelpCtx)))
 }
 
 func DTextToShortCut(val string) TShortCut {
-	ret, _, _ := dTextToShortCut.Call(PascalStr(val))
-	return TShortCut(ret)
+	return TShortCut(defSyscallN(dllimports.DTEXTTOSHORTCUT, PascalStr(val)))
 }
 
 func DShortCutToText(val TShortCut) string {
-	ret, _, _ := dShortCutToText.Call(uintptr(val))
-	return GoStr(ret)
+	return GoStr(defSyscallN(dllimports.DSHORTCUTTOTEXT, uintptr(val)))
 }
 
 func DSysOpen(filename string) {
-	dSysOpen.Call(PascalStr(filename))
+	defSyscallN(dllimports.DSYSOPEN, PascalStr(filename))
 }
 
 func DExtractFilePath(filename string) string {
-	r, _, _ := dExtractFilePath.Call(PascalStr(filename))
-	return GoStr(r)
+	return GoStr(defSyscallN(dllimports.DEXTRACTFILEPATH, PascalStr(filename)))
 }
 
 func DFileExists(filename string) bool {
-	r, _, _ := dFileExists.Call(PascalStr(filename))
-	return GoBool(r)
+	return GoBool(defSyscallN(dllimports.DFILEEXISTS, PascalStr(filename)))
 }
 
 func DSelectDirectory1(options TSelectDirOpts) (bool, string) {
 	var ptr uintptr
-	r, _, _ := dSelectDirectory1.Call(uintptr(unsafe.Pointer(&ptr)), uintptr(options), 0)
-	v := GoBool(r)
+	v := GoBool(defSyscallN(dllimports.DSELECTDIRECTORY1, uintptr(unsafe.Pointer(&ptr)), uintptr(options), 0))
 	if v {
 		return true, GoStr(ptr)
 	}
@@ -203,8 +197,7 @@ func DSelectDirectory1(options TSelectDirOpts) (bool, string) {
 
 func DSelectDirectory2(caption, root string, showHidden bool) (bool, string) {
 	var ptr uintptr
-	r, _, _ := dSelectDirectory2.Call(PascalStr(caption), PascalStr(root), PascalBool(showHidden), uintptr(unsafe.Pointer(&ptr)))
-	v := GoBool(r)
+	v := GoBool(defSyscallN(dllimports.DSELECTDIRECTORY2, PascalStr(caption), PascalStr(root), PascalBool(showHidden), uintptr(unsafe.Pointer(&ptr))))
 	if v {
 		return true, GoStr(ptr)
 	}
@@ -215,13 +208,12 @@ func DSynchronize(fn func(), useMsg uintptr) {
 	threadSync.Lock()
 	defer threadSync.Unlock()
 	threadSyncFn = fn
-	dSynchronize.Call(useMsg)
+	defSyscallN(dllimports.DSYNCHRONIZE, useMsg)
 	threadSyncFn = nil
 }
 
 func DInputBox(aCaption, aPrompt, aDefault string) string {
-	r, _, _ := dInputBox.Call(PascalStr(aCaption), PascalStr(aPrompt), PascalStr(aDefault))
-	return GoStr(r)
+	return GoStr(defSyscallN(dllimports.DINPUTBOX, PascalStr(aCaption), PascalStr(aPrompt), PascalStr(aDefault)))
 }
 
 func DInputQuery(aCaption, aPrompt string, value *string) bool {
@@ -229,7 +221,7 @@ func DInputQuery(aCaption, aPrompt string, value *string) bool {
 		return false
 	}
 	var strPtr uintptr
-	r, _, _ := dInputQuery.Call(PascalStr(aCaption), PascalStr(aPrompt), PascalStr(*value), uintptr(unsafe.Pointer(&strPtr)))
+	r := defSyscallN(dllimports.DINPUTQUERY, PascalStr(aCaption), PascalStr(aPrompt), PascalStr(*value), uintptr(unsafe.Pointer(&strPtr)))
 	if strPtr != 0 {
 		*value = GoStr(strPtr)
 	}
@@ -237,62 +229,54 @@ func DInputQuery(aCaption, aPrompt string, value *string) bool {
 }
 
 func DPasswordBox(aCaption, aPrompt string) string {
-	r, _, _ := dPasswordBox.Call(PascalStr(aCaption), PascalStr(aPrompt))
-	return GoStr(r)
+	return GoStr(defSyscallN(dllimports.DPASSWORDBOX, PascalStr(aCaption), PascalStr(aPrompt)))
 }
 
 func DInputCombo(aCaption, aPrompt string, aList uintptr) int32 {
-	r, _, _ := dInputCombo.Call(PascalStr(aCaption), PascalStr(aPrompt), aList)
-	return int32(r)
+	return int32(defSyscallN(dllimports.DINPUTCOMBO, PascalStr(aCaption), PascalStr(aPrompt), aList))
 }
 
 func DInputComboEx(aCaption, aPrompt string, aList uintptr, allowCustomText bool) string {
-	r, _, _ := dInputComboEx.Call(PascalStr(aCaption), PascalStr(aPrompt), aList, PascalBool(allowCustomText))
-	return GoStr(r)
+	return GoStr(defSyscallN(dllimports.DINPUTCOMBOEX, PascalStr(aCaption), PascalStr(aPrompt), aList, PascalBool(allowCustomText)))
 }
 
 func DSysLocale(aInfo *TSysLocale) {
-	dSysLocale.Call(uintptr(unsafe.Pointer(aInfo)))
+	defSyscallN(dllimports.DSYSLOCALE, uintptr(unsafe.Pointer(aInfo)))
 }
 
 func DCreateURLShortCut(aDestPath, aShortCutName, aURL string) {
-	dCreateURLShortCut.Call(PascalStr(aDestPath), PascalStr(aShortCutName), PascalStr(aURL))
+	defSyscallN(dllimports.DCREATEURLSHORTCUT, PascalStr(aDestPath), PascalStr(aShortCutName), PascalStr(aURL))
 }
 
 func DCreateShortCut(aDestPath, aShortCutName, aSrcFileName, aIconFileName, aDescription, aCmdArgs string) bool {
-	r, _, _ := dCreateShortCut.Call(PascalStr(aDestPath), PascalStr(aShortCutName), PascalStr(aSrcFileName),
-		PascalStr(aIconFileName), PascalStr(aDescription), PascalStr(aCmdArgs))
-	return GoBool(r)
+	return GoBool(defSyscallN(dllimports.DCREATESHORTCUT, PascalStr(aDestPath), PascalStr(aShortCutName), PascalStr(aSrcFileName),
+		PascalStr(aIconFileName), PascalStr(aDescription), PascalStr(aCmdArgs)))
 }
 
 func DSetPropertyValue(instance uintptr, propName, value string) {
-	dSetPropertyValue.Call(instance, PascalStr(propName), PascalStr(value))
+	defSyscallN(dllimports.DSETPROPERTYVALUE, instance, PascalStr(propName), PascalStr(value))
 }
 
 func DSetPropertySecValue(instance uintptr, propName, secPropName, value string) {
-	dSetPropertySecValue.Call(instance, PascalStr(propName), PascalStr(secPropName), PascalStr(value))
+	defSyscallN(dllimports.DSETPROPERTYSECVALUE, instance, PascalStr(propName), PascalStr(secPropName), PascalStr(value))
 }
 
 func DGUIDToString(guid TGUID) string {
-	r, _, _ := dGUIDToString.Call(uintptr(unsafe.Pointer(&guid)))
-	return GoStr(r)
+	return GoStr(defSyscallN(dllimports.DGUIDTOSTRING, uintptr(unsafe.Pointer(&guid))))
 }
 
-func DStringToGUID(str string) TGUID {
-	var guid TGUID
-	dStringToGUID.Call(PascalStr(str), uintptr(unsafe.Pointer(&guid)))
-	return guid
+func DStringToGUID(str string) (guid TGUID) {
+	defSyscallN(dllimports.DSTRINGTOGUID, PascalStr(str), uintptr(unsafe.Pointer(&guid)))
+	return
 }
 
-func DCreateGUID() TGUID {
-	var guid TGUID
-	dCreateGUID.Call(uintptr(unsafe.Pointer(&guid)))
-	return guid
+func DCreateGUID() (guid TGUID) {
+	defSyscallN(dllimports.DCREATEGUID, uintptr(unsafe.Pointer(&guid)))
+	return
 }
 
 func DGetLibResourceCount() int32 {
-	r, _, _ := dGetLibResourceCount.Call()
-	return int32(r)
+	return int32(defSyscallN(dllimports.DGETLIBRESOURCECOUNT))
 }
 
 func DGetLibResourceItem(aIndex int32) (ret TLibResource) {
@@ -300,71 +284,60 @@ func DGetLibResourceItem(aIndex int32) (ret TLibResource) {
 		Name     uintptr
 		ValuePtr uintptr
 	}{}
-	dGetLibResourceItem.Call(uintptr(aIndex), uintptr(unsafe.Pointer(&item)))
+	defSyscallN(dllimports.DGETLIBRESOURCEITEM, uintptr(aIndex), uintptr(unsafe.Pointer(&item)))
 	ret.Name = GoStr(item.Name)
 	ret.Ptr = item.ValuePtr
 	return
 }
 
 func DModifyLibResource(aPtr uintptr, aValue string) {
-	dModifyLibResource.Call(aPtr, PascalStr(aValue))
+	defSyscallN(dllimports.DMODIFYLIBRESOURCE, aPtr, PascalStr(aValue))
 }
 
 func DLibStringEncoding() TStringEncoding {
-	r, _, _ := dLibStringEncoding.Call()
-	return TStringEncoding(r)
+	return TStringEncoding(defSyscallN(dllimports.DLIBSTRINGENCODING))
 }
 
 func DLibVersion() uint32 {
-	r, _, _ := dLibVersion.Call()
-	return uint32(r)
+	return uint32(defSyscallN(dllimports.DLIBVERSION))
 }
 
 func DLibAbout() string {
-	r, _, _ := dLibAbout.Call()
-	return GoStr(r)
+	return GoStr(defSyscallN(dllimports.DLIBABOUT))
 }
 
 func DMainThreadId() uintptr {
-	r, _, _ := dMainThreadId.Call()
-	return r
+	return defSyscallN(dllimports.DMAINTHREADID)
 }
 
 func DCurrentThreadId() uintptr {
-	r, _, _ := dCurrentThreadId.Call()
-	return r
+	return defSyscallN(dllimports.DCURRENTTHREADID)
 }
 
 func DInitGoDll(aMainThreadId uintptr) {
-	dInitGoDll.Call(aMainThreadId)
+	defSyscallN(dllimports.DINITGODLL, aMainThreadId)
 }
 
 func DFindControl(handle HWND) uintptr {
-	r, _, _ := dFindControl.Call(handle)
-	return r
+	return defSyscallN(dllimports.DFINDCONTROL, handle)
 }
 
 func DFindLCLControl(screenPos TPoint) uintptr {
-	r, _, _ := dFindLCLControl.Call(uintptr(unsafe.Pointer(&screenPos)))
-	return r
+	return defSyscallN(dllimports.DFINDLCLCONTROL, uintptr(unsafe.Pointer(&screenPos)))
 }
 
 func DFindOwnerControl(handle HWND) uintptr {
-	r, _, _ := dFindOwnerControl.Call(handle)
-	return r
+	return defSyscallN(dllimports.DFINDOWNERCONTROL, handle)
 }
 
 func DFindControlAtPosition(position TPoint, allowDisabled bool) uintptr {
-	r, _, _ := dFindControlAtPosition.Call(uintptr(unsafe.Pointer(&position)), PascalBool(allowDisabled))
-	return r
+	return defSyscallN(dllimports.DFINDCONTROLATPOSITION, uintptr(unsafe.Pointer(&position)), PascalBool(allowDisabled))
 }
 
 func DFindLCLWindow(screenPos TPoint, allowDisabled bool) uintptr {
-	r, _, _ := dFindLCLWindow.Call(uintptr(unsafe.Pointer(&screenPos)), PascalBool(allowDisabled))
-	return r
+	return defSyscallN(dllimports.DFINDLCLWINDOW, uintptr(unsafe.Pointer(&screenPos)), PascalBool(allowDisabled))
 }
 
 func DFindDragTarget(position TPoint, allowDisabled bool) uintptr {
-	r, _, _ := dFindDragTarget.Call(uintptr(unsafe.Pointer(&position)), PascalBool(allowDisabled))
-	return r
+	return defSyscallN(dllimports.DFINDDRAGTARGET, uintptr(unsafe.Pointer(&position)), PascalBool(allowDisabled))
 }

@@ -11,8 +11,6 @@
 package vcl
 
 import (
-	"unsafe"
-
 	. "github.com/ying32/govcl/vcl/api"
 	"github.com/ying32/govcl/vcl/types"
 )
@@ -31,25 +29,20 @@ func HandleToPlatformHandle(h types.HWND) GtkWidget {
 }
 
 func (f *TForm) PlatformWindow() GdkWindow {
-	r, _, _ := GdkWindow_FromForm.Call(f._instance())
-	return GdkWindow(r)
+	return GdkWindow(GdkWindow_FromForm(f._instance()))
 }
 
 func (g GdkWindow) XID() (xid XID) {
-	GdkWindow_GetXId.Call(uintptr(g), uintptr(unsafe.Pointer(&xid)))
-	return
+	return XID(GdkWindow_GetXId(uintptr(g)))
 }
 
 // FixedWidget
 //
 // lz中首先是一个widget，然后上面用了一个fixedWidget来处理的。
 func (g GtkWidget) FixedWidget() GtkFixed {
-	r, _, _ := GtkWidget_GetGtkFixed.Call(uintptr(g))
-	return GtkFixed(r)
+	return GtkFixed(GtkWidget_GetGtkFixed(uintptr(g)))
 }
 
 func (g GtkWidget) Window() GdkWindow {
-	return 0
-	r, _, _ := GtkWidget_Window.Call(uintptr(g))
-	return GdkWindow(r)
+	return GdkWindow(GtkWidget_Window(uintptr(g)))
 }
