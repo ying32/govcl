@@ -13,6 +13,10 @@ package dllimports
 /*
 	#cgo LDFLAGS: -ldl
 	#include <dlfcn.h>
+	#include <limits.h>
+	#include <stdlib.h>
+	#include <stdint.h>
+	#include <stdio.h>
     #include "posix_syscall.h"
 */
 import "C"
