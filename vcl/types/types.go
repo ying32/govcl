@@ -79,7 +79,7 @@ type HGLOBAL = uintptr
 
 type TFNWndEnumProc = uintptr
 
-type TXID = uint64
+type TXId = uint64
 
 type ATOM = uint16
 
