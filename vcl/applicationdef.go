@@ -103,3 +103,8 @@ func (a *TApplication) Run() {
 func (a *TApplication) Initialize() {
 	Application_Initialize(a._instance())
 }
+
+// SetRunLoopReceived 这里只是测试，实际Go并未用得着他
+func (a *TApplication) SetRunLoopReceived(proc uintptr) {
+	Application_SetRunLoopReceived(a._instance(), proc)
+}

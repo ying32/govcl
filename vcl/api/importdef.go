@@ -39,6 +39,10 @@ func Application_Initialize(obj uintptr) {
 	defSyscallN(dllimports.APPLICATION_INITIALIZE, obj)
 }
 
+func Application_SetRunLoopReceived(obj uintptr, proc uintptr) {
+	defSyscallN(dllimports.APPLICATION_SETRUNLOOPRECEIVED, obj, proc)
+}
+
 // -------------------- TForm ---------------------------
 
 func Form_Create2(owner uintptr) uintptr {
