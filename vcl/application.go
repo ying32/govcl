@@ -336,6 +336,58 @@ func (a *TApplication) SetExceptionExitCode(value int32) {
     Application_SetExceptionExitCode(a._instance(), value)
 }
 
+func (a *TApplication) CaseSensitiveOptions() bool {
+    return Application_GetCaseSensitiveOptions(a._instance())
+}
+
+func (a *TApplication) SetCaseSensitiveOptions(value bool) {
+    Application_SetCaseSensitiveOptions(a._instance(), value)
+}
+
+func (a *TApplication) CaptureExceptions() bool {
+    return Application_GetCaptureExceptions(a._instance())
+}
+
+func (a *TApplication) SetCaptureExceptions(value bool) {
+    Application_SetCaptureExceptions(a._instance(), value)
+}
+
+func (a *TApplication) ExtendedKeysSupport() bool {
+    return Application_GetExtendedKeysSupport(a._instance())
+}
+
+func (a *TApplication) SetExtendedKeysSupport(value bool) {
+    Application_SetExtendedKeysSupport(a._instance(), value)
+}
+
+func (a *TApplication) Active() bool {
+    return Application_GetActive(a._instance())
+}
+
+func (a *TApplication) MainFormHandle() HWND {
+    return Application_GetMainFormHandle(a._instance())
+}
+
+func (a *TApplication) MouseControl() *TControl {
+    return AsControl(Application_GetMouseControl(a._instance()))
+}
+
+func (a *TApplication) HintHidePausePerChar() int32 {
+    return Application_GetHintHidePausePerChar(a._instance())
+}
+
+func (a *TApplication) SetHintHidePausePerChar(value int32) {
+    Application_SetHintHidePausePerChar(a._instance(), value)
+}
+
+func (a *TApplication) FindGlobalComponentEnabled() bool {
+    return Application_GetFindGlobalComponentEnabled(a._instance())
+}
+
+func (a *TApplication) SetFindGlobalComponentEnabled(value bool) {
+    Application_SetFindGlobalComponentEnabled(a._instance(), value)
+}
+
 // ExeName
 //
 // 获取当前exe文件名，包含全路径。
@@ -441,10 +493,6 @@ func (a *TApplication) MainForm() *TForm {
     return AsForm(Application_GetMainForm(a._instance()))
 }
 
-func (a *TApplication) MainFormHandle() HWND {
-    return Application_GetMainFormHandle(a._instance())
-}
-
 // MainFormOnTaskBar
 //
 // 获取主窗口显示在任务栏上。
@@ -497,6 +545,10 @@ func (a *TApplication) ShowMainForm() bool {
 // 设置初始显示主窗口。
 func (a *TApplication) SetShowMainForm(value bool) {
     Application_SetShowMainForm(a._instance(), value)
+}
+
+func (a *TApplication) Terminated() bool {
+    return Application_GetTerminated(a._instance())
 }
 
 func (a *TApplication) Title() string {

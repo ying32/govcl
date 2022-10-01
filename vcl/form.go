@@ -1576,6 +1576,10 @@ func (f *TForm) SetOnUnDock(fn TUnDockEvent) {
     Form_SetOnUnDock(f._instance(), fn)
 }
 
+func (f *TForm) Active() bool {
+    return Form_GetActive(f._instance())
+}
+
 // Canvas
 //
 // 获取画布。
