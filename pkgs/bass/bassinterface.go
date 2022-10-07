@@ -101,7 +101,6 @@ func BASS_ChannelGetLength(handle HSTREAM, mode uint32) uint64 {
 
 func BASS_ChannelGetPosition(handle HSTREAM, mode uint32) uint64 {
 	r1, r2, _ := _BASS_ChannelGetPosition.Call(uintptr(handle), uintptr(mode))
-	//fmt.Println(r1, r2, ", ", ToUInt64(r1, r2))
 	return ToUInt64(r1, r2)
 }
 

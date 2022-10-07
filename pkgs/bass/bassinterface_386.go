@@ -1,6 +1,10 @@
 package bass
 
-import "github.com/ying32/dylib/floatpatch"
+import (
+	"math"
+
+	"github.com/ying32/dylib/floatpatch"
+)
 
 func ToUInt64(r1, r2 uintptr) uint64 {
 	ret := uint64(r2)
@@ -32,7 +36,7 @@ func BASS_ChannelBytes2Seconds(handle HSTREAM, pos uint64) float64 {
 }
 
 func BASS_ChannelSeconds2Bytes(handle HSTREAM, pos float64) uint64 {
-	pos1, pos2 := UInt64To(uint64(pos))
+	pos1, pos2 := UInt64To(math.Float64bits(pos))
 	r1, r2, _ := _BASS_ChannelSeconds2Bytes.Call(uintptr(handle), pos1, pos2)
 	return ToUInt64(r1, r2)
 }
