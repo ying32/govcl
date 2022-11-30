@@ -236,3 +236,5 @@ type TCheckItemChange func(sender IObject, index int32)
 type TUTF8KeyPressEvent func(sender IObject, utf8key *TUTF8Char)
 
 type TMenuDrawItemEvent func(sender IObject, aCanvas *TCanvas, aRect TRect, aState TOwnerDrawState)
+
+type TImagePaintBackgroundEvent func(sender IObject, aCanvas *TCanvas, aRect TRect)

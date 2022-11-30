@@ -501,6 +501,10 @@ func (i *TImage) SetStretchOutEnabled(value bool) {
     Image_SetStretchOutEnabled(i._instance(), value)
 }
 
+func (i *TImage) SetOnPaintBackground(fn TImagePaintBackgroundEvent) {
+    Image_SetOnPaintBackground(i._instance(), fn)
+}
+
 // Canvas
 //
 // 获取画布。

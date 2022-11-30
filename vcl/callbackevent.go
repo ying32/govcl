@@ -942,6 +942,13 @@ func eventCallbackProc(f unsafe.Pointer, args uintptr, _ int) uintptr {
 				AsObject(getVal(0)),
 				(*TUTF8Char)(getPtr(1)))
 
+		// type  func(sender IObject, aCanvas *TCanvas, aRect TRect)
+		case TImagePaintBackgroundEvent:
+			v.(TImagePaintBackgroundEvent)(
+				AsObject(getVal(0)),
+				AsCanvas(getVal(1)),
+				*getRectPtr(2))
+
 		default:
 		}
 	}
