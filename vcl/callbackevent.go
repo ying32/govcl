@@ -42,14 +42,14 @@ func getParamOf(index int, ptr uintptr) uintptr {
 }
 
 // 移除事件，释放相关的引用
-func removeEventCallbackProc(f unsafe.Pointer) uintptr {
+func removeEventCallbackProc(f uintptr) uintptr {
 	//RemoveEventElement(PtrToElementPtr(f))
 	RemoveEventElement(f)
 	return 0
 }
 
 // 回调过程
-func eventCallbackProc(f unsafe.Pointer, args uintptr, _ int) uintptr {
+func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 	v := PtrToElementValue(f)
 	if v != nil {
 

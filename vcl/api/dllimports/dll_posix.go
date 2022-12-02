@@ -70,8 +70,8 @@ func (h DLL) GetProcAddr(name string) (ProcAddr, error) {
 	return ProcAddr(C.dlsym(unsafe.Pointer(h), cName)), dlError()
 }
 
-func toPtr(p uintptr) unsafe.Pointer {
-	return unsafe.Pointer(p)
+func toPtr(p uintptr) C.uintptr_t {
+	return C.uintptr_t(p)
 }
 
 func (p ProcAddr) Call(args ...uintptr) (r1, r2 uintptr, err error) {
