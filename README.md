@@ -2,6 +2,8 @@
 [中文](README.zh-CN.md)   | English    
 
 ----
+**Next release: no plans, maybe wait until Lazarus 2.4? , If you want to use the new code that can use the dev branch in advance.**
+----
 
 ### GoVCL
 
