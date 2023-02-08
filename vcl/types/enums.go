@@ -70,6 +70,7 @@ const (
 	PoWorkAreaCenter             // center form on working area (depends on DefaultMonitor)
 )
 
+// 相关常量见 vcl/types/cussors.go
 // TCursor = -32768..32767;
 type TCursor int16
 

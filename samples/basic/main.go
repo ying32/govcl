@@ -103,6 +103,21 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	//	fmt.Println(c.ButtonColor())
 	//})
 
+	//pnl := vcl.NewPanel(f)
+	//pnl.SetParent(f)
+	//pnl.SetBounds(20, 150, 200, 300)
+	//pnl.SetOnMouseMove(func(sender vcl.IObject, shift types.TShiftState, x, y int32) {
+	//	// x < 5时显示左右调节指针样式
+	//	if x < 5 {
+	//		pnl.SetCursor(types.CrSizeE)
+	//		// y<5时显示上下调节指针样式
+	//	} else if y < 5 {
+	//		pnl.SetCursor(types.CrSizeN)
+	//	} else {
+	//		pnl.SetCursor(types.CrDefault)
+	//	}
+	//})
+
 }
 
 func (f *TMainForm) OnFormCloseQuery(Sender vcl.IObject, CanClose *bool) {

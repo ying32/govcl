@@ -21,18 +21,20 @@ import (
 var (
 	gdi32dll = syscall.NewLazyDLL("gdi32.dll")
 
-	_CreateCompatibleDC = gdi32dll.NewProc("CreateCompatibleDC")
-	_CreateDIBSection   = gdi32dll.NewProc("CreateDIBSection")
-	_SelectObject       = gdi32dll.NewProc("SelectObject")
-	_DeleteDC           = gdi32dll.NewProc("DeleteDC")
-	_DeleteObject       = gdi32dll.NewProc("DeleteObject")
-	_CreatePen          = gdi32dll.NewProc("CreatePen")
-	_SetROP2            = gdi32dll.NewProc("SetROP2")
-	_Rectangle          = gdi32dll.NewProc("Rectangle")
-	_SaveDC             = gdi32dll.NewProc("SaveDC")
-	_RestoreDC          = gdi32dll.NewProc("RestoreDC")
-	_SetBkMode          = gdi32dll.NewProc("SetBkMode")
-	_SetTextColor       = gdi32dll.NewProc("SetTextColor")
+	_CreateCompatibleDC     = gdi32dll.NewProc("CreateCompatibleDC")
+	_CreateDIBSection       = gdi32dll.NewProc("CreateDIBSection")
+	_SelectObject           = gdi32dll.NewProc("SelectObject")
+	_DeleteDC               = gdi32dll.NewProc("DeleteDC")
+	_DeleteObject           = gdi32dll.NewProc("DeleteObject")
+	_CreatePen              = gdi32dll.NewProc("CreatePen")
+	_SetROP2                = gdi32dll.NewProc("SetROP2")
+	_Rectangle              = gdi32dll.NewProc("Rectangle")
+	_SaveDC                 = gdi32dll.NewProc("SaveDC")
+	_RestoreDC              = gdi32dll.NewProc("RestoreDC")
+	_SetBkMode              = gdi32dll.NewProc("SetBkMode")
+	_SetTextColor           = gdi32dll.NewProc("SetTextColor")
+	_CreateCompatibleBitmap = gdi32dll.NewProc("CreateCompatibleBitmap")
+	_BitBlt                 = gdi32dll.NewProc("BitBlt")
 )
 
 func CreateCompatibleDC(dc HDC) HDC {
@@ -93,4 +95,14 @@ func RestoreDC(dC HDC, savedDC int32) bool {
 func SetTextColor(dC HDC, color uint32) uint32 {
 	r, _, _ := _SetTextColor.Call(uintptr(dC), uintptr(color))
 	return uint32(r)
+}
+
+func CreateCompatibleBitmap(dc HDC, width, height int32) HBITMAP {
+	r, _, _ := _CreateCompatibleBitmap.Call(dc, uintptr(width), uintptr(height))
+	return HBITMAP(r)
+}
+
+func BitBlt(destDC HDC, x, y, width, height int32, srcDC HDC, xSrc, ySrc int32, rop uint32) bool {
+	r, _, _ := _BitBlt.Call(destDC, uintptr(x), uintptr(y), uintptr(width), uintptr(height), srcDC, uintptr(xSrc), uintptr(ySrc), uintptr(rop))
+	return r != 0
 }

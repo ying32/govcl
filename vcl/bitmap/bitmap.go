@@ -66,7 +66,10 @@ func ToBitmap(img image.Image) (*vcl.TBitmap, error) {
 }
 
 func ToBitmap2(img image.Image, bmp *vcl.TBitmap) error {
-	if bmp == nil || !bmp.IsValid() {
+	if bmp == nil {
+		return ErrBitmapInvalid
+	}
+	if !bmp.IsValid() {
 		return ErrBitmapInvalid
 	}
 	switch img.(type) {
@@ -126,10 +129,12 @@ func toBitmap(width, height int, pix []uint8, bmp *vcl.TBitmap) error {
 	if len(pix) == 0 {
 		return ErrPixelDataEmpty
 	}
-	if bmp == nil || !bmp.IsValid() {
+	if bmp == nil {
 		return ErrBitmapInvalid
 	}
-
+	if !bmp.IsValid() {
+		return ErrBitmapInvalid
+	}
 	bmp.SetSize(int32(width), int32(height))
 	// 总是32位，不然没办法透明。
 	bmp.SetPixelFormat(types.Pf32bit)

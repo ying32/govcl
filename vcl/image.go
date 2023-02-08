@@ -501,8 +501,19 @@ func (i *TImage) SetStretchOutEnabled(value bool) {
     Image_SetStretchOutEnabled(i._instance(), value)
 }
 
+// SetOnPaint
+//
+// 设置绘画事件。
+func (i *TImage) SetOnPaint(fn TNotifyEvent) {
+    Image_SetOnPaint(i._instance(), fn)
+}
+
 func (i *TImage) SetOnPaintBackground(fn TImagePaintBackgroundEvent) {
     Image_SetOnPaintBackground(i._instance(), fn)
+}
+
+func (i *TImage) SetOnPictureChanged(fn TNotifyEvent) {
+    Image_SetOnPictureChanged(i._instance(), fn)
 }
 
 // Canvas
