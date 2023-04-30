@@ -6,6 +6,7 @@
 //
 //----------------------------------------
 
+//go:build windows
 // +build windows
 
 package win
@@ -75,7 +76,7 @@ func SHGetPathFromIDList(pidl *TItemIDList) (bool, string) {
 	return r != 0, GoStr(szPath)
 }
 
-func SHGetFileInfo(pszPath string, dwFileAttributes uint32, psfi *TSHFileInfo, uFlags uint32) DWORD_PTR {
-	r, _, _ := _SHGetFileInfo.Call(CStr(pszPath), uintptr(dwFileAttributes), uintptr(unsafe.Pointer(psfi)), uintptr(uFlags))
+func SHGetFileInfo(pszPath string, dwFileAttributes uint32, psfi *TSHFileInfo, cbFileInfo, uFlags uint32) DWORD_PTR {
+	r, _, _ := _SHGetFileInfo.Call(CStr(pszPath), uintptr(dwFileAttributes), uintptr(unsafe.Pointer(psfi)), uintptr(cbFileInfo), uintptr(uFlags))
 	return DWORD_PTR(r)
 }
