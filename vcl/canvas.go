@@ -201,6 +201,14 @@ func (c *TCanvas) TextWidth(Text string) int32 {
     return Canvas_TextWidth(c._instance(), Text)
 }
 
+func (c *TCanvas) TryLock() bool {
+    return Canvas_TryLock(c._instance())
+}
+
+func (c *TCanvas) Unlock() {
+    Canvas_Unlock(c._instance())
+}
+
 // Assign
 //
 // 复制一个对象，如果对象实现了此方法的话。

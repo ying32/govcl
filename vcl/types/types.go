@@ -89,6 +89,10 @@ type SIZE_T = uintptr
 
 type DWORD_PTR = uintptr
 
+type ACCESS_MASK = DWORD
+
+type REGSAM = ACCESS_MASK
+
 // TSet Pascal集合类型 set of xxx
 type TSet uint32
 

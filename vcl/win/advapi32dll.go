@@ -6,6 +6,7 @@
 //
 //----------------------------------------
 
+//go:build windows
 // +build windows
 
 package win
@@ -13,6 +14,8 @@ package win
 import (
 	"syscall"
 	"unsafe"
+
+	. "github.com/ying32/govcl/vcl/types"
 )
 
 var (
@@ -22,6 +25,8 @@ var (
 
 	_OpenProcessToken    = advapi32dll.NewProc("OpenProcessToken")
 	_GetTokenInformation = advapi32dll.NewProc("GetTokenInformation")
+
+	_RegOpenKeyEx = advapi32dll.NewProc("RegOpenKeyExW")
 )
 
 // OpenProcessToken
@@ -35,4 +40,10 @@ func GetTokenInformation(TokenHandle uintptr, TokenInformationClass TTokenInform
 	ReturnLength *uint32) bool {
 	r, _, _ := _GetTokenInformation.Call(TokenHandle, uintptr(TokenInformationClass), TokenInformation, uintptr(TokenInformationLength), uintptr(unsafe.Pointer(ReturnLength)))
 	return r != 0
+}
+
+// RegOpenKeyEx
+func RegOpenKeyEx(hKey HKEY, lpSubKey string, ulOptions DWORD, samDesired REGSAM, phkResult *HKEY) int32 {
+	r, _, _ := _RegOpenKeyEx.Call(uintptr(hKey), CStr(lpSubKey), uintptr(ulOptions), uintptr(samDesired), uintptr(unsafe.Pointer(phkResult)))
+	return int32(r)
 }

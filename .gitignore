@@ -96,3 +96,5 @@ lib
 go.sum
 /samples/controls
 midform
+/samples/FCSimulator
+/samples/facecheck

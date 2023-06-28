@@ -110,17 +110,17 @@ type TAlignInfo struct {
 // Moved from Controls to avoid circles
 // Since it is part of the interface now
 type TCreateParams struct {
-	Caption       LPCWSTR
-	Style         uint32
-	ExStyle       uint32
-	X             int32
-	Y             int32
-	Width         int32
-	Height        int32
-	WndParent     HWND
-	Param         uintptr
-	WindowClass   TWndClass
-	WinClassName  [64]int8
+	Caption      LPCWSTR
+	Style        uint32
+	ExStyle      uint32
+	X            int32
+	Y            int32
+	Width        int32
+	Height       int32
+	WndParent    HWND
+	Param        uintptr
+	WindowClass  TWndClass
+	WinClassName [64]int8
 }
 
 // TColor

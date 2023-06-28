@@ -143,6 +143,26 @@ func (c *TClipboard) GetFormat(FormatID TClipboardFormat, Stream IStream) bool {
     return Clipboard_GetFormat(c._instance(), FormatID , CheckPtr(Stream))
 }
 
+func (c *TClipboard) AddFormat(FormatID TClipboardFormat, Stream IStream) bool {
+    return Clipboard_AddFormat(c._instance(), FormatID , CheckPtr(Stream))
+}
+
+func (c *TClipboard) SetFormat(FormatID TClipboardFormat, Stream IStream) bool {
+    return Clipboard_SetFormat(c._instance(), FormatID , CheckPtr(Stream))
+}
+
+func (c *TClipboard) GetComponent(Owner IComponent, Parent IComponent) *TComponent {
+    return AsComponent(Clipboard_GetComponent(c._instance(), CheckPtr(Owner), CheckPtr(Parent)))
+}
+
+func (c *TClipboard) SetComponent(Component IComponent) bool {
+    return Clipboard_SetComponent(c._instance(), CheckPtr(Component))
+}
+
+func (c *TClipboard) SetComponentAsText(Component IComponent) bool {
+    return Clipboard_SetComponentAsText(c._instance(), CheckPtr(Component))
+}
+
 // Assign
 //
 // 复制一个对象，如果对象实现了此方法的话。

@@ -510,10 +510,11 @@ const (
 	SWP_DEFERERASE     = 0x2000
 	SWP_ASYNCWINDOWPOS = 0x4000
 
-	HWND_TOP       = 0
-	HWND_BOTTOM    = 1
-	HWND_TOPMOST   = ^(-1) // -1
-	HWND_NOTOPMOST = ^(-2) // -2
+	HWND_TOP    = 0
+	HWND_BOTTOM = 1
+	// 见const_386或者const_amd64
+	//HWND_TOPMOST   = ^(0) // -1
+	//HWND_NOTOPMOST = ^(1) // -2
 )
 
 /* Translated from WINGDI.H */
@@ -629,10 +630,6 @@ const (
 	CSIDL_FLAG_NO_ALIAS      = 0x1000 // combine with CSIDL_ value to insure non-alias versions of the pidl
 	CSIDL_FLAG_PER_USER_INIT = 0x0800 // combine with CSIDL_ value to indicate per-user init (eg. upgrade)
 	CSIDL_FLAG_MASK          = 0xFF00 // mask for all possible flag values
-)
-
-const (
-	INVALID_HANDLE_VALUE = ^(-1)
 )
 
 /* Init/Uninit */
