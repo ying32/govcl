@@ -1,10 +1,6 @@
 
 [中文](README.zh-CN.md)   | English    
 
-----
-**Next release: no plans, maybe wait until Lazarus 2.4? , If you want to use the new code that can use the dev branch in advance.**
-----
-
 ### GoVCL
 
 Cross-platform Golang GUI library, The core binding is [liblcl](https://github.com/ying32/liblcl), a common cross-platform GUI library created by [Lazarus](https://www.lazarus-ide.org/).    
