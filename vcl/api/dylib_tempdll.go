@@ -23,7 +23,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/ying32/liblclbinres"
+	"github.com/ying32/govcl/pkgs/liblclbinres"
 )
 
 // $GOPATH/github.com/ying32/liblclbinres

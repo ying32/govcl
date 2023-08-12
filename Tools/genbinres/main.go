@@ -36,13 +36,13 @@ func main() {
 	sp := strings.Split(gopaths, ";")
 	libLCLBinResDir := strings.TrimSpace(sp[0])
 	for _, s := range sp {
-		s = strings.TrimSpace(s) + "/src/github.com/ying32/liblclbinres"
+		s = strings.TrimSpace(s) + "/src/github.com/ying32/govcl/pkgs/liblclbinres"
 		if fileExists(s) {
 			libLCLBinResDir = s
 			break
 		}
 	}
-
+	
 	fmt.Println("找到路径")
 	if !fileExists(libLCLBinResDir) {
 		if err := os.MkdirAll(libLCLBinResDir, 0666); err != nil {
@@ -75,9 +75,9 @@ func main() {
 		}
 
 	} else {
-		genresFile("../../Librarys/liblcl/win32/liblcl.dll", libLCLBinResDir+"/liblcl_windows_386.go")
-		genresFile("../../Librarys/liblcl/win64/liblcl.dll", libLCLBinResDir+"/liblcl_windows_amd64.go")
-		genresFile("../../Librarys/liblcl/linux64-gtk2/liblcl.so", libLCLBinResDir+"/liblcl_linux_amd64.go")
+		genresFile("./liblcl/win32/liblcl.dll", libLCLBinResDir+"/liblcl_windows_386.go")
+		genresFile("./liblcl/win64/liblcl.dll", libLCLBinResDir+"/liblcl_windows_amd64.go")
+		genresFile("./liblcl/linux64-gtk2/liblcl.so", libLCLBinResDir+"/liblcl_linux_amd64.go")
 	}
 
 	// macOS不支持这种，也不需要支持这种
