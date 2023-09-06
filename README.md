@@ -17,22 +17,29 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 
 ----
 
-### Support Platform    
+### Ⅰ. Support Platform    
 **Windows** | **Linux** | **macOS**  
 
 > If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.   
 
-### Pre-compiled GUI library binary download ([source code](https://github.com/ying32/liblcl))     
+### Ⅱ. Pre-compiled GUI library binary download ([source code](https://github.com/ying32/liblcl))     
 [![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.2.3.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.2.3/liblcl-2.2.3.zip)  
 
+### Ⅲ. UI Designer(Two options)  
 
-### res2go IDE plugin source code（[source code](https://github.com/ying32/res2go-ide-plugin)）  
+* 1、 Easy UI designer (single-page design, suitable for those who do not want to install Lazarus, and the project is not too complicated)      
+
+[![GoVCLDesigner.win](https://img.shields.io/github/downloads/ying32/govcl/latest/GoVCLDesigner-win-1.2.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.2.3/GoVCLDesigner-win-1.2.0.zip)  
+
+**Note: This UI designer is no longer updated, but it does not affect use.**  
+
+* 2. res2go IDE plugin source code（[source code](https://github.com/ying32/res2go-ide-plugin)）  
 
 **How to use: [Installation method](https://gitee.com/ying32/govcl/wikis/pages?sort_id=2645001&doc_id=102420)**   
 
 > Note: Designed in Lazarus, code written in Golang.  
  
-### usage: 
+### Ⅳ. usage: 
 
 #### Step 1: Get the govcl code  
 
@@ -185,14 +192,14 @@ Note: The "current executable file directory" here refers to the location of the
 
 ---
 
-### FAQ
+### Ⅴ. FAQ
 
 Q: Why is there no English WIKI?   
 A: My English is bad. You can try using Google Translate [Chinese WIKI](https://gitee.com/ying32/govcl/wikis/pages).    
  
 ---  
 
-### API document
+### Ⅵ. API document
 
 * [Lazarus LCL component WIKI](http://wiki.freepascal.org/LCL_Components)  
 * [Windows API document](https://msdn.microsoft.com/zh-cn/library/ms123401.aspx)

@@ -17,25 +17,32 @@
 
 ----
 
-### 支持的平台  
+### 一、支持的平台  
 **Windows** | **Linux** | **macOS**  
 
 > 如果你想要支持linux arm及linux 32bit则需要自己编译对应的liblcl二进制。  
 
 ----
 
-### 预编译GUI库二进制下载（[源代码](https://github.com/ying32/liblcl)）       
+### 二、预编译GUI库二进制下载（[源代码](https://github.com/ying32/liblcl)）       
 [![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.2.3.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.2.3/liblcl-2.2.3.zip)  
 
+### 三、UI设计器（两种选择）
 
-### res2go IDE插件源代码（[源代码](https://github.com/ying32/res2go-ide-plugin)）  
+* 1、 简易UI设计器（单页设计，适合不想安装Lazarus，项目不太复杂的）    
+
+[![GoVCLDesigner.win](https://img.shields.io/github/downloads/ying32/govcl/latest/GoVCLDesigner-win-1.2.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.2.3/GoVCLDesigner-win-1.2.0.zip)  
+
+**注：此UI设计器已经不再更新了，但不影响使用。**
+
+* 2、 res2go IDE插件源代码（[源代码](https://github.com/ying32/res2go-ide-plugin)）  
 
 **使用方法: [安装方法](https://gitee.com/ying32/govcl/wikis/pages?sort_id=2645001&doc_id=102420)**   
 
 > 注：用Lazarus设计界面，用Golang写代码。    
   
 ---
-### 使用方法  
+### 四、使用方法  
 
 #### 步骤一：获取govcl代码  
 
@@ -185,13 +192,13 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 
 ----
 
-### 注意:  
+### 五、注意:  
 
 **特别注意：所有UI组件都是非线程/协程安全的，当在goroutine中使用时，请使用[vcl.ThreadSync](https://gitee.com/ying32/govcl/wikis/pages?sort_id=976890&doc_id=102420)来同步更新到UI上。**    
 
 **特别注意2：如果你使用go>=1.15编译Windows可执行文件，则必须则必须使用`-buildmode=exe`编译选项，不然会有错误。**  
 
-### API文档
+### 六、API文档
 
 * [Lazarus LCL组件WIKI](http://wiki.freepascal.org/LCL_Components)
 * [Windows API文档](https://msdn.microsoft.com/zh-cn/library/ms123401.aspx)  
