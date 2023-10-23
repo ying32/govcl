@@ -203,8 +203,3 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 * [Lazarus LCL组件WIKI](http://wiki.freepascal.org/LCL_Components)
 * [Windows API文档](https://msdn.microsoft.com/zh-cn/library/ms123401.aspx)  
 
-
-----
-
-![jetbrains](https://z-kit.cc/assets/images/jetbrains.png)   
-[鸣谢jetbrains](https://www.jetbrains.com/?from=govcl)  
