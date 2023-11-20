@@ -11,6 +11,12 @@
 
 *govcl最低要求go1.9.2。*    
 
+----
+
+**因为GoVCL早已经进入稳定阶段，目前处于纯维护状态，正常情况下不会增加新功能或者新组件，如果没有什么bug需要修复（指govcl这块的bug），原则上是不会发布新版本了。 2023/11/20**  
+
+----
+
 [截图查看](https://z-kit.cc/screenshot.html) | 
 [中文文档](https://gitee.com/ying32/govcl/wikis/pages) | 
 [更新日志](https://z-kit.cc/changelog.html) 

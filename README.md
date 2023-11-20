@@ -11,6 +11,12 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 
 *govcl minimum requirement is go1.9.2.*    
 
+----
+
+**Because GoVCL has already entered a stable stage and is currently in a state of pure maintenance. Under normal circumstances, no new features or components will be added. If there are no bugs that need to be fixed (referring to the bugs in govcl), in principle, a new version will not be released.   2023/11/20**  
+
+----
+
 [Screenshots](https://z-kit.cc/en/screenshot.html) | 
 [WIKI(Chinese)](https://gitee.com/ying32/govcl/wikis/pages) | 
 [What's-new(Chinese)](https://z-kit.cc/en/changelog.html) 
