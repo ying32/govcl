@@ -35,7 +35,7 @@ Cross-platform Golang GUI library, The core binding is [liblcl](https://github.c
 
 * 1、 Easy UI designer (single-page design, suitable for those who do not want to install Lazarus, and the project is not too complicated)      
 
-[![GoVCLDesigner.win](https://img.shields.io/github/downloads/ying32/govcl/latest/GoVCLDesigner-win-1.2.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.2.3/GoVCLDesigner-win-1.2.0.zip)  
+[![GoVCLDesigner.win](https://img.shields.io/github/downloads/ying32/govcl/latest/GoVCLDesigner-win-1.2.1.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.2.3/GoVCLDesigner-win-1.2.1.zip)  
 
 **Note: This UI designer is no longer updated, but it does not affect use.**  
 

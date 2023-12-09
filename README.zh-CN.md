@@ -37,7 +37,7 @@
 
 * 1、 简易UI设计器（单页设计，适合不想安装Lazarus，项目不太复杂的）    
 
-[![GoVCLDesigner.win](https://img.shields.io/github/downloads/ying32/govcl/latest/GoVCLDesigner-win-1.2.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.2.3/GoVCLDesigner-win-1.2.0.zip)  
+[![GoVCLDesigner.win](https://img.shields.io/github/downloads/ying32/govcl/latest/GoVCLDesigner-win-1.2.1.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.2.3/GoVCLDesigner-win-1.2.1.zip)  
 
 **注：此UI设计器已经不再更新了，但不影响使用。**
 
