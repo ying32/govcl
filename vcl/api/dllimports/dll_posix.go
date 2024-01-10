@@ -6,6 +6,7 @@
 //
 //----------------------------------------
 
+//go:build !windows
 // +build !windows
 
 package dllimports
@@ -22,7 +23,10 @@ package dllimports
 import "C"
 import (
 	"errors"
+	"os"
+	"path/filepath"
 	"runtime"
+	"strings"
 	"syscall"
 	"unsafe"
 )
@@ -34,7 +38,12 @@ func NewDLL(name string) (DLL, error) {
 
 	// macOS下强制加载执行文件路径下的liblcl
 	if runtime.GOOS == "darwin" {
-		name = "@executable_path/" + name
+		// 兼容GO RUN 直接调用go文件路径下的liblcl
+		path, _ := os.Executable()
+		path = filepath.Dir(path)
+		if !strings.Contains(path, "go-build") {
+			name = "@executable_path/" + name
+		}
 	}
 	cRelName := C.CString(name)
 	defer C.free(unsafe.Pointer(cRelName))
