@@ -593,7 +593,7 @@ const (
 	CSIDL_COMMON_DESKTOPDIRECTORY = 0x0019 // All Users\Desktop
 	CSIDL_APPDATA                 = 0x001a // <user name>\Application Data
 	CSIDL_PRINTHOOD               = 0x001b // <user name>\PrintHood
-	CSIDL_LOCAL_APPDATA           = 0x001c // <user name>\Local Settings\Applicaiton Data (non roaming)
+	CSIDL_LOCAL_APPDATA           = 0x001c // <user name>\Local Settings\Application Data (non roaming)
 	CSIDL_ALTSTARTUP              = 0x001d // non localized startup
 	CSIDL_COMMON_ALTSTARTUP       = 0x001e // non localized common startup
 	CSIDL_COMMON_FAVORITES        = 0x001f

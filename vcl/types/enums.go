@@ -2187,7 +2187,7 @@ type TTimeDisplay int32
 const (
 	TdHM    = iota + 0 // hour and minute
 	TdHMS              // hour Minute and second
-	TdHMSMs            // hour Minute Second and milisecond
+	TdHMSMs            // hour Minute Second and millisecond
 )
 
 //ENUM:
