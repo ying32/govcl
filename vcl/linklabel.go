@@ -150,6 +150,10 @@ func (l *TLinkLabel) Update() {
     LinkLabel_Update(l._instance())
 }
 
+func (l *TLinkLabel) BeginDrag(Immediate bool, Threshold int32) {
+    LinkLabel_BeginDrag(l._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -184,6 +188,10 @@ func (l *TLinkLabel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (l *TLinkLabel) Dragging() bool {
     return LinkLabel_Dragging(l._instance())
+}
+
+func (l *TLinkLabel) EndDrag(Drop bool) {
+    LinkLabel_EndDrag(l._instance(), Drop)
 }
 
 // HasParent

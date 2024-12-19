@@ -291,6 +291,10 @@ func (f *TFrame) Update() {
     Frame_Update(f._instance())
 }
 
+func (f *TFrame) BeginDrag(Immediate bool, Threshold int32) {
+    Frame_BeginDrag(f._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -325,6 +329,10 @@ func (f *TFrame) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (f *TFrame) Dragging() bool {
     return Frame_Dragging(f._instance())
+}
+
+func (f *TFrame) EndDrag(Drop bool) {
+    Frame_EndDrag(f._instance(), Drop)
 }
 
 // HasParent

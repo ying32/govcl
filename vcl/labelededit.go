@@ -336,6 +336,10 @@ func (l *TLabeledEdit) Update() {
     LabeledEdit_Update(l._instance())
 }
 
+func (l *TLabeledEdit) BeginDrag(Immediate bool, Threshold int32) {
+    LabeledEdit_BeginDrag(l._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -370,6 +374,10 @@ func (l *TLabeledEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint 
 // Is it in the middle of dragging.
 func (l *TLabeledEdit) Dragging() bool {
     return LabeledEdit_Dragging(l._instance())
+}
+
+func (l *TLabeledEdit) EndDrag(Drop bool) {
+    LabeledEdit_EndDrag(l._instance(), Drop)
 }
 
 // HasParent

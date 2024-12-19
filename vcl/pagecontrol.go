@@ -318,6 +318,10 @@ func (p *TPageControl) Update() {
     PageControl_Update(p._instance())
 }
 
+func (p *TPageControl) BeginDrag(Immediate bool, Threshold int32) {
+    PageControl_BeginDrag(p._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -352,6 +356,10 @@ func (p *TPageControl) ClientToParent(Point TPoint, AParent IWinControl) TPoint 
 // Is it in the middle of dragging.
 func (p *TPageControl) Dragging() bool {
     return PageControl_Dragging(p._instance())
+}
+
+func (p *TPageControl) EndDrag(Drop bool) {
+    PageControl_EndDrag(p._instance(), Drop)
 }
 
 // HasParent

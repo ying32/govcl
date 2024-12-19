@@ -287,6 +287,10 @@ func (s *TStaticText) Update() {
     StaticText_Update(s._instance())
 }
 
+func (s *TStaticText) BeginDrag(Immediate bool, Threshold int32) {
+    StaticText_BeginDrag(s._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -321,6 +325,10 @@ func (s *TStaticText) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (s *TStaticText) Dragging() bool {
     return StaticText_Dragging(s._instance())
+}
+
+func (s *TStaticText) EndDrag(Drop bool) {
+    StaticText_EndDrag(s._instance(), Drop)
 }
 
 // HasParent

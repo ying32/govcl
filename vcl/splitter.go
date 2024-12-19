@@ -114,6 +114,10 @@ func TSplitterClass() TClass {
     return Splitter_StaticClassType()
 }
 
+func (s *TSplitter) BeginDrag(Immediate bool, Threshold int32) {
+    Splitter_BeginDrag(s._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -148,6 +152,10 @@ func (s *TSplitter) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (s *TSplitter) Dragging() bool {
     return Splitter_Dragging(s._instance())
+}
+
+func (s *TSplitter) EndDrag(Drop bool) {
+    Splitter_EndDrag(s._instance(), Drop)
 }
 
 // HasParent

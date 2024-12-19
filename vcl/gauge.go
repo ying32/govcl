@@ -118,6 +118,10 @@ func (g *TGauge) AddProgress(Value int32) {
     Gauge_AddProgress(g._instance(), Value)
 }
 
+func (g *TGauge) BeginDrag(Immediate bool, Threshold int32) {
+    Gauge_BeginDrag(g._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -152,6 +156,10 @@ func (g *TGauge) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (g *TGauge) Dragging() bool {
     return Gauge_Dragging(g._instance())
+}
+
+func (g *TGauge) EndDrag(Drop bool) {
+    Gauge_EndDrag(g._instance(), Drop)
 }
 
 // HasParent

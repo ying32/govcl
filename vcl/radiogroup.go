@@ -287,6 +287,10 @@ func (r *TRadioGroup) Update() {
     RadioGroup_Update(r._instance())
 }
 
+func (r *TRadioGroup) BeginDrag(Immediate bool, Threshold int32) {
+    RadioGroup_BeginDrag(r._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -321,6 +325,10 @@ func (r *TRadioGroup) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (r *TRadioGroup) Dragging() bool {
     return RadioGroup_Dragging(r._instance())
+}
+
+func (r *TRadioGroup) EndDrag(Drop bool) {
+    RadioGroup_EndDrag(r._instance(), Drop)
 }
 
 // HasParent

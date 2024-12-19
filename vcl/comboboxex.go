@@ -319,6 +319,10 @@ func (c *TComboBoxEx) Update() {
     ComboBoxEx_Update(c._instance())
 }
 
+func (c *TComboBoxEx) BeginDrag(Immediate bool, Threshold int32) {
+    ComboBoxEx_BeginDrag(c._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -353,6 +357,10 @@ func (c *TComboBoxEx) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (c *TComboBoxEx) Dragging() bool {
     return ComboBoxEx_Dragging(c._instance())
+}
+
+func (c *TComboBoxEx) EndDrag(Drop bool) {
+    ComboBoxEx_EndDrag(c._instance(), Drop)
 }
 
 // HasParent

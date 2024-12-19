@@ -121,6 +121,10 @@ func (s *TSpeedButton) Click() {
     SpeedButton_Click(s._instance())
 }
 
+func (s *TSpeedButton) BeginDrag(Immediate bool, Threshold int32) {
+    SpeedButton_BeginDrag(s._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -155,6 +159,10 @@ func (s *TSpeedButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint 
 // Is it in the middle of dragging.
 func (s *TSpeedButton) Dragging() bool {
     return SpeedButton_Dragging(s._instance())
+}
+
+func (s *TSpeedButton) EndDrag(Drop bool) {
+    SpeedButton_EndDrag(s._instance(), Drop)
 }
 
 // HasParent

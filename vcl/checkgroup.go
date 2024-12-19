@@ -291,6 +291,10 @@ func (c *TCheckGroup) Update() {
     CheckGroup_Update(c._instance())
 }
 
+func (c *TCheckGroup) BeginDrag(Immediate bool, Threshold int32) {
+    CheckGroup_BeginDrag(c._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -325,6 +329,10 @@ func (c *TCheckGroup) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (c *TCheckGroup) Dragging() bool {
     return CheckGroup_Dragging(c._instance())
+}
+
+func (c *TCheckGroup) EndDrag(Drop bool) {
+    CheckGroup_EndDrag(c._instance(), Drop)
 }
 
 // HasParent

@@ -291,6 +291,10 @@ func (t *TTrackBar) Update() {
     TrackBar_Update(t._instance())
 }
 
+func (t *TTrackBar) BeginDrag(Immediate bool, Threshold int32) {
+    TrackBar_BeginDrag(t._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -325,6 +329,10 @@ func (t *TTrackBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (t *TTrackBar) Dragging() bool {
     return TrackBar_Dragging(t._instance())
+}
+
+func (t *TTrackBar) EndDrag(Drop bool) {
+    TrackBar_EndDrag(t._instance(), Drop)
 }
 
 // HasParent

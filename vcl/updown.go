@@ -287,6 +287,10 @@ func (u *TUpDown) Update() {
     UpDown_Update(u._instance())
 }
 
+func (u *TUpDown) BeginDrag(Immediate bool, Threshold int32) {
+    UpDown_BeginDrag(u._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -321,6 +325,10 @@ func (u *TUpDown) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (u *TUpDown) Dragging() bool {
     return UpDown_Dragging(u._instance())
+}
+
+func (u *TUpDown) EndDrag(Drop bool) {
+    UpDown_EndDrag(u._instance(), Drop)
 }
 
 // HasParent

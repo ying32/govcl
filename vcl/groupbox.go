@@ -287,6 +287,10 @@ func (g *TGroupBox) Update() {
     GroupBox_Update(g._instance())
 }
 
+func (g *TGroupBox) BeginDrag(Immediate bool, Threshold int32) {
+    GroupBox_BeginDrag(g._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -321,6 +325,10 @@ func (g *TGroupBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (g *TGroupBox) Dragging() bool {
     return GroupBox_Dragging(g._instance())
+}
+
+func (g *TGroupBox) EndDrag(Drop bool) {
+    GroupBox_EndDrag(g._instance(), Drop)
 }
 
 // HasParent

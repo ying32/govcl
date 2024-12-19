@@ -381,6 +381,10 @@ func (f *TForm) Update() {
     Form_Update(f._instance())
 }
 
+func (f *TForm) BeginDrag(Immediate bool, Threshold int32) {
+    Form_BeginDrag(f._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -415,6 +419,10 @@ func (f *TForm) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (f *TForm) Dragging() bool {
     return Form_Dragging(f._instance())
+}
+
+func (f *TForm) EndDrag(Drop bool) {
+    Form_EndDrag(f._instance(), Drop)
 }
 
 // HasParent

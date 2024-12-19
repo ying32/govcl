@@ -163,7 +163,7 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	col.PickList().Add("Elephant")
 
 	// 设置表格的行数，上面已经通过Columns设置了列数了，所以这里只设置行数
-	f.grid.SetRowCount(30)
+	f.grid.SetRowCount(30000)
 
 	// 要填充的数据
 	f.iData = make([]InputData, f.grid.RowCount()-1)
@@ -199,6 +199,7 @@ func (f *TMainForm) onGridButtonClick(sender vcl.IObject, aCol, aRow int32) {
 	//so use ButtonClick event
 	fmt.Println("GridButtonClick")
 	switch aCol {
+
 	case 2:
 		if f.dlgColor.Execute() {
 			f.iData[aRow-1].Button = f.dlgColor.Color() //store cell colour in array

@@ -134,6 +134,10 @@ func (t *TToolButton) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight i
     ToolButton_SetBounds(t._instance(), ALeft , ATop , AWidth , AHeight)
 }
 
+func (t *TToolButton) BeginDrag(Immediate bool, Threshold int32) {
+    ToolButton_BeginDrag(t._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -168,6 +172,10 @@ func (t *TToolButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (t *TToolButton) Dragging() bool {
     return ToolButton_Dragging(t._instance())
+}
+
+func (t *TToolButton) EndDrag(Drop bool) {
+    ToolButton_EndDrag(t._instance(), Drop)
 }
 
 // HasParent

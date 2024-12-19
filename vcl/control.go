@@ -114,6 +114,10 @@ func TControlClass() TClass {
     return Control_StaticClassType()
 }
 
+func (c *TControl) BeginDrag(Immediate bool, Threshold int32) {
+    Control_BeginDrag(c._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -148,6 +152,10 @@ func (c *TControl) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (c *TControl) Dragging() bool {
     return Control_Dragging(c._instance())
+}
+
+func (c *TControl) EndDrag(Drop bool) {
+    Control_EndDrag(c._instance(), Drop)
 }
 
 // HasParent

@@ -336,6 +336,10 @@ func (s *TSpinEdit) Update() {
     SpinEdit_Update(s._instance())
 }
 
+func (s *TSpinEdit) BeginDrag(Immediate bool, Threshold int32) {
+    SpinEdit_BeginDrag(s._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -370,6 +374,10 @@ func (s *TSpinEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (s *TSpinEdit) Dragging() bool {
     return SpinEdit_Dragging(s._instance())
+}
+
+func (s *TSpinEdit) EndDrag(Drop bool) {
+    SpinEdit_EndDrag(s._instance(), Drop)
 }
 
 // HasParent

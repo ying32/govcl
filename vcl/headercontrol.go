@@ -287,6 +287,10 @@ func (h *THeaderControl) Update() {
     HeaderControl_Update(h._instance())
 }
 
+func (h *THeaderControl) BeginDrag(Immediate bool, Threshold int32) {
+    HeaderControl_BeginDrag(h._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -321,6 +325,10 @@ func (h *THeaderControl) ClientToParent(Point TPoint, AParent IWinControl) TPoin
 // Is it in the middle of dragging.
 func (h *THeaderControl) Dragging() bool {
     return HeaderControl_Dragging(h._instance())
+}
+
+func (h *THeaderControl) EndDrag(Drop bool) {
+    HeaderControl_EndDrag(h._instance(), Drop)
 }
 
 // HasParent

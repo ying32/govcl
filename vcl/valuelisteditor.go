@@ -312,6 +312,10 @@ func (v *TValueListEditor) Update() {
     ValueListEditor_Update(v._instance())
 }
 
+func (v *TValueListEditor) BeginDrag(Immediate bool, Threshold int32) {
+    ValueListEditor_BeginDrag(v._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -346,6 +350,10 @@ func (v *TValueListEditor) ClientToParent(Point TPoint, AParent IWinControl) TPo
 // Is it in the middle of dragging.
 func (v *TValueListEditor) Dragging() bool {
     return ValueListEditor_Dragging(v._instance())
+}
+
+func (v *TValueListEditor) EndDrag(Drop bool) {
+    ValueListEditor_EndDrag(v._instance(), Drop)
 }
 
 // HasParent

@@ -295,6 +295,10 @@ func (p *TProgressBar) Update() {
     ProgressBar_Update(p._instance())
 }
 
+func (p *TProgressBar) BeginDrag(Immediate bool, Threshold int32) {
+    ProgressBar_BeginDrag(p._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -329,6 +333,10 @@ func (p *TProgressBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint 
 // Is it in the middle of dragging.
 func (p *TProgressBar) Dragging() bool {
     return ProgressBar_Dragging(p._instance())
+}
+
+func (p *TProgressBar) EndDrag(Drop bool) {
+    ProgressBar_EndDrag(p._instance(), Drop)
 }
 
 // HasParent

@@ -121,6 +121,10 @@ func (c *TColorButton) Click() {
     ColorButton_Click(c._instance())
 }
 
+func (c *TColorButton) BeginDrag(Immediate bool, Threshold int32) {
+    ColorButton_BeginDrag(c._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -155,6 +159,10 @@ func (c *TColorButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint 
 // Is it in the middle of dragging.
 func (c *TColorButton) Dragging() bool {
     return ColorButton_Dragging(c._instance())
+}
+
+func (c *TColorButton) EndDrag(Drop bool) {
+    ColorButton_EndDrag(c._instance(), Drop)
 }
 
 // HasParent

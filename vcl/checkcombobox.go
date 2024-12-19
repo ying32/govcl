@@ -328,6 +328,10 @@ func (c *TCheckComboBox) Update() {
     CheckComboBox_Update(c._instance())
 }
 
+func (c *TCheckComboBox) BeginDrag(Immediate bool, Threshold int32) {
+    CheckComboBox_BeginDrag(c._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -362,6 +366,10 @@ func (c *TCheckComboBox) ClientToParent(Point TPoint, AParent IWinControl) TPoin
 // Is it in the middle of dragging.
 func (c *TCheckComboBox) Dragging() bool {
     return CheckComboBox_Dragging(c._instance())
+}
+
+func (c *TCheckComboBox) EndDrag(Drop bool) {
+    CheckComboBox_EndDrag(c._instance(), Drop)
 }
 
 // HasParent

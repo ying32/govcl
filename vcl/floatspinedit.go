@@ -336,6 +336,10 @@ func (f *TFloatSpinEdit) Update() {
     FloatSpinEdit_Update(f._instance())
 }
 
+func (f *TFloatSpinEdit) BeginDrag(Immediate bool, Threshold int32) {
+    FloatSpinEdit_BeginDrag(f._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -370,6 +374,10 @@ func (f *TFloatSpinEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoin
 // Is it in the middle of dragging.
 func (f *TFloatSpinEdit) Dragging() bool {
     return FloatSpinEdit_Dragging(f._instance())
+}
+
+func (f *TFloatSpinEdit) EndDrag(Drop bool) {
+    FloatSpinEdit_EndDrag(f._instance(), Drop)
 }
 
 // HasParent

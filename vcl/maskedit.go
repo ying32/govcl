@@ -349,6 +349,10 @@ func (m *TMaskEdit) Update() {
     MaskEdit_Update(m._instance())
 }
 
+func (m *TMaskEdit) BeginDrag(Immediate bool, Threshold int32) {
+    MaskEdit_BeginDrag(m._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -383,6 +387,10 @@ func (m *TMaskEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (m *TMaskEdit) Dragging() bool {
     return MaskEdit_Dragging(m._instance())
+}
+
+func (m *TMaskEdit) EndDrag(Drop bool) {
+    MaskEdit_EndDrag(m._instance(), Drop)
 }
 
 // HasParent

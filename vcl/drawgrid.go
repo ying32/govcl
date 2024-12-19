@@ -299,6 +299,10 @@ func (d *TDrawGrid) Update() {
     DrawGrid_Update(d._instance())
 }
 
+func (d *TDrawGrid) BeginDrag(Immediate bool, Threshold int32) {
+    DrawGrid_BeginDrag(d._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -333,6 +337,10 @@ func (d *TDrawGrid) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (d *TDrawGrid) Dragging() bool {
     return DrawGrid_Dragging(d._instance())
+}
+
+func (d *TDrawGrid) EndDrag(Drop bool) {
+    DrawGrid_EndDrag(d._instance(), Drop)
 }
 
 // HasParent

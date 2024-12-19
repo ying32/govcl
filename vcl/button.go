@@ -294,6 +294,10 @@ func (b *TButton) Update() {
     Button_Update(b._instance())
 }
 
+func (b *TButton) BeginDrag(Immediate bool, Threshold int32) {
+    Button_BeginDrag(b._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -328,6 +332,10 @@ func (b *TButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (b *TButton) Dragging() bool {
     return Button_Dragging(b._instance())
+}
+
+func (b *TButton) EndDrag(Drop bool) {
+    Button_EndDrag(b._instance(), Drop)
 }
 
 // HasParent

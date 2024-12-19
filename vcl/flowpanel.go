@@ -295,6 +295,10 @@ func (f *TFlowPanel) Update() {
     FlowPanel_Update(f._instance())
 }
 
+func (f *TFlowPanel) BeginDrag(Immediate bool, Threshold int32) {
+    FlowPanel_BeginDrag(f._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -329,6 +333,10 @@ func (f *TFlowPanel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (f *TFlowPanel) Dragging() bool {
     return FlowPanel_Dragging(f._instance())
+}
+
+func (f *TFlowPanel) EndDrag(Drop bool) {
+    FlowPanel_EndDrag(f._instance(), Drop)
 }
 
 // HasParent

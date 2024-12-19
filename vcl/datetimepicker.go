@@ -300,6 +300,10 @@ func (d *TDateTimePicker) Update() {
     DateTimePicker_Update(d._instance())
 }
 
+func (d *TDateTimePicker) BeginDrag(Immediate bool, Threshold int32) {
+    DateTimePicker_BeginDrag(d._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -334,6 +338,10 @@ func (d *TDateTimePicker) ClientToParent(Point TPoint, AParent IWinControl) TPoi
 // Is it in the middle of dragging.
 func (d *TDateTimePicker) Dragging() bool {
     return DateTimePicker_Dragging(d._instance())
+}
+
+func (d *TDateTimePicker) EndDrag(Drop bool) {
+    DateTimePicker_EndDrag(d._instance(), Drop)
 }
 
 // HasParent

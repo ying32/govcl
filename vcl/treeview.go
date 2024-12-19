@@ -360,6 +360,10 @@ func (t *TTreeView) Update() {
     TreeView_Update(t._instance())
 }
 
+func (t *TTreeView) BeginDrag(Immediate bool, Threshold int32) {
+    TreeView_BeginDrag(t._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -394,6 +398,10 @@ func (t *TTreeView) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (t *TTreeView) Dragging() bool {
     return TreeView_Dragging(t._instance())
+}
+
+func (t *TTreeView) EndDrag(Drop bool) {
+    TreeView_EndDrag(t._instance(), Drop)
 }
 
 // HasParent

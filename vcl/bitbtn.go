@@ -294,6 +294,10 @@ func (b *TBitBtn) Update() {
     BitBtn_Update(b._instance())
 }
 
+func (b *TBitBtn) BeginDrag(Immediate bool, Threshold int32) {
+    BitBtn_BeginDrag(b._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -328,6 +332,10 @@ func (b *TBitBtn) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (b *TBitBtn) Dragging() bool {
     return BitBtn_Dragging(b._instance())
+}
+
+func (b *TBitBtn) EndDrag(Drop bool) {
+    BitBtn_EndDrag(b._instance(), Drop)
 }
 
 // HasParent

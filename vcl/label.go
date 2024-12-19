@@ -114,6 +114,10 @@ func TLabelClass() TClass {
     return Label_StaticClassType()
 }
 
+func (l *TLabel) BeginDrag(Immediate bool, Threshold int32) {
+    Label_BeginDrag(l._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -148,6 +152,10 @@ func (l *TLabel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (l *TLabel) Dragging() bool {
     return Label_Dragging(l._instance())
+}
+
+func (l *TLabel) EndDrag(Drop bool) {
+    Label_EndDrag(l._instance(), Drop)
 }
 
 // HasParent

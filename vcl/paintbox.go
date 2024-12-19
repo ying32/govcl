@@ -114,6 +114,10 @@ func TPaintBoxClass() TClass {
     return PaintBox_StaticClassType()
 }
 
+func (p *TPaintBox) BeginDrag(Immediate bool, Threshold int32) {
+    PaintBox_BeginDrag(p._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -148,6 +152,10 @@ func (p *TPaintBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (p *TPaintBox) Dragging() bool {
     return PaintBox_Dragging(p._instance())
+}
+
+func (p *TPaintBox) EndDrag(Drop bool) {
+    PaintBox_EndDrag(p._instance(), Drop)
 }
 
 // HasParent

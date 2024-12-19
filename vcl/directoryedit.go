@@ -340,6 +340,10 @@ func (d *TDirectoryEdit) Update() {
     DirectoryEdit_Update(d._instance())
 }
 
+func (d *TDirectoryEdit) BeginDrag(Immediate bool, Threshold int32) {
+    DirectoryEdit_BeginDrag(d._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -374,6 +378,10 @@ func (d *TDirectoryEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoin
 // Is it in the middle of dragging.
 func (d *TDirectoryEdit) Dragging() bool {
     return DirectoryEdit_Dragging(d._instance())
+}
+
+func (d *TDirectoryEdit) EndDrag(Drop bool) {
+    DirectoryEdit_EndDrag(d._instance(), Drop)
 }
 
 // HasParent

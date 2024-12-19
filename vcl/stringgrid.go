@@ -418,6 +418,10 @@ func (s *TStringGrid) Update() {
     StringGrid_Update(s._instance())
 }
 
+func (s *TStringGrid) BeginDrag(Immediate bool, Threshold int32) {
+    StringGrid_BeginDrag(s._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -452,6 +456,10 @@ func (s *TStringGrid) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (s *TStringGrid) Dragging() bool {
     return StringGrid_Dragging(s._instance())
+}
+
+func (s *TStringGrid) EndDrag(Drop bool) {
+    StringGrid_EndDrag(s._instance(), Drop)
 }
 
 // HasParent

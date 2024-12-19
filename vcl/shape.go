@@ -114,6 +114,10 @@ func TShapeClass() TClass {
     return Shape_StaticClassType()
 }
 
+func (s *TShape) BeginDrag(Immediate bool, Threshold int32) {
+    Shape_BeginDrag(s._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -148,6 +152,10 @@ func (s *TShape) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (s *TShape) Dragging() bool {
     return Shape_Dragging(s._instance())
+}
+
+func (s *TShape) EndDrag(Drop bool) {
+    Shape_EndDrag(s._instance(), Drop)
 }
 
 // HasParent

@@ -352,6 +352,10 @@ func (l *TListView) Update() {
     ListView_Update(l._instance())
 }
 
+func (l *TListView) BeginDrag(Immediate bool, Threshold int32) {
+    ListView_BeginDrag(l._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -386,6 +390,10 @@ func (l *TListView) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (l *TListView) Dragging() bool {
     return ListView_Dragging(l._instance())
+}
+
+func (l *TListView) EndDrag(Drop bool) {
+    ListView_EndDrag(l._instance(), Drop)
 }
 
 // HasParent

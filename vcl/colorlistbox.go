@@ -327,6 +327,10 @@ func (c *TColorListBox) Update() {
     ColorListBox_Update(c._instance())
 }
 
+func (c *TColorListBox) BeginDrag(Immediate bool, Threshold int32) {
+    ColorListBox_BeginDrag(c._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -361,6 +365,10 @@ func (c *TColorListBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint
 // Is it in the middle of dragging.
 func (c *TColorListBox) Dragging() bool {
     return ColorListBox_Dragging(c._instance())
+}
+
+func (c *TColorListBox) EndDrag(Drop bool) {
+    ColorListBox_EndDrag(c._instance(), Drop)
 }
 
 // HasParent

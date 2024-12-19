@@ -1,6 +1,8 @@
 package main
 
 import (
+	"math/rand"
+
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/types"
@@ -21,6 +23,34 @@ func main() {
 	initMainMenu()
 	tlbar := vcl.NewToolBar(mainForm)
 	tlbar.SetParent(mainForm)
+	tlbar.SetShowCaptions(true)
+	btn1 := vcl.NewToolButton(mainForm)
+	btn1.SetParent(tlbar)
+	btn1.SetCaption("吉")
+	btn1.SetOnClick(func(sender vcl.IObject) {
+		//richEdit.SetSelStart(-1)
+		//vcl.ShowMessage(strconv.Itoa(int(richEdit.SelStart())))
+
+		//start := richEdit.SelStart()
+		//
+		//richEdit.SetSelStart(start)
+		richEdit.SetSelLength(1)
+		x := rand.Int31n(3)
+		switch x {
+		case 0:
+			richEdit.SelAttributes().SetColor(colors.ClRed)
+		case 1:
+			richEdit.SelAttributes().SetColor(colors.ClGreen)
+		case 2:
+			richEdit.SelAttributes().SetColor(colors.ClBlue)
+		default:
+			richEdit.SelAttributes().SetColor(colors.ClYellow)
+		}
+		richEdit.Lines().Add("数据1")
+		//richEdit.SetSelLength(-1)
+		//println(richEdit.SelStart())
+		//vcl.ShowMessage(strconv.Itoa(int(richEdit.SelStart())))
+	})
 
 	richEdit = vcl.NewRichEdit(mainForm)
 	richEdit.SetParent(mainForm)

@@ -336,6 +336,10 @@ func (e *TEdit) Update() {
     Edit_Update(e._instance())
 }
 
+func (e *TEdit) BeginDrag(Immediate bool, Threshold int32) {
+    Edit_BeginDrag(e._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -370,6 +374,10 @@ func (e *TEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (e *TEdit) Dragging() bool {
     return Edit_Dragging(e._instance())
+}
+
+func (e *TEdit) EndDrag(Drop bool) {
+    Edit_EndDrag(e._instance(), Drop)
 }
 
 // HasParent

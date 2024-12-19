@@ -287,6 +287,10 @@ func (s *TStatusBar) Update() {
     StatusBar_Update(s._instance())
 }
 
+func (s *TStatusBar) BeginDrag(Immediate bool, Threshold int32) {
+    StatusBar_BeginDrag(s._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -321,6 +325,10 @@ func (s *TStatusBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (s *TStatusBar) Dragging() bool {
     return StatusBar_Dragging(s._instance())
+}
+
+func (s *TStatusBar) EndDrag(Drop bool) {
+    StatusBar_EndDrag(s._instance(), Drop)
 }
 
 // HasParent

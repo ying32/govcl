@@ -288,6 +288,10 @@ func (m *TMonthCalendar) Update() {
     MonthCalendar_Update(m._instance())
 }
 
+func (m *TMonthCalendar) BeginDrag(Immediate bool, Threshold int32) {
+    MonthCalendar_BeginDrag(m._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -322,6 +326,10 @@ func (m *TMonthCalendar) ClientToParent(Point TPoint, AParent IWinControl) TPoin
 // Is it in the middle of dragging.
 func (m *TMonthCalendar) Dragging() bool {
     return MonthCalendar_Dragging(m._instance())
+}
+
+func (m *TMonthCalendar) EndDrag(Drop bool) {
+    MonthCalendar_EndDrag(m._instance(), Drop)
 }
 
 // HasParent

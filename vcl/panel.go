@@ -287,6 +287,10 @@ func (p *TPanel) Update() {
     Panel_Update(p._instance())
 }
 
+func (p *TPanel) BeginDrag(Immediate bool, Threshold int32) {
+    Panel_BeginDrag(p._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -321,6 +325,10 @@ func (p *TPanel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (p *TPanel) Dragging() bool {
     return Panel_Dragging(p._instance())
+}
+
+func (p *TPanel) EndDrag(Drop bool) {
+    Panel_EndDrag(p._instance(), Drop)
 }
 
 // HasParent

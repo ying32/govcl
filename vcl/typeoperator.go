@@ -1237,6 +1237,24 @@ func (i TIs) XButton() bool {
 //}
 
 
+func (i TIs) Notebook() bool {
+    return Notebook_InheritsFrom(uintptr(i), TNotebookClass())
+}
+
+//func (a TAs) Notebook() *TNotebook {
+//    return AsNotebook(uintptr(a))
+//}
+
+
+func (i TIs) Page() bool {
+    return Page_InheritsFrom(uintptr(i), TPageClass())
+}
+
+//func (a TAs) Page() *TPage {
+//    return AsPage(uintptr(a))
+//}
+
+
 func (i TIs) AnchorSide() bool {
     return AnchorSide_InheritsFrom(uintptr(i), TAnchorSideClass())
 }

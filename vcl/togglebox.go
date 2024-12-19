@@ -287,6 +287,10 @@ func (t *TToggleBox) Update() {
     ToggleBox_Update(t._instance())
 }
 
+func (t *TToggleBox) BeginDrag(Immediate bool, Threshold int32) {
+    ToggleBox_BeginDrag(t._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -321,6 +325,10 @@ func (t *TToggleBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (t *TToggleBox) Dragging() bool {
     return ToggleBox_Dragging(t._instance())
+}
+
+func (t *TToggleBox) EndDrag(Drop bool) {
+    ToggleBox_EndDrag(t._instance(), Drop)
 }
 
 // HasParent

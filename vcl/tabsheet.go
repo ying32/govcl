@@ -287,6 +287,10 @@ func (t *TTabSheet) Update() {
     TabSheet_Update(t._instance())
 }
 
+func (t *TTabSheet) BeginDrag(Immediate bool, Threshold int32) {
+    TabSheet_BeginDrag(t._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -321,6 +325,10 @@ func (t *TTabSheet) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (t *TTabSheet) Dragging() bool {
     return TabSheet_Dragging(t._instance())
+}
+
+func (t *TTabSheet) EndDrag(Drop bool) {
+    TabSheet_EndDrag(t._instance(), Drop)
 }
 
 // HasParent

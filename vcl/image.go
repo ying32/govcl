@@ -114,6 +114,10 @@ func TImageClass() TClass {
     return Image_StaticClassType()
 }
 
+func (i *TImage) BeginDrag(Immediate bool, Threshold int32) {
+    Image_BeginDrag(i._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -148,6 +152,10 @@ func (i *TImage) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (i *TImage) Dragging() bool {
     return Image_Dragging(i._instance())
+}
+
+func (i *TImage) EndDrag(Drop bool) {
+    Image_EndDrag(i._instance(), Drop)
 }
 
 // HasParent

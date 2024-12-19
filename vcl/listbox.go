@@ -327,6 +327,10 @@ func (l *TListBox) Update() {
     ListBox_Update(l._instance())
 }
 
+func (l *TListBox) BeginDrag(Immediate bool, Threshold int32) {
+    ListBox_BeginDrag(l._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -361,6 +365,10 @@ func (l *TListBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (l *TListBox) Dragging() bool {
     return ListBox_Dragging(l._instance())
+}
+
+func (l *TListBox) EndDrag(Drop bool) {
+    ListBox_EndDrag(l._instance(), Drop)
 }
 
 // HasParent

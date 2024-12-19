@@ -287,6 +287,10 @@ func (w *TWinControl) Update() {
     WinControl_Update(w._instance())
 }
 
+func (w *TWinControl) BeginDrag(Immediate bool, Threshold int32) {
+    WinControl_BeginDrag(w._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -321,6 +325,10 @@ func (w *TWinControl) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (w *TWinControl) Dragging() bool {
     return WinControl_Dragging(w._instance())
+}
+
+func (w *TWinControl) EndDrag(Drop bool) {
+    WinControl_EndDrag(w._instance(), Drop)
 }
 
 // HasParent

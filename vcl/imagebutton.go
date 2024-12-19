@@ -121,6 +121,10 @@ func (i *TImageButton) Click() {
     ImageButton_Click(i._instance())
 }
 
+func (i *TImageButton) BeginDrag(Immediate bool, Threshold int32) {
+    ImageButton_BeginDrag(i._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -155,6 +159,10 @@ func (i *TImageButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint 
 // Is it in the middle of dragging.
 func (i *TImageButton) Dragging() bool {
     return ImageButton_Dragging(i._instance())
+}
+
+func (i *TImageButton) EndDrag(Drop bool) {
+    ImageButton_EndDrag(i._instance(), Drop)
 }
 
 // HasParent

@@ -291,6 +291,10 @@ func (s *TScrollBar) Update() {
     ScrollBar_Update(s._instance())
 }
 
+func (s *TScrollBar) BeginDrag(Immediate bool, Threshold int32) {
+    ScrollBar_BeginDrag(s._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -325,6 +329,10 @@ func (s *TScrollBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (s *TScrollBar) Dragging() bool {
     return ScrollBar_Dragging(s._instance())
+}
+
+func (s *TScrollBar) EndDrag(Drop bool) {
+    ScrollBar_EndDrag(s._instance(), Drop)
 }
 
 // HasParent

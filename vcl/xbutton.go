@@ -114,6 +114,10 @@ func TXButtonClass() TClass {
     return XButton_StaticClassType()
 }
 
+func (x *TXButton) BeginDrag(Immediate bool, Threshold int32) {
+    XButton_BeginDrag(x._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -148,6 +152,10 @@ func (x *TXButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (x *TXButton) Dragging() bool {
     return XButton_Dragging(x._instance())
+}
+
+func (x *TXButton) EndDrag(Drop bool) {
+    XButton_EndDrag(x._instance(), Drop)
 }
 
 // HasParent

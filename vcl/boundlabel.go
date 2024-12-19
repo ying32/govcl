@@ -114,6 +114,10 @@ func TBoundLabelClass() TClass {
     return BoundLabel_StaticClassType()
 }
 
+func (b *TBoundLabel) BeginDrag(Immediate bool, Threshold int32) {
+    BoundLabel_BeginDrag(b._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -148,6 +152,10 @@ func (b *TBoundLabel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (b *TBoundLabel) Dragging() bool {
     return BoundLabel_Dragging(b._instance())
+}
+
+func (b *TBoundLabel) EndDrag(Drop bool) {
+    BoundLabel_EndDrag(b._instance(), Drop)
 }
 
 // HasParent

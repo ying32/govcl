@@ -340,6 +340,10 @@ func (m *TMemo) Update() {
     Memo_Update(m._instance())
 }
 
+func (m *TMemo) BeginDrag(Immediate bool, Threshold int32) {
+    Memo_BeginDrag(m._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -374,6 +378,10 @@ func (m *TMemo) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (m *TMemo) Dragging() bool {
     return Memo_Dragging(m._instance())
+}
+
+func (m *TMemo) EndDrag(Drop bool) {
+    Memo_EndDrag(m._instance(), Drop)
 }
 
 // HasParent

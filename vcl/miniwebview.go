@@ -332,6 +332,10 @@ func (m *TMiniWebview) Update() {
     MiniWebview_Update(m._instance())
 }
 
+func (m *TMiniWebview) BeginDrag(Immediate bool, Threshold int32) {
+    MiniWebview_BeginDrag(m._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -366,6 +370,10 @@ func (m *TMiniWebview) ClientToParent(Point TPoint, AParent IWinControl) TPoint 
 // Is it in the middle of dragging.
 func (m *TMiniWebview) Dragging() bool {
     return MiniWebview_Dragging(m._instance())
+}
+
+func (m *TMiniWebview) EndDrag(Drop bool) {
+    MiniWebview_EndDrag(m._instance(), Drop)
 }
 
 // HasParent

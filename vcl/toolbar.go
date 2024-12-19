@@ -287,6 +287,10 @@ func (t *TToolBar) Update() {
     ToolBar_Update(t._instance())
 }
 
+func (t *TToolBar) BeginDrag(Immediate bool, Threshold int32) {
+    ToolBar_BeginDrag(t._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -321,6 +325,10 @@ func (t *TToolBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (t *TToolBar) Dragging() bool {
     return ToolBar_Dragging(t._instance())
+}
+
+func (t *TToolBar) EndDrag(Drop bool) {
+    ToolBar_EndDrag(t._instance(), Drop)
 }
 
 // HasParent

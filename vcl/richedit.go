@@ -340,6 +340,10 @@ func (r *TRichEdit) Update() {
     RichEdit_Update(r._instance())
 }
 
+func (r *TRichEdit) BeginDrag(Immediate bool, Threshold int32) {
+    RichEdit_BeginDrag(r._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -374,6 +378,10 @@ func (r *TRichEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (r *TRichEdit) Dragging() bool {
     return RichEdit_Dragging(r._instance())
+}
+
+func (r *TRichEdit) EndDrag(Drop bool) {
+    RichEdit_EndDrag(r._instance(), Drop)
 }
 
 // HasParent

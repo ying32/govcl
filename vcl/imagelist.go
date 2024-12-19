@@ -154,6 +154,14 @@ func (i *TImageList) GetFullBitmap(Image IBitmap, AEffect TGraphicsDrawEffect) {
     ImageList_GetFullBitmap(i._instance(), CheckPtr(Image), AEffect)
 }
 
+func (i *TImageList) BeginDrag(Window HWND, X int32, Y int32) bool {
+    return ImageList_BeginDrag(i._instance(), Window , X , Y)
+}
+
+func (i *TImageList) EndDrag() bool {
+    return ImageList_EndDrag(i._instance())
+}
+
 func (i *TImageList) GetHotSpot() TPoint {
     return ImageList_GetHotSpot(i._instance())
 }

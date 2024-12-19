@@ -278,6 +278,10 @@ func (c *TCoolBar) Update() {
     CoolBar_Update(c._instance())
 }
 
+func (c *TCoolBar) BeginDrag(Immediate bool, Threshold int32) {
+    CoolBar_BeginDrag(c._instance(), Immediate , Threshold)
+}
+
 // BringToFront
 //
 // 将控件置于最前。
@@ -312,6 +316,10 @@ func (c *TCoolBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
 // Is it in the middle of dragging.
 func (c *TCoolBar) Dragging() bool {
     return CoolBar_Dragging(c._instance())
+}
+
+func (c *TCoolBar) EndDrag(Drop bool) {
+    CoolBar_EndDrag(c._instance(), Drop)
 }
 
 // HasParent
