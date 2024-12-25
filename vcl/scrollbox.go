@@ -1052,6 +1052,15 @@ func (s *TScrollBox) SetOnDragOver(fn TDragOverEvent) {
     ScrollBox_SetOnDragOver(s._instance(), fn)
 }
 
+// SetOnEndDock
+//
+// 设置停靠结束事件。
+//
+// Set Dock end event.
+func (s *TScrollBox) SetOnEndDock(fn TEndDragEvent) {
+    ScrollBox_SetOnEndDock(s._instance(), fn)
+}
+
 // SetOnEndDrag
 //
 // 设置拖拽结束。
@@ -1152,6 +1161,13 @@ func (s *TScrollBox) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
 // 设置大小被改变事件。
 func (s *TScrollBox) SetOnResize(fn TNotifyEvent) {
     ScrollBox_SetOnResize(s._instance(), fn)
+}
+
+// SetOnStartDock
+//
+// 设置启动停靠。
+func (s *TScrollBox) SetOnStartDock(fn TStartDockEvent) {
+    ScrollBox_SetOnStartDock(s._instance(), fn)
 }
 
 func (s *TScrollBox) SetOnUnDock(fn TUnDockEvent) {

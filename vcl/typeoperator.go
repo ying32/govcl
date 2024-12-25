@@ -1255,6 +1255,24 @@ func (i TIs) Page() bool {
 //}
 
 
+func (i TIs) ButtonPanel() bool {
+    return ButtonPanel_InheritsFrom(uintptr(i), TButtonPanelClass())
+}
+
+//func (a TAs) ButtonPanel() *TButtonPanel {
+//    return AsButtonPanel(uintptr(a))
+//}
+
+
+func (i TIs) PanelBitBtn() bool {
+    return PanelBitBtn_InheritsFrom(uintptr(i), TPanelBitBtnClass())
+}
+
+//func (a TAs) PanelBitBtn() *TPanelBitBtn {
+//    return AsPanelBitBtn(uintptr(a))
+//}
+
+
 func (i TIs) AnchorSide() bool {
     return AnchorSide_InheritsFrom(uintptr(i), TAnchorSideClass())
 }

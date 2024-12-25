@@ -45284,20442 +45284,22036 @@ func ScrollBox_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(11171, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnEndDrag(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnEndDock(obj uintptr, fn interface{}) {
     syscallN(11172, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnEnter(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(11173, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnExit(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnEnter(obj uintptr, fn interface{}) {
     syscallN(11174, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnExit(obj uintptr, fn interface{}) {
     syscallN(11175, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnMouseDown(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     syscallN(11176, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(11177, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(11178, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnMouseMove(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(11179, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnMouseUp(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnMouseMove(obj uintptr, fn interface{}) {
     syscallN(11180, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnMouseWheel(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnMouseUp(obj uintptr, fn interface{}) {
     syscallN(11181, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnMouseWheel(obj uintptr, fn interface{}) {
     syscallN(11182, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
     syscallN(11183, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnResize(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
     syscallN(11184, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnUnDock(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnResize(obj uintptr, fn interface{}) {
     syscallN(11185, obj, MakeEventDataPtr(fn))
 }
 
-func ScrollBox_SetOnAlignPosition(obj uintptr, fn interface{}) {
+func ScrollBox_SetOnStartDock(obj uintptr, fn interface{}) {
     syscallN(11186, obj, MakeEventDataPtr(fn))
 }
 
+func ScrollBox_SetOnUnDock(obj uintptr, fn interface{}) {
+    syscallN(11187, obj, MakeEventDataPtr(fn))
+}
+
+func ScrollBox_SetOnAlignPosition(obj uintptr, fn interface{}) {
+    syscallN(11188, obj, MakeEventDataPtr(fn))
+}
+
 func ScrollBox_GetHorzScrollBar(obj uintptr) uintptr {
-    return syscallN(11187, obj)
-}
-
-func ScrollBox_SetHorzScrollBar(obj uintptr, value uintptr) {
-    syscallN(11188, obj, value)
-}
-
-func ScrollBox_GetVertScrollBar(obj uintptr) uintptr {
     return syscallN(11189, obj)
 }
 
-func ScrollBox_SetVertScrollBar(obj uintptr, value uintptr) {
+func ScrollBox_SetHorzScrollBar(obj uintptr, value uintptr) {
     syscallN(11190, obj, value)
 }
 
+func ScrollBox_GetVertScrollBar(obj uintptr) uintptr {
+    return syscallN(11191, obj)
+}
+
+func ScrollBox_SetVertScrollBar(obj uintptr, value uintptr) {
+    syscallN(11192, obj, value)
+}
+
 func ScrollBox_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(11191, obj))
-}
-
-func ScrollBox_GetMouseInClient(obj uintptr) bool {
-    return GoBool(syscallN(11192, obj))
-}
-
-func ScrollBox_GetVisibleDockClientCount(obj uintptr) int32 {
     return int32(syscallN(11193, obj))
 }
 
-func ScrollBox_GetBrush(obj uintptr) uintptr {
-    return syscallN(11194, obj)
+func ScrollBox_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(11194, obj))
 }
 
-func ScrollBox_GetControlCount(obj uintptr) int32 {
+func ScrollBox_GetVisibleDockClientCount(obj uintptr) int32 {
     return int32(syscallN(11195, obj))
 }
 
+func ScrollBox_GetBrush(obj uintptr) uintptr {
+    return syscallN(11196, obj)
+}
+
+func ScrollBox_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(11197, obj))
+}
+
 func ScrollBox_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(11196, obj))
+    return HWND(syscallN(11198, obj))
 }
 
 func ScrollBox_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(11197, obj))
+    return HWND(syscallN(11199, obj))
 }
 
 func ScrollBox_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(11198, obj, uintptr(value))
+    syscallN(11200, obj, uintptr(value))
 }
 
 func ScrollBox_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(11199, obj))
+    return GoBool(syscallN(11201, obj))
 }
 
 func ScrollBox_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(11200, obj))
+    return GoBool(syscallN(11202, obj))
 }
 
 func ScrollBox_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(11201, obj, PascalBool(value))
+    syscallN(11203, obj, PascalBool(value))
 }
 
 func ScrollBox_GetAction(obj uintptr) uintptr {
-    return syscallN(11202, obj)
+    return syscallN(11204, obj)
 }
 
 func ScrollBox_SetAction(obj uintptr, value uintptr) {
-    syscallN(11203, obj, value)
+    syscallN(11205, obj, value)
 }
 
 func ScrollBox_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(11204, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11206, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ScrollBox_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(11205, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(11207, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func ScrollBox_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(11206, obj))
+    return int32(syscallN(11208, obj))
 }
 
 func ScrollBox_SetClientHeight(obj uintptr, value int32) {
-    syscallN(11207, obj, uintptr(value))
+    syscallN(11209, obj, uintptr(value))
 }
 
 func ScrollBox_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(11208, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11210, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ScrollBox_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(11209, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11211, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ScrollBox_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(11210, obj))
+    return int32(syscallN(11212, obj))
 }
 
 func ScrollBox_SetClientWidth(obj uintptr, value int32) {
-    syscallN(11211, obj, uintptr(value))
-}
-
-func ScrollBox_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(11212, obj))
-}
-
-func ScrollBox_SetControlState(obj uintptr, value TControlState) {
     syscallN(11213, obj, uintptr(value))
 }
 
-func ScrollBox_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(11214, obj))
+func ScrollBox_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(11214, obj))
 }
 
-func ScrollBox_SetControlStyle(obj uintptr, value TControlStyle) {
+func ScrollBox_SetControlState(obj uintptr, value TControlState) {
     syscallN(11215, obj, uintptr(value))
 }
 
+func ScrollBox_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(11216, obj))
+}
+
+func ScrollBox_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(11217, obj, uintptr(value))
+}
+
 func ScrollBox_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(11216, obj))
+    return GoBool(syscallN(11218, obj))
 }
 
 func ScrollBox_GetParent(obj uintptr) uintptr {
-    return syscallN(11217, obj)
+    return syscallN(11219, obj)
 }
 
 func ScrollBox_SetParent(obj uintptr, value uintptr) {
-    syscallN(11218, obj, value)
+    syscallN(11220, obj, value)
 }
 
 func ScrollBox_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(11219, obj))
-}
-
-func ScrollBox_SetLeft(obj uintptr, value int32) {
-    syscallN(11220, obj, uintptr(value))
-}
-
-func ScrollBox_GetTop(obj uintptr) int32 {
     return int32(syscallN(11221, obj))
 }
 
-func ScrollBox_SetTop(obj uintptr, value int32) {
+func ScrollBox_SetLeft(obj uintptr, value int32) {
     syscallN(11222, obj, uintptr(value))
 }
 
-func ScrollBox_GetWidth(obj uintptr) int32 {
+func ScrollBox_GetTop(obj uintptr) int32 {
     return int32(syscallN(11223, obj))
 }
 
-func ScrollBox_SetWidth(obj uintptr, value int32) {
+func ScrollBox_SetTop(obj uintptr, value int32) {
     syscallN(11224, obj, uintptr(value))
 }
 
-func ScrollBox_GetHeight(obj uintptr) int32 {
+func ScrollBox_GetWidth(obj uintptr) int32 {
     return int32(syscallN(11225, obj))
 }
 
-func ScrollBox_SetHeight(obj uintptr, value int32) {
+func ScrollBox_SetWidth(obj uintptr, value int32) {
     syscallN(11226, obj, uintptr(value))
 }
 
-func ScrollBox_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(11227, obj))
+func ScrollBox_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(11227, obj))
 }
 
-func ScrollBox_SetCursor(obj uintptr, value TCursor) {
+func ScrollBox_SetHeight(obj uintptr, value int32) {
     syscallN(11228, obj, uintptr(value))
 }
 
+func ScrollBox_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(11229, obj))
+}
+
+func ScrollBox_SetCursor(obj uintptr, value TCursor) {
+    syscallN(11230, obj, uintptr(value))
+}
+
 func ScrollBox_GetHint(obj uintptr) string {
-    return GoStr(syscallN(11229, obj))
+    return GoStr(syscallN(11231, obj))
 }
 
 func ScrollBox_SetHint(obj uintptr, value string) {
-    syscallN(11230, obj, PascalStr(value))
+    syscallN(11232, obj, PascalStr(value))
 }
 
 func ScrollBox_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(11231, obj))
+    return int32(syscallN(11233, obj))
 }
 
 func ScrollBox_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(11232, obj))
+    return int32(syscallN(11234, obj))
 }
 
 func ScrollBox_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(11233, obj, uintptr(value))
+    syscallN(11235, obj, uintptr(value))
 }
 
 func ScrollBox_GetOwner(obj uintptr) uintptr {
-    return syscallN(11234, obj)
+    return syscallN(11236, obj)
 }
 
 func ScrollBox_GetName(obj uintptr) string {
-    return GoStr(syscallN(11235, obj))
+    return GoStr(syscallN(11237, obj))
 }
 
 func ScrollBox_SetName(obj uintptr, value string) {
-    syscallN(11236, obj, PascalStr(value))
+    syscallN(11238, obj, PascalStr(value))
 }
 
 func ScrollBox_GetTag(obj uintptr) int {
-    return int(syscallN(11237, obj))
+    return int(syscallN(11239, obj))
 }
 
 func ScrollBox_SetTag(obj uintptr, value int) {
-    syscallN(11238, obj, uintptr(value))
+    syscallN(11240, obj, uintptr(value))
 }
 
 func ScrollBox_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(11239, obj)
-}
-
-func ScrollBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(11240, obj, value)
-}
-
-func ScrollBox_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(11241, obj)
 }
 
-func ScrollBox_SetAnchorSideTop(obj uintptr, value uintptr) {
+func ScrollBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(11242, obj, value)
 }
 
-func ScrollBox_GetAnchorSideRight(obj uintptr) uintptr {
+func ScrollBox_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(11243, obj)
 }
 
-func ScrollBox_SetAnchorSideRight(obj uintptr, value uintptr) {
+func ScrollBox_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(11244, obj, value)
 }
 
-func ScrollBox_GetAnchorSideBottom(obj uintptr) uintptr {
+func ScrollBox_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(11245, obj)
 }
 
-func ScrollBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func ScrollBox_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(11246, obj, value)
 }
 
-func ScrollBox_GetChildSizing(obj uintptr) uintptr {
+func ScrollBox_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(11247, obj)
 }
 
-func ScrollBox_SetChildSizing(obj uintptr, value uintptr) {
+func ScrollBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(11248, obj, value)
 }
 
-func ScrollBox_GetBorderSpacing(obj uintptr) uintptr {
+func ScrollBox_GetChildSizing(obj uintptr) uintptr {
     return syscallN(11249, obj)
 }
 
-func ScrollBox_SetBorderSpacing(obj uintptr, value uintptr) {
+func ScrollBox_SetChildSizing(obj uintptr, value uintptr) {
     syscallN(11250, obj, value)
 }
 
+func ScrollBox_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(11251, obj)
+}
+
+func ScrollBox_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(11252, obj, value)
+}
+
 func ScrollBox_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(11251, obj, uintptr(Index))
+    return syscallN(11253, obj, uintptr(Index))
 }
 
 func ScrollBox_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(11252, obj, uintptr(Index))
+    return syscallN(11254, obj, uintptr(Index))
 }
 
 func ScrollBox_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(11253, obj, uintptr(AIndex))
+    return syscallN(11255, obj, uintptr(AIndex))
 }
 
 func ScrollBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(11254, obj, uintptr(AKind))
+    return syscallN(11256, obj, uintptr(AKind))
 }
 
 func ScrollBox_StaticClassType() TClass {
-    return TClass(syscallN(11255))
+    return TClass(syscallN(11257))
 }
 
 //--------------------------- TCheckListBox ---------------------------
 
 func CheckListBox_Create(obj uintptr) uintptr {
-    return syscallN(11256, obj)
+    return syscallN(11258, obj)
 }
 
 func CheckListBox_Free(obj uintptr) {
-    syscallN(11257, obj)
+    syscallN(11259, obj)
 }
 
 func CheckListBox_CheckAll(obj uintptr, AState TCheckBoxState, AllowGrayed bool, AllowDisabled bool)  {
-    syscallN(11258, obj, uintptr(AState) , PascalBool(AllowGrayed) , PascalBool(AllowDisabled) )
+    syscallN(11260, obj, uintptr(AState) , PascalBool(AllowGrayed) , PascalBool(AllowDisabled) )
 }
 
 func CheckListBox_AddItem(obj uintptr, Item string, AObject uintptr)  {
-    syscallN(11259, obj, PascalStr(Item) , AObject )
+    syscallN(11261, obj, PascalStr(Item) , AObject )
 }
 
 func CheckListBox_Clear(obj uintptr)  {
-    syscallN(11260, obj)
-}
-
-func CheckListBox_ClearSelection(obj uintptr)  {
-    syscallN(11261, obj)
-}
-
-func CheckListBox_DeleteSelected(obj uintptr)  {
     syscallN(11262, obj)
 }
 
+func CheckListBox_ClearSelection(obj uintptr)  {
+    syscallN(11263, obj)
+}
+
+func CheckListBox_DeleteSelected(obj uintptr)  {
+    syscallN(11264, obj)
+}
+
 func CheckListBox_ItemAtPos(obj uintptr, Pos TPoint, Existing bool) int32 {
-    return int32(syscallN(11263, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(Existing) ))
+    return int32(syscallN(11265, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(Existing) ))
 }
 
 func CheckListBox_ItemRect(obj uintptr, Index int32)(result  TRect)  {
-    syscallN(11264, obj, uintptr(Index) , uintptr(unsafe.Pointer(&result)))
+    syscallN(11266, obj, uintptr(Index) , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckListBox_SelectAll(obj uintptr)  {
-    syscallN(11265, obj)
+    syscallN(11267, obj)
 }
 
 func CheckListBox_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(11266, obj))
+    return GoBool(syscallN(11268, obj))
 }
 
 func CheckListBox_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(11267, obj, Control ))
+    return GoBool(syscallN(11269, obj, Control ))
 }
 
 func CheckListBox_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(11268, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(11270, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func CheckListBox_DisableAlign(obj uintptr)  {
-    syscallN(11269, obj)
+    syscallN(11271, obj)
 }
 
 func CheckListBox_EnableAlign(obj uintptr)  {
-    syscallN(11270, obj)
+    syscallN(11272, obj)
 }
 
 func CheckListBox_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(11271, obj, PascalStr(ControlName) )
+    return syscallN(11273, obj, PascalStr(ControlName) )
 }
 
 func CheckListBox_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(11272, obj, PascalBool(AllLevels) )
+    syscallN(11274, obj, PascalBool(AllLevels) )
 }
 
 func CheckListBox_Focused(obj uintptr) bool {
-    return GoBool(syscallN(11273, obj))
+    return GoBool(syscallN(11275, obj))
 }
 
 func CheckListBox_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(11274, obj))
+    return GoBool(syscallN(11276, obj))
 }
 
 func CheckListBox_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(11275, obj, AControl )
+    syscallN(11277, obj, AControl )
 }
 
 func CheckListBox_Invalidate(obj uintptr)  {
-    syscallN(11276, obj)
+    syscallN(11278, obj)
 }
 
 func CheckListBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(11277, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(11279, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func CheckListBox_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(11278, obj, AControl )
+    syscallN(11280, obj, AControl )
 }
 
 func CheckListBox_Realign(obj uintptr)  {
-    syscallN(11279, obj)
+    syscallN(11281, obj)
 }
 
 func CheckListBox_Repaint(obj uintptr)  {
-    syscallN(11280, obj)
+    syscallN(11282, obj)
 }
 
 func CheckListBox_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(11281, obj, uintptr(M) , uintptr(D) )
+    syscallN(11283, obj, uintptr(M) , uintptr(D) )
 }
 
 func CheckListBox_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(11282, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(11284, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func CheckListBox_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(11283, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(11285, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func CheckListBox_SetFocus(obj uintptr)  {
-    syscallN(11284, obj)
+    syscallN(11286, obj)
 }
 
 func CheckListBox_Update(obj uintptr)  {
-    syscallN(11285, obj)
-}
-
-func CheckListBox_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(11286, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func CheckListBox_BringToFront(obj uintptr)  {
     syscallN(11287, obj)
 }
 
+func CheckListBox_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(11288, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func CheckListBox_BringToFront(obj uintptr)  {
+    syscallN(11289, obj)
+}
+
 func CheckListBox_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(11288, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(11290, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckListBox_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(11289, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(11291, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckListBox_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(11290, obj))
-}
-
-func CheckListBox_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(11291, obj, PascalBool(Drop) )
-}
-
-func CheckListBox_HasParent(obj uintptr) bool {
     return GoBool(syscallN(11292, obj))
 }
 
+func CheckListBox_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(11293, obj, PascalBool(Drop) )
+}
+
+func CheckListBox_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(11294, obj))
+}
+
 func CheckListBox_Hide(obj uintptr)  {
-    syscallN(11293, obj)
-}
-
-func CheckListBox_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(11294, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func CheckListBox_Refresh(obj uintptr)  {
     syscallN(11295, obj)
 }
 
+func CheckListBox_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(11296, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func CheckListBox_Refresh(obj uintptr)  {
+    syscallN(11297, obj)
+}
+
 func CheckListBox_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(11296, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(11298, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckListBox_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(11297, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(11299, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckListBox_SendToBack(obj uintptr)  {
-    syscallN(11298, obj)
+    syscallN(11300, obj)
 }
 
 func CheckListBox_Show(obj uintptr)  {
-    syscallN(11299, obj)
+    syscallN(11301, obj)
 }
 
 func CheckListBox_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(11300, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(11302, obj, Buffer, uintptr(BufSize) ))
 }
 
 func CheckListBox_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(11301, obj))
+    return int32(syscallN(11303, obj))
 }
 
 func CheckListBox_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(11302, obj, PascalStr(Buffer) )
+    syscallN(11304, obj, PascalStr(Buffer) )
 }
 
 func CheckListBox_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(11303, obj, PascalStr(AName) )
+    return syscallN(11305, obj, PascalStr(AName) )
 }
 
 func CheckListBox_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(11304, obj))
+    return GoStr(syscallN(11306, obj))
 }
 
 func CheckListBox_Assign(obj uintptr, Source uintptr)  {
-    syscallN(11305, obj, Source )
+    syscallN(11307, obj, Source )
 }
 
 func CheckListBox_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(11306, obj))
+    return TClass(syscallN(11308, obj))
 }
 
 func CheckListBox_ClassName(obj uintptr) string {
-    return GoStr(syscallN(11307, obj))
+    return GoStr(syscallN(11309, obj))
 }
 
 func CheckListBox_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(11308, obj))
+    return int32(syscallN(11310, obj))
 }
 
 func CheckListBox_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(11309, obj, uintptr(AClass) ))
+    return GoBool(syscallN(11311, obj, uintptr(AClass) ))
 }
 
 func CheckListBox_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(11310, obj, Obj ))
+    return GoBool(syscallN(11312, obj, Obj ))
 }
 
 func CheckListBox_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(11311, obj))
+    return int32(syscallN(11313, obj))
 }
 
 func CheckListBox_ToString(obj uintptr) string {
-    return GoStr(syscallN(11312, obj))
+    return GoStr(syscallN(11314, obj))
 }
 
 func CheckListBox_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(11313, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(11315, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func CheckListBox_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(11314, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(11316, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func CheckListBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(11315, obj, ASibling )
+    syscallN(11317, obj, ASibling )
 }
 
 func CheckListBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(11316, obj, ASibling )
+    syscallN(11318, obj, ASibling )
 }
 
 func CheckListBox_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(11317, obj, uintptr(ASide) , ASibling )
+    syscallN(11319, obj, uintptr(ASide) , ASibling )
 }
 
 func CheckListBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(11318, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(11320, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func CheckListBox_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(11319, obj, uintptr(ASpace) )
+    syscallN(11321, obj, uintptr(ASpace) )
 }
 
 func CheckListBox_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(11320, obj, uintptr(ASize) ))
-}
-
-func CheckListBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(11321, obj, uintptr(ASize) ))
-}
-
-func CheckListBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11322, obj, uintptr(ASize) ))
 }
 
-func CheckListBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func CheckListBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11323, obj, uintptr(ASize) ))
 }
 
-func CheckListBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func CheckListBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11324, obj, uintptr(ASize) ))
 }
 
-func CheckListBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func CheckListBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11325, obj, uintptr(ASize) ))
 }
 
-func CheckListBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func CheckListBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11326, obj, uintptr(ASize) ))
 }
 
-func CheckListBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func CheckListBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11327, obj, uintptr(ASize) ))
 }
 
-func CheckListBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func CheckListBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11328, obj, uintptr(ASize) ))
 }
 
-func CheckListBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func CheckListBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11329, obj, uintptr(ASize) ))
 }
 
+func CheckListBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(11330, obj, uintptr(ASize) ))
+}
+
+func CheckListBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(11331, obj, uintptr(ASize) ))
+}
+
 func CheckListBox_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(11330, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(11332, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func CheckListBox_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(11331, obj, uintptr(ADesignTimePPI) )
+    syscallN(11333, obj, uintptr(ADesignTimePPI) )
 }
 
 func CheckListBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(11332, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(11334, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func CheckListBox_SetOnClickCheck(obj uintptr, fn interface{}) {
-    syscallN(11333, obj, MakeEventDataPtr(fn))
+    syscallN(11335, obj, MakeEventDataPtr(fn))
 }
 
 func CheckListBox_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(11334, obj))
+    return TAlign(syscallN(11336, obj))
 }
 
 func CheckListBox_SetAlign(obj uintptr, value TAlign) {
-    syscallN(11335, obj, uintptr(value))
+    syscallN(11337, obj, uintptr(value))
 }
 
 func CheckListBox_GetAllowGrayed(obj uintptr) bool {
-    return GoBool(syscallN(11336, obj))
+    return GoBool(syscallN(11338, obj))
 }
 
 func CheckListBox_SetAllowGrayed(obj uintptr, value bool) {
-    syscallN(11337, obj, PascalBool(value))
+    syscallN(11339, obj, PascalBool(value))
 }
 
 func CheckListBox_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(11338, obj))
+    return TAnchors(syscallN(11340, obj))
 }
 
 func CheckListBox_SetAnchors(obj uintptr, value TAnchors) {
-    syscallN(11339, obj, uintptr(value))
-}
-
-func CheckListBox_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(11340, obj))
-}
-
-func CheckListBox_SetBiDiMode(obj uintptr, value TBiDiMode) {
     syscallN(11341, obj, uintptr(value))
 }
 
-func CheckListBox_GetBorderStyle(obj uintptr) TBorderStyle {
-    return TBorderStyle(syscallN(11342, obj))
+func CheckListBox_GetBiDiMode(obj uintptr) TBiDiMode {
+    return TBiDiMode(syscallN(11342, obj))
 }
 
-func CheckListBox_SetBorderStyle(obj uintptr, value TBorderStyle) {
+func CheckListBox_SetBiDiMode(obj uintptr, value TBiDiMode) {
     syscallN(11343, obj, uintptr(value))
 }
 
-func CheckListBox_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(11344, obj))
+func CheckListBox_GetBorderStyle(obj uintptr) TBorderStyle {
+    return TBorderStyle(syscallN(11344, obj))
 }
 
-func CheckListBox_SetColor(obj uintptr, value TColor) {
+func CheckListBox_SetBorderStyle(obj uintptr, value TBorderStyle) {
     syscallN(11345, obj, uintptr(value))
 }
 
-func CheckListBox_GetColumns(obj uintptr) int32 {
-    return int32(syscallN(11346, obj))
+func CheckListBox_GetColor(obj uintptr) TColor {
+    return TColor(syscallN(11346, obj))
 }
 
-func CheckListBox_SetColumns(obj uintptr, value int32) {
+func CheckListBox_SetColor(obj uintptr, value TColor) {
     syscallN(11347, obj, uintptr(value))
 }
 
+func CheckListBox_GetColumns(obj uintptr) int32 {
+    return int32(syscallN(11348, obj))
+}
+
+func CheckListBox_SetColumns(obj uintptr, value int32) {
+    syscallN(11349, obj, uintptr(value))
+}
+
 func CheckListBox_GetConstraints(obj uintptr) uintptr {
-    return syscallN(11348, obj)
+    return syscallN(11350, obj)
 }
 
 func CheckListBox_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(11349, obj, value)
+    syscallN(11351, obj, value)
 }
 
 func CheckListBox_GetDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(11350, obj))
+    return GoBool(syscallN(11352, obj))
 }
 
 func CheckListBox_SetDoubleBuffered(obj uintptr, value bool) {
-    syscallN(11351, obj, PascalBool(value))
+    syscallN(11353, obj, PascalBool(value))
 }
 
 func CheckListBox_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(11352, obj))
+    return TCursor(syscallN(11354, obj))
 }
 
 func CheckListBox_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(11353, obj, uintptr(value))
-}
-
-func CheckListBox_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(11354, obj))
-}
-
-func CheckListBox_SetDragMode(obj uintptr, value TDragMode) {
     syscallN(11355, obj, uintptr(value))
 }
 
+func CheckListBox_GetDragMode(obj uintptr) TDragMode {
+    return TDragMode(syscallN(11356, obj))
+}
+
+func CheckListBox_SetDragMode(obj uintptr, value TDragMode) {
+    syscallN(11357, obj, uintptr(value))
+}
+
 func CheckListBox_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(11356, obj))
+    return GoBool(syscallN(11358, obj))
 }
 
 func CheckListBox_SetEnabled(obj uintptr, value bool) {
-    syscallN(11357, obj, PascalBool(value))
+    syscallN(11359, obj, PascalBool(value))
 }
 
 func CheckListBox_GetFont(obj uintptr) uintptr {
-    return syscallN(11358, obj)
+    return syscallN(11360, obj)
 }
 
 func CheckListBox_SetFont(obj uintptr, value uintptr) {
-    syscallN(11359, obj, value)
+    syscallN(11361, obj, value)
 }
 
 func CheckListBox_GetItemHeight(obj uintptr) int32 {
-    return int32(syscallN(11360, obj))
+    return int32(syscallN(11362, obj))
 }
 
 func CheckListBox_SetItemHeight(obj uintptr, value int32) {
-    syscallN(11361, obj, uintptr(value))
+    syscallN(11363, obj, uintptr(value))
 }
 
 func CheckListBox_GetItems(obj uintptr) uintptr {
-    return syscallN(11362, obj)
+    return syscallN(11364, obj)
 }
 
 func CheckListBox_SetItems(obj uintptr, value uintptr) {
-    syscallN(11363, obj, value)
+    syscallN(11365, obj, value)
 }
 
 func CheckListBox_GetParentColor(obj uintptr) bool {
-    return GoBool(syscallN(11364, obj))
-}
-
-func CheckListBox_SetParentColor(obj uintptr, value bool) {
-    syscallN(11365, obj, PascalBool(value))
-}
-
-func CheckListBox_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(11366, obj))
 }
 
-func CheckListBox_SetParentDoubleBuffered(obj uintptr, value bool) {
+func CheckListBox_SetParentColor(obj uintptr, value bool) {
     syscallN(11367, obj, PascalBool(value))
 }
 
-func CheckListBox_GetParentFont(obj uintptr) bool {
+func CheckListBox_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(11368, obj))
 }
 
-func CheckListBox_SetParentFont(obj uintptr, value bool) {
+func CheckListBox_SetParentDoubleBuffered(obj uintptr, value bool) {
     syscallN(11369, obj, PascalBool(value))
 }
 
-func CheckListBox_GetParentShowHint(obj uintptr) bool {
+func CheckListBox_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(11370, obj))
 }
 
-func CheckListBox_SetParentShowHint(obj uintptr, value bool) {
+func CheckListBox_SetParentFont(obj uintptr, value bool) {
     syscallN(11371, obj, PascalBool(value))
 }
 
+func CheckListBox_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(11372, obj))
+}
+
+func CheckListBox_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(11373, obj, PascalBool(value))
+}
+
 func CheckListBox_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(11372, obj)
+    return syscallN(11374, obj)
 }
 
 func CheckListBox_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(11373, obj, value)
+    syscallN(11375, obj, value)
 }
 
 func CheckListBox_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(11374, obj))
-}
-
-func CheckListBox_SetShowHint(obj uintptr, value bool) {
-    syscallN(11375, obj, PascalBool(value))
-}
-
-func CheckListBox_GetSorted(obj uintptr) bool {
     return GoBool(syscallN(11376, obj))
 }
 
-func CheckListBox_SetSorted(obj uintptr, value bool) {
+func CheckListBox_SetShowHint(obj uintptr, value bool) {
     syscallN(11377, obj, PascalBool(value))
 }
 
+func CheckListBox_GetSorted(obj uintptr) bool {
+    return GoBool(syscallN(11378, obj))
+}
+
+func CheckListBox_SetSorted(obj uintptr, value bool) {
+    syscallN(11379, obj, PascalBool(value))
+}
+
 func CheckListBox_GetStyle(obj uintptr) TListBoxStyle {
-    return TListBoxStyle(syscallN(11378, obj))
+    return TListBoxStyle(syscallN(11380, obj))
 }
 
 func CheckListBox_SetStyle(obj uintptr, value TListBoxStyle) {
-    syscallN(11379, obj, uintptr(value))
-}
-
-func CheckListBox_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(11380, obj))
-}
-
-func CheckListBox_SetTabOrder(obj uintptr, value TTabOrder) {
     syscallN(11381, obj, uintptr(value))
 }
 
+func CheckListBox_GetTabOrder(obj uintptr) TTabOrder {
+    return TTabOrder(syscallN(11382, obj))
+}
+
+func CheckListBox_SetTabOrder(obj uintptr, value TTabOrder) {
+    syscallN(11383, obj, uintptr(value))
+}
+
 func CheckListBox_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(11382, obj))
-}
-
-func CheckListBox_SetTabStop(obj uintptr, value bool) {
-    syscallN(11383, obj, PascalBool(value))
-}
-
-func CheckListBox_GetVisible(obj uintptr) bool {
     return GoBool(syscallN(11384, obj))
 }
 
-func CheckListBox_SetVisible(obj uintptr, value bool) {
+func CheckListBox_SetTabStop(obj uintptr, value bool) {
     syscallN(11385, obj, PascalBool(value))
 }
 
+func CheckListBox_GetVisible(obj uintptr) bool {
+    return GoBool(syscallN(11386, obj))
+}
+
+func CheckListBox_SetVisible(obj uintptr, value bool) {
+    syscallN(11387, obj, PascalBool(value))
+}
+
 func CheckListBox_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(11386, obj, MakeEventDataPtr(fn))
-}
-
-func CheckListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
-    syscallN(11387, obj, MakeEventDataPtr(fn))
-}
-
-func CheckListBox_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(11388, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnDragDrop(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
     syscallN(11389, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnDragOver(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(11390, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnEndDrag(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(11391, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnEnter(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(11392, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnExit(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(11393, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnEnter(obj uintptr, fn interface{}) {
     syscallN(11394, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnKeyPress(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnExit(obj uintptr, fn interface{}) {
     syscallN(11395, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
     syscallN(11396, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnMeasureItem(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnKeyPress(obj uintptr, fn interface{}) {
     syscallN(11397, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
     syscallN(11398, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnMeasureItem(obj uintptr, fn interface{}) {
     syscallN(11399, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(11400, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnMouseMove(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(11401, obj, MakeEventDataPtr(fn))
 }
 
-func CheckListBox_SetOnMouseUp(obj uintptr, fn interface{}) {
+func CheckListBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(11402, obj, MakeEventDataPtr(fn))
 }
 
+func CheckListBox_SetOnMouseMove(obj uintptr, fn interface{}) {
+    syscallN(11403, obj, MakeEventDataPtr(fn))
+}
+
+func CheckListBox_SetOnMouseUp(obj uintptr, fn interface{}) {
+    syscallN(11404, obj, MakeEventDataPtr(fn))
+}
+
 func CheckListBox_GetCanvas(obj uintptr) uintptr {
-    return syscallN(11403, obj)
+    return syscallN(11405, obj)
 }
 
 func CheckListBox_GetCount(obj uintptr) int32 {
-    return int32(syscallN(11404, obj))
+    return int32(syscallN(11406, obj))
 }
 
 func CheckListBox_GetTopIndex(obj uintptr) int32 {
-    return int32(syscallN(11405, obj))
+    return int32(syscallN(11407, obj))
 }
 
 func CheckListBox_SetTopIndex(obj uintptr, value int32) {
-    syscallN(11406, obj, uintptr(value))
+    syscallN(11408, obj, uintptr(value))
 }
 
 func CheckListBox_GetMultiSelect(obj uintptr) bool {
-    return GoBool(syscallN(11407, obj))
+    return GoBool(syscallN(11409, obj))
 }
 
 func CheckListBox_SetMultiSelect(obj uintptr, value bool) {
-    syscallN(11408, obj, PascalBool(value))
+    syscallN(11410, obj, PascalBool(value))
 }
 
 func CheckListBox_GetSelCount(obj uintptr) int32 {
-    return int32(syscallN(11409, obj))
+    return int32(syscallN(11411, obj))
 }
 
 func CheckListBox_GetItemIndex(obj uintptr) int32 {
-    return int32(syscallN(11410, obj))
-}
-
-func CheckListBox_SetItemIndex(obj uintptr, value int32) {
-    syscallN(11411, obj, uintptr(value))
-}
-
-func CheckListBox_GetDockClientCount(obj uintptr) int32 {
     return int32(syscallN(11412, obj))
 }
 
+func CheckListBox_SetItemIndex(obj uintptr, value int32) {
+    syscallN(11413, obj, uintptr(value))
+}
+
+func CheckListBox_GetDockClientCount(obj uintptr) int32 {
+    return int32(syscallN(11414, obj))
+}
+
 func CheckListBox_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(11413, obj))
-}
-
-func CheckListBox_SetDockSite(obj uintptr, value bool) {
-    syscallN(11414, obj, PascalBool(value))
-}
-
-func CheckListBox_GetMouseInClient(obj uintptr) bool {
     return GoBool(syscallN(11415, obj))
 }
 
+func CheckListBox_SetDockSite(obj uintptr, value bool) {
+    syscallN(11416, obj, PascalBool(value))
+}
+
+func CheckListBox_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(11417, obj))
+}
+
 func CheckListBox_GetVisibleDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(11416, obj))
-}
-
-func CheckListBox_GetBrush(obj uintptr) uintptr {
-    return syscallN(11417, obj)
-}
-
-func CheckListBox_GetControlCount(obj uintptr) int32 {
     return int32(syscallN(11418, obj))
 }
 
+func CheckListBox_GetBrush(obj uintptr) uintptr {
+    return syscallN(11419, obj)
+}
+
+func CheckListBox_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(11420, obj))
+}
+
 func CheckListBox_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(11419, obj))
+    return HWND(syscallN(11421, obj))
 }
 
 func CheckListBox_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(11420, obj))
+    return HWND(syscallN(11422, obj))
 }
 
 func CheckListBox_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(11421, obj, uintptr(value))
+    syscallN(11423, obj, uintptr(value))
 }
 
 func CheckListBox_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(11422, obj))
+    return GoBool(syscallN(11424, obj))
 }
 
 func CheckListBox_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(11423, obj))
+    return GoBool(syscallN(11425, obj))
 }
 
 func CheckListBox_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(11424, obj, PascalBool(value))
+    syscallN(11426, obj, PascalBool(value))
 }
 
 func CheckListBox_GetAction(obj uintptr) uintptr {
-    return syscallN(11425, obj)
+    return syscallN(11427, obj)
 }
 
 func CheckListBox_SetAction(obj uintptr, value uintptr) {
-    syscallN(11426, obj, value)
+    syscallN(11428, obj, value)
 }
 
 func CheckListBox_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(11427, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11429, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckListBox_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(11428, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(11430, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func CheckListBox_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(11429, obj))
+    return int32(syscallN(11431, obj))
 }
 
 func CheckListBox_SetClientHeight(obj uintptr, value int32) {
-    syscallN(11430, obj, uintptr(value))
+    syscallN(11432, obj, uintptr(value))
 }
 
 func CheckListBox_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(11431, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11433, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckListBox_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(11432, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11434, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckListBox_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(11433, obj))
+    return int32(syscallN(11435, obj))
 }
 
 func CheckListBox_SetClientWidth(obj uintptr, value int32) {
-    syscallN(11434, obj, uintptr(value))
-}
-
-func CheckListBox_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(11435, obj))
-}
-
-func CheckListBox_SetControlState(obj uintptr, value TControlState) {
     syscallN(11436, obj, uintptr(value))
 }
 
-func CheckListBox_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(11437, obj))
+func CheckListBox_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(11437, obj))
 }
 
-func CheckListBox_SetControlStyle(obj uintptr, value TControlStyle) {
+func CheckListBox_SetControlState(obj uintptr, value TControlState) {
     syscallN(11438, obj, uintptr(value))
 }
 
+func CheckListBox_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(11439, obj))
+}
+
+func CheckListBox_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(11440, obj, uintptr(value))
+}
+
 func CheckListBox_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(11439, obj))
+    return GoBool(syscallN(11441, obj))
 }
 
 func CheckListBox_GetParent(obj uintptr) uintptr {
-    return syscallN(11440, obj)
+    return syscallN(11442, obj)
 }
 
 func CheckListBox_SetParent(obj uintptr, value uintptr) {
-    syscallN(11441, obj, value)
+    syscallN(11443, obj, value)
 }
 
 func CheckListBox_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(11442, obj))
-}
-
-func CheckListBox_SetLeft(obj uintptr, value int32) {
-    syscallN(11443, obj, uintptr(value))
-}
-
-func CheckListBox_GetTop(obj uintptr) int32 {
     return int32(syscallN(11444, obj))
 }
 
-func CheckListBox_SetTop(obj uintptr, value int32) {
+func CheckListBox_SetLeft(obj uintptr, value int32) {
     syscallN(11445, obj, uintptr(value))
 }
 
-func CheckListBox_GetWidth(obj uintptr) int32 {
+func CheckListBox_GetTop(obj uintptr) int32 {
     return int32(syscallN(11446, obj))
 }
 
-func CheckListBox_SetWidth(obj uintptr, value int32) {
+func CheckListBox_SetTop(obj uintptr, value int32) {
     syscallN(11447, obj, uintptr(value))
 }
 
-func CheckListBox_GetHeight(obj uintptr) int32 {
+func CheckListBox_GetWidth(obj uintptr) int32 {
     return int32(syscallN(11448, obj))
 }
 
-func CheckListBox_SetHeight(obj uintptr, value int32) {
+func CheckListBox_SetWidth(obj uintptr, value int32) {
     syscallN(11449, obj, uintptr(value))
 }
 
-func CheckListBox_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(11450, obj))
+func CheckListBox_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(11450, obj))
 }
 
-func CheckListBox_SetCursor(obj uintptr, value TCursor) {
+func CheckListBox_SetHeight(obj uintptr, value int32) {
     syscallN(11451, obj, uintptr(value))
 }
 
+func CheckListBox_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(11452, obj))
+}
+
+func CheckListBox_SetCursor(obj uintptr, value TCursor) {
+    syscallN(11453, obj, uintptr(value))
+}
+
 func CheckListBox_GetHint(obj uintptr) string {
-    return GoStr(syscallN(11452, obj))
+    return GoStr(syscallN(11454, obj))
 }
 
 func CheckListBox_SetHint(obj uintptr, value string) {
-    syscallN(11453, obj, PascalStr(value))
+    syscallN(11455, obj, PascalStr(value))
 }
 
 func CheckListBox_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(11454, obj))
+    return int32(syscallN(11456, obj))
 }
 
 func CheckListBox_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(11455, obj))
+    return int32(syscallN(11457, obj))
 }
 
 func CheckListBox_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(11456, obj, uintptr(value))
+    syscallN(11458, obj, uintptr(value))
 }
 
 func CheckListBox_GetOwner(obj uintptr) uintptr {
-    return syscallN(11457, obj)
+    return syscallN(11459, obj)
 }
 
 func CheckListBox_GetName(obj uintptr) string {
-    return GoStr(syscallN(11458, obj))
+    return GoStr(syscallN(11460, obj))
 }
 
 func CheckListBox_SetName(obj uintptr, value string) {
-    syscallN(11459, obj, PascalStr(value))
+    syscallN(11461, obj, PascalStr(value))
 }
 
 func CheckListBox_GetTag(obj uintptr) int {
-    return int(syscallN(11460, obj))
+    return int(syscallN(11462, obj))
 }
 
 func CheckListBox_SetTag(obj uintptr, value int) {
-    syscallN(11461, obj, uintptr(value))
+    syscallN(11463, obj, uintptr(value))
 }
 
 func CheckListBox_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(11462, obj)
-}
-
-func CheckListBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(11463, obj, value)
-}
-
-func CheckListBox_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(11464, obj)
 }
 
-func CheckListBox_SetAnchorSideTop(obj uintptr, value uintptr) {
+func CheckListBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(11465, obj, value)
 }
 
-func CheckListBox_GetAnchorSideRight(obj uintptr) uintptr {
+func CheckListBox_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(11466, obj)
 }
 
-func CheckListBox_SetAnchorSideRight(obj uintptr, value uintptr) {
+func CheckListBox_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(11467, obj, value)
 }
 
-func CheckListBox_GetAnchorSideBottom(obj uintptr) uintptr {
+func CheckListBox_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(11468, obj)
 }
 
-func CheckListBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func CheckListBox_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(11469, obj, value)
 }
 
-func CheckListBox_GetChildSizing(obj uintptr) uintptr {
+func CheckListBox_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(11470, obj)
 }
 
-func CheckListBox_SetChildSizing(obj uintptr, value uintptr) {
+func CheckListBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(11471, obj, value)
 }
 
-func CheckListBox_GetBorderSpacing(obj uintptr) uintptr {
+func CheckListBox_GetChildSizing(obj uintptr) uintptr {
     return syscallN(11472, obj)
 }
 
-func CheckListBox_SetBorderSpacing(obj uintptr, value uintptr) {
+func CheckListBox_SetChildSizing(obj uintptr, value uintptr) {
     syscallN(11473, obj, value)
 }
 
+func CheckListBox_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(11474, obj)
+}
+
+func CheckListBox_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(11475, obj, value)
+}
+
 func CheckListBox_GetChecked(obj uintptr, Index int32) bool {
-    return GoBool(syscallN(11474, obj, uintptr(Index)))
-}
-
-func CheckListBox_SetChecked(obj uintptr, Index int32, value bool) {
-    syscallN(11475, obj, uintptr(Index), PascalBool(value))
-}
-
-func CheckListBox_GetItemEnabled(obj uintptr, Index int32) bool {
     return GoBool(syscallN(11476, obj, uintptr(Index)))
 }
 
-func CheckListBox_SetItemEnabled(obj uintptr, Index int32, value bool) {
+func CheckListBox_SetChecked(obj uintptr, Index int32, value bool) {
     syscallN(11477, obj, uintptr(Index), PascalBool(value))
 }
 
+func CheckListBox_GetItemEnabled(obj uintptr, Index int32) bool {
+    return GoBool(syscallN(11478, obj, uintptr(Index)))
+}
+
+func CheckListBox_SetItemEnabled(obj uintptr, Index int32, value bool) {
+    syscallN(11479, obj, uintptr(Index), PascalBool(value))
+}
+
 func CheckListBox_GetState(obj uintptr, Index int32) TCheckBoxState {
-    return TCheckBoxState(syscallN(11478, obj, uintptr(Index)))
+    return TCheckBoxState(syscallN(11480, obj, uintptr(Index)))
 }
 
 func CheckListBox_SetState(obj uintptr, Index int32, value TCheckBoxState) {
-    syscallN(11479, obj, uintptr(Index), uintptr(value))
+    syscallN(11481, obj, uintptr(Index), uintptr(value))
 }
 
 func CheckListBox_GetHeader(obj uintptr, Index int32) bool {
-    return GoBool(syscallN(11480, obj, uintptr(Index)))
-}
-
-func CheckListBox_SetHeader(obj uintptr, Index int32, value bool) {
-    syscallN(11481, obj, uintptr(Index), PascalBool(value))
-}
-
-func CheckListBox_GetSelected(obj uintptr, Index int32) bool {
     return GoBool(syscallN(11482, obj, uintptr(Index)))
 }
 
-func CheckListBox_SetSelected(obj uintptr, Index int32, value bool) {
+func CheckListBox_SetHeader(obj uintptr, Index int32, value bool) {
     syscallN(11483, obj, uintptr(Index), PascalBool(value))
 }
 
+func CheckListBox_GetSelected(obj uintptr, Index int32) bool {
+    return GoBool(syscallN(11484, obj, uintptr(Index)))
+}
+
+func CheckListBox_SetSelected(obj uintptr, Index int32, value bool) {
+    syscallN(11485, obj, uintptr(Index), PascalBool(value))
+}
+
 func CheckListBox_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(11484, obj, uintptr(Index))
+    return syscallN(11486, obj, uintptr(Index))
 }
 
 func CheckListBox_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(11485, obj, uintptr(Index))
+    return syscallN(11487, obj, uintptr(Index))
 }
 
 func CheckListBox_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(11486, obj, uintptr(AIndex))
+    return syscallN(11488, obj, uintptr(AIndex))
 }
 
 func CheckListBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(11487, obj, uintptr(AKind))
+    return syscallN(11489, obj, uintptr(AKind))
 }
 
 func CheckListBox_StaticClassType() TClass {
-    return TClass(syscallN(11488))
+    return TClass(syscallN(11490))
 }
 
 //--------------------------- TGauge ---------------------------
 
 func Gauge_Create(obj uintptr) uintptr {
-    return syscallN(11489, obj)
+    return syscallN(11491, obj)
 }
 
 func Gauge_Free(obj uintptr) {
-    syscallN(11490, obj)
+    syscallN(11492, obj)
 }
 
 func Gauge_AddProgress(obj uintptr, Value int32)  {
-    syscallN(11491, obj, uintptr(Value) )
+    syscallN(11493, obj, uintptr(Value) )
 }
 
 func Gauge_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(11492, obj, PascalBool(Immediate) , uintptr(Threshold) )
+    syscallN(11494, obj, PascalBool(Immediate) , uintptr(Threshold) )
 }
 
 func Gauge_BringToFront(obj uintptr)  {
-    syscallN(11493, obj)
+    syscallN(11495, obj)
 }
 
 func Gauge_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(11494, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(11496, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Gauge_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(11495, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(11497, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Gauge_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(11496, obj))
-}
-
-func Gauge_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(11497, obj, PascalBool(Drop) )
-}
-
-func Gauge_HasParent(obj uintptr) bool {
     return GoBool(syscallN(11498, obj))
 }
 
+func Gauge_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(11499, obj, PascalBool(Drop) )
+}
+
+func Gauge_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(11500, obj))
+}
+
 func Gauge_Hide(obj uintptr)  {
-    syscallN(11499, obj)
+    syscallN(11501, obj)
 }
 
 func Gauge_Invalidate(obj uintptr)  {
-    syscallN(11500, obj)
-}
-
-func Gauge_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(11501, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func Gauge_Refresh(obj uintptr)  {
     syscallN(11502, obj)
 }
 
+func Gauge_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(11503, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func Gauge_Refresh(obj uintptr)  {
+    syscallN(11504, obj)
+}
+
 func Gauge_Repaint(obj uintptr)  {
-    syscallN(11503, obj)
+    syscallN(11505, obj)
 }
 
 func Gauge_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(11504, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(11506, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Gauge_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(11505, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(11507, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Gauge_SendToBack(obj uintptr)  {
-    syscallN(11506, obj)
-}
-
-func Gauge_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(11507, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
-}
-
-func Gauge_Show(obj uintptr)  {
     syscallN(11508, obj)
 }
 
+func Gauge_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    syscallN(11509, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func Gauge_Show(obj uintptr)  {
+    syscallN(11510, obj)
+}
+
 func Gauge_Update(obj uintptr)  {
-    syscallN(11509, obj)
+    syscallN(11511, obj)
 }
 
 func Gauge_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(11510, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(11512, obj, Buffer, uintptr(BufSize) ))
 }
 
 func Gauge_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(11511, obj))
+    return int32(syscallN(11513, obj))
 }
 
 func Gauge_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(11512, obj, PascalStr(Buffer) )
+    syscallN(11514, obj, PascalStr(Buffer) )
 }
 
 func Gauge_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(11513, obj, PascalStr(AName) )
+    return syscallN(11515, obj, PascalStr(AName) )
 }
 
 func Gauge_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(11514, obj))
+    return GoStr(syscallN(11516, obj))
 }
 
 func Gauge_Assign(obj uintptr, Source uintptr)  {
-    syscallN(11515, obj, Source )
+    syscallN(11517, obj, Source )
 }
 
 func Gauge_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(11516, obj))
+    return TClass(syscallN(11518, obj))
 }
 
 func Gauge_ClassName(obj uintptr) string {
-    return GoStr(syscallN(11517, obj))
+    return GoStr(syscallN(11519, obj))
 }
 
 func Gauge_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(11518, obj))
+    return int32(syscallN(11520, obj))
 }
 
 func Gauge_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(11519, obj, uintptr(AClass) ))
+    return GoBool(syscallN(11521, obj, uintptr(AClass) ))
 }
 
 func Gauge_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(11520, obj, Obj ))
+    return GoBool(syscallN(11522, obj, Obj ))
 }
 
 func Gauge_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(11521, obj))
+    return int32(syscallN(11523, obj))
 }
 
 func Gauge_ToString(obj uintptr) string {
-    return GoStr(syscallN(11522, obj))
+    return GoStr(syscallN(11524, obj))
 }
 
 func Gauge_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(11523, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(11525, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func Gauge_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(11524, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(11526, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func Gauge_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(11525, obj, ASibling )
+    syscallN(11527, obj, ASibling )
 }
 
 func Gauge_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(11526, obj, ASibling )
+    syscallN(11528, obj, ASibling )
 }
 
 func Gauge_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(11527, obj, uintptr(ASide) , ASibling )
+    syscallN(11529, obj, uintptr(ASide) , ASibling )
 }
 
 func Gauge_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(11528, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(11530, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func Gauge_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(11529, obj, uintptr(ASpace) )
+    syscallN(11531, obj, uintptr(ASpace) )
 }
 
 func Gauge_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(11530, obj, uintptr(ASize) ))
-}
-
-func Gauge_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(11531, obj, uintptr(ASize) ))
-}
-
-func Gauge_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11532, obj, uintptr(ASize) ))
 }
 
-func Gauge_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func Gauge_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11533, obj, uintptr(ASize) ))
 }
 
-func Gauge_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func Gauge_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11534, obj, uintptr(ASize) ))
 }
 
-func Gauge_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func Gauge_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11535, obj, uintptr(ASize) ))
 }
 
-func Gauge_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func Gauge_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11536, obj, uintptr(ASize) ))
 }
 
-func Gauge_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func Gauge_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11537, obj, uintptr(ASize) ))
 }
 
-func Gauge_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func Gauge_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11538, obj, uintptr(ASize) ))
 }
 
-func Gauge_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func Gauge_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11539, obj, uintptr(ASize) ))
 }
 
+func Gauge_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(11540, obj, uintptr(ASize) ))
+}
+
+func Gauge_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(11541, obj, uintptr(ASize) ))
+}
+
 func Gauge_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(11540, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(11542, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func Gauge_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(11541, obj, uintptr(ADesignTimePPI) )
+    syscallN(11543, obj, uintptr(ADesignTimePPI) )
 }
 
 func Gauge_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(11542, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(11544, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func Gauge_GetPercentDone(obj uintptr) int32 {
-    return int32(syscallN(11543, obj))
+    return int32(syscallN(11545, obj))
 }
 
 func Gauge_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(11544, obj))
+    return TAlign(syscallN(11546, obj))
 }
 
 func Gauge_SetAlign(obj uintptr, value TAlign) {
-    syscallN(11545, obj, uintptr(value))
-}
-
-func Gauge_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(11546, obj))
-}
-
-func Gauge_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(11547, obj, uintptr(value))
 }
 
-func Gauge_GetBackColor(obj uintptr) TColor {
-    return TColor(syscallN(11548, obj))
+func Gauge_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(11548, obj))
 }
 
-func Gauge_SetBackColor(obj uintptr, value TColor) {
+func Gauge_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(11549, obj, uintptr(value))
 }
 
-func Gauge_GetBorderStyle(obj uintptr) TBorderStyle {
-    return TBorderStyle(syscallN(11550, obj))
+func Gauge_GetBackColor(obj uintptr) TColor {
+    return TColor(syscallN(11550, obj))
 }
 
-func Gauge_SetBorderStyle(obj uintptr, value TBorderStyle) {
+func Gauge_SetBackColor(obj uintptr, value TColor) {
     syscallN(11551, obj, uintptr(value))
 }
 
-func Gauge_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(11552, obj))
+func Gauge_GetBorderStyle(obj uintptr) TBorderStyle {
+    return TBorderStyle(syscallN(11552, obj))
 }
 
-func Gauge_SetColor(obj uintptr, value TColor) {
+func Gauge_SetBorderStyle(obj uintptr, value TBorderStyle) {
     syscallN(11553, obj, uintptr(value))
 }
 
+func Gauge_GetColor(obj uintptr) TColor {
+    return TColor(syscallN(11554, obj))
+}
+
+func Gauge_SetColor(obj uintptr, value TColor) {
+    syscallN(11555, obj, uintptr(value))
+}
+
 func Gauge_GetConstraints(obj uintptr) uintptr {
-    return syscallN(11554, obj)
+    return syscallN(11556, obj)
 }
 
 func Gauge_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(11555, obj, value)
+    syscallN(11557, obj, value)
 }
 
 func Gauge_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(11556, obj))
+    return GoBool(syscallN(11558, obj))
 }
 
 func Gauge_SetEnabled(obj uintptr, value bool) {
-    syscallN(11557, obj, PascalBool(value))
+    syscallN(11559, obj, PascalBool(value))
 }
 
 func Gauge_GetForeColor(obj uintptr) TColor {
-    return TColor(syscallN(11558, obj))
+    return TColor(syscallN(11560, obj))
 }
 
 func Gauge_SetForeColor(obj uintptr, value TColor) {
-    syscallN(11559, obj, uintptr(value))
+    syscallN(11561, obj, uintptr(value))
 }
 
 func Gauge_GetFont(obj uintptr) uintptr {
-    return syscallN(11560, obj)
+    return syscallN(11562, obj)
 }
 
 func Gauge_SetFont(obj uintptr, value uintptr) {
-    syscallN(11561, obj, value)
+    syscallN(11563, obj, value)
 }
 
 func Gauge_GetKind(obj uintptr) TGaugeKind {
-    return TGaugeKind(syscallN(11562, obj))
+    return TGaugeKind(syscallN(11564, obj))
 }
 
 func Gauge_SetKind(obj uintptr, value TGaugeKind) {
-    syscallN(11563, obj, uintptr(value))
-}
-
-func Gauge_GetMinValue(obj uintptr) int32 {
-    return int32(syscallN(11564, obj))
-}
-
-func Gauge_SetMinValue(obj uintptr, value int32) {
     syscallN(11565, obj, uintptr(value))
 }
 
-func Gauge_GetMaxValue(obj uintptr) int32 {
+func Gauge_GetMinValue(obj uintptr) int32 {
     return int32(syscallN(11566, obj))
 }
 
-func Gauge_SetMaxValue(obj uintptr, value int32) {
+func Gauge_SetMinValue(obj uintptr, value int32) {
     syscallN(11567, obj, uintptr(value))
 }
 
+func Gauge_GetMaxValue(obj uintptr) int32 {
+    return int32(syscallN(11568, obj))
+}
+
+func Gauge_SetMaxValue(obj uintptr, value int32) {
+    syscallN(11569, obj, uintptr(value))
+}
+
 func Gauge_GetParentColor(obj uintptr) bool {
-    return GoBool(syscallN(11568, obj))
-}
-
-func Gauge_SetParentColor(obj uintptr, value bool) {
-    syscallN(11569, obj, PascalBool(value))
-}
-
-func Gauge_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(11570, obj))
 }
 
-func Gauge_SetParentFont(obj uintptr, value bool) {
+func Gauge_SetParentColor(obj uintptr, value bool) {
     syscallN(11571, obj, PascalBool(value))
 }
 
-func Gauge_GetParentShowHint(obj uintptr) bool {
+func Gauge_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(11572, obj))
 }
 
-func Gauge_SetParentShowHint(obj uintptr, value bool) {
+func Gauge_SetParentFont(obj uintptr, value bool) {
     syscallN(11573, obj, PascalBool(value))
 }
 
+func Gauge_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(11574, obj))
+}
+
+func Gauge_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(11575, obj, PascalBool(value))
+}
+
 func Gauge_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(11574, obj)
+    return syscallN(11576, obj)
 }
 
 func Gauge_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(11575, obj, value)
+    syscallN(11577, obj, value)
 }
 
 func Gauge_GetProgress(obj uintptr) int32 {
-    return int32(syscallN(11576, obj))
+    return int32(syscallN(11578, obj))
 }
 
 func Gauge_SetProgress(obj uintptr, value int32) {
-    syscallN(11577, obj, uintptr(value))
+    syscallN(11579, obj, uintptr(value))
 }
 
 func Gauge_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(11578, obj))
-}
-
-func Gauge_SetShowHint(obj uintptr, value bool) {
-    syscallN(11579, obj, PascalBool(value))
-}
-
-func Gauge_GetShowText(obj uintptr) bool {
     return GoBool(syscallN(11580, obj))
 }
 
-func Gauge_SetShowText(obj uintptr, value bool) {
+func Gauge_SetShowHint(obj uintptr, value bool) {
     syscallN(11581, obj, PascalBool(value))
 }
 
-func Gauge_GetVisible(obj uintptr) bool {
+func Gauge_GetShowText(obj uintptr) bool {
     return GoBool(syscallN(11582, obj))
 }
 
-func Gauge_SetVisible(obj uintptr, value bool) {
+func Gauge_SetShowText(obj uintptr, value bool) {
     syscallN(11583, obj, PascalBool(value))
 }
 
+func Gauge_GetVisible(obj uintptr) bool {
+    return GoBool(syscallN(11584, obj))
+}
+
+func Gauge_SetVisible(obj uintptr, value bool) {
+    syscallN(11585, obj, PascalBool(value))
+}
+
 func Gauge_GetAction(obj uintptr) uintptr {
-    return syscallN(11584, obj)
+    return syscallN(11586, obj)
 }
 
 func Gauge_SetAction(obj uintptr, value uintptr) {
-    syscallN(11585, obj, value)
+    syscallN(11587, obj, value)
 }
 
 func Gauge_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(11586, obj))
+    return TBiDiMode(syscallN(11588, obj))
 }
 
 func Gauge_SetBiDiMode(obj uintptr, value TBiDiMode) {
-    syscallN(11587, obj, uintptr(value))
+    syscallN(11589, obj, uintptr(value))
 }
 
 func Gauge_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(11588, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11590, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Gauge_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(11589, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(11591, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func Gauge_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(11590, obj))
+    return int32(syscallN(11592, obj))
 }
 
 func Gauge_SetClientHeight(obj uintptr, value int32) {
-    syscallN(11591, obj, uintptr(value))
+    syscallN(11593, obj, uintptr(value))
 }
 
 func Gauge_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(11592, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11594, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Gauge_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(11593, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11595, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Gauge_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(11594, obj))
+    return int32(syscallN(11596, obj))
 }
 
 func Gauge_SetClientWidth(obj uintptr, value int32) {
-    syscallN(11595, obj, uintptr(value))
-}
-
-func Gauge_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(11596, obj))
-}
-
-func Gauge_SetControlState(obj uintptr, value TControlState) {
     syscallN(11597, obj, uintptr(value))
 }
 
-func Gauge_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(11598, obj))
+func Gauge_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(11598, obj))
 }
 
-func Gauge_SetControlStyle(obj uintptr, value TControlStyle) {
+func Gauge_SetControlState(obj uintptr, value TControlState) {
     syscallN(11599, obj, uintptr(value))
 }
 
+func Gauge_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(11600, obj))
+}
+
+func Gauge_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(11601, obj, uintptr(value))
+}
+
 func Gauge_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(11600, obj))
+    return GoBool(syscallN(11602, obj))
 }
 
 func Gauge_GetParent(obj uintptr) uintptr {
-    return syscallN(11601, obj)
+    return syscallN(11603, obj)
 }
 
 func Gauge_SetParent(obj uintptr, value uintptr) {
-    syscallN(11602, obj, value)
+    syscallN(11604, obj, value)
 }
 
 func Gauge_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(11603, obj))
-}
-
-func Gauge_SetLeft(obj uintptr, value int32) {
-    syscallN(11604, obj, uintptr(value))
-}
-
-func Gauge_GetTop(obj uintptr) int32 {
     return int32(syscallN(11605, obj))
 }
 
-func Gauge_SetTop(obj uintptr, value int32) {
+func Gauge_SetLeft(obj uintptr, value int32) {
     syscallN(11606, obj, uintptr(value))
 }
 
-func Gauge_GetWidth(obj uintptr) int32 {
+func Gauge_GetTop(obj uintptr) int32 {
     return int32(syscallN(11607, obj))
 }
 
-func Gauge_SetWidth(obj uintptr, value int32) {
+func Gauge_SetTop(obj uintptr, value int32) {
     syscallN(11608, obj, uintptr(value))
 }
 
-func Gauge_GetHeight(obj uintptr) int32 {
+func Gauge_GetWidth(obj uintptr) int32 {
     return int32(syscallN(11609, obj))
 }
 
-func Gauge_SetHeight(obj uintptr, value int32) {
+func Gauge_SetWidth(obj uintptr, value int32) {
     syscallN(11610, obj, uintptr(value))
 }
 
-func Gauge_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(11611, obj))
+func Gauge_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(11611, obj))
 }
 
-func Gauge_SetCursor(obj uintptr, value TCursor) {
+func Gauge_SetHeight(obj uintptr, value int32) {
     syscallN(11612, obj, uintptr(value))
 }
 
+func Gauge_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(11613, obj))
+}
+
+func Gauge_SetCursor(obj uintptr, value TCursor) {
+    syscallN(11614, obj, uintptr(value))
+}
+
 func Gauge_GetHint(obj uintptr) string {
-    return GoStr(syscallN(11613, obj))
+    return GoStr(syscallN(11615, obj))
 }
 
 func Gauge_SetHint(obj uintptr, value string) {
-    syscallN(11614, obj, PascalStr(value))
+    syscallN(11616, obj, PascalStr(value))
 }
 
 func Gauge_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(11615, obj))
+    return int32(syscallN(11617, obj))
 }
 
 func Gauge_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(11616, obj))
+    return int32(syscallN(11618, obj))
 }
 
 func Gauge_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(11617, obj, uintptr(value))
+    syscallN(11619, obj, uintptr(value))
 }
 
 func Gauge_GetOwner(obj uintptr) uintptr {
-    return syscallN(11618, obj)
+    return syscallN(11620, obj)
 }
 
 func Gauge_GetName(obj uintptr) string {
-    return GoStr(syscallN(11619, obj))
+    return GoStr(syscallN(11621, obj))
 }
 
 func Gauge_SetName(obj uintptr, value string) {
-    syscallN(11620, obj, PascalStr(value))
+    syscallN(11622, obj, PascalStr(value))
 }
 
 func Gauge_GetTag(obj uintptr) int {
-    return int(syscallN(11621, obj))
+    return int(syscallN(11623, obj))
 }
 
 func Gauge_SetTag(obj uintptr, value int) {
-    syscallN(11622, obj, uintptr(value))
+    syscallN(11624, obj, uintptr(value))
 }
 
 func Gauge_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(11623, obj)
-}
-
-func Gauge_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(11624, obj, value)
-}
-
-func Gauge_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(11625, obj)
 }
 
-func Gauge_SetAnchorSideTop(obj uintptr, value uintptr) {
+func Gauge_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(11626, obj, value)
 }
 
-func Gauge_GetAnchorSideRight(obj uintptr) uintptr {
+func Gauge_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(11627, obj)
 }
 
-func Gauge_SetAnchorSideRight(obj uintptr, value uintptr) {
+func Gauge_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(11628, obj, value)
 }
 
-func Gauge_GetAnchorSideBottom(obj uintptr) uintptr {
+func Gauge_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(11629, obj)
 }
 
-func Gauge_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func Gauge_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(11630, obj, value)
 }
 
-func Gauge_GetBorderSpacing(obj uintptr) uintptr {
+func Gauge_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(11631, obj)
 }
 
-func Gauge_SetBorderSpacing(obj uintptr, value uintptr) {
+func Gauge_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(11632, obj, value)
 }
 
+func Gauge_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(11633, obj)
+}
+
+func Gauge_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(11634, obj, value)
+}
+
 func Gauge_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(11633, obj, uintptr(AIndex))
+    return syscallN(11635, obj, uintptr(AIndex))
 }
 
 func Gauge_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(11634, obj, uintptr(AKind))
+    return syscallN(11636, obj, uintptr(AKind))
 }
 
 func Gauge_StaticClassType() TClass {
-    return TClass(syscallN(11635))
+    return TClass(syscallN(11637))
 }
 
 //--------------------------- TImageButton ---------------------------
 
 func ImageButton_Create(obj uintptr) uintptr {
-    return syscallN(11636, obj)
+    return syscallN(11638, obj)
 }
 
 func ImageButton_Free(obj uintptr) {
-    syscallN(11637, obj)
+    syscallN(11639, obj)
 }
 
 func ImageButton_Click(obj uintptr)  {
-    syscallN(11638, obj)
-}
-
-func ImageButton_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(11639, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func ImageButton_BringToFront(obj uintptr)  {
     syscallN(11640, obj)
 }
 
+func ImageButton_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(11641, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func ImageButton_BringToFront(obj uintptr)  {
+    syscallN(11642, obj)
+}
+
 func ImageButton_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(11641, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(11643, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ImageButton_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(11642, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(11644, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ImageButton_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(11643, obj))
-}
-
-func ImageButton_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(11644, obj, PascalBool(Drop) )
-}
-
-func ImageButton_HasParent(obj uintptr) bool {
     return GoBool(syscallN(11645, obj))
 }
 
+func ImageButton_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(11646, obj, PascalBool(Drop) )
+}
+
+func ImageButton_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(11647, obj))
+}
+
 func ImageButton_Hide(obj uintptr)  {
-    syscallN(11646, obj)
+    syscallN(11648, obj)
 }
 
 func ImageButton_Invalidate(obj uintptr)  {
-    syscallN(11647, obj)
-}
-
-func ImageButton_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(11648, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func ImageButton_Refresh(obj uintptr)  {
     syscallN(11649, obj)
 }
 
+func ImageButton_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(11650, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func ImageButton_Refresh(obj uintptr)  {
+    syscallN(11651, obj)
+}
+
 func ImageButton_Repaint(obj uintptr)  {
-    syscallN(11650, obj)
+    syscallN(11652, obj)
 }
 
 func ImageButton_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(11651, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(11653, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ImageButton_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(11652, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(11654, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ImageButton_SendToBack(obj uintptr)  {
-    syscallN(11653, obj)
-}
-
-func ImageButton_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(11654, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
-}
-
-func ImageButton_Show(obj uintptr)  {
     syscallN(11655, obj)
 }
 
+func ImageButton_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    syscallN(11656, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func ImageButton_Show(obj uintptr)  {
+    syscallN(11657, obj)
+}
+
 func ImageButton_Update(obj uintptr)  {
-    syscallN(11656, obj)
+    syscallN(11658, obj)
 }
 
 func ImageButton_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(11657, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(11659, obj, Buffer, uintptr(BufSize) ))
 }
 
 func ImageButton_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(11658, obj))
+    return int32(syscallN(11660, obj))
 }
 
 func ImageButton_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(11659, obj, PascalStr(Buffer) )
+    syscallN(11661, obj, PascalStr(Buffer) )
 }
 
 func ImageButton_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(11660, obj, PascalStr(AName) )
+    return syscallN(11662, obj, PascalStr(AName) )
 }
 
 func ImageButton_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(11661, obj))
+    return GoStr(syscallN(11663, obj))
 }
 
 func ImageButton_Assign(obj uintptr, Source uintptr)  {
-    syscallN(11662, obj, Source )
+    syscallN(11664, obj, Source )
 }
 
 func ImageButton_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(11663, obj))
+    return TClass(syscallN(11665, obj))
 }
 
 func ImageButton_ClassName(obj uintptr) string {
-    return GoStr(syscallN(11664, obj))
+    return GoStr(syscallN(11666, obj))
 }
 
 func ImageButton_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(11665, obj))
+    return int32(syscallN(11667, obj))
 }
 
 func ImageButton_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(11666, obj, uintptr(AClass) ))
+    return GoBool(syscallN(11668, obj, uintptr(AClass) ))
 }
 
 func ImageButton_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(11667, obj, Obj ))
+    return GoBool(syscallN(11669, obj, Obj ))
 }
 
 func ImageButton_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(11668, obj))
+    return int32(syscallN(11670, obj))
 }
 
 func ImageButton_ToString(obj uintptr) string {
-    return GoStr(syscallN(11669, obj))
+    return GoStr(syscallN(11671, obj))
 }
 
 func ImageButton_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(11670, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(11672, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func ImageButton_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(11671, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(11673, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func ImageButton_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(11672, obj, ASibling )
+    syscallN(11674, obj, ASibling )
 }
 
 func ImageButton_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(11673, obj, ASibling )
+    syscallN(11675, obj, ASibling )
 }
 
 func ImageButton_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(11674, obj, uintptr(ASide) , ASibling )
+    syscallN(11676, obj, uintptr(ASide) , ASibling )
 }
 
 func ImageButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(11675, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(11677, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func ImageButton_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(11676, obj, uintptr(ASpace) )
+    syscallN(11678, obj, uintptr(ASpace) )
 }
 
 func ImageButton_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(11677, obj, uintptr(ASize) ))
-}
-
-func ImageButton_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(11678, obj, uintptr(ASize) ))
-}
-
-func ImageButton_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11679, obj, uintptr(ASize) ))
 }
 
-func ImageButton_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func ImageButton_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11680, obj, uintptr(ASize) ))
 }
 
-func ImageButton_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func ImageButton_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11681, obj, uintptr(ASize) ))
 }
 
-func ImageButton_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func ImageButton_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11682, obj, uintptr(ASize) ))
 }
 
-func ImageButton_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func ImageButton_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11683, obj, uintptr(ASize) ))
 }
 
-func ImageButton_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func ImageButton_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11684, obj, uintptr(ASize) ))
 }
 
-func ImageButton_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func ImageButton_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11685, obj, uintptr(ASize) ))
 }
 
-func ImageButton_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func ImageButton_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(11686, obj, uintptr(ASize) ))
 }
 
+func ImageButton_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(11687, obj, uintptr(ASize) ))
+}
+
+func ImageButton_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(11688, obj, uintptr(ASize) ))
+}
+
 func ImageButton_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(11687, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(11689, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func ImageButton_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(11688, obj, uintptr(ADesignTimePPI) )
+    syscallN(11690, obj, uintptr(ADesignTimePPI) )
 }
 
 func ImageButton_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(11689, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(11691, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ImageButton_GetAction(obj uintptr) uintptr {
-    return syscallN(11690, obj)
+    return syscallN(11692, obj)
 }
 
 func ImageButton_SetAction(obj uintptr, value uintptr) {
-    syscallN(11691, obj, value)
+    syscallN(11693, obj, value)
 }
 
 func ImageButton_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(11692, obj))
+    return TAlign(syscallN(11694, obj))
 }
 
 func ImageButton_SetAlign(obj uintptr, value TAlign) {
-    syscallN(11693, obj, uintptr(value))
-}
-
-func ImageButton_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(11694, obj))
-}
-
-func ImageButton_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(11695, obj, uintptr(value))
 }
 
+func ImageButton_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(11696, obj))
+}
+
+func ImageButton_SetAnchors(obj uintptr, value TAnchors) {
+    syscallN(11697, obj, uintptr(value))
+}
+
 func ImageButton_GetAutoSize(obj uintptr) bool {
-    return GoBool(syscallN(11696, obj))
+    return GoBool(syscallN(11698, obj))
 }
 
 func ImageButton_SetAutoSize(obj uintptr, value bool) {
-    syscallN(11697, obj, PascalBool(value))
+    syscallN(11699, obj, PascalBool(value))
 }
 
 func ImageButton_GetConstraints(obj uintptr) uintptr {
-    return syscallN(11698, obj)
+    return syscallN(11700, obj)
 }
 
 func ImageButton_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(11699, obj, value)
+    syscallN(11701, obj, value)
 }
 
 func ImageButton_GetCaption(obj uintptr) string {
-    return GoStr(syscallN(11700, obj))
+    return GoStr(syscallN(11702, obj))
 }
 
 func ImageButton_SetCaption(obj uintptr, value string) {
-    syscallN(11701, obj, PascalStr(value))
+    syscallN(11703, obj, PascalStr(value))
 }
 
 func ImageButton_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(11702, obj))
+    return TCursor(syscallN(11704, obj))
 }
 
 func ImageButton_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(11703, obj, uintptr(value))
-}
-
-func ImageButton_GetDragKind(obj uintptr) TDragKind {
-    return TDragKind(syscallN(11704, obj))
-}
-
-func ImageButton_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(11705, obj, uintptr(value))
 }
 
-func ImageButton_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(11706, obj))
+func ImageButton_GetDragKind(obj uintptr) TDragKind {
+    return TDragKind(syscallN(11706, obj))
 }
 
-func ImageButton_SetDragMode(obj uintptr, value TDragMode) {
+func ImageButton_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(11707, obj, uintptr(value))
 }
 
+func ImageButton_GetDragMode(obj uintptr) TDragMode {
+    return TDragMode(syscallN(11708, obj))
+}
+
+func ImageButton_SetDragMode(obj uintptr, value TDragMode) {
+    syscallN(11709, obj, uintptr(value))
+}
+
 func ImageButton_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(11708, obj))
+    return GoBool(syscallN(11710, obj))
 }
 
 func ImageButton_SetEnabled(obj uintptr, value bool) {
-    syscallN(11709, obj, PascalBool(value))
+    syscallN(11711, obj, PascalBool(value))
 }
 
 func ImageButton_GetFont(obj uintptr) uintptr {
-    return syscallN(11710, obj)
+    return syscallN(11712, obj)
 }
 
 func ImageButton_SetFont(obj uintptr, value uintptr) {
-    syscallN(11711, obj, value)
+    syscallN(11713, obj, value)
 }
 
 func ImageButton_GetImageCount(obj uintptr) int32 {
-    return int32(syscallN(11712, obj))
+    return int32(syscallN(11714, obj))
 }
 
 func ImageButton_SetImageCount(obj uintptr, value int32) {
-    syscallN(11713, obj, uintptr(value))
-}
-
-func ImageButton_GetOrientation(obj uintptr) TImageOrientation {
-    return TImageOrientation(syscallN(11714, obj))
-}
-
-func ImageButton_SetOrientation(obj uintptr, value TImageOrientation) {
     syscallN(11715, obj, uintptr(value))
 }
 
-func ImageButton_GetModalResult(obj uintptr) TModalResult {
-    return TModalResult(syscallN(11716, obj))
+func ImageButton_GetOrientation(obj uintptr) TImageOrientation {
+    return TImageOrientation(syscallN(11716, obj))
 }
 
-func ImageButton_SetModalResult(obj uintptr, value TModalResult) {
+func ImageButton_SetOrientation(obj uintptr, value TImageOrientation) {
     syscallN(11717, obj, uintptr(value))
 }
 
+func ImageButton_GetModalResult(obj uintptr) TModalResult {
+    return TModalResult(syscallN(11718, obj))
+}
+
+func ImageButton_SetModalResult(obj uintptr, value TModalResult) {
+    syscallN(11719, obj, uintptr(value))
+}
+
 func ImageButton_GetParentShowHint(obj uintptr) bool {
-    return GoBool(syscallN(11718, obj))
-}
-
-func ImageButton_SetParentShowHint(obj uintptr, value bool) {
-    syscallN(11719, obj, PascalBool(value))
-}
-
-func ImageButton_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(11720, obj))
 }
 
-func ImageButton_SetParentFont(obj uintptr, value bool) {
+func ImageButton_SetParentShowHint(obj uintptr, value bool) {
     syscallN(11721, obj, PascalBool(value))
 }
 
+func ImageButton_GetParentFont(obj uintptr) bool {
+    return GoBool(syscallN(11722, obj))
+}
+
+func ImageButton_SetParentFont(obj uintptr, value bool) {
+    syscallN(11723, obj, PascalBool(value))
+}
+
 func ImageButton_GetPicture(obj uintptr) uintptr {
-    return syscallN(11722, obj)
-}
-
-func ImageButton_SetPicture(obj uintptr, value uintptr) {
-    syscallN(11723, obj, value)
-}
-
-func ImageButton_GetPopupMenu(obj uintptr) uintptr {
     return syscallN(11724, obj)
 }
 
-func ImageButton_SetPopupMenu(obj uintptr, value uintptr) {
+func ImageButton_SetPicture(obj uintptr, value uintptr) {
     syscallN(11725, obj, value)
 }
 
+func ImageButton_GetPopupMenu(obj uintptr) uintptr {
+    return syscallN(11726, obj)
+}
+
+func ImageButton_SetPopupMenu(obj uintptr, value uintptr) {
+    syscallN(11727, obj, value)
+}
+
 func ImageButton_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(11726, obj))
-}
-
-func ImageButton_SetShowHint(obj uintptr, value bool) {
-    syscallN(11727, obj, PascalBool(value))
-}
-
-func ImageButton_GetShowCaption(obj uintptr) bool {
     return GoBool(syscallN(11728, obj))
 }
 
-func ImageButton_SetShowCaption(obj uintptr, value bool) {
+func ImageButton_SetShowHint(obj uintptr, value bool) {
     syscallN(11729, obj, PascalBool(value))
 }
 
-func ImageButton_GetVisible(obj uintptr) bool {
+func ImageButton_GetShowCaption(obj uintptr) bool {
     return GoBool(syscallN(11730, obj))
 }
 
-func ImageButton_SetVisible(obj uintptr, value bool) {
+func ImageButton_SetShowCaption(obj uintptr, value bool) {
     syscallN(11731, obj, PascalBool(value))
 }
 
+func ImageButton_GetVisible(obj uintptr) bool {
+    return GoBool(syscallN(11732, obj))
+}
+
+func ImageButton_SetVisible(obj uintptr, value bool) {
+    syscallN(11733, obj, PascalBool(value))
+}
+
 func ImageButton_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(11732, obj, MakeEventDataPtr(fn))
-}
-
-func ImageButton_SetOnContextPopup(obj uintptr, fn interface{}) {
-    syscallN(11733, obj, MakeEventDataPtr(fn))
-}
-
-func ImageButton_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(11734, obj, MakeEventDataPtr(fn))
 }
 
-func ImageButton_SetOnDragDrop(obj uintptr, fn interface{}) {
+func ImageButton_SetOnContextPopup(obj uintptr, fn interface{}) {
     syscallN(11735, obj, MakeEventDataPtr(fn))
 }
 
-func ImageButton_SetOnDragOver(obj uintptr, fn interface{}) {
+func ImageButton_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(11736, obj, MakeEventDataPtr(fn))
 }
 
-func ImageButton_SetOnEndDock(obj uintptr, fn interface{}) {
+func ImageButton_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(11737, obj, MakeEventDataPtr(fn))
 }
 
-func ImageButton_SetOnEndDrag(obj uintptr, fn interface{}) {
+func ImageButton_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(11738, obj, MakeEventDataPtr(fn))
 }
 
-func ImageButton_SetOnMouseDown(obj uintptr, fn interface{}) {
+func ImageButton_SetOnEndDock(obj uintptr, fn interface{}) {
     syscallN(11739, obj, MakeEventDataPtr(fn))
 }
 
-func ImageButton_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func ImageButton_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(11740, obj, MakeEventDataPtr(fn))
 }
 
-func ImageButton_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func ImageButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(11741, obj, MakeEventDataPtr(fn))
 }
 
-func ImageButton_SetOnMouseMove(obj uintptr, fn interface{}) {
+func ImageButton_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(11742, obj, MakeEventDataPtr(fn))
 }
 
-func ImageButton_SetOnMouseUp(obj uintptr, fn interface{}) {
+func ImageButton_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(11743, obj, MakeEventDataPtr(fn))
 }
 
+func ImageButton_SetOnMouseMove(obj uintptr, fn interface{}) {
+    syscallN(11744, obj, MakeEventDataPtr(fn))
+}
+
+func ImageButton_SetOnMouseUp(obj uintptr, fn interface{}) {
+    syscallN(11745, obj, MakeEventDataPtr(fn))
+}
+
 func ImageButton_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(11744, obj))
+    return TBiDiMode(syscallN(11746, obj))
 }
 
 func ImageButton_SetBiDiMode(obj uintptr, value TBiDiMode) {
-    syscallN(11745, obj, uintptr(value))
+    syscallN(11747, obj, uintptr(value))
 }
 
 func ImageButton_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(11746, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11748, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ImageButton_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(11747, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(11749, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func ImageButton_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(11748, obj))
+    return int32(syscallN(11750, obj))
 }
 
 func ImageButton_SetClientHeight(obj uintptr, value int32) {
-    syscallN(11749, obj, uintptr(value))
+    syscallN(11751, obj, uintptr(value))
 }
 
 func ImageButton_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(11750, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11752, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ImageButton_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(11751, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11753, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ImageButton_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(11752, obj))
+    return int32(syscallN(11754, obj))
 }
 
 func ImageButton_SetClientWidth(obj uintptr, value int32) {
-    syscallN(11753, obj, uintptr(value))
-}
-
-func ImageButton_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(11754, obj))
-}
-
-func ImageButton_SetControlState(obj uintptr, value TControlState) {
     syscallN(11755, obj, uintptr(value))
 }
 
-func ImageButton_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(11756, obj))
+func ImageButton_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(11756, obj))
 }
 
-func ImageButton_SetControlStyle(obj uintptr, value TControlStyle) {
+func ImageButton_SetControlState(obj uintptr, value TControlState) {
     syscallN(11757, obj, uintptr(value))
 }
 
+func ImageButton_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(11758, obj))
+}
+
+func ImageButton_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(11759, obj, uintptr(value))
+}
+
 func ImageButton_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(11758, obj))
+    return GoBool(syscallN(11760, obj))
 }
 
 func ImageButton_GetParent(obj uintptr) uintptr {
-    return syscallN(11759, obj)
+    return syscallN(11761, obj)
 }
 
 func ImageButton_SetParent(obj uintptr, value uintptr) {
-    syscallN(11760, obj, value)
+    syscallN(11762, obj, value)
 }
 
 func ImageButton_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(11761, obj))
-}
-
-func ImageButton_SetLeft(obj uintptr, value int32) {
-    syscallN(11762, obj, uintptr(value))
-}
-
-func ImageButton_GetTop(obj uintptr) int32 {
     return int32(syscallN(11763, obj))
 }
 
-func ImageButton_SetTop(obj uintptr, value int32) {
+func ImageButton_SetLeft(obj uintptr, value int32) {
     syscallN(11764, obj, uintptr(value))
 }
 
-func ImageButton_GetWidth(obj uintptr) int32 {
+func ImageButton_GetTop(obj uintptr) int32 {
     return int32(syscallN(11765, obj))
 }
 
-func ImageButton_SetWidth(obj uintptr, value int32) {
+func ImageButton_SetTop(obj uintptr, value int32) {
     syscallN(11766, obj, uintptr(value))
 }
 
-func ImageButton_GetHeight(obj uintptr) int32 {
+func ImageButton_GetWidth(obj uintptr) int32 {
     return int32(syscallN(11767, obj))
 }
 
-func ImageButton_SetHeight(obj uintptr, value int32) {
+func ImageButton_SetWidth(obj uintptr, value int32) {
     syscallN(11768, obj, uintptr(value))
 }
 
-func ImageButton_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(11769, obj))
+func ImageButton_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(11769, obj))
 }
 
-func ImageButton_SetCursor(obj uintptr, value TCursor) {
+func ImageButton_SetHeight(obj uintptr, value int32) {
     syscallN(11770, obj, uintptr(value))
 }
 
+func ImageButton_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(11771, obj))
+}
+
+func ImageButton_SetCursor(obj uintptr, value TCursor) {
+    syscallN(11772, obj, uintptr(value))
+}
+
 func ImageButton_GetHint(obj uintptr) string {
-    return GoStr(syscallN(11771, obj))
+    return GoStr(syscallN(11773, obj))
 }
 
 func ImageButton_SetHint(obj uintptr, value string) {
-    syscallN(11772, obj, PascalStr(value))
+    syscallN(11774, obj, PascalStr(value))
 }
 
 func ImageButton_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(11773, obj))
+    return int32(syscallN(11775, obj))
 }
 
 func ImageButton_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(11774, obj))
+    return int32(syscallN(11776, obj))
 }
 
 func ImageButton_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(11775, obj, uintptr(value))
+    syscallN(11777, obj, uintptr(value))
 }
 
 func ImageButton_GetOwner(obj uintptr) uintptr {
-    return syscallN(11776, obj)
+    return syscallN(11778, obj)
 }
 
 func ImageButton_GetName(obj uintptr) string {
-    return GoStr(syscallN(11777, obj))
+    return GoStr(syscallN(11779, obj))
 }
 
 func ImageButton_SetName(obj uintptr, value string) {
-    syscallN(11778, obj, PascalStr(value))
+    syscallN(11780, obj, PascalStr(value))
 }
 
 func ImageButton_GetTag(obj uintptr) int {
-    return int(syscallN(11779, obj))
+    return int(syscallN(11781, obj))
 }
 
 func ImageButton_SetTag(obj uintptr, value int) {
-    syscallN(11780, obj, uintptr(value))
+    syscallN(11782, obj, uintptr(value))
 }
 
 func ImageButton_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(11781, obj)
-}
-
-func ImageButton_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(11782, obj, value)
-}
-
-func ImageButton_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(11783, obj)
 }
 
-func ImageButton_SetAnchorSideTop(obj uintptr, value uintptr) {
+func ImageButton_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(11784, obj, value)
 }
 
-func ImageButton_GetAnchorSideRight(obj uintptr) uintptr {
+func ImageButton_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(11785, obj)
 }
 
-func ImageButton_SetAnchorSideRight(obj uintptr, value uintptr) {
+func ImageButton_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(11786, obj, value)
 }
 
-func ImageButton_GetAnchorSideBottom(obj uintptr) uintptr {
+func ImageButton_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(11787, obj)
 }
 
-func ImageButton_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func ImageButton_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(11788, obj, value)
 }
 
-func ImageButton_GetBorderSpacing(obj uintptr) uintptr {
+func ImageButton_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(11789, obj)
 }
 
-func ImageButton_SetBorderSpacing(obj uintptr, value uintptr) {
+func ImageButton_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(11790, obj, value)
 }
 
+func ImageButton_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(11791, obj)
+}
+
+func ImageButton_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(11792, obj, value)
+}
+
 func ImageButton_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(11791, obj, uintptr(AIndex))
+    return syscallN(11793, obj, uintptr(AIndex))
 }
 
 func ImageButton_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(11792, obj, uintptr(AKind))
+    return syscallN(11794, obj, uintptr(AKind))
 }
 
 func ImageButton_StaticClassType() TClass {
-    return TClass(syscallN(11793))
+    return TClass(syscallN(11795))
 }
 
 //--------------------------- TFindDialog ---------------------------
 
 func FindDialog_Create(obj uintptr) uintptr {
-    return syscallN(11794, obj)
+    return syscallN(11796, obj)
 }
 
 func FindDialog_Free(obj uintptr) {
-    syscallN(11795, obj)
+    syscallN(11797, obj)
 }
 
 func FindDialog_CloseDialog(obj uintptr)  {
-    syscallN(11796, obj)
+    syscallN(11798, obj)
 }
 
 func FindDialog_Execute(obj uintptr) bool {
-    return GoBool(syscallN(11797, obj))
+    return GoBool(syscallN(11799, obj))
 }
 
 func FindDialog_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(11798, obj, PascalStr(AName) )
+    return syscallN(11800, obj, PascalStr(AName) )
 }
 
 func FindDialog_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(11799, obj))
+    return GoStr(syscallN(11801, obj))
 }
 
 func FindDialog_HasParent(obj uintptr) bool {
-    return GoBool(syscallN(11800, obj))
+    return GoBool(syscallN(11802, obj))
 }
 
 func FindDialog_Assign(obj uintptr, Source uintptr)  {
-    syscallN(11801, obj, Source )
+    syscallN(11803, obj, Source )
 }
 
 func FindDialog_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(11802, obj))
+    return TClass(syscallN(11804, obj))
 }
 
 func FindDialog_ClassName(obj uintptr) string {
-    return GoStr(syscallN(11803, obj))
+    return GoStr(syscallN(11805, obj))
 }
 
 func FindDialog_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(11804, obj))
+    return int32(syscallN(11806, obj))
 }
 
 func FindDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(11805, obj, uintptr(AClass) ))
+    return GoBool(syscallN(11807, obj, uintptr(AClass) ))
 }
 
 func FindDialog_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(11806, obj, Obj ))
+    return GoBool(syscallN(11808, obj, Obj ))
 }
 
 func FindDialog_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(11807, obj))
-}
-
-func FindDialog_ToString(obj uintptr) string {
-    return GoStr(syscallN(11808, obj))
-}
-
-func FindDialog_GetLeft(obj uintptr) int32 {
     return int32(syscallN(11809, obj))
 }
 
+func FindDialog_ToString(obj uintptr) string {
+    return GoStr(syscallN(11810, obj))
+}
+
+func FindDialog_GetLeft(obj uintptr) int32 {
+    return int32(syscallN(11811, obj))
+}
+
 func FindDialog_SetLeft(obj uintptr, value int32) {
-    syscallN(11810, obj, uintptr(value))
+    syscallN(11812, obj, uintptr(value))
 }
 
 func FindDialog_GetPosition(obj uintptr) (result TPoint) {
-    syscallN(11811, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11813, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func FindDialog_SetPosition(obj uintptr, value TPoint) {
-    syscallN(11812, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(11814, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func FindDialog_GetTop(obj uintptr) int32 {
-    return int32(syscallN(11813, obj))
+    return int32(syscallN(11815, obj))
 }
 
 func FindDialog_SetTop(obj uintptr, value int32) {
-    syscallN(11814, obj, uintptr(value))
+    syscallN(11816, obj, uintptr(value))
 }
 
 func FindDialog_GetFindText(obj uintptr) string {
-    return GoStr(syscallN(11815, obj))
+    return GoStr(syscallN(11817, obj))
 }
 
 func FindDialog_SetFindText(obj uintptr, value string) {
-    syscallN(11816, obj, PascalStr(value))
+    syscallN(11818, obj, PascalStr(value))
 }
 
 func FindDialog_GetOptions(obj uintptr) TFindOptions {
-    return TFindOptions(syscallN(11817, obj))
+    return TFindOptions(syscallN(11819, obj))
 }
 
 func FindDialog_SetOptions(obj uintptr, value TFindOptions) {
-    syscallN(11818, obj, uintptr(value))
+    syscallN(11820, obj, uintptr(value))
 }
 
 func FindDialog_SetOnFind(obj uintptr, fn interface{}) {
-    syscallN(11819, obj, MakeEventDataPtr(fn))
-}
-
-func FindDialog_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(11820, obj))
-}
-
-func FindDialog_SetOnClose(obj uintptr, fn interface{}) {
     syscallN(11821, obj, MakeEventDataPtr(fn))
 }
 
+func FindDialog_GetHandle(obj uintptr) HWND {
+    return HWND(syscallN(11822, obj))
+}
+
+func FindDialog_SetOnClose(obj uintptr, fn interface{}) {
+    syscallN(11823, obj, MakeEventDataPtr(fn))
+}
+
 func FindDialog_SetOnShow(obj uintptr, fn interface{}) {
-    syscallN(11822, obj, MakeEventDataPtr(fn))
+    syscallN(11824, obj, MakeEventDataPtr(fn))
 }
 
 func FindDialog_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(11823, obj))
+    return int32(syscallN(11825, obj))
 }
 
 func FindDialog_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(11824, obj))
+    return int32(syscallN(11826, obj))
 }
 
 func FindDialog_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(11825, obj, uintptr(value))
+    syscallN(11827, obj, uintptr(value))
 }
 
 func FindDialog_GetOwner(obj uintptr) uintptr {
-    return syscallN(11826, obj)
+    return syscallN(11828, obj)
 }
 
 func FindDialog_GetName(obj uintptr) string {
-    return GoStr(syscallN(11827, obj))
+    return GoStr(syscallN(11829, obj))
 }
 
 func FindDialog_SetName(obj uintptr, value string) {
-    syscallN(11828, obj, PascalStr(value))
+    syscallN(11830, obj, PascalStr(value))
 }
 
 func FindDialog_GetTag(obj uintptr) int {
-    return int(syscallN(11829, obj))
+    return int(syscallN(11831, obj))
 }
 
 func FindDialog_SetTag(obj uintptr, value int) {
-    syscallN(11830, obj, uintptr(value))
+    syscallN(11832, obj, uintptr(value))
 }
 
 func FindDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(11831, obj, uintptr(AIndex))
+    return syscallN(11833, obj, uintptr(AIndex))
 }
 
 func FindDialog_StaticClassType() TClass {
-    return TClass(syscallN(11832))
+    return TClass(syscallN(11834))
 }
 
 //--------------------------- TReplaceDialog ---------------------------
 
 func ReplaceDialog_Create(obj uintptr) uintptr {
-    return syscallN(11833, obj)
+    return syscallN(11835, obj)
 }
 
 func ReplaceDialog_Free(obj uintptr) {
-    syscallN(11834, obj)
+    syscallN(11836, obj)
 }
 
 func ReplaceDialog_CloseDialog(obj uintptr)  {
-    syscallN(11835, obj)
+    syscallN(11837, obj)
 }
 
 func ReplaceDialog_Execute(obj uintptr) bool {
-    return GoBool(syscallN(11836, obj))
+    return GoBool(syscallN(11838, obj))
 }
 
 func ReplaceDialog_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(11837, obj, PascalStr(AName) )
+    return syscallN(11839, obj, PascalStr(AName) )
 }
 
 func ReplaceDialog_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(11838, obj))
+    return GoStr(syscallN(11840, obj))
 }
 
 func ReplaceDialog_HasParent(obj uintptr) bool {
-    return GoBool(syscallN(11839, obj))
+    return GoBool(syscallN(11841, obj))
 }
 
 func ReplaceDialog_Assign(obj uintptr, Source uintptr)  {
-    syscallN(11840, obj, Source )
+    syscallN(11842, obj, Source )
 }
 
 func ReplaceDialog_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(11841, obj))
+    return TClass(syscallN(11843, obj))
 }
 
 func ReplaceDialog_ClassName(obj uintptr) string {
-    return GoStr(syscallN(11842, obj))
+    return GoStr(syscallN(11844, obj))
 }
 
 func ReplaceDialog_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(11843, obj))
+    return int32(syscallN(11845, obj))
 }
 
 func ReplaceDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(11844, obj, uintptr(AClass) ))
+    return GoBool(syscallN(11846, obj, uintptr(AClass) ))
 }
 
 func ReplaceDialog_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(11845, obj, Obj ))
+    return GoBool(syscallN(11847, obj, Obj ))
 }
 
 func ReplaceDialog_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(11846, obj))
+    return int32(syscallN(11848, obj))
 }
 
 func ReplaceDialog_ToString(obj uintptr) string {
-    return GoStr(syscallN(11847, obj))
+    return GoStr(syscallN(11849, obj))
 }
 
 func ReplaceDialog_GetReplaceText(obj uintptr) string {
-    return GoStr(syscallN(11848, obj))
+    return GoStr(syscallN(11850, obj))
 }
 
 func ReplaceDialog_SetReplaceText(obj uintptr, value string) {
-    syscallN(11849, obj, PascalStr(value))
+    syscallN(11851, obj, PascalStr(value))
 }
 
 func ReplaceDialog_SetOnReplace(obj uintptr, fn interface{}) {
-    syscallN(11850, obj, MakeEventDataPtr(fn))
+    syscallN(11852, obj, MakeEventDataPtr(fn))
 }
 
 func ReplaceDialog_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(11851, obj))
+    return int32(syscallN(11853, obj))
 }
 
 func ReplaceDialog_SetLeft(obj uintptr, value int32) {
-    syscallN(11852, obj, uintptr(value))
+    syscallN(11854, obj, uintptr(value))
 }
 
 func ReplaceDialog_GetPosition(obj uintptr) (result TPoint) {
-    syscallN(11853, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11855, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ReplaceDialog_SetPosition(obj uintptr, value TPoint) {
-    syscallN(11854, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(11856, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func ReplaceDialog_GetTop(obj uintptr) int32 {
-    return int32(syscallN(11855, obj))
+    return int32(syscallN(11857, obj))
 }
 
 func ReplaceDialog_SetTop(obj uintptr, value int32) {
-    syscallN(11856, obj, uintptr(value))
+    syscallN(11858, obj, uintptr(value))
 }
 
 func ReplaceDialog_GetFindText(obj uintptr) string {
-    return GoStr(syscallN(11857, obj))
+    return GoStr(syscallN(11859, obj))
 }
 
 func ReplaceDialog_SetFindText(obj uintptr, value string) {
-    syscallN(11858, obj, PascalStr(value))
+    syscallN(11860, obj, PascalStr(value))
 }
 
 func ReplaceDialog_GetOptions(obj uintptr) TFindOptions {
-    return TFindOptions(syscallN(11859, obj))
+    return TFindOptions(syscallN(11861, obj))
 }
 
 func ReplaceDialog_SetOptions(obj uintptr, value TFindOptions) {
-    syscallN(11860, obj, uintptr(value))
+    syscallN(11862, obj, uintptr(value))
 }
 
 func ReplaceDialog_SetOnFind(obj uintptr, fn interface{}) {
-    syscallN(11861, obj, MakeEventDataPtr(fn))
-}
-
-func ReplaceDialog_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(11862, obj))
-}
-
-func ReplaceDialog_SetOnClose(obj uintptr, fn interface{}) {
     syscallN(11863, obj, MakeEventDataPtr(fn))
 }
 
+func ReplaceDialog_GetHandle(obj uintptr) HWND {
+    return HWND(syscallN(11864, obj))
+}
+
+func ReplaceDialog_SetOnClose(obj uintptr, fn interface{}) {
+    syscallN(11865, obj, MakeEventDataPtr(fn))
+}
+
 func ReplaceDialog_SetOnShow(obj uintptr, fn interface{}) {
-    syscallN(11864, obj, MakeEventDataPtr(fn))
+    syscallN(11866, obj, MakeEventDataPtr(fn))
 }
 
 func ReplaceDialog_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(11865, obj))
+    return int32(syscallN(11867, obj))
 }
 
 func ReplaceDialog_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(11866, obj))
+    return int32(syscallN(11868, obj))
 }
 
 func ReplaceDialog_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(11867, obj, uintptr(value))
+    syscallN(11869, obj, uintptr(value))
 }
 
 func ReplaceDialog_GetOwner(obj uintptr) uintptr {
-    return syscallN(11868, obj)
+    return syscallN(11870, obj)
 }
 
 func ReplaceDialog_GetName(obj uintptr) string {
-    return GoStr(syscallN(11869, obj))
+    return GoStr(syscallN(11871, obj))
 }
 
 func ReplaceDialog_SetName(obj uintptr, value string) {
-    syscallN(11870, obj, PascalStr(value))
+    syscallN(11872, obj, PascalStr(value))
 }
 
 func ReplaceDialog_GetTag(obj uintptr) int {
-    return int(syscallN(11871, obj))
+    return int(syscallN(11873, obj))
 }
 
 func ReplaceDialog_SetTag(obj uintptr, value int) {
-    syscallN(11872, obj, uintptr(value))
+    syscallN(11874, obj, uintptr(value))
 }
 
 func ReplaceDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(11873, obj, uintptr(AIndex))
+    return syscallN(11875, obj, uintptr(AIndex))
 }
 
 func ReplaceDialog_StaticClassType() TClass {
-    return TClass(syscallN(11874))
+    return TClass(syscallN(11876))
 }
 
 //--------------------------- TPrinterSetupDialog ---------------------------
 
 func PrinterSetupDialog_Create(obj uintptr) uintptr {
-    return syscallN(11875, obj)
+    return syscallN(11877, obj)
 }
 
 func PrinterSetupDialog_Free(obj uintptr) {
-    syscallN(11876, obj)
+    syscallN(11878, obj)
 }
 
 func PrinterSetupDialog_Execute(obj uintptr) bool {
-    return GoBool(syscallN(11877, obj))
+    return GoBool(syscallN(11879, obj))
 }
 
 func PrinterSetupDialog_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(11878, obj, PascalStr(AName) )
+    return syscallN(11880, obj, PascalStr(AName) )
 }
 
 func PrinterSetupDialog_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(11879, obj))
+    return GoStr(syscallN(11881, obj))
 }
 
 func PrinterSetupDialog_HasParent(obj uintptr) bool {
-    return GoBool(syscallN(11880, obj))
+    return GoBool(syscallN(11882, obj))
 }
 
 func PrinterSetupDialog_Assign(obj uintptr, Source uintptr)  {
-    syscallN(11881, obj, Source )
+    syscallN(11883, obj, Source )
 }
 
 func PrinterSetupDialog_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(11882, obj))
+    return TClass(syscallN(11884, obj))
 }
 
 func PrinterSetupDialog_ClassName(obj uintptr) string {
-    return GoStr(syscallN(11883, obj))
+    return GoStr(syscallN(11885, obj))
 }
 
 func PrinterSetupDialog_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(11884, obj))
+    return int32(syscallN(11886, obj))
 }
 
 func PrinterSetupDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(11885, obj, uintptr(AClass) ))
+    return GoBool(syscallN(11887, obj, uintptr(AClass) ))
 }
 
 func PrinterSetupDialog_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(11886, obj, Obj ))
+    return GoBool(syscallN(11888, obj, Obj ))
 }
 
 func PrinterSetupDialog_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(11887, obj))
+    return int32(syscallN(11889, obj))
 }
 
 func PrinterSetupDialog_ToString(obj uintptr) string {
-    return GoStr(syscallN(11888, obj))
+    return GoStr(syscallN(11890, obj))
 }
 
 func PrinterSetupDialog_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(11889, obj))
+    return HWND(syscallN(11891, obj))
 }
 
 func PrinterSetupDialog_SetOnClose(obj uintptr, fn interface{}) {
-    syscallN(11890, obj, MakeEventDataPtr(fn))
+    syscallN(11892, obj, MakeEventDataPtr(fn))
 }
 
 func PrinterSetupDialog_SetOnShow(obj uintptr, fn interface{}) {
-    syscallN(11891, obj, MakeEventDataPtr(fn))
+    syscallN(11893, obj, MakeEventDataPtr(fn))
 }
 
 func PrinterSetupDialog_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(11892, obj))
+    return int32(syscallN(11894, obj))
 }
 
 func PrinterSetupDialog_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(11893, obj))
+    return int32(syscallN(11895, obj))
 }
 
 func PrinterSetupDialog_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(11894, obj, uintptr(value))
+    syscallN(11896, obj, uintptr(value))
 }
 
 func PrinterSetupDialog_GetOwner(obj uintptr) uintptr {
-    return syscallN(11895, obj)
+    return syscallN(11897, obj)
 }
 
 func PrinterSetupDialog_GetName(obj uintptr) string {
-    return GoStr(syscallN(11896, obj))
+    return GoStr(syscallN(11898, obj))
 }
 
 func PrinterSetupDialog_SetName(obj uintptr, value string) {
-    syscallN(11897, obj, PascalStr(value))
+    syscallN(11899, obj, PascalStr(value))
 }
 
 func PrinterSetupDialog_GetTag(obj uintptr) int {
-    return int(syscallN(11898, obj))
+    return int(syscallN(11900, obj))
 }
 
 func PrinterSetupDialog_SetTag(obj uintptr, value int) {
-    syscallN(11899, obj, uintptr(value))
+    syscallN(11901, obj, uintptr(value))
 }
 
 func PrinterSetupDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(11900, obj, uintptr(AIndex))
+    return syscallN(11902, obj, uintptr(AIndex))
 }
 
 func PrinterSetupDialog_StaticClassType() TClass {
-    return TClass(syscallN(11901))
+    return TClass(syscallN(11903))
 }
 
 //--------------------------- TPageSetupDialog ---------------------------
 
 func PageSetupDialog_Create(obj uintptr) uintptr {
-    return syscallN(11902, obj)
+    return syscallN(11904, obj)
 }
 
 func PageSetupDialog_Free(obj uintptr) {
-    syscallN(11903, obj)
+    syscallN(11905, obj)
 }
 
 func PageSetupDialog_Execute(obj uintptr) bool {
-    return GoBool(syscallN(11904, obj))
+    return GoBool(syscallN(11906, obj))
 }
 
 func PageSetupDialog_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(11905, obj, PascalStr(AName) )
+    return syscallN(11907, obj, PascalStr(AName) )
 }
 
 func PageSetupDialog_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(11906, obj))
+    return GoStr(syscallN(11908, obj))
 }
 
 func PageSetupDialog_HasParent(obj uintptr) bool {
-    return GoBool(syscallN(11907, obj))
+    return GoBool(syscallN(11909, obj))
 }
 
 func PageSetupDialog_Assign(obj uintptr, Source uintptr)  {
-    syscallN(11908, obj, Source )
+    syscallN(11910, obj, Source )
 }
 
 func PageSetupDialog_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(11909, obj))
+    return TClass(syscallN(11911, obj))
 }
 
 func PageSetupDialog_ClassName(obj uintptr) string {
-    return GoStr(syscallN(11910, obj))
+    return GoStr(syscallN(11912, obj))
 }
 
 func PageSetupDialog_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(11911, obj))
+    return int32(syscallN(11913, obj))
 }
 
 func PageSetupDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(11912, obj, uintptr(AClass) ))
+    return GoBool(syscallN(11914, obj, uintptr(AClass) ))
 }
 
 func PageSetupDialog_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(11913, obj, Obj ))
+    return GoBool(syscallN(11915, obj, Obj ))
 }
 
 func PageSetupDialog_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(11914, obj))
-}
-
-func PageSetupDialog_ToString(obj uintptr) string {
-    return GoStr(syscallN(11915, obj))
-}
-
-func PageSetupDialog_GetMarginLeft(obj uintptr) int32 {
     return int32(syscallN(11916, obj))
 }
 
-func PageSetupDialog_SetMarginLeft(obj uintptr, value int32) {
-    syscallN(11917, obj, uintptr(value))
+func PageSetupDialog_ToString(obj uintptr) string {
+    return GoStr(syscallN(11917, obj))
 }
 
-func PageSetupDialog_GetMarginTop(obj uintptr) int32 {
+func PageSetupDialog_GetMarginLeft(obj uintptr) int32 {
     return int32(syscallN(11918, obj))
 }
 
-func PageSetupDialog_SetMarginTop(obj uintptr, value int32) {
+func PageSetupDialog_SetMarginLeft(obj uintptr, value int32) {
     syscallN(11919, obj, uintptr(value))
 }
 
-func PageSetupDialog_GetMarginRight(obj uintptr) int32 {
+func PageSetupDialog_GetMarginTop(obj uintptr) int32 {
     return int32(syscallN(11920, obj))
 }
 
-func PageSetupDialog_SetMarginRight(obj uintptr, value int32) {
+func PageSetupDialog_SetMarginTop(obj uintptr, value int32) {
     syscallN(11921, obj, uintptr(value))
 }
 
-func PageSetupDialog_GetMarginBottom(obj uintptr) int32 {
+func PageSetupDialog_GetMarginRight(obj uintptr) int32 {
     return int32(syscallN(11922, obj))
 }
 
-func PageSetupDialog_SetMarginBottom(obj uintptr, value int32) {
+func PageSetupDialog_SetMarginRight(obj uintptr, value int32) {
     syscallN(11923, obj, uintptr(value))
 }
 
-func PageSetupDialog_GetOptions(obj uintptr) TPageSetupDialogOptions {
-    return TPageSetupDialogOptions(syscallN(11924, obj))
+func PageSetupDialog_GetMarginBottom(obj uintptr) int32 {
+    return int32(syscallN(11924, obj))
 }
 
-func PageSetupDialog_SetOptions(obj uintptr, value TPageSetupDialogOptions) {
+func PageSetupDialog_SetMarginBottom(obj uintptr, value int32) {
     syscallN(11925, obj, uintptr(value))
 }
 
-func PageSetupDialog_GetPageWidth(obj uintptr) int32 {
-    return int32(syscallN(11926, obj))
+func PageSetupDialog_GetOptions(obj uintptr) TPageSetupDialogOptions {
+    return TPageSetupDialogOptions(syscallN(11926, obj))
 }
 
-func PageSetupDialog_SetPageWidth(obj uintptr, value int32) {
+func PageSetupDialog_SetOptions(obj uintptr, value TPageSetupDialogOptions) {
     syscallN(11927, obj, uintptr(value))
 }
 
-func PageSetupDialog_GetPageHeight(obj uintptr) int32 {
+func PageSetupDialog_GetPageWidth(obj uintptr) int32 {
     return int32(syscallN(11928, obj))
 }
 
-func PageSetupDialog_SetPageHeight(obj uintptr, value int32) {
+func PageSetupDialog_SetPageWidth(obj uintptr, value int32) {
     syscallN(11929, obj, uintptr(value))
 }
 
+func PageSetupDialog_GetPageHeight(obj uintptr) int32 {
+    return int32(syscallN(11930, obj))
+}
+
+func PageSetupDialog_SetPageHeight(obj uintptr, value int32) {
+    syscallN(11931, obj, uintptr(value))
+}
+
 func PageSetupDialog_GetUnits(obj uintptr) TPageMeasureUnits {
-    return TPageMeasureUnits(syscallN(11930, obj))
+    return TPageMeasureUnits(syscallN(11932, obj))
 }
 
 func PageSetupDialog_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(11931, obj))
+    return HWND(syscallN(11933, obj))
 }
 
 func PageSetupDialog_SetOnClose(obj uintptr, fn interface{}) {
-    syscallN(11932, obj, MakeEventDataPtr(fn))
+    syscallN(11934, obj, MakeEventDataPtr(fn))
 }
 
 func PageSetupDialog_SetOnShow(obj uintptr, fn interface{}) {
-    syscallN(11933, obj, MakeEventDataPtr(fn))
+    syscallN(11935, obj, MakeEventDataPtr(fn))
 }
 
 func PageSetupDialog_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(11934, obj))
+    return int32(syscallN(11936, obj))
 }
 
 func PageSetupDialog_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(11935, obj))
+    return int32(syscallN(11937, obj))
 }
 
 func PageSetupDialog_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(11936, obj, uintptr(value))
+    syscallN(11938, obj, uintptr(value))
 }
 
 func PageSetupDialog_GetOwner(obj uintptr) uintptr {
-    return syscallN(11937, obj)
+    return syscallN(11939, obj)
 }
 
 func PageSetupDialog_GetName(obj uintptr) string {
-    return GoStr(syscallN(11938, obj))
+    return GoStr(syscallN(11940, obj))
 }
 
 func PageSetupDialog_SetName(obj uintptr, value string) {
-    syscallN(11939, obj, PascalStr(value))
+    syscallN(11941, obj, PascalStr(value))
 }
 
 func PageSetupDialog_GetTag(obj uintptr) int {
-    return int(syscallN(11940, obj))
+    return int(syscallN(11942, obj))
 }
 
 func PageSetupDialog_SetTag(obj uintptr, value int) {
-    syscallN(11941, obj, uintptr(value))
+    syscallN(11943, obj, uintptr(value))
 }
 
 func PageSetupDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(11942, obj, uintptr(AIndex))
+    return syscallN(11944, obj, uintptr(AIndex))
 }
 
 func PageSetupDialog_StaticClassType() TClass {
-    return TClass(syscallN(11943))
+    return TClass(syscallN(11945))
 }
 
 //--------------------------- TDragObject ---------------------------
 
 func DragObject_Create(obj uintptr) uintptr {
-    return syscallN(11944, obj)
+    return syscallN(11946, obj)
 }
 
 func DragObject_Free(obj uintptr) {
-    syscallN(11945, obj)
-}
-
-func DragObject_Assign(obj uintptr, Source uintptr)  {
-    syscallN(11946, obj, Source )
-}
-
-func DragObject_HideDragImage(obj uintptr)  {
     syscallN(11947, obj)
 }
 
+func DragObject_Assign(obj uintptr, Source uintptr)  {
+    syscallN(11948, obj, Source )
+}
+
+func DragObject_HideDragImage(obj uintptr)  {
+    syscallN(11949, obj)
+}
+
 func DragObject_ShowDragImage(obj uintptr)  {
-    syscallN(11948, obj)
+    syscallN(11950, obj)
 }
 
 func DragObject_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(11949, obj))
+    return TClass(syscallN(11951, obj))
 }
 
 func DragObject_ClassName(obj uintptr) string {
-    return GoStr(syscallN(11950, obj))
+    return GoStr(syscallN(11952, obj))
 }
 
 func DragObject_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(11951, obj))
+    return int32(syscallN(11953, obj))
 }
 
 func DragObject_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(11952, obj, uintptr(AClass) ))
+    return GoBool(syscallN(11954, obj, uintptr(AClass) ))
 }
 
 func DragObject_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(11953, obj, Obj ))
+    return GoBool(syscallN(11955, obj, Obj ))
 }
 
 func DragObject_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(11954, obj))
+    return int32(syscallN(11956, obj))
 }
 
 func DragObject_ToString(obj uintptr) string {
-    return GoStr(syscallN(11955, obj))
+    return GoStr(syscallN(11957, obj))
 }
 
 func DragObject_GetAlwaysShowDragImages(obj uintptr) bool {
-    return GoBool(syscallN(11956, obj))
+    return GoBool(syscallN(11958, obj))
 }
 
 func DragObject_SetAlwaysShowDragImages(obj uintptr, value bool) {
-    syscallN(11957, obj, PascalBool(value))
+    syscallN(11959, obj, PascalBool(value))
 }
 
 func DragObject_GetDragPos(obj uintptr) (result TPoint) {
-    syscallN(11958, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11960, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DragObject_SetDragPos(obj uintptr, value TPoint) {
-    syscallN(11959, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(11961, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func DragObject_GetDragTarget(obj uintptr) uintptr {
-    return syscallN(11960, obj)
+    return syscallN(11962, obj)
 }
 
 func DragObject_SetDragTarget(obj uintptr, value uintptr) {
-    syscallN(11961, obj, value)
+    syscallN(11963, obj, value)
 }
 
 func DragObject_GetDragTargetPos(obj uintptr) (result TPoint) {
-    syscallN(11962, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11964, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DragObject_SetDragTargetPos(obj uintptr, value TPoint) {
-    syscallN(11963, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(11965, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func DragObject_GetDropped(obj uintptr) bool {
-    return GoBool(syscallN(11964, obj))
+    return GoBool(syscallN(11966, obj))
 }
 
 func DragObject_StaticClassType() TClass {
-    return TClass(syscallN(11965))
+    return TClass(syscallN(11967))
 }
 
 //--------------------------- TDragDockObject ---------------------------
 
 func DragDockObject_Create(obj uintptr) uintptr {
-    return syscallN(11966, obj)
+    return syscallN(11968, obj)
 }
 
 func DragDockObject_Free(obj uintptr) {
-    syscallN(11967, obj)
-}
-
-func DragDockObject_Assign(obj uintptr, Source uintptr)  {
-    syscallN(11968, obj, Source )
-}
-
-func DragDockObject_HideDragImage(obj uintptr)  {
     syscallN(11969, obj)
 }
 
+func DragDockObject_Assign(obj uintptr, Source uintptr)  {
+    syscallN(11970, obj, Source )
+}
+
+func DragDockObject_HideDragImage(obj uintptr)  {
+    syscallN(11971, obj)
+}
+
 func DragDockObject_ShowDragImage(obj uintptr)  {
-    syscallN(11970, obj)
+    syscallN(11972, obj)
 }
 
 func DragDockObject_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(11971, obj))
+    return TClass(syscallN(11973, obj))
 }
 
 func DragDockObject_ClassName(obj uintptr) string {
-    return GoStr(syscallN(11972, obj))
+    return GoStr(syscallN(11974, obj))
 }
 
 func DragDockObject_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(11973, obj))
+    return int32(syscallN(11975, obj))
 }
 
 func DragDockObject_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(11974, obj, uintptr(AClass) ))
+    return GoBool(syscallN(11976, obj, uintptr(AClass) ))
 }
 
 func DragDockObject_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(11975, obj, Obj ))
+    return GoBool(syscallN(11977, obj, Obj ))
 }
 
 func DragDockObject_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(11976, obj))
+    return int32(syscallN(11978, obj))
 }
 
 func DragDockObject_ToString(obj uintptr) string {
-    return GoStr(syscallN(11977, obj))
+    return GoStr(syscallN(11979, obj))
 }
 
 func DragDockObject_GetDockRect(obj uintptr) (result TRect) {
-    syscallN(11978, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11980, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DragDockObject_SetDockRect(obj uintptr, value TRect) {
-    syscallN(11979, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(11981, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func DragDockObject_GetDropAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(11980, obj))
+    return TAlign(syscallN(11982, obj))
 }
 
 func DragDockObject_GetDropOnControl(obj uintptr) uintptr {
-    return syscallN(11981, obj)
+    return syscallN(11983, obj)
 }
 
 func DragDockObject_GetEraseDockRect(obj uintptr) (result TRect) {
-    syscallN(11982, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11984, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DragDockObject_SetEraseDockRect(obj uintptr, value TRect) {
-    syscallN(11983, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(11985, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func DragDockObject_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(11984, obj))
+    return GoBool(syscallN(11986, obj))
 }
 
 func DragDockObject_SetFloating(obj uintptr, value bool) {
-    syscallN(11985, obj, PascalBool(value))
+    syscallN(11987, obj, PascalBool(value))
 }
 
 func DragDockObject_GetControl(obj uintptr) uintptr {
-    return syscallN(11986, obj)
+    return syscallN(11988, obj)
 }
 
 func DragDockObject_SetControl(obj uintptr, value uintptr) {
-    syscallN(11987, obj, value)
+    syscallN(11989, obj, value)
 }
 
 func DragDockObject_GetAlwaysShowDragImages(obj uintptr) bool {
-    return GoBool(syscallN(11988, obj))
+    return GoBool(syscallN(11990, obj))
 }
 
 func DragDockObject_SetAlwaysShowDragImages(obj uintptr, value bool) {
-    syscallN(11989, obj, PascalBool(value))
+    syscallN(11991, obj, PascalBool(value))
 }
 
 func DragDockObject_GetDragPos(obj uintptr) (result TPoint) {
-    syscallN(11990, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11992, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DragDockObject_SetDragPos(obj uintptr, value TPoint) {
-    syscallN(11991, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(11993, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func DragDockObject_GetDragTarget(obj uintptr) uintptr {
-    return syscallN(11992, obj)
+    return syscallN(11994, obj)
 }
 
 func DragDockObject_SetDragTarget(obj uintptr, value uintptr) {
-    syscallN(11993, obj, value)
+    syscallN(11995, obj, value)
 }
 
 func DragDockObject_GetDragTargetPos(obj uintptr) (result TPoint) {
-    syscallN(11994, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(11996, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DragDockObject_SetDragTargetPos(obj uintptr, value TPoint) {
-    syscallN(11995, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(11997, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func DragDockObject_GetDropped(obj uintptr) bool {
-    return GoBool(syscallN(11996, obj))
+    return GoBool(syscallN(11998, obj))
 }
 
 func DragDockObject_StaticClassType() TClass {
-    return TClass(syscallN(11997))
+    return TClass(syscallN(11999))
 }
 
 //--------------------------- TStringGrid ---------------------------
 
 func StringGrid_Create(obj uintptr) uintptr {
-    return syscallN(11998, obj)
+    return syscallN(12000, obj)
 }
 
 func StringGrid_Free(obj uintptr) {
-    syscallN(11999, obj)
+    syscallN(12001, obj)
 }
 
 func StringGrid_DeleteColRow(obj uintptr, IsColumn bool, index int32)  {
-    syscallN(12000, obj, PascalBool(IsColumn) , uintptr(index) )
+    syscallN(12002, obj, PascalBool(IsColumn) , uintptr(index) )
 }
 
 func StringGrid_DeleteCol(obj uintptr, Index int32)  {
-    syscallN(12001, obj, uintptr(Index) )
+    syscallN(12003, obj, uintptr(Index) )
 }
 
 func StringGrid_DeleteRow(obj uintptr, Index int32)  {
-    syscallN(12002, obj, uintptr(Index) )
+    syscallN(12004, obj, uintptr(Index) )
 }
 
 func StringGrid_ExchangeColRow(obj uintptr, IsColumn bool, index int32, WithIndex int32)  {
-    syscallN(12003, obj, PascalBool(IsColumn) , uintptr(index) , uintptr(WithIndex) )
+    syscallN(12005, obj, PascalBool(IsColumn) , uintptr(index) , uintptr(WithIndex) )
 }
 
 func StringGrid_InsertColRow(obj uintptr, IsColumn bool, index int32)  {
-    syscallN(12004, obj, PascalBool(IsColumn) , uintptr(index) )
+    syscallN(12006, obj, PascalBool(IsColumn) , uintptr(index) )
 }
 
 func StringGrid_MoveColRow(obj uintptr, IsColumn bool, FromIndex int32, ToIndex int32)  {
-    syscallN(12005, obj, PascalBool(IsColumn) , uintptr(FromIndex) , uintptr(ToIndex) )
+    syscallN(12007, obj, PascalBool(IsColumn) , uintptr(FromIndex) , uintptr(ToIndex) )
 }
 
 func StringGrid_SortColRow(obj uintptr, IsColumn bool, Index int32, FromIndex int32, ToIndex int32)  {
-    syscallN(12006, obj, PascalBool(IsColumn) , uintptr(Index) , uintptr(FromIndex) , uintptr(ToIndex) )
+    syscallN(12008, obj, PascalBool(IsColumn) , uintptr(Index) , uintptr(FromIndex) , uintptr(ToIndex) )
 }
 
 func StringGrid_EditorByStyle(obj uintptr, Style TColumnButtonStyle) uintptr {
-    return syscallN(12007, obj, uintptr(Style) )
+    return syscallN(12009, obj, uintptr(Style) )
 }
 
 func StringGrid_EditorKeyDown(obj uintptr, Sender uintptr, Key *uint16, Shift TShiftState)  {
-    syscallN(12008, obj, Sender , uintptr(unsafe.Pointer(Key)), uintptr(Shift) )
+    syscallN(12010, obj, Sender , uintptr(unsafe.Pointer(Key)), uintptr(Shift) )
 }
 
 func StringGrid_EditorKeyPress(obj uintptr, Sender uintptr, Key *uint16)  {
-    syscallN(12009, obj, Sender , uintptr(unsafe.Pointer(Key)))
+    syscallN(12011, obj, Sender , uintptr(unsafe.Pointer(Key)))
 }
 
 func StringGrid_EditorKeyUp(obj uintptr, Sender uintptr, key *uint16, shift TShiftState)  {
-    syscallN(12010, obj, Sender , uintptr(unsafe.Pointer(key)), uintptr(shift) )
+    syscallN(12012, obj, Sender , uintptr(unsafe.Pointer(key)), uintptr(shift) )
 }
 
 func StringGrid_EditorTextChanged(obj uintptr, aCol int32, aRow int32, aText string)  {
-    syscallN(12011, obj, uintptr(aCol) , uintptr(aRow) , PascalStr(aText) )
+    syscallN(12013, obj, uintptr(aCol) , uintptr(aRow) , PascalStr(aText) )
 }
 
 func StringGrid_EditingDone(obj uintptr)  {
-    syscallN(12012, obj)
+    syscallN(12014, obj)
 }
 
 func StringGrid_AutoAdjustColumns(obj uintptr)  {
-    syscallN(12013, obj)
+    syscallN(12015, obj)
 }
 
 func StringGrid_CellRect(obj uintptr, ACol int32, ARow int32)(result  TRect)  {
-    syscallN(12014, obj, uintptr(ACol) , uintptr(ARow) , uintptr(unsafe.Pointer(&result)))
+    syscallN(12016, obj, uintptr(ACol) , uintptr(ARow) , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func StringGrid_CellToGridZone(obj uintptr, aCol int32, aRow int32) TGridZone {
-    return TGridZone(syscallN(12015, obj, uintptr(aCol) , uintptr(aRow) ))
+    return TGridZone(syscallN(12017, obj, uintptr(aCol) , uintptr(aRow) ))
 }
 
 func StringGrid_CheckPosition(obj uintptr)  {
-    syscallN(12016, obj)
+    syscallN(12018, obj)
 }
 
 func StringGrid_ClearCols(obj uintptr) bool {
-    return GoBool(syscallN(12017, obj))
+    return GoBool(syscallN(12019, obj))
 }
 
 func StringGrid_ClearRows(obj uintptr) bool {
-    return GoBool(syscallN(12018, obj))
+    return GoBool(syscallN(12020, obj))
 }
 
 func StringGrid_Clear(obj uintptr)  {
-    syscallN(12019, obj)
+    syscallN(12021, obj)
 }
 
 func StringGrid_ClearSelections(obj uintptr)  {
-    syscallN(12020, obj)
+    syscallN(12022, obj)
 }
 
 func StringGrid_HasMultiSelection(obj uintptr) bool {
-    return GoBool(syscallN(12021, obj))
+    return GoBool(syscallN(12023, obj))
 }
 
 func StringGrid_InvalidateCell(obj uintptr, aCol int32, aRow int32)  {
-    syscallN(12022, obj, uintptr(aCol) , uintptr(aRow) )
+    syscallN(12024, obj, uintptr(aCol) , uintptr(aRow) )
 }
 
 func StringGrid_InvalidateCol(obj uintptr, ACol int32)  {
-    syscallN(12023, obj, uintptr(ACol) )
+    syscallN(12025, obj, uintptr(ACol) )
 }
 
 func StringGrid_InvalidateRange(obj uintptr, aRange TRect)  {
-    syscallN(12024, obj, uintptr(unsafe.Pointer(&aRange)))
+    syscallN(12026, obj, uintptr(unsafe.Pointer(&aRange)))
 }
 
 func StringGrid_InvalidateRow(obj uintptr, ARow int32)  {
-    syscallN(12025, obj, uintptr(ARow) )
+    syscallN(12027, obj, uintptr(ARow) )
 }
 
 func StringGrid_IsCellVisible(obj uintptr, aCol int32, aRow int32) bool {
-    return GoBool(syscallN(12026, obj, uintptr(aCol) , uintptr(aRow) ))
+    return GoBool(syscallN(12028, obj, uintptr(aCol) , uintptr(aRow) ))
 }
 
 func StringGrid_IsFixedCellVisible(obj uintptr, aCol int32, aRow int32) bool {
-    return GoBool(syscallN(12027, obj, uintptr(aCol) , uintptr(aRow) ))
+    return GoBool(syscallN(12029, obj, uintptr(aCol) , uintptr(aRow) ))
 }
 
 func StringGrid_MouseCoord(obj uintptr, X int32, Y int32)(result  TGridCoord)  {
-    syscallN(12028, obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(&result)))
+    syscallN(12030, obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func StringGrid_MouseToCell(obj uintptr, Mouse TPoint)(result  TPoint)  {
-    syscallN(12029, obj, uintptr(unsafe.Pointer(&Mouse)), uintptr(unsafe.Pointer(&result)))
+    syscallN(12031, obj, uintptr(unsafe.Pointer(&Mouse)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func StringGrid_MouseToLogcell(obj uintptr, Mouse TPoint)(result  TPoint)  {
-    syscallN(12030, obj, uintptr(unsafe.Pointer(&Mouse)), uintptr(unsafe.Pointer(&result)))
+    syscallN(12032, obj, uintptr(unsafe.Pointer(&Mouse)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func StringGrid_MouseToGridZone(obj uintptr, X int32, Y int32) TGridZone {
-    return TGridZone(syscallN(12031, obj, uintptr(X) , uintptr(Y) ))
+    return TGridZone(syscallN(12033, obj, uintptr(X) , uintptr(Y) ))
 }
 
 func StringGrid_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(12032, obj))
+    return GoBool(syscallN(12034, obj))
 }
 
 func StringGrid_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(12033, obj, Control ))
+    return GoBool(syscallN(12035, obj, Control ))
 }
 
 func StringGrid_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(12034, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(12036, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func StringGrid_DisableAlign(obj uintptr)  {
-    syscallN(12035, obj)
+    syscallN(12037, obj)
 }
 
 func StringGrid_EnableAlign(obj uintptr)  {
-    syscallN(12036, obj)
+    syscallN(12038, obj)
 }
 
 func StringGrid_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(12037, obj, PascalStr(ControlName) )
+    return syscallN(12039, obj, PascalStr(ControlName) )
 }
 
 func StringGrid_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(12038, obj, PascalBool(AllLevels) )
+    syscallN(12040, obj, PascalBool(AllLevels) )
 }
 
 func StringGrid_Focused(obj uintptr) bool {
-    return GoBool(syscallN(12039, obj))
+    return GoBool(syscallN(12041, obj))
 }
 
 func StringGrid_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(12040, obj))
+    return GoBool(syscallN(12042, obj))
 }
 
 func StringGrid_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(12041, obj, AControl )
+    syscallN(12043, obj, AControl )
 }
 
 func StringGrid_Invalidate(obj uintptr)  {
-    syscallN(12042, obj)
+    syscallN(12044, obj)
 }
 
 func StringGrid_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(12043, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(12045, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func StringGrid_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(12044, obj, AControl )
+    syscallN(12046, obj, AControl )
 }
 
 func StringGrid_Realign(obj uintptr)  {
-    syscallN(12045, obj)
+    syscallN(12047, obj)
 }
 
 func StringGrid_Repaint(obj uintptr)  {
-    syscallN(12046, obj)
+    syscallN(12048, obj)
 }
 
 func StringGrid_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(12047, obj, uintptr(M) , uintptr(D) )
+    syscallN(12049, obj, uintptr(M) , uintptr(D) )
 }
 
 func StringGrid_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(12048, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(12050, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func StringGrid_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(12049, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(12051, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func StringGrid_SetFocus(obj uintptr)  {
-    syscallN(12050, obj)
+    syscallN(12052, obj)
 }
 
 func StringGrid_Update(obj uintptr)  {
-    syscallN(12051, obj)
-}
-
-func StringGrid_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(12052, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func StringGrid_BringToFront(obj uintptr)  {
     syscallN(12053, obj)
 }
 
+func StringGrid_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(12054, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func StringGrid_BringToFront(obj uintptr)  {
+    syscallN(12055, obj)
+}
+
 func StringGrid_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(12054, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(12056, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func StringGrid_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(12055, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(12057, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func StringGrid_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(12056, obj))
-}
-
-func StringGrid_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(12057, obj, PascalBool(Drop) )
-}
-
-func StringGrid_HasParent(obj uintptr) bool {
     return GoBool(syscallN(12058, obj))
 }
 
+func StringGrid_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(12059, obj, PascalBool(Drop) )
+}
+
+func StringGrid_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(12060, obj))
+}
+
 func StringGrid_Hide(obj uintptr)  {
-    syscallN(12059, obj)
-}
-
-func StringGrid_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(12060, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func StringGrid_Refresh(obj uintptr)  {
     syscallN(12061, obj)
 }
 
+func StringGrid_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(12062, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func StringGrid_Refresh(obj uintptr)  {
+    syscallN(12063, obj)
+}
+
 func StringGrid_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(12062, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(12064, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func StringGrid_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(12063, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(12065, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func StringGrid_SendToBack(obj uintptr)  {
-    syscallN(12064, obj)
+    syscallN(12066, obj)
 }
 
 func StringGrid_Show(obj uintptr)  {
-    syscallN(12065, obj)
+    syscallN(12067, obj)
 }
 
 func StringGrid_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(12066, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(12068, obj, Buffer, uintptr(BufSize) ))
 }
 
 func StringGrid_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(12067, obj))
+    return int32(syscallN(12069, obj))
 }
 
 func StringGrid_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(12068, obj, PascalStr(Buffer) )
+    syscallN(12070, obj, PascalStr(Buffer) )
 }
 
 func StringGrid_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(12069, obj, PascalStr(AName) )
+    return syscallN(12071, obj, PascalStr(AName) )
 }
 
 func StringGrid_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(12070, obj))
+    return GoStr(syscallN(12072, obj))
 }
 
 func StringGrid_Assign(obj uintptr, Source uintptr)  {
-    syscallN(12071, obj, Source )
+    syscallN(12073, obj, Source )
 }
 
 func StringGrid_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(12072, obj))
+    return TClass(syscallN(12074, obj))
 }
 
 func StringGrid_ClassName(obj uintptr) string {
-    return GoStr(syscallN(12073, obj))
+    return GoStr(syscallN(12075, obj))
 }
 
 func StringGrid_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(12074, obj))
+    return int32(syscallN(12076, obj))
 }
 
 func StringGrid_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(12075, obj, uintptr(AClass) ))
+    return GoBool(syscallN(12077, obj, uintptr(AClass) ))
 }
 
 func StringGrid_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(12076, obj, Obj ))
+    return GoBool(syscallN(12078, obj, Obj ))
 }
 
 func StringGrid_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(12077, obj))
+    return int32(syscallN(12079, obj))
 }
 
 func StringGrid_ToString(obj uintptr) string {
-    return GoStr(syscallN(12078, obj))
+    return GoStr(syscallN(12080, obj))
 }
 
 func StringGrid_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(12079, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(12081, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func StringGrid_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(12080, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(12082, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func StringGrid_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(12081, obj, ASibling )
+    syscallN(12083, obj, ASibling )
 }
 
 func StringGrid_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(12082, obj, ASibling )
+    syscallN(12084, obj, ASibling )
 }
 
 func StringGrid_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(12083, obj, uintptr(ASide) , ASibling )
+    syscallN(12085, obj, uintptr(ASide) , ASibling )
 }
 
 func StringGrid_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(12084, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(12086, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func StringGrid_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(12085, obj, uintptr(ASpace) )
+    syscallN(12087, obj, uintptr(ASpace) )
 }
 
 func StringGrid_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(12086, obj, uintptr(ASize) ))
-}
-
-func StringGrid_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(12087, obj, uintptr(ASize) ))
-}
-
-func StringGrid_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12088, obj, uintptr(ASize) ))
 }
 
-func StringGrid_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func StringGrid_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12089, obj, uintptr(ASize) ))
 }
 
-func StringGrid_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func StringGrid_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12090, obj, uintptr(ASize) ))
 }
 
-func StringGrid_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func StringGrid_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12091, obj, uintptr(ASize) ))
 }
 
-func StringGrid_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func StringGrid_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12092, obj, uintptr(ASize) ))
 }
 
-func StringGrid_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func StringGrid_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12093, obj, uintptr(ASize) ))
 }
 
-func StringGrid_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func StringGrid_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12094, obj, uintptr(ASize) ))
 }
 
-func StringGrid_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func StringGrid_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12095, obj, uintptr(ASize) ))
 }
 
+func StringGrid_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(12096, obj, uintptr(ASize) ))
+}
+
+func StringGrid_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(12097, obj, uintptr(ASize) ))
+}
+
 func StringGrid_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(12096, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(12098, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func StringGrid_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(12097, obj, uintptr(ADesignTimePPI) )
+    syscallN(12099, obj, uintptr(ADesignTimePPI) )
 }
 
 func StringGrid_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(12098, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(12100, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func StringGrid_GetSelectedColor(obj uintptr) TColor {
-    return TColor(syscallN(12099, obj))
+    return TColor(syscallN(12101, obj))
 }
 
 func StringGrid_SetSelectedColor(obj uintptr, value TColor) {
-    syscallN(12100, obj, uintptr(value))
+    syscallN(12102, obj, uintptr(value))
 }
 
 func StringGrid_GetSelectedColumn(obj uintptr) uintptr {
-    return syscallN(12101, obj)
+    return syscallN(12103, obj)
 }
 
 func StringGrid_GetStrictSort(obj uintptr) bool {
-    return GoBool(syscallN(12102, obj))
+    return GoBool(syscallN(12104, obj))
 }
 
 func StringGrid_SetStrictSort(obj uintptr, value bool) {
-    syscallN(12103, obj, PascalBool(value))
+    syscallN(12105, obj, PascalBool(value))
 }
 
 func StringGrid_GetFixedHotColor(obj uintptr) TColor {
-    return TColor(syscallN(12104, obj))
+    return TColor(syscallN(12106, obj))
 }
 
 func StringGrid_SetFixedHotColor(obj uintptr, value TColor) {
-    syscallN(12105, obj, uintptr(value))
+    syscallN(12107, obj, uintptr(value))
 }
 
 func StringGrid_GetFastEditing(obj uintptr) bool {
-    return GoBool(syscallN(12106, obj))
+    return GoBool(syscallN(12108, obj))
 }
 
 func StringGrid_SetFastEditing(obj uintptr, value bool) {
-    syscallN(12107, obj, PascalBool(value))
+    syscallN(12109, obj, PascalBool(value))
 }
 
 func StringGrid_GetFixedGridLineColor(obj uintptr) TColor {
-    return TColor(syscallN(12108, obj))
-}
-
-func StringGrid_SetFixedGridLineColor(obj uintptr, value TColor) {
-    syscallN(12109, obj, uintptr(value))
-}
-
-func StringGrid_GetFocusColor(obj uintptr) TColor {
     return TColor(syscallN(12110, obj))
 }
 
-func StringGrid_SetFocusColor(obj uintptr, value TColor) {
+func StringGrid_SetFixedGridLineColor(obj uintptr, value TColor) {
     syscallN(12111, obj, uintptr(value))
 }
 
+func StringGrid_GetFocusColor(obj uintptr) TColor {
+    return TColor(syscallN(12112, obj))
+}
+
+func StringGrid_SetFocusColor(obj uintptr, value TColor) {
+    syscallN(12113, obj, uintptr(value))
+}
+
 func StringGrid_GetFocusRectVisible(obj uintptr) bool {
-    return GoBool(syscallN(12112, obj))
+    return GoBool(syscallN(12114, obj))
 }
 
 func StringGrid_SetFocusRectVisible(obj uintptr, value bool) {
-    syscallN(12113, obj, PascalBool(value))
+    syscallN(12115, obj, PascalBool(value))
 }
 
 func StringGrid_GetGridLineColor(obj uintptr) TColor {
-    return TColor(syscallN(12114, obj))
+    return TColor(syscallN(12116, obj))
 }
 
 func StringGrid_SetGridLineColor(obj uintptr, value TColor) {
-    syscallN(12115, obj, uintptr(value))
-}
-
-func StringGrid_GetGridLineStyle(obj uintptr) TPenStyle {
-    return TPenStyle(syscallN(12116, obj))
-}
-
-func StringGrid_SetGridLineStyle(obj uintptr, value TPenStyle) {
     syscallN(12117, obj, uintptr(value))
 }
 
+func StringGrid_GetGridLineStyle(obj uintptr) TPenStyle {
+    return TPenStyle(syscallN(12118, obj))
+}
+
+func StringGrid_SetGridLineStyle(obj uintptr, value TPenStyle) {
+    syscallN(12119, obj, uintptr(value))
+}
+
 func StringGrid_GetEditor(obj uintptr) uintptr {
-    return syscallN(12118, obj)
+    return syscallN(12120, obj)
 }
 
 func StringGrid_SetEditor(obj uintptr, value uintptr) {
-    syscallN(12119, obj, value)
+    syscallN(12121, obj, value)
 }
 
 func StringGrid_GetEditorBorderStyle(obj uintptr) TBorderStyle {
-    return TBorderStyle(syscallN(12120, obj))
+    return TBorderStyle(syscallN(12122, obj))
 }
 
 func StringGrid_SetEditorBorderStyle(obj uintptr, value TBorderStyle) {
-    syscallN(12121, obj, uintptr(value))
+    syscallN(12123, obj, uintptr(value))
 }
 
 func StringGrid_GetEditorMode(obj uintptr) bool {
-    return GoBool(syscallN(12122, obj))
+    return GoBool(syscallN(12124, obj))
 }
 
 func StringGrid_SetEditorMode(obj uintptr, value bool) {
-    syscallN(12123, obj, PascalBool(value))
+    syscallN(12125, obj, PascalBool(value))
 }
 
 func StringGrid_GetSortOrder(obj uintptr) TSortOrder {
-    return TSortOrder(syscallN(12124, obj))
+    return TSortOrder(syscallN(12126, obj))
 }
 
 func StringGrid_SetSortOrder(obj uintptr, value TSortOrder) {
-    syscallN(12125, obj, uintptr(value))
+    syscallN(12127, obj, uintptr(value))
 }
 
 func StringGrid_GetSortColumn(obj uintptr) int32 {
-    return int32(syscallN(12126, obj))
+    return int32(syscallN(12128, obj))
 }
 
 func StringGrid_SetOnAfterSelection(obj uintptr, fn interface{}) {
-    syscallN(12127, obj, MakeEventDataPtr(fn))
-}
-
-func StringGrid_SetOnBeforeSelection(obj uintptr, fn interface{}) {
-    syscallN(12128, obj, MakeEventDataPtr(fn))
-}
-
-func StringGrid_SetOnButtonClick(obj uintptr, fn interface{}) {
     syscallN(12129, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnCheckboxToggled(obj uintptr, fn interface{}) {
+func StringGrid_SetOnBeforeSelection(obj uintptr, fn interface{}) {
     syscallN(12130, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnColRowDeleted(obj uintptr, fn interface{}) {
+func StringGrid_SetOnButtonClick(obj uintptr, fn interface{}) {
     syscallN(12131, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnColRowExchanged(obj uintptr, fn interface{}) {
+func StringGrid_SetOnCheckboxToggled(obj uintptr, fn interface{}) {
     syscallN(12132, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnColRowInserted(obj uintptr, fn interface{}) {
+func StringGrid_SetOnColRowDeleted(obj uintptr, fn interface{}) {
     syscallN(12133, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnColRowMoved(obj uintptr, fn interface{}) {
+func StringGrid_SetOnColRowExchanged(obj uintptr, fn interface{}) {
     syscallN(12134, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnCompareCells(obj uintptr, fn interface{}) {
+func StringGrid_SetOnColRowInserted(obj uintptr, fn interface{}) {
     syscallN(12135, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnEditingDone(obj uintptr, fn interface{}) {
+func StringGrid_SetOnColRowMoved(obj uintptr, fn interface{}) {
     syscallN(12136, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnGetCellHint(obj uintptr, fn interface{}) {
+func StringGrid_SetOnCompareCells(obj uintptr, fn interface{}) {
     syscallN(12137, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnGetCheckboxState(obj uintptr, fn interface{}) {
+func StringGrid_SetOnEditingDone(obj uintptr, fn interface{}) {
     syscallN(12138, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnSetCheckboxState(obj uintptr, fn interface{}) {
+func StringGrid_SetOnGetCellHint(obj uintptr, fn interface{}) {
     syscallN(12139, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnHeaderClick(obj uintptr, fn interface{}) {
+func StringGrid_SetOnGetCheckboxState(obj uintptr, fn interface{}) {
     syscallN(12140, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnHeaderSized(obj uintptr, fn interface{}) {
+func StringGrid_SetOnSetCheckboxState(obj uintptr, fn interface{}) {
     syscallN(12141, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnHeaderSizing(obj uintptr, fn interface{}) {
+func StringGrid_SetOnHeaderClick(obj uintptr, fn interface{}) {
     syscallN(12142, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnPickListSelect(obj uintptr, fn interface{}) {
+func StringGrid_SetOnHeaderSized(obj uintptr, fn interface{}) {
     syscallN(12143, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnSelection(obj uintptr, fn interface{}) {
+func StringGrid_SetOnHeaderSizing(obj uintptr, fn interface{}) {
     syscallN(12144, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnSelectEditor(obj uintptr, fn interface{}) {
+func StringGrid_SetOnPickListSelect(obj uintptr, fn interface{}) {
     syscallN(12145, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnUserCheckboxBitmap(obj uintptr, fn interface{}) {
+func StringGrid_SetOnSelection(obj uintptr, fn interface{}) {
     syscallN(12146, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnValidateEntry(obj uintptr, fn interface{}) {
+func StringGrid_SetOnSelectEditor(obj uintptr, fn interface{}) {
     syscallN(12147, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnPrepareCanvas(obj uintptr, fn interface{}) {
+func StringGrid_SetOnUserCheckboxBitmap(obj uintptr, fn interface{}) {
     syscallN(12148, obj, MakeEventDataPtr(fn))
 }
 
+func StringGrid_SetOnValidateEntry(obj uintptr, fn interface{}) {
+    syscallN(12149, obj, MakeEventDataPtr(fn))
+}
+
+func StringGrid_SetOnPrepareCanvas(obj uintptr, fn interface{}) {
+    syscallN(12150, obj, MakeEventDataPtr(fn))
+}
+
 func StringGrid_GetAlternateColor(obj uintptr) TColor {
-    return TColor(syscallN(12149, obj))
+    return TColor(syscallN(12151, obj))
 }
 
 func StringGrid_SetAlternateColor(obj uintptr, value TColor) {
-    syscallN(12150, obj, uintptr(value))
-}
-
-func StringGrid_GetAutoAdvance(obj uintptr) TAutoAdvance {
-    return TAutoAdvance(syscallN(12151, obj))
-}
-
-func StringGrid_SetAutoAdvance(obj uintptr, value TAutoAdvance) {
     syscallN(12152, obj, uintptr(value))
 }
 
+func StringGrid_GetAutoAdvance(obj uintptr) TAutoAdvance {
+    return TAutoAdvance(syscallN(12153, obj))
+}
+
+func StringGrid_SetAutoAdvance(obj uintptr, value TAutoAdvance) {
+    syscallN(12154, obj, uintptr(value))
+}
+
 func StringGrid_GetAutoEdit(obj uintptr) bool {
-    return GoBool(syscallN(12153, obj))
-}
-
-func StringGrid_SetAutoEdit(obj uintptr, value bool) {
-    syscallN(12154, obj, PascalBool(value))
-}
-
-func StringGrid_GetAutoFillColumns(obj uintptr) bool {
     return GoBool(syscallN(12155, obj))
 }
 
-func StringGrid_SetAutoFillColumns(obj uintptr, value bool) {
+func StringGrid_SetAutoEdit(obj uintptr, value bool) {
     syscallN(12156, obj, PascalBool(value))
 }
 
+func StringGrid_GetAutoFillColumns(obj uintptr) bool {
+    return GoBool(syscallN(12157, obj))
+}
+
+func StringGrid_SetAutoFillColumns(obj uintptr, value bool) {
+    syscallN(12158, obj, PascalBool(value))
+}
+
 func StringGrid_GetCellHintPriority(obj uintptr) TCellHintPriority {
-    return TCellHintPriority(syscallN(12157, obj))
+    return TCellHintPriority(syscallN(12159, obj))
 }
 
 func StringGrid_SetCellHintPriority(obj uintptr, value TCellHintPriority) {
-    syscallN(12158, obj, uintptr(value))
+    syscallN(12160, obj, uintptr(value))
 }
 
 func StringGrid_GetColumnClickSorts(obj uintptr) bool {
-    return GoBool(syscallN(12159, obj))
+    return GoBool(syscallN(12161, obj))
 }
 
 func StringGrid_SetColumnClickSorts(obj uintptr, value bool) {
-    syscallN(12160, obj, PascalBool(value))
+    syscallN(12162, obj, PascalBool(value))
 }
 
 func StringGrid_GetColumns(obj uintptr) uintptr {
-    return syscallN(12161, obj)
+    return syscallN(12163, obj)
 }
 
 func StringGrid_SetColumns(obj uintptr, value uintptr) {
-    syscallN(12162, obj, value)
+    syscallN(12164, obj, value)
 }
 
 func StringGrid_GetExtendedSelect(obj uintptr) bool {
-    return GoBool(syscallN(12163, obj))
-}
-
-func StringGrid_SetExtendedSelect(obj uintptr, value bool) {
-    syscallN(12164, obj, PascalBool(value))
-}
-
-func StringGrid_GetFlat(obj uintptr) bool {
     return GoBool(syscallN(12165, obj))
 }
 
-func StringGrid_SetFlat(obj uintptr, value bool) {
+func StringGrid_SetExtendedSelect(obj uintptr, value bool) {
     syscallN(12166, obj, PascalBool(value))
 }
 
+func StringGrid_GetFlat(obj uintptr) bool {
+    return GoBool(syscallN(12167, obj))
+}
+
+func StringGrid_SetFlat(obj uintptr, value bool) {
+    syscallN(12168, obj, PascalBool(value))
+}
+
 func StringGrid_GetHeaderHotZones(obj uintptr) TGridZoneSet {
-    return TGridZoneSet(syscallN(12167, obj))
-}
-
-func StringGrid_SetHeaderHotZones(obj uintptr, value TGridZoneSet) {
-    syscallN(12168, obj, uintptr(value))
-}
-
-func StringGrid_GetHeaderPushZones(obj uintptr) TGridZoneSet {
     return TGridZoneSet(syscallN(12169, obj))
 }
 
-func StringGrid_SetHeaderPushZones(obj uintptr, value TGridZoneSet) {
+func StringGrid_SetHeaderHotZones(obj uintptr, value TGridZoneSet) {
     syscallN(12170, obj, uintptr(value))
 }
 
-func StringGrid_GetImageIndexSortAsc(obj uintptr) int32 {
-    return int32(syscallN(12171, obj))
+func StringGrid_GetHeaderPushZones(obj uintptr) TGridZoneSet {
+    return TGridZoneSet(syscallN(12171, obj))
 }
 
-func StringGrid_SetImageIndexSortAsc(obj uintptr, value int32) {
+func StringGrid_SetHeaderPushZones(obj uintptr, value TGridZoneSet) {
     syscallN(12172, obj, uintptr(value))
 }
 
-func StringGrid_GetImageIndexSortDesc(obj uintptr) int32 {
+func StringGrid_GetImageIndexSortAsc(obj uintptr) int32 {
     return int32(syscallN(12173, obj))
 }
 
-func StringGrid_SetImageIndexSortDesc(obj uintptr, value int32) {
+func StringGrid_SetImageIndexSortAsc(obj uintptr, value int32) {
     syscallN(12174, obj, uintptr(value))
 }
 
-func StringGrid_GetMouseWheelOption(obj uintptr) TMouseWheelOption {
-    return TMouseWheelOption(syscallN(12175, obj))
+func StringGrid_GetImageIndexSortDesc(obj uintptr) int32 {
+    return int32(syscallN(12175, obj))
 }
 
-func StringGrid_SetMouseWheelOption(obj uintptr, value TMouseWheelOption) {
+func StringGrid_SetImageIndexSortDesc(obj uintptr, value int32) {
     syscallN(12176, obj, uintptr(value))
 }
 
-func StringGrid_GetOptions2(obj uintptr) TGridOptions2 {
-    return TGridOptions2(syscallN(12177, obj))
+func StringGrid_GetMouseWheelOption(obj uintptr) TMouseWheelOption {
+    return TMouseWheelOption(syscallN(12177, obj))
 }
 
-func StringGrid_SetOptions2(obj uintptr, value TGridOptions2) {
+func StringGrid_SetMouseWheelOption(obj uintptr, value TMouseWheelOption) {
     syscallN(12178, obj, uintptr(value))
 }
 
-func StringGrid_GetRangeSelectMode(obj uintptr) TRangeSelectMode {
-    return TRangeSelectMode(syscallN(12179, obj))
+func StringGrid_GetOptions2(obj uintptr) TGridOptions2 {
+    return TGridOptions2(syscallN(12179, obj))
 }
 
-func StringGrid_SetRangeSelectMode(obj uintptr, value TRangeSelectMode) {
+func StringGrid_SetOptions2(obj uintptr, value TGridOptions2) {
     syscallN(12180, obj, uintptr(value))
 }
 
-func StringGrid_GetTabAdvance(obj uintptr) TAutoAdvance {
-    return TAutoAdvance(syscallN(12181, obj))
+func StringGrid_GetRangeSelectMode(obj uintptr) TRangeSelectMode {
+    return TRangeSelectMode(syscallN(12181, obj))
 }
 
-func StringGrid_SetTabAdvance(obj uintptr, value TAutoAdvance) {
+func StringGrid_SetRangeSelectMode(obj uintptr, value TRangeSelectMode) {
     syscallN(12182, obj, uintptr(value))
 }
 
+func StringGrid_GetTabAdvance(obj uintptr) TAutoAdvance {
+    return TAutoAdvance(syscallN(12183, obj))
+}
+
+func StringGrid_SetTabAdvance(obj uintptr, value TAutoAdvance) {
+    syscallN(12184, obj, uintptr(value))
+}
+
 func StringGrid_GetTitleFont(obj uintptr) uintptr {
-    return syscallN(12183, obj)
-}
-
-func StringGrid_SetTitleFont(obj uintptr, value uintptr) {
-    syscallN(12184, obj, value)
-}
-
-func StringGrid_GetTitleImageList(obj uintptr) uintptr {
     return syscallN(12185, obj)
 }
 
-func StringGrid_SetTitleImageList(obj uintptr, value uintptr) {
+func StringGrid_SetTitleFont(obj uintptr, value uintptr) {
     syscallN(12186, obj, value)
 }
 
+func StringGrid_GetTitleImageList(obj uintptr) uintptr {
+    return syscallN(12187, obj)
+}
+
+func StringGrid_SetTitleImageList(obj uintptr, value uintptr) {
+    syscallN(12188, obj, value)
+}
+
 func StringGrid_GetTitleStyle(obj uintptr) TTitleStyle {
-    return TTitleStyle(syscallN(12187, obj))
+    return TTitleStyle(syscallN(12189, obj))
 }
 
 func StringGrid_SetTitleStyle(obj uintptr, value TTitleStyle) {
-    syscallN(12188, obj, uintptr(value))
+    syscallN(12190, obj, uintptr(value))
 }
 
 func StringGrid_GetUseXORFeatures(obj uintptr) bool {
-    return GoBool(syscallN(12189, obj))
+    return GoBool(syscallN(12191, obj))
 }
 
 func StringGrid_SetUseXORFeatures(obj uintptr, value bool) {
-    syscallN(12190, obj, PascalBool(value))
+    syscallN(12192, obj, PascalBool(value))
 }
 
 func StringGrid_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(12191, obj))
+    return TAlign(syscallN(12193, obj))
 }
 
 func StringGrid_SetAlign(obj uintptr, value TAlign) {
-    syscallN(12192, obj, uintptr(value))
-}
-
-func StringGrid_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(12193, obj))
-}
-
-func StringGrid_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(12194, obj, uintptr(value))
 }
 
-func StringGrid_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(12195, obj))
+func StringGrid_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(12195, obj))
 }
 
-func StringGrid_SetBiDiMode(obj uintptr, value TBiDiMode) {
+func StringGrid_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(12196, obj, uintptr(value))
 }
 
-func StringGrid_GetBorderStyle(obj uintptr) TBorderStyle {
-    return TBorderStyle(syscallN(12197, obj))
+func StringGrid_GetBiDiMode(obj uintptr) TBiDiMode {
+    return TBiDiMode(syscallN(12197, obj))
 }
 
-func StringGrid_SetBorderStyle(obj uintptr, value TBorderStyle) {
+func StringGrid_SetBiDiMode(obj uintptr, value TBiDiMode) {
     syscallN(12198, obj, uintptr(value))
 }
 
-func StringGrid_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(12199, obj))
+func StringGrid_GetBorderStyle(obj uintptr) TBorderStyle {
+    return TBorderStyle(syscallN(12199, obj))
 }
 
-func StringGrid_SetColor(obj uintptr, value TColor) {
+func StringGrid_SetBorderStyle(obj uintptr, value TBorderStyle) {
     syscallN(12200, obj, uintptr(value))
 }
 
-func StringGrid_GetColCount(obj uintptr) int32 {
-    return int32(syscallN(12201, obj))
+func StringGrid_GetColor(obj uintptr) TColor {
+    return TColor(syscallN(12201, obj))
 }
 
-func StringGrid_SetColCount(obj uintptr, value int32) {
+func StringGrid_SetColor(obj uintptr, value TColor) {
     syscallN(12202, obj, uintptr(value))
 }
 
+func StringGrid_GetColCount(obj uintptr) int32 {
+    return int32(syscallN(12203, obj))
+}
+
+func StringGrid_SetColCount(obj uintptr, value int32) {
+    syscallN(12204, obj, uintptr(value))
+}
+
 func StringGrid_GetConstraints(obj uintptr) uintptr {
-    return syscallN(12203, obj)
+    return syscallN(12205, obj)
 }
 
 func StringGrid_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(12204, obj, value)
+    syscallN(12206, obj, value)
 }
 
 func StringGrid_GetDefaultColWidth(obj uintptr) int32 {
-    return int32(syscallN(12205, obj))
-}
-
-func StringGrid_SetDefaultColWidth(obj uintptr, value int32) {
-    syscallN(12206, obj, uintptr(value))
-}
-
-func StringGrid_GetDefaultRowHeight(obj uintptr) int32 {
     return int32(syscallN(12207, obj))
 }
 
-func StringGrid_SetDefaultRowHeight(obj uintptr, value int32) {
+func StringGrid_SetDefaultColWidth(obj uintptr, value int32) {
     syscallN(12208, obj, uintptr(value))
 }
 
+func StringGrid_GetDefaultRowHeight(obj uintptr) int32 {
+    return int32(syscallN(12209, obj))
+}
+
+func StringGrid_SetDefaultRowHeight(obj uintptr, value int32) {
+    syscallN(12210, obj, uintptr(value))
+}
+
 func StringGrid_GetDefaultDrawing(obj uintptr) bool {
-    return GoBool(syscallN(12209, obj))
-}
-
-func StringGrid_SetDefaultDrawing(obj uintptr, value bool) {
-    syscallN(12210, obj, PascalBool(value))
-}
-
-func StringGrid_GetDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(12211, obj))
 }
 
-func StringGrid_SetDoubleBuffered(obj uintptr, value bool) {
+func StringGrid_SetDefaultDrawing(obj uintptr, value bool) {
     syscallN(12212, obj, PascalBool(value))
 }
 
+func StringGrid_GetDoubleBuffered(obj uintptr) bool {
+    return GoBool(syscallN(12213, obj))
+}
+
+func StringGrid_SetDoubleBuffered(obj uintptr, value bool) {
+    syscallN(12214, obj, PascalBool(value))
+}
+
 func StringGrid_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(12213, obj))
+    return TCursor(syscallN(12215, obj))
 }
 
 func StringGrid_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(12214, obj, uintptr(value))
-}
-
-func StringGrid_GetDragKind(obj uintptr) TDragKind {
-    return TDragKind(syscallN(12215, obj))
-}
-
-func StringGrid_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(12216, obj, uintptr(value))
 }
 
-func StringGrid_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(12217, obj))
+func StringGrid_GetDragKind(obj uintptr) TDragKind {
+    return TDragKind(syscallN(12217, obj))
 }
 
-func StringGrid_SetDragMode(obj uintptr, value TDragMode) {
+func StringGrid_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(12218, obj, uintptr(value))
 }
 
+func StringGrid_GetDragMode(obj uintptr) TDragMode {
+    return TDragMode(syscallN(12219, obj))
+}
+
+func StringGrid_SetDragMode(obj uintptr, value TDragMode) {
+    syscallN(12220, obj, uintptr(value))
+}
+
 func StringGrid_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(12219, obj))
+    return GoBool(syscallN(12221, obj))
 }
 
 func StringGrid_SetEnabled(obj uintptr, value bool) {
-    syscallN(12220, obj, PascalBool(value))
+    syscallN(12222, obj, PascalBool(value))
 }
 
 func StringGrid_GetFixedColor(obj uintptr) TColor {
-    return TColor(syscallN(12221, obj))
+    return TColor(syscallN(12223, obj))
 }
 
 func StringGrid_SetFixedColor(obj uintptr, value TColor) {
-    syscallN(12222, obj, uintptr(value))
-}
-
-func StringGrid_GetFixedCols(obj uintptr) int32 {
-    return int32(syscallN(12223, obj))
-}
-
-func StringGrid_SetFixedCols(obj uintptr, value int32) {
     syscallN(12224, obj, uintptr(value))
 }
 
-func StringGrid_GetRowCount(obj uintptr) int32 {
+func StringGrid_GetFixedCols(obj uintptr) int32 {
     return int32(syscallN(12225, obj))
 }
 
-func StringGrid_SetRowCount(obj uintptr, value int32) {
+func StringGrid_SetFixedCols(obj uintptr, value int32) {
     syscallN(12226, obj, uintptr(value))
 }
 
-func StringGrid_GetFixedRows(obj uintptr) int32 {
+func StringGrid_GetRowCount(obj uintptr) int32 {
     return int32(syscallN(12227, obj))
 }
 
-func StringGrid_SetFixedRows(obj uintptr, value int32) {
+func StringGrid_SetRowCount(obj uintptr, value int32) {
     syscallN(12228, obj, uintptr(value))
 }
 
+func StringGrid_GetFixedRows(obj uintptr) int32 {
+    return int32(syscallN(12229, obj))
+}
+
+func StringGrid_SetFixedRows(obj uintptr, value int32) {
+    syscallN(12230, obj, uintptr(value))
+}
+
 func StringGrid_GetFont(obj uintptr) uintptr {
-    return syscallN(12229, obj)
+    return syscallN(12231, obj)
 }
 
 func StringGrid_SetFont(obj uintptr, value uintptr) {
-    syscallN(12230, obj, value)
+    syscallN(12232, obj, value)
 }
 
 func StringGrid_GetGridLineWidth(obj uintptr) int32 {
-    return int32(syscallN(12231, obj))
+    return int32(syscallN(12233, obj))
 }
 
 func StringGrid_SetGridLineWidth(obj uintptr, value int32) {
-    syscallN(12232, obj, uintptr(value))
-}
-
-func StringGrid_GetOptions(obj uintptr) TGridOptions {
-    return TGridOptions(syscallN(12233, obj))
-}
-
-func StringGrid_SetOptions(obj uintptr, value TGridOptions) {
     syscallN(12234, obj, uintptr(value))
 }
 
+func StringGrid_GetOptions(obj uintptr) TGridOptions {
+    return TGridOptions(syscallN(12235, obj))
+}
+
+func StringGrid_SetOptions(obj uintptr, value TGridOptions) {
+    syscallN(12236, obj, uintptr(value))
+}
+
 func StringGrid_GetParentColor(obj uintptr) bool {
-    return GoBool(syscallN(12235, obj))
-}
-
-func StringGrid_SetParentColor(obj uintptr, value bool) {
-    syscallN(12236, obj, PascalBool(value))
-}
-
-func StringGrid_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(12237, obj))
 }
 
-func StringGrid_SetParentDoubleBuffered(obj uintptr, value bool) {
+func StringGrid_SetParentColor(obj uintptr, value bool) {
     syscallN(12238, obj, PascalBool(value))
 }
 
-func StringGrid_GetParentFont(obj uintptr) bool {
+func StringGrid_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(12239, obj))
 }
 
-func StringGrid_SetParentFont(obj uintptr, value bool) {
+func StringGrid_SetParentDoubleBuffered(obj uintptr, value bool) {
     syscallN(12240, obj, PascalBool(value))
 }
 
-func StringGrid_GetParentShowHint(obj uintptr) bool {
+func StringGrid_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(12241, obj))
 }
 
-func StringGrid_SetParentShowHint(obj uintptr, value bool) {
+func StringGrid_SetParentFont(obj uintptr, value bool) {
     syscallN(12242, obj, PascalBool(value))
 }
 
+func StringGrid_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(12243, obj))
+}
+
+func StringGrid_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(12244, obj, PascalBool(value))
+}
+
 func StringGrid_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(12243, obj)
+    return syscallN(12245, obj)
 }
 
 func StringGrid_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(12244, obj, value)
+    syscallN(12246, obj, value)
 }
 
 func StringGrid_GetScrollBars(obj uintptr) TScrollStyle {
-    return TScrollStyle(syscallN(12245, obj))
+    return TScrollStyle(syscallN(12247, obj))
 }
 
 func StringGrid_SetScrollBars(obj uintptr, value TScrollStyle) {
-    syscallN(12246, obj, uintptr(value))
+    syscallN(12248, obj, uintptr(value))
 }
 
 func StringGrid_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(12247, obj))
+    return GoBool(syscallN(12249, obj))
 }
 
 func StringGrid_SetShowHint(obj uintptr, value bool) {
-    syscallN(12248, obj, PascalBool(value))
+    syscallN(12250, obj, PascalBool(value))
 }
 
 func StringGrid_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(12249, obj))
+    return TTabOrder(syscallN(12251, obj))
 }
 
 func StringGrid_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(12250, obj, uintptr(value))
+    syscallN(12252, obj, uintptr(value))
 }
 
 func StringGrid_GetVisible(obj uintptr) bool {
-    return GoBool(syscallN(12251, obj))
+    return GoBool(syscallN(12253, obj))
 }
 
 func StringGrid_SetVisible(obj uintptr, value bool) {
-    syscallN(12252, obj, PascalBool(value))
+    syscallN(12254, obj, PascalBool(value))
 }
 
 func StringGrid_GetVisibleColCount(obj uintptr) int32 {
-    return int32(syscallN(12253, obj))
+    return int32(syscallN(12255, obj))
 }
 
 func StringGrid_GetVisibleRowCount(obj uintptr) int32 {
-    return int32(syscallN(12254, obj))
+    return int32(syscallN(12256, obj))
 }
 
 func StringGrid_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(12255, obj, MakeEventDataPtr(fn))
-}
-
-func StringGrid_SetOnContextPopup(obj uintptr, fn interface{}) {
-    syscallN(12256, obj, MakeEventDataPtr(fn))
-}
-
-func StringGrid_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(12257, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnDragDrop(obj uintptr, fn interface{}) {
+func StringGrid_SetOnContextPopup(obj uintptr, fn interface{}) {
     syscallN(12258, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnDragOver(obj uintptr, fn interface{}) {
+func StringGrid_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(12259, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnDrawCell(obj uintptr, fn interface{}) {
+func StringGrid_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(12260, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnEndDock(obj uintptr, fn interface{}) {
+func StringGrid_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(12261, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnEndDrag(obj uintptr, fn interface{}) {
+func StringGrid_SetOnDrawCell(obj uintptr, fn interface{}) {
     syscallN(12262, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnEnter(obj uintptr, fn interface{}) {
+func StringGrid_SetOnEndDock(obj uintptr, fn interface{}) {
     syscallN(12263, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnExit(obj uintptr, fn interface{}) {
+func StringGrid_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(12264, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
+func StringGrid_SetOnEnter(obj uintptr, fn interface{}) {
     syscallN(12265, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnGetEditText(obj uintptr, fn interface{}) {
+func StringGrid_SetOnExit(obj uintptr, fn interface{}) {
     syscallN(12266, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnKeyDown(obj uintptr, fn interface{}) {
+func StringGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
     syscallN(12267, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
+func StringGrid_SetOnGetEditText(obj uintptr, fn interface{}) {
     syscallN(12268, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
+func StringGrid_SetOnKeyDown(obj uintptr, fn interface{}) {
     syscallN(12269, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
+func StringGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
     syscallN(12270, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func StringGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
     syscallN(12271, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func StringGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(12272, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnMouseMove(obj uintptr, fn interface{}) {
+func StringGrid_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(12273, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnMouseUp(obj uintptr, fn interface{}) {
+func StringGrid_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(12274, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+func StringGrid_SetOnMouseMove(obj uintptr, fn interface{}) {
     syscallN(12275, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+func StringGrid_SetOnMouseUp(obj uintptr, fn interface{}) {
     syscallN(12276, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnSelectCell(obj uintptr, fn interface{}) {
+func StringGrid_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
     syscallN(12277, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnSetEditText(obj uintptr, fn interface{}) {
+func StringGrid_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
     syscallN(12278, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnStartDock(obj uintptr, fn interface{}) {
+func StringGrid_SetOnSelectCell(obj uintptr, fn interface{}) {
     syscallN(12279, obj, MakeEventDataPtr(fn))
 }
 
-func StringGrid_SetOnTopLeftChanged(obj uintptr, fn interface{}) {
+func StringGrid_SetOnSetEditText(obj uintptr, fn interface{}) {
     syscallN(12280, obj, MakeEventDataPtr(fn))
 }
 
+func StringGrid_SetOnStartDock(obj uintptr, fn interface{}) {
+    syscallN(12281, obj, MakeEventDataPtr(fn))
+}
+
+func StringGrid_SetOnTopLeftChanged(obj uintptr, fn interface{}) {
+    syscallN(12282, obj, MakeEventDataPtr(fn))
+}
+
 func StringGrid_GetCanvas(obj uintptr) uintptr {
-    return syscallN(12281, obj)
+    return syscallN(12283, obj)
 }
 
 func StringGrid_GetCol(obj uintptr) int32 {
-    return int32(syscallN(12282, obj))
-}
-
-func StringGrid_SetCol(obj uintptr, value int32) {
-    syscallN(12283, obj, uintptr(value))
-}
-
-func StringGrid_GetGridHeight(obj uintptr) int32 {
     return int32(syscallN(12284, obj))
 }
 
-func StringGrid_GetGridWidth(obj uintptr) int32 {
-    return int32(syscallN(12285, obj))
+func StringGrid_SetCol(obj uintptr, value int32) {
+    syscallN(12285, obj, uintptr(value))
 }
 
-func StringGrid_GetLeftCol(obj uintptr) int32 {
+func StringGrid_GetGridHeight(obj uintptr) int32 {
     return int32(syscallN(12286, obj))
 }
 
+func StringGrid_GetGridWidth(obj uintptr) int32 {
+    return int32(syscallN(12287, obj))
+}
+
+func StringGrid_GetLeftCol(obj uintptr) int32 {
+    return int32(syscallN(12288, obj))
+}
+
 func StringGrid_SetLeftCol(obj uintptr, value int32) {
-    syscallN(12287, obj, uintptr(value))
+    syscallN(12289, obj, uintptr(value))
 }
 
 func StringGrid_GetSelection(obj uintptr) (result TGridRect) {
-    syscallN(12288, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(12290, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func StringGrid_SetSelection(obj uintptr, value TGridRect) {
-    syscallN(12289, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(12291, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func StringGrid_GetRow(obj uintptr) int32 {
-    return int32(syscallN(12290, obj))
-}
-
-func StringGrid_SetRow(obj uintptr, value int32) {
-    syscallN(12291, obj, uintptr(value))
-}
-
-func StringGrid_GetTopRow(obj uintptr) int32 {
     return int32(syscallN(12292, obj))
 }
 
-func StringGrid_SetTopRow(obj uintptr, value int32) {
+func StringGrid_SetRow(obj uintptr, value int32) {
     syscallN(12293, obj, uintptr(value))
 }
 
+func StringGrid_GetTopRow(obj uintptr) int32 {
+    return int32(syscallN(12294, obj))
+}
+
+func StringGrid_SetTopRow(obj uintptr, value int32) {
+    syscallN(12295, obj, uintptr(value))
+}
+
 func StringGrid_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(12294, obj))
+    return GoBool(syscallN(12296, obj))
 }
 
 func StringGrid_SetTabStop(obj uintptr, value bool) {
-    syscallN(12295, obj, PascalBool(value))
+    syscallN(12297, obj, PascalBool(value))
 }
 
 func StringGrid_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(12296, obj))
+    return int32(syscallN(12298, obj))
 }
 
 func StringGrid_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(12297, obj))
-}
-
-func StringGrid_SetDockSite(obj uintptr, value bool) {
-    syscallN(12298, obj, PascalBool(value))
-}
-
-func StringGrid_GetMouseInClient(obj uintptr) bool {
     return GoBool(syscallN(12299, obj))
 }
 
+func StringGrid_SetDockSite(obj uintptr, value bool) {
+    syscallN(12300, obj, PascalBool(value))
+}
+
+func StringGrid_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(12301, obj))
+}
+
 func StringGrid_GetVisibleDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(12300, obj))
-}
-
-func StringGrid_GetBrush(obj uintptr) uintptr {
-    return syscallN(12301, obj)
-}
-
-func StringGrid_GetControlCount(obj uintptr) int32 {
     return int32(syscallN(12302, obj))
 }
 
+func StringGrid_GetBrush(obj uintptr) uintptr {
+    return syscallN(12303, obj)
+}
+
+func StringGrid_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(12304, obj))
+}
+
 func StringGrid_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(12303, obj))
+    return HWND(syscallN(12305, obj))
 }
 
 func StringGrid_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(12304, obj))
+    return HWND(syscallN(12306, obj))
 }
 
 func StringGrid_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(12305, obj, uintptr(value))
+    syscallN(12307, obj, uintptr(value))
 }
 
 func StringGrid_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(12306, obj))
+    return GoBool(syscallN(12308, obj))
 }
 
 func StringGrid_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(12307, obj))
+    return GoBool(syscallN(12309, obj))
 }
 
 func StringGrid_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(12308, obj, PascalBool(value))
+    syscallN(12310, obj, PascalBool(value))
 }
 
 func StringGrid_GetAction(obj uintptr) uintptr {
-    return syscallN(12309, obj)
+    return syscallN(12311, obj)
 }
 
 func StringGrid_SetAction(obj uintptr, value uintptr) {
-    syscallN(12310, obj, value)
+    syscallN(12312, obj, value)
 }
 
 func StringGrid_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(12311, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(12313, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func StringGrid_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(12312, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(12314, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func StringGrid_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(12313, obj))
+    return int32(syscallN(12315, obj))
 }
 
 func StringGrid_SetClientHeight(obj uintptr, value int32) {
-    syscallN(12314, obj, uintptr(value))
+    syscallN(12316, obj, uintptr(value))
 }
 
 func StringGrid_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(12315, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(12317, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func StringGrid_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(12316, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(12318, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func StringGrid_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(12317, obj))
+    return int32(syscallN(12319, obj))
 }
 
 func StringGrid_SetClientWidth(obj uintptr, value int32) {
-    syscallN(12318, obj, uintptr(value))
-}
-
-func StringGrid_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(12319, obj))
-}
-
-func StringGrid_SetControlState(obj uintptr, value TControlState) {
     syscallN(12320, obj, uintptr(value))
 }
 
-func StringGrid_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(12321, obj))
+func StringGrid_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(12321, obj))
 }
 
-func StringGrid_SetControlStyle(obj uintptr, value TControlStyle) {
+func StringGrid_SetControlState(obj uintptr, value TControlState) {
     syscallN(12322, obj, uintptr(value))
 }
 
+func StringGrid_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(12323, obj))
+}
+
+func StringGrid_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(12324, obj, uintptr(value))
+}
+
 func StringGrid_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(12323, obj))
+    return GoBool(syscallN(12325, obj))
 }
 
 func StringGrid_GetParent(obj uintptr) uintptr {
-    return syscallN(12324, obj)
+    return syscallN(12326, obj)
 }
 
 func StringGrid_SetParent(obj uintptr, value uintptr) {
-    syscallN(12325, obj, value)
+    syscallN(12327, obj, value)
 }
 
 func StringGrid_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(12326, obj))
-}
-
-func StringGrid_SetLeft(obj uintptr, value int32) {
-    syscallN(12327, obj, uintptr(value))
-}
-
-func StringGrid_GetTop(obj uintptr) int32 {
     return int32(syscallN(12328, obj))
 }
 
-func StringGrid_SetTop(obj uintptr, value int32) {
+func StringGrid_SetLeft(obj uintptr, value int32) {
     syscallN(12329, obj, uintptr(value))
 }
 
-func StringGrid_GetWidth(obj uintptr) int32 {
+func StringGrid_GetTop(obj uintptr) int32 {
     return int32(syscallN(12330, obj))
 }
 
-func StringGrid_SetWidth(obj uintptr, value int32) {
+func StringGrid_SetTop(obj uintptr, value int32) {
     syscallN(12331, obj, uintptr(value))
 }
 
-func StringGrid_GetHeight(obj uintptr) int32 {
+func StringGrid_GetWidth(obj uintptr) int32 {
     return int32(syscallN(12332, obj))
 }
 
-func StringGrid_SetHeight(obj uintptr, value int32) {
+func StringGrid_SetWidth(obj uintptr, value int32) {
     syscallN(12333, obj, uintptr(value))
 }
 
-func StringGrid_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(12334, obj))
+func StringGrid_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(12334, obj))
 }
 
-func StringGrid_SetCursor(obj uintptr, value TCursor) {
+func StringGrid_SetHeight(obj uintptr, value int32) {
     syscallN(12335, obj, uintptr(value))
 }
 
+func StringGrid_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(12336, obj))
+}
+
+func StringGrid_SetCursor(obj uintptr, value TCursor) {
+    syscallN(12337, obj, uintptr(value))
+}
+
 func StringGrid_GetHint(obj uintptr) string {
-    return GoStr(syscallN(12336, obj))
+    return GoStr(syscallN(12338, obj))
 }
 
 func StringGrid_SetHint(obj uintptr, value string) {
-    syscallN(12337, obj, PascalStr(value))
+    syscallN(12339, obj, PascalStr(value))
 }
 
 func StringGrid_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(12338, obj))
+    return int32(syscallN(12340, obj))
 }
 
 func StringGrid_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(12339, obj))
+    return int32(syscallN(12341, obj))
 }
 
 func StringGrid_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(12340, obj, uintptr(value))
+    syscallN(12342, obj, uintptr(value))
 }
 
 func StringGrid_GetOwner(obj uintptr) uintptr {
-    return syscallN(12341, obj)
+    return syscallN(12343, obj)
 }
 
 func StringGrid_GetName(obj uintptr) string {
-    return GoStr(syscallN(12342, obj))
+    return GoStr(syscallN(12344, obj))
 }
 
 func StringGrid_SetName(obj uintptr, value string) {
-    syscallN(12343, obj, PascalStr(value))
+    syscallN(12345, obj, PascalStr(value))
 }
 
 func StringGrid_GetTag(obj uintptr) int {
-    return int(syscallN(12344, obj))
+    return int(syscallN(12346, obj))
 }
 
 func StringGrid_SetTag(obj uintptr, value int) {
-    syscallN(12345, obj, uintptr(value))
+    syscallN(12347, obj, uintptr(value))
 }
 
 func StringGrid_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(12346, obj)
-}
-
-func StringGrid_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(12347, obj, value)
-}
-
-func StringGrid_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(12348, obj)
 }
 
-func StringGrid_SetAnchorSideTop(obj uintptr, value uintptr) {
+func StringGrid_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(12349, obj, value)
 }
 
-func StringGrid_GetAnchorSideRight(obj uintptr) uintptr {
+func StringGrid_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(12350, obj)
 }
 
-func StringGrid_SetAnchorSideRight(obj uintptr, value uintptr) {
+func StringGrid_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(12351, obj, value)
 }
 
-func StringGrid_GetAnchorSideBottom(obj uintptr) uintptr {
+func StringGrid_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(12352, obj)
 }
 
-func StringGrid_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func StringGrid_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(12353, obj, value)
 }
 
-func StringGrid_GetChildSizing(obj uintptr) uintptr {
+func StringGrid_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(12354, obj)
 }
 
-func StringGrid_SetChildSizing(obj uintptr, value uintptr) {
+func StringGrid_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(12355, obj, value)
 }
 
-func StringGrid_GetBorderSpacing(obj uintptr) uintptr {
+func StringGrid_GetChildSizing(obj uintptr) uintptr {
     return syscallN(12356, obj)
 }
 
-func StringGrid_SetBorderSpacing(obj uintptr, value uintptr) {
+func StringGrid_SetChildSizing(obj uintptr, value uintptr) {
     syscallN(12357, obj, value)
 }
 
+func StringGrid_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(12358, obj)
+}
+
+func StringGrid_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(12359, obj, value)
+}
+
 func StringGrid_GetIsCellSelected(obj uintptr, aCol int32, aRow int32) bool {
-    return GoBool(syscallN(12358, obj, uintptr(aCol), uintptr(aRow)))
+    return GoBool(syscallN(12360, obj, uintptr(aCol), uintptr(aRow)))
 }
 
 func StringGrid_GetCells(obj uintptr, ACol int32, ARow int32) string {
-    return GoStr(syscallN(12359, obj, uintptr(ACol), uintptr(ARow)))
+    return GoStr(syscallN(12361, obj, uintptr(ACol), uintptr(ARow)))
 }
 
 func StringGrid_SetCells(obj uintptr, ACol int32, ARow int32, value string) {
-    syscallN(12360, obj, uintptr(ACol), uintptr(ARow), PascalStr(value))
+    syscallN(12362, obj, uintptr(ACol), uintptr(ARow), PascalStr(value))
 }
 
 func StringGrid_GetCols(obj uintptr, Index int32) uintptr {
-    return syscallN(12361, obj, uintptr(Index))
+    return syscallN(12363, obj, uintptr(Index))
 }
 
 func StringGrid_SetCols(obj uintptr, Index int32, value uintptr) {
-    syscallN(12362, obj, uintptr(Index), value)
+    syscallN(12364, obj, uintptr(Index), value)
 }
 
 func StringGrid_GetObjects(obj uintptr, ACol int32, ARow int32) uintptr {
-    return syscallN(12363, obj, uintptr(ACol), uintptr(ARow))
+    return syscallN(12365, obj, uintptr(ACol), uintptr(ARow))
 }
 
 func StringGrid_SetObjects(obj uintptr, ACol int32, ARow int32, value uintptr) {
-    syscallN(12364, obj, uintptr(ACol), uintptr(ARow), value)
+    syscallN(12366, obj, uintptr(ACol), uintptr(ARow), value)
 }
 
 func StringGrid_GetRows(obj uintptr, Index int32) uintptr {
-    return syscallN(12365, obj, uintptr(Index))
+    return syscallN(12367, obj, uintptr(Index))
 }
 
 func StringGrid_SetRows(obj uintptr, Index int32, value uintptr) {
-    syscallN(12366, obj, uintptr(Index), value)
+    syscallN(12368, obj, uintptr(Index), value)
 }
 
 func StringGrid_GetColWidths(obj uintptr, Index int32) int32 {
-    return int32(syscallN(12367, obj, uintptr(Index)))
-}
-
-func StringGrid_SetColWidths(obj uintptr, Index int32, value int32) {
-    syscallN(12368, obj, uintptr(Index), uintptr(value))
-}
-
-func StringGrid_GetRowHeights(obj uintptr, Index int32) int32 {
     return int32(syscallN(12369, obj, uintptr(Index)))
 }
 
-func StringGrid_SetRowHeights(obj uintptr, Index int32, value int32) {
+func StringGrid_SetColWidths(obj uintptr, Index int32, value int32) {
     syscallN(12370, obj, uintptr(Index), uintptr(value))
 }
 
+func StringGrid_GetRowHeights(obj uintptr, Index int32) int32 {
+    return int32(syscallN(12371, obj, uintptr(Index)))
+}
+
+func StringGrid_SetRowHeights(obj uintptr, Index int32, value int32) {
+    syscallN(12372, obj, uintptr(Index), uintptr(value))
+}
+
 func StringGrid_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(12371, obj, uintptr(Index))
+    return syscallN(12373, obj, uintptr(Index))
 }
 
 func StringGrid_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(12372, obj, uintptr(Index))
+    return syscallN(12374, obj, uintptr(Index))
 }
 
 func StringGrid_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(12373, obj, uintptr(AIndex))
+    return syscallN(12375, obj, uintptr(AIndex))
 }
 
 func StringGrid_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(12374, obj, uintptr(AKind))
+    return syscallN(12376, obj, uintptr(AKind))
 }
 
 func StringGrid_StaticClassType() TClass {
-    return TClass(syscallN(12375))
+    return TClass(syscallN(12377))
 }
 
 //--------------------------- TDrawGrid ---------------------------
 
 func DrawGrid_Create(obj uintptr) uintptr {
-    return syscallN(12376, obj)
+    return syscallN(12378, obj)
 }
 
 func DrawGrid_Free(obj uintptr) {
-    syscallN(12377, obj)
+    syscallN(12379, obj)
 }
 
 func DrawGrid_CellRect(obj uintptr, ACol int32, ARow int32)(result  TRect)  {
-    syscallN(12378, obj, uintptr(ACol) , uintptr(ARow) , uintptr(unsafe.Pointer(&result)))
+    syscallN(12380, obj, uintptr(ACol) , uintptr(ARow) , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DrawGrid_MouseToCell(obj uintptr, X int32, Y int32, ACol *int32, ARow *int32)  {
-    syscallN(12379, obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(ACol)), uintptr(unsafe.Pointer(ARow)))
+    syscallN(12381, obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(ACol)), uintptr(unsafe.Pointer(ARow)))
 }
 
 func DrawGrid_MouseCoord(obj uintptr, X int32, Y int32)(result  TGridCoord)  {
-    syscallN(12380, obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(&result)))
+    syscallN(12382, obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DrawGrid_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(12381, obj))
+    return GoBool(syscallN(12383, obj))
 }
 
 func DrawGrid_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(12382, obj, Control ))
+    return GoBool(syscallN(12384, obj, Control ))
 }
 
 func DrawGrid_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(12383, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(12385, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func DrawGrid_DisableAlign(obj uintptr)  {
-    syscallN(12384, obj)
+    syscallN(12386, obj)
 }
 
 func DrawGrid_EnableAlign(obj uintptr)  {
-    syscallN(12385, obj)
+    syscallN(12387, obj)
 }
 
 func DrawGrid_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(12386, obj, PascalStr(ControlName) )
+    return syscallN(12388, obj, PascalStr(ControlName) )
 }
 
 func DrawGrid_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(12387, obj, PascalBool(AllLevels) )
+    syscallN(12389, obj, PascalBool(AllLevels) )
 }
 
 func DrawGrid_Focused(obj uintptr) bool {
-    return GoBool(syscallN(12388, obj))
+    return GoBool(syscallN(12390, obj))
 }
 
 func DrawGrid_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(12389, obj))
+    return GoBool(syscallN(12391, obj))
 }
 
 func DrawGrid_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(12390, obj, AControl )
+    syscallN(12392, obj, AControl )
 }
 
 func DrawGrid_Invalidate(obj uintptr)  {
-    syscallN(12391, obj)
+    syscallN(12393, obj)
 }
 
 func DrawGrid_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(12392, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(12394, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func DrawGrid_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(12393, obj, AControl )
+    syscallN(12395, obj, AControl )
 }
 
 func DrawGrid_Realign(obj uintptr)  {
-    syscallN(12394, obj)
+    syscallN(12396, obj)
 }
 
 func DrawGrid_Repaint(obj uintptr)  {
-    syscallN(12395, obj)
+    syscallN(12397, obj)
 }
 
 func DrawGrid_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(12396, obj, uintptr(M) , uintptr(D) )
+    syscallN(12398, obj, uintptr(M) , uintptr(D) )
 }
 
 func DrawGrid_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(12397, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(12399, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func DrawGrid_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(12398, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(12400, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func DrawGrid_SetFocus(obj uintptr)  {
-    syscallN(12399, obj)
+    syscallN(12401, obj)
 }
 
 func DrawGrid_Update(obj uintptr)  {
-    syscallN(12400, obj)
-}
-
-func DrawGrid_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(12401, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func DrawGrid_BringToFront(obj uintptr)  {
     syscallN(12402, obj)
 }
 
+func DrawGrid_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(12403, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func DrawGrid_BringToFront(obj uintptr)  {
+    syscallN(12404, obj)
+}
+
 func DrawGrid_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(12403, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(12405, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DrawGrid_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(12404, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(12406, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DrawGrid_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(12405, obj))
-}
-
-func DrawGrid_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(12406, obj, PascalBool(Drop) )
-}
-
-func DrawGrid_HasParent(obj uintptr) bool {
     return GoBool(syscallN(12407, obj))
 }
 
+func DrawGrid_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(12408, obj, PascalBool(Drop) )
+}
+
+func DrawGrid_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(12409, obj))
+}
+
 func DrawGrid_Hide(obj uintptr)  {
-    syscallN(12408, obj)
-}
-
-func DrawGrid_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(12409, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func DrawGrid_Refresh(obj uintptr)  {
     syscallN(12410, obj)
 }
 
+func DrawGrid_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(12411, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func DrawGrid_Refresh(obj uintptr)  {
+    syscallN(12412, obj)
+}
+
 func DrawGrid_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(12411, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(12413, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DrawGrid_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(12412, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(12414, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DrawGrid_SendToBack(obj uintptr)  {
-    syscallN(12413, obj)
+    syscallN(12415, obj)
 }
 
 func DrawGrid_Show(obj uintptr)  {
-    syscallN(12414, obj)
+    syscallN(12416, obj)
 }
 
 func DrawGrid_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(12415, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(12417, obj, Buffer, uintptr(BufSize) ))
 }
 
 func DrawGrid_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(12416, obj))
+    return int32(syscallN(12418, obj))
 }
 
 func DrawGrid_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(12417, obj, PascalStr(Buffer) )
+    syscallN(12419, obj, PascalStr(Buffer) )
 }
 
 func DrawGrid_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(12418, obj, PascalStr(AName) )
+    return syscallN(12420, obj, PascalStr(AName) )
 }
 
 func DrawGrid_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(12419, obj))
+    return GoStr(syscallN(12421, obj))
 }
 
 func DrawGrid_Assign(obj uintptr, Source uintptr)  {
-    syscallN(12420, obj, Source )
+    syscallN(12422, obj, Source )
 }
 
 func DrawGrid_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(12421, obj))
+    return TClass(syscallN(12423, obj))
 }
 
 func DrawGrid_ClassName(obj uintptr) string {
-    return GoStr(syscallN(12422, obj))
+    return GoStr(syscallN(12424, obj))
 }
 
 func DrawGrid_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(12423, obj))
+    return int32(syscallN(12425, obj))
 }
 
 func DrawGrid_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(12424, obj, uintptr(AClass) ))
+    return GoBool(syscallN(12426, obj, uintptr(AClass) ))
 }
 
 func DrawGrid_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(12425, obj, Obj ))
+    return GoBool(syscallN(12427, obj, Obj ))
 }
 
 func DrawGrid_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(12426, obj))
+    return int32(syscallN(12428, obj))
 }
 
 func DrawGrid_ToString(obj uintptr) string {
-    return GoStr(syscallN(12427, obj))
+    return GoStr(syscallN(12429, obj))
 }
 
 func DrawGrid_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(12428, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(12430, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func DrawGrid_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(12429, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(12431, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func DrawGrid_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(12430, obj, ASibling )
+    syscallN(12432, obj, ASibling )
 }
 
 func DrawGrid_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(12431, obj, ASibling )
+    syscallN(12433, obj, ASibling )
 }
 
 func DrawGrid_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(12432, obj, uintptr(ASide) , ASibling )
+    syscallN(12434, obj, uintptr(ASide) , ASibling )
 }
 
 func DrawGrid_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(12433, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(12435, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func DrawGrid_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(12434, obj, uintptr(ASpace) )
+    syscallN(12436, obj, uintptr(ASpace) )
 }
 
 func DrawGrid_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(12435, obj, uintptr(ASize) ))
-}
-
-func DrawGrid_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(12436, obj, uintptr(ASize) ))
-}
-
-func DrawGrid_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12437, obj, uintptr(ASize) ))
 }
 
-func DrawGrid_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func DrawGrid_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12438, obj, uintptr(ASize) ))
 }
 
-func DrawGrid_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func DrawGrid_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12439, obj, uintptr(ASize) ))
 }
 
-func DrawGrid_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func DrawGrid_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12440, obj, uintptr(ASize) ))
 }
 
-func DrawGrid_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func DrawGrid_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12441, obj, uintptr(ASize) ))
 }
 
-func DrawGrid_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func DrawGrid_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12442, obj, uintptr(ASize) ))
 }
 
-func DrawGrid_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func DrawGrid_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12443, obj, uintptr(ASize) ))
 }
 
-func DrawGrid_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func DrawGrid_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12444, obj, uintptr(ASize) ))
 }
 
+func DrawGrid_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(12445, obj, uintptr(ASize) ))
+}
+
+func DrawGrid_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(12446, obj, uintptr(ASize) ))
+}
+
 func DrawGrid_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(12445, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(12447, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func DrawGrid_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(12446, obj, uintptr(ADesignTimePPI) )
+    syscallN(12448, obj, uintptr(ADesignTimePPI) )
 }
 
 func DrawGrid_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(12447, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(12449, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func DrawGrid_SetOnColRowMoved(obj uintptr, fn interface{}) {
-    syscallN(12448, obj, MakeEventDataPtr(fn))
+    syscallN(12450, obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_SetOnPrepareCanvas(obj uintptr, fn interface{}) {
-    syscallN(12449, obj, MakeEventDataPtr(fn))
+    syscallN(12451, obj, MakeEventDataPtr(fn))
 }
 
 func DrawGrid_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(12450, obj))
+    return TAlign(syscallN(12452, obj))
 }
 
 func DrawGrid_SetAlign(obj uintptr, value TAlign) {
-    syscallN(12451, obj, uintptr(value))
-}
-
-func DrawGrid_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(12452, obj))
-}
-
-func DrawGrid_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(12453, obj, uintptr(value))
 }
 
-func DrawGrid_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(12454, obj))
+func DrawGrid_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(12454, obj))
 }
 
-func DrawGrid_SetBiDiMode(obj uintptr, value TBiDiMode) {
+func DrawGrid_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(12455, obj, uintptr(value))
 }
 
-func DrawGrid_GetBorderStyle(obj uintptr) TBorderStyle {
-    return TBorderStyle(syscallN(12456, obj))
+func DrawGrid_GetBiDiMode(obj uintptr) TBiDiMode {
+    return TBiDiMode(syscallN(12456, obj))
 }
 
-func DrawGrid_SetBorderStyle(obj uintptr, value TBorderStyle) {
+func DrawGrid_SetBiDiMode(obj uintptr, value TBiDiMode) {
     syscallN(12457, obj, uintptr(value))
 }
 
-func DrawGrid_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(12458, obj))
+func DrawGrid_GetBorderStyle(obj uintptr) TBorderStyle {
+    return TBorderStyle(syscallN(12458, obj))
 }
 
-func DrawGrid_SetColor(obj uintptr, value TColor) {
+func DrawGrid_SetBorderStyle(obj uintptr, value TBorderStyle) {
     syscallN(12459, obj, uintptr(value))
 }
 
-func DrawGrid_GetColCount(obj uintptr) int32 {
-    return int32(syscallN(12460, obj))
+func DrawGrid_GetColor(obj uintptr) TColor {
+    return TColor(syscallN(12460, obj))
 }
 
-func DrawGrid_SetColCount(obj uintptr, value int32) {
+func DrawGrid_SetColor(obj uintptr, value TColor) {
     syscallN(12461, obj, uintptr(value))
 }
 
+func DrawGrid_GetColCount(obj uintptr) int32 {
+    return int32(syscallN(12462, obj))
+}
+
+func DrawGrid_SetColCount(obj uintptr, value int32) {
+    syscallN(12463, obj, uintptr(value))
+}
+
 func DrawGrid_GetConstraints(obj uintptr) uintptr {
-    return syscallN(12462, obj)
+    return syscallN(12464, obj)
 }
 
 func DrawGrid_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(12463, obj, value)
+    syscallN(12465, obj, value)
 }
 
 func DrawGrid_GetDefaultColWidth(obj uintptr) int32 {
-    return int32(syscallN(12464, obj))
-}
-
-func DrawGrid_SetDefaultColWidth(obj uintptr, value int32) {
-    syscallN(12465, obj, uintptr(value))
-}
-
-func DrawGrid_GetDefaultRowHeight(obj uintptr) int32 {
     return int32(syscallN(12466, obj))
 }
 
-func DrawGrid_SetDefaultRowHeight(obj uintptr, value int32) {
+func DrawGrid_SetDefaultColWidth(obj uintptr, value int32) {
     syscallN(12467, obj, uintptr(value))
 }
 
+func DrawGrid_GetDefaultRowHeight(obj uintptr) int32 {
+    return int32(syscallN(12468, obj))
+}
+
+func DrawGrid_SetDefaultRowHeight(obj uintptr, value int32) {
+    syscallN(12469, obj, uintptr(value))
+}
+
 func DrawGrid_GetDefaultDrawing(obj uintptr) bool {
-    return GoBool(syscallN(12468, obj))
-}
-
-func DrawGrid_SetDefaultDrawing(obj uintptr, value bool) {
-    syscallN(12469, obj, PascalBool(value))
-}
-
-func DrawGrid_GetDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(12470, obj))
 }
 
-func DrawGrid_SetDoubleBuffered(obj uintptr, value bool) {
+func DrawGrid_SetDefaultDrawing(obj uintptr, value bool) {
     syscallN(12471, obj, PascalBool(value))
 }
 
+func DrawGrid_GetDoubleBuffered(obj uintptr) bool {
+    return GoBool(syscallN(12472, obj))
+}
+
+func DrawGrid_SetDoubleBuffered(obj uintptr, value bool) {
+    syscallN(12473, obj, PascalBool(value))
+}
+
 func DrawGrid_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(12472, obj))
+    return TCursor(syscallN(12474, obj))
 }
 
 func DrawGrid_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(12473, obj, uintptr(value))
-}
-
-func DrawGrid_GetDragKind(obj uintptr) TDragKind {
-    return TDragKind(syscallN(12474, obj))
-}
-
-func DrawGrid_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(12475, obj, uintptr(value))
 }
 
-func DrawGrid_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(12476, obj))
+func DrawGrid_GetDragKind(obj uintptr) TDragKind {
+    return TDragKind(syscallN(12476, obj))
 }
 
-func DrawGrid_SetDragMode(obj uintptr, value TDragMode) {
+func DrawGrid_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(12477, obj, uintptr(value))
 }
 
+func DrawGrid_GetDragMode(obj uintptr) TDragMode {
+    return TDragMode(syscallN(12478, obj))
+}
+
+func DrawGrid_SetDragMode(obj uintptr, value TDragMode) {
+    syscallN(12479, obj, uintptr(value))
+}
+
 func DrawGrid_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(12478, obj))
+    return GoBool(syscallN(12480, obj))
 }
 
 func DrawGrid_SetEnabled(obj uintptr, value bool) {
-    syscallN(12479, obj, PascalBool(value))
+    syscallN(12481, obj, PascalBool(value))
 }
 
 func DrawGrid_GetFixedColor(obj uintptr) TColor {
-    return TColor(syscallN(12480, obj))
+    return TColor(syscallN(12482, obj))
 }
 
 func DrawGrid_SetFixedColor(obj uintptr, value TColor) {
-    syscallN(12481, obj, uintptr(value))
-}
-
-func DrawGrid_GetFixedCols(obj uintptr) int32 {
-    return int32(syscallN(12482, obj))
-}
-
-func DrawGrid_SetFixedCols(obj uintptr, value int32) {
     syscallN(12483, obj, uintptr(value))
 }
 
-func DrawGrid_GetRowCount(obj uintptr) int32 {
+func DrawGrid_GetFixedCols(obj uintptr) int32 {
     return int32(syscallN(12484, obj))
 }
 
-func DrawGrid_SetRowCount(obj uintptr, value int32) {
+func DrawGrid_SetFixedCols(obj uintptr, value int32) {
     syscallN(12485, obj, uintptr(value))
 }
 
-func DrawGrid_GetFixedRows(obj uintptr) int32 {
+func DrawGrid_GetRowCount(obj uintptr) int32 {
     return int32(syscallN(12486, obj))
 }
 
-func DrawGrid_SetFixedRows(obj uintptr, value int32) {
+func DrawGrid_SetRowCount(obj uintptr, value int32) {
     syscallN(12487, obj, uintptr(value))
 }
 
+func DrawGrid_GetFixedRows(obj uintptr) int32 {
+    return int32(syscallN(12488, obj))
+}
+
+func DrawGrid_SetFixedRows(obj uintptr, value int32) {
+    syscallN(12489, obj, uintptr(value))
+}
+
 func DrawGrid_GetFont(obj uintptr) uintptr {
-    return syscallN(12488, obj)
+    return syscallN(12490, obj)
 }
 
 func DrawGrid_SetFont(obj uintptr, value uintptr) {
-    syscallN(12489, obj, value)
+    syscallN(12491, obj, value)
 }
 
 func DrawGrid_GetGridLineWidth(obj uintptr) int32 {
-    return int32(syscallN(12490, obj))
+    return int32(syscallN(12492, obj))
 }
 
 func DrawGrid_SetGridLineWidth(obj uintptr, value int32) {
-    syscallN(12491, obj, uintptr(value))
-}
-
-func DrawGrid_GetOptions(obj uintptr) TGridOptions {
-    return TGridOptions(syscallN(12492, obj))
-}
-
-func DrawGrid_SetOptions(obj uintptr, value TGridOptions) {
     syscallN(12493, obj, uintptr(value))
 }
 
+func DrawGrid_GetOptions(obj uintptr) TGridOptions {
+    return TGridOptions(syscallN(12494, obj))
+}
+
+func DrawGrid_SetOptions(obj uintptr, value TGridOptions) {
+    syscallN(12495, obj, uintptr(value))
+}
+
 func DrawGrid_GetParentColor(obj uintptr) bool {
-    return GoBool(syscallN(12494, obj))
-}
-
-func DrawGrid_SetParentColor(obj uintptr, value bool) {
-    syscallN(12495, obj, PascalBool(value))
-}
-
-func DrawGrid_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(12496, obj))
 }
 
-func DrawGrid_SetParentDoubleBuffered(obj uintptr, value bool) {
+func DrawGrid_SetParentColor(obj uintptr, value bool) {
     syscallN(12497, obj, PascalBool(value))
 }
 
-func DrawGrid_GetParentFont(obj uintptr) bool {
+func DrawGrid_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(12498, obj))
 }
 
-func DrawGrid_SetParentFont(obj uintptr, value bool) {
+func DrawGrid_SetParentDoubleBuffered(obj uintptr, value bool) {
     syscallN(12499, obj, PascalBool(value))
 }
 
-func DrawGrid_GetParentShowHint(obj uintptr) bool {
+func DrawGrid_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(12500, obj))
 }
 
-func DrawGrid_SetParentShowHint(obj uintptr, value bool) {
+func DrawGrid_SetParentFont(obj uintptr, value bool) {
     syscallN(12501, obj, PascalBool(value))
 }
 
+func DrawGrid_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(12502, obj))
+}
+
+func DrawGrid_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(12503, obj, PascalBool(value))
+}
+
 func DrawGrid_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(12502, obj)
+    return syscallN(12504, obj)
 }
 
 func DrawGrid_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(12503, obj, value)
+    syscallN(12505, obj, value)
 }
 
 func DrawGrid_GetScrollBars(obj uintptr) TScrollStyle {
-    return TScrollStyle(syscallN(12504, obj))
+    return TScrollStyle(syscallN(12506, obj))
 }
 
 func DrawGrid_SetScrollBars(obj uintptr, value TScrollStyle) {
-    syscallN(12505, obj, uintptr(value))
+    syscallN(12507, obj, uintptr(value))
 }
 
 func DrawGrid_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(12506, obj))
+    return GoBool(syscallN(12508, obj))
 }
 
 func DrawGrid_SetShowHint(obj uintptr, value bool) {
-    syscallN(12507, obj, PascalBool(value))
+    syscallN(12509, obj, PascalBool(value))
 }
 
 func DrawGrid_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(12508, obj))
+    return TTabOrder(syscallN(12510, obj))
 }
 
 func DrawGrid_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(12509, obj, uintptr(value))
+    syscallN(12511, obj, uintptr(value))
 }
 
 func DrawGrid_GetVisible(obj uintptr) bool {
-    return GoBool(syscallN(12510, obj))
+    return GoBool(syscallN(12512, obj))
 }
 
 func DrawGrid_SetVisible(obj uintptr, value bool) {
-    syscallN(12511, obj, PascalBool(value))
+    syscallN(12513, obj, PascalBool(value))
 }
 
 func DrawGrid_GetVisibleColCount(obj uintptr) int32 {
-    return int32(syscallN(12512, obj))
+    return int32(syscallN(12514, obj))
 }
 
 func DrawGrid_GetVisibleRowCount(obj uintptr) int32 {
-    return int32(syscallN(12513, obj))
+    return int32(syscallN(12515, obj))
 }
 
 func DrawGrid_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(12514, obj, MakeEventDataPtr(fn))
-}
-
-func DrawGrid_SetOnContextPopup(obj uintptr, fn interface{}) {
-    syscallN(12515, obj, MakeEventDataPtr(fn))
-}
-
-func DrawGrid_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(12516, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnDragDrop(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnContextPopup(obj uintptr, fn interface{}) {
     syscallN(12517, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnDragOver(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(12518, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnDrawCell(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(12519, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnEndDock(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(12520, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnEndDrag(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnDrawCell(obj uintptr, fn interface{}) {
     syscallN(12521, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnEnter(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnEndDock(obj uintptr, fn interface{}) {
     syscallN(12522, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnExit(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(12523, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnEnter(obj uintptr, fn interface{}) {
     syscallN(12524, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnGetEditText(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnExit(obj uintptr, fn interface{}) {
     syscallN(12525, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnKeyDown(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
     syscallN(12526, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnGetEditText(obj uintptr, fn interface{}) {
     syscallN(12527, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnKeyDown(obj uintptr, fn interface{}) {
     syscallN(12528, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
     syscallN(12529, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
     syscallN(12530, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(12531, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnMouseMove(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(12532, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnMouseUp(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(12533, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnMouseMove(obj uintptr, fn interface{}) {
     syscallN(12534, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnMouseUp(obj uintptr, fn interface{}) {
     syscallN(12535, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnSelectCell(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
     syscallN(12536, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnSetEditText(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
     syscallN(12537, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnStartDock(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnSelectCell(obj uintptr, fn interface{}) {
     syscallN(12538, obj, MakeEventDataPtr(fn))
 }
 
-func DrawGrid_SetOnTopLeftChanged(obj uintptr, fn interface{}) {
+func DrawGrid_SetOnSetEditText(obj uintptr, fn interface{}) {
     syscallN(12539, obj, MakeEventDataPtr(fn))
 }
 
+func DrawGrid_SetOnStartDock(obj uintptr, fn interface{}) {
+    syscallN(12540, obj, MakeEventDataPtr(fn))
+}
+
+func DrawGrid_SetOnTopLeftChanged(obj uintptr, fn interface{}) {
+    syscallN(12541, obj, MakeEventDataPtr(fn))
+}
+
 func DrawGrid_GetCanvas(obj uintptr) uintptr {
-    return syscallN(12540, obj)
+    return syscallN(12542, obj)
 }
 
 func DrawGrid_GetCol(obj uintptr) int32 {
-    return int32(syscallN(12541, obj))
+    return int32(syscallN(12543, obj))
 }
 
 func DrawGrid_SetCol(obj uintptr, value int32) {
-    syscallN(12542, obj, uintptr(value))
+    syscallN(12544, obj, uintptr(value))
 }
 
 func DrawGrid_GetEditorMode(obj uintptr) bool {
-    return GoBool(syscallN(12543, obj))
+    return GoBool(syscallN(12545, obj))
 }
 
 func DrawGrid_SetEditorMode(obj uintptr, value bool) {
-    syscallN(12544, obj, PascalBool(value))
+    syscallN(12546, obj, PascalBool(value))
 }
 
 func DrawGrid_GetGridHeight(obj uintptr) int32 {
-    return int32(syscallN(12545, obj))
-}
-
-func DrawGrid_GetGridWidth(obj uintptr) int32 {
-    return int32(syscallN(12546, obj))
-}
-
-func DrawGrid_GetLeftCol(obj uintptr) int32 {
     return int32(syscallN(12547, obj))
 }
 
+func DrawGrid_GetGridWidth(obj uintptr) int32 {
+    return int32(syscallN(12548, obj))
+}
+
+func DrawGrid_GetLeftCol(obj uintptr) int32 {
+    return int32(syscallN(12549, obj))
+}
+
 func DrawGrid_SetLeftCol(obj uintptr, value int32) {
-    syscallN(12548, obj, uintptr(value))
+    syscallN(12550, obj, uintptr(value))
 }
 
 func DrawGrid_GetSelection(obj uintptr) (result TGridRect) {
-    syscallN(12549, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(12551, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DrawGrid_SetSelection(obj uintptr, value TGridRect) {
-    syscallN(12550, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(12552, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func DrawGrid_GetRow(obj uintptr) int32 {
-    return int32(syscallN(12551, obj))
-}
-
-func DrawGrid_SetRow(obj uintptr, value int32) {
-    syscallN(12552, obj, uintptr(value))
-}
-
-func DrawGrid_GetTopRow(obj uintptr) int32 {
     return int32(syscallN(12553, obj))
 }
 
-func DrawGrid_SetTopRow(obj uintptr, value int32) {
+func DrawGrid_SetRow(obj uintptr, value int32) {
     syscallN(12554, obj, uintptr(value))
 }
 
+func DrawGrid_GetTopRow(obj uintptr) int32 {
+    return int32(syscallN(12555, obj))
+}
+
+func DrawGrid_SetTopRow(obj uintptr, value int32) {
+    syscallN(12556, obj, uintptr(value))
+}
+
 func DrawGrid_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(12555, obj))
+    return GoBool(syscallN(12557, obj))
 }
 
 func DrawGrid_SetTabStop(obj uintptr, value bool) {
-    syscallN(12556, obj, PascalBool(value))
+    syscallN(12558, obj, PascalBool(value))
 }
 
 func DrawGrid_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(12557, obj))
+    return int32(syscallN(12559, obj))
 }
 
 func DrawGrid_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(12558, obj))
-}
-
-func DrawGrid_SetDockSite(obj uintptr, value bool) {
-    syscallN(12559, obj, PascalBool(value))
-}
-
-func DrawGrid_GetMouseInClient(obj uintptr) bool {
     return GoBool(syscallN(12560, obj))
 }
 
+func DrawGrid_SetDockSite(obj uintptr, value bool) {
+    syscallN(12561, obj, PascalBool(value))
+}
+
+func DrawGrid_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(12562, obj))
+}
+
 func DrawGrid_GetVisibleDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(12561, obj))
-}
-
-func DrawGrid_GetBrush(obj uintptr) uintptr {
-    return syscallN(12562, obj)
-}
-
-func DrawGrid_GetControlCount(obj uintptr) int32 {
     return int32(syscallN(12563, obj))
 }
 
+func DrawGrid_GetBrush(obj uintptr) uintptr {
+    return syscallN(12564, obj)
+}
+
+func DrawGrid_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(12565, obj))
+}
+
 func DrawGrid_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(12564, obj))
+    return HWND(syscallN(12566, obj))
 }
 
 func DrawGrid_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(12565, obj))
+    return HWND(syscallN(12567, obj))
 }
 
 func DrawGrid_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(12566, obj, uintptr(value))
+    syscallN(12568, obj, uintptr(value))
 }
 
 func DrawGrid_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(12567, obj))
+    return GoBool(syscallN(12569, obj))
 }
 
 func DrawGrid_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(12568, obj))
+    return GoBool(syscallN(12570, obj))
 }
 
 func DrawGrid_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(12569, obj, PascalBool(value))
+    syscallN(12571, obj, PascalBool(value))
 }
 
 func DrawGrid_GetAction(obj uintptr) uintptr {
-    return syscallN(12570, obj)
+    return syscallN(12572, obj)
 }
 
 func DrawGrid_SetAction(obj uintptr, value uintptr) {
-    syscallN(12571, obj, value)
+    syscallN(12573, obj, value)
 }
 
 func DrawGrid_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(12572, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(12574, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DrawGrid_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(12573, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(12575, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func DrawGrid_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(12574, obj))
+    return int32(syscallN(12576, obj))
 }
 
 func DrawGrid_SetClientHeight(obj uintptr, value int32) {
-    syscallN(12575, obj, uintptr(value))
+    syscallN(12577, obj, uintptr(value))
 }
 
 func DrawGrid_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(12576, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(12578, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DrawGrid_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(12577, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(12579, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func DrawGrid_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(12578, obj))
+    return int32(syscallN(12580, obj))
 }
 
 func DrawGrid_SetClientWidth(obj uintptr, value int32) {
-    syscallN(12579, obj, uintptr(value))
-}
-
-func DrawGrid_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(12580, obj))
-}
-
-func DrawGrid_SetControlState(obj uintptr, value TControlState) {
     syscallN(12581, obj, uintptr(value))
 }
 
-func DrawGrid_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(12582, obj))
+func DrawGrid_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(12582, obj))
 }
 
-func DrawGrid_SetControlStyle(obj uintptr, value TControlStyle) {
+func DrawGrid_SetControlState(obj uintptr, value TControlState) {
     syscallN(12583, obj, uintptr(value))
 }
 
+func DrawGrid_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(12584, obj))
+}
+
+func DrawGrid_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(12585, obj, uintptr(value))
+}
+
 func DrawGrid_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(12584, obj))
+    return GoBool(syscallN(12586, obj))
 }
 
 func DrawGrid_GetParent(obj uintptr) uintptr {
-    return syscallN(12585, obj)
+    return syscallN(12587, obj)
 }
 
 func DrawGrid_SetParent(obj uintptr, value uintptr) {
-    syscallN(12586, obj, value)
+    syscallN(12588, obj, value)
 }
 
 func DrawGrid_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(12587, obj))
-}
-
-func DrawGrid_SetLeft(obj uintptr, value int32) {
-    syscallN(12588, obj, uintptr(value))
-}
-
-func DrawGrid_GetTop(obj uintptr) int32 {
     return int32(syscallN(12589, obj))
 }
 
-func DrawGrid_SetTop(obj uintptr, value int32) {
+func DrawGrid_SetLeft(obj uintptr, value int32) {
     syscallN(12590, obj, uintptr(value))
 }
 
-func DrawGrid_GetWidth(obj uintptr) int32 {
+func DrawGrid_GetTop(obj uintptr) int32 {
     return int32(syscallN(12591, obj))
 }
 
-func DrawGrid_SetWidth(obj uintptr, value int32) {
+func DrawGrid_SetTop(obj uintptr, value int32) {
     syscallN(12592, obj, uintptr(value))
 }
 
-func DrawGrid_GetHeight(obj uintptr) int32 {
+func DrawGrid_GetWidth(obj uintptr) int32 {
     return int32(syscallN(12593, obj))
 }
 
-func DrawGrid_SetHeight(obj uintptr, value int32) {
+func DrawGrid_SetWidth(obj uintptr, value int32) {
     syscallN(12594, obj, uintptr(value))
 }
 
-func DrawGrid_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(12595, obj))
+func DrawGrid_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(12595, obj))
 }
 
-func DrawGrid_SetCursor(obj uintptr, value TCursor) {
+func DrawGrid_SetHeight(obj uintptr, value int32) {
     syscallN(12596, obj, uintptr(value))
 }
 
+func DrawGrid_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(12597, obj))
+}
+
+func DrawGrid_SetCursor(obj uintptr, value TCursor) {
+    syscallN(12598, obj, uintptr(value))
+}
+
 func DrawGrid_GetHint(obj uintptr) string {
-    return GoStr(syscallN(12597, obj))
+    return GoStr(syscallN(12599, obj))
 }
 
 func DrawGrid_SetHint(obj uintptr, value string) {
-    syscallN(12598, obj, PascalStr(value))
+    syscallN(12600, obj, PascalStr(value))
 }
 
 func DrawGrid_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(12599, obj))
+    return int32(syscallN(12601, obj))
 }
 
 func DrawGrid_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(12600, obj))
+    return int32(syscallN(12602, obj))
 }
 
 func DrawGrid_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(12601, obj, uintptr(value))
+    syscallN(12603, obj, uintptr(value))
 }
 
 func DrawGrid_GetOwner(obj uintptr) uintptr {
-    return syscallN(12602, obj)
+    return syscallN(12604, obj)
 }
 
 func DrawGrid_GetName(obj uintptr) string {
-    return GoStr(syscallN(12603, obj))
+    return GoStr(syscallN(12605, obj))
 }
 
 func DrawGrid_SetName(obj uintptr, value string) {
-    syscallN(12604, obj, PascalStr(value))
+    syscallN(12606, obj, PascalStr(value))
 }
 
 func DrawGrid_GetTag(obj uintptr) int {
-    return int(syscallN(12605, obj))
+    return int(syscallN(12607, obj))
 }
 
 func DrawGrid_SetTag(obj uintptr, value int) {
-    syscallN(12606, obj, uintptr(value))
+    syscallN(12608, obj, uintptr(value))
 }
 
 func DrawGrid_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(12607, obj)
-}
-
-func DrawGrid_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(12608, obj, value)
-}
-
-func DrawGrid_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(12609, obj)
 }
 
-func DrawGrid_SetAnchorSideTop(obj uintptr, value uintptr) {
+func DrawGrid_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(12610, obj, value)
 }
 
-func DrawGrid_GetAnchorSideRight(obj uintptr) uintptr {
+func DrawGrid_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(12611, obj)
 }
 
-func DrawGrid_SetAnchorSideRight(obj uintptr, value uintptr) {
+func DrawGrid_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(12612, obj, value)
 }
 
-func DrawGrid_GetAnchorSideBottom(obj uintptr) uintptr {
+func DrawGrid_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(12613, obj)
 }
 
-func DrawGrid_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func DrawGrid_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(12614, obj, value)
 }
 
-func DrawGrid_GetChildSizing(obj uintptr) uintptr {
+func DrawGrid_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(12615, obj)
 }
 
-func DrawGrid_SetChildSizing(obj uintptr, value uintptr) {
+func DrawGrid_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(12616, obj, value)
 }
 
-func DrawGrid_GetBorderSpacing(obj uintptr) uintptr {
+func DrawGrid_GetChildSizing(obj uintptr) uintptr {
     return syscallN(12617, obj)
 }
 
-func DrawGrid_SetBorderSpacing(obj uintptr, value uintptr) {
+func DrawGrid_SetChildSizing(obj uintptr, value uintptr) {
     syscallN(12618, obj, value)
 }
 
+func DrawGrid_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(12619, obj)
+}
+
+func DrawGrid_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(12620, obj, value)
+}
+
 func DrawGrid_GetColWidths(obj uintptr, Index int32) int32 {
-    return int32(syscallN(12619, obj, uintptr(Index)))
-}
-
-func DrawGrid_SetColWidths(obj uintptr, Index int32, value int32) {
-    syscallN(12620, obj, uintptr(Index), uintptr(value))
-}
-
-func DrawGrid_GetRowHeights(obj uintptr, Index int32) int32 {
     return int32(syscallN(12621, obj, uintptr(Index)))
 }
 
-func DrawGrid_SetRowHeights(obj uintptr, Index int32, value int32) {
+func DrawGrid_SetColWidths(obj uintptr, Index int32, value int32) {
     syscallN(12622, obj, uintptr(Index), uintptr(value))
 }
 
+func DrawGrid_GetRowHeights(obj uintptr, Index int32) int32 {
+    return int32(syscallN(12623, obj, uintptr(Index)))
+}
+
+func DrawGrid_SetRowHeights(obj uintptr, Index int32, value int32) {
+    syscallN(12624, obj, uintptr(Index), uintptr(value))
+}
+
 func DrawGrid_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(12623, obj, uintptr(Index))
+    return syscallN(12625, obj, uintptr(Index))
 }
 
 func DrawGrid_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(12624, obj, uintptr(Index))
+    return syscallN(12626, obj, uintptr(Index))
 }
 
 func DrawGrid_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(12625, obj, uintptr(AIndex))
+    return syscallN(12627, obj, uintptr(AIndex))
 }
 
 func DrawGrid_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(12626, obj, uintptr(AKind))
+    return syscallN(12628, obj, uintptr(AKind))
 }
 
 func DrawGrid_StaticClassType() TClass {
-    return TClass(syscallN(12627))
+    return TClass(syscallN(12629))
 }
 
 //--------------------------- TValueListEditor ---------------------------
 
 func ValueListEditor_Create(obj uintptr) uintptr {
-    return syscallN(12628, obj)
+    return syscallN(12630, obj)
 }
 
 func ValueListEditor_Free(obj uintptr) {
-    syscallN(12629, obj)
-}
-
-func ValueListEditor_DeleteRow(obj uintptr, ARow int32)  {
-    syscallN(12630, obj, uintptr(ARow) )
-}
-
-func ValueListEditor_Refresh(obj uintptr)  {
     syscallN(12631, obj)
 }
 
+func ValueListEditor_DeleteRow(obj uintptr, ARow int32)  {
+    syscallN(12632, obj, uintptr(ARow) )
+}
+
+func ValueListEditor_Refresh(obj uintptr)  {
+    syscallN(12633, obj)
+}
+
 func ValueListEditor_CellRect(obj uintptr, ACol int32, ARow int32)(result  TRect)  {
-    syscallN(12632, obj, uintptr(ACol) , uintptr(ARow) , uintptr(unsafe.Pointer(&result)))
+    syscallN(12634, obj, uintptr(ACol) , uintptr(ARow) , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ValueListEditor_MouseToCell(obj uintptr, X int32, Y int32, ACol *int32, ARow *int32)  {
-    syscallN(12633, obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(ACol)), uintptr(unsafe.Pointer(ARow)))
+    syscallN(12635, obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(ACol)), uintptr(unsafe.Pointer(ARow)))
 }
 
 func ValueListEditor_MouseCoord(obj uintptr, X int32, Y int32)(result  TGridCoord)  {
-    syscallN(12634, obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(&result)))
+    syscallN(12636, obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ValueListEditor_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(12635, obj))
+    return GoBool(syscallN(12637, obj))
 }
 
 func ValueListEditor_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(12636, obj, Control ))
+    return GoBool(syscallN(12638, obj, Control ))
 }
 
 func ValueListEditor_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(12637, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(12639, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func ValueListEditor_DisableAlign(obj uintptr)  {
-    syscallN(12638, obj)
+    syscallN(12640, obj)
 }
 
 func ValueListEditor_EnableAlign(obj uintptr)  {
-    syscallN(12639, obj)
+    syscallN(12641, obj)
 }
 
 func ValueListEditor_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(12640, obj, PascalStr(ControlName) )
+    return syscallN(12642, obj, PascalStr(ControlName) )
 }
 
 func ValueListEditor_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(12641, obj, PascalBool(AllLevels) )
+    syscallN(12643, obj, PascalBool(AllLevels) )
 }
 
 func ValueListEditor_Focused(obj uintptr) bool {
-    return GoBool(syscallN(12642, obj))
+    return GoBool(syscallN(12644, obj))
 }
 
 func ValueListEditor_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(12643, obj))
+    return GoBool(syscallN(12645, obj))
 }
 
 func ValueListEditor_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(12644, obj, AControl )
+    syscallN(12646, obj, AControl )
 }
 
 func ValueListEditor_Invalidate(obj uintptr)  {
-    syscallN(12645, obj)
+    syscallN(12647, obj)
 }
 
 func ValueListEditor_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(12646, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(12648, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func ValueListEditor_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(12647, obj, AControl )
+    syscallN(12649, obj, AControl )
 }
 
 func ValueListEditor_Realign(obj uintptr)  {
-    syscallN(12648, obj)
+    syscallN(12650, obj)
 }
 
 func ValueListEditor_Repaint(obj uintptr)  {
-    syscallN(12649, obj)
+    syscallN(12651, obj)
 }
 
 func ValueListEditor_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(12650, obj, uintptr(M) , uintptr(D) )
+    syscallN(12652, obj, uintptr(M) , uintptr(D) )
 }
 
 func ValueListEditor_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(12651, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(12653, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func ValueListEditor_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(12652, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(12654, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func ValueListEditor_SetFocus(obj uintptr)  {
-    syscallN(12653, obj)
+    syscallN(12655, obj)
 }
 
 func ValueListEditor_Update(obj uintptr)  {
-    syscallN(12654, obj)
-}
-
-func ValueListEditor_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(12655, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func ValueListEditor_BringToFront(obj uintptr)  {
     syscallN(12656, obj)
 }
 
+func ValueListEditor_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(12657, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func ValueListEditor_BringToFront(obj uintptr)  {
+    syscallN(12658, obj)
+}
+
 func ValueListEditor_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(12657, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(12659, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ValueListEditor_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(12658, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(12660, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ValueListEditor_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(12659, obj))
-}
-
-func ValueListEditor_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(12660, obj, PascalBool(Drop) )
-}
-
-func ValueListEditor_HasParent(obj uintptr) bool {
     return GoBool(syscallN(12661, obj))
 }
 
+func ValueListEditor_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(12662, obj, PascalBool(Drop) )
+}
+
+func ValueListEditor_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(12663, obj))
+}
+
 func ValueListEditor_Hide(obj uintptr)  {
-    syscallN(12662, obj)
+    syscallN(12664, obj)
 }
 
 func ValueListEditor_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(12663, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+    return int(syscallN(12665, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
 }
 
 func ValueListEditor_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(12664, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(12666, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ValueListEditor_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(12665, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(12667, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ValueListEditor_SendToBack(obj uintptr)  {
-    syscallN(12666, obj)
+    syscallN(12668, obj)
 }
 
 func ValueListEditor_Show(obj uintptr)  {
-    syscallN(12667, obj)
+    syscallN(12669, obj)
 }
 
 func ValueListEditor_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(12668, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(12670, obj, Buffer, uintptr(BufSize) ))
 }
 
 func ValueListEditor_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(12669, obj))
+    return int32(syscallN(12671, obj))
 }
 
 func ValueListEditor_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(12670, obj, PascalStr(Buffer) )
+    syscallN(12672, obj, PascalStr(Buffer) )
 }
 
 func ValueListEditor_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(12671, obj, PascalStr(AName) )
+    return syscallN(12673, obj, PascalStr(AName) )
 }
 
 func ValueListEditor_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(12672, obj))
+    return GoStr(syscallN(12674, obj))
 }
 
 func ValueListEditor_Assign(obj uintptr, Source uintptr)  {
-    syscallN(12673, obj, Source )
+    syscallN(12675, obj, Source )
 }
 
 func ValueListEditor_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(12674, obj))
+    return TClass(syscallN(12676, obj))
 }
 
 func ValueListEditor_ClassName(obj uintptr) string {
-    return GoStr(syscallN(12675, obj))
+    return GoStr(syscallN(12677, obj))
 }
 
 func ValueListEditor_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(12676, obj))
+    return int32(syscallN(12678, obj))
 }
 
 func ValueListEditor_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(12677, obj, uintptr(AClass) ))
+    return GoBool(syscallN(12679, obj, uintptr(AClass) ))
 }
 
 func ValueListEditor_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(12678, obj, Obj ))
+    return GoBool(syscallN(12680, obj, Obj ))
 }
 
 func ValueListEditor_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(12679, obj))
+    return int32(syscallN(12681, obj))
 }
 
 func ValueListEditor_ToString(obj uintptr) string {
-    return GoStr(syscallN(12680, obj))
+    return GoStr(syscallN(12682, obj))
 }
 
 func ValueListEditor_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(12681, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(12683, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func ValueListEditor_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(12682, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(12684, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func ValueListEditor_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(12683, obj, ASibling )
+    syscallN(12685, obj, ASibling )
 }
 
 func ValueListEditor_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(12684, obj, ASibling )
+    syscallN(12686, obj, ASibling )
 }
 
 func ValueListEditor_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(12685, obj, uintptr(ASide) , ASibling )
+    syscallN(12687, obj, uintptr(ASide) , ASibling )
 }
 
 func ValueListEditor_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(12686, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(12688, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func ValueListEditor_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(12687, obj, uintptr(ASpace) )
+    syscallN(12689, obj, uintptr(ASpace) )
 }
 
 func ValueListEditor_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(12688, obj, uintptr(ASize) ))
-}
-
-func ValueListEditor_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(12689, obj, uintptr(ASize) ))
-}
-
-func ValueListEditor_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12690, obj, uintptr(ASize) ))
 }
 
-func ValueListEditor_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func ValueListEditor_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12691, obj, uintptr(ASize) ))
 }
 
-func ValueListEditor_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func ValueListEditor_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12692, obj, uintptr(ASize) ))
 }
 
-func ValueListEditor_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func ValueListEditor_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12693, obj, uintptr(ASize) ))
 }
 
-func ValueListEditor_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func ValueListEditor_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12694, obj, uintptr(ASize) ))
 }
 
-func ValueListEditor_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func ValueListEditor_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12695, obj, uintptr(ASize) ))
 }
 
-func ValueListEditor_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func ValueListEditor_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12696, obj, uintptr(ASize) ))
 }
 
-func ValueListEditor_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func ValueListEditor_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12697, obj, uintptr(ASize) ))
 }
 
+func ValueListEditor_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(12698, obj, uintptr(ASize) ))
+}
+
+func ValueListEditor_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(12699, obj, uintptr(ASize) ))
+}
+
 func ValueListEditor_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(12698, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(12700, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func ValueListEditor_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(12699, obj, uintptr(ADesignTimePPI) )
+    syscallN(12701, obj, uintptr(ADesignTimePPI) )
 }
 
 func ValueListEditor_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(12700, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(12702, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ValueListEditor_GetColCount(obj uintptr) int32 {
-    return int32(syscallN(12701, obj))
-}
-
-func ValueListEditor_SetColCount(obj uintptr, value int32) {
-    syscallN(12702, obj, uintptr(value))
-}
-
-func ValueListEditor_GetRowCount(obj uintptr) int32 {
     return int32(syscallN(12703, obj))
 }
 
-func ValueListEditor_GetVisibleColCount(obj uintptr) int32 {
-    return int32(syscallN(12704, obj))
+func ValueListEditor_SetColCount(obj uintptr, value int32) {
+    syscallN(12704, obj, uintptr(value))
 }
 
-func ValueListEditor_GetVisibleRowCount(obj uintptr) int32 {
+func ValueListEditor_GetRowCount(obj uintptr) int32 {
     return int32(syscallN(12705, obj))
 }
 
+func ValueListEditor_GetVisibleColCount(obj uintptr) int32 {
+    return int32(syscallN(12706, obj))
+}
+
+func ValueListEditor_GetVisibleRowCount(obj uintptr) int32 {
+    return int32(syscallN(12707, obj))
+}
+
 func ValueListEditor_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(12706, obj))
+    return TAlign(syscallN(12708, obj))
 }
 
 func ValueListEditor_SetAlign(obj uintptr, value TAlign) {
-    syscallN(12707, obj, uintptr(value))
-}
-
-func ValueListEditor_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(12708, obj))
-}
-
-func ValueListEditor_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(12709, obj, uintptr(value))
 }
 
-func ValueListEditor_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(12710, obj))
+func ValueListEditor_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(12710, obj))
 }
 
-func ValueListEditor_SetBiDiMode(obj uintptr, value TBiDiMode) {
+func ValueListEditor_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(12711, obj, uintptr(value))
 }
 
-func ValueListEditor_GetBorderStyle(obj uintptr) TBorderStyle {
-    return TBorderStyle(syscallN(12712, obj))
+func ValueListEditor_GetBiDiMode(obj uintptr) TBiDiMode {
+    return TBiDiMode(syscallN(12712, obj))
 }
 
-func ValueListEditor_SetBorderStyle(obj uintptr, value TBorderStyle) {
+func ValueListEditor_SetBiDiMode(obj uintptr, value TBiDiMode) {
     syscallN(12713, obj, uintptr(value))
 }
 
-func ValueListEditor_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(12714, obj))
+func ValueListEditor_GetBorderStyle(obj uintptr) TBorderStyle {
+    return TBorderStyle(syscallN(12714, obj))
 }
 
-func ValueListEditor_SetColor(obj uintptr, value TColor) {
+func ValueListEditor_SetBorderStyle(obj uintptr, value TBorderStyle) {
     syscallN(12715, obj, uintptr(value))
 }
 
+func ValueListEditor_GetColor(obj uintptr) TColor {
+    return TColor(syscallN(12716, obj))
+}
+
+func ValueListEditor_SetColor(obj uintptr, value TColor) {
+    syscallN(12717, obj, uintptr(value))
+}
+
 func ValueListEditor_GetConstraints(obj uintptr) uintptr {
-    return syscallN(12716, obj)
+    return syscallN(12718, obj)
 }
 
 func ValueListEditor_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(12717, obj, value)
+    syscallN(12719, obj, value)
 }
 
 func ValueListEditor_GetDefaultColWidth(obj uintptr) int32 {
-    return int32(syscallN(12718, obj))
+    return int32(syscallN(12720, obj))
 }
 
 func ValueListEditor_SetDefaultColWidth(obj uintptr, value int32) {
-    syscallN(12719, obj, uintptr(value))
+    syscallN(12721, obj, uintptr(value))
 }
 
 func ValueListEditor_GetDefaultDrawing(obj uintptr) bool {
-    return GoBool(syscallN(12720, obj))
+    return GoBool(syscallN(12722, obj))
 }
 
 func ValueListEditor_SetDefaultDrawing(obj uintptr, value bool) {
-    syscallN(12721, obj, PascalBool(value))
+    syscallN(12723, obj, PascalBool(value))
 }
 
 func ValueListEditor_GetDefaultRowHeight(obj uintptr) int32 {
-    return int32(syscallN(12722, obj))
+    return int32(syscallN(12724, obj))
 }
 
 func ValueListEditor_SetDefaultRowHeight(obj uintptr, value int32) {
-    syscallN(12723, obj, uintptr(value))
+    syscallN(12725, obj, uintptr(value))
 }
 
 func ValueListEditor_GetDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(12724, obj))
+    return GoBool(syscallN(12726, obj))
 }
 
 func ValueListEditor_SetDoubleBuffered(obj uintptr, value bool) {
-    syscallN(12725, obj, PascalBool(value))
+    syscallN(12727, obj, PascalBool(value))
 }
 
 func ValueListEditor_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(12726, obj))
+    return TCursor(syscallN(12728, obj))
 }
 
 func ValueListEditor_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(12727, obj, uintptr(value))
-}
-
-func ValueListEditor_GetDragKind(obj uintptr) TDragKind {
-    return TDragKind(syscallN(12728, obj))
-}
-
-func ValueListEditor_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(12729, obj, uintptr(value))
 }
 
-func ValueListEditor_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(12730, obj))
+func ValueListEditor_GetDragKind(obj uintptr) TDragKind {
+    return TDragKind(syscallN(12730, obj))
 }
 
-func ValueListEditor_SetDragMode(obj uintptr, value TDragMode) {
+func ValueListEditor_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(12731, obj, uintptr(value))
 }
 
-func ValueListEditor_GetDropDownRows(obj uintptr) int32 {
-    return int32(syscallN(12732, obj))
+func ValueListEditor_GetDragMode(obj uintptr) TDragMode {
+    return TDragMode(syscallN(12732, obj))
 }
 
-func ValueListEditor_SetDropDownRows(obj uintptr, value int32) {
+func ValueListEditor_SetDragMode(obj uintptr, value TDragMode) {
     syscallN(12733, obj, uintptr(value))
 }
 
+func ValueListEditor_GetDropDownRows(obj uintptr) int32 {
+    return int32(syscallN(12734, obj))
+}
+
+func ValueListEditor_SetDropDownRows(obj uintptr, value int32) {
+    syscallN(12735, obj, uintptr(value))
+}
+
 func ValueListEditor_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(12734, obj))
+    return GoBool(syscallN(12736, obj))
 }
 
 func ValueListEditor_SetEnabled(obj uintptr, value bool) {
-    syscallN(12735, obj, PascalBool(value))
+    syscallN(12737, obj, PascalBool(value))
 }
 
 func ValueListEditor_GetFixedColor(obj uintptr) TColor {
-    return TColor(syscallN(12736, obj))
+    return TColor(syscallN(12738, obj))
 }
 
 func ValueListEditor_SetFixedColor(obj uintptr, value TColor) {
-    syscallN(12737, obj, uintptr(value))
-}
-
-func ValueListEditor_GetFixedCols(obj uintptr) int32 {
-    return int32(syscallN(12738, obj))
-}
-
-func ValueListEditor_SetFixedCols(obj uintptr, value int32) {
     syscallN(12739, obj, uintptr(value))
 }
 
+func ValueListEditor_GetFixedCols(obj uintptr) int32 {
+    return int32(syscallN(12740, obj))
+}
+
+func ValueListEditor_SetFixedCols(obj uintptr, value int32) {
+    syscallN(12741, obj, uintptr(value))
+}
+
 func ValueListEditor_GetFont(obj uintptr) uintptr {
-    return syscallN(12740, obj)
+    return syscallN(12742, obj)
 }
 
 func ValueListEditor_SetFont(obj uintptr, value uintptr) {
-    syscallN(12741, obj, value)
+    syscallN(12743, obj, value)
 }
 
 func ValueListEditor_GetGridLineWidth(obj uintptr) int32 {
-    return int32(syscallN(12742, obj))
+    return int32(syscallN(12744, obj))
 }
 
 func ValueListEditor_SetGridLineWidth(obj uintptr, value int32) {
-    syscallN(12743, obj, uintptr(value))
-}
-
-func ValueListEditor_GetOptions(obj uintptr) TGridOptions {
-    return TGridOptions(syscallN(12744, obj))
-}
-
-func ValueListEditor_SetOptions(obj uintptr, value TGridOptions) {
     syscallN(12745, obj, uintptr(value))
 }
 
+func ValueListEditor_GetOptions(obj uintptr) TGridOptions {
+    return TGridOptions(syscallN(12746, obj))
+}
+
+func ValueListEditor_SetOptions(obj uintptr, value TGridOptions) {
+    syscallN(12747, obj, uintptr(value))
+}
+
 func ValueListEditor_GetParentColor(obj uintptr) bool {
-    return GoBool(syscallN(12746, obj))
-}
-
-func ValueListEditor_SetParentColor(obj uintptr, value bool) {
-    syscallN(12747, obj, PascalBool(value))
-}
-
-func ValueListEditor_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(12748, obj))
 }
 
-func ValueListEditor_SetParentDoubleBuffered(obj uintptr, value bool) {
+func ValueListEditor_SetParentColor(obj uintptr, value bool) {
     syscallN(12749, obj, PascalBool(value))
 }
 
-func ValueListEditor_GetParentFont(obj uintptr) bool {
+func ValueListEditor_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(12750, obj))
 }
 
-func ValueListEditor_SetParentFont(obj uintptr, value bool) {
+func ValueListEditor_SetParentDoubleBuffered(obj uintptr, value bool) {
     syscallN(12751, obj, PascalBool(value))
 }
 
-func ValueListEditor_GetParentShowHint(obj uintptr) bool {
+func ValueListEditor_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(12752, obj))
 }
 
-func ValueListEditor_SetParentShowHint(obj uintptr, value bool) {
+func ValueListEditor_SetParentFont(obj uintptr, value bool) {
     syscallN(12753, obj, PascalBool(value))
 }
 
+func ValueListEditor_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(12754, obj))
+}
+
+func ValueListEditor_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(12755, obj, PascalBool(value))
+}
+
 func ValueListEditor_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(12754, obj)
+    return syscallN(12756, obj)
 }
 
 func ValueListEditor_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(12755, obj, value)
+    syscallN(12757, obj, value)
 }
 
 func ValueListEditor_GetScrollBars(obj uintptr) TScrollStyle {
-    return TScrollStyle(syscallN(12756, obj))
+    return TScrollStyle(syscallN(12758, obj))
 }
 
 func ValueListEditor_SetScrollBars(obj uintptr, value TScrollStyle) {
-    syscallN(12757, obj, uintptr(value))
+    syscallN(12759, obj, uintptr(value))
 }
 
 func ValueListEditor_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(12758, obj))
+    return GoBool(syscallN(12760, obj))
 }
 
 func ValueListEditor_SetShowHint(obj uintptr, value bool) {
-    syscallN(12759, obj, PascalBool(value))
+    syscallN(12761, obj, PascalBool(value))
 }
 
 func ValueListEditor_GetStrings(obj uintptr) uintptr {
-    return syscallN(12760, obj)
+    return syscallN(12762, obj)
 }
 
 func ValueListEditor_SetStrings(obj uintptr, value uintptr) {
-    syscallN(12761, obj, value)
+    syscallN(12763, obj, value)
 }
 
 func ValueListEditor_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(12762, obj))
+    return TTabOrder(syscallN(12764, obj))
 }
 
 func ValueListEditor_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(12763, obj, uintptr(value))
+    syscallN(12765, obj, uintptr(value))
 }
 
 func ValueListEditor_GetVisible(obj uintptr) bool {
-    return GoBool(syscallN(12764, obj))
+    return GoBool(syscallN(12766, obj))
 }
 
 func ValueListEditor_SetVisible(obj uintptr, value bool) {
-    syscallN(12765, obj, PascalBool(value))
+    syscallN(12767, obj, PascalBool(value))
 }
 
 func ValueListEditor_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(12766, obj, MakeEventDataPtr(fn))
-}
-
-func ValueListEditor_SetOnContextPopup(obj uintptr, fn interface{}) {
-    syscallN(12767, obj, MakeEventDataPtr(fn))
-}
-
-func ValueListEditor_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(12768, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnDragDrop(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnContextPopup(obj uintptr, fn interface{}) {
     syscallN(12769, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnDragOver(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(12770, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnDrawCell(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(12771, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnEndDock(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(12772, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnEndDrag(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnDrawCell(obj uintptr, fn interface{}) {
     syscallN(12773, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnEnter(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnEndDock(obj uintptr, fn interface{}) {
     syscallN(12774, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnExit(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(12775, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnGetEditMask(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnEnter(obj uintptr, fn interface{}) {
     syscallN(12776, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnGetEditText(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnExit(obj uintptr, fn interface{}) {
     syscallN(12777, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnKeyDown(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnGetEditMask(obj uintptr, fn interface{}) {
     syscallN(12778, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnKeyPress(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnGetEditText(obj uintptr, fn interface{}) {
     syscallN(12779, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnKeyUp(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnKeyDown(obj uintptr, fn interface{}) {
     syscallN(12780, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnMouseDown(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnKeyPress(obj uintptr, fn interface{}) {
     syscallN(12781, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnKeyUp(obj uintptr, fn interface{}) {
     syscallN(12782, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(12783, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnMouseMove(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(12784, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnMouseUp(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(12785, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnMouseMove(obj uintptr, fn interface{}) {
     syscallN(12786, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnMouseUp(obj uintptr, fn interface{}) {
     syscallN(12787, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnSelectCell(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
     syscallN(12788, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnSetEditText(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
     syscallN(12789, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnStartDock(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnSelectCell(obj uintptr, fn interface{}) {
     syscallN(12790, obj, MakeEventDataPtr(fn))
 }
 
-func ValueListEditor_SetOnTopLeftChanged(obj uintptr, fn interface{}) {
+func ValueListEditor_SetOnSetEditText(obj uintptr, fn interface{}) {
     syscallN(12791, obj, MakeEventDataPtr(fn))
 }
 
+func ValueListEditor_SetOnStartDock(obj uintptr, fn interface{}) {
+    syscallN(12792, obj, MakeEventDataPtr(fn))
+}
+
+func ValueListEditor_SetOnTopLeftChanged(obj uintptr, fn interface{}) {
+    syscallN(12793, obj, MakeEventDataPtr(fn))
+}
+
 func ValueListEditor_GetCanvas(obj uintptr) uintptr {
-    return syscallN(12792, obj)
+    return syscallN(12794, obj)
 }
 
 func ValueListEditor_GetCol(obj uintptr) int32 {
-    return int32(syscallN(12793, obj))
+    return int32(syscallN(12795, obj))
 }
 
 func ValueListEditor_SetCol(obj uintptr, value int32) {
-    syscallN(12794, obj, uintptr(value))
+    syscallN(12796, obj, uintptr(value))
 }
 
 func ValueListEditor_GetEditorMode(obj uintptr) bool {
-    return GoBool(syscallN(12795, obj))
+    return GoBool(syscallN(12797, obj))
 }
 
 func ValueListEditor_SetEditorMode(obj uintptr, value bool) {
-    syscallN(12796, obj, PascalBool(value))
+    syscallN(12798, obj, PascalBool(value))
 }
 
 func ValueListEditor_GetGridHeight(obj uintptr) int32 {
-    return int32(syscallN(12797, obj))
-}
-
-func ValueListEditor_GetGridWidth(obj uintptr) int32 {
-    return int32(syscallN(12798, obj))
-}
-
-func ValueListEditor_GetLeftCol(obj uintptr) int32 {
     return int32(syscallN(12799, obj))
 }
 
+func ValueListEditor_GetGridWidth(obj uintptr) int32 {
+    return int32(syscallN(12800, obj))
+}
+
+func ValueListEditor_GetLeftCol(obj uintptr) int32 {
+    return int32(syscallN(12801, obj))
+}
+
 func ValueListEditor_SetLeftCol(obj uintptr, value int32) {
-    syscallN(12800, obj, uintptr(value))
+    syscallN(12802, obj, uintptr(value))
 }
 
 func ValueListEditor_GetSelection(obj uintptr) (result TGridRect) {
-    syscallN(12801, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(12803, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ValueListEditor_SetSelection(obj uintptr, value TGridRect) {
-    syscallN(12802, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(12804, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func ValueListEditor_GetRow(obj uintptr) int32 {
-    return int32(syscallN(12803, obj))
-}
-
-func ValueListEditor_SetRow(obj uintptr, value int32) {
-    syscallN(12804, obj, uintptr(value))
-}
-
-func ValueListEditor_GetTopRow(obj uintptr) int32 {
     return int32(syscallN(12805, obj))
 }
 
-func ValueListEditor_SetTopRow(obj uintptr, value int32) {
+func ValueListEditor_SetRow(obj uintptr, value int32) {
     syscallN(12806, obj, uintptr(value))
 }
 
+func ValueListEditor_GetTopRow(obj uintptr) int32 {
+    return int32(syscallN(12807, obj))
+}
+
+func ValueListEditor_SetTopRow(obj uintptr, value int32) {
+    syscallN(12808, obj, uintptr(value))
+}
+
 func ValueListEditor_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(12807, obj))
+    return GoBool(syscallN(12809, obj))
 }
 
 func ValueListEditor_SetTabStop(obj uintptr, value bool) {
-    syscallN(12808, obj, PascalBool(value))
+    syscallN(12810, obj, PascalBool(value))
 }
 
 func ValueListEditor_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(12809, obj))
+    return int32(syscallN(12811, obj))
 }
 
 func ValueListEditor_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(12810, obj))
-}
-
-func ValueListEditor_SetDockSite(obj uintptr, value bool) {
-    syscallN(12811, obj, PascalBool(value))
-}
-
-func ValueListEditor_GetMouseInClient(obj uintptr) bool {
     return GoBool(syscallN(12812, obj))
 }
 
+func ValueListEditor_SetDockSite(obj uintptr, value bool) {
+    syscallN(12813, obj, PascalBool(value))
+}
+
+func ValueListEditor_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(12814, obj))
+}
+
 func ValueListEditor_GetVisibleDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(12813, obj))
-}
-
-func ValueListEditor_GetBrush(obj uintptr) uintptr {
-    return syscallN(12814, obj)
-}
-
-func ValueListEditor_GetControlCount(obj uintptr) int32 {
     return int32(syscallN(12815, obj))
 }
 
+func ValueListEditor_GetBrush(obj uintptr) uintptr {
+    return syscallN(12816, obj)
+}
+
+func ValueListEditor_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(12817, obj))
+}
+
 func ValueListEditor_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(12816, obj))
+    return HWND(syscallN(12818, obj))
 }
 
 func ValueListEditor_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(12817, obj))
+    return HWND(syscallN(12819, obj))
 }
 
 func ValueListEditor_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(12818, obj, uintptr(value))
+    syscallN(12820, obj, uintptr(value))
 }
 
 func ValueListEditor_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(12819, obj))
+    return GoBool(syscallN(12821, obj))
 }
 
 func ValueListEditor_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(12820, obj))
+    return GoBool(syscallN(12822, obj))
 }
 
 func ValueListEditor_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(12821, obj, PascalBool(value))
+    syscallN(12823, obj, PascalBool(value))
 }
 
 func ValueListEditor_GetAction(obj uintptr) uintptr {
-    return syscallN(12822, obj)
+    return syscallN(12824, obj)
 }
 
 func ValueListEditor_SetAction(obj uintptr, value uintptr) {
-    syscallN(12823, obj, value)
+    syscallN(12825, obj, value)
 }
 
 func ValueListEditor_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(12824, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(12826, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ValueListEditor_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(12825, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(12827, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func ValueListEditor_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(12826, obj))
+    return int32(syscallN(12828, obj))
 }
 
 func ValueListEditor_SetClientHeight(obj uintptr, value int32) {
-    syscallN(12827, obj, uintptr(value))
+    syscallN(12829, obj, uintptr(value))
 }
 
 func ValueListEditor_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(12828, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(12830, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ValueListEditor_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(12829, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(12831, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ValueListEditor_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(12830, obj))
+    return int32(syscallN(12832, obj))
 }
 
 func ValueListEditor_SetClientWidth(obj uintptr, value int32) {
-    syscallN(12831, obj, uintptr(value))
-}
-
-func ValueListEditor_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(12832, obj))
-}
-
-func ValueListEditor_SetControlState(obj uintptr, value TControlState) {
     syscallN(12833, obj, uintptr(value))
 }
 
-func ValueListEditor_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(12834, obj))
+func ValueListEditor_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(12834, obj))
 }
 
-func ValueListEditor_SetControlStyle(obj uintptr, value TControlStyle) {
+func ValueListEditor_SetControlState(obj uintptr, value TControlState) {
     syscallN(12835, obj, uintptr(value))
 }
 
+func ValueListEditor_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(12836, obj))
+}
+
+func ValueListEditor_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(12837, obj, uintptr(value))
+}
+
 func ValueListEditor_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(12836, obj))
+    return GoBool(syscallN(12838, obj))
 }
 
 func ValueListEditor_GetParent(obj uintptr) uintptr {
-    return syscallN(12837, obj)
+    return syscallN(12839, obj)
 }
 
 func ValueListEditor_SetParent(obj uintptr, value uintptr) {
-    syscallN(12838, obj, value)
+    syscallN(12840, obj, value)
 }
 
 func ValueListEditor_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(12839, obj))
-}
-
-func ValueListEditor_SetLeft(obj uintptr, value int32) {
-    syscallN(12840, obj, uintptr(value))
-}
-
-func ValueListEditor_GetTop(obj uintptr) int32 {
     return int32(syscallN(12841, obj))
 }
 
-func ValueListEditor_SetTop(obj uintptr, value int32) {
+func ValueListEditor_SetLeft(obj uintptr, value int32) {
     syscallN(12842, obj, uintptr(value))
 }
 
-func ValueListEditor_GetWidth(obj uintptr) int32 {
+func ValueListEditor_GetTop(obj uintptr) int32 {
     return int32(syscallN(12843, obj))
 }
 
-func ValueListEditor_SetWidth(obj uintptr, value int32) {
+func ValueListEditor_SetTop(obj uintptr, value int32) {
     syscallN(12844, obj, uintptr(value))
 }
 
-func ValueListEditor_GetHeight(obj uintptr) int32 {
+func ValueListEditor_GetWidth(obj uintptr) int32 {
     return int32(syscallN(12845, obj))
 }
 
-func ValueListEditor_SetHeight(obj uintptr, value int32) {
+func ValueListEditor_SetWidth(obj uintptr, value int32) {
     syscallN(12846, obj, uintptr(value))
 }
 
-func ValueListEditor_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(12847, obj))
+func ValueListEditor_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(12847, obj))
 }
 
-func ValueListEditor_SetCursor(obj uintptr, value TCursor) {
+func ValueListEditor_SetHeight(obj uintptr, value int32) {
     syscallN(12848, obj, uintptr(value))
 }
 
+func ValueListEditor_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(12849, obj))
+}
+
+func ValueListEditor_SetCursor(obj uintptr, value TCursor) {
+    syscallN(12850, obj, uintptr(value))
+}
+
 func ValueListEditor_GetHint(obj uintptr) string {
-    return GoStr(syscallN(12849, obj))
+    return GoStr(syscallN(12851, obj))
 }
 
 func ValueListEditor_SetHint(obj uintptr, value string) {
-    syscallN(12850, obj, PascalStr(value))
+    syscallN(12852, obj, PascalStr(value))
 }
 
 func ValueListEditor_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(12851, obj))
+    return int32(syscallN(12853, obj))
 }
 
 func ValueListEditor_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(12852, obj))
+    return int32(syscallN(12854, obj))
 }
 
 func ValueListEditor_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(12853, obj, uintptr(value))
+    syscallN(12855, obj, uintptr(value))
 }
 
 func ValueListEditor_GetOwner(obj uintptr) uintptr {
-    return syscallN(12854, obj)
+    return syscallN(12856, obj)
 }
 
 func ValueListEditor_GetName(obj uintptr) string {
-    return GoStr(syscallN(12855, obj))
+    return GoStr(syscallN(12857, obj))
 }
 
 func ValueListEditor_SetName(obj uintptr, value string) {
-    syscallN(12856, obj, PascalStr(value))
+    syscallN(12858, obj, PascalStr(value))
 }
 
 func ValueListEditor_GetTag(obj uintptr) int {
-    return int(syscallN(12857, obj))
+    return int(syscallN(12859, obj))
 }
 
 func ValueListEditor_SetTag(obj uintptr, value int) {
-    syscallN(12858, obj, uintptr(value))
+    syscallN(12860, obj, uintptr(value))
 }
 
 func ValueListEditor_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(12859, obj)
-}
-
-func ValueListEditor_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(12860, obj, value)
-}
-
-func ValueListEditor_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(12861, obj)
 }
 
-func ValueListEditor_SetAnchorSideTop(obj uintptr, value uintptr) {
+func ValueListEditor_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(12862, obj, value)
 }
 
-func ValueListEditor_GetAnchorSideRight(obj uintptr) uintptr {
+func ValueListEditor_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(12863, obj)
 }
 
-func ValueListEditor_SetAnchorSideRight(obj uintptr, value uintptr) {
+func ValueListEditor_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(12864, obj, value)
 }
 
-func ValueListEditor_GetAnchorSideBottom(obj uintptr) uintptr {
+func ValueListEditor_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(12865, obj)
 }
 
-func ValueListEditor_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func ValueListEditor_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(12866, obj, value)
 }
 
-func ValueListEditor_GetChildSizing(obj uintptr) uintptr {
+func ValueListEditor_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(12867, obj)
 }
 
-func ValueListEditor_SetChildSizing(obj uintptr, value uintptr) {
+func ValueListEditor_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(12868, obj, value)
 }
 
-func ValueListEditor_GetBorderSpacing(obj uintptr) uintptr {
+func ValueListEditor_GetChildSizing(obj uintptr) uintptr {
     return syscallN(12869, obj)
 }
 
-func ValueListEditor_SetBorderSpacing(obj uintptr, value uintptr) {
+func ValueListEditor_SetChildSizing(obj uintptr, value uintptr) {
     syscallN(12870, obj, value)
 }
 
+func ValueListEditor_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(12871, obj)
+}
+
+func ValueListEditor_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(12872, obj, value)
+}
+
 func ValueListEditor_GetCells(obj uintptr, ACol int32, ARow int32) string {
-    return GoStr(syscallN(12871, obj, uintptr(ACol), uintptr(ARow)))
+    return GoStr(syscallN(12873, obj, uintptr(ACol), uintptr(ARow)))
 }
 
 func ValueListEditor_SetCells(obj uintptr, ACol int32, ARow int32, value string) {
-    syscallN(12872, obj, uintptr(ACol), uintptr(ARow), PascalStr(value))
+    syscallN(12874, obj, uintptr(ACol), uintptr(ARow), PascalStr(value))
 }
 
 func ValueListEditor_GetValues(obj uintptr, Key string) string {
-    return GoStr(syscallN(12873, obj, PascalStr(Key)))
+    return GoStr(syscallN(12875, obj, PascalStr(Key)))
 }
 
 func ValueListEditor_SetValues(obj uintptr, Key string, value string) {
-    syscallN(12874, obj, PascalStr(Key), PascalStr(value))
+    syscallN(12876, obj, PascalStr(Key), PascalStr(value))
 }
 
 func ValueListEditor_GetColWidths(obj uintptr, Index int32) int32 {
-    return int32(syscallN(12875, obj, uintptr(Index)))
-}
-
-func ValueListEditor_SetColWidths(obj uintptr, Index int32, value int32) {
-    syscallN(12876, obj, uintptr(Index), uintptr(value))
-}
-
-func ValueListEditor_GetRowHeights(obj uintptr, Index int32) int32 {
     return int32(syscallN(12877, obj, uintptr(Index)))
 }
 
-func ValueListEditor_SetRowHeights(obj uintptr, Index int32, value int32) {
+func ValueListEditor_SetColWidths(obj uintptr, Index int32, value int32) {
     syscallN(12878, obj, uintptr(Index), uintptr(value))
 }
 
+func ValueListEditor_GetRowHeights(obj uintptr, Index int32) int32 {
+    return int32(syscallN(12879, obj, uintptr(Index)))
+}
+
+func ValueListEditor_SetRowHeights(obj uintptr, Index int32, value int32) {
+    syscallN(12880, obj, uintptr(Index), uintptr(value))
+}
+
 func ValueListEditor_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(12879, obj, uintptr(Index))
+    return syscallN(12881, obj, uintptr(Index))
 }
 
 func ValueListEditor_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(12880, obj, uintptr(Index))
+    return syscallN(12882, obj, uintptr(Index))
 }
 
 func ValueListEditor_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(12881, obj, uintptr(AIndex))
+    return syscallN(12883, obj, uintptr(AIndex))
 }
 
 func ValueListEditor_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(12882, obj, uintptr(AKind))
+    return syscallN(12884, obj, uintptr(AKind))
 }
 
 func ValueListEditor_StaticClassType() TClass {
-    return TClass(syscallN(12883))
+    return TClass(syscallN(12885))
 }
 
 //--------------------------- THeaderControl ---------------------------
 
 func HeaderControl_Create(obj uintptr) uintptr {
-    return syscallN(12884, obj)
+    return syscallN(12886, obj)
 }
 
 func HeaderControl_Free(obj uintptr) {
-    syscallN(12885, obj)
+    syscallN(12887, obj)
 }
 
 func HeaderControl_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(12886, obj, PascalBool(AllLevels) )
+    syscallN(12888, obj, PascalBool(AllLevels) )
 }
 
 func HeaderControl_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(12887, obj))
+    return GoBool(syscallN(12889, obj))
 }
 
 func HeaderControl_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(12888, obj, Control ))
+    return GoBool(syscallN(12890, obj, Control ))
 }
 
 func HeaderControl_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(12889, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(12891, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func HeaderControl_DisableAlign(obj uintptr)  {
-    syscallN(12890, obj)
+    syscallN(12892, obj)
 }
 
 func HeaderControl_EnableAlign(obj uintptr)  {
-    syscallN(12891, obj)
+    syscallN(12893, obj)
 }
 
 func HeaderControl_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(12892, obj, PascalStr(ControlName) )
+    return syscallN(12894, obj, PascalStr(ControlName) )
 }
 
 func HeaderControl_Focused(obj uintptr) bool {
-    return GoBool(syscallN(12893, obj))
+    return GoBool(syscallN(12895, obj))
 }
 
 func HeaderControl_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(12894, obj))
+    return GoBool(syscallN(12896, obj))
 }
 
 func HeaderControl_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(12895, obj, AControl )
+    syscallN(12897, obj, AControl )
 }
 
 func HeaderControl_Invalidate(obj uintptr)  {
-    syscallN(12896, obj)
+    syscallN(12898, obj)
 }
 
 func HeaderControl_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(12897, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(12899, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func HeaderControl_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(12898, obj, AControl )
+    syscallN(12900, obj, AControl )
 }
 
 func HeaderControl_Realign(obj uintptr)  {
-    syscallN(12899, obj)
+    syscallN(12901, obj)
 }
 
 func HeaderControl_Repaint(obj uintptr)  {
-    syscallN(12900, obj)
+    syscallN(12902, obj)
 }
 
 func HeaderControl_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(12901, obj, uintptr(M) , uintptr(D) )
+    syscallN(12903, obj, uintptr(M) , uintptr(D) )
 }
 
 func HeaderControl_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(12902, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(12904, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func HeaderControl_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(12903, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(12905, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func HeaderControl_SetFocus(obj uintptr)  {
-    syscallN(12904, obj)
+    syscallN(12906, obj)
 }
 
 func HeaderControl_Update(obj uintptr)  {
-    syscallN(12905, obj)
-}
-
-func HeaderControl_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(12906, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func HeaderControl_BringToFront(obj uintptr)  {
     syscallN(12907, obj)
 }
 
+func HeaderControl_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(12908, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func HeaderControl_BringToFront(obj uintptr)  {
+    syscallN(12909, obj)
+}
+
 func HeaderControl_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(12908, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(12910, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func HeaderControl_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(12909, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(12911, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func HeaderControl_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(12910, obj))
-}
-
-func HeaderControl_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(12911, obj, PascalBool(Drop) )
-}
-
-func HeaderControl_HasParent(obj uintptr) bool {
     return GoBool(syscallN(12912, obj))
 }
 
+func HeaderControl_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(12913, obj, PascalBool(Drop) )
+}
+
+func HeaderControl_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(12914, obj))
+}
+
 func HeaderControl_Hide(obj uintptr)  {
-    syscallN(12913, obj)
-}
-
-func HeaderControl_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(12914, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func HeaderControl_Refresh(obj uintptr)  {
     syscallN(12915, obj)
 }
 
+func HeaderControl_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(12916, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func HeaderControl_Refresh(obj uintptr)  {
+    syscallN(12917, obj)
+}
+
 func HeaderControl_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(12916, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(12918, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func HeaderControl_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(12917, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(12919, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func HeaderControl_SendToBack(obj uintptr)  {
-    syscallN(12918, obj)
+    syscallN(12920, obj)
 }
 
 func HeaderControl_Show(obj uintptr)  {
-    syscallN(12919, obj)
+    syscallN(12921, obj)
 }
 
 func HeaderControl_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(12920, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(12922, obj, Buffer, uintptr(BufSize) ))
 }
 
 func HeaderControl_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(12921, obj))
+    return int32(syscallN(12923, obj))
 }
 
 func HeaderControl_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(12922, obj, PascalStr(Buffer) )
+    syscallN(12924, obj, PascalStr(Buffer) )
 }
 
 func HeaderControl_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(12923, obj, PascalStr(AName) )
+    return syscallN(12925, obj, PascalStr(AName) )
 }
 
 func HeaderControl_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(12924, obj))
+    return GoStr(syscallN(12926, obj))
 }
 
 func HeaderControl_Assign(obj uintptr, Source uintptr)  {
-    syscallN(12925, obj, Source )
+    syscallN(12927, obj, Source )
 }
 
 func HeaderControl_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(12926, obj))
+    return TClass(syscallN(12928, obj))
 }
 
 func HeaderControl_ClassName(obj uintptr) string {
-    return GoStr(syscallN(12927, obj))
+    return GoStr(syscallN(12929, obj))
 }
 
 func HeaderControl_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(12928, obj))
+    return int32(syscallN(12930, obj))
 }
 
 func HeaderControl_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(12929, obj, uintptr(AClass) ))
+    return GoBool(syscallN(12931, obj, uintptr(AClass) ))
 }
 
 func HeaderControl_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(12930, obj, Obj ))
+    return GoBool(syscallN(12932, obj, Obj ))
 }
 
 func HeaderControl_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(12931, obj))
+    return int32(syscallN(12933, obj))
 }
 
 func HeaderControl_ToString(obj uintptr) string {
-    return GoStr(syscallN(12932, obj))
+    return GoStr(syscallN(12934, obj))
 }
 
 func HeaderControl_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(12933, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(12935, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func HeaderControl_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(12934, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(12936, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func HeaderControl_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(12935, obj, ASibling )
+    syscallN(12937, obj, ASibling )
 }
 
 func HeaderControl_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(12936, obj, ASibling )
+    syscallN(12938, obj, ASibling )
 }
 
 func HeaderControl_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(12937, obj, uintptr(ASide) , ASibling )
+    syscallN(12939, obj, uintptr(ASide) , ASibling )
 }
 
 func HeaderControl_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(12938, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(12940, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func HeaderControl_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(12939, obj, uintptr(ASpace) )
+    syscallN(12941, obj, uintptr(ASpace) )
 }
 
 func HeaderControl_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(12940, obj, uintptr(ASize) ))
-}
-
-func HeaderControl_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(12941, obj, uintptr(ASize) ))
-}
-
-func HeaderControl_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12942, obj, uintptr(ASize) ))
 }
 
-func HeaderControl_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func HeaderControl_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12943, obj, uintptr(ASize) ))
 }
 
-func HeaderControl_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func HeaderControl_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12944, obj, uintptr(ASize) ))
 }
 
-func HeaderControl_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func HeaderControl_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12945, obj, uintptr(ASize) ))
 }
 
-func HeaderControl_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func HeaderControl_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12946, obj, uintptr(ASize) ))
 }
 
-func HeaderControl_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func HeaderControl_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12947, obj, uintptr(ASize) ))
 }
 
-func HeaderControl_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func HeaderControl_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12948, obj, uintptr(ASize) ))
 }
 
-func HeaderControl_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func HeaderControl_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(12949, obj, uintptr(ASize) ))
 }
 
+func HeaderControl_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(12950, obj, uintptr(ASize) ))
+}
+
+func HeaderControl_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(12951, obj, uintptr(ASize) ))
+}
+
 func HeaderControl_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(12950, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(12952, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func HeaderControl_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(12951, obj, uintptr(ADesignTimePPI) )
+    syscallN(12953, obj, uintptr(ADesignTimePPI) )
 }
 
 func HeaderControl_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(12952, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(12954, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func HeaderControl_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(12953, obj))
+    return TAlign(syscallN(12955, obj))
 }
 
 func HeaderControl_SetAlign(obj uintptr, value TAlign) {
-    syscallN(12954, obj, uintptr(value))
-}
-
-func HeaderControl_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(12955, obj))
-}
-
-func HeaderControl_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(12956, obj, uintptr(value))
 }
 
-func HeaderControl_GetBorderWidth(obj uintptr) int32 {
-    return int32(syscallN(12957, obj))
+func HeaderControl_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(12957, obj))
 }
 
-func HeaderControl_SetBorderWidth(obj uintptr, value int32) {
+func HeaderControl_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(12958, obj, uintptr(value))
 }
 
+func HeaderControl_GetBorderWidth(obj uintptr) int32 {
+    return int32(syscallN(12959, obj))
+}
+
+func HeaderControl_SetBorderWidth(obj uintptr, value int32) {
+    syscallN(12960, obj, uintptr(value))
+}
+
 func HeaderControl_GetDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(12959, obj))
+    return GoBool(syscallN(12961, obj))
 }
 
 func HeaderControl_SetDoubleBuffered(obj uintptr, value bool) {
-    syscallN(12960, obj, PascalBool(value))
+    syscallN(12962, obj, PascalBool(value))
 }
 
 func HeaderControl_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(12961, obj))
+    return TCursor(syscallN(12963, obj))
 }
 
 func HeaderControl_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(12962, obj, uintptr(value))
-}
-
-func HeaderControl_GetDragKind(obj uintptr) TDragKind {
-    return TDragKind(syscallN(12963, obj))
-}
-
-func HeaderControl_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(12964, obj, uintptr(value))
 }
 
-func HeaderControl_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(12965, obj))
+func HeaderControl_GetDragKind(obj uintptr) TDragKind {
+    return TDragKind(syscallN(12965, obj))
 }
 
-func HeaderControl_SetDragMode(obj uintptr, value TDragMode) {
+func HeaderControl_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(12966, obj, uintptr(value))
 }
 
+func HeaderControl_GetDragMode(obj uintptr) TDragMode {
+    return TDragMode(syscallN(12967, obj))
+}
+
+func HeaderControl_SetDragMode(obj uintptr, value TDragMode) {
+    syscallN(12968, obj, uintptr(value))
+}
+
 func HeaderControl_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(12967, obj))
+    return GoBool(syscallN(12969, obj))
 }
 
 func HeaderControl_SetEnabled(obj uintptr, value bool) {
-    syscallN(12968, obj, PascalBool(value))
+    syscallN(12970, obj, PascalBool(value))
 }
 
 func HeaderControl_GetFont(obj uintptr) uintptr {
-    return syscallN(12969, obj)
-}
-
-func HeaderControl_SetFont(obj uintptr, value uintptr) {
-    syscallN(12970, obj, value)
-}
-
-func HeaderControl_GetImages(obj uintptr) uintptr {
     return syscallN(12971, obj)
 }
 
-func HeaderControl_SetImages(obj uintptr, value uintptr) {
+func HeaderControl_SetFont(obj uintptr, value uintptr) {
     syscallN(12972, obj, value)
 }
 
-func HeaderControl_GetConstraints(obj uintptr) uintptr {
+func HeaderControl_GetImages(obj uintptr) uintptr {
     return syscallN(12973, obj)
 }
 
-func HeaderControl_SetConstraints(obj uintptr, value uintptr) {
+func HeaderControl_SetImages(obj uintptr, value uintptr) {
     syscallN(12974, obj, value)
 }
 
-func HeaderControl_GetSections(obj uintptr) uintptr {
+func HeaderControl_GetConstraints(obj uintptr) uintptr {
     return syscallN(12975, obj)
 }
 
-func HeaderControl_SetSections(obj uintptr, value uintptr) {
+func HeaderControl_SetConstraints(obj uintptr, value uintptr) {
     syscallN(12976, obj, value)
 }
 
+func HeaderControl_GetSections(obj uintptr) uintptr {
+    return syscallN(12977, obj)
+}
+
+func HeaderControl_SetSections(obj uintptr, value uintptr) {
+    syscallN(12978, obj, value)
+}
+
 func HeaderControl_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(12977, obj))
-}
-
-func HeaderControl_SetShowHint(obj uintptr, value bool) {
-    syscallN(12978, obj, PascalBool(value))
-}
-
-func HeaderControl_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(12979, obj))
 }
 
-func HeaderControl_SetParentDoubleBuffered(obj uintptr, value bool) {
+func HeaderControl_SetShowHint(obj uintptr, value bool) {
     syscallN(12980, obj, PascalBool(value))
 }
 
-func HeaderControl_GetParentFont(obj uintptr) bool {
+func HeaderControl_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(12981, obj))
 }
 
-func HeaderControl_SetParentFont(obj uintptr, value bool) {
+func HeaderControl_SetParentDoubleBuffered(obj uintptr, value bool) {
     syscallN(12982, obj, PascalBool(value))
 }
 
-func HeaderControl_GetParentShowHint(obj uintptr) bool {
+func HeaderControl_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(12983, obj))
 }
 
-func HeaderControl_SetParentShowHint(obj uintptr, value bool) {
+func HeaderControl_SetParentFont(obj uintptr, value bool) {
     syscallN(12984, obj, PascalBool(value))
 }
 
+func HeaderControl_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(12985, obj))
+}
+
+func HeaderControl_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(12986, obj, PascalBool(value))
+}
+
 func HeaderControl_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(12985, obj)
+    return syscallN(12987, obj)
 }
 
 func HeaderControl_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(12986, obj, value)
+    syscallN(12988, obj, value)
 }
 
 func HeaderControl_GetVisible(obj uintptr) bool {
-    return GoBool(syscallN(12987, obj))
+    return GoBool(syscallN(12989, obj))
 }
 
 func HeaderControl_SetVisible(obj uintptr, value bool) {
-    syscallN(12988, obj, PascalBool(value))
+    syscallN(12990, obj, PascalBool(value))
 }
 
 func HeaderControl_SetOnContextPopup(obj uintptr, fn interface{}) {
-    syscallN(12989, obj, MakeEventDataPtr(fn))
-}
-
-func HeaderControl_SetOnDragDrop(obj uintptr, fn interface{}) {
-    syscallN(12990, obj, MakeEventDataPtr(fn))
-}
-
-func HeaderControl_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(12991, obj, MakeEventDataPtr(fn))
 }
 
-func HeaderControl_SetOnEndDock(obj uintptr, fn interface{}) {
+func HeaderControl_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(12992, obj, MakeEventDataPtr(fn))
 }
 
-func HeaderControl_SetOnEndDrag(obj uintptr, fn interface{}) {
+func HeaderControl_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(12993, obj, MakeEventDataPtr(fn))
 }
 
-func HeaderControl_SetOnMouseDown(obj uintptr, fn interface{}) {
+func HeaderControl_SetOnEndDock(obj uintptr, fn interface{}) {
     syscallN(12994, obj, MakeEventDataPtr(fn))
 }
 
-func HeaderControl_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func HeaderControl_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(12995, obj, MakeEventDataPtr(fn))
 }
 
-func HeaderControl_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func HeaderControl_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(12996, obj, MakeEventDataPtr(fn))
 }
 
-func HeaderControl_SetOnMouseMove(obj uintptr, fn interface{}) {
+func HeaderControl_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(12997, obj, MakeEventDataPtr(fn))
 }
 
-func HeaderControl_SetOnMouseUp(obj uintptr, fn interface{}) {
+func HeaderControl_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(12998, obj, MakeEventDataPtr(fn))
 }
 
-func HeaderControl_SetOnResize(obj uintptr, fn interface{}) {
+func HeaderControl_SetOnMouseMove(obj uintptr, fn interface{}) {
     syscallN(12999, obj, MakeEventDataPtr(fn))
 }
 
-func HeaderControl_SetOnSectionClick(obj uintptr, fn interface{}) {
+func HeaderControl_SetOnMouseUp(obj uintptr, fn interface{}) {
     syscallN(13000, obj, MakeEventDataPtr(fn))
 }
 
-func HeaderControl_SetOnSectionResize(obj uintptr, fn interface{}) {
+func HeaderControl_SetOnResize(obj uintptr, fn interface{}) {
     syscallN(13001, obj, MakeEventDataPtr(fn))
 }
 
-func HeaderControl_SetOnSectionTrack(obj uintptr, fn interface{}) {
+func HeaderControl_SetOnSectionClick(obj uintptr, fn interface{}) {
     syscallN(13002, obj, MakeEventDataPtr(fn))
 }
 
-func HeaderControl_SetOnSectionDrag(obj uintptr, fn interface{}) {
+func HeaderControl_SetOnSectionResize(obj uintptr, fn interface{}) {
     syscallN(13003, obj, MakeEventDataPtr(fn))
 }
 
-func HeaderControl_SetOnSectionEndDrag(obj uintptr, fn interface{}) {
+func HeaderControl_SetOnSectionTrack(obj uintptr, fn interface{}) {
     syscallN(13004, obj, MakeEventDataPtr(fn))
 }
 
+func HeaderControl_SetOnSectionDrag(obj uintptr, fn interface{}) {
+    syscallN(13005, obj, MakeEventDataPtr(fn))
+}
+
+func HeaderControl_SetOnSectionEndDrag(obj uintptr, fn interface{}) {
+    syscallN(13006, obj, MakeEventDataPtr(fn))
+}
+
 func HeaderControl_GetCanvas(obj uintptr) uintptr {
-    return syscallN(13005, obj)
+    return syscallN(13007, obj)
 }
 
 func HeaderControl_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(13006, obj))
+    return int32(syscallN(13008, obj))
 }
 
 func HeaderControl_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(13007, obj))
-}
-
-func HeaderControl_SetDockSite(obj uintptr, value bool) {
-    syscallN(13008, obj, PascalBool(value))
-}
-
-func HeaderControl_GetMouseInClient(obj uintptr) bool {
     return GoBool(syscallN(13009, obj))
 }
 
+func HeaderControl_SetDockSite(obj uintptr, value bool) {
+    syscallN(13010, obj, PascalBool(value))
+}
+
+func HeaderControl_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(13011, obj))
+}
+
 func HeaderControl_GetVisibleDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(13010, obj))
-}
-
-func HeaderControl_GetBrush(obj uintptr) uintptr {
-    return syscallN(13011, obj)
-}
-
-func HeaderControl_GetControlCount(obj uintptr) int32 {
     return int32(syscallN(13012, obj))
 }
 
+func HeaderControl_GetBrush(obj uintptr) uintptr {
+    return syscallN(13013, obj)
+}
+
+func HeaderControl_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(13014, obj))
+}
+
 func HeaderControl_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(13013, obj))
+    return HWND(syscallN(13015, obj))
 }
 
 func HeaderControl_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(13014, obj))
+    return HWND(syscallN(13016, obj))
 }
 
 func HeaderControl_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(13015, obj, uintptr(value))
+    syscallN(13017, obj, uintptr(value))
 }
 
 func HeaderControl_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(13016, obj))
+    return GoBool(syscallN(13018, obj))
 }
 
 func HeaderControl_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(13017, obj))
+    return TTabOrder(syscallN(13019, obj))
 }
 
 func HeaderControl_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(13018, obj, uintptr(value))
+    syscallN(13020, obj, uintptr(value))
 }
 
 func HeaderControl_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(13019, obj))
-}
-
-func HeaderControl_SetTabStop(obj uintptr, value bool) {
-    syscallN(13020, obj, PascalBool(value))
-}
-
-func HeaderControl_GetUseDockManager(obj uintptr) bool {
     return GoBool(syscallN(13021, obj))
 }
 
-func HeaderControl_SetUseDockManager(obj uintptr, value bool) {
+func HeaderControl_SetTabStop(obj uintptr, value bool) {
     syscallN(13022, obj, PascalBool(value))
 }
 
+func HeaderControl_GetUseDockManager(obj uintptr) bool {
+    return GoBool(syscallN(13023, obj))
+}
+
+func HeaderControl_SetUseDockManager(obj uintptr, value bool) {
+    syscallN(13024, obj, PascalBool(value))
+}
+
 func HeaderControl_GetAction(obj uintptr) uintptr {
-    return syscallN(13023, obj)
+    return syscallN(13025, obj)
 }
 
 func HeaderControl_SetAction(obj uintptr, value uintptr) {
-    syscallN(13024, obj, value)
+    syscallN(13026, obj, value)
 }
 
 func HeaderControl_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(13025, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13027, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func HeaderControl_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(13026, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(13028, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func HeaderControl_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(13027, obj))
+    return int32(syscallN(13029, obj))
 }
 
 func HeaderControl_SetClientHeight(obj uintptr, value int32) {
-    syscallN(13028, obj, uintptr(value))
+    syscallN(13030, obj, uintptr(value))
 }
 
 func HeaderControl_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(13029, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13031, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func HeaderControl_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(13030, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13032, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func HeaderControl_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(13031, obj))
+    return int32(syscallN(13033, obj))
 }
 
 func HeaderControl_SetClientWidth(obj uintptr, value int32) {
-    syscallN(13032, obj, uintptr(value))
-}
-
-func HeaderControl_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(13033, obj))
-}
-
-func HeaderControl_SetControlState(obj uintptr, value TControlState) {
     syscallN(13034, obj, uintptr(value))
 }
 
-func HeaderControl_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(13035, obj))
+func HeaderControl_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(13035, obj))
 }
 
-func HeaderControl_SetControlStyle(obj uintptr, value TControlStyle) {
+func HeaderControl_SetControlState(obj uintptr, value TControlState) {
     syscallN(13036, obj, uintptr(value))
 }
 
+func HeaderControl_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(13037, obj))
+}
+
+func HeaderControl_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(13038, obj, uintptr(value))
+}
+
 func HeaderControl_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(13037, obj))
+    return GoBool(syscallN(13039, obj))
 }
 
 func HeaderControl_GetParent(obj uintptr) uintptr {
-    return syscallN(13038, obj)
+    return syscallN(13040, obj)
 }
 
 func HeaderControl_SetParent(obj uintptr, value uintptr) {
-    syscallN(13039, obj, value)
+    syscallN(13041, obj, value)
 }
 
 func HeaderControl_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(13040, obj))
-}
-
-func HeaderControl_SetLeft(obj uintptr, value int32) {
-    syscallN(13041, obj, uintptr(value))
-}
-
-func HeaderControl_GetTop(obj uintptr) int32 {
     return int32(syscallN(13042, obj))
 }
 
-func HeaderControl_SetTop(obj uintptr, value int32) {
+func HeaderControl_SetLeft(obj uintptr, value int32) {
     syscallN(13043, obj, uintptr(value))
 }
 
-func HeaderControl_GetWidth(obj uintptr) int32 {
+func HeaderControl_GetTop(obj uintptr) int32 {
     return int32(syscallN(13044, obj))
 }
 
-func HeaderControl_SetWidth(obj uintptr, value int32) {
+func HeaderControl_SetTop(obj uintptr, value int32) {
     syscallN(13045, obj, uintptr(value))
 }
 
-func HeaderControl_GetHeight(obj uintptr) int32 {
+func HeaderControl_GetWidth(obj uintptr) int32 {
     return int32(syscallN(13046, obj))
 }
 
-func HeaderControl_SetHeight(obj uintptr, value int32) {
+func HeaderControl_SetWidth(obj uintptr, value int32) {
     syscallN(13047, obj, uintptr(value))
 }
 
-func HeaderControl_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(13048, obj))
+func HeaderControl_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(13048, obj))
 }
 
-func HeaderControl_SetCursor(obj uintptr, value TCursor) {
+func HeaderControl_SetHeight(obj uintptr, value int32) {
     syscallN(13049, obj, uintptr(value))
 }
 
+func HeaderControl_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(13050, obj))
+}
+
+func HeaderControl_SetCursor(obj uintptr, value TCursor) {
+    syscallN(13051, obj, uintptr(value))
+}
+
 func HeaderControl_GetHint(obj uintptr) string {
-    return GoStr(syscallN(13050, obj))
+    return GoStr(syscallN(13052, obj))
 }
 
 func HeaderControl_SetHint(obj uintptr, value string) {
-    syscallN(13051, obj, PascalStr(value))
+    syscallN(13053, obj, PascalStr(value))
 }
 
 func HeaderControl_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(13052, obj))
+    return int32(syscallN(13054, obj))
 }
 
 func HeaderControl_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(13053, obj))
+    return int32(syscallN(13055, obj))
 }
 
 func HeaderControl_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(13054, obj, uintptr(value))
+    syscallN(13056, obj, uintptr(value))
 }
 
 func HeaderControl_GetOwner(obj uintptr) uintptr {
-    return syscallN(13055, obj)
+    return syscallN(13057, obj)
 }
 
 func HeaderControl_GetName(obj uintptr) string {
-    return GoStr(syscallN(13056, obj))
+    return GoStr(syscallN(13058, obj))
 }
 
 func HeaderControl_SetName(obj uintptr, value string) {
-    syscallN(13057, obj, PascalStr(value))
+    syscallN(13059, obj, PascalStr(value))
 }
 
 func HeaderControl_GetTag(obj uintptr) int {
-    return int(syscallN(13058, obj))
+    return int(syscallN(13060, obj))
 }
 
 func HeaderControl_SetTag(obj uintptr, value int) {
-    syscallN(13059, obj, uintptr(value))
+    syscallN(13061, obj, uintptr(value))
 }
 
 func HeaderControl_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(13060, obj)
-}
-
-func HeaderControl_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(13061, obj, value)
-}
-
-func HeaderControl_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(13062, obj)
 }
 
-func HeaderControl_SetAnchorSideTop(obj uintptr, value uintptr) {
+func HeaderControl_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(13063, obj, value)
 }
 
-func HeaderControl_GetAnchorSideRight(obj uintptr) uintptr {
+func HeaderControl_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(13064, obj)
 }
 
-func HeaderControl_SetAnchorSideRight(obj uintptr, value uintptr) {
+func HeaderControl_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(13065, obj, value)
 }
 
-func HeaderControl_GetAnchorSideBottom(obj uintptr) uintptr {
+func HeaderControl_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(13066, obj)
 }
 
-func HeaderControl_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func HeaderControl_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(13067, obj, value)
 }
 
-func HeaderControl_GetChildSizing(obj uintptr) uintptr {
+func HeaderControl_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(13068, obj)
 }
 
-func HeaderControl_SetChildSizing(obj uintptr, value uintptr) {
+func HeaderControl_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(13069, obj, value)
 }
 
-func HeaderControl_GetBorderSpacing(obj uintptr) uintptr {
+func HeaderControl_GetChildSizing(obj uintptr) uintptr {
     return syscallN(13070, obj)
 }
 
-func HeaderControl_SetBorderSpacing(obj uintptr, value uintptr) {
+func HeaderControl_SetChildSizing(obj uintptr, value uintptr) {
     syscallN(13071, obj, value)
 }
 
+func HeaderControl_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(13072, obj)
+}
+
+func HeaderControl_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(13073, obj, value)
+}
+
 func HeaderControl_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(13072, obj, uintptr(Index))
+    return syscallN(13074, obj, uintptr(Index))
 }
 
 func HeaderControl_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(13073, obj, uintptr(Index))
+    return syscallN(13075, obj, uintptr(Index))
 }
 
 func HeaderControl_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(13074, obj, uintptr(AIndex))
+    return syscallN(13076, obj, uintptr(AIndex))
 }
 
 func HeaderControl_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(13075, obj, uintptr(AKind))
+    return syscallN(13077, obj, uintptr(AKind))
 }
 
 func HeaderControl_StaticClassType() TClass {
-    return TClass(syscallN(13076))
+    return TClass(syscallN(13078))
 }
 
 //--------------------------- THeaderSection ---------------------------
 
 func HeaderSection_Create(obj uintptr) uintptr {
-    return syscallN(13077, obj)
+    return syscallN(13079, obj)
 }
 
 func HeaderSection_Free(obj uintptr) {
-    syscallN(13078, obj)
+    syscallN(13080, obj)
 }
 
 func HeaderSection_Assign(obj uintptr, Source uintptr)  {
-    syscallN(13079, obj, Source )
+    syscallN(13081, obj, Source )
 }
 
 func HeaderSection_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(13080, obj))
-}
-
-func HeaderSection_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(13081, obj))
-}
-
-func HeaderSection_ClassName(obj uintptr) string {
     return GoStr(syscallN(13082, obj))
 }
 
+func HeaderSection_ClassType(obj uintptr) TClass {
+    return TClass(syscallN(13083, obj))
+}
+
+func HeaderSection_ClassName(obj uintptr) string {
+    return GoStr(syscallN(13084, obj))
+}
+
 func HeaderSection_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(13083, obj))
+    return int32(syscallN(13085, obj))
 }
 
 func HeaderSection_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(13084, obj, uintptr(AClass) ))
+    return GoBool(syscallN(13086, obj, uintptr(AClass) ))
 }
 
 func HeaderSection_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(13085, obj, Obj ))
+    return GoBool(syscallN(13087, obj, Obj ))
 }
 
 func HeaderSection_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(13086, obj))
-}
-
-func HeaderSection_ToString(obj uintptr) string {
-    return GoStr(syscallN(13087, obj))
-}
-
-func HeaderSection_GetLeft(obj uintptr) int32 {
     return int32(syscallN(13088, obj))
 }
 
+func HeaderSection_ToString(obj uintptr) string {
+    return GoStr(syscallN(13089, obj))
+}
+
+func HeaderSection_GetLeft(obj uintptr) int32 {
+    return int32(syscallN(13090, obj))
+}
+
 func HeaderSection_GetRight(obj uintptr) int32 {
-    return int32(syscallN(13089, obj))
+    return int32(syscallN(13091, obj))
 }
 
 func HeaderSection_GetAlignment(obj uintptr) TAlignment {
-    return TAlignment(syscallN(13090, obj))
+    return TAlignment(syscallN(13092, obj))
 }
 
 func HeaderSection_SetAlignment(obj uintptr, value TAlignment) {
-    syscallN(13091, obj, uintptr(value))
-}
-
-func HeaderSection_GetImageIndex(obj uintptr) int32 {
-    return int32(syscallN(13092, obj))
-}
-
-func HeaderSection_SetImageIndex(obj uintptr, value int32) {
     syscallN(13093, obj, uintptr(value))
 }
 
-func HeaderSection_GetMaxWidth(obj uintptr) int32 {
+func HeaderSection_GetImageIndex(obj uintptr) int32 {
     return int32(syscallN(13094, obj))
 }
 
-func HeaderSection_SetMaxWidth(obj uintptr, value int32) {
+func HeaderSection_SetImageIndex(obj uintptr, value int32) {
     syscallN(13095, obj, uintptr(value))
 }
 
-func HeaderSection_GetMinWidth(obj uintptr) int32 {
+func HeaderSection_GetMaxWidth(obj uintptr) int32 {
     return int32(syscallN(13096, obj))
 }
 
-func HeaderSection_SetMinWidth(obj uintptr, value int32) {
+func HeaderSection_SetMaxWidth(obj uintptr, value int32) {
     syscallN(13097, obj, uintptr(value))
 }
 
+func HeaderSection_GetMinWidth(obj uintptr) int32 {
+    return int32(syscallN(13098, obj))
+}
+
+func HeaderSection_SetMinWidth(obj uintptr, value int32) {
+    syscallN(13099, obj, uintptr(value))
+}
+
 func HeaderSection_GetText(obj uintptr) string {
-    return GoStr(syscallN(13098, obj))
+    return GoStr(syscallN(13100, obj))
 }
 
 func HeaderSection_SetText(obj uintptr, value string) {
-    syscallN(13099, obj, PascalStr(value))
+    syscallN(13101, obj, PascalStr(value))
 }
 
 func HeaderSection_GetWidth(obj uintptr) int32 {
-    return int32(syscallN(13100, obj))
+    return int32(syscallN(13102, obj))
 }
 
 func HeaderSection_SetWidth(obj uintptr, value int32) {
-    syscallN(13101, obj, uintptr(value))
+    syscallN(13103, obj, uintptr(value))
 }
 
 func HeaderSection_GetCollection(obj uintptr) uintptr {
-    return syscallN(13102, obj)
+    return syscallN(13104, obj)
 }
 
 func HeaderSection_SetCollection(obj uintptr, value uintptr) {
-    syscallN(13103, obj, value)
+    syscallN(13105, obj, value)
 }
 
 func HeaderSection_GetIndex(obj uintptr) int32 {
-    return int32(syscallN(13104, obj))
+    return int32(syscallN(13106, obj))
 }
 
 func HeaderSection_SetIndex(obj uintptr, value int32) {
-    syscallN(13105, obj, uintptr(value))
+    syscallN(13107, obj, uintptr(value))
 }
 
 func HeaderSection_GetDisplayName(obj uintptr) string {
-    return GoStr(syscallN(13106, obj))
+    return GoStr(syscallN(13108, obj))
 }
 
 func HeaderSection_SetDisplayName(obj uintptr, value string) {
-    syscallN(13107, obj, PascalStr(value))
+    syscallN(13109, obj, PascalStr(value))
 }
 
 func HeaderSection_StaticClassType() TClass {
-    return TClass(syscallN(13108))
+    return TClass(syscallN(13110))
 }
 
 //--------------------------- THeaderSections ---------------------------
 
 func HeaderSections_Create(obj uintptr) uintptr {
-    return syscallN(13109, obj)
-}
-
-func HeaderSections_Free(obj uintptr) {
-    syscallN(13110, obj)
-}
-
-func HeaderSections_Add(obj uintptr) uintptr {
     return syscallN(13111, obj)
 }
 
+func HeaderSections_Free(obj uintptr) {
+    syscallN(13112, obj)
+}
+
+func HeaderSections_Add(obj uintptr) uintptr {
+    return syscallN(13113, obj)
+}
+
 func HeaderSections_AddItem(obj uintptr, Item uintptr, Index int32) uintptr {
-    return syscallN(13112, obj, Item , uintptr(Index) )
+    return syscallN(13114, obj, Item , uintptr(Index) )
 }
 
 func HeaderSections_Insert(obj uintptr, Index int32) uintptr {
-    return syscallN(13113, obj, uintptr(Index) )
+    return syscallN(13115, obj, uintptr(Index) )
 }
 
 func HeaderSections_Owner(obj uintptr) uintptr {
-    return syscallN(13114, obj)
+    return syscallN(13116, obj)
 }
 
 func HeaderSections_Assign(obj uintptr, Source uintptr)  {
-    syscallN(13115, obj, Source )
+    syscallN(13117, obj, Source )
 }
 
 func HeaderSections_BeginUpdate(obj uintptr)  {
-    syscallN(13116, obj)
+    syscallN(13118, obj)
 }
 
 func HeaderSections_Clear(obj uintptr)  {
-    syscallN(13117, obj)
-}
-
-func HeaderSections_Delete(obj uintptr, Index int32)  {
-    syscallN(13118, obj, uintptr(Index) )
-}
-
-func HeaderSections_EndUpdate(obj uintptr)  {
     syscallN(13119, obj)
 }
 
+func HeaderSections_Delete(obj uintptr, Index int32)  {
+    syscallN(13120, obj, uintptr(Index) )
+}
+
+func HeaderSections_EndUpdate(obj uintptr)  {
+    syscallN(13121, obj)
+}
+
 func HeaderSections_FindItemID(obj uintptr, ID int32) uintptr {
-    return syscallN(13120, obj, uintptr(ID) )
+    return syscallN(13122, obj, uintptr(ID) )
 }
 
 func HeaderSections_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(13121, obj))
-}
-
-func HeaderSections_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(13122, obj))
-}
-
-func HeaderSections_ClassName(obj uintptr) string {
     return GoStr(syscallN(13123, obj))
 }
 
+func HeaderSections_ClassType(obj uintptr) TClass {
+    return TClass(syscallN(13124, obj))
+}
+
+func HeaderSections_ClassName(obj uintptr) string {
+    return GoStr(syscallN(13125, obj))
+}
+
 func HeaderSections_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(13124, obj))
+    return int32(syscallN(13126, obj))
 }
 
 func HeaderSections_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(13125, obj, uintptr(AClass) ))
+    return GoBool(syscallN(13127, obj, uintptr(AClass) ))
 }
 
 func HeaderSections_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(13126, obj, Obj ))
+    return GoBool(syscallN(13128, obj, Obj ))
 }
 
 func HeaderSections_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(13127, obj))
-}
-
-func HeaderSections_ToString(obj uintptr) string {
-    return GoStr(syscallN(13128, obj))
-}
-
-func HeaderSections_GetCount(obj uintptr) int32 {
     return int32(syscallN(13129, obj))
 }
 
+func HeaderSections_ToString(obj uintptr) string {
+    return GoStr(syscallN(13130, obj))
+}
+
+func HeaderSections_GetCount(obj uintptr) int32 {
+    return int32(syscallN(13131, obj))
+}
+
 func HeaderSections_GetItems(obj uintptr, Index int32) uintptr {
-    return syscallN(13130, obj, uintptr(Index))
+    return syscallN(13132, obj, uintptr(Index))
 }
 
 func HeaderSections_SetItems(obj uintptr, Index int32, value uintptr) {
-    syscallN(13131, obj, uintptr(Index), value)
+    syscallN(13133, obj, uintptr(Index), value)
 }
 
 func HeaderSections_StaticClassType() TClass {
-    return TClass(syscallN(13132))
+    return TClass(syscallN(13134))
 }
 
 //--------------------------- TLabeledEdit ---------------------------
 
 func LabeledEdit_Create(obj uintptr) uintptr {
-    return syscallN(13133, obj)
+    return syscallN(13135, obj)
 }
 
 func LabeledEdit_Free(obj uintptr) {
-    syscallN(13134, obj)
-}
-
-func LabeledEdit_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(13135, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
-}
-
-func LabeledEdit_Clear(obj uintptr)  {
     syscallN(13136, obj)
 }
 
-func LabeledEdit_ClearSelection(obj uintptr)  {
-    syscallN(13137, obj)
+func LabeledEdit_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    syscallN(13137, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
-func LabeledEdit_CopyToClipboard(obj uintptr)  {
+func LabeledEdit_Clear(obj uintptr)  {
     syscallN(13138, obj)
 }
 
-func LabeledEdit_CutToClipboard(obj uintptr)  {
+func LabeledEdit_ClearSelection(obj uintptr)  {
     syscallN(13139, obj)
 }
 
-func LabeledEdit_PasteFromClipboard(obj uintptr)  {
+func LabeledEdit_CopyToClipboard(obj uintptr)  {
     syscallN(13140, obj)
 }
 
-func LabeledEdit_Undo(obj uintptr)  {
+func LabeledEdit_CutToClipboard(obj uintptr)  {
     syscallN(13141, obj)
 }
 
-func LabeledEdit_SelectAll(obj uintptr)  {
+func LabeledEdit_PasteFromClipboard(obj uintptr)  {
     syscallN(13142, obj)
 }
 
+func LabeledEdit_Undo(obj uintptr)  {
+    syscallN(13143, obj)
+}
+
+func LabeledEdit_SelectAll(obj uintptr)  {
+    syscallN(13144, obj)
+}
+
 func LabeledEdit_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(13143, obj))
+    return GoBool(syscallN(13145, obj))
 }
 
 func LabeledEdit_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(13144, obj, Control ))
+    return GoBool(syscallN(13146, obj, Control ))
 }
 
 func LabeledEdit_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(13145, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(13147, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func LabeledEdit_DisableAlign(obj uintptr)  {
-    syscallN(13146, obj)
+    syscallN(13148, obj)
 }
 
 func LabeledEdit_EnableAlign(obj uintptr)  {
-    syscallN(13147, obj)
+    syscallN(13149, obj)
 }
 
 func LabeledEdit_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(13148, obj, PascalStr(ControlName) )
+    return syscallN(13150, obj, PascalStr(ControlName) )
 }
 
 func LabeledEdit_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(13149, obj, PascalBool(AllLevels) )
+    syscallN(13151, obj, PascalBool(AllLevels) )
 }
 
 func LabeledEdit_Focused(obj uintptr) bool {
-    return GoBool(syscallN(13150, obj))
+    return GoBool(syscallN(13152, obj))
 }
 
 func LabeledEdit_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(13151, obj))
+    return GoBool(syscallN(13153, obj))
 }
 
 func LabeledEdit_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(13152, obj, AControl )
+    syscallN(13154, obj, AControl )
 }
 
 func LabeledEdit_Invalidate(obj uintptr)  {
-    syscallN(13153, obj)
+    syscallN(13155, obj)
 }
 
 func LabeledEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(13154, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(13156, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func LabeledEdit_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(13155, obj, AControl )
+    syscallN(13157, obj, AControl )
 }
 
 func LabeledEdit_Realign(obj uintptr)  {
-    syscallN(13156, obj)
+    syscallN(13158, obj)
 }
 
 func LabeledEdit_Repaint(obj uintptr)  {
-    syscallN(13157, obj)
+    syscallN(13159, obj)
 }
 
 func LabeledEdit_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(13158, obj, uintptr(M) , uintptr(D) )
+    syscallN(13160, obj, uintptr(M) , uintptr(D) )
 }
 
 func LabeledEdit_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(13159, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(13161, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func LabeledEdit_SetFocus(obj uintptr)  {
-    syscallN(13160, obj)
+    syscallN(13162, obj)
 }
 
 func LabeledEdit_Update(obj uintptr)  {
-    syscallN(13161, obj)
-}
-
-func LabeledEdit_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(13162, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func LabeledEdit_BringToFront(obj uintptr)  {
     syscallN(13163, obj)
 }
 
+func LabeledEdit_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(13164, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func LabeledEdit_BringToFront(obj uintptr)  {
+    syscallN(13165, obj)
+}
+
 func LabeledEdit_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(13164, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(13166, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func LabeledEdit_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(13165, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(13167, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func LabeledEdit_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(13166, obj))
-}
-
-func LabeledEdit_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(13167, obj, PascalBool(Drop) )
-}
-
-func LabeledEdit_HasParent(obj uintptr) bool {
     return GoBool(syscallN(13168, obj))
 }
 
+func LabeledEdit_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(13169, obj, PascalBool(Drop) )
+}
+
+func LabeledEdit_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(13170, obj))
+}
+
 func LabeledEdit_Hide(obj uintptr)  {
-    syscallN(13169, obj)
-}
-
-func LabeledEdit_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(13170, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func LabeledEdit_Refresh(obj uintptr)  {
     syscallN(13171, obj)
 }
 
+func LabeledEdit_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(13172, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func LabeledEdit_Refresh(obj uintptr)  {
+    syscallN(13173, obj)
+}
+
 func LabeledEdit_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(13172, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(13174, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func LabeledEdit_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(13173, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(13175, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func LabeledEdit_SendToBack(obj uintptr)  {
-    syscallN(13174, obj)
+    syscallN(13176, obj)
 }
 
 func LabeledEdit_Show(obj uintptr)  {
-    syscallN(13175, obj)
+    syscallN(13177, obj)
 }
 
 func LabeledEdit_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(13176, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(13178, obj, Buffer, uintptr(BufSize) ))
 }
 
 func LabeledEdit_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(13177, obj))
+    return int32(syscallN(13179, obj))
 }
 
 func LabeledEdit_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(13178, obj, PascalStr(Buffer) )
+    syscallN(13180, obj, PascalStr(Buffer) )
 }
 
 func LabeledEdit_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(13179, obj, PascalStr(AName) )
+    return syscallN(13181, obj, PascalStr(AName) )
 }
 
 func LabeledEdit_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(13180, obj))
+    return GoStr(syscallN(13182, obj))
 }
 
 func LabeledEdit_Assign(obj uintptr, Source uintptr)  {
-    syscallN(13181, obj, Source )
+    syscallN(13183, obj, Source )
 }
 
 func LabeledEdit_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(13182, obj))
+    return TClass(syscallN(13184, obj))
 }
 
 func LabeledEdit_ClassName(obj uintptr) string {
-    return GoStr(syscallN(13183, obj))
+    return GoStr(syscallN(13185, obj))
 }
 
 func LabeledEdit_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(13184, obj))
+    return int32(syscallN(13186, obj))
 }
 
 func LabeledEdit_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(13185, obj, uintptr(AClass) ))
+    return GoBool(syscallN(13187, obj, uintptr(AClass) ))
 }
 
 func LabeledEdit_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(13186, obj, Obj ))
+    return GoBool(syscallN(13188, obj, Obj ))
 }
 
 func LabeledEdit_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(13187, obj))
+    return int32(syscallN(13189, obj))
 }
 
 func LabeledEdit_ToString(obj uintptr) string {
-    return GoStr(syscallN(13188, obj))
+    return GoStr(syscallN(13190, obj))
 }
 
 func LabeledEdit_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(13189, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(13191, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func LabeledEdit_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(13190, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(13192, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func LabeledEdit_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(13191, obj, ASibling )
+    syscallN(13193, obj, ASibling )
 }
 
 func LabeledEdit_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(13192, obj, ASibling )
+    syscallN(13194, obj, ASibling )
 }
 
 func LabeledEdit_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(13193, obj, uintptr(ASide) , ASibling )
+    syscallN(13195, obj, uintptr(ASide) , ASibling )
 }
 
 func LabeledEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(13194, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(13196, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func LabeledEdit_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(13195, obj, uintptr(ASpace) )
+    syscallN(13197, obj, uintptr(ASpace) )
 }
 
 func LabeledEdit_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(13196, obj, uintptr(ASize) ))
-}
-
-func LabeledEdit_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(13197, obj, uintptr(ASize) ))
-}
-
-func LabeledEdit_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13198, obj, uintptr(ASize) ))
 }
 
-func LabeledEdit_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func LabeledEdit_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13199, obj, uintptr(ASize) ))
 }
 
-func LabeledEdit_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func LabeledEdit_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13200, obj, uintptr(ASize) ))
 }
 
-func LabeledEdit_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func LabeledEdit_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13201, obj, uintptr(ASize) ))
 }
 
-func LabeledEdit_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func LabeledEdit_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13202, obj, uintptr(ASize) ))
 }
 
-func LabeledEdit_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func LabeledEdit_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13203, obj, uintptr(ASize) ))
 }
 
-func LabeledEdit_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func LabeledEdit_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13204, obj, uintptr(ASize) ))
 }
 
-func LabeledEdit_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func LabeledEdit_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13205, obj, uintptr(ASize) ))
 }
 
+func LabeledEdit_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(13206, obj, uintptr(ASize) ))
+}
+
+func LabeledEdit_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(13207, obj, uintptr(ASize) ))
+}
+
 func LabeledEdit_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(13206, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(13208, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func LabeledEdit_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(13207, obj, uintptr(ADesignTimePPI) )
+    syscallN(13209, obj, uintptr(ADesignTimePPI) )
 }
 
 func LabeledEdit_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(13208, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(13210, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func LabeledEdit_GetAlignment(obj uintptr) TAlignment {
-    return TAlignment(syscallN(13209, obj))
+    return TAlignment(syscallN(13211, obj))
 }
 
 func LabeledEdit_SetAlignment(obj uintptr, value TAlignment) {
-    syscallN(13210, obj, uintptr(value))
-}
-
-func LabeledEdit_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(13211, obj))
-}
-
-func LabeledEdit_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(13212, obj, uintptr(value))
 }
 
+func LabeledEdit_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(13213, obj))
+}
+
+func LabeledEdit_SetAnchors(obj uintptr, value TAnchors) {
+    syscallN(13214, obj, uintptr(value))
+}
+
 func LabeledEdit_GetAutoSelect(obj uintptr) bool {
-    return GoBool(syscallN(13213, obj))
-}
-
-func LabeledEdit_SetAutoSelect(obj uintptr, value bool) {
-    syscallN(13214, obj, PascalBool(value))
-}
-
-func LabeledEdit_GetAutoSize(obj uintptr) bool {
     return GoBool(syscallN(13215, obj))
 }
 
-func LabeledEdit_SetAutoSize(obj uintptr, value bool) {
+func LabeledEdit_SetAutoSelect(obj uintptr, value bool) {
     syscallN(13216, obj, PascalBool(value))
 }
 
+func LabeledEdit_GetAutoSize(obj uintptr) bool {
+    return GoBool(syscallN(13217, obj))
+}
+
+func LabeledEdit_SetAutoSize(obj uintptr, value bool) {
+    syscallN(13218, obj, PascalBool(value))
+}
+
 func LabeledEdit_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(13217, obj))
+    return TBiDiMode(syscallN(13219, obj))
 }
 
 func LabeledEdit_SetBiDiMode(obj uintptr, value TBiDiMode) {
-    syscallN(13218, obj, uintptr(value))
-}
-
-func LabeledEdit_GetBorderStyle(obj uintptr) TBorderStyle {
-    return TBorderStyle(syscallN(13219, obj))
-}
-
-func LabeledEdit_SetBorderStyle(obj uintptr, value TBorderStyle) {
     syscallN(13220, obj, uintptr(value))
 }
 
-func LabeledEdit_GetCharCase(obj uintptr) TEditCharCase {
-    return TEditCharCase(syscallN(13221, obj))
+func LabeledEdit_GetBorderStyle(obj uintptr) TBorderStyle {
+    return TBorderStyle(syscallN(13221, obj))
 }
 
-func LabeledEdit_SetCharCase(obj uintptr, value TEditCharCase) {
+func LabeledEdit_SetBorderStyle(obj uintptr, value TBorderStyle) {
     syscallN(13222, obj, uintptr(value))
 }
 
-func LabeledEdit_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(13223, obj))
+func LabeledEdit_GetCharCase(obj uintptr) TEditCharCase {
+    return TEditCharCase(syscallN(13223, obj))
 }
 
-func LabeledEdit_SetColor(obj uintptr, value TColor) {
+func LabeledEdit_SetCharCase(obj uintptr, value TEditCharCase) {
     syscallN(13224, obj, uintptr(value))
 }
 
+func LabeledEdit_GetColor(obj uintptr) TColor {
+    return TColor(syscallN(13225, obj))
+}
+
+func LabeledEdit_SetColor(obj uintptr, value TColor) {
+    syscallN(13226, obj, uintptr(value))
+}
+
 func LabeledEdit_GetConstraints(obj uintptr) uintptr {
-    return syscallN(13225, obj)
+    return syscallN(13227, obj)
 }
 
 func LabeledEdit_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(13226, obj, value)
+    syscallN(13228, obj, value)
 }
 
 func LabeledEdit_GetDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(13227, obj))
+    return GoBool(syscallN(13229, obj))
 }
 
 func LabeledEdit_SetDoubleBuffered(obj uintptr, value bool) {
-    syscallN(13228, obj, PascalBool(value))
+    syscallN(13230, obj, PascalBool(value))
 }
 
 func LabeledEdit_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(13229, obj))
+    return TCursor(syscallN(13231, obj))
 }
 
 func LabeledEdit_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(13230, obj, uintptr(value))
-}
-
-func LabeledEdit_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(13231, obj))
-}
-
-func LabeledEdit_SetDragMode(obj uintptr, value TDragMode) {
     syscallN(13232, obj, uintptr(value))
 }
 
+func LabeledEdit_GetDragMode(obj uintptr) TDragMode {
+    return TDragMode(syscallN(13233, obj))
+}
+
+func LabeledEdit_SetDragMode(obj uintptr, value TDragMode) {
+    syscallN(13234, obj, uintptr(value))
+}
+
 func LabeledEdit_GetEditLabel(obj uintptr) uintptr {
-    return syscallN(13233, obj)
+    return syscallN(13235, obj)
 }
 
 func LabeledEdit_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(13234, obj))
+    return GoBool(syscallN(13236, obj))
 }
 
 func LabeledEdit_SetEnabled(obj uintptr, value bool) {
-    syscallN(13235, obj, PascalBool(value))
+    syscallN(13237, obj, PascalBool(value))
 }
 
 func LabeledEdit_GetFont(obj uintptr) uintptr {
-    return syscallN(13236, obj)
+    return syscallN(13238, obj)
 }
 
 func LabeledEdit_SetFont(obj uintptr, value uintptr) {
-    syscallN(13237, obj, value)
+    syscallN(13239, obj, value)
 }
 
 func LabeledEdit_GetHideSelection(obj uintptr) bool {
-    return GoBool(syscallN(13238, obj))
+    return GoBool(syscallN(13240, obj))
 }
 
 func LabeledEdit_SetHideSelection(obj uintptr, value bool) {
-    syscallN(13239, obj, PascalBool(value))
+    syscallN(13241, obj, PascalBool(value))
 }
 
 func LabeledEdit_GetLabelPosition(obj uintptr) TLabelPosition {
-    return TLabelPosition(syscallN(13240, obj))
+    return TLabelPosition(syscallN(13242, obj))
 }
 
 func LabeledEdit_SetLabelPosition(obj uintptr, value TLabelPosition) {
-    syscallN(13241, obj, uintptr(value))
-}
-
-func LabeledEdit_GetLabelSpacing(obj uintptr) int32 {
-    return int32(syscallN(13242, obj))
-}
-
-func LabeledEdit_SetLabelSpacing(obj uintptr, value int32) {
     syscallN(13243, obj, uintptr(value))
 }
 
-func LabeledEdit_GetMaxLength(obj uintptr) int32 {
+func LabeledEdit_GetLabelSpacing(obj uintptr) int32 {
     return int32(syscallN(13244, obj))
 }
 
-func LabeledEdit_SetMaxLength(obj uintptr, value int32) {
+func LabeledEdit_SetLabelSpacing(obj uintptr, value int32) {
     syscallN(13245, obj, uintptr(value))
 }
 
+func LabeledEdit_GetMaxLength(obj uintptr) int32 {
+    return int32(syscallN(13246, obj))
+}
+
+func LabeledEdit_SetMaxLength(obj uintptr, value int32) {
+    syscallN(13247, obj, uintptr(value))
+}
+
 func LabeledEdit_GetNumbersOnly(obj uintptr) bool {
-    return GoBool(syscallN(13246, obj))
-}
-
-func LabeledEdit_SetNumbersOnly(obj uintptr, value bool) {
-    syscallN(13247, obj, PascalBool(value))
-}
-
-func LabeledEdit_GetParentColor(obj uintptr) bool {
     return GoBool(syscallN(13248, obj))
 }
 
-func LabeledEdit_SetParentColor(obj uintptr, value bool) {
+func LabeledEdit_SetNumbersOnly(obj uintptr, value bool) {
     syscallN(13249, obj, PascalBool(value))
 }
 
-func LabeledEdit_GetParentDoubleBuffered(obj uintptr) bool {
+func LabeledEdit_GetParentColor(obj uintptr) bool {
     return GoBool(syscallN(13250, obj))
 }
 
-func LabeledEdit_SetParentDoubleBuffered(obj uintptr, value bool) {
+func LabeledEdit_SetParentColor(obj uintptr, value bool) {
     syscallN(13251, obj, PascalBool(value))
 }
 
-func LabeledEdit_GetParentFont(obj uintptr) bool {
+func LabeledEdit_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(13252, obj))
 }
 
-func LabeledEdit_SetParentFont(obj uintptr, value bool) {
+func LabeledEdit_SetParentDoubleBuffered(obj uintptr, value bool) {
     syscallN(13253, obj, PascalBool(value))
 }
 
-func LabeledEdit_GetParentShowHint(obj uintptr) bool {
+func LabeledEdit_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(13254, obj))
 }
 
-func LabeledEdit_SetParentShowHint(obj uintptr, value bool) {
+func LabeledEdit_SetParentFont(obj uintptr, value bool) {
     syscallN(13255, obj, PascalBool(value))
 }
 
+func LabeledEdit_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(13256, obj))
+}
+
+func LabeledEdit_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(13257, obj, PascalBool(value))
+}
+
 func LabeledEdit_GetPasswordChar(obj uintptr) uint16 {
-    return uint16(syscallN(13256, obj))
+    return uint16(syscallN(13258, obj))
 }
 
 func LabeledEdit_SetPasswordChar(obj uintptr, value uint16) {
-    syscallN(13257, obj, uintptr(value))
+    syscallN(13259, obj, uintptr(value))
 }
 
 func LabeledEdit_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(13258, obj)
+    return syscallN(13260, obj)
 }
 
 func LabeledEdit_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(13259, obj, value)
+    syscallN(13261, obj, value)
 }
 
 func LabeledEdit_GetReadOnly(obj uintptr) bool {
-    return GoBool(syscallN(13260, obj))
-}
-
-func LabeledEdit_SetReadOnly(obj uintptr, value bool) {
-    syscallN(13261, obj, PascalBool(value))
-}
-
-func LabeledEdit_GetShowHint(obj uintptr) bool {
     return GoBool(syscallN(13262, obj))
 }
 
-func LabeledEdit_SetShowHint(obj uintptr, value bool) {
+func LabeledEdit_SetReadOnly(obj uintptr, value bool) {
     syscallN(13263, obj, PascalBool(value))
 }
 
+func LabeledEdit_GetShowHint(obj uintptr) bool {
+    return GoBool(syscallN(13264, obj))
+}
+
+func LabeledEdit_SetShowHint(obj uintptr, value bool) {
+    syscallN(13265, obj, PascalBool(value))
+}
+
 func LabeledEdit_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(13264, obj))
+    return TTabOrder(syscallN(13266, obj))
 }
 
 func LabeledEdit_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(13265, obj, uintptr(value))
+    syscallN(13267, obj, uintptr(value))
 }
 
 func LabeledEdit_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(13266, obj))
+    return GoBool(syscallN(13268, obj))
 }
 
 func LabeledEdit_SetTabStop(obj uintptr, value bool) {
-    syscallN(13267, obj, PascalBool(value))
+    syscallN(13269, obj, PascalBool(value))
 }
 
 func LabeledEdit_GetText(obj uintptr) string {
-    return GoStr(syscallN(13268, obj))
-}
-
-func LabeledEdit_SetText(obj uintptr, value string) {
-    syscallN(13269, obj, PascalStr(value))
-}
-
-func LabeledEdit_GetTextHint(obj uintptr) string {
     return GoStr(syscallN(13270, obj))
 }
 
-func LabeledEdit_SetTextHint(obj uintptr, value string) {
+func LabeledEdit_SetText(obj uintptr, value string) {
     syscallN(13271, obj, PascalStr(value))
 }
 
+func LabeledEdit_GetTextHint(obj uintptr) string {
+    return GoStr(syscallN(13272, obj))
+}
+
+func LabeledEdit_SetTextHint(obj uintptr, value string) {
+    syscallN(13273, obj, PascalStr(value))
+}
+
 func LabeledEdit_GetVisible(obj uintptr) bool {
-    return GoBool(syscallN(13272, obj))
+    return GoBool(syscallN(13274, obj))
 }
 
 func LabeledEdit_SetVisible(obj uintptr, value bool) {
-    syscallN(13273, obj, PascalBool(value))
+    syscallN(13275, obj, PascalBool(value))
 }
 
 func LabeledEdit_SetOnChange(obj uintptr, fn interface{}) {
-    syscallN(13274, obj, MakeEventDataPtr(fn))
-}
-
-func LabeledEdit_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(13275, obj, MakeEventDataPtr(fn))
-}
-
-func LabeledEdit_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(13276, obj, MakeEventDataPtr(fn))
 }
 
-func LabeledEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
+func LabeledEdit_SetOnClick(obj uintptr, fn interface{}) {
     syscallN(13277, obj, MakeEventDataPtr(fn))
 }
 
-func LabeledEdit_SetOnDragOver(obj uintptr, fn interface{}) {
+func LabeledEdit_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(13278, obj, MakeEventDataPtr(fn))
 }
 
-func LabeledEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
+func LabeledEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(13279, obj, MakeEventDataPtr(fn))
 }
 
-func LabeledEdit_SetOnEnter(obj uintptr, fn interface{}) {
+func LabeledEdit_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(13280, obj, MakeEventDataPtr(fn))
 }
 
-func LabeledEdit_SetOnExit(obj uintptr, fn interface{}) {
+func LabeledEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(13281, obj, MakeEventDataPtr(fn))
 }
 
-func LabeledEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
+func LabeledEdit_SetOnEnter(obj uintptr, fn interface{}) {
     syscallN(13282, obj, MakeEventDataPtr(fn))
 }
 
-func LabeledEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
+func LabeledEdit_SetOnExit(obj uintptr, fn interface{}) {
     syscallN(13283, obj, MakeEventDataPtr(fn))
 }
 
-func LabeledEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
+func LabeledEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
     syscallN(13284, obj, MakeEventDataPtr(fn))
 }
 
-func LabeledEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
+func LabeledEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
     syscallN(13285, obj, MakeEventDataPtr(fn))
 }
 
-func LabeledEdit_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func LabeledEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
     syscallN(13286, obj, MakeEventDataPtr(fn))
 }
 
-func LabeledEdit_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func LabeledEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(13287, obj, MakeEventDataPtr(fn))
 }
 
-func LabeledEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
+func LabeledEdit_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(13288, obj, MakeEventDataPtr(fn))
 }
 
-func LabeledEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
+func LabeledEdit_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(13289, obj, MakeEventDataPtr(fn))
 }
 
+func LabeledEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
+    syscallN(13290, obj, MakeEventDataPtr(fn))
+}
+
+func LabeledEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
+    syscallN(13291, obj, MakeEventDataPtr(fn))
+}
+
 func LabeledEdit_GetCanUndo(obj uintptr) bool {
-    return GoBool(syscallN(13290, obj))
+    return GoBool(syscallN(13292, obj))
 }
 
 func LabeledEdit_GetModified(obj uintptr) bool {
-    return GoBool(syscallN(13291, obj))
+    return GoBool(syscallN(13293, obj))
 }
 
 func LabeledEdit_SetModified(obj uintptr, value bool) {
-    syscallN(13292, obj, PascalBool(value))
+    syscallN(13294, obj, PascalBool(value))
 }
 
 func LabeledEdit_GetSelLength(obj uintptr) int32 {
-    return int32(syscallN(13293, obj))
-}
-
-func LabeledEdit_SetSelLength(obj uintptr, value int32) {
-    syscallN(13294, obj, uintptr(value))
-}
-
-func LabeledEdit_GetSelStart(obj uintptr) int32 {
     return int32(syscallN(13295, obj))
 }
 
-func LabeledEdit_SetSelStart(obj uintptr, value int32) {
+func LabeledEdit_SetSelLength(obj uintptr, value int32) {
     syscallN(13296, obj, uintptr(value))
 }
 
+func LabeledEdit_GetSelStart(obj uintptr) int32 {
+    return int32(syscallN(13297, obj))
+}
+
+func LabeledEdit_SetSelStart(obj uintptr, value int32) {
+    syscallN(13298, obj, uintptr(value))
+}
+
 func LabeledEdit_GetSelText(obj uintptr) string {
-    return GoStr(syscallN(13297, obj))
+    return GoStr(syscallN(13299, obj))
 }
 
 func LabeledEdit_SetSelText(obj uintptr, value string) {
-    syscallN(13298, obj, PascalStr(value))
+    syscallN(13300, obj, PascalStr(value))
 }
 
 func LabeledEdit_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(13299, obj))
+    return int32(syscallN(13301, obj))
 }
 
 func LabeledEdit_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(13300, obj))
-}
-
-func LabeledEdit_SetDockSite(obj uintptr, value bool) {
-    syscallN(13301, obj, PascalBool(value))
-}
-
-func LabeledEdit_GetMouseInClient(obj uintptr) bool {
     return GoBool(syscallN(13302, obj))
 }
 
+func LabeledEdit_SetDockSite(obj uintptr, value bool) {
+    syscallN(13303, obj, PascalBool(value))
+}
+
+func LabeledEdit_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(13304, obj))
+}
+
 func LabeledEdit_GetVisibleDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(13303, obj))
-}
-
-func LabeledEdit_GetBrush(obj uintptr) uintptr {
-    return syscallN(13304, obj)
-}
-
-func LabeledEdit_GetControlCount(obj uintptr) int32 {
     return int32(syscallN(13305, obj))
 }
 
+func LabeledEdit_GetBrush(obj uintptr) uintptr {
+    return syscallN(13306, obj)
+}
+
+func LabeledEdit_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(13307, obj))
+}
+
 func LabeledEdit_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(13306, obj))
+    return HWND(syscallN(13308, obj))
 }
 
 func LabeledEdit_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(13307, obj))
+    return HWND(syscallN(13309, obj))
 }
 
 func LabeledEdit_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(13308, obj, uintptr(value))
+    syscallN(13310, obj, uintptr(value))
 }
 
 func LabeledEdit_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(13309, obj))
+    return GoBool(syscallN(13311, obj))
 }
 
 func LabeledEdit_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(13310, obj))
+    return GoBool(syscallN(13312, obj))
 }
 
 func LabeledEdit_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(13311, obj, PascalBool(value))
+    syscallN(13313, obj, PascalBool(value))
 }
 
 func LabeledEdit_GetAction(obj uintptr) uintptr {
-    return syscallN(13312, obj)
+    return syscallN(13314, obj)
 }
 
 func LabeledEdit_SetAction(obj uintptr, value uintptr) {
-    syscallN(13313, obj, value)
+    syscallN(13315, obj, value)
 }
 
 func LabeledEdit_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(13314, obj))
+    return TAlign(syscallN(13316, obj))
 }
 
 func LabeledEdit_SetAlign(obj uintptr, value TAlign) {
-    syscallN(13315, obj, uintptr(value))
+    syscallN(13317, obj, uintptr(value))
 }
 
 func LabeledEdit_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(13316, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13318, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func LabeledEdit_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(13317, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(13319, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func LabeledEdit_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(13318, obj))
+    return int32(syscallN(13320, obj))
 }
 
 func LabeledEdit_SetClientHeight(obj uintptr, value int32) {
-    syscallN(13319, obj, uintptr(value))
+    syscallN(13321, obj, uintptr(value))
 }
 
 func LabeledEdit_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(13320, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13322, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func LabeledEdit_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(13321, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13323, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func LabeledEdit_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(13322, obj))
+    return int32(syscallN(13324, obj))
 }
 
 func LabeledEdit_SetClientWidth(obj uintptr, value int32) {
-    syscallN(13323, obj, uintptr(value))
-}
-
-func LabeledEdit_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(13324, obj))
-}
-
-func LabeledEdit_SetControlState(obj uintptr, value TControlState) {
     syscallN(13325, obj, uintptr(value))
 }
 
-func LabeledEdit_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(13326, obj))
+func LabeledEdit_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(13326, obj))
 }
 
-func LabeledEdit_SetControlStyle(obj uintptr, value TControlStyle) {
+func LabeledEdit_SetControlState(obj uintptr, value TControlState) {
     syscallN(13327, obj, uintptr(value))
 }
 
+func LabeledEdit_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(13328, obj))
+}
+
+func LabeledEdit_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(13329, obj, uintptr(value))
+}
+
 func LabeledEdit_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(13328, obj))
+    return GoBool(syscallN(13330, obj))
 }
 
 func LabeledEdit_GetParent(obj uintptr) uintptr {
-    return syscallN(13329, obj)
+    return syscallN(13331, obj)
 }
 
 func LabeledEdit_SetParent(obj uintptr, value uintptr) {
-    syscallN(13330, obj, value)
+    syscallN(13332, obj, value)
 }
 
 func LabeledEdit_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(13331, obj))
-}
-
-func LabeledEdit_SetLeft(obj uintptr, value int32) {
-    syscallN(13332, obj, uintptr(value))
-}
-
-func LabeledEdit_GetTop(obj uintptr) int32 {
     return int32(syscallN(13333, obj))
 }
 
-func LabeledEdit_SetTop(obj uintptr, value int32) {
+func LabeledEdit_SetLeft(obj uintptr, value int32) {
     syscallN(13334, obj, uintptr(value))
 }
 
-func LabeledEdit_GetWidth(obj uintptr) int32 {
+func LabeledEdit_GetTop(obj uintptr) int32 {
     return int32(syscallN(13335, obj))
 }
 
-func LabeledEdit_SetWidth(obj uintptr, value int32) {
+func LabeledEdit_SetTop(obj uintptr, value int32) {
     syscallN(13336, obj, uintptr(value))
 }
 
-func LabeledEdit_GetHeight(obj uintptr) int32 {
+func LabeledEdit_GetWidth(obj uintptr) int32 {
     return int32(syscallN(13337, obj))
 }
 
-func LabeledEdit_SetHeight(obj uintptr, value int32) {
+func LabeledEdit_SetWidth(obj uintptr, value int32) {
     syscallN(13338, obj, uintptr(value))
 }
 
-func LabeledEdit_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(13339, obj))
+func LabeledEdit_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(13339, obj))
 }
 
-func LabeledEdit_SetCursor(obj uintptr, value TCursor) {
+func LabeledEdit_SetHeight(obj uintptr, value int32) {
     syscallN(13340, obj, uintptr(value))
 }
 
+func LabeledEdit_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(13341, obj))
+}
+
+func LabeledEdit_SetCursor(obj uintptr, value TCursor) {
+    syscallN(13342, obj, uintptr(value))
+}
+
 func LabeledEdit_GetHint(obj uintptr) string {
-    return GoStr(syscallN(13341, obj))
+    return GoStr(syscallN(13343, obj))
 }
 
 func LabeledEdit_SetHint(obj uintptr, value string) {
-    syscallN(13342, obj, PascalStr(value))
+    syscallN(13344, obj, PascalStr(value))
 }
 
 func LabeledEdit_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(13343, obj))
+    return int32(syscallN(13345, obj))
 }
 
 func LabeledEdit_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(13344, obj))
+    return int32(syscallN(13346, obj))
 }
 
 func LabeledEdit_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(13345, obj, uintptr(value))
+    syscallN(13347, obj, uintptr(value))
 }
 
 func LabeledEdit_GetOwner(obj uintptr) uintptr {
-    return syscallN(13346, obj)
+    return syscallN(13348, obj)
 }
 
 func LabeledEdit_GetName(obj uintptr) string {
-    return GoStr(syscallN(13347, obj))
+    return GoStr(syscallN(13349, obj))
 }
 
 func LabeledEdit_SetName(obj uintptr, value string) {
-    syscallN(13348, obj, PascalStr(value))
+    syscallN(13350, obj, PascalStr(value))
 }
 
 func LabeledEdit_GetTag(obj uintptr) int {
-    return int(syscallN(13349, obj))
+    return int(syscallN(13351, obj))
 }
 
 func LabeledEdit_SetTag(obj uintptr, value int) {
-    syscallN(13350, obj, uintptr(value))
+    syscallN(13352, obj, uintptr(value))
 }
 
 func LabeledEdit_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(13351, obj)
-}
-
-func LabeledEdit_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(13352, obj, value)
-}
-
-func LabeledEdit_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(13353, obj)
 }
 
-func LabeledEdit_SetAnchorSideTop(obj uintptr, value uintptr) {
+func LabeledEdit_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(13354, obj, value)
 }
 
-func LabeledEdit_GetAnchorSideRight(obj uintptr) uintptr {
+func LabeledEdit_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(13355, obj)
 }
 
-func LabeledEdit_SetAnchorSideRight(obj uintptr, value uintptr) {
+func LabeledEdit_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(13356, obj, value)
 }
 
-func LabeledEdit_GetAnchorSideBottom(obj uintptr) uintptr {
+func LabeledEdit_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(13357, obj)
 }
 
-func LabeledEdit_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func LabeledEdit_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(13358, obj, value)
 }
 
-func LabeledEdit_GetChildSizing(obj uintptr) uintptr {
+func LabeledEdit_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(13359, obj)
 }
 
-func LabeledEdit_SetChildSizing(obj uintptr, value uintptr) {
+func LabeledEdit_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(13360, obj, value)
 }
 
-func LabeledEdit_GetBorderSpacing(obj uintptr) uintptr {
+func LabeledEdit_GetChildSizing(obj uintptr) uintptr {
     return syscallN(13361, obj)
 }
 
-func LabeledEdit_SetBorderSpacing(obj uintptr, value uintptr) {
+func LabeledEdit_SetChildSizing(obj uintptr, value uintptr) {
     syscallN(13362, obj, value)
 }
 
+func LabeledEdit_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(13363, obj)
+}
+
+func LabeledEdit_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(13364, obj, value)
+}
+
 func LabeledEdit_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(13363, obj, uintptr(Index))
+    return syscallN(13365, obj, uintptr(Index))
 }
 
 func LabeledEdit_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(13364, obj, uintptr(Index))
+    return syscallN(13366, obj, uintptr(Index))
 }
 
 func LabeledEdit_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(13365, obj, uintptr(AIndex))
+    return syscallN(13367, obj, uintptr(AIndex))
 }
 
 func LabeledEdit_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(13366, obj, uintptr(AKind))
+    return syscallN(13368, obj, uintptr(AKind))
 }
 
 func LabeledEdit_StaticClassType() TClass {
-    return TClass(syscallN(13367))
+    return TClass(syscallN(13369))
 }
 
 //--------------------------- TBoundLabel ---------------------------
 
 func BoundLabel_Create(obj uintptr) uintptr {
-    return syscallN(13368, obj)
+    return syscallN(13370, obj)
 }
 
 func BoundLabel_Free(obj uintptr) {
-    syscallN(13369, obj)
-}
-
-func BoundLabel_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(13370, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func BoundLabel_BringToFront(obj uintptr)  {
     syscallN(13371, obj)
 }
 
+func BoundLabel_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(13372, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func BoundLabel_BringToFront(obj uintptr)  {
+    syscallN(13373, obj)
+}
+
 func BoundLabel_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(13372, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(13374, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func BoundLabel_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(13373, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(13375, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func BoundLabel_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(13374, obj))
-}
-
-func BoundLabel_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(13375, obj, PascalBool(Drop) )
-}
-
-func BoundLabel_HasParent(obj uintptr) bool {
     return GoBool(syscallN(13376, obj))
 }
 
+func BoundLabel_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(13377, obj, PascalBool(Drop) )
+}
+
+func BoundLabel_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(13378, obj))
+}
+
 func BoundLabel_Hide(obj uintptr)  {
-    syscallN(13377, obj)
+    syscallN(13379, obj)
 }
 
 func BoundLabel_Invalidate(obj uintptr)  {
-    syscallN(13378, obj)
-}
-
-func BoundLabel_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(13379, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func BoundLabel_Refresh(obj uintptr)  {
     syscallN(13380, obj)
 }
 
+func BoundLabel_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(13381, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func BoundLabel_Refresh(obj uintptr)  {
+    syscallN(13382, obj)
+}
+
 func BoundLabel_Repaint(obj uintptr)  {
-    syscallN(13381, obj)
+    syscallN(13383, obj)
 }
 
 func BoundLabel_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(13382, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(13384, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func BoundLabel_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(13383, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(13385, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func BoundLabel_SendToBack(obj uintptr)  {
-    syscallN(13384, obj)
-}
-
-func BoundLabel_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(13385, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
-}
-
-func BoundLabel_Show(obj uintptr)  {
     syscallN(13386, obj)
 }
 
+func BoundLabel_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    syscallN(13387, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func BoundLabel_Show(obj uintptr)  {
+    syscallN(13388, obj)
+}
+
 func BoundLabel_Update(obj uintptr)  {
-    syscallN(13387, obj)
+    syscallN(13389, obj)
 }
 
 func BoundLabel_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(13388, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(13390, obj, Buffer, uintptr(BufSize) ))
 }
 
 func BoundLabel_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(13389, obj))
+    return int32(syscallN(13391, obj))
 }
 
 func BoundLabel_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(13390, obj, PascalStr(Buffer) )
+    syscallN(13392, obj, PascalStr(Buffer) )
 }
 
 func BoundLabel_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(13391, obj, PascalStr(AName) )
+    return syscallN(13393, obj, PascalStr(AName) )
 }
 
 func BoundLabel_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(13392, obj))
+    return GoStr(syscallN(13394, obj))
 }
 
 func BoundLabel_Assign(obj uintptr, Source uintptr)  {
-    syscallN(13393, obj, Source )
+    syscallN(13395, obj, Source )
 }
 
 func BoundLabel_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(13394, obj))
+    return TClass(syscallN(13396, obj))
 }
 
 func BoundLabel_ClassName(obj uintptr) string {
-    return GoStr(syscallN(13395, obj))
+    return GoStr(syscallN(13397, obj))
 }
 
 func BoundLabel_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(13396, obj))
+    return int32(syscallN(13398, obj))
 }
 
 func BoundLabel_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(13397, obj, uintptr(AClass) ))
+    return GoBool(syscallN(13399, obj, uintptr(AClass) ))
 }
 
 func BoundLabel_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(13398, obj, Obj ))
+    return GoBool(syscallN(13400, obj, Obj ))
 }
 
 func BoundLabel_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(13399, obj))
+    return int32(syscallN(13401, obj))
 }
 
 func BoundLabel_ToString(obj uintptr) string {
-    return GoStr(syscallN(13400, obj))
+    return GoStr(syscallN(13402, obj))
 }
 
 func BoundLabel_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(13401, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(13403, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func BoundLabel_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(13402, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(13404, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func BoundLabel_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(13403, obj, ASibling )
+    syscallN(13405, obj, ASibling )
 }
 
 func BoundLabel_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(13404, obj, ASibling )
+    syscallN(13406, obj, ASibling )
 }
 
 func BoundLabel_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(13405, obj, uintptr(ASide) , ASibling )
+    syscallN(13407, obj, uintptr(ASide) , ASibling )
 }
 
 func BoundLabel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(13406, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(13408, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func BoundLabel_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(13407, obj, uintptr(ASpace) )
+    syscallN(13409, obj, uintptr(ASpace) )
 }
 
 func BoundLabel_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(13408, obj, uintptr(ASize) ))
-}
-
-func BoundLabel_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(13409, obj, uintptr(ASize) ))
-}
-
-func BoundLabel_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13410, obj, uintptr(ASize) ))
 }
 
-func BoundLabel_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func BoundLabel_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13411, obj, uintptr(ASize) ))
 }
 
-func BoundLabel_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func BoundLabel_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13412, obj, uintptr(ASize) ))
 }
 
-func BoundLabel_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func BoundLabel_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13413, obj, uintptr(ASize) ))
 }
 
-func BoundLabel_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func BoundLabel_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13414, obj, uintptr(ASize) ))
 }
 
-func BoundLabel_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func BoundLabel_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13415, obj, uintptr(ASize) ))
 }
 
-func BoundLabel_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func BoundLabel_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13416, obj, uintptr(ASize) ))
 }
 
-func BoundLabel_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func BoundLabel_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13417, obj, uintptr(ASize) ))
 }
 
+func BoundLabel_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(13418, obj, uintptr(ASize) ))
+}
+
+func BoundLabel_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(13419, obj, uintptr(ASize) ))
+}
+
 func BoundLabel_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(13418, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(13420, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func BoundLabel_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(13419, obj, uintptr(ADesignTimePPI) )
+    syscallN(13421, obj, uintptr(ADesignTimePPI) )
 }
 
 func BoundLabel_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(13420, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(13422, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func BoundLabel_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(13421, obj))
+    return TBiDiMode(syscallN(13423, obj))
 }
 
 func BoundLabel_SetBiDiMode(obj uintptr, value TBiDiMode) {
-    syscallN(13422, obj, uintptr(value))
+    syscallN(13424, obj, uintptr(value))
 }
 
 func BoundLabel_GetCaption(obj uintptr) string {
-    return GoStr(syscallN(13423, obj))
+    return GoStr(syscallN(13425, obj))
 }
 
 func BoundLabel_SetCaption(obj uintptr, value string) {
-    syscallN(13424, obj, PascalStr(value))
+    syscallN(13426, obj, PascalStr(value))
 }
 
 func BoundLabel_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(13425, obj))
+    return TColor(syscallN(13427, obj))
 }
 
 func BoundLabel_SetColor(obj uintptr, value TColor) {
-    syscallN(13426, obj, uintptr(value))
-}
-
-func BoundLabel_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(13427, obj))
-}
-
-func BoundLabel_SetDragCursor(obj uintptr, value TCursor) {
     syscallN(13428, obj, uintptr(value))
 }
 
-func BoundLabel_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(13429, obj))
+func BoundLabel_GetDragCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(13429, obj))
 }
 
-func BoundLabel_SetDragMode(obj uintptr, value TDragMode) {
+func BoundLabel_SetDragCursor(obj uintptr, value TCursor) {
     syscallN(13430, obj, uintptr(value))
 }
 
+func BoundLabel_GetDragMode(obj uintptr) TDragMode {
+    return TDragMode(syscallN(13431, obj))
+}
+
+func BoundLabel_SetDragMode(obj uintptr, value TDragMode) {
+    syscallN(13432, obj, uintptr(value))
+}
+
 func BoundLabel_GetFont(obj uintptr) uintptr {
-    return syscallN(13431, obj)
+    return syscallN(13433, obj)
 }
 
 func BoundLabel_SetFont(obj uintptr, value uintptr) {
-    syscallN(13432, obj, value)
+    syscallN(13434, obj, value)
 }
 
 func BoundLabel_GetHeight(obj uintptr) int32 {
-    return int32(syscallN(13433, obj))
-}
-
-func BoundLabel_SetHeight(obj uintptr, value int32) {
-    syscallN(13434, obj, uintptr(value))
-}
-
-func BoundLabel_GetLeft(obj uintptr) int32 {
     return int32(syscallN(13435, obj))
 }
 
+func BoundLabel_SetHeight(obj uintptr, value int32) {
+    syscallN(13436, obj, uintptr(value))
+}
+
+func BoundLabel_GetLeft(obj uintptr) int32 {
+    return int32(syscallN(13437, obj))
+}
+
 func BoundLabel_GetParentColor(obj uintptr) bool {
-    return GoBool(syscallN(13436, obj))
-}
-
-func BoundLabel_SetParentColor(obj uintptr, value bool) {
-    syscallN(13437, obj, PascalBool(value))
-}
-
-func BoundLabel_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(13438, obj))
 }
 
-func BoundLabel_SetParentFont(obj uintptr, value bool) {
+func BoundLabel_SetParentColor(obj uintptr, value bool) {
     syscallN(13439, obj, PascalBool(value))
 }
 
-func BoundLabel_GetParentShowHint(obj uintptr) bool {
+func BoundLabel_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(13440, obj))
 }
 
-func BoundLabel_SetParentShowHint(obj uintptr, value bool) {
+func BoundLabel_SetParentFont(obj uintptr, value bool) {
     syscallN(13441, obj, PascalBool(value))
 }
 
+func BoundLabel_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(13442, obj))
+}
+
+func BoundLabel_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(13443, obj, PascalBool(value))
+}
+
 func BoundLabel_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(13442, obj)
+    return syscallN(13444, obj)
 }
 
 func BoundLabel_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(13443, obj, value)
+    syscallN(13445, obj, value)
 }
 
 func BoundLabel_GetShowAccelChar(obj uintptr) bool {
-    return GoBool(syscallN(13444, obj))
-}
-
-func BoundLabel_SetShowAccelChar(obj uintptr, value bool) {
-    syscallN(13445, obj, PascalBool(value))
-}
-
-func BoundLabel_GetShowHint(obj uintptr) bool {
     return GoBool(syscallN(13446, obj))
 }
 
-func BoundLabel_SetShowHint(obj uintptr, value bool) {
+func BoundLabel_SetShowAccelChar(obj uintptr, value bool) {
     syscallN(13447, obj, PascalBool(value))
 }
 
+func BoundLabel_GetShowHint(obj uintptr) bool {
+    return GoBool(syscallN(13448, obj))
+}
+
+func BoundLabel_SetShowHint(obj uintptr, value bool) {
+    syscallN(13449, obj, PascalBool(value))
+}
+
 func BoundLabel_GetTop(obj uintptr) int32 {
-    return int32(syscallN(13448, obj))
+    return int32(syscallN(13450, obj))
 }
 
 func BoundLabel_GetLayout(obj uintptr) TTextLayout {
-    return TTextLayout(syscallN(13449, obj))
+    return TTextLayout(syscallN(13451, obj))
 }
 
 func BoundLabel_SetLayout(obj uintptr, value TTextLayout) {
-    syscallN(13450, obj, uintptr(value))
+    syscallN(13452, obj, uintptr(value))
 }
 
 func BoundLabel_GetWordWrap(obj uintptr) bool {
-    return GoBool(syscallN(13451, obj))
+    return GoBool(syscallN(13453, obj))
 }
 
 func BoundLabel_SetWordWrap(obj uintptr, value bool) {
-    syscallN(13452, obj, PascalBool(value))
+    syscallN(13454, obj, PascalBool(value))
 }
 
 func BoundLabel_GetWidth(obj uintptr) int32 {
-    return int32(syscallN(13453, obj))
+    return int32(syscallN(13455, obj))
 }
 
 func BoundLabel_SetWidth(obj uintptr, value int32) {
-    syscallN(13454, obj, uintptr(value))
+    syscallN(13456, obj, uintptr(value))
 }
 
 func BoundLabel_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(13455, obj, MakeEventDataPtr(fn))
-}
-
-func BoundLabel_SetOnDblClick(obj uintptr, fn interface{}) {
-    syscallN(13456, obj, MakeEventDataPtr(fn))
-}
-
-func BoundLabel_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(13457, obj, MakeEventDataPtr(fn))
 }
 
-func BoundLabel_SetOnDragOver(obj uintptr, fn interface{}) {
+func BoundLabel_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(13458, obj, MakeEventDataPtr(fn))
 }
 
-func BoundLabel_SetOnEndDrag(obj uintptr, fn interface{}) {
+func BoundLabel_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(13459, obj, MakeEventDataPtr(fn))
 }
 
-func BoundLabel_SetOnMouseDown(obj uintptr, fn interface{}) {
+func BoundLabel_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(13460, obj, MakeEventDataPtr(fn))
 }
 
-func BoundLabel_SetOnMouseMove(obj uintptr, fn interface{}) {
+func BoundLabel_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(13461, obj, MakeEventDataPtr(fn))
 }
 
-func BoundLabel_SetOnMouseUp(obj uintptr, fn interface{}) {
+func BoundLabel_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(13462, obj, MakeEventDataPtr(fn))
 }
 
+func BoundLabel_SetOnMouseMove(obj uintptr, fn interface{}) {
+    syscallN(13463, obj, MakeEventDataPtr(fn))
+}
+
+func BoundLabel_SetOnMouseUp(obj uintptr, fn interface{}) {
+    syscallN(13464, obj, MakeEventDataPtr(fn))
+}
+
 func BoundLabel_GetCanvas(obj uintptr) uintptr {
-    return syscallN(13463, obj)
+    return syscallN(13465, obj)
 }
 
 func BoundLabel_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(13464, obj))
+    return GoBool(syscallN(13466, obj))
 }
 
 func BoundLabel_SetEnabled(obj uintptr, value bool) {
-    syscallN(13465, obj, PascalBool(value))
+    syscallN(13467, obj, PascalBool(value))
 }
 
 func BoundLabel_GetAction(obj uintptr) uintptr {
-    return syscallN(13466, obj)
+    return syscallN(13468, obj)
 }
 
 func BoundLabel_SetAction(obj uintptr, value uintptr) {
-    syscallN(13467, obj, value)
+    syscallN(13469, obj, value)
 }
 
 func BoundLabel_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(13468, obj))
+    return TAlign(syscallN(13470, obj))
 }
 
 func BoundLabel_SetAlign(obj uintptr, value TAlign) {
-    syscallN(13469, obj, uintptr(value))
-}
-
-func BoundLabel_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(13470, obj))
-}
-
-func BoundLabel_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(13471, obj, uintptr(value))
 }
 
+func BoundLabel_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(13472, obj))
+}
+
+func BoundLabel_SetAnchors(obj uintptr, value TAnchors) {
+    syscallN(13473, obj, uintptr(value))
+}
+
 func BoundLabel_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(13472, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13474, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func BoundLabel_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(13473, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(13475, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func BoundLabel_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(13474, obj))
+    return int32(syscallN(13476, obj))
 }
 
 func BoundLabel_SetClientHeight(obj uintptr, value int32) {
-    syscallN(13475, obj, uintptr(value))
+    syscallN(13477, obj, uintptr(value))
 }
 
 func BoundLabel_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(13476, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13478, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func BoundLabel_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(13477, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13479, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func BoundLabel_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(13478, obj))
+    return int32(syscallN(13480, obj))
 }
 
 func BoundLabel_SetClientWidth(obj uintptr, value int32) {
-    syscallN(13479, obj, uintptr(value))
+    syscallN(13481, obj, uintptr(value))
 }
 
 func BoundLabel_GetConstraints(obj uintptr) uintptr {
-    return syscallN(13480, obj)
+    return syscallN(13482, obj)
 }
 
 func BoundLabel_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(13481, obj, value)
+    syscallN(13483, obj, value)
 }
 
 func BoundLabel_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(13482, obj))
+    return TControlState(syscallN(13484, obj))
 }
 
 func BoundLabel_SetControlState(obj uintptr, value TControlState) {
-    syscallN(13483, obj, uintptr(value))
-}
-
-func BoundLabel_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(13484, obj))
-}
-
-func BoundLabel_SetControlStyle(obj uintptr, value TControlStyle) {
     syscallN(13485, obj, uintptr(value))
 }
 
+func BoundLabel_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(13486, obj))
+}
+
+func BoundLabel_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(13487, obj, uintptr(value))
+}
+
 func BoundLabel_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(13486, obj))
+    return GoBool(syscallN(13488, obj))
 }
 
 func BoundLabel_GetVisible(obj uintptr) bool {
-    return GoBool(syscallN(13487, obj))
+    return GoBool(syscallN(13489, obj))
 }
 
 func BoundLabel_SetVisible(obj uintptr, value bool) {
-    syscallN(13488, obj, PascalBool(value))
+    syscallN(13490, obj, PascalBool(value))
 }
 
 func BoundLabel_GetParent(obj uintptr) uintptr {
-    return syscallN(13489, obj)
+    return syscallN(13491, obj)
 }
 
 func BoundLabel_SetParent(obj uintptr, value uintptr) {
-    syscallN(13490, obj, value)
+    syscallN(13492, obj, value)
 }
 
 func BoundLabel_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(13491, obj))
+    return TCursor(syscallN(13493, obj))
 }
 
 func BoundLabel_SetCursor(obj uintptr, value TCursor) {
-    syscallN(13492, obj, uintptr(value))
+    syscallN(13494, obj, uintptr(value))
 }
 
 func BoundLabel_GetHint(obj uintptr) string {
-    return GoStr(syscallN(13493, obj))
+    return GoStr(syscallN(13495, obj))
 }
 
 func BoundLabel_SetHint(obj uintptr, value string) {
-    syscallN(13494, obj, PascalStr(value))
+    syscallN(13496, obj, PascalStr(value))
 }
 
 func BoundLabel_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(13495, obj))
+    return int32(syscallN(13497, obj))
 }
 
 func BoundLabel_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(13496, obj))
+    return int32(syscallN(13498, obj))
 }
 
 func BoundLabel_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(13497, obj, uintptr(value))
+    syscallN(13499, obj, uintptr(value))
 }
 
 func BoundLabel_GetOwner(obj uintptr) uintptr {
-    return syscallN(13498, obj)
+    return syscallN(13500, obj)
 }
 
 func BoundLabel_GetName(obj uintptr) string {
-    return GoStr(syscallN(13499, obj))
+    return GoStr(syscallN(13501, obj))
 }
 
 func BoundLabel_SetName(obj uintptr, value string) {
-    syscallN(13500, obj, PascalStr(value))
+    syscallN(13502, obj, PascalStr(value))
 }
 
 func BoundLabel_GetTag(obj uintptr) int {
-    return int(syscallN(13501, obj))
+    return int(syscallN(13503, obj))
 }
 
 func BoundLabel_SetTag(obj uintptr, value int) {
-    syscallN(13502, obj, uintptr(value))
+    syscallN(13504, obj, uintptr(value))
 }
 
 func BoundLabel_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(13503, obj)
-}
-
-func BoundLabel_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(13504, obj, value)
-}
-
-func BoundLabel_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(13505, obj)
 }
 
-func BoundLabel_SetAnchorSideTop(obj uintptr, value uintptr) {
+func BoundLabel_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(13506, obj, value)
 }
 
-func BoundLabel_GetAnchorSideRight(obj uintptr) uintptr {
+func BoundLabel_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(13507, obj)
 }
 
-func BoundLabel_SetAnchorSideRight(obj uintptr, value uintptr) {
+func BoundLabel_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(13508, obj, value)
 }
 
-func BoundLabel_GetAnchorSideBottom(obj uintptr) uintptr {
+func BoundLabel_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(13509, obj)
 }
 
-func BoundLabel_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func BoundLabel_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(13510, obj, value)
 }
 
-func BoundLabel_GetBorderSpacing(obj uintptr) uintptr {
+func BoundLabel_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(13511, obj)
 }
 
-func BoundLabel_SetBorderSpacing(obj uintptr, value uintptr) {
+func BoundLabel_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(13512, obj, value)
 }
 
+func BoundLabel_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(13513, obj)
+}
+
+func BoundLabel_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(13514, obj, value)
+}
+
 func BoundLabel_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(13513, obj, uintptr(AIndex))
+    return syscallN(13515, obj, uintptr(AIndex))
 }
 
 func BoundLabel_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(13514, obj, uintptr(AKind))
+    return syscallN(13516, obj, uintptr(AKind))
 }
 
 func BoundLabel_StaticClassType() TClass {
-    return TClass(syscallN(13515))
+    return TClass(syscallN(13517))
 }
 
 //--------------------------- TFlowPanel ---------------------------
 
 func FlowPanel_Create(obj uintptr) uintptr {
-    return syscallN(13516, obj)
+    return syscallN(13518, obj)
 }
 
 func FlowPanel_Free(obj uintptr) {
-    syscallN(13517, obj)
+    syscallN(13519, obj)
 }
 
 func FlowPanel_GetControlIndex(obj uintptr, AControl uintptr) int32 {
-    return int32(syscallN(13518, obj, AControl ))
+    return int32(syscallN(13520, obj, AControl ))
 }
 
 func FlowPanel_SetControlIndex(obj uintptr, AControl uintptr, Index int32)  {
-    syscallN(13519, obj, AControl , uintptr(Index) )
+    syscallN(13521, obj, AControl , uintptr(Index) )
 }
 
 func FlowPanel_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(13520, obj))
+    return GoBool(syscallN(13522, obj))
 }
 
 func FlowPanel_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(13521, obj, Control ))
+    return GoBool(syscallN(13523, obj, Control ))
 }
 
 func FlowPanel_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(13522, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(13524, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func FlowPanel_DisableAlign(obj uintptr)  {
-    syscallN(13523, obj)
+    syscallN(13525, obj)
 }
 
 func FlowPanel_EnableAlign(obj uintptr)  {
-    syscallN(13524, obj)
+    syscallN(13526, obj)
 }
 
 func FlowPanel_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(13525, obj, PascalStr(ControlName) )
+    return syscallN(13527, obj, PascalStr(ControlName) )
 }
 
 func FlowPanel_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(13526, obj, PascalBool(AllLevels) )
+    syscallN(13528, obj, PascalBool(AllLevels) )
 }
 
 func FlowPanel_Focused(obj uintptr) bool {
-    return GoBool(syscallN(13527, obj))
+    return GoBool(syscallN(13529, obj))
 }
 
 func FlowPanel_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(13528, obj))
+    return GoBool(syscallN(13530, obj))
 }
 
 func FlowPanel_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(13529, obj, AControl )
+    syscallN(13531, obj, AControl )
 }
 
 func FlowPanel_Invalidate(obj uintptr)  {
-    syscallN(13530, obj)
+    syscallN(13532, obj)
 }
 
 func FlowPanel_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(13531, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(13533, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func FlowPanel_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(13532, obj, AControl )
+    syscallN(13534, obj, AControl )
 }
 
 func FlowPanel_Realign(obj uintptr)  {
-    syscallN(13533, obj)
+    syscallN(13535, obj)
 }
 
 func FlowPanel_Repaint(obj uintptr)  {
-    syscallN(13534, obj)
+    syscallN(13536, obj)
 }
 
 func FlowPanel_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(13535, obj, uintptr(M) , uintptr(D) )
+    syscallN(13537, obj, uintptr(M) , uintptr(D) )
 }
 
 func FlowPanel_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(13536, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(13538, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func FlowPanel_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(13537, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(13539, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func FlowPanel_SetFocus(obj uintptr)  {
-    syscallN(13538, obj)
+    syscallN(13540, obj)
 }
 
 func FlowPanel_Update(obj uintptr)  {
-    syscallN(13539, obj)
-}
-
-func FlowPanel_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(13540, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func FlowPanel_BringToFront(obj uintptr)  {
     syscallN(13541, obj)
 }
 
+func FlowPanel_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(13542, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func FlowPanel_BringToFront(obj uintptr)  {
+    syscallN(13543, obj)
+}
+
 func FlowPanel_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(13542, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(13544, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func FlowPanel_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(13543, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(13545, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func FlowPanel_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(13544, obj))
-}
-
-func FlowPanel_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(13545, obj, PascalBool(Drop) )
-}
-
-func FlowPanel_HasParent(obj uintptr) bool {
     return GoBool(syscallN(13546, obj))
 }
 
+func FlowPanel_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(13547, obj, PascalBool(Drop) )
+}
+
+func FlowPanel_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(13548, obj))
+}
+
 func FlowPanel_Hide(obj uintptr)  {
-    syscallN(13547, obj)
-}
-
-func FlowPanel_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(13548, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func FlowPanel_Refresh(obj uintptr)  {
     syscallN(13549, obj)
 }
 
+func FlowPanel_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(13550, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func FlowPanel_Refresh(obj uintptr)  {
+    syscallN(13551, obj)
+}
+
 func FlowPanel_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(13550, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(13552, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func FlowPanel_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(13551, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(13553, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func FlowPanel_SendToBack(obj uintptr)  {
-    syscallN(13552, obj)
+    syscallN(13554, obj)
 }
 
 func FlowPanel_Show(obj uintptr)  {
-    syscallN(13553, obj)
+    syscallN(13555, obj)
 }
 
 func FlowPanel_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(13554, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(13556, obj, Buffer, uintptr(BufSize) ))
 }
 
 func FlowPanel_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(13555, obj))
+    return int32(syscallN(13557, obj))
 }
 
 func FlowPanel_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(13556, obj, PascalStr(Buffer) )
+    syscallN(13558, obj, PascalStr(Buffer) )
 }
 
 func FlowPanel_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(13557, obj, PascalStr(AName) )
+    return syscallN(13559, obj, PascalStr(AName) )
 }
 
 func FlowPanel_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(13558, obj))
+    return GoStr(syscallN(13560, obj))
 }
 
 func FlowPanel_Assign(obj uintptr, Source uintptr)  {
-    syscallN(13559, obj, Source )
+    syscallN(13561, obj, Source )
 }
 
 func FlowPanel_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(13560, obj))
+    return TClass(syscallN(13562, obj))
 }
 
 func FlowPanel_ClassName(obj uintptr) string {
-    return GoStr(syscallN(13561, obj))
+    return GoStr(syscallN(13563, obj))
 }
 
 func FlowPanel_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(13562, obj))
+    return int32(syscallN(13564, obj))
 }
 
 func FlowPanel_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(13563, obj, uintptr(AClass) ))
+    return GoBool(syscallN(13565, obj, uintptr(AClass) ))
 }
 
 func FlowPanel_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(13564, obj, Obj ))
+    return GoBool(syscallN(13566, obj, Obj ))
 }
 
 func FlowPanel_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(13565, obj))
+    return int32(syscallN(13567, obj))
 }
 
 func FlowPanel_ToString(obj uintptr) string {
-    return GoStr(syscallN(13566, obj))
+    return GoStr(syscallN(13568, obj))
 }
 
 func FlowPanel_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(13567, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(13569, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func FlowPanel_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(13568, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(13570, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func FlowPanel_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(13569, obj, ASibling )
+    syscallN(13571, obj, ASibling )
 }
 
 func FlowPanel_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(13570, obj, ASibling )
+    syscallN(13572, obj, ASibling )
 }
 
 func FlowPanel_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(13571, obj, uintptr(ASide) , ASibling )
+    syscallN(13573, obj, uintptr(ASide) , ASibling )
 }
 
 func FlowPanel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(13572, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(13574, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func FlowPanel_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(13573, obj, uintptr(ASpace) )
+    syscallN(13575, obj, uintptr(ASpace) )
 }
 
 func FlowPanel_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(13574, obj, uintptr(ASize) ))
-}
-
-func FlowPanel_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(13575, obj, uintptr(ASize) ))
-}
-
-func FlowPanel_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13576, obj, uintptr(ASize) ))
 }
 
-func FlowPanel_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func FlowPanel_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13577, obj, uintptr(ASize) ))
 }
 
-func FlowPanel_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func FlowPanel_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13578, obj, uintptr(ASize) ))
 }
 
-func FlowPanel_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func FlowPanel_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13579, obj, uintptr(ASize) ))
 }
 
-func FlowPanel_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func FlowPanel_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13580, obj, uintptr(ASize) ))
 }
 
-func FlowPanel_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func FlowPanel_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13581, obj, uintptr(ASize) ))
 }
 
-func FlowPanel_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func FlowPanel_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13582, obj, uintptr(ASize) ))
 }
 
-func FlowPanel_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func FlowPanel_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13583, obj, uintptr(ASize) ))
 }
 
+func FlowPanel_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(13584, obj, uintptr(ASize) ))
+}
+
+func FlowPanel_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(13585, obj, uintptr(ASize) ))
+}
+
 func FlowPanel_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(13584, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(13586, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func FlowPanel_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(13585, obj, uintptr(ADesignTimePPI) )
+    syscallN(13587, obj, uintptr(ADesignTimePPI) )
 }
 
 func FlowPanel_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(13586, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(13588, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func FlowPanel_GetControlList(obj uintptr) uintptr {
-    return syscallN(13587, obj)
+    return syscallN(13589, obj)
 }
 
 func FlowPanel_SetControlList(obj uintptr, value uintptr) {
-    syscallN(13588, obj, value)
+    syscallN(13590, obj, value)
 }
 
 func FlowPanel_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(13589, obj))
+    return TAlign(syscallN(13591, obj))
 }
 
 func FlowPanel_SetAlign(obj uintptr, value TAlign) {
-    syscallN(13590, obj, uintptr(value))
-}
-
-func FlowPanel_GetAlignment(obj uintptr) TAlignment {
-    return TAlignment(syscallN(13591, obj))
-}
-
-func FlowPanel_SetAlignment(obj uintptr, value TAlignment) {
     syscallN(13592, obj, uintptr(value))
 }
 
-func FlowPanel_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(13593, obj))
+func FlowPanel_GetAlignment(obj uintptr) TAlignment {
+    return TAlignment(syscallN(13593, obj))
 }
 
-func FlowPanel_SetAnchors(obj uintptr, value TAnchors) {
+func FlowPanel_SetAlignment(obj uintptr, value TAlignment) {
     syscallN(13594, obj, uintptr(value))
 }
 
+func FlowPanel_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(13595, obj))
+}
+
+func FlowPanel_SetAnchors(obj uintptr, value TAnchors) {
+    syscallN(13596, obj, uintptr(value))
+}
+
 func FlowPanel_GetAutoSize(obj uintptr) bool {
-    return GoBool(syscallN(13595, obj))
-}
-
-func FlowPanel_SetAutoSize(obj uintptr, value bool) {
-    syscallN(13596, obj, PascalBool(value))
-}
-
-func FlowPanel_GetAutoWrap(obj uintptr) bool {
     return GoBool(syscallN(13597, obj))
 }
 
-func FlowPanel_SetAutoWrap(obj uintptr, value bool) {
+func FlowPanel_SetAutoSize(obj uintptr, value bool) {
     syscallN(13598, obj, PascalBool(value))
 }
 
+func FlowPanel_GetAutoWrap(obj uintptr) bool {
+    return GoBool(syscallN(13599, obj))
+}
+
+func FlowPanel_SetAutoWrap(obj uintptr, value bool) {
+    syscallN(13600, obj, PascalBool(value))
+}
+
 func FlowPanel_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(13599, obj))
+    return TBiDiMode(syscallN(13601, obj))
 }
 
 func FlowPanel_SetBiDiMode(obj uintptr, value TBiDiMode) {
-    syscallN(13600, obj, uintptr(value))
-}
-
-func FlowPanel_GetBorderWidth(obj uintptr) int32 {
-    return int32(syscallN(13601, obj))
-}
-
-func FlowPanel_SetBorderWidth(obj uintptr, value int32) {
     syscallN(13602, obj, uintptr(value))
 }
 
-func FlowPanel_GetBorderStyle(obj uintptr) TBorderStyle {
-    return TBorderStyle(syscallN(13603, obj))
+func FlowPanel_GetBorderWidth(obj uintptr) int32 {
+    return int32(syscallN(13603, obj))
 }
 
-func FlowPanel_SetBorderStyle(obj uintptr, value TBorderStyle) {
+func FlowPanel_SetBorderWidth(obj uintptr, value int32) {
     syscallN(13604, obj, uintptr(value))
 }
 
+func FlowPanel_GetBorderStyle(obj uintptr) TBorderStyle {
+    return TBorderStyle(syscallN(13605, obj))
+}
+
+func FlowPanel_SetBorderStyle(obj uintptr, value TBorderStyle) {
+    syscallN(13606, obj, uintptr(value))
+}
+
 func FlowPanel_GetCaption(obj uintptr) string {
-    return GoStr(syscallN(13605, obj))
+    return GoStr(syscallN(13607, obj))
 }
 
 func FlowPanel_SetCaption(obj uintptr, value string) {
-    syscallN(13606, obj, PascalStr(value))
+    syscallN(13608, obj, PascalStr(value))
 }
 
 func FlowPanel_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(13607, obj))
+    return TColor(syscallN(13609, obj))
 }
 
 func FlowPanel_SetColor(obj uintptr, value TColor) {
-    syscallN(13608, obj, uintptr(value))
+    syscallN(13610, obj, uintptr(value))
 }
 
 func FlowPanel_GetConstraints(obj uintptr) uintptr {
-    return syscallN(13609, obj)
+    return syscallN(13611, obj)
 }
 
 func FlowPanel_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(13610, obj, value)
+    syscallN(13612, obj, value)
 }
 
 func FlowPanel_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(13611, obj))
-}
-
-func FlowPanel_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(13612, obj, PascalBool(value))
-}
-
-func FlowPanel_GetDockSite(obj uintptr) bool {
     return GoBool(syscallN(13613, obj))
 }
 
-func FlowPanel_SetDockSite(obj uintptr, value bool) {
+func FlowPanel_SetUseDockManager(obj uintptr, value bool) {
     syscallN(13614, obj, PascalBool(value))
 }
 
-func FlowPanel_GetDoubleBuffered(obj uintptr) bool {
+func FlowPanel_GetDockSite(obj uintptr) bool {
     return GoBool(syscallN(13615, obj))
 }
 
-func FlowPanel_SetDoubleBuffered(obj uintptr, value bool) {
+func FlowPanel_SetDockSite(obj uintptr, value bool) {
     syscallN(13616, obj, PascalBool(value))
 }
 
+func FlowPanel_GetDoubleBuffered(obj uintptr) bool {
+    return GoBool(syscallN(13617, obj))
+}
+
+func FlowPanel_SetDoubleBuffered(obj uintptr, value bool) {
+    syscallN(13618, obj, PascalBool(value))
+}
+
 func FlowPanel_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(13617, obj))
+    return TCursor(syscallN(13619, obj))
 }
 
 func FlowPanel_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(13618, obj, uintptr(value))
-}
-
-func FlowPanel_GetDragKind(obj uintptr) TDragKind {
-    return TDragKind(syscallN(13619, obj))
-}
-
-func FlowPanel_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(13620, obj, uintptr(value))
 }
 
-func FlowPanel_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(13621, obj))
+func FlowPanel_GetDragKind(obj uintptr) TDragKind {
+    return TDragKind(syscallN(13621, obj))
 }
 
-func FlowPanel_SetDragMode(obj uintptr, value TDragMode) {
+func FlowPanel_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(13622, obj, uintptr(value))
 }
 
+func FlowPanel_GetDragMode(obj uintptr) TDragMode {
+    return TDragMode(syscallN(13623, obj))
+}
+
+func FlowPanel_SetDragMode(obj uintptr, value TDragMode) {
+    syscallN(13624, obj, uintptr(value))
+}
+
 func FlowPanel_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(13623, obj))
+    return GoBool(syscallN(13625, obj))
 }
 
 func FlowPanel_SetEnabled(obj uintptr, value bool) {
-    syscallN(13624, obj, PascalBool(value))
+    syscallN(13626, obj, PascalBool(value))
 }
 
 func FlowPanel_GetFlowStyle(obj uintptr) TFlowStyle {
-    return TFlowStyle(syscallN(13625, obj))
+    return TFlowStyle(syscallN(13627, obj))
 }
 
 func FlowPanel_SetFlowStyle(obj uintptr, value TFlowStyle) {
-    syscallN(13626, obj, uintptr(value))
+    syscallN(13628, obj, uintptr(value))
 }
 
 func FlowPanel_GetFullRepaint(obj uintptr) bool {
-    return GoBool(syscallN(13627, obj))
+    return GoBool(syscallN(13629, obj))
 }
 
 func FlowPanel_SetFullRepaint(obj uintptr, value bool) {
-    syscallN(13628, obj, PascalBool(value))
+    syscallN(13630, obj, PascalBool(value))
 }
 
 func FlowPanel_GetFont(obj uintptr) uintptr {
-    return syscallN(13629, obj)
+    return syscallN(13631, obj)
 }
 
 func FlowPanel_SetFont(obj uintptr, value uintptr) {
-    syscallN(13630, obj, value)
+    syscallN(13632, obj, value)
 }
 
 func FlowPanel_GetParentBackground(obj uintptr) bool {
-    return GoBool(syscallN(13631, obj))
-}
-
-func FlowPanel_SetParentBackground(obj uintptr, value bool) {
-    syscallN(13632, obj, PascalBool(value))
-}
-
-func FlowPanel_GetParentColor(obj uintptr) bool {
     return GoBool(syscallN(13633, obj))
 }
 
-func FlowPanel_SetParentColor(obj uintptr, value bool) {
+func FlowPanel_SetParentBackground(obj uintptr, value bool) {
     syscallN(13634, obj, PascalBool(value))
 }
 
-func FlowPanel_GetParentDoubleBuffered(obj uintptr) bool {
+func FlowPanel_GetParentColor(obj uintptr) bool {
     return GoBool(syscallN(13635, obj))
 }
 
-func FlowPanel_SetParentDoubleBuffered(obj uintptr, value bool) {
+func FlowPanel_SetParentColor(obj uintptr, value bool) {
     syscallN(13636, obj, PascalBool(value))
 }
 
-func FlowPanel_GetParentFont(obj uintptr) bool {
+func FlowPanel_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(13637, obj))
 }
 
-func FlowPanel_SetParentFont(obj uintptr, value bool) {
+func FlowPanel_SetParentDoubleBuffered(obj uintptr, value bool) {
     syscallN(13638, obj, PascalBool(value))
 }
 
-func FlowPanel_GetParentShowHint(obj uintptr) bool {
+func FlowPanel_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(13639, obj))
 }
 
-func FlowPanel_SetParentShowHint(obj uintptr, value bool) {
+func FlowPanel_SetParentFont(obj uintptr, value bool) {
     syscallN(13640, obj, PascalBool(value))
 }
 
+func FlowPanel_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(13641, obj))
+}
+
+func FlowPanel_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(13642, obj, PascalBool(value))
+}
+
 func FlowPanel_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(13641, obj)
+    return syscallN(13643, obj)
 }
 
 func FlowPanel_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(13642, obj, value)
+    syscallN(13644, obj, value)
 }
 
 func FlowPanel_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(13643, obj))
+    return GoBool(syscallN(13645, obj))
 }
 
 func FlowPanel_SetShowHint(obj uintptr, value bool) {
-    syscallN(13644, obj, PascalBool(value))
+    syscallN(13646, obj, PascalBool(value))
 }
 
 func FlowPanel_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(13645, obj))
+    return TTabOrder(syscallN(13647, obj))
 }
 
 func FlowPanel_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(13646, obj, uintptr(value))
+    syscallN(13648, obj, uintptr(value))
 }
 
 func FlowPanel_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(13647, obj))
-}
-
-func FlowPanel_SetTabStop(obj uintptr, value bool) {
-    syscallN(13648, obj, PascalBool(value))
-}
-
-func FlowPanel_GetVisible(obj uintptr) bool {
     return GoBool(syscallN(13649, obj))
 }
 
-func FlowPanel_SetVisible(obj uintptr, value bool) {
+func FlowPanel_SetTabStop(obj uintptr, value bool) {
     syscallN(13650, obj, PascalBool(value))
 }
 
+func FlowPanel_GetVisible(obj uintptr) bool {
+    return GoBool(syscallN(13651, obj))
+}
+
+func FlowPanel_SetVisible(obj uintptr, value bool) {
+    syscallN(13652, obj, PascalBool(value))
+}
+
 func FlowPanel_SetOnAlignPosition(obj uintptr, fn interface{}) {
-    syscallN(13651, obj, MakeEventDataPtr(fn))
-}
-
-func FlowPanel_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(13652, obj, MakeEventDataPtr(fn))
-}
-
-func FlowPanel_SetOnConstrainedResize(obj uintptr, fn interface{}) {
     syscallN(13653, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnContextPopup(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnClick(obj uintptr, fn interface{}) {
     syscallN(13654, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnDockDrop(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnConstrainedResize(obj uintptr, fn interface{}) {
     syscallN(13655, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnDblClick(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnContextPopup(obj uintptr, fn interface{}) {
     syscallN(13656, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnDragDrop(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnDockDrop(obj uintptr, fn interface{}) {
     syscallN(13657, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnDragOver(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(13658, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnEndDock(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(13659, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnEndDrag(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(13660, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnEnter(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnEndDock(obj uintptr, fn interface{}) {
     syscallN(13661, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnExit(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(13662, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnEnter(obj uintptr, fn interface{}) {
     syscallN(13663, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnMouseDown(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnExit(obj uintptr, fn interface{}) {
     syscallN(13664, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     syscallN(13665, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(13666, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnMouseMove(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(13667, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnMouseUp(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(13668, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnResize(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnMouseMove(obj uintptr, fn interface{}) {
     syscallN(13669, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnStartDock(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnMouseUp(obj uintptr, fn interface{}) {
     syscallN(13670, obj, MakeEventDataPtr(fn))
 }
 
-func FlowPanel_SetOnUnDock(obj uintptr, fn interface{}) {
+func FlowPanel_SetOnResize(obj uintptr, fn interface{}) {
     syscallN(13671, obj, MakeEventDataPtr(fn))
 }
 
+func FlowPanel_SetOnStartDock(obj uintptr, fn interface{}) {
+    syscallN(13672, obj, MakeEventDataPtr(fn))
+}
+
+func FlowPanel_SetOnUnDock(obj uintptr, fn interface{}) {
+    syscallN(13673, obj, MakeEventDataPtr(fn))
+}
+
 func FlowPanel_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(13672, obj))
-}
-
-func FlowPanel_GetMouseInClient(obj uintptr) bool {
-    return GoBool(syscallN(13673, obj))
-}
-
-func FlowPanel_GetVisibleDockClientCount(obj uintptr) int32 {
     return int32(syscallN(13674, obj))
 }
 
-func FlowPanel_GetBrush(obj uintptr) uintptr {
-    return syscallN(13675, obj)
+func FlowPanel_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(13675, obj))
 }
 
-func FlowPanel_GetControlCount(obj uintptr) int32 {
+func FlowPanel_GetVisibleDockClientCount(obj uintptr) int32 {
     return int32(syscallN(13676, obj))
 }
 
+func FlowPanel_GetBrush(obj uintptr) uintptr {
+    return syscallN(13677, obj)
+}
+
+func FlowPanel_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(13678, obj))
+}
+
 func FlowPanel_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(13677, obj))
+    return HWND(syscallN(13679, obj))
 }
 
 func FlowPanel_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(13678, obj))
+    return HWND(syscallN(13680, obj))
 }
 
 func FlowPanel_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(13679, obj, uintptr(value))
+    syscallN(13681, obj, uintptr(value))
 }
 
 func FlowPanel_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(13680, obj))
+    return GoBool(syscallN(13682, obj))
 }
 
 func FlowPanel_GetAction(obj uintptr) uintptr {
-    return syscallN(13681, obj)
+    return syscallN(13683, obj)
 }
 
 func FlowPanel_SetAction(obj uintptr, value uintptr) {
-    syscallN(13682, obj, value)
+    syscallN(13684, obj, value)
 }
 
 func FlowPanel_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(13683, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13685, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func FlowPanel_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(13684, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(13686, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func FlowPanel_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(13685, obj))
+    return int32(syscallN(13687, obj))
 }
 
 func FlowPanel_SetClientHeight(obj uintptr, value int32) {
-    syscallN(13686, obj, uintptr(value))
+    syscallN(13688, obj, uintptr(value))
 }
 
 func FlowPanel_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(13687, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13689, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func FlowPanel_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(13688, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13690, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func FlowPanel_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(13689, obj))
+    return int32(syscallN(13691, obj))
 }
 
 func FlowPanel_SetClientWidth(obj uintptr, value int32) {
-    syscallN(13690, obj, uintptr(value))
-}
-
-func FlowPanel_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(13691, obj))
-}
-
-func FlowPanel_SetControlState(obj uintptr, value TControlState) {
     syscallN(13692, obj, uintptr(value))
 }
 
-func FlowPanel_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(13693, obj))
+func FlowPanel_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(13693, obj))
 }
 
-func FlowPanel_SetControlStyle(obj uintptr, value TControlStyle) {
+func FlowPanel_SetControlState(obj uintptr, value TControlState) {
     syscallN(13694, obj, uintptr(value))
 }
 
+func FlowPanel_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(13695, obj))
+}
+
+func FlowPanel_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(13696, obj, uintptr(value))
+}
+
 func FlowPanel_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(13695, obj))
+    return GoBool(syscallN(13697, obj))
 }
 
 func FlowPanel_GetParent(obj uintptr) uintptr {
-    return syscallN(13696, obj)
+    return syscallN(13698, obj)
 }
 
 func FlowPanel_SetParent(obj uintptr, value uintptr) {
-    syscallN(13697, obj, value)
+    syscallN(13699, obj, value)
 }
 
 func FlowPanel_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(13698, obj))
-}
-
-func FlowPanel_SetLeft(obj uintptr, value int32) {
-    syscallN(13699, obj, uintptr(value))
-}
-
-func FlowPanel_GetTop(obj uintptr) int32 {
     return int32(syscallN(13700, obj))
 }
 
-func FlowPanel_SetTop(obj uintptr, value int32) {
+func FlowPanel_SetLeft(obj uintptr, value int32) {
     syscallN(13701, obj, uintptr(value))
 }
 
-func FlowPanel_GetWidth(obj uintptr) int32 {
+func FlowPanel_GetTop(obj uintptr) int32 {
     return int32(syscallN(13702, obj))
 }
 
-func FlowPanel_SetWidth(obj uintptr, value int32) {
+func FlowPanel_SetTop(obj uintptr, value int32) {
     syscallN(13703, obj, uintptr(value))
 }
 
-func FlowPanel_GetHeight(obj uintptr) int32 {
+func FlowPanel_GetWidth(obj uintptr) int32 {
     return int32(syscallN(13704, obj))
 }
 
-func FlowPanel_SetHeight(obj uintptr, value int32) {
+func FlowPanel_SetWidth(obj uintptr, value int32) {
     syscallN(13705, obj, uintptr(value))
 }
 
-func FlowPanel_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(13706, obj))
+func FlowPanel_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(13706, obj))
 }
 
-func FlowPanel_SetCursor(obj uintptr, value TCursor) {
+func FlowPanel_SetHeight(obj uintptr, value int32) {
     syscallN(13707, obj, uintptr(value))
 }
 
+func FlowPanel_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(13708, obj))
+}
+
+func FlowPanel_SetCursor(obj uintptr, value TCursor) {
+    syscallN(13709, obj, uintptr(value))
+}
+
 func FlowPanel_GetHint(obj uintptr) string {
-    return GoStr(syscallN(13708, obj))
+    return GoStr(syscallN(13710, obj))
 }
 
 func FlowPanel_SetHint(obj uintptr, value string) {
-    syscallN(13709, obj, PascalStr(value))
+    syscallN(13711, obj, PascalStr(value))
 }
 
 func FlowPanel_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(13710, obj))
+    return int32(syscallN(13712, obj))
 }
 
 func FlowPanel_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(13711, obj))
+    return int32(syscallN(13713, obj))
 }
 
 func FlowPanel_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(13712, obj, uintptr(value))
+    syscallN(13714, obj, uintptr(value))
 }
 
 func FlowPanel_GetOwner(obj uintptr) uintptr {
-    return syscallN(13713, obj)
+    return syscallN(13715, obj)
 }
 
 func FlowPanel_GetName(obj uintptr) string {
-    return GoStr(syscallN(13714, obj))
+    return GoStr(syscallN(13716, obj))
 }
 
 func FlowPanel_SetName(obj uintptr, value string) {
-    syscallN(13715, obj, PascalStr(value))
+    syscallN(13717, obj, PascalStr(value))
 }
 
 func FlowPanel_GetTag(obj uintptr) int {
-    return int(syscallN(13716, obj))
+    return int(syscallN(13718, obj))
 }
 
 func FlowPanel_SetTag(obj uintptr, value int) {
-    syscallN(13717, obj, uintptr(value))
+    syscallN(13719, obj, uintptr(value))
 }
 
 func FlowPanel_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(13718, obj)
-}
-
-func FlowPanel_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(13719, obj, value)
-}
-
-func FlowPanel_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(13720, obj)
 }
 
-func FlowPanel_SetAnchorSideTop(obj uintptr, value uintptr) {
+func FlowPanel_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(13721, obj, value)
 }
 
-func FlowPanel_GetAnchorSideRight(obj uintptr) uintptr {
+func FlowPanel_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(13722, obj)
 }
 
-func FlowPanel_SetAnchorSideRight(obj uintptr, value uintptr) {
+func FlowPanel_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(13723, obj, value)
 }
 
-func FlowPanel_GetAnchorSideBottom(obj uintptr) uintptr {
+func FlowPanel_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(13724, obj)
 }
 
-func FlowPanel_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func FlowPanel_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(13725, obj, value)
 }
 
-func FlowPanel_GetChildSizing(obj uintptr) uintptr {
+func FlowPanel_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(13726, obj)
 }
 
-func FlowPanel_SetChildSizing(obj uintptr, value uintptr) {
+func FlowPanel_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(13727, obj, value)
 }
 
-func FlowPanel_GetBorderSpacing(obj uintptr) uintptr {
+func FlowPanel_GetChildSizing(obj uintptr) uintptr {
     return syscallN(13728, obj)
 }
 
-func FlowPanel_SetBorderSpacing(obj uintptr, value uintptr) {
+func FlowPanel_SetChildSizing(obj uintptr, value uintptr) {
     syscallN(13729, obj, value)
 }
 
+func FlowPanel_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(13730, obj)
+}
+
+func FlowPanel_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(13731, obj, value)
+}
+
 func FlowPanel_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(13730, obj, uintptr(Index))
+    return syscallN(13732, obj, uintptr(Index))
 }
 
 func FlowPanel_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(13731, obj, uintptr(Index))
+    return syscallN(13733, obj, uintptr(Index))
 }
 
 func FlowPanel_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(13732, obj, uintptr(AIndex))
+    return syscallN(13734, obj, uintptr(AIndex))
 }
 
 func FlowPanel_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(13733, obj, uintptr(AKind))
+    return syscallN(13735, obj, uintptr(AKind))
 }
 
 func FlowPanel_StaticClassType() TClass {
-    return TClass(syscallN(13734))
+    return TClass(syscallN(13736))
 }
 
 //--------------------------- TFlowPanelControlList ---------------------------
 
 func FlowPanelControlList_IndexOf(obj uintptr, AControl uintptr) int32 {
-    return int32(syscallN(13735, obj, AControl ))
+    return int32(syscallN(13737, obj, AControl ))
 }
 
 func FlowPanelControlList_Exchange(obj uintptr, Index1 int32, index2 int32)  {
-    syscallN(13736, obj, uintptr(Index1) , uintptr(index2) )
+    syscallN(13738, obj, uintptr(Index1) , uintptr(index2) )
 }
 
 func FlowPanelControlList_Move(obj uintptr, Index1 int32, index2 int32)  {
-    syscallN(13737, obj, uintptr(Index1) , uintptr(index2) )
+    syscallN(13739, obj, uintptr(Index1) , uintptr(index2) )
 }
 
 func FlowPanelControlList_AllowAdd(obj uintptr) bool {
-    return GoBool(syscallN(13738, obj))
+    return GoBool(syscallN(13740, obj))
 }
 
 func FlowPanelControlList_AllowDelete(obj uintptr) bool {
-    return GoBool(syscallN(13739, obj))
+    return GoBool(syscallN(13741, obj))
 }
 
 func FlowPanelControlList_Owner(obj uintptr) uintptr {
-    return syscallN(13740, obj)
+    return syscallN(13742, obj)
 }
 
 func FlowPanelControlList_Add(obj uintptr) uintptr {
-    return syscallN(13741, obj)
+    return syscallN(13743, obj)
 }
 
 func FlowPanelControlList_Assign(obj uintptr, Source uintptr)  {
-    syscallN(13742, obj, Source )
+    syscallN(13744, obj, Source )
 }
 
 func FlowPanelControlList_BeginUpdate(obj uintptr)  {
-    syscallN(13743, obj)
+    syscallN(13745, obj)
 }
 
 func FlowPanelControlList_Clear(obj uintptr)  {
-    syscallN(13744, obj)
-}
-
-func FlowPanelControlList_Delete(obj uintptr, Index int32)  {
-    syscallN(13745, obj, uintptr(Index) )
-}
-
-func FlowPanelControlList_EndUpdate(obj uintptr)  {
     syscallN(13746, obj)
 }
 
+func FlowPanelControlList_Delete(obj uintptr, Index int32)  {
+    syscallN(13747, obj, uintptr(Index) )
+}
+
+func FlowPanelControlList_EndUpdate(obj uintptr)  {
+    syscallN(13748, obj)
+}
+
 func FlowPanelControlList_FindItemID(obj uintptr, ID int32) uintptr {
-    return syscallN(13747, obj, uintptr(ID) )
+    return syscallN(13749, obj, uintptr(ID) )
 }
 
 func FlowPanelControlList_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(13748, obj))
+    return GoStr(syscallN(13750, obj))
 }
 
 func FlowPanelControlList_Insert(obj uintptr, Index int32) uintptr {
-    return syscallN(13749, obj, uintptr(Index) )
+    return syscallN(13751, obj, uintptr(Index) )
 }
 
 func FlowPanelControlList_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(13750, obj))
+    return TClass(syscallN(13752, obj))
 }
 
 func FlowPanelControlList_ClassName(obj uintptr) string {
-    return GoStr(syscallN(13751, obj))
+    return GoStr(syscallN(13753, obj))
 }
 
 func FlowPanelControlList_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(13752, obj))
+    return int32(syscallN(13754, obj))
 }
 
 func FlowPanelControlList_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(13753, obj, uintptr(AClass) ))
+    return GoBool(syscallN(13755, obj, uintptr(AClass) ))
 }
 
 func FlowPanelControlList_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(13754, obj, Obj ))
+    return GoBool(syscallN(13756, obj, Obj ))
 }
 
 func FlowPanelControlList_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(13755, obj))
-}
-
-func FlowPanelControlList_ToString(obj uintptr) string {
-    return GoStr(syscallN(13756, obj))
-}
-
-func FlowPanelControlList_GetCount(obj uintptr) int32 {
     return int32(syscallN(13757, obj))
 }
 
+func FlowPanelControlList_ToString(obj uintptr) string {
+    return GoStr(syscallN(13758, obj))
+}
+
+func FlowPanelControlList_GetCount(obj uintptr) int32 {
+    return int32(syscallN(13759, obj))
+}
+
 func FlowPanelControlList_GetItems(obj uintptr, Index int32) uintptr {
-    return syscallN(13758, obj, uintptr(Index))
+    return syscallN(13760, obj, uintptr(Index))
 }
 
 func FlowPanelControlList_SetItems(obj uintptr, Index int32, value uintptr) {
-    syscallN(13759, obj, uintptr(Index), value)
+    syscallN(13761, obj, uintptr(Index), value)
 }
 
 func FlowPanelControlList_StaticClassType() TClass {
-    return TClass(syscallN(13760))
+    return TClass(syscallN(13762))
 }
 
 //--------------------------- TFlowPanelControl ---------------------------
 
 func FlowPanelControl_AllowAdd(obj uintptr) bool {
-    return GoBool(syscallN(13761, obj))
+    return GoBool(syscallN(13763, obj))
 }
 
 func FlowPanelControl_AllowDelete(obj uintptr) bool {
-    return GoBool(syscallN(13762, obj))
+    return GoBool(syscallN(13764, obj))
 }
 
 func FlowPanelControl_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(13763, obj))
+    return GoStr(syscallN(13765, obj))
 }
 
 func FlowPanelControl_Assign(obj uintptr, Source uintptr)  {
-    syscallN(13764, obj, Source )
+    syscallN(13766, obj, Source )
 }
 
 func FlowPanelControl_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(13765, obj))
+    return TClass(syscallN(13767, obj))
 }
 
 func FlowPanelControl_ClassName(obj uintptr) string {
-    return GoStr(syscallN(13766, obj))
+    return GoStr(syscallN(13768, obj))
 }
 
 func FlowPanelControl_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(13767, obj))
+    return int32(syscallN(13769, obj))
 }
 
 func FlowPanelControl_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(13768, obj, uintptr(AClass) ))
+    return GoBool(syscallN(13770, obj, uintptr(AClass) ))
 }
 
 func FlowPanelControl_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(13769, obj, Obj ))
+    return GoBool(syscallN(13771, obj, Obj ))
 }
 
 func FlowPanelControl_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(13770, obj))
+    return int32(syscallN(13772, obj))
 }
 
 func FlowPanelControl_ToString(obj uintptr) string {
-    return GoStr(syscallN(13771, obj))
+    return GoStr(syscallN(13773, obj))
 }
 
 func FlowPanelControl_GetControl(obj uintptr) uintptr {
-    return syscallN(13772, obj)
+    return syscallN(13774, obj)
 }
 
 func FlowPanelControl_SetControl(obj uintptr, value uintptr) {
-    syscallN(13773, obj, value)
+    syscallN(13775, obj, value)
 }
 
 func FlowPanelControl_GetWrapAfter(obj uintptr) TWrapAfter {
-    return TWrapAfter(syscallN(13774, obj))
+    return TWrapAfter(syscallN(13776, obj))
 }
 
 func FlowPanelControl_SetWrapAfter(obj uintptr, value TWrapAfter) {
-    syscallN(13775, obj, uintptr(value))
-}
-
-func FlowPanelControl_GetIndex(obj uintptr) int32 {
-    return int32(syscallN(13776, obj))
-}
-
-func FlowPanelControl_SetIndex(obj uintptr, value int32) {
     syscallN(13777, obj, uintptr(value))
 }
 
+func FlowPanelControl_GetIndex(obj uintptr) int32 {
+    return int32(syscallN(13778, obj))
+}
+
+func FlowPanelControl_SetIndex(obj uintptr, value int32) {
+    syscallN(13779, obj, uintptr(value))
+}
+
 func FlowPanelControl_GetCollection(obj uintptr) uintptr {
-    return syscallN(13778, obj)
+    return syscallN(13780, obj)
 }
 
 func FlowPanelControl_SetCollection(obj uintptr, value uintptr) {
-    syscallN(13779, obj, value)
+    syscallN(13781, obj, value)
 }
 
 func FlowPanelControl_GetDisplayName(obj uintptr) string {
-    return GoStr(syscallN(13780, obj))
+    return GoStr(syscallN(13782, obj))
 }
 
 func FlowPanelControl_SetDisplayName(obj uintptr, value string) {
-    syscallN(13781, obj, PascalStr(value))
+    syscallN(13783, obj, PascalStr(value))
 }
 
 func FlowPanelControl_StaticClassType() TClass {
-    return TClass(syscallN(13782))
+    return TClass(syscallN(13784))
 }
 
 //--------------------------- TCoolBar ---------------------------
 
 func CoolBar_Create(obj uintptr) uintptr {
-    return syscallN(13783, obj)
+    return syscallN(13785, obj)
 }
 
 func CoolBar_Free(obj uintptr) {
-    syscallN(13784, obj)
+    syscallN(13786, obj)
 }
 
 func CoolBar_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(13785, obj, PascalBool(AllLevels) )
+    syscallN(13787, obj, PascalBool(AllLevels) )
 }
 
 func CoolBar_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(13786, obj))
+    return GoBool(syscallN(13788, obj))
 }
 
 func CoolBar_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(13787, obj, Control ))
+    return GoBool(syscallN(13789, obj, Control ))
 }
 
 func CoolBar_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(13788, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(13790, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func CoolBar_DisableAlign(obj uintptr)  {
-    syscallN(13789, obj)
+    syscallN(13791, obj)
 }
 
 func CoolBar_EnableAlign(obj uintptr)  {
-    syscallN(13790, obj)
+    syscallN(13792, obj)
 }
 
 func CoolBar_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(13791, obj, PascalStr(ControlName) )
+    return syscallN(13793, obj, PascalStr(ControlName) )
 }
 
 func CoolBar_Focused(obj uintptr) bool {
-    return GoBool(syscallN(13792, obj))
+    return GoBool(syscallN(13794, obj))
 }
 
 func CoolBar_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(13793, obj))
+    return GoBool(syscallN(13795, obj))
 }
 
 func CoolBar_Invalidate(obj uintptr)  {
-    syscallN(13794, obj)
+    syscallN(13796, obj)
 }
 
 func CoolBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(13795, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(13797, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func CoolBar_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(13796, obj, AControl )
+    syscallN(13798, obj, AControl )
 }
 
 func CoolBar_Realign(obj uintptr)  {
-    syscallN(13797, obj)
+    syscallN(13799, obj)
 }
 
 func CoolBar_Repaint(obj uintptr)  {
-    syscallN(13798, obj)
+    syscallN(13800, obj)
 }
 
 func CoolBar_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(13799, obj, uintptr(M) , uintptr(D) )
+    syscallN(13801, obj, uintptr(M) , uintptr(D) )
 }
 
 func CoolBar_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(13800, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(13802, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func CoolBar_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(13801, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(13803, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func CoolBar_SetFocus(obj uintptr)  {
-    syscallN(13802, obj)
+    syscallN(13804, obj)
 }
 
 func CoolBar_Update(obj uintptr)  {
-    syscallN(13803, obj)
-}
-
-func CoolBar_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(13804, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func CoolBar_BringToFront(obj uintptr)  {
     syscallN(13805, obj)
 }
 
+func CoolBar_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(13806, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func CoolBar_BringToFront(obj uintptr)  {
+    syscallN(13807, obj)
+}
+
 func CoolBar_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(13806, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(13808, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CoolBar_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(13807, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(13809, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CoolBar_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(13808, obj))
-}
-
-func CoolBar_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(13809, obj, PascalBool(Drop) )
-}
-
-func CoolBar_HasParent(obj uintptr) bool {
     return GoBool(syscallN(13810, obj))
 }
 
+func CoolBar_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(13811, obj, PascalBool(Drop) )
+}
+
+func CoolBar_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(13812, obj))
+}
+
 func CoolBar_Hide(obj uintptr)  {
-    syscallN(13811, obj)
-}
-
-func CoolBar_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(13812, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func CoolBar_Refresh(obj uintptr)  {
     syscallN(13813, obj)
 }
 
+func CoolBar_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(13814, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func CoolBar_Refresh(obj uintptr)  {
+    syscallN(13815, obj)
+}
+
 func CoolBar_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(13814, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(13816, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CoolBar_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(13815, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(13817, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CoolBar_SendToBack(obj uintptr)  {
-    syscallN(13816, obj)
+    syscallN(13818, obj)
 }
 
 func CoolBar_Show(obj uintptr)  {
-    syscallN(13817, obj)
+    syscallN(13819, obj)
 }
 
 func CoolBar_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(13818, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(13820, obj, Buffer, uintptr(BufSize) ))
 }
 
 func CoolBar_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(13819, obj))
+    return int32(syscallN(13821, obj))
 }
 
 func CoolBar_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(13820, obj, PascalStr(Buffer) )
+    syscallN(13822, obj, PascalStr(Buffer) )
 }
 
 func CoolBar_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(13821, obj, PascalStr(AName) )
+    return syscallN(13823, obj, PascalStr(AName) )
 }
 
 func CoolBar_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(13822, obj))
+    return GoStr(syscallN(13824, obj))
 }
 
 func CoolBar_Assign(obj uintptr, Source uintptr)  {
-    syscallN(13823, obj, Source )
+    syscallN(13825, obj, Source )
 }
 
 func CoolBar_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(13824, obj))
+    return TClass(syscallN(13826, obj))
 }
 
 func CoolBar_ClassName(obj uintptr) string {
-    return GoStr(syscallN(13825, obj))
+    return GoStr(syscallN(13827, obj))
 }
 
 func CoolBar_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(13826, obj))
+    return int32(syscallN(13828, obj))
 }
 
 func CoolBar_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(13827, obj, uintptr(AClass) ))
+    return GoBool(syscallN(13829, obj, uintptr(AClass) ))
 }
 
 func CoolBar_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(13828, obj, Obj ))
+    return GoBool(syscallN(13830, obj, Obj ))
 }
 
 func CoolBar_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(13829, obj))
+    return int32(syscallN(13831, obj))
 }
 
 func CoolBar_ToString(obj uintptr) string {
-    return GoStr(syscallN(13830, obj))
+    return GoStr(syscallN(13832, obj))
 }
 
 func CoolBar_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(13831, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(13833, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func CoolBar_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(13832, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(13834, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func CoolBar_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(13833, obj, ASibling )
+    syscallN(13835, obj, ASibling )
 }
 
 func CoolBar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(13834, obj, ASibling )
+    syscallN(13836, obj, ASibling )
 }
 
 func CoolBar_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(13835, obj, uintptr(ASide) , ASibling )
+    syscallN(13837, obj, uintptr(ASide) , ASibling )
 }
 
 func CoolBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(13836, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(13838, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func CoolBar_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(13837, obj, uintptr(ASpace) )
+    syscallN(13839, obj, uintptr(ASpace) )
 }
 
 func CoolBar_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(13838, obj, uintptr(ASize) ))
-}
-
-func CoolBar_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(13839, obj, uintptr(ASize) ))
-}
-
-func CoolBar_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13840, obj, uintptr(ASize) ))
 }
 
-func CoolBar_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func CoolBar_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13841, obj, uintptr(ASize) ))
 }
 
-func CoolBar_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func CoolBar_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13842, obj, uintptr(ASize) ))
 }
 
-func CoolBar_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func CoolBar_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13843, obj, uintptr(ASize) ))
 }
 
-func CoolBar_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func CoolBar_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13844, obj, uintptr(ASize) ))
 }
 
-func CoolBar_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func CoolBar_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13845, obj, uintptr(ASize) ))
 }
 
-func CoolBar_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func CoolBar_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13846, obj, uintptr(ASize) ))
 }
 
-func CoolBar_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func CoolBar_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(13847, obj, uintptr(ASize) ))
 }
 
+func CoolBar_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(13848, obj, uintptr(ASize) ))
+}
+
+func CoolBar_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(13849, obj, uintptr(ASize) ))
+}
+
 func CoolBar_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(13848, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(13850, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func CoolBar_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(13849, obj, uintptr(ADesignTimePPI) )
+    syscallN(13851, obj, uintptr(ADesignTimePPI) )
 }
 
 func CoolBar_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(13850, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(13852, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func CoolBar_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(13851, obj))
+    return TAlign(syscallN(13853, obj))
 }
 
 func CoolBar_SetAlign(obj uintptr, value TAlign) {
-    syscallN(13852, obj, uintptr(value))
-}
-
-func CoolBar_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(13853, obj))
-}
-
-func CoolBar_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(13854, obj, uintptr(value))
 }
 
+func CoolBar_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(13855, obj))
+}
+
+func CoolBar_SetAnchors(obj uintptr, value TAnchors) {
+    syscallN(13856, obj, uintptr(value))
+}
+
 func CoolBar_GetAutoSize(obj uintptr) bool {
-    return GoBool(syscallN(13855, obj))
+    return GoBool(syscallN(13857, obj))
 }
 
 func CoolBar_SetAutoSize(obj uintptr, value bool) {
-    syscallN(13856, obj, PascalBool(value))
+    syscallN(13858, obj, PascalBool(value))
 }
 
 func CoolBar_GetBandBorderStyle(obj uintptr) TBorderStyle {
-    return TBorderStyle(syscallN(13857, obj))
+    return TBorderStyle(syscallN(13859, obj))
 }
 
 func CoolBar_SetBandBorderStyle(obj uintptr, value TBorderStyle) {
-    syscallN(13858, obj, uintptr(value))
-}
-
-func CoolBar_GetBandMaximize(obj uintptr) TCoolBandMaximize {
-    return TCoolBandMaximize(syscallN(13859, obj))
-}
-
-func CoolBar_SetBandMaximize(obj uintptr, value TCoolBandMaximize) {
     syscallN(13860, obj, uintptr(value))
 }
 
+func CoolBar_GetBandMaximize(obj uintptr) TCoolBandMaximize {
+    return TCoolBandMaximize(syscallN(13861, obj))
+}
+
+func CoolBar_SetBandMaximize(obj uintptr, value TCoolBandMaximize) {
+    syscallN(13862, obj, uintptr(value))
+}
+
 func CoolBar_GetBands(obj uintptr) uintptr {
-    return syscallN(13861, obj)
+    return syscallN(13863, obj)
 }
 
 func CoolBar_SetBands(obj uintptr, value uintptr) {
-    syscallN(13862, obj, value)
+    syscallN(13864, obj, value)
 }
 
 func CoolBar_GetBorderWidth(obj uintptr) int32 {
-    return int32(syscallN(13863, obj))
+    return int32(syscallN(13865, obj))
 }
 
 func CoolBar_SetBorderWidth(obj uintptr, value int32) {
-    syscallN(13864, obj, uintptr(value))
-}
-
-func CoolBar_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(13865, obj))
-}
-
-func CoolBar_SetColor(obj uintptr, value TColor) {
     syscallN(13866, obj, uintptr(value))
 }
 
+func CoolBar_GetColor(obj uintptr) TColor {
+    return TColor(syscallN(13867, obj))
+}
+
+func CoolBar_SetColor(obj uintptr, value TColor) {
+    syscallN(13868, obj, uintptr(value))
+}
+
 func CoolBar_GetConstraints(obj uintptr) uintptr {
-    return syscallN(13867, obj)
+    return syscallN(13869, obj)
 }
 
 func CoolBar_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(13868, obj, value)
+    syscallN(13870, obj, value)
 }
 
 func CoolBar_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(13869, obj))
-}
-
-func CoolBar_SetDockSite(obj uintptr, value bool) {
-    syscallN(13870, obj, PascalBool(value))
-}
-
-func CoolBar_GetDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(13871, obj))
 }
 
-func CoolBar_SetDoubleBuffered(obj uintptr, value bool) {
+func CoolBar_SetDockSite(obj uintptr, value bool) {
     syscallN(13872, obj, PascalBool(value))
 }
 
+func CoolBar_GetDoubleBuffered(obj uintptr) bool {
+    return GoBool(syscallN(13873, obj))
+}
+
+func CoolBar_SetDoubleBuffered(obj uintptr, value bool) {
+    syscallN(13874, obj, PascalBool(value))
+}
+
 func CoolBar_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(13873, obj))
+    return TCursor(syscallN(13875, obj))
 }
 
 func CoolBar_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(13874, obj, uintptr(value))
-}
-
-func CoolBar_GetDragKind(obj uintptr) TDragKind {
-    return TDragKind(syscallN(13875, obj))
-}
-
-func CoolBar_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(13876, obj, uintptr(value))
 }
 
-func CoolBar_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(13877, obj))
+func CoolBar_GetDragKind(obj uintptr) TDragKind {
+    return TDragKind(syscallN(13877, obj))
 }
 
-func CoolBar_SetDragMode(obj uintptr, value TDragMode) {
+func CoolBar_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(13878, obj, uintptr(value))
 }
 
-func CoolBar_GetEdgeBorders(obj uintptr) TEdgeBorders {
-    return TEdgeBorders(syscallN(13879, obj))
+func CoolBar_GetDragMode(obj uintptr) TDragMode {
+    return TDragMode(syscallN(13879, obj))
 }
 
-func CoolBar_SetEdgeBorders(obj uintptr, value TEdgeBorders) {
+func CoolBar_SetDragMode(obj uintptr, value TDragMode) {
     syscallN(13880, obj, uintptr(value))
 }
 
-func CoolBar_GetEdgeInner(obj uintptr) TEdgeStyle {
-    return TEdgeStyle(syscallN(13881, obj))
+func CoolBar_GetEdgeBorders(obj uintptr) TEdgeBorders {
+    return TEdgeBorders(syscallN(13881, obj))
 }
 
-func CoolBar_SetEdgeInner(obj uintptr, value TEdgeStyle) {
+func CoolBar_SetEdgeBorders(obj uintptr, value TEdgeBorders) {
     syscallN(13882, obj, uintptr(value))
 }
 
-func CoolBar_GetEdgeOuter(obj uintptr) TEdgeStyle {
+func CoolBar_GetEdgeInner(obj uintptr) TEdgeStyle {
     return TEdgeStyle(syscallN(13883, obj))
 }
 
-func CoolBar_SetEdgeOuter(obj uintptr, value TEdgeStyle) {
+func CoolBar_SetEdgeInner(obj uintptr, value TEdgeStyle) {
     syscallN(13884, obj, uintptr(value))
 }
 
+func CoolBar_GetEdgeOuter(obj uintptr) TEdgeStyle {
+    return TEdgeStyle(syscallN(13885, obj))
+}
+
+func CoolBar_SetEdgeOuter(obj uintptr, value TEdgeStyle) {
+    syscallN(13886, obj, uintptr(value))
+}
+
 func CoolBar_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(13885, obj))
-}
-
-func CoolBar_SetEnabled(obj uintptr, value bool) {
-    syscallN(13886, obj, PascalBool(value))
-}
-
-func CoolBar_GetFixedSize(obj uintptr) bool {
     return GoBool(syscallN(13887, obj))
 }
 
-func CoolBar_SetFixedSize(obj uintptr, value bool) {
+func CoolBar_SetEnabled(obj uintptr, value bool) {
     syscallN(13888, obj, PascalBool(value))
 }
 
-func CoolBar_GetFixedOrder(obj uintptr) bool {
+func CoolBar_GetFixedSize(obj uintptr) bool {
     return GoBool(syscallN(13889, obj))
 }
 
-func CoolBar_SetFixedOrder(obj uintptr, value bool) {
+func CoolBar_SetFixedSize(obj uintptr, value bool) {
     syscallN(13890, obj, PascalBool(value))
 }
 
+func CoolBar_GetFixedOrder(obj uintptr) bool {
+    return GoBool(syscallN(13891, obj))
+}
+
+func CoolBar_SetFixedOrder(obj uintptr, value bool) {
+    syscallN(13892, obj, PascalBool(value))
+}
+
 func CoolBar_GetFont(obj uintptr) uintptr {
-    return syscallN(13891, obj)
-}
-
-func CoolBar_SetFont(obj uintptr, value uintptr) {
-    syscallN(13892, obj, value)
-}
-
-func CoolBar_GetImages(obj uintptr) uintptr {
     return syscallN(13893, obj)
 }
 
-func CoolBar_SetImages(obj uintptr, value uintptr) {
+func CoolBar_SetFont(obj uintptr, value uintptr) {
     syscallN(13894, obj, value)
 }
 
+func CoolBar_GetImages(obj uintptr) uintptr {
+    return syscallN(13895, obj)
+}
+
+func CoolBar_SetImages(obj uintptr, value uintptr) {
+    syscallN(13896, obj, value)
+}
+
 func CoolBar_GetParentColor(obj uintptr) bool {
-    return GoBool(syscallN(13895, obj))
-}
-
-func CoolBar_SetParentColor(obj uintptr, value bool) {
-    syscallN(13896, obj, PascalBool(value))
-}
-
-func CoolBar_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(13897, obj))
 }
 
-func CoolBar_SetParentDoubleBuffered(obj uintptr, value bool) {
+func CoolBar_SetParentColor(obj uintptr, value bool) {
     syscallN(13898, obj, PascalBool(value))
 }
 
-func CoolBar_GetParentFont(obj uintptr) bool {
+func CoolBar_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(13899, obj))
 }
 
-func CoolBar_SetParentFont(obj uintptr, value bool) {
+func CoolBar_SetParentDoubleBuffered(obj uintptr, value bool) {
     syscallN(13900, obj, PascalBool(value))
 }
 
-func CoolBar_GetParentShowHint(obj uintptr) bool {
+func CoolBar_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(13901, obj))
 }
 
-func CoolBar_SetParentShowHint(obj uintptr, value bool) {
+func CoolBar_SetParentFont(obj uintptr, value bool) {
     syscallN(13902, obj, PascalBool(value))
 }
 
+func CoolBar_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(13903, obj))
+}
+
+func CoolBar_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(13904, obj, PascalBool(value))
+}
+
 func CoolBar_GetBitmap(obj uintptr) uintptr {
-    return syscallN(13903, obj)
-}
-
-func CoolBar_SetBitmap(obj uintptr, value uintptr) {
-    syscallN(13904, obj, value)
-}
-
-func CoolBar_GetPopupMenu(obj uintptr) uintptr {
     return syscallN(13905, obj)
 }
 
-func CoolBar_SetPopupMenu(obj uintptr, value uintptr) {
+func CoolBar_SetBitmap(obj uintptr, value uintptr) {
     syscallN(13906, obj, value)
 }
 
+func CoolBar_GetPopupMenu(obj uintptr) uintptr {
+    return syscallN(13907, obj)
+}
+
+func CoolBar_SetPopupMenu(obj uintptr, value uintptr) {
+    syscallN(13908, obj, value)
+}
+
 func CoolBar_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(13907, obj))
-}
-
-func CoolBar_SetShowHint(obj uintptr, value bool) {
-    syscallN(13908, obj, PascalBool(value))
-}
-
-func CoolBar_GetShowText(obj uintptr) bool {
     return GoBool(syscallN(13909, obj))
 }
 
-func CoolBar_SetShowText(obj uintptr, value bool) {
+func CoolBar_SetShowHint(obj uintptr, value bool) {
     syscallN(13910, obj, PascalBool(value))
 }
 
-func CoolBar_GetVertical(obj uintptr) bool {
+func CoolBar_GetShowText(obj uintptr) bool {
     return GoBool(syscallN(13911, obj))
 }
 
-func CoolBar_SetVertical(obj uintptr, value bool) {
+func CoolBar_SetShowText(obj uintptr, value bool) {
     syscallN(13912, obj, PascalBool(value))
 }
 
-func CoolBar_GetVisible(obj uintptr) bool {
+func CoolBar_GetVertical(obj uintptr) bool {
     return GoBool(syscallN(13913, obj))
 }
 
-func CoolBar_SetVisible(obj uintptr, value bool) {
+func CoolBar_SetVertical(obj uintptr, value bool) {
     syscallN(13914, obj, PascalBool(value))
 }
 
+func CoolBar_GetVisible(obj uintptr) bool {
+    return GoBool(syscallN(13915, obj))
+}
+
+func CoolBar_SetVisible(obj uintptr, value bool) {
+    syscallN(13916, obj, PascalBool(value))
+}
+
 func CoolBar_SetOnChange(obj uintptr, fn interface{}) {
-    syscallN(13915, obj, MakeEventDataPtr(fn))
-}
-
-func CoolBar_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(13916, obj, MakeEventDataPtr(fn))
-}
-
-func CoolBar_SetOnContextPopup(obj uintptr, fn interface{}) {
     syscallN(13917, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnDblClick(obj uintptr, fn interface{}) {
+func CoolBar_SetOnClick(obj uintptr, fn interface{}) {
     syscallN(13918, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnDockDrop(obj uintptr, fn interface{}) {
+func CoolBar_SetOnContextPopup(obj uintptr, fn interface{}) {
     syscallN(13919, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnDragDrop(obj uintptr, fn interface{}) {
+func CoolBar_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(13920, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnDragOver(obj uintptr, fn interface{}) {
+func CoolBar_SetOnDockDrop(obj uintptr, fn interface{}) {
     syscallN(13921, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnEndDock(obj uintptr, fn interface{}) {
+func CoolBar_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(13922, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnEndDrag(obj uintptr, fn interface{}) {
+func CoolBar_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(13923, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+func CoolBar_SetOnEndDock(obj uintptr, fn interface{}) {
     syscallN(13924, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnMouseDown(obj uintptr, fn interface{}) {
+func CoolBar_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(13925, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func CoolBar_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     syscallN(13926, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func CoolBar_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(13927, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnMouseMove(obj uintptr, fn interface{}) {
+func CoolBar_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(13928, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnMouseUp(obj uintptr, fn interface{}) {
+func CoolBar_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(13929, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnResize(obj uintptr, fn interface{}) {
+func CoolBar_SetOnMouseMove(obj uintptr, fn interface{}) {
     syscallN(13930, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnStartDock(obj uintptr, fn interface{}) {
+func CoolBar_SetOnMouseUp(obj uintptr, fn interface{}) {
     syscallN(13931, obj, MakeEventDataPtr(fn))
 }
 
-func CoolBar_SetOnUnDock(obj uintptr, fn interface{}) {
+func CoolBar_SetOnResize(obj uintptr, fn interface{}) {
     syscallN(13932, obj, MakeEventDataPtr(fn))
 }
 
+func CoolBar_SetOnStartDock(obj uintptr, fn interface{}) {
+    syscallN(13933, obj, MakeEventDataPtr(fn))
+}
+
+func CoolBar_SetOnUnDock(obj uintptr, fn interface{}) {
+    syscallN(13934, obj, MakeEventDataPtr(fn))
+}
+
 func CoolBar_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(13933, obj))
-}
-
-func CoolBar_GetMouseInClient(obj uintptr) bool {
-    return GoBool(syscallN(13934, obj))
-}
-
-func CoolBar_GetVisibleDockClientCount(obj uintptr) int32 {
     return int32(syscallN(13935, obj))
 }
 
-func CoolBar_GetBrush(obj uintptr) uintptr {
-    return syscallN(13936, obj)
+func CoolBar_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(13936, obj))
 }
 
-func CoolBar_GetControlCount(obj uintptr) int32 {
+func CoolBar_GetVisibleDockClientCount(obj uintptr) int32 {
     return int32(syscallN(13937, obj))
 }
 
+func CoolBar_GetBrush(obj uintptr) uintptr {
+    return syscallN(13938, obj)
+}
+
+func CoolBar_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(13939, obj))
+}
+
 func CoolBar_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(13938, obj))
+    return HWND(syscallN(13940, obj))
 }
 
 func CoolBar_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(13939, obj))
+    return HWND(syscallN(13941, obj))
 }
 
 func CoolBar_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(13940, obj, uintptr(value))
+    syscallN(13942, obj, uintptr(value))
 }
 
 func CoolBar_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(13941, obj))
+    return GoBool(syscallN(13943, obj))
 }
 
 func CoolBar_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(13942, obj))
+    return TTabOrder(syscallN(13944, obj))
 }
 
 func CoolBar_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(13943, obj, uintptr(value))
+    syscallN(13945, obj, uintptr(value))
 }
 
 func CoolBar_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(13944, obj))
-}
-
-func CoolBar_SetTabStop(obj uintptr, value bool) {
-    syscallN(13945, obj, PascalBool(value))
-}
-
-func CoolBar_GetUseDockManager(obj uintptr) bool {
     return GoBool(syscallN(13946, obj))
 }
 
-func CoolBar_SetUseDockManager(obj uintptr, value bool) {
+func CoolBar_SetTabStop(obj uintptr, value bool) {
     syscallN(13947, obj, PascalBool(value))
 }
 
+func CoolBar_GetUseDockManager(obj uintptr) bool {
+    return GoBool(syscallN(13948, obj))
+}
+
+func CoolBar_SetUseDockManager(obj uintptr, value bool) {
+    syscallN(13949, obj, PascalBool(value))
+}
+
 func CoolBar_GetAction(obj uintptr) uintptr {
-    return syscallN(13948, obj)
+    return syscallN(13950, obj)
 }
 
 func CoolBar_SetAction(obj uintptr, value uintptr) {
-    syscallN(13949, obj, value)
+    syscallN(13951, obj, value)
 }
 
 func CoolBar_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(13950, obj))
+    return TBiDiMode(syscallN(13952, obj))
 }
 
 func CoolBar_SetBiDiMode(obj uintptr, value TBiDiMode) {
-    syscallN(13951, obj, uintptr(value))
+    syscallN(13953, obj, uintptr(value))
 }
 
 func CoolBar_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(13952, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13954, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CoolBar_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(13953, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(13955, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func CoolBar_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(13954, obj))
+    return int32(syscallN(13956, obj))
 }
 
 func CoolBar_SetClientHeight(obj uintptr, value int32) {
-    syscallN(13955, obj, uintptr(value))
+    syscallN(13957, obj, uintptr(value))
 }
 
 func CoolBar_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(13956, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13958, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CoolBar_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(13957, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(13959, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CoolBar_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(13958, obj))
+    return int32(syscallN(13960, obj))
 }
 
 func CoolBar_SetClientWidth(obj uintptr, value int32) {
-    syscallN(13959, obj, uintptr(value))
-}
-
-func CoolBar_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(13960, obj))
-}
-
-func CoolBar_SetControlState(obj uintptr, value TControlState) {
     syscallN(13961, obj, uintptr(value))
 }
 
-func CoolBar_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(13962, obj))
+func CoolBar_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(13962, obj))
 }
 
-func CoolBar_SetControlStyle(obj uintptr, value TControlStyle) {
+func CoolBar_SetControlState(obj uintptr, value TControlState) {
     syscallN(13963, obj, uintptr(value))
 }
 
+func CoolBar_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(13964, obj))
+}
+
+func CoolBar_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(13965, obj, uintptr(value))
+}
+
 func CoolBar_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(13964, obj))
+    return GoBool(syscallN(13966, obj))
 }
 
 func CoolBar_GetParent(obj uintptr) uintptr {
-    return syscallN(13965, obj)
+    return syscallN(13967, obj)
 }
 
 func CoolBar_SetParent(obj uintptr, value uintptr) {
-    syscallN(13966, obj, value)
+    syscallN(13968, obj, value)
 }
 
 func CoolBar_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(13967, obj))
-}
-
-func CoolBar_SetLeft(obj uintptr, value int32) {
-    syscallN(13968, obj, uintptr(value))
-}
-
-func CoolBar_GetTop(obj uintptr) int32 {
     return int32(syscallN(13969, obj))
 }
 
-func CoolBar_SetTop(obj uintptr, value int32) {
+func CoolBar_SetLeft(obj uintptr, value int32) {
     syscallN(13970, obj, uintptr(value))
 }
 
-func CoolBar_GetWidth(obj uintptr) int32 {
+func CoolBar_GetTop(obj uintptr) int32 {
     return int32(syscallN(13971, obj))
 }
 
-func CoolBar_SetWidth(obj uintptr, value int32) {
+func CoolBar_SetTop(obj uintptr, value int32) {
     syscallN(13972, obj, uintptr(value))
 }
 
-func CoolBar_GetHeight(obj uintptr) int32 {
+func CoolBar_GetWidth(obj uintptr) int32 {
     return int32(syscallN(13973, obj))
 }
 
-func CoolBar_SetHeight(obj uintptr, value int32) {
+func CoolBar_SetWidth(obj uintptr, value int32) {
     syscallN(13974, obj, uintptr(value))
 }
 
-func CoolBar_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(13975, obj))
+func CoolBar_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(13975, obj))
 }
 
-func CoolBar_SetCursor(obj uintptr, value TCursor) {
+func CoolBar_SetHeight(obj uintptr, value int32) {
     syscallN(13976, obj, uintptr(value))
 }
 
+func CoolBar_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(13977, obj))
+}
+
+func CoolBar_SetCursor(obj uintptr, value TCursor) {
+    syscallN(13978, obj, uintptr(value))
+}
+
 func CoolBar_GetHint(obj uintptr) string {
-    return GoStr(syscallN(13977, obj))
+    return GoStr(syscallN(13979, obj))
 }
 
 func CoolBar_SetHint(obj uintptr, value string) {
-    syscallN(13978, obj, PascalStr(value))
+    syscallN(13980, obj, PascalStr(value))
 }
 
 func CoolBar_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(13979, obj))
+    return int32(syscallN(13981, obj))
 }
 
 func CoolBar_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(13980, obj))
+    return int32(syscallN(13982, obj))
 }
 
 func CoolBar_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(13981, obj, uintptr(value))
+    syscallN(13983, obj, uintptr(value))
 }
 
 func CoolBar_GetOwner(obj uintptr) uintptr {
-    return syscallN(13982, obj)
+    return syscallN(13984, obj)
 }
 
 func CoolBar_GetName(obj uintptr) string {
-    return GoStr(syscallN(13983, obj))
+    return GoStr(syscallN(13985, obj))
 }
 
 func CoolBar_SetName(obj uintptr, value string) {
-    syscallN(13984, obj, PascalStr(value))
+    syscallN(13986, obj, PascalStr(value))
 }
 
 func CoolBar_GetTag(obj uintptr) int {
-    return int(syscallN(13985, obj))
+    return int(syscallN(13987, obj))
 }
 
 func CoolBar_SetTag(obj uintptr, value int) {
-    syscallN(13986, obj, uintptr(value))
+    syscallN(13988, obj, uintptr(value))
 }
 
 func CoolBar_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(13987, obj)
-}
-
-func CoolBar_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(13988, obj, value)
-}
-
-func CoolBar_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(13989, obj)
 }
 
-func CoolBar_SetAnchorSideTop(obj uintptr, value uintptr) {
+func CoolBar_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(13990, obj, value)
 }
 
-func CoolBar_GetAnchorSideRight(obj uintptr) uintptr {
+func CoolBar_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(13991, obj)
 }
 
-func CoolBar_SetAnchorSideRight(obj uintptr, value uintptr) {
+func CoolBar_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(13992, obj, value)
 }
 
-func CoolBar_GetAnchorSideBottom(obj uintptr) uintptr {
+func CoolBar_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(13993, obj)
 }
 
-func CoolBar_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func CoolBar_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(13994, obj, value)
 }
 
-func CoolBar_GetChildSizing(obj uintptr) uintptr {
+func CoolBar_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(13995, obj)
 }
 
-func CoolBar_SetChildSizing(obj uintptr, value uintptr) {
+func CoolBar_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(13996, obj, value)
 }
 
-func CoolBar_GetBorderSpacing(obj uintptr) uintptr {
+func CoolBar_GetChildSizing(obj uintptr) uintptr {
     return syscallN(13997, obj)
 }
 
-func CoolBar_SetBorderSpacing(obj uintptr, value uintptr) {
+func CoolBar_SetChildSizing(obj uintptr, value uintptr) {
     syscallN(13998, obj, value)
 }
 
+func CoolBar_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(13999, obj)
+}
+
+func CoolBar_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(14000, obj, value)
+}
+
 func CoolBar_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(13999, obj, uintptr(Index))
+    return syscallN(14001, obj, uintptr(Index))
 }
 
 func CoolBar_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(14000, obj, uintptr(Index))
+    return syscallN(14002, obj, uintptr(Index))
 }
 
 func CoolBar_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(14001, obj, uintptr(AIndex))
+    return syscallN(14003, obj, uintptr(AIndex))
 }
 
 func CoolBar_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(14002, obj, uintptr(AKind))
+    return syscallN(14004, obj, uintptr(AKind))
 }
 
 func CoolBar_StaticClassType() TClass {
-    return TClass(syscallN(14003))
+    return TClass(syscallN(14005))
 }
 
 //--------------------------- TCoolBands ---------------------------
 
 func CoolBands_Create(obj uintptr) uintptr {
-    return syscallN(14004, obj)
-}
-
-func CoolBands_Free(obj uintptr) {
-    syscallN(14005, obj)
-}
-
-func CoolBands_Add(obj uintptr) uintptr {
     return syscallN(14006, obj)
 }
 
-func CoolBands_FindBand(obj uintptr, AControl uintptr) uintptr {
-    return syscallN(14007, obj, AControl )
+func CoolBands_Free(obj uintptr) {
+    syscallN(14007, obj)
 }
 
-func CoolBands_Owner(obj uintptr) uintptr {
+func CoolBands_Add(obj uintptr) uintptr {
     return syscallN(14008, obj)
 }
 
+func CoolBands_FindBand(obj uintptr, AControl uintptr) uintptr {
+    return syscallN(14009, obj, AControl )
+}
+
+func CoolBands_Owner(obj uintptr) uintptr {
+    return syscallN(14010, obj)
+}
+
 func CoolBands_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14009, obj, Source )
+    syscallN(14011, obj, Source )
 }
 
 func CoolBands_BeginUpdate(obj uintptr)  {
-    syscallN(14010, obj)
+    syscallN(14012, obj)
 }
 
 func CoolBands_Clear(obj uintptr)  {
-    syscallN(14011, obj)
-}
-
-func CoolBands_Delete(obj uintptr, Index int32)  {
-    syscallN(14012, obj, uintptr(Index) )
-}
-
-func CoolBands_EndUpdate(obj uintptr)  {
     syscallN(14013, obj)
 }
 
+func CoolBands_Delete(obj uintptr, Index int32)  {
+    syscallN(14014, obj, uintptr(Index) )
+}
+
+func CoolBands_EndUpdate(obj uintptr)  {
+    syscallN(14015, obj)
+}
+
 func CoolBands_FindItemID(obj uintptr, ID int32) uintptr {
-    return syscallN(14014, obj, uintptr(ID) )
+    return syscallN(14016, obj, uintptr(ID) )
 }
 
 func CoolBands_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14015, obj))
+    return GoStr(syscallN(14017, obj))
 }
 
 func CoolBands_Insert(obj uintptr, Index int32) uintptr {
-    return syscallN(14016, obj, uintptr(Index) )
+    return syscallN(14018, obj, uintptr(Index) )
 }
 
 func CoolBands_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14017, obj))
+    return TClass(syscallN(14019, obj))
 }
 
 func CoolBands_ClassName(obj uintptr) string {
-    return GoStr(syscallN(14018, obj))
+    return GoStr(syscallN(14020, obj))
 }
 
 func CoolBands_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14019, obj))
+    return int32(syscallN(14021, obj))
 }
 
 func CoolBands_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14020, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14022, obj, uintptr(AClass) ))
 }
 
 func CoolBands_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14021, obj, Obj ))
+    return GoBool(syscallN(14023, obj, Obj ))
 }
 
 func CoolBands_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14022, obj))
-}
-
-func CoolBands_ToString(obj uintptr) string {
-    return GoStr(syscallN(14023, obj))
-}
-
-func CoolBands_GetCount(obj uintptr) int32 {
     return int32(syscallN(14024, obj))
 }
 
+func CoolBands_ToString(obj uintptr) string {
+    return GoStr(syscallN(14025, obj))
+}
+
+func CoolBands_GetCount(obj uintptr) int32 {
+    return int32(syscallN(14026, obj))
+}
+
 func CoolBands_GetItems(obj uintptr, Index int32) uintptr {
-    return syscallN(14025, obj, uintptr(Index))
+    return syscallN(14027, obj, uintptr(Index))
 }
 
 func CoolBands_SetItems(obj uintptr, Index int32, value uintptr) {
-    syscallN(14026, obj, uintptr(Index), value)
+    syscallN(14028, obj, uintptr(Index), value)
 }
 
 func CoolBands_StaticClassType() TClass {
-    return TClass(syscallN(14027))
+    return TClass(syscallN(14029))
 }
 
 //--------------------------- TCoolBand ---------------------------
 
 func CoolBand_Create(obj uintptr) uintptr {
-    return syscallN(14028, obj)
+    return syscallN(14030, obj)
 }
 
 func CoolBand_Free(obj uintptr) {
-    syscallN(14029, obj)
+    syscallN(14031, obj)
 }
 
 func CoolBand_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14030, obj, Source )
+    syscallN(14032, obj, Source )
 }
 
 func CoolBand_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14031, obj))
-}
-
-func CoolBand_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14032, obj))
-}
-
-func CoolBand_ClassName(obj uintptr) string {
     return GoStr(syscallN(14033, obj))
 }
 
+func CoolBand_ClassType(obj uintptr) TClass {
+    return TClass(syscallN(14034, obj))
+}
+
+func CoolBand_ClassName(obj uintptr) string {
+    return GoStr(syscallN(14035, obj))
+}
+
 func CoolBand_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14034, obj))
+    return int32(syscallN(14036, obj))
 }
 
 func CoolBand_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14035, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14037, obj, uintptr(AClass) ))
 }
 
 func CoolBand_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14036, obj, Obj ))
+    return GoBool(syscallN(14038, obj, Obj ))
 }
 
 func CoolBand_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14037, obj))
-}
-
-func CoolBand_ToString(obj uintptr) string {
-    return GoStr(syscallN(14038, obj))
-}
-
-func CoolBand_GetHeight(obj uintptr) int32 {
     return int32(syscallN(14039, obj))
 }
 
+func CoolBand_ToString(obj uintptr) string {
+    return GoStr(syscallN(14040, obj))
+}
+
+func CoolBand_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(14041, obj))
+}
+
 func CoolBand_GetBitmap(obj uintptr) uintptr {
-    return syscallN(14040, obj)
+    return syscallN(14042, obj)
 }
 
 func CoolBand_SetBitmap(obj uintptr, value uintptr) {
-    syscallN(14041, obj, value)
+    syscallN(14043, obj, value)
 }
 
 func CoolBand_GetBorderStyle(obj uintptr) TBorderStyle {
-    return TBorderStyle(syscallN(14042, obj))
+    return TBorderStyle(syscallN(14044, obj))
 }
 
 func CoolBand_SetBorderStyle(obj uintptr, value TBorderStyle) {
-    syscallN(14043, obj, uintptr(value))
+    syscallN(14045, obj, uintptr(value))
 }
 
 func CoolBand_GetBreak(obj uintptr) bool {
-    return GoBool(syscallN(14044, obj))
+    return GoBool(syscallN(14046, obj))
 }
 
 func CoolBand_SetBreak(obj uintptr, value bool) {
-    syscallN(14045, obj, PascalBool(value))
+    syscallN(14047, obj, PascalBool(value))
 }
 
 func CoolBand_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(14046, obj))
+    return TColor(syscallN(14048, obj))
 }
 
 func CoolBand_SetColor(obj uintptr, value TColor) {
-    syscallN(14047, obj, uintptr(value))
+    syscallN(14049, obj, uintptr(value))
 }
 
 func CoolBand_GetControl(obj uintptr) uintptr {
-    return syscallN(14048, obj)
+    return syscallN(14050, obj)
 }
 
 func CoolBand_SetControl(obj uintptr, value uintptr) {
-    syscallN(14049, obj, value)
+    syscallN(14051, obj, value)
 }
 
 func CoolBand_GetFixedBackground(obj uintptr) bool {
-    return GoBool(syscallN(14050, obj))
-}
-
-func CoolBand_SetFixedBackground(obj uintptr, value bool) {
-    syscallN(14051, obj, PascalBool(value))
-}
-
-func CoolBand_GetFixedSize(obj uintptr) bool {
     return GoBool(syscallN(14052, obj))
 }
 
-func CoolBand_SetFixedSize(obj uintptr, value bool) {
+func CoolBand_SetFixedBackground(obj uintptr, value bool) {
     syscallN(14053, obj, PascalBool(value))
 }
 
-func CoolBand_GetHorizontalOnly(obj uintptr) bool {
+func CoolBand_GetFixedSize(obj uintptr) bool {
     return GoBool(syscallN(14054, obj))
 }
 
-func CoolBand_SetHorizontalOnly(obj uintptr, value bool) {
+func CoolBand_SetFixedSize(obj uintptr, value bool) {
     syscallN(14055, obj, PascalBool(value))
 }
 
+func CoolBand_GetHorizontalOnly(obj uintptr) bool {
+    return GoBool(syscallN(14056, obj))
+}
+
+func CoolBand_SetHorizontalOnly(obj uintptr, value bool) {
+    syscallN(14057, obj, PascalBool(value))
+}
+
 func CoolBand_GetImageIndex(obj uintptr) int32 {
-    return int32(syscallN(14056, obj))
-}
-
-func CoolBand_SetImageIndex(obj uintptr, value int32) {
-    syscallN(14057, obj, uintptr(value))
-}
-
-func CoolBand_GetMinHeight(obj uintptr) int32 {
     return int32(syscallN(14058, obj))
 }
 
-func CoolBand_SetMinHeight(obj uintptr, value int32) {
+func CoolBand_SetImageIndex(obj uintptr, value int32) {
     syscallN(14059, obj, uintptr(value))
 }
 
-func CoolBand_GetMinWidth(obj uintptr) int32 {
+func CoolBand_GetMinHeight(obj uintptr) int32 {
     return int32(syscallN(14060, obj))
 }
 
-func CoolBand_SetMinWidth(obj uintptr, value int32) {
+func CoolBand_SetMinHeight(obj uintptr, value int32) {
     syscallN(14061, obj, uintptr(value))
 }
 
+func CoolBand_GetMinWidth(obj uintptr) int32 {
+    return int32(syscallN(14062, obj))
+}
+
+func CoolBand_SetMinWidth(obj uintptr, value int32) {
+    syscallN(14063, obj, uintptr(value))
+}
+
 func CoolBand_GetParentColor(obj uintptr) bool {
-    return GoBool(syscallN(14062, obj))
-}
-
-func CoolBand_SetParentColor(obj uintptr, value bool) {
-    syscallN(14063, obj, PascalBool(value))
-}
-
-func CoolBand_GetParentBitmap(obj uintptr) bool {
     return GoBool(syscallN(14064, obj))
 }
 
-func CoolBand_SetParentBitmap(obj uintptr, value bool) {
+func CoolBand_SetParentColor(obj uintptr, value bool) {
     syscallN(14065, obj, PascalBool(value))
 }
 
+func CoolBand_GetParentBitmap(obj uintptr) bool {
+    return GoBool(syscallN(14066, obj))
+}
+
+func CoolBand_SetParentBitmap(obj uintptr, value bool) {
+    syscallN(14067, obj, PascalBool(value))
+}
+
 func CoolBand_GetText(obj uintptr) string {
-    return GoStr(syscallN(14066, obj))
+    return GoStr(syscallN(14068, obj))
 }
 
 func CoolBand_SetText(obj uintptr, value string) {
-    syscallN(14067, obj, PascalStr(value))
+    syscallN(14069, obj, PascalStr(value))
 }
 
 func CoolBand_GetVisible(obj uintptr) bool {
-    return GoBool(syscallN(14068, obj))
+    return GoBool(syscallN(14070, obj))
 }
 
 func CoolBand_SetVisible(obj uintptr, value bool) {
-    syscallN(14069, obj, PascalBool(value))
+    syscallN(14071, obj, PascalBool(value))
 }
 
 func CoolBand_GetWidth(obj uintptr) int32 {
-    return int32(syscallN(14070, obj))
+    return int32(syscallN(14072, obj))
 }
 
 func CoolBand_SetWidth(obj uintptr, value int32) {
-    syscallN(14071, obj, uintptr(value))
+    syscallN(14073, obj, uintptr(value))
 }
 
 func CoolBand_GetCollection(obj uintptr) uintptr {
-    return syscallN(14072, obj)
+    return syscallN(14074, obj)
 }
 
 func CoolBand_SetCollection(obj uintptr, value uintptr) {
-    syscallN(14073, obj, value)
+    syscallN(14075, obj, value)
 }
 
 func CoolBand_GetIndex(obj uintptr) int32 {
-    return int32(syscallN(14074, obj))
+    return int32(syscallN(14076, obj))
 }
 
 func CoolBand_SetIndex(obj uintptr, value int32) {
-    syscallN(14075, obj, uintptr(value))
+    syscallN(14077, obj, uintptr(value))
 }
 
 func CoolBand_GetDisplayName(obj uintptr) string {
-    return GoStr(syscallN(14076, obj))
+    return GoStr(syscallN(14078, obj))
 }
 
 func CoolBand_SetDisplayName(obj uintptr, value string) {
-    syscallN(14077, obj, PascalStr(value))
+    syscallN(14079, obj, PascalStr(value))
 }
 
 func CoolBand_StaticClassType() TClass {
-    return TClass(syscallN(14078))
+    return TClass(syscallN(14080))
 }
 
 //--------------------------- TCollection ---------------------------
 
 func Collection_Create(obj uintptr) uintptr {
-    return syscallN(14079, obj)
-}
-
-func Collection_Free(obj uintptr) {
-    syscallN(14080, obj)
-}
-
-func Collection_Owner(obj uintptr) uintptr {
     return syscallN(14081, obj)
 }
 
+func Collection_Free(obj uintptr) {
+    syscallN(14082, obj)
+}
+
+func Collection_Owner(obj uintptr) uintptr {
+    return syscallN(14083, obj)
+}
+
 func Collection_Add(obj uintptr) uintptr {
-    return syscallN(14082, obj)
+    return syscallN(14084, obj)
 }
 
 func Collection_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14083, obj, Source )
+    syscallN(14085, obj, Source )
 }
 
 func Collection_BeginUpdate(obj uintptr)  {
-    syscallN(14084, obj)
+    syscallN(14086, obj)
 }
 
 func Collection_Clear(obj uintptr)  {
-    syscallN(14085, obj)
-}
-
-func Collection_Delete(obj uintptr, Index int32)  {
-    syscallN(14086, obj, uintptr(Index) )
-}
-
-func Collection_EndUpdate(obj uintptr)  {
     syscallN(14087, obj)
 }
 
+func Collection_Delete(obj uintptr, Index int32)  {
+    syscallN(14088, obj, uintptr(Index) )
+}
+
+func Collection_EndUpdate(obj uintptr)  {
+    syscallN(14089, obj)
+}
+
 func Collection_FindItemID(obj uintptr, ID int32) uintptr {
-    return syscallN(14088, obj, uintptr(ID) )
+    return syscallN(14090, obj, uintptr(ID) )
 }
 
 func Collection_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14089, obj))
+    return GoStr(syscallN(14091, obj))
 }
 
 func Collection_Insert(obj uintptr, Index int32) uintptr {
-    return syscallN(14090, obj, uintptr(Index) )
+    return syscallN(14092, obj, uintptr(Index) )
 }
 
 func Collection_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14091, obj))
+    return TClass(syscallN(14093, obj))
 }
 
 func Collection_ClassName(obj uintptr) string {
-    return GoStr(syscallN(14092, obj))
+    return GoStr(syscallN(14094, obj))
 }
 
 func Collection_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14093, obj))
+    return int32(syscallN(14095, obj))
 }
 
 func Collection_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14094, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14096, obj, uintptr(AClass) ))
 }
 
 func Collection_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14095, obj, Obj ))
+    return GoBool(syscallN(14097, obj, Obj ))
 }
 
 func Collection_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14096, obj))
-}
-
-func Collection_ToString(obj uintptr) string {
-    return GoStr(syscallN(14097, obj))
-}
-
-func Collection_GetCount(obj uintptr) int32 {
     return int32(syscallN(14098, obj))
 }
 
+func Collection_ToString(obj uintptr) string {
+    return GoStr(syscallN(14099, obj))
+}
+
+func Collection_GetCount(obj uintptr) int32 {
+    return int32(syscallN(14100, obj))
+}
+
 func Collection_GetItems(obj uintptr, Index int32) uintptr {
-    return syscallN(14099, obj, uintptr(Index))
+    return syscallN(14101, obj, uintptr(Index))
 }
 
 func Collection_SetItems(obj uintptr, Index int32, value uintptr) {
-    syscallN(14100, obj, uintptr(Index), value)
+    syscallN(14102, obj, uintptr(Index), value)
 }
 
 func Collection_StaticClassType() TClass {
-    return TClass(syscallN(14101))
+    return TClass(syscallN(14103))
 }
 
 //--------------------------- TPrinter ---------------------------
 
 func Printer_Create() uintptr {
-    return syscallN(14102, )
+    return syscallN(14104, )
 }
 
 func Printer_Free(obj uintptr) {
-    syscallN(14103, obj)
-}
-
-func Printer_Abort(obj uintptr)  {
-    syscallN(14104, obj)
-}
-
-func Printer_BeginDoc(obj uintptr)  {
     syscallN(14105, obj)
 }
 
-func Printer_EndDoc(obj uintptr)  {
+func Printer_Abort(obj uintptr)  {
     syscallN(14106, obj)
 }
 
-func Printer_NewPage(obj uintptr)  {
+func Printer_BeginDoc(obj uintptr)  {
     syscallN(14107, obj)
 }
 
-func Printer_Refresh(obj uintptr)  {
+func Printer_EndDoc(obj uintptr)  {
     syscallN(14108, obj)
 }
 
+func Printer_NewPage(obj uintptr)  {
+    syscallN(14109, obj)
+}
+
+func Printer_Refresh(obj uintptr)  {
+    syscallN(14110, obj)
+}
+
 func Printer_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14109, obj))
+    return TClass(syscallN(14111, obj))
 }
 
 func Printer_ClassName(obj uintptr) string {
-    return GoStr(syscallN(14110, obj))
+    return GoStr(syscallN(14112, obj))
 }
 
 func Printer_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14111, obj))
+    return int32(syscallN(14113, obj))
 }
 
 func Printer_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14112, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14114, obj, uintptr(AClass) ))
 }
 
 func Printer_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14113, obj, Obj ))
+    return GoBool(syscallN(14115, obj, Obj ))
 }
 
 func Printer_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14114, obj))
+    return int32(syscallN(14116, obj))
 }
 
 func Printer_ToString(obj uintptr) string {
-    return GoStr(syscallN(14115, obj))
+    return GoStr(syscallN(14117, obj))
 }
 
 func Printer_GetAborted(obj uintptr) bool {
-    return GoBool(syscallN(14116, obj))
+    return GoBool(syscallN(14118, obj))
 }
 
 func Printer_GetCanvas(obj uintptr) uintptr {
-    return syscallN(14117, obj)
+    return syscallN(14119, obj)
 }
 
 func Printer_GetCopies(obj uintptr) int32 {
-    return int32(syscallN(14118, obj))
+    return int32(syscallN(14120, obj))
 }
 
 func Printer_SetCopies(obj uintptr, value int32) {
-    syscallN(14119, obj, uintptr(value))
+    syscallN(14121, obj, uintptr(value))
 }
 
 func Printer_GetFonts(obj uintptr) uintptr {
-    return syscallN(14120, obj)
+    return syscallN(14122, obj)
 }
 
 func Printer_GetOrientation(obj uintptr) TPrinterOrientation {
-    return TPrinterOrientation(syscallN(14121, obj))
+    return TPrinterOrientation(syscallN(14123, obj))
 }
 
 func Printer_SetOrientation(obj uintptr, value TPrinterOrientation) {
-    syscallN(14122, obj, uintptr(value))
+    syscallN(14124, obj, uintptr(value))
 }
 
 func Printer_GetPageHeight(obj uintptr) int32 {
-    return int32(syscallN(14123, obj))
-}
-
-func Printer_GetPageWidth(obj uintptr) int32 {
-    return int32(syscallN(14124, obj))
-}
-
-func Printer_GetPageNumber(obj uintptr) int32 {
     return int32(syscallN(14125, obj))
 }
 
-func Printer_GetPrinterIndex(obj uintptr) int32 {
+func Printer_GetPageWidth(obj uintptr) int32 {
     return int32(syscallN(14126, obj))
 }
 
+func Printer_GetPageNumber(obj uintptr) int32 {
+    return int32(syscallN(14127, obj))
+}
+
+func Printer_GetPrinterIndex(obj uintptr) int32 {
+    return int32(syscallN(14128, obj))
+}
+
 func Printer_SetPrinterIndex(obj uintptr, value int32) {
-    syscallN(14127, obj, uintptr(value))
+    syscallN(14129, obj, uintptr(value))
 }
 
 func Printer_GetPrinting(obj uintptr) bool {
-    return GoBool(syscallN(14128, obj))
+    return GoBool(syscallN(14130, obj))
 }
 
 func Printer_GetPrinters(obj uintptr) uintptr {
-    return syscallN(14129, obj)
+    return syscallN(14131, obj)
 }
 
 func Printer_GetTitle(obj uintptr) string {
-    return GoStr(syscallN(14130, obj))
+    return GoStr(syscallN(14132, obj))
 }
 
 func Printer_SetTitle(obj uintptr, value string) {
-    syscallN(14131, obj, PascalStr(value))
+    syscallN(14133, obj, PascalStr(value))
 }
 
 func Printer_StaticClassType() TClass {
-    return TClass(syscallN(14132))
+    return TClass(syscallN(14134))
 }
 
 //--------------------------- TTaskDialog ---------------------------
 
 func TaskDialog_Create(obj uintptr) uintptr {
-    return syscallN(14133, obj)
+    return syscallN(14135, obj)
 }
 
 func TaskDialog_Free(obj uintptr) {
-    syscallN(14134, obj)
+    syscallN(14136, obj)
 }
 
 func TaskDialog_Execute(obj uintptr) bool {
-    return GoBool(syscallN(14135, obj))
+    return GoBool(syscallN(14137, obj))
 }
 
 func TaskDialog_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(14136, obj, PascalStr(AName) )
+    return syscallN(14138, obj, PascalStr(AName) )
 }
 
 func TaskDialog_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14137, obj))
+    return GoStr(syscallN(14139, obj))
 }
 
 func TaskDialog_HasParent(obj uintptr) bool {
-    return GoBool(syscallN(14138, obj))
+    return GoBool(syscallN(14140, obj))
 }
 
 func TaskDialog_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14139, obj, Source )
+    syscallN(14141, obj, Source )
 }
 
 func TaskDialog_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14140, obj))
+    return TClass(syscallN(14142, obj))
 }
 
 func TaskDialog_ClassName(obj uintptr) string {
-    return GoStr(syscallN(14141, obj))
+    return GoStr(syscallN(14143, obj))
 }
 
 func TaskDialog_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14142, obj))
+    return int32(syscallN(14144, obj))
 }
 
 func TaskDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14143, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14145, obj, uintptr(AClass) ))
 }
 
 func TaskDialog_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14144, obj, Obj ))
+    return GoBool(syscallN(14146, obj, Obj ))
 }
 
 func TaskDialog_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14145, obj))
+    return int32(syscallN(14147, obj))
 }
 
 func TaskDialog_ToString(obj uintptr) string {
-    return GoStr(syscallN(14146, obj))
+    return GoStr(syscallN(14148, obj))
 }
 
 func TaskDialog_GetButtons(obj uintptr) uintptr {
-    return syscallN(14147, obj)
+    return syscallN(14149, obj)
 }
 
 func TaskDialog_SetButtons(obj uintptr, value uintptr) {
-    syscallN(14148, obj, value)
+    syscallN(14150, obj, value)
 }
 
 func TaskDialog_GetCaption(obj uintptr) string {
-    return GoStr(syscallN(14149, obj))
+    return GoStr(syscallN(14151, obj))
 }
 
 func TaskDialog_SetCaption(obj uintptr, value string) {
-    syscallN(14150, obj, PascalStr(value))
+    syscallN(14152, obj, PascalStr(value))
 }
 
 func TaskDialog_GetCommonButtons(obj uintptr) TTaskDialogCommonButtons {
-    return TTaskDialogCommonButtons(syscallN(14151, obj))
+    return TTaskDialogCommonButtons(syscallN(14153, obj))
 }
 
 func TaskDialog_SetCommonButtons(obj uintptr, value TTaskDialogCommonButtons) {
-    syscallN(14152, obj, uintptr(value))
-}
-
-func TaskDialog_GetDefaultButton(obj uintptr) TTaskDialogCommonButton {
-    return TTaskDialogCommonButton(syscallN(14153, obj))
-}
-
-func TaskDialog_SetDefaultButton(obj uintptr, value TTaskDialogCommonButton) {
     syscallN(14154, obj, uintptr(value))
 }
 
+func TaskDialog_GetDefaultButton(obj uintptr) TTaskDialogCommonButton {
+    return TTaskDialogCommonButton(syscallN(14155, obj))
+}
+
+func TaskDialog_SetDefaultButton(obj uintptr, value TTaskDialogCommonButton) {
+    syscallN(14156, obj, uintptr(value))
+}
+
 func TaskDialog_GetExpandButtonCaption(obj uintptr) string {
-    return GoStr(syscallN(14155, obj))
-}
-
-func TaskDialog_SetExpandButtonCaption(obj uintptr, value string) {
-    syscallN(14156, obj, PascalStr(value))
-}
-
-func TaskDialog_GetExpandedText(obj uintptr) string {
     return GoStr(syscallN(14157, obj))
 }
 
-func TaskDialog_SetExpandedText(obj uintptr, value string) {
+func TaskDialog_SetExpandButtonCaption(obj uintptr, value string) {
     syscallN(14158, obj, PascalStr(value))
 }
 
+func TaskDialog_GetExpandedText(obj uintptr) string {
+    return GoStr(syscallN(14159, obj))
+}
+
+func TaskDialog_SetExpandedText(obj uintptr, value string) {
+    syscallN(14160, obj, PascalStr(value))
+}
+
 func TaskDialog_GetFlags(obj uintptr) TTaskDialogFlags {
-    return TTaskDialogFlags(syscallN(14159, obj))
+    return TTaskDialogFlags(syscallN(14161, obj))
 }
 
 func TaskDialog_SetFlags(obj uintptr, value TTaskDialogFlags) {
-    syscallN(14160, obj, uintptr(value))
-}
-
-func TaskDialog_GetFooterIcon(obj uintptr) TTaskDialogIcon {
-    return TTaskDialogIcon(syscallN(14161, obj))
-}
-
-func TaskDialog_SetFooterIcon(obj uintptr, value TTaskDialogIcon) {
     syscallN(14162, obj, uintptr(value))
 }
 
+func TaskDialog_GetFooterIcon(obj uintptr) TTaskDialogIcon {
+    return TTaskDialogIcon(syscallN(14163, obj))
+}
+
+func TaskDialog_SetFooterIcon(obj uintptr, value TTaskDialogIcon) {
+    syscallN(14164, obj, uintptr(value))
+}
+
 func TaskDialog_GetFooterText(obj uintptr) string {
-    return GoStr(syscallN(14163, obj))
+    return GoStr(syscallN(14165, obj))
 }
 
 func TaskDialog_SetFooterText(obj uintptr, value string) {
-    syscallN(14164, obj, PascalStr(value))
+    syscallN(14166, obj, PascalStr(value))
 }
 
 func TaskDialog_GetMainIcon(obj uintptr) TTaskDialogIcon {
-    return TTaskDialogIcon(syscallN(14165, obj))
+    return TTaskDialogIcon(syscallN(14167, obj))
 }
 
 func TaskDialog_SetMainIcon(obj uintptr, value TTaskDialogIcon) {
-    syscallN(14166, obj, uintptr(value))
+    syscallN(14168, obj, uintptr(value))
 }
 
 func TaskDialog_GetRadioButtons(obj uintptr) uintptr {
-    return syscallN(14167, obj)
+    return syscallN(14169, obj)
 }
 
 func TaskDialog_SetRadioButtons(obj uintptr, value uintptr) {
-    syscallN(14168, obj, value)
+    syscallN(14170, obj, value)
 }
 
 func TaskDialog_GetText(obj uintptr) string {
-    return GoStr(syscallN(14169, obj))
-}
-
-func TaskDialog_SetText(obj uintptr, value string) {
-    syscallN(14170, obj, PascalStr(value))
-}
-
-func TaskDialog_GetTitle(obj uintptr) string {
     return GoStr(syscallN(14171, obj))
 }
 
-func TaskDialog_SetTitle(obj uintptr, value string) {
+func TaskDialog_SetText(obj uintptr, value string) {
     syscallN(14172, obj, PascalStr(value))
 }
 
-func TaskDialog_GetVerificationText(obj uintptr) string {
+func TaskDialog_GetTitle(obj uintptr) string {
     return GoStr(syscallN(14173, obj))
 }
 
-func TaskDialog_SetVerificationText(obj uintptr, value string) {
+func TaskDialog_SetTitle(obj uintptr, value string) {
     syscallN(14174, obj, PascalStr(value))
 }
 
+func TaskDialog_GetVerificationText(obj uintptr) string {
+    return GoStr(syscallN(14175, obj))
+}
+
+func TaskDialog_SetVerificationText(obj uintptr, value string) {
+    syscallN(14176, obj, PascalStr(value))
+}
+
 func TaskDialog_SetOnButtonClicked(obj uintptr, fn interface{}) {
-    syscallN(14175, obj, MakeEventDataPtr(fn))
+    syscallN(14177, obj, MakeEventDataPtr(fn))
 }
 
 func TaskDialog_GetButton(obj uintptr) uintptr {
-    return syscallN(14176, obj)
+    return syscallN(14178, obj)
 }
 
 func TaskDialog_SetButton(obj uintptr, value uintptr) {
-    syscallN(14177, obj, value)
+    syscallN(14179, obj, value)
 }
 
 func TaskDialog_GetModalResult(obj uintptr) TModalResult {
-    return TModalResult(syscallN(14178, obj))
+    return TModalResult(syscallN(14180, obj))
 }
 
 func TaskDialog_SetModalResult(obj uintptr, value TModalResult) {
-    syscallN(14179, obj, uintptr(value))
+    syscallN(14181, obj, uintptr(value))
 }
 
 func TaskDialog_GetRadioButton(obj uintptr) uintptr {
-    return syscallN(14180, obj)
+    return syscallN(14182, obj)
 }
 
 func TaskDialog_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(14181, obj))
+    return int32(syscallN(14183, obj))
 }
 
 func TaskDialog_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(14182, obj))
+    return int32(syscallN(14184, obj))
 }
 
 func TaskDialog_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(14183, obj, uintptr(value))
+    syscallN(14185, obj, uintptr(value))
 }
 
 func TaskDialog_GetOwner(obj uintptr) uintptr {
-    return syscallN(14184, obj)
+    return syscallN(14186, obj)
 }
 
 func TaskDialog_GetName(obj uintptr) string {
-    return GoStr(syscallN(14185, obj))
+    return GoStr(syscallN(14187, obj))
 }
 
 func TaskDialog_SetName(obj uintptr, value string) {
-    syscallN(14186, obj, PascalStr(value))
+    syscallN(14188, obj, PascalStr(value))
 }
 
 func TaskDialog_GetTag(obj uintptr) int {
-    return int(syscallN(14187, obj))
+    return int(syscallN(14189, obj))
 }
 
 func TaskDialog_SetTag(obj uintptr, value int) {
-    syscallN(14188, obj, uintptr(value))
+    syscallN(14190, obj, uintptr(value))
 }
 
 func TaskDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(14189, obj, uintptr(AIndex))
+    return syscallN(14191, obj, uintptr(AIndex))
 }
 
 func TaskDialog_StaticClassType() TClass {
-    return TClass(syscallN(14190))
+    return TClass(syscallN(14192))
 }
 
 //--------------------------- TTaskDialogButtons ---------------------------
 
 func TaskDialogButtons_Add(obj uintptr) uintptr {
-    return syscallN(14191, obj)
-}
-
-func TaskDialogButtons_FindButton(obj uintptr, AModalResult TModalResult) uintptr {
-    return syscallN(14192, obj, uintptr(AModalResult) )
-}
-
-func TaskDialogButtons_Owner(obj uintptr) uintptr {
     return syscallN(14193, obj)
 }
 
+func TaskDialogButtons_FindButton(obj uintptr, AModalResult TModalResult) uintptr {
+    return syscallN(14194, obj, uintptr(AModalResult) )
+}
+
+func TaskDialogButtons_Owner(obj uintptr) uintptr {
+    return syscallN(14195, obj)
+}
+
 func TaskDialogButtons_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14194, obj, Source )
+    syscallN(14196, obj, Source )
 }
 
 func TaskDialogButtons_BeginUpdate(obj uintptr)  {
-    syscallN(14195, obj)
+    syscallN(14197, obj)
 }
 
 func TaskDialogButtons_Clear(obj uintptr)  {
-    syscallN(14196, obj)
-}
-
-func TaskDialogButtons_Delete(obj uintptr, Index int32)  {
-    syscallN(14197, obj, uintptr(Index) )
-}
-
-func TaskDialogButtons_EndUpdate(obj uintptr)  {
     syscallN(14198, obj)
 }
 
+func TaskDialogButtons_Delete(obj uintptr, Index int32)  {
+    syscallN(14199, obj, uintptr(Index) )
+}
+
+func TaskDialogButtons_EndUpdate(obj uintptr)  {
+    syscallN(14200, obj)
+}
+
 func TaskDialogButtons_FindItemID(obj uintptr, ID int32) uintptr {
-    return syscallN(14199, obj, uintptr(ID) )
+    return syscallN(14201, obj, uintptr(ID) )
 }
 
 func TaskDialogButtons_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14200, obj))
+    return GoStr(syscallN(14202, obj))
 }
 
 func TaskDialogButtons_Insert(obj uintptr, Index int32) uintptr {
-    return syscallN(14201, obj, uintptr(Index) )
+    return syscallN(14203, obj, uintptr(Index) )
 }
 
 func TaskDialogButtons_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14202, obj))
+    return TClass(syscallN(14204, obj))
 }
 
 func TaskDialogButtons_ClassName(obj uintptr) string {
-    return GoStr(syscallN(14203, obj))
+    return GoStr(syscallN(14205, obj))
 }
 
 func TaskDialogButtons_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14204, obj))
+    return int32(syscallN(14206, obj))
 }
 
 func TaskDialogButtons_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14205, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14207, obj, uintptr(AClass) ))
 }
 
 func TaskDialogButtons_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14206, obj, Obj ))
+    return GoBool(syscallN(14208, obj, Obj ))
 }
 
 func TaskDialogButtons_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14207, obj))
+    return int32(syscallN(14209, obj))
 }
 
 func TaskDialogButtons_ToString(obj uintptr) string {
-    return GoStr(syscallN(14208, obj))
+    return GoStr(syscallN(14210, obj))
 }
 
 func TaskDialogButtons_GetDefaultButton(obj uintptr) uintptr {
-    return syscallN(14209, obj)
+    return syscallN(14211, obj)
 }
 
 func TaskDialogButtons_SetDefaultButton(obj uintptr, value uintptr) {
-    syscallN(14210, obj, value)
+    syscallN(14212, obj, value)
 }
 
 func TaskDialogButtons_GetCount(obj uintptr) int32 {
-    return int32(syscallN(14211, obj))
+    return int32(syscallN(14213, obj))
 }
 
 func TaskDialogButtons_GetItems(obj uintptr, Index int32) uintptr {
-    return syscallN(14212, obj, uintptr(Index))
+    return syscallN(14214, obj, uintptr(Index))
 }
 
 func TaskDialogButtons_SetItems(obj uintptr, Index int32, value uintptr) {
-    syscallN(14213, obj, uintptr(Index), value)
+    syscallN(14215, obj, uintptr(Index), value)
 }
 
 func TaskDialogButtons_StaticClassType() TClass {
-    return TClass(syscallN(14214))
+    return TClass(syscallN(14216))
 }
 
 //--------------------------- TTaskDialogButtonItem ---------------------------
 
 func TaskDialogButtonItem_Create(obj uintptr) uintptr {
-    return syscallN(14215, obj)
+    return syscallN(14217, obj)
 }
 
 func TaskDialogButtonItem_Free(obj uintptr) {
-    syscallN(14216, obj)
+    syscallN(14218, obj)
 }
 
 func TaskDialogButtonItem_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14217, obj))
+    return GoStr(syscallN(14219, obj))
 }
 
 func TaskDialogButtonItem_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14218, obj, Source )
+    syscallN(14220, obj, Source )
 }
 
 func TaskDialogButtonItem_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14219, obj))
+    return TClass(syscallN(14221, obj))
 }
 
 func TaskDialogButtonItem_ClassName(obj uintptr) string {
-    return GoStr(syscallN(14220, obj))
+    return GoStr(syscallN(14222, obj))
 }
 
 func TaskDialogButtonItem_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14221, obj))
+    return int32(syscallN(14223, obj))
 }
 
 func TaskDialogButtonItem_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14222, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14224, obj, uintptr(AClass) ))
 }
 
 func TaskDialogButtonItem_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14223, obj, Obj ))
+    return GoBool(syscallN(14225, obj, Obj ))
 }
 
 func TaskDialogButtonItem_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14224, obj))
+    return int32(syscallN(14226, obj))
 }
 
 func TaskDialogButtonItem_ToString(obj uintptr) string {
-    return GoStr(syscallN(14225, obj))
+    return GoStr(syscallN(14227, obj))
 }
 
 func TaskDialogButtonItem_GetModalResult(obj uintptr) TModalResult {
-    return TModalResult(syscallN(14226, obj))
+    return TModalResult(syscallN(14228, obj))
 }
 
 func TaskDialogButtonItem_SetModalResult(obj uintptr, value TModalResult) {
-    syscallN(14227, obj, uintptr(value))
+    syscallN(14229, obj, uintptr(value))
 }
 
 func TaskDialogButtonItem_GetCaption(obj uintptr) string {
-    return GoStr(syscallN(14228, obj))
+    return GoStr(syscallN(14230, obj))
 }
 
 func TaskDialogButtonItem_SetCaption(obj uintptr, value string) {
-    syscallN(14229, obj, PascalStr(value))
+    syscallN(14231, obj, PascalStr(value))
 }
 
 func TaskDialogButtonItem_GetDefault(obj uintptr) bool {
-    return GoBool(syscallN(14230, obj))
+    return GoBool(syscallN(14232, obj))
 }
 
 func TaskDialogButtonItem_SetDefault(obj uintptr, value bool) {
-    syscallN(14231, obj, PascalBool(value))
+    syscallN(14233, obj, PascalBool(value))
 }
 
 func TaskDialogButtonItem_GetCollection(obj uintptr) uintptr {
-    return syscallN(14232, obj)
+    return syscallN(14234, obj)
 }
 
 func TaskDialogButtonItem_SetCollection(obj uintptr, value uintptr) {
-    syscallN(14233, obj, value)
+    syscallN(14235, obj, value)
 }
 
 func TaskDialogButtonItem_GetIndex(obj uintptr) int32 {
-    return int32(syscallN(14234, obj))
+    return int32(syscallN(14236, obj))
 }
 
 func TaskDialogButtonItem_SetIndex(obj uintptr, value int32) {
-    syscallN(14235, obj, uintptr(value))
+    syscallN(14237, obj, uintptr(value))
 }
 
 func TaskDialogButtonItem_GetDisplayName(obj uintptr) string {
-    return GoStr(syscallN(14236, obj))
+    return GoStr(syscallN(14238, obj))
 }
 
 func TaskDialogButtonItem_SetDisplayName(obj uintptr, value string) {
-    syscallN(14237, obj, PascalStr(value))
+    syscallN(14239, obj, PascalStr(value))
 }
 
 func TaskDialogButtonItem_StaticClassType() TClass {
-    return TClass(syscallN(14238))
+    return TClass(syscallN(14240))
 }
 
 //--------------------------- TTaskDialogRadioButtonItem ---------------------------
 
 func TaskDialogRadioButtonItem_Create(obj uintptr) uintptr {
-    return syscallN(14239, obj)
+    return syscallN(14241, obj)
 }
 
 func TaskDialogRadioButtonItem_Free(obj uintptr) {
-    syscallN(14240, obj)
+    syscallN(14242, obj)
 }
 
 func TaskDialogRadioButtonItem_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14241, obj))
+    return GoStr(syscallN(14243, obj))
 }
 
 func TaskDialogRadioButtonItem_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14242, obj, Source )
+    syscallN(14244, obj, Source )
 }
 
 func TaskDialogRadioButtonItem_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14243, obj))
+    return TClass(syscallN(14245, obj))
 }
 
 func TaskDialogRadioButtonItem_ClassName(obj uintptr) string {
-    return GoStr(syscallN(14244, obj))
+    return GoStr(syscallN(14246, obj))
 }
 
 func TaskDialogRadioButtonItem_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14245, obj))
+    return int32(syscallN(14247, obj))
 }
 
 func TaskDialogRadioButtonItem_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14246, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14248, obj, uintptr(AClass) ))
 }
 
 func TaskDialogRadioButtonItem_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14247, obj, Obj ))
+    return GoBool(syscallN(14249, obj, Obj ))
 }
 
 func TaskDialogRadioButtonItem_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14248, obj))
+    return int32(syscallN(14250, obj))
 }
 
 func TaskDialogRadioButtonItem_ToString(obj uintptr) string {
-    return GoStr(syscallN(14249, obj))
+    return GoStr(syscallN(14251, obj))
 }
 
 func TaskDialogRadioButtonItem_GetModalResult(obj uintptr) TModalResult {
-    return TModalResult(syscallN(14250, obj))
+    return TModalResult(syscallN(14252, obj))
 }
 
 func TaskDialogRadioButtonItem_SetModalResult(obj uintptr, value TModalResult) {
-    syscallN(14251, obj, uintptr(value))
+    syscallN(14253, obj, uintptr(value))
 }
 
 func TaskDialogRadioButtonItem_GetCaption(obj uintptr) string {
-    return GoStr(syscallN(14252, obj))
+    return GoStr(syscallN(14254, obj))
 }
 
 func TaskDialogRadioButtonItem_SetCaption(obj uintptr, value string) {
-    syscallN(14253, obj, PascalStr(value))
+    syscallN(14255, obj, PascalStr(value))
 }
 
 func TaskDialogRadioButtonItem_GetDefault(obj uintptr) bool {
-    return GoBool(syscallN(14254, obj))
+    return GoBool(syscallN(14256, obj))
 }
 
 func TaskDialogRadioButtonItem_SetDefault(obj uintptr, value bool) {
-    syscallN(14255, obj, PascalBool(value))
+    syscallN(14257, obj, PascalBool(value))
 }
 
 func TaskDialogRadioButtonItem_GetCollection(obj uintptr) uintptr {
-    return syscallN(14256, obj)
+    return syscallN(14258, obj)
 }
 
 func TaskDialogRadioButtonItem_SetCollection(obj uintptr, value uintptr) {
-    syscallN(14257, obj, value)
+    syscallN(14259, obj, value)
 }
 
 func TaskDialogRadioButtonItem_GetIndex(obj uintptr) int32 {
-    return int32(syscallN(14258, obj))
+    return int32(syscallN(14260, obj))
 }
 
 func TaskDialogRadioButtonItem_SetIndex(obj uintptr, value int32) {
-    syscallN(14259, obj, uintptr(value))
+    syscallN(14261, obj, uintptr(value))
 }
 
 func TaskDialogRadioButtonItem_GetDisplayName(obj uintptr) string {
-    return GoStr(syscallN(14260, obj))
+    return GoStr(syscallN(14262, obj))
 }
 
 func TaskDialogRadioButtonItem_SetDisplayName(obj uintptr, value string) {
-    syscallN(14261, obj, PascalStr(value))
+    syscallN(14263, obj, PascalStr(value))
 }
 
 func TaskDialogRadioButtonItem_StaticClassType() TClass {
-    return TClass(syscallN(14262))
+    return TClass(syscallN(14264))
 }
 
 //--------------------------- TTaskDialogBaseButtonItem ---------------------------
 
 func TaskDialogBaseButtonItem_Create(obj uintptr) uintptr {
-    return syscallN(14263, obj)
+    return syscallN(14265, obj)
 }
 
 func TaskDialogBaseButtonItem_Free(obj uintptr) {
-    syscallN(14264, obj)
+    syscallN(14266, obj)
 }
 
 func TaskDialogBaseButtonItem_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14265, obj))
+    return GoStr(syscallN(14267, obj))
 }
 
 func TaskDialogBaseButtonItem_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14266, obj, Source )
+    syscallN(14268, obj, Source )
 }
 
 func TaskDialogBaseButtonItem_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14267, obj))
+    return TClass(syscallN(14269, obj))
 }
 
 func TaskDialogBaseButtonItem_ClassName(obj uintptr) string {
-    return GoStr(syscallN(14268, obj))
+    return GoStr(syscallN(14270, obj))
 }
 
 func TaskDialogBaseButtonItem_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14269, obj))
+    return int32(syscallN(14271, obj))
 }
 
 func TaskDialogBaseButtonItem_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14270, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14272, obj, uintptr(AClass) ))
 }
 
 func TaskDialogBaseButtonItem_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14271, obj, Obj ))
+    return GoBool(syscallN(14273, obj, Obj ))
 }
 
 func TaskDialogBaseButtonItem_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14272, obj))
+    return int32(syscallN(14274, obj))
 }
 
 func TaskDialogBaseButtonItem_ToString(obj uintptr) string {
-    return GoStr(syscallN(14273, obj))
+    return GoStr(syscallN(14275, obj))
 }
 
 func TaskDialogBaseButtonItem_GetModalResult(obj uintptr) TModalResult {
-    return TModalResult(syscallN(14274, obj))
+    return TModalResult(syscallN(14276, obj))
 }
 
 func TaskDialogBaseButtonItem_SetModalResult(obj uintptr, value TModalResult) {
-    syscallN(14275, obj, uintptr(value))
+    syscallN(14277, obj, uintptr(value))
 }
 
 func TaskDialogBaseButtonItem_GetCaption(obj uintptr) string {
-    return GoStr(syscallN(14276, obj))
+    return GoStr(syscallN(14278, obj))
 }
 
 func TaskDialogBaseButtonItem_SetCaption(obj uintptr, value string) {
-    syscallN(14277, obj, PascalStr(value))
+    syscallN(14279, obj, PascalStr(value))
 }
 
 func TaskDialogBaseButtonItem_GetDefault(obj uintptr) bool {
-    return GoBool(syscallN(14278, obj))
+    return GoBool(syscallN(14280, obj))
 }
 
 func TaskDialogBaseButtonItem_SetDefault(obj uintptr, value bool) {
-    syscallN(14279, obj, PascalBool(value))
+    syscallN(14281, obj, PascalBool(value))
 }
 
 func TaskDialogBaseButtonItem_GetCollection(obj uintptr) uintptr {
-    return syscallN(14280, obj)
+    return syscallN(14282, obj)
 }
 
 func TaskDialogBaseButtonItem_SetCollection(obj uintptr, value uintptr) {
-    syscallN(14281, obj, value)
+    syscallN(14283, obj, value)
 }
 
 func TaskDialogBaseButtonItem_GetIndex(obj uintptr) int32 {
-    return int32(syscallN(14282, obj))
+    return int32(syscallN(14284, obj))
 }
 
 func TaskDialogBaseButtonItem_SetIndex(obj uintptr, value int32) {
-    syscallN(14283, obj, uintptr(value))
+    syscallN(14285, obj, uintptr(value))
 }
 
 func TaskDialogBaseButtonItem_GetDisplayName(obj uintptr) string {
-    return GoStr(syscallN(14284, obj))
+    return GoStr(syscallN(14286, obj))
 }
 
 func TaskDialogBaseButtonItem_SetDisplayName(obj uintptr, value string) {
-    syscallN(14285, obj, PascalStr(value))
+    syscallN(14287, obj, PascalStr(value))
 }
 
 func TaskDialogBaseButtonItem_StaticClassType() TClass {
-    return TClass(syscallN(14286))
+    return TClass(syscallN(14288))
 }
 
 //--------------------------- TComboBoxEx ---------------------------
 
 func ComboBoxEx_Create(obj uintptr) uintptr {
-    return syscallN(14287, obj)
+    return syscallN(14289, obj)
 }
 
 func ComboBoxEx_Free(obj uintptr) {
-    syscallN(14288, obj)
+    syscallN(14290, obj)
 }
 
 func ComboBoxEx_Focused(obj uintptr) bool {
-    return GoBool(syscallN(14289, obj))
+    return GoBool(syscallN(14291, obj))
 }
 
 func ComboBoxEx_AddItem(obj uintptr, Item string, AObject uintptr)  {
-    syscallN(14290, obj, PascalStr(Item) , AObject )
+    syscallN(14292, obj, PascalStr(Item) , AObject )
 }
 
 func ComboBoxEx_Clear(obj uintptr)  {
-    syscallN(14291, obj)
-}
-
-func ComboBoxEx_ClearSelection(obj uintptr)  {
-    syscallN(14292, obj)
-}
-
-func ComboBoxEx_DeleteSelected(obj uintptr)  {
     syscallN(14293, obj)
 }
 
-func ComboBoxEx_SelectAll(obj uintptr)  {
+func ComboBoxEx_ClearSelection(obj uintptr)  {
     syscallN(14294, obj)
 }
 
+func ComboBoxEx_DeleteSelected(obj uintptr)  {
+    syscallN(14295, obj)
+}
+
+func ComboBoxEx_SelectAll(obj uintptr)  {
+    syscallN(14296, obj)
+}
+
 func ComboBoxEx_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(14295, obj))
+    return GoBool(syscallN(14297, obj))
 }
 
 func ComboBoxEx_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(14296, obj, Control ))
+    return GoBool(syscallN(14298, obj, Control ))
 }
 
 func ComboBoxEx_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(14297, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(14299, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func ComboBoxEx_DisableAlign(obj uintptr)  {
-    syscallN(14298, obj)
+    syscallN(14300, obj)
 }
 
 func ComboBoxEx_EnableAlign(obj uintptr)  {
-    syscallN(14299, obj)
+    syscallN(14301, obj)
 }
 
 func ComboBoxEx_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(14300, obj, PascalStr(ControlName) )
+    return syscallN(14302, obj, PascalStr(ControlName) )
 }
 
 func ComboBoxEx_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(14301, obj, PascalBool(AllLevels) )
+    syscallN(14303, obj, PascalBool(AllLevels) )
 }
 
 func ComboBoxEx_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(14302, obj))
+    return GoBool(syscallN(14304, obj))
 }
 
 func ComboBoxEx_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(14303, obj, AControl )
+    syscallN(14305, obj, AControl )
 }
 
 func ComboBoxEx_Invalidate(obj uintptr)  {
-    syscallN(14304, obj)
+    syscallN(14306, obj)
 }
 
 func ComboBoxEx_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(14305, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(14307, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func ComboBoxEx_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(14306, obj, AControl )
+    syscallN(14308, obj, AControl )
 }
 
 func ComboBoxEx_Realign(obj uintptr)  {
-    syscallN(14307, obj)
+    syscallN(14309, obj)
 }
 
 func ComboBoxEx_Repaint(obj uintptr)  {
-    syscallN(14308, obj)
+    syscallN(14310, obj)
 }
 
 func ComboBoxEx_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(14309, obj, uintptr(M) , uintptr(D) )
+    syscallN(14311, obj, uintptr(M) , uintptr(D) )
 }
 
 func ComboBoxEx_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(14310, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(14312, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func ComboBoxEx_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(14311, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(14313, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func ComboBoxEx_SetFocus(obj uintptr)  {
-    syscallN(14312, obj)
+    syscallN(14314, obj)
 }
 
 func ComboBoxEx_Update(obj uintptr)  {
-    syscallN(14313, obj)
-}
-
-func ComboBoxEx_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(14314, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func ComboBoxEx_BringToFront(obj uintptr)  {
     syscallN(14315, obj)
 }
 
+func ComboBoxEx_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(14316, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func ComboBoxEx_BringToFront(obj uintptr)  {
+    syscallN(14317, obj)
+}
+
 func ComboBoxEx_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(14316, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(14318, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ComboBoxEx_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(14317, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(14319, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ComboBoxEx_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(14318, obj))
-}
-
-func ComboBoxEx_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(14319, obj, PascalBool(Drop) )
-}
-
-func ComboBoxEx_HasParent(obj uintptr) bool {
     return GoBool(syscallN(14320, obj))
 }
 
+func ComboBoxEx_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(14321, obj, PascalBool(Drop) )
+}
+
+func ComboBoxEx_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(14322, obj))
+}
+
 func ComboBoxEx_Hide(obj uintptr)  {
-    syscallN(14321, obj)
-}
-
-func ComboBoxEx_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(14322, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func ComboBoxEx_Refresh(obj uintptr)  {
     syscallN(14323, obj)
 }
 
+func ComboBoxEx_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(14324, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func ComboBoxEx_Refresh(obj uintptr)  {
+    syscallN(14325, obj)
+}
+
 func ComboBoxEx_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(14324, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(14326, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ComboBoxEx_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(14325, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(14327, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ComboBoxEx_SendToBack(obj uintptr)  {
-    syscallN(14326, obj)
+    syscallN(14328, obj)
 }
 
 func ComboBoxEx_Show(obj uintptr)  {
-    syscallN(14327, obj)
+    syscallN(14329, obj)
 }
 
 func ComboBoxEx_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(14328, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(14330, obj, Buffer, uintptr(BufSize) ))
 }
 
 func ComboBoxEx_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(14329, obj))
+    return int32(syscallN(14331, obj))
 }
 
 func ComboBoxEx_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(14330, obj, PascalStr(Buffer) )
+    syscallN(14332, obj, PascalStr(Buffer) )
 }
 
 func ComboBoxEx_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(14331, obj, PascalStr(AName) )
+    return syscallN(14333, obj, PascalStr(AName) )
 }
 
 func ComboBoxEx_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14332, obj))
+    return GoStr(syscallN(14334, obj))
 }
 
 func ComboBoxEx_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14333, obj, Source )
+    syscallN(14335, obj, Source )
 }
 
 func ComboBoxEx_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14334, obj))
+    return TClass(syscallN(14336, obj))
 }
 
 func ComboBoxEx_ClassName(obj uintptr) string {
-    return GoStr(syscallN(14335, obj))
+    return GoStr(syscallN(14337, obj))
 }
 
 func ComboBoxEx_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14336, obj))
+    return int32(syscallN(14338, obj))
 }
 
 func ComboBoxEx_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14337, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14339, obj, uintptr(AClass) ))
 }
 
 func ComboBoxEx_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14338, obj, Obj ))
+    return GoBool(syscallN(14340, obj, Obj ))
 }
 
 func ComboBoxEx_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14339, obj))
+    return int32(syscallN(14341, obj))
 }
 
 func ComboBoxEx_ToString(obj uintptr) string {
-    return GoStr(syscallN(14340, obj))
+    return GoStr(syscallN(14342, obj))
 }
 
 func ComboBoxEx_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(14341, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(14343, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func ComboBoxEx_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(14342, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(14344, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func ComboBoxEx_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(14343, obj, ASibling )
+    syscallN(14345, obj, ASibling )
 }
 
 func ComboBoxEx_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(14344, obj, ASibling )
+    syscallN(14346, obj, ASibling )
 }
 
 func ComboBoxEx_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(14345, obj, uintptr(ASide) , ASibling )
+    syscallN(14347, obj, uintptr(ASide) , ASibling )
 }
 
 func ComboBoxEx_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(14346, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(14348, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func ComboBoxEx_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(14347, obj, uintptr(ASpace) )
+    syscallN(14349, obj, uintptr(ASpace) )
 }
 
 func ComboBoxEx_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(14348, obj, uintptr(ASize) ))
-}
-
-func ComboBoxEx_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(14349, obj, uintptr(ASize) ))
-}
-
-func ComboBoxEx_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14350, obj, uintptr(ASize) ))
 }
 
-func ComboBoxEx_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func ComboBoxEx_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14351, obj, uintptr(ASize) ))
 }
 
-func ComboBoxEx_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func ComboBoxEx_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14352, obj, uintptr(ASize) ))
 }
 
-func ComboBoxEx_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func ComboBoxEx_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14353, obj, uintptr(ASize) ))
 }
 
-func ComboBoxEx_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func ComboBoxEx_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14354, obj, uintptr(ASize) ))
 }
 
-func ComboBoxEx_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func ComboBoxEx_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14355, obj, uintptr(ASize) ))
 }
 
-func ComboBoxEx_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func ComboBoxEx_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14356, obj, uintptr(ASize) ))
 }
 
-func ComboBoxEx_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func ComboBoxEx_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14357, obj, uintptr(ASize) ))
 }
 
+func ComboBoxEx_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(14358, obj, uintptr(ASize) ))
+}
+
+func ComboBoxEx_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(14359, obj, uintptr(ASize) ))
+}
+
 func ComboBoxEx_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(14358, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(14360, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func ComboBoxEx_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(14359, obj, uintptr(ADesignTimePPI) )
+    syscallN(14361, obj, uintptr(ADesignTimePPI) )
 }
 
 func ComboBoxEx_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(14360, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(14362, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ComboBoxEx_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(14361, obj))
+    return TAlign(syscallN(14363, obj))
 }
 
 func ComboBoxEx_SetAlign(obj uintptr, value TAlign) {
-    syscallN(14362, obj, uintptr(value))
-}
-
-func ComboBoxEx_GetAutoCompleteOptions(obj uintptr) TAutoCompleteOptions {
-    return TAutoCompleteOptions(syscallN(14363, obj))
-}
-
-func ComboBoxEx_SetAutoCompleteOptions(obj uintptr, value TAutoCompleteOptions) {
     syscallN(14364, obj, uintptr(value))
 }
 
+func ComboBoxEx_GetAutoCompleteOptions(obj uintptr) TAutoCompleteOptions {
+    return TAutoCompleteOptions(syscallN(14365, obj))
+}
+
+func ComboBoxEx_SetAutoCompleteOptions(obj uintptr, value TAutoCompleteOptions) {
+    syscallN(14366, obj, uintptr(value))
+}
+
 func ComboBoxEx_GetItemsEx(obj uintptr) uintptr {
-    return syscallN(14365, obj)
+    return syscallN(14367, obj)
 }
 
 func ComboBoxEx_SetItemsEx(obj uintptr, value uintptr) {
-    syscallN(14366, obj, value)
+    syscallN(14368, obj, value)
 }
 
 func ComboBoxEx_GetStyle(obj uintptr) TComboBoxExStyle {
-    return TComboBoxExStyle(syscallN(14367, obj))
+    return TComboBoxExStyle(syscallN(14369, obj))
 }
 
 func ComboBoxEx_SetStyle(obj uintptr, value TComboBoxExStyle) {
-    syscallN(14368, obj, uintptr(value))
-}
-
-func ComboBoxEx_GetStyleEx(obj uintptr) TComboBoxExStyles {
-    return TComboBoxExStyles(syscallN(14369, obj))
-}
-
-func ComboBoxEx_SetStyleEx(obj uintptr, value TComboBoxExStyles) {
     syscallN(14370, obj, uintptr(value))
 }
 
+func ComboBoxEx_GetStyleEx(obj uintptr) TComboBoxExStyles {
+    return TComboBoxExStyles(syscallN(14371, obj))
+}
+
+func ComboBoxEx_SetStyleEx(obj uintptr, value TComboBoxExStyles) {
+    syscallN(14372, obj, uintptr(value))
+}
+
 func ComboBoxEx_GetAction(obj uintptr) uintptr {
-    return syscallN(14371, obj)
+    return syscallN(14373, obj)
 }
 
 func ComboBoxEx_SetAction(obj uintptr, value uintptr) {
-    syscallN(14372, obj, value)
+    syscallN(14374, obj, value)
 }
 
 func ComboBoxEx_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(14373, obj))
+    return TAnchors(syscallN(14375, obj))
 }
 
 func ComboBoxEx_SetAnchors(obj uintptr, value TAnchors) {
-    syscallN(14374, obj, uintptr(value))
-}
-
-func ComboBoxEx_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(14375, obj))
-}
-
-func ComboBoxEx_SetBiDiMode(obj uintptr, value TBiDiMode) {
     syscallN(14376, obj, uintptr(value))
 }
 
-func ComboBoxEx_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(14377, obj))
+func ComboBoxEx_GetBiDiMode(obj uintptr) TBiDiMode {
+    return TBiDiMode(syscallN(14377, obj))
 }
 
-func ComboBoxEx_SetColor(obj uintptr, value TColor) {
+func ComboBoxEx_SetBiDiMode(obj uintptr, value TBiDiMode) {
     syscallN(14378, obj, uintptr(value))
 }
 
+func ComboBoxEx_GetColor(obj uintptr) TColor {
+    return TColor(syscallN(14379, obj))
+}
+
+func ComboBoxEx_SetColor(obj uintptr, value TColor) {
+    syscallN(14380, obj, uintptr(value))
+}
+
 func ComboBoxEx_GetConstraints(obj uintptr) uintptr {
-    return syscallN(14379, obj)
+    return syscallN(14381, obj)
 }
 
 func ComboBoxEx_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(14380, obj, value)
+    syscallN(14382, obj, value)
 }
 
 func ComboBoxEx_GetDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(14381, obj))
+    return GoBool(syscallN(14383, obj))
 }
 
 func ComboBoxEx_SetDoubleBuffered(obj uintptr, value bool) {
-    syscallN(14382, obj, PascalBool(value))
+    syscallN(14384, obj, PascalBool(value))
 }
 
 func ComboBoxEx_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(14383, obj))
+    return TCursor(syscallN(14385, obj))
 }
 
 func ComboBoxEx_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(14384, obj, uintptr(value))
-}
-
-func ComboBoxEx_GetDragKind(obj uintptr) TDragKind {
-    return TDragKind(syscallN(14385, obj))
-}
-
-func ComboBoxEx_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(14386, obj, uintptr(value))
 }
 
-func ComboBoxEx_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(14387, obj))
+func ComboBoxEx_GetDragKind(obj uintptr) TDragKind {
+    return TDragKind(syscallN(14387, obj))
 }
 
-func ComboBoxEx_SetDragMode(obj uintptr, value TDragMode) {
+func ComboBoxEx_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(14388, obj, uintptr(value))
 }
 
+func ComboBoxEx_GetDragMode(obj uintptr) TDragMode {
+    return TDragMode(syscallN(14389, obj))
+}
+
+func ComboBoxEx_SetDragMode(obj uintptr, value TDragMode) {
+    syscallN(14390, obj, uintptr(value))
+}
+
 func ComboBoxEx_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(14389, obj))
+    return GoBool(syscallN(14391, obj))
 }
 
 func ComboBoxEx_SetEnabled(obj uintptr, value bool) {
-    syscallN(14390, obj, PascalBool(value))
+    syscallN(14392, obj, PascalBool(value))
 }
 
 func ComboBoxEx_GetFont(obj uintptr) uintptr {
-    return syscallN(14391, obj)
+    return syscallN(14393, obj)
 }
 
 func ComboBoxEx_SetFont(obj uintptr, value uintptr) {
-    syscallN(14392, obj, value)
+    syscallN(14394, obj, value)
 }
 
 func ComboBoxEx_GetItemHeight(obj uintptr) int32 {
-    return int32(syscallN(14393, obj))
-}
-
-func ComboBoxEx_SetItemHeight(obj uintptr, value int32) {
-    syscallN(14394, obj, uintptr(value))
-}
-
-func ComboBoxEx_GetMaxLength(obj uintptr) int32 {
     return int32(syscallN(14395, obj))
 }
 
-func ComboBoxEx_SetMaxLength(obj uintptr, value int32) {
+func ComboBoxEx_SetItemHeight(obj uintptr, value int32) {
     syscallN(14396, obj, uintptr(value))
 }
 
+func ComboBoxEx_GetMaxLength(obj uintptr) int32 {
+    return int32(syscallN(14397, obj))
+}
+
+func ComboBoxEx_SetMaxLength(obj uintptr, value int32) {
+    syscallN(14398, obj, uintptr(value))
+}
+
 func ComboBoxEx_GetParentColor(obj uintptr) bool {
-    return GoBool(syscallN(14397, obj))
-}
-
-func ComboBoxEx_SetParentColor(obj uintptr, value bool) {
-    syscallN(14398, obj, PascalBool(value))
-}
-
-func ComboBoxEx_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(14399, obj))
 }
 
-func ComboBoxEx_SetParentDoubleBuffered(obj uintptr, value bool) {
+func ComboBoxEx_SetParentColor(obj uintptr, value bool) {
     syscallN(14400, obj, PascalBool(value))
 }
 
-func ComboBoxEx_GetParentFont(obj uintptr) bool {
+func ComboBoxEx_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(14401, obj))
 }
 
-func ComboBoxEx_SetParentFont(obj uintptr, value bool) {
+func ComboBoxEx_SetParentDoubleBuffered(obj uintptr, value bool) {
     syscallN(14402, obj, PascalBool(value))
 }
 
-func ComboBoxEx_GetParentShowHint(obj uintptr) bool {
+func ComboBoxEx_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(14403, obj))
 }
 
-func ComboBoxEx_SetParentShowHint(obj uintptr, value bool) {
+func ComboBoxEx_SetParentFont(obj uintptr, value bool) {
     syscallN(14404, obj, PascalBool(value))
 }
 
+func ComboBoxEx_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(14405, obj))
+}
+
+func ComboBoxEx_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(14406, obj, PascalBool(value))
+}
+
 func ComboBoxEx_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(14405, obj)
+    return syscallN(14407, obj)
 }
 
 func ComboBoxEx_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(14406, obj, value)
+    syscallN(14408, obj, value)
 }
 
 func ComboBoxEx_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(14407, obj))
+    return GoBool(syscallN(14409, obj))
 }
 
 func ComboBoxEx_SetShowHint(obj uintptr, value bool) {
-    syscallN(14408, obj, PascalBool(value))
+    syscallN(14410, obj, PascalBool(value))
 }
 
 func ComboBoxEx_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(14409, obj))
+    return TTabOrder(syscallN(14411, obj))
 }
 
 func ComboBoxEx_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(14410, obj, uintptr(value))
+    syscallN(14412, obj, uintptr(value))
 }
 
 func ComboBoxEx_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(14411, obj))
+    return GoBool(syscallN(14413, obj))
 }
 
 func ComboBoxEx_SetTabStop(obj uintptr, value bool) {
-    syscallN(14412, obj, PascalBool(value))
+    syscallN(14414, obj, PascalBool(value))
 }
 
 func ComboBoxEx_GetText(obj uintptr) string {
-    return GoStr(syscallN(14413, obj))
+    return GoStr(syscallN(14415, obj))
 }
 
 func ComboBoxEx_SetText(obj uintptr, value string) {
-    syscallN(14414, obj, PascalStr(value))
+    syscallN(14416, obj, PascalStr(value))
 }
 
 func ComboBoxEx_GetVisible(obj uintptr) bool {
-    return GoBool(syscallN(14415, obj))
+    return GoBool(syscallN(14417, obj))
 }
 
 func ComboBoxEx_SetVisible(obj uintptr, value bool) {
-    syscallN(14416, obj, PascalBool(value))
+    syscallN(14418, obj, PascalBool(value))
 }
 
 func ComboBoxEx_SetOnChange(obj uintptr, fn interface{}) {
-    syscallN(14417, obj, MakeEventDataPtr(fn))
-}
-
-func ComboBoxEx_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(14418, obj, MakeEventDataPtr(fn))
-}
-
-func ComboBoxEx_SetOnContextPopup(obj uintptr, fn interface{}) {
     syscallN(14419, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnDblClick(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnClick(obj uintptr, fn interface{}) {
     syscallN(14420, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnDragDrop(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnContextPopup(obj uintptr, fn interface{}) {
     syscallN(14421, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnDragOver(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(14422, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnDropDown(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(14423, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnEndDock(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(14424, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnEndDrag(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnDropDown(obj uintptr, fn interface{}) {
     syscallN(14425, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnEnter(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnEndDock(obj uintptr, fn interface{}) {
     syscallN(14426, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnExit(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(14427, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnKeyDown(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnEnter(obj uintptr, fn interface{}) {
     syscallN(14428, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnKeyPress(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnExit(obj uintptr, fn interface{}) {
     syscallN(14429, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnKeyUp(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnKeyDown(obj uintptr, fn interface{}) {
     syscallN(14430, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnMouseMove(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnKeyPress(obj uintptr, fn interface{}) {
     syscallN(14431, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnSelect(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnKeyUp(obj uintptr, fn interface{}) {
     syscallN(14432, obj, MakeEventDataPtr(fn))
 }
 
-func ComboBoxEx_SetOnStartDock(obj uintptr, fn interface{}) {
+func ComboBoxEx_SetOnMouseMove(obj uintptr, fn interface{}) {
     syscallN(14433, obj, MakeEventDataPtr(fn))
 }
 
+func ComboBoxEx_SetOnSelect(obj uintptr, fn interface{}) {
+    syscallN(14434, obj, MakeEventDataPtr(fn))
+}
+
+func ComboBoxEx_SetOnStartDock(obj uintptr, fn interface{}) {
+    syscallN(14435, obj, MakeEventDataPtr(fn))
+}
+
 func ComboBoxEx_GetImages(obj uintptr) uintptr {
-    return syscallN(14434, obj)
+    return syscallN(14436, obj)
 }
 
 func ComboBoxEx_SetImages(obj uintptr, value uintptr) {
-    syscallN(14435, obj, value)
+    syscallN(14437, obj, value)
 }
 
 func ComboBoxEx_GetDropDownCount(obj uintptr) int32 {
-    return int32(syscallN(14436, obj))
+    return int32(syscallN(14438, obj))
 }
 
 func ComboBoxEx_SetDropDownCount(obj uintptr, value int32) {
-    syscallN(14437, obj, uintptr(value))
+    syscallN(14439, obj, uintptr(value))
 }
 
 func ComboBoxEx_GetSelText(obj uintptr) string {
-    return GoStr(syscallN(14438, obj))
+    return GoStr(syscallN(14440, obj))
 }
 
 func ComboBoxEx_SetSelText(obj uintptr, value string) {
-    syscallN(14439, obj, PascalStr(value))
+    syscallN(14441, obj, PascalStr(value))
 }
 
 func ComboBoxEx_GetCanvas(obj uintptr) uintptr {
-    return syscallN(14440, obj)
+    return syscallN(14442, obj)
 }
 
 func ComboBoxEx_GetDroppedDown(obj uintptr) bool {
-    return GoBool(syscallN(14441, obj))
+    return GoBool(syscallN(14443, obj))
 }
 
 func ComboBoxEx_SetDroppedDown(obj uintptr, value bool) {
-    syscallN(14442, obj, PascalBool(value))
+    syscallN(14444, obj, PascalBool(value))
 }
 
 func ComboBoxEx_GetItems(obj uintptr) uintptr {
-    return syscallN(14443, obj)
+    return syscallN(14445, obj)
 }
 
 func ComboBoxEx_SetItems(obj uintptr, value uintptr) {
-    syscallN(14444, obj, value)
+    syscallN(14446, obj, value)
 }
 
 func ComboBoxEx_GetSelLength(obj uintptr) int32 {
-    return int32(syscallN(14445, obj))
-}
-
-func ComboBoxEx_SetSelLength(obj uintptr, value int32) {
-    syscallN(14446, obj, uintptr(value))
-}
-
-func ComboBoxEx_GetSelStart(obj uintptr) int32 {
     return int32(syscallN(14447, obj))
 }
 
-func ComboBoxEx_SetSelStart(obj uintptr, value int32) {
+func ComboBoxEx_SetSelLength(obj uintptr, value int32) {
     syscallN(14448, obj, uintptr(value))
 }
 
-func ComboBoxEx_GetItemIndex(obj uintptr) int32 {
+func ComboBoxEx_GetSelStart(obj uintptr) int32 {
     return int32(syscallN(14449, obj))
 }
 
-func ComboBoxEx_SetItemIndex(obj uintptr, value int32) {
+func ComboBoxEx_SetSelStart(obj uintptr, value int32) {
     syscallN(14450, obj, uintptr(value))
 }
 
-func ComboBoxEx_GetDockClientCount(obj uintptr) int32 {
+func ComboBoxEx_GetItemIndex(obj uintptr) int32 {
     return int32(syscallN(14451, obj))
 }
 
+func ComboBoxEx_SetItemIndex(obj uintptr, value int32) {
+    syscallN(14452, obj, uintptr(value))
+}
+
+func ComboBoxEx_GetDockClientCount(obj uintptr) int32 {
+    return int32(syscallN(14453, obj))
+}
+
 func ComboBoxEx_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(14452, obj))
-}
-
-func ComboBoxEx_SetDockSite(obj uintptr, value bool) {
-    syscallN(14453, obj, PascalBool(value))
-}
-
-func ComboBoxEx_GetMouseInClient(obj uintptr) bool {
     return GoBool(syscallN(14454, obj))
 }
 
+func ComboBoxEx_SetDockSite(obj uintptr, value bool) {
+    syscallN(14455, obj, PascalBool(value))
+}
+
+func ComboBoxEx_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(14456, obj))
+}
+
 func ComboBoxEx_GetVisibleDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(14455, obj))
-}
-
-func ComboBoxEx_GetBrush(obj uintptr) uintptr {
-    return syscallN(14456, obj)
-}
-
-func ComboBoxEx_GetControlCount(obj uintptr) int32 {
     return int32(syscallN(14457, obj))
 }
 
+func ComboBoxEx_GetBrush(obj uintptr) uintptr {
+    return syscallN(14458, obj)
+}
+
+func ComboBoxEx_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(14459, obj))
+}
+
 func ComboBoxEx_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(14458, obj))
+    return HWND(syscallN(14460, obj))
 }
 
 func ComboBoxEx_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(14459, obj))
+    return HWND(syscallN(14461, obj))
 }
 
 func ComboBoxEx_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(14460, obj, uintptr(value))
+    syscallN(14462, obj, uintptr(value))
 }
 
 func ComboBoxEx_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(14461, obj))
+    return GoBool(syscallN(14463, obj))
 }
 
 func ComboBoxEx_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(14462, obj))
+    return GoBool(syscallN(14464, obj))
 }
 
 func ComboBoxEx_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(14463, obj, PascalBool(value))
+    syscallN(14465, obj, PascalBool(value))
 }
 
 func ComboBoxEx_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(14464, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(14466, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ComboBoxEx_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(14465, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(14467, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func ComboBoxEx_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(14466, obj))
+    return int32(syscallN(14468, obj))
 }
 
 func ComboBoxEx_SetClientHeight(obj uintptr, value int32) {
-    syscallN(14467, obj, uintptr(value))
+    syscallN(14469, obj, uintptr(value))
 }
 
 func ComboBoxEx_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(14468, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(14470, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ComboBoxEx_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(14469, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(14471, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ComboBoxEx_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(14470, obj))
+    return int32(syscallN(14472, obj))
 }
 
 func ComboBoxEx_SetClientWidth(obj uintptr, value int32) {
-    syscallN(14471, obj, uintptr(value))
-}
-
-func ComboBoxEx_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(14472, obj))
-}
-
-func ComboBoxEx_SetControlState(obj uintptr, value TControlState) {
     syscallN(14473, obj, uintptr(value))
 }
 
-func ComboBoxEx_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(14474, obj))
+func ComboBoxEx_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(14474, obj))
 }
 
-func ComboBoxEx_SetControlStyle(obj uintptr, value TControlStyle) {
+func ComboBoxEx_SetControlState(obj uintptr, value TControlState) {
     syscallN(14475, obj, uintptr(value))
 }
 
+func ComboBoxEx_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(14476, obj))
+}
+
+func ComboBoxEx_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(14477, obj, uintptr(value))
+}
+
 func ComboBoxEx_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(14476, obj))
+    return GoBool(syscallN(14478, obj))
 }
 
 func ComboBoxEx_GetParent(obj uintptr) uintptr {
-    return syscallN(14477, obj)
+    return syscallN(14479, obj)
 }
 
 func ComboBoxEx_SetParent(obj uintptr, value uintptr) {
-    syscallN(14478, obj, value)
+    syscallN(14480, obj, value)
 }
 
 func ComboBoxEx_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(14479, obj))
-}
-
-func ComboBoxEx_SetLeft(obj uintptr, value int32) {
-    syscallN(14480, obj, uintptr(value))
-}
-
-func ComboBoxEx_GetTop(obj uintptr) int32 {
     return int32(syscallN(14481, obj))
 }
 
-func ComboBoxEx_SetTop(obj uintptr, value int32) {
+func ComboBoxEx_SetLeft(obj uintptr, value int32) {
     syscallN(14482, obj, uintptr(value))
 }
 
-func ComboBoxEx_GetWidth(obj uintptr) int32 {
+func ComboBoxEx_GetTop(obj uintptr) int32 {
     return int32(syscallN(14483, obj))
 }
 
-func ComboBoxEx_SetWidth(obj uintptr, value int32) {
+func ComboBoxEx_SetTop(obj uintptr, value int32) {
     syscallN(14484, obj, uintptr(value))
 }
 
-func ComboBoxEx_GetHeight(obj uintptr) int32 {
+func ComboBoxEx_GetWidth(obj uintptr) int32 {
     return int32(syscallN(14485, obj))
 }
 
-func ComboBoxEx_SetHeight(obj uintptr, value int32) {
+func ComboBoxEx_SetWidth(obj uintptr, value int32) {
     syscallN(14486, obj, uintptr(value))
 }
 
-func ComboBoxEx_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(14487, obj))
+func ComboBoxEx_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(14487, obj))
 }
 
-func ComboBoxEx_SetCursor(obj uintptr, value TCursor) {
+func ComboBoxEx_SetHeight(obj uintptr, value int32) {
     syscallN(14488, obj, uintptr(value))
 }
 
+func ComboBoxEx_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(14489, obj))
+}
+
+func ComboBoxEx_SetCursor(obj uintptr, value TCursor) {
+    syscallN(14490, obj, uintptr(value))
+}
+
 func ComboBoxEx_GetHint(obj uintptr) string {
-    return GoStr(syscallN(14489, obj))
+    return GoStr(syscallN(14491, obj))
 }
 
 func ComboBoxEx_SetHint(obj uintptr, value string) {
-    syscallN(14490, obj, PascalStr(value))
+    syscallN(14492, obj, PascalStr(value))
 }
 
 func ComboBoxEx_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(14491, obj))
+    return int32(syscallN(14493, obj))
 }
 
 func ComboBoxEx_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(14492, obj))
+    return int32(syscallN(14494, obj))
 }
 
 func ComboBoxEx_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(14493, obj, uintptr(value))
+    syscallN(14495, obj, uintptr(value))
 }
 
 func ComboBoxEx_GetOwner(obj uintptr) uintptr {
-    return syscallN(14494, obj)
+    return syscallN(14496, obj)
 }
 
 func ComboBoxEx_GetName(obj uintptr) string {
-    return GoStr(syscallN(14495, obj))
+    return GoStr(syscallN(14497, obj))
 }
 
 func ComboBoxEx_SetName(obj uintptr, value string) {
-    syscallN(14496, obj, PascalStr(value))
+    syscallN(14498, obj, PascalStr(value))
 }
 
 func ComboBoxEx_GetTag(obj uintptr) int {
-    return int(syscallN(14497, obj))
+    return int(syscallN(14499, obj))
 }
 
 func ComboBoxEx_SetTag(obj uintptr, value int) {
-    syscallN(14498, obj, uintptr(value))
+    syscallN(14500, obj, uintptr(value))
 }
 
 func ComboBoxEx_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(14499, obj)
-}
-
-func ComboBoxEx_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(14500, obj, value)
-}
-
-func ComboBoxEx_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(14501, obj)
 }
 
-func ComboBoxEx_SetAnchorSideTop(obj uintptr, value uintptr) {
+func ComboBoxEx_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(14502, obj, value)
 }
 
-func ComboBoxEx_GetAnchorSideRight(obj uintptr) uintptr {
+func ComboBoxEx_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(14503, obj)
 }
 
-func ComboBoxEx_SetAnchorSideRight(obj uintptr, value uintptr) {
+func ComboBoxEx_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(14504, obj, value)
 }
 
-func ComboBoxEx_GetAnchorSideBottom(obj uintptr) uintptr {
+func ComboBoxEx_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(14505, obj)
 }
 
-func ComboBoxEx_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func ComboBoxEx_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(14506, obj, value)
 }
 
-func ComboBoxEx_GetChildSizing(obj uintptr) uintptr {
+func ComboBoxEx_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(14507, obj)
 }
 
-func ComboBoxEx_SetChildSizing(obj uintptr, value uintptr) {
+func ComboBoxEx_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(14508, obj, value)
 }
 
-func ComboBoxEx_GetBorderSpacing(obj uintptr) uintptr {
+func ComboBoxEx_GetChildSizing(obj uintptr) uintptr {
     return syscallN(14509, obj)
 }
 
-func ComboBoxEx_SetBorderSpacing(obj uintptr, value uintptr) {
+func ComboBoxEx_SetChildSizing(obj uintptr, value uintptr) {
     syscallN(14510, obj, value)
 }
 
+func ComboBoxEx_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(14511, obj)
+}
+
+func ComboBoxEx_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(14512, obj, value)
+}
+
 func ComboBoxEx_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(14511, obj, uintptr(Index))
+    return syscallN(14513, obj, uintptr(Index))
 }
 
 func ComboBoxEx_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(14512, obj, uintptr(Index))
+    return syscallN(14514, obj, uintptr(Index))
 }
 
 func ComboBoxEx_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(14513, obj, uintptr(AIndex))
+    return syscallN(14515, obj, uintptr(AIndex))
 }
 
 func ComboBoxEx_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(14514, obj, uintptr(AKind))
+    return syscallN(14516, obj, uintptr(AKind))
 }
 
 func ComboBoxEx_StaticClassType() TClass {
-    return TClass(syscallN(14515))
+    return TClass(syscallN(14517))
 }
 
 //--------------------------- TComboExItems ---------------------------
 
 func ComboExItems_Add(obj uintptr) uintptr {
-    return syscallN(14516, obj)
+    return syscallN(14518, obj)
 }
 
 func ComboExItems_AddItem(obj uintptr, Caption string, ImageIndex int32, SelectedImageIndex int32, OverlayImageIndex int32, Indent int32, Data uintptr) uintptr {
-    return syscallN(14517, obj, PascalStr(Caption) , uintptr(ImageIndex) , uintptr(SelectedImageIndex) , uintptr(OverlayImageIndex) , uintptr(Indent) , Data )
+    return syscallN(14519, obj, PascalStr(Caption) , uintptr(ImageIndex) , uintptr(SelectedImageIndex) , uintptr(OverlayImageIndex) , uintptr(Indent) , Data )
 }
 
 func ComboExItems_Insert(obj uintptr, Index int32) uintptr {
-    return syscallN(14518, obj, uintptr(Index) )
+    return syscallN(14520, obj, uintptr(Index) )
 }
 
 func ComboExItems_Owner(obj uintptr) uintptr {
-    return syscallN(14519, obj)
+    return syscallN(14521, obj)
 }
 
 func ComboExItems_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14520, obj, Source )
+    syscallN(14522, obj, Source )
 }
 
 func ComboExItems_BeginUpdate(obj uintptr)  {
-    syscallN(14521, obj)
+    syscallN(14523, obj)
 }
 
 func ComboExItems_Clear(obj uintptr)  {
-    syscallN(14522, obj)
-}
-
-func ComboExItems_Delete(obj uintptr, Index int32)  {
-    syscallN(14523, obj, uintptr(Index) )
-}
-
-func ComboExItems_EndUpdate(obj uintptr)  {
     syscallN(14524, obj)
 }
 
+func ComboExItems_Delete(obj uintptr, Index int32)  {
+    syscallN(14525, obj, uintptr(Index) )
+}
+
+func ComboExItems_EndUpdate(obj uintptr)  {
+    syscallN(14526, obj)
+}
+
 func ComboExItems_FindItemID(obj uintptr, ID int32) uintptr {
-    return syscallN(14525, obj, uintptr(ID) )
+    return syscallN(14527, obj, uintptr(ID) )
 }
 
 func ComboExItems_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14526, obj))
-}
-
-func ComboExItems_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14527, obj))
-}
-
-func ComboExItems_ClassName(obj uintptr) string {
     return GoStr(syscallN(14528, obj))
 }
 
+func ComboExItems_ClassType(obj uintptr) TClass {
+    return TClass(syscallN(14529, obj))
+}
+
+func ComboExItems_ClassName(obj uintptr) string {
+    return GoStr(syscallN(14530, obj))
+}
+
 func ComboExItems_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14529, obj))
+    return int32(syscallN(14531, obj))
 }
 
 func ComboExItems_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14530, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14532, obj, uintptr(AClass) ))
 }
 
 func ComboExItems_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14531, obj, Obj ))
+    return GoBool(syscallN(14533, obj, Obj ))
 }
 
 func ComboExItems_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14532, obj))
-}
-
-func ComboExItems_ToString(obj uintptr) string {
-    return GoStr(syscallN(14533, obj))
-}
-
-func ComboExItems_GetCount(obj uintptr) int32 {
     return int32(syscallN(14534, obj))
 }
 
+func ComboExItems_ToString(obj uintptr) string {
+    return GoStr(syscallN(14535, obj))
+}
+
+func ComboExItems_GetCount(obj uintptr) int32 {
+    return int32(syscallN(14536, obj))
+}
+
 func ComboExItems_GetComboItems(obj uintptr, Index int32) uintptr {
-    return syscallN(14535, obj, uintptr(Index))
+    return syscallN(14537, obj, uintptr(Index))
 }
 
 func ComboExItems_StaticClassType() TClass {
-    return TClass(syscallN(14536))
+    return TClass(syscallN(14538))
 }
 
 //--------------------------- TComboExItem ---------------------------
 
 func ComboExItem_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14537, obj, Source )
+    syscallN(14539, obj, Source )
 }
 
 func ComboExItem_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14538, obj))
-}
-
-func ComboExItem_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14539, obj))
-}
-
-func ComboExItem_ClassName(obj uintptr) string {
     return GoStr(syscallN(14540, obj))
 }
 
+func ComboExItem_ClassType(obj uintptr) TClass {
+    return TClass(syscallN(14541, obj))
+}
+
+func ComboExItem_ClassName(obj uintptr) string {
+    return GoStr(syscallN(14542, obj))
+}
+
 func ComboExItem_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14541, obj))
+    return int32(syscallN(14543, obj))
 }
 
 func ComboExItem_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14542, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14544, obj, uintptr(AClass) ))
 }
 
 func ComboExItem_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14543, obj, Obj ))
+    return GoBool(syscallN(14545, obj, Obj ))
 }
 
 func ComboExItem_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14544, obj))
-}
-
-func ComboExItem_ToString(obj uintptr) string {
-    return GoStr(syscallN(14545, obj))
-}
-
-func ComboExItem_GetIndent(obj uintptr) int32 {
     return int32(syscallN(14546, obj))
 }
 
-func ComboExItem_SetIndent(obj uintptr, value int32) {
-    syscallN(14547, obj, uintptr(value))
+func ComboExItem_ToString(obj uintptr) string {
+    return GoStr(syscallN(14547, obj))
 }
 
-func ComboExItem_GetOverlayImageIndex(obj uintptr) int32 {
+func ComboExItem_GetIndent(obj uintptr) int32 {
     return int32(syscallN(14548, obj))
 }
 
-func ComboExItem_SetOverlayImageIndex(obj uintptr, value int32) {
+func ComboExItem_SetIndent(obj uintptr, value int32) {
     syscallN(14549, obj, uintptr(value))
 }
 
-func ComboExItem_GetData(obj uintptr) unsafe.Pointer {
-    return unsafe.Pointer(syscallN(14550, obj))
+func ComboExItem_GetOverlayImageIndex(obj uintptr) int32 {
+    return int32(syscallN(14550, obj))
 }
 
-func ComboExItem_SetData(obj uintptr, value unsafe.Pointer) {
+func ComboExItem_SetOverlayImageIndex(obj uintptr, value int32) {
     syscallN(14551, obj, uintptr(value))
 }
 
+func ComboExItem_GetData(obj uintptr) unsafe.Pointer {
+    return unsafe.Pointer(syscallN(14552, obj))
+}
+
+func ComboExItem_SetData(obj uintptr, value unsafe.Pointer) {
+    syscallN(14553, obj, uintptr(value))
+}
+
 func ComboExItem_GetCaption(obj uintptr) string {
-    return GoStr(syscallN(14552, obj))
+    return GoStr(syscallN(14554, obj))
 }
 
 func ComboExItem_SetCaption(obj uintptr, value string) {
-    syscallN(14553, obj, PascalStr(value))
+    syscallN(14555, obj, PascalStr(value))
 }
 
 func ComboExItem_GetImageIndex(obj uintptr) int32 {
-    return int32(syscallN(14554, obj))
+    return int32(syscallN(14556, obj))
 }
 
 func ComboExItem_SetImageIndex(obj uintptr, value int32) {
-    syscallN(14555, obj, uintptr(value))
+    syscallN(14557, obj, uintptr(value))
 }
 
 func ComboExItem_GetCollection(obj uintptr) uintptr {
-    return syscallN(14556, obj)
+    return syscallN(14558, obj)
 }
 
 func ComboExItem_SetCollection(obj uintptr, value uintptr) {
-    syscallN(14557, obj, value)
+    syscallN(14559, obj, value)
 }
 
 func ComboExItem_GetIndex(obj uintptr) int32 {
-    return int32(syscallN(14558, obj))
+    return int32(syscallN(14560, obj))
 }
 
 func ComboExItem_SetIndex(obj uintptr, value int32) {
-    syscallN(14559, obj, uintptr(value))
+    syscallN(14561, obj, uintptr(value))
 }
 
 func ComboExItem_GetDisplayName(obj uintptr) string {
-    return GoStr(syscallN(14560, obj))
+    return GoStr(syscallN(14562, obj))
 }
 
 func ComboExItem_SetDisplayName(obj uintptr, value string) {
-    syscallN(14561, obj, PascalStr(value))
+    syscallN(14563, obj, PascalStr(value))
 }
 
 func ComboExItem_StaticClassType() TClass {
-    return TClass(syscallN(14562))
+    return TClass(syscallN(14564))
 }
 
 //--------------------------- TFrame ---------------------------
 
 func Frame_Create(obj uintptr) uintptr {
-    return syscallN(14563, obj)
+    return syscallN(14565, obj)
 }
 
 func Frame_Free(obj uintptr) {
-    syscallN(14564, obj)
+    syscallN(14566, obj)
 }
 
 func Frame_ScrollInView(obj uintptr, AControl uintptr)  {
-    syscallN(14565, obj, AControl )
+    syscallN(14567, obj, AControl )
 }
 
 func Frame_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(14566, obj))
+    return GoBool(syscallN(14568, obj))
 }
 
 func Frame_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(14567, obj, Control ))
+    return GoBool(syscallN(14569, obj, Control ))
 }
 
 func Frame_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(14568, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(14570, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func Frame_DisableAlign(obj uintptr)  {
-    syscallN(14569, obj)
+    syscallN(14571, obj)
 }
 
 func Frame_EnableAlign(obj uintptr)  {
-    syscallN(14570, obj)
+    syscallN(14572, obj)
 }
 
 func Frame_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(14571, obj, PascalStr(ControlName) )
+    return syscallN(14573, obj, PascalStr(ControlName) )
 }
 
 func Frame_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(14572, obj, PascalBool(AllLevels) )
+    syscallN(14574, obj, PascalBool(AllLevels) )
 }
 
 func Frame_Focused(obj uintptr) bool {
-    return GoBool(syscallN(14573, obj))
+    return GoBool(syscallN(14575, obj))
 }
 
 func Frame_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(14574, obj))
+    return GoBool(syscallN(14576, obj))
 }
 
 func Frame_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(14575, obj, AControl )
+    syscallN(14577, obj, AControl )
 }
 
 func Frame_Invalidate(obj uintptr)  {
-    syscallN(14576, obj)
+    syscallN(14578, obj)
 }
 
 func Frame_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(14577, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(14579, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func Frame_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(14578, obj, AControl )
+    syscallN(14580, obj, AControl )
 }
 
 func Frame_Realign(obj uintptr)  {
-    syscallN(14579, obj)
+    syscallN(14581, obj)
 }
 
 func Frame_Repaint(obj uintptr)  {
-    syscallN(14580, obj)
+    syscallN(14582, obj)
 }
 
 func Frame_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(14581, obj, uintptr(M) , uintptr(D) )
+    syscallN(14583, obj, uintptr(M) , uintptr(D) )
 }
 
 func Frame_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(14582, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(14584, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func Frame_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(14583, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(14585, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func Frame_SetFocus(obj uintptr)  {
-    syscallN(14584, obj)
+    syscallN(14586, obj)
 }
 
 func Frame_Update(obj uintptr)  {
-    syscallN(14585, obj)
-}
-
-func Frame_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(14586, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func Frame_BringToFront(obj uintptr)  {
     syscallN(14587, obj)
 }
 
+func Frame_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(14588, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func Frame_BringToFront(obj uintptr)  {
+    syscallN(14589, obj)
+}
+
 func Frame_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(14588, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(14590, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Frame_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(14589, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(14591, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Frame_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(14590, obj))
-}
-
-func Frame_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(14591, obj, PascalBool(Drop) )
-}
-
-func Frame_HasParent(obj uintptr) bool {
     return GoBool(syscallN(14592, obj))
 }
 
+func Frame_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(14593, obj, PascalBool(Drop) )
+}
+
+func Frame_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(14594, obj))
+}
+
 func Frame_Hide(obj uintptr)  {
-    syscallN(14593, obj)
-}
-
-func Frame_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(14594, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func Frame_Refresh(obj uintptr)  {
     syscallN(14595, obj)
 }
 
+func Frame_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(14596, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func Frame_Refresh(obj uintptr)  {
+    syscallN(14597, obj)
+}
+
 func Frame_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(14596, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(14598, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Frame_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(14597, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(14599, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Frame_SendToBack(obj uintptr)  {
-    syscallN(14598, obj)
+    syscallN(14600, obj)
 }
 
 func Frame_Show(obj uintptr)  {
-    syscallN(14599, obj)
+    syscallN(14601, obj)
 }
 
 func Frame_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(14600, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(14602, obj, Buffer, uintptr(BufSize) ))
 }
 
 func Frame_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(14601, obj))
+    return int32(syscallN(14603, obj))
 }
 
 func Frame_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(14602, obj, PascalStr(Buffer) )
+    syscallN(14604, obj, PascalStr(Buffer) )
 }
 
 func Frame_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(14603, obj, PascalStr(AName) )
+    return syscallN(14605, obj, PascalStr(AName) )
 }
 
 func Frame_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14604, obj))
+    return GoStr(syscallN(14606, obj))
 }
 
 func Frame_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14605, obj, Source )
+    syscallN(14607, obj, Source )
 }
 
 func Frame_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14606, obj))
+    return TClass(syscallN(14608, obj))
 }
 
 func Frame_ClassName(obj uintptr) string {
-    return GoStr(syscallN(14607, obj))
+    return GoStr(syscallN(14609, obj))
 }
 
 func Frame_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14608, obj))
+    return int32(syscallN(14610, obj))
 }
 
 func Frame_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14609, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14611, obj, uintptr(AClass) ))
 }
 
 func Frame_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14610, obj, Obj ))
+    return GoBool(syscallN(14612, obj, Obj ))
 }
 
 func Frame_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14611, obj))
+    return int32(syscallN(14613, obj))
 }
 
 func Frame_ToString(obj uintptr) string {
-    return GoStr(syscallN(14612, obj))
+    return GoStr(syscallN(14614, obj))
 }
 
 func Frame_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(14613, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(14615, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func Frame_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(14614, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(14616, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func Frame_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(14615, obj, ASibling )
+    syscallN(14617, obj, ASibling )
 }
 
 func Frame_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(14616, obj, ASibling )
+    syscallN(14618, obj, ASibling )
 }
 
 func Frame_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(14617, obj, uintptr(ASide) , ASibling )
+    syscallN(14619, obj, uintptr(ASide) , ASibling )
 }
 
 func Frame_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(14618, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(14620, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func Frame_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(14619, obj, uintptr(ASpace) )
+    syscallN(14621, obj, uintptr(ASpace) )
 }
 
 func Frame_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(14620, obj, uintptr(ASize) ))
-}
-
-func Frame_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(14621, obj, uintptr(ASize) ))
-}
-
-func Frame_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14622, obj, uintptr(ASize) ))
 }
 
-func Frame_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func Frame_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14623, obj, uintptr(ASize) ))
 }
 
-func Frame_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func Frame_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14624, obj, uintptr(ASize) ))
 }
 
-func Frame_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func Frame_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14625, obj, uintptr(ASize) ))
 }
 
-func Frame_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func Frame_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14626, obj, uintptr(ASize) ))
 }
 
-func Frame_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func Frame_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14627, obj, uintptr(ASize) ))
 }
 
-func Frame_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func Frame_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14628, obj, uintptr(ASize) ))
 }
 
-func Frame_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func Frame_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14629, obj, uintptr(ASize) ))
 }
 
+func Frame_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(14630, obj, uintptr(ASize) ))
+}
+
+func Frame_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(14631, obj, uintptr(ASize) ))
+}
+
 func Frame_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(14630, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(14632, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func Frame_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(14631, obj, uintptr(ADesignTimePPI) )
+    syscallN(14633, obj, uintptr(ADesignTimePPI) )
 }
 
 func Frame_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(14632, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(14634, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func Frame_GetDesignTimePPI(obj uintptr) int32 {
-    return int32(syscallN(14633, obj))
+    return int32(syscallN(14635, obj))
 }
 
 func Frame_SetDesignTimePPI(obj uintptr, value int32) {
-    syscallN(14634, obj, uintptr(value))
-}
-
-func Frame_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(14635, obj))
-}
-
-func Frame_SetAlign(obj uintptr, value TAlign) {
     syscallN(14636, obj, uintptr(value))
 }
 
-func Frame_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(14637, obj))
+func Frame_GetAlign(obj uintptr) TAlign {
+    return TAlign(syscallN(14637, obj))
 }
 
-func Frame_SetAnchors(obj uintptr, value TAnchors) {
+func Frame_SetAlign(obj uintptr, value TAlign) {
     syscallN(14638, obj, uintptr(value))
 }
 
+func Frame_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(14639, obj))
+}
+
+func Frame_SetAnchors(obj uintptr, value TAnchors) {
+    syscallN(14640, obj, uintptr(value))
+}
+
 func Frame_GetAutoScroll(obj uintptr) bool {
-    return GoBool(syscallN(14639, obj))
-}
-
-func Frame_SetAutoScroll(obj uintptr, value bool) {
-    syscallN(14640, obj, PascalBool(value))
-}
-
-func Frame_GetAutoSize(obj uintptr) bool {
     return GoBool(syscallN(14641, obj))
 }
 
-func Frame_SetAutoSize(obj uintptr, value bool) {
+func Frame_SetAutoScroll(obj uintptr, value bool) {
     syscallN(14642, obj, PascalBool(value))
 }
 
+func Frame_GetAutoSize(obj uintptr) bool {
+    return GoBool(syscallN(14643, obj))
+}
+
+func Frame_SetAutoSize(obj uintptr, value bool) {
+    syscallN(14644, obj, PascalBool(value))
+}
+
 func Frame_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(14643, obj))
+    return TBiDiMode(syscallN(14645, obj))
 }
 
 func Frame_SetBiDiMode(obj uintptr, value TBiDiMode) {
-    syscallN(14644, obj, uintptr(value))
+    syscallN(14646, obj, uintptr(value))
 }
 
 func Frame_GetConstraints(obj uintptr) uintptr {
-    return syscallN(14645, obj)
+    return syscallN(14647, obj)
 }
 
 func Frame_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(14646, obj, value)
+    syscallN(14648, obj, value)
 }
 
 func Frame_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(14647, obj))
-}
-
-func Frame_SetDockSite(obj uintptr, value bool) {
-    syscallN(14648, obj, PascalBool(value))
-}
-
-func Frame_GetDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(14649, obj))
 }
 
-func Frame_SetDoubleBuffered(obj uintptr, value bool) {
+func Frame_SetDockSite(obj uintptr, value bool) {
     syscallN(14650, obj, PascalBool(value))
 }
 
+func Frame_GetDoubleBuffered(obj uintptr) bool {
+    return GoBool(syscallN(14651, obj))
+}
+
+func Frame_SetDoubleBuffered(obj uintptr, value bool) {
+    syscallN(14652, obj, PascalBool(value))
+}
+
 func Frame_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(14651, obj))
+    return TCursor(syscallN(14653, obj))
 }
 
 func Frame_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(14652, obj, uintptr(value))
-}
-
-func Frame_GetDragKind(obj uintptr) TDragKind {
-    return TDragKind(syscallN(14653, obj))
-}
-
-func Frame_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(14654, obj, uintptr(value))
 }
 
-func Frame_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(14655, obj))
+func Frame_GetDragKind(obj uintptr) TDragKind {
+    return TDragKind(syscallN(14655, obj))
 }
 
-func Frame_SetDragMode(obj uintptr, value TDragMode) {
+func Frame_SetDragKind(obj uintptr, value TDragKind) {
     syscallN(14656, obj, uintptr(value))
 }
 
+func Frame_GetDragMode(obj uintptr) TDragMode {
+    return TDragMode(syscallN(14657, obj))
+}
+
+func Frame_SetDragMode(obj uintptr, value TDragMode) {
+    syscallN(14658, obj, uintptr(value))
+}
+
 func Frame_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(14657, obj))
+    return GoBool(syscallN(14659, obj))
 }
 
 func Frame_SetEnabled(obj uintptr, value bool) {
-    syscallN(14658, obj, PascalBool(value))
+    syscallN(14660, obj, PascalBool(value))
 }
 
 func Frame_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(14659, obj))
+    return TColor(syscallN(14661, obj))
 }
 
 func Frame_SetColor(obj uintptr, value TColor) {
-    syscallN(14660, obj, uintptr(value))
+    syscallN(14662, obj, uintptr(value))
 }
 
 func Frame_GetFont(obj uintptr) uintptr {
-    return syscallN(14661, obj)
+    return syscallN(14663, obj)
 }
 
 func Frame_SetFont(obj uintptr, value uintptr) {
-    syscallN(14662, obj, value)
+    syscallN(14664, obj, value)
 }
 
 func Frame_GetParentBackground(obj uintptr) bool {
-    return GoBool(syscallN(14663, obj))
-}
-
-func Frame_SetParentBackground(obj uintptr, value bool) {
-    syscallN(14664, obj, PascalBool(value))
-}
-
-func Frame_GetParentColor(obj uintptr) bool {
     return GoBool(syscallN(14665, obj))
 }
 
-func Frame_SetParentColor(obj uintptr, value bool) {
+func Frame_SetParentBackground(obj uintptr, value bool) {
     syscallN(14666, obj, PascalBool(value))
 }
 
-func Frame_GetParentDoubleBuffered(obj uintptr) bool {
+func Frame_GetParentColor(obj uintptr) bool {
     return GoBool(syscallN(14667, obj))
 }
 
-func Frame_SetParentDoubleBuffered(obj uintptr, value bool) {
+func Frame_SetParentColor(obj uintptr, value bool) {
     syscallN(14668, obj, PascalBool(value))
 }
 
-func Frame_GetParentFont(obj uintptr) bool {
+func Frame_GetParentDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(14669, obj))
 }
 
-func Frame_SetParentFont(obj uintptr, value bool) {
+func Frame_SetParentDoubleBuffered(obj uintptr, value bool) {
     syscallN(14670, obj, PascalBool(value))
 }
 
-func Frame_GetParentShowHint(obj uintptr) bool {
+func Frame_GetParentFont(obj uintptr) bool {
     return GoBool(syscallN(14671, obj))
 }
 
-func Frame_SetParentShowHint(obj uintptr, value bool) {
+func Frame_SetParentFont(obj uintptr, value bool) {
     syscallN(14672, obj, PascalBool(value))
 }
 
+func Frame_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(14673, obj))
+}
+
+func Frame_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(14674, obj, PascalBool(value))
+}
+
 func Frame_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(14673, obj)
+    return syscallN(14675, obj)
 }
 
 func Frame_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(14674, obj, value)
+    syscallN(14676, obj, value)
 }
 
 func Frame_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(14675, obj))
+    return GoBool(syscallN(14677, obj))
 }
 
 func Frame_SetShowHint(obj uintptr, value bool) {
-    syscallN(14676, obj, PascalBool(value))
+    syscallN(14678, obj, PascalBool(value))
 }
 
 func Frame_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(14677, obj))
+    return TTabOrder(syscallN(14679, obj))
 }
 
 func Frame_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(14678, obj, uintptr(value))
+    syscallN(14680, obj, uintptr(value))
 }
 
 func Frame_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(14679, obj))
-}
-
-func Frame_SetTabStop(obj uintptr, value bool) {
-    syscallN(14680, obj, PascalBool(value))
-}
-
-func Frame_GetVisible(obj uintptr) bool {
     return GoBool(syscallN(14681, obj))
 }
 
-func Frame_SetVisible(obj uintptr, value bool) {
+func Frame_SetTabStop(obj uintptr, value bool) {
     syscallN(14682, obj, PascalBool(value))
 }
 
+func Frame_GetVisible(obj uintptr) bool {
+    return GoBool(syscallN(14683, obj))
+}
+
+func Frame_SetVisible(obj uintptr, value bool) {
+    syscallN(14684, obj, PascalBool(value))
+}
+
 func Frame_SetOnAlignPosition(obj uintptr, fn interface{}) {
-    syscallN(14683, obj, MakeEventDataPtr(fn))
-}
-
-func Frame_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(14684, obj, MakeEventDataPtr(fn))
-}
-
-func Frame_SetOnConstrainedResize(obj uintptr, fn interface{}) {
     syscallN(14685, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnContextPopup(obj uintptr, fn interface{}) {
+func Frame_SetOnClick(obj uintptr, fn interface{}) {
     syscallN(14686, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnDblClick(obj uintptr, fn interface{}) {
+func Frame_SetOnConstrainedResize(obj uintptr, fn interface{}) {
     syscallN(14687, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnDockDrop(obj uintptr, fn interface{}) {
+func Frame_SetOnContextPopup(obj uintptr, fn interface{}) {
     syscallN(14688, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnDragDrop(obj uintptr, fn interface{}) {
+func Frame_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(14689, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnDragOver(obj uintptr, fn interface{}) {
+func Frame_SetOnDockDrop(obj uintptr, fn interface{}) {
     syscallN(14690, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnEndDock(obj uintptr, fn interface{}) {
+func Frame_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(14691, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnEndDrag(obj uintptr, fn interface{}) {
+func Frame_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(14692, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnEnter(obj uintptr, fn interface{}) {
+func Frame_SetOnEndDock(obj uintptr, fn interface{}) {
     syscallN(14693, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnExit(obj uintptr, fn interface{}) {
+func Frame_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(14694, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+func Frame_SetOnEnter(obj uintptr, fn interface{}) {
     syscallN(14695, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnMouseDown(obj uintptr, fn interface{}) {
+func Frame_SetOnExit(obj uintptr, fn interface{}) {
     syscallN(14696, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func Frame_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     syscallN(14697, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func Frame_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(14698, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnMouseMove(obj uintptr, fn interface{}) {
+func Frame_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(14699, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnMouseUp(obj uintptr, fn interface{}) {
+func Frame_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(14700, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnMouseWheel(obj uintptr, fn interface{}) {
+func Frame_SetOnMouseMove(obj uintptr, fn interface{}) {
     syscallN(14701, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+func Frame_SetOnMouseUp(obj uintptr, fn interface{}) {
     syscallN(14702, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+func Frame_SetOnMouseWheel(obj uintptr, fn interface{}) {
     syscallN(14703, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnResize(obj uintptr, fn interface{}) {
+func Frame_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
     syscallN(14704, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnStartDock(obj uintptr, fn interface{}) {
+func Frame_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
     syscallN(14705, obj, MakeEventDataPtr(fn))
 }
 
-func Frame_SetOnUnDock(obj uintptr, fn interface{}) {
+func Frame_SetOnResize(obj uintptr, fn interface{}) {
     syscallN(14706, obj, MakeEventDataPtr(fn))
 }
 
+func Frame_SetOnStartDock(obj uintptr, fn interface{}) {
+    syscallN(14707, obj, MakeEventDataPtr(fn))
+}
+
+func Frame_SetOnUnDock(obj uintptr, fn interface{}) {
+    syscallN(14708, obj, MakeEventDataPtr(fn))
+}
+
 func Frame_GetHorzScrollBar(obj uintptr) uintptr {
-    return syscallN(14707, obj)
-}
-
-func Frame_SetHorzScrollBar(obj uintptr, value uintptr) {
-    syscallN(14708, obj, value)
-}
-
-func Frame_GetVertScrollBar(obj uintptr) uintptr {
     return syscallN(14709, obj)
 }
 
-func Frame_SetVertScrollBar(obj uintptr, value uintptr) {
+func Frame_SetHorzScrollBar(obj uintptr, value uintptr) {
     syscallN(14710, obj, value)
 }
 
+func Frame_GetVertScrollBar(obj uintptr) uintptr {
+    return syscallN(14711, obj)
+}
+
+func Frame_SetVertScrollBar(obj uintptr, value uintptr) {
+    syscallN(14712, obj, value)
+}
+
 func Frame_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(14711, obj))
-}
-
-func Frame_GetMouseInClient(obj uintptr) bool {
-    return GoBool(syscallN(14712, obj))
-}
-
-func Frame_GetVisibleDockClientCount(obj uintptr) int32 {
     return int32(syscallN(14713, obj))
 }
 
-func Frame_GetBrush(obj uintptr) uintptr {
-    return syscallN(14714, obj)
+func Frame_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(14714, obj))
 }
 
-func Frame_GetControlCount(obj uintptr) int32 {
+func Frame_GetVisibleDockClientCount(obj uintptr) int32 {
     return int32(syscallN(14715, obj))
 }
 
+func Frame_GetBrush(obj uintptr) uintptr {
+    return syscallN(14716, obj)
+}
+
+func Frame_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(14717, obj))
+}
+
 func Frame_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(14716, obj))
+    return HWND(syscallN(14718, obj))
 }
 
 func Frame_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(14717, obj))
+    return HWND(syscallN(14719, obj))
 }
 
 func Frame_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(14718, obj, uintptr(value))
+    syscallN(14720, obj, uintptr(value))
 }
 
 func Frame_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(14719, obj))
+    return GoBool(syscallN(14721, obj))
 }
 
 func Frame_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(14720, obj))
+    return GoBool(syscallN(14722, obj))
 }
 
 func Frame_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(14721, obj, PascalBool(value))
+    syscallN(14723, obj, PascalBool(value))
 }
 
 func Frame_GetAction(obj uintptr) uintptr {
-    return syscallN(14722, obj)
+    return syscallN(14724, obj)
 }
 
 func Frame_SetAction(obj uintptr, value uintptr) {
-    syscallN(14723, obj, value)
+    syscallN(14725, obj, value)
 }
 
 func Frame_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(14724, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(14726, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Frame_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(14725, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(14727, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func Frame_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(14726, obj))
+    return int32(syscallN(14728, obj))
 }
 
 func Frame_SetClientHeight(obj uintptr, value int32) {
-    syscallN(14727, obj, uintptr(value))
+    syscallN(14729, obj, uintptr(value))
 }
 
 func Frame_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(14728, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(14730, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Frame_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(14729, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(14731, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Frame_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(14730, obj))
+    return int32(syscallN(14732, obj))
 }
 
 func Frame_SetClientWidth(obj uintptr, value int32) {
-    syscallN(14731, obj, uintptr(value))
-}
-
-func Frame_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(14732, obj))
-}
-
-func Frame_SetControlState(obj uintptr, value TControlState) {
     syscallN(14733, obj, uintptr(value))
 }
 
-func Frame_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(14734, obj))
+func Frame_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(14734, obj))
 }
 
-func Frame_SetControlStyle(obj uintptr, value TControlStyle) {
+func Frame_SetControlState(obj uintptr, value TControlState) {
     syscallN(14735, obj, uintptr(value))
 }
 
+func Frame_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(14736, obj))
+}
+
+func Frame_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(14737, obj, uintptr(value))
+}
+
 func Frame_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(14736, obj))
+    return GoBool(syscallN(14738, obj))
 }
 
 func Frame_GetParent(obj uintptr) uintptr {
-    return syscallN(14737, obj)
+    return syscallN(14739, obj)
 }
 
 func Frame_SetParent(obj uintptr, value uintptr) {
-    syscallN(14738, obj, value)
+    syscallN(14740, obj, value)
 }
 
 func Frame_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(14739, obj))
-}
-
-func Frame_SetLeft(obj uintptr, value int32) {
-    syscallN(14740, obj, uintptr(value))
-}
-
-func Frame_GetTop(obj uintptr) int32 {
     return int32(syscallN(14741, obj))
 }
 
-func Frame_SetTop(obj uintptr, value int32) {
+func Frame_SetLeft(obj uintptr, value int32) {
     syscallN(14742, obj, uintptr(value))
 }
 
-func Frame_GetWidth(obj uintptr) int32 {
+func Frame_GetTop(obj uintptr) int32 {
     return int32(syscallN(14743, obj))
 }
 
-func Frame_SetWidth(obj uintptr, value int32) {
+func Frame_SetTop(obj uintptr, value int32) {
     syscallN(14744, obj, uintptr(value))
 }
 
-func Frame_GetHeight(obj uintptr) int32 {
+func Frame_GetWidth(obj uintptr) int32 {
     return int32(syscallN(14745, obj))
 }
 
-func Frame_SetHeight(obj uintptr, value int32) {
+func Frame_SetWidth(obj uintptr, value int32) {
     syscallN(14746, obj, uintptr(value))
 }
 
-func Frame_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(14747, obj))
+func Frame_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(14747, obj))
 }
 
-func Frame_SetCursor(obj uintptr, value TCursor) {
+func Frame_SetHeight(obj uintptr, value int32) {
     syscallN(14748, obj, uintptr(value))
 }
 
+func Frame_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(14749, obj))
+}
+
+func Frame_SetCursor(obj uintptr, value TCursor) {
+    syscallN(14750, obj, uintptr(value))
+}
+
 func Frame_GetHint(obj uintptr) string {
-    return GoStr(syscallN(14749, obj))
+    return GoStr(syscallN(14751, obj))
 }
 
 func Frame_SetHint(obj uintptr, value string) {
-    syscallN(14750, obj, PascalStr(value))
+    syscallN(14752, obj, PascalStr(value))
 }
 
 func Frame_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(14751, obj))
+    return int32(syscallN(14753, obj))
 }
 
 func Frame_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(14752, obj))
+    return int32(syscallN(14754, obj))
 }
 
 func Frame_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(14753, obj, uintptr(value))
+    syscallN(14755, obj, uintptr(value))
 }
 
 func Frame_GetOwner(obj uintptr) uintptr {
-    return syscallN(14754, obj)
+    return syscallN(14756, obj)
 }
 
 func Frame_GetName(obj uintptr) string {
-    return GoStr(syscallN(14755, obj))
+    return GoStr(syscallN(14757, obj))
 }
 
 func Frame_SetName(obj uintptr, value string) {
-    syscallN(14756, obj, PascalStr(value))
+    syscallN(14758, obj, PascalStr(value))
 }
 
 func Frame_GetTag(obj uintptr) int {
-    return int(syscallN(14757, obj))
+    return int(syscallN(14759, obj))
 }
 
 func Frame_SetTag(obj uintptr, value int) {
-    syscallN(14758, obj, uintptr(value))
+    syscallN(14760, obj, uintptr(value))
 }
 
 func Frame_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(14759, obj)
-}
-
-func Frame_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(14760, obj, value)
-}
-
-func Frame_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(14761, obj)
 }
 
-func Frame_SetAnchorSideTop(obj uintptr, value uintptr) {
+func Frame_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(14762, obj, value)
 }
 
-func Frame_GetAnchorSideRight(obj uintptr) uintptr {
+func Frame_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(14763, obj)
 }
 
-func Frame_SetAnchorSideRight(obj uintptr, value uintptr) {
+func Frame_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(14764, obj, value)
 }
 
-func Frame_GetAnchorSideBottom(obj uintptr) uintptr {
+func Frame_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(14765, obj)
 }
 
-func Frame_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func Frame_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(14766, obj, value)
 }
 
-func Frame_GetChildSizing(obj uintptr) uintptr {
+func Frame_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(14767, obj)
 }
 
-func Frame_SetChildSizing(obj uintptr, value uintptr) {
+func Frame_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(14768, obj, value)
 }
 
-func Frame_GetBorderSpacing(obj uintptr) uintptr {
+func Frame_GetChildSizing(obj uintptr) uintptr {
     return syscallN(14769, obj)
 }
 
-func Frame_SetBorderSpacing(obj uintptr, value uintptr) {
+func Frame_SetChildSizing(obj uintptr, value uintptr) {
     syscallN(14770, obj, value)
 }
 
+func Frame_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(14771, obj)
+}
+
+func Frame_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(14772, obj, value)
+}
+
 func Frame_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(14771, obj, uintptr(Index))
+    return syscallN(14773, obj, uintptr(Index))
 }
 
 func Frame_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(14772, obj, uintptr(Index))
+    return syscallN(14774, obj, uintptr(Index))
 }
 
 func Frame_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(14773, obj, uintptr(AIndex))
+    return syscallN(14775, obj, uintptr(AIndex))
 }
 
 func Frame_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(14774, obj, uintptr(AKind))
+    return syscallN(14776, obj, uintptr(AKind))
 }
 
 func Frame_StaticClassType() TClass {
-    return TClass(syscallN(14775))
+    return TClass(syscallN(14777))
 }
 
 //--------------------------- TControlScrollBar ---------------------------
 
 func ControlScrollBar_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14776, obj, Source )
+    syscallN(14778, obj, Source )
 }
 
 func ControlScrollBar_IsScrollBarVisible(obj uintptr) bool {
-    return GoBool(syscallN(14777, obj))
+    return GoBool(syscallN(14779, obj))
 }
 
 func ControlScrollBar_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14778, obj))
-}
-
-func ControlScrollBar_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14779, obj))
-}
-
-func ControlScrollBar_ClassName(obj uintptr) string {
     return GoStr(syscallN(14780, obj))
 }
 
+func ControlScrollBar_ClassType(obj uintptr) TClass {
+    return TClass(syscallN(14781, obj))
+}
+
+func ControlScrollBar_ClassName(obj uintptr) string {
+    return GoStr(syscallN(14782, obj))
+}
+
 func ControlScrollBar_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14781, obj))
+    return int32(syscallN(14783, obj))
 }
 
 func ControlScrollBar_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14782, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14784, obj, uintptr(AClass) ))
 }
 
 func ControlScrollBar_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14783, obj, Obj ))
+    return GoBool(syscallN(14785, obj, Obj ))
 }
 
 func ControlScrollBar_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14784, obj))
+    return int32(syscallN(14786, obj))
 }
 
 func ControlScrollBar_ToString(obj uintptr) string {
-    return GoStr(syscallN(14785, obj))
+    return GoStr(syscallN(14787, obj))
 }
 
 func ControlScrollBar_GetKind(obj uintptr) TScrollBarKind {
-    return TScrollBarKind(syscallN(14786, obj))
+    return TScrollBarKind(syscallN(14788, obj))
 }
 
 func ControlScrollBar_GetScrollPos(obj uintptr) int32 {
-    return int32(syscallN(14787, obj))
+    return int32(syscallN(14789, obj))
 }
 
 func ControlScrollBar_GetIncrement(obj uintptr) TScrollBarInc {
-    return TScrollBarInc(syscallN(14788, obj))
+    return TScrollBarInc(syscallN(14790, obj))
 }
 
 func ControlScrollBar_SetIncrement(obj uintptr, value TScrollBarInc) {
-    syscallN(14789, obj, uintptr(value))
-}
-
-func ControlScrollBar_GetPosition(obj uintptr) int32 {
-    return int32(syscallN(14790, obj))
-}
-
-func ControlScrollBar_SetPosition(obj uintptr, value int32) {
     syscallN(14791, obj, uintptr(value))
 }
 
-func ControlScrollBar_GetRange(obj uintptr) int32 {
+func ControlScrollBar_GetPosition(obj uintptr) int32 {
     return int32(syscallN(14792, obj))
 }
 
-func ControlScrollBar_SetRange(obj uintptr, value int32) {
+func ControlScrollBar_SetPosition(obj uintptr, value int32) {
     syscallN(14793, obj, uintptr(value))
 }
 
+func ControlScrollBar_GetRange(obj uintptr) int32 {
+    return int32(syscallN(14794, obj))
+}
+
+func ControlScrollBar_SetRange(obj uintptr, value int32) {
+    syscallN(14795, obj, uintptr(value))
+}
+
 func ControlScrollBar_GetSmooth(obj uintptr) bool {
-    return GoBool(syscallN(14794, obj))
-}
-
-func ControlScrollBar_SetSmooth(obj uintptr, value bool) {
-    syscallN(14795, obj, PascalBool(value))
-}
-
-func ControlScrollBar_GetTracking(obj uintptr) bool {
     return GoBool(syscallN(14796, obj))
 }
 
-func ControlScrollBar_SetTracking(obj uintptr, value bool) {
+func ControlScrollBar_SetSmooth(obj uintptr, value bool) {
     syscallN(14797, obj, PascalBool(value))
 }
 
-func ControlScrollBar_GetVisible(obj uintptr) bool {
+func ControlScrollBar_GetTracking(obj uintptr) bool {
     return GoBool(syscallN(14798, obj))
 }
 
-func ControlScrollBar_SetVisible(obj uintptr, value bool) {
+func ControlScrollBar_SetTracking(obj uintptr, value bool) {
     syscallN(14799, obj, PascalBool(value))
 }
 
+func ControlScrollBar_GetVisible(obj uintptr) bool {
+    return GoBool(syscallN(14800, obj))
+}
+
+func ControlScrollBar_SetVisible(obj uintptr, value bool) {
+    syscallN(14801, obj, PascalBool(value))
+}
+
 func ControlScrollBar_StaticClassType() TClass {
-    return TClass(syscallN(14800))
+    return TClass(syscallN(14802))
 }
 
 //--------------------------- TSizeConstraints ---------------------------
 
 func SizeConstraints_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14801, obj, Source )
+    syscallN(14803, obj, Source )
 }
 
 func SizeConstraints_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14802, obj))
-}
-
-func SizeConstraints_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14803, obj))
-}
-
-func SizeConstraints_ClassName(obj uintptr) string {
     return GoStr(syscallN(14804, obj))
 }
 
+func SizeConstraints_ClassType(obj uintptr) TClass {
+    return TClass(syscallN(14805, obj))
+}
+
+func SizeConstraints_ClassName(obj uintptr) string {
+    return GoStr(syscallN(14806, obj))
+}
+
 func SizeConstraints_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14805, obj))
+    return int32(syscallN(14807, obj))
 }
 
 func SizeConstraints_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14806, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14808, obj, uintptr(AClass) ))
 }
 
 func SizeConstraints_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14807, obj, Obj ))
+    return GoBool(syscallN(14809, obj, Obj ))
 }
 
 func SizeConstraints_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14808, obj))
+    return int32(syscallN(14810, obj))
 }
 
 func SizeConstraints_ToString(obj uintptr) string {
-    return GoStr(syscallN(14809, obj))
+    return GoStr(syscallN(14811, obj))
 }
 
 func SizeConstraints_SetOnChange(obj uintptr, fn interface{}) {
-    syscallN(14810, obj, MakeEventDataPtr(fn))
+    syscallN(14812, obj, MakeEventDataPtr(fn))
 }
 
 func SizeConstraints_GetMaxHeight(obj uintptr) TConstraintSize {
-    return TConstraintSize(syscallN(14811, obj))
-}
-
-func SizeConstraints_SetMaxHeight(obj uintptr, value TConstraintSize) {
-    syscallN(14812, obj, uintptr(value))
-}
-
-func SizeConstraints_GetMaxWidth(obj uintptr) TConstraintSize {
     return TConstraintSize(syscallN(14813, obj))
 }
 
-func SizeConstraints_SetMaxWidth(obj uintptr, value TConstraintSize) {
+func SizeConstraints_SetMaxHeight(obj uintptr, value TConstraintSize) {
     syscallN(14814, obj, uintptr(value))
 }
 
-func SizeConstraints_GetMinHeight(obj uintptr) TConstraintSize {
+func SizeConstraints_GetMaxWidth(obj uintptr) TConstraintSize {
     return TConstraintSize(syscallN(14815, obj))
 }
 
-func SizeConstraints_SetMinHeight(obj uintptr, value TConstraintSize) {
+func SizeConstraints_SetMaxWidth(obj uintptr, value TConstraintSize) {
     syscallN(14816, obj, uintptr(value))
 }
 
-func SizeConstraints_GetMinWidth(obj uintptr) TConstraintSize {
+func SizeConstraints_GetMinHeight(obj uintptr) TConstraintSize {
     return TConstraintSize(syscallN(14817, obj))
 }
 
-func SizeConstraints_SetMinWidth(obj uintptr, value TConstraintSize) {
+func SizeConstraints_SetMinHeight(obj uintptr, value TConstraintSize) {
     syscallN(14818, obj, uintptr(value))
 }
 
+func SizeConstraints_GetMinWidth(obj uintptr) TConstraintSize {
+    return TConstraintSize(syscallN(14819, obj))
+}
+
+func SizeConstraints_SetMinWidth(obj uintptr, value TConstraintSize) {
+    syscallN(14820, obj, uintptr(value))
+}
+
 func SizeConstraints_StaticClassType() TClass {
-    return TClass(syscallN(14819))
+    return TClass(syscallN(14821))
 }
 
 //--------------------------- TXButton ---------------------------
 
 func XButton_Create(obj uintptr) uintptr {
-    return syscallN(14820, obj)
+    return syscallN(14822, obj)
 }
 
 func XButton_Free(obj uintptr) {
-    syscallN(14821, obj)
-}
-
-func XButton_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(14822, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func XButton_BringToFront(obj uintptr)  {
     syscallN(14823, obj)
 }
 
+func XButton_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(14824, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func XButton_BringToFront(obj uintptr)  {
+    syscallN(14825, obj)
+}
+
 func XButton_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(14824, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(14826, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func XButton_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(14825, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(14827, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func XButton_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(14826, obj))
-}
-
-func XButton_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(14827, obj, PascalBool(Drop) )
-}
-
-func XButton_HasParent(obj uintptr) bool {
     return GoBool(syscallN(14828, obj))
 }
 
+func XButton_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(14829, obj, PascalBool(Drop) )
+}
+
+func XButton_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(14830, obj))
+}
+
 func XButton_Hide(obj uintptr)  {
-    syscallN(14829, obj)
+    syscallN(14831, obj)
 }
 
 func XButton_Invalidate(obj uintptr)  {
-    syscallN(14830, obj)
-}
-
-func XButton_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(14831, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func XButton_Refresh(obj uintptr)  {
     syscallN(14832, obj)
 }
 
+func XButton_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(14833, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func XButton_Refresh(obj uintptr)  {
+    syscallN(14834, obj)
+}
+
 func XButton_Repaint(obj uintptr)  {
-    syscallN(14833, obj)
+    syscallN(14835, obj)
 }
 
 func XButton_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(14834, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(14836, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func XButton_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(14835, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(14837, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func XButton_SendToBack(obj uintptr)  {
-    syscallN(14836, obj)
-}
-
-func XButton_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(14837, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
-}
-
-func XButton_Show(obj uintptr)  {
     syscallN(14838, obj)
 }
 
+func XButton_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    syscallN(14839, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func XButton_Show(obj uintptr)  {
+    syscallN(14840, obj)
+}
+
 func XButton_Update(obj uintptr)  {
-    syscallN(14839, obj)
+    syscallN(14841, obj)
 }
 
 func XButton_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(14840, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(14842, obj, Buffer, uintptr(BufSize) ))
 }
 
 func XButton_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(14841, obj))
+    return int32(syscallN(14843, obj))
 }
 
 func XButton_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(14842, obj, PascalStr(Buffer) )
+    syscallN(14844, obj, PascalStr(Buffer) )
 }
 
 func XButton_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(14843, obj, PascalStr(AName) )
+    return syscallN(14845, obj, PascalStr(AName) )
 }
 
 func XButton_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(14844, obj))
+    return GoStr(syscallN(14846, obj))
 }
 
 func XButton_Assign(obj uintptr, Source uintptr)  {
-    syscallN(14845, obj, Source )
+    syscallN(14847, obj, Source )
 }
 
 func XButton_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(14846, obj))
+    return TClass(syscallN(14848, obj))
 }
 
 func XButton_ClassName(obj uintptr) string {
-    return GoStr(syscallN(14847, obj))
+    return GoStr(syscallN(14849, obj))
 }
 
 func XButton_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(14848, obj))
+    return int32(syscallN(14850, obj))
 }
 
 func XButton_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(14849, obj, uintptr(AClass) ))
+    return GoBool(syscallN(14851, obj, uintptr(AClass) ))
 }
 
 func XButton_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(14850, obj, Obj ))
+    return GoBool(syscallN(14852, obj, Obj ))
 }
 
 func XButton_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(14851, obj))
+    return int32(syscallN(14853, obj))
 }
 
 func XButton_ToString(obj uintptr) string {
-    return GoStr(syscallN(14852, obj))
+    return GoStr(syscallN(14854, obj))
 }
 
 func XButton_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(14853, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(14855, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func XButton_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(14854, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(14856, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func XButton_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(14855, obj, ASibling )
+    syscallN(14857, obj, ASibling )
 }
 
 func XButton_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(14856, obj, ASibling )
+    syscallN(14858, obj, ASibling )
 }
 
 func XButton_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(14857, obj, uintptr(ASide) , ASibling )
+    syscallN(14859, obj, uintptr(ASide) , ASibling )
 }
 
 func XButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(14858, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(14860, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func XButton_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(14859, obj, uintptr(ASpace) )
+    syscallN(14861, obj, uintptr(ASpace) )
 }
 
 func XButton_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(14860, obj, uintptr(ASize) ))
-}
-
-func XButton_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(14861, obj, uintptr(ASize) ))
-}
-
-func XButton_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14862, obj, uintptr(ASize) ))
 }
 
-func XButton_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func XButton_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14863, obj, uintptr(ASize) ))
 }
 
-func XButton_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func XButton_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14864, obj, uintptr(ASize) ))
 }
 
-func XButton_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func XButton_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14865, obj, uintptr(ASize) ))
 }
 
-func XButton_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func XButton_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14866, obj, uintptr(ASize) ))
 }
 
-func XButton_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func XButton_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14867, obj, uintptr(ASize) ))
 }
 
-func XButton_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func XButton_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14868, obj, uintptr(ASize) ))
 }
 
-func XButton_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func XButton_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(14869, obj, uintptr(ASize) ))
 }
 
+func XButton_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(14870, obj, uintptr(ASize) ))
+}
+
+func XButton_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(14871, obj, uintptr(ASize) ))
+}
+
 func XButton_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(14870, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(14872, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func XButton_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(14871, obj, uintptr(ADesignTimePPI) )
+    syscallN(14873, obj, uintptr(ADesignTimePPI) )
 }
 
 func XButton_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(14872, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(14874, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func XButton_GetCaption(obj uintptr) string {
-    return GoStr(syscallN(14873, obj))
+    return GoStr(syscallN(14875, obj))
 }
 
 func XButton_SetCaption(obj uintptr, value string) {
-    syscallN(14874, obj, PascalStr(value))
+    syscallN(14876, obj, PascalStr(value))
 }
 
 func XButton_GetShowCaption(obj uintptr) bool {
-    return GoBool(syscallN(14875, obj))
+    return GoBool(syscallN(14877, obj))
 }
 
 func XButton_SetShowCaption(obj uintptr, value bool) {
-    syscallN(14876, obj, PascalBool(value))
+    syscallN(14878, obj, PascalBool(value))
 }
 
 func XButton_GetBackColor(obj uintptr) TColor {
-    return TColor(syscallN(14877, obj))
-}
-
-func XButton_SetBackColor(obj uintptr, value TColor) {
-    syscallN(14878, obj, uintptr(value))
-}
-
-func XButton_GetHoverColor(obj uintptr) TColor {
     return TColor(syscallN(14879, obj))
 }
 
-func XButton_SetHoverColor(obj uintptr, value TColor) {
+func XButton_SetBackColor(obj uintptr, value TColor) {
     syscallN(14880, obj, uintptr(value))
 }
 
-func XButton_GetDownColor(obj uintptr) TColor {
+func XButton_GetHoverColor(obj uintptr) TColor {
     return TColor(syscallN(14881, obj))
 }
 
-func XButton_SetDownColor(obj uintptr, value TColor) {
+func XButton_SetHoverColor(obj uintptr, value TColor) {
     syscallN(14882, obj, uintptr(value))
 }
 
-func XButton_GetBorderWidth(obj uintptr) int32 {
-    return int32(syscallN(14883, obj))
+func XButton_GetDownColor(obj uintptr) TColor {
+    return TColor(syscallN(14883, obj))
 }
 
-func XButton_SetBorderWidth(obj uintptr, value int32) {
+func XButton_SetDownColor(obj uintptr, value TColor) {
     syscallN(14884, obj, uintptr(value))
 }
 
-func XButton_GetBorderColor(obj uintptr) TColor {
-    return TColor(syscallN(14885, obj))
+func XButton_GetBorderWidth(obj uintptr) int32 {
+    return int32(syscallN(14885, obj))
 }
 
-func XButton_SetBorderColor(obj uintptr, value TColor) {
+func XButton_SetBorderWidth(obj uintptr, value int32) {
     syscallN(14886, obj, uintptr(value))
 }
 
+func XButton_GetBorderColor(obj uintptr) TColor {
+    return TColor(syscallN(14887, obj))
+}
+
+func XButton_SetBorderColor(obj uintptr, value TColor) {
+    syscallN(14888, obj, uintptr(value))
+}
+
 func XButton_GetPicture(obj uintptr) uintptr {
-    return syscallN(14887, obj)
+    return syscallN(14889, obj)
 }
 
 func XButton_SetPicture(obj uintptr, value uintptr) {
-    syscallN(14888, obj, value)
+    syscallN(14890, obj, value)
 }
 
 func XButton_GetDrawMode(obj uintptr) TDrawImageMode {
-    return TDrawImageMode(syscallN(14889, obj))
+    return TDrawImageMode(syscallN(14891, obj))
 }
 
 func XButton_SetDrawMode(obj uintptr, value TDrawImageMode) {
-    syscallN(14890, obj, uintptr(value))
-}
-
-func XButton_GetNormalFontColor(obj uintptr) TColor {
-    return TColor(syscallN(14891, obj))
-}
-
-func XButton_SetNormalFontColor(obj uintptr, value TColor) {
     syscallN(14892, obj, uintptr(value))
 }
 
-func XButton_GetDownFontColor(obj uintptr) TColor {
+func XButton_GetNormalFontColor(obj uintptr) TColor {
     return TColor(syscallN(14893, obj))
 }
 
-func XButton_SetDownFontColor(obj uintptr, value TColor) {
+func XButton_SetNormalFontColor(obj uintptr, value TColor) {
     syscallN(14894, obj, uintptr(value))
 }
 
-func XButton_GetHoverFontColor(obj uintptr) TColor {
+func XButton_GetDownFontColor(obj uintptr) TColor {
     return TColor(syscallN(14895, obj))
 }
 
-func XButton_SetHoverFontColor(obj uintptr, value TColor) {
+func XButton_SetDownFontColor(obj uintptr, value TColor) {
     syscallN(14896, obj, uintptr(value))
 }
 
+func XButton_GetHoverFontColor(obj uintptr) TColor {
+    return TColor(syscallN(14897, obj))
+}
+
+func XButton_SetHoverFontColor(obj uintptr, value TColor) {
+    syscallN(14898, obj, uintptr(value))
+}
+
 func XButton_GetAction(obj uintptr) uintptr {
-    return syscallN(14897, obj)
+    return syscallN(14899, obj)
 }
 
 func XButton_SetAction(obj uintptr, value uintptr) {
-    syscallN(14898, obj, value)
+    syscallN(14900, obj, value)
 }
 
 func XButton_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(14899, obj))
+    return TAlign(syscallN(14901, obj))
 }
 
 func XButton_SetAlign(obj uintptr, value TAlign) {
-    syscallN(14900, obj, uintptr(value))
-}
-
-func XButton_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(14901, obj))
-}
-
-func XButton_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(14902, obj, uintptr(value))
 }
 
-func XButton_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(14903, obj))
+func XButton_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(14903, obj))
 }
 
-func XButton_SetBiDiMode(obj uintptr, value TBiDiMode) {
+func XButton_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(14904, obj, uintptr(value))
 }
 
+func XButton_GetBiDiMode(obj uintptr) TBiDiMode {
+    return TBiDiMode(syscallN(14905, obj))
+}
+
+func XButton_SetBiDiMode(obj uintptr, value TBiDiMode) {
+    syscallN(14906, obj, uintptr(value))
+}
+
 func XButton_GetConstraints(obj uintptr) uintptr {
-    return syscallN(14905, obj)
+    return syscallN(14907, obj)
 }
 
 func XButton_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(14906, obj, value)
+    syscallN(14908, obj, value)
 }
 
 func XButton_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(14907, obj))
+    return GoBool(syscallN(14909, obj))
 }
 
 func XButton_SetEnabled(obj uintptr, value bool) {
-    syscallN(14908, obj, PascalBool(value))
+    syscallN(14910, obj, PascalBool(value))
 }
 
 func XButton_GetFont(obj uintptr) uintptr {
-    return syscallN(14909, obj)
+    return syscallN(14911, obj)
 }
 
 func XButton_SetFont(obj uintptr, value uintptr) {
-    syscallN(14910, obj, value)
+    syscallN(14912, obj, value)
 }
 
 func XButton_GetParentFont(obj uintptr) bool {
-    return GoBool(syscallN(14911, obj))
-}
-
-func XButton_SetParentFont(obj uintptr, value bool) {
-    syscallN(14912, obj, PascalBool(value))
-}
-
-func XButton_GetParentShowHint(obj uintptr) bool {
     return GoBool(syscallN(14913, obj))
 }
 
-func XButton_SetParentShowHint(obj uintptr, value bool) {
+func XButton_SetParentFont(obj uintptr, value bool) {
     syscallN(14914, obj, PascalBool(value))
 }
 
+func XButton_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(14915, obj))
+}
+
+func XButton_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(14916, obj, PascalBool(value))
+}
+
 func XButton_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(14915, obj)
+    return syscallN(14917, obj)
 }
 
 func XButton_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(14916, obj, value)
+    syscallN(14918, obj, value)
 }
 
 func XButton_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(14917, obj))
-}
-
-func XButton_SetShowHint(obj uintptr, value bool) {
-    syscallN(14918, obj, PascalBool(value))
-}
-
-func XButton_GetVisible(obj uintptr) bool {
     return GoBool(syscallN(14919, obj))
 }
 
-func XButton_SetVisible(obj uintptr, value bool) {
+func XButton_SetShowHint(obj uintptr, value bool) {
     syscallN(14920, obj, PascalBool(value))
 }
 
+func XButton_GetVisible(obj uintptr) bool {
+    return GoBool(syscallN(14921, obj))
+}
+
+func XButton_SetVisible(obj uintptr, value bool) {
+    syscallN(14922, obj, PascalBool(value))
+}
+
 func XButton_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(14921, obj, MakeEventDataPtr(fn))
-}
-
-func XButton_SetOnDblClick(obj uintptr, fn interface{}) {
-    syscallN(14922, obj, MakeEventDataPtr(fn))
-}
-
-func XButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(14923, obj, MakeEventDataPtr(fn))
 }
 
-func XButton_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func XButton_SetOnDblClick(obj uintptr, fn interface{}) {
     syscallN(14924, obj, MakeEventDataPtr(fn))
 }
 
-func XButton_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func XButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(14925, obj, MakeEventDataPtr(fn))
 }
 
-func XButton_SetOnMouseMove(obj uintptr, fn interface{}) {
+func XButton_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(14926, obj, MakeEventDataPtr(fn))
 }
 
-func XButton_SetOnMouseUp(obj uintptr, fn interface{}) {
+func XButton_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(14927, obj, MakeEventDataPtr(fn))
 }
 
+func XButton_SetOnMouseMove(obj uintptr, fn interface{}) {
+    syscallN(14928, obj, MakeEventDataPtr(fn))
+}
+
+func XButton_SetOnMouseUp(obj uintptr, fn interface{}) {
+    syscallN(14929, obj, MakeEventDataPtr(fn))
+}
+
 func XButton_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(14928, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(14930, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func XButton_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(14929, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(14931, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func XButton_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(14930, obj))
+    return int32(syscallN(14932, obj))
 }
 
 func XButton_SetClientHeight(obj uintptr, value int32) {
-    syscallN(14931, obj, uintptr(value))
+    syscallN(14933, obj, uintptr(value))
 }
 
 func XButton_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(14932, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(14934, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func XButton_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(14933, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(14935, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func XButton_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(14934, obj))
+    return int32(syscallN(14936, obj))
 }
 
 func XButton_SetClientWidth(obj uintptr, value int32) {
-    syscallN(14935, obj, uintptr(value))
-}
-
-func XButton_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(14936, obj))
-}
-
-func XButton_SetControlState(obj uintptr, value TControlState) {
     syscallN(14937, obj, uintptr(value))
 }
 
-func XButton_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(14938, obj))
+func XButton_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(14938, obj))
 }
 
-func XButton_SetControlStyle(obj uintptr, value TControlStyle) {
+func XButton_SetControlState(obj uintptr, value TControlState) {
     syscallN(14939, obj, uintptr(value))
 }
 
+func XButton_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(14940, obj))
+}
+
+func XButton_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(14941, obj, uintptr(value))
+}
+
 func XButton_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(14940, obj))
+    return GoBool(syscallN(14942, obj))
 }
 
 func XButton_GetParent(obj uintptr) uintptr {
-    return syscallN(14941, obj)
+    return syscallN(14943, obj)
 }
 
 func XButton_SetParent(obj uintptr, value uintptr) {
-    syscallN(14942, obj, value)
+    syscallN(14944, obj, value)
 }
 
 func XButton_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(14943, obj))
-}
-
-func XButton_SetLeft(obj uintptr, value int32) {
-    syscallN(14944, obj, uintptr(value))
-}
-
-func XButton_GetTop(obj uintptr) int32 {
     return int32(syscallN(14945, obj))
 }
 
-func XButton_SetTop(obj uintptr, value int32) {
+func XButton_SetLeft(obj uintptr, value int32) {
     syscallN(14946, obj, uintptr(value))
 }
 
-func XButton_GetWidth(obj uintptr) int32 {
+func XButton_GetTop(obj uintptr) int32 {
     return int32(syscallN(14947, obj))
 }
 
-func XButton_SetWidth(obj uintptr, value int32) {
+func XButton_SetTop(obj uintptr, value int32) {
     syscallN(14948, obj, uintptr(value))
 }
 
-func XButton_GetHeight(obj uintptr) int32 {
+func XButton_GetWidth(obj uintptr) int32 {
     return int32(syscallN(14949, obj))
 }
 
-func XButton_SetHeight(obj uintptr, value int32) {
+func XButton_SetWidth(obj uintptr, value int32) {
     syscallN(14950, obj, uintptr(value))
 }
 
-func XButton_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(14951, obj))
+func XButton_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(14951, obj))
 }
 
-func XButton_SetCursor(obj uintptr, value TCursor) {
+func XButton_SetHeight(obj uintptr, value int32) {
     syscallN(14952, obj, uintptr(value))
 }
 
+func XButton_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(14953, obj))
+}
+
+func XButton_SetCursor(obj uintptr, value TCursor) {
+    syscallN(14954, obj, uintptr(value))
+}
+
 func XButton_GetHint(obj uintptr) string {
-    return GoStr(syscallN(14953, obj))
+    return GoStr(syscallN(14955, obj))
 }
 
 func XButton_SetHint(obj uintptr, value string) {
-    syscallN(14954, obj, PascalStr(value))
+    syscallN(14956, obj, PascalStr(value))
 }
 
 func XButton_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(14955, obj))
+    return int32(syscallN(14957, obj))
 }
 
 func XButton_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(14956, obj))
+    return int32(syscallN(14958, obj))
 }
 
 func XButton_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(14957, obj, uintptr(value))
+    syscallN(14959, obj, uintptr(value))
 }
 
 func XButton_GetOwner(obj uintptr) uintptr {
-    return syscallN(14958, obj)
+    return syscallN(14960, obj)
 }
 
 func XButton_GetName(obj uintptr) string {
-    return GoStr(syscallN(14959, obj))
+    return GoStr(syscallN(14961, obj))
 }
 
 func XButton_SetName(obj uintptr, value string) {
-    syscallN(14960, obj, PascalStr(value))
+    syscallN(14962, obj, PascalStr(value))
 }
 
 func XButton_GetTag(obj uintptr) int {
-    return int(syscallN(14961, obj))
+    return int(syscallN(14963, obj))
 }
 
 func XButton_SetTag(obj uintptr, value int) {
-    syscallN(14962, obj, uintptr(value))
+    syscallN(14964, obj, uintptr(value))
 }
 
 func XButton_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(14963, obj)
-}
-
-func XButton_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(14964, obj, value)
-}
-
-func XButton_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(14965, obj)
 }
 
-func XButton_SetAnchorSideTop(obj uintptr, value uintptr) {
+func XButton_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(14966, obj, value)
 }
 
-func XButton_GetAnchorSideRight(obj uintptr) uintptr {
+func XButton_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(14967, obj)
 }
 
-func XButton_SetAnchorSideRight(obj uintptr, value uintptr) {
+func XButton_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(14968, obj, value)
 }
 
-func XButton_GetAnchorSideBottom(obj uintptr) uintptr {
+func XButton_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(14969, obj)
 }
 
-func XButton_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func XButton_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(14970, obj, value)
 }
 
-func XButton_GetBorderSpacing(obj uintptr) uintptr {
+func XButton_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(14971, obj)
 }
 
-func XButton_SetBorderSpacing(obj uintptr, value uintptr) {
+func XButton_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(14972, obj, value)
 }
 
+func XButton_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(14973, obj)
+}
+
+func XButton_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(14974, obj, value)
+}
+
 func XButton_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(14973, obj, uintptr(AIndex))
+    return syscallN(14975, obj, uintptr(AIndex))
 }
 
 func XButton_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(14974, obj, uintptr(AKind))
+    return syscallN(14976, obj, uintptr(AKind))
 }
 
 func XButton_StaticClassType() TClass {
-    return TClass(syscallN(14975))
+    return TClass(syscallN(14977))
 }
 
 //--------------------------- TNotebook ---------------------------
 
 func Notebook_Create(obj uintptr) uintptr {
-    return syscallN(14976, obj)
+    return syscallN(14978, obj)
 }
 
 func Notebook_Free(obj uintptr) {
-    syscallN(14977, obj)
+    syscallN(14979, obj)
 }
 
 func Notebook_ShowControl(obj uintptr, AControl uintptr)  {
-    syscallN(14978, obj, AControl )
+    syscallN(14980, obj, AControl )
 }
 
 func Notebook_IndexOf(obj uintptr, APage uintptr) int32 {
-    return int32(syscallN(14979, obj, APage ))
+    return int32(syscallN(14981, obj, APage ))
 }
 
 func Notebook_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(14980, obj))
+    return GoBool(syscallN(14982, obj))
 }
 
 func Notebook_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(14981, obj, Control ))
+    return GoBool(syscallN(14983, obj, Control ))
 }
 
 func Notebook_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(14982, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(14984, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func Notebook_DisableAlign(obj uintptr)  {
-    syscallN(14983, obj)
+    syscallN(14985, obj)
 }
 
 func Notebook_EnableAlign(obj uintptr)  {
-    syscallN(14984, obj)
+    syscallN(14986, obj)
 }
 
 func Notebook_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(14985, obj, PascalBool(AllLevels) )
+    syscallN(14987, obj, PascalBool(AllLevels) )
 }
 
 func Notebook_Focused(obj uintptr) bool {
-    return GoBool(syscallN(14986, obj))
+    return GoBool(syscallN(14988, obj))
 }
 
 func Notebook_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(14987, obj))
+    return GoBool(syscallN(14989, obj))
 }
 
 func Notebook_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(14988, obj, AControl )
+    syscallN(14990, obj, AControl )
 }
 
 func Notebook_Invalidate(obj uintptr)  {
-    syscallN(14989, obj)
+    syscallN(14991, obj)
 }
 
 func Notebook_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(14990, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(14992, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func Notebook_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(14991, obj, AControl )
+    syscallN(14993, obj, AControl )
 }
 
 func Notebook_Realign(obj uintptr)  {
-    syscallN(14992, obj)
+    syscallN(14994, obj)
 }
 
 func Notebook_Repaint(obj uintptr)  {
-    syscallN(14993, obj)
+    syscallN(14995, obj)
 }
 
 func Notebook_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(14994, obj, uintptr(M) , uintptr(D) )
+    syscallN(14996, obj, uintptr(M) , uintptr(D) )
 }
 
 func Notebook_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(14995, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(14997, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func Notebook_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(14996, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(14998, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func Notebook_SetFocus(obj uintptr)  {
-    syscallN(14997, obj)
+    syscallN(14999, obj)
 }
 
 func Notebook_Update(obj uintptr)  {
-    syscallN(14998, obj)
-}
-
-func Notebook_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(14999, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func Notebook_BringToFront(obj uintptr)  {
     syscallN(15000, obj)
 }
 
+func Notebook_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(15001, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func Notebook_BringToFront(obj uintptr)  {
+    syscallN(15002, obj)
+}
+
 func Notebook_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(15001, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(15003, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Notebook_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(15002, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(15004, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Notebook_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(15003, obj))
-}
-
-func Notebook_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(15004, obj, PascalBool(Drop) )
-}
-
-func Notebook_HasParent(obj uintptr) bool {
     return GoBool(syscallN(15005, obj))
 }
 
+func Notebook_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(15006, obj, PascalBool(Drop) )
+}
+
+func Notebook_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(15007, obj))
+}
+
 func Notebook_Hide(obj uintptr)  {
-    syscallN(15006, obj)
-}
-
-func Notebook_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(15007, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func Notebook_Refresh(obj uintptr)  {
     syscallN(15008, obj)
 }
 
+func Notebook_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(15009, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func Notebook_Refresh(obj uintptr)  {
+    syscallN(15010, obj)
+}
+
 func Notebook_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(15009, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(15011, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Notebook_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(15010, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(15012, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Notebook_SendToBack(obj uintptr)  {
-    syscallN(15011, obj)
+    syscallN(15013, obj)
 }
 
 func Notebook_Show(obj uintptr)  {
-    syscallN(15012, obj)
+    syscallN(15014, obj)
 }
 
 func Notebook_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(15013, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(15015, obj, Buffer, uintptr(BufSize) ))
 }
 
 func Notebook_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(15014, obj))
+    return int32(syscallN(15016, obj))
 }
 
 func Notebook_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(15015, obj, PascalStr(Buffer) )
+    syscallN(15017, obj, PascalStr(Buffer) )
 }
 
 func Notebook_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(15016, obj, PascalStr(AName) )
+    return syscallN(15018, obj, PascalStr(AName) )
 }
 
 func Notebook_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(15017, obj))
+    return GoStr(syscallN(15019, obj))
 }
 
 func Notebook_Assign(obj uintptr, Source uintptr)  {
-    syscallN(15018, obj, Source )
+    syscallN(15020, obj, Source )
 }
 
 func Notebook_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(15019, obj))
+    return TClass(syscallN(15021, obj))
 }
 
 func Notebook_ClassName(obj uintptr) string {
-    return GoStr(syscallN(15020, obj))
+    return GoStr(syscallN(15022, obj))
 }
 
 func Notebook_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(15021, obj))
+    return int32(syscallN(15023, obj))
 }
 
 func Notebook_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(15022, obj, uintptr(AClass) ))
+    return GoBool(syscallN(15024, obj, uintptr(AClass) ))
 }
 
 func Notebook_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(15023, obj, Obj ))
+    return GoBool(syscallN(15025, obj, Obj ))
 }
 
 func Notebook_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(15024, obj))
+    return int32(syscallN(15026, obj))
 }
 
 func Notebook_ToString(obj uintptr) string {
-    return GoStr(syscallN(15025, obj))
+    return GoStr(syscallN(15027, obj))
 }
 
 func Notebook_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(15026, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(15028, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func Notebook_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(15027, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(15029, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func Notebook_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(15028, obj, ASibling )
+    syscallN(15030, obj, ASibling )
 }
 
 func Notebook_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(15029, obj, ASibling )
+    syscallN(15031, obj, ASibling )
 }
 
 func Notebook_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(15030, obj, uintptr(ASide) , ASibling )
+    syscallN(15032, obj, uintptr(ASide) , ASibling )
 }
 
 func Notebook_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(15031, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(15033, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func Notebook_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(15032, obj, uintptr(ASpace) )
+    syscallN(15034, obj, uintptr(ASpace) )
 }
 
 func Notebook_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15033, obj, uintptr(ASize) ))
-}
-
-func Notebook_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15034, obj, uintptr(ASize) ))
-}
-
-func Notebook_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15035, obj, uintptr(ASize) ))
 }
 
-func Notebook_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func Notebook_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15036, obj, uintptr(ASize) ))
 }
 
-func Notebook_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func Notebook_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15037, obj, uintptr(ASize) ))
 }
 
-func Notebook_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func Notebook_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15038, obj, uintptr(ASize) ))
 }
 
-func Notebook_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func Notebook_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15039, obj, uintptr(ASize) ))
 }
 
-func Notebook_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func Notebook_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15040, obj, uintptr(ASize) ))
 }
 
-func Notebook_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func Notebook_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15041, obj, uintptr(ASize) ))
 }
 
-func Notebook_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func Notebook_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15042, obj, uintptr(ASize) ))
 }
 
+func Notebook_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15043, obj, uintptr(ASize) ))
+}
+
+func Notebook_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15044, obj, uintptr(ASize) ))
+}
+
 func Notebook_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(15043, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(15045, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func Notebook_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(15044, obj, uintptr(ADesignTimePPI) )
+    syscallN(15046, obj, uintptr(ADesignTimePPI) )
 }
 
 func Notebook_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(15045, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(15047, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func Notebook_GetActivePage(obj uintptr) string {
-    return GoStr(syscallN(15046, obj))
+    return GoStr(syscallN(15048, obj))
 }
 
 func Notebook_GetActivePageComponent(obj uintptr) uintptr {
-    return syscallN(15047, obj)
+    return syscallN(15049, obj)
 }
 
 func Notebook_GetPageCount(obj uintptr) int32 {
-    return int32(syscallN(15048, obj))
+    return int32(syscallN(15050, obj))
 }
 
 func Notebook_GetPageIndex(obj uintptr) int32 {
-    return int32(syscallN(15049, obj))
+    return int32(syscallN(15051, obj))
 }
 
 func Notebook_SetPageIndex(obj uintptr, value int32) {
-    syscallN(15050, obj, uintptr(value))
+    syscallN(15052, obj, uintptr(value))
 }
 
 func Notebook_GetPages(obj uintptr) uintptr {
-    return syscallN(15051, obj)
+    return syscallN(15053, obj)
 }
 
 func Notebook_SetPages(obj uintptr, value uintptr) {
-    syscallN(15052, obj, value)
+    syscallN(15054, obj, value)
 }
 
 func Notebook_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(15053, obj))
+    return TAlign(syscallN(15055, obj))
 }
 
 func Notebook_SetAlign(obj uintptr, value TAlign) {
-    syscallN(15054, obj, uintptr(value))
+    syscallN(15056, obj, uintptr(value))
 }
 
 func Notebook_GetAutoSize(obj uintptr) bool {
-    return GoBool(syscallN(15055, obj))
+    return GoBool(syscallN(15057, obj))
 }
 
 func Notebook_SetAutoSize(obj uintptr, value bool) {
-    syscallN(15056, obj, PascalBool(value))
+    syscallN(15058, obj, PascalBool(value))
 }
 
 func Notebook_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(15057, obj))
+    return TAnchors(syscallN(15059, obj))
 }
 
 func Notebook_SetAnchors(obj uintptr, value TAnchors) {
-    syscallN(15058, obj, uintptr(value))
-}
-
-func Notebook_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(15059, obj))
-}
-
-func Notebook_SetBiDiMode(obj uintptr, value TBiDiMode) {
     syscallN(15060, obj, uintptr(value))
 }
 
-func Notebook_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(15061, obj))
+func Notebook_GetBiDiMode(obj uintptr) TBiDiMode {
+    return TBiDiMode(syscallN(15061, obj))
 }
 
-func Notebook_SetColor(obj uintptr, value TColor) {
+func Notebook_SetBiDiMode(obj uintptr, value TBiDiMode) {
     syscallN(15062, obj, uintptr(value))
 }
 
+func Notebook_GetColor(obj uintptr) TColor {
+    return TColor(syscallN(15063, obj))
+}
+
+func Notebook_SetColor(obj uintptr, value TColor) {
+    syscallN(15064, obj, uintptr(value))
+}
+
 func Notebook_GetConstraints(obj uintptr) uintptr {
-    return syscallN(15063, obj)
+    return syscallN(15065, obj)
 }
 
 func Notebook_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(15064, obj, value)
+    syscallN(15066, obj, value)
 }
 
 func Notebook_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(15065, obj))
+    return TCursor(syscallN(15067, obj))
 }
 
 func Notebook_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(15066, obj, uintptr(value))
-}
-
-func Notebook_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(15067, obj))
-}
-
-func Notebook_SetDragMode(obj uintptr, value TDragMode) {
     syscallN(15068, obj, uintptr(value))
 }
 
+func Notebook_GetDragMode(obj uintptr) TDragMode {
+    return TDragMode(syscallN(15069, obj))
+}
+
+func Notebook_SetDragMode(obj uintptr, value TDragMode) {
+    syscallN(15070, obj, uintptr(value))
+}
+
 func Notebook_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(15069, obj))
+    return GoBool(syscallN(15071, obj))
 }
 
 func Notebook_SetEnabled(obj uintptr, value bool) {
-    syscallN(15070, obj, PascalBool(value))
+    syscallN(15072, obj, PascalBool(value))
 }
 
 func Notebook_SetOnContextPopup(obj uintptr, fn interface{}) {
-    syscallN(15071, obj, MakeEventDataPtr(fn))
-}
-
-func Notebook_SetOnDragDrop(obj uintptr, fn interface{}) {
-    syscallN(15072, obj, MakeEventDataPtr(fn))
-}
-
-func Notebook_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(15073, obj, MakeEventDataPtr(fn))
 }
 
-func Notebook_SetOnEndDrag(obj uintptr, fn interface{}) {
+func Notebook_SetOnDragDrop(obj uintptr, fn interface{}) {
     syscallN(15074, obj, MakeEventDataPtr(fn))
 }
 
-func Notebook_SetOnEnter(obj uintptr, fn interface{}) {
+func Notebook_SetOnDragOver(obj uintptr, fn interface{}) {
     syscallN(15075, obj, MakeEventDataPtr(fn))
 }
 
-func Notebook_SetOnExit(obj uintptr, fn interface{}) {
+func Notebook_SetOnEndDrag(obj uintptr, fn interface{}) {
     syscallN(15076, obj, MakeEventDataPtr(fn))
 }
 
-func Notebook_SetOnMouseDown(obj uintptr, fn interface{}) {
+func Notebook_SetOnEnter(obj uintptr, fn interface{}) {
     syscallN(15077, obj, MakeEventDataPtr(fn))
 }
 
-func Notebook_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func Notebook_SetOnExit(obj uintptr, fn interface{}) {
     syscallN(15078, obj, MakeEventDataPtr(fn))
 }
 
-func Notebook_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func Notebook_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(15079, obj, MakeEventDataPtr(fn))
 }
 
-func Notebook_SetOnMouseMove(obj uintptr, fn interface{}) {
+func Notebook_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(15080, obj, MakeEventDataPtr(fn))
 }
 
-func Notebook_SetOnMouseUp(obj uintptr, fn interface{}) {
+func Notebook_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(15081, obj, MakeEventDataPtr(fn))
 }
 
-func Notebook_SetOnMouseWheel(obj uintptr, fn interface{}) {
+func Notebook_SetOnMouseMove(obj uintptr, fn interface{}) {
     syscallN(15082, obj, MakeEventDataPtr(fn))
 }
 
-func Notebook_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+func Notebook_SetOnMouseUp(obj uintptr, fn interface{}) {
     syscallN(15083, obj, MakeEventDataPtr(fn))
 }
 
-func Notebook_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+func Notebook_SetOnMouseWheel(obj uintptr, fn interface{}) {
     syscallN(15084, obj, MakeEventDataPtr(fn))
 }
 
-func Notebook_SetOnResize(obj uintptr, fn interface{}) {
+func Notebook_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
     syscallN(15085, obj, MakeEventDataPtr(fn))
 }
 
+func Notebook_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    syscallN(15086, obj, MakeEventDataPtr(fn))
+}
+
+func Notebook_SetOnResize(obj uintptr, fn interface{}) {
+    syscallN(15087, obj, MakeEventDataPtr(fn))
+}
+
 func Notebook_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(15086, obj)
+    return syscallN(15088, obj)
 }
 
 func Notebook_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(15087, obj, value)
+    syscallN(15089, obj, value)
 }
 
 func Notebook_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(15088, obj))
+    return TTabOrder(syscallN(15090, obj))
 }
 
 func Notebook_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(15089, obj, uintptr(value))
+    syscallN(15091, obj, uintptr(value))
 }
 
 func Notebook_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(15090, obj))
+    return GoBool(syscallN(15092, obj))
 }
 
 func Notebook_SetTabStop(obj uintptr, value bool) {
-    syscallN(15091, obj, PascalBool(value))
+    syscallN(15093, obj, PascalBool(value))
 }
 
 func Notebook_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(15092, obj))
+    return int32(syscallN(15094, obj))
 }
 
 func Notebook_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(15093, obj))
-}
-
-func Notebook_SetDockSite(obj uintptr, value bool) {
-    syscallN(15094, obj, PascalBool(value))
-}
-
-func Notebook_GetDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(15095, obj))
 }
 
-func Notebook_SetDoubleBuffered(obj uintptr, value bool) {
+func Notebook_SetDockSite(obj uintptr, value bool) {
     syscallN(15096, obj, PascalBool(value))
 }
 
-func Notebook_GetMouseInClient(obj uintptr) bool {
+func Notebook_GetDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(15097, obj))
 }
 
+func Notebook_SetDoubleBuffered(obj uintptr, value bool) {
+    syscallN(15098, obj, PascalBool(value))
+}
+
+func Notebook_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(15099, obj))
+}
+
 func Notebook_GetVisibleDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(15098, obj))
-}
-
-func Notebook_GetBrush(obj uintptr) uintptr {
-    return syscallN(15099, obj)
-}
-
-func Notebook_GetControlCount(obj uintptr) int32 {
     return int32(syscallN(15100, obj))
 }
 
+func Notebook_GetBrush(obj uintptr) uintptr {
+    return syscallN(15101, obj)
+}
+
+func Notebook_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(15102, obj))
+}
+
 func Notebook_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(15101, obj))
+    return HWND(syscallN(15103, obj))
 }
 
 func Notebook_GetParentDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(15102, obj))
+    return GoBool(syscallN(15104, obj))
 }
 
 func Notebook_SetParentDoubleBuffered(obj uintptr, value bool) {
-    syscallN(15103, obj, PascalBool(value))
+    syscallN(15105, obj, PascalBool(value))
 }
 
 func Notebook_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(15104, obj))
+    return HWND(syscallN(15106, obj))
 }
 
 func Notebook_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(15105, obj, uintptr(value))
+    syscallN(15107, obj, uintptr(value))
 }
 
 func Notebook_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(15106, obj))
+    return GoBool(syscallN(15108, obj))
 }
 
 func Notebook_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(15107, obj))
+    return GoBool(syscallN(15109, obj))
 }
 
 func Notebook_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(15108, obj, PascalBool(value))
+    syscallN(15110, obj, PascalBool(value))
 }
 
 func Notebook_GetAction(obj uintptr) uintptr {
-    return syscallN(15109, obj)
+    return syscallN(15111, obj)
 }
 
 func Notebook_SetAction(obj uintptr, value uintptr) {
-    syscallN(15110, obj, value)
+    syscallN(15112, obj, value)
 }
 
 func Notebook_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(15111, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(15113, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Notebook_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(15112, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(15114, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func Notebook_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(15113, obj))
+    return int32(syscallN(15115, obj))
 }
 
 func Notebook_SetClientHeight(obj uintptr, value int32) {
-    syscallN(15114, obj, uintptr(value))
+    syscallN(15116, obj, uintptr(value))
 }
 
 func Notebook_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(15115, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(15117, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Notebook_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(15116, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(15118, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Notebook_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(15117, obj))
+    return int32(syscallN(15119, obj))
 }
 
 func Notebook_SetClientWidth(obj uintptr, value int32) {
-    syscallN(15118, obj, uintptr(value))
-}
-
-func Notebook_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(15119, obj))
-}
-
-func Notebook_SetControlState(obj uintptr, value TControlState) {
     syscallN(15120, obj, uintptr(value))
 }
 
-func Notebook_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(15121, obj))
+func Notebook_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(15121, obj))
 }
 
-func Notebook_SetControlStyle(obj uintptr, value TControlStyle) {
+func Notebook_SetControlState(obj uintptr, value TControlState) {
     syscallN(15122, obj, uintptr(value))
 }
 
+func Notebook_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(15123, obj))
+}
+
+func Notebook_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(15124, obj, uintptr(value))
+}
+
 func Notebook_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(15123, obj))
+    return GoBool(syscallN(15125, obj))
 }
 
 func Notebook_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(15124, obj))
-}
-
-func Notebook_SetShowHint(obj uintptr, value bool) {
-    syscallN(15125, obj, PascalBool(value))
-}
-
-func Notebook_GetVisible(obj uintptr) bool {
     return GoBool(syscallN(15126, obj))
 }
 
-func Notebook_SetVisible(obj uintptr, value bool) {
+func Notebook_SetShowHint(obj uintptr, value bool) {
     syscallN(15127, obj, PascalBool(value))
 }
 
+func Notebook_GetVisible(obj uintptr) bool {
+    return GoBool(syscallN(15128, obj))
+}
+
+func Notebook_SetVisible(obj uintptr, value bool) {
+    syscallN(15129, obj, PascalBool(value))
+}
+
 func Notebook_GetParent(obj uintptr) uintptr {
-    return syscallN(15128, obj)
+    return syscallN(15130, obj)
 }
 
 func Notebook_SetParent(obj uintptr, value uintptr) {
-    syscallN(15129, obj, value)
+    syscallN(15131, obj, value)
 }
 
 func Notebook_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(15130, obj))
-}
-
-func Notebook_SetLeft(obj uintptr, value int32) {
-    syscallN(15131, obj, uintptr(value))
-}
-
-func Notebook_GetTop(obj uintptr) int32 {
     return int32(syscallN(15132, obj))
 }
 
-func Notebook_SetTop(obj uintptr, value int32) {
+func Notebook_SetLeft(obj uintptr, value int32) {
     syscallN(15133, obj, uintptr(value))
 }
 
-func Notebook_GetWidth(obj uintptr) int32 {
+func Notebook_GetTop(obj uintptr) int32 {
     return int32(syscallN(15134, obj))
 }
 
-func Notebook_SetWidth(obj uintptr, value int32) {
+func Notebook_SetTop(obj uintptr, value int32) {
     syscallN(15135, obj, uintptr(value))
 }
 
-func Notebook_GetHeight(obj uintptr) int32 {
+func Notebook_GetWidth(obj uintptr) int32 {
     return int32(syscallN(15136, obj))
 }
 
-func Notebook_SetHeight(obj uintptr, value int32) {
+func Notebook_SetWidth(obj uintptr, value int32) {
     syscallN(15137, obj, uintptr(value))
 }
 
-func Notebook_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(15138, obj))
+func Notebook_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(15138, obj))
 }
 
-func Notebook_SetCursor(obj uintptr, value TCursor) {
+func Notebook_SetHeight(obj uintptr, value int32) {
     syscallN(15139, obj, uintptr(value))
 }
 
+func Notebook_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(15140, obj))
+}
+
+func Notebook_SetCursor(obj uintptr, value TCursor) {
+    syscallN(15141, obj, uintptr(value))
+}
+
 func Notebook_GetHint(obj uintptr) string {
-    return GoStr(syscallN(15140, obj))
+    return GoStr(syscallN(15142, obj))
 }
 
 func Notebook_SetHint(obj uintptr, value string) {
-    syscallN(15141, obj, PascalStr(value))
+    syscallN(15143, obj, PascalStr(value))
 }
 
 func Notebook_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(15142, obj))
+    return int32(syscallN(15144, obj))
 }
 
 func Notebook_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(15143, obj))
+    return int32(syscallN(15145, obj))
 }
 
 func Notebook_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(15144, obj, uintptr(value))
+    syscallN(15146, obj, uintptr(value))
 }
 
 func Notebook_GetOwner(obj uintptr) uintptr {
-    return syscallN(15145, obj)
+    return syscallN(15147, obj)
 }
 
 func Notebook_GetName(obj uintptr) string {
-    return GoStr(syscallN(15146, obj))
+    return GoStr(syscallN(15148, obj))
 }
 
 func Notebook_SetName(obj uintptr, value string) {
-    syscallN(15147, obj, PascalStr(value))
+    syscallN(15149, obj, PascalStr(value))
 }
 
 func Notebook_GetTag(obj uintptr) int {
-    return int(syscallN(15148, obj))
+    return int(syscallN(15150, obj))
 }
 
 func Notebook_SetTag(obj uintptr, value int) {
-    syscallN(15149, obj, uintptr(value))
+    syscallN(15151, obj, uintptr(value))
 }
 
 func Notebook_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(15150, obj)
-}
-
-func Notebook_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(15151, obj, value)
-}
-
-func Notebook_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(15152, obj)
 }
 
-func Notebook_SetAnchorSideTop(obj uintptr, value uintptr) {
+func Notebook_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(15153, obj, value)
 }
 
-func Notebook_GetAnchorSideRight(obj uintptr) uintptr {
+func Notebook_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(15154, obj)
 }
 
-func Notebook_SetAnchorSideRight(obj uintptr, value uintptr) {
+func Notebook_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(15155, obj, value)
 }
 
-func Notebook_GetAnchorSideBottom(obj uintptr) uintptr {
+func Notebook_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(15156, obj)
 }
 
-func Notebook_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func Notebook_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(15157, obj, value)
 }
 
-func Notebook_GetChildSizing(obj uintptr) uintptr {
+func Notebook_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(15158, obj)
 }
 
-func Notebook_SetChildSizing(obj uintptr, value uintptr) {
+func Notebook_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(15159, obj, value)
 }
 
-func Notebook_GetBorderSpacing(obj uintptr) uintptr {
+func Notebook_GetChildSizing(obj uintptr) uintptr {
     return syscallN(15160, obj)
 }
 
-func Notebook_SetBorderSpacing(obj uintptr, value uintptr) {
+func Notebook_SetChildSizing(obj uintptr, value uintptr) {
     syscallN(15161, obj, value)
 }
 
+func Notebook_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(15162, obj)
+}
+
+func Notebook_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(15163, obj, value)
+}
+
 func Notebook_GetPage(obj uintptr, AIndex int32) uintptr {
-    return syscallN(15162, obj, uintptr(AIndex))
+    return syscallN(15164, obj, uintptr(AIndex))
 }
 
 func Notebook_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(15163, obj, uintptr(Index))
+    return syscallN(15165, obj, uintptr(Index))
 }
 
 func Notebook_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(15164, obj, uintptr(Index))
+    return syscallN(15166, obj, uintptr(Index))
 }
 
 func Notebook_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(15165, obj, uintptr(AIndex))
+    return syscallN(15167, obj, uintptr(AIndex))
 }
 
 func Notebook_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(15166, obj, uintptr(AKind))
+    return syscallN(15168, obj, uintptr(AKind))
 }
 
 func Notebook_StaticClassType() TClass {
-    return TClass(syscallN(15167))
+    return TClass(syscallN(15169))
 }
 
 //--------------------------- TPage ---------------------------
 
 func Page_Create(obj uintptr) uintptr {
-    return syscallN(15168, obj)
+    return syscallN(15170, obj)
 }
 
 func Page_Free(obj uintptr) {
-    syscallN(15169, obj)
+    syscallN(15171, obj)
 }
 
 func Page_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(15170, obj))
+    return GoBool(syscallN(15172, obj))
 }
 
 func Page_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(15171, obj, Control ))
+    return GoBool(syscallN(15173, obj, Control ))
 }
 
 func Page_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(15172, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(15174, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func Page_DisableAlign(obj uintptr)  {
-    syscallN(15173, obj)
+    syscallN(15175, obj)
 }
 
 func Page_EnableAlign(obj uintptr)  {
-    syscallN(15174, obj)
+    syscallN(15176, obj)
 }
 
 func Page_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(15175, obj, PascalStr(ControlName) )
+    return syscallN(15177, obj, PascalStr(ControlName) )
 }
 
 func Page_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(15176, obj, PascalBool(AllLevels) )
+    syscallN(15178, obj, PascalBool(AllLevels) )
 }
 
 func Page_Focused(obj uintptr) bool {
-    return GoBool(syscallN(15177, obj))
+    return GoBool(syscallN(15179, obj))
 }
 
 func Page_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(15178, obj))
+    return GoBool(syscallN(15180, obj))
 }
 
 func Page_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(15179, obj, AControl )
+    syscallN(15181, obj, AControl )
 }
 
 func Page_Invalidate(obj uintptr)  {
-    syscallN(15180, obj)
+    syscallN(15182, obj)
 }
 
 func Page_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(15181, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(15183, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func Page_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(15182, obj, AControl )
+    syscallN(15184, obj, AControl )
 }
 
 func Page_Realign(obj uintptr)  {
-    syscallN(15183, obj)
+    syscallN(15185, obj)
 }
 
 func Page_Repaint(obj uintptr)  {
-    syscallN(15184, obj)
+    syscallN(15186, obj)
 }
 
 func Page_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(15185, obj, uintptr(M) , uintptr(D) )
+    syscallN(15187, obj, uintptr(M) , uintptr(D) )
 }
 
 func Page_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(15186, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(15188, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func Page_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(15187, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(15189, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func Page_SetFocus(obj uintptr)  {
-    syscallN(15188, obj)
+    syscallN(15190, obj)
 }
 
 func Page_Update(obj uintptr)  {
-    syscallN(15189, obj)
-}
-
-func Page_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(15190, obj, PascalBool(Immediate) , uintptr(Threshold) )
-}
-
-func Page_BringToFront(obj uintptr)  {
     syscallN(15191, obj)
 }
 
+func Page_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(15192, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func Page_BringToFront(obj uintptr)  {
+    syscallN(15193, obj)
+}
+
 func Page_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(15192, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(15194, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Page_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(15193, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(15195, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Page_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(15194, obj))
-}
-
-func Page_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(15195, obj, PascalBool(Drop) )
-}
-
-func Page_HasParent(obj uintptr) bool {
     return GoBool(syscallN(15196, obj))
 }
 
+func Page_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(15197, obj, PascalBool(Drop) )
+}
+
+func Page_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(15198, obj))
+}
+
 func Page_Hide(obj uintptr)  {
-    syscallN(15197, obj)
-}
-
-func Page_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(15198, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
-}
-
-func Page_Refresh(obj uintptr)  {
     syscallN(15199, obj)
 }
 
+func Page_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(15200, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func Page_Refresh(obj uintptr)  {
+    syscallN(15201, obj)
+}
+
 func Page_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(15200, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(15202, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Page_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(15201, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(15203, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Page_SendToBack(obj uintptr)  {
-    syscallN(15202, obj)
+    syscallN(15204, obj)
 }
 
 func Page_Show(obj uintptr)  {
-    syscallN(15203, obj)
+    syscallN(15205, obj)
 }
 
 func Page_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(15204, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(15206, obj, Buffer, uintptr(BufSize) ))
 }
 
 func Page_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(15205, obj))
+    return int32(syscallN(15207, obj))
 }
 
 func Page_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(15206, obj, PascalStr(Buffer) )
+    syscallN(15208, obj, PascalStr(Buffer) )
 }
 
 func Page_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(15207, obj, PascalStr(AName) )
+    return syscallN(15209, obj, PascalStr(AName) )
 }
 
 func Page_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(15208, obj))
+    return GoStr(syscallN(15210, obj))
 }
 
 func Page_Assign(obj uintptr, Source uintptr)  {
-    syscallN(15209, obj, Source )
+    syscallN(15211, obj, Source )
 }
 
 func Page_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(15210, obj))
+    return TClass(syscallN(15212, obj))
 }
 
 func Page_ClassName(obj uintptr) string {
-    return GoStr(syscallN(15211, obj))
+    return GoStr(syscallN(15213, obj))
 }
 
 func Page_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(15212, obj))
+    return int32(syscallN(15214, obj))
 }
 
 func Page_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(15213, obj, uintptr(AClass) ))
+    return GoBool(syscallN(15215, obj, uintptr(AClass) ))
 }
 
 func Page_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(15214, obj, Obj ))
+    return GoBool(syscallN(15216, obj, Obj ))
 }
 
 func Page_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(15215, obj))
+    return int32(syscallN(15217, obj))
 }
 
 func Page_ToString(obj uintptr) string {
-    return GoStr(syscallN(15216, obj))
+    return GoStr(syscallN(15218, obj))
 }
 
 func Page_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(15217, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(15219, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func Page_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(15218, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(15220, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func Page_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(15219, obj, ASibling )
+    syscallN(15221, obj, ASibling )
 }
 
 func Page_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(15220, obj, ASibling )
+    syscallN(15222, obj, ASibling )
 }
 
 func Page_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(15221, obj, uintptr(ASide) , ASibling )
+    syscallN(15223, obj, uintptr(ASide) , ASibling )
 }
 
 func Page_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(15222, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(15224, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func Page_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(15223, obj, uintptr(ASpace) )
+    syscallN(15225, obj, uintptr(ASpace) )
 }
 
 func Page_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15224, obj, uintptr(ASize) ))
-}
-
-func Page_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15225, obj, uintptr(ASize) ))
-}
-
-func Page_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15226, obj, uintptr(ASize) ))
 }
 
-func Page_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+func Page_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15227, obj, uintptr(ASize) ))
 }
 
-func Page_Scale96ToFont(obj uintptr, ASize int32) int32 {
+func Page_Scale96ToForm(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15228, obj, uintptr(ASize) ))
 }
 
-func Page_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+func Page_ScaleFormTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15229, obj, uintptr(ASize) ))
 }
 
-func Page_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+func Page_Scale96ToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15230, obj, uintptr(ASize) ))
 }
 
-func Page_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+func Page_ScaleFontTo96(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15231, obj, uintptr(ASize) ))
 }
 
-func Page_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+func Page_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15232, obj, uintptr(ASize) ))
 }
 
-func Page_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+func Page_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
     return int32(syscallN(15233, obj, uintptr(ASize) ))
 }
 
+func Page_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15234, obj, uintptr(ASize) ))
+}
+
+func Page_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15235, obj, uintptr(ASize) ))
+}
+
 func Page_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(15234, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(15236, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func Page_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(15235, obj, uintptr(ADesignTimePPI) )
+    syscallN(15237, obj, uintptr(ADesignTimePPI) )
 }
 
 func Page_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(15236, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(15238, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func Page_GetPageIndex(obj uintptr) int32 {
-    return int32(syscallN(15237, obj))
+    return int32(syscallN(15239, obj))
 }
 
 func Page_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(15238, obj))
+    return TBiDiMode(syscallN(15240, obj))
 }
 
 func Page_SetBiDiMode(obj uintptr, value TBiDiMode) {
-    syscallN(15239, obj, uintptr(value))
-}
-
-func Page_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(15240, obj))
-}
-
-func Page_SetColor(obj uintptr, value TColor) {
     syscallN(15241, obj, uintptr(value))
 }
 
-func Page_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(15242, obj))
+func Page_GetColor(obj uintptr) TColor {
+    return TColor(syscallN(15242, obj))
 }
 
-func Page_SetLeft(obj uintptr, value int32) {
+func Page_SetColor(obj uintptr, value TColor) {
     syscallN(15243, obj, uintptr(value))
 }
 
-func Page_GetTop(obj uintptr) int32 {
+func Page_GetLeft(obj uintptr) int32 {
     return int32(syscallN(15244, obj))
 }
 
-func Page_SetTop(obj uintptr, value int32) {
+func Page_SetLeft(obj uintptr, value int32) {
     syscallN(15245, obj, uintptr(value))
 }
 
-func Page_GetWidth(obj uintptr) int32 {
+func Page_GetTop(obj uintptr) int32 {
     return int32(syscallN(15246, obj))
 }
 
-func Page_SetWidth(obj uintptr, value int32) {
+func Page_SetTop(obj uintptr, value int32) {
     syscallN(15247, obj, uintptr(value))
 }
 
-func Page_GetHeight(obj uintptr) int32 {
+func Page_GetWidth(obj uintptr) int32 {
     return int32(syscallN(15248, obj))
 }
 
-func Page_SetHeight(obj uintptr, value int32) {
+func Page_SetWidth(obj uintptr, value int32) {
     syscallN(15249, obj, uintptr(value))
 }
 
+func Page_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(15250, obj))
+}
+
+func Page_SetHeight(obj uintptr, value int32) {
+    syscallN(15251, obj, uintptr(value))
+}
+
 func Page_SetOnContextPopup(obj uintptr, fn interface{}) {
-    syscallN(15250, obj, MakeEventDataPtr(fn))
-}
-
-func Page_SetOnEnter(obj uintptr, fn interface{}) {
-    syscallN(15251, obj, MakeEventDataPtr(fn))
-}
-
-func Page_SetOnExit(obj uintptr, fn interface{}) {
     syscallN(15252, obj, MakeEventDataPtr(fn))
 }
 
-func Page_SetOnMouseDown(obj uintptr, fn interface{}) {
+func Page_SetOnEnter(obj uintptr, fn interface{}) {
     syscallN(15253, obj, MakeEventDataPtr(fn))
 }
 
-func Page_SetOnMouseEnter(obj uintptr, fn interface{}) {
+func Page_SetOnExit(obj uintptr, fn interface{}) {
     syscallN(15254, obj, MakeEventDataPtr(fn))
 }
 
-func Page_SetOnMouseLeave(obj uintptr, fn interface{}) {
+func Page_SetOnMouseDown(obj uintptr, fn interface{}) {
     syscallN(15255, obj, MakeEventDataPtr(fn))
 }
 
-func Page_SetOnMouseMove(obj uintptr, fn interface{}) {
+func Page_SetOnMouseEnter(obj uintptr, fn interface{}) {
     syscallN(15256, obj, MakeEventDataPtr(fn))
 }
 
-func Page_SetOnMouseUp(obj uintptr, fn interface{}) {
+func Page_SetOnMouseLeave(obj uintptr, fn interface{}) {
     syscallN(15257, obj, MakeEventDataPtr(fn))
 }
 
-func Page_SetOnMouseWheel(obj uintptr, fn interface{}) {
+func Page_SetOnMouseMove(obj uintptr, fn interface{}) {
     syscallN(15258, obj, MakeEventDataPtr(fn))
 }
 
-func Page_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+func Page_SetOnMouseUp(obj uintptr, fn interface{}) {
     syscallN(15259, obj, MakeEventDataPtr(fn))
 }
 
-func Page_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+func Page_SetOnMouseWheel(obj uintptr, fn interface{}) {
     syscallN(15260, obj, MakeEventDataPtr(fn))
 }
 
-func Page_SetOnResize(obj uintptr, fn interface{}) {
+func Page_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
     syscallN(15261, obj, MakeEventDataPtr(fn))
 }
 
+func Page_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    syscallN(15262, obj, MakeEventDataPtr(fn))
+}
+
+func Page_SetOnResize(obj uintptr, fn interface{}) {
+    syscallN(15263, obj, MakeEventDataPtr(fn))
+}
+
 func Page_GetParentShowHint(obj uintptr) bool {
-    return GoBool(syscallN(15262, obj))
+    return GoBool(syscallN(15264, obj))
 }
 
 func Page_SetParentShowHint(obj uintptr, value bool) {
-    syscallN(15263, obj, PascalBool(value))
+    syscallN(15265, obj, PascalBool(value))
 }
 
 func Page_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(15264, obj)
+    return syscallN(15266, obj)
 }
 
 func Page_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(15265, obj, value)
+    syscallN(15267, obj, value)
 }
 
 func Page_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(15266, obj))
+    return TTabOrder(syscallN(15268, obj))
 }
 
 func Page_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(15267, obj, uintptr(value))
+    syscallN(15269, obj, uintptr(value))
 }
 
 func Page_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(15268, obj))
-}
-
-func Page_SetTabStop(obj uintptr, value bool) {
-    syscallN(15269, obj, PascalBool(value))
-}
-
-func Page_GetVisible(obj uintptr) bool {
     return GoBool(syscallN(15270, obj))
 }
 
-func Page_SetVisible(obj uintptr, value bool) {
+func Page_SetTabStop(obj uintptr, value bool) {
     syscallN(15271, obj, PascalBool(value))
 }
 
+func Page_GetVisible(obj uintptr) bool {
+    return GoBool(syscallN(15272, obj))
+}
+
+func Page_SetVisible(obj uintptr, value bool) {
+    syscallN(15273, obj, PascalBool(value))
+}
+
 func Page_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(15272, obj))
+    return int32(syscallN(15274, obj))
 }
 
 func Page_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(15273, obj))
-}
-
-func Page_SetDockSite(obj uintptr, value bool) {
-    syscallN(15274, obj, PascalBool(value))
-}
-
-func Page_GetDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(15275, obj))
 }
 
-func Page_SetDoubleBuffered(obj uintptr, value bool) {
+func Page_SetDockSite(obj uintptr, value bool) {
     syscallN(15276, obj, PascalBool(value))
 }
 
-func Page_GetMouseInClient(obj uintptr) bool {
+func Page_GetDoubleBuffered(obj uintptr) bool {
     return GoBool(syscallN(15277, obj))
 }
 
+func Page_SetDoubleBuffered(obj uintptr, value bool) {
+    syscallN(15278, obj, PascalBool(value))
+}
+
+func Page_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(15279, obj))
+}
+
 func Page_GetVisibleDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(15278, obj))
-}
-
-func Page_GetBrush(obj uintptr) uintptr {
-    return syscallN(15279, obj)
-}
-
-func Page_GetControlCount(obj uintptr) int32 {
     return int32(syscallN(15280, obj))
 }
 
+func Page_GetBrush(obj uintptr) uintptr {
+    return syscallN(15281, obj)
+}
+
+func Page_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(15282, obj))
+}
+
 func Page_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(15281, obj))
+    return HWND(syscallN(15283, obj))
 }
 
 func Page_GetParentDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(15282, obj))
+    return GoBool(syscallN(15284, obj))
 }
 
 func Page_SetParentDoubleBuffered(obj uintptr, value bool) {
-    syscallN(15283, obj, PascalBool(value))
+    syscallN(15285, obj, PascalBool(value))
 }
 
 func Page_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(15284, obj))
+    return HWND(syscallN(15286, obj))
 }
 
 func Page_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(15285, obj, uintptr(value))
+    syscallN(15287, obj, uintptr(value))
 }
 
 func Page_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(15286, obj))
+    return GoBool(syscallN(15288, obj))
 }
 
 func Page_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(15287, obj))
-}
-
-func Page_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(15288, obj, PascalBool(value))
-}
-
-func Page_GetEnabled(obj uintptr) bool {
     return GoBool(syscallN(15289, obj))
 }
 
-func Page_SetEnabled(obj uintptr, value bool) {
+func Page_SetUseDockManager(obj uintptr, value bool) {
     syscallN(15290, obj, PascalBool(value))
 }
 
+func Page_GetEnabled(obj uintptr) bool {
+    return GoBool(syscallN(15291, obj))
+}
+
+func Page_SetEnabled(obj uintptr, value bool) {
+    syscallN(15292, obj, PascalBool(value))
+}
+
 func Page_GetAction(obj uintptr) uintptr {
-    return syscallN(15291, obj)
+    return syscallN(15293, obj)
 }
 
 func Page_SetAction(obj uintptr, value uintptr) {
-    syscallN(15292, obj, value)
+    syscallN(15294, obj, value)
 }
 
 func Page_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(15293, obj))
+    return TAlign(syscallN(15295, obj))
 }
 
 func Page_SetAlign(obj uintptr, value TAlign) {
-    syscallN(15294, obj, uintptr(value))
-}
-
-func Page_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(15295, obj))
-}
-
-func Page_SetAnchors(obj uintptr, value TAnchors) {
     syscallN(15296, obj, uintptr(value))
 }
 
+func Page_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(15297, obj))
+}
+
+func Page_SetAnchors(obj uintptr, value TAnchors) {
+    syscallN(15298, obj, uintptr(value))
+}
+
 func Page_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(15297, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(15299, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Page_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(15298, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(15300, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func Page_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(15299, obj))
+    return int32(syscallN(15301, obj))
 }
 
 func Page_SetClientHeight(obj uintptr, value int32) {
-    syscallN(15300, obj, uintptr(value))
+    syscallN(15302, obj, uintptr(value))
 }
 
 func Page_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(15301, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(15303, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Page_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(15302, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(15304, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func Page_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(15303, obj))
+    return int32(syscallN(15305, obj))
 }
 
 func Page_SetClientWidth(obj uintptr, value int32) {
-    syscallN(15304, obj, uintptr(value))
+    syscallN(15306, obj, uintptr(value))
 }
 
 func Page_GetConstraints(obj uintptr) uintptr {
-    return syscallN(15305, obj)
+    return syscallN(15307, obj)
 }
 
 func Page_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(15306, obj, value)
+    syscallN(15308, obj, value)
 }
 
 func Page_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(15307, obj))
+    return TControlState(syscallN(15309, obj))
 }
 
 func Page_SetControlState(obj uintptr, value TControlState) {
-    syscallN(15308, obj, uintptr(value))
-}
-
-func Page_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(15309, obj))
-}
-
-func Page_SetControlStyle(obj uintptr, value TControlStyle) {
     syscallN(15310, obj, uintptr(value))
 }
 
+func Page_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(15311, obj))
+}
+
+func Page_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(15312, obj, uintptr(value))
+}
+
 func Page_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(15311, obj))
+    return GoBool(syscallN(15313, obj))
 }
 
 func Page_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(15312, obj))
+    return GoBool(syscallN(15314, obj))
 }
 
 func Page_SetShowHint(obj uintptr, value bool) {
-    syscallN(15313, obj, PascalBool(value))
+    syscallN(15315, obj, PascalBool(value))
 }
 
 func Page_GetParent(obj uintptr) uintptr {
-    return syscallN(15314, obj)
+    return syscallN(15316, obj)
 }
 
 func Page_SetParent(obj uintptr, value uintptr) {
-    syscallN(15315, obj, value)
+    syscallN(15317, obj, value)
 }
 
 func Page_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(15316, obj))
+    return TCursor(syscallN(15318, obj))
 }
 
 func Page_SetCursor(obj uintptr, value TCursor) {
-    syscallN(15317, obj, uintptr(value))
+    syscallN(15319, obj, uintptr(value))
 }
 
 func Page_GetHint(obj uintptr) string {
-    return GoStr(syscallN(15318, obj))
+    return GoStr(syscallN(15320, obj))
 }
 
 func Page_SetHint(obj uintptr, value string) {
-    syscallN(15319, obj, PascalStr(value))
+    syscallN(15321, obj, PascalStr(value))
 }
 
 func Page_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(15320, obj))
+    return int32(syscallN(15322, obj))
 }
 
 func Page_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(15321, obj))
+    return int32(syscallN(15323, obj))
 }
 
 func Page_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(15322, obj, uintptr(value))
+    syscallN(15324, obj, uintptr(value))
 }
 
 func Page_GetOwner(obj uintptr) uintptr {
-    return syscallN(15323, obj)
+    return syscallN(15325, obj)
 }
 
 func Page_GetName(obj uintptr) string {
-    return GoStr(syscallN(15324, obj))
+    return GoStr(syscallN(15326, obj))
 }
 
 func Page_SetName(obj uintptr, value string) {
-    syscallN(15325, obj, PascalStr(value))
+    syscallN(15327, obj, PascalStr(value))
 }
 
 func Page_GetTag(obj uintptr) int {
-    return int(syscallN(15326, obj))
+    return int(syscallN(15328, obj))
 }
 
 func Page_SetTag(obj uintptr, value int) {
-    syscallN(15327, obj, uintptr(value))
+    syscallN(15329, obj, uintptr(value))
 }
 
 func Page_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(15328, obj)
-}
-
-func Page_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(15329, obj, value)
-}
-
-func Page_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(15330, obj)
 }
 
-func Page_SetAnchorSideTop(obj uintptr, value uintptr) {
+func Page_SetAnchorSideLeft(obj uintptr, value uintptr) {
     syscallN(15331, obj, value)
 }
 
-func Page_GetAnchorSideRight(obj uintptr) uintptr {
+func Page_GetAnchorSideTop(obj uintptr) uintptr {
     return syscallN(15332, obj)
 }
 
-func Page_SetAnchorSideRight(obj uintptr, value uintptr) {
+func Page_SetAnchorSideTop(obj uintptr, value uintptr) {
     syscallN(15333, obj, value)
 }
 
-func Page_GetAnchorSideBottom(obj uintptr) uintptr {
+func Page_GetAnchorSideRight(obj uintptr) uintptr {
     return syscallN(15334, obj)
 }
 
-func Page_SetAnchorSideBottom(obj uintptr, value uintptr) {
+func Page_SetAnchorSideRight(obj uintptr, value uintptr) {
     syscallN(15335, obj, value)
 }
 
-func Page_GetChildSizing(obj uintptr) uintptr {
+func Page_GetAnchorSideBottom(obj uintptr) uintptr {
     return syscallN(15336, obj)
 }
 
-func Page_SetChildSizing(obj uintptr, value uintptr) {
+func Page_SetAnchorSideBottom(obj uintptr, value uintptr) {
     syscallN(15337, obj, value)
 }
 
-func Page_GetBorderSpacing(obj uintptr) uintptr {
+func Page_GetChildSizing(obj uintptr) uintptr {
     return syscallN(15338, obj)
 }
 
-func Page_SetBorderSpacing(obj uintptr, value uintptr) {
+func Page_SetChildSizing(obj uintptr, value uintptr) {
     syscallN(15339, obj, value)
 }
 
+func Page_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(15340, obj)
+}
+
+func Page_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(15341, obj, value)
+}
+
 func Page_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(15340, obj, uintptr(Index))
+    return syscallN(15342, obj, uintptr(Index))
 }
 
 func Page_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(15341, obj, uintptr(Index))
+    return syscallN(15343, obj, uintptr(Index))
 }
 
 func Page_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(15342, obj, uintptr(AIndex))
+    return syscallN(15344, obj, uintptr(AIndex))
 }
 
 func Page_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(15343, obj, uintptr(AKind))
+    return syscallN(15345, obj, uintptr(AKind))
 }
 
 func Page_StaticClassType() TClass {
-    return TClass(syscallN(15344))
+    return TClass(syscallN(15346))
+}
+
+//--------------------------- TButtonPanel ---------------------------
+
+func ButtonPanel_Create(obj uintptr) uintptr {
+    return syscallN(15347, obj)
+}
+
+func ButtonPanel_Free(obj uintptr) {
+    syscallN(15348, obj)
+}
+
+func ButtonPanel_CanFocus(obj uintptr) bool {
+    return GoBool(syscallN(15349, obj))
+}
+
+func ButtonPanel_ContainsControl(obj uintptr, Control uintptr) bool {
+    return GoBool(syscallN(15350, obj, Control ))
+}
+
+func ButtonPanel_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    return syscallN(15351, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+}
+
+func ButtonPanel_DisableAlign(obj uintptr)  {
+    syscallN(15352, obj)
+}
+
+func ButtonPanel_EnableAlign(obj uintptr)  {
+    syscallN(15353, obj)
+}
+
+func ButtonPanel_FindChildControl(obj uintptr, ControlName string) uintptr {
+    return syscallN(15354, obj, PascalStr(ControlName) )
+}
+
+func ButtonPanel_FlipChildren(obj uintptr, AllLevels bool)  {
+    syscallN(15355, obj, PascalBool(AllLevels) )
+}
+
+func ButtonPanel_Focused(obj uintptr) bool {
+    return GoBool(syscallN(15356, obj))
+}
+
+func ButtonPanel_HandleAllocated(obj uintptr) bool {
+    return GoBool(syscallN(15357, obj))
+}
+
+func ButtonPanel_InsertControl(obj uintptr, AControl uintptr)  {
+    syscallN(15358, obj, AControl )
+}
+
+func ButtonPanel_Invalidate(obj uintptr)  {
+    syscallN(15359, obj)
+}
+
+func ButtonPanel_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    syscallN(15360, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func ButtonPanel_RemoveControl(obj uintptr, AControl uintptr)  {
+    syscallN(15361, obj, AControl )
+}
+
+func ButtonPanel_Realign(obj uintptr)  {
+    syscallN(15362, obj)
+}
+
+func ButtonPanel_Repaint(obj uintptr)  {
+    syscallN(15363, obj)
+}
+
+func ButtonPanel_ScaleBy(obj uintptr, M int32, D int32)  {
+    syscallN(15364, obj, uintptr(M) , uintptr(D) )
+}
+
+func ButtonPanel_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    syscallN(15365, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
+func ButtonPanel_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    syscallN(15366, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func ButtonPanel_SetFocus(obj uintptr)  {
+    syscallN(15367, obj)
+}
+
+func ButtonPanel_Update(obj uintptr)  {
+    syscallN(15368, obj)
+}
+
+func ButtonPanel_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(15369, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func ButtonPanel_BringToFront(obj uintptr)  {
+    syscallN(15370, obj)
+}
+
+func ButtonPanel_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
+    syscallN(15371, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func ButtonPanel_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
+    syscallN(15372, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func ButtonPanel_Dragging(obj uintptr) bool {
+    return GoBool(syscallN(15373, obj))
+}
+
+func ButtonPanel_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(15374, obj, PascalBool(Drop) )
+}
+
+func ButtonPanel_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(15375, obj))
+}
+
+func ButtonPanel_Hide(obj uintptr)  {
+    syscallN(15376, obj)
+}
+
+func ButtonPanel_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(15377, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func ButtonPanel_Refresh(obj uintptr)  {
+    syscallN(15378, obj)
+}
+
+func ButtonPanel_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
+    syscallN(15379, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func ButtonPanel_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
+    syscallN(15380, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func ButtonPanel_SendToBack(obj uintptr)  {
+    syscallN(15381, obj)
+}
+
+func ButtonPanel_Show(obj uintptr)  {
+    syscallN(15382, obj)
+}
+
+func ButtonPanel_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    return int32(syscallGetTextBuf(15383, obj, Buffer, uintptr(BufSize) ))
+}
+
+func ButtonPanel_GetTextLen(obj uintptr) int32 {
+    return int32(syscallN(15384, obj))
+}
+
+func ButtonPanel_SetTextBuf(obj uintptr, Buffer string)  {
+    syscallN(15385, obj, PascalStr(Buffer) )
+}
+
+func ButtonPanel_FindComponent(obj uintptr, AName string) uintptr {
+    return syscallN(15386, obj, PascalStr(AName) )
+}
+
+func ButtonPanel_GetNamePath(obj uintptr) string {
+    return GoStr(syscallN(15387, obj))
+}
+
+func ButtonPanel_Assign(obj uintptr, Source uintptr)  {
+    syscallN(15388, obj, Source )
+}
+
+func ButtonPanel_ClassType(obj uintptr) TClass {
+    return TClass(syscallN(15389, obj))
+}
+
+func ButtonPanel_ClassName(obj uintptr) string {
+    return GoStr(syscallN(15390, obj))
+}
+
+func ButtonPanel_InstanceSize(obj uintptr) int32 {
+    return int32(syscallN(15391, obj))
+}
+
+func ButtonPanel_InheritsFrom(obj uintptr, AClass TClass) bool {
+    return GoBool(syscallN(15392, obj, uintptr(AClass) ))
+}
+
+func ButtonPanel_Equals(obj uintptr, Obj uintptr) bool {
+    return GoBool(syscallN(15393, obj, Obj ))
+}
+
+func ButtonPanel_GetHashCode(obj uintptr) int32 {
+    return int32(syscallN(15394, obj))
+}
+
+func ButtonPanel_ToString(obj uintptr) string {
+    return GoStr(syscallN(15395, obj))
+}
+
+func ButtonPanel_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    syscallN(15396, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ButtonPanel_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    syscallN(15397, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ButtonPanel_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    syscallN(15398, obj, ASibling )
+}
+
+func ButtonPanel_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    syscallN(15399, obj, ASibling )
+}
+
+func ButtonPanel_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    syscallN(15400, obj, uintptr(ASide) , ASibling )
+}
+
+func ButtonPanel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    syscallN(15401, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ButtonPanel_AnchorClient(obj uintptr, ASpace int32)  {
+    syscallN(15402, obj, uintptr(ASpace) )
+}
+
+func ButtonPanel_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15403, obj, uintptr(ASize) ))
+}
+
+func ButtonPanel_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15404, obj, uintptr(ASize) ))
+}
+
+func ButtonPanel_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15405, obj, uintptr(ASize) ))
+}
+
+func ButtonPanel_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15406, obj, uintptr(ASize) ))
+}
+
+func ButtonPanel_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15407, obj, uintptr(ASize) ))
+}
+
+func ButtonPanel_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15408, obj, uintptr(ASize) ))
+}
+
+func ButtonPanel_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15409, obj, uintptr(ASize) ))
+}
+
+func ButtonPanel_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15410, obj, uintptr(ASize) ))
+}
+
+func ButtonPanel_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15411, obj, uintptr(ASize) ))
+}
+
+func ButtonPanel_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15412, obj, uintptr(ASize) ))
+}
+
+func ButtonPanel_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    syscallN(15413, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func ButtonPanel_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    syscallN(15414, obj, uintptr(ADesignTimePPI) )
+}
+
+func ButtonPanel_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    syscallN(15415, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
+func ButtonPanel_GetAlign(obj uintptr) TAlign {
+    return TAlign(syscallN(15416, obj))
+}
+
+func ButtonPanel_SetAlign(obj uintptr, value TAlign) {
+    syscallN(15417, obj, uintptr(value))
+}
+
+func ButtonPanel_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(15418, obj))
+}
+
+func ButtonPanel_SetAnchors(obj uintptr, value TAnchors) {
+    syscallN(15419, obj, uintptr(value))
+}
+
+func ButtonPanel_GetAutoSize(obj uintptr) bool {
+    return GoBool(syscallN(15420, obj))
+}
+
+func ButtonPanel_SetAutoSize(obj uintptr, value bool) {
+    syscallN(15421, obj, PascalBool(value))
+}
+
+func ButtonPanel_GetConstraints(obj uintptr) uintptr {
+    return syscallN(15422, obj)
+}
+
+func ButtonPanel_SetConstraints(obj uintptr, value uintptr) {
+    syscallN(15423, obj, value)
+}
+
+func ButtonPanel_GetEnabled(obj uintptr) bool {
+    return GoBool(syscallN(15424, obj))
+}
+
+func ButtonPanel_SetEnabled(obj uintptr, value bool) {
+    syscallN(15425, obj, PascalBool(value))
+}
+
+func ButtonPanel_GetOKButton(obj uintptr) uintptr {
+    return syscallN(15426, obj)
+}
+
+func ButtonPanel_GetHelpButton(obj uintptr) uintptr {
+    return syscallN(15427, obj)
+}
+
+func ButtonPanel_GetCloseButton(obj uintptr) uintptr {
+    return syscallN(15428, obj)
+}
+
+func ButtonPanel_GetCancelButton(obj uintptr) uintptr {
+    return syscallN(15429, obj)
+}
+
+func ButtonPanel_GetColor(obj uintptr) TColor {
+    return TColor(syscallN(15430, obj))
+}
+
+func ButtonPanel_SetColor(obj uintptr, value TColor) {
+    syscallN(15431, obj, uintptr(value))
+}
+
+func ButtonPanel_GetButtonOrder(obj uintptr) TButtonOrder {
+    return TButtonOrder(syscallN(15432, obj))
+}
+
+func ButtonPanel_SetButtonOrder(obj uintptr, value TButtonOrder) {
+    syscallN(15433, obj, uintptr(value))
+}
+
+func ButtonPanel_GetTabOrder(obj uintptr) TTabOrder {
+    return TTabOrder(syscallN(15434, obj))
+}
+
+func ButtonPanel_SetTabOrder(obj uintptr, value TTabOrder) {
+    syscallN(15435, obj, uintptr(value))
+}
+
+func ButtonPanel_GetDefaultButton(obj uintptr) TPanelButtonEx {
+    return TPanelButtonEx(syscallN(15436, obj))
+}
+
+func ButtonPanel_SetDefaultButton(obj uintptr, value TPanelButtonEx) {
+    syscallN(15437, obj, uintptr(value))
+}
+
+func ButtonPanel_GetSpacing(obj uintptr) int32 {
+    return int32(syscallN(15438, obj))
+}
+
+func ButtonPanel_SetSpacing(obj uintptr, value int32) {
+    syscallN(15439, obj, uintptr(value))
+}
+
+func ButtonPanel_SetOnClick(obj uintptr, fn interface{}) {
+    syscallN(15440, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnEnter(obj uintptr, fn interface{}) {
+    syscallN(15441, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnExit(obj uintptr, fn interface{}) {
+    syscallN(15442, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnKeyDown(obj uintptr, fn interface{}) {
+    syscallN(15443, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnKeyPress(obj uintptr, fn interface{}) {
+    syscallN(15444, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnKeyUp(obj uintptr, fn interface{}) {
+    syscallN(15445, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnMouseDown(obj uintptr, fn interface{}) {
+    syscallN(15446, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    syscallN(15447, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    syscallN(15448, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnMouseMove(obj uintptr, fn interface{}) {
+    syscallN(15449, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnMouseUp(obj uintptr, fn interface{}) {
+    syscallN(15450, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnMouseWheel(obj uintptr, fn interface{}) {
+    syscallN(15451, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+    syscallN(15452, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    syscallN(15453, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_SetOnResize(obj uintptr, fn interface{}) {
+    syscallN(15454, obj, MakeEventDataPtr(fn))
+}
+
+func ButtonPanel_GetShowButtons(obj uintptr) TPanelButtons {
+    return TPanelButtons(syscallN(15455, obj))
+}
+
+func ButtonPanel_SetShowButtons(obj uintptr, value TPanelButtons) {
+    syscallN(15456, obj, uintptr(value))
+}
+
+func ButtonPanel_GetShowGlyphs(obj uintptr) TPanelButtons {
+    return TPanelButtons(syscallN(15457, obj))
+}
+
+func ButtonPanel_SetShowGlyphs(obj uintptr, value TPanelButtons) {
+    syscallN(15458, obj, uintptr(value))
+}
+
+func ButtonPanel_GetShowBevel(obj uintptr) bool {
+    return GoBool(syscallN(15459, obj))
+}
+
+func ButtonPanel_SetShowBevel(obj uintptr, value bool) {
+    syscallN(15460, obj, PascalBool(value))
+}
+
+func ButtonPanel_GetVisible(obj uintptr) bool {
+    return GoBool(syscallN(15461, obj))
+}
+
+func ButtonPanel_SetVisible(obj uintptr, value bool) {
+    syscallN(15462, obj, PascalBool(value))
+}
+
+func ButtonPanel_GetParentBackground(obj uintptr) bool {
+    return GoBool(syscallN(15463, obj))
+}
+
+func ButtonPanel_SetParentBackground(obj uintptr, value bool) {
+    syscallN(15464, obj, PascalBool(value))
+}
+
+func ButtonPanel_GetDockClientCount(obj uintptr) int32 {
+    return int32(syscallN(15465, obj))
+}
+
+func ButtonPanel_GetDockSite(obj uintptr) bool {
+    return GoBool(syscallN(15466, obj))
+}
+
+func ButtonPanel_SetDockSite(obj uintptr, value bool) {
+    syscallN(15467, obj, PascalBool(value))
+}
+
+func ButtonPanel_GetDoubleBuffered(obj uintptr) bool {
+    return GoBool(syscallN(15468, obj))
+}
+
+func ButtonPanel_SetDoubleBuffered(obj uintptr, value bool) {
+    syscallN(15469, obj, PascalBool(value))
+}
+
+func ButtonPanel_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(15470, obj))
+}
+
+func ButtonPanel_GetVisibleDockClientCount(obj uintptr) int32 {
+    return int32(syscallN(15471, obj))
+}
+
+func ButtonPanel_GetBrush(obj uintptr) uintptr {
+    return syscallN(15472, obj)
+}
+
+func ButtonPanel_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(15473, obj))
+}
+
+func ButtonPanel_GetHandle(obj uintptr) HWND {
+    return HWND(syscallN(15474, obj))
+}
+
+func ButtonPanel_GetParentDoubleBuffered(obj uintptr) bool {
+    return GoBool(syscallN(15475, obj))
+}
+
+func ButtonPanel_SetParentDoubleBuffered(obj uintptr, value bool) {
+    syscallN(15476, obj, PascalBool(value))
+}
+
+func ButtonPanel_GetParentWindow(obj uintptr) HWND {
+    return HWND(syscallN(15477, obj))
+}
+
+func ButtonPanel_SetParentWindow(obj uintptr, value HWND) {
+    syscallN(15478, obj, uintptr(value))
+}
+
+func ButtonPanel_GetShowing(obj uintptr) bool {
+    return GoBool(syscallN(15479, obj))
+}
+
+func ButtonPanel_GetTabStop(obj uintptr) bool {
+    return GoBool(syscallN(15480, obj))
+}
+
+func ButtonPanel_SetTabStop(obj uintptr, value bool) {
+    syscallN(15481, obj, PascalBool(value))
+}
+
+func ButtonPanel_GetUseDockManager(obj uintptr) bool {
+    return GoBool(syscallN(15482, obj))
+}
+
+func ButtonPanel_SetUseDockManager(obj uintptr, value bool) {
+    syscallN(15483, obj, PascalBool(value))
+}
+
+func ButtonPanel_GetAction(obj uintptr) uintptr {
+    return syscallN(15484, obj)
+}
+
+func ButtonPanel_SetAction(obj uintptr, value uintptr) {
+    syscallN(15485, obj, value)
+}
+
+func ButtonPanel_GetBiDiMode(obj uintptr) TBiDiMode {
+    return TBiDiMode(syscallN(15486, obj))
+}
+
+func ButtonPanel_SetBiDiMode(obj uintptr, value TBiDiMode) {
+    syscallN(15487, obj, uintptr(value))
+}
+
+func ButtonPanel_GetBoundsRect(obj uintptr) (result TRect) {
+    syscallN(15488, obj, uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func ButtonPanel_SetBoundsRect(obj uintptr, value TRect) {
+    syscallN(15489, obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func ButtonPanel_GetClientHeight(obj uintptr) int32 {
+    return int32(syscallN(15490, obj))
+}
+
+func ButtonPanel_SetClientHeight(obj uintptr, value int32) {
+    syscallN(15491, obj, uintptr(value))
+}
+
+func ButtonPanel_GetClientOrigin(obj uintptr) (result TPoint) {
+    syscallN(15492, obj, uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func ButtonPanel_GetClientRect(obj uintptr) (result TRect) {
+    syscallN(15493, obj, uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func ButtonPanel_GetClientWidth(obj uintptr) int32 {
+    return int32(syscallN(15494, obj))
+}
+
+func ButtonPanel_SetClientWidth(obj uintptr, value int32) {
+    syscallN(15495, obj, uintptr(value))
+}
+
+func ButtonPanel_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(15496, obj))
+}
+
+func ButtonPanel_SetControlState(obj uintptr, value TControlState) {
+    syscallN(15497, obj, uintptr(value))
+}
+
+func ButtonPanel_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(15498, obj))
+}
+
+func ButtonPanel_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(15499, obj, uintptr(value))
+}
+
+func ButtonPanel_GetFloating(obj uintptr) bool {
+    return GoBool(syscallN(15500, obj))
+}
+
+func ButtonPanel_GetShowHint(obj uintptr) bool {
+    return GoBool(syscallN(15501, obj))
+}
+
+func ButtonPanel_SetShowHint(obj uintptr, value bool) {
+    syscallN(15502, obj, PascalBool(value))
+}
+
+func ButtonPanel_GetParent(obj uintptr) uintptr {
+    return syscallN(15503, obj)
+}
+
+func ButtonPanel_SetParent(obj uintptr, value uintptr) {
+    syscallN(15504, obj, value)
+}
+
+func ButtonPanel_GetLeft(obj uintptr) int32 {
+    return int32(syscallN(15505, obj))
+}
+
+func ButtonPanel_SetLeft(obj uintptr, value int32) {
+    syscallN(15506, obj, uintptr(value))
+}
+
+func ButtonPanel_GetTop(obj uintptr) int32 {
+    return int32(syscallN(15507, obj))
+}
+
+func ButtonPanel_SetTop(obj uintptr, value int32) {
+    syscallN(15508, obj, uintptr(value))
+}
+
+func ButtonPanel_GetWidth(obj uintptr) int32 {
+    return int32(syscallN(15509, obj))
+}
+
+func ButtonPanel_SetWidth(obj uintptr, value int32) {
+    syscallN(15510, obj, uintptr(value))
+}
+
+func ButtonPanel_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(15511, obj))
+}
+
+func ButtonPanel_SetHeight(obj uintptr, value int32) {
+    syscallN(15512, obj, uintptr(value))
+}
+
+func ButtonPanel_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(15513, obj))
+}
+
+func ButtonPanel_SetCursor(obj uintptr, value TCursor) {
+    syscallN(15514, obj, uintptr(value))
+}
+
+func ButtonPanel_GetHint(obj uintptr) string {
+    return GoStr(syscallN(15515, obj))
+}
+
+func ButtonPanel_SetHint(obj uintptr, value string) {
+    syscallN(15516, obj, PascalStr(value))
+}
+
+func ButtonPanel_GetComponentCount(obj uintptr) int32 {
+    return int32(syscallN(15517, obj))
+}
+
+func ButtonPanel_GetComponentIndex(obj uintptr) int32 {
+    return int32(syscallN(15518, obj))
+}
+
+func ButtonPanel_SetComponentIndex(obj uintptr, value int32) {
+    syscallN(15519, obj, uintptr(value))
+}
+
+func ButtonPanel_GetOwner(obj uintptr) uintptr {
+    return syscallN(15520, obj)
+}
+
+func ButtonPanel_GetName(obj uintptr) string {
+    return GoStr(syscallN(15521, obj))
+}
+
+func ButtonPanel_SetName(obj uintptr, value string) {
+    syscallN(15522, obj, PascalStr(value))
+}
+
+func ButtonPanel_GetTag(obj uintptr) int {
+    return int(syscallN(15523, obj))
+}
+
+func ButtonPanel_SetTag(obj uintptr, value int) {
+    syscallN(15524, obj, uintptr(value))
+}
+
+func ButtonPanel_GetAnchorSideLeft(obj uintptr) uintptr {
+    return syscallN(15525, obj)
+}
+
+func ButtonPanel_SetAnchorSideLeft(obj uintptr, value uintptr) {
+    syscallN(15526, obj, value)
+}
+
+func ButtonPanel_GetAnchorSideTop(obj uintptr) uintptr {
+    return syscallN(15527, obj)
+}
+
+func ButtonPanel_SetAnchorSideTop(obj uintptr, value uintptr) {
+    syscallN(15528, obj, value)
+}
+
+func ButtonPanel_GetAnchorSideRight(obj uintptr) uintptr {
+    return syscallN(15529, obj)
+}
+
+func ButtonPanel_SetAnchorSideRight(obj uintptr, value uintptr) {
+    syscallN(15530, obj, value)
+}
+
+func ButtonPanel_GetAnchorSideBottom(obj uintptr) uintptr {
+    return syscallN(15531, obj)
+}
+
+func ButtonPanel_SetAnchorSideBottom(obj uintptr, value uintptr) {
+    syscallN(15532, obj, value)
+}
+
+func ButtonPanel_GetChildSizing(obj uintptr) uintptr {
+    return syscallN(15533, obj)
+}
+
+func ButtonPanel_SetChildSizing(obj uintptr, value uintptr) {
+    syscallN(15534, obj, value)
+}
+
+func ButtonPanel_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(15535, obj)
+}
+
+func ButtonPanel_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(15536, obj, value)
+}
+
+func ButtonPanel_GetDockClients(obj uintptr, Index int32) uintptr {
+    return syscallN(15537, obj, uintptr(Index))
+}
+
+func ButtonPanel_GetControls(obj uintptr, Index int32) uintptr {
+    return syscallN(15538, obj, uintptr(Index))
+}
+
+func ButtonPanel_GetComponents(obj uintptr, AIndex int32) uintptr {
+    return syscallN(15539, obj, uintptr(AIndex))
+}
+
+func ButtonPanel_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    return syscallN(15540, obj, uintptr(AKind))
+}
+
+func ButtonPanel_StaticClassType() TClass {
+    return TClass(syscallN(15541))
+}
+
+//--------------------------- TPanelBitBtn ---------------------------
+
+func PanelBitBtn_Create(obj uintptr) uintptr {
+    return syscallN(15542, obj)
+}
+
+func PanelBitBtn_Free(obj uintptr) {
+    syscallN(15543, obj)
+}
+
+func PanelBitBtn_Click(obj uintptr)  {
+    syscallN(15544, obj)
+}
+
+func PanelBitBtn_CanFocus(obj uintptr) bool {
+    return GoBool(syscallN(15545, obj))
+}
+
+func PanelBitBtn_ContainsControl(obj uintptr, Control uintptr) bool {
+    return GoBool(syscallN(15546, obj, Control ))
+}
+
+func PanelBitBtn_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    return syscallN(15547, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+}
+
+func PanelBitBtn_DisableAlign(obj uintptr)  {
+    syscallN(15548, obj)
+}
+
+func PanelBitBtn_EnableAlign(obj uintptr)  {
+    syscallN(15549, obj)
+}
+
+func PanelBitBtn_FindChildControl(obj uintptr, ControlName string) uintptr {
+    return syscallN(15550, obj, PascalStr(ControlName) )
+}
+
+func PanelBitBtn_FlipChildren(obj uintptr, AllLevels bool)  {
+    syscallN(15551, obj, PascalBool(AllLevels) )
+}
+
+func PanelBitBtn_Focused(obj uintptr) bool {
+    return GoBool(syscallN(15552, obj))
+}
+
+func PanelBitBtn_HandleAllocated(obj uintptr) bool {
+    return GoBool(syscallN(15553, obj))
+}
+
+func PanelBitBtn_InsertControl(obj uintptr, AControl uintptr)  {
+    syscallN(15554, obj, AControl )
+}
+
+func PanelBitBtn_Invalidate(obj uintptr)  {
+    syscallN(15555, obj)
+}
+
+func PanelBitBtn_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    syscallN(15556, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func PanelBitBtn_RemoveControl(obj uintptr, AControl uintptr)  {
+    syscallN(15557, obj, AControl )
+}
+
+func PanelBitBtn_Realign(obj uintptr)  {
+    syscallN(15558, obj)
+}
+
+func PanelBitBtn_Repaint(obj uintptr)  {
+    syscallN(15559, obj)
+}
+
+func PanelBitBtn_ScaleBy(obj uintptr, M int32, D int32)  {
+    syscallN(15560, obj, uintptr(M) , uintptr(D) )
+}
+
+func PanelBitBtn_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    syscallN(15561, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
+func PanelBitBtn_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    syscallN(15562, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func PanelBitBtn_SetFocus(obj uintptr)  {
+    syscallN(15563, obj)
+}
+
+func PanelBitBtn_Update(obj uintptr)  {
+    syscallN(15564, obj)
+}
+
+func PanelBitBtn_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
+    syscallN(15565, obj, PascalBool(Immediate) , uintptr(Threshold) )
+}
+
+func PanelBitBtn_BringToFront(obj uintptr)  {
+    syscallN(15566, obj)
+}
+
+func PanelBitBtn_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
+    syscallN(15567, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func PanelBitBtn_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
+    syscallN(15568, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func PanelBitBtn_Dragging(obj uintptr) bool {
+    return GoBool(syscallN(15569, obj))
+}
+
+func PanelBitBtn_EndDrag(obj uintptr, Drop bool)  {
+    syscallN(15570, obj, PascalBool(Drop) )
+}
+
+func PanelBitBtn_HasParent(obj uintptr) bool {
+    return GoBool(syscallN(15571, obj))
+}
+
+func PanelBitBtn_Hide(obj uintptr)  {
+    syscallN(15572, obj)
+}
+
+func PanelBitBtn_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    return int(syscallN(15573, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+}
+
+func PanelBitBtn_Refresh(obj uintptr)  {
+    syscallN(15574, obj)
+}
+
+func PanelBitBtn_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
+    syscallN(15575, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func PanelBitBtn_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
+    syscallN(15576, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func PanelBitBtn_SendToBack(obj uintptr)  {
+    syscallN(15577, obj)
+}
+
+func PanelBitBtn_Show(obj uintptr)  {
+    syscallN(15578, obj)
+}
+
+func PanelBitBtn_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    return int32(syscallGetTextBuf(15579, obj, Buffer, uintptr(BufSize) ))
+}
+
+func PanelBitBtn_GetTextLen(obj uintptr) int32 {
+    return int32(syscallN(15580, obj))
+}
+
+func PanelBitBtn_SetTextBuf(obj uintptr, Buffer string)  {
+    syscallN(15581, obj, PascalStr(Buffer) )
+}
+
+func PanelBitBtn_FindComponent(obj uintptr, AName string) uintptr {
+    return syscallN(15582, obj, PascalStr(AName) )
+}
+
+func PanelBitBtn_GetNamePath(obj uintptr) string {
+    return GoStr(syscallN(15583, obj))
+}
+
+func PanelBitBtn_Assign(obj uintptr, Source uintptr)  {
+    syscallN(15584, obj, Source )
+}
+
+func PanelBitBtn_ClassType(obj uintptr) TClass {
+    return TClass(syscallN(15585, obj))
+}
+
+func PanelBitBtn_ClassName(obj uintptr) string {
+    return GoStr(syscallN(15586, obj))
+}
+
+func PanelBitBtn_InstanceSize(obj uintptr) int32 {
+    return int32(syscallN(15587, obj))
+}
+
+func PanelBitBtn_InheritsFrom(obj uintptr, AClass TClass) bool {
+    return GoBool(syscallN(15588, obj, uintptr(AClass) ))
+}
+
+func PanelBitBtn_Equals(obj uintptr, Obj uintptr) bool {
+    return GoBool(syscallN(15589, obj, Obj ))
+}
+
+func PanelBitBtn_GetHashCode(obj uintptr) int32 {
+    return int32(syscallN(15590, obj))
+}
+
+func PanelBitBtn_ToString(obj uintptr) string {
+    return GoStr(syscallN(15591, obj))
+}
+
+func PanelBitBtn_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    syscallN(15592, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func PanelBitBtn_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    syscallN(15593, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func PanelBitBtn_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    syscallN(15594, obj, ASibling )
+}
+
+func PanelBitBtn_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    syscallN(15595, obj, ASibling )
+}
+
+func PanelBitBtn_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
+    syscallN(15596, obj, uintptr(ASide) , ASibling )
+}
+
+func PanelBitBtn_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    syscallN(15597, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func PanelBitBtn_AnchorClient(obj uintptr, ASpace int32)  {
+    syscallN(15598, obj, uintptr(ASpace) )
+}
+
+func PanelBitBtn_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15599, obj, uintptr(ASize) ))
+}
+
+func PanelBitBtn_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15600, obj, uintptr(ASize) ))
+}
+
+func PanelBitBtn_Scale96ToForm(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15601, obj, uintptr(ASize) ))
+}
+
+func PanelBitBtn_ScaleFormTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15602, obj, uintptr(ASize) ))
+}
+
+func PanelBitBtn_Scale96ToFont(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15603, obj, uintptr(ASize) ))
+}
+
+func PanelBitBtn_ScaleFontTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15604, obj, uintptr(ASize) ))
+}
+
+func PanelBitBtn_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15605, obj, uintptr(ASize) ))
+}
+
+func PanelBitBtn_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15606, obj, uintptr(ASize) ))
+}
+
+func PanelBitBtn_Scale96ToScreen(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15607, obj, uintptr(ASize) ))
+}
+
+func PanelBitBtn_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
+    return int32(syscallN(15608, obj, uintptr(ASize) ))
+}
+
+func PanelBitBtn_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
+    syscallN(15609, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+}
+
+func PanelBitBtn_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
+    syscallN(15610, obj, uintptr(ADesignTimePPI) )
+}
+
+func PanelBitBtn_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
+    syscallN(15611, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+}
+
+func PanelBitBtn_GetCaption(obj uintptr) string {
+    return GoStr(syscallN(15612, obj))
+}
+
+func PanelBitBtn_SetCaption(obj uintptr, value string) {
+    syscallN(15613, obj, PascalStr(value))
+}
+
+func PanelBitBtn_GetDefaultCaption(obj uintptr) bool {
+    return GoBool(syscallN(15614, obj))
+}
+
+func PanelBitBtn_SetDefaultCaption(obj uintptr, value bool) {
+    syscallN(15615, obj, PascalBool(value))
+}
+
+func PanelBitBtn_GetLeft(obj uintptr) int32 {
+    return int32(syscallN(15616, obj))
+}
+
+func PanelBitBtn_SetLeft(obj uintptr, value int32) {
+    syscallN(15617, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetTop(obj uintptr) int32 {
+    return int32(syscallN(15618, obj))
+}
+
+func PanelBitBtn_SetTop(obj uintptr, value int32) {
+    syscallN(15619, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetWidth(obj uintptr) int32 {
+    return int32(syscallN(15620, obj))
+}
+
+func PanelBitBtn_SetWidth(obj uintptr, value int32) {
+    syscallN(15621, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetHeight(obj uintptr) int32 {
+    return int32(syscallN(15622, obj))
+}
+
+func PanelBitBtn_SetHeight(obj uintptr, value int32) {
+    syscallN(15623, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetEnabled(obj uintptr) bool {
+    return GoBool(syscallN(15624, obj))
+}
+
+func PanelBitBtn_SetEnabled(obj uintptr, value bool) {
+    syscallN(15625, obj, PascalBool(value))
+}
+
+func PanelBitBtn_GetFont(obj uintptr) uintptr {
+    return syscallN(15626, obj)
+}
+
+func PanelBitBtn_SetFont(obj uintptr, value uintptr) {
+    syscallN(15627, obj, value)
+}
+
+func PanelBitBtn_GetGlyph(obj uintptr) uintptr {
+    return syscallN(15628, obj)
+}
+
+func PanelBitBtn_SetGlyph(obj uintptr, value uintptr) {
+    syscallN(15629, obj, value)
+}
+
+func PanelBitBtn_GetName(obj uintptr) string {
+    return GoStr(syscallN(15630, obj))
+}
+
+func PanelBitBtn_SetName(obj uintptr, value string) {
+    syscallN(15631, obj, PascalStr(value))
+}
+
+func PanelBitBtn_GetPopupMenu(obj uintptr) uintptr {
+    return syscallN(15632, obj)
+}
+
+func PanelBitBtn_SetPopupMenu(obj uintptr, value uintptr) {
+    syscallN(15633, obj, value)
+}
+
+func PanelBitBtn_GetShowHint(obj uintptr) bool {
+    return GoBool(syscallN(15634, obj))
+}
+
+func PanelBitBtn_SetShowHint(obj uintptr, value bool) {
+    syscallN(15635, obj, PascalBool(value))
+}
+
+func PanelBitBtn_SetOnClick(obj uintptr, fn interface{}) {
+    syscallN(15636, obj, MakeEventDataPtr(fn))
+}
+
+func PanelBitBtn_GetGlyphShowMode(obj uintptr) TGlyphShowMode {
+    return TGlyphShowMode(syscallN(15637, obj))
+}
+
+func PanelBitBtn_SetGlyphShowMode(obj uintptr, value TGlyphShowMode) {
+    syscallN(15638, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetImageIndex(obj uintptr) int32 {
+    return int32(syscallN(15639, obj))
+}
+
+func PanelBitBtn_SetImageIndex(obj uintptr, value int32) {
+    syscallN(15640, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetImages(obj uintptr) uintptr {
+    return syscallN(15641, obj)
+}
+
+func PanelBitBtn_SetImages(obj uintptr, value uintptr) {
+    syscallN(15642, obj, value)
+}
+
+func PanelBitBtn_GetImageWidth(obj uintptr) int32 {
+    return int32(syscallN(15643, obj))
+}
+
+func PanelBitBtn_SetImageWidth(obj uintptr, value int32) {
+    syscallN(15644, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetAction(obj uintptr) uintptr {
+    return syscallN(15645, obj)
+}
+
+func PanelBitBtn_SetAction(obj uintptr, value uintptr) {
+    syscallN(15646, obj, value)
+}
+
+func PanelBitBtn_GetAlign(obj uintptr) TAlign {
+    return TAlign(syscallN(15647, obj))
+}
+
+func PanelBitBtn_SetAlign(obj uintptr, value TAlign) {
+    syscallN(15648, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(15649, obj))
+}
+
+func PanelBitBtn_SetAnchors(obj uintptr, value TAnchors) {
+    syscallN(15650, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetBiDiMode(obj uintptr) TBiDiMode {
+    return TBiDiMode(syscallN(15651, obj))
+}
+
+func PanelBitBtn_SetBiDiMode(obj uintptr, value TBiDiMode) {
+    syscallN(15652, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetCancel(obj uintptr) bool {
+    return GoBool(syscallN(15653, obj))
+}
+
+func PanelBitBtn_SetCancel(obj uintptr, value bool) {
+    syscallN(15654, obj, PascalBool(value))
+}
+
+func PanelBitBtn_GetConstraints(obj uintptr) uintptr {
+    return syscallN(15655, obj)
+}
+
+func PanelBitBtn_SetConstraints(obj uintptr, value uintptr) {
+    syscallN(15656, obj, value)
+}
+
+func PanelBitBtn_GetDefault(obj uintptr) bool {
+    return GoBool(syscallN(15657, obj))
+}
+
+func PanelBitBtn_SetDefault(obj uintptr, value bool) {
+    syscallN(15658, obj, PascalBool(value))
+}
+
+func PanelBitBtn_GetDoubleBuffered(obj uintptr) bool {
+    return GoBool(syscallN(15659, obj))
+}
+
+func PanelBitBtn_SetDoubleBuffered(obj uintptr, value bool) {
+    syscallN(15660, obj, PascalBool(value))
+}
+
+func PanelBitBtn_GetKind(obj uintptr) TBitBtnKind {
+    return TBitBtnKind(syscallN(15661, obj))
+}
+
+func PanelBitBtn_SetKind(obj uintptr, value TBitBtnKind) {
+    syscallN(15662, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetLayout(obj uintptr) TButtonLayout {
+    return TButtonLayout(syscallN(15663, obj))
+}
+
+func PanelBitBtn_SetLayout(obj uintptr, value TButtonLayout) {
+    syscallN(15664, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetModalResult(obj uintptr) TModalResult {
+    return TModalResult(syscallN(15665, obj))
+}
+
+func PanelBitBtn_SetModalResult(obj uintptr, value TModalResult) {
+    syscallN(15666, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetNumGlyphs(obj uintptr) TNumGlyphs {
+    return TNumGlyphs(syscallN(15667, obj))
+}
+
+func PanelBitBtn_SetNumGlyphs(obj uintptr, value TNumGlyphs) {
+    syscallN(15668, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetParentDoubleBuffered(obj uintptr) bool {
+    return GoBool(syscallN(15669, obj))
+}
+
+func PanelBitBtn_SetParentDoubleBuffered(obj uintptr, value bool) {
+    syscallN(15670, obj, PascalBool(value))
+}
+
+func PanelBitBtn_GetSpacing(obj uintptr) int32 {
+    return int32(syscallN(15671, obj))
+}
+
+func PanelBitBtn_SetSpacing(obj uintptr, value int32) {
+    syscallN(15672, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetTabOrder(obj uintptr) TTabOrder {
+    return TTabOrder(syscallN(15673, obj))
+}
+
+func PanelBitBtn_SetTabOrder(obj uintptr, value TTabOrder) {
+    syscallN(15674, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetTabStop(obj uintptr) bool {
+    return GoBool(syscallN(15675, obj))
+}
+
+func PanelBitBtn_SetTabStop(obj uintptr, value bool) {
+    syscallN(15676, obj, PascalBool(value))
+}
+
+func PanelBitBtn_GetVisible(obj uintptr) bool {
+    return GoBool(syscallN(15677, obj))
+}
+
+func PanelBitBtn_SetVisible(obj uintptr, value bool) {
+    syscallN(15678, obj, PascalBool(value))
+}
+
+func PanelBitBtn_SetOnEnter(obj uintptr, fn interface{}) {
+    syscallN(15679, obj, MakeEventDataPtr(fn))
+}
+
+func PanelBitBtn_SetOnExit(obj uintptr, fn interface{}) {
+    syscallN(15680, obj, MakeEventDataPtr(fn))
+}
+
+func PanelBitBtn_SetOnKeyDown(obj uintptr, fn interface{}) {
+    syscallN(15681, obj, MakeEventDataPtr(fn))
+}
+
+func PanelBitBtn_SetOnKeyPress(obj uintptr, fn interface{}) {
+    syscallN(15682, obj, MakeEventDataPtr(fn))
+}
+
+func PanelBitBtn_SetOnKeyUp(obj uintptr, fn interface{}) {
+    syscallN(15683, obj, MakeEventDataPtr(fn))
+}
+
+func PanelBitBtn_GetDockClientCount(obj uintptr) int32 {
+    return int32(syscallN(15684, obj))
+}
+
+func PanelBitBtn_GetDockSite(obj uintptr) bool {
+    return GoBool(syscallN(15685, obj))
+}
+
+func PanelBitBtn_SetDockSite(obj uintptr, value bool) {
+    syscallN(15686, obj, PascalBool(value))
+}
+
+func PanelBitBtn_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(15687, obj))
+}
+
+func PanelBitBtn_GetVisibleDockClientCount(obj uintptr) int32 {
+    return int32(syscallN(15688, obj))
+}
+
+func PanelBitBtn_GetBrush(obj uintptr) uintptr {
+    return syscallN(15689, obj)
+}
+
+func PanelBitBtn_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(15690, obj))
+}
+
+func PanelBitBtn_GetHandle(obj uintptr) HWND {
+    return HWND(syscallN(15691, obj))
+}
+
+func PanelBitBtn_GetParentWindow(obj uintptr) HWND {
+    return HWND(syscallN(15692, obj))
+}
+
+func PanelBitBtn_SetParentWindow(obj uintptr, value HWND) {
+    syscallN(15693, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetShowing(obj uintptr) bool {
+    return GoBool(syscallN(15694, obj))
+}
+
+func PanelBitBtn_GetUseDockManager(obj uintptr) bool {
+    return GoBool(syscallN(15695, obj))
+}
+
+func PanelBitBtn_SetUseDockManager(obj uintptr, value bool) {
+    syscallN(15696, obj, PascalBool(value))
+}
+
+func PanelBitBtn_GetBoundsRect(obj uintptr) (result TRect) {
+    syscallN(15697, obj, uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func PanelBitBtn_SetBoundsRect(obj uintptr, value TRect) {
+    syscallN(15698, obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func PanelBitBtn_GetClientHeight(obj uintptr) int32 {
+    return int32(syscallN(15699, obj))
+}
+
+func PanelBitBtn_SetClientHeight(obj uintptr, value int32) {
+    syscallN(15700, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetClientOrigin(obj uintptr) (result TPoint) {
+    syscallN(15701, obj, uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func PanelBitBtn_GetClientRect(obj uintptr) (result TRect) {
+    syscallN(15702, obj, uintptr(unsafe.Pointer(&result)))
+    return
+}
+
+func PanelBitBtn_GetClientWidth(obj uintptr) int32 {
+    return int32(syscallN(15703, obj))
+}
+
+func PanelBitBtn_SetClientWidth(obj uintptr, value int32) {
+    syscallN(15704, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetControlState(obj uintptr) TControlState {
+    return TControlState(syscallN(15705, obj))
+}
+
+func PanelBitBtn_SetControlState(obj uintptr, value TControlState) {
+    syscallN(15706, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetControlStyle(obj uintptr) TControlStyle {
+    return TControlStyle(syscallN(15707, obj))
+}
+
+func PanelBitBtn_SetControlStyle(obj uintptr, value TControlStyle) {
+    syscallN(15708, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetFloating(obj uintptr) bool {
+    return GoBool(syscallN(15709, obj))
+}
+
+func PanelBitBtn_GetParent(obj uintptr) uintptr {
+    return syscallN(15710, obj)
+}
+
+func PanelBitBtn_SetParent(obj uintptr, value uintptr) {
+    syscallN(15711, obj, value)
+}
+
+func PanelBitBtn_GetCursor(obj uintptr) TCursor {
+    return TCursor(syscallN(15712, obj))
+}
+
+func PanelBitBtn_SetCursor(obj uintptr, value TCursor) {
+    syscallN(15713, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetHint(obj uintptr) string {
+    return GoStr(syscallN(15714, obj))
+}
+
+func PanelBitBtn_SetHint(obj uintptr, value string) {
+    syscallN(15715, obj, PascalStr(value))
+}
+
+func PanelBitBtn_GetComponentCount(obj uintptr) int32 {
+    return int32(syscallN(15716, obj))
+}
+
+func PanelBitBtn_GetComponentIndex(obj uintptr) int32 {
+    return int32(syscallN(15717, obj))
+}
+
+func PanelBitBtn_SetComponentIndex(obj uintptr, value int32) {
+    syscallN(15718, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetOwner(obj uintptr) uintptr {
+    return syscallN(15719, obj)
+}
+
+func PanelBitBtn_GetTag(obj uintptr) int {
+    return int(syscallN(15720, obj))
+}
+
+func PanelBitBtn_SetTag(obj uintptr, value int) {
+    syscallN(15721, obj, uintptr(value))
+}
+
+func PanelBitBtn_GetAnchorSideLeft(obj uintptr) uintptr {
+    return syscallN(15722, obj)
+}
+
+func PanelBitBtn_SetAnchorSideLeft(obj uintptr, value uintptr) {
+    syscallN(15723, obj, value)
+}
+
+func PanelBitBtn_GetAnchorSideTop(obj uintptr) uintptr {
+    return syscallN(15724, obj)
+}
+
+func PanelBitBtn_SetAnchorSideTop(obj uintptr, value uintptr) {
+    syscallN(15725, obj, value)
+}
+
+func PanelBitBtn_GetAnchorSideRight(obj uintptr) uintptr {
+    return syscallN(15726, obj)
+}
+
+func PanelBitBtn_SetAnchorSideRight(obj uintptr, value uintptr) {
+    syscallN(15727, obj, value)
+}
+
+func PanelBitBtn_GetAnchorSideBottom(obj uintptr) uintptr {
+    return syscallN(15728, obj)
+}
+
+func PanelBitBtn_SetAnchorSideBottom(obj uintptr, value uintptr) {
+    syscallN(15729, obj, value)
+}
+
+func PanelBitBtn_GetChildSizing(obj uintptr) uintptr {
+    return syscallN(15730, obj)
+}
+
+func PanelBitBtn_SetChildSizing(obj uintptr, value uintptr) {
+    syscallN(15731, obj, value)
+}
+
+func PanelBitBtn_GetBorderSpacing(obj uintptr) uintptr {
+    return syscallN(15732, obj)
+}
+
+func PanelBitBtn_SetBorderSpacing(obj uintptr, value uintptr) {
+    syscallN(15733, obj, value)
+}
+
+func PanelBitBtn_GetDockClients(obj uintptr, Index int32) uintptr {
+    return syscallN(15734, obj, uintptr(Index))
+}
+
+func PanelBitBtn_GetControls(obj uintptr, Index int32) uintptr {
+    return syscallN(15735, obj, uintptr(Index))
+}
+
+func PanelBitBtn_GetComponents(obj uintptr, AIndex int32) uintptr {
+    return syscallN(15736, obj, uintptr(AIndex))
+}
+
+func PanelBitBtn_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    return syscallN(15737, obj, uintptr(AKind))
+}
+
+func PanelBitBtn_StaticClassType() TClass {
+    return TClass(syscallN(15738))
 }
 
 //--------------------------- TAnchorSide ---------------------------
 
 func AnchorSide_Assign(obj uintptr, Source uintptr)  {
-    syscallN(15345, obj, Source )
+    syscallN(15739, obj, Source )
 }
 
 func AnchorSide_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(15346, obj))
+    return GoStr(syscallN(15740, obj))
 }
 
 func AnchorSide_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(15347, obj))
+    return TClass(syscallN(15741, obj))
 }
 
 func AnchorSide_ClassName(obj uintptr) string {
-    return GoStr(syscallN(15348, obj))
+    return GoStr(syscallN(15742, obj))
 }
 
 func AnchorSide_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(15349, obj))
+    return int32(syscallN(15743, obj))
 }
 
 func AnchorSide_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(15350, obj, uintptr(AClass) ))
+    return GoBool(syscallN(15744, obj, uintptr(AClass) ))
 }
 
 func AnchorSide_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(15351, obj, Obj ))
+    return GoBool(syscallN(15745, obj, Obj ))
 }
 
 func AnchorSide_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(15352, obj))
+    return int32(syscallN(15746, obj))
 }
 
 func AnchorSide_ToString(obj uintptr) string {
-    return GoStr(syscallN(15353, obj))
+    return GoStr(syscallN(15747, obj))
 }
 
 func AnchorSide_GetOwner(obj uintptr) uintptr {
-    return syscallN(15354, obj)
+    return syscallN(15748, obj)
 }
 
 func AnchorSide_GetKind(obj uintptr) TAnchorKind {
-    return TAnchorKind(syscallN(15355, obj))
+    return TAnchorKind(syscallN(15749, obj))
 }
 
 func AnchorSide_GetControl(obj uintptr) uintptr {
-    return syscallN(15356, obj)
+    return syscallN(15750, obj)
 }
 
 func AnchorSide_SetControl(obj uintptr, value uintptr) {
-    syscallN(15357, obj, value)
+    syscallN(15751, obj, value)
 }
 
 func AnchorSide_GetSide(obj uintptr) TAnchorSideReference {
-    return TAnchorSideReference(syscallN(15358, obj))
+    return TAnchorSideReference(syscallN(15752, obj))
 }
 
 func AnchorSide_SetSide(obj uintptr, value TAnchorSideReference) {
-    syscallN(15359, obj, uintptr(value))
+    syscallN(15753, obj, uintptr(value))
 }
 
 func AnchorSide_StaticClassType() TClass {
-    return TClass(syscallN(15360))
+    return TClass(syscallN(15754))
 }
 
 //--------------------------- TControlBorderSpacing ---------------------------
 
 func ControlBorderSpacing_Assign(obj uintptr, Source uintptr)  {
-    syscallN(15361, obj, Source )
+    syscallN(15755, obj, Source )
 }
 
 func ControlBorderSpacing_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(15362, obj))
+    return GoStr(syscallN(15756, obj))
 }
 
 func ControlBorderSpacing_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(15363, obj))
+    return TClass(syscallN(15757, obj))
 }
 
 func ControlBorderSpacing_ClassName(obj uintptr) string {
-    return GoStr(syscallN(15364, obj))
+    return GoStr(syscallN(15758, obj))
 }
 
 func ControlBorderSpacing_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(15365, obj))
+    return int32(syscallN(15759, obj))
 }
 
 func ControlBorderSpacing_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(15366, obj, uintptr(AClass) ))
+    return GoBool(syscallN(15760, obj, uintptr(AClass) ))
 }
 
 func ControlBorderSpacing_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(15367, obj, Obj ))
+    return GoBool(syscallN(15761, obj, Obj ))
 }
 
 func ControlBorderSpacing_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(15368, obj))
+    return int32(syscallN(15762, obj))
 }
 
 func ControlBorderSpacing_ToString(obj uintptr) string {
-    return GoStr(syscallN(15369, obj))
+    return GoStr(syscallN(15763, obj))
 }
 
 func ControlBorderSpacing_GetControl(obj uintptr) uintptr {
-    return syscallN(15370, obj)
+    return syscallN(15764, obj)
 }
 
 func ControlBorderSpacing_GetAroundLeft(obj uintptr) int32 {
-    return int32(syscallN(15371, obj))
+    return int32(syscallN(15765, obj))
 }
 
 func ControlBorderSpacing_GetAroundTop(obj uintptr) int32 {
-    return int32(syscallN(15372, obj))
+    return int32(syscallN(15766, obj))
 }
 
 func ControlBorderSpacing_GetAroundRight(obj uintptr) int32 {
-    return int32(syscallN(15373, obj))
+    return int32(syscallN(15767, obj))
 }
 
 func ControlBorderSpacing_GetAroundBottom(obj uintptr) int32 {
-    return int32(syscallN(15374, obj))
+    return int32(syscallN(15768, obj))
 }
 
 func ControlBorderSpacing_GetControlLeft(obj uintptr) int32 {
-    return int32(syscallN(15375, obj))
+    return int32(syscallN(15769, obj))
 }
 
 func ControlBorderSpacing_GetControlTop(obj uintptr) int32 {
-    return int32(syscallN(15376, obj))
+    return int32(syscallN(15770, obj))
 }
 
 func ControlBorderSpacing_GetControlWidth(obj uintptr) int32 {
-    return int32(syscallN(15377, obj))
+    return int32(syscallN(15771, obj))
 }
 
 func ControlBorderSpacing_GetControlHeight(obj uintptr) int32 {
-    return int32(syscallN(15378, obj))
+    return int32(syscallN(15772, obj))
 }
 
 func ControlBorderSpacing_GetControlRight(obj uintptr) int32 {
-    return int32(syscallN(15379, obj))
+    return int32(syscallN(15773, obj))
 }
 
 func ControlBorderSpacing_GetControlBottom(obj uintptr) int32 {
-    return int32(syscallN(15380, obj))
+    return int32(syscallN(15774, obj))
 }
 
 func ControlBorderSpacing_SetOnChange(obj uintptr, fn interface{}) {
-    syscallN(15381, obj, MakeEventDataPtr(fn))
+    syscallN(15775, obj, MakeEventDataPtr(fn))
 }
 
 func ControlBorderSpacing_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(15382, obj))
+    return int32(syscallN(15776, obj))
 }
 
 func ControlBorderSpacing_SetLeft(obj uintptr, value int32) {
-    syscallN(15383, obj, uintptr(value))
+    syscallN(15777, obj, uintptr(value))
 }
 
 func ControlBorderSpacing_GetTop(obj uintptr) int32 {
-    return int32(syscallN(15384, obj))
+    return int32(syscallN(15778, obj))
 }
 
 func ControlBorderSpacing_SetTop(obj uintptr, value int32) {
-    syscallN(15385, obj, uintptr(value))
+    syscallN(15779, obj, uintptr(value))
 }
 
 func ControlBorderSpacing_GetRight(obj uintptr) int32 {
-    return int32(syscallN(15386, obj))
+    return int32(syscallN(15780, obj))
 }
 
 func ControlBorderSpacing_SetRight(obj uintptr, value int32) {
-    syscallN(15387, obj, uintptr(value))
+    syscallN(15781, obj, uintptr(value))
 }
 
 func ControlBorderSpacing_GetBottom(obj uintptr) int32 {
-    return int32(syscallN(15388, obj))
+    return int32(syscallN(15782, obj))
 }
 
 func ControlBorderSpacing_SetBottom(obj uintptr, value int32) {
-    syscallN(15389, obj, uintptr(value))
+    syscallN(15783, obj, uintptr(value))
 }
 
 func ControlBorderSpacing_GetAround(obj uintptr) int32 {
-    return int32(syscallN(15390, obj))
+    return int32(syscallN(15784, obj))
 }
 
 func ControlBorderSpacing_SetAround(obj uintptr, value int32) {
-    syscallN(15391, obj, uintptr(value))
+    syscallN(15785, obj, uintptr(value))
 }
 
 func ControlBorderSpacing_GetInnerBorder(obj uintptr) int32 {
-    return int32(syscallN(15392, obj))
+    return int32(syscallN(15786, obj))
 }
 
 func ControlBorderSpacing_SetInnerBorder(obj uintptr, value int32) {
-    syscallN(15393, obj, uintptr(value))
+    syscallN(15787, obj, uintptr(value))
 }
 
 func ControlBorderSpacing_GetCellAlignHorizontal(obj uintptr) TControlCellAlign {
-    return TControlCellAlign(syscallN(15394, obj))
+    return TControlCellAlign(syscallN(15788, obj))
 }
 
 func ControlBorderSpacing_SetCellAlignHorizontal(obj uintptr, value TControlCellAlign) {
-    syscallN(15395, obj, uintptr(value))
+    syscallN(15789, obj, uintptr(value))
 }
 
 func ControlBorderSpacing_GetCellAlignVertical(obj uintptr) TControlCellAlign {
-    return TControlCellAlign(syscallN(15396, obj))
+    return TControlCellAlign(syscallN(15790, obj))
 }
 
 func ControlBorderSpacing_SetCellAlignVertical(obj uintptr, value TControlCellAlign) {
-    syscallN(15397, obj, uintptr(value))
+    syscallN(15791, obj, uintptr(value))
 }
 
 func ControlBorderSpacing_GetSpace(obj uintptr, Kind TAnchorKind) int32 {
-    return int32(syscallN(15398, obj, uintptr(Kind)))
+    return int32(syscallN(15792, obj, uintptr(Kind)))
 }
 
 func ControlBorderSpacing_SetSpace(obj uintptr, Kind TAnchorKind, value int32) {
-    syscallN(15399, obj, uintptr(Kind), uintptr(value))
+    syscallN(15793, obj, uintptr(Kind), uintptr(value))
 }
 
 func ControlBorderSpacing_StaticClassType() TClass {
-    return TClass(syscallN(15400))
+    return TClass(syscallN(15794))
 }
 
 //--------------------------- TControlChildSizing ---------------------------
 
 func ControlChildSizing_Assign(obj uintptr, Source uintptr)  {
-    syscallN(15401, obj, Source )
+    syscallN(15795, obj, Source )
 }
 
 func ControlChildSizing_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(15402, obj))
+    return GoStr(syscallN(15796, obj))
 }
 
 func ControlChildSizing_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(15403, obj))
+    return TClass(syscallN(15797, obj))
 }
 
 func ControlChildSizing_ClassName(obj uintptr) string {
-    return GoStr(syscallN(15404, obj))
+    return GoStr(syscallN(15798, obj))
 }
 
 func ControlChildSizing_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(15405, obj))
+    return int32(syscallN(15799, obj))
 }
 
 func ControlChildSizing_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(15406, obj, uintptr(AClass) ))
+    return GoBool(syscallN(15800, obj, uintptr(AClass) ))
 }
 
 func ControlChildSizing_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(15407, obj, Obj ))
+    return GoBool(syscallN(15801, obj, Obj ))
 }
 
 func ControlChildSizing_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(15408, obj))
+    return int32(syscallN(15802, obj))
 }
 
 func ControlChildSizing_ToString(obj uintptr) string {
-    return GoStr(syscallN(15409, obj))
+    return GoStr(syscallN(15803, obj))
 }
 
 func ControlChildSizing_GetControl(obj uintptr) uintptr {
-    return syscallN(15410, obj)
+    return syscallN(15804, obj)
 }
 
 func ControlChildSizing_SetOnChange(obj uintptr, fn interface{}) {
-    syscallN(15411, obj, MakeEventDataPtr(fn))
+    syscallN(15805, obj, MakeEventDataPtr(fn))
 }
 
 func ControlChildSizing_GetLeftRightSpacing(obj uintptr) int32 {
-    return int32(syscallN(15412, obj))
+    return int32(syscallN(15806, obj))
 }
 
 func ControlChildSizing_SetLeftRightSpacing(obj uintptr, value int32) {
-    syscallN(15413, obj, uintptr(value))
+    syscallN(15807, obj, uintptr(value))
 }
 
 func ControlChildSizing_GetTopBottomSpacing(obj uintptr) int32 {
-    return int32(syscallN(15414, obj))
+    return int32(syscallN(15808, obj))
 }
 
 func ControlChildSizing_SetTopBottomSpacing(obj uintptr, value int32) {
-    syscallN(15415, obj, uintptr(value))
+    syscallN(15809, obj, uintptr(value))
 }
 
 func ControlChildSizing_GetHorizontalSpacing(obj uintptr) int32 {
-    return int32(syscallN(15416, obj))
+    return int32(syscallN(15810, obj))
 }
 
 func ControlChildSizing_SetHorizontalSpacing(obj uintptr, value int32) {
-    syscallN(15417, obj, uintptr(value))
+    syscallN(15811, obj, uintptr(value))
 }
 
 func ControlChildSizing_GetVerticalSpacing(obj uintptr) int32 {
-    return int32(syscallN(15418, obj))
+    return int32(syscallN(15812, obj))
 }
 
 func ControlChildSizing_SetVerticalSpacing(obj uintptr, value int32) {
-    syscallN(15419, obj, uintptr(value))
+    syscallN(15813, obj, uintptr(value))
 }
 
 func ControlChildSizing_GetEnlargeHorizontal(obj uintptr) TChildControlResizeStyle {
-    return TChildControlResizeStyle(syscallN(15420, obj))
+    return TChildControlResizeStyle(syscallN(15814, obj))
 }
 
 func ControlChildSizing_SetEnlargeHorizontal(obj uintptr, value TChildControlResizeStyle) {
-    syscallN(15421, obj, uintptr(value))
+    syscallN(15815, obj, uintptr(value))
 }
 
 func ControlChildSizing_GetEnlargeVertical(obj uintptr) TChildControlResizeStyle {
-    return TChildControlResizeStyle(syscallN(15422, obj))
+    return TChildControlResizeStyle(syscallN(15816, obj))
 }
 
 func ControlChildSizing_SetEnlargeVertical(obj uintptr, value TChildControlResizeStyle) {
-    syscallN(15423, obj, uintptr(value))
+    syscallN(15817, obj, uintptr(value))
 }
 
 func ControlChildSizing_GetShrinkHorizontal(obj uintptr) TChildControlResizeStyle {
-    return TChildControlResizeStyle(syscallN(15424, obj))
+    return TChildControlResizeStyle(syscallN(15818, obj))
 }
 
 func ControlChildSizing_SetShrinkHorizontal(obj uintptr, value TChildControlResizeStyle) {
-    syscallN(15425, obj, uintptr(value))
+    syscallN(15819, obj, uintptr(value))
 }
 
 func ControlChildSizing_GetShrinkVertical(obj uintptr) TChildControlResizeStyle {
-    return TChildControlResizeStyle(syscallN(15426, obj))
+    return TChildControlResizeStyle(syscallN(15820, obj))
 }
 
 func ControlChildSizing_SetShrinkVertical(obj uintptr, value TChildControlResizeStyle) {
-    syscallN(15427, obj, uintptr(value))
+    syscallN(15821, obj, uintptr(value))
 }
 
 func ControlChildSizing_GetLayout(obj uintptr) TControlChildrenLayout {
-    return TControlChildrenLayout(syscallN(15428, obj))
+    return TControlChildrenLayout(syscallN(15822, obj))
 }
 
 func ControlChildSizing_SetLayout(obj uintptr, value TControlChildrenLayout) {
-    syscallN(15429, obj, uintptr(value))
+    syscallN(15823, obj, uintptr(value))
 }
 
 func ControlChildSizing_GetControlsPerLine(obj uintptr) int32 {
-    return int32(syscallN(15430, obj))
+    return int32(syscallN(15824, obj))
 }
 
 func ControlChildSizing_SetControlsPerLine(obj uintptr, value int32) {
-    syscallN(15431, obj, uintptr(value))
+    syscallN(15825, obj, uintptr(value))
 }
 
 func ControlChildSizing_StaticClassType() TClass {
-    return TClass(syscallN(15432))
+    return TClass(syscallN(15826))
 }
 
 //--------------------------- TCheckGroup ---------------------------
 
 func CheckGroup_Create(obj uintptr) uintptr {
-    return syscallN(15433, obj)
+    return syscallN(15827, obj)
 }
 
 func CheckGroup_Free(obj uintptr) {
-    syscallN(15434, obj)
+    syscallN(15828, obj)
 }
 
 func CheckGroup_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(15435, obj, PascalBool(AllLevels) )
+    syscallN(15829, obj, PascalBool(AllLevels) )
 }
 
 func CheckGroup_Rows(obj uintptr) int32 {
-    return int32(syscallN(15436, obj))
+    return int32(syscallN(15830, obj))
 }
 
 func CheckGroup_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(15437, obj))
+    return GoBool(syscallN(15831, obj))
 }
 
 func CheckGroup_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(15438, obj, Control ))
+    return GoBool(syscallN(15832, obj, Control ))
 }
 
 func CheckGroup_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(15439, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(15833, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func CheckGroup_DisableAlign(obj uintptr)  {
-    syscallN(15440, obj)
+    syscallN(15834, obj)
 }
 
 func CheckGroup_EnableAlign(obj uintptr)  {
-    syscallN(15441, obj)
+    syscallN(15835, obj)
 }
 
 func CheckGroup_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(15442, obj, PascalStr(ControlName) )
+    return syscallN(15836, obj, PascalStr(ControlName) )
 }
 
 func CheckGroup_Focused(obj uintptr) bool {
-    return GoBool(syscallN(15443, obj))
+    return GoBool(syscallN(15837, obj))
 }
 
 func CheckGroup_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(15444, obj))
+    return GoBool(syscallN(15838, obj))
 }
 
 func CheckGroup_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(15445, obj, AControl )
+    syscallN(15839, obj, AControl )
 }
 
 func CheckGroup_Invalidate(obj uintptr)  {
-    syscallN(15446, obj)
+    syscallN(15840, obj)
 }
 
 func CheckGroup_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(15447, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(15841, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func CheckGroup_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(15448, obj, AControl )
+    syscallN(15842, obj, AControl )
 }
 
 func CheckGroup_Realign(obj uintptr)  {
-    syscallN(15449, obj)
+    syscallN(15843, obj)
 }
 
 func CheckGroup_Repaint(obj uintptr)  {
-    syscallN(15450, obj)
+    syscallN(15844, obj)
 }
 
 func CheckGroup_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(15451, obj, uintptr(M) , uintptr(D) )
+    syscallN(15845, obj, uintptr(M) , uintptr(D) )
 }
 
 func CheckGroup_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(15452, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(15846, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func CheckGroup_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(15453, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(15847, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func CheckGroup_SetFocus(obj uintptr)  {
-    syscallN(15454, obj)
+    syscallN(15848, obj)
 }
 
 func CheckGroup_Update(obj uintptr)  {
-    syscallN(15455, obj)
+    syscallN(15849, obj)
 }
 
 func CheckGroup_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(15456, obj, PascalBool(Immediate) , uintptr(Threshold) )
+    syscallN(15850, obj, PascalBool(Immediate) , uintptr(Threshold) )
 }
 
 func CheckGroup_BringToFront(obj uintptr)  {
-    syscallN(15457, obj)
+    syscallN(15851, obj)
 }
 
 func CheckGroup_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(15458, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(15852, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckGroup_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(15459, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(15853, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckGroup_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(15460, obj))
+    return GoBool(syscallN(15854, obj))
 }
 
 func CheckGroup_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(15461, obj, PascalBool(Drop) )
+    syscallN(15855, obj, PascalBool(Drop) )
 }
 
 func CheckGroup_HasParent(obj uintptr) bool {
-    return GoBool(syscallN(15462, obj))
+    return GoBool(syscallN(15856, obj))
 }
 
 func CheckGroup_Hide(obj uintptr)  {
-    syscallN(15463, obj)
+    syscallN(15857, obj)
 }
 
 func CheckGroup_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(15464, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+    return int(syscallN(15858, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
 }
 
 func CheckGroup_Refresh(obj uintptr)  {
-    syscallN(15465, obj)
+    syscallN(15859, obj)
 }
 
 func CheckGroup_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(15466, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(15860, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckGroup_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(15467, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(15861, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckGroup_SendToBack(obj uintptr)  {
-    syscallN(15468, obj)
+    syscallN(15862, obj)
 }
 
 func CheckGroup_Show(obj uintptr)  {
-    syscallN(15469, obj)
+    syscallN(15863, obj)
 }
 
 func CheckGroup_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(15470, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(15864, obj, Buffer, uintptr(BufSize) ))
 }
 
 func CheckGroup_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(15471, obj))
+    return int32(syscallN(15865, obj))
 }
 
 func CheckGroup_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(15472, obj, PascalStr(Buffer) )
+    syscallN(15866, obj, PascalStr(Buffer) )
 }
 
 func CheckGroup_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(15473, obj, PascalStr(AName) )
+    return syscallN(15867, obj, PascalStr(AName) )
 }
 
 func CheckGroup_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(15474, obj))
+    return GoStr(syscallN(15868, obj))
 }
 
 func CheckGroup_Assign(obj uintptr, Source uintptr)  {
-    syscallN(15475, obj, Source )
+    syscallN(15869, obj, Source )
 }
 
 func CheckGroup_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(15476, obj))
+    return TClass(syscallN(15870, obj))
 }
 
 func CheckGroup_ClassName(obj uintptr) string {
-    return GoStr(syscallN(15477, obj))
+    return GoStr(syscallN(15871, obj))
 }
 
 func CheckGroup_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(15478, obj))
+    return int32(syscallN(15872, obj))
 }
 
 func CheckGroup_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(15479, obj, uintptr(AClass) ))
+    return GoBool(syscallN(15873, obj, uintptr(AClass) ))
 }
 
 func CheckGroup_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(15480, obj, Obj ))
+    return GoBool(syscallN(15874, obj, Obj ))
 }
 
 func CheckGroup_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(15481, obj))
+    return int32(syscallN(15875, obj))
 }
 
 func CheckGroup_ToString(obj uintptr) string {
-    return GoStr(syscallN(15482, obj))
+    return GoStr(syscallN(15876, obj))
 }
 
 func CheckGroup_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(15483, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(15877, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func CheckGroup_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(15484, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(15878, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func CheckGroup_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(15485, obj, ASibling )
+    syscallN(15879, obj, ASibling )
 }
 
 func CheckGroup_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(15486, obj, ASibling )
+    syscallN(15880, obj, ASibling )
 }
 
 func CheckGroup_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(15487, obj, uintptr(ASide) , ASibling )
+    syscallN(15881, obj, uintptr(ASide) , ASibling )
 }
 
 func CheckGroup_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(15488, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(15882, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func CheckGroup_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(15489, obj, uintptr(ASpace) )
+    syscallN(15883, obj, uintptr(ASpace) )
 }
 
 func CheckGroup_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15490, obj, uintptr(ASize) ))
+    return int32(syscallN(15884, obj, uintptr(ASize) ))
 }
 
 func CheckGroup_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15491, obj, uintptr(ASize) ))
+    return int32(syscallN(15885, obj, uintptr(ASize) ))
 }
 
 func CheckGroup_Scale96ToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15492, obj, uintptr(ASize) ))
+    return int32(syscallN(15886, obj, uintptr(ASize) ))
 }
 
 func CheckGroup_ScaleFormTo96(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15493, obj, uintptr(ASize) ))
+    return int32(syscallN(15887, obj, uintptr(ASize) ))
 }
 
 func CheckGroup_Scale96ToFont(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15494, obj, uintptr(ASize) ))
+    return int32(syscallN(15888, obj, uintptr(ASize) ))
 }
 
 func CheckGroup_ScaleFontTo96(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15495, obj, uintptr(ASize) ))
+    return int32(syscallN(15889, obj, uintptr(ASize) ))
 }
 
 func CheckGroup_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15496, obj, uintptr(ASize) ))
+    return int32(syscallN(15890, obj, uintptr(ASize) ))
 }
 
 func CheckGroup_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15497, obj, uintptr(ASize) ))
+    return int32(syscallN(15891, obj, uintptr(ASize) ))
 }
 
 func CheckGroup_Scale96ToScreen(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15498, obj, uintptr(ASize) ))
+    return int32(syscallN(15892, obj, uintptr(ASize) ))
 }
 
 func CheckGroup_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15499, obj, uintptr(ASize) ))
+    return int32(syscallN(15893, obj, uintptr(ASize) ))
 }
 
 func CheckGroup_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(15500, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(15894, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func CheckGroup_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(15501, obj, uintptr(ADesignTimePPI) )
+    syscallN(15895, obj, uintptr(ADesignTimePPI) )
 }
 
 func CheckGroup_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(15502, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(15896, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func CheckGroup_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(15503, obj))
+    return TAlign(syscallN(15897, obj))
 }
 
 func CheckGroup_SetAlign(obj uintptr, value TAlign) {
-    syscallN(15504, obj, uintptr(value))
+    syscallN(15898, obj, uintptr(value))
 }
 
 func CheckGroup_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(15505, obj))
+    return TAnchors(syscallN(15899, obj))
 }
 
 func CheckGroup_SetAnchors(obj uintptr, value TAnchors) {
-    syscallN(15506, obj, uintptr(value))
+    syscallN(15900, obj, uintptr(value))
 }
 
 func CheckGroup_GetAutoFill(obj uintptr) bool {
-    return GoBool(syscallN(15507, obj))
+    return GoBool(syscallN(15901, obj))
 }
 
 func CheckGroup_SetAutoFill(obj uintptr, value bool) {
-    syscallN(15508, obj, PascalBool(value))
+    syscallN(15902, obj, PascalBool(value))
 }
 
 func CheckGroup_GetAutoSize(obj uintptr) bool {
-    return GoBool(syscallN(15509, obj))
+    return GoBool(syscallN(15903, obj))
 }
 
 func CheckGroup_SetAutoSize(obj uintptr, value bool) {
-    syscallN(15510, obj, PascalBool(value))
+    syscallN(15904, obj, PascalBool(value))
 }
 
 func CheckGroup_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(15511, obj))
+    return TBiDiMode(syscallN(15905, obj))
 }
 
 func CheckGroup_SetBiDiMode(obj uintptr, value TBiDiMode) {
-    syscallN(15512, obj, uintptr(value))
+    syscallN(15906, obj, uintptr(value))
 }
 
 func CheckGroup_GetCaption(obj uintptr) string {
-    return GoStr(syscallN(15513, obj))
+    return GoStr(syscallN(15907, obj))
 }
 
 func CheckGroup_SetCaption(obj uintptr, value string) {
-    syscallN(15514, obj, PascalStr(value))
+    syscallN(15908, obj, PascalStr(value))
 }
 
 func CheckGroup_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(15515, obj))
+    return int32(syscallN(15909, obj))
 }
 
 func CheckGroup_SetClientHeight(obj uintptr, value int32) {
-    syscallN(15516, obj, uintptr(value))
+    syscallN(15910, obj, uintptr(value))
 }
 
 func CheckGroup_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(15517, obj))
+    return int32(syscallN(15911, obj))
 }
 
 func CheckGroup_SetClientWidth(obj uintptr, value int32) {
-    syscallN(15518, obj, uintptr(value))
+    syscallN(15912, obj, uintptr(value))
 }
 
 func CheckGroup_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(15519, obj))
+    return TColor(syscallN(15913, obj))
 }
 
 func CheckGroup_SetColor(obj uintptr, value TColor) {
-    syscallN(15520, obj, uintptr(value))
+    syscallN(15914, obj, uintptr(value))
 }
 
 func CheckGroup_GetColumnLayout(obj uintptr) TColumnLayout {
-    return TColumnLayout(syscallN(15521, obj))
+    return TColumnLayout(syscallN(15915, obj))
 }
 
 func CheckGroup_SetColumnLayout(obj uintptr, value TColumnLayout) {
-    syscallN(15522, obj, uintptr(value))
+    syscallN(15916, obj, uintptr(value))
 }
 
 func CheckGroup_GetColumns(obj uintptr) int32 {
-    return int32(syscallN(15523, obj))
+    return int32(syscallN(15917, obj))
 }
 
 func CheckGroup_SetColumns(obj uintptr, value int32) {
-    syscallN(15524, obj, uintptr(value))
+    syscallN(15918, obj, uintptr(value))
 }
 
 func CheckGroup_GetConstraints(obj uintptr) uintptr {
-    return syscallN(15525, obj)
+    return syscallN(15919, obj)
 }
 
 func CheckGroup_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(15526, obj, value)
+    syscallN(15920, obj, value)
 }
 
 func CheckGroup_GetDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(15527, obj))
+    return GoBool(syscallN(15921, obj))
 }
 
 func CheckGroup_SetDoubleBuffered(obj uintptr, value bool) {
-    syscallN(15528, obj, PascalBool(value))
+    syscallN(15922, obj, PascalBool(value))
 }
 
 func CheckGroup_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(15529, obj))
+    return TCursor(syscallN(15923, obj))
 }
 
 func CheckGroup_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(15530, obj, uintptr(value))
+    syscallN(15924, obj, uintptr(value))
 }
 
 func CheckGroup_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(15531, obj))
+    return TDragMode(syscallN(15925, obj))
 }
 
 func CheckGroup_SetDragMode(obj uintptr, value TDragMode) {
-    syscallN(15532, obj, uintptr(value))
+    syscallN(15926, obj, uintptr(value))
 }
 
 func CheckGroup_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(15533, obj))
+    return GoBool(syscallN(15927, obj))
 }
 
 func CheckGroup_SetEnabled(obj uintptr, value bool) {
-    syscallN(15534, obj, PascalBool(value))
+    syscallN(15928, obj, PascalBool(value))
 }
 
 func CheckGroup_GetFont(obj uintptr) uintptr {
-    return syscallN(15535, obj)
+    return syscallN(15929, obj)
 }
 
 func CheckGroup_SetFont(obj uintptr, value uintptr) {
-    syscallN(15536, obj, value)
+    syscallN(15930, obj, value)
 }
 
 func CheckGroup_GetItems(obj uintptr) uintptr {
-    return syscallN(15537, obj)
+    return syscallN(15931, obj)
 }
 
 func CheckGroup_SetItems(obj uintptr, value uintptr) {
-    syscallN(15538, obj, value)
+    syscallN(15932, obj, value)
 }
 
 func CheckGroup_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(15539, obj, MakeEventDataPtr(fn))
+    syscallN(15933, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnDblClick(obj uintptr, fn interface{}) {
-    syscallN(15540, obj, MakeEventDataPtr(fn))
+    syscallN(15934, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnDragDrop(obj uintptr, fn interface{}) {
-    syscallN(15541, obj, MakeEventDataPtr(fn))
+    syscallN(15935, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnDragOver(obj uintptr, fn interface{}) {
-    syscallN(15542, obj, MakeEventDataPtr(fn))
+    syscallN(15936, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnEndDrag(obj uintptr, fn interface{}) {
-    syscallN(15543, obj, MakeEventDataPtr(fn))
+    syscallN(15937, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnEnter(obj uintptr, fn interface{}) {
-    syscallN(15544, obj, MakeEventDataPtr(fn))
+    syscallN(15938, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnExit(obj uintptr, fn interface{}) {
-    syscallN(15545, obj, MakeEventDataPtr(fn))
+    syscallN(15939, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnItemClick(obj uintptr, fn interface{}) {
-    syscallN(15546, obj, MakeEventDataPtr(fn))
+    syscallN(15940, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnKeyDown(obj uintptr, fn interface{}) {
-    syscallN(15547, obj, MakeEventDataPtr(fn))
+    syscallN(15941, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnKeyPress(obj uintptr, fn interface{}) {
-    syscallN(15548, obj, MakeEventDataPtr(fn))
+    syscallN(15942, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnKeyUp(obj uintptr, fn interface{}) {
-    syscallN(15549, obj, MakeEventDataPtr(fn))
+    syscallN(15943, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseDown(obj uintptr, fn interface{}) {
-    syscallN(15550, obj, MakeEventDataPtr(fn))
+    syscallN(15944, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    syscallN(15551, obj, MakeEventDataPtr(fn))
+    syscallN(15945, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    syscallN(15552, obj, MakeEventDataPtr(fn))
+    syscallN(15946, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseMove(obj uintptr, fn interface{}) {
-    syscallN(15553, obj, MakeEventDataPtr(fn))
+    syscallN(15947, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseUp(obj uintptr, fn interface{}) {
-    syscallN(15554, obj, MakeEventDataPtr(fn))
+    syscallN(15948, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseWheel(obj uintptr, fn interface{}) {
-    syscallN(15555, obj, MakeEventDataPtr(fn))
+    syscallN(15949, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    syscallN(15556, obj, MakeEventDataPtr(fn))
+    syscallN(15950, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    syscallN(15557, obj, MakeEventDataPtr(fn))
+    syscallN(15951, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_SetOnResize(obj uintptr, fn interface{}) {
-    syscallN(15558, obj, MakeEventDataPtr(fn))
+    syscallN(15952, obj, MakeEventDataPtr(fn))
 }
 
 func CheckGroup_GetParentFont(obj uintptr) bool {
-    return GoBool(syscallN(15559, obj))
+    return GoBool(syscallN(15953, obj))
 }
 
 func CheckGroup_SetParentFont(obj uintptr, value bool) {
-    syscallN(15560, obj, PascalBool(value))
+    syscallN(15954, obj, PascalBool(value))
 }
 
 func CheckGroup_GetParentColor(obj uintptr) bool {
-    return GoBool(syscallN(15561, obj))
+    return GoBool(syscallN(15955, obj))
 }
 
 func CheckGroup_SetParentColor(obj uintptr, value bool) {
-    syscallN(15562, obj, PascalBool(value))
+    syscallN(15956, obj, PascalBool(value))
 }
 
 func CheckGroup_GetParentDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(15563, obj))
+    return GoBool(syscallN(15957, obj))
 }
 
 func CheckGroup_SetParentDoubleBuffered(obj uintptr, value bool) {
-    syscallN(15564, obj, PascalBool(value))
+    syscallN(15958, obj, PascalBool(value))
 }
 
 func CheckGroup_GetParentShowHint(obj uintptr) bool {
-    return GoBool(syscallN(15565, obj))
+    return GoBool(syscallN(15959, obj))
 }
 
 func CheckGroup_SetParentShowHint(obj uintptr, value bool) {
-    syscallN(15566, obj, PascalBool(value))
+    syscallN(15960, obj, PascalBool(value))
 }
 
 func CheckGroup_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(15567, obj)
+    return syscallN(15961, obj)
 }
 
 func CheckGroup_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(15568, obj, value)
+    syscallN(15962, obj, value)
 }
 
 func CheckGroup_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(15569, obj))
+    return GoBool(syscallN(15963, obj))
 }
 
 func CheckGroup_SetShowHint(obj uintptr, value bool) {
-    syscallN(15570, obj, PascalBool(value))
+    syscallN(15964, obj, PascalBool(value))
 }
 
 func CheckGroup_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(15571, obj))
+    return TTabOrder(syscallN(15965, obj))
 }
 
 func CheckGroup_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(15572, obj, uintptr(value))
+    syscallN(15966, obj, uintptr(value))
 }
 
 func CheckGroup_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(15573, obj))
+    return GoBool(syscallN(15967, obj))
 }
 
 func CheckGroup_SetTabStop(obj uintptr, value bool) {
-    syscallN(15574, obj, PascalBool(value))
+    syscallN(15968, obj, PascalBool(value))
 }
 
 func CheckGroup_GetVisible(obj uintptr) bool {
-    return GoBool(syscallN(15575, obj))
+    return GoBool(syscallN(15969, obj))
 }
 
 func CheckGroup_SetVisible(obj uintptr, value bool) {
-    syscallN(15576, obj, PascalBool(value))
+    syscallN(15970, obj, PascalBool(value))
 }
 
 func CheckGroup_GetParentBackground(obj uintptr) bool {
-    return GoBool(syscallN(15577, obj))
+    return GoBool(syscallN(15971, obj))
 }
 
 func CheckGroup_SetParentBackground(obj uintptr, value bool) {
-    syscallN(15578, obj, PascalBool(value))
+    syscallN(15972, obj, PascalBool(value))
 }
 
 func CheckGroup_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(15579, obj))
+    return int32(syscallN(15973, obj))
 }
 
 func CheckGroup_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(15580, obj))
+    return GoBool(syscallN(15974, obj))
 }
 
 func CheckGroup_SetDockSite(obj uintptr, value bool) {
-    syscallN(15581, obj, PascalBool(value))
+    syscallN(15975, obj, PascalBool(value))
 }
 
 func CheckGroup_GetMouseInClient(obj uintptr) bool {
-    return GoBool(syscallN(15582, obj))
+    return GoBool(syscallN(15976, obj))
 }
 
 func CheckGroup_GetVisibleDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(15583, obj))
+    return int32(syscallN(15977, obj))
 }
 
 func CheckGroup_GetBrush(obj uintptr) uintptr {
-    return syscallN(15584, obj)
+    return syscallN(15978, obj)
 }
 
 func CheckGroup_GetControlCount(obj uintptr) int32 {
-    return int32(syscallN(15585, obj))
+    return int32(syscallN(15979, obj))
 }
 
 func CheckGroup_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(15586, obj))
+    return HWND(syscallN(15980, obj))
 }
 
 func CheckGroup_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(15587, obj))
+    return HWND(syscallN(15981, obj))
 }
 
 func CheckGroup_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(15588, obj, uintptr(value))
+    syscallN(15982, obj, uintptr(value))
 }
 
 func CheckGroup_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(15589, obj))
+    return GoBool(syscallN(15983, obj))
 }
 
 func CheckGroup_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(15590, obj))
+    return GoBool(syscallN(15984, obj))
 }
 
 func CheckGroup_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(15591, obj, PascalBool(value))
+    syscallN(15985, obj, PascalBool(value))
 }
 
 func CheckGroup_GetAction(obj uintptr) uintptr {
-    return syscallN(15592, obj)
+    return syscallN(15986, obj)
 }
 
 func CheckGroup_SetAction(obj uintptr, value uintptr) {
-    syscallN(15593, obj, value)
+    syscallN(15987, obj, value)
 }
 
 func CheckGroup_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(15594, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(15988, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckGroup_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(15595, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(15989, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func CheckGroup_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(15596, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(15990, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckGroup_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(15597, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(15991, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckGroup_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(15598, obj))
+    return TControlState(syscallN(15992, obj))
 }
 
 func CheckGroup_SetControlState(obj uintptr, value TControlState) {
-    syscallN(15599, obj, uintptr(value))
+    syscallN(15993, obj, uintptr(value))
 }
 
 func CheckGroup_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(15600, obj))
+    return TControlStyle(syscallN(15994, obj))
 }
 
 func CheckGroup_SetControlStyle(obj uintptr, value TControlStyle) {
-    syscallN(15601, obj, uintptr(value))
+    syscallN(15995, obj, uintptr(value))
 }
 
 func CheckGroup_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(15602, obj))
+    return GoBool(syscallN(15996, obj))
 }
 
 func CheckGroup_GetParent(obj uintptr) uintptr {
-    return syscallN(15603, obj)
+    return syscallN(15997, obj)
 }
 
 func CheckGroup_SetParent(obj uintptr, value uintptr) {
-    syscallN(15604, obj, value)
+    syscallN(15998, obj, value)
 }
 
 func CheckGroup_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(15605, obj))
+    return int32(syscallN(15999, obj))
 }
 
 func CheckGroup_SetLeft(obj uintptr, value int32) {
-    syscallN(15606, obj, uintptr(value))
+    syscallN(16000, obj, uintptr(value))
 }
 
 func CheckGroup_GetTop(obj uintptr) int32 {
-    return int32(syscallN(15607, obj))
+    return int32(syscallN(16001, obj))
 }
 
 func CheckGroup_SetTop(obj uintptr, value int32) {
-    syscallN(15608, obj, uintptr(value))
+    syscallN(16002, obj, uintptr(value))
 }
 
 func CheckGroup_GetWidth(obj uintptr) int32 {
-    return int32(syscallN(15609, obj))
+    return int32(syscallN(16003, obj))
 }
 
 func CheckGroup_SetWidth(obj uintptr, value int32) {
-    syscallN(15610, obj, uintptr(value))
+    syscallN(16004, obj, uintptr(value))
 }
 
 func CheckGroup_GetHeight(obj uintptr) int32 {
-    return int32(syscallN(15611, obj))
+    return int32(syscallN(16005, obj))
 }
 
 func CheckGroup_SetHeight(obj uintptr, value int32) {
-    syscallN(15612, obj, uintptr(value))
+    syscallN(16006, obj, uintptr(value))
 }
 
 func CheckGroup_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(15613, obj))
+    return TCursor(syscallN(16007, obj))
 }
 
 func CheckGroup_SetCursor(obj uintptr, value TCursor) {
-    syscallN(15614, obj, uintptr(value))
+    syscallN(16008, obj, uintptr(value))
 }
 
 func CheckGroup_GetHint(obj uintptr) string {
-    return GoStr(syscallN(15615, obj))
+    return GoStr(syscallN(16009, obj))
 }
 
 func CheckGroup_SetHint(obj uintptr, value string) {
-    syscallN(15616, obj, PascalStr(value))
+    syscallN(16010, obj, PascalStr(value))
 }
 
 func CheckGroup_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(15617, obj))
+    return int32(syscallN(16011, obj))
 }
 
 func CheckGroup_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(15618, obj))
+    return int32(syscallN(16012, obj))
 }
 
 func CheckGroup_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(15619, obj, uintptr(value))
+    syscallN(16013, obj, uintptr(value))
 }
 
 func CheckGroup_GetOwner(obj uintptr) uintptr {
-    return syscallN(15620, obj)
+    return syscallN(16014, obj)
 }
 
 func CheckGroup_GetName(obj uintptr) string {
-    return GoStr(syscallN(15621, obj))
+    return GoStr(syscallN(16015, obj))
 }
 
 func CheckGroup_SetName(obj uintptr, value string) {
-    syscallN(15622, obj, PascalStr(value))
+    syscallN(16016, obj, PascalStr(value))
 }
 
 func CheckGroup_GetTag(obj uintptr) int {
-    return int(syscallN(15623, obj))
+    return int(syscallN(16017, obj))
 }
 
 func CheckGroup_SetTag(obj uintptr, value int) {
-    syscallN(15624, obj, uintptr(value))
+    syscallN(16018, obj, uintptr(value))
 }
 
 func CheckGroup_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(15625, obj)
+    return syscallN(16019, obj)
 }
 
 func CheckGroup_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(15626, obj, value)
+    syscallN(16020, obj, value)
 }
 
 func CheckGroup_GetAnchorSideTop(obj uintptr) uintptr {
-    return syscallN(15627, obj)
+    return syscallN(16021, obj)
 }
 
 func CheckGroup_SetAnchorSideTop(obj uintptr, value uintptr) {
-    syscallN(15628, obj, value)
+    syscallN(16022, obj, value)
 }
 
 func CheckGroup_GetAnchorSideRight(obj uintptr) uintptr {
-    return syscallN(15629, obj)
+    return syscallN(16023, obj)
 }
 
 func CheckGroup_SetAnchorSideRight(obj uintptr, value uintptr) {
-    syscallN(15630, obj, value)
+    syscallN(16024, obj, value)
 }
 
 func CheckGroup_GetAnchorSideBottom(obj uintptr) uintptr {
-    return syscallN(15631, obj)
+    return syscallN(16025, obj)
 }
 
 func CheckGroup_SetAnchorSideBottom(obj uintptr, value uintptr) {
-    syscallN(15632, obj, value)
+    syscallN(16026, obj, value)
 }
 
 func CheckGroup_GetChildSizing(obj uintptr) uintptr {
-    return syscallN(15633, obj)
+    return syscallN(16027, obj)
 }
 
 func CheckGroup_SetChildSizing(obj uintptr, value uintptr) {
-    syscallN(15634, obj, value)
+    syscallN(16028, obj, value)
 }
 
 func CheckGroup_GetBorderSpacing(obj uintptr) uintptr {
-    return syscallN(15635, obj)
+    return syscallN(16029, obj)
 }
 
 func CheckGroup_SetBorderSpacing(obj uintptr, value uintptr) {
-    syscallN(15636, obj, value)
+    syscallN(16030, obj, value)
 }
 
 func CheckGroup_GetChecked(obj uintptr, Index int32) bool {
-    return GoBool(syscallN(15637, obj, uintptr(Index)))
+    return GoBool(syscallN(16031, obj, uintptr(Index)))
 }
 
 func CheckGroup_SetChecked(obj uintptr, Index int32, value bool) {
-    syscallN(15638, obj, uintptr(Index), PascalBool(value))
+    syscallN(16032, obj, uintptr(Index), PascalBool(value))
 }
 
 func CheckGroup_GetCheckEnabled(obj uintptr, Index int32) bool {
-    return GoBool(syscallN(15639, obj, uintptr(Index)))
+    return GoBool(syscallN(16033, obj, uintptr(Index)))
 }
 
 func CheckGroup_SetCheckEnabled(obj uintptr, Index int32, value bool) {
-    syscallN(15640, obj, uintptr(Index), PascalBool(value))
+    syscallN(16034, obj, uintptr(Index), PascalBool(value))
 }
 
 func CheckGroup_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(15641, obj, uintptr(Index))
+    return syscallN(16035, obj, uintptr(Index))
 }
 
 func CheckGroup_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(15642, obj, uintptr(Index))
+    return syscallN(16036, obj, uintptr(Index))
 }
 
 func CheckGroup_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(15643, obj, uintptr(AIndex))
+    return syscallN(16037, obj, uintptr(AIndex))
 }
 
 func CheckGroup_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(15644, obj, uintptr(AKind))
+    return syscallN(16038, obj, uintptr(AKind))
 }
 
 func CheckGroup_StaticClassType() TClass {
-    return TClass(syscallN(15645))
+    return TClass(syscallN(16039))
 }
 
 //--------------------------- TToggleBox ---------------------------
 
 func ToggleBox_Create(obj uintptr) uintptr {
-    return syscallN(15646, obj)
+    return syscallN(16040, obj)
 }
 
 func ToggleBox_Free(obj uintptr) {
-    syscallN(15647, obj)
+    syscallN(16041, obj)
 }
 
 func ToggleBox_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(15648, obj))
+    return GoBool(syscallN(16042, obj))
 }
 
 func ToggleBox_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(15649, obj, Control ))
+    return GoBool(syscallN(16043, obj, Control ))
 }
 
 func ToggleBox_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(15650, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(16044, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func ToggleBox_DisableAlign(obj uintptr)  {
-    syscallN(15651, obj)
+    syscallN(16045, obj)
 }
 
 func ToggleBox_EnableAlign(obj uintptr)  {
-    syscallN(15652, obj)
+    syscallN(16046, obj)
 }
 
 func ToggleBox_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(15653, obj, PascalStr(ControlName) )
+    return syscallN(16047, obj, PascalStr(ControlName) )
 }
 
 func ToggleBox_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(15654, obj, PascalBool(AllLevels) )
+    syscallN(16048, obj, PascalBool(AllLevels) )
 }
 
 func ToggleBox_Focused(obj uintptr) bool {
-    return GoBool(syscallN(15655, obj))
+    return GoBool(syscallN(16049, obj))
 }
 
 func ToggleBox_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(15656, obj))
+    return GoBool(syscallN(16050, obj))
 }
 
 func ToggleBox_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(15657, obj, AControl )
+    syscallN(16051, obj, AControl )
 }
 
 func ToggleBox_Invalidate(obj uintptr)  {
-    syscallN(15658, obj)
+    syscallN(16052, obj)
 }
 
 func ToggleBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(15659, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(16053, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func ToggleBox_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(15660, obj, AControl )
+    syscallN(16054, obj, AControl )
 }
 
 func ToggleBox_Realign(obj uintptr)  {
-    syscallN(15661, obj)
+    syscallN(16055, obj)
 }
 
 func ToggleBox_Repaint(obj uintptr)  {
-    syscallN(15662, obj)
+    syscallN(16056, obj)
 }
 
 func ToggleBox_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(15663, obj, uintptr(M) , uintptr(D) )
+    syscallN(16057, obj, uintptr(M) , uintptr(D) )
 }
 
 func ToggleBox_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(15664, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(16058, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func ToggleBox_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(15665, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(16059, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func ToggleBox_SetFocus(obj uintptr)  {
-    syscallN(15666, obj)
+    syscallN(16060, obj)
 }
 
 func ToggleBox_Update(obj uintptr)  {
-    syscallN(15667, obj)
+    syscallN(16061, obj)
 }
 
 func ToggleBox_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(15668, obj, PascalBool(Immediate) , uintptr(Threshold) )
+    syscallN(16062, obj, PascalBool(Immediate) , uintptr(Threshold) )
 }
 
 func ToggleBox_BringToFront(obj uintptr)  {
-    syscallN(15669, obj)
+    syscallN(16063, obj)
 }
 
 func ToggleBox_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(15670, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(16064, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ToggleBox_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(15671, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(16065, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ToggleBox_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(15672, obj))
+    return GoBool(syscallN(16066, obj))
 }
 
 func ToggleBox_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(15673, obj, PascalBool(Drop) )
+    syscallN(16067, obj, PascalBool(Drop) )
 }
 
 func ToggleBox_HasParent(obj uintptr) bool {
-    return GoBool(syscallN(15674, obj))
+    return GoBool(syscallN(16068, obj))
 }
 
 func ToggleBox_Hide(obj uintptr)  {
-    syscallN(15675, obj)
+    syscallN(16069, obj)
 }
 
 func ToggleBox_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(15676, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+    return int(syscallN(16070, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
 }
 
 func ToggleBox_Refresh(obj uintptr)  {
-    syscallN(15677, obj)
+    syscallN(16071, obj)
 }
 
 func ToggleBox_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(15678, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(16072, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ToggleBox_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(15679, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(16073, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ToggleBox_SendToBack(obj uintptr)  {
-    syscallN(15680, obj)
+    syscallN(16074, obj)
 }
 
 func ToggleBox_Show(obj uintptr)  {
-    syscallN(15681, obj)
+    syscallN(16075, obj)
 }
 
 func ToggleBox_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(15682, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(16076, obj, Buffer, uintptr(BufSize) ))
 }
 
 func ToggleBox_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(15683, obj))
+    return int32(syscallN(16077, obj))
 }
 
 func ToggleBox_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(15684, obj, PascalStr(Buffer) )
+    syscallN(16078, obj, PascalStr(Buffer) )
 }
 
 func ToggleBox_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(15685, obj, PascalStr(AName) )
+    return syscallN(16079, obj, PascalStr(AName) )
 }
 
 func ToggleBox_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(15686, obj))
+    return GoStr(syscallN(16080, obj))
 }
 
 func ToggleBox_Assign(obj uintptr, Source uintptr)  {
-    syscallN(15687, obj, Source )
+    syscallN(16081, obj, Source )
 }
 
 func ToggleBox_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(15688, obj))
+    return TClass(syscallN(16082, obj))
 }
 
 func ToggleBox_ClassName(obj uintptr) string {
-    return GoStr(syscallN(15689, obj))
+    return GoStr(syscallN(16083, obj))
 }
 
 func ToggleBox_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(15690, obj))
+    return int32(syscallN(16084, obj))
 }
 
 func ToggleBox_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(15691, obj, uintptr(AClass) ))
+    return GoBool(syscallN(16085, obj, uintptr(AClass) ))
 }
 
 func ToggleBox_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(15692, obj, Obj ))
+    return GoBool(syscallN(16086, obj, Obj ))
 }
 
 func ToggleBox_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(15693, obj))
+    return int32(syscallN(16087, obj))
 }
 
 func ToggleBox_ToString(obj uintptr) string {
-    return GoStr(syscallN(15694, obj))
+    return GoStr(syscallN(16088, obj))
 }
 
 func ToggleBox_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(15695, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(16089, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func ToggleBox_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(15696, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(16090, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func ToggleBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(15697, obj, ASibling )
+    syscallN(16091, obj, ASibling )
 }
 
 func ToggleBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(15698, obj, ASibling )
+    syscallN(16092, obj, ASibling )
 }
 
 func ToggleBox_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(15699, obj, uintptr(ASide) , ASibling )
+    syscallN(16093, obj, uintptr(ASide) , ASibling )
 }
 
 func ToggleBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(15700, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(16094, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func ToggleBox_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(15701, obj, uintptr(ASpace) )
+    syscallN(16095, obj, uintptr(ASpace) )
 }
 
 func ToggleBox_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15702, obj, uintptr(ASize) ))
+    return int32(syscallN(16096, obj, uintptr(ASize) ))
 }
 
 func ToggleBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15703, obj, uintptr(ASize) ))
+    return int32(syscallN(16097, obj, uintptr(ASize) ))
 }
 
 func ToggleBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15704, obj, uintptr(ASize) ))
+    return int32(syscallN(16098, obj, uintptr(ASize) ))
 }
 
 func ToggleBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15705, obj, uintptr(ASize) ))
+    return int32(syscallN(16099, obj, uintptr(ASize) ))
 }
 
 func ToggleBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15706, obj, uintptr(ASize) ))
+    return int32(syscallN(16100, obj, uintptr(ASize) ))
 }
 
 func ToggleBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15707, obj, uintptr(ASize) ))
+    return int32(syscallN(16101, obj, uintptr(ASize) ))
 }
 
 func ToggleBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15708, obj, uintptr(ASize) ))
+    return int32(syscallN(16102, obj, uintptr(ASize) ))
 }
 
 func ToggleBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15709, obj, uintptr(ASize) ))
+    return int32(syscallN(16103, obj, uintptr(ASize) ))
 }
 
 func ToggleBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15710, obj, uintptr(ASize) ))
+    return int32(syscallN(16104, obj, uintptr(ASize) ))
 }
 
 func ToggleBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15711, obj, uintptr(ASize) ))
+    return int32(syscallN(16105, obj, uintptr(ASize) ))
 }
 
 func ToggleBox_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(15712, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(16106, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func ToggleBox_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(15713, obj, uintptr(ADesignTimePPI) )
+    syscallN(16107, obj, uintptr(ADesignTimePPI) )
 }
 
 func ToggleBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(15714, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(16108, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func ToggleBox_GetAllowGrayed(obj uintptr) bool {
-    return GoBool(syscallN(15715, obj))
+    return GoBool(syscallN(16109, obj))
 }
 
 func ToggleBox_SetAllowGrayed(obj uintptr, value bool) {
-    syscallN(15716, obj, PascalBool(value))
+    syscallN(16110, obj, PascalBool(value))
 }
 
 func ToggleBox_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(15717, obj))
+    return TAlign(syscallN(16111, obj))
 }
 
 func ToggleBox_SetAlign(obj uintptr, value TAlign) {
-    syscallN(15718, obj, uintptr(value))
+    syscallN(16112, obj, uintptr(value))
 }
 
 func ToggleBox_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(15719, obj))
+    return TAnchors(syscallN(16113, obj))
 }
 
 func ToggleBox_SetAnchors(obj uintptr, value TAnchors) {
-    syscallN(15720, obj, uintptr(value))
+    syscallN(16114, obj, uintptr(value))
 }
 
 func ToggleBox_GetAutoSize(obj uintptr) bool {
-    return GoBool(syscallN(15721, obj))
+    return GoBool(syscallN(16115, obj))
 }
 
 func ToggleBox_SetAutoSize(obj uintptr, value bool) {
-    syscallN(15722, obj, PascalBool(value))
+    syscallN(16116, obj, PascalBool(value))
 }
 
 func ToggleBox_GetCaption(obj uintptr) string {
-    return GoStr(syscallN(15723, obj))
+    return GoStr(syscallN(16117, obj))
 }
 
 func ToggleBox_SetCaption(obj uintptr, value string) {
-    syscallN(15724, obj, PascalStr(value))
+    syscallN(16118, obj, PascalStr(value))
 }
 
 func ToggleBox_GetChecked(obj uintptr) bool {
-    return GoBool(syscallN(15725, obj))
+    return GoBool(syscallN(16119, obj))
 }
 
 func ToggleBox_SetChecked(obj uintptr, value bool) {
-    syscallN(15726, obj, PascalBool(value))
+    syscallN(16120, obj, PascalBool(value))
 }
 
 func ToggleBox_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(15727, obj))
+    return TColor(syscallN(16121, obj))
 }
 
 func ToggleBox_SetColor(obj uintptr, value TColor) {
-    syscallN(15728, obj, uintptr(value))
+    syscallN(16122, obj, uintptr(value))
 }
 
 func ToggleBox_GetConstraints(obj uintptr) uintptr {
-    return syscallN(15729, obj)
+    return syscallN(16123, obj)
 }
 
 func ToggleBox_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(15730, obj, value)
+    syscallN(16124, obj, value)
 }
 
 func ToggleBox_GetDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(15731, obj))
+    return GoBool(syscallN(16125, obj))
 }
 
 func ToggleBox_SetDoubleBuffered(obj uintptr, value bool) {
-    syscallN(15732, obj, PascalBool(value))
+    syscallN(16126, obj, PascalBool(value))
 }
 
 func ToggleBox_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(15733, obj))
+    return TCursor(syscallN(16127, obj))
 }
 
 func ToggleBox_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(15734, obj, uintptr(value))
+    syscallN(16128, obj, uintptr(value))
 }
 
 func ToggleBox_GetDragKind(obj uintptr) TDragKind {
-    return TDragKind(syscallN(15735, obj))
+    return TDragKind(syscallN(16129, obj))
 }
 
 func ToggleBox_SetDragKind(obj uintptr, value TDragKind) {
-    syscallN(15736, obj, uintptr(value))
+    syscallN(16130, obj, uintptr(value))
 }
 
 func ToggleBox_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(15737, obj))
+    return TDragMode(syscallN(16131, obj))
 }
 
 func ToggleBox_SetDragMode(obj uintptr, value TDragMode) {
-    syscallN(15738, obj, uintptr(value))
+    syscallN(16132, obj, uintptr(value))
 }
 
 func ToggleBox_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(15739, obj))
+    return GoBool(syscallN(16133, obj))
 }
 
 func ToggleBox_SetEnabled(obj uintptr, value bool) {
-    syscallN(15740, obj, PascalBool(value))
+    syscallN(16134, obj, PascalBool(value))
 }
 
 func ToggleBox_GetFont(obj uintptr) uintptr {
-    return syscallN(15741, obj)
+    return syscallN(16135, obj)
 }
 
 func ToggleBox_SetFont(obj uintptr, value uintptr) {
-    syscallN(15742, obj, value)
+    syscallN(16136, obj, value)
 }
 
 func ToggleBox_GetHint(obj uintptr) string {
-    return GoStr(syscallN(15743, obj))
+    return GoStr(syscallN(16137, obj))
 }
 
 func ToggleBox_SetHint(obj uintptr, value string) {
-    syscallN(15744, obj, PascalStr(value))
+    syscallN(16138, obj, PascalStr(value))
 }
 
 func ToggleBox_SetOnChange(obj uintptr, fn interface{}) {
-    syscallN(15745, obj, MakeEventDataPtr(fn))
+    syscallN(16139, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(15746, obj, MakeEventDataPtr(fn))
+    syscallN(16140, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnDragDrop(obj uintptr, fn interface{}) {
-    syscallN(15747, obj, MakeEventDataPtr(fn))
+    syscallN(16141, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnDragOver(obj uintptr, fn interface{}) {
-    syscallN(15748, obj, MakeEventDataPtr(fn))
+    syscallN(16142, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnEndDrag(obj uintptr, fn interface{}) {
-    syscallN(15749, obj, MakeEventDataPtr(fn))
+    syscallN(16143, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnEnter(obj uintptr, fn interface{}) {
-    syscallN(15750, obj, MakeEventDataPtr(fn))
+    syscallN(16144, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnExit(obj uintptr, fn interface{}) {
-    syscallN(15751, obj, MakeEventDataPtr(fn))
+    syscallN(16145, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseDown(obj uintptr, fn interface{}) {
-    syscallN(15752, obj, MakeEventDataPtr(fn))
+    syscallN(16146, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    syscallN(15753, obj, MakeEventDataPtr(fn))
+    syscallN(16147, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    syscallN(15754, obj, MakeEventDataPtr(fn))
+    syscallN(16148, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseMove(obj uintptr, fn interface{}) {
-    syscallN(15755, obj, MakeEventDataPtr(fn))
+    syscallN(16149, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseUp(obj uintptr, fn interface{}) {
-    syscallN(15756, obj, MakeEventDataPtr(fn))
+    syscallN(16150, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseWheel(obj uintptr, fn interface{}) {
-    syscallN(15757, obj, MakeEventDataPtr(fn))
+    syscallN(16151, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    syscallN(15758, obj, MakeEventDataPtr(fn))
+    syscallN(16152, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    syscallN(15759, obj, MakeEventDataPtr(fn))
+    syscallN(16153, obj, MakeEventDataPtr(fn))
 }
 
 func ToggleBox_GetParentDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(15760, obj))
+    return GoBool(syscallN(16154, obj))
 }
 
 func ToggleBox_SetParentDoubleBuffered(obj uintptr, value bool) {
-    syscallN(15761, obj, PascalBool(value))
+    syscallN(16155, obj, PascalBool(value))
 }
 
 func ToggleBox_GetParentFont(obj uintptr) bool {
-    return GoBool(syscallN(15762, obj))
+    return GoBool(syscallN(16156, obj))
 }
 
 func ToggleBox_SetParentFont(obj uintptr, value bool) {
-    syscallN(15763, obj, PascalBool(value))
+    syscallN(16157, obj, PascalBool(value))
 }
 
 func ToggleBox_GetParentShowHint(obj uintptr) bool {
-    return GoBool(syscallN(15764, obj))
+    return GoBool(syscallN(16158, obj))
 }
 
 func ToggleBox_SetParentShowHint(obj uintptr, value bool) {
-    syscallN(15765, obj, PascalBool(value))
+    syscallN(16159, obj, PascalBool(value))
 }
 
 func ToggleBox_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(15766, obj)
+    return syscallN(16160, obj)
 }
 
 func ToggleBox_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(15767, obj, value)
+    syscallN(16161, obj, value)
 }
 
 func ToggleBox_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(15768, obj))
+    return GoBool(syscallN(16162, obj))
 }
 
 func ToggleBox_SetShowHint(obj uintptr, value bool) {
-    syscallN(15769, obj, PascalBool(value))
+    syscallN(16163, obj, PascalBool(value))
 }
 
 func ToggleBox_GetState(obj uintptr) TCheckBoxState {
-    return TCheckBoxState(syscallN(15770, obj))
+    return TCheckBoxState(syscallN(16164, obj))
 }
 
 func ToggleBox_SetState(obj uintptr, value TCheckBoxState) {
-    syscallN(15771, obj, uintptr(value))
+    syscallN(16165, obj, uintptr(value))
 }
 
 func ToggleBox_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(15772, obj))
+    return TTabOrder(syscallN(16166, obj))
 }
 
 func ToggleBox_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(15773, obj, uintptr(value))
+    syscallN(16167, obj, uintptr(value))
 }
 
 func ToggleBox_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(15774, obj))
+    return GoBool(syscallN(16168, obj))
 }
 
 func ToggleBox_SetTabStop(obj uintptr, value bool) {
-    syscallN(15775, obj, PascalBool(value))
+    syscallN(16169, obj, PascalBool(value))
 }
 
 func ToggleBox_GetVisible(obj uintptr) bool {
-    return GoBool(syscallN(15776, obj))
+    return GoBool(syscallN(16170, obj))
 }
 
 func ToggleBox_SetVisible(obj uintptr, value bool) {
-    syscallN(15777, obj, PascalBool(value))
+    syscallN(16171, obj, PascalBool(value))
 }
 
 func ToggleBox_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(15778, obj))
+    return int32(syscallN(16172, obj))
 }
 
 func ToggleBox_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(15779, obj))
+    return GoBool(syscallN(16173, obj))
 }
 
 func ToggleBox_SetDockSite(obj uintptr, value bool) {
-    syscallN(15780, obj, PascalBool(value))
+    syscallN(16174, obj, PascalBool(value))
 }
 
 func ToggleBox_GetMouseInClient(obj uintptr) bool {
-    return GoBool(syscallN(15781, obj))
+    return GoBool(syscallN(16175, obj))
 }
 
 func ToggleBox_GetVisibleDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(15782, obj))
+    return int32(syscallN(16176, obj))
 }
 
 func ToggleBox_GetBrush(obj uintptr) uintptr {
-    return syscallN(15783, obj)
+    return syscallN(16177, obj)
 }
 
 func ToggleBox_GetControlCount(obj uintptr) int32 {
-    return int32(syscallN(15784, obj))
+    return int32(syscallN(16178, obj))
 }
 
 func ToggleBox_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(15785, obj))
+    return HWND(syscallN(16179, obj))
 }
 
 func ToggleBox_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(15786, obj))
+    return HWND(syscallN(16180, obj))
 }
 
 func ToggleBox_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(15787, obj, uintptr(value))
+    syscallN(16181, obj, uintptr(value))
 }
 
 func ToggleBox_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(15788, obj))
+    return GoBool(syscallN(16182, obj))
 }
 
 func ToggleBox_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(15789, obj))
+    return GoBool(syscallN(16183, obj))
 }
 
 func ToggleBox_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(15790, obj, PascalBool(value))
+    syscallN(16184, obj, PascalBool(value))
 }
 
 func ToggleBox_GetAction(obj uintptr) uintptr {
-    return syscallN(15791, obj)
+    return syscallN(16185, obj)
 }
 
 func ToggleBox_SetAction(obj uintptr, value uintptr) {
-    syscallN(15792, obj, value)
+    syscallN(16186, obj, value)
 }
 
 func ToggleBox_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(15793, obj))
+    return TBiDiMode(syscallN(16187, obj))
 }
 
 func ToggleBox_SetBiDiMode(obj uintptr, value TBiDiMode) {
-    syscallN(15794, obj, uintptr(value))
+    syscallN(16188, obj, uintptr(value))
 }
 
 func ToggleBox_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(15795, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(16189, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ToggleBox_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(15796, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(16190, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func ToggleBox_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(15797, obj))
+    return int32(syscallN(16191, obj))
 }
 
 func ToggleBox_SetClientHeight(obj uintptr, value int32) {
-    syscallN(15798, obj, uintptr(value))
+    syscallN(16192, obj, uintptr(value))
 }
 
 func ToggleBox_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(15799, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(16193, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ToggleBox_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(15800, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(16194, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func ToggleBox_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(15801, obj))
+    return int32(syscallN(16195, obj))
 }
 
 func ToggleBox_SetClientWidth(obj uintptr, value int32) {
-    syscallN(15802, obj, uintptr(value))
+    syscallN(16196, obj, uintptr(value))
 }
 
 func ToggleBox_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(15803, obj))
+    return TControlState(syscallN(16197, obj))
 }
 
 func ToggleBox_SetControlState(obj uintptr, value TControlState) {
-    syscallN(15804, obj, uintptr(value))
+    syscallN(16198, obj, uintptr(value))
 }
 
 func ToggleBox_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(15805, obj))
+    return TControlStyle(syscallN(16199, obj))
 }
 
 func ToggleBox_SetControlStyle(obj uintptr, value TControlStyle) {
-    syscallN(15806, obj, uintptr(value))
+    syscallN(16200, obj, uintptr(value))
 }
 
 func ToggleBox_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(15807, obj))
+    return GoBool(syscallN(16201, obj))
 }
 
 func ToggleBox_GetParent(obj uintptr) uintptr {
-    return syscallN(15808, obj)
+    return syscallN(16202, obj)
 }
 
 func ToggleBox_SetParent(obj uintptr, value uintptr) {
-    syscallN(15809, obj, value)
+    syscallN(16203, obj, value)
 }
 
 func ToggleBox_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(15810, obj))
+    return int32(syscallN(16204, obj))
 }
 
 func ToggleBox_SetLeft(obj uintptr, value int32) {
-    syscallN(15811, obj, uintptr(value))
+    syscallN(16205, obj, uintptr(value))
 }
 
 func ToggleBox_GetTop(obj uintptr) int32 {
-    return int32(syscallN(15812, obj))
+    return int32(syscallN(16206, obj))
 }
 
 func ToggleBox_SetTop(obj uintptr, value int32) {
-    syscallN(15813, obj, uintptr(value))
+    syscallN(16207, obj, uintptr(value))
 }
 
 func ToggleBox_GetWidth(obj uintptr) int32 {
-    return int32(syscallN(15814, obj))
+    return int32(syscallN(16208, obj))
 }
 
 func ToggleBox_SetWidth(obj uintptr, value int32) {
-    syscallN(15815, obj, uintptr(value))
+    syscallN(16209, obj, uintptr(value))
 }
 
 func ToggleBox_GetHeight(obj uintptr) int32 {
-    return int32(syscallN(15816, obj))
+    return int32(syscallN(16210, obj))
 }
 
 func ToggleBox_SetHeight(obj uintptr, value int32) {
-    syscallN(15817, obj, uintptr(value))
+    syscallN(16211, obj, uintptr(value))
 }
 
 func ToggleBox_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(15818, obj))
+    return TCursor(syscallN(16212, obj))
 }
 
 func ToggleBox_SetCursor(obj uintptr, value TCursor) {
-    syscallN(15819, obj, uintptr(value))
+    syscallN(16213, obj, uintptr(value))
 }
 
 func ToggleBox_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(15820, obj))
+    return int32(syscallN(16214, obj))
 }
 
 func ToggleBox_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(15821, obj))
+    return int32(syscallN(16215, obj))
 }
 
 func ToggleBox_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(15822, obj, uintptr(value))
+    syscallN(16216, obj, uintptr(value))
 }
 
 func ToggleBox_GetOwner(obj uintptr) uintptr {
-    return syscallN(15823, obj)
+    return syscallN(16217, obj)
 }
 
 func ToggleBox_GetName(obj uintptr) string {
-    return GoStr(syscallN(15824, obj))
+    return GoStr(syscallN(16218, obj))
 }
 
 func ToggleBox_SetName(obj uintptr, value string) {
-    syscallN(15825, obj, PascalStr(value))
+    syscallN(16219, obj, PascalStr(value))
 }
 
 func ToggleBox_GetTag(obj uintptr) int {
-    return int(syscallN(15826, obj))
+    return int(syscallN(16220, obj))
 }
 
 func ToggleBox_SetTag(obj uintptr, value int) {
-    syscallN(15827, obj, uintptr(value))
+    syscallN(16221, obj, uintptr(value))
 }
 
 func ToggleBox_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(15828, obj)
+    return syscallN(16222, obj)
 }
 
 func ToggleBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(15829, obj, value)
+    syscallN(16223, obj, value)
 }
 
 func ToggleBox_GetAnchorSideTop(obj uintptr) uintptr {
-    return syscallN(15830, obj)
+    return syscallN(16224, obj)
 }
 
 func ToggleBox_SetAnchorSideTop(obj uintptr, value uintptr) {
-    syscallN(15831, obj, value)
+    syscallN(16225, obj, value)
 }
 
 func ToggleBox_GetAnchorSideRight(obj uintptr) uintptr {
-    return syscallN(15832, obj)
+    return syscallN(16226, obj)
 }
 
 func ToggleBox_SetAnchorSideRight(obj uintptr, value uintptr) {
-    syscallN(15833, obj, value)
+    syscallN(16227, obj, value)
 }
 
 func ToggleBox_GetAnchorSideBottom(obj uintptr) uintptr {
-    return syscallN(15834, obj)
+    return syscallN(16228, obj)
 }
 
 func ToggleBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
-    syscallN(15835, obj, value)
+    syscallN(16229, obj, value)
 }
 
 func ToggleBox_GetChildSizing(obj uintptr) uintptr {
-    return syscallN(15836, obj)
+    return syscallN(16230, obj)
 }
 
 func ToggleBox_SetChildSizing(obj uintptr, value uintptr) {
-    syscallN(15837, obj, value)
+    syscallN(16231, obj, value)
 }
 
 func ToggleBox_GetBorderSpacing(obj uintptr) uintptr {
-    return syscallN(15838, obj)
+    return syscallN(16232, obj)
 }
 
 func ToggleBox_SetBorderSpacing(obj uintptr, value uintptr) {
-    syscallN(15839, obj, value)
+    syscallN(16233, obj, value)
 }
 
 func ToggleBox_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(15840, obj, uintptr(Index))
+    return syscallN(16234, obj, uintptr(Index))
 }
 
 func ToggleBox_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(15841, obj, uintptr(Index))
+    return syscallN(16235, obj, uintptr(Index))
 }
 
 func ToggleBox_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(15842, obj, uintptr(AIndex))
+    return syscallN(16236, obj, uintptr(AIndex))
 }
 
 func ToggleBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(15843, obj, uintptr(AKind))
+    return syscallN(16237, obj, uintptr(AKind))
 }
 
 func ToggleBox_StaticClassType() TClass {
-    return TClass(syscallN(15844))
+    return TClass(syscallN(16238))
 }
 
 //--------------------------- TCheckComboBox ---------------------------
 
 func CheckComboBox_Create(obj uintptr) uintptr {
-    return syscallN(15845, obj)
+    return syscallN(16239, obj)
 }
 
 func CheckComboBox_Free(obj uintptr) {
-    syscallN(15846, obj)
+    syscallN(16240, obj)
 }
 
 func CheckComboBox_AddItem(obj uintptr, AItem string, AState TCheckBoxState, AEnabled bool)  {
-    syscallN(15847, obj, PascalStr(AItem) , uintptr(AState) , PascalBool(AEnabled) )
+    syscallN(16241, obj, PascalStr(AItem) , uintptr(AState) , PascalBool(AEnabled) )
 }
 
 func CheckComboBox_AssignItems(obj uintptr, AItems uintptr)  {
-    syscallN(15848, obj, AItems )
+    syscallN(16242, obj, AItems )
 }
 
 func CheckComboBox_Clear(obj uintptr)  {
-    syscallN(15849, obj)
+    syscallN(16243, obj)
 }
 
 func CheckComboBox_DeleteItem(obj uintptr, AIndex int32)  {
-    syscallN(15850, obj, uintptr(AIndex) )
+    syscallN(16244, obj, uintptr(AIndex) )
 }
 
 func CheckComboBox_CheckAll(obj uintptr, AState TCheckBoxState, AAllowGrayed bool, AAllowDisabled bool)  {
-    syscallN(15851, obj, uintptr(AState) , PascalBool(AAllowGrayed) , PascalBool(AAllowDisabled) )
+    syscallN(16245, obj, uintptr(AState) , PascalBool(AAllowGrayed) , PascalBool(AAllowDisabled) )
 }
 
 func CheckComboBox_Toggle(obj uintptr, AIndex int32)  {
-    syscallN(15852, obj, uintptr(AIndex) )
+    syscallN(16246, obj, uintptr(AIndex) )
 }
 
 func CheckComboBox_ClearSelection(obj uintptr)  {
-    syscallN(15853, obj)
+    syscallN(16247, obj)
 }
 
 func CheckComboBox_Focused(obj uintptr) bool {
-    return GoBool(syscallN(15854, obj))
+    return GoBool(syscallN(16248, obj))
 }
 
 func CheckComboBox_SelectAll(obj uintptr)  {
-    syscallN(15855, obj)
+    syscallN(16249, obj)
 }
 
 func CheckComboBox_CanFocus(obj uintptr) bool {
-    return GoBool(syscallN(15856, obj))
+    return GoBool(syscallN(16250, obj))
 }
 
 func CheckComboBox_ContainsControl(obj uintptr, Control uintptr) bool {
-    return GoBool(syscallN(15857, obj, Control ))
+    return GoBool(syscallN(16251, obj, Control ))
 }
 
 func CheckComboBox_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    return syscallN(15858, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
+    return syscallN(16252, obj, uintptr(unsafe.Pointer(&Pos)), PascalBool(AllowDisabled) , PascalBool(AllowWinControls) , PascalBool(AllLevels) )
 }
 
 func CheckComboBox_DisableAlign(obj uintptr)  {
-    syscallN(15859, obj)
+    syscallN(16253, obj)
 }
 
 func CheckComboBox_EnableAlign(obj uintptr)  {
-    syscallN(15860, obj)
+    syscallN(16254, obj)
 }
 
 func CheckComboBox_FindChildControl(obj uintptr, ControlName string) uintptr {
-    return syscallN(15861, obj, PascalStr(ControlName) )
+    return syscallN(16255, obj, PascalStr(ControlName) )
 }
 
 func CheckComboBox_FlipChildren(obj uintptr, AllLevels bool)  {
-    syscallN(15862, obj, PascalBool(AllLevels) )
+    syscallN(16256, obj, PascalBool(AllLevels) )
 }
 
 func CheckComboBox_HandleAllocated(obj uintptr) bool {
-    return GoBool(syscallN(15863, obj))
+    return GoBool(syscallN(16257, obj))
 }
 
 func CheckComboBox_InsertControl(obj uintptr, AControl uintptr)  {
-    syscallN(15864, obj, AControl )
+    syscallN(16258, obj, AControl )
 }
 
 func CheckComboBox_Invalidate(obj uintptr)  {
-    syscallN(15865, obj)
+    syscallN(16259, obj)
 }
 
 func CheckComboBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    syscallN(15866, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+    syscallN(16260, obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func CheckComboBox_RemoveControl(obj uintptr, AControl uintptr)  {
-    syscallN(15867, obj, AControl )
+    syscallN(16261, obj, AControl )
 }
 
 func CheckComboBox_Realign(obj uintptr)  {
-    syscallN(15868, obj)
+    syscallN(16262, obj)
 }
 
 func CheckComboBox_Repaint(obj uintptr)  {
-    syscallN(15869, obj)
+    syscallN(16263, obj)
 }
 
 func CheckComboBox_ScaleBy(obj uintptr, M int32, D int32)  {
-    syscallN(15870, obj, uintptr(M) , uintptr(D) )
+    syscallN(16264, obj, uintptr(M) , uintptr(D) )
 }
 
 func CheckComboBox_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    syscallN(15871, obj, uintptr(DeltaX) , uintptr(DeltaY) )
+    syscallN(16265, obj, uintptr(DeltaX) , uintptr(DeltaY) )
 }
 
 func CheckComboBox_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    syscallN(15872, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+    syscallN(16266, obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func CheckComboBox_SetFocus(obj uintptr)  {
-    syscallN(15873, obj)
+    syscallN(16267, obj)
 }
 
 func CheckComboBox_Update(obj uintptr)  {
-    syscallN(15874, obj)
+    syscallN(16268, obj)
 }
 
 func CheckComboBox_BeginDrag(obj uintptr, Immediate bool, Threshold int32)  {
-    syscallN(15875, obj, PascalBool(Immediate) , uintptr(Threshold) )
+    syscallN(16269, obj, PascalBool(Immediate) , uintptr(Threshold) )
 }
 
 func CheckComboBox_BringToFront(obj uintptr)  {
-    syscallN(15876, obj)
+    syscallN(16270, obj)
 }
 
 func CheckComboBox_ClientToScreen(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(15877, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(16271, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckComboBox_ClientToParent(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(15878, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(16272, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckComboBox_Dragging(obj uintptr) bool {
-    return GoBool(syscallN(15879, obj))
+    return GoBool(syscallN(16273, obj))
 }
 
 func CheckComboBox_EndDrag(obj uintptr, Drop bool)  {
-    syscallN(15880, obj, PascalBool(Drop) )
+    syscallN(16274, obj, PascalBool(Drop) )
 }
 
 func CheckComboBox_HasParent(obj uintptr) bool {
-    return GoBool(syscallN(15881, obj))
+    return GoBool(syscallN(16275, obj))
 }
 
 func CheckComboBox_Hide(obj uintptr)  {
-    syscallN(15882, obj)
+    syscallN(16276, obj)
 }
 
 func CheckComboBox_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    return int(syscallN(15883, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
+    return int(syscallN(16277, obj, uintptr(Msg) , WParam , uintptr(LParam) ))
 }
 
 func CheckComboBox_Refresh(obj uintptr)  {
-    syscallN(15884, obj)
+    syscallN(16278, obj)
 }
 
 func CheckComboBox_ScreenToClient(obj uintptr, Point TPoint)(result  TPoint)  {
-    syscallN(15885, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
+    syscallN(16279, obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckComboBox_ParentToClient(obj uintptr, Point TPoint, AParent uintptr)(result  TPoint)  {
-    syscallN(15886, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
+    syscallN(16280, obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckComboBox_SendToBack(obj uintptr)  {
-    syscallN(15887, obj)
+    syscallN(16281, obj)
 }
 
 func CheckComboBox_Show(obj uintptr)  {
-    syscallN(15888, obj)
+    syscallN(16282, obj)
 }
 
 func CheckComboBox_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    return int32(syscallGetTextBuf(15889, obj, Buffer, uintptr(BufSize) ))
+    return int32(syscallGetTextBuf(16283, obj, Buffer, uintptr(BufSize) ))
 }
 
 func CheckComboBox_GetTextLen(obj uintptr) int32 {
-    return int32(syscallN(15890, obj))
+    return int32(syscallN(16284, obj))
 }
 
 func CheckComboBox_SetTextBuf(obj uintptr, Buffer string)  {
-    syscallN(15891, obj, PascalStr(Buffer) )
+    syscallN(16285, obj, PascalStr(Buffer) )
 }
 
 func CheckComboBox_FindComponent(obj uintptr, AName string) uintptr {
-    return syscallN(15892, obj, PascalStr(AName) )
+    return syscallN(16286, obj, PascalStr(AName) )
 }
 
 func CheckComboBox_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(15893, obj))
+    return GoStr(syscallN(16287, obj))
 }
 
 func CheckComboBox_Assign(obj uintptr, Source uintptr)  {
-    syscallN(15894, obj, Source )
+    syscallN(16288, obj, Source )
 }
 
 func CheckComboBox_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(15895, obj))
+    return TClass(syscallN(16289, obj))
 }
 
 func CheckComboBox_ClassName(obj uintptr) string {
-    return GoStr(syscallN(15896, obj))
+    return GoStr(syscallN(16290, obj))
 }
 
 func CheckComboBox_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(15897, obj))
+    return int32(syscallN(16291, obj))
 }
 
 func CheckComboBox_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(15898, obj, uintptr(AClass) ))
+    return GoBool(syscallN(16292, obj, uintptr(AClass) ))
 }
 
 func CheckComboBox_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(15899, obj, Obj ))
+    return GoBool(syscallN(16293, obj, Obj ))
 }
 
 func CheckComboBox_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(15900, obj))
+    return int32(syscallN(16294, obj))
 }
 
 func CheckComboBox_ToString(obj uintptr) string {
-    return GoStr(syscallN(15901, obj))
+    return GoStr(syscallN(16295, obj))
 }
 
 func CheckComboBox_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(15902, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(16296, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func CheckComboBox_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
-    syscallN(15903, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+    syscallN(16297, obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
 }
 
 func CheckComboBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(15904, obj, ASibling )
+    syscallN(16298, obj, ASibling )
 }
 
 func CheckComboBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
-    syscallN(15905, obj, ASibling )
+    syscallN(16299, obj, ASibling )
 }
 
 func CheckComboBox_AnchorSame(obj uintptr, ASide TAnchorKind, ASibling uintptr)  {
-    syscallN(15906, obj, uintptr(ASide) , ASibling )
+    syscallN(16300, obj, uintptr(ASide) , ASibling )
 }
 
 func CheckComboBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
-    syscallN(15907, obj, uintptr(ATheAlign) , uintptr(ASpace) )
+    syscallN(16301, obj, uintptr(ATheAlign) , uintptr(ASpace) )
 }
 
 func CheckComboBox_AnchorClient(obj uintptr, ASpace int32)  {
-    syscallN(15908, obj, uintptr(ASpace) )
+    syscallN(16302, obj, uintptr(ASpace) )
 }
 
 func CheckComboBox_ScaleDesignToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15909, obj, uintptr(ASize) ))
+    return int32(syscallN(16303, obj, uintptr(ASize) ))
 }
 
 func CheckComboBox_ScaleFormToDesign(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15910, obj, uintptr(ASize) ))
+    return int32(syscallN(16304, obj, uintptr(ASize) ))
 }
 
 func CheckComboBox_Scale96ToForm(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15911, obj, uintptr(ASize) ))
+    return int32(syscallN(16305, obj, uintptr(ASize) ))
 }
 
 func CheckComboBox_ScaleFormTo96(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15912, obj, uintptr(ASize) ))
+    return int32(syscallN(16306, obj, uintptr(ASize) ))
 }
 
 func CheckComboBox_Scale96ToFont(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15913, obj, uintptr(ASize) ))
+    return int32(syscallN(16307, obj, uintptr(ASize) ))
 }
 
 func CheckComboBox_ScaleFontTo96(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15914, obj, uintptr(ASize) ))
+    return int32(syscallN(16308, obj, uintptr(ASize) ))
 }
 
 func CheckComboBox_ScaleScreenToFont(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15915, obj, uintptr(ASize) ))
+    return int32(syscallN(16309, obj, uintptr(ASize) ))
 }
 
 func CheckComboBox_ScaleFontToScreen(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15916, obj, uintptr(ASize) ))
+    return int32(syscallN(16310, obj, uintptr(ASize) ))
 }
 
 func CheckComboBox_Scale96ToScreen(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15917, obj, uintptr(ASize) ))
+    return int32(syscallN(16311, obj, uintptr(ASize) ))
 }
 
 func CheckComboBox_ScaleScreenTo96(obj uintptr, ASize int32) int32 {
-    return int32(syscallN(15918, obj, uintptr(ASize) ))
+    return int32(syscallN(16312, obj, uintptr(ASize) ))
 }
 
 func CheckComboBox_AutoAdjustLayout(obj uintptr, AMode TLayoutAdjustmentPolicy, AFromPPI int32, AToPPI int32, AOldFormWidth int32, ANewFormWidth int32)  {
-    syscallN(15919, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
+    syscallN(16313, obj, uintptr(AMode) , uintptr(AFromPPI) , uintptr(AToPPI) , uintptr(AOldFormWidth) , uintptr(ANewFormWidth) )
 }
 
 func CheckComboBox_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(15920, obj, uintptr(ADesignTimePPI) )
+    syscallN(16314, obj, uintptr(ADesignTimePPI) )
 }
 
 func CheckComboBox_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(15921, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(16315, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func CheckComboBox_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(15922, obj))
+    return TAlign(syscallN(16316, obj))
 }
 
 func CheckComboBox_SetAlign(obj uintptr, value TAlign) {
-    syscallN(15923, obj, uintptr(value))
+    syscallN(16317, obj, uintptr(value))
 }
 
 func CheckComboBox_GetAllowGrayed(obj uintptr) bool {
-    return GoBool(syscallN(15924, obj))
+    return GoBool(syscallN(16318, obj))
 }
 
 func CheckComboBox_SetAllowGrayed(obj uintptr, value bool) {
-    syscallN(15925, obj, PascalBool(value))
+    syscallN(16319, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(15926, obj))
+    return TAnchors(syscallN(16320, obj))
 }
 
 func CheckComboBox_SetAnchors(obj uintptr, value TAnchors) {
-    syscallN(15927, obj, uintptr(value))
+    syscallN(16321, obj, uintptr(value))
 }
 
 func CheckComboBox_GetAutoDropDown(obj uintptr) bool {
-    return GoBool(syscallN(15928, obj))
+    return GoBool(syscallN(16322, obj))
 }
 
 func CheckComboBox_SetAutoDropDown(obj uintptr, value bool) {
-    syscallN(15929, obj, PascalBool(value))
+    syscallN(16323, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetAutoSize(obj uintptr) bool {
-    return GoBool(syscallN(15930, obj))
+    return GoBool(syscallN(16324, obj))
 }
 
 func CheckComboBox_SetAutoSize(obj uintptr, value bool) {
-    syscallN(15931, obj, PascalBool(value))
+    syscallN(16325, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(15932, obj))
+    return TColor(syscallN(16326, obj))
 }
 
 func CheckComboBox_SetColor(obj uintptr, value TColor) {
-    syscallN(15933, obj, uintptr(value))
+    syscallN(16327, obj, uintptr(value))
 }
 
 func CheckComboBox_GetConstraints(obj uintptr) uintptr {
-    return syscallN(15934, obj)
+    return syscallN(16328, obj)
 }
 
 func CheckComboBox_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(15935, obj, value)
+    syscallN(16329, obj, value)
 }
 
 func CheckComboBox_GetCount(obj uintptr) int32 {
-    return int32(syscallN(15936, obj))
+    return int32(syscallN(16330, obj))
 }
 
 func CheckComboBox_GetDragCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(15937, obj))
+    return TCursor(syscallN(16331, obj))
 }
 
 func CheckComboBox_SetDragCursor(obj uintptr, value TCursor) {
-    syscallN(15938, obj, uintptr(value))
+    syscallN(16332, obj, uintptr(value))
 }
 
 func CheckComboBox_GetDragKind(obj uintptr) TDragKind {
-    return TDragKind(syscallN(15939, obj))
+    return TDragKind(syscallN(16333, obj))
 }
 
 func CheckComboBox_SetDragKind(obj uintptr, value TDragKind) {
-    syscallN(15940, obj, uintptr(value))
+    syscallN(16334, obj, uintptr(value))
 }
 
 func CheckComboBox_GetDragMode(obj uintptr) TDragMode {
-    return TDragMode(syscallN(15941, obj))
+    return TDragMode(syscallN(16335, obj))
 }
 
 func CheckComboBox_SetDragMode(obj uintptr, value TDragMode) {
-    syscallN(15942, obj, uintptr(value))
+    syscallN(16336, obj, uintptr(value))
 }
 
 func CheckComboBox_GetDropDownCount(obj uintptr) int32 {
-    return int32(syscallN(15943, obj))
+    return int32(syscallN(16337, obj))
 }
 
 func CheckComboBox_SetDropDownCount(obj uintptr, value int32) {
-    syscallN(15944, obj, uintptr(value))
+    syscallN(16338, obj, uintptr(value))
 }
 
 func CheckComboBox_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(15945, obj))
+    return GoBool(syscallN(16339, obj))
 }
 
 func CheckComboBox_SetEnabled(obj uintptr, value bool) {
-    syscallN(15946, obj, PascalBool(value))
+    syscallN(16340, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetFont(obj uintptr) uintptr {
-    return syscallN(15947, obj)
+    return syscallN(16341, obj)
 }
 
 func CheckComboBox_SetFont(obj uintptr, value uintptr) {
-    syscallN(15948, obj, value)
+    syscallN(16342, obj, value)
 }
 
 func CheckComboBox_GetItemHeight(obj uintptr) int32 {
-    return int32(syscallN(15949, obj))
+    return int32(syscallN(16343, obj))
 }
 
 func CheckComboBox_SetItemHeight(obj uintptr, value int32) {
-    syscallN(15950, obj, uintptr(value))
+    syscallN(16344, obj, uintptr(value))
 }
 
 func CheckComboBox_GetItemIndex(obj uintptr) int32 {
-    return int32(syscallN(15951, obj))
+    return int32(syscallN(16345, obj))
 }
 
 func CheckComboBox_SetItemIndex(obj uintptr, value int32) {
-    syscallN(15952, obj, uintptr(value))
+    syscallN(16346, obj, uintptr(value))
 }
 
 func CheckComboBox_GetItems(obj uintptr) uintptr {
-    return syscallN(15953, obj)
+    return syscallN(16347, obj)
 }
 
 func CheckComboBox_SetItems(obj uintptr, value uintptr) {
-    syscallN(15954, obj, value)
+    syscallN(16348, obj, value)
 }
 
 func CheckComboBox_GetItemWidth(obj uintptr) int32 {
-    return int32(syscallN(15955, obj))
+    return int32(syscallN(16349, obj))
 }
 
 func CheckComboBox_SetItemWidth(obj uintptr, value int32) {
-    syscallN(15956, obj, uintptr(value))
+    syscallN(16350, obj, uintptr(value))
 }
 
 func CheckComboBox_GetMaxLength(obj uintptr) int32 {
-    return int32(syscallN(15957, obj))
+    return int32(syscallN(16351, obj))
 }
 
 func CheckComboBox_SetMaxLength(obj uintptr, value int32) {
-    syscallN(15958, obj, uintptr(value))
+    syscallN(16352, obj, uintptr(value))
 }
 
 func CheckComboBox_SetOnChange(obj uintptr, fn interface{}) {
-    syscallN(15959, obj, MakeEventDataPtr(fn))
+    syscallN(16353, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(15960, obj, MakeEventDataPtr(fn))
+    syscallN(16354, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnCloseUp(obj uintptr, fn interface{}) {
-    syscallN(15961, obj, MakeEventDataPtr(fn))
+    syscallN(16355, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnContextPopup(obj uintptr, fn interface{}) {
-    syscallN(15962, obj, MakeEventDataPtr(fn))
+    syscallN(16356, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnDblClick(obj uintptr, fn interface{}) {
-    syscallN(15963, obj, MakeEventDataPtr(fn))
+    syscallN(16357, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnDragDrop(obj uintptr, fn interface{}) {
-    syscallN(15964, obj, MakeEventDataPtr(fn))
+    syscallN(16358, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnDragOver(obj uintptr, fn interface{}) {
-    syscallN(15965, obj, MakeEventDataPtr(fn))
+    syscallN(16359, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnEndDrag(obj uintptr, fn interface{}) {
-    syscallN(15966, obj, MakeEventDataPtr(fn))
+    syscallN(16360, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnDropDown(obj uintptr, fn interface{}) {
-    syscallN(15967, obj, MakeEventDataPtr(fn))
+    syscallN(16361, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnEnter(obj uintptr, fn interface{}) {
-    syscallN(15968, obj, MakeEventDataPtr(fn))
+    syscallN(16362, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnExit(obj uintptr, fn interface{}) {
-    syscallN(15969, obj, MakeEventDataPtr(fn))
+    syscallN(16363, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnItemChange(obj uintptr, fn interface{}) {
-    syscallN(15970, obj, MakeEventDataPtr(fn))
+    syscallN(16364, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnKeyDown(obj uintptr, fn interface{}) {
-    syscallN(15971, obj, MakeEventDataPtr(fn))
+    syscallN(16365, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnKeyPress(obj uintptr, fn interface{}) {
-    syscallN(15972, obj, MakeEventDataPtr(fn))
+    syscallN(16366, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnKeyUp(obj uintptr, fn interface{}) {
-    syscallN(15973, obj, MakeEventDataPtr(fn))
+    syscallN(16367, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseDown(obj uintptr, fn interface{}) {
-    syscallN(15974, obj, MakeEventDataPtr(fn))
+    syscallN(16368, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    syscallN(15975, obj, MakeEventDataPtr(fn))
+    syscallN(16369, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    syscallN(15976, obj, MakeEventDataPtr(fn))
+    syscallN(16370, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseMove(obj uintptr, fn interface{}) {
-    syscallN(15977, obj, MakeEventDataPtr(fn))
+    syscallN(16371, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseUp(obj uintptr, fn interface{}) {
-    syscallN(15978, obj, MakeEventDataPtr(fn))
+    syscallN(16372, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseWheel(obj uintptr, fn interface{}) {
-    syscallN(15979, obj, MakeEventDataPtr(fn))
+    syscallN(16373, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
-    syscallN(15980, obj, MakeEventDataPtr(fn))
+    syscallN(16374, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
-    syscallN(15981, obj, MakeEventDataPtr(fn))
+    syscallN(16375, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_SetOnSelect(obj uintptr, fn interface{}) {
-    syscallN(15982, obj, MakeEventDataPtr(fn))
+    syscallN(16376, obj, MakeEventDataPtr(fn))
 }
 
 func CheckComboBox_GetParentColor(obj uintptr) bool {
-    return GoBool(syscallN(15983, obj))
+    return GoBool(syscallN(16377, obj))
 }
 
 func CheckComboBox_SetParentColor(obj uintptr, value bool) {
-    syscallN(15984, obj, PascalBool(value))
+    syscallN(16378, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetParentFont(obj uintptr) bool {
-    return GoBool(syscallN(15985, obj))
+    return GoBool(syscallN(16379, obj))
 }
 
 func CheckComboBox_SetParentFont(obj uintptr, value bool) {
-    syscallN(15986, obj, PascalBool(value))
+    syscallN(16380, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetParentShowHint(obj uintptr) bool {
-    return GoBool(syscallN(15987, obj))
+    return GoBool(syscallN(16381, obj))
 }
 
 func CheckComboBox_SetParentShowHint(obj uintptr, value bool) {
-    syscallN(15988, obj, PascalBool(value))
+    syscallN(16382, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(15989, obj)
+    return syscallN(16383, obj)
 }
 
 func CheckComboBox_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(15990, obj, value)
+    syscallN(16384, obj, value)
 }
 
 func CheckComboBox_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(15991, obj))
+    return GoBool(syscallN(16385, obj))
 }
 
 func CheckComboBox_SetShowHint(obj uintptr, value bool) {
-    syscallN(15992, obj, PascalBool(value))
+    syscallN(16386, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetSorted(obj uintptr) bool {
-    return GoBool(syscallN(15993, obj))
+    return GoBool(syscallN(16387, obj))
 }
 
 func CheckComboBox_SetSorted(obj uintptr, value bool) {
-    syscallN(15994, obj, PascalBool(value))
+    syscallN(16388, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(15995, obj))
+    return TTabOrder(syscallN(16389, obj))
 }
 
 func CheckComboBox_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(15996, obj, uintptr(value))
+    syscallN(16390, obj, uintptr(value))
 }
 
 func CheckComboBox_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(15997, obj))
+    return GoBool(syscallN(16391, obj))
 }
 
 func CheckComboBox_SetTabStop(obj uintptr, value bool) {
-    syscallN(15998, obj, PascalBool(value))
+    syscallN(16392, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetText(obj uintptr) string {
-    return GoStr(syscallN(15999, obj))
+    return GoStr(syscallN(16393, obj))
 }
 
 func CheckComboBox_SetText(obj uintptr, value string) {
-    syscallN(16000, obj, PascalStr(value))
+    syscallN(16394, obj, PascalStr(value))
 }
 
 func CheckComboBox_GetTextHint(obj uintptr) string {
-    return GoStr(syscallN(16001, obj))
+    return GoStr(syscallN(16395, obj))
 }
 
 func CheckComboBox_SetTextHint(obj uintptr, value string) {
-    syscallN(16002, obj, PascalStr(value))
+    syscallN(16396, obj, PascalStr(value))
 }
 
 func CheckComboBox_GetVisible(obj uintptr) bool {
-    return GoBool(syscallN(16003, obj))
+    return GoBool(syscallN(16397, obj))
 }
 
 func CheckComboBox_SetVisible(obj uintptr, value bool) {
-    syscallN(16004, obj, PascalBool(value))
+    syscallN(16398, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetAutoComplete(obj uintptr) bool {
-    return GoBool(syscallN(16005, obj))
+    return GoBool(syscallN(16399, obj))
 }
 
 func CheckComboBox_SetAutoComplete(obj uintptr, value bool) {
-    syscallN(16006, obj, PascalBool(value))
+    syscallN(16400, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetCharCase(obj uintptr) TEditCharCase {
-    return TEditCharCase(syscallN(16007, obj))
+    return TEditCharCase(syscallN(16401, obj))
 }
 
 func CheckComboBox_SetCharCase(obj uintptr, value TEditCharCase) {
-    syscallN(16008, obj, uintptr(value))
+    syscallN(16402, obj, uintptr(value))
 }
 
 func CheckComboBox_GetSelText(obj uintptr) string {
-    return GoStr(syscallN(16009, obj))
+    return GoStr(syscallN(16403, obj))
 }
 
 func CheckComboBox_SetSelText(obj uintptr, value string) {
-    syscallN(16010, obj, PascalStr(value))
+    syscallN(16404, obj, PascalStr(value))
 }
 
 func CheckComboBox_GetCanvas(obj uintptr) uintptr {
-    return syscallN(16011, obj)
+    return syscallN(16405, obj)
 }
 
 func CheckComboBox_GetDroppedDown(obj uintptr) bool {
-    return GoBool(syscallN(16012, obj))
+    return GoBool(syscallN(16406, obj))
 }
 
 func CheckComboBox_SetDroppedDown(obj uintptr, value bool) {
-    syscallN(16013, obj, PascalBool(value))
+    syscallN(16407, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetSelLength(obj uintptr) int32 {
-    return int32(syscallN(16014, obj))
+    return int32(syscallN(16408, obj))
 }
 
 func CheckComboBox_SetSelLength(obj uintptr, value int32) {
-    syscallN(16015, obj, uintptr(value))
+    syscallN(16409, obj, uintptr(value))
 }
 
 func CheckComboBox_GetSelStart(obj uintptr) int32 {
-    return int32(syscallN(16016, obj))
+    return int32(syscallN(16410, obj))
 }
 
 func CheckComboBox_SetSelStart(obj uintptr, value int32) {
-    syscallN(16017, obj, uintptr(value))
+    syscallN(16411, obj, uintptr(value))
 }
 
 func CheckComboBox_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(16018, obj))
+    return int32(syscallN(16412, obj))
 }
 
 func CheckComboBox_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(16019, obj))
+    return GoBool(syscallN(16413, obj))
 }
 
 func CheckComboBox_SetDockSite(obj uintptr, value bool) {
-    syscallN(16020, obj, PascalBool(value))
+    syscallN(16414, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(16021, obj))
+    return GoBool(syscallN(16415, obj))
 }
 
 func CheckComboBox_SetDoubleBuffered(obj uintptr, value bool) {
-    syscallN(16022, obj, PascalBool(value))
+    syscallN(16416, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetMouseInClient(obj uintptr) bool {
-    return GoBool(syscallN(16023, obj))
+    return GoBool(syscallN(16417, obj))
 }
 
 func CheckComboBox_GetVisibleDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(16024, obj))
+    return int32(syscallN(16418, obj))
 }
 
 func CheckComboBox_GetBrush(obj uintptr) uintptr {
-    return syscallN(16025, obj)
+    return syscallN(16419, obj)
 }
 
 func CheckComboBox_GetControlCount(obj uintptr) int32 {
-    return int32(syscallN(16026, obj))
+    return int32(syscallN(16420, obj))
 }
 
 func CheckComboBox_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(16027, obj))
+    return HWND(syscallN(16421, obj))
 }
 
 func CheckComboBox_GetParentDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(16028, obj))
+    return GoBool(syscallN(16422, obj))
 }
 
 func CheckComboBox_SetParentDoubleBuffered(obj uintptr, value bool) {
-    syscallN(16029, obj, PascalBool(value))
+    syscallN(16423, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(16030, obj))
+    return HWND(syscallN(16424, obj))
 }
 
 func CheckComboBox_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(16031, obj, uintptr(value))
+    syscallN(16425, obj, uintptr(value))
 }
 
 func CheckComboBox_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(16032, obj))
+    return GoBool(syscallN(16426, obj))
 }
 
 func CheckComboBox_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(16033, obj))
+    return GoBool(syscallN(16427, obj))
 }
 
 func CheckComboBox_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(16034, obj, PascalBool(value))
+    syscallN(16428, obj, PascalBool(value))
 }
 
 func CheckComboBox_GetAction(obj uintptr) uintptr {
-    return syscallN(16035, obj)
+    return syscallN(16429, obj)
 }
 
 func CheckComboBox_SetAction(obj uintptr, value uintptr) {
-    syscallN(16036, obj, value)
+    syscallN(16430, obj, value)
 }
 
 func CheckComboBox_GetBiDiMode(obj uintptr) TBiDiMode {
-    return TBiDiMode(syscallN(16037, obj))
+    return TBiDiMode(syscallN(16431, obj))
 }
 
 func CheckComboBox_SetBiDiMode(obj uintptr, value TBiDiMode) {
-    syscallN(16038, obj, uintptr(value))
+    syscallN(16432, obj, uintptr(value))
 }
 
 func CheckComboBox_GetBoundsRect(obj uintptr) (result TRect) {
-    syscallN(16039, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(16433, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckComboBox_SetBoundsRect(obj uintptr, value TRect) {
-    syscallN(16040, obj, uintptr(unsafe.Pointer(&value)))
+    syscallN(16434, obj, uintptr(unsafe.Pointer(&value)))
 }
 
 func CheckComboBox_GetClientHeight(obj uintptr) int32 {
-    return int32(syscallN(16041, obj))
+    return int32(syscallN(16435, obj))
 }
 
 func CheckComboBox_SetClientHeight(obj uintptr, value int32) {
-    syscallN(16042, obj, uintptr(value))
+    syscallN(16436, obj, uintptr(value))
 }
 
 func CheckComboBox_GetClientOrigin(obj uintptr) (result TPoint) {
-    syscallN(16043, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(16437, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckComboBox_GetClientRect(obj uintptr) (result TRect) {
-    syscallN(16044, obj, uintptr(unsafe.Pointer(&result)))
+    syscallN(16438, obj, uintptr(unsafe.Pointer(&result)))
     return
 }
 
 func CheckComboBox_GetClientWidth(obj uintptr) int32 {
-    return int32(syscallN(16045, obj))
+    return int32(syscallN(16439, obj))
 }
 
 func CheckComboBox_SetClientWidth(obj uintptr, value int32) {
-    syscallN(16046, obj, uintptr(value))
+    syscallN(16440, obj, uintptr(value))
 }
 
 func CheckComboBox_GetControlState(obj uintptr) TControlState {
-    return TControlState(syscallN(16047, obj))
+    return TControlState(syscallN(16441, obj))
 }
 
 func CheckComboBox_SetControlState(obj uintptr, value TControlState) {
-    syscallN(16048, obj, uintptr(value))
+    syscallN(16442, obj, uintptr(value))
 }
 
 func CheckComboBox_GetControlStyle(obj uintptr) TControlStyle {
-    return TControlStyle(syscallN(16049, obj))
+    return TControlStyle(syscallN(16443, obj))
 }
 
 func CheckComboBox_SetControlStyle(obj uintptr, value TControlStyle) {
-    syscallN(16050, obj, uintptr(value))
+    syscallN(16444, obj, uintptr(value))
 }
 
 func CheckComboBox_GetFloating(obj uintptr) bool {
-    return GoBool(syscallN(16051, obj))
+    return GoBool(syscallN(16445, obj))
 }
 
 func CheckComboBox_GetParent(obj uintptr) uintptr {
-    return syscallN(16052, obj)
+    return syscallN(16446, obj)
 }
 
 func CheckComboBox_SetParent(obj uintptr, value uintptr) {
-    syscallN(16053, obj, value)
+    syscallN(16447, obj, value)
 }
 
 func CheckComboBox_GetLeft(obj uintptr) int32 {
-    return int32(syscallN(16054, obj))
+    return int32(syscallN(16448, obj))
 }
 
 func CheckComboBox_SetLeft(obj uintptr, value int32) {
-    syscallN(16055, obj, uintptr(value))
+    syscallN(16449, obj, uintptr(value))
 }
 
 func CheckComboBox_GetTop(obj uintptr) int32 {
-    return int32(syscallN(16056, obj))
+    return int32(syscallN(16450, obj))
 }
 
 func CheckComboBox_SetTop(obj uintptr, value int32) {
-    syscallN(16057, obj, uintptr(value))
+    syscallN(16451, obj, uintptr(value))
 }
 
 func CheckComboBox_GetWidth(obj uintptr) int32 {
-    return int32(syscallN(16058, obj))
+    return int32(syscallN(16452, obj))
 }
 
 func CheckComboBox_SetWidth(obj uintptr, value int32) {
-    syscallN(16059, obj, uintptr(value))
+    syscallN(16453, obj, uintptr(value))
 }
 
 func CheckComboBox_GetHeight(obj uintptr) int32 {
-    return int32(syscallN(16060, obj))
+    return int32(syscallN(16454, obj))
 }
 
 func CheckComboBox_SetHeight(obj uintptr, value int32) {
-    syscallN(16061, obj, uintptr(value))
+    syscallN(16455, obj, uintptr(value))
 }
 
 func CheckComboBox_GetCursor(obj uintptr) TCursor {
-    return TCursor(syscallN(16062, obj))
+    return TCursor(syscallN(16456, obj))
 }
 
 func CheckComboBox_SetCursor(obj uintptr, value TCursor) {
-    syscallN(16063, obj, uintptr(value))
+    syscallN(16457, obj, uintptr(value))
 }
 
 func CheckComboBox_GetHint(obj uintptr) string {
-    return GoStr(syscallN(16064, obj))
+    return GoStr(syscallN(16458, obj))
 }
 
 func CheckComboBox_SetHint(obj uintptr, value string) {
-    syscallN(16065, obj, PascalStr(value))
+    syscallN(16459, obj, PascalStr(value))
 }
 
 func CheckComboBox_GetComponentCount(obj uintptr) int32 {
-    return int32(syscallN(16066, obj))
+    return int32(syscallN(16460, obj))
 }
 
 func CheckComboBox_GetComponentIndex(obj uintptr) int32 {
-    return int32(syscallN(16067, obj))
+    return int32(syscallN(16461, obj))
 }
 
 func CheckComboBox_SetComponentIndex(obj uintptr, value int32) {
-    syscallN(16068, obj, uintptr(value))
+    syscallN(16462, obj, uintptr(value))
 }
 
 func CheckComboBox_GetOwner(obj uintptr) uintptr {
-    return syscallN(16069, obj)
+    return syscallN(16463, obj)
 }
 
 func CheckComboBox_GetName(obj uintptr) string {
-    return GoStr(syscallN(16070, obj))
+    return GoStr(syscallN(16464, obj))
 }
 
 func CheckComboBox_SetName(obj uintptr, value string) {
-    syscallN(16071, obj, PascalStr(value))
+    syscallN(16465, obj, PascalStr(value))
 }
 
 func CheckComboBox_GetTag(obj uintptr) int {
-    return int(syscallN(16072, obj))
+    return int(syscallN(16466, obj))
 }
 
 func CheckComboBox_SetTag(obj uintptr, value int) {
-    syscallN(16073, obj, uintptr(value))
+    syscallN(16467, obj, uintptr(value))
 }
 
 func CheckComboBox_GetAnchorSideLeft(obj uintptr) uintptr {
-    return syscallN(16074, obj)
+    return syscallN(16468, obj)
 }
 
 func CheckComboBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
-    syscallN(16075, obj, value)
+    syscallN(16469, obj, value)
 }
 
 func CheckComboBox_GetAnchorSideTop(obj uintptr) uintptr {
-    return syscallN(16076, obj)
+    return syscallN(16470, obj)
 }
 
 func CheckComboBox_SetAnchorSideTop(obj uintptr, value uintptr) {
-    syscallN(16077, obj, value)
+    syscallN(16471, obj, value)
 }
 
 func CheckComboBox_GetAnchorSideRight(obj uintptr) uintptr {
-    return syscallN(16078, obj)
+    return syscallN(16472, obj)
 }
 
 func CheckComboBox_SetAnchorSideRight(obj uintptr, value uintptr) {
-    syscallN(16079, obj, value)
+    syscallN(16473, obj, value)
 }
 
 func CheckComboBox_GetAnchorSideBottom(obj uintptr) uintptr {
-    return syscallN(16080, obj)
+    return syscallN(16474, obj)
 }
 
 func CheckComboBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
-    syscallN(16081, obj, value)
+    syscallN(16475, obj, value)
 }
 
 func CheckComboBox_GetChildSizing(obj uintptr) uintptr {
-    return syscallN(16082, obj)
+    return syscallN(16476, obj)
 }
 
 func CheckComboBox_SetChildSizing(obj uintptr, value uintptr) {
-    syscallN(16083, obj, value)
+    syscallN(16477, obj, value)
 }
 
 func CheckComboBox_GetBorderSpacing(obj uintptr) uintptr {
-    return syscallN(16084, obj)
+    return syscallN(16478, obj)
 }
 
 func CheckComboBox_SetBorderSpacing(obj uintptr, value uintptr) {
-    syscallN(16085, obj, value)
+    syscallN(16479, obj, value)
 }
 
 func CheckComboBox_GetChecked(obj uintptr, AIndex int32) bool {
-    return GoBool(syscallN(16086, obj, uintptr(AIndex)))
+    return GoBool(syscallN(16480, obj, uintptr(AIndex)))
 }
 
 func CheckComboBox_SetChecked(obj uintptr, AIndex int32, value bool) {
-    syscallN(16087, obj, uintptr(AIndex), PascalBool(value))
+    syscallN(16481, obj, uintptr(AIndex), PascalBool(value))
 }
 
 func CheckComboBox_GetItemEnabled(obj uintptr, AIndex int32) bool {
-    return GoBool(syscallN(16088, obj, uintptr(AIndex)))
+    return GoBool(syscallN(16482, obj, uintptr(AIndex)))
 }
 
 func CheckComboBox_SetItemEnabled(obj uintptr, AIndex int32, value bool) {
-    syscallN(16089, obj, uintptr(AIndex), PascalBool(value))
+    syscallN(16483, obj, uintptr(AIndex), PascalBool(value))
 }
 
 func CheckComboBox_GetObjects(obj uintptr, AIndex int32) uintptr {
-    return syscallN(16090, obj, uintptr(AIndex))
+    return syscallN(16484, obj, uintptr(AIndex))
 }
 
 func CheckComboBox_SetObjects(obj uintptr, AIndex int32, value uintptr) {
-    syscallN(16091, obj, uintptr(AIndex), value)
+    syscallN(16485, obj, uintptr(AIndex), value)
 }
 
 func CheckComboBox_GetState(obj uintptr, AIndex int32) TCheckBoxState {
-    return TCheckBoxState(syscallN(16092, obj, uintptr(AIndex)))
+    return TCheckBoxState(syscallN(16486, obj, uintptr(AIndex)))
 }
 
 func CheckComboBox_SetState(obj uintptr, AIndex int32, value TCheckBoxState) {
-    syscallN(16093, obj, uintptr(AIndex), uintptr(value))
+    syscallN(16487, obj, uintptr(AIndex), uintptr(value))
 }
 
 func CheckComboBox_GetDockClients(obj uintptr, Index int32) uintptr {
-    return syscallN(16094, obj, uintptr(Index))
+    return syscallN(16488, obj, uintptr(Index))
 }
 
 func CheckComboBox_GetControls(obj uintptr, Index int32) uintptr {
-    return syscallN(16095, obj, uintptr(Index))
+    return syscallN(16489, obj, uintptr(Index))
 }
 
 func CheckComboBox_GetComponents(obj uintptr, AIndex int32) uintptr {
-    return syscallN(16096, obj, uintptr(AIndex))
+    return syscallN(16490, obj, uintptr(AIndex))
 }
 
 func CheckComboBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
-    return syscallN(16097, obj, uintptr(AKind))
+    return syscallN(16491, obj, uintptr(AKind))
 }
 
 func CheckComboBox_StaticClassType() TClass {
-    return TClass(syscallN(16098))
+    return TClass(syscallN(16492))
 }
 
 //--------------------------- TGridColumnTitle ---------------------------
 
 func GridColumnTitle_Assign(obj uintptr, Source uintptr)  {
-    syscallN(16099, obj, Source )
+    syscallN(16493, obj, Source )
 }
 
 func GridColumnTitle_FillTitleDefaultFont(obj uintptr)  {
-    syscallN(16100, obj)
+    syscallN(16494, obj)
 }
 
 func GridColumnTitle_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(16101, obj, uintptr(ADesignTimePPI) )
+    syscallN(16495, obj, uintptr(ADesignTimePPI) )
 }
 
 func GridColumnTitle_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(16102, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(16496, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func GridColumnTitle_IsDefault(obj uintptr) bool {
-    return GoBool(syscallN(16103, obj))
+    return GoBool(syscallN(16497, obj))
 }
 
 func GridColumnTitle_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(16104, obj))
+    return GoStr(syscallN(16498, obj))
 }
 
 func GridColumnTitle_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(16105, obj))
+    return TClass(syscallN(16499, obj))
 }
 
 func GridColumnTitle_ClassName(obj uintptr) string {
-    return GoStr(syscallN(16106, obj))
+    return GoStr(syscallN(16500, obj))
 }
 
 func GridColumnTitle_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(16107, obj))
+    return int32(syscallN(16501, obj))
 }
 
 func GridColumnTitle_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(16108, obj, uintptr(AClass) ))
+    return GoBool(syscallN(16502, obj, uintptr(AClass) ))
 }
 
 func GridColumnTitle_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(16109, obj, Obj ))
+    return GoBool(syscallN(16503, obj, Obj ))
 }
 
 func GridColumnTitle_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(16110, obj))
+    return int32(syscallN(16504, obj))
 }
 
 func GridColumnTitle_ToString(obj uintptr) string {
-    return GoStr(syscallN(16111, obj))
+    return GoStr(syscallN(16505, obj))
 }
 
 func GridColumnTitle_GetColumn(obj uintptr) uintptr {
-    return syscallN(16112, obj)
+    return syscallN(16506, obj)
 }
 
 func GridColumnTitle_GetAlignment(obj uintptr) TAlignment {
-    return TAlignment(syscallN(16113, obj))
+    return TAlignment(syscallN(16507, obj))
 }
 
 func GridColumnTitle_SetAlignment(obj uintptr, value TAlignment) {
-    syscallN(16114, obj, uintptr(value))
+    syscallN(16508, obj, uintptr(value))
 }
 
 func GridColumnTitle_GetCaption(obj uintptr) string {
-    return GoStr(syscallN(16115, obj))
+    return GoStr(syscallN(16509, obj))
 }
 
 func GridColumnTitle_SetCaption(obj uintptr, value string) {
-    syscallN(16116, obj, PascalStr(value))
+    syscallN(16510, obj, PascalStr(value))
 }
 
 func GridColumnTitle_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(16117, obj))
+    return TColor(syscallN(16511, obj))
 }
 
 func GridColumnTitle_SetColor(obj uintptr, value TColor) {
-    syscallN(16118, obj, uintptr(value))
+    syscallN(16512, obj, uintptr(value))
 }
 
 func GridColumnTitle_GetFont(obj uintptr) uintptr {
-    return syscallN(16119, obj)
+    return syscallN(16513, obj)
 }
 
 func GridColumnTitle_SetFont(obj uintptr, value uintptr) {
-    syscallN(16120, obj, value)
+    syscallN(16514, obj, value)
 }
 
 func GridColumnTitle_GetImageIndex(obj uintptr) int32 {
-    return int32(syscallN(16121, obj))
+    return int32(syscallN(16515, obj))
 }
 
 func GridColumnTitle_SetImageIndex(obj uintptr, value int32) {
-    syscallN(16122, obj, uintptr(value))
+    syscallN(16516, obj, uintptr(value))
 }
 
 func GridColumnTitle_GetImageLayout(obj uintptr) TButtonLayout {
-    return TButtonLayout(syscallN(16123, obj))
+    return TButtonLayout(syscallN(16517, obj))
 }
 
 func GridColumnTitle_SetImageLayout(obj uintptr, value TButtonLayout) {
-    syscallN(16124, obj, uintptr(value))
+    syscallN(16518, obj, uintptr(value))
 }
 
 func GridColumnTitle_GetLayout(obj uintptr) TTextLayout {
-    return TTextLayout(syscallN(16125, obj))
+    return TTextLayout(syscallN(16519, obj))
 }
 
 func GridColumnTitle_SetLayout(obj uintptr, value TTextLayout) {
-    syscallN(16126, obj, uintptr(value))
+    syscallN(16520, obj, uintptr(value))
 }
 
 func GridColumnTitle_GetMultiLine(obj uintptr) bool {
-    return GoBool(syscallN(16127, obj))
+    return GoBool(syscallN(16521, obj))
 }
 
 func GridColumnTitle_SetMultiLine(obj uintptr, value bool) {
-    syscallN(16128, obj, PascalBool(value))
+    syscallN(16522, obj, PascalBool(value))
 }
 
 func GridColumnTitle_GetPrefixOption(obj uintptr) TPrefixOption {
-    return TPrefixOption(syscallN(16129, obj))
+    return TPrefixOption(syscallN(16523, obj))
 }
 
 func GridColumnTitle_SetPrefixOption(obj uintptr, value TPrefixOption) {
-    syscallN(16130, obj, uintptr(value))
+    syscallN(16524, obj, uintptr(value))
 }
 
 func GridColumnTitle_StaticClassType() TClass {
-    return TClass(syscallN(16131))
+    return TClass(syscallN(16525))
 }
 
 //--------------------------- TGridColumn ---------------------------
 
 func GridColumn_Assign(obj uintptr, Source uintptr)  {
-    syscallN(16132, obj, Source )
+    syscallN(16526, obj, Source )
 }
 
 func GridColumn_FixDesignFontsPPI(obj uintptr, ADesignTimePPI int32)  {
-    syscallN(16133, obj, uintptr(ADesignTimePPI) )
+    syscallN(16527, obj, uintptr(ADesignTimePPI) )
 }
 
 func GridColumn_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
-    syscallN(16134, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
+    syscallN(16528, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
 func GridColumn_IsDefault(obj uintptr) bool {
-    return GoBool(syscallN(16135, obj))
+    return GoBool(syscallN(16529, obj))
 }
 
 func GridColumn_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(16136, obj))
+    return GoStr(syscallN(16530, obj))
 }
 
 func GridColumn_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(16137, obj))
+    return TClass(syscallN(16531, obj))
 }
 
 func GridColumn_ClassName(obj uintptr) string {
-    return GoStr(syscallN(16138, obj))
+    return GoStr(syscallN(16532, obj))
 }
 
 func GridColumn_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(16139, obj))
+    return int32(syscallN(16533, obj))
 }
 
 func GridColumn_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(16140, obj, uintptr(AClass) ))
+    return GoBool(syscallN(16534, obj, uintptr(AClass) ))
 }
 
 func GridColumn_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(16141, obj, Obj ))
+    return GoBool(syscallN(16535, obj, Obj ))
 }
 
 func GridColumn_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(16142, obj))
+    return int32(syscallN(16536, obj))
 }
 
 func GridColumn_ToString(obj uintptr) string {
-    return GoStr(syscallN(16143, obj))
+    return GoStr(syscallN(16537, obj))
 }
 
 func GridColumn_GetGrid(obj uintptr) uintptr {
-    return syscallN(16144, obj)
+    return syscallN(16538, obj)
 }
 
 func GridColumn_GetDefaultWidth(obj uintptr) int32 {
-    return int32(syscallN(16145, obj))
+    return int32(syscallN(16539, obj))
 }
 
 func GridColumn_GetStoredWidth(obj uintptr) int32 {
-    return int32(syscallN(16146, obj))
+    return int32(syscallN(16540, obj))
 }
 
 func GridColumn_GetWidthChanged(obj uintptr) bool {
-    return GoBool(syscallN(16147, obj))
+    return GoBool(syscallN(16541, obj))
 }
 
 func GridColumn_GetAlignment(obj uintptr) TAlignment {
-    return TAlignment(syscallN(16148, obj))
+    return TAlignment(syscallN(16542, obj))
 }
 
 func GridColumn_SetAlignment(obj uintptr, value TAlignment) {
-    syscallN(16149, obj, uintptr(value))
+    syscallN(16543, obj, uintptr(value))
 }
 
 func GridColumn_GetButtonStyle(obj uintptr) TColumnButtonStyle {
-    return TColumnButtonStyle(syscallN(16150, obj))
+    return TColumnButtonStyle(syscallN(16544, obj))
 }
 
 func GridColumn_SetButtonStyle(obj uintptr, value TColumnButtonStyle) {
-    syscallN(16151, obj, uintptr(value))
+    syscallN(16545, obj, uintptr(value))
 }
 
 func GridColumn_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(16152, obj))
+    return TColor(syscallN(16546, obj))
 }
 
 func GridColumn_SetColor(obj uintptr, value TColor) {
-    syscallN(16153, obj, uintptr(value))
+    syscallN(16547, obj, uintptr(value))
 }
 
 func GridColumn_GetDropDownRows(obj uintptr) int32 {
-    return int32(syscallN(16154, obj))
+    return int32(syscallN(16548, obj))
 }
 
 func GridColumn_SetDropDownRows(obj uintptr, value int32) {
-    syscallN(16155, obj, uintptr(value))
+    syscallN(16549, obj, uintptr(value))
 }
 
 func GridColumn_GetExpanded(obj uintptr) bool {
-    return GoBool(syscallN(16156, obj))
+    return GoBool(syscallN(16550, obj))
 }
 
 func GridColumn_SetExpanded(obj uintptr, value bool) {
-    syscallN(16157, obj, PascalBool(value))
+    syscallN(16551, obj, PascalBool(value))
 }
 
 func GridColumn_GetFont(obj uintptr) uintptr {
-    return syscallN(16158, obj)
+    return syscallN(16552, obj)
 }
 
 func GridColumn_SetFont(obj uintptr, value uintptr) {
-    syscallN(16159, obj, value)
+    syscallN(16553, obj, value)
 }
 
 func GridColumn_GetLayout(obj uintptr) TTextLayout {
-    return TTextLayout(syscallN(16160, obj))
+    return TTextLayout(syscallN(16554, obj))
 }
 
 func GridColumn_SetLayout(obj uintptr, value TTextLayout) {
-    syscallN(16161, obj, uintptr(value))
+    syscallN(16555, obj, uintptr(value))
 }
 
 func GridColumn_GetMinSize(obj uintptr) int32 {
-    return int32(syscallN(16162, obj))
+    return int32(syscallN(16556, obj))
 }
 
 func GridColumn_SetMinSize(obj uintptr, value int32) {
-    syscallN(16163, obj, uintptr(value))
+    syscallN(16557, obj, uintptr(value))
 }
 
 func GridColumn_GetMaxSize(obj uintptr) int32 {
-    return int32(syscallN(16164, obj))
+    return int32(syscallN(16558, obj))
 }
 
 func GridColumn_SetMaxSize(obj uintptr, value int32) {
-    syscallN(16165, obj, uintptr(value))
+    syscallN(16559, obj, uintptr(value))
 }
 
 func GridColumn_GetPickList(obj uintptr) uintptr {
-    return syscallN(16166, obj)
+    return syscallN(16560, obj)
 }
 
 func GridColumn_SetPickList(obj uintptr, value uintptr) {
-    syscallN(16167, obj, value)
+    syscallN(16561, obj, value)
 }
 
 func GridColumn_GetReadOnly(obj uintptr) bool {
-    return GoBool(syscallN(16168, obj))
+    return GoBool(syscallN(16562, obj))
 }
 
 func GridColumn_SetReadOnly(obj uintptr, value bool) {
-    syscallN(16169, obj, PascalBool(value))
+    syscallN(16563, obj, PascalBool(value))
 }
 
 func GridColumn_GetSizePriority(obj uintptr) int32 {
-    return int32(syscallN(16170, obj))
+    return int32(syscallN(16564, obj))
 }
 
 func GridColumn_SetSizePriority(obj uintptr, value int32) {
-    syscallN(16171, obj, uintptr(value))
+    syscallN(16565, obj, uintptr(value))
 }
 
 func GridColumn_GetTag(obj uintptr) int {
-    return int(syscallN(16172, obj))
+    return int(syscallN(16566, obj))
 }
 
 func GridColumn_SetTag(obj uintptr, value int) {
-    syscallN(16173, obj, uintptr(value))
+    syscallN(16567, obj, uintptr(value))
 }
 
 func GridColumn_GetTitle(obj uintptr) uintptr {
-    return syscallN(16174, obj)
+    return syscallN(16568, obj)
 }
 
 func GridColumn_SetTitle(obj uintptr, value uintptr) {
-    syscallN(16175, obj, value)
+    syscallN(16569, obj, value)
 }
 
 func GridColumn_GetWidth(obj uintptr) int32 {
-    return int32(syscallN(16176, obj))
+    return int32(syscallN(16570, obj))
 }
 
 func GridColumn_SetWidth(obj uintptr, value int32) {
-    syscallN(16177, obj, uintptr(value))
+    syscallN(16571, obj, uintptr(value))
 }
 
 func GridColumn_GetVisible(obj uintptr) bool {
-    return GoBool(syscallN(16178, obj))
+    return GoBool(syscallN(16572, obj))
 }
 
 func GridColumn_SetVisible(obj uintptr, value bool) {
-    syscallN(16179, obj, PascalBool(value))
+    syscallN(16573, obj, PascalBool(value))
 }
 
 func GridColumn_GetValueChecked(obj uintptr) string {
-    return GoStr(syscallN(16180, obj))
+    return GoStr(syscallN(16574, obj))
 }
 
 func GridColumn_SetValueChecked(obj uintptr, value string) {
-    syscallN(16181, obj, PascalStr(value))
+    syscallN(16575, obj, PascalStr(value))
 }
 
 func GridColumn_GetValueUnchecked(obj uintptr) string {
-    return GoStr(syscallN(16182, obj))
+    return GoStr(syscallN(16576, obj))
 }
 
 func GridColumn_SetValueUnchecked(obj uintptr, value string) {
-    syscallN(16183, obj, PascalStr(value))
+    syscallN(16577, obj, PascalStr(value))
 }
 
 func GridColumn_GetCollection(obj uintptr) uintptr {
-    return syscallN(16184, obj)
+    return syscallN(16578, obj)
 }
 
 func GridColumn_SetCollection(obj uintptr, value uintptr) {
-    syscallN(16185, obj, value)
+    syscallN(16579, obj, value)
 }
 
 func GridColumn_GetIndex(obj uintptr) int32 {
-    return int32(syscallN(16186, obj))
+    return int32(syscallN(16580, obj))
 }
 
 func GridColumn_SetIndex(obj uintptr, value int32) {
-    syscallN(16187, obj, uintptr(value))
+    syscallN(16581, obj, uintptr(value))
 }
 
 func GridColumn_GetDisplayName(obj uintptr) string {
-    return GoStr(syscallN(16188, obj))
+    return GoStr(syscallN(16582, obj))
 }
 
 func GridColumn_SetDisplayName(obj uintptr, value string) {
-    syscallN(16189, obj, PascalStr(value))
+    syscallN(16583, obj, PascalStr(value))
 }
 
 func GridColumn_StaticClassType() TClass {
-    return TClass(syscallN(16190))
+    return TClass(syscallN(16584))
 }
 
 //--------------------------- TGridColumns ---------------------------
 
 func GridColumns_Add(obj uintptr) uintptr {
-    return syscallN(16191, obj)
+    return syscallN(16585, obj)
 }
 
 func GridColumns_Clear(obj uintptr)  {
-    syscallN(16192, obj)
+    syscallN(16586, obj)
 }
 
 func GridColumns_RealIndex(obj uintptr, Index int32) int32 {
-    return int32(syscallN(16193, obj, uintptr(Index) ))
+    return int32(syscallN(16587, obj, uintptr(Index) ))
 }
 
 func GridColumns_IndexOf(obj uintptr, Column uintptr) int32 {
-    return int32(syscallN(16194, obj, Column ))
+    return int32(syscallN(16588, obj, Column ))
 }
 
 func GridColumns_IsDefault(obj uintptr) bool {
-    return GoBool(syscallN(16195, obj))
+    return GoBool(syscallN(16589, obj))
 }
 
 func GridColumns_HasIndex(obj uintptr, Index int32) bool {
-    return GoBool(syscallN(16196, obj, uintptr(Index) ))
+    return GoBool(syscallN(16590, obj, uintptr(Index) ))
 }
 
 func GridColumns_Owner(obj uintptr) uintptr {
-    return syscallN(16197, obj)
+    return syscallN(16591, obj)
 }
 
 func GridColumns_Assign(obj uintptr, Source uintptr)  {
-    syscallN(16198, obj, Source )
+    syscallN(16592, obj, Source )
 }
 
 func GridColumns_BeginUpdate(obj uintptr)  {
-    syscallN(16199, obj)
+    syscallN(16593, obj)
 }
 
 func GridColumns_Delete(obj uintptr, Index int32)  {
-    syscallN(16200, obj, uintptr(Index) )
+    syscallN(16594, obj, uintptr(Index) )
 }
 
 func GridColumns_EndUpdate(obj uintptr)  {
-    syscallN(16201, obj)
+    syscallN(16595, obj)
 }
 
 func GridColumns_FindItemID(obj uintptr, ID int32) uintptr {
-    return syscallN(16202, obj, uintptr(ID) )
+    return syscallN(16596, obj, uintptr(ID) )
 }
 
 func GridColumns_GetNamePath(obj uintptr) string {
-    return GoStr(syscallN(16203, obj))
+    return GoStr(syscallN(16597, obj))
 }
 
 func GridColumns_Insert(obj uintptr, Index int32) uintptr {
-    return syscallN(16204, obj, uintptr(Index) )
+    return syscallN(16598, obj, uintptr(Index) )
 }
 
 func GridColumns_ClassType(obj uintptr) TClass {
-    return TClass(syscallN(16205, obj))
+    return TClass(syscallN(16599, obj))
 }
 
 func GridColumns_ClassName(obj uintptr) string {
-    return GoStr(syscallN(16206, obj))
+    return GoStr(syscallN(16600, obj))
 }
 
 func GridColumns_InstanceSize(obj uintptr) int32 {
-    return int32(syscallN(16207, obj))
+    return int32(syscallN(16601, obj))
 }
 
 func GridColumns_InheritsFrom(obj uintptr, AClass TClass) bool {
-    return GoBool(syscallN(16208, obj, uintptr(AClass) ))
+    return GoBool(syscallN(16602, obj, uintptr(AClass) ))
 }
 
 func GridColumns_Equals(obj uintptr, Obj uintptr) bool {
-    return GoBool(syscallN(16209, obj, Obj ))
+    return GoBool(syscallN(16603, obj, Obj ))
 }
 
 func GridColumns_GetHashCode(obj uintptr) int32 {
-    return int32(syscallN(16210, obj))
+    return int32(syscallN(16604, obj))
 }
 
 func GridColumns_ToString(obj uintptr) string {
-    return GoStr(syscallN(16211, obj))
+    return GoStr(syscallN(16605, obj))
 }
 
 func GridColumns_GetGrid(obj uintptr) uintptr {
-    return syscallN(16212, obj)
+    return syscallN(16606, obj)
 }
 
 func GridColumns_GetVisibleCount(obj uintptr) int32 {
-    return int32(syscallN(16213, obj))
+    return int32(syscallN(16607, obj))
 }
 
 func GridColumns_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(16214, obj))
+    return GoBool(syscallN(16608, obj))
 }
 
 func GridColumns_GetCount(obj uintptr) int32 {
-    return int32(syscallN(16215, obj))
+    return int32(syscallN(16609, obj))
 }
 
 func GridColumns_GetItems(obj uintptr, Index int32) uintptr {
-    return syscallN(16216, obj, uintptr(Index))
+    return syscallN(16610, obj, uintptr(Index))
 }
 
 func GridColumns_SetItems(obj uintptr, Index int32, value uintptr) {
-    syscallN(16217, obj, uintptr(Index), value)
+    syscallN(16611, obj, uintptr(Index), value)
 }
 
 func GridColumns_StaticClassType() TClass {
-    return TClass(syscallN(16218))
+    return TClass(syscallN(16612))
 }
