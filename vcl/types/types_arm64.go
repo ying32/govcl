@@ -6,8 +6,8 @@
 //
 //----------------------------------------
 
-//go:build amd64 || arm64
-// +build amd64 arm64
+//go:build arm64
+// +build arm64
 
 package types
 
