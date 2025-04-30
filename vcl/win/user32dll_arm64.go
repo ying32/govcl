@@ -6,10 +6,13 @@
 //
 //----------------------------------------
 
-//go:build windows
 // +build windows
 
 package win
+
+import (
+	. "github.com/ying32/govcl/vcl/types"
+)
 
 var (
 	_GetWindowLongPtr = user32dll.NewProc("GetWindowLongPtrW")
