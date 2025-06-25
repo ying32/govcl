@@ -4,6 +4,7 @@ import "github.com/ying32/govcl/vcl"
 import _ "github.com/ying32/govcl/pkgs/winappres"
 
 func main() {
+	vcl.DEBUG = true
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 	vcl.Application.CreateForm(&mainForm, true)

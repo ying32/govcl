@@ -606,6 +606,14 @@ func (t *TToolBar) ScaleFontsPPI(AToPPI int32, AProportion float64) {
     ToolBar_ScaleFontsPPI(t._instance(), AToPPI , AProportion)
 }
 
+func (t *TToolBar) ImagesWidth() int32 {
+    return ToolBar_GetImagesWidth(t._instance())
+}
+
+func (t *TToolBar) SetImagesWidth(value int32) {
+    ToolBar_SetImagesWidth(t._instance(), value)
+}
+
 func (t *TToolBar) ButtonCount() int32 {
     return ToolBar_GetButtonCount(t._instance())
 }

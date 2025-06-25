@@ -238,3 +238,5 @@ type TUTF8KeyPressEvent func(sender IObject, utf8key *TUTF8Char)
 type TMenuDrawItemEvent func(sender IObject, aCanvas *TCanvas, aRect TRect, aState TOwnerDrawState)
 
 type TImagePaintBackgroundEvent func(sender IObject, aCanvas *TCanvas, aRect TRect)
+
+type TDrawPanelEvent func(statusBar *TStatusBar, panel *TStatusPanel, rect TRect)

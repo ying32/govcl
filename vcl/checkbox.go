@@ -606,6 +606,20 @@ func (c *TCheckBox) ScaleFontsPPI(AToPPI int32, AProportion float64) {
     CheckBox_ScaleFontsPPI(c._instance(), AToPPI , AProportion)
 }
 
+// AutoSize
+//
+// 获取自动调整大小。
+func (c *TCheckBox) AutoSize() bool {
+    return CheckBox_GetAutoSize(c._instance())
+}
+
+// SetAutoSize
+//
+// 设置自动调整大小。
+func (c *TCheckBox) SetAutoSize(value bool) {
+    CheckBox_SetAutoSize(c._instance(), value)
+}
+
 // SetOnChange
 //
 // 设置改变事件。

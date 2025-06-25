@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/types"
 )
@@ -63,8 +64,17 @@ func (f *TMainForm) initComponents() {
 	// 底部状态条
 	f.Stbar = vcl.NewStatusBar(f)
 	f.Stbar.SetParent(f)
-	f.Stbar.SetAutoHint(true)
-	f.Stbar.SetSimplePanel(true)
+	f.Stbar.SetSimplePanel(false)
+	f.Stbar.SetAutoHint(false)
+	//f.Stbar.SetAutoHint(true)
+	//f.Stbar.SetSimplePanel(true)
+
+	f.Stbar.SetOnDrawPanel(func(statusBar *vcl.TStatusBar, panel *vcl.TStatusPanel, rect types.TRect) {
+		fmt.Println(rect)
+		statusBar.Canvas().TextOut(rect.Left, rect.Top, "fff")
+	})
+	f.Stbar.Panels().Add().SetStyle(types.PsOwnerDraw)
+	f.Stbar.Panels().Add().SetStyle(types.PsOwnerDraw)
 
 	f.Btn = vcl.NewButton(f)
 	f.Btn.SetParent(f)

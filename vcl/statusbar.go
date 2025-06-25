@@ -1089,6 +1089,10 @@ func (s *TStatusBar) SetOnMouseUp(fn TMouseEvent) {
     StatusBar_SetOnMouseUp(s._instance(), fn)
 }
 
+func (s *TStatusBar) SetOnDrawPanel(fn TDrawPanelEvent) {
+    StatusBar_SetOnDrawPanel(s._instance(), fn)
+}
+
 // SetOnResize
 //
 // 设置大小被改变事件。

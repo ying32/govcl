@@ -949,6 +949,13 @@ func eventCallbackProc(f uintptr, args uintptr, _ int) uintptr {
 				AsCanvas(getVal(1)),
 				*getRectPtr(2))
 
+        // func(statusBar *TStatusBar, panel *TStatusPanel, rect TRect)
+		case TDrawPanelEvent:
+			v.(TDrawPanelEvent)(
+				AsStatusBar(getVal(0)),
+				AsStatusPanel(getVal(1)),
+				*getRectPtr(2))
+
 		default:
 		}
 	}
