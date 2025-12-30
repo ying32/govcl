@@ -1667,10 +1667,16 @@ func (t *TTreeView) SetUseDockManager(value bool) {
     TreeView_SetUseDockManager(t._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (t *TTreeView) Action() *TAction {
     return AsAction(TreeView_GetAction(t._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (t *TTreeView) SetAction(value IComponent) {
     TreeView_SetAction(t._instance(), CheckPtr(value))
 }

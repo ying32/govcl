@@ -1308,10 +1308,16 @@ func (p *TPageControl) SetUseDockManager(value bool) {
     PageControl_SetUseDockManager(p._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (p *TPageControl) Action() *TAction {
     return AsAction(PageControl_GetAction(p._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (p *TPageControl) SetAction(value IComponent) {
     PageControl_SetAction(p._instance(), CheckPtr(value))
 }

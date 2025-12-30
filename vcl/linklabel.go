@@ -885,10 +885,16 @@ func (l *TLinkLabel) MouseInClient() bool {
     return LinkLabel_GetMouseInClient(l._instance())
 }
 
+// Action
+//
+// 获取。
 func (l *TLinkLabel) Action() *TAction {
     return AsAction(LinkLabel_GetAction(l._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (l *TLinkLabel) SetAction(value IComponent) {
     LinkLabel_SetAction(l._instance(), CheckPtr(value))
 }

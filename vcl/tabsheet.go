@@ -1184,10 +1184,16 @@ func (t *TTabSheet) SetUseDockManager(value bool) {
     TabSheet_SetUseDockManager(t._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (t *TTabSheet) Action() *TAction {
     return AsAction(TabSheet_GetAction(t._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (t *TTabSheet) SetAction(value IComponent) {
     TabSheet_SetAction(t._instance(), CheckPtr(value))
 }

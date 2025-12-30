@@ -599,10 +599,16 @@ func (b *TBevel) SetEnabled(value bool) {
     Bevel_SetEnabled(b._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (b *TBevel) Action() *TAction {
     return AsAction(Bevel_GetAction(b._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (b *TBevel) SetAction(value IComponent) {
     Bevel_SetAction(b._instance(), CheckPtr(value))
 }

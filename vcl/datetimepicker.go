@@ -1361,10 +1361,16 @@ func (d *TDateTimePicker) SetUseDockManager(value bool) {
     DateTimePicker_SetUseDockManager(d._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (d *TDateTimePicker) Action() *TAction {
     return AsAction(DateTimePicker_GetAction(d._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (d *TDateTimePicker) SetAction(value IComponent) {
     DateTimePicker_SetAction(d._instance(), CheckPtr(value))
 }

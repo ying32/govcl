@@ -169,6 +169,14 @@ func (s *TStringList) IndexOf(S string) int32 {
     return StringList_IndexOf(s._instance(), S)
 }
 
+func (s *TStringList) IndexOfName(Name string) int32 {
+    return StringList_IndexOfName(s._instance(), Name)
+}
+
+func (s *TStringList) IndexOfObject(AObject IObject) int32 {
+    return StringList_IndexOfObject(s._instance(), CheckPtr(AObject))
+}
+
 func (s *TStringList) Insert(Index int32, S string) {
     StringList_Insert(s._instance(), Index , S)
 }
@@ -196,14 +204,6 @@ func (s *TStringList) EndUpdate() {
 // Compare with an object.
 func (s *TStringList) Equals(Strings IObject) bool {
     return StringList_Equals(s._instance(), CheckPtr(Strings))
-}
-
-func (s *TStringList) IndexOfName(Name string) int32 {
-    return StringList_IndexOfName(s._instance(), Name)
-}
-
-func (s *TStringList) IndexOfObject(AObject IObject) int32 {
-    return StringList_IndexOfObject(s._instance(), CheckPtr(AObject))
 }
 
 // LoadFromFile

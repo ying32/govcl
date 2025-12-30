@@ -1160,10 +1160,16 @@ func (t *TTrackBar) SetUseDockManager(value bool) {
     TrackBar_SetUseDockManager(t._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (t *TTrackBar) Action() *TAction {
     return AsAction(TrackBar_GetAction(t._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (t *TTrackBar) SetAction(value IComponent) {
     TrackBar_SetAction(t._instance(), CheckPtr(value))
 }

@@ -665,10 +665,16 @@ func (b *TBitBtn) SetImageWidth(value int32) {
     BitBtn_SetImageWidth(b._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (b *TBitBtn) Action() *TAction {
     return AsAction(BitBtn_GetAction(b._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (b *TBitBtn) SetAction(value IComponent) {
     BitBtn_SetAction(b._instance(), CheckPtr(value))
 }

@@ -1140,10 +1140,16 @@ func (r *TRadioGroup) SetUseDockManager(value bool) {
     RadioGroup_SetUseDockManager(r._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (r *TRadioGroup) Action() *TAction {
     return AsAction(RadioGroup_GetAction(r._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (r *TRadioGroup) SetAction(value IComponent) {
     RadioGroup_SetAction(r._instance(), CheckPtr(value))
 }

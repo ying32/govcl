@@ -914,10 +914,16 @@ func (m *TMiniWebview) SetUseDockManager(value bool) {
     MiniWebview_SetUseDockManager(m._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (m *TMiniWebview) Action() *TAction {
     return AsAction(MiniWebview_GetAction(m._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (m *TMiniWebview) SetAction(value IComponent) {
     MiniWebview_SetAction(m._instance(), CheckPtr(value))
 }

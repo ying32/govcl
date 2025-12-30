@@ -741,10 +741,16 @@ func (s *TShape) SetOnMouseUp(fn TMouseEvent) {
     Shape_SetOnMouseUp(s._instance(), fn)
 }
 
+// Action
+//
+// 获取。
 func (s *TShape) Action() *TAction {
     return AsAction(Shape_GetAction(s._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (s *TShape) SetAction(value IComponent) {
     Shape_SetAction(s._instance(), CheckPtr(value))
 }

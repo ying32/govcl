@@ -476,10 +476,16 @@ func (c *TColorButton) ScaleFontsPPI(AToPPI int32, AProportion float64) {
     ColorButton_ScaleFontsPPI(c._instance(), AToPPI , AProportion)
 }
 
+// Action
+//
+// 获取。
 func (c *TColorButton) Action() *TAction {
     return AsAction(ColorButton_GetAction(c._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (c *TColorButton) SetAction(value IComponent) {
     ColorButton_SetAction(c._instance(), CheckPtr(value))
 }

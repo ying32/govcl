@@ -1540,10 +1540,16 @@ func (r *TRichEdit) SetUseDockManager(value bool) {
     RichEdit_SetUseDockManager(r._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (r *TRichEdit) Action() *TAction {
     return AsAction(RichEdit_GetAction(r._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (r *TRichEdit) SetAction(value IComponent) {
     RichEdit_SetAction(r._instance(), CheckPtr(value))
 }

@@ -834,10 +834,16 @@ func (b *TBoundLabel) SetEnabled(value bool) {
     BoundLabel_SetEnabled(b._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (b *TBoundLabel) Action() *TAction {
     return AsAction(BoundLabel_GetAction(b._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (b *TBoundLabel) SetAction(value IComponent) {
     BoundLabel_SetAction(b._instance(), CheckPtr(value))
 }

@@ -1454,10 +1454,16 @@ func (l *TLabeledEdit) SetUseDockManager(value bool) {
     LabeledEdit_SetUseDockManager(l._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (l *TLabeledEdit) Action() *TAction {
     return AsAction(LabeledEdit_GetAction(l._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (l *TLabeledEdit) SetAction(value IComponent) {
     LabeledEdit_SetAction(l._instance(), CheckPtr(value))
 }

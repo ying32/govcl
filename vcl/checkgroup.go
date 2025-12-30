@@ -1305,10 +1305,16 @@ func (c *TCheckGroup) SetUseDockManager(value bool) {
     CheckGroup_SetUseDockManager(c._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (c *TCheckGroup) Action() *TAction {
     return AsAction(CheckGroup_GetAction(c._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (c *TCheckGroup) SetAction(value IComponent) {
     CheckGroup_SetAction(c._instance(), CheckPtr(value))
 }

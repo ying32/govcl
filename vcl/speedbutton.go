@@ -520,10 +520,16 @@ func (s *TSpeedButton) SetShowCaption(value bool) {
     SpeedButton_SetShowCaption(s._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (s *TSpeedButton) Action() *TAction {
     return AsAction(SpeedButton_GetAction(s._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (s *TSpeedButton) SetAction(value IComponent) {
     SpeedButton_SetAction(s._instance(), CheckPtr(value))
 }

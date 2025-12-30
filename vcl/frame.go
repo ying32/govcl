@@ -1288,10 +1288,16 @@ func (f *TFrame) SetUseDockManager(value bool) {
     Frame_SetUseDockManager(f._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (f *TFrame) Action() *TAction {
     return AsAction(Frame_GetAction(f._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (f *TFrame) SetAction(value IComponent) {
     Frame_SetAction(f._instance(), CheckPtr(value))
 }

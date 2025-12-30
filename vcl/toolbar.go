@@ -1389,10 +1389,16 @@ func (t *TToolBar) SetUseDockManager(value bool) {
     ToolBar_SetUseDockManager(t._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (t *TToolBar) Action() *TAction {
     return AsAction(ToolBar_GetAction(t._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (t *TToolBar) SetAction(value IComponent) {
     ToolBar_SetAction(t._instance(), CheckPtr(value))
 }

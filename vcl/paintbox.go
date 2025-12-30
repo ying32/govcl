@@ -809,10 +809,16 @@ func (p *TPaintBox) SetOnPaint(fn TNotifyEvent) {
     PaintBox_SetOnPaint(p._instance(), fn)
 }
 
+// Action
+//
+// 获取。
 func (p *TPaintBox) Action() *TAction {
     return AsAction(PaintBox_GetAction(p._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (p *TPaintBox) SetAction(value IComponent) {
     PaintBox_SetAction(p._instance(), CheckPtr(value))
 }

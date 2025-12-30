@@ -1364,10 +1364,16 @@ func (f *TFloatSpinEdit) SetUseDockManager(value bool) {
     FloatSpinEdit_SetUseDockManager(f._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (f *TFloatSpinEdit) Action() *TAction {
     return AsAction(FloatSpinEdit_GetAction(f._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (f *TFloatSpinEdit) SetAction(value IComponent) {
     FloatSpinEdit_SetAction(f._instance(), CheckPtr(value))
 }

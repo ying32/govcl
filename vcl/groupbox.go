@@ -1224,10 +1224,16 @@ func (g *TGroupBox) SetUseDockManager(value bool) {
     GroupBox_SetUseDockManager(g._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (g *TGroupBox) Action() *TAction {
     return AsAction(GroupBox_GetAction(g._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (g *TGroupBox) SetAction(value IComponent) {
     GroupBox_SetAction(g._instance(), CheckPtr(value))
 }

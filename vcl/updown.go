@@ -1047,10 +1047,16 @@ func (u *TUpDown) SetUseDockManager(value bool) {
     UpDown_SetUseDockManager(u._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (u *TUpDown) Action() *TAction {
     return AsAction(UpDown_GetAction(u._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (u *TUpDown) SetAction(value IComponent) {
     UpDown_SetAction(u._instance(), CheckPtr(value))
 }

@@ -1302,10 +1302,16 @@ func (c *TCoolBar) SetUseDockManager(value bool) {
     CoolBar_SetUseDockManager(c._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (c *TCoolBar) Action() *TAction {
     return AsAction(CoolBar_GetAction(c._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (c *TCoolBar) SetAction(value IComponent) {
     CoolBar_SetAction(c._instance(), CheckPtr(value))
 }

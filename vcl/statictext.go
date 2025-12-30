@@ -1243,10 +1243,16 @@ func (s *TStaticText) SetUseDockManager(value bool) {
     StaticText_SetUseDockManager(s._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (s *TStaticText) Action() *TAction {
     return AsAction(StaticText_GetAction(s._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (s *TStaticText) SetAction(value IComponent) {
     StaticText_SetAction(s._instance(), CheckPtr(value))
 }

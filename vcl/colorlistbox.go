@@ -1261,10 +1261,16 @@ func (c *TColorListBox) SetUseDockManager(value bool) {
     ColorListBox_SetUseDockManager(c._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (c *TColorListBox) Action() *TAction {
     return AsAction(ColorListBox_GetAction(c._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (c *TColorListBox) SetAction(value IComponent) {
     ColorListBox_SetAction(c._instance(), CheckPtr(value))
 }

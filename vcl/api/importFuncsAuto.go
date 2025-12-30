@@ -28956,36 +28956,36 @@ func StringList_IndexOf(obj uintptr, S string) int32 {
     return int32(syscallN(7149, obj, PascalStr(S) ))
 }
 
-func StringList_Insert(obj uintptr, Index int32, S string)  {
-    syscallN(7150, obj, uintptr(Index) , PascalStr(S) )
-}
-
-func StringList_InsertObject(obj uintptr, Index int32, S string, AObject uintptr)  {
-    syscallN(7151, obj, uintptr(Index) , PascalStr(S) , AObject )
-}
-
-func StringList_Append(obj uintptr, S string)  {
-    syscallN(7152, obj, PascalStr(S) )
-}
-
-func StringList_BeginUpdate(obj uintptr)  {
-    syscallN(7153, obj)
-}
-
-func StringList_EndUpdate(obj uintptr)  {
-    syscallN(7154, obj)
-}
-
-func StringList_Equals(obj uintptr, Strings uintptr) bool {
-    return GoBool(syscallN(7155, obj, Strings ))
-}
-
 func StringList_IndexOfName(obj uintptr, Name string) int32 {
-    return int32(syscallN(7156, obj, PascalStr(Name) ))
+    return int32(syscallN(7150, obj, PascalStr(Name) ))
 }
 
 func StringList_IndexOfObject(obj uintptr, AObject uintptr) int32 {
-    return int32(syscallN(7157, obj, AObject ))
+    return int32(syscallN(7151, obj, AObject ))
+}
+
+func StringList_Insert(obj uintptr, Index int32, S string)  {
+    syscallN(7152, obj, uintptr(Index) , PascalStr(S) )
+}
+
+func StringList_InsertObject(obj uintptr, Index int32, S string, AObject uintptr)  {
+    syscallN(7153, obj, uintptr(Index) , PascalStr(S) , AObject )
+}
+
+func StringList_Append(obj uintptr, S string)  {
+    syscallN(7154, obj, PascalStr(S) )
+}
+
+func StringList_BeginUpdate(obj uintptr)  {
+    syscallN(7155, obj)
+}
+
+func StringList_EndUpdate(obj uintptr)  {
+    syscallN(7156, obj)
+}
+
+func StringList_Equals(obj uintptr, Strings uintptr) bool {
+    return GoBool(syscallN(7157, obj, Strings ))
 }
 
 func StringList_LoadFromFile(obj uintptr, FileName string)  {
@@ -34493,356 +34493,356 @@ func SpinEdit_ScaleFontsPPI(obj uintptr, AToPPI int32, AProportion float64)  {
     syscallN(8513, obj, uintptr(AToPPI) , uintptr(unsafe.Pointer(&AProportion)))
 }
 
-func SpinEdit_GetAnchors(obj uintptr) TAnchors {
-    return TAnchors(syscallN(8514, obj))
-}
-
-func SpinEdit_SetAnchors(obj uintptr, value TAnchors) {
-    syscallN(8515, obj, uintptr(value))
-}
-
-func SpinEdit_GetAutoSelect(obj uintptr) bool {
-    return GoBool(syscallN(8516, obj))
-}
-
-func SpinEdit_SetAutoSelect(obj uintptr, value bool) {
-    syscallN(8517, obj, PascalBool(value))
-}
-
-func SpinEdit_GetAutoSize(obj uintptr) bool {
-    return GoBool(syscallN(8518, obj))
-}
-
-func SpinEdit_SetAutoSize(obj uintptr, value bool) {
-    syscallN(8519, obj, PascalBool(value))
-}
-
-func SpinEdit_GetColor(obj uintptr) TColor {
-    return TColor(syscallN(8520, obj))
-}
-
-func SpinEdit_SetColor(obj uintptr, value TColor) {
-    syscallN(8521, obj, uintptr(value))
-}
-
-func SpinEdit_GetConstraints(obj uintptr) uintptr {
-    return syscallN(8522, obj)
-}
-
-func SpinEdit_SetConstraints(obj uintptr, value uintptr) {
-    syscallN(8523, obj, value)
-}
-
-func SpinEdit_GetEnabled(obj uintptr) bool {
-    return GoBool(syscallN(8524, obj))
-}
-
-func SpinEdit_SetEnabled(obj uintptr, value bool) {
-    syscallN(8525, obj, PascalBool(value))
-}
-
-func SpinEdit_GetFont(obj uintptr) uintptr {
-    return syscallN(8526, obj)
-}
-
-func SpinEdit_SetFont(obj uintptr, value uintptr) {
-    syscallN(8527, obj, value)
-}
-
-func SpinEdit_GetIncrement(obj uintptr) int32 {
-    return int32(syscallN(8528, obj))
-}
-
-func SpinEdit_SetIncrement(obj uintptr, value int32) {
-    syscallN(8529, obj, uintptr(value))
-}
-
-func SpinEdit_GetMaxLength(obj uintptr) int32 {
-    return int32(syscallN(8530, obj))
-}
-
-func SpinEdit_SetMaxLength(obj uintptr, value int32) {
-    syscallN(8531, obj, uintptr(value))
-}
-
-func SpinEdit_GetMaxValue(obj uintptr) int32 {
-    return int32(syscallN(8532, obj))
-}
-
-func SpinEdit_SetMaxValue(obj uintptr, value int32) {
-    syscallN(8533, obj, uintptr(value))
-}
-
-func SpinEdit_GetMinValue(obj uintptr) int32 {
-    return int32(syscallN(8534, obj))
-}
-
-func SpinEdit_SetMinValue(obj uintptr, value int32) {
-    syscallN(8535, obj, uintptr(value))
-}
-
-func SpinEdit_GetParentColor(obj uintptr) bool {
-    return GoBool(syscallN(8536, obj))
-}
-
-func SpinEdit_SetParentColor(obj uintptr, value bool) {
-    syscallN(8537, obj, PascalBool(value))
-}
-
-func SpinEdit_GetParentFont(obj uintptr) bool {
-    return GoBool(syscallN(8538, obj))
-}
-
-func SpinEdit_SetParentFont(obj uintptr, value bool) {
-    syscallN(8539, obj, PascalBool(value))
-}
-
-func SpinEdit_GetParentShowHint(obj uintptr) bool {
-    return GoBool(syscallN(8540, obj))
-}
-
-func SpinEdit_SetParentShowHint(obj uintptr, value bool) {
-    syscallN(8541, obj, PascalBool(value))
-}
-
-func SpinEdit_GetPopupMenu(obj uintptr) uintptr {
-    return syscallN(8542, obj)
-}
-
-func SpinEdit_SetPopupMenu(obj uintptr, value uintptr) {
-    syscallN(8543, obj, value)
-}
-
-func SpinEdit_GetReadOnly(obj uintptr) bool {
-    return GoBool(syscallN(8544, obj))
-}
-
-func SpinEdit_SetReadOnly(obj uintptr, value bool) {
-    syscallN(8545, obj, PascalBool(value))
-}
-
-func SpinEdit_GetShowHint(obj uintptr) bool {
-    return GoBool(syscallN(8546, obj))
-}
-
-func SpinEdit_SetShowHint(obj uintptr, value bool) {
-    syscallN(8547, obj, PascalBool(value))
-}
-
-func SpinEdit_GetTabOrder(obj uintptr) TTabOrder {
-    return TTabOrder(syscallN(8548, obj))
-}
-
-func SpinEdit_SetTabOrder(obj uintptr, value TTabOrder) {
-    syscallN(8549, obj, uintptr(value))
-}
-
-func SpinEdit_GetTabStop(obj uintptr) bool {
-    return GoBool(syscallN(8550, obj))
-}
-
-func SpinEdit_SetTabStop(obj uintptr, value bool) {
-    syscallN(8551, obj, PascalBool(value))
-}
-
-func SpinEdit_GetValue(obj uintptr) int32 {
-    return int32(syscallN(8552, obj))
-}
-
-func SpinEdit_SetValue(obj uintptr, value int32) {
-    syscallN(8553, obj, uintptr(value))
-}
-
-func SpinEdit_GetVisible(obj uintptr) bool {
-    return GoBool(syscallN(8554, obj))
-}
-
-func SpinEdit_SetVisible(obj uintptr, value bool) {
-    syscallN(8555, obj, PascalBool(value))
-}
-
-func SpinEdit_SetOnChange(obj uintptr, fn interface{}) {
-    syscallN(8556, obj, MakeEventDataPtr(fn))
-}
-
-func SpinEdit_SetOnClick(obj uintptr, fn interface{}) {
-    syscallN(8557, obj, MakeEventDataPtr(fn))
-}
-
-func SpinEdit_SetOnEnter(obj uintptr, fn interface{}) {
-    syscallN(8558, obj, MakeEventDataPtr(fn))
-}
-
-func SpinEdit_SetOnExit(obj uintptr, fn interface{}) {
-    syscallN(8559, obj, MakeEventDataPtr(fn))
-}
-
-func SpinEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
-    syscallN(8560, obj, MakeEventDataPtr(fn))
-}
-
-func SpinEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
-    syscallN(8561, obj, MakeEventDataPtr(fn))
-}
-
-func SpinEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
-    syscallN(8562, obj, MakeEventDataPtr(fn))
-}
-
-func SpinEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
-    syscallN(8563, obj, MakeEventDataPtr(fn))
-}
-
-func SpinEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
-    syscallN(8564, obj, MakeEventDataPtr(fn))
-}
-
-func SpinEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
-    syscallN(8565, obj, MakeEventDataPtr(fn))
-}
-
-func SpinEdit_GetAlignment(obj uintptr) TAlignment {
-    return TAlignment(syscallN(8566, obj))
-}
-
-func SpinEdit_SetAlignment(obj uintptr, value TAlignment) {
-    syscallN(8567, obj, uintptr(value))
-}
-
-func SpinEdit_GetCanUndo(obj uintptr) bool {
-    return GoBool(syscallN(8568, obj))
-}
-
-func SpinEdit_GetModified(obj uintptr) bool {
-    return GoBool(syscallN(8569, obj))
-}
-
-func SpinEdit_SetModified(obj uintptr, value bool) {
-    syscallN(8570, obj, PascalBool(value))
-}
-
-func SpinEdit_GetSelLength(obj uintptr) int32 {
-    return int32(syscallN(8571, obj))
-}
-
-func SpinEdit_SetSelLength(obj uintptr, value int32) {
-    syscallN(8572, obj, uintptr(value))
-}
-
-func SpinEdit_GetSelStart(obj uintptr) int32 {
-    return int32(syscallN(8573, obj))
-}
-
-func SpinEdit_SetSelStart(obj uintptr, value int32) {
-    syscallN(8574, obj, uintptr(value))
-}
-
-func SpinEdit_GetSelText(obj uintptr) string {
-    return GoStr(syscallN(8575, obj))
-}
-
-func SpinEdit_SetSelText(obj uintptr, value string) {
-    syscallN(8576, obj, PascalStr(value))
-}
-
-func SpinEdit_GetText(obj uintptr) string {
-    return GoStr(syscallN(8577, obj))
-}
-
-func SpinEdit_SetText(obj uintptr, value string) {
-    syscallN(8578, obj, PascalStr(value))
-}
-
-func SpinEdit_GetTextHint(obj uintptr) string {
-    return GoStr(syscallN(8579, obj))
-}
-
-func SpinEdit_SetTextHint(obj uintptr, value string) {
-    syscallN(8580, obj, PascalStr(value))
-}
-
-func SpinEdit_GetDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(8581, obj))
-}
-
-func SpinEdit_GetDockSite(obj uintptr) bool {
-    return GoBool(syscallN(8582, obj))
-}
-
-func SpinEdit_SetDockSite(obj uintptr, value bool) {
-    syscallN(8583, obj, PascalBool(value))
-}
-
-func SpinEdit_GetDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(8584, obj))
-}
-
-func SpinEdit_SetDoubleBuffered(obj uintptr, value bool) {
-    syscallN(8585, obj, PascalBool(value))
-}
-
-func SpinEdit_GetMouseInClient(obj uintptr) bool {
-    return GoBool(syscallN(8586, obj))
-}
-
-func SpinEdit_GetVisibleDockClientCount(obj uintptr) int32 {
-    return int32(syscallN(8587, obj))
-}
-
-func SpinEdit_GetBrush(obj uintptr) uintptr {
-    return syscallN(8588, obj)
-}
-
-func SpinEdit_GetControlCount(obj uintptr) int32 {
-    return int32(syscallN(8589, obj))
-}
-
-func SpinEdit_GetHandle(obj uintptr) HWND {
-    return HWND(syscallN(8590, obj))
-}
-
-func SpinEdit_GetParentDoubleBuffered(obj uintptr) bool {
-    return GoBool(syscallN(8591, obj))
-}
-
-func SpinEdit_SetParentDoubleBuffered(obj uintptr, value bool) {
-    syscallN(8592, obj, PascalBool(value))
-}
-
-func SpinEdit_GetParentWindow(obj uintptr) HWND {
-    return HWND(syscallN(8593, obj))
-}
-
-func SpinEdit_SetParentWindow(obj uintptr, value HWND) {
-    syscallN(8594, obj, uintptr(value))
-}
-
-func SpinEdit_GetShowing(obj uintptr) bool {
-    return GoBool(syscallN(8595, obj))
-}
-
-func SpinEdit_GetUseDockManager(obj uintptr) bool {
-    return GoBool(syscallN(8596, obj))
-}
-
-func SpinEdit_SetUseDockManager(obj uintptr, value bool) {
-    syscallN(8597, obj, PascalBool(value))
-}
-
-func SpinEdit_GetAction(obj uintptr) uintptr {
-    return syscallN(8598, obj)
-}
-
-func SpinEdit_SetAction(obj uintptr, value uintptr) {
-    syscallN(8599, obj, value)
-}
-
 func SpinEdit_GetAlign(obj uintptr) TAlign {
-    return TAlign(syscallN(8600, obj))
+    return TAlign(syscallN(8514, obj))
 }
 
 func SpinEdit_SetAlign(obj uintptr, value TAlign) {
-    syscallN(8601, obj, uintptr(value))
+    syscallN(8515, obj, uintptr(value))
+}
+
+func SpinEdit_GetAnchors(obj uintptr) TAnchors {
+    return TAnchors(syscallN(8516, obj))
+}
+
+func SpinEdit_SetAnchors(obj uintptr, value TAnchors) {
+    syscallN(8517, obj, uintptr(value))
+}
+
+func SpinEdit_GetAutoSelect(obj uintptr) bool {
+    return GoBool(syscallN(8518, obj))
+}
+
+func SpinEdit_SetAutoSelect(obj uintptr, value bool) {
+    syscallN(8519, obj, PascalBool(value))
+}
+
+func SpinEdit_GetAutoSize(obj uintptr) bool {
+    return GoBool(syscallN(8520, obj))
+}
+
+func SpinEdit_SetAutoSize(obj uintptr, value bool) {
+    syscallN(8521, obj, PascalBool(value))
+}
+
+func SpinEdit_GetColor(obj uintptr) TColor {
+    return TColor(syscallN(8522, obj))
+}
+
+func SpinEdit_SetColor(obj uintptr, value TColor) {
+    syscallN(8523, obj, uintptr(value))
+}
+
+func SpinEdit_GetConstraints(obj uintptr) uintptr {
+    return syscallN(8524, obj)
+}
+
+func SpinEdit_SetConstraints(obj uintptr, value uintptr) {
+    syscallN(8525, obj, value)
+}
+
+func SpinEdit_GetEnabled(obj uintptr) bool {
+    return GoBool(syscallN(8526, obj))
+}
+
+func SpinEdit_SetEnabled(obj uintptr, value bool) {
+    syscallN(8527, obj, PascalBool(value))
+}
+
+func SpinEdit_GetFont(obj uintptr) uintptr {
+    return syscallN(8528, obj)
+}
+
+func SpinEdit_SetFont(obj uintptr, value uintptr) {
+    syscallN(8529, obj, value)
+}
+
+func SpinEdit_GetIncrement(obj uintptr) int32 {
+    return int32(syscallN(8530, obj))
+}
+
+func SpinEdit_SetIncrement(obj uintptr, value int32) {
+    syscallN(8531, obj, uintptr(value))
+}
+
+func SpinEdit_GetMaxLength(obj uintptr) int32 {
+    return int32(syscallN(8532, obj))
+}
+
+func SpinEdit_SetMaxLength(obj uintptr, value int32) {
+    syscallN(8533, obj, uintptr(value))
+}
+
+func SpinEdit_GetMaxValue(obj uintptr) int32 {
+    return int32(syscallN(8534, obj))
+}
+
+func SpinEdit_SetMaxValue(obj uintptr, value int32) {
+    syscallN(8535, obj, uintptr(value))
+}
+
+func SpinEdit_GetMinValue(obj uintptr) int32 {
+    return int32(syscallN(8536, obj))
+}
+
+func SpinEdit_SetMinValue(obj uintptr, value int32) {
+    syscallN(8537, obj, uintptr(value))
+}
+
+func SpinEdit_GetParentColor(obj uintptr) bool {
+    return GoBool(syscallN(8538, obj))
+}
+
+func SpinEdit_SetParentColor(obj uintptr, value bool) {
+    syscallN(8539, obj, PascalBool(value))
+}
+
+func SpinEdit_GetParentFont(obj uintptr) bool {
+    return GoBool(syscallN(8540, obj))
+}
+
+func SpinEdit_SetParentFont(obj uintptr, value bool) {
+    syscallN(8541, obj, PascalBool(value))
+}
+
+func SpinEdit_GetParentShowHint(obj uintptr) bool {
+    return GoBool(syscallN(8542, obj))
+}
+
+func SpinEdit_SetParentShowHint(obj uintptr, value bool) {
+    syscallN(8543, obj, PascalBool(value))
+}
+
+func SpinEdit_GetPopupMenu(obj uintptr) uintptr {
+    return syscallN(8544, obj)
+}
+
+func SpinEdit_SetPopupMenu(obj uintptr, value uintptr) {
+    syscallN(8545, obj, value)
+}
+
+func SpinEdit_GetReadOnly(obj uintptr) bool {
+    return GoBool(syscallN(8546, obj))
+}
+
+func SpinEdit_SetReadOnly(obj uintptr, value bool) {
+    syscallN(8547, obj, PascalBool(value))
+}
+
+func SpinEdit_GetShowHint(obj uintptr) bool {
+    return GoBool(syscallN(8548, obj))
+}
+
+func SpinEdit_SetShowHint(obj uintptr, value bool) {
+    syscallN(8549, obj, PascalBool(value))
+}
+
+func SpinEdit_GetTabOrder(obj uintptr) TTabOrder {
+    return TTabOrder(syscallN(8550, obj))
+}
+
+func SpinEdit_SetTabOrder(obj uintptr, value TTabOrder) {
+    syscallN(8551, obj, uintptr(value))
+}
+
+func SpinEdit_GetTabStop(obj uintptr) bool {
+    return GoBool(syscallN(8552, obj))
+}
+
+func SpinEdit_SetTabStop(obj uintptr, value bool) {
+    syscallN(8553, obj, PascalBool(value))
+}
+
+func SpinEdit_GetValue(obj uintptr) int32 {
+    return int32(syscallN(8554, obj))
+}
+
+func SpinEdit_SetValue(obj uintptr, value int32) {
+    syscallN(8555, obj, uintptr(value))
+}
+
+func SpinEdit_GetVisible(obj uintptr) bool {
+    return GoBool(syscallN(8556, obj))
+}
+
+func SpinEdit_SetVisible(obj uintptr, value bool) {
+    syscallN(8557, obj, PascalBool(value))
+}
+
+func SpinEdit_SetOnChange(obj uintptr, fn interface{}) {
+    syscallN(8558, obj, MakeEventDataPtr(fn))
+}
+
+func SpinEdit_SetOnClick(obj uintptr, fn interface{}) {
+    syscallN(8559, obj, MakeEventDataPtr(fn))
+}
+
+func SpinEdit_SetOnEnter(obj uintptr, fn interface{}) {
+    syscallN(8560, obj, MakeEventDataPtr(fn))
+}
+
+func SpinEdit_SetOnExit(obj uintptr, fn interface{}) {
+    syscallN(8561, obj, MakeEventDataPtr(fn))
+}
+
+func SpinEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
+    syscallN(8562, obj, MakeEventDataPtr(fn))
+}
+
+func SpinEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
+    syscallN(8563, obj, MakeEventDataPtr(fn))
+}
+
+func SpinEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
+    syscallN(8564, obj, MakeEventDataPtr(fn))
+}
+
+func SpinEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
+    syscallN(8565, obj, MakeEventDataPtr(fn))
+}
+
+func SpinEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
+    syscallN(8566, obj, MakeEventDataPtr(fn))
+}
+
+func SpinEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
+    syscallN(8567, obj, MakeEventDataPtr(fn))
+}
+
+func SpinEdit_GetAlignment(obj uintptr) TAlignment {
+    return TAlignment(syscallN(8568, obj))
+}
+
+func SpinEdit_SetAlignment(obj uintptr, value TAlignment) {
+    syscallN(8569, obj, uintptr(value))
+}
+
+func SpinEdit_GetCanUndo(obj uintptr) bool {
+    return GoBool(syscallN(8570, obj))
+}
+
+func SpinEdit_GetModified(obj uintptr) bool {
+    return GoBool(syscallN(8571, obj))
+}
+
+func SpinEdit_SetModified(obj uintptr, value bool) {
+    syscallN(8572, obj, PascalBool(value))
+}
+
+func SpinEdit_GetSelLength(obj uintptr) int32 {
+    return int32(syscallN(8573, obj))
+}
+
+func SpinEdit_SetSelLength(obj uintptr, value int32) {
+    syscallN(8574, obj, uintptr(value))
+}
+
+func SpinEdit_GetSelStart(obj uintptr) int32 {
+    return int32(syscallN(8575, obj))
+}
+
+func SpinEdit_SetSelStart(obj uintptr, value int32) {
+    syscallN(8576, obj, uintptr(value))
+}
+
+func SpinEdit_GetSelText(obj uintptr) string {
+    return GoStr(syscallN(8577, obj))
+}
+
+func SpinEdit_SetSelText(obj uintptr, value string) {
+    syscallN(8578, obj, PascalStr(value))
+}
+
+func SpinEdit_GetText(obj uintptr) string {
+    return GoStr(syscallN(8579, obj))
+}
+
+func SpinEdit_SetText(obj uintptr, value string) {
+    syscallN(8580, obj, PascalStr(value))
+}
+
+func SpinEdit_GetTextHint(obj uintptr) string {
+    return GoStr(syscallN(8581, obj))
+}
+
+func SpinEdit_SetTextHint(obj uintptr, value string) {
+    syscallN(8582, obj, PascalStr(value))
+}
+
+func SpinEdit_GetDockClientCount(obj uintptr) int32 {
+    return int32(syscallN(8583, obj))
+}
+
+func SpinEdit_GetDockSite(obj uintptr) bool {
+    return GoBool(syscallN(8584, obj))
+}
+
+func SpinEdit_SetDockSite(obj uintptr, value bool) {
+    syscallN(8585, obj, PascalBool(value))
+}
+
+func SpinEdit_GetDoubleBuffered(obj uintptr) bool {
+    return GoBool(syscallN(8586, obj))
+}
+
+func SpinEdit_SetDoubleBuffered(obj uintptr, value bool) {
+    syscallN(8587, obj, PascalBool(value))
+}
+
+func SpinEdit_GetMouseInClient(obj uintptr) bool {
+    return GoBool(syscallN(8588, obj))
+}
+
+func SpinEdit_GetVisibleDockClientCount(obj uintptr) int32 {
+    return int32(syscallN(8589, obj))
+}
+
+func SpinEdit_GetBrush(obj uintptr) uintptr {
+    return syscallN(8590, obj)
+}
+
+func SpinEdit_GetControlCount(obj uintptr) int32 {
+    return int32(syscallN(8591, obj))
+}
+
+func SpinEdit_GetHandle(obj uintptr) HWND {
+    return HWND(syscallN(8592, obj))
+}
+
+func SpinEdit_GetParentDoubleBuffered(obj uintptr) bool {
+    return GoBool(syscallN(8593, obj))
+}
+
+func SpinEdit_SetParentDoubleBuffered(obj uintptr, value bool) {
+    syscallN(8594, obj, PascalBool(value))
+}
+
+func SpinEdit_GetParentWindow(obj uintptr) HWND {
+    return HWND(syscallN(8595, obj))
+}
+
+func SpinEdit_SetParentWindow(obj uintptr, value HWND) {
+    syscallN(8596, obj, uintptr(value))
+}
+
+func SpinEdit_GetShowing(obj uintptr) bool {
+    return GoBool(syscallN(8597, obj))
+}
+
+func SpinEdit_GetUseDockManager(obj uintptr) bool {
+    return GoBool(syscallN(8598, obj))
+}
+
+func SpinEdit_SetUseDockManager(obj uintptr, value bool) {
+    syscallN(8599, obj, PascalBool(value))
+}
+
+func SpinEdit_GetAction(obj uintptr) uintptr {
+    return syscallN(8600, obj)
+}
+
+func SpinEdit_SetAction(obj uintptr, value uintptr) {
+    syscallN(8601, obj, value)
 }
 
 func SpinEdit_GetBiDiMode(obj uintptr) TBiDiMode {

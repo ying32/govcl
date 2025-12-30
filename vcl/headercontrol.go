@@ -1164,10 +1164,16 @@ func (h *THeaderControl) SetUseDockManager(value bool) {
     HeaderControl_SetUseDockManager(h._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (h *THeaderControl) Action() *TAction {
     return AsAction(HeaderControl_GetAction(h._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (h *THeaderControl) SetAction(value IComponent) {
     HeaderControl_SetAction(h._instance(), CheckPtr(value))
 }

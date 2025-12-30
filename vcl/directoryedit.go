@@ -1670,10 +1670,16 @@ func (d *TDirectoryEdit) SetUseDockManager(value bool) {
     DirectoryEdit_SetUseDockManager(d._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (d *TDirectoryEdit) Action() *TAction {
     return AsAction(DirectoryEdit_GetAction(d._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (d *TDirectoryEdit) SetAction(value IComponent) {
     DirectoryEdit_SetAction(d._instance(), CheckPtr(value))
 }

@@ -1156,10 +1156,16 @@ func (m *TMonthCalendar) SetUseDockManager(value bool) {
     MonthCalendar_SetUseDockManager(m._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (m *TMonthCalendar) Action() *TAction {
     return AsAction(MonthCalendar_GetAction(m._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (m *TMonthCalendar) SetAction(value IComponent) {
     MonthCalendar_SetAction(m._instance(), CheckPtr(value))
 }

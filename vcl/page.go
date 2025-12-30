@@ -1052,10 +1052,16 @@ func (p *TPage) SetEnabled(value bool) {
     Page_SetEnabled(p._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (p *TPage) Action() *TAction {
     return AsAction(Page_GetAction(p._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (p *TPage) SetAction(value IComponent) {
     Page_SetAction(p._instance(), CheckPtr(value))
 }

@@ -484,10 +484,16 @@ func (t *TToolButton) Index() int32 {
     return ToolButton_GetIndex(t._instance())
 }
 
+// Action
+//
+// 获取。
 func (t *TToolButton) Action() *TAction {
     return AsAction(ToolButton_GetAction(t._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (t *TToolButton) SetAction(value IComponent) {
     ToolButton_SetAction(t._instance(), CheckPtr(value))
 }

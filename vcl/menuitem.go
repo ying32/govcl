@@ -265,10 +265,16 @@ func (m *TMenuItem) Parent() *TMenuItem {
     return AsMenuItem(MenuItem_GetParent(m._instance()))
 }
 
+// Action
+//
+// 获取。
 func (m *TMenuItem) Action() *TAction {
     return AsAction(MenuItem_GetAction(m._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (m *TMenuItem) SetAction(value IComponent) {
     MenuItem_SetAction(m._instance(), CheckPtr(value))
 }

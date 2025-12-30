@@ -1435,10 +1435,16 @@ func (d *TDrawGrid) SetUseDockManager(value bool) {
     DrawGrid_SetUseDockManager(d._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (d *TDrawGrid) Action() *TAction {
     return AsAction(DrawGrid_GetAction(d._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (d *TDrawGrid) SetAction(value IComponent) {
     DrawGrid_SetAction(d._instance(), CheckPtr(value))
 }

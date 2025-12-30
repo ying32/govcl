@@ -729,10 +729,16 @@ func (f *TForm) SetOnUTF8KeyPress(fn TUTF8KeyPressEvent) {
     Form_SetOnUTF8KeyPress(f._instance(), fn)
 }
 
+// Action
+//
+// 获取。
 func (f *TForm) Action() *TAction {
     return AsAction(Form_GetAction(f._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (f *TForm) SetAction(value IComponent) {
     Form_SetAction(f._instance(), CheckPtr(value))
 }

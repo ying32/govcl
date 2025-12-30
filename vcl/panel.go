@@ -1336,10 +1336,16 @@ func (p *TPanel) Showing() bool {
     return Panel_GetShowing(p._instance())
 }
 
+// Action
+//
+// 获取。
 func (p *TPanel) Action() *TAction {
     return AsAction(Panel_GetAction(p._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (p *TPanel) SetAction(value IComponent) {
     Panel_SetAction(p._instance(), CheckPtr(value))
 }

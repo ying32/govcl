@@ -961,10 +961,16 @@ func (l *TLabel) Canvas() *TCanvas {
     return AsCanvas(Label_GetCanvas(l._instance()))
 }
 
+// Action
+//
+// 获取。
 func (l *TLabel) Action() *TAction {
     return AsAction(Label_GetAction(l._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (l *TLabel) SetAction(value IComponent) {
     Label_SetAction(l._instance(), CheckPtr(value))
 }

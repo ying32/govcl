@@ -1093,10 +1093,16 @@ func (b *TButtonPanel) SetUseDockManager(value bool) {
     ButtonPanel_SetUseDockManager(b._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (b *TButtonPanel) Action() *TAction {
     return AsAction(ButtonPanel_GetAction(b._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (b *TButtonPanel) SetAction(value IComponent) {
     ButtonPanel_SetAction(b._instance(), CheckPtr(value))
 }

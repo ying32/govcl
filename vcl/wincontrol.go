@@ -802,10 +802,16 @@ func (w *TWinControl) SetEnabled(value bool) {
     WinControl_SetEnabled(w._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (w *TWinControl) Action() *TAction {
     return AsAction(WinControl_GetAction(w._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (w *TWinControl) SetAction(value IComponent) {
     WinControl_SetAction(w._instance(), CheckPtr(value))
 }

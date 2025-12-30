@@ -606,10 +606,16 @@ func (s *TStatusBar) ScaleFontsPPI(AToPPI int32, AProportion float64) {
     StatusBar_ScaleFontsPPI(s._instance(), AToPPI , AProportion)
 }
 
+// Action
+//
+// 获取。
 func (s *TStatusBar) Action() *TAction {
     return AsAction(StatusBar_GetAction(s._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (s *TStatusBar) SetAction(value IComponent) {
     StatusBar_SetAction(s._instance(), CheckPtr(value))
 }

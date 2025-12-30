@@ -867,10 +867,16 @@ func (i *TImage) SetOnMouseUp(fn TMouseEvent) {
     Image_SetOnMouseUp(i._instance(), fn)
 }
 
+// Action
+//
+// 获取。
 func (i *TImage) Action() *TAction {
     return AsAction(Image_GetAction(i._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (i *TImage) SetAction(value IComponent) {
     Image_SetAction(i._instance(), CheckPtr(value))
 }

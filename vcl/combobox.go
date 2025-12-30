@@ -1395,10 +1395,16 @@ func (c *TComboBox) SetUseDockManager(value bool) {
     ComboBox_SetUseDockManager(c._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (c *TComboBox) Action() *TAction {
     return AsAction(ComboBox_GetAction(c._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (c *TComboBox) SetAction(value IComponent) {
     ComboBox_SetAction(c._instance(), CheckPtr(value))
 }

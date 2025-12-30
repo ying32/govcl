@@ -755,10 +755,16 @@ func (l *TListView) ColumnCount() int32 {
     return ListView_GetColumnCount(l._instance())
 }
 
+// Action
+//
+// 获取。
 func (l *TListView) Action() *TAction {
     return AsAction(ListView_GetAction(l._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (l *TListView) SetAction(value IComponent) {
     ListView_SetAction(l._instance(), CheckPtr(value))
 }

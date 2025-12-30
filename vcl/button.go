@@ -613,10 +613,16 @@ func (b *TButton) ScaleFontsPPI(AToPPI int32, AProportion float64) {
     Button_ScaleFontsPPI(b._instance(), AToPPI , AProportion)
 }
 
+// Action
+//
+// 获取。
 func (b *TButton) Action() *TAction {
     return AsAction(Button_GetAction(b._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (b *TButton) SetAction(value IComponent) {
     Button_SetAction(b._instance(), CheckPtr(value))
 }

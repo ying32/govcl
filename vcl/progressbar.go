@@ -1163,10 +1163,16 @@ func (p *TProgressBar) SetUseDockManager(value bool) {
     ProgressBar_SetUseDockManager(p._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (p *TProgressBar) Action() *TAction {
     return AsAction(ProgressBar_GetAction(p._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (p *TProgressBar) SetAction(value IComponent) {
     ProgressBar_SetAction(p._instance(), CheckPtr(value))
 }

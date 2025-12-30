@@ -1231,10 +1231,16 @@ func (t *TToggleBox) SetUseDockManager(value bool) {
     ToggleBox_SetUseDockManager(t._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (t *TToggleBox) Action() *TAction {
     return AsAction(ToggleBox_GetAction(t._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (t *TToggleBox) SetAction(value IComponent) {
     ToggleBox_SetAction(t._instance(), CheckPtr(value))
 }

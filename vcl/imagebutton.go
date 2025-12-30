@@ -476,10 +476,16 @@ func (i *TImageButton) ScaleFontsPPI(AToPPI int32, AProportion float64) {
     ImageButton_ScaleFontsPPI(i._instance(), AToPPI , AProportion)
 }
 
+// Action
+//
+// 获取。
 func (i *TImageButton) Action() *TAction {
     return AsAction(ImageButton_GetAction(i._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (i *TImageButton) SetAction(value IComponent) {
     ImageButton_SetAction(i._instance(), CheckPtr(value))
 }

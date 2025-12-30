@@ -1335,10 +1335,16 @@ func (f *TFlowPanel) Showing() bool {
     return FlowPanel_GetShowing(f._instance())
 }
 
+// Action
+//
+// 获取。
 func (f *TFlowPanel) Action() *TAction {
     return AsAction(FlowPanel_GetAction(f._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (f *TFlowPanel) SetAction(value IComponent) {
     FlowPanel_SetAction(f._instance(), CheckPtr(value))
 }

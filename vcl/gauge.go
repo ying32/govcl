@@ -751,10 +751,16 @@ func (g *TGauge) SetVisible(value bool) {
     Gauge_SetVisible(g._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (g *TGauge) Action() *TAction {
     return AsAction(Gauge_GetAction(g._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (g *TGauge) SetAction(value IComponent) {
     Gauge_SetAction(g._instance(), CheckPtr(value))
 }

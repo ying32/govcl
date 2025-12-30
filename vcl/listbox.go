@@ -1353,10 +1353,16 @@ func (l *TListBox) SetUseDockManager(value bool) {
     ListBox_SetUseDockManager(l._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (l *TListBox) Action() *TAction {
     return AsAction(ListBox_GetAction(l._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (l *TListBox) SetAction(value IComponent) {
     ListBox_SetAction(l._instance(), CheckPtr(value))
 }

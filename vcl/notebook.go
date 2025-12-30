@@ -1094,10 +1094,16 @@ func (n *TNotebook) SetUseDockManager(value bool) {
     Notebook_SetUseDockManager(n._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (n *TNotebook) Action() *TAction {
     return AsAction(Notebook_GetAction(n._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (n *TNotebook) SetAction(value IComponent) {
     Notebook_SetAction(n._instance(), CheckPtr(value))
 }

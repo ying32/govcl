@@ -655,6 +655,24 @@ func (s *TSpinEdit) ScaleFontsPPI(AToPPI int32, AProportion float64) {
     SpinEdit_ScaleFontsPPI(s._instance(), AToPPI , AProportion)
 }
 
+// Align
+//
+// 获取控件自动调整。
+//
+// Get Control automatically adjusts.
+func (s *TSpinEdit) Align() TAlign {
+    return SpinEdit_GetAlign(s._instance())
+}
+
+// SetAlign
+//
+// 设置控件自动调整。
+//
+// Set Control automatically adjusts.
+func (s *TSpinEdit) SetAlign(value TAlign) {
+    SpinEdit_SetAlign(s._instance(), value)
+}
+
 // Anchors
 //
 // 获取四个角位置的锚点。
@@ -1306,30 +1324,18 @@ func (s *TSpinEdit) SetUseDockManager(value bool) {
     SpinEdit_SetUseDockManager(s._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (s *TSpinEdit) Action() *TAction {
     return AsAction(SpinEdit_GetAction(s._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (s *TSpinEdit) SetAction(value IComponent) {
     SpinEdit_SetAction(s._instance(), CheckPtr(value))
-}
-
-// Align
-//
-// 获取控件自动调整。
-//
-// Get Control automatically adjusts.
-func (s *TSpinEdit) Align() TAlign {
-    return SpinEdit_GetAlign(s._instance())
-}
-
-// SetAlign
-//
-// 设置控件自动调整。
-//
-// Set Control automatically adjusts.
-func (s *TSpinEdit) SetAlign(value TAlign) {
-    SpinEdit_SetAlign(s._instance(), value)
 }
 
 func (s *TSpinEdit) BiDiMode() TBiDiMode {

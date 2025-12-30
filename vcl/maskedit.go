@@ -1474,10 +1474,16 @@ func (m *TMaskEdit) SetUseDockManager(value bool) {
     MaskEdit_SetUseDockManager(m._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (m *TMaskEdit) Action() *TAction {
     return AsAction(MaskEdit_GetAction(m._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (m *TMaskEdit) SetAction(value IComponent) {
     MaskEdit_SetAction(m._instance(), CheckPtr(value))
 }

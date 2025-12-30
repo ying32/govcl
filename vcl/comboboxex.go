@@ -688,10 +688,16 @@ func (c *TComboBoxEx) SetStyleEx(value TComboBoxExStyles) {
     ComboBoxEx_SetStyleEx(c._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (c *TComboBoxEx) Action() *TAction {
     return AsAction(ComboBoxEx_GetAction(c._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (c *TComboBoxEx) SetAction(value IComponent) {
     ComboBoxEx_SetAction(c._instance(), CheckPtr(value))
 }

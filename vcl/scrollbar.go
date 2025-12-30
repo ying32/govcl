@@ -1126,10 +1126,16 @@ func (s *TScrollBar) SetUseDockManager(value bool) {
     ScrollBar_SetUseDockManager(s._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (s *TScrollBar) Action() *TAction {
     return AsAction(ScrollBar_GetAction(s._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (s *TScrollBar) SetAction(value IComponent) {
     ScrollBar_SetAction(s._instance(), CheckPtr(value))
 }

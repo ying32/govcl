@@ -487,10 +487,16 @@ func (c *TControl) SetEnabled(value bool) {
     Control_SetEnabled(c._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (c *TControl) Action() *TAction {
     return AsAction(Control_GetAction(c._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (c *TControl) SetAction(value IComponent) {
     Control_SetAction(c._instance(), CheckPtr(value))
 }

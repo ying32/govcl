@@ -1479,10 +1479,16 @@ func (e *TEdit) SetUseDockManager(value bool) {
     Edit_SetUseDockManager(e._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (e *TEdit) Action() *TAction {
     return AsAction(Edit_GetAction(e._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (e *TEdit) SetAction(value IComponent) {
     Edit_SetAction(e._instance(), CheckPtr(value))
 }

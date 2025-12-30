@@ -629,10 +629,16 @@ func (c *TCheckBox) SetOnChange(fn TNotifyEvent) {
     CheckBox_SetOnChange(c._instance(), fn)
 }
 
+// Action
+//
+// 获取。
 func (c *TCheckBox) Action() *TAction {
     return AsAction(CheckBox_GetAction(c._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (c *TCheckBox) SetAction(value IComponent) {
     CheckBox_SetAction(c._instance(), CheckPtr(value))
 }

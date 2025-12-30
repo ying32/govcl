@@ -1435,10 +1435,16 @@ func (v *TValueListEditor) SetUseDockManager(value bool) {
     ValueListEditor_SetUseDockManager(v._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (v *TValueListEditor) Action() *TAction {
     return AsAction(ValueListEditor_GetAction(v._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (v *TValueListEditor) SetAction(value IComponent) {
     ValueListEditor_SetAction(v._instance(), CheckPtr(value))
 }

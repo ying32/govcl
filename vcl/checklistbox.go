@@ -1323,10 +1323,16 @@ func (c *TCheckListBox) SetUseDockManager(value bool) {
     CheckListBox_SetUseDockManager(c._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (c *TCheckListBox) Action() *TAction {
     return AsAction(CheckListBox_GetAction(c._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (c *TCheckListBox) SetAction(value IComponent) {
     CheckListBox_SetAction(c._instance(), CheckPtr(value))
 }

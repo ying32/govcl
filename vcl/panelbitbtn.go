@@ -862,10 +862,16 @@ func (p *TPanelBitBtn) SetImageWidth(value int32) {
     PanelBitBtn_SetImageWidth(p._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (p *TPanelBitBtn) Action() *TAction {
     return AsAction(PanelBitBtn_GetAction(p._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (p *TPanelBitBtn) SetAction(value IComponent) {
     PanelBitBtn_SetAction(p._instance(), CheckPtr(value))
 }

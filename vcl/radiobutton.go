@@ -615,10 +615,16 @@ func (r *TRadioButton) SetOnChange(fn TNotifyEvent) {
     RadioButton_SetOnChange(r._instance(), fn)
 }
 
+// Action
+//
+// 获取。
 func (r *TRadioButton) Action() *TAction {
     return AsAction(RadioButton_GetAction(r._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (r *TRadioButton) SetAction(value IComponent) {
     RadioButton_SetAction(r._instance(), CheckPtr(value))
 }

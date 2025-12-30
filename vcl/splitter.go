@@ -639,10 +639,16 @@ func (s *TSplitter) SetEnabled(value bool) {
     Splitter_SetEnabled(s._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (s *TSplitter) Action() *TAction {
     return AsAction(Splitter_GetAction(s._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (s *TSplitter) SetAction(value IComponent) {
     Splitter_SetAction(s._instance(), CheckPtr(value))
 }

@@ -1485,10 +1485,16 @@ func (m *TMemo) SetUseDockManager(value bool) {
     Memo_SetUseDockManager(m._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (m *TMemo) Action() *TAction {
     return AsAction(Memo_GetAction(m._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (m *TMemo) SetAction(value IComponent) {
     Memo_SetAction(m._instance(), CheckPtr(value))
 }

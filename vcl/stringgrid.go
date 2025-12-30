@@ -1912,10 +1912,16 @@ func (s *TStringGrid) SetUseDockManager(value bool) {
     StringGrid_SetUseDockManager(s._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (s *TStringGrid) Action() *TAction {
     return AsAction(StringGrid_GetAction(s._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (s *TStringGrid) SetAction(value IComponent) {
     StringGrid_SetAction(s._instance(), CheckPtr(value))
 }

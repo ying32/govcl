@@ -587,10 +587,16 @@ func (x *TXButton) SetHoverFontColor(value TColor) {
     XButton_SetHoverFontColor(x._instance(), value)
 }
 
+// Action
+//
+// 获取。
 func (x *TXButton) Action() *TAction {
     return AsAction(XButton_GetAction(x._instance()))
 }
 
+// SetAction
+//
+// 设置。
 func (x *TXButton) SetAction(value IComponent) {
     XButton_SetAction(x._instance(), CheckPtr(value))
 }
